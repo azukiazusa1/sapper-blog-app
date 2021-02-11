@@ -9,8 +9,10 @@
 	onMount(() => {
 		html = document.documentElement
 		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+			darkMode = true
 			html.classList.add('dark')
 		} else {
+			darkMode = false
 			html.classList.remove('dark')
 		}
 	})
