@@ -4,24 +4,24 @@ import { onMount } from 'svelte';
 	import Nav from '../components/Nav.svelte';
 
 	export let segment: string;
-	let body;
+	let html: HTMLElement;
 	let darkMode = false
 
 	onMount(() => {
-		body = document.body
+		html = document.documentElement
 		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-			document.documentElement.classList.add('dark')
+			html.classList.add('dark')
 		} else {
-			document.documentElement.classList.remove('dark')
+			html.classList.remove('dark')
 		}
 	})
 	$: {
-			if (body) {
+		if (html) {
 			if (darkMode) {
-				body.classList.add('dark')
+				html.classList.add('dark')
 				localStorage.theme = 'dark'
 			} else {
-				body.classList.remove('dark')
+				html.classList.remove('dark')
 				localStorage.theme = 'light'
 			}
 		}
@@ -35,6 +35,6 @@ import { onMount } from 'svelte';
 <button on:click={toggleDarkMode}>button</button>
 <Nav {segment}/>
 
-<main class="bg-white dark:bg-black">
+<main>
 	<slot></slot>
 </main>
