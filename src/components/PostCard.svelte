@@ -17,7 +17,7 @@
     <p class="text-grey-darker text-sm mt-2">14/4/19</p>
   </header>
 
-  <p class="mx-4 break-words">{about}</p>
+  <p class="mx-4 break-words text-sm">{about}</p>
 
   <footer class="flex items-center justify-between leading-none p-2 md:p-4">
     <a class="flex items-center no-underline hover:underline" href="#">
