@@ -2,7 +2,7 @@
 	export let segment: string;
 </script>
 
-<nav class="hidden sm:block">
+<nav>
 	<ul class="flex space-x-4">
 		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href="." class="capitalize px-3 hover:opacity-75">home</a></li>
 		<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about" class="capitalize px-3 hover:opacity-75">about</a></li>
