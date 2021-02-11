@@ -14,12 +14,12 @@
   }
 </script>
 
-<header class="top-0 lef-0 w-full z-40 bg-gray-100 dark:bg-gray-700 shadow fixed border-b border-gray-200 dark:border-gray-600">
+<header
+  class="top-0 lef-0 w-full z-40 bg-gray-100 dark:bg-gray-700 shadow fixed border-b border-gray-200 dark:border-gray-600"
+>
   <div class="px-6 h-16 flex justify-between items-center">
     <span class="font-semibold text-lg md:text-xl tracking-wide">
-      <a href="/">
-        azukiazusaのテックブログ2
-      </a>
+      <a href="/"> azukiazusaのテックブログ2 </a>
     </span>
     <div class="hidden md:block">
       <SearchBar />
@@ -28,7 +28,7 @@
       <Nav {segment} />
     </div>
     <div class="flex">
-      <SearchIcon className="h-6 w-6 cursor-pointer md:hidden mr-3"/>
+      <SearchIcon className="h-6 w-6 cursor-pointer md:hidden mr-3" />
       <MoonIcon className="h-6 w-6 cursor-pointer" on:click={handleMoonClick} />
     </div>
   </div>
