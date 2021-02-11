@@ -1,22 +1,17 @@
-<style>
-  ul {
-    margin: 0 0 1em 0;
-    line-height: 1.5;
-  }
-</style>
-
 <script context="module" lang="ts">
-  export function preload() {
-    return this.fetch(`blog.json`)
-      .then((r: { json: () => any }) => r.json())
-      .then((posts: { slug: string; title: string; html: any }[]) => {
-        return { posts }
-      })
+  import RepositoryFactory, {POST} from '../../repositories/RepositoryFactory'
+  const PostRepository = RepositoryFactory[POST]
+  
+  export async function preload() {
+    const posts = await PostRepository.get()
+    return { posts }
   }
 </script>
 
 <script lang="ts">
-  export let posts: { slug: string; title: string; html: any }[]
+import type { Post } from '../../repositories/post';  
+
+  export let posts: Post[]
 </script>
 
 <svelte:head>
