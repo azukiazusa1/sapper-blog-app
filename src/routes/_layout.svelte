@@ -1,7 +1,6 @@
 <script lang="ts">
-import { onMount } from 'svelte';
-
-	import Nav from '../components/Nav.svelte';
+	import Header from '../components/Header.svelte'
+	import { onMount } from 'svelte';
 
 	export let segment: string;
 	let html: HTMLElement;
@@ -32,9 +31,10 @@ import { onMount } from 'svelte';
 	}
 </script>
 
-<button on:click={toggleDarkMode}>button</button>
-<Nav {segment}/>
+<Header {segment} on:clickMoon={toggleDarkMode} />
 
-<main>
-	<slot></slot>
+<main class="pt-16">
+	<div class="container mx-auto px-6 my-4">
+		<slot></slot>
+	</div>
 </main>
