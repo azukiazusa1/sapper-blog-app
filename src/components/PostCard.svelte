@@ -1,18 +1,17 @@
 <script lang="ts">
-  import type { Asset, TagCollection } from '../generated/graphql';
+  import type { Asset, Scalars, TagCollection } from '../generated/graphql';
 
   import Tag from './Tag.svelte'
 
   export let title: string
   export let slug: string
   export let about: string
-  export let thumbnail: Asset
-  export let createdAt: string
+  export let thumbnail: Pick<Asset, 'title' | 'url'>
+  export let createdAt: Scalars['DateTime']
   export let tagsCollection: TagCollection
 
 </script>
 
-<!-- Article -->
 <article class="overflow-hidden h-full bg-white dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
   <a href={`/blog/${slug}`}>
     <img alt={thumbnail.title} class="h-72 w-72 block mx-auto" src={thumbnail.url} />
@@ -35,4 +34,3 @@
       {/each}
   </footer>
 </article>
-<!-- END Article -->
