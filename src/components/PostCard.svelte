@@ -14,10 +14,10 @@
     <h1 class="text-2xl">
       <a class="no-underline hover:underline" href={`/blog/${slug}`}>{ title }</a>
     </h1>
-    <p class="text-grey-darker text-sm mt-2">14/4/19</p>
+    <p class="text-grey-darker text-sm mt-2 text-opacity-70 text-black dark:text-gray-50 dark:text-opacity-60">14/4/19</p>
   </header>
 
-  <p class="mx-4 break-words text-sm">{about}</p>
+  <p class="mx-4 break-words text-sm text-opacity-70 text-black dark:text-gray-50 dark:text-opacity-60">{about}</p>
 
   <footer class="flex items-center justify-between leading-none p-2 md:p-4">
     <a class="flex items-center no-underline hover:underline" href="#">
