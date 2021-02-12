@@ -22,7 +22,7 @@
     <p class="text-grey-darker text-sm mt-2 text-opacity-70 text-black dark:text-gray-50 dark:text-opacity-60">14/4/19</p>
   </header>
 
-  <p class="mx-4 break-words text-sm text-opacity-70 text-black dark:text-gray-50 dark:text-opacity-60">{about}</p>
+  <p class="mx-4 break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80">{about}</p>
 
   <footer class="flex items-center leading-none mt-2 p-2 md:p-4">
       {#each tagsCollection.items as tag (tag.slug)}
