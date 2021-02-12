@@ -5,7 +5,7 @@
 </script>
 
 <!-- Article -->
-<article class="overflow-hidden bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
+<article class="overflow-hidden h-full bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
   <a href={`/blog/${slug}`}>
     <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random" />
   </a>
