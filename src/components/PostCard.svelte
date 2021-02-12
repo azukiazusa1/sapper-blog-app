@@ -1,25 +1,32 @@
 <script lang="ts">
-  import type { TagCollection } from '../generated/graphql';
+  import type { Asset, TagCollection } from '../generated/graphql';
 
   import Tag from './Tag.svelte'
 
   export let title: string
   export let slug: string
   export let about: string
+  export let thumbnail: Asset
+  export let createdAt: string
   export let tagsCollection: TagCollection
+
+  console.log(thumbnail)
+  console.log(createdAt)
 </script>
 
 <!-- Article -->
-<article class="overflow-hidden h-full bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
+<article class="overflow-hidden h-full bg-white dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
   <a href={`/blog/${slug}`}>
-    <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random" />
+    <img alt={thumbnail.title} class="h-72 w-72 block mx-auto" src={thumbnail.url} />
   </a>
 
-  <header class="flex-row items-center justify-between leading-tight p-4">
+  <header class="flex-row items-center justify-between leading-tight p-4 border-t border-gray-300 dark:border-gray-600">
     <h1 class="text-2xl">
       <a class="no-underline hover:underline" href={`/blog/${slug}`}>{ title }</a>
     </h1>
-    <p class="text-grey-darker text-sm mt-2 text-opacity-70 text-black dark:text-gray-50 dark:text-opacity-60">14/4/19</p>
+    <p class="text-grey-darker text-sm mt-2 text-opacity-70 text-black dark:text-gray-50 dark:text-opacity-60">
+      <time datetime={createdAt}>{createdAt}</time>
+    </p>
   </header>
 
   <p class="mx-4 break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80">{about}</p>
