@@ -1,7 +1,12 @@
 <script lang="ts">
+  import type { TagCollection } from '../generated/graphql';
+
+  import Tag from './Tag.svelte'
+
   export let title: string
   export let slug: string
   export let about: string
+  export let tagsCollection: TagCollection
 </script>
 
 <!-- Article -->
@@ -10,7 +15,7 @@
     <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random" />
   </a>
 
-  <header class="flex-row items-center justify-between leading-tight p-2 md:p-4">
+  <header class="flex-row items-center justify-between leading-tight p-4">
     <h1 class="text-2xl">
       <a class="no-underline hover:underline" href={`/blog/${slug}`}>{ title }</a>
     </h1>
@@ -19,15 +24,10 @@
 
   <p class="mx-4 break-words text-sm text-opacity-70 text-black dark:text-gray-50 dark:text-opacity-60">{about}</p>
 
-  <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-    <a class="flex items-center no-underline hover:underline" href="#">
-      <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random" />
-      <p class="ml-2 text-sm">Author Name</p>
-    </a>
-    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
-      <span class="hidden">Like</span>
-      <i class="fa fa-heart" />
-    </a>
+  <footer class="flex items-center leading-none mt-2 p-2 md:p-4">
+      {#each tagsCollection.items as tag (tag.slug)}
+        <Tag {...tag} />
+      {/each}
   </footer>
 </article>
 <!-- END Article -->
