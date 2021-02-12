@@ -1,0 +1,14 @@
+overwrite: true
+schema:
+  - "https://graphql.contentful.com/content/v1/spaces/${SPACE}/environments/${ENVIRONMENTS}":
+      headers:
+        Authorization: Bearer ${API_KEY}
+documents: "src/**/*.graphql"
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

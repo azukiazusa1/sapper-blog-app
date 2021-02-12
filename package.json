@@ -11,7 +11,8 @@
     "build:tailwind": "NODE_ENV=production postcss static/tailwind.css -o static/index.css",
     "validate": "svelte-check --ignore src/node_modules/@sapper",
     "lint": "eslint . --ext .js,.ts,.svelte --fix",
-    "format": "prettier --write ./**/*.svelte"
+    "format": "prettier --write ./**/*.svelte",
+    "gen": "graphql-codegen --config codegen.yml -r dotenv/config"
   },
   "dependencies": {
     "@urql/core": "^2.0.0",
@@ -30,6 +31,10 @@
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.0.0",
+    "@graphql-codegen/cli": "1.20.1",
+    "@graphql-codegen/introspection": "1.18.1",
+    "@graphql-codegen/typescript": "1.21.0",
+    "@graphql-codegen/typescript-operations": "^1.17.14",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
