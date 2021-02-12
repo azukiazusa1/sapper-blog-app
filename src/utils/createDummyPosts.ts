@@ -2,9 +2,11 @@ import type { Post } from "../repositories/post"
 
 export const createDummyPost = (id = '1') => {
   return {
-    slug: id,
-    title: `title${id}`,
-    about: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum perspiciatis quasi cum illo nihil dolorum eaque itaque quaerat deleniti tempore! Fuga animi maxime culpa nisi veritatis? Quasi officia temporibus voluptates?'
+    fields: {
+      slug: id,
+      title: `title${id}`,
+      about: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum perspiciatis quasi cum illo nihil dolorum eaque itaque quaerat deleniti tempore! Fuga animi maxime culpa nisi veritatis? Quasi officia temporibus voluptates?'
+    }
   } as Post
 }
 

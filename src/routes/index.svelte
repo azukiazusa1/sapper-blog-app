@@ -1,6 +1,5 @@
 <script>
   import successkid from 'images/successkid.jpg'
-  console.log(process.env.API_KEY)
 </script>
 
 <svelte:head>

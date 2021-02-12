@@ -1,7 +1,9 @@
 export interface Post {
-  title: string
-  about: string
-  slug: string
+  fields: {
+    title: string
+    about: string
+    slug: string
+  }
 }
 
 export interface PostRepositoryInterFace {

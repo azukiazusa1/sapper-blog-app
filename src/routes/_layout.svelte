@@ -1,6 +1,6 @@
 <script lang="ts">
   import Header from '../components/Header.svelte'
-  import { onMount } from 'svelte'
+	import { onMount } from 'svelte'
 
   export let segment: string
   let html: HTMLElement

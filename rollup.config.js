@@ -31,7 +31,9 @@ export default {
 			replace({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode),
-				'process.env.API_KEY': JSON.stringify(process.env.API_KEY)
+				'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
+				'process.env.SPACE': JSON.stringify(process.env.SPACE),
+				'process.env.ENVIRONMENTS': JSON.stringify(process.env.ENVIRONMENTS)
 			}),
 			svelte({
 				preprocess: sveltePreprocess({ sourceMap: dev }),
@@ -83,7 +85,10 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
+				'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
+				'process.env.SPACE': JSON.stringify(process.env.SPACE),
+				'process.env.ENVIRONMENTS': JSON.stringify(process.env.ENVIRONMENTS)
 			}),
 			svelte({
 				preprocess: sveltePreprocess({ sourceMap: dev }),
@@ -118,7 +123,7 @@ export default {
 			resolve(),
 			replace({
 				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
 			}),
 			commonjs(),
 			typescript({ sourceMap: dev }),
