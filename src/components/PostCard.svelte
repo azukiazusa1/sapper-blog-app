@@ -10,8 +10,6 @@
   export let createdAt: string
   export let tagsCollection: TagCollection
 
-  console.log(thumbnail)
-  console.log(createdAt)
 </script>
 
 <!-- Article -->

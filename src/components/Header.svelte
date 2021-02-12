@@ -2,10 +2,12 @@
   import SearchBar from './SearchBar.svelte'
   import Nav from './Nav.svelte'
   import MoonIcon from './Icons/Moon.svelte'
+  import SunIcon from './Icons/Sun.svelte'
   import SearchIcon from './Icons/Search.svelte'
   import { createEventDispatcher } from 'svelte'
 
   export let segment: string
+  export let darkMode: boolean
 
   const dispatch = createEventDispatcher()
 
@@ -29,7 +31,11 @@
     </div>
     <div class="flex">
       <SearchIcon className="h-6 w-6 cursor-pointer md:hidden mr-3" />
-      <MoonIcon className="h-6 w-6 cursor-pointer" on:click={handleMoonClick} />
+      {#if darkMode}
+        <SunIcon className="h-6 w-6 cursor-pointer" on:click={handleMoonClick} />
+      {:else}
+        <MoonIcon className="h-6 w-6 cursor-pointer" on:click={handleMoonClick} />
+      {/if}
     </div>
   </div>
 </header>

@@ -36,7 +36,7 @@
   }
 </script>
 
-<Header {segment} on:clickMoon={toggleDarkMode} />
+<Header {segment} {darkMode} on:clickMoon={toggleDarkMode} />
 
 <main class="pt-16">
   <div class="container mx-auto px-6 my-4">
