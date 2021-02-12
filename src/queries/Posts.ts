@@ -1,4 +1,6 @@
-query Posts {
+import { gql } from "@urql/core"
+
+export const postsQuery = gql`query Posts {
   blogPostCollection(limit: 10){
     items{
       title
@@ -11,4 +13,4 @@ query Posts {
       }
     }
   }
-}
+}`
