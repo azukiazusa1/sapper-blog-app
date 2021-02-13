@@ -1,3 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* style for Markdown */
+
+#contents {
+  font-size: 16px;
+}
+
+#contents h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.1rem;
+  margin-bottom: 1.1rem;
+}
+
+#contents h2 {
+  font-size: 1.6em;
+  font-weight: 700;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.1rem;
+  margin-bottom: 1.1rem;
+}
+
+#contents h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding-bottom: 0.1rem;
+  margin-bottom: 1.1rem;
+}
+
+#contents h4 {
+  font-size: 0.4rem;
+  padding-bottom: 0.1rem;
+  margin-bottom: 1.1rem;
+}
+
+#contents ul {
+  list-style-type: disc;
+}
+
+#contents ol {
+  list-style-type: decimal;
+}
+
+#contents ul,
+#contents ol {
+  padding-left: 1.5em;
+    margin: 1.5em 0;
+    line-height: 1.9;
+}
+
+#contents blockquote {
+  border-left: 5px solid #ddd;
+  font-weight: 100;
+  padding: 1rem;
+  padding-right: 0;
+  margin: 1.5rem 0;
+}
+
+#contents p {
+  margin: 0 0 1.125rem 0;
+  line-height: 1.9;
+}
+
+#contents img {
+  margin: 1.5rem auto;
+}
+
+#contents a {
+  color: #0f83fd;
+}
+
+#contents a:hover {
+  text-decoration: underline;
+}
+
+#contents code:not([class*="language-"]) {
+  background-color: #eee;
+  color: #333;
+  padding: 0.1em 0.4em;
+}

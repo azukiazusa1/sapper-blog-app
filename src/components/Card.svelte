@@ -23,6 +23,8 @@
 </script>
 
 <article class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
-  <h1 class="text-7xl font-bold mb-2">{ title }</h1>
-  <p>{@html contents}</p>
+  <div class="px-0 md:px-8">
+    <h1 class="text-7xl font-bold mb-8">{ title }</h1>
+    <p id="contents">{@html contents}</p>
+  </div>
 </article>
