@@ -16,15 +16,19 @@
 </script>
 
 <script lang="ts">
-  export let post: { slug: string; title: string; about: string }
+  import type { BlogPost } from '../../generated/graphql';
+
+  export let post: Pick<BlogPost, 'title' | 'slug' | 'about' | 'article' | 'createdAt'>
 </script>
 
 <svelte:head>
   <title>{post.title}</title>
+  <meta name="description" content={post.about}>
 </svelte:head>
+
 <h1>{post.title}</h1>
 
 <div class="content">
-  {@html post.about}
+  {@html post.article}
 </div>
 
