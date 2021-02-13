@@ -1,4 +1,4 @@
-import { MockPostRepository, PostRepositoryInterFace } from './post'
+import { MockPostRepository, PostRepositoryInterFace, PostRepository } from './post'
 
 export const POST = Symbol('post')
 
@@ -7,5 +7,5 @@ export interface Repositories {
 }
 
 export default {
-  [POST]: new MockPostRepository()
+  [POST]: new PostRepository()
 } as Repositories

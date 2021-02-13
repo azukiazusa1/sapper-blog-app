@@ -6,9 +6,15 @@ export const postsQuery = gql`query Posts {
       title
       slug
       about
+      createdAt
+      thumbnail {
+        title
+        url
+      }
       tagsCollection(limit: 5) {
         items {
           name
+          slug
         }
       }
     }

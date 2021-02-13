@@ -690,12 +690,15 @@ export type PostsQuery = (
     { __typename?: 'BlogPostCollection' }
     & { items: Array<Maybe<(
       { __typename?: 'BlogPost' }
-      & Pick<BlogPost, 'title' | 'slug' | 'about'>
-      & { tagsCollection?: Maybe<(
+      & Pick<BlogPost, 'title' | 'slug' | 'about' | 'createdAt'>
+      & { thumbnail?: Maybe<(
+        { __typename?: 'Asset' }
+        & Pick<Asset, 'title' | 'url'>
+      )>, tagsCollection?: Maybe<(
         { __typename?: 'BlogPostTagsCollection' }
         & { items: Array<Maybe<(
           { __typename?: 'Tag' }
-          & Pick<Tag, 'name'>
+          & Pick<Tag, 'name' | 'slug'>
         )>> }
       )> }
     )>> }

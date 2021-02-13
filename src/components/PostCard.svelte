@@ -1,6 +1,5 @@
 <script lang="ts">
-  import type { Asset, Scalars, TagCollection } from '../generated/graphql';
-
+  import type { Asset, Scalars, TagCollection } from '../generated/graphql'
   import Tag from './Tag.svelte'
 
   export let title: string
@@ -9,7 +8,6 @@
   export let thumbnail: Pick<Asset, 'title' | 'url'>
   export let createdAt: Scalars['DateTime']
   export let tagsCollection: TagCollection
-
 </script>
 
 <article class="overflow-hidden h-full bg-white dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
@@ -19,7 +17,7 @@
 
   <header class="flex-row items-center justify-between leading-tight p-4 border-t border-gray-300 dark:border-gray-600">
     <h1 class="text-2xl">
-      <a class="no-underline hover:underline" href={`/blog/${slug}`}>{ title }</a>
+      <a class="no-underline hover:underline" href={`/blog/${slug}`}>{title}</a>
     </h1>
     <p class="text-grey-darker text-sm mt-2 text-opacity-70 text-black dark:text-gray-50 dark:text-opacity-60">
       <time datetime={createdAt}>{createdAt}</time>
@@ -29,8 +27,8 @@
   <p class="mx-4 break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80">{about}</p>
 
   <footer class="flex items-center leading-none mt-2 p-2 md:p-4">
-      {#each tagsCollection.items as tag (tag.slug)}
-        <Tag {...tag} />
-      {/each}
+    {#each tagsCollection.items as tag (tag.slug)}
+      <Tag {...tag} />
+    {/each}
   </footer>
 </article>

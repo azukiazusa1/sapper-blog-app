@@ -1,3 +1,5 @@
+import type { PostsQuery } from "../../generated/graphql";
+
 export interface Post {
   fields: {
     title: string
@@ -7,6 +9,6 @@ export interface Post {
 }
 
 export interface PostRepositoryInterFace {
-  get(): Promise<any[]>
+  get(): Promise<PostsQuery>
   find(id: string): Promise<any>
 }
