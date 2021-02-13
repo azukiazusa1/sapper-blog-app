@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Asset, Scalars, TagCollection } from '../generated/graphql'
   import Tag from './Tag.svelte'
+  import Time from './Time.svelte'
 
   export let title: string
   export let slug: string
@@ -19,8 +20,8 @@
     <h1 class="text-2xl">
       <a class="no-underline hover:underline" href={`/blog/${slug}`}>{title}</a>
     </h1>
-    <p class="text-grey-darker text-sm mt-2 text-opacity-70 text-black dark:text-gray-50 dark:text-opacity-60">
-      <time datetime={createdAt}>{createdAt}</time>
+    <p class="mt-2">
+      <Time date={createdAt} />
     </p>
   </header>
 
