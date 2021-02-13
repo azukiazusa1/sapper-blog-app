@@ -26,7 +26,7 @@
 
   <p class="mx-4 break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80">{about}</p>
 
-  <footer class="flex items-center leading-none mt-2 p-2 md:p-4">
+  <footer class="flex flex-wrap items-center leading-none mt-2 p-2 md:p-4">
     {#each tagsCollection.items as tag (tag.slug)}
       <Tag {...tag} />
     {/each}
