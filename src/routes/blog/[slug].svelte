@@ -5,7 +5,10 @@
   export async function preload({ params }) {
     try {
       const res = await PostRepository.find(params.slug)
-      return { post: res.fields }
+      if (res.blogPostCollection.items.length === 0) {
+        this.error(404, 'Not Found')
+      }
+      return { post: res.blogPostCollection.items[0] }
     } catch (err) {
       this.error(err.status, err.message)
     }
@@ -19,9 +22,9 @@
 <svelte:head>
   <title>{post.title}</title>
 </svelte:head>
-
 <h1>{post.title}</h1>
 
 <div class="content">
   {@html post.about}
 </div>
+
