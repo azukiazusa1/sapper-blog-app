@@ -3,7 +3,8 @@ import { createDummyPosts, createDummyPost } from "../../utils/createDummyPosts"
 import { client } from "../client"
 import type { PostRepositoryInterFace } from "./types";
 import { postsQuery } from '../../queries/Posts'
-import type { PostsQuery } from '../../generated/graphql';
+import type { PostBySlugQuery, PostsQuery } from '../../generated/graphql';
+import { postBySlugQuery } from '../../queries/PostBySlug';
 
 export class PostRepository implements PostRepositoryInterFace {
   async get() {
@@ -18,7 +19,16 @@ export class PostRepository implements PostRepositoryInterFace {
 
     return posts as PostsQuery
   }
-  find(id: string) {
-    return Promise.resolve(createDummyPost(id))
+  async find(slug: string) {
+    const post = await new Promise(r => {
+      pipe(
+        client.query(postBySlugQuery, { slug }),
+        subscribe(result => {
+          r(result.data)
+        })
+      )
+    })
+
+    return post as PostBySlugQuery
   }
 }
