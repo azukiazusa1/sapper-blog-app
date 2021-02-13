@@ -1,18 +1,16 @@
 <script context="module" lang="ts">
-  import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
-  const PostRepository = RepositoryFactory[POST]
-
   export async function preload() {
-    const posts = await PostRepository.get()
-    return { posts }
-  }
+    const res = await this.fetch(`blog.json`)
+    const { posts } = await res.json()
+			return { posts }
+	}  
 </script>
 
 <script lang="ts">
   import PostList from '../../components/PostList.svelte'
-  import type { Post } from '../../repositories/post'
+  import type { PostsQuery } from '../../generated/graphql';
 
-  export let posts: Post[]
+  export let posts: PostsQuery
 
 </script>
 
