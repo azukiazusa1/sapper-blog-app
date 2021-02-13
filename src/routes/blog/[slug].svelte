@@ -30,7 +30,7 @@
   import Card from '../../components/Card.svelte';
 import type { BlogPost } from '../../generated/graphql';
 
-  export let post: Pick<BlogPost, 'title' | 'slug' | 'about' | 'article' | 'createdAt'>
+  export let post: Pick<BlogPost, 'title' | 'slug' | 'about' | 'article' | 'createdAt' | 'tagsCollection'>
   export let contents: string
 </script>
 
@@ -39,4 +39,6 @@ import type { BlogPost } from '../../generated/graphql';
   <meta name="description" content={post.about}>
 </svelte:head>
 
-<Card title={post.title} {contents} />
+<div class="my-12">
+  <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />
+</div>
