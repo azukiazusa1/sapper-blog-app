@@ -681,6 +681,39 @@ export enum BlogPostOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+export type PostBySlugQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type PostBySlugQuery = (
+  { __typename?: 'Query' }
+  & { blogPostCollection?: Maybe<(
+    { __typename?: 'BlogPostCollection' }
+    & { items: Array<Maybe<(
+      { __typename?: 'BlogPost' }
+      & Pick<BlogPost, 'title' | 'slug' | 'about' | 'article' | 'createdAt'>
+      & { relatedArticleCollection?: Maybe<(
+        { __typename?: 'BlogPostRelatedArticleCollection' }
+        & { items: Array<Maybe<(
+          { __typename?: 'BlogPost' }
+          & Pick<BlogPost, 'title' | 'slug'>
+          & { thumbnail?: Maybe<(
+            { __typename?: 'Asset' }
+            & Pick<Asset, 'title' | 'url'>
+          )> }
+        )>> }
+      )>, tagsCollection?: Maybe<(
+        { __typename?: 'BlogPostTagsCollection' }
+        & { items: Array<Maybe<(
+          { __typename?: 'Tag' }
+          & Pick<Tag, 'name' | 'slug'>
+        )>> }
+      )> }
+    )>> }
+  )> }
+);
+
 export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
