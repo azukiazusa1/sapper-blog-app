@@ -596,6 +596,10 @@ video {
   border-color: rgba(75, 85, 99, var(--tw-border-opacity));
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -1077,7 +1081,7 @@ video {
 #contents h1 {
   font-size: 1.8rem;
   font-weight: 700;
-  border-bottom: 2px solid  rgb(255, 62, 0);
+  border-bottom: 1px solid  #ddd;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
 }

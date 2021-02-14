@@ -20,7 +20,6 @@
   export let post: Pick<BlogPost, 'title' | 'slug' | 'about' | 'article' | 'createdAt' | 'tagsCollection' | 'relatedArticleCollection'>
   export let contents: string
 
-  console.log(post.relatedArticleCollection)
 </script>
 
 <svelte:head>

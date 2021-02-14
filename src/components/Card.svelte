@@ -1,25 +1,8 @@
 <script lang="ts">
-  import Prism from 'prismjs'
-  import 'prismjs/components/prism-typescript'
-  import 'prismjs/components/prism-diff'
-  import 'prismjs/components/prism-go'
-  import 'prismjs/components/prism-json'
-  import 'prismjs/components/prism-jsx'
-  import 'prismjs/components/prism-python'
-  import 'prismjs/components/prism-scss'
-  import 'prismjs/components/prism-sass'
-  import 'prismjs/components/prism-yaml'
-  import 'prismjs/components/prism-bash'
-  import 'prismjs/components/prism-java'
-  import 'prismjs/themes/prism-tomorrow.css'
   import AppTag from './Tag.svelte'
   import Time from './Time.svelte'
-  import { onMount } from 'svelte'
+  import 'prismjs/themes/prism-tomorrow.css'
   import type { Tag } from '../generated/graphql';
-
-  onMount(() => {
-    Prism.highlightAll()
-  })
 
   export let title: string
   export let contents: string
