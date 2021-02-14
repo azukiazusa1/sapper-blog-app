@@ -18,7 +18,7 @@
 <script lang="ts">
   export let segment: string
 
-  const routes = ['blog', 'about']
+  const routes = ['blog', 'about', 'tags']
 </script>
 
 <nav>
