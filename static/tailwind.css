@@ -77,6 +77,26 @@
   text-decoration: underline;
 }
 
+#contents .toc {
+  margin: 2rem;
+}
+
+#contents .toc-item {
+  opacity: 0.7;
+}
+
+#contents .toc-link {
+  color: inherit;
+}
+
+#contents .toc-link:hover {
+  opacity: 1;
+}
+
+#contents .toc-level {
+  margin: 0.4rem 0;
+}
+
 #contents code:not([class*="language-"]) {
   background-color: #eee;
   color: #333;

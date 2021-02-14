@@ -6,6 +6,8 @@ import markdown from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import html from 'rehype-stringify'
 import rehypePrism from '@mapbox/rehype-prism'
+import rehypeSlug from 'rehype-slug'
+import rehypeToc from '@jsdevtools/rehype-toc'
 import type { Request } from 'polka'
 import type { ServerResponse } from 'http'
 
@@ -26,6 +28,8 @@ export async function get(req: Request, res: ServerResponse, next: () => void) {
     .use(markdown)
     .use(remark2rehype)
     .use(rehypePrism, { ignoreMissing: true })
+    .use(rehypeSlug)
+    .use(rehypeToc)
     .use(html)
   const input = data.blogPostCollection.items[0].article
   const { contents } = await processor.process(input)

@@ -1,6 +1,6 @@
 module.exports = {
   purge: {
-    enabled: !process.env.ROLLUP_WATCH,
+    enabled: !process.env.NODE_ENV === 'production',
     mode: 'all',
     content: ['./**/**/*.html', './**/**/*.svelte'],
     options: {

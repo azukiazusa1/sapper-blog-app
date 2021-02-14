@@ -15,6 +15,7 @@
     "gen": "graphql-codegen --config codegen.yml -r dotenv/config"
   },
   "dependencies": {
+    "@jsdevtools/rehype-toc": "^3.0.2",
     "@mapbox/rehype-prism": "^0.5.0",
     "@urql/core": "^2.0.0",
     "@urql/svelte": "^1.2.0",
@@ -26,6 +27,7 @@
     "node-fetch": "^2.6.1",
     "polka": "next",
     "prismjs": "^1.23.0",
+    "rehype-slug": "^4.0.1",
     "rehype-stringify": "^8.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
