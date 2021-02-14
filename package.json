@@ -29,6 +29,8 @@
     "prismjs": "^1.23.0",
     "rehype-slug": "^4.0.1",
     "rehype-stringify": "^8.0.0",
+    "remark-code-titles": "^0.1.1",
+    "remark-footnotes": "^3.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
     "sirv": "^1.0.0",

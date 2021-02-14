@@ -4,6 +4,8 @@ const PostRepository = RepositoryFactory[POST]
 import unified from 'unified'
 import markdown from 'remark-parse'
 import remark2rehype from 'remark-rehype'
+import remarkfootnotes from 'remark-footnotes'
+import remarkCodeTitles from 'remark-code-titles'
 import html from 'rehype-stringify'
 import rehypePrism from '@mapbox/rehype-prism'
 import rehypeSlug from 'rehype-slug'
@@ -26,6 +28,8 @@ export async function get(req: Request, res: ServerResponse, next: () => void) {
   }
   const processor = unified()
     .use(markdown)
+    .use(remarkfootnotes)
+    .use(remarkCodeTitles)
     .use(remark2rehype)
     .use(rehypePrism, { ignoreMissing: true })
     .use(rehypeSlug)
