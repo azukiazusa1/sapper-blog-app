@@ -76,6 +76,11 @@ Grouping content
 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
 */
 
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+}
+
 /*
 Text-level semantics
 ====================
@@ -85,11 +90,15 @@ Text-level semantics
 Add the correct text decoration in Chrome, Edge, and Safari.
 */
 
+abbr[title] {
+  text-decoration: underline dotted;
+}
+
 /**
 Add the correct font weight in Edge and Safari.
 */
 
-
+b,
 strong {
   font-weight: bolder;
 }
@@ -99,7 +108,9 @@ strong {
 2. Correct the odd 'em' font sizing in all browsers.
 */
 
-
+code,
+kbd,
+samp,
 pre {
   font-family:
 		ui-monospace,
@@ -115,9 +126,29 @@ pre {
 Add the correct font size in all browsers.
 */
 
+small {
+  font-size: 80%;
+}
+
 /**
 Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
 */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
 
 /*
 Tabular data
@@ -128,6 +159,11 @@ Tabular data
 1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
 2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
 */
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+}
 
 /*
 Forms
@@ -140,7 +176,10 @@ Forms
 */
 
 button,
-input {
+input,
+optgroup,
+select,
+textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
@@ -152,7 +191,8 @@ Remove the inheritance of text transform in Edge and Firefox.
 1. Remove the inheritance of text transform in Firefox.
 */
 
-button { /* 1 */
+button,
+select { /* 1 */
   text-transform: none;
 }
 
@@ -162,6 +202,7 @@ Correct the inability to style clickable types in iOS and Safari.
 
 button,
 [type='button'],
+[type='reset'],
 [type='submit'] {
   -webkit-appearance: button;
 }
@@ -183,9 +224,17 @@ See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d4
 Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
 */
 
+legend {
+  padding: 0;
+}
+
 /**
 Add the correct vertical alignment in Chrome and Firefox.
 */
+
+progress {
+  vertical-align: baseline;
+}
 
 /**
 Correct the cursor style of increment and decrement buttons in Safari.
@@ -219,6 +268,10 @@ Interactive
 Add the correct display in Chrome and Safari.
 */
 
+summary {
+  display: list-item;
+}
+
 /**
  * Manually forked from SUIT CSS Base: https://github.com/suitcss/base
  * A thin layer on top of normalize.css that provides a starting point more
@@ -229,8 +282,16 @@ Add the correct display in Chrome and Safari.
  * Removes the default spacing and border for appropriate elements.
  */
 
-
+blockquote,
+dl,
+dd,
 h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
 figure,
 p,
 pre {
@@ -252,7 +313,12 @@ button:focus {
   outline: 5px auto -webkit-focus-ring-color;
 }
 
+fieldset {
+  margin: 0;
+  padding: 0;
+}
 
+ol,
 ul {
   list-style: none;
   margin: 0;
@@ -324,6 +390,10 @@ body {
  * Ensure horizontal rules are visible by default
  */
 
+hr {
+  border-top-width: 1px;
+}
+
 /**
  * Undo the `border-style: none` reset that Normalize applies to images so that
  * our `border-{width}` utilities have the expected effect.
@@ -338,7 +408,12 @@ img {
   border-style: solid;
 }
 
-input::placeholder {
+textarea {
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
   opacity: 1;
   color: #9ca3af;
 }
@@ -347,7 +422,16 @@ button {
   cursor: pointer;
 }
 
-h1 {
+table {
+  border-collapse: collapse;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: inherit;
   font-weight: inherit;
 }
@@ -371,7 +455,10 @@ a {
  */
 
 button,
-input {
+input,
+optgroup,
+select,
+textarea {
   padding: 0;
   line-height: inherit;
   color: inherit;
@@ -384,7 +471,10 @@ input {
  * 'mono' font family.
  */
 
-pre {
+pre,
+code,
+kbd,
+samp {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -397,7 +487,13 @@ pre {
  */
 
 img,
-svg {
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
   display: block;
   vertical-align: middle;
 }
@@ -409,7 +505,8 @@ svg {
  * https://github.com/mozdevs/cssremedy/issues/14
  */
 
-img {
+img,
+video {
   max-width: 100%;
   height: auto;
 }
@@ -549,6 +646,14 @@ img {
   display: flex;
 }
 
+.table {
+  display: table;
+}
+
+.table-row {
+  display: table-row;
+}
+
 .contents {
   display: contents;
 }
@@ -651,6 +756,11 @@ img {
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .my-12 {
@@ -767,6 +877,10 @@ img {
   padding-right: 4rem;
 }
 
+.static {
+  position: static;
+}
+
 .fixed {
   position: fixed;
 }
@@ -779,8 +893,16 @@ img {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .top-0 {
   top: 0px;
+}
+
+.resize {
+  resize: both;
 }
 
 * {
@@ -842,8 +964,30 @@ img {
   --tw-text-opacity: 0.8;
 }
 
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
 .capitalize {
   text-transform: capitalize;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .no-underline {
@@ -856,6 +1000,10 @@ img {
 
 .tracking-wide {
   letter-spacing: 0.025em;
+}
+
+.visible {
+  visibility: visible;
 }
 
 .break-words {
@@ -876,6 +1024,17 @@ img {
 
 .z-40 {
   z-index: 40;
+}
+
+.transform {
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 @keyframes spin {
@@ -918,7 +1077,28 @@ img {
 #contents h1 {
   font-size: 1.8rem;
   font-weight: 700;
+  border-bottom: 2px solid  rgb(255, 62, 0);
+  padding-bottom: 0.1rem;
+  margin-bottom: 1.1rem;
+}
+
+#contents h2 {
+  font-size: 1.6em;
+  font-weight: 700;
   border-bottom: 1px solid #ddd;
+  padding-bottom: 0.1rem;
+  margin-bottom: 1.1rem;
+}
+
+#contents h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding-bottom: 0.1rem;
+  margin-bottom: 1.1rem;
+}
+
+#contents h4 {
+  font-size: 0.4rem;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
 }
@@ -927,10 +1107,23 @@ img {
   list-style-type: disc;
 }
 
-#contents ul {
+#contents ol {
+  list-style-type: decimal;
+}
+
+#contents ul,
+#contents ol {
   padding-left: 1.5em;
   margin: 1.5em 0;
   line-height: 1.9;
+}
+
+#contents blockquote {
+  border-left: 5px solid #ddd;
+  font-weight: 100;
+  padding: 1rem;
+  padding-right: 0;
+  margin: 1.5rem 0;
 }
 
 #contents p {
@@ -948,6 +1141,12 @@ img {
 
 #contents a:hover {
   text-decoration: underline;
+}
+
+#contents code:not([class*="language-"]) {
+  background-color: #eee;
+  color: #333;
+  padding: 0.1em 0.4em;
 }
 
 @media (min-width: 768px) {

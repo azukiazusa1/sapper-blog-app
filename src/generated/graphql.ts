@@ -697,7 +697,7 @@ export type PostBySlugQuery = (
         { __typename?: 'BlogPostRelatedArticleCollection' }
         & { items: Array<Maybe<(
           { __typename?: 'BlogPost' }
-          & Pick<BlogPost, 'title' | 'slug'>
+          & Pick<BlogPost, 'title' | 'slug' | 'createdAt'>
           & { thumbnail?: Maybe<(
             { __typename?: 'Asset' }
             & Pick<Asset, 'title' | 'url'>

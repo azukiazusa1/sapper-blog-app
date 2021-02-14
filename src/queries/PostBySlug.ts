@@ -11,6 +11,7 @@ export const postBySlugQuery = gql`query postBySlug($slug: String!) {
         items {
           title
           slug
+          createdAt
           thumbnail {
             title
             url

@@ -9,6 +9,7 @@
   export let thumbnail: Pick<Asset, 'title' | 'url'>
   export let createdAt: Scalars['DateTime']
   export let tagsCollection: TagCollection
+  export let small = false
 </script>
 
 <article class="overflow-hidden h-full bg-white dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
@@ -25,11 +26,13 @@
     </p>
   </header>
 
-  <p class="mx-4 break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80">{about}</p>
+  {#if !small}
+    <p class="mx-4 break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80">{about}</p>
 
-  <footer class="flex flex-wrap items-center leading-none mt-2 p-2 md:p-4">
-    {#each tagsCollection.items as tag (tag.slug)}
-      <Tag {...tag} />
-    {/each}
-  </footer>
+    <footer class="flex flex-wrap items-center leading-none mt-2 p-2 md:p-4">
+      {#each tagsCollection.items as tag (tag.slug)}
+        <Tag {...tag} />
+      {/each}
+    </footer>
+  {/if}
 </article>
