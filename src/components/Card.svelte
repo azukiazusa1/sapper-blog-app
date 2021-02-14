@@ -1,8 +1,19 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import AppTag from './Tag.svelte'
   import Time from './Time.svelte'
   import 'prismjs/themes/prism-tomorrow.css'
-  import type { Tag } from '../generated/graphql';
+  import type { Tag } from '../generated/graphql'
+
+  onMount( () => {
+    document.querySelectorAll('a').forEach(a => {
+      if (!a.hash && !document.getElementById(a.hash)) {
+        return
+      }
+      const url = new URL(String(window.location))
+      a.href = url.origin + url.pathname + a.hash
+    })
+  })
 
   export let title: string
   export let contents: string
