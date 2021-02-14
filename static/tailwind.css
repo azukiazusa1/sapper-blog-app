@@ -77,24 +77,26 @@
   text-decoration: underline;
 }
 
-#contents .toc {
+#contents nav {
   margin: 2rem;
 }
 
-#contents .toc-item {
-  opacity: 0.7;
-}
-
-#contents .toc-link {
+#contents nav a {
   color: inherit;
 }
 
-#contents .toc-link:hover {
-  opacity: 1;
+#contents nav a:hover {
+  opacity: 0.75;
 }
 
-#contents .toc-level {
+#contents nav ol {
   margin: 0.4rem 0;
+}
+
+@media (max-width: 768px) {
+  #contents nav {
+    margin: 0;
+  }
 }
 
 #contents code:not([class*="language-"]) {

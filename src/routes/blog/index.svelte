@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-  <title>Blog</title>
+  <title>azukiazusaのテックブログ2</title>
 </svelte:head>
 
 <PostList {posts} />
