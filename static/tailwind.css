@@ -48,8 +48,8 @@
 #contents ul,
 #contents ol {
   padding-left: 1.5em;
-    margin: 1.5em 0;
-    line-height: 1.9;
+  margin: 1.5em 0;
+  line-height: 1.9;
 }
 
 #contents blockquote {
@@ -83,6 +83,7 @@
 
 #contents nav a {
   color: inherit;
+  text-decoration: underline;
 }
 
 #contents nav a:hover {
@@ -91,6 +92,8 @@
 
 #contents nav ol {
   margin: 0.4rem 0;
+  padding-left: 1.5em;
+  line-height: 1.9;
 }
 
 @media (max-width: 768px) {
