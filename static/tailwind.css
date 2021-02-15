@@ -77,28 +77,32 @@
   text-decoration: underline;
 }
 
-#contents nav {
-  margin: 2rem;
+.toc {
+  margin: 2rem !important;
 }
 
-#contents nav a {
-  color: inherit;
-  text-decoration: underline;
+.toc-item {
+  margin: 0.375rem 0 !important;
 }
 
-#contents nav a:hover {
-  opacity: 0.75;
+.toc-link {
+  color: inherit !important;
+  text-decoration: underline !important;
 }
 
-#contents nav ol {
-  margin: 0.4rem 0;
-  padding-left: 1.5em;
-  line-height: 1.9;
+.toc-link:hover {
+  opacity: 0.75 !important;
+}
+
+.toc-level {
+  margin: 0.4rem 0 !important;
+  padding-left: 1.5em !important;
+  line-height: 1.9 !important;
 }
 
 @media (max-width: 768px) {
-  #contents nav {
-    margin: 0;
+  .toc {
+    margin: 0 !important;
   }
 }
 
