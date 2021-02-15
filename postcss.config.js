@@ -4,7 +4,7 @@ const tailwindcss = require("tailwindcss");
 const purgecss = require("@fullhuman/postcss-purgecss")({
   content: ["./src/**/*.svelte", "./src/**/*.html"],
   defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-  whitelist: ['toc', 'toc-link', 'toc-level']
+  safelist: ['toc', 'toc-item', 'toc-level', 'toc-link']
 });
 
 module.exports = {
