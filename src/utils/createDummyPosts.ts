@@ -5,7 +5,7 @@ export const createDummyPost = (id = '1') => {
     __typename: 'BlogPost' as const,
     title: `title${id}`,
     slug: id,
-    aboug: 'lorem ipsum',
+    about: '木曾路はすべて山の中である。あるところは岨づたいに行く崖の道であり、あるところは数十間の深さに臨む木曾川の岸であり、あるところは山の尾をめぐる谷の入り口である。一筋の街道はこの深い森林地帯を貫いていた。東ざかいの桜沢から、西の十曲峠まで、木曾十一宿はこの街道に添うて、二十二里余にわたる長い谿谷の間に散在していた。道路の位置も幾たびか改まったもので、古道はいつのまにか深い山間に埋もれた。名高い桟も、',
     createdAt: '2021-01-31T15:00:00.000Z',
     tagsCollection: {
       __typename: 'BlogPostTagsCollection' as const,
@@ -13,6 +13,11 @@ export const createDummyPost = (id = '1') => {
         __typename: 'Tag' as const,
         name: 'tag'
       }]
+    },
+    thumbnail: {
+      __typename: 'Asset' as const,
+      title: 'thumbnail',
+      url: 'https://picsum.photos/600/400/?random'
     }
   }
 }
