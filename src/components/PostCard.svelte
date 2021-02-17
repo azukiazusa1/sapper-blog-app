@@ -14,7 +14,7 @@
 
 <article class="overflow-hidden h-full bg-white dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
   <a href={`/blog/${slug}`}>
-    <img alt={thumbnail.title} class="h-72 w-72 block mx-auto" src={thumbnail.url} />
+    <img alt={thumbnail.title} class="h-72 w-full block mx-auto" src={thumbnail.url} />
   </a>
 
   <header class="flex-row items-center justify-between leading-tight p-4 border-t border-gray-300 dark:border-gray-600">
