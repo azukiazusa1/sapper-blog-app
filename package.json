@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
+    "mock": "NODE_MOCK=true sapper dev",
     "build": "npm run build:tailwind && sapper build --legacy",
     "export": "npm run build:tailwind && sapper export --legacy",
     "start": "node __sapper__/build",

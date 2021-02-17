@@ -6,6 +6,8 @@ export interface Repositories {
   [POST]: PostRepositoryInterFace;
 }
 
+const isMock = process.env.NODE_MOCK === 'true'
+
 export default {
-  [POST]: new PostRepository()
+  [POST]: isMock ? new MockPostRepository() : new PostRepository()
 } as Repositories
