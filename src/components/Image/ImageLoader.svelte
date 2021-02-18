@@ -2,7 +2,7 @@
   export let src
   export let alt
 
-  import IntersectionObserver from './IntersectionObserver.svelte'
+  import IntersectionObserver from './InterSectionObserver.svelte'
   import Image from './Image.svelte'
   
 </script>
