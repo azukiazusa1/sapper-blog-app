@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { Asset, Scalars, TagCollection } from '../generated/graphql'
+  import type { Asset, Scalars, Tag as TagType } from '../generated/graphql'
+  import ImageLoader from './Image/ImageLoader.svelte'
   import Tag from './Tag.svelte'
   import Time from './Time.svelte'
 
@@ -8,13 +9,13 @@
   export let about: string
   export let thumbnail: Pick<Asset, 'title' | 'url'>
   export let createdAt: Scalars['DateTime']
-  export let tagsCollection: TagCollection
+  export let tags: Array<Pick<TagType, 'name' | 'slug'>>
   export let small = false
 </script>
 
 <article class="overflow-hidden h-full bg-white dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
   <a href={`/blog/${slug}`}>
-    <img alt={thumbnail.title} class="h-72 w-full block mx-auto" src={thumbnail.url} />
+    <ImageLoader alt={thumbnail.title} src={thumbnail.url} />
   </a>
 
   <header class="flex-row items-center justify-between leading-tight p-4 border-t border-gray-300 dark:border-gray-600">
@@ -30,8 +31,8 @@
     <p class="mx-4 break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80">{about}</p>
 
     <footer class="flex flex-wrap items-center leading-none mt-2 p-2 md:p-4">
-      {#each tagsCollection.items as tag (tag.slug)}
-        <Tag {...tag} />
+      {#each tags as tag (tag.slug)}
+        <Tag name={tag.name} slug={tag.slug} />
       {/each}
     </footer>
   {/if}
