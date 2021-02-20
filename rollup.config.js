@@ -35,7 +35,8 @@ export default {
 				'process.env.NODE_ENV': JSON.stringify(mode),
 				'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
 				'process.env.SPACE': JSON.stringify(process.env.SPACE),
-				'process.env.ENVIRONMENTS': JSON.stringify(process.env.ENVIRONMENTS)
+				'process.env.ENVIRONMENTS': JSON.stringify(process.env.ENVIRONMENTS),
+				'process.env.ANALYTICS_ID': JSON.stringify(process.env.ANALYTICS_ID)
 			}),
 			svelte({
 				preprocess: sveltePreprocess({ sourceMap: dev }),
@@ -90,7 +91,8 @@ export default {
 				'process.env.NODE_ENV': JSON.stringify(mode),
 				'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
 				'process.env.SPACE': JSON.stringify(process.env.SPACE),
-				'process.env.ENVIRONMENTS': JSON.stringify(process.env.ENVIRONMENTS)
+				'process.env.ENVIRONMENTS': JSON.stringify(process.env.ENVIRONMENTS),
+				'process.env.ANALYTICS_ID': JSON.stringify(process.env.ANALYTICS_ID)
 			}),
 			svelte({
 				preprocess: sveltePreprocess({ sourceMap: dev }),
