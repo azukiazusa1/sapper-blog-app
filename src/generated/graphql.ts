@@ -714,7 +714,9 @@ export type PostBySlugQuery = (
   )> }
 );
 
-export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
+export type PostsQueryVariables = Exact<{
+  order?: Maybe<BlogPostOrder>;
+}>;
 
 
 export type PostsQuery = (

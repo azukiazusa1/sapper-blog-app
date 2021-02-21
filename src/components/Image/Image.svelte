@@ -18,8 +18,9 @@
 <style>
   img {
     height: 18rem;
-    width: 100%;
+    width: auto;
     display: block;
+    margin: 0 auto;
     opacity: 0;
     transition: opacity 1200ms ease-out;
   }

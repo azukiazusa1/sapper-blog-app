@@ -1,5 +1,4 @@
 import { pipe, subscribe } from 'wonka'
-import { createDummyPosts, createDummyPost } from "../../utils/createDummyPosts";
 import { client } from "../client"
 import type { PostRepositoryInterFace } from "./types";
 import { postsQuery } from '../../queries/Posts'
