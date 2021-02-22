@@ -15,7 +15,20 @@ export const postsQuery = gql`
       skip
       limit
       items {
-        ...BlogPostItem
+        title
+        slug
+        about
+        createdAt
+        thumbnail {
+          title
+          url
+        }
+        tagsCollection(limit: 5) {
+          items {
+            name
+            slug
+          }
+        }
       }
     }
   }
