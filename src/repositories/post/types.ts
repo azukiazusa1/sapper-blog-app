@@ -1,4 +1,4 @@
-import type { PostBySlugQuery, PostsQuery } from "../../generated/graphql";
+import type { PostBySlugQuery, PostsQuery, PostsQueryVariables, SearchPostsQuery, SearchPostsQueryVariables } from "../../generated/graphql";
 
 export interface Post {
   fields: {
@@ -9,6 +9,7 @@ export interface Post {
 }
 
 export interface PostRepositoryInterFace {
-  get(): Promise<PostsQuery>
+  get(queryVariables: PostsQueryVariables): Promise<PostsQuery>
+  search(queryVariables: SearchPostsQueryVariables): Promise<SearchPostsQuery>
   find(slug: string): Promise<PostBySlugQuery>
 }
