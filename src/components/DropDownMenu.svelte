@@ -3,7 +3,7 @@
 
   export let items: any[]
   export let itemHref = 'href'
-  export let itemImage = 'image'
+  export let itemImageUrl = 'imageUrl'
   export let itemText = 'text'
   export let loading = false
 </script>
@@ -13,9 +13,11 @@
     <div class="py-2">loading...</div>
   {:else}
     <div class="py-2">
-        <DropDownItem href="#" 
-        image="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=398&q=80" 
-        text="test" />
+      {#each items as item, index (index)}
+        <DropDownItem href={item[itemHref]} 
+        imageUrl={item[itemImageUrl]} 
+        text={item[itemText]} />
+      {/each}
     </div>
   {/if}
 </div>
