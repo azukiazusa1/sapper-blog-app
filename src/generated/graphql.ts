@@ -732,6 +732,7 @@ export type PostBySlugQuery = (
 export type PostsQueryVariables = Exact<{
   order?: Maybe<BlogPostOrder>;
   limit?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
 }>;
 
 
@@ -739,6 +740,7 @@ export type PostsQuery = (
   { __typename?: 'Query' }
   & { blogPostCollection?: Maybe<(
     { __typename?: 'BlogPostCollection' }
+    & Pick<BlogPostCollection, 'total' | 'skip' | 'limit'>
     & { items: Array<Maybe<(
       { __typename?: 'BlogPost' }
       & BlogPostItemFragment
@@ -749,6 +751,7 @@ export type PostsQuery = (
 export type SearchPostsQueryVariables = Exact<{
   order?: Maybe<BlogPostOrder>;
   limit?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
   q: Scalars['String'];
 }>;
 
@@ -757,6 +760,7 @@ export type SearchPostsQuery = (
   { __typename?: 'Query' }
   & { blogPostCollection?: Maybe<(
     { __typename?: 'BlogPostCollection' }
+    & Pick<BlogPostCollection, 'total' | 'skip' | 'limit'>
     & { items: Array<Maybe<(
       { __typename?: 'BlogPost' }
       & BlogPostItemFragment
