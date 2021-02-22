@@ -745,3 +745,21 @@ export type PostsQuery = (
     )>> }
   )> }
 );
+
+export type SearchPostsQueryVariables = Exact<{
+  order?: Maybe<BlogPostOrder>;
+  limit?: Maybe<Scalars['Int']>;
+  q: Scalars['String'];
+}>;
+
+
+export type SearchPostsQuery = (
+  { __typename?: 'Query' }
+  & { blogPostCollection?: Maybe<(
+    { __typename?: 'BlogPostCollection' }
+    & { items: Array<Maybe<(
+      { __typename?: 'BlogPost' }
+      & BlogPostItemFragment
+    )>> }
+  )> }
+);
