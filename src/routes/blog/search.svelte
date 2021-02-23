@@ -16,7 +16,7 @@
 
   export let posts: SearchPostsQuery
   export let q: string
-  let value: string
+  let value = q
   let promise: Promise<void>
   
   $: empty = posts.blogPostCollection.total === 0
