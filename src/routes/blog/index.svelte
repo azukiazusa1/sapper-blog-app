@@ -18,4 +18,4 @@
   <title>azukiazusaのテックブログ2</title>
 </svelte:head>
 
-<PostList {posts} />
+<PostList posts={posts.blogPostCollection.items} />
