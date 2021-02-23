@@ -27,8 +27,7 @@
     posts = data.posts
   }
 
-  const handleSubmit = (e) => {
-    console.log(e)
+  const handleSubmit = () => {
     q = value
     if (!q.trim()) return
     promise = search(params)
