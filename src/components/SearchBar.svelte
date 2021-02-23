@@ -14,7 +14,7 @@
 
   const search = async () => {
     loading = true
-    posts = await PostRepository.search({ q })
+    posts = await PostRepository.search({ q: value })
     loading = false
   }
 
