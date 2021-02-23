@@ -1,9 +1,10 @@
 <script lang="ts">
+  import { goto } from '@sapper/app';
   import SearchInput from './SearchInput.svelte'
   import DropDownMenu from './DropDownMenu.svelte'
   import type { SearchPostsQuery } from '../generated/graphql';
 
-  export let value = ''
+  let value = ''
   let posts: SearchPostsQuery
   let isFocus = false
   let loading = true
@@ -17,9 +18,10 @@
     posts = data.posts
   }
 
+  $: params = new URLSearchParams({q: value})
+
   $: {
     if (value.trim()) {
-      const params = new URLSearchParams({q: value})
       search(params)
     }
   }
@@ -37,13 +39,20 @@
       isFocus = false
     }, 100)
   }
+
+  const handleSubmit = () => {
+    if (!value.trim()) return
+    goto(`/blog/search?${params}`)
+  }
 </script>
 
-<SearchInput 
-  bind:value
-  on:focus={() => isFocus = true}
-  on:blur={handleBlur}
-/>
+<form on:submit|preventDefault={handleSubmit}>
+  <SearchInput
+    bind:value
+    on:focus={() => isFocus = true}
+    on:blur={handleBlur}
+  />
+</form>
 {#if showDropDownMenu}
   <DropDownMenu {items} {loading} />
 {/if}
