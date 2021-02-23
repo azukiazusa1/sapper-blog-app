@@ -6,6 +6,7 @@ import type { PostBySlugQuery, PostsQuery, PostsQueryVariables, SearchPostsQuery
 import { postBySlugQuery } from '../../queries/PostBySlug';
 import type { TypedDocumentNode } from '@urql/core';
 import type { DocumentNode } from 'graphql';
+import { searchPostsQuery } from '../../queries/SearchPosts';
 
 export class PostRepository implements PostRepositoryInterFace {
   async get(queryVariables: PostsQueryVariables) {
@@ -14,7 +15,7 @@ export class PostRepository implements PostRepositoryInterFace {
   }
 
   async search(queryVariables: SearchPostsQueryVariables) {
-    const posts = await this.req(postsQuery, queryVariables)
+    const posts = await this.req(searchPostsQuery, queryVariables)
 
     return posts as SearchPostsQuery
   }
@@ -30,7 +31,6 @@ export class PostRepository implements PostRepositoryInterFace {
       pipe(
         client.query(query, variables),
         subscribe(result => {
-          console.log(result)
           r(result.data)
         })
       )

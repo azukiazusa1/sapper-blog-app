@@ -2,7 +2,7 @@
   export async function preload() {
     const res = await this.fetch(`blog.json`)
     const { posts } = await res.json()
-			return { posts }
+		return { posts }
 	}  
 </script>
 
