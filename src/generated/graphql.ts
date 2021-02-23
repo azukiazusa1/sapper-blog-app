@@ -681,6 +681,21 @@ export enum BlogPostOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+export type BlogPostItemFragment = (
+  { __typename?: 'BlogPost' }
+  & Pick<BlogPost, 'title' | 'slug' | 'about' | 'createdAt'>
+  & { thumbnail?: Maybe<(
+    { __typename?: 'Asset' }
+    & Pick<Asset, 'title' | 'url'>
+  )>, tagsCollection?: Maybe<(
+    { __typename?: 'BlogPostTagsCollection' }
+    & { items: Array<Maybe<(
+      { __typename?: 'Tag' }
+      & Pick<Tag, 'name' | 'slug'>
+    )>> }
+  )> }
+);
+
 export type PostBySlugQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
@@ -716,6 +731,8 @@ export type PostBySlugQuery = (
 
 export type PostsQueryVariables = Exact<{
   order?: Maybe<BlogPostOrder>;
+  limit?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
 }>;
 
 
@@ -723,19 +740,30 @@ export type PostsQuery = (
   { __typename?: 'Query' }
   & { blogPostCollection?: Maybe<(
     { __typename?: 'BlogPostCollection' }
+    & Pick<BlogPostCollection, 'total' | 'skip' | 'limit'>
     & { items: Array<Maybe<(
       { __typename?: 'BlogPost' }
-      & Pick<BlogPost, 'title' | 'slug' | 'about' | 'createdAt'>
-      & { thumbnail?: Maybe<(
-        { __typename?: 'Asset' }
-        & Pick<Asset, 'title' | 'url'>
-      )>, tagsCollection?: Maybe<(
-        { __typename?: 'BlogPostTagsCollection' }
-        & { items: Array<Maybe<(
-          { __typename?: 'Tag' }
-          & Pick<Tag, 'name' | 'slug'>
-        )>> }
-      )> }
+      & BlogPostItemFragment
+    )>> }
+  )> }
+);
+
+export type SearchPostsQueryVariables = Exact<{
+  order?: Maybe<BlogPostOrder>;
+  limit?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  q: Scalars['String'];
+}>;
+
+
+export type SearchPostsQuery = (
+  { __typename?: 'Query' }
+  & { blogPostCollection?: Maybe<(
+    { __typename?: 'BlogPostCollection' }
+    & Pick<BlogPostCollection, 'total' | 'skip' | 'limit'>
+    & { items: Array<Maybe<(
+      { __typename?: 'BlogPost' }
+      & BlogPostItemFragment
     )>> }
   )> }
 );

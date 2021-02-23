@@ -2,7 +2,10 @@ import { createDummyPosts, createDummyPost, createDummyPostBySlugQuery } from ".
 import type { PostRepositoryInterFace } from "./types";
 
 export class MockPostRepository implements PostRepositoryInterFace {
-  get() {
+  get(_) {
+    return Promise.resolve(createDummyPosts(15))
+  }
+  search(_) {
     return Promise.resolve(createDummyPosts(15))
   }
   find(slug: string) {

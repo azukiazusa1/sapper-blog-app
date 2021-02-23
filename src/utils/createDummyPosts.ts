@@ -26,6 +26,9 @@ export const createDummyPosts = (num: number) => {
   const dummyPosts: PostsQuery = {
     __typename: 'Query',
     blogPostCollection: {
+      limit: 12,
+      skip: 0,
+      total: num,
       items: []
     }
   }

@@ -1,23 +1,58 @@
-<style>
-  ::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-  }
-</style>
-
 <script lang="ts">
-  import SearchIcon from './Icons/Search.svelte'
-  export let value = ''
+  import { goto } from '@sapper/app';
+  import SearchInput from './SearchInput.svelte'
+  import DropDownMenu from './DropDownMenu.svelte'
+  import type { SearchPostsQuery } from '../generated/graphql';
+  import RepositoryFactory, { POST } from '../repositories/RepositoryFactory'
+  const PostRepository = RepositoryFactory[POST]
+
+  let value = ''
+  let posts: SearchPostsQuery
+  let isFocus = false
+  let loading = true
+  $: showDropDownMenu = isFocus && value.trim()
+
+  const search = async () => {
+    loading = true
+    posts = await PostRepository.search({ q: value })
+    loading = false
+  }
+
+  $: params = new URLSearchParams({q: value})
+
+  $: {
+    if (value.trim()) {
+      search()
+    }
+  }
+
+  $: items = posts ? posts.blogPostCollection.items.map(item => {
+    return {
+      href: `/blog/${item.slug}`,
+      imageUrl: item.thumbnail.url,
+      text: item.title
+    }
+  }) : []
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      isFocus = false
+    }, 100)
+  }
+
+  const handleSubmit = () => {
+    if (!value.trim()) return
+    goto(`/blog/search?${params}`)
+  }
 </script>
 
-<div class="flex border-2 border-gray-300 dark:border-gray-600 rounded-lg">
-  <input
+<form on:submit|preventDefault={handleSubmit}>
+  <SearchInput
     bind:value
-    class="bg-white h-10 px-5 pr-16 text-sm rounded-l-lg focus:outline-none dark:bg-gray-800"
-    type="search"
-    name="search"
-    placeholder="Search"
+    on:focus={() => isFocus = true}
+    on:blur={handleBlur}
   />
-  <button type="submit" class="flex justify-end p-2 rounded-r-lg dark:bg-gray-700">
-    <SearchIcon className="text-gray-600 dark:text-gray-50 h-6 w-6" />
-  </button>
-</div>
+</form>
+{#if showDropDownMenu}
+  <DropDownMenu {items} {loading} />
+{/if}
