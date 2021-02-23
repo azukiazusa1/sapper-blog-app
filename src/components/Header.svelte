@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { goto } from '@sapper/app';
   import SearchBar from './SearchBar.svelte'
   import Nav from './Nav.svelte'
   import MoonIcon from './Icons/Moon.svelte'
@@ -13,6 +14,10 @@
 
   const handleMoonClick = () => {
     dispatch('clickMoon')
+  }
+
+  const handleSearchClick = () => {
+    goto('/blog/search')
   }
 </script>
 
@@ -30,7 +35,7 @@
       <Nav {segment} />
     </div>
     <div class="flex">
-      <SearchIcon className="h-6 w-6 cursor-pointer md:hidden mr-3" />
+      <SearchIcon className="h-6 w-6 cursor-pointer md:hidden mr-3" on:click={handleSearchClick} />
       {#if darkMode}
         <SunIcon className="h-6 w-6 cursor-pointer" on:click={handleMoonClick} />
       {:else}

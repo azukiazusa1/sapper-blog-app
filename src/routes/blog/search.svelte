@@ -2,8 +2,9 @@
   import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
   const PostRepository = RepositoryFactory[POST]
 	export async function preload({ query }) {
-    const posts = await PostRepository.search({ q: query.q })
-		return { posts, q: query.q ?? '' }
+    const q = query.q ?? ''
+    const posts = await PostRepository.search({ q })
+		return { posts, q }
 	}
 </script>
 
