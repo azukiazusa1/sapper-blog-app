@@ -8,6 +8,7 @@
 </script>
 
 <script lang="ts">
+  import Loading from "../../components/Icons/Loading.svelte";
   import PostList from "../../components/PostList.svelte";
   import SearchInput from "../../components/SearchInput.svelte";
   import type { SearchPostsQuery } from '../../generated/graphql'
@@ -42,7 +43,9 @@
     <SearchInput bind:value={value} />
   </form>
   {#await promise}
-    <div>Loading</div>
+    <div class="mt-8 text-center">
+      <Loading />
+    </div>
   {:then fullfill}
     {#if !q.trim()}
       <div class="mt-8 text-center">
