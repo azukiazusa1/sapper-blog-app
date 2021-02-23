@@ -1,8 +1,8 @@
 <script context="module">
+  import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
+  const PostRepository = RepositoryFactory[POST]
 	export async function preload({ query }) {
-		const params = new URLSearchParams({ q: query.q })
-    const res = await this.fetch(`blog.json?${params}`)
-    const { posts } = await res.json()
+    const posts = await PostRepository.search({ q: query.q })
 		return { posts, q: query.q ?? '' }
 	}
 </script>
@@ -19,18 +19,15 @@
   let promise: Promise<void>
   
   $: empty = posts.blogPostCollection.total === 0
-  $: params = new URLSearchParams({ q })
 
-  const search = async (params: URLSearchParams) => {
-    const res = await fetch(`blog.json?${params}`,)
-    const data = await res.json()
-    posts = data.posts
+  const search = async () => {
+    posts = await PostRepository.search({ q })
   }
 
   const handleSubmit = () => {
     q = value
     if (!q.trim()) return
-    promise = search(params)
+    promise = search()
   }
 </script>
 

@@ -3,6 +3,8 @@
   import SearchInput from './SearchInput.svelte'
   import DropDownMenu from './DropDownMenu.svelte'
   import type { SearchPostsQuery } from '../generated/graphql';
+  import RepositoryFactory, { POST } from '../repositories/RepositoryFactory'
+  const PostRepository = RepositoryFactory[POST]
 
   let value = ''
   let posts: SearchPostsQuery
@@ -10,19 +12,17 @@
   let loading = true
   $: showDropDownMenu = isFocus && value.trim()
 
-  const search = async (params: URLSearchParams) => {
+  const search = async () => {
     loading = true
-    const res = await fetch(`blog.json?${params}`,)
-    const data = await res.json()
+    posts = await PostRepository.search({ q })
     loading = false
-    posts = data.posts
   }
 
   $: params = new URLSearchParams({q: value})
 
   $: {
     if (value.trim()) {
-      search(params)
+      search()
     }
   }
 
