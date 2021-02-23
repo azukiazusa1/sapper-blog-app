@@ -1,23 +1,49 @@
-<style>
-  ::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-  }
-</style>
-
 <script lang="ts">
-  import SearchIcon from './Icons/Search.svelte'
+  import SearchInput from './SearchInput.svelte'
+  import DropDownMenu from './DropDownMenu.svelte'
+  import type { SearchPostsQuery } from '../generated/graphql';
+
   export let value = ''
+  let posts: SearchPostsQuery
+  let isFocus = false
+  let loading = true
+  $: showDropDownMenu = isFocus && value.trim()
+
+  const search = async (params: URLSearchParams) => {
+    loading = true
+    const res = await fetch(`blog.json?${params}`,)
+    const data = await res.json()
+    loading = false
+    posts = data.posts
+  }
+
+  $: {
+    if (value.trim()) {
+      const params = new URLSearchParams({q: value})
+      search(params)
+    }
+  }
+
+  $: items = posts ? posts.blogPostCollection.items.map(item => {
+    return {
+      href: `/blog/${item.slug}`,
+      imageUrl: item.thumbnail.url,
+      text: item.title
+    }
+  }) : []
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      isFocus = false
+    }, 100)
+  }
 </script>
 
-<div class="flex border-2 border-gray-300 dark:border-gray-600 rounded-lg">
-  <input
-    bind:value
-    class="bg-white h-10 px-5 pr-16 text-sm rounded-l-lg focus:outline-none dark:bg-gray-800"
-    type="search"
-    name="search"
-    placeholder="Search"
-  />
-  <button type="submit" class="flex justify-end p-2 rounded-r-lg dark:bg-gray-700">
-    <SearchIcon className="text-gray-600 dark:text-gray-50 h-6 w-6" />
-  </button>
-</div>
+<SearchInput 
+  bind:value
+  on:focus={() => isFocus = true}
+  on:blur={handleBlur}
+/>
+{#if showDropDownMenu}
+  <DropDownMenu {items} {loading} />
+{/if}
