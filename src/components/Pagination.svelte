@@ -7,11 +7,11 @@ import Page from "./Page.svelte"
   export let total: number
   export let limit: number
 
-  const totalPage = Math.ceil(total / limit)
-  const hasPrev = page !== 1
-  const hasNext = page !== totalPage
-  const prevPage = page - 1
-  const nextPage = page + 1
+  $: totalPage = Math.ceil(total / limit)
+  $: hasPrev = page !== 1
+  $: hasNext = page !== totalPage
+  $: prevPage = page - 1
+  $: nextPage = page + 1
 
   console.log(total)
   console.log(limit)
