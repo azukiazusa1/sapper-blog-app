@@ -21,4 +21,7 @@
 
 <PostList posts={posts.blogPostCollection.items} />
 
-<Pagination />
+<Pagination 
+  total={posts.blogPostCollection.total}
+  limit={posts.blogPostCollection.limit}
+/>
