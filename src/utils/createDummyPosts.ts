@@ -22,20 +22,28 @@ export const createDummyPost = (id = '1') => {
   }
 }
 
-export const createDummyPosts = (num: number) => {
-  const dummyPosts: PostsQuery = {
-    __typename: 'Query',
-    blogPostCollection: {
-      limit: 12,
-      skip: 0,
-      total: num,
-      items: []
+export const createDummyPosts = (total: number, limit: number = 12, skip: number = 0) => {
+  const totalItems = []
+
+  if (totalItems.length === 0) {
+    for (let i = 0; i < total; i++) {
+      totalItems.push(createDummyPost(String(i)))
     }
   }
-  for (let i = 0; i < num; i++) {
-    dummyPosts.blogPostCollection.items.push(createDummyPost(String(i)))
+
+  return () => {
+    const items = totalItems.slice(skip, skip + limit)
+    const dummyPosts: PostsQuery = {
+      __typename: 'Query',
+      blogPostCollection: {
+        limit,
+        skip,
+        total,
+        items
+      }
+    }
+    return dummyPosts
   }
-  return dummyPosts
 }
 
 export const createDummyPostBySlugQuery = (slug: string) => {
@@ -48,7 +56,7 @@ export const createDummyPostBySlugQuery = (slug: string) => {
           about: 'lorem ipsum',
           slug,
           relatedArticleCollection: {
-            items: createDummyPosts(4)
+            items: createDummyPosts(4)()
           },
           article: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo sequi esse asperiores quaerat, est ex? Eaque totam nostrum iure, quod cum dolor asperiores. Deleniti, ab unde? Magni, voluptate velit. Neque!',
           createdAt: '2021-01-31T15:00:00.000Z',

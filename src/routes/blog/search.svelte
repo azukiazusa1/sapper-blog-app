@@ -1,21 +1,26 @@
 <script context="module">
+  import { paginateParams } from '../../utils/paginateParams';
   import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
   const PostRepository = RepositoryFactory[POST]
+
 	export async function preload({ query }) {
     const q = query.q ?? ''
-    const posts = await PostRepository.search({ q })
-		return { posts, q }
+    const page = query.page ? Number(query.page) : 1
+    const posts = await PostRepository.search({ q, ...paginateParams(page) })
+		return { posts, q, page }
 	}
 </script>
 
 <script lang="ts">
-  import Loading from "../../components/Icons/Loading.svelte";
+  import Loading from "../../components/Icons/Loading.svelte"
   import PostList from "../../components/PostList.svelte";
-  import SearchInput from "../../components/SearchInput.svelte";
+  import Pagination from '../../components/Pagination.svelte'
+  import SearchInput from "../../components/SearchInput.svelte"
   import type { SearchPostsQuery } from '../../generated/graphql'
 
   export let posts: SearchPostsQuery
   export let q: string
+  export let page: number
   let value = q
   let promise: Promise<void>
   
@@ -54,6 +59,13 @@
       </div>
     {:else}
       <PostList posts={posts.blogPostCollection.items}/>
+
+      <Pagination
+        {page}
+        total={posts.blogPostCollection.total}
+        limit={posts.blogPostCollection.limit}
+        href={`/blog/search?q=${q}&page=`}
+      />
     {/if}
   {/await}
 </div>
