@@ -1,4 +1,6 @@
-import { ssrExchange, createClient, dedupExchange, cacheExchange, fetchExchange } from "@urql/core"
+import { ssrExchange, createClient, dedupExchange, cacheExchange, fetchExchange, TypedDocumentNode } from "@urql/core"
+import type { DocumentNode } from "graphql";
+import { pipe, subscribe } from 'wonka'
 import fetch from 'node-fetch';
 
 const isServerSide = typeof window === 'undefined'
@@ -21,3 +23,13 @@ export const client = createClient({
   }
 })
 
+export const request = (query: DocumentNode | TypedDocumentNode<any, object> | string, variables = {}) => {
+  return new Promise(r => {
+    pipe(
+      client.query(query, variables),
+      subscribe(result => {
+        r(result.data)
+      })
+    )
+  })
+}
