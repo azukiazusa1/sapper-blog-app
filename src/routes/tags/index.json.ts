@@ -6,7 +6,7 @@ const TagRepository = RepositoryFactory[TAG]
 export async function get(req: Request, res: ServerResponse) {
   const tags = await TagRepository.get()
   tags.tagCollection.items.sort((a, b) => {
-    return a.linkedFrom.entryCollection.total - b.linkedFrom.entryCollection.total
+    return b.linkedFrom.entryCollection.total - a.linkedFrom.entryCollection.total
   }) 
   res.end(JSON.stringify({ tags }))
 }
