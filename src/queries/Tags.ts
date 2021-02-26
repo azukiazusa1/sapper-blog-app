@@ -1,6 +1,6 @@
 import { gql } from "@urql/core"
 
-export const TagsQuery = gql`
+export const tagsQuery = gql`
  query Tags {
     tagCollection {
       items {
