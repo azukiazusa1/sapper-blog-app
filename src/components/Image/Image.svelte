@@ -1,20 +1,3 @@
-<script>
-  export let src
-  export let alt
-
-  import { onMount } from 'svelte'
-
-  let loaded = false
-  let thisImage
-
-  onMount(() => {
-    thisImage.onload = () => {
-      loaded = true
-    }
-  }) 
-
-</script>
-
 <style>
   img {
     height: 18rem;
@@ -28,5 +11,21 @@
     opacity: 1;
   }
 </style>
+
+<script>
+  export let src
+  export let alt
+
+  import { onMount } from 'svelte'
+
+  let loaded = false
+  let thisImage
+
+  onMount(() => {
+    thisImage.onload = () => {
+      loaded = true
+    }
+  })
+</script>
 
 <img {src} {alt} class:loaded bind:this={thisImage} />

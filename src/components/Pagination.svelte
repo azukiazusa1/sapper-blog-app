@@ -1,7 +1,7 @@
 <script lang="ts">
-  import PrevIcon from "./Icons/Prev.svelte"
-  import NextIcon from "./Icons/Next.svelte"
-  import Page from "./Page.svelte"
+  import PrevIcon from './Icons/Prev.svelte'
+  import NextIcon from './Icons/Next.svelte'
+  import Page from './Page.svelte'
 
   export let page = 1
   export let total: number
@@ -18,7 +18,9 @@
 <nav class="flex flex-col items-center my-12">
   <div class="flex">
     {#if hasPrev}
-      <div class="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer bg-white dark:bg-gray-700">
+      <div
+        class="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer bg-white dark:bg-gray-700"
+      >
         <a href={`${href}${prevPage}`}>
           <PrevIcon />
         </a>
@@ -27,13 +29,15 @@
     <div class="flex h-12 font-medium rounded-full bg-white dark:bg-gray-700">
       {#each Array(totalPage) as _, i (i)}
         <Page current={page === i + 1}>
-          <a href={`${href}${i +1}`}>{i + 1}</a>
+          <a href={`${href}${i + 1}`}>{i + 1}</a>
         </Page>
       {/each}
       <Page current sm>{page}</Page>
     </div>
     {#if hasNext}
-      <div class="h-12 w-12 ml-1 flex justify-center items-center rounded-full cursor-pointer bg-white dark:bg-gray-700">
+      <div
+        class="h-12 w-12 ml-1 flex justify-center items-center rounded-full cursor-pointer bg-white dark:bg-gray-700"
+      >
         <a href={`${href}${nextPage}`}>
           <NextIcon />
         </a>

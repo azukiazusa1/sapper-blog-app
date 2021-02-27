@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { goto } from '@sapper/app';
+  import { goto } from '@sapper/app'
   import SearchInput from './SearchInput.svelte'
   import DropDownMenu from './DropDownMenu.svelte'
-  import type { SearchPostsQuery } from '../generated/graphql';
+  import type { SearchPostsQuery } from '../generated/graphql'
   import RepositoryFactory, { POST } from '../repositories/RepositoryFactory'
   const PostRepository = RepositoryFactory[POST]
 
@@ -18,7 +18,7 @@
     loading = false
   }
 
-  $: params = new URLSearchParams({q: value})
+  $: params = new URLSearchParams({ q: value })
 
   $: {
     if (value.trim()) {
@@ -26,13 +26,15 @@
     }
   }
 
-  $: items = posts ? posts.blogPostCollection.items.map(item => {
-    return {
-      href: `/blog/${item.slug}`,
-      imageUrl: item.thumbnail.url,
-      text: item.title
-    }
-  }) : []
+  $: items = posts
+    ? posts.blogPostCollection.items.map((item) => {
+        return {
+          href: `/blog/${item.slug}`,
+          imageUrl: item.thumbnail.url,
+          text: item.title,
+        }
+      })
+    : []
 
   const handleBlur = () => {
     setTimeout(() => {
@@ -47,11 +49,7 @@
 </script>
 
 <form on:submit|preventDefault={handleSubmit}>
-  <SearchInput
-    bind:value
-    on:focus={() => isFocus = true}
-    on:blur={handleBlur}
-  />
+  <SearchInput bind:value on:focus={() => (isFocus = true)} on:blur={handleBlur} />
 </form>
 {#if showDropDownMenu}
   <DropDownMenu {items} {loading} />
