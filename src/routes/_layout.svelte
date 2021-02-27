@@ -1,8 +1,8 @@
 <script lang="ts">
   import Header from '../components/Header.svelte'
-	import { onMount } from 'svelte'
-  import GoogleAnalytics from "sapper-google-analytics/GoogleAnalytics.svelte"
-  import { stores } from "@sapper/app"
+  import { onMount } from 'svelte'
+  import GoogleAnalytics from 'sapper-google-analytics/GoogleAnalytics.svelte'
+  import { stores } from '@sapper/app'
   import Visual from '../components/Visual.svelte'
 
   let ga_measurment_id = process.env.ANALYTICS_ID
@@ -41,7 +41,7 @@
   }
 </script>
 
-<GoogleAnalytics {stores} id={ga_measurment_id}/>
+<GoogleAnalytics {stores} id={ga_measurment_id} />
 <Header {segment} {darkMode} on:clickMoon={toggleDarkMode} />
 
 <main class="pt-16">

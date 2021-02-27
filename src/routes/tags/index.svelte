@@ -2,16 +2,16 @@
   export async function preload() {
     const res = await this.fetch(`tags.json`)
     const { tags } = await res.json()
-		return {
-      tags
+    return {
+      tags,
     }
-	}  
+  }
 </script>
 
 <script lang="ts">
   import Tag from '../../components/Tag.svelte'
   import Badge from '../../components/Badge.svelte'
-  import type { TagsQuery } from "../../generated/graphql";
+  import type { TagsQuery } from '../../generated/graphql'
 
   export let tags: TagsQuery
 </script>

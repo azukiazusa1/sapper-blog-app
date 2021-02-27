@@ -1,21 +1,21 @@
 <script context="module">
-  import { paginateParams } from '../../utils/paginateParams';
+  import { paginateParams } from '../../utils/paginateParams'
   import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
   const PostRepository = RepositoryFactory[POST]
 
-	export async function preload({ query }) {
+  export async function preload({ query }) {
     const q = query.q ?? ''
     const page = query.page ? Number(query.page) : 1
     const posts = await PostRepository.search({ q, ...paginateParams(page) })
-		return { posts, q, page }
-	}
+    return { posts, q, page }
+  }
 </script>
 
 <script lang="ts">
-  import Loading from "../../components/Icons/Loading.svelte"
-  import PostList from "../../components/PostList.svelte";
+  import Loading from '../../components/Icons/Loading.svelte'
+  import PostList from '../../components/PostList.svelte'
   import Pagination from '../../components/Pagination.svelte'
-  import SearchInput from "../../components/SearchInput.svelte"
+  import SearchInput from '../../components/SearchInput.svelte'
   import type { SearchPostsQuery } from '../../generated/graphql'
 
   export let posts: SearchPostsQuery
@@ -23,7 +23,7 @@
   export let page: number
   let value = q
   let promise: Promise<void>
-  
+
   $: empty = posts.blogPostCollection.total === 0
 
   const search = async () => {
@@ -42,7 +42,7 @@
 </svelte:head>
 <div class="container my-10 md:mx-auto">
   <form on:submit|preventDefault={handleSubmit}>
-    <SearchInput bind:value={value} />
+    <SearchInput bind:value />
   </form>
   {#await promise}
     <div class="mt-8 text-center">
@@ -50,15 +50,11 @@
     </div>
   {:then fullfill}
     {#if !q.trim()}
-      <div class="mt-8 text-center">
-        検索ワードを入力してください。
-      </div>
+      <div class="mt-8 text-center">検索ワードを入力してください。</div>
     {:else if empty}
-      <div class="mt-8 text-center">
-        検索結果が見つかりませんでした
-      </div>
+      <div class="mt-8 text-center">検索結果が見つかりませんでした</div>
     {:else}
-      <PostList posts={posts.blogPostCollection.items}/>
+      <PostList posts={posts.blogPostCollection.items} />
 
       <Pagination
         {page}

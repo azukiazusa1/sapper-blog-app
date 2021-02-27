@@ -1,6 +1,13 @@
 <script context="module" lang="ts">
+  import { paginateParams } from '../../../../utils/paginateParams'
+
   export async function preload({ params }) {
-    const res = await this.fetch(`tags/${params.slug}.json`)
+    const page = Number(params.page)
+    const record = paginateParams(page)
+    const searchParams = new URLSearchParams({
+      skip: String(record.skip),
+    })
+    const res = await this.fetch(`tags/${params.slug}.json?${searchParams}`)
     const data = await res.json()
     if (res.status === 200) {
       const { tag } = data
@@ -13,9 +20,9 @@
 </script>
 
 <script lang="ts">
-  import PostList from '../../components/PostList.svelte'
-  import Pagination from '../../components/Pagination.svelte'
-  import type { TagBySlugQuery } from '../../generated/graphql'
+  import PostList from '../../../../components/PostList.svelte'
+  import Pagination from '../../../../components/Pagination.svelte'
+  import type { TagBySlugQuery } from '../../../../generated/graphql'
 
   export let tag: TagBySlugQuery
 

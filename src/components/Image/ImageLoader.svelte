@@ -4,10 +4,9 @@
 
   import IntersectionObserver from './InterSectionObserver.svelte'
   import Image from './Image.svelte'
-  
 </script>
 
-<IntersectionObserver once={true} let:intersecting={intersecting}>
+<IntersectionObserver once={true} let:intersecting>
   {#if intersecting}
     <Image {alt} {src} />
   {/if}

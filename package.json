@@ -89,6 +89,6 @@
   },
   "lint-staged": {
     "*.{js,ts,svelte}": "eslint --cache --fix",
-    "*.svelte": "prettier --write"
+    "*.svelte": "npm run format"
   }
 }
