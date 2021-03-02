@@ -1,13 +1,7 @@
 <script context="module" lang="ts">
-  import { paginateParams } from '../../../../utils/paginateParams'
-
   export async function preload({ params }) {
     const page = Number(params.page)
-    const record = paginateParams(page)
-    const searchParams = new URLSearchParams({
-      skip: String(record.skip),
-    })
-    const res = await this.fetch(`tags/${params.slug}.json?${searchParams}`)
+    const res = await this.fetch(`tags/${params.slug}/page/${page}.json`)
     const data = await res.json()
     if (res.status === 200) {
       const { tag } = data
