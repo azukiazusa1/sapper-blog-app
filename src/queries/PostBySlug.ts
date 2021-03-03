@@ -20,6 +20,10 @@ query postBySlug($slug: String!) {
         }
       }
       createdAt
+      thumbnail {
+          title
+          url
+        }
       tagsCollection(limit: 5) {
         items {
           name
