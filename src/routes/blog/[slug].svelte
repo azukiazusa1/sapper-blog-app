@@ -27,7 +27,7 @@
   >
   export let contents: string
 
-  $: protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http'
+  $: protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
 </script>
 
 <svelte:head>
