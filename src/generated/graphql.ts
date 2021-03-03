@@ -28,10 +28,10 @@ export type Query = {
   __typename?: 'Query';
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
-  tag?: Maybe<Tag>;
-  tagCollection?: Maybe<TagCollection>;
   blogPost?: Maybe<BlogPost>;
   blogPostCollection?: Maybe<BlogPostCollection>;
+  tag?: Maybe<Tag>;
+  tagCollection?: Maybe<TagCollection>;
 };
 
 
@@ -52,23 +52,6 @@ export type QueryAssetCollectionArgs = {
 };
 
 
-export type QueryTagArgs = {
-  id: Scalars['String'];
-  preview?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryTagCollectionArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  preview?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
-  where?: Maybe<TagFilter>;
-  order?: Maybe<Array<Maybe<TagOrder>>>;
-};
-
-
 export type QueryBlogPostArgs = {
   id: Scalars['String'];
   preview?: Maybe<Scalars['Boolean']>;
@@ -83,6 +66,23 @@ export type QueryBlogPostCollectionArgs = {
   locale?: Maybe<Scalars['String']>;
   where?: Maybe<BlogPostFilter>;
   order?: Maybe<Array<Maybe<BlogPostOrder>>>;
+};
+
+
+export type QueryTagArgs = {
+  id: Scalars['String'];
+  preview?: Maybe<Scalars['Boolean']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryTagCollectionArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  locale?: Maybe<Scalars['String']>;
+  where?: Maybe<TagFilter>;
+  order?: Maybe<Array<Maybe<TagOrder>>>;
 };
 
 /** Represents a binary file in a space. An asset can be any file type. */
@@ -509,26 +509,32 @@ export type SysFilter = {
   id_contains?: Maybe<Scalars['String']>;
   id_not_contains?: Maybe<Scalars['String']>;
   publishedAt_exists?: Maybe<Scalars['Boolean']>;
-  publishedAt?: Maybe<Scalars['String']>;
-  publishedAt_not?: Maybe<Scalars['String']>;
-  publishedAt_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  publishedAt_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  publishedAt_contains?: Maybe<Scalars['String']>;
-  publishedAt_not_contains?: Maybe<Scalars['String']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  publishedAt_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
+  publishedAt_not_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
   firstPublishedAt_exists?: Maybe<Scalars['Boolean']>;
-  firstPublishedAt?: Maybe<Scalars['String']>;
-  firstPublishedAt_not?: Maybe<Scalars['String']>;
-  firstPublishedAt_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  firstPublishedAt_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  firstPublishedAt_contains?: Maybe<Scalars['String']>;
-  firstPublishedAt_not_contains?: Maybe<Scalars['String']>;
+  firstPublishedAt?: Maybe<Scalars['DateTime']>;
+  firstPublishedAt_not?: Maybe<Scalars['DateTime']>;
+  firstPublishedAt_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
+  firstPublishedAt_not_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
+  firstPublishedAt_gt?: Maybe<Scalars['DateTime']>;
+  firstPublishedAt_gte?: Maybe<Scalars['DateTime']>;
+  firstPublishedAt_lt?: Maybe<Scalars['DateTime']>;
+  firstPublishedAt_lte?: Maybe<Scalars['DateTime']>;
   publishedVersion_exists?: Maybe<Scalars['Boolean']>;
-  publishedVersion?: Maybe<Scalars['String']>;
-  publishedVersion_not?: Maybe<Scalars['String']>;
-  publishedVersion_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  publishedVersion_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  publishedVersion_contains?: Maybe<Scalars['String']>;
-  publishedVersion_not_contains?: Maybe<Scalars['String']>;
+  publishedVersion?: Maybe<Scalars['Float']>;
+  publishedVersion_not?: Maybe<Scalars['Float']>;
+  publishedVersion_in?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  publishedVersion_not_in?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  publishedVersion_gt?: Maybe<Scalars['Float']>;
+  publishedVersion_gte?: Maybe<Scalars['Float']>;
+  publishedVersion_lt?: Maybe<Scalars['Float']>;
+  publishedVersion_lte?: Maybe<Scalars['Float']>;
 };
 
 export enum AssetOrder {
@@ -560,49 +566,6 @@ export type AssetCollection = {
   skip: Scalars['Int'];
   limit: Scalars['Int'];
   items: Array<Maybe<Asset>>;
-};
-
-export type TagFilter = {
-  sys?: Maybe<SysFilter>;
-  name_exists?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
-  name_not?: Maybe<Scalars['String']>;
-  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  name_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  name_contains?: Maybe<Scalars['String']>;
-  name_not_contains?: Maybe<Scalars['String']>;
-  slug_exists?: Maybe<Scalars['Boolean']>;
-  slug?: Maybe<Scalars['String']>;
-  slug_not?: Maybe<Scalars['String']>;
-  slug_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug_contains?: Maybe<Scalars['String']>;
-  slug_not_contains?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<Maybe<TagFilter>>>;
-  AND?: Maybe<Array<Maybe<TagFilter>>>;
-};
-
-export enum TagOrder {
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export type TagCollection = {
-  __typename?: 'TagCollection';
-  total: Scalars['Int'];
-  skip: Scalars['Int'];
-  limit: Scalars['Int'];
-  items: Array<Maybe<Tag>>;
 };
 
 export type BlogPostFilter = {
@@ -681,6 +644,49 @@ export enum BlogPostOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+export type TagFilter = {
+  sys?: Maybe<SysFilter>;
+  name_exists?: Maybe<Scalars['Boolean']>;
+  name?: Maybe<Scalars['String']>;
+  name_not?: Maybe<Scalars['String']>;
+  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name_contains?: Maybe<Scalars['String']>;
+  name_not_contains?: Maybe<Scalars['String']>;
+  slug_exists?: Maybe<Scalars['Boolean']>;
+  slug?: Maybe<Scalars['String']>;
+  slug_not?: Maybe<Scalars['String']>;
+  slug_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug_contains?: Maybe<Scalars['String']>;
+  slug_not_contains?: Maybe<Scalars['String']>;
+  OR?: Maybe<Array<Maybe<TagFilter>>>;
+  AND?: Maybe<Array<Maybe<TagFilter>>>;
+};
+
+export enum TagOrder {
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export type TagCollection = {
+  __typename?: 'TagCollection';
+  total: Scalars['Int'];
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+  items: Array<Maybe<Tag>>;
+};
+
 export type BlogPostItemFragment = (
   { __typename?: 'BlogPost' }
   & Pick<BlogPost, 'title' | 'slug' | 'about' | 'createdAt'>
@@ -718,6 +724,9 @@ export type PostBySlugQuery = (
             & Pick<Asset, 'title' | 'url'>
           )> }
         )>> }
+      )>, thumbnail?: Maybe<(
+        { __typename?: 'Asset' }
+        & Pick<Asset, 'title' | 'url'>
       )>, tagsCollection?: Maybe<(
         { __typename?: 'BlogPostTagsCollection' }
         & { items: Array<Maybe<(
