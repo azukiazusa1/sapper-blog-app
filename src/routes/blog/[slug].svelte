@@ -17,6 +17,7 @@
   import Card from '../../components/Card.svelte'
   import Ogp from '../../components/Ogp.svelte'
   import PostList from '../../components/PostList.svelte'
+import TwitterShareButton from '../../components/TwitterShareButton.svelte';
   import type { BlogPost } from '../../generated/graphql'
 
   const { page } = stores()
@@ -28,6 +29,7 @@
   export let contents: string
 
   $: protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
+  $: url = `${protocol}://${$page.host}${$page.path}`
 </script>
 
 <svelte:head>
@@ -37,13 +39,17 @@
 
 <Ogp title={post.title}
   description={post.about}
-  url={`${protocol}://${$page.host}${$page.path}`}
+  url={url}
   image={post.thumbnail.url}
 />
 
 <div class="my-12">
   <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />
+  <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg mt-2">
+    <TwitterShareButton url={url} text={post.title} />
+  </div>
 </div>
+
 
 <h2 class="text-2xl">関連記事</h2>
 
