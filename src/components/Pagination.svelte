@@ -21,7 +21,7 @@
       <div
         class="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer bg-white dark:bg-gray-700"
       >
-        <a href={`${href}${prevPage}`}>
+        <a href={`${href}${prevPage}`} rel=prefetch>
           <PrevIcon />
         </a>
       </div>
@@ -38,7 +38,7 @@
       <div
         class="h-12 w-12 ml-1 flex justify-center items-center rounded-full cursor-pointer bg-white dark:bg-gray-700"
       >
-        <a href={`${href}${nextPage}`}>
+        <a href={`${href}${nextPage}`} rel=prefetch>
           <NextIcon />
         </a>
       </div>
