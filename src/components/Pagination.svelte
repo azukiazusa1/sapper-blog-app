@@ -29,7 +29,7 @@
     <div class="flex h-12 font-medium rounded-full bg-white dark:bg-gray-700">
       {#each Array(totalPage) as _, i (i)}
         <Page current={page === i + 1}>
-          <a href={`${href}${i + 1}`}>{i + 1}</a>
+          <a href={`${href}${i + 1}`} rel=prefetch>{i + 1}</a>
         </Page>
       {/each}
       <Page current sm>{page}</Page>
