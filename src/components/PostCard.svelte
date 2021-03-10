@@ -14,13 +14,13 @@
 </script>
 
 <article class="overflow-hidden h-full bg-white dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
-  <a href={`/blog/${slug}`}>
+  <a href={`/blog/${slug}`} rel=prefetch>
     <ImageLoader alt={thumbnail.title} src={thumbnail.url} />
   </a>
 
   <header class="flex-row items-center justify-between leading-tight p-4 border-t border-gray-300 dark:border-gray-600">
     <h1 class="text-2xl">
-      <a class="no-underline hover:underline" href={`/blog/${slug}`}>{title}</a>
+      <a class="no-underline hover:underline" href={`/blog/${slug}`} rel=prefetch>{title}</a>
     </h1>
     <p class="mt-2">
       <Time date={createdAt} />
