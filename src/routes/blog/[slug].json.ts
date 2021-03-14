@@ -4,6 +4,7 @@ const PostRepository = RepositoryFactory[POST]
 import unified from 'unified'
 import markdown from 'remark-parse'
 import remark2rehype from 'remark-rehype'
+import remarkGfm from 'remark-gfm'
 import remarkfootnotes from 'remark-footnotes'
 import remarkCodeTitles from 'remark-code-titles'
 import html from 'rehype-stringify'
@@ -28,6 +29,7 @@ export async function get(req: Request, res: ServerResponse, next: () => void) {
   }
   const processor = unified()
     .use(markdown)
+    .use(remarkGfm)
     .use(remarkfootnotes)
     .use(remarkCodeTitles)
     .use(remark2rehype)
