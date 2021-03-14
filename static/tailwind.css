@@ -92,6 +92,7 @@
 #contents th {
   font-weight: 700;
   color: black;
+  padding: .5rem;
   border: 1px solid #cfdce6;
   background: #edf2f7;
 }
