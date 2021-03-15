@@ -17,7 +17,7 @@
   import Card from '../../components/Card.svelte'
   import Ogp from '../../components/Ogp.svelte'
   import PostList from '../../components/PostList.svelte'
-import TwitterShareButton from '../../components/TwitterShareButton.svelte';
+  import TwitterShareButton from '../../components/TwitterShareButton.svelte';
   import type { BlogPost } from '../../generated/graphql'
 
   const { page } = stores()

@@ -131,6 +131,15 @@
   }
 }
 
+.icon-link::before {
+  content: "#";
+}
+@layer components {
+  .icon-link {
+    @apply text-gray-400 mr-2 no-underline
+  }
+}
+
 #contents code:not([class*="language-"]) {
   background-color: #eee;
   color: #333;

@@ -26,6 +26,7 @@
     "node-fetch": "^2.6.1",
     "polka": "next",
     "prismjs": "^1.23.0",
+    "rehype-autolink-headings": "^5.0.1",
     "rehype-slug": "^4.0.1",
     "rehype-stringify": "^8.0.0",
     "remark-code-titles": "^0.1.1",
