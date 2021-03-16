@@ -7,6 +7,7 @@ import remark2rehype from 'remark-rehype'
 import remarkGfm from 'remark-gfm'
 import remarkfootnotes from 'remark-footnotes'
 import remarkCodeTitles from 'remark-code-titles'
+import remarkHink from 'remark-hint'
 import html from 'rehype-stringify'
 import rehypePrism from '@mapbox/rehype-prism'
 import rehypeSlug from 'rehype-slug'
@@ -33,6 +34,7 @@ export async function get(req: Request, res: ServerResponse, next: () => void) {
     .use(remarkGfm)
     .use(remarkfootnotes)
     .use(remarkCodeTitles)
+    .use(remarkHink)
     .use(remark2rehype)
     .use(rehypePrism, { ignoreMissing: true })
     .use(rehypeSlug)
