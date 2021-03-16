@@ -131,6 +131,61 @@
   }
 }
 
+.icon-link::before {
+  content: "#";
+}
+
+.hint::before {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-52%);
+  content: "!";
+  display: block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 13px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+@layer components {
+  .icon-link {
+    @apply text-gray-400 mr-2 no-underline
+  }
+
+  .hint {
+    @apply border-l-4 p-4 rounded-lg rounded-l-none relative pl-12
+  }
+
+  .tip {
+    @apply bg-blue-200 border-blue-600 text-blue-600
+  }
+
+  .tip::before {
+    @apply bg-blue-600;
+  }
+
+  .warn {
+    @apply bg-yellow-200 border-yellow-600 text-yellow-600
+  }
+
+  .warn::before {
+    @apply bg-yellow-600;
+  }
+
+  .error {
+    @apply bg-red-200 border-red-600 text-red-600
+  }
+
+  .error::before {
+    @apply bg-red-600;
+  }
+}
+
 #contents code:not([class*="language-"]) {
   background-color: #eee;
   color: #333;
