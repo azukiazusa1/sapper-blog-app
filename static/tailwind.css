@@ -152,6 +152,10 @@
   border-radius: 50%;
 }
 
+.link-card--iframe {
+  width: 80%;
+}
+
 @layer components {
   .icon-link {
     @apply text-gray-400 mr-2 no-underline
