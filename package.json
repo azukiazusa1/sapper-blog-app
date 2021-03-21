@@ -29,17 +29,15 @@
     "rehype-autolink-headings": "^5.0.1",
     "rehype-slug": "^4.0.1",
     "rehype-stringify": "^8.0.0",
-    "remark-code-titles": "^0.1.1",
     "remark-footnotes": "^3.0.0",
     "remark-gfm": "^1.0.0",
+    "remark-hatena-link-card": "^1.0.1",
     "remark-hint": "^1.0.9",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
     "sapper-google-analytics": "^1.0.2",
     "sirv": "^1.0.0",
-    "unified": "^9.2.0",
-    "unist-builder": "^2.0.3",
-    "unist-util-visit": "^2.0.3"
+    "unified": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
