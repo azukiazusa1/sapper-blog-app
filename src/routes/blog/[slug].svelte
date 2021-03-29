@@ -18,6 +18,7 @@
   import Ogp from '../../components/Ogp.svelte'
   import PostList from '../../components/PostList.svelte'
   import TwitterShareButton from '../../components/TwitterShareButton.svelte';
+  import HatenaShareButton from '../../components/HatenaShareButton.svelte';
   import type { BlogPost } from '../../generated/graphql'
 
   const { page } = stores()
@@ -46,7 +47,15 @@
 <div class="my-12">
   <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />
   <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg mt-2">
-    <TwitterShareButton url={url} text={post.title} />
+    <div class="flex">
+      <div>この記事をシェアする</div>
+      <div class="ml-4">
+        <TwitterShareButton url={url} text={post.title} />
+      </div>
+      <div class="ml-4">
+        <HatenaShareButton url={url} text={post.title} />
+      </div>
+    </div>
   </div>
 </div>
 
