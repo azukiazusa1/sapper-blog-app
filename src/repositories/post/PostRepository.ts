@@ -1,9 +1,10 @@
 import type { PostRepositoryInterFace } from "./types";
 import { postsQuery } from '../../queries/Posts'
-import type { PostBySlugQuery, PostsQuery, PostsQueryVariables, SearchPostsQuery, SearchPostsQueryVariables } from '../../generated/graphql';
+import type { AllPostsQuery, PostBySlugQuery, PostsQuery, PostsQueryVariables, SearchPostsQuery, SearchPostsQueryVariables } from '../../generated/graphql';
 import { postBySlugQuery } from '../../queries/PostBySlug';
 import { searchPostsQuery } from '../../queries/SearchPosts';
 import { request } from "../client";
+import { allPostsQuery } from "../../queries/AllPosts";
 
 export class PostRepository implements PostRepositoryInterFace {
   async get(queryVariables: PostsQueryVariables) {
@@ -21,5 +22,11 @@ export class PostRepository implements PostRepositoryInterFace {
     const post = await request(postBySlugQuery, { slug })
 
     return post as PostBySlugQuery
+  }
+
+  async findAll() {
+    const post = await request(allPostsQuery)
+
+    return post as AllPostsQuery
   }
 }

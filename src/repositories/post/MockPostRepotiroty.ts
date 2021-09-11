@@ -12,4 +12,7 @@ export class MockPostRepository implements PostRepositoryInterFace {
   find(slug: string) {
     return Promise.resolve(createDummyPostBySlugQuery(slug))
   }
+  findAll() {
+    return Promise.resolve(createDummyPosts(100)())
+  }
 }

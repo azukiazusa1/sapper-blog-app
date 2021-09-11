@@ -9,7 +9,7 @@
   import { createEventDispatcher } from 'svelte'
   import SideMenu from './SideMenu.svelte'
 
-  let routes = ['blog', 'about', 'tags']
+  let routes = ['blog', 'about', 'tags', 'rss']
 
   export let segment: string
   export let darkMode: boolean
