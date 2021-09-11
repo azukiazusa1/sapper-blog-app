@@ -28,10 +28,11 @@ export type Query = {
   __typename?: 'Query';
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
-  blogPost?: Maybe<BlogPost>;
-  blogPostCollection?: Maybe<BlogPostCollection>;
   tag?: Maybe<Tag>;
   tagCollection?: Maybe<TagCollection>;
+  blogPost?: Maybe<BlogPost>;
+  blogPostCollection?: Maybe<BlogPostCollection>;
+  entryCollection?: Maybe<EntryCollection>;
 };
 
 
@@ -52,6 +53,23 @@ export type QueryAssetCollectionArgs = {
 };
 
 
+export type QueryTagArgs = {
+  id: Scalars['String'];
+  preview?: Maybe<Scalars['Boolean']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryTagCollectionArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  locale?: Maybe<Scalars['String']>;
+  where?: Maybe<TagFilter>;
+  order?: Maybe<Array<Maybe<TagOrder>>>;
+};
+
+
 export type QueryBlogPostArgs = {
   id: Scalars['String'];
   preview?: Maybe<Scalars['Boolean']>;
@@ -69,26 +87,20 @@ export type QueryBlogPostCollectionArgs = {
 };
 
 
-export type QueryTagArgs = {
-  id: Scalars['String'];
-  preview?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryTagCollectionArgs = {
+export type QueryEntryCollectionArgs = {
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   preview?: Maybe<Scalars['Boolean']>;
   locale?: Maybe<Scalars['String']>;
-  where?: Maybe<TagFilter>;
-  order?: Maybe<Array<Maybe<TagOrder>>>;
+  where?: Maybe<EntryFilter>;
+  order?: Maybe<Array<Maybe<EntryOrder>>>;
 };
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type Asset = {
   __typename?: 'Asset';
   sys: Sys;
+  contentfulMetadata: ContentfulMetadata;
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   contentType?: Maybe<Scalars['String']>;
@@ -122,6 +134,21 @@ export type Sys = {
   publishedVersion?: Maybe<Scalars['Int']>;
 };
 
+
+export type ContentfulMetadata = {
+  __typename?: 'ContentfulMetadata';
+  tags: Array<Maybe<ContentfulTag>>;
+};
+
+/**
+ * Represents a tag entity for finding and organizing content easily.
+ *     Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
+ */
+export type ContentfulTag = {
+  __typename?: 'ContentfulTag';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
 
 export type ImageTransformOptions = {
   /** Desired width in pixels. Defaults to the original image width. */
@@ -252,6 +279,7 @@ export type EntryCollection = {
 
 export type Entry = {
   sys: Sys;
+  contentfulMetadata: ContentfulMetadata;
 };
 
 export type BlogPostCollection = {
@@ -266,6 +294,7 @@ export type BlogPostCollection = {
 export type BlogPost = Entry & {
   __typename?: 'BlogPost';
   sys: Sys;
+  contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<BlogPostLinkingCollections>;
   about?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
@@ -379,6 +408,7 @@ export type BlogPostTagsCollection = {
 export type Tag = Entry & {
   __typename?: 'Tag';
   sys: Sys;
+  contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<TagLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
@@ -432,8 +462,17 @@ export type BlogPostRelatedArticleCollection = {
   items: Array<Maybe<BlogPost>>;
 };
 
+export type AssetCollection = {
+  __typename?: 'AssetCollection';
+  total: Scalars['Int'];
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+  items: Array<Maybe<Asset>>;
+};
+
 export type AssetFilter = {
   sys?: Maybe<SysFilter>;
+  contentfulMetadata?: Maybe<ContentfulMetadataFilter>;
   title_exists?: Maybe<Scalars['Boolean']>;
   title?: Maybe<Scalars['String']>;
   title_not?: Maybe<Scalars['String']>;
@@ -537,6 +576,17 @@ export type SysFilter = {
   publishedVersion_lte?: Maybe<Scalars['Float']>;
 };
 
+export type ContentfulMetadataFilter = {
+  tags_exists?: Maybe<Scalars['Boolean']>;
+  tags?: Maybe<ContentfulMetadataTagsFilter>;
+};
+
+export type ContentfulMetadataTagsFilter = {
+  id_contains_all?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id_contains_some?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id_contains_none?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
 export enum AssetOrder {
   UrlAsc = 'url_ASC',
   UrlDesc = 'url_DESC',
@@ -560,16 +610,53 @@ export enum AssetOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-export type AssetCollection = {
-  __typename?: 'AssetCollection';
+export type TagCollection = {
+  __typename?: 'TagCollection';
   total: Scalars['Int'];
   skip: Scalars['Int'];
   limit: Scalars['Int'];
-  items: Array<Maybe<Asset>>;
+  items: Array<Maybe<Tag>>;
 };
+
+export type TagFilter = {
+  sys?: Maybe<SysFilter>;
+  contentfulMetadata?: Maybe<ContentfulMetadataFilter>;
+  name_exists?: Maybe<Scalars['Boolean']>;
+  name?: Maybe<Scalars['String']>;
+  name_not?: Maybe<Scalars['String']>;
+  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name_contains?: Maybe<Scalars['String']>;
+  name_not_contains?: Maybe<Scalars['String']>;
+  slug_exists?: Maybe<Scalars['Boolean']>;
+  slug?: Maybe<Scalars['String']>;
+  slug_not?: Maybe<Scalars['String']>;
+  slug_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug_contains?: Maybe<Scalars['String']>;
+  slug_not_contains?: Maybe<Scalars['String']>;
+  OR?: Maybe<Array<Maybe<TagFilter>>>;
+  AND?: Maybe<Array<Maybe<TagFilter>>>;
+};
+
+export enum TagOrder {
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 export type BlogPostFilter = {
   sys?: Maybe<SysFilter>;
+  contentfulMetadata?: Maybe<ContentfulMetadataFilter>;
   about_exists?: Maybe<Scalars['Boolean']>;
   about?: Maybe<Scalars['String']>;
   about_not?: Maybe<Scalars['String']>;
@@ -644,31 +731,14 @@ export enum BlogPostOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-export type TagFilter = {
+export type EntryFilter = {
   sys?: Maybe<SysFilter>;
-  name_exists?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
-  name_not?: Maybe<Scalars['String']>;
-  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  name_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  name_contains?: Maybe<Scalars['String']>;
-  name_not_contains?: Maybe<Scalars['String']>;
-  slug_exists?: Maybe<Scalars['Boolean']>;
-  slug?: Maybe<Scalars['String']>;
-  slug_not?: Maybe<Scalars['String']>;
-  slug_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug_contains?: Maybe<Scalars['String']>;
-  slug_not_contains?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<Maybe<TagFilter>>>;
-  AND?: Maybe<Array<Maybe<TagFilter>>>;
+  contentfulMetadata?: Maybe<ContentfulMetadataFilter>;
+  OR?: Maybe<Array<Maybe<EntryFilter>>>;
+  AND?: Maybe<Array<Maybe<EntryFilter>>>;
 };
 
-export enum TagOrder {
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
+export enum EntryOrder {
   SysIdAsc = 'sys_id_ASC',
   SysIdDesc = 'sys_id_DESC',
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
@@ -678,14 +748,6 @@ export enum TagOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
-
-export type TagCollection = {
-  __typename?: 'TagCollection';
-  total: Scalars['Int'];
-  skip: Scalars['Int'];
-  limit: Scalars['Int'];
-  items: Array<Maybe<Tag>>;
-};
 
 export type BlogPostItemFragment = (
   { __typename?: 'BlogPost' }
@@ -698,6 +760,22 @@ export type BlogPostItemFragment = (
     & { items: Array<Maybe<(
       { __typename?: 'Tag' }
       & Pick<Tag, 'name' | 'slug'>
+    )>> }
+  )> }
+);
+
+export type AllPostsQueryVariables = Exact<{
+  order?: Maybe<BlogPostOrder>;
+}>;
+
+
+export type AllPostsQuery = (
+  { __typename?: 'Query' }
+  & { blogPostCollection?: Maybe<(
+    { __typename?: 'BlogPostCollection' }
+    & { items: Array<Maybe<(
+      { __typename?: 'BlogPost' }
+      & Pick<BlogPost, 'title' | 'slug' | 'about' | 'createdAt'>
     )>> }
   )> }
 );

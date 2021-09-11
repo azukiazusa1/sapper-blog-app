@@ -24,7 +24,12 @@
   <ul class="flex space-x-4">
     {#each routes as route}
       <li>
-        <a aria-current={segment === route ? 'page' : undefined} href={route} rel=prefetch class="capitalize px-3 hover:opacity-75">
+        <a
+          aria-current={segment === route ? 'page' : undefined}
+          href={route}
+          rel="prefetch"
+          class="uppercase px-3 hover:opacity-75"
+        >
           {route}
         </a>
       </li>
