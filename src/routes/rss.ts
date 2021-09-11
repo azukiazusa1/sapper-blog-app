@@ -20,8 +20,8 @@ const renderXmlRssFeed = (posts: AllPostsQuery) => `<?xml version="1.0" encoding
     ${posts.blogPostCollection.items.map(post => `
       <item>
         <title>${post.title}</title>
-      <link>${siteUrl}/${post.slug}</link>
-      <guid isPermaLink="false">${siteUrl}/${post.slug}</guid>
+      <link>${siteUrl}/blog/${post.slug}</link>
+      <guid isPermaLink="false">${siteUrl}/blog/${post.slug}</guid>
         <description><![CDATA[${post.about}]]></description>
         <pubDate>${new Date(post.createdAt).toUTCString()}</pubDate>
       </item>
