@@ -45,6 +45,16 @@
   margin-top: -64px;
 }
 
+#contents h5 {
+  padding-top: 64px;
+  margin-top: -64px;
+}
+
+#contents h6 {
+  padding-top: 64px;
+  margin-top: -64px;
+}
+
 #contents ul {
   list-style-type: disc;
 }
