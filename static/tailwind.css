@@ -14,6 +14,8 @@
   border-bottom: 1px solid  #ddd;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
+  padding-top: 64px;
+  margin-top: -64px;
 }
 
 #contents h2 {
@@ -22,6 +24,8 @@
   border-bottom: 1px solid #ddd;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
+  padding-top: 64px;
+  margin-top: -64px;
 }
 
 #contents h3 {
@@ -29,12 +33,26 @@
   font-weight: 700;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
+  padding-top: 64px;
+  margin-top: -64px;
 }
 
 #contents h4 {
   font-size: 0.4rem;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
+  padding-top: 64px;
+  margin-top: -64px;
+}
+
+#contents h5 {
+  padding-top: 64px;
+  margin-top: -64px;
+}
+
+#contents h6 {
+  padding-top: 64px;
+  margin-top: -64px;
 }
 
 #contents ul {
