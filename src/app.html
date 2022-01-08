@@ -10,12 +10,13 @@
 	<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
 	<link rel="icon" type="image/png" href="favicon.png">
 	<link rel="alternate" type="application/rss+xml" title="RSS Feed for azukiazusa's Blog" href="/rss">
+	%svelte.head%
 </head>
 
 <body class="min-h-screen bg-gray-100 dark:bg-gray-800 dark:text-gray-50">
 	<!-- The application will be rendered inside this element,
 	     because `src/client.js` references it -->
-	<div id="sapper">%svelte.body%</div>
+	<div id="svelte">%svelte.body%</div>
 </body>
 
 </html>

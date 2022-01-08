@@ -3,7 +3,9 @@
     const res = await fetch(`blog.json`)
     const { posts } = await res.json()
     return {
-      props: posts
+      props: {
+        posts
+      }
     }
   }
 </script>
