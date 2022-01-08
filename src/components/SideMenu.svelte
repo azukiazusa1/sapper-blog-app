@@ -40,7 +40,7 @@
         <a
           aria-current={segment === route ? 'page' : undefined}
           href={route}
-          rel="prefetch"
+          sveltekit:prefetch
           class="capitalize px-3 hover:opacity-75"
         >
           {route}
