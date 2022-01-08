@@ -1,21 +1,23 @@
-import type { ServerResponse } from "http"
-import type { Request } from 'polka'
+import type { RequestHandler } from '@sveltejs/kit'
 import RepositoryFactory, { TAG } from '../../repositories/RepositoryFactory'
 const TagRepository = RepositoryFactory[TAG]
 
-export async function get(req: Request, res: ServerResponse) {
-  const { slug } = req.params
+export const get: RequestHandler = async ({ params }) => {
+  const { slug } = params
 
   const tag = await TagRepository.find({ slug })
   if (tag.tagCollection.items.length === 0) {
-    res.writeHead(404, {
-			'Content-Type': 'application/json'
-		})
-
-		res.end(JSON.stringify({
-			message: `Not found`
-		}))
+    return {
+      status: 404,
+      body: {
+        message: 'Not Found',
+      }
+    }
   }
 
-  res.end(JSON.stringify({ tag }))
+  return {
+    body: {
+      tag
+    }
+  }
 }

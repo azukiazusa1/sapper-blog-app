@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   export async function load({ fetch }) {
-    const res = await fetch(`tags.json`)
+    const res = await fetch(`/tags.json`)
     const { tags } = await res.json()
     return {
       props: {

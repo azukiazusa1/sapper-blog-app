@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   export async function load({ params, fetch }) {
-    const res = await fetch(`tags/${params.slug}.json`)
+    const res = await fetch(`/tags/${params.slug}.json`)
     const data = await res.json()
     if (res.status === 200) {
       const { tag } = data
