@@ -1,7 +1,6 @@
 .DS_Store
 /node_modules/
-/src/node_modules/@sapper/
 yarn-error.log
-/__sapper__/
+/.svelte-kit
 /static/index.css
 .env
