@@ -19,7 +19,6 @@
 
   export let page: number
   export let posts: PostsQuery
-  console.log(page)
 </script>
 
 <svelte:head>

@@ -1,7 +1,8 @@
-import { ssrExchange, createClient, dedupExchange, cacheExchange, fetchExchange, TypedDocumentNode } from "@urql/core"
+import { ssrExchange, createClient, dedupExchange, cacheExchange, fetchExchange } from "@urql/core"
+import type { TypedDocumentNode } from "@urql/core"
 import type { DocumentNode } from "graphql";
 import { pipe, subscribe } from 'wonka'
-import fetch from 'node-fetch';
+import variables from "$lib/variables";
 
 const isServerSide = typeof window === 'undefined'
 
@@ -11,13 +12,13 @@ const ssr = ssrExchange({
 })
 
 export const client = createClient({
-  url: `https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE}/environments/${process.env.ENVIRONMENTS}`,
+  url: `https://graphql.contentful.com/content/v1/spaces/${variables.space}/environments/${variables.environments}`,
   fetch,
   exchanges: [dedupExchange, cacheExchange, ssr, fetchExchange],
   fetchOptions: () => {
     return {
       headers: {
-        Authorization: `Bearer ${process.env.API_KEY}`
+        Authorization: `Bearer ${variables.apiKey}`,
       }
     }
   }

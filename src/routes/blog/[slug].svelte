@@ -35,8 +35,6 @@
   >
   export let contents: string
 
-  console.log({ page: $page})
-
   $: protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
   $: url = `${protocol}://${$page.url.host}${$page.url.pathname}`
 </script>

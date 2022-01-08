@@ -28,4 +28,4 @@
   })
 </script>
 
-<img {src} {alt} class:loaded bind:this={thisImage} />
+<img {src} {alt} class:loaded bind:this={thisImage} height="400" width="300" />

@@ -1,5 +1,7 @@
-import { MockPostRepository, PostRepositoryInterFace, PostRepository } from './post'
-import { TagsRepositoryInterFace, TagRepository } from './tag'
+import { MockPostRepository, PostRepository } from './post'
+import type { PostRepositoryInterFace } from './post'
+import { TagRepository } from './tag'
+import type { TagsRepositoryInterFace } from './tag'
 
 export const POST = Symbol('post')
 export const TAG = Symbol('tag')
