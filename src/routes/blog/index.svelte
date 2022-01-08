@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
-  export async function preload() {
-    const res = await this.fetch(`blog.json`)
+  export async function load({ fetch }) {
+    const res = await fetch(`blog.json`)
     const { posts } = await res.json()
     return { posts }
   }

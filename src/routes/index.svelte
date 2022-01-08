@@ -1,5 +1,8 @@
 <script context="module">
-  export function preload() {
-    return this.redirect(302, 'blog')
+  export function load() {
+    return {
+      status: 302,
+      redirect: 'blog'
+    }
   }
 </script>

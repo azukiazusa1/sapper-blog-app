@@ -1,13 +1,21 @@
 <script context="module" lang="ts">
-  export async function preload({ params }) {
-    const res = await this.fetch(`blog/${params.slug}.json`)
+  export async function load({ params, fetch }) {
+    const res = await fetch(`blog/${params.slug}.json`)
     const data = await res.json()
     if (res.status === 200) {
       const { post, contents } = data
-      return { post, contents }
+      return {
+        props: {
+          post,
+          contents,
+        },
+      }
     } else {
       const { message } = data
-      this.error(res.status, message)
+      return {
+        status: res.status,
+        error: new Error(message),
+      }
     }
   }
 </script>

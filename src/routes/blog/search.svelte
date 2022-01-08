@@ -3,11 +3,17 @@
   import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
   const PostRepository = RepositoryFactory[POST]
 
-  export async function preload({ query }) {
+  export async function load({ query }) {
     const q = query.q ?? ''
     const page = query.page ? Number(query.page) : 1
     const posts = await PostRepository.search({ q, ...paginateParams(page) })
-    return { posts, q, page }
+    return { 
+      props: {
+        posts,
+        q,
+        page
+      }
+    }
   }
 </script>
 
