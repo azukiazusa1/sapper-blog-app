@@ -1,4 +1,4 @@
-import type { ServerResponse } from "http";
+import type { RequestHandler } from '@sveltejs/kit'
 import type { AllPostsQuery } from "../generated/graphql";
 import RepositoryFactory, { POST } from '../repositories/RepositoryFactory'
 const PostRepository = RepositoryFactory[POST]
@@ -30,13 +30,14 @@ const renderXmlRssFeed = (posts: AllPostsQuery) => `<?xml version="1.0" encoding
   </rss>
 `;
 
-export async function get(req: Request, res: ServerResponse) {
-  res.writeHead(200, {
-    'Cache-Control' : 'max-age=0, s-max-age=600',
-    'Content-Type': 'application/rss+xml; charset=utf-8'
-  })
-
+export const get: RequestHandler = async () => {
   const posts = await PostRepository.findAll()
   const feed = renderXmlRssFeed(posts)
-  res.end(feed)
+  return {
+    headers: {
+      'Cache-Control': 'max-age=0, s-max-age=600',
+      'Content-Type': 'application/rss+xml; charset=utf-8'
+    },
+    body: feed
+  }
 }
