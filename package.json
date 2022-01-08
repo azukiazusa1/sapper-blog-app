@@ -11,8 +11,8 @@
     "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w",
     "build:tailwind": "NODE_ENV=production postcss static/tailwind.css -o static/index.css",
     "validate": "svelte-check --ignore src/node_modules/@sapper",
-    "lint": "eslint . --ext .js,.ts,.svelte --fix",
-    "format": "prettier --write ./**/*.svelte",
+    "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
+    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
     "gen": "graphql-codegen --config codegen.yml -r dotenv/config"
   },
   "dependencies": {
