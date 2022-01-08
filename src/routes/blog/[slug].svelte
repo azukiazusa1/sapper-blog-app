@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   export async function load({ params, fetch }) {
-    const res = await fetch(`blog/${params.slug}.json`)
+    const res = await fetch(`/blog/${params.slug}.json`)
     const data = await res.json()
     if (res.status === 200) {
       const { post, contents } = data
@@ -35,8 +35,10 @@
   >
   export let contents: string
 
+  console.log({ page: $page})
+
   $: protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
-  $: url = `${protocol}://${$page.host}${$page.path}`
+  $: url = `${protocol}://${$page.url.host}${$page.url.pathname}`
 </script>
 
 <svelte:head>
@@ -44,7 +46,7 @@
   <meta name="description" content={post.about} />
 </svelte:head>
 
-<Ogp title={post.title} description={post.about} {url} image={post.thumbnail.url} />
+<Ogp title={post.title} description={post.about} {url} image={post.thumbnail?.url} />
 
 <div class="my-12">
   <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />
