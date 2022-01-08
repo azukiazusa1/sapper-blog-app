@@ -2,11 +2,11 @@
   import '../app.css'
   import Header from '../components/Header.svelte'
   import { onMount } from 'svelte'
+  import { page } from '$app/stores';
   import GoogleAnalytics from 'sapper-google-analytics/GoogleAnalytics.svelte'
   import { getStores } from '$app/stores';
   import Visual from '../components/Visual.svelte'
 
-  export let segment: string
   let html: HTMLElement
   let darkMode = false
 
@@ -40,10 +40,10 @@
   }
 </script>
 
-<Header {segment} {darkMode} on:clickMoon={toggleDarkMode} />
+<Header segment={$page.url.pathname} {darkMode} on:clickMoon={toggleDarkMode} />
 
 <main class="pt-16">
-  {#if segment === 'about'}
+  {#if $page.url.pathname === '/about'}
     <Visual title="about" image="images/road-984251_1280.jpg" />
   {/if}
   <div class="container mx-auto px-6 my-4">

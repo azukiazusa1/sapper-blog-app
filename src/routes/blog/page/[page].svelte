@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
-  export async function load({ params, fetch }) {
+    import type { Load } from '@sveltejs/kit';
+  export const load: Load = async ({ params, fetch }) =>{
     const page = Number(params.page)
     const res = await fetch(`/blog/page/${page}.json`)
     const { posts } = await res.json()

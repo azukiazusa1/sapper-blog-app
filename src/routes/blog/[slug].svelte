@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
-  export async function load({ params, fetch }) {
+    import type { Load } from '@sveltejs/kit';
+  export const load: Load = async ({ params, fetch }) => {
     const res = await fetch(`/blog/${params.slug}.json`)
     const data = await res.json()
     if (res.status === 200) {

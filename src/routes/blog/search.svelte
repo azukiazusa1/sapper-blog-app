@@ -1,11 +1,12 @@
-<script context="module">
+<script context="module" lang="ts">
   import { paginateParams } from '../../utils/paginateParams'
   import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
   const PostRepository = RepositoryFactory[POST]
+  import type { Load } from '@sveltejs/kit';
 
-  export async function load({ query }) {
-    const q = query.q ?? ''
-    const page = query.page ? Number(query.page) : 1
+  export const load: Load = async ({ url }) => {
+    const q = url.searchParams.get('q') ?? ''
+    const page = url.searchParams.get('page') ? Number(url.searchParams.get('page')) : 1
     const posts = await PostRepository.search({ q, ...paginateParams(page) })
     return { 
       props: {
