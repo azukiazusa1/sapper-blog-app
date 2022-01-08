@@ -9,7 +9,7 @@ export const get: RequestHandler = async () => {
   })
   return {
     body: {
-      tags: tags.tagCollection.items,
+      tags
     }
   }
 }
