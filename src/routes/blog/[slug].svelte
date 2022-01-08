@@ -21,15 +21,13 @@
 </script>
 
 <script lang="ts">
-  import { stores } from '@sapper/app'
+  import { page } from '$app/stores';
   import Card from '../../components/Card.svelte'
   import Ogp from '../../components/Ogp.svelte'
   import PostList from '../../components/PostList.svelte'
   import TwitterShareButton from '../../components/TwitterShareButton.svelte'
   import HatenaShareButton from '../../components/HatenaShareButton.svelte'
   import type { BlogPost } from '../../generated/graphql'
-
-  const { page } = stores()
 
   export let post: Pick<
     BlogPost,
