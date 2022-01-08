@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { goto } from '@sapper/app'
+  import { goto } from '$app/navigation'
   import SearchInput from './SearchInput.svelte'
   import DropDownMenu from './DropDownMenu.svelte'
   import type { SearchPostsQuery } from '../generated/graphql'
