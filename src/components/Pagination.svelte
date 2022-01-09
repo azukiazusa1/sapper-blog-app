@@ -18,30 +18,30 @@
 <nav class="flex flex-col items-center my-12">
   <div class="flex">
     {#if hasPrev}
-      <div
-        class="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer bg-white dark:bg-gray-700"
+      <a
+        class="h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-white dark:bg-gray-700"
+        href={`${href}${prevPage}`}
+        sveltekit:prefetch
       >
-        <a href={`${href}${prevPage}`} sveltekit:prefetch>
-          <PrevIcon />
-        </a>
-      </div>
+        <PrevIcon />
+      </a>
     {/if}
     <div class="flex h-12 font-medium rounded-full bg-white dark:bg-gray-700">
       {#each Array(totalPage) as _, i (i)}
-        <Page current={page === i + 1}>
-          <a href={`${href}${i + 1}`} sveltekit:prefetch>{i + 1}</a>
+        <Page href={`${href}${i + 1}`} current={page === i + 1}>
+          {i + 1}
         </Page>
       {/each}
       <Page current sm>{page}</Page>
     </div>
     {#if hasNext}
-      <div
+      <a
         class="h-12 w-12 ml-1 flex justify-center items-center rounded-full cursor-pointer bg-white dark:bg-gray-700"
+        href={`${href}${nextPage}`}
+        sveltekit:prefetch
       >
-        <a href={`${href}${nextPage}`} sveltekit:prefetch>
-          <NextIcon />
-        </a>
-      </div>
+        <NextIcon />
+      </a>
     {/if}
   </div>
 </nav>

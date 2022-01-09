@@ -1,12 +1,6 @@
-<style>
-  .bg-theme {
-    background-color: rgb(255, 62, 0);
-  }
-</style>
-
 <script>
   const content =
-    'このブログはSapper + Contentful + Vercelによって作成されています。学んだ技術についてつらつらと書いてきます。毎週日曜日夜くらいに更新されます。JavaScript/TypeScript/Vue.js/React/Svelte/PHP/Laravel/CakePHPあたり。趣味は読書と麻雀。'
+    'このブログはSvelteKit + Contentful + Vercelによって作成されています。学んだ技術についてつらつらと書いてきます。毎週日曜日夜くらいに更新されます。JavaScript/TypeScript/Vue.js/React/Svelte/PHP/Laravel/CakePHPあたり。趣味は読書と麻雀。'
 </script>
 
 <svelte:head>
@@ -30,7 +24,7 @@
               <a class="underline hover:opacity-75" target="_blank" href="https://zenn.dev/azukiazusa">Zenn</a>&nbsp;/
               <a class="underline hover:opacity-75" target="_blank" href="https://github.com/azukiazusa1">GitHub</a>
             </p>
-            <p class="mt-2">2年目のエンジニアです。</p>
+            <p class="mt-2">3年目のエンジニアです。</p>
           </div>
         </div>
         <div
@@ -58,3 +52,9 @@
     </div>
   </div>
 </section>
+
+<style>
+  .bg-theme {
+    background-color: rgb(255, 62, 0);
+  }
+</style>

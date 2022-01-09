@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-  import type { Load } from '@sveltejs/kit';
+  import type { Load } from '@sveltejs/kit'
   export const load: Load = async ({ params, fetch }) => {
     const page = Number(params.page)
     const res = await fetch(`/tags/${params.slug}/page/${page}.json`)
@@ -7,16 +7,17 @@
 
     if (res.status === 200) {
       const { tag } = data
-      return { 
+      return {
         props: {
-          tag 
-        }
+          tag,
+          page,
+        },
       }
     } else {
       const { message } = data
       return {
         status: res.status,
-        error: new Error(message)
+        error: new Error(message),
       }
     }
   }
@@ -28,6 +29,7 @@
   import type { TagBySlugQuery } from '../../../../generated/graphql'
 
   export let tag: TagBySlugQuery
+  export let page: number = 1
 
   $: tagName = tag.tagCollection.items[0].name
   $: tagSlug = tag.tagCollection.items[0].slug
@@ -45,6 +47,7 @@
 <PostList posts={posts.blogPostCollection.items} />
 
 <Pagination
+  {page}
   total={posts.blogPostCollection.total}
   limit={posts.blogPostCollection.limit}
   href={`/tags/${tagSlug}/page/`}
