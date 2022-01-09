@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Asset, Scalars, Tag as TagType } from '../generated/graphql'
-  import ImageLoader from './Image/ImageLoader.svelte'
+  import Image from './Image/Image.svelte'
   import Tag from './Tag.svelte'
   import Time from './Time.svelte'
 
@@ -15,7 +15,7 @@
 
 <article class="overflow-hidden h-full bg-white dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
   <a href={`/blog/${slug}`} sveltekit:prefetch>
-    <ImageLoader alt={thumbnail.title} src={thumbnail.url} />
+    <Image alt={thumbnail.title} src={thumbnail.url} width={400} height={300} />
   </a>
 
   <header class="flex-row items-center justify-between leading-tight p-4 border-t border-gray-300 dark:border-gray-600">
