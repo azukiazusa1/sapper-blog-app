@@ -26,7 +26,6 @@
   import type { TagBySlugQuery } from '../../generated/graphql'
 
   export let tag: TagBySlugQuery
-
   $: tagName = tag.tagCollection.items[0].name
   $: tagSlug = tag.tagCollection.items[0].slug
   $: posts = tag.tagCollection.items[0].linkedFrom
@@ -45,5 +44,5 @@
 <Pagination
   total={posts.blogPostCollection.total}
   limit={posts.blogPostCollection.limit}
-  href={`tags/${tagSlug}/page/`}
+  href={`/tags/${tagSlug}/page/`}
 />

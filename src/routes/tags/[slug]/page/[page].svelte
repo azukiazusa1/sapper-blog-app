@@ -1,12 +1,17 @@
 <script context="module" lang="ts">
-    import type { Load } from '@sveltejs/kit';
-  export const load = async ({ params, fetch }) => {
+  import type { Load } from '@sveltejs/kit';
+  export const load: Load = async ({ params, fetch }) => {
     const page = Number(params.page)
     const res = await fetch(`/tags/${params.slug}/page/${page}.json`)
     const data = await res.json()
+
     if (res.status === 200) {
       const { tag } = data
-      return { props: tag }
+      return { 
+        props: {
+          tag 
+        }
+      }
     } else {
       const { message } = data
       return {
@@ -42,5 +47,5 @@
 <Pagination
   total={posts.blogPostCollection.total}
   limit={posts.blogPostCollection.limit}
-  href={`tags/${tagSlug}/page/`}
+  href={`/tags/${tagSlug}/page/`}
 />
