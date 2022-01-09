@@ -6,7 +6,6 @@
   import variables from '$lib/variables';
 
   const id = variables.analyticsId
-  console.log(id)
   if (typeof window !== "undefined") {
       window.dataLayer = window.dataLayer || []
       window.gtag = function gtag() {
