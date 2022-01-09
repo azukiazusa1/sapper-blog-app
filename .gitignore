@@ -3,4 +3,5 @@
 yarn-error.log
 /.svelte-kit
 /static/index.css
+build/
 .env

@@ -3,10 +3,8 @@
   import Header from '../components/Header.svelte'
   import { onMount } from 'svelte'
   import { page } from '$app/stores';
-  import GoogleAnalytics from 'sapper-google-analytics/GoogleAnalytics.svelte'
-  import { getStores } from '$app/stores';
+  import GoogleAnalytics from '../components/GoogleAnalytics.svelte'
   import Visual from '../components/Visual.svelte'
-
   let html: HTMLElement
   let darkMode = false
 
@@ -41,7 +39,7 @@
 </script>
 
 <Header segment={$page.url.pathname} {darkMode} on:clickMoon={toggleDarkMode} />
-
+<GoogleAnalytics />
 <main class="pt-16">
   {#if $page.url.pathname === '/about'}
     <Visual title="about" image="images/road-984251_1280.jpg" />
