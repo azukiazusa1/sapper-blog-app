@@ -40,10 +40,11 @@
         <a
           aria-current={segment === route ? 'page' : undefined}
           href={route}
-          rel="prefetch"
+          sveltekit:prefetch
           class="capitalize px-3 hover:opacity-75"
+          target={route === '/rss' ? '_blank' : ''}
         >
-          {route}
+          {route.slice(1)}
         </a>
       </li>
     {/each}

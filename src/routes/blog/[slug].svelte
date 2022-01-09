@@ -1,27 +1,34 @@
 <script context="module" lang="ts">
-  export async function preload({ params }) {
-    const res = await this.fetch(`blog/${params.slug}.json`)
+    import type { Load } from '@sveltejs/kit';
+  export const load: Load = async ({ params, fetch }) => {
+    const res = await fetch(`/blog/${params.slug}.json`)
     const data = await res.json()
     if (res.status === 200) {
       const { post, contents } = data
-      return { post, contents }
+      return {
+        props: {
+          post,
+          contents,
+        },
+      }
     } else {
       const { message } = data
-      this.error(res.status, message)
+      return {
+        status: res.status,
+        error: new Error(message),
+      }
     }
   }
 </script>
 
 <script lang="ts">
-  import { stores } from '@sapper/app'
+  import { page } from '$app/stores';
   import Card from '../../components/Card.svelte'
   import Ogp from '../../components/Ogp.svelte'
   import PostList from '../../components/PostList.svelte'
   import TwitterShareButton from '../../components/TwitterShareButton.svelte'
   import HatenaShareButton from '../../components/HatenaShareButton.svelte'
   import type { BlogPost } from '../../generated/graphql'
-
-  const { page } = stores()
 
   export let post: Pick<
     BlogPost,
@@ -30,7 +37,7 @@
   export let contents: string
 
   $: protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
-  $: url = `${protocol}://${$page.host}${$page.path}`
+  $: url = `${protocol}://${$page.url.host}${$page.url.pathname}`
 </script>
 
 <svelte:head>
@@ -38,7 +45,7 @@
   <meta name="description" content={post.about} />
 </svelte:head>
 
-<Ogp title={post.title} description={post.about} {url} image={post.thumbnail.url} />
+<Ogp title={post.title} description={post.about} {url} image={post.thumbnail?.url} />
 
 <div class="my-12">
   <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />

@@ -1,9 +1,15 @@
 <script context="module" lang="ts">
-  export async function preload({ params }) {
+    import type { Load } from '@sveltejs/kit';
+  export const load: Load = async ({ params, fetch }) =>{
     const page = Number(params.page)
-    const res = await this.fetch(`blog/page/${page}.json`)
+    const res = await fetch(`/blog/page/${page}.json`)
     const { posts } = await res.json()
-    return { posts, page }
+    return { 
+      props: {
+        posts,
+        page,
+      }
+    }
   }
 </script>
 
@@ -14,7 +20,6 @@
 
   export let page: number
   export let posts: PostsQuery
-  console.log(page)
 </script>
 
 <svelte:head>

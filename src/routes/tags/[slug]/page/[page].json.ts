@@ -1,23 +1,25 @@
-import type { ServerResponse } from "http"
-import type { Request } from 'polka'
+import type { RequestHandler } from '@sveltejs/kit'
 import RepositoryFactory, { TAG } from '../../../../repositories/RepositoryFactory'
 import { paginateParams } from "../../../../utils/paginateParams"
 const TagRepository = RepositoryFactory[TAG]
 
-export async function get(req: Request, res: ServerResponse) {
-  const { slug, page } = req.params
+export const get: RequestHandler = async ({ params }) => {
+  const { slug, page } = params
   const { skip } = paginateParams(Number(page))
 
   const tag = await TagRepository.find({ slug, skip })
   if (tag.tagCollection.items.length === 0) {
-    res.writeHead(404, {
-			'Content-Type': 'application/json'
-		})
-
-		res.end(JSON.stringify({
-			message: `Not found`
-		}))
+    return {
+      status: 404,
+      body: {
+        message: 'Not Found',
+      }
+    }
   }
 
-  res.end(JSON.stringify({ tag }))
+  return {
+    body: {
+      tag
+    }
+  }
 }

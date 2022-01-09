@@ -1,8 +1,13 @@
 <script context="module" lang="ts">
-  export async function preload() {
-    const res = await this.fetch(`blog.json`)
+  import type { Load } from '@sveltejs/kit';
+  export const load: Load = async ({ fetch }) => {
+    const res = await fetch(`blog.json`)
     const { posts } = await res.json()
-    return { posts }
+    return {
+      props: {
+        posts
+      }
+    }
   }
 </script>
 

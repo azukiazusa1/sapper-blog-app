@@ -1,9 +1,12 @@
-import type { ServerResponse } from 'http'
-import type { Request } from 'polka'
+import type { RequestHandler } from '@sveltejs/kit'
 import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
 const PostRepository = RepositoryFactory[POST]
 
-export async function get(req: Request, res: ServerResponse) {
+export const get: RequestHandler = async (req) => {
   const posts = await PostRepository.get({})
-  res.end(JSON.stringify({ posts }))
+  return {
+    body: {
+      posts
+    }
+  }
 }

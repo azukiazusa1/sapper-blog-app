@@ -1,13 +1,10 @@
 <script lang="ts">
+  import '../app.css'
   import Header from '../components/Header.svelte'
   import { onMount } from 'svelte'
-  import GoogleAnalytics from 'sapper-google-analytics/GoogleAnalytics.svelte'
-  import { stores } from '@sapper/app'
+  import { page } from '$app/stores';
+  import GoogleAnalytics from '../components/GoogleAnalytics.svelte'
   import Visual from '../components/Visual.svelte'
-
-  let ga_measurment_id = process.env.ANALYTICS_ID
-
-  export let segment: string
   let html: HTMLElement
   let darkMode = false
 
@@ -41,11 +38,10 @@
   }
 </script>
 
-<GoogleAnalytics {stores} id={ga_measurment_id} />
-<Header {segment} {darkMode} on:clickMoon={toggleDarkMode} />
-
+<Header segment={$page.url.pathname} {darkMode} on:clickMoon={toggleDarkMode} />
+<GoogleAnalytics />
 <main class="pt-16">
-  {#if segment === 'about'}
+  {#if $page.url.pathname === '/about'}
     <Visual title="about" image="images/road-984251_1280.jpg" />
   {/if}
   <div class="container mx-auto px-6 my-4">

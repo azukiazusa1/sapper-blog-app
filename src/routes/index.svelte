@@ -1,5 +1,9 @@
-<script context="module">
-  export function preload() {
-    return this.redirect(302, 'blog')
+<script context="module" lang="ts">
+  import type { Load } from '@sveltejs/kit';
+  export const load: Load = () => {
+    return {
+      status: 302,
+      redirect: 'blog'
+    }
   }
 </script>
