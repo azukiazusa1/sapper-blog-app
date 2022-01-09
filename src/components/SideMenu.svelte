@@ -42,8 +42,9 @@
           href={route}
           sveltekit:prefetch
           class="capitalize px-3 hover:opacity-75"
+          target={route === '/rss' ? '_blank' : ''}
         >
-          {route}
+          {route.slice(1)}
         </a>
       </li>
     {/each}
