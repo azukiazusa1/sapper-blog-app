@@ -38,7 +38,7 @@
 }
 
 #contents h4 {
-  font-size: 0.4rem;
+  font-size: 1.5rem;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
   padding-top: 64px;
@@ -46,11 +46,13 @@
 }
 
 #contents h5 {
+  font-size: 1.25rem;
   padding-top: 64px;
   margin-top: -64px;
 }
 
 #contents h6 {
+  font-size: 1.125rem;
   padding-top: 64px;
   margin-top: -64px;
 }
