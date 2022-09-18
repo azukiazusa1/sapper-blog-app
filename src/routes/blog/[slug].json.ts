@@ -33,12 +33,12 @@ export const get: RequestHandler = async ({ params }) => {
     .use(remarkGfm)
     .use(remarkfootnotes)
     .use(remarkHink)
-    .use(remark2rehype)
+    .use(remark2rehype, { allowDangerousHtml: true })
     .use(rehypePrism, { ignoreMissing: true })
     .use(rehypeSlug)
     .use(rehypeAutoLinkHeadings)
     .use(rehypeToc)
-    .use(html)
+    .use(html, { allowDangerousHtml: true })
   const input = data.blogPostCollection.items[0].article
   const { contents } = await processor.process(input)
   return {
