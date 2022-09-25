@@ -14,4 +14,4 @@
   export let height
 </script>
 
-<img {src} {alt} loading="lazy" height={width} width={height} />
+<img {src} {alt} loading="lazy" height={width} width={height} class="aspect-square" />
