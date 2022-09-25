@@ -1,7 +1,6 @@
 <style>
   img {
     height: 18rem;
-    width: auto;
     display: block;
     margin: 0 auto;
     aspect-ratio: 4 / 3;
