@@ -4,6 +4,7 @@
     width: auto;
     display: block;
     margin: 0 auto;
+    aspect-ratio: 4 / 3;
   }
 </style>
 
@@ -14,4 +15,4 @@
   export let height
 </script>
 
-<img {src} {alt} loading="lazy" height={width} width={height} class="aspect-square" />
+<img {src} {alt} loading="lazy" height={width} width={height}/>
