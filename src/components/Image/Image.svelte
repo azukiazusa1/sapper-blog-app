@@ -3,7 +3,7 @@
     height: 18rem;
     display: block;
     margin: 0 auto;
-    aspect-ratio: 4 / 3;
+    object-fit: contain;
   }
 </style>
 
