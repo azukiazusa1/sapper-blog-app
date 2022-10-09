@@ -15,10 +15,10 @@ const renderXmlRssFeed = (posts: AllPostsQuery) => `<?xml version="1.0" encoding
       <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
       <image>
         <url>${siteUrl}/favicon.png</url>
-        <title>azukiazusa のテックブログ</title>
+        <title>azukiazusa のテックブログ2</title>
         <link>${siteUrl}</link>
       </image>
-      <atom:link href=${siteUrl} rel="self" type="application/rss+xml" />
+      <atom:link href="${siteUrl}" rel="self" type="application/rss+xml" />
       <language>
         <![CDATA[ja]]>
       </language>
