@@ -9,15 +9,19 @@ const siteUrl = variables.baseURL;
 const renderXmlRssFeed = (posts: AllPostsQuery) => `<?xml version="1.0" encoding="UTF-8" ?>
   <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-      <title><![CDATA[David's Blog]]></title>
+      <title>azukiazusa のテックブログ2</title>
       <link>${siteUrl}</link>
-    <description><![CDATA[A developer's blog. Might be useful. Maybe.]]></description>
+    <description>Web フロントエンド要素多めの技術ブログです。週に1度更新されます。</description>
       <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
       <image>
-        <url>${siteUrl}/profile-pic-small.jpg</url>
-        <title><![CDATA[David's Blog]]></title>
+        <url>${siteUrl}/favicon.png</url>
+        <title>azukiazusa のテックブログ2</title>
         <link>${siteUrl}</link>
       </image>
+      <atom:link href="${siteUrl}" rel="self" type="application/rss+xml" />
+      <language>
+        <![CDATA[ja]]>
+      </language>
     ${posts.blogPostCollection.items.map(post => `
       <item>
         <title>${post.title}</title>
@@ -37,7 +41,7 @@ export const get: RequestHandler = async () => {
   return {
     headers: {
       'Cache-Control': 'max-age=0, s-max-age=600',
-      'Content-Type': 'application/rss+xml; charset=utf-8'
+      'Content-Type': 'application/xml'
     },
     body: feed
   }
