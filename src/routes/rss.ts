@@ -39,12 +39,16 @@ const renderXmlRssFeed = (posts: AllPostsQuery) => `<?xml version="1.0" encoding
   </rss>
 `
 
-export const get: RequestHandler = async ({ headers }) => {
-  headers['Content-Type'] = 'application/rss+xml'
-  headers['Cache-Control'] = 'max-age=0, s-max-age=3600'
+export const get: RequestHandler = async () => {
   const posts = await PostRepository.findAll()
   const feed = renderXmlRssFeed(posts)
-  return {
-    body: feed,
+
+  const headers = {
+    'Content-Type': 'application/rss+xml',
+    'Cache-Control': 'max-age=0, s-max-age=3600',
   }
+
+  return new Response(feed, {
+    headers,
+  })
 }
