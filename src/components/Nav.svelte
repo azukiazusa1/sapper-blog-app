@@ -1,3 +1,26 @@
+<script lang="ts">
+  export let segment: string
+  export let routes: string[]
+</script>
+
+<nav>
+  <ul class="flex space-x-4">
+    {#each routes as route}
+      <li>
+        <a
+          aria-current={segment === route ? 'page' : undefined}
+          href={route}
+          sveltekit:prefetch
+          class="uppercase px-3 hover:opacity-75"
+          target={route === '/rss.xml' ? '_blank' : ''}
+        >
+          {route.slice(1)}
+        </a>
+      </li>
+    {/each}
+  </ul>
+</nav>
+
 <style>
   [aria-current] {
     position: relative;
@@ -14,26 +37,3 @@
     bottom: -8px;
   }
 </style>
-
-<script lang="ts">
-  export let segment: string
-  export let routes: string[]
-</script>
-
-<nav>
-  <ul class="flex space-x-4">
-    {#each routes as route}
-      <li>
-        <a
-          aria-current={segment === route ? 'page' : undefined}
-          href={route}
-          sveltekit:prefetch
-          class="uppercase px-3 hover:opacity-75"
-          target={route === '/rss' ? '_blank' : ''}
-        >
-          {route.slice(1)}
-        </a>
-      </li>
-    {/each}
-  </ul>
-</nav>
