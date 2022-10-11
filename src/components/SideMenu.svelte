@@ -1,20 +1,3 @@
-<style>
-  [aria-current] {
-    position: relative;
-    display: inline-block;
-  }
-
-  [aria-current]::after {
-    position: absolute;
-    content: '';
-    width: calc(100% - 1.5rem);
-    height: 2px;
-    background-color: rgb(255, 62, 0);
-    display: block;
-    bottom: -8px;
-  }
-</style>
-
 <script lang="ts">
   import Title from './Title.svelte'
 
@@ -42,7 +25,7 @@
           href={route}
           sveltekit:prefetch
           class="capitalize px-3 hover:opacity-75"
-          target={route === '/rss' ? '_blank' : ''}
+          target={route === '/rss.xml' ? '_blank' : ''}
         >
           {route.slice(1)}
         </a>
@@ -50,3 +33,20 @@
     {/each}
   </ul>
 </aside>
+
+<style>
+  [aria-current] {
+    position: relative;
+    display: inline-block;
+  }
+
+  [aria-current]::after {
+    position: absolute;
+    content: '';
+    width: calc(100% - 1.5rem);
+    height: 2px;
+    background-color: rgb(255, 62, 0);
+    display: block;
+    bottom: -8px;
+  }
+</style>
