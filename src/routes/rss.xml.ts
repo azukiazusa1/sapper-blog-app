@@ -18,7 +18,7 @@ const renderXmlRssFeed = (posts: AllPostsQuery) => `<?xml version="1.0" encoding
         <title>azukiazusa のテックブログ2</title>
         <link>${siteUrl}</link>
       </image>
-      <atom:link href="${siteUrl}/rss" rel="self" type="application/rss+xml" />
+      <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
       <language>
         <![CDATA[ja]]>
       </language>
