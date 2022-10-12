@@ -77,7 +77,7 @@ export const get: RequestHandler = async () => {
   const feed = renderXmlSitemap(posts, tags)
 
   const headers = {
-    'Content-Type': 'application/rss+xml',
+    'Content-Type': 'application/xml',
     'Cache-Control': 'max-age=0, s-max-age=3600',
   }
 
