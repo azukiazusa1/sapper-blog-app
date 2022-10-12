@@ -10,7 +10,8 @@ const siteUrl = variables.baseURL
 const renderXmlSitemap = (posts: AllPostsQuery, tags: TagsQuery) => {
   const total = posts.blogPostCollection.items.length
   const limit = 12
-  const pages: number[] = Array.from(Array(Math.ceil(total / limit)).keys())
+  const pageNum = Math.ceil(total / limit)
+  const pages = Array.from({ length: pageNum }, (_, i) => i + 1)
 
   return `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
@@ -26,15 +27,17 @@ const renderXmlSitemap = (posts: AllPostsQuery, tags: TagsQuery) => {
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  ${pages.map(
-    (page) => `
+  ${pages
+    .map(
+      (page) => `
   <url>
-    <loc>${siteUrl}/blog/page/${page + 1}</loc>
+    <loc>${siteUrl}/blog/page/${page}</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   `,
-  )}
+    )
+    .join('\n')}
   ${posts.blogPostCollection.items
     .map(
       (post) => `
