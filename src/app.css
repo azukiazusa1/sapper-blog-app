@@ -151,8 +151,28 @@
   }
 }
 
-.icon-link::before {
+h1 .icon-link::before {
   content: "#";
+}
+
+h2 .icon-link::before {
+  content: "##";
+}
+
+h3 .icon-link::before {
+  content: "###";
+}
+
+h4 .icon-link::before {
+  content: "####";
+}
+
+h5 .icon-link::before {
+  content: "#####";
+}
+
+h6 .icon-link::before {
+  content: "######";
 }
 
 .hint::before {
