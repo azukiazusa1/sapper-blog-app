@@ -1,25 +1,38 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte'
   import Title from './Title.svelte'
+  const dispatch = createEventDispatcher()
+
+  const close = () => {
+    dispatch('close')
+  }
+
+  function handleWindowKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      close()
+    }
+  }
 
   export let isOpen = false
   export let segment: string
   export let routes: string[]
 </script>
 
+<svelte:window on:keydown={handleWindowKeyDown} />
 {#if isOpen}
-  <div on:click|self class="fixed z-10 inset-0 overflow-y-auto bg-gray-900 opacity-50" />
+  <div on:click|self={close} class="fixed z-10 inset-0 overflow-y-auto bg-gray-900 opacity-50" />
 {/if}
 <aside
   class={`transform top-0 left-0 w-64 bg-white dark:bg-gray-700 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
-    isOpen ? 'translate-x-0' : '-translate-x-full'
+    isOpen ? 'translate-x-0 visible ' : '-translate-x-full invisible'
   }`}
 >
-  <span on:click class="flex w-full items-center p-4 border-b border-gray-200 dark:border-gray-600">
+  <button on:click={close} class="flex w-full items-center p-4 border-b border-gray-200 dark:border-gray-600">
     <Title />
-  </span>
+  </button>
   <ul>
     {#each routes as route}
-      <li class="flex items-center p-4" on:click>
+      <li class="flex items-center p-4" on:click={close}>
         <a
           aria-current={segment === route ? 'page' : undefined}
           href={route}
