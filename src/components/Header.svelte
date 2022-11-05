@@ -35,25 +35,29 @@
 >
   <SideMenu {isOpen} {segment} {routes} on:click={closeSideMenu} />
   <div class="px-6 h-16 flex justify-between items-center">
-    <div class="md:hidden">
-      <MenuIcon className="h-6 w-6 cursor-pointer" on:click={openSideMenu} />
+    <div class="md:invisible">
+      <button on:click={openSideMenu}>
+        <MenuIcon className="h-6 w-6" />
+      </button>
     </div>
     <Title />
-    <div class="hidden md:block">
+    <div class="invisible md:visible">
       <SearchBar />
     </div>
-    <div class="hidden md:block">
+    <div class="invisible md:visible">
       <Nav {segment} {routes} />
     </div>
     <div class="flex">
-      <a href="/blog/search">
-        <SearchIcon className="h-6 w-6 cursor-pointer md:hidden mr-3" />
+      <a href="/blog/search" class="md:invisible">
+        <SearchIcon className="h-6 w-6 cursor-pointer mr-3" />
       </a>
-      {#if darkMode}
-        <SunIcon className="h-6 w-6 cursor-pointer" on:click={handleMoonClick} />
-      {:else}
-        <MoonIcon className="h-6 w-6 cursor-pointer" on:click={handleMoonClick} />
-      {/if}
+      <button on:click={handleMoonClick}>
+        {#if darkMode}
+          <SunIcon className="h-6 w-6" />
+        {:else}
+          <MoonIcon className="h-6 w-6" />
+        {/if}
+      </button>
     </div>
   </div>
 </header>
