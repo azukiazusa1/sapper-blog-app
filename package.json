@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "svelte-kit dev",
     "mock": "NODE_MOCK=true svelte-kit dev",
-    "postbuild": "npx svelte-sitemap --domain https://sapper-blog-app.vercel.app",
+    "postbuild": "npx svelte-sitemap --domain https://azukiazusa.dev",
     "build": "svelte-kit build",
     "start": "node build",
     "preview": "svelte-kit preview",
