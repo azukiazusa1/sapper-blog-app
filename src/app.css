@@ -230,8 +230,9 @@ h6 .icon-link::before {
   }
 }
 
-#contents code:not([class*="language-"]) {
+#contents p > code {
   background-color: #eee;
   color: #333;
   padding: 0.1em 0.4em;
+  word-break: break-all;
 }
