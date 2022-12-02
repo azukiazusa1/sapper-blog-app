@@ -1,8 +1,8 @@
-import { ssrExchange, createClient, dedupExchange, cacheExchange, fetchExchange } from "@urql/core"
-import type { TypedDocumentNode } from "@urql/core"
-import type { DocumentNode } from "graphql";
+import { ssrExchange, createClient, dedupExchange, cacheExchange, fetchExchange } from '@urql/core'
+import type { TypedDocumentNode } from '@urql/core'
+import type { DocumentNode } from 'graphql'
 import { pipe, subscribe } from 'wonka'
-import variables from "$lib/variables";
+import variables from '$lib/variables'
 
 const isServerSide = typeof window === 'undefined'
 
@@ -19,18 +19,18 @@ export const client = createClient({
     return {
       headers: {
         Authorization: `Bearer ${variables.apiKey}`,
-      }
+      },
     }
-  }
+  },
 })
 
 export const request = (query: DocumentNode | TypedDocumentNode<any, object> | string, variables = {}) => {
-  return new Promise(r => {
+  return new Promise((r) => {
     pipe(
       client.query(query, variables),
-      subscribe(result => {
+      subscribe((result) => {
         r(result.data)
-      })
+      }),
     )
   })
 }

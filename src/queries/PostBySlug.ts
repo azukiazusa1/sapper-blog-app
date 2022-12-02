@@ -1,35 +1,36 @@
-import { gql } from "@urql/core"
+import { gql } from '@urql/core'
 
 export const postBySlugQuery = gql`
-query postBySlug($slug: String!) {
-  blogPostCollection(where: {slug: $slug}, limit: 1) {
-    items{
-      title
-      slug
-      about
-      article
-      relatedArticleCollection(limit: 5) {
-        items {
-          title
-          slug
-          createdAt
-          thumbnail {
+  query postBySlug($slug: String!) {
+    blogPostCollection(where: { slug: $slug }, limit: 1) {
+      items {
+        title
+        slug
+        about
+        article
+        relatedArticleCollection(limit: 5) {
+          items {
             title
-            url
+            slug
+            createdAt
+            thumbnail {
+              title
+              url
+            }
           }
         }
-      }
-      createdAt
-      thumbnail {
+        createdAt
+        thumbnail {
           title
           url
         }
-      tagsCollection(limit: 5) {
-        items {
-          name
-          slug
+        tagsCollection(limit: 5) {
+          items {
+            name
+            slug
+          }
         }
       }
     }
   }
-}`
+`

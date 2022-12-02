@@ -1,8 +1,8 @@
-import type { TagBySlugQuery, TagBySlugQueryVariables, TagsQuery } from "../../generated/graphql";
-import { tagBySlugQuery } from "../../queries/TagBySlug";
-import { tagsQuery } from "../../queries/Tags";
-import { request } from "../client";
-import type { TagsRepositoryInterFace } from "./types";
+import type { TagBySlugQuery, TagBySlugQueryVariables, TagsQuery } from '../../generated/graphql'
+import { tagBySlugQuery } from '../../queries/TagBySlug'
+import { tagsQuery } from '../../queries/Tags'
+import { request } from '../client'
+import type { TagsRepositoryInterFace } from './types'
 
 export class TagRepository implements TagsRepositoryInterFace {
   async get() {

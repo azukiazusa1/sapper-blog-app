@@ -9,7 +9,7 @@ const config = {
     autoprefixer,
     require('cssnano')({
       preset: 'default',
-    })
+    }),
   ],
 }
 

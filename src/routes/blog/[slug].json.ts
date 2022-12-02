@@ -24,7 +24,7 @@ export const get: RequestHandler = async ({ params }) => {
       status: 404,
       body: {
         message: 'Not Found',
-      }
+      },
     }
   }
   const processor = unified()
@@ -46,6 +46,6 @@ export const get: RequestHandler = async ({ params }) => {
     body: {
       contents: contents.toString(),
       post: data.blogPostCollection.items[0],
-    }
+    },
   }
 }

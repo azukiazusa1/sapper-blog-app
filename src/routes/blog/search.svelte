@@ -1,14 +1,14 @@
 <script lang="ts">
   import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
-  import { page } from '$app/stores';
+  import { page } from '$app/stores'
   import Loading from '../../components/Icons/Loading.svelte'
   import PostList from '../../components/PostList.svelte'
   import Pagination from '../../components/Pagination.svelte'
   import SearchInput from '../../components/SearchInput.svelte'
   import type { SearchPostsQuery } from '../../generated/graphql'
-  import { onMount } from 'svelte';
+  import { onMount } from 'svelte'
   const PostRepository = RepositoryFactory[POST]
-  
+
   let posts: SearchPostsQuery
   let value = $page.url.searchParams.get('q') ?? ''
   let q = value

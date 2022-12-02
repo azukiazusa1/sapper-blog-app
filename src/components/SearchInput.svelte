@@ -1,9 +1,3 @@
-<style>
-  ::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-  }
-</style>
-
 <script lang="ts">
   import SearchIcon from './Icons/Search.svelte'
   export let value = ''
@@ -24,3 +18,9 @@
     <SearchIcon className="text-gray-600 dark:text-gray-50 h-6 w-6" />
   </button>
 </div>
+
+<style>
+  ::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+</style>

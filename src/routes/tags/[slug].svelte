@@ -1,20 +1,20 @@
 <script context="module" lang="ts">
-  import type { Load } from '@sveltejs/kit';
+  import type { Load } from '@sveltejs/kit'
   export const load: Load = async ({ params, fetch }) => {
     const res = await fetch(`/tags/${params.slug}.json`)
     const data = await res.json()
     if (res.status === 200) {
       const { tag } = data
-      return { 
+      return {
         props: {
-          tag 
-        }
+          tag,
+        },
       }
     } else {
       const { message } = data
       return {
         status: res.status,
-        error: new Error(message)
+        error: new Error(message),
       }
     }
   }

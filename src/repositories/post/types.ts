@@ -1,4 +1,11 @@
-import type { AllPostsQuery, PostBySlugQuery, PostsQuery, PostsQueryVariables, SearchPostsQuery, SearchPostsQueryVariables } from "../../generated/graphql";
+import type {
+  AllPostsQuery,
+  PostBySlugQuery,
+  PostsQuery,
+  PostsQueryVariables,
+  SearchPostsQuery,
+  SearchPostsQueryVariables,
+} from '../../generated/graphql'
 
 export interface Post {
   fields: {

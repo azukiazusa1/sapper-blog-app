@@ -1,4 +1,4 @@
-import { PER_PAGE } from "../constants"
+import { PER_PAGE } from '../constants'
 
 export const paginateParams = (page: number) => {
   const limit = PER_PAGE
@@ -6,6 +6,6 @@ export const paginateParams = (page: number) => {
 
   return {
     limit,
-    skip
+    skip,
   }
 }

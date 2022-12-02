@@ -11,7 +11,7 @@
 #contents h1 {
   font-size: 1.8rem;
   font-weight: 700;
-  border-bottom: 1px solid  #ddd;
+  border-bottom: 1px solid #ddd;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
   padding-top: 64px;
@@ -101,7 +101,7 @@
   margin: 1.2rem auto;
   width: auto;
   border-collapse: collapse;
-  font-size: .95em;
+  font-size: 0.95em;
   line-height: 1.5;
   word-break: normal;
   display: block;
@@ -112,13 +112,13 @@
 #contents th {
   font-weight: 700;
   color: black;
-  padding: .5rem;
+  padding: 0.5rem;
   border: 1px solid #cfdce6;
   background: #edf2f7;
 }
 
 #contents td {
-  padding: .5rem;
+  padding: 0.5rem;
   border: 1px solid #cfdce6;
 }
 
@@ -152,27 +152,27 @@
 }
 
 h1 .icon-link::before {
-  content: "#";
+  content: '#';
 }
 
 h2 .icon-link::before {
-  content: "##";
+  content: '##';
 }
 
 h3 .icon-link::before {
-  content: "###";
+  content: '###';
 }
 
 h4 .icon-link::before {
-  content: "####";
+  content: '####';
 }
 
 h5 .icon-link::before {
-  content: "#####";
+  content: '#####';
 }
 
 h6 .icon-link::before {
-  content: "######";
+  content: '######';
 }
 
 .hint::before {
@@ -180,7 +180,7 @@ h6 .icon-link::before {
   left: 15px;
   top: 50%;
   transform: translateY(-52%);
-  content: "!";
+  content: '!';
   display: block;
   width: 20px;
   height: 20px;
@@ -198,15 +198,15 @@ h6 .icon-link::before {
 
 @layer components {
   .icon-link {
-    @apply text-gray-400 mr-2 no-underline
+    @apply text-gray-400 mr-2 no-underline;
   }
 
   .hint {
-    @apply border-l-4 p-4 rounded-lg rounded-l-none relative pl-12
+    @apply border-l-4 p-4 rounded-lg rounded-l-none relative pl-12;
   }
 
   .tip {
-    @apply bg-blue-200 border-blue-600 text-blue-600
+    @apply bg-blue-200 border-blue-600 text-blue-600;
   }
 
   .tip::before {
@@ -214,7 +214,7 @@ h6 .icon-link::before {
   }
 
   .warn {
-    @apply bg-yellow-200 border-yellow-600 text-yellow-600
+    @apply bg-yellow-200 border-yellow-600 text-yellow-600;
   }
 
   .warn::before {
@@ -222,7 +222,7 @@ h6 .icon-link::before {
   }
 
   .error {
-    @apply bg-red-200 border-red-600 text-red-600
+    @apply bg-red-200 border-red-600 text-red-600;
   }
 
   .error::before {
@@ -230,7 +230,7 @@ h6 .icon-link::before {
   }
 }
 
-#contents code:not([class*="language-"]) {
+#contents code:not([class*='language-']) {
   background-color: #eee;
   color: #333;
   padding: 0.1em 0.4em;

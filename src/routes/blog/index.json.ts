@@ -6,7 +6,7 @@ export const get: RequestHandler = async (req) => {
   const posts = await PostRepository.get({})
   return {
     body: {
-      posts
-    }
+      posts,
+    },
   }
 }

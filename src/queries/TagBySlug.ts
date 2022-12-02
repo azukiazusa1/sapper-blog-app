@@ -1,8 +1,8 @@
-import { gql } from "@urql/core"
+import { gql } from '@urql/core'
 
 export const tagBySlugQuery = gql`
   query TagBySlug($slug: String!, $skip: Int = 0) {
-    tagCollection(where: {slug: $slug}, limit: 1) {
+    tagCollection(where: { slug: $slug }, limit: 1) {
       items {
         name
         slug

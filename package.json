@@ -93,5 +93,8 @@
   "lint-staged": {
     "*.{js,ts,svelte}": "eslint --cache --fix",
     "*.svelte": "npm run format"
+  },
+  "volta": {
+    "node": "18.12.1"
   }
 }
