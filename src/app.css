@@ -91,6 +91,7 @@
 
 #contents a {
   color: #0f83fd;
+  word-break: break-all;
 }
 
 #contents a:hover {
@@ -235,4 +236,8 @@ h6 .icon-link::before {
   color: #333;
   padding: 0.1em 0.4em;
   word-break: break-all;
+}
+
+#contents pre > code {
+  overflow: auto;
 }
