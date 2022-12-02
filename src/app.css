@@ -238,6 +238,6 @@ h6 .icon-link::before {
   word-break: break-all;
 }
 
-#contents pre > code {
+#contents pre:has(code) {
   overflow: auto;
 }
