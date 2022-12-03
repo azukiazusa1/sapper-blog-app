@@ -38,8 +38,10 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Add permissions
+        run: chmod 777 -R .
       - name: Run Tests
-        run: chmod --recursive 777 /root && npx playwright test
+        run: npx playwright test
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
