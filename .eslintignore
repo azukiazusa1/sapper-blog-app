@@ -4,3 +4,4 @@
 /src/service-worker.ts
 src/generated/graphql.ts
 /cypress/
+playwright.config.ts
