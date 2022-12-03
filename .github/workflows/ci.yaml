@@ -44,7 +44,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Run Tests
-        run: npm run test
+        run: npx playwright test
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
