@@ -31,15 +31,20 @@ jobs:
     name: Visual Regression Testing
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.28.1-focal
+      image: mcr.microsoft.com/playwright:v1.28.0-focal
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: package.json
+          cache: npm
       - name: Install dependencies
         run: npm ci
       - name: Build
         run: npm run build
       - name: Run Tests
-        run: HOME=/root npm run test
+        run: npm run test
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
