@@ -18,16 +18,19 @@
     "lint:eslint:fix": "eslint --ignore-path .gitignore --fix ./src",
     "format:check": "prettier --check --plugin-search-dir=. .",
     "format": "prettier --write --plugin-search-dir=. .",
-    "gen": "graphql-codegen --config codegen.yml -r dotenv/config"
+    "gen": "graphql-codegen --config codegen.yml -r dotenv/config",
+    "test": "playwright test"
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@mapbox/rehype-prism": "^0.5.0",
+    "@playwright/test": "^1.28.1",
     "@urql/core": "^2.0.0",
     "@urql/svelte": "^1.2.0",
     "autoprefixer": "^10.2.4",
     "graphql": "^15.5.0",
     "node-fetch": "^2.6.1",
+    "playwright": "^1.28.1",
     "prismjs": "^1.23.0",
     "rehype-autolink-headings": "^5.0.1",
     "rehype-slug": "^4.0.1",
