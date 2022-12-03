@@ -1,5 +1,7 @@
 const paths = require('./testedPaths.cjs')
 
+const url = paths.map((path) => `http://localhost:3000${path}`)
+
 module.exports = {
   ci: {
     upload: {
@@ -7,7 +9,7 @@ module.exports = {
     },
     collect: {
       startServerCommand: 'npm run preview',
-      url: paths,
+      url,
       numberOfRuns: 1,
       settings: {
         preset: 'desktop',
