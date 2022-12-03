@@ -16,8 +16,8 @@
     "lint": "npm run format:check && npm run lint:eslint",
     "lint:eslint": "eslint --ignore-path .gitignore ./src",
     "lint:eslint:fix": "eslint --ignore-path .gitignore --fix ./src",
-    "format:check": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
-    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
+    "format:check": "prettier --check --plugin-search-dir=. .",
+    "format": "prettier --write --plugin-search-dir=. .",
     "gen": "graphql-codegen --config codegen.yml -r dotenv/config"
   },
   "dependencies": {

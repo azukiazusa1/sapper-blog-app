@@ -1,3 +1,10 @@
 graphql.schema.json
 src/service-worker.ts
 src/generated/graphql.ts
+.DS_Store
+/node_modules/
+yarn-error.log
+/.svelte-kit
+/static/index.css
+build/
+.env
