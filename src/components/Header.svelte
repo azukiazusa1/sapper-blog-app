@@ -36,7 +36,7 @@
   <SideMenu {isOpen} {segment} {routes} on:close={closeSideMenu} />
   <div class="px-6 h-16 flex justify-between items-center">
     <div class="md:invisible md:hidden">
-      <button on:click={openSideMenu}>
+      <button on:click={openSideMenu} aria-label="サイドメニューを開く">
         <MenuIcon className="h-6 w-6" />
       </button>
     </div>
@@ -51,7 +51,10 @@
       <a href="/blog/search" class="md:invisible md:hidden">
         <SearchIcon className="h-6 w-6 cursor-pointer mr-3" />
       </a>
-      <button on:click={handleMoonClick}>
+      <button
+        on:click={handleMoonClick}
+        aria-label={`${darkMode ? 'ライトモードに切り替える' : 'ダークモードに切り替える'}`}
+      >
         {#if darkMode}
           <SunIcon className="h-6 w-6" />
         {:else}

@@ -14,7 +14,7 @@
     placeholder="Search"
     autocomplete="off"
   />
-  <button type="submit" class="flex justify-end p-2 rounded-r-lg dark:bg-gray-700">
+  <button type="submit" class="flex justify-end p-2 rounded-r-lg dark:bg-gray-700" aria-label="検索">
     <SearchIcon className="text-gray-600 dark:text-gray-50 h-6 w-6" />
   </button>
 </div>
