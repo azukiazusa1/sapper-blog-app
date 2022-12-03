@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import type { Load } from '@sveltejs/kit'
   export const load: Load = async ({ fetch }) => {
-    const res = await fetch(`blog.json`)
+    const res = await fetch(`/blog.json`)
     const { posts } = await res.json()
     return {
       props: {
@@ -23,6 +23,8 @@
   <title>azukiazusaのテックブログ2</title>
 </svelte:head>
 
-<PostList posts={posts.blogPostCollection.items} />
+<div class="container my-12 md:mx-auto">
+  <PostList posts={posts.blogPostCollection.items} />
+</div>
 
 <Pagination total={posts.blogPostCollection.total} limit={posts.blogPostCollection.limit} />
