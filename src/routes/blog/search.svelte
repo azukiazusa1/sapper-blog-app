@@ -39,7 +39,7 @@
   <title>検索</title>
 </svelte:head>
 <div class="container my-10 md:mx-auto">
-  <form on:submit|preventDefault={handleSubmit}>
+  <form on:submit|preventDefault={handleSubmit} role="search">
     <SearchInput bind:value />
   </form>
   {#await promise}

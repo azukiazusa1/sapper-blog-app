@@ -48,7 +48,7 @@
   }
 </script>
 
-<form on:submit|preventDefault={handleSubmit}>
+<form role="search" on:submit|preventDefault={handleSubmit}>
   <SearchInput bind:value on:focus={() => (isFocus = true)} on:blur={handleBlur} />
 </form>
 {#if showDropDownMenu}
