@@ -10,7 +10,7 @@ env:
 
 jobs:
   lighthouse:
-    name: eslint
+    name: Lighthouse
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

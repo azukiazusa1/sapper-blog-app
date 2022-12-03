@@ -6,9 +6,12 @@ module.exports = {
       target: 'temporary-public-storage',
     },
     collect: {
-      staticDistDir: './build',
+      startServerCommand: 'npm run preview',
       url: paths,
       numberOfRuns: 1,
+      settings: {
+        preset: 'desktop',
+      },
     },
   },
 }
