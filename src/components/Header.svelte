@@ -40,7 +40,9 @@
         <MenuIcon className="h-6 w-6" />
       </button>
     </div>
-    <Title />
+    <div class="hidden md:block">
+      <Title />
+    </div>
     <div class="invisible hidden md:visible md:block">
       <SearchBar />
     </div>

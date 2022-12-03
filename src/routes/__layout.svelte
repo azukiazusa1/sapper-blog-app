@@ -1,10 +1,12 @@
 <script lang="ts">
   import '../app.css'
   import Header from '../components/Header.svelte'
+  import Footer from '../components/Footer.svelte'
   import { onMount } from 'svelte'
   import { page } from '$app/stores'
   import GoogleAnalytics from '../components/GoogleAnalytics.svelte'
   import Visual from '../components/Visual.svelte'
+  import image from '../assets/images/road-984251_1280.jpg'
   let html: HTMLElement
   let darkMode = false
 
@@ -42,9 +44,10 @@
 <GoogleAnalytics />
 <main class="pt-16">
   {#if $page.url.pathname === '/about'}
-    <Visual title="about" image="images/road-984251_1280.jpg" />
+    <Visual title="about" {image} />
   {/if}
   <div class="container mx-auto px-6 my-4">
     <slot />
   </div>
 </main>
+<Footer />

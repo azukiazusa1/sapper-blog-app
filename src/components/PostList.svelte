@@ -12,20 +12,18 @@
   export let small = false
 </script>
 
-<div class="container my-12 md:mx-auto md:px-12">
-  <div class="flex flex-wrap -mx-1 lg:-mx-4">
-    {#each posts as post (post.slug)}
-      <div class="mt-1 mb-4 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-        <PostCard
-          title={post.title}
-          slug={post.slug}
-          about={post.about}
-          thumbnail={post.thumbnail}
-          createdAt={post.createdAt}
-          tags={post.tagsCollection ? post.tagsCollection.items : []}
-          {small}
-        />
-      </div>
-    {/each}
-  </div>
+<div class="flex flex-wrap -mx-1 lg:-mx-4">
+  {#each posts as post (post.slug)}
+    <div class="mt-1 mb-4 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+      <PostCard
+        title={post.title}
+        slug={post.slug}
+        about={post.about}
+        thumbnail={post.thumbnail}
+        createdAt={post.createdAt}
+        tags={post.tagsCollection ? post.tagsCollection.items : []}
+        {small}
+      />
+    </div>
+  {/each}
 </div>
