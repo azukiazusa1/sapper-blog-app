@@ -2,7 +2,7 @@
   import '../app.css'
   import Header from '../components/Header.svelte'
   import { onMount } from 'svelte'
-  import { page } from '$app/stores';
+  import { page } from '$app/stores'
   import GoogleAnalytics from '../components/GoogleAnalytics.svelte'
   import Visual from '../components/Visual.svelte'
   let html: HTMLElement

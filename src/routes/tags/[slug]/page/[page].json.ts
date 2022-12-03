@@ -1,6 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import RepositoryFactory, { TAG } from '../../../../repositories/RepositoryFactory'
-import { paginateParams } from "../../../../utils/paginateParams"
+import { paginateParams } from '../../../../utils/paginateParams'
 const TagRepository = RepositoryFactory[TAG]
 
 export const get: RequestHandler = async ({ params }) => {
@@ -13,13 +13,13 @@ export const get: RequestHandler = async ({ params }) => {
       status: 404,
       body: {
         message: 'Not Found',
-      }
+      },
     }
   }
 
   return {
     body: {
-      tag
-    }
+      tag,
+    },
   }
 }

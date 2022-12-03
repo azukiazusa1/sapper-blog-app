@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import type { Load } from '@sveltejs/kit';
+  import type { Load } from '@sveltejs/kit'
   export const load: Load = async ({ params, fetch }) => {
     const res = await fetch(`/blog/${params.slug}.json`)
     const data = await res.json()
@@ -22,7 +22,7 @@
 </script>
 
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/stores'
   import Card from '../../components/Card.svelte'
   import Ogp from '../../components/Ogp.svelte'
   import PostList from '../../components/PostList.svelte'

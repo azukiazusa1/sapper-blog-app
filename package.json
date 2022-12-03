@@ -13,8 +13,11 @@
     "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w",
     "build:tailwind": "NODE_ENV=production postcss static/tailwind.css -o static/index.css",
     "validate": "svelte-check --ignore src/node_modules/@sapper",
-    "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
+    "lint": "npm run format:check && npm run lint:eslint",
+    "lint:eslint": "eslint --ignore-path .gitignore ./src",
+    "lint:eslint:fix": "eslint --ignore-path .gitignore --fix ./src",
+    "format:check": "prettier --check --plugin-search-dir=. .",
+    "format": "prettier --write --plugin-search-dir=. .",
     "gen": "graphql-codegen --config codegen.yml -r dotenv/config"
   },
   "dependencies": {
@@ -58,6 +61,8 @@
     "@sveltejs/kit": "^1.0.0-next.218",
     "@tsconfig/svelte": "^1.0.10",
     "@types/node": "^14.11.1",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
     "autoprefixer": "^10.4.2",
     "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
@@ -67,7 +72,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-svelte3": "^3.0.0",
+    "eslint-plugin-svelte": "^2.13.1",
     "husky": "^5.0.9",
     "lint-staged": "^10.5.4",
     "postcss": "^8.4.5",
@@ -93,5 +98,8 @@
   "lint-staged": {
     "*.{js,ts,svelte}": "eslint --cache --fix",
     "*.svelte": "npm run format"
+  },
+  "volta": {
+    "node": "18.12.1"
   }
 }

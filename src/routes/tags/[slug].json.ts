@@ -11,13 +11,13 @@ export const get: RequestHandler = async ({ params }) => {
       status: 404,
       body: {
         message: 'Not Found',
-      }
+      },
     }
   }
 
   return {
     body: {
-      tag
-    }
+      tag,
+    },
   }
 }

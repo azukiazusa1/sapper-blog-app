@@ -9,7 +9,7 @@ export const get: RequestHandler = async ({ params }) => {
   const posts = await PostRepository.get({ limit, skip })
   return {
     body: {
-      posts
-    }
+      posts,
+    },
   }
 }

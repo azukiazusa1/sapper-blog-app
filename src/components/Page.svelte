@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let href: string = ''
+  export let href = ''
   export let current: boolean
   export let sm = false
 

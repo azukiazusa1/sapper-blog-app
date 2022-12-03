@@ -1,12 +1,12 @@
 <script context="module" lang="ts">
-  import type { Load } from '@sveltejs/kit';
+  import type { Load } from '@sveltejs/kit'
   export const load: Load = async ({ fetch }) => {
     const res = await fetch(`/tags.json`)
     const { tags } = await res.json()
     return {
       props: {
-        tags
-      }
+        tags,
+      },
     }
   }
 </script>

@@ -1,7 +1,7 @@
-import { gql } from "@urql/core"
+import { gql } from '@urql/core'
 
 export const tagsQuery = gql`
- query Tags {
+  query Tags {
     tagCollection {
       items {
         linkedFrom {

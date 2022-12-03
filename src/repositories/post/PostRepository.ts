@@ -1,10 +1,17 @@
-import type { PostRepositoryInterFace } from "./types";
+import type { PostRepositoryInterFace } from './types'
 import { postsQuery } from '../../queries/Posts'
-import type { AllPostsQuery, PostBySlugQuery, PostsQuery, PostsQueryVariables, SearchPostsQuery, SearchPostsQueryVariables } from '../../generated/graphql';
-import { postBySlugQuery } from '../../queries/PostBySlug';
-import { searchPostsQuery } from '../../queries/SearchPosts';
-import { request } from "../client";
-import { allPostsQuery } from "../../queries/AllPosts";
+import type {
+  AllPostsQuery,
+  PostBySlugQuery,
+  PostsQuery,
+  PostsQueryVariables,
+  SearchPostsQuery,
+  SearchPostsQueryVariables,
+} from '../../generated/graphql'
+import { postBySlugQuery } from '../../queries/PostBySlug'
+import { searchPostsQuery } from '../../queries/SearchPosts'
+import { request } from '../client'
+import { allPostsQuery } from '../../queries/AllPosts'
 
 export class PostRepository implements PostRepositoryInterFace {
   async get(queryVariables: PostsQueryVariables) {
