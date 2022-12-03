@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
   import AppTag from './Tag.svelte'
   import Time from './Time.svelte'
   import 'prismjs/themes/prism-tomorrow.css'
@@ -22,6 +21,7 @@
     <p class="my-2">
       <Time date={createdAt} />
     </p>
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     <p id="contents" class="mt-6">{@html contents}</p>
   </div>
 </article>

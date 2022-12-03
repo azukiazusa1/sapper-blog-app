@@ -29,7 +29,7 @@
   import type { TagBySlugQuery } from '../../../../generated/graphql'
 
   export let tag: TagBySlugQuery
-  export let page: number = 1
+  export let page = 1
 
   $: tagName = tag.tagCollection.items[0].name
   $: tagSlug = tag.tagCollection.items[0].slug

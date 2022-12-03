@@ -1,5 +1,5 @@
 import type { PostsQueryVariables } from '../../generated/graphql'
-import { createDummyPosts, createDummyPost, createDummyPostBySlugQuery } from '../../utils/createDummyPosts'
+import { createDummyPosts, createDummyPostBySlugQuery } from '../../utils/createDummyPosts'
 import type { PostRepositoryInterFace } from './types'
 
 export class MockPostRepository implements PostRepositoryInterFace {

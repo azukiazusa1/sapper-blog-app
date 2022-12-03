@@ -25,7 +25,7 @@ export const createDummyPost = (id = '1') => {
   }
 }
 
-export const createDummyPosts = (total: number, limit: number = 12, skip: number = 0) => {
+export const createDummyPosts = (total: number, limit = 12, skip = 0) => {
   const totalItems = []
 
   if (totalItems.length === 0) {

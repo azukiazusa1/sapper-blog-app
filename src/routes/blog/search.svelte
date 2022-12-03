@@ -46,7 +46,7 @@
     <div class="mt-8 text-center">
       <Loading />
     </div>
-  {:then fullfill}
+  {:then}
     {#if !q.trim()}
       <div class="mt-8 text-center">検索ワードを入力してください。</div>
     {:else if empty}

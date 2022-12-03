@@ -1,0 +1,3 @@
+graphql.schema.json
+src/service-worker.ts
+src/generated/graphql.ts
