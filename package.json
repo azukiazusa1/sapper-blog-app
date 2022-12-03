@@ -19,7 +19,8 @@
     "format:check": "prettier --check --plugin-search-dir=. .",
     "format": "prettier --write --plugin-search-dir=. .",
     "gen": "graphql-codegen --config codegen.yml -r dotenv/config",
-    "test": "playwright test"
+    "test": "playwright test",
+    "test:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.28.0-focal /bin/bash -c 'npm test -- -u'"
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",

@@ -7,18 +7,13 @@ const config: PlaywrightTestConfig = {
     port: 3000,
     reuseExistingServer: true,
   },
+  expect: {
+    timeout: 15000,
+  },
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'Pixel 5',
-      use: { ...devices['Pixel 5'] },
     },
   ],
 }
