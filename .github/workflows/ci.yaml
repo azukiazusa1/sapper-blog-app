@@ -60,4 +60,4 @@ jobs:
       - name: Build
         run: npm run build
       - name: pa11y-ci
-        run: npm run preview & pa11y-ci
+        run: npm run preview & sleep 3000; pa11y-ci
