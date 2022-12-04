@@ -20,7 +20,7 @@
 
 <style>
   [aria-current] {
-    background-color: rgb(255, 62, 0);
+    background-color: #df3600;
     color: white;
   }
 </style>

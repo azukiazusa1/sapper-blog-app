@@ -34,7 +34,7 @@
           <p class="leading-relaxed text-lg mb-4 break-words">
             {content}
           </p>
-          <a class="text-indigo-500 inline-flex items-center" href="blog"
+          <a class="dark:text-indigo-400  text-indigo-800 inline-flex items-center" href="blog"
             >記事を読む
             <svg
               fill="none"
