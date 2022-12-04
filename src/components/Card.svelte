@@ -6,7 +6,7 @@
 
   export let title: string
   export let contents: string
-  export let tags: Tag[]
+  export let tags: Pick<Tag, 'name' | 'slug'>[]
   export let createdAt: string
 </script>
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
+import RepositoryFactory, { POST } from '../../../repositories/RepositoryFactory'
 const PostRepository = RepositoryFactory[POST]
 
 import unified from 'unified'
@@ -14,21 +14,15 @@ import rehypePrism from '@mapbox/rehype-prism'
 import rehypeSlug from 'rehype-slug'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
-import { json, RequestHandler } from '@sveltejs/kit'
+import type { PageServerLoad } from './$types'
+import { error } from '@sveltejs/kit'
 
-export const get: RequestHandler = async ({ params }) => {
+export const load: PageServerLoad = async ({ params }) => {
   const { slug } = params
 
   const data = await PostRepository.find(slug)
   if (data.blogPostCollection.items.length === 0) {
-    return json(
-      {
-        message: 'Not Found',
-      },
-      {
-        status: 404,
-      },
-    )
+    return error(404, 'Not Found')
   }
   const processor = unified()
     // @ts-expect-error
@@ -49,8 +43,8 @@ export const get: RequestHandler = async ({ params }) => {
     .use(html, { allowDangerousHtml: true })
   const input = data.blogPostCollection.items[0].article
   const { contents } = await processor.process(input)
-  return json({
+  return {
     contents: contents.toString(),
     post: data.blogPostCollection.items[0],
-  })
+  }
 }
