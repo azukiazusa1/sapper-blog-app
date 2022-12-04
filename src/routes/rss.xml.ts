@@ -48,8 +48,7 @@ export const get: RequestHandler = async () => {
     'Cache-Control': 'max-age=0, s-max-age=3600',
   }
 
-  return {
+  return new Response(feed, {
     headers,
-    body: feed,
-  }
+  })
 }

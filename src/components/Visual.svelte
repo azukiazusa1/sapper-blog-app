@@ -16,6 +16,7 @@
       class="underline hover:opacity-75"
       href="https://pixabay.com/photos/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=984251"
       target="_blank"
+      rel="noreferrer noopener"
     >
       Free-Photos
     </a>による
@@ -23,6 +24,7 @@
       class="underline hover:opacity-75"
       href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=984251"
       target="_blank"
+      rel="noreferrer noopener"
     >
       Pixabay
     </a>からの画像

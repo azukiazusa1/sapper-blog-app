@@ -1,4 +1,4 @@
-import type { RequestHandler } from '@sveltejs/kit'
+import { json, RequestHandler } from '@sveltejs/kit'
 import RepositoryFactory, { TAG } from '../../repositories/RepositoryFactory'
 const TagRepository = RepositoryFactory[TAG]
 
@@ -7,17 +7,17 @@ export const get: RequestHandler = async ({ params }) => {
 
   const tag = await TagRepository.find({ slug })
   if (tag.tagCollection.items.length === 0) {
-    return {
-      status: 404,
-      body: {
+    return json(
+      {
         message: 'Not Found',
       },
-    }
+      {
+        status: 404,
+      },
+    )
   }
 
-  return {
-    body: {
-      tag,
-    },
-  }
+  return json({
+    tag,
+  })
 }

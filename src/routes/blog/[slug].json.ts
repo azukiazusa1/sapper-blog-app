@@ -13,19 +13,21 @@ import rehypePrism from '@mapbox/rehype-prism'
 import rehypeSlug from 'rehype-slug'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
-import type { RequestHandler } from '@sveltejs/kit'
+import { json, RequestHandler } from '@sveltejs/kit'
 
 export const get: RequestHandler = async ({ params }) => {
   const { slug } = params
 
   const data = await PostRepository.find(slug)
   if (data.blogPostCollection.items.length === 0) {
-    return {
-      status: 404,
-      body: {
+    return json(
+      {
         message: 'Not Found',
       },
-    }
+      {
+        status: 404,
+      },
+    )
   }
   const processor = unified()
     .use(markdown)
@@ -41,11 +43,8 @@ export const get: RequestHandler = async ({ params }) => {
     .use(html, { allowDangerousHtml: true })
   const input = data.blogPostCollection.items[0].article
   const { contents } = await processor.process(input)
-  return {
-    status: 200,
-    body: {
-      contents: contents.toString(),
-      post: data.blogPostCollection.items[0],
-    },
-  }
+  return json({
+    contents: contents.toString(),
+    post: data.blogPostCollection.items[0],
+  })
 }
