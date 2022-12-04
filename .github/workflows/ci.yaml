@@ -59,4 +59,4 @@ jobs:
         run: npm ci && npm install -g pa11y-ci
       - name: Build
         run: npm run build
-      - run: pa11y-ci --sitemap http://localhost:3000/sitemap.xml
+      - run: pa11y-ci --sitemap ./build/sitemap.xml
