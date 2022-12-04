@@ -31,7 +31,7 @@ jobs:
     name: Visual Regression Testing
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.28.0-focal
+      image: mcr.microsoft.com/playwright:v1.28.1-focal
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
