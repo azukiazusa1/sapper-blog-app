@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
 const PostRepository = RepositoryFactory[POST]
 
@@ -30,16 +31,21 @@ export const get: RequestHandler = async ({ params }) => {
     )
   }
   const processor = unified()
+    // @ts-expect-error
     .use(markdown)
     .use(remarkLinkCard)
     .use(remarkGfm)
+    // @ts-expect-error
     .use(remarkfootnotes)
     .use(remarkHink)
     .use(remark2rehype, { allowDangerousHtml: true })
     .use(rehypePrism, { ignoreMissing: true })
+    // @ts-expect-error
     .use(rehypeSlug)
+    // @ts-expect-error
     .use(rehypeAutoLinkHeadings)
     .use(rehypeToc)
+    // @ts-expect-error
     .use(html, { allowDangerousHtml: true })
   const input = data.blogPostCollection.items[0].article
   const { contents } = await processor.process(input)
