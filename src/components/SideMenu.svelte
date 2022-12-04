@@ -36,7 +36,7 @@
         <a
           aria-current={segment === route ? 'page' : undefined}
           href={route}
-          data-sveltekit-preload-data
+          data-sveltekit-preload-data="hover"
           class="capitalize px-3 hover:opacity-75"
           target={route === '/rss.xml' ? '_blank' : ''}
         >
