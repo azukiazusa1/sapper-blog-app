@@ -50,7 +50,7 @@
       <Nav {segment} {routes} />
     </div>
     <div class="flex">
-      <a href="/blog/search" class="md:invisible md:hidden">
+      <a href="/blog/search" class="md:invisible md:hidden" aria-label="検索ページ">
         <SearchIcon className="h-6 w-6 cursor-pointer mr-3" />
       </a>
       <button

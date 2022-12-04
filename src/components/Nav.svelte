@@ -32,7 +32,7 @@
     content: '';
     width: calc(100% - 1.5rem);
     height: 2px;
-    background-color: rgb(255, 62, 0);
+    background-color: #df3600;
     display: block;
     bottom: -8px;
   }

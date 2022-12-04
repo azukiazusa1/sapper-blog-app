@@ -30,4 +30,4 @@
 <div class="container my-4 md:mx-auto">
   <PostList posts={posts.blogPostCollection.items} />
 </div>
-<a class="text-indigo-500 flex items-center flex-row-reverse" href="/blog">もっと見る </a>
+<a class="dark:text-indigo-400  text-indigo-800 flex items-center flex-row-reverse" href="/blog">もっと見る </a>
