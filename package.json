@@ -27,7 +27,7 @@
     "@urql/svelte": "^3.0.0",
     "autoprefixer": "^10.2.4",
     "graphql": "^15.5.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.0.0",
     "playwright": "^1.28.1",
     "prismjs": "^1.23.0",
     "rehype-autolink-headings": "^5.0.1",
