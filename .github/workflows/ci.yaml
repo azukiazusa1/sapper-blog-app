@@ -47,3 +47,17 @@ jobs:
         with:
           name: test-results
           path: test-results/
+  a11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci && npm install -g @lhci/cli@0.10.x
+      - name: Build
+        run: npm run build
+      - run: pa11y-ci
+      - run: pa11y-ci --sitemap http://localhost:3000/sitemap.xml

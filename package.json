@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "svelte-kit dev",
     "mock": "NODE_MOCK=true svelte-kit dev",
-    "postbuild": "npx svelte-sitemap --domain https://azukiazusa.dev",
+    "postbuild": "npx svelte-sitemap --domain VITE_BASE_URL",
     "build": "svelte-kit build",
     "start": "node build",
     "preview": "svelte-kit preview",
