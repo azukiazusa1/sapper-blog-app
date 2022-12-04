@@ -59,6 +59,5 @@ jobs:
         run: npm ci && npm install -g pa11y-ci
       - name: Build
         run: npm run build
-      - name: Start server
-        run: npm run preview
-      - run: pa11y-ci
+      - name: pa11y-ci
+        run: npm run preview && pa11y-ci
