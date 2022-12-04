@@ -56,8 +56,7 @@ jobs:
           node-version: '18'
           cache: npm
       - name: Install dependencies
-        run: npm ci && npm install -g @lhci/cli@0.10.x
+        run: npm ci && npm install -g pa11y-ci
       - name: Build
         run: npm run build
-      - run: pa11y-ci
       - run: pa11y-ci --sitemap http://localhost:3000/sitemap.xml
