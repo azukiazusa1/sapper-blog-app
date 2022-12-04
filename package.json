@@ -17,7 +17,8 @@
     "format": "prettier --write --plugin-search-dir=. ./src",
     "gen": "graphql-codegen --config codegen.yml -r dotenv/config",
     "test": "playwright test",
-    "test:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.28.0-focal /bin/bash -c 'npm test -- -u'"
+    "test:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.28.0-focal /bin/bash -c 'npm test -- -u'",
+    "typecheck": "tsc --noEmit && svelte-check --ignore ./src/components/GoogleAnalytics.svelte"
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
@@ -73,6 +74,7 @@
     "prettier": "^2.2.1",
     "prettier-plugin-svelte": "^2.1.4",
     "svelte": "^3.17.3",
+    "svelte-check": "^2.10.0",
     "svelte-preprocess": "^4.10.1",
     "svelte-sitemap": "^2.5.2",
     "tailwindcss": "^3.0.12",

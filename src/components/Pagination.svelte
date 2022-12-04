@@ -21,7 +21,7 @@
       <a
         class="h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-white dark:bg-gray-700"
         href={`${href}${prevPage}`}
-        sveltekit:prefetch
+        data-sveltekit-preload-data
       >
         <PrevIcon />
       </a>
@@ -38,7 +38,7 @@
       <a
         class="h-12 w-12 ml-1 flex justify-center items-center rounded-full cursor-pointer bg-white dark:bg-gray-700"
         href={`${href}${nextPage}`}
-        sveltekit:prefetch
+        data-sveltekit-preload-data
       >
         <NextIcon />
       </a>

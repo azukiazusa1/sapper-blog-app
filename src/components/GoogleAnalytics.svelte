@@ -4,6 +4,7 @@
 
   const id = variables.analyticsId
   if (typeof window !== 'undefined') {
+    // @ts-ignore
     window.dataLayer = window.dataLayer || []
     window.gtag = function gtag() {
       window.dataLayer.push(arguments)

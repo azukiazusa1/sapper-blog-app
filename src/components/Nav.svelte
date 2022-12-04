@@ -10,7 +10,7 @@
         <a
           aria-current={segment === route ? 'page' : undefined}
           href={route}
-          sveltekit:prefetch
+          data-sveltekit-preload-data
           class="uppercase px-3 hover:opacity-75"
           target={route === '/rss.xml' ? '_blank' : ''}
         >
