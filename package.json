@@ -59,7 +59,7 @@
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "autoprefixer": "^10.4.2",
-    "cssnano": "^4.1.10",
+    "cssnano": "^5.0.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
