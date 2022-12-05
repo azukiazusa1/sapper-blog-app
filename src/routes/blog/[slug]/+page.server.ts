@@ -28,6 +28,7 @@ export const load: PageServerLoad = async ({ params }) => {
     // @ts-expect-error
     .use(markdown)
     .use(remarkLinkCard)
+    // @ts-expect-error
     .use(remarkGfm)
     // @ts-expect-error
     .use(remarkfootnotes)
