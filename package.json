@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "mock": "NODE_MOCK=true vite dev",
-    "postbuild": "npx svelte-sitemap --domain $VITE_BASE_URL",
+    "postbuild": "npx svelte-sitemap --domain $VITE_BASE_URL --out-dir /vercel/output",
     "build": "vite build",
     "preview": "vite preview --port 3000",
     "lint": "npm run format:check && npm run lint:eslint",
