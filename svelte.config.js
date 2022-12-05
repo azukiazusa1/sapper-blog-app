@@ -8,9 +8,7 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
-    adapter: adapter({
-      trailingSlash: 'always',
-    }),
+    adapter: adapter(),
   },
 }
 
