@@ -1,20 +1,19 @@
 <script lang="ts">
-  import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
+  import RepositoryFactory, { POST } from '../../../repositories/RepositoryFactory'
   import { page } from '$app/stores'
-  import Loading from '../../components/Icons/Loading.svelte'
-  import PostList from '../../components/PostList.svelte'
-  import Pagination from '../../components/Pagination.svelte'
-  import SearchInput from '../../components/SearchInput.svelte'
-  import type { SearchPostsQuery } from '../../generated/graphql'
+  import Loading from '../../../components/Icons/Loading.svelte'
+  import PostList from '../../../components/PostList.svelte'
+  import Pagination from '../../../components/Pagination.svelte'
+  import SearchInput from '../../../components/SearchInput.svelte'
+  import type { SearchPostsQuery } from '../../../generated/graphql'
   import { onMount } from 'svelte'
   const PostRepository = RepositoryFactory[POST]
 
   let posts: SearchPostsQuery
-  let value = $page.url.searchParams.get('q') ?? ''
-  let q = value
+  let value = ''
+  let q = ''
   let promise: Promise<void>
-
-  $: currenPage = $page.url.searchParams.get('page') ? Number($page.url.searchParams.get('page')) : 1
+  let currentPage = 1
 
   $: empty = !posts || posts.blogPostCollection.total === 0
 
@@ -29,6 +28,9 @@
   }
 
   onMount(() => {
+    value = $page.url.searchParams.get('q') || ''
+    q = value
+    currentPage = $page.url.searchParams.get('page') ? Number($page.url.searchParams.get('page')) : 1
     if (q.trim()) {
       promise = search()
     }
@@ -55,7 +57,7 @@
       <PostList posts={posts.blogPostCollection.items} />
 
       <Pagination
-        page={currenPage}
+        page={currentPage}
         total={posts.blogPostCollection.total}
         limit={posts.blogPostCollection.limit}
         href={`/blog/search?q=${q}&page=`}

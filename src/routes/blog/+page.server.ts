@@ -1,12 +1,8 @@
-import type { RequestHandler } from '@sveltejs/kit'
+import type { PageServerLoad } from './$types'
 import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
 const PostRepository = RepositoryFactory[POST]
 
-export const get: RequestHandler = async () => {
+export const load: PageServerLoad = async () => {
   const posts = await PostRepository.get({})
-  return {
-    body: {
-      posts,
-    },
-  }
+  return posts
 }

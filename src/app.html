@@ -9,12 +9,12 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for azukiazusa's Blog" href="/rss.xml" />
     <meta name="google-site-verification" content="lit8ah1v-aE1xKqcwwouGH9RHp9SPo_8WvhC5ucyx04" />
-    %svelte.head%
+    %sveltekit.head%
   </head>
 
-  <body class="min-h-screen bg-gray-100 dark:bg-gray-800 dark:text-gray-50">
+  <body data-sveltekit-preload-data="hover" class="min-h-screen bg-gray-100 dark:bg-gray-800 dark:text-gray-50">
     <!-- The application will be rendered inside this element,
 	     because `src/client.js` references it -->
-    <div id="svelte">%svelte.body%</div>
+    <div id="svelte">%sveltekit.body%</div>
   </body>
 </html>

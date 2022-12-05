@@ -20,6 +20,7 @@
 
 <svelte:window on:keydown={handleWindowKeyDown} />
 {#if isOpen}
+  <!-- eslint-disable-next-line svelte/valid-compile -->
   <div on:click|self={close} class="fixed z-10 inset-0 overflow-y-auto bg-gray-900 opacity-50" />
 {/if}
 <aside
@@ -32,11 +33,11 @@
   </button>
   <ul>
     {#each routes as route}
-      <li class="flex items-center p-4" on:click={close}>
+      <li class="flex items-center p-4">
         <a
+          on:click={close}
           aria-current={segment === route ? 'page' : undefined}
           href={route}
-          sveltekit:prefetch
           class="capitalize px-3 hover:opacity-75"
           target={route === '/rss.xml' ? '_blank' : ''}
         >

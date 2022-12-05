@@ -9,6 +9,7 @@
   import image from '../assets/images/road-984251_1280.jpg'
   let html: HTMLElement
   let darkMode = false
+  export const prerender = true
 
   onMount(() => {
     html = document.documentElement

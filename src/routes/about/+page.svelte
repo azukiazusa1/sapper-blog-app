@@ -1,5 +1,5 @@
 <script>
-  import author from '../assets/images/azukiazusa.jpeg'
+  import author from '../../assets/images/azukiazusa.jpeg'
   const content =
     'このブログはSvelteKit + Contentful + Vercelによって作成されています。学んだ技術についてつらつらと書いてきます。毎週日曜日夜くらいに更新されます。JavaScript/TypeScript/Vue.js/React/Svelte/PHP/Laravel/CakePHPあたり。趣味は読書と麻雀。'
 </script>
@@ -21,9 +21,24 @@
             <h2 class="font-medium mt-4 text-lg">azukiazusa1</h2>
             <div class="w-12 h-1 bg-theme rounded mt-2 mb-4" />
             <p class="text-base">
-              <a class="underline hover:opacity-75" target="_blank" href="https://qiita.com/azukiazusa">Qiita</a>&nbsp;/
-              <a class="underline hover:opacity-75" target="_blank" href="https://zenn.dev/azukiazusa">Zenn</a>&nbsp;/
-              <a class="underline hover:opacity-75" target="_blank" href="https://github.com/azukiazusa1">GitHub</a>
+              <a
+                class="underline hover:opacity-75"
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://qiita.com/azukiazusa">Qiita</a
+              >&nbsp;/
+              <a
+                class="underline hover:opacity-75"
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://zenn.dev/azukiazusa">Zenn</a
+              >&nbsp;/
+              <a
+                class="underline hover:opacity-75"
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://github.com/azukiazusa1">GitHub</a
+              >
             </p>
             <p class="mt-2">3年目のエンジニアです。</p>
           </div>
