@@ -5,7 +5,8 @@
 
   export let data: PageData
 
-  let { tag, page } = data
+  $: tag = data.tag
+  $: page = data.page
 
   $: tagName = tag.tagCollection.items[0].name
   $: tagSlug = tag.tagCollection.items[0].slug

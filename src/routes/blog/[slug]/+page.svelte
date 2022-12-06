@@ -9,7 +9,8 @@
 
   export let data: PageData
 
-  let { post, contents } = data
+  $: post = data.post
+  $: contents = data.contents
 
   $: protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
   $: url = `${protocol}://${$page.url.host}${$page.url.pathname}`

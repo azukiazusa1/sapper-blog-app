@@ -3,7 +3,7 @@ import { PlaywrightTestConfig, devices } from '@playwright/test'
 const config: PlaywrightTestConfig = {
   fullyParallel: true,
   webServer: {
-    command: 'npm run preview',
+    command: 'npm run serve',
     port: 3000,
     reuseExistingServer: true,
   },
