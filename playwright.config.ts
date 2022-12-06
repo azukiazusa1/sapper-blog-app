@@ -9,6 +9,9 @@ const config: PlaywrightTestConfig = {
   },
   expect: {
     timeout: 15000,
+    toHaveScreenshot: {
+      maxDiffPixels: 1000,
+    },
   },
   projects: [
     {
