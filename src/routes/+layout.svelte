@@ -7,6 +7,7 @@
   import GoogleAnalytics from '../components/GoogleAnalytics.svelte'
   import Visual from '../components/Visual.svelte'
   import image from '../assets/images/road-984251_1280.jpg'
+  import { removeTrailingSlash } from '$lib/utils'
   let html: HTMLElement
   let darkMode = false
   export const prerender = true
@@ -44,7 +45,7 @@
 <Header segment={$page.url.pathname} {darkMode} on:clickMoon={toggleDarkMode} />
 <GoogleAnalytics />
 <main class="pt-16">
-  {#if $page.url.pathname === '/about'}
+  {#if removeTrailingSlash($page.url.pathname) === '/about'}
     <Visual title="about" {image} />
   {/if}
   <div class="container mx-auto px-6 my-4">
