@@ -15,5 +15,8 @@ module.exports = {
         preset: 'desktop',
       },
     },
+    asserts: {
+      preset: 'lighthouse:recommended',
+    },
   },
 }
