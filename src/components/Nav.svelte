@@ -8,7 +8,7 @@
     {#each routes as route}
       <li>
         <a
-          aria-current={segment === route ? 'page' : undefined}
+          aria-current={segment === `${route}/` ? 'page' : undefined}
           href={route}
           class="uppercase px-3 hover:opacity-75"
           target={route === '/rss.xml' ? '_blank' : ''}
