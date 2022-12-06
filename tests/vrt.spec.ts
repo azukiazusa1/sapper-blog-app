@@ -7,6 +7,7 @@ for (const path of paths) {
     await expect(page).toHaveScreenshot({
       fullPage: true,
       scale: 'device',
+      maxDiffPixels: 100,
     })
   })
 
@@ -16,6 +17,7 @@ for (const path of paths) {
     await expect(page).toHaveScreenshot({
       fullPage: true,
       scale: 'device',
+      maxDiffPixels: 100,
     })
   })
 }
