@@ -12,8 +12,7 @@
         <a
           aria-current={removeTrailingSlash(segment) === `${route}` ? 'page' : undefined}
           href={route}
-          class="uppercase px-3 hover:opacity-75"
-          target={route === '/rss.xml' ? '_blank' : ''}
+          class="capitalize px-3 hover:opacity-75"
         >
           {route.slice(1)}
         </a>
