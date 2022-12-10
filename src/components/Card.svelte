@@ -2,6 +2,7 @@
   import AppTag from './Tag.svelte'
   import Time from './Time.svelte'
   import 'prismjs/themes/prism-tomorrow.css'
+  import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
   import type { Tag } from '../generated/graphql'
 
   export let title: string
