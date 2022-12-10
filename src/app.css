@@ -274,6 +274,6 @@ h6 .icon-link::before {
   text-align: right;
   margin-right: 1.5rem;
   margin-left: -8px;
-  color: rgb(99, 119, 119);; /* Line number color */
+  color: rgb(99, 119, 119); /* Line number color */
   content: attr(line);
 }

@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "@mapbox/rehype-prism": "^0.8.0",
     "@playwright/test": "^1.28.1",
     "@urql/core": "^3.0.0",
     "@urql/svelte": "^3.0.0",
@@ -42,7 +41,8 @@
     "remark-hint": "^1.0.9",
     "remark-parse": "^10.0.0",
     "remark-rehype": "^10.1.0",
-    "unified": "^10.1.2"
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
