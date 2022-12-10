@@ -2,7 +2,6 @@
   import AppTag from './Tag.svelte'
   import Time from './Time.svelte'
   import 'prismjs/themes/prism-tomorrow.css'
-  import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
   import type { Tag } from '../generated/graphql'
 
   export let title: string
@@ -11,9 +10,9 @@
   export let createdAt: string
 </script>
 
-<article class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+<article class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg max-w-5xl mx-auto">
   <div class="px-0 md:px-8">
-    <h1 class="text-4xl md:text-6xl font-bold mb-8">{title}</h1>
+    <h1 class="text-2xl md:text-4xl font-bold mb-8">{title}</h1>
     <div class="flex flex-wrap items-center leading-none mt-2 mb-2">
       {#each tags as tag (tag.slug)}
         <AppTag {...tag} />

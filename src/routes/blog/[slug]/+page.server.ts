@@ -11,7 +11,8 @@ import remarkfootnotes from 'remark-footnotes'
 import remarkHint from 'remark-hint'
 import remarkContentFulImage from '$lib/remark-contentful-image'
 import html from 'rehype-stringify'
-import rehypePrism from '@mapbox/rehype-prism'
+import rehypeCodeTitles from 'rehype-code-titles'
+import rehypePrism from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
@@ -32,7 +33,8 @@ export const load: PageServerLoad = async ({ params }) => {
     .use(remarkfootnotes)
     .use(remarkHint)
     .use(remark2rehype, { allowDangerousHtml: true })
-    .use(rehypePrism, { ignoreMissing: true })
+    .use(rehypeCodeTitles)
+    .use(rehypePrism, { ignoreMissing: true, showLineNumbers: true })
     .use(remarkContentFulImage)
     .use(rehypeSlug)
     .use(rehypeAutoLinkHeadings)
