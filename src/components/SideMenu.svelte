@@ -39,7 +39,6 @@
           aria-current={segment === route ? 'page' : undefined}
           href={route}
           class="capitalize px-3 hover:opacity-75"
-          target={route === '/rss.xml' ? '_blank' : ''}
         >
           {route.slice(1)}
         </a>

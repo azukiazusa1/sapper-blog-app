@@ -14,37 +14,39 @@
 
   onMount(() => {
     html = document.documentElement
+    if (html.classList.contains('dark')) {
+      darkMode = true
+    }
+  })
+  const toggleDarkMode = () => {
+    darkMode = !darkMode
+    if (!html) return
+    if (darkMode) {
+      html.classList.add('dark')
+      localStorage.theme = 'dark'
+    } else {
+      html.classList.remove('dark')
+      localStorage.theme = 'light'
+    }
+  }
+</script>
+
+<svelte:head>
+  <script>
     if (
       localStorage.theme === 'dark' ||
       (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
-      darkMode = true
-      html.classList.add('dark')
+      document.documentElement.classList.add('dark')
     } else {
-      darkMode = false
-      html.classList.remove('dark')
+      document.documentElement.classList.remove('dark')
     }
-  })
-  $: {
-    if (html) {
-      if (darkMode) {
-        html.classList.add('dark')
-        localStorage.theme = 'dark'
-      } else {
-        html.classList.remove('dark')
-        localStorage.theme = 'light'
-      }
-    }
-  }
-
-  const toggleDarkMode = () => {
-    darkMode = !darkMode
-  }
-</script>
-
+  </script>
+</svelte:head>
 <Header segment={$page.url.pathname} {darkMode} on:clickMoon={toggleDarkMode} />
 <GoogleAnalytics />
-<main class="pt-16">
+
+<main>
   {#if removeTrailingSlash($page.url.pathname) === '/about'}
     <Visual title="about" {image} />
   {/if}
