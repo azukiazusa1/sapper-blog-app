@@ -48,7 +48,7 @@
   {#if removeTrailingSlash($page.url.pathname) === '/about'}
     <Visual title="about" {image} />
   {/if}
-  <div class="container mx-auto px-6 my-4">
+  <div class="container mx-auto px-1 md:px-6 my-4">
     <slot />
   </div>
 </main>

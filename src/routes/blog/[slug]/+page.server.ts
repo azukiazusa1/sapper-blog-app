@@ -10,7 +10,8 @@ import remarkGfm from 'remark-gfm'
 import remarkfootnotes from 'remark-footnotes'
 import remarkHink from 'remark-hint'
 import html from 'rehype-stringify'
-import rehypePrism from '@mapbox/rehype-prism'
+import rehypeCodeTitles from 'rehype-code-titles'
+import rehypePrism from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
@@ -31,7 +32,8 @@ export const load: PageServerLoad = async ({ params }) => {
     .use(remarkfootnotes)
     .use(remarkHink)
     .use(remark2rehype, { allowDangerousHtml: true })
-    .use(rehypePrism, { ignoreMissing: true })
+    .use(rehypeCodeTitles)
+    .use(rehypePrism, { ignoreMissing: true, showLineNumbers: true })
     .use(rehypeSlug)
     .use(rehypeAutoLinkHeadings)
     .use(rehypeToc)

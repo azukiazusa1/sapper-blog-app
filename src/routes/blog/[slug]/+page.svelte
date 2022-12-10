@@ -25,7 +25,7 @@
 
 <div class="my-12">
   <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />
-  <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg mt-2">
+  <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg mt-2 max-w-5xl mx-auto">
     <div class="flex">
       <div>この記事をシェアする</div>
       <div class="ml-4">
