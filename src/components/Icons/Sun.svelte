@@ -1,17 +1,8 @@
 <script lang="ts">
   export let className = ''
-  import { fly } from 'svelte/transition'
 </script>
 
-<svg
-  class={className}
-  xmlns="http://www.w3.org/2000/svg"
-  fill="none"
-  viewBox="0 0 24 24"
-  stroke="currentColor"
-  out:fly={{ x: 100, y: 50, duration: 800 }}
-  in:fly={{ x: -100, y: 50, duration: 800 }}
->
+<svg class={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path
     stroke-linecap="round"
     stroke-linejoin="round"
