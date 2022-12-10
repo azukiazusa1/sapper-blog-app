@@ -8,6 +8,10 @@
 
 <svelte:head>
   <title>azukiazusaのテックブログ2</title>
+  <meta
+    name="description"
+    content="azukiazusaのテックブログ2です。週に1回 Web 開発に関する記事をお届けします。フロントエンドに関する分野の記事が中心です。"
+  />
 </svelte:head>
 
 <HeroSection />
