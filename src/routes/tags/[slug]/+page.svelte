@@ -11,6 +11,7 @@
 
 <svelte:head>
   <title>{tagName} | タグ</title>
+  <meta name="description" content="{tagName}の記事一覧です。" />
 </svelte:head>
 
 <h1 class="text-2xl">

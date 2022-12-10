@@ -8,6 +8,7 @@
 
 <svelte:head>
   <title>タグ一覧</title>
+  <meta name="description" content="ブログに存在するタグの一覧です。" />
 </svelte:head>
 
 <h1 class="text-2xl">タグ一覧</h1>
