@@ -15,14 +15,14 @@ export const postBySlugQuery = gql`
             createdAt
             thumbnail {
               title
-              url
+              url(transform: { format: WEBP, quality: 50 })
             }
           }
         }
         createdAt
         thumbnail {
           title
-          url
+          url(transform: { format: WEBP, quality: 50 })
         }
         tagsCollection(limit: 5) {
           items {

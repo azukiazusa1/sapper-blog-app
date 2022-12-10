@@ -8,7 +8,8 @@ import markdown from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import remarkGfm from 'remark-gfm'
 import remarkfootnotes from 'remark-footnotes'
-import remarkHink from 'remark-hint'
+import remarkHint from 'remark-hint'
+import remarkContentFulImage from '$lib/remark-contentful-image'
 import html from 'rehype-stringify'
 import rehypePrism from '@mapbox/rehype-prism'
 import rehypeSlug from 'rehype-slug'
@@ -29,9 +30,10 @@ export const load: PageServerLoad = async ({ params }) => {
     .use(remarkLinkCard)
     .use(remarkGfm)
     .use(remarkfootnotes)
-    .use(remarkHink)
+    .use(remarkHint)
     .use(remark2rehype, { allowDangerousHtml: true })
     .use(rehypePrism, { ignoreMissing: true })
+    .use(remarkContentFulImage)
     .use(rehypeSlug)
     .use(rehypeAutoLinkHeadings)
     .use(rehypeToc)

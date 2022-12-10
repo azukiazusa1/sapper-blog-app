@@ -13,7 +13,7 @@ export const postsQuery = gql`
         createdAt
         thumbnail {
           title
-          url
+          url(transform: { format: WEBP, quality: 50 })
         }
         tagsCollection(limit: 5) {
           items {
