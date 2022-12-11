@@ -21,11 +21,14 @@ jobs:
           cache: npm
       - name: Build
         uses: preactjs/compressed-size-action@v2
+        with:
+          pattern: 'build/**/*'
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
           name: build
           path: build/
+          retention-days: 1
 
   lighthouse:
     name: Lighthouse
@@ -41,7 +44,7 @@ jobs:
           node-version-file: package.json
           cache: npm
       - name: Install dependencies
-        run: npm ci
+        run: npm ci && npm install -g @lhci/cli@0.10.x
       - name: Download build
         uses: actions/download-artifact@v3
         with:
