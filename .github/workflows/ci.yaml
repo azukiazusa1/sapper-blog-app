@@ -9,9 +9,28 @@ env:
   VITE_BASE_URL: http://localhost:3000
 
 jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: package.json
+          cache: npm
+      - name: Build
+        uses: preactjs/compressed-size-action@v2
+      - name: Upload build
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: build/
+
   lighthouse:
     name: Lighthouse
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - uses: actions/checkout@v3
         with:
@@ -22,9 +41,12 @@ jobs:
           node-version-file: package.json
           cache: npm
       - name: Install dependencies
-        run: npm ci && npm install -g @lhci/cli@0.10.x
-      - name: Build
-        run: npm run build
+        run: npm ci
+      - name: Download build
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build/
       - name: Run Lighthouse CI
         run: lhci autorun
         env:
@@ -32,14 +54,23 @@ jobs:
   vrt:
     name: Visual Regression Testing
     runs-on: ubuntu-latest
+    needs: build
     container:
       image: mcr.microsoft.com/playwright:v1.28.1-focal
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: package.json
+          cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Build
-        run: npm run build
+      - name: Download build
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build/
       - name: Add permissions
         run: chmod 777 -R .
       - name: Run Tests
@@ -51,6 +82,7 @@ jobs:
           path: test-results/
   a11y:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -59,7 +91,10 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci && npm install -g pa11y-ci
-      - name: Build
-        run: npm run build
+      - name: Download build
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build/
       - name: pa11y-ci
         run: npm run serve & sleep 3; pa11y-ci
