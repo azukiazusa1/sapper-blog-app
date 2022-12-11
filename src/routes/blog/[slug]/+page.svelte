@@ -25,7 +25,7 @@
   title={post.title}
   description={post.about}
   {url}
-  image={`${protocol}://${$page.url.host}/blog/ogp/${encodeURIComponent(post.title)}`}
+  image={`${protocol}://${$page.url.host}/blog/ogp/${encodeURIComponent(post.title)}.png`}
 />
 
 <div class="my-12">
@@ -47,4 +47,4 @@
 
 <PostList posts={post.relatedArticleCollection?.items} small />
 <!-- svelte-ignore a11y-missing-content -->
-<a href={`/blog/ogp/${encodeURIComponent(post.title)}`} />
+<a href={`/blog/ogp/${encodeURIComponent(post.title)}.png`} />

@@ -1,6 +1,7 @@
 import { loadGoogleFont } from '$lib/loadGoogleFont'
 import satori from 'satori'
 import type { RequestHandler } from '@sveltejs/kit'
+import sharp from 'sharp'
 export const prerender = true
 
 export const GET: RequestHandler = async ({ params }) => {
@@ -64,9 +65,12 @@ export const GET: RequestHandler = async ({ params }) => {
       ],
     },
   )
-  return new Response(svg, {
+
+  const png = await sharp(Buffer.from(svg)).png().toBuffer()
+
+  return new Response(png, {
     headers: {
-      'Content-Type': 'image/svg+xml',
+      'Content-Type': 'image/png',
     },
   })
 }
