@@ -1,4 +1,11 @@
+const cache: Record<string, ArrayBuffer> = {}
+
 export async function loadGoogleFont({ family, weight, text }: { family: string; weight?: number; text?: string }) {
+  const cacheKey = `${family}${weight ? `:${weight}` : ''}${text ? `:${text}` : ''}`
+  if (cache[cacheKey]) {
+    return cache[cacheKey]
+  }
+
   const params: Record<string, string> = {
     family: `${encodeURIComponent(family)}${weight ? `:wght@${weight}` : ''}`,
   }
@@ -28,5 +35,9 @@ export async function loadGoogleFont({ family, weight, text }: { family: string;
     throw new Error('Could not find font URL')
   }
 
-  return fetch(fontUrl).then((res) => res.arrayBuffer())
+  const result = await fetch(fontUrl).then((res) => res.arrayBuffer())
+
+  cache[cacheKey] = result
+
+  return result
 }

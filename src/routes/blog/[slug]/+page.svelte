@@ -21,7 +21,12 @@
   <meta name="description" content={post.about} />
 </svelte:head>
 
-<Ogp title={post.title} description={post.about} {url} image={`/blog/ogp/${post.title}`} />
+<Ogp
+  title={post.title}
+  description={post.about}
+  {url}
+  image={`${protocol}://${$page.url.host}/blog/ogp/${encodeURIComponent(post.title)}`}
+/>
 
 <div class="my-12">
   <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />
@@ -41,3 +46,5 @@
 <h2 class="text-2xl">関連記事</h2>
 
 <PostList posts={post.relatedArticleCollection?.items} small />
+<!-- svelte-ignore a11y-missing-content -->
+<a href={`/blog/ogp/${encodeURIComponent(post.title)}`} />
