@@ -25,7 +25,7 @@
   title={post.title}
   description={post.about}
   {url}
-  image={`${protocol}://${$page.url.host}/blog/ogp/${encodeURIComponent(post.title)}.png`}
+  image={`https://azukiazusa.dev/blog/ogp/${encodeURIComponent(post.title)}.png`}
 />
 
 <div class="my-12">
