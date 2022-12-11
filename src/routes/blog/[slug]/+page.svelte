@@ -11,6 +11,7 @@
 
   $: post = data.post
   $: contents = data.contents
+  $: tagNames = post.tagsCollection.items.map((t) => encodeURIComponent(t.name))
 
   $: protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
   $: url = `${protocol}://${$page.url.host}${$page.url.pathname}`
@@ -25,7 +26,7 @@
   title={post.title}
   description={post.about}
   {url}
-  image={`https://azukiazusa.dev/blog/ogp/${encodeURIComponent(post.title)}.png`}
+  image={`https://azukiazusa.dev/blog/ogp/${encodeURIComponent(post.title)}/${tagNames.join('/')}.png`}
 />
 
 <div class="my-12">
@@ -47,4 +48,4 @@
 
 <PostList posts={post.relatedArticleCollection?.items} small />
 <!-- svelte-ignore a11y-missing-content -->
-<a href={`/blog/ogp/${encodeURIComponent(post.title)}.png`} />
+<a href={`/blog/ogp/${encodeURIComponent(post.title)}/${tagNames.join('/')}.png`} />
