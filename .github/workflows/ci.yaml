@@ -22,7 +22,7 @@ jobs:
       - name: Build
         uses: preactjs/compressed-size-action@v2
         with:
-          pattern: 'build/**/*'
+          pattern: 'build/**/*.{js,css,html.json}'
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
