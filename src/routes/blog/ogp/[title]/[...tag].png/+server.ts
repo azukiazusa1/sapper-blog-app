@@ -20,7 +20,7 @@ export const GET: RequestHandler = async ({ params }) => {
                   type: 'div',
                   props: {
                     children: title,
-                    style: { color: '#fff', fontSize: 72 },
+                    style: { color: '#fff', fontSize: 64, maxWidth: 1000 },
                   },
                 },
                 {
@@ -40,7 +40,7 @@ export const GET: RequestHandler = async ({ params }) => {
                         },
                       },
                     })),
-                    style: { display: 'flex', alignItems: 'center' },
+                    style: { display: 'flex', alignItems: 'center', marginTop: 12 },
                   },
                 },
               ],
