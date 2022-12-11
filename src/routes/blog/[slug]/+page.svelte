@@ -21,7 +21,7 @@
   <meta name="description" content={post.about} />
 </svelte:head>
 
-<Ogp title={post.title} description={post.about} {url} image={post.thumbnail?.url} />
+<Ogp title={post.title} description={post.about} {url} image={`/blog/ogp/${post.title}`} />
 
 <div class="my-12">
   <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />

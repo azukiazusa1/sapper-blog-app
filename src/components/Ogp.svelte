@@ -5,7 +5,7 @@
   export let url = ''
   export let image = ''
   export let description = ''
-  export let card = 'summary'
+  export let card = 'summary_large_image'
 </script>
 
 <svelte:head>

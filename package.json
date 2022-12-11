@@ -42,6 +42,7 @@
     "remark-hint": "^1.0.9",
     "remark-parse": "^10.0.0",
     "remark-rehype": "^10.1.0",
+    "satori": "^0.0.44",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.1"
   },
