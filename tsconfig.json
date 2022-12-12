@@ -22,6 +22,7 @@
     "baseUrl": ".",
     "allowJs": true,
     "checkJs": true,
+    "jsx": "react-jsx",
     "paths": {
       "$lib": ["src/lib"],
       "$lib/*": ["src/lib/*"]
