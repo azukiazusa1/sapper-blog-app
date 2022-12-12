@@ -22,11 +22,12 @@
     "baseUrl": ".",
     "allowJs": true,
     "checkJs": true,
+    "jsx": "react-jsx",
     "paths": {
       "$lib": ["src/lib"],
       "$lib/*": ["src/lib/*"]
     }
   },
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte", "tests/**/*.ts"],
+  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.tsx", "src/**/*.svelte", "tests/**/*.ts"],
   "extends": "./.svelte-kit/tsconfig.json" 
 }
