@@ -263,6 +263,7 @@ h6 .icon-link::before {
   overflow: auto;
   border-radius: 6px;
   background-color: #2d2d2d;
+  color: #ccc;
   margin: 0.5em 0;
   padding: 1em;
 }
