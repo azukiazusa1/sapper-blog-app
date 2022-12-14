@@ -3,7 +3,7 @@ import RepositoryFactory, { POST } from '../../../repositories/RepositoryFactory
 const PostRepository = RepositoryFactory[POST]
 
 import { unified } from 'unified'
-import remarkLinkCard from 'remark-hatena-link-card'
+import remarkLinkCard from '$lib/remark-link-card'
 import markdown from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import remarkGfm from 'remark-gfm'
