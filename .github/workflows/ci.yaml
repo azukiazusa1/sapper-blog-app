@@ -23,17 +23,10 @@ jobs:
         uses: preactjs/compressed-size-action@v2
         with:
           pattern: 'build/**/*.{js,css,html.json}'
-      - name: Upload build
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          path: build/
-          retention-days: 1
 
   lighthouse:
     name: Lighthouse
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v3
         with:
@@ -45,11 +38,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci && npm install -g @lhci/cli@0.10.x
-      - name: Download build
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build/
+      - name: Build
+        run: npm run build
       - name: Run Lighthouse CI
         run: lhci autorun
         env:
@@ -57,7 +47,6 @@ jobs:
   vrt:
     name: Visual Regression Testing
     runs-on: ubuntu-latest
-    needs: build
     container:
       image: mcr.microsoft.com/playwright:v1.28.1-focal
     steps:
@@ -69,11 +58,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Download build
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build/
+      - name: Build
+        run: npm run build
       - name: Add permissions
         run: chmod 777 -R .
       - name: Run Tests
@@ -85,7 +71,6 @@ jobs:
           path: test-results/
   a11y:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -94,10 +79,7 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci && npm install -g pa11y-ci
-      - name: Download build
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build/
+      - name: Build
+        run: npm run build
       - name: pa11y-ci
         run: npm run serve & sleep 3; pa11y-ci

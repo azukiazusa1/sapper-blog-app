@@ -3,11 +3,10 @@ import RepositoryFactory, { POST } from '../../../repositories/RepositoryFactory
 const PostRepository = RepositoryFactory[POST]
 
 import { unified } from 'unified'
-import remarkLinkCard from 'remark-hatena-link-card'
+import remarkLinkCard from '$lib/remark-link-card'
 import markdown from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import remarkGfm from 'remark-gfm'
-import remarkfootnotes from 'remark-footnotes'
 import remarkHint from 'remark-hint'
 import remarkContentFulImage from '$lib/remark-contentful-image'
 import html from 'rehype-stringify'
@@ -30,7 +29,6 @@ export const load: PageServerLoad = async ({ params }) => {
     .use(markdown)
     .use(remarkLinkCard)
     .use(remarkGfm)
-    .use(remarkfootnotes)
     .use(remarkHint)
     .use(remarkContentFulImage)
     .use(remark2rehype, { allowDangerousHtml: true })
