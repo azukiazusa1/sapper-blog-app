@@ -27,7 +27,6 @@ jobs:
   lighthouse:
     name: Lighthouse
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v3
         with:
@@ -48,7 +47,6 @@ jobs:
   vrt:
     name: Visual Regression Testing
     runs-on: ubuntu-latest
-    needs: build
     container:
       image: mcr.microsoft.com/playwright:v1.28.1-focal
     steps:
@@ -73,7 +71,6 @@ jobs:
           path: test-results/
   a11y:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
