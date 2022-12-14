@@ -29,7 +29,6 @@ export const load: PageServerLoad = async ({ params }) => {
     .use(markdown)
     .use(remarkLinkCard)
     .use(remarkGfm)
-    .use(remarkfootnotes)
     .use(remarkHint)
     .use(remarkContentFulImage)
     .use(remark2rehype, { allowDangerousHtml: true })
