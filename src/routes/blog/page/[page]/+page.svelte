@@ -4,13 +4,12 @@
   import type { PageData } from './$types'
 
   export let data: PageData
-  let { page, posts } = data
 </script>
 
 <svelte:head>
-  <title>{page}ページ目 | azukiazusaのテックブログ2</title>
+  <title>{data.page}ページ目 | azukiazusaのテックブログ2</title>
 </svelte:head>
 
-<PostList posts={posts.blogPostCollection.items} />
+<PostList posts={data.posts.blogPostCollection.items} />
 
 <Pagination {page} total={posts.blogPostCollection.total} limit={posts.blogPostCollection.limit} />
