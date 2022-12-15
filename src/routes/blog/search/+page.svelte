@@ -16,7 +16,7 @@
   $: empty = !posts || posts.blogPostCollection.total === 0
 
   const search = async () => {
-    posts = await fetch(`/blog/search?q=${q}&page=${currentPage}`).then((res) => res.json())
+    posts = await fetch(`/api/search?q=${q}&page=${currentPage}`).then((res) => res.json())
   }
 
   const handleSubmit = () => {

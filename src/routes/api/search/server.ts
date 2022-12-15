@@ -2,6 +2,8 @@ import { json, type RequestHandler } from '@sveltejs/kit'
 import RepositoryFactory, { POST } from '../../../repositories/RepositoryFactory'
 const PostRepository = RepositoryFactory[POST]
 
+export const prerender = false
+
 export const GET: RequestHandler = async ({ request }) => {
   const url = new URL(request.url)
   const q = url.searchParams.get('q') ?? ''
