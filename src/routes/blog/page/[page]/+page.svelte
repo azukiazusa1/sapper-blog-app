@@ -12,4 +12,4 @@
 
 <PostList posts={data.posts.blogPostCollection.items} />
 
-<Pagination {page} total={posts.blogPostCollection.total} limit={posts.blogPostCollection.limit} />
+<Pagination {data.page} total={data.posts.blogPostCollection.total} limit={data.posts.blogPostCollection.limit} />
