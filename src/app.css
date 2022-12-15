@@ -279,8 +279,7 @@ h6 .icon-link::before {
 }
 
 .link-card__main {
-  max-width: 100%;
-  @apply flex flex-col justify-between p-4 leading-normal h-32;
+  @apply flex flex-col justify-between p-4 leading-normal h-32 w-full;
 }
 
 .link-card__main:has(+ .link-card__thumbnail) {
