@@ -3,8 +3,6 @@
   import SearchInput from './SearchInput.svelte'
   import DropDownMenu from './DropDownMenu.svelte'
   import type { SearchPostsQuery } from '../generated/graphql'
-  import RepositoryFactory, { POST } from '../repositories/RepositoryFactory'
-  const PostRepository = RepositoryFactory[POST]
 
   let value = ''
   let posts: SearchPostsQuery
@@ -14,7 +12,7 @@
 
   const search = async () => {
     loading = true
-    posts = await PostRepository.search({ q: value })
+    posts = await fetch(`/api/search?q=${value}`).then((res) => res.json())
     loading = false
   }
 
