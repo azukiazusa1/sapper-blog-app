@@ -2,12 +2,16 @@
   import PostList from '../../../../components/PostList.svelte'
   import Pagination from '../../../../components/Pagination.svelte'
   import type { PageData } from './$types'
+  import variables from '$lib/variables'
 
   export let data: PageData
 </script>
 
 <svelte:head>
   <title>{data.page}ページ目 | azukiazusaのテックブログ2</title>
+  {#if data.page === 1}
+    <link rel="canonical" href={`https://${variables.baseURL}/blog`} />
+  {/if}
 </svelte:head>
 
 <PostList posts={data.posts.blogPostCollection.items} />
