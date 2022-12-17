@@ -23,7 +23,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
   const data = await PostRepository.find(slug)
   if (data.blogPostCollection.items.length === 0) {
-    return error(404, 'Not Found')
+    throw error(404, 'Not Found')
   }
   const processor = unified()
     .use(markdown)
