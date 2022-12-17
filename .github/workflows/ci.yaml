@@ -22,7 +22,7 @@ jobs:
       - name: Build
         uses: preactjs/compressed-size-action@v2
         with:
-          pattern: 'build/**/*.{js,css,html.json}'
+          pattern: '.vercel/output/static/**/*.{js,css,html.json}'
 
   lighthouse:
     name: Lighthouse
@@ -48,7 +48,7 @@ jobs:
     name: Visual Regression Testing
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.28.1-focal
+      image: mcr.microsoft.com/playwright:v1.29.0-focal
     steps:
       - uses: actions/checkout@v3
       - name: Set up Node.js
