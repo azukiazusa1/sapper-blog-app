@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
   const tag = await TagRepository.find({ slug, skip })
   if (tag.tagCollection.items.length === 0) {
-    return error(404, 'Tag not found')
+    throw error(404, 'Tag not found')
   }
 
   return {
