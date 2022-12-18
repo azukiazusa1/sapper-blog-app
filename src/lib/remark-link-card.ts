@@ -24,8 +24,14 @@ interface Result {
  * 指定したURLのfaviconのURLを返す
  * @param url
  */
-const faviconImageSrc = (url: URL) => {
-  return `https://www.google.com/s2/favicons?domain=${url.hostname}&sz=14`
+const faviconImageSrc = async (url: URL) => {
+  const faviconUrl = `https://www.google.com/s2/favicons?domain=${url.hostname}&sz=14`
+
+  // favicon が存在するか確認する
+  const res = await fetch(faviconUrl, { method: 'HEAD' })
+  if (!res.ok) return ''
+
+  return faviconUrl
 }
 
 const h = (type: string, attrs = {}, children = []) => {
@@ -59,7 +65,7 @@ const remarkLinkCard: Plugin = () => async (tree) => {
 
     transfroms.push(
       client({ url: node.url })
-        .then(({ error, result }) => {
+        .then(async ({ error, result }) => {
           if (error) return
 
           const r = result as Result
@@ -73,6 +79,8 @@ const remarkLinkCard: Plugin = () => async (tree) => {
             imageUrl = ''
           }
 
+          const faviconUrl = await faviconImageSrc(url)
+
           node.children = [
             h('div', { className: 'link-card__wrapper' }, [
               h('a', { className: 'link-card', href: url.toString(), rel: 'noreferrer noopener', target: '_blank' }, [
@@ -82,7 +90,9 @@ const remarkLinkCard: Plugin = () => async (tree) => {
                     h('div', { className: 'link-card__description' }, [text(r.ogDescription)]),
                   ]),
                   h('div', { className: 'link-card__meta' }, [
-                    h('img', { className: 'link-card__favicon', src: faviconImageSrc(url), width: 14, height: 14 }),
+                    faviconUrl
+                      ? h('img', { className: 'link-card__favicon', src: faviconUrl, width: 14, height: 14 })
+                      : h('div'),
                     h('span', { className: 'link-card__url' }, [text(url.hostname)]),
                   ]),
                 ]),

@@ -283,12 +283,12 @@ h6 .icon-link::before {
 }
 
 .link-card__main:has(+ .link-card__thumbnail) {
-  max-width: 60%;
+  width: 60%;
 }
 
 @media (min-width: 768px) {
   .link-card__main:has(+ .link-card__thumbnail) {
-    max-width: 70%;
+    width: 70%;
   }
 }
 
