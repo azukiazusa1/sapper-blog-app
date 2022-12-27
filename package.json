@@ -49,9 +49,9 @@
     "unist-util-visit": "^4.1.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "2.16.1",
+    "@graphql-codegen/cli": "2.16.2",
     "@graphql-codegen/introspection": "2.2.3",
-    "@graphql-codegen/typescript": "2.8.5",
+    "@graphql-codegen/typescript": "2.8.6",
     "@graphql-codegen/typescript-operations": "^2.0.0",
     "@sveltejs/kit": "^1.0.1",
     "@tsconfig/svelte": "^3.0.0",
