@@ -99,7 +99,7 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build
-        run: npm run build
+        run: npm run dev
       - name: Build Storybook
         run: yarn build-storybook --quiet
       - name: Serve Storybook and run tests

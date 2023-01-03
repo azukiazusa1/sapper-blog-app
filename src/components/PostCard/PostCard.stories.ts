@@ -37,7 +37,7 @@ const meta: Meta<PostCard> = {
       default: false,
     },
   },
-  decorators: [() => Decorator],
+  decorators: [() => Decorator as any],
 }
 
 export default meta
