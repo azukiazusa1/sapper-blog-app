@@ -58,7 +58,6 @@ __ か ** で囲むとHTMLのstrongタグになります。Qiitaでは<strong>�
 プログラミングに関することをどんどん投稿して、知識を記録、共有しましょう。
 Qiitaに投稿すると、自分のコードやノウハウを見やすい形で残すことができます。
 技術情報はテキストファイルへのメモではなく、タグを付けた文章、シンタックスハイライトされたコードで保存することで初めて再利用可能な知識になる、そうQiitaでは考えています。</details>
-<p>折りたたんだ部分で Markdown を使いたい場合は、折りたたまれる部分全体を <code>&lt;div&gt;</code> で囲ってください。（\` は実際は \ を含みません。また <code>&lt;div&gt;</code> とコードブロックの間には空白行が一つ以上必要です。）</p>
 <h2 id="lists---リスト"><a aria-hidden="true" tabindex="-1" href="#lists---リスト"><span class="icon icon-link"></span></a>Lists - リスト</h2>
 <h3 id="disc型"><a aria-hidden="true" tabindex="-1" href="#disc型"><span class="icon icon-link"></span></a>Disc型</h3>
 <ul>
