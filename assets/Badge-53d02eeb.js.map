@@ -1,0 +1,1 @@
+{"version":3,"file":"Badge-53d02eeb.js","sources":["../../src/components/Badge/Badge.svelte"],"sourcesContent":["<span\n  class=\"inline-flex items-center justify-center px-2 py-1 ml-2 text-xs font-bold leading-none text-white bg-gray-600 rounded-full\"\n>\n  <slot />\n</span>\n"],"names":["insert_hydration","target","span","anchor"],"mappings":"idAAAA,EAIMC,EAAAC,EAAAC,CAAA"}

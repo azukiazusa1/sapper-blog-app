@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>@storybook/cli - Storybook</title>
+
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+      
+
+    <style>
+      #storybook-root[hidden]{
+        display: none !important;
+      }
+    </style>
+
+    
+  </head>
+  <body>
+    <div id="root"></div>
+
+    
+    <script>
+      
+        
+          window['FEATURES'] = {
+  "warnOnLegacyHierarchySeparator": true,
+  "buildStoriesJson": false,
+  "storyStoreV7": true,
+  "breakingChangesV7": true,
+  "interactionsDebugger": false,
+  "argTypeTargetsV7": true
+};
+        
+      
+        
+          window['REFS'] = {};
+        
+      
+        
+          window['LOGLEVEL'] = "info";
+        
+      
+        
+          window['DOCS_OPTIONS'] = {
+  "disable": false,
+  "defaultName": "Docs",
+  "autodocs": "tag"
+};
+        
+      
+        
+          window['CONFIG_TYPE'] = "PRODUCTION";
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </script>
+    
+
+    <script type="module">
+      import './sb-manager/runtime.mjs';
+
+      
+      import './sb-addons/%40storybook/addon-links/dist/manager-bundle.mjs';
+      
+      import './sb-addons/%40storybook/addon-essentials/dist/controls/manager-bundle.mjs';
+      
+      import './sb-addons/%40storybook/addon-essentials/dist/actions/manager-bundle.mjs';
+      
+      import './sb-addons/%40storybook/addon-essentials/dist/backgrounds/manager-bundle.mjs';
+      
+      import './sb-addons/%40storybook/addon-essentials/dist/viewport/manager-bundle.mjs';
+      
+      import './sb-addons/%40storybook/addon-essentials/dist/toolbars/manager-bundle.mjs';
+      
+      import './sb-addons/%40storybook/addon-essentials/dist/measure/manager-bundle.mjs';
+      
+      import './sb-addons/%40storybook/addon-essentials/dist/outline/manager-bundle.mjs';
+      
+      import './sb-addons/%40storybook/addon-interactions/dist/manager-bundle.mjs';
+      
+      import './sb-addons/%40storybook/addon-a11y/manager-bundle.mjs';
+      
+      import './sb-addons/storybook-addon-themes/register-bundle.mjs';
+           
+    </script>    
+
+    <link href="./sb-preview/runtime.mjs" rel="preload" as="script">
+  </body>
+</html>

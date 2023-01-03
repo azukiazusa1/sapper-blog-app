@@ -1,9 +1,0 @@
-.DS_Store
-/node_modules/
-yarn-error.log
-/.svelte-kit
-/static/index.css
-build/
-test-results/
-.env
-.vercel
