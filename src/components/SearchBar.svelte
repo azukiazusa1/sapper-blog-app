@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
-  import SearchInput from './SearchInput.svelte'
-  import DropDownMenu from './DropDownMenu.svelte'
+  import SearchInput from './SearchInput/SearchInput.svelte'
+  import DropDownMenu from './DropDown/DropDownMenu.svelte'
   import type { SearchPostsQuery } from '../generated/graphql'
 
   let value = ''

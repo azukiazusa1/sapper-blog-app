@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Heroimage from '../assets/images/heroImage.png'
+  import Heroimage from '../../assets/images/heroImage.png'
 </script>
 
 <section class="bg-white dark:bg-gray-700 rounded-lg shadow-lg">

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Asset, BlogPost, Tag } from '../generated/graphql'
-  import PostCard from './PostCard.svelte'
+  import PostCard from './PostCard/PostCard.svelte'
 
   export let posts: (Pick<BlogPost, 'title' | 'slug' | 'about' | 'createdAt'> & {
     thumbnail?: Pick<Asset, 'title' | 'url'>

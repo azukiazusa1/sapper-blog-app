@@ -7,3 +7,4 @@ build/
 test-results/
 .env
 .vercel
+storybook-static/

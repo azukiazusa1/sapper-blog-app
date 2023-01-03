@@ -1,6 +1,6 @@
 <script lang="ts">
   import PostList from '../../components/PostList.svelte'
-  import Pagination from '../../components/Pagination.svelte'
+  import Pagination from '../../components/Pagination/Pagination.svelte'
   import type { PageData } from './$types'
 
   export let data: PageData

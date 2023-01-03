@@ -91,14 +91,14 @@ const remarkLinkCard: Plugin = () => async (tree) => {
                   ]),
                   h('div', { className: 'link-card__meta' }, [
                     faviconUrl
-                      ? h('img', { className: 'link-card__favicon', src: faviconUrl, width: 14, height: 14 })
+                      ? h('img', { className: 'link-card__favicon', src: faviconUrl, width: 14, height: 14, alt: '' })
                       : h('div'),
                     h('span', { className: 'link-card__url' }, [text(url.hostname)]),
                   ]),
                 ]),
                 imageUrl
                   ? h('div', { className: 'link-card__thumbnail' }, [
-                      h('img', { src: imageUrl, className: 'link-card__image' }),
+                      h('img', { src: imageUrl, className: 'link-card__image', alt: '' }),
                     ])
                   : h('div'),
               ]),

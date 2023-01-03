@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Tag from '../../components/Tag.svelte'
-  import Badge from '../../components/Badge.svelte'
+  import Tag from '../../components/Tag/Tag.svelte'
+  import Badge from '../../components/Badge/Badge.svelte'
   import type { PageData } from './$types'
 
   export let data: PageData

@@ -1,6 +1,6 @@
 <script lang="ts">
   import DropDownItem from './DropDownItem.svelte'
-  import Loading from './Icons/Loading.svelte'
+  import Loading from '../Icons/Loading.svelte'
 
   export let items: any[]
   export let itemHref = 'href'

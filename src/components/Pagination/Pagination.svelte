@@ -1,6 +1,6 @@
 <script lang="ts">
-  import PrevIcon from './Icons/Prev.svelte'
-  import NextIcon from './Icons/Next.svelte'
+  import PrevIcon from '../Icons/Prev.svelte'
+  import NextIcon from '../Icons/Next.svelte'
   import Page from './Page.svelte'
 
   export let page = 1
@@ -23,6 +23,7 @@
         href={`${href}${prevPage}`}
         data-sveltekit-preload-data
       >
+        <div class="sr-only">前のページ</div>
         <PrevIcon />
       </a>
     {/if}
@@ -40,6 +41,7 @@
         href={`${href}${nextPage}`}
         data-sveltekit-preload-data
       >
+        <div class="sr-only">次のページ</div>
         <NextIcon />
       </a>
     {/if}

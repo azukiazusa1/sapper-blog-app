@@ -1,15 +1,15 @@
 <script lang="ts">
-  import SearchBar from './SearchBar.svelte'
+  import SearchBar from '../SearchBar.svelte'
   import Nav from './Nav.svelte'
   import Title from './Title.svelte'
-  import MoonIcon from './Icons/Moon.svelte'
-  import SunIcon from './Icons/Sun.svelte'
-  import SearchIcon from './Icons/Search.svelte'
-  import MenuIcon from './Icons/Menu.svelte'
-  import RsssIcon from './Icons/Rss.svelte'
+  import MoonIcon from '../Icons/Moon.svelte'
+  import SunIcon from '../Icons/Sun.svelte'
+  import SearchIcon from '../Icons/Search.svelte'
+  import MenuIcon from '../Icons/Menu.svelte'
+  import RsssIcon from '../Icons/Rss.svelte'
   import { createEventDispatcher } from 'svelte'
   import SideMenu from './SideMenu.svelte'
-  import GitHub from './Icons/GitHub.svelte'
+  import GitHub from '../Icons/GitHub.svelte'
 
   let routes = ['/blog', '/about', '/tags']
 

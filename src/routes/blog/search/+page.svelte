@@ -2,8 +2,8 @@
   import { page } from '$app/stores'
   import Loading from '../../../components/Icons/Loading.svelte'
   import PostList from '../../../components/PostList.svelte'
-  import Pagination from '../../../components/Pagination.svelte'
-  import SearchInput from '../../../components/SearchInput.svelte'
+  import Pagination from '../../../components/Pagination/Pagination.svelte'
+  import SearchInput from '../../../components/SearchInput/SearchInput.svelte'
   import type { SearchPostsQuery } from '../../../generated/graphql'
   import { onMount } from 'svelte'
 
