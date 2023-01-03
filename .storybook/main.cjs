@@ -26,7 +26,9 @@ module.exports = {
     autodocs: 'tag',
   },
   async viteFinal(config, { configType }) {
+    console.log(process.env.GH_PAGE, 'NODE_ENV')
     return mergeConfig(config, {
+      base: process.env.GH_PAGE === 'true' ? '/sapper-blog-app' : '/',
       resolve: {
         alias: {
           $lib: path.resolve(__dirname, '../src/lib'),
