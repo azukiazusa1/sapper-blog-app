@@ -1,4 +1,7 @@
 <script>
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-nocheck
+
   import { page } from '$app/stores'
   import variables from '$lib/variables'
 
