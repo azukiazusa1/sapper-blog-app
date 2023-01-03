@@ -16,10 +16,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Build
-        run: npm run dev
       - name: build storybook
-        run: npm run build-storybook
+        run: npm run dev & sleep 3; npm run build-storybook
       - name: deploy storybook
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:

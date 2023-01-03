@@ -154,6 +154,6 @@ Qiitaに投稿すると、自分のコードやノウハウを見やすい形で
         slug: 'tag3',
       },
     ],
-    createdAt: new Date(),
+    createdAt: new Date().toISOString(),
   },
 }
