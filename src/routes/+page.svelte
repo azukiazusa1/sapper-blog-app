@@ -1,5 +1,5 @@
 <script lang="ts">
-  import HeroSection from '../components/HeroSection.svelte'
+  import HeroSection from '../components/HeroSection/HeroSection.svelte'
   import PostList from '../components/PostList.svelte'
   import type { PageData } from './$types'
 

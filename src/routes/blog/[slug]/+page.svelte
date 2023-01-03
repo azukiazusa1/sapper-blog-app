@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import Card from '../../../components/Card.svelte'
+  import Card from '../../../components/Card/Card.svelte'
   import Ogp from '../../../components/Ogp.svelte'
   import PostList from '../../../components/PostList.svelte'
   import TwitterShareButton from '../../../components/TwitterShareButton.svelte'

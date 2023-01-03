@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Asset, Scalars, Tag as TagType } from '../generated/graphql'
-  import Image from './Image/Image.svelte'
-  import Tag from './Tag.svelte'
-  import Time from './Time.svelte'
+  import type { Asset, Scalars, Tag as TagType } from '../../generated/graphql'
+  import Image from '../Image/Image.svelte'
+  import Tag from '../Tag/Tag.svelte'
+  import Time from '../Time/Time.svelte'
 
   export let title: string
   export let slug: string

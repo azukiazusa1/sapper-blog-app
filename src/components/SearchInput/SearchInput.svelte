@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SearchIcon from './Icons/Search.svelte'
+  import SearchIcon from '../Icons/Search.svelte'
   export let value = ''
 </script>
 

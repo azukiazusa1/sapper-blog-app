@@ -1,8 +1,8 @@
 <script lang="ts">
-  import AppTag from './Tag.svelte'
-  import Time from './Time.svelte'
+  import AppTag from '../Tag/Tag.svelte'
+  import Time from '../Time/Time.svelte'
   import 'prismjs/themes/prism-tomorrow.css'
-  import type { Tag } from '../generated/graphql'
+  import type { Tag } from '../../generated/graphql'
 
   export let title: string
   export let contents: string
