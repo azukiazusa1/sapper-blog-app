@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "@playwright/test": "^1.29.0",
+    "@playwright/test": "^1.29.1",
     "@sveltejs/adapter-vercel": "^1.0.0",
     "@types/react": "^18.0.26",
     "@urql/core": "^3.0.0",
