@@ -1,6 +1,7 @@
 <script lang="ts">
   import PostList from '../../../components/PostList.svelte'
   import Pagination from '../../../components/Pagination/Pagination.svelte'
+  import variables from '$lib/variables'
   import type { PageData } from './$types'
   export let data: PageData
 
@@ -12,6 +13,7 @@
 <svelte:head>
   <title>{tagName} | タグ</title>
   <meta name="description" content="{tagName}の記事一覧です。" />
+  <link rel="canonical" href={`https://${variables.baseURL}/tags/${tagSlug}`} />
 </svelte:head>
 
 <h1 class="text-2xl">

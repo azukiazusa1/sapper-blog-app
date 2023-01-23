@@ -1,4 +1,5 @@
 <script lang="ts">
+  import variables from '$lib/variables'
   import HeroSection from '../components/HeroSection/HeroSection.svelte'
   import PostList from '../components/PostList.svelte'
   import type { PageData } from './$types'
@@ -12,6 +13,7 @@
     name="description"
     content="azukiazusaのテックブログ2です。週に1回 Web 開発に関する記事をお届けします。フロントエンドに関する分野の記事が中心です。"
   />
+  <link rel="canonical" href={`https://${variables.baseURL}`} />
 </svelte:head>
 
 <HeroSection />

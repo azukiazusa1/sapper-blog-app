@@ -18,6 +18,8 @@
   <title>{tagName} | タグ</title>
   {#if page === 1}
     <link rel="canonical" href={`https://${variables.baseURL}/tags/${tagSlug}`} />
+  {:else}
+    <link rel="canonical" href={`https://${variables.baseURL}/tags/${tagSlug}/page/${page}`} />
   {/if}
 </svelte:head>
 

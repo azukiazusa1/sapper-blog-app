@@ -11,6 +11,8 @@
   <title>{data.page}ページ目 | azukiazusaのテックブログ2</title>
   {#if data.page === 1}
     <link rel="canonical" href={`https://${variables.baseURL}/blog`} />
+  {:else}
+    <link rel="canonical" href={`https://${variables.baseURL}/blog/page/${data.page}`} />
   {/if}
 </svelte:head>
 

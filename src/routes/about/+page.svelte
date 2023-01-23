@@ -7,6 +7,7 @@
 <svelte:head>
   <title>About</title>
   <meta name="description" {content} />
+  <link rel="canonical" href="https://azukiazusa.dev/about" />
 </svelte:head>
 
 <section>

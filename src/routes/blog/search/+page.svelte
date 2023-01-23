@@ -6,6 +6,7 @@
   import SearchInput from '../../../components/SearchInput/SearchInput.svelte'
   import type { SearchPostsQuery } from '../../../generated/graphql'
   import { onMount } from 'svelte'
+  import variables from '$lib/variables'
 
   let posts: SearchPostsQuery
   let value = ''
@@ -37,6 +38,7 @@
 
 <svelte:head>
   <title>検索</title>
+  <link rel="canonical" href={`https://${variables.baseURL}/blog/search`} />
 </svelte:head>
 <div class="container my-10 md:mx-auto">
   <form on:submit|preventDefault={handleSubmit} role="search">

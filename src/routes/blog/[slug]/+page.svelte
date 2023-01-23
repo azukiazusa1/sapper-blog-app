@@ -6,6 +6,7 @@
   import TwitterShareButton from '../../../components/TwitterShareButton.svelte'
   import HatenaShareButton from '../../../components/HatenaShareButton.svelte'
   import type { PageData } from './$types'
+  import variables from '$lib/variables'
 
   export let data: PageData
 
@@ -20,6 +21,7 @@
 <svelte:head>
   <title>{post.title}</title>
   <meta name="description" content={post.about} />
+  <link rel="canonical" href={`https://${variables.baseURL}/blog/${post.slug}`} />
 </svelte:head>
 
 <Ogp
