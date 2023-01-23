@@ -20,7 +20,7 @@
     "test:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.29.1-focal /bin/bash -c 'npm test -- -u'",
     "typecheck": "tsc --noEmit && svelte-check",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "GH_PAGE=true storybook build",
+    "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
     "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run build-storybook --quiet && npx http-server storybook-static --port 6006 --silent\" \"npx wait-on http://127.0.0.1:6006 && npx test-storybook --url http://127.0.0.1:6006\""
   },

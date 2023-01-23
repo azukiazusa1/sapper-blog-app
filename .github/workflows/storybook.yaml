@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+
+env:
+  GH_PAGE: 'true'
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: build storybook
-        run: npm run build-storybook
       - name: deploy storybook
+        run: npm run build-storybook
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
