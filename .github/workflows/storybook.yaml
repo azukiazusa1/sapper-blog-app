@@ -20,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: build storybook
-      - name: deploy storybook
         run: npm run build-storybook
+      - name: deploy storybook
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
