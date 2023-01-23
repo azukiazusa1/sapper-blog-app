@@ -1,4 +1,5 @@
 <script>
+  import variables from '$lib/variables'
   import author from '../../assets/images/azukiazusa.jpeg'
   const content =
     'このブログはSvelteKit + Contentful + Vercelによって作成されています。学んだ技術についてつらつらと書いてきます。毎週日曜日夜くらいに更新されます。JavaScript/TypeScript/Vue.js/React/Svelte/PHP/Laravel/CakePHPあたり。趣味は読書と麻雀。'
@@ -7,7 +8,7 @@
 <svelte:head>
   <title>About</title>
   <meta name="description" {content} />
-  <link rel="canonical" href="https://azukiazusa.dev/about" />
+  <link rel="canonical" href={`${variables.baseURL}/about`} />
 </svelte:head>
 
 <section>

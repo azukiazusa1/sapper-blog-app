@@ -2,6 +2,7 @@
   import PostList from '../../components/PostList.svelte'
   import Pagination from '../../components/Pagination/Pagination.svelte'
   import type { PageData } from './$types'
+  import variables from '$lib/variables'
 
   export let data: PageData
 </script>
@@ -12,7 +13,7 @@
     name="description"
     content="azukiazusaのテックブログ2です。週に1回 Web 開発に関する記事をお届けします。フロントエンドに関する分野の記事が中心です。"
   />
-  <link rel="canonical" href="https://azukiazusa.dev/search" />
+  <link rel="canonical" href={`${variables.baseURL}/blog`} />
 </svelte:head>
 
 <div class="container my-12 md:mx-auto">

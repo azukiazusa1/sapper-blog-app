@@ -21,7 +21,7 @@
 <svelte:head>
   <title>{post.title}</title>
   <meta name="description" content={post.about} />
-  <link rel="canonical" href={`https://${variables.baseURL}/blog/${post.slug}`} />
+  <link rel="canonical" href={`${variables.baseURL}/blog/${post.slug}`} />
 </svelte:head>
 
 <Ogp

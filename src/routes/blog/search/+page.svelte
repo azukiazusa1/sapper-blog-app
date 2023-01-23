@@ -38,7 +38,7 @@
 
 <svelte:head>
   <title>検索</title>
-  <link rel="canonical" href={`https://${variables.baseURL}/blog/search`} />
+  <link rel="canonical" href={`${variables.baseURL}/blog/search`} />
 </svelte:head>
 <div class="container my-10 md:mx-auto">
   <form on:submit|preventDefault={handleSubmit} role="search">

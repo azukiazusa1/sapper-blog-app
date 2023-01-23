@@ -13,7 +13,7 @@
 <svelte:head>
   <title>{tagName} | タグ</title>
   <meta name="description" content="{tagName}の記事一覧です。" />
-  <link rel="canonical" href={`https://${variables.baseURL}/tags/${tagSlug}`} />
+  <link rel="canonical" href={`${variables.baseURL}/tags/${tagSlug}`} />
 </svelte:head>
 
 <h1 class="text-2xl">
