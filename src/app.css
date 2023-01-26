@@ -247,8 +247,14 @@ h6 .icon-link::before {
 #contents p > code {
   background-color: #eee;
   color: #333;
-  padding: 0.1em 0.4em;
+  padding: 0.1em 0.25em;
   word-break: break-all;
+  border-radius: 0.125rem;
+  font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+}
+
+html.dark #contents p > code {
+  @apply bg-gray-500 text-gray-50;
 }
 
 #contents pre:has(code) {
@@ -271,7 +277,7 @@ h6 .icon-link::before {
 }
 
 .link-card {
-  @apply flex flex-auto items-center justify-between bg-white border rounded-lg md:flex-row hover:bg-gray-100 dark:border-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600 h-32 max-w-full;
+  @apply flex flex-auto items-center justify-between bg-gray-50 border rounded-lg md:flex-row hover:bg-gray-100 dark:border-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600 h-32 max-w-full;
 }
 
 .link-card:hover {
@@ -293,7 +299,7 @@ h6 .icon-link::before {
 }
 
 .link-card__title {
-  @apply text-lg font-bold tracking-tight text-gray-900 dark:text-white truncate;
+  @apply text-lg font-bold tracking-tight text-slate-900 dark:text-white truncate;
 }
 
 .link-card__description {
@@ -314,7 +320,7 @@ h6 .icon-link::before {
 }
 
 .link-card__url {
-  @apply text-gray-900 dark:text-white ml-2;
+  @apply text-slate-900 dark:text-white ml-2;
 }
 
 .link-card__thumbnail {

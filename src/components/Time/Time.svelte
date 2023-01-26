@@ -11,7 +11,7 @@
 
 <time
   datetime={date}
-  class="text-grey-darker text-sm text-opacity-70 text-black dark:text-gray-50 dark:text-opacity-60"
+  class="text-grey-darker text-sm text-opacity-70 text-slate-900 dark:text-gray-50 dark:text-opacity-60"
 >
   {format()}
 </time>
