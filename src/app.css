@@ -66,19 +66,15 @@
 
 #contents ul ul,
 #contents ol ol {
-  margin: 0.5em 0;
+  @apply my-2;
 }
 
 #contents li {
-  margin: 0.2em 0;
+  @apply my-1;
 }
 
 #contents blockquote {
-  border-left: 5px solid #ddd;
-  font-weight: 100;
-  padding: 1rem;
-  padding-right: 0;
-  margin: 1.5rem 0;
+  @apply text-gray-600 border-l-4 border-l-gray-200 pl-4 py-1 my-6 dark:text-gray-300 dark:border-l-gray-400;
 }
 
 #contents p {
