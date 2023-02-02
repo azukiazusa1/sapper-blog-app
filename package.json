@@ -46,7 +46,7 @@
     "remark-parse": "^10.0.0",
     "remark-rehype": "^10.1.0",
     "sanitize-html": "^2.8.0",
-    "satori": "^0.1.0",
+    "satori": "^0.2.0",
     "sharp": "^0.31.1",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.1"
