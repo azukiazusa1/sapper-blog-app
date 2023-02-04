@@ -11,11 +11,12 @@
   export let createdAt: Scalars['DateTime']
   export let tags: Array<Pick<TagType, 'name' | 'slug'>>
   export let small = false
+  export let lazy = true
 </script>
 
 <article class="overflow-hidden h-full bg-white dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600">
   <a href={`/blog/${slug}`}>
-    <Image alt={thumbnail.title} src={thumbnail.url} width={400} height={300} />
+    <Image alt={thumbnail.title} src={thumbnail.url} width={400} height={300} {lazy} />
   </a>
 
   <header class="flex-row items-center justify-between leading-tight p-4 border-t border-gray-300 dark:border-gray-600">

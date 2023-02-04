@@ -13,7 +13,7 @@
 </script>
 
 <div class="flex flex-wrap -mx-1 lg:-mx-4">
-  {#each posts as post (post.slug)}
+  {#each posts as post, i (post.slug)}
     <div class="mt-1 mb-4 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
       <PostCard
         title={post.title}
@@ -23,6 +23,7 @@
         createdAt={post.createdAt}
         tags={post.tagsCollection ? post.tagsCollection.items : []}
         {small}
+        lazy={i > 2 && !small}
       />
     </div>
   {/each}
