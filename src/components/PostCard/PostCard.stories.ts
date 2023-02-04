@@ -36,6 +36,11 @@ const meta: Meta<PostCard> = {
       description: 'フッターを表示するか',
       default: false,
     },
+    lazy: {
+      control: { type: 'boolean' },
+      description: '画像を遅延読み込みするか',
+      default: true,
+    },
   },
   decorators: [() => Decorator as any],
 }
