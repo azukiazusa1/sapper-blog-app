@@ -21,7 +21,7 @@
     ${src}&w=1000 1000w,
     ${src}&w=1100 1100w,
     ${src}&w=1200 1200w`}
-  sizes="(max-width: 600px) 600px, 1200px"
+  sizes="(max-width: 600px) 100vw, 600px"
   loading={lazy ? 'lazy' : 'eager'}
   decoding={lazy ? 'async' : 'auto'}
   height={width}
