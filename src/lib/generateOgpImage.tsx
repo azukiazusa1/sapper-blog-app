@@ -4,7 +4,8 @@ import sharp from 'sharp'
 import fs from 'fs'
 
 export const generateOgpImage = async (title: string, tags: string[]) => {
-  const font = fs.readFileSync('./fonts/NotoSansJP-Regular.otf')
+  const fontRegular = fs.readFileSync('./fonts/NotoSansJP-Regular.otf')
+  const fontBold = fs.readFileSync('./fonts/NotoSansJP-Bold.otf')
   const svg = await satori(
     <div
       style={{
@@ -22,7 +23,6 @@ export const generateOgpImage = async (title: string, tags: string[]) => {
           justifyContent: 'space-between',
           flexDirection: 'column',
           backgroundColor: 'white',
-          fontWeight: 600,
           color: '#000000d1',
           padding: 48,
           borderRadius: 12,
@@ -34,13 +34,14 @@ export const generateOgpImage = async (title: string, tags: string[]) => {
             flexDirection: 'column',
           }}
         >
-          <div style={{ fontSize: 64, maxWidth: 1000 }}>{title}</div>
+          <div style={{ fontSize: 64, maxWidth: 1000, fontWeight: 600 }}>{title}</div>
           <div style={{ display: 'flex', alignItems: 'center', marginTop: 12 }}>
             {tags.map((tag, i) => (
               <div
                 key={i}
                 style={{
                   fontSize: 24,
+                  fontWeight: 400,
                   backgroundColor: 'rgb(229,231,235)',
                   padding: '4px 24px',
                   borderRadius: 9999,
@@ -53,7 +54,7 @@ export const generateOgpImage = async (title: string, tags: string[]) => {
           </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div style={{ fontSize: 48, display: 'flex', alignItems: 'center' }}>
+          <div style={{ fontSize: 48, fontWeight: 400, display: 'flex', alignItems: 'center' }}>
             <img
               src="https://avatars.githubusercontent.com/u/59350345?s=400&u=9248ba88eab0723c214e002bea66ca1079ef89d8&v=4"
               width={60}
@@ -71,8 +72,15 @@ export const generateOgpImage = async (title: string, tags: string[]) => {
       fonts: [
         {
           name: 'Noto Sans JP',
-          data: font,
+          data: fontRegular,
           style: 'normal',
+          weight: 400,
+        },
+        {
+          name: 'Noto Sans JP',
+          data: fontBold,
+          style: 'normal',
+          weight: 600,
         },
       ],
     },
