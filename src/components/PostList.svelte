@@ -23,7 +23,7 @@
         createdAt={post.createdAt}
         tags={post.tagsCollection ? post.tagsCollection.items : []}
         {small}
-        lazy={i > 2 && !small}
+        lazy={i > 2 || small}
       />
     </div>
   {/each}
