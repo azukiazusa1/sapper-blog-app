@@ -34,7 +34,7 @@
               </div>
             {/if}
           </td>
-          <td class="px-6 py-4 truncate">{draft.about || ''}</td>
+          <td class="px-6 py-4 max-w-18">{draft.about || ''}</td>
           <td class="px-6 py-4">
             {#each draft.tagsCollection?.items as tag (tag.slug)}
               <Tag name={tag.name} slug={tag.slug} />

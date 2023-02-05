@@ -16,6 +16,7 @@ export const client = (preview: boolean) =>
     url: `https://graphql.contentful.com/content/v1/spaces/${variables.space}/environments/${variables.environments}`,
     fetch,
     exchanges: [dedupExchange, cacheExchange, ssr, fetchExchange],
+    requestPolicy: preview ? 'network-only' : 'cache-first',
     fetchOptions: () => {
       return {
         headers: {

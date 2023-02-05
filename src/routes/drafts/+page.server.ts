@@ -7,5 +7,6 @@ export const ssr = true
 
 export const load: PageServerLoad = async () => {
   const posts = await PostRepository.getAllPreview()
+
   return posts
 }
