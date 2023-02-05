@@ -1,4 +1,4 @@
-import type { PostsQueryVariables } from '../../generated/graphql'
+import type { PostsQueryVariables, PreviewPostQuery, PreviewPostsQuery } from '../../generated/graphql'
 import { createDummyPosts, createDummyPostBySlugQuery } from '../../utils/createDummyPosts'
 import type { PostRepositoryInterFace } from './types'
 
@@ -14,5 +14,12 @@ export class MockPostRepository implements PostRepositoryInterFace {
   }
   findAll() {
     return Promise.resolve(createDummyPosts(100)())
+  }
+  getAllPreview(): Promise<PreviewPostsQuery> {
+    return Promise.resolve(null)
+  }
+
+  getPreview(id: string): Promise<PreviewPostQuery> {
+    return Promise.resolve(null)
   }
 }

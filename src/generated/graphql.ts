@@ -806,6 +806,18 @@ export type PostsQueryVariables = Exact<{
 
 export type PostsQuery = { __typename?: 'Query', blogPostCollection?: { __typename?: 'BlogPostCollection', total: number, skip: number, limit: number, items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, about?: string | null, createdAt?: any | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null, tagsCollection?: { __typename?: 'BlogPostTagsCollection', items: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null } | null> } | null } | null> } | null };
 
+export type PreviewPostQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type PreviewPostQuery = { __typename?: 'Query', blogPostCollection?: { __typename?: 'BlogPostCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, about?: string | null, article?: string | null, createdAt?: any | null, sys: { __typename?: 'Sys', id: string, firstPublishedAt?: any | null }, tagsCollection?: { __typename?: 'BlogPostTagsCollection', items: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null } | null> } | null } | null> } | null };
+
+export type PreviewPostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PreviewPostsQuery = { __typename?: 'Query', blogPostCollection?: { __typename?: 'BlogPostCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, about?: string | null, sys: { __typename?: 'Sys', id: string }, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null, tagsCollection?: { __typename?: 'BlogPostTagsCollection', items: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null } | null> } | null } | null> } | null };
+
 export type SearchPostsQueryVariables = Exact<{
   order?: InputMaybe<BlogPostOrder>;
   limit?: InputMaybe<Scalars['Int']>;

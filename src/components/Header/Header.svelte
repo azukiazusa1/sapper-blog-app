@@ -11,7 +11,7 @@
   import SideMenu from './SideMenu.svelte'
   import GitHub from '../Icons/GitHub.svelte'
 
-  let routes = ['/blog', '/about', '/tags']
+  let routes = ['/blog', '/about', '/tags', '/drafts']
 
   export let segment: string
   export let darkMode: boolean
