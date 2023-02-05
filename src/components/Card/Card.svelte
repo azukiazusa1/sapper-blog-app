@@ -8,6 +8,7 @@
   export let contents: string
   export let tags: Pick<Tag, 'name' | 'slug'>[]
   export let createdAt: string
+  export let preview = false
 </script>
 
 <article class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg max-w-5xl mx-auto">
@@ -21,6 +22,9 @@
     <p class="my-2">
       <Time date={createdAt} />
     </p>
+    {#if preview}
+      <p class="hint error my-4">これは下書き記事のプレビューです。内容は不正確な恐れがあります。</p>
+    {/if}
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     <p id="contents" class="mt-6">{@html contents}</p>
   </div>

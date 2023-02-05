@@ -11,23 +11,28 @@ const ssr = ssrExchange({
   initialState: !isServerSide ? (window as any).__URQL_DATA__ : undefined,
 })
 
-export const client = createClient({
-  url: `https://graphql.contentful.com/content/v1/spaces/${variables.space}/environments/${variables.environments}`,
-  fetch,
-  exchanges: [dedupExchange, cacheExchange, ssr, fetchExchange],
-  fetchOptions: () => {
-    return {
-      headers: {
-        Authorization: `Bearer ${variables.apiKey}`,
-      },
-    }
-  },
-})
+export const client = (preview: boolean) =>
+  createClient({
+    url: `https://graphql.contentful.com/content/v1/spaces/${variables.space}/environments/${variables.environments}`,
+    fetch,
+    exchanges: [dedupExchange, cacheExchange, ssr, fetchExchange],
+    fetchOptions: () => {
+      return {
+        headers: {
+          Authorization: `Bearer ${preview ? variables.previewApiKey : variables.apiKey}`,
+        },
+      }
+    },
+  })
 
-export const request = (query: DocumentNode | TypedDocumentNode<any, object> | string, variables = {}) => {
+export const request = (
+  query: DocumentNode | TypedDocumentNode<any, object> | string,
+  variables = {},
+  { preview = false } = {},
+) => {
   return new Promise((r) => {
     pipe(
-      client.query(query, variables),
+      client(preview).query(query, variables),
       subscribe((result) => {
         r(result.data)
       }),

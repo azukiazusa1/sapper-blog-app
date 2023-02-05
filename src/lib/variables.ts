@@ -1,5 +1,6 @@
 const variables = {
   apiKey: import.meta.env.VITE_API_KEY,
+  previewApiKey: import.meta.env.VITE_PREVIEW_API_KEY,
   space: import.meta.env.VITE_SPACE,
   environments: import.meta.env.VITE_ENVIRONMENTS,
   analyticsId: import.meta.env.VITE_ANALYTICS_ID,
