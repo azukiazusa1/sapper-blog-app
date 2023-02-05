@@ -3,9 +3,6 @@
   import type { PageData } from './$types'
   import Table from '../../components/Table/Table.svelte'
 
-  export const prerender = false
-  export const ssr = true
-
   export let data: PageData
 </script>
 

@@ -3,9 +3,6 @@
   import type { PageData } from './$types'
   import variables from '$lib/variables'
 
-  export const prerender = false
-  export const ssr = true
-
   export let data: PageData
 
   $: post = data.post
