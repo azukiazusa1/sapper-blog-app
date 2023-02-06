@@ -33,6 +33,7 @@
     "autoprefixer": "^10.2.4",
     "graphql": "^16.0.0",
     "html-minifier": "^4.0.0",
+    "nprogress": "^0.2.0",
     "open-graph-scraper": "^5.0.1",
     "playwright": "^1.29.1",
     "prismjs": "^1.23.0",
