@@ -1,12 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": [
+    "config:base"
+  ],
   "automerge": true,
   "platformAutomerge": true,
   "prHourlyLimit": 0,
   "prConcurrentLimit": 5,
-  "branchConcurrentLimit": 5,
-  "major": {
-    "automerge": false
-  }
+  "branchConcurrentLimit": 5
 }
