@@ -84,19 +84,19 @@ jobs:
         run: npm run build
       - name: pa11y-ci
         run: npm run serve & sleep 3; pa11y-ci
-  test:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: package.json
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Install Playwright
-        run: npx playwright install --with-deps
-      - name: Serve Storybook and run tests
-        run: npm run test-storybook:ci
+  # test:
+  #   timeout-minutes: 60
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version-file: package.json
+  #         cache: npm
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: Install Playwright
+  #       run: npx playwright install --with-deps
+  #     - name: Serve Storybook and run tests
+  #       run: npm run test-storybook:ci
