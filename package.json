@@ -27,7 +27,7 @@
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@playwright/test": "^1.30.0",
-    "@sveltejs/adapter-vercel": "^1.0.6",
+    "@sveltejs/adapter-vercel": "^1.0.0",
     "@types/react": "^18.0.26",
     "@urql/core": "^3.0.0",
     "autoprefixer": "^10.2.4",
