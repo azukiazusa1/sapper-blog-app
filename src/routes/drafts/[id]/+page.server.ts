@@ -6,7 +6,6 @@ import { error, redirect } from '@sveltejs/kit'
 import { markdownToHtml } from '$lib/markdownToHtml'
 
 export const prerender = false
-export const ssr = true
 
 export const load: PageServerLoad = async ({ params }) => {
   const { id } = params

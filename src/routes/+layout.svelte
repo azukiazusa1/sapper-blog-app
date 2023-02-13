@@ -13,7 +13,6 @@
   import { removeTrailingSlash } from '$lib/utils'
   let html: HTMLElement
   let darkMode = false
-  export const prerender = true
 
   NProgress.configure({
     showSpinner: false,
