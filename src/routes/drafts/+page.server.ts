@@ -11,6 +11,6 @@ export const load: PageServerLoad = async () => {
     return posts
   } catch (e) {
     console.error(e)
-    return { status: 500 }
+    return []
   }
 }
