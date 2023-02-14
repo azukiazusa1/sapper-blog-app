@@ -4,6 +4,12 @@ const PostRepository = RepositoryFactory[POST]
 
 export const prerender = false
 
+export const config = {
+  isr: {
+    expiration: 60,
+  },
+}
+
 export const load: PageServerLoad = async () => {
   try {
     const posts = await PostRepository.getAllPreview()
