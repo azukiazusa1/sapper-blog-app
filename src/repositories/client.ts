@@ -2,7 +2,7 @@ import { ssrExchange, createClient, dedupExchange, cacheExchange, fetchExchange 
 import type { TypedDocumentNode } from '@urql/core'
 import type { DocumentNode } from 'graphql'
 import { pipe, subscribe } from 'wonka'
-import variables from '$lib/variables'
+import secrets from '$lib/server/secrets'
 
 const isServerSide = typeof window === 'undefined'
 
@@ -13,14 +13,14 @@ const ssr = ssrExchange({
 
 export const client = (preview: boolean) =>
   createClient({
-    url: `https://graphql.contentful.com/content/v1/spaces/${variables.space}/environments/${variables.environments}`,
+    url: `https://graphql.contentful.com/content/v1/spaces/${secrets.space}/environments/${secrets.environments}`,
     fetch,
     exchanges: [dedupExchange, cacheExchange, ssr, fetchExchange],
     requestPolicy: preview ? 'network-only' : 'cache-first',
     fetchOptions: () => {
       return {
         headers: {
-          Authorization: `Bearer ${preview ? variables.previewApiKey : variables.apiKey}`,
+          Authorization: `Bearer ${preview ? secrets.previewApiKey : secrets.apiKey}`,
         },
       }
     },

@@ -1,4 +1,5 @@
 import type { Handle } from '@sveltejs/kit'
+import { building } from '$app/environment'
 import { minify, type Options } from 'html-minifier'
 
 const minification_options: Options = {
@@ -21,14 +22,14 @@ const minification_options: Options = {
 }
 
 export const handle: Handle = async ({ event, resolve }) => {
-  const response = await resolve(event)
+  let page = ''
 
-  if (response.headers.get('content-type') === 'text/html') {
-    return new Response(minify(await response.text(), minification_options), {
-      status: response.status,
-      headers: response.headers,
-    })
-  }
-
-  return response
+  return resolve(event, {
+    transformPageChunk: ({ html, done }) => {
+      page += html
+      if (done) {
+        return building ? minify(page, minification_options) : page
+      }
+    },
+  })
 }
