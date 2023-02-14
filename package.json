@@ -27,7 +27,7 @@
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@playwright/test": "^1.30.0",
-    "@sveltejs/adapter-vercel": "^1.0.6",
+    "@sveltejs/adapter-vercel": "^2.0.2",
     "@types/react": "^18.0.26",
     "@urql/core": "^3.0.0",
     "autoprefixer": "^10.2.4",
@@ -68,7 +68,7 @@
     "@storybook/sveltekit": "^7.0.0-beta.19",
     "@storybook/test-runner": "^0.9.2",
     "@storybook/testing-library": "^0.0.13",
-    "@sveltejs/kit": "^1.5.5",
+    "@sveltejs/kit": "^1.5.6",
     "@tsconfig/svelte": "^3.0.0",
     "@types/html-minifier": "^4.0.2",
     "@types/node": "^18.0.0",

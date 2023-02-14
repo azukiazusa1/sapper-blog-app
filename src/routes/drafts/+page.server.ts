@@ -3,10 +3,14 @@ import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
 const PostRepository = RepositoryFactory[POST]
 
 export const prerender = false
-export const ssr = true
 
 export const load: PageServerLoad = async () => {
-  const posts = await PostRepository.getAllPreview()
+  try {
+    const posts = await PostRepository.getAllPreview()
 
-  return posts
+    return posts
+  } catch (e) {
+    console.error(e)
+    return []
+  }
 }
