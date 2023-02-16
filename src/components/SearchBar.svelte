@@ -37,7 +37,7 @@
   const handleBlur = () => {
     setTimeout(() => {
       isFocus = false
-    }, 100)
+    }, 300)
   }
 
   const handleSubmit = () => {
