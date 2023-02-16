@@ -8,7 +8,6 @@
   import NProgress from 'nprogress'
 
   const reloadPage = async () => {
-    console.log('reload')
     NProgress.start()
     await invalidateAll()
     NProgress.done()
