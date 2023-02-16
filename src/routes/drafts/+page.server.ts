@@ -2,6 +2,8 @@ import type { PageServerLoad } from './$types'
 import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
 const PostRepository = RepositoryFactory[POST]
 
+export const prerender = false
+
 export const config = {
   isr: {
     expiration: 60,
