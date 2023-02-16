@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/svelte'
-import FloatingActionButton from './FloatingActionButton.svelte'
+import FloatingActionButton from './FloatingActionButtonView.svelte'
 
 const meta = {
   title: 'FloatingActionButton',
