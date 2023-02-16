@@ -1,4 +1,4 @@
-import { generateOgpImage } from '$lib/generateOgpImage'
+import { generateOgpImage } from '$lib/server/generateOgpImage'
 import type { RequestHandler } from '@sveltejs/kit'
 export const prerender = true
 

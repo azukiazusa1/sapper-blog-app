@@ -3,7 +3,7 @@ const PostRepository = RepositoryFactory[POST]
 
 import type { PageServerLoad } from './$types'
 import { error, redirect } from '@sveltejs/kit'
-import { markdownToHtml } from '$lib/markdownToHtml'
+import { markdownToHtml } from '$lib/server/markdownToHtml'
 
 export const prerender = false
 
