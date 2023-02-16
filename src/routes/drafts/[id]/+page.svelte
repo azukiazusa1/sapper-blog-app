@@ -8,13 +8,19 @@
   import NProgress from 'nprogress'
 
   const reloadPage = async () => {
+    console.log('reload')
     NProgress.start()
     await invalidateAll()
     NProgress.done()
   }
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'r' && e.ctrlKey) {
+    // ⌘ + shift + r のときは普通にリロード
+    if (e.key === 'r' && e.metaKey && e.shiftKey) {
+      return
+    }
+
+    if (e.key === 'r' && e.metaKey) {
       e.preventDefault()
       reloadPage()
     }
