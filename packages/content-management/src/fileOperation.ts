@@ -55,8 +55,17 @@ export const getBlogFile = async (filename: string): Promise<BlogPost> => {
   const dirname = path.join(__dirname, `../../../contents/blogPost/${filename}.md`)
   const content = await fs.readFile(dirname, 'utf-8')
   const blogPost = yamlFront.loadFront(content)
-  blogPost.article = blogPost.__content
-  delete blogPost.__content
 
-  return blogPost as BlogPost
+  // TODO: Zod で型チェック
+  return {
+    id: blogPost['id'] as string,
+    title: blogPost['title'] as string,
+    about: blogPost['about'] as string,
+    article: blogPost.__content,
+    createdAt: blogPost['createdAt'] as string,
+    updatedAt: blogPost['updatedAt'] as string,
+    slug: blogPost['slug'] as string,
+    tags: blogPost['tags'] as string[],
+    published: blogPost['published'] as boolean,
+  } satisfies BlogPost
 }
