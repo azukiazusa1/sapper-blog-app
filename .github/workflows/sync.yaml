@@ -1,0 +1,32 @@
+name: Sync Blog Posts
+
+on:
+  repository_dispatch:
+    types: [sync-blog-posts]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: package.json
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Sync blog posts
+        run: npm run sync -w=packages/content-management
+        env:
+          MANAGEMENT_TOKEN: ${{ secrets.MANAGEMENT_TOKEN }}
+          VITE_SPACE: ${{ secrets.PREVIEW_SPACE }}
+          VITE_ENVIRONMENTS: master
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "Sync blog posts"
+          git push

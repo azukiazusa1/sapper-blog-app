@@ -1,6 +1,8 @@
 name: CI
 on:
   pull_request:
+    path:
+      - app/**
 
 env:
   VITE_API_KEY: ${{ secrets.PREVIEW_API_KEY }}
@@ -64,6 +66,7 @@ jobs:
         run: chmod 777 -R .
       - name: Run Tests
         run: npx playwright test
+        working-directory: app
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
@@ -83,7 +86,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: pa11y-ci
-        run: npm run serve & sleep 3; pa11y-ci
+        run: npm run serve -w=app & sleep 3; pa11y-ci
   # test:
   #   timeout-minutes: 60
   #   runs-on: ubuntu-latest

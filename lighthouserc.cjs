@@ -8,7 +8,7 @@ module.exports = {
       target: 'temporary-public-storage',
     },
     collect: {
-      startServerCommand: 'npm run serve',
+      startServerCommand: 'npm run serve -w=app',
       url,
       numberOfRuns: 1,
       settings: {

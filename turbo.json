@@ -1,0 +1,15 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "outputs": [".vercel/**"]
+    },
+    "lint": {},
+    "test": {},
+    "dev": {
+      "cache": false
+    },
+    "typecheck": {},
+    "format": {}
+  }
+}

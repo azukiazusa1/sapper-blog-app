@@ -6,19 +6,16 @@
   import variables from '$lib/variables'
   import { invalidateAll } from '$app/navigation'
   import NProgress from 'nprogress'
-
   const reloadPage = async () => {
     NProgress.start()
     await invalidateAll()
     NProgress.done()
   }
-
   const handleKeyDown = (e: KeyboardEvent) => {
     // ⌘ + shift + r のときは普通にリロード
     if (e.key === 'r' && e.metaKey && e.shiftKey) {
       return
     }
-
     if (e.key === 'r' && e.metaKey) {
       e.preventDefault()
       reloadPage()
