@@ -1,3 +1,4 @@
+console.log(import.meta.env.VITE_API_KEY)
 const secrets = {
   apiKey: import.meta.env.VITE_API_KEY,
   previewApiKey: import.meta.env.VITE_PREVIEW_API_KEY,

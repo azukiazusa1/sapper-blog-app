@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import paths from '../testedPaths.cjs'
+import paths from '../../testedPaths.cjs'
 
 for (const path of paths) {
   test(`VRT: ${path}`, async ({ page }) => {

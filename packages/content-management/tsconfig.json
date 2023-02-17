@@ -1,0 +1,12 @@
+{
+  "extends": "@tsconfig/node-lts-strictest-esm",
+  "ts-node": {
+    "swc": true,
+    "esm": true
+  },
+  "compilerOptions": {
+    "types": [
+      "vitest/importMeta"
+    ]
+  }
+}

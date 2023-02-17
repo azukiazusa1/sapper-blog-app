@@ -1,10 +1,12 @@
 .DS_Store
 /node_modules/
 yarn-error.log
-/.svelte-kit
+app/.svelte-kit
 /static/index.css
-build/
-test-results/
+app/build/
+app/test-results/
+app/node_modules
 .env
 .vercel
+.turbo
 storybook-static/
