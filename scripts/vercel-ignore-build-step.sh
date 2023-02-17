@@ -6,7 +6,4 @@ if [ "$VERCEL_GITHUB_COMMIT_REF" = "gh-pages" ]; then
   exit 0
 fi
 
-GLOB=${@}
-PREV_MERGE_COMMIT=`git rev-list --grep "Merge pull request" -n 1 HEAD`
-
-eval "git diff --quiet $PREV_MERGE_COMMIT HEAD -- $GLOB"
+eval "git diff --quiet HEAD^ HEAD ./app"
