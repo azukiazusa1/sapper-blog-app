@@ -1,5 +1,7 @@
 ---
+id: GljjCNWnOW8sEgql7rCD6
 title: "Q：TypeScript の関数の返り値の型を明示的に書かないのは犯罪ですか？#Shorts"
+slug: "q-typescript-shorts"
 about: "TypeScript において関数の返り値の型は推論させることは可能ですが、これはコードベース全体に意図しない型の変更による影響が広がる可能性があります。"
 createdAt: "2022-02-13T00:00+09:00"
 updatedAt: "2022-02-13T00:00+09:00"

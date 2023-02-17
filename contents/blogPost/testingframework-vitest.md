@@ -1,5 +1,7 @@
 ---
+id: 3RtRu2WqCpp66VlJRnsc2K
 title: "Vitest と呼ばれるテスティングフレームワークがめちゃくちゃ早いらしいな"
+slug: "testingframework-vitest"
 about: "Vitest は Vite ベースの JavaScript のテスティングフレームワークです。"
 createdAt: "2021-12-26T00:00+09:00"
 updatedAt: "2021-12-26T00:00+09:00"

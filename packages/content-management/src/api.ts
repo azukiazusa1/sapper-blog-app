@@ -16,10 +16,19 @@ const client = contentful.createClient({
 const space = await client.getSpace(Env.space)
 const environment = await space.getEnvironment(Env.environments)
 
+const cache = new Map<string, ContentfulTag[]>()
+
 const fetchTags = async (): Promise<ContentfulTag[]> => {
+  if (cache.has('tags')) {
+    return cache.get('tags') as ContentfulTag[]
+  }
+
   const tags = await environment.getEntries({
     content_type: 'tag',
   })
+
+  cache.set('tags', tags.items as unknown as ContentfulTag[])
+
   return tags.items as unknown as ContentfulTag[]
 }
 
@@ -77,4 +86,79 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
       } satisfies DraftBlogPost
     }
   })
+}
+
+export const createBlogPost = async (blog: BlogPost): Promise<void> => {
+  const tags = await fetchTags()
+  const entry = await environment.createEntry('blogPost', {
+    fields: {
+      title: {
+        'en-US': blog.title,
+      },
+      slug: {
+        'en-US': blog.slug,
+      },
+      about: {
+        'en-US': blog.about,
+      },
+      article: {
+        'en-US': blog.article,
+      },
+      createdAt: {
+        'en-US': blog.createdAt,
+      },
+      updatedAt: {
+        'en-US': blog.updatedAt,
+      },
+      tags: {
+        'en-US': blog.tags.map((tag) => {
+          return {
+            sys: {
+              type: 'Link',
+              linkType: 'Entry',
+              id: tags.find((t) => flattenField(t.fields.name) === tag)?.sys.id,
+            },
+          }
+        }),
+      },
+    },
+  })
+
+  if (blog.published) {
+    await entry.publish()
+  }
+}
+
+export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
+  const entry = await environment.getEntry(blog.id)
+  const tags = await fetchTags()
+  const fields = entry.fields
+
+  fields['title']['en-US'] = blog.title
+  fields['slug']['en-US'] = blog.slug
+  fields['about']['en-US'] = blog.about
+  fields['article']['en-US'] = blog.article
+  fields['createdAt']['en-US'] = blog.createdAt
+  fields['updatedAt']['en-US'] = blog.updatedAt
+  fields['tags']['en-US'] = blog.tags.map((tag) => {
+    return {
+      sys: {
+        type: 'Link',
+        linkType: 'Entry',
+        id: tags.find((t) => flattenField(t.fields.name) === tag)?.sys.id,
+      },
+    }
+  })
+
+  await entry.update()
+
+  if (blog.published) {
+    await entry.publish()
+  }
+}
+
+export const deleteBlogPost = async (id: string): Promise<void> => {
+  const entry = await environment.getEntry(id)
+  await entry.unpublish()
+  await entry.delete()
 }

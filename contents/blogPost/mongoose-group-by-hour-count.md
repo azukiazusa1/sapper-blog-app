@@ -1,5 +1,7 @@
 ---
+id: 3xNzHzULvKTFegCu13TFua
 title: "【mongoose】日付のカラムで時間ごとにグループ化してドキュメント数をカウントする"
+slug: "mongoose-group-by-hour-count"
 about: "タイトルのとおりです"
 createdAt: "2021-07-18T00:00+09:00"
 updatedAt: "2021-07-18T00:00+09:00"

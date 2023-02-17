@@ -1,5 +1,7 @@
 ---
+id: 1T0JPTxjWrIfjqC9m5hXjC
 title: "Go 言語　標準パッケージでHTTPサーバー"
+slug: "go-http"
 about: "Go言語は、標準パッケージでHTTPサーバーと基本的なHTTPクライアントを提供します。 使用するのは、net/httpというパッケージです。"
 createdAt: "2020-11-08T00:00+09:00"
 updatedAt: "2020-11-08T00:00+09:00"

@@ -1,5 +1,7 @@
 ---
+id: EHpHcxE8D2ltdD673W10f
 title: "JSONオブジェクトのあれこれ"
+slug: "json-object"
 about: "`JSON`オブジェクトはJavaScriptにおいて、JSONをパースしたり値をJSONに変換するためにもっぱら使われます。  普段使っている`JSON.stringify()`や`JSON.parse()`にはオプショナルな引数を渡すことによってその振る舞いを変更することができます。"
 createdAt: "2021-07-04T00:00+09:00"
 updatedAt: "2021-07-04T00:00+09:00"

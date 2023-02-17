@@ -1,5 +1,7 @@
 ---
+id: 3i91qJrvc5Xk0QmjCkBC3M
 title: "KubernetesのパッケージマネージャーHelm"
+slug: "kubernetes-helm"
 about: "Helmは、Kubernetsのパッケージマネージャーです。 例えば、npmを利用して第三者が作成したパッケージをレポジトリで管理して検索・インストールするように、Helmではチャート(Chart)と呼ばれる設定ファイルをレポジトリで管理しています。"
 createdAt: "2021-03-14T00:00+09:00"
 updatedAt: "2021-03-14T00:00+09:00"

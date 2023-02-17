@@ -1,5 +1,7 @@
 ---
+id: 3fSOYlPU95IS65fgD7gIFq
 title: "【TypeScript】type-challenges 中級編"
+slug: "typescript-type-challenges"
 about: "[type-challengs](https://github.com/type-challenges/type-challenges) の medium レベルをやります。"
 createdAt: "2021-10-24T00:00+09:00"
 updatedAt: "2021-10-24T00:00+09:00"

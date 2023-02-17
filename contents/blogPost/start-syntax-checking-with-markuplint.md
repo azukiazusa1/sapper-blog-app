@@ -1,5 +1,7 @@
 ---
+id: 4clsBlTOVYYGcnmeSlsotK
 title: "markuplint で構文チェックを始めよう"
+slug: "start-syntax-checking-with-markuplint"
 about: "HTML の構文チェックを実施するには適切なツールを導入するのがよいでしょう。この記事では markuplint と呼ばれる HTML の静的解析ツールを紹介します。markuplint は JSX(React),Vue,Svlete のようなテンプレートエンジンにも対応しています。"
 createdAt: "2022-04-24T00:00+09:00"
 updatedAt: "2022-04-24T00:00+09:00"

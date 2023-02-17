@@ -1,5 +1,7 @@
 ---
+id: 1tsgSfKnoe2z3OM5zomet2
 title: "青春JSDocはTypeScript先輩の夢を見ない"
+slug: "jsdoc-typescript"
 about: "時には、TypeScriptという概念が存在しない退屈な世界で開発を行わなけらばならない状況はあるでしょう。私はもはやキーボードでタイピングすることすらままなりません。  そんなJavaScriptしか利用できない状況で代替手段となるのが、JSDocです。JSDocのアノテーションによって型を付与することによって最低限の支援を受けることができます。"
 createdAt: "2021-08-15T00:00+09:00"
 updatedAt: "2021-08-15T00:00+09:00"

@@ -1,5 +1,7 @@
 ---
+id: 1gm1qoxbVwQfKlSQsNkX4n
 title: "【Vue.js】script setup 構文がすごくすごい"
+slug: "vue-js-script-setup"
 about: "Vue.js 3.x から script setup 構文が使えるようになりました。これは単一ファイルコンポーネント(SFC)内で Composition API を使用している際に使える糖衣構文です。下記のようなメリットを得ることができ、公式からも使用が推奨されています。"
 createdAt: "2021-09-26T00:00+09:00"
 updatedAt: "2021-09-26T00:00+09:00"

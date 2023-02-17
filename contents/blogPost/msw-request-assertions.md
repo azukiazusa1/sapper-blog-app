@@ -1,5 +1,7 @@
 ---
+id: 7E8bLyCzCNmLnK9pWTMOxq
 title: "msw でリクエストを検証する方法"
+slug: "msw-request-assertions"
 about: "msw 使ってテストを記述した時期待したリクエストが送信されているのか検査したくなるかもしれません。リクエストを検証する方法と、それを回避する方法を紹介します。"
 createdAt: "2022-03-13T00:00+09:00"
 updatedAt: "2022-03-13T00:00+09:00"

@@ -1,5 +1,7 @@
 ---
+id: ZZ9piCw17Q7WEAsB56j2c
 title: "ReactのErrorBoundaryで内部のエラーをキャッチする"
+slug: "react-errorboundary"
 about: "Error Boundaryとは、自身の子コンポーネントツリーで発生したJavaScriptのエラーをキャッチ・記録しフォールバックのUIを表示するコンポーネントです。  例えるなら、`try/catch`構文を行うコンポーネントのようなものと言えます。"
 createdAt: "2021-06-20T00:00+09:00"
 updatedAt: "2021-06-20T00:00+09:00"

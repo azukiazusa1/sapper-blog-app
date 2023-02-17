@@ -1,5 +1,7 @@
 ---
+id: 3lleHkt1P2mCRmyspGl09t
 title: "Volar で Vuetify2.x  の補完を効かせる"
+slug: "volar-vuetify2-x"
 about: "Volar + Vuetify 2.x を利用する場合、型定義ファイルを作成してグローバルコンポーネントを定義する必要があります。"
 createdAt: "2022-07-10T00:00+09:00"
 updatedAt: "2022-07-10T00:00+09:00"

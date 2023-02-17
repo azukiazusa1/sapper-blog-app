@@ -1,5 +1,7 @@
 ---
+id: 5Vu57bqPpBcYVPPsmf16r5
 title: "Playwright でコンポーネントテスト"
+slug: "playwright-component-testing"
 about: "Playwright は E2E テストのための Node.js フレームワークです。v1.22.0 から React,Vue.js,Svelte のコンポーネントに対してテストを実行できるようになりました。つまりもともと備えていた E2E レベルのテストに加えて、結合レベルのテストまでカバーできるようになったということです。"
 createdAt: "2022-05-22T00:00+09:00"
 updatedAt: "2022-05-22T00:00+09:00"

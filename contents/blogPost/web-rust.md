@@ -1,5 +1,7 @@
 ---
+id: 4zDMWNUeqabXITEdcA1jUn
 title: "Web フロントエンドエンジニアなら当然 Rust も書けますよね？？"
+slug: "web-rust"
 about: "本記事では Yew を利用して Web アプリケーションを作成してみたいと思います。Yew は React や Vue などと同じくコンポーネントベースのフレームワークでインタラクティブな UI を作成できます。"
 createdAt: "2022-02-27T00:00+09:00"
 updatedAt: "2022-02-27T00:00+09:00"

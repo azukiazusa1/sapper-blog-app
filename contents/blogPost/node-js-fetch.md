@@ -1,5 +1,7 @@
 ---
+id: 7n8nY3SWSzTjEpHUOUljUD
 title: "Node.js に fetch がやってきた"
+slug: "node-js-fetch"
 about: "Node.js で fetch が使えるようになる"
 createdAt: "2022-02-06T00:00+09:00"
 updatedAt: "2022-02-06T00:00+09:00"

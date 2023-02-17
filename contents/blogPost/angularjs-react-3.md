@@ -1,5 +1,7 @@
 ---
+id: 4jtCLN3uaTewFCLqHtFXHa
 title: "AngularJS のチュートリアルを React にリプレイスしてみた③"
+slug: "angularjs-react-3"
 about: "それではいよいよ、AnguarJS のルーティングモジュールである `ngRoute` を置き換えましょう。この置き換えが完了したら AngularJS を完全に取り除くことができます。"
 createdAt: "2022-08-14T00:00+09:00"
 updatedAt: "2022-08-14T00:00+09:00"

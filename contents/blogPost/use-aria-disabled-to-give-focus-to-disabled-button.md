@@ -1,5 +1,7 @@
 ---
+id: 4tyFV1argIJHolBcOfw8iM
 title: "無効にしたボタンにフォーカスさせたいときには aria-disabled を使う"
+slug: "use-aria-disabled-to-give-focus-to-disabled-button"
 about: "例えばフォームの項目になにか入力されるまで、送信ボタンを無効にしたい状況があるかと思います。このような場合には `<button>` に `disabled` 属性を与えることでフォームの送信を無効にできます。`disabled` 属性はデフォルトでコントロールを無効にする一般的に期待されるすべての機能を提供するため、多くの場合はこの属性を使用するべきです。しかし `disabled` 属性には 1 つ問題点が存在します。それは Tab キーによるフォーカスができなくなるという点です。"
 createdAt: "2023-01-15T00:00+09:00"
 updatedAt: "2023-01-15T00:00+09:00"

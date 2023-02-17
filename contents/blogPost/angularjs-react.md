@@ -1,5 +1,7 @@
 ---
+id: 5ACtPt8kTcKUmsuY1XIE08
 title: "AngularJS のチュートリアルを React にリプレイスしてみた①"
+slug: "angularjs-react"
 about: "AngularJS のチュートリアルを React にリプレイスします。"
 createdAt: "2022-07-31T00:00+09:00"
 updatedAt: "2022-07-31T00:00+09:00"

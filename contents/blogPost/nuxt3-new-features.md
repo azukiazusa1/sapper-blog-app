@@ -1,5 +1,7 @@
 ---
+id: 70JvyVM6NdKuBNZqwgfsFo
 title: "Nuxt3 の新しい機能いろいろ"
+slug: "nuxt3-new-features"
 about: "現在 Nuxt.js は バージョン3がパブリックベータ版として提供されています。 Nuxt.js が 2 → 3 に移行するにあたってたくさんの新機能が追加されました。"
 createdAt: "2021-12-12T00:00+09:00"
 updatedAt: "2021-12-12T00:00+09:00"

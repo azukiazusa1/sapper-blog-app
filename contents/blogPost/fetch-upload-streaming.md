@@ -1,5 +1,7 @@
 ---
+id: 6ZB8hpKB1F4uIsc46YGuuM
 title: "Fetch Upload Streaming でチャットアプリを作ってみる"
+slug: "fetch-upload-streaming"
 about: "Fetch Upload Streaming とは、ブラウザの JavaScript の POST リクエストで HTTP のストリーミングを行える機能です。より具体的には、Fetch API の `body` に ReadableStream を渡せるようになります。"
 createdAt: "2022-08-21T00:00+09:00"
 updatedAt: "2022-08-21T00:00+09:00"

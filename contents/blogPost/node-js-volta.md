@@ -1,5 +1,7 @@
 ---
+id: 6duFGtubCCQEqTmPEonmDL
 title: "Node.js のバージョン管理には Volta がよい"
+slug: "node-js-volta"
 about: "皆さん Node.js のバージョン管理ツールには何を使っておりますでしょうか？上記の中でも私がオススメするのは [volta](https://volta.sh/) です。volta は 1.0 がリリースされたのが2020年12月と比較的新しいツールです。"
 createdAt: "2022-04-17T00:00+09:00"
 updatedAt: "2022-04-17T00:00+09:00"

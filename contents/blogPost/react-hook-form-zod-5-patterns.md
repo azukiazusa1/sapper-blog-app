@@ -1,5 +1,7 @@
 ---
+id: 1gInemylx3oblhAYMWOT06
 title: "React Hook Form で Zod を使う時の 5 つパターン"
+slug: "react-hook-form-zod-5-patterns"
 about: "React Hook Form で Zod を使用する時によくあるバリデーションのパターンを 5 つ紹介します"
 createdAt: "2023-02-12T00:00+09:00"
 updatedAt: "2023-02-12T00:00+09:00"

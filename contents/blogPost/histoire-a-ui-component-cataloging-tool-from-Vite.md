@@ -1,5 +1,7 @@
 ---
+id: 3umlIiUNubGYQzfBoZVLO5
 title: "Vue 向けの Vite 製の UI コンポーネントカタログツール Histoire"
+slug: "histoire-a-ui-component-cataloging-tool-from-Vite"
 about: "Histoireはフランス語で「Story」という意味の単語であり、Storybook のように UI コンポーネントのカタログを作成するツールです。Vite にネイティブ対応、Vue の SFC 形式で Story を書けるといった特徴があります。"
 createdAt: "2022-06-05T00:00+09:00"
 updatedAt: "2022-06-05T00:00+09:00"

@@ -1,5 +1,7 @@
 ---
+id: 36OjS31xT3orA4NTf05gYH
 title: "Deno Web フレームワーク Fresh チュートリアル"
+slug: "fresh-tutorial"
 about: "Fresh は Deno 製の Web フレームワークです。事前のビルドを必要せず、エッジでレンダリングを提供するという特徴があります。また、Islands Architecture を採用しており、デフォルトではクライアントに JavaScript が配信されることがありません。"
 createdAt: "2022-06-19T00:00+09:00"
 updatedAt: "2022-06-19T00:00+09:00"

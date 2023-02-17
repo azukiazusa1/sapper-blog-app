@@ -1,5 +1,7 @@
 ---
+id: 2OFN6XUeTuIEbRNxWYCZhF
 title: "Storybook の interaction testing と jest を組み合わせる"
+slug: "compose-storybook-interaction-testing-jest"
 about: "Storybook の Component Story Format 3.0 では新機能として `play()` 関数が追加されました。  `play()` 関数は Storybook 上で ユーザーのクリックやフォーム入力のようなインタラクションな操作を表現することができます。  `play()` 関数の大きな特徴としては Component Story Format の移植性の高さを利用して Storybook 上で定義したインタラクションを `Jest` など他の領域においても再利用できることです。"
 createdAt: "2022-01-23T00:00+09:00"
 updatedAt: "2022-01-23T00:00+09:00"

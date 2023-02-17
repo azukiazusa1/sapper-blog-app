@@ -1,5 +1,7 @@
 ---
+id: 1hoeYWvFpBx8tCIC2GvYma
 title: "TypeScript 4.9 で in 演算子による型の絞り込みが改善された"
+slug: "typescript-4-9-in"
 about: "TypeScript において `in` 演算子を `unknown` 型に対して使用した際の挙動が改善されました。"
 createdAt: "2022-11-20T00:00+09:00"
 updatedAt: "2022-11-20T00:00+09:00"

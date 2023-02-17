@@ -1,5 +1,7 @@
 ---
+id: 20j7YgNX5HCR9OY5hAgqyE
 title: "【TypeScript】型アノテーションと型アサーションの違い"
+slug: "typescript-type-annotation-vs-type-assetion"
 about: "型アノテーションと型アサーションによる変数宣言は、一見同じ結果ををもたらすように見えます。しかし、型アサーションには明確な欠点が存在します。"
 createdAt: "2021-07-24T00:00+09:00"
 updatedAt: "2021-07-24T00:00+09:00"

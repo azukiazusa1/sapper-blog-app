@@ -1,5 +1,7 @@
 ---
+id: 3juvS7xuG2RVygYtqTgNa2
 title: "Tailwind CSS ベースの UI フレームワークという選択肢"
+slug: "tailwind-css-ui-library-option"
 about: "この記事を読んでいるみなさんも、Vuetify や MUI のような UI フレームワークを使用したことがあるでしょう。これらの UI フレームワークは Web アプリケーションでよく使われる UI パーツを非常に高機能で提供しており、多大な工数の削減に貢献しています。  その一方で、細かなスタイルの調整に手間取り余分に時間を取られ苦労を経験している方も多いのではないでしょうか？"
 createdAt: "2022-05-15T00:00+09:00"
 updatedAt: "2022-05-15T00:00+09:00"

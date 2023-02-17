@@ -1,5 +1,7 @@
 ---
+id: 6N00Agdv9F0ngDUbTtbBRz
 title: "Webpack5 Module Federation ではじめるマイクロフロントエンド"
+slug: "webpack5-module-federation"
 about: "Webpack5 の Module Federation を使用してマイクロフロントエンドを作成します。"
 createdAt: "2021-11-21T00:00+09:00"
 updatedAt: "2021-11-21T00:00+09:00"

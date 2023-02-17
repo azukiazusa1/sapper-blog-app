@@ -1,5 +1,7 @@
 ---
+id: 3fFqhHW97Bhoup0vUTo3RV
 title: "Vuex 5 でどのように変わるのか。"
+slug: "vuex-5"
 about: " 現在リリースされている最新のバージョンは Vuex 4 です。 これは Vuex 3 と互換性のあるバージョンで Vue 3 で使用するためのものであり、 Vuex 3 と同じ API となっています。  Vuex 5 は Vue 3 において　Composition API による Reactivity API が登場したことにより Reactivitty API によってどのように Vuex をどうさせるか再考されたバージョンとなっています。"
 createdAt: "2021-09-26T00:00+09:00"
 updatedAt: "2021-09-26T00:00+09:00"

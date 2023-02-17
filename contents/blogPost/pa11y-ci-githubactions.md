@@ -1,5 +1,7 @@
 ---
+id: 79f3mj1zk0bKneHYXScGQD
 title: "Pa11y CI でアクセシビリティテストを GitHub Actions で実行する"
+slug: "pa11y-ci-githubactions"
 about: "Pa11y とは Web Content Accessibility Guidelines (WCAG) をベースに HTML のアクセシビリティを検査するツールです。適合レベル AA を対象にテストします。Pa11y にはいくつかの種類がありますが、その中でも Pa11y CI は CI 上で実行することにフォーカスしています。"
 createdAt: "2022-12-04T00:00+09:00"
 updatedAt: "2022-12-04T00:00+09:00"

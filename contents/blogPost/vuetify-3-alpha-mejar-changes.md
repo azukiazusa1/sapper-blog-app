@@ -1,5 +1,7 @@
 ---
+id: 7iV9EA9pt8XuugJTV8anSZ
 title: "Vuetify 3 Alpha の主な変更点"
+slug: "vuetify-3-alpha-mejar-changes"
 about: "[Vuetify](https://vuetifyjs.com/) は Vue.js で多く使われている UI コンポーネントです。現在のバージョンは Vue 3 には対応していません。  現在 Vue 3 に対応する Alpha 版の Vuetify 3 が公開されています。開発スケジュールは以下のとおりになっています。"
 createdAt: "2021-12-19T00:00+09:00"
 updatedAt: "2021-12-19T00:00+09:00"

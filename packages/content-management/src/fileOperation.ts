@@ -2,6 +2,7 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
+import yamlFront from 'yaml-front-matter'
 import type { BlogPost } from './types'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -11,7 +12,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 export const createBlogFile = async (blog: BlogPost) => {
   const { title, about, article, createdAt, updatedAt, slug, tags, published } = blog
   const content = `---
+id: ${blog.id}
 title: "${title ? title : 'null'}"
+slug: ${slug ? `"${slug}"` : 'null'}
 about: "${about ? about : 'null'}"
 createdAt: ${createdAt ? `"${createdAt}"` : 'null'}
 updatedAt: ${updatedAt ? `"${updatedAt}"` : 'null'}
@@ -46,4 +49,14 @@ export const deletePublishedBlogFile = async (blog: BlogPost) => {
   }
 
   await fs.unlink(dirname)
+}
+
+export const getBlogFile = async (filename: string): Promise<BlogPost> => {
+  const dirname = path.join(__dirname, `../../../contents/blogPost/${filename}.md`)
+  const content = await fs.readFile(dirname, 'utf-8')
+  const blogPost = yamlFront.loadFront(content)
+  blogPost.article = blogPost.__content
+  delete blogPost.__content
+
+  return blogPost as BlogPost
 }

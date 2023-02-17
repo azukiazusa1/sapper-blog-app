@@ -1,0 +1,39 @@
+name: Update Blog Post
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - contents/**
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    name: Update changed-files
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Get changed files in the contents folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v35
+        with:
+          files: |
+            contents/**
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: package.json
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Update changed files
+        run: npm run update
+        env:
+          ADDED_FILES: ${{ steps.changed-files-specific.outputs.added_files }}
+          MODIFIED_FILES: ${{ steps.changed-files-specific.outputs.modified_files }}
+          DELETED_FILES: ${{ steps.changed-files-specific.outputs.deleted_files }}
+          MANAGEMENT_TOKEN: ${{ secrets.MANAGEMENT_TOKEN }}
+          VITE_SPACE: ${{ secrets.PREVIEW_SPACE }}
+          VITE_ENVIRONMENTS: master
