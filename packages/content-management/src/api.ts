@@ -67,7 +67,6 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
         article: flattenField(blog.fields.article),
         createdAt: flattenField(blog.fields.createdAt),
         updatedAt: flattenField(blog.fields.updatedAt),
-        thumbnail: flattenField(blog.fields.thumbnail),
         published: true,
         tags: blogTags,
       } satisfies PublishedBlogPost
@@ -80,7 +79,6 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
         article: flattenOptionalField(blog.fields.article),
         createdAt: flattenOptionalField(blog.fields.createdAt),
         updatedAt: flattenOptionalField(blog.fields.updatedAt),
-        thumbnail: flattenOptionalField(blog.fields.thumbnail),
         published: false,
         tags: blogTags,
       } satisfies DraftBlogPost
