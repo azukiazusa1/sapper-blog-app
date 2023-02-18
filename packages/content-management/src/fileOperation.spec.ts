@@ -1,14 +1,16 @@
-import { createBlogFile } from './fileOperation.js'
+import { createBlogFile, loadBlogPost, Result } from './fileOperation.js'
 import { vi, describe, test, expect, afterEach, MockedFunction } from 'vitest'
 import { promises as fs } from 'fs'
 import type { DraftBlogPost, PublishedBlogPost } from './types.js'
 
 const mockedWriteFile = fs.writeFile as MockedFunction<typeof fs.writeFile>
+const mockedReadFile = fs.readFile as MockedFunction<typeof fs.readFile>
 
 vi.mock('fs', () => {
   return {
     promises: {
       writeFile: vi.fn(),
+      readFile: vi.fn(),
     },
   }
 })
@@ -19,6 +21,7 @@ vi.mock('url', () => ({
 
 afterEach(() => {
   mockedWriteFile.mockClear()
+  mockedReadFile.mockClear()
 })
 
 describe('createBlogFile', () => {
@@ -116,5 +119,724 @@ published: true
 article "article"
 `,
     )
+  })
+})
+
+describe('loadBlogPost', () => {
+  test('ファイル名からファイルを取得して BlogPost の形式で取得する', async () => {
+    mockedReadFile.mockResolvedValue(
+      `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+    )
+
+    const result = await loadBlogPost('slug')
+    expect(mockedReadFile).toHaveBeenCalledWith(`/contents/blogPost/slug.md`, 'utf-8')
+    expect(result).toEqual<Result>({
+      success: true,
+      data: {
+        id: 'id',
+        title: 'title',
+        about: 'about',
+        article: '\narticle\n',
+        createdAt: '2023-02-05T00:00+09:00',
+        updatedAt: '2023-02-05T00:00+09:00',
+        slug: 'slug',
+        tags: ['tag1', 'tag2'],
+        published: true,
+      },
+    })
+  })
+
+  test('下書きのファイルを取得してブログポストの形式で取得する', async () => {
+    mockedReadFile.mockResolvedValue(
+      `---
+id: id
+title: null
+slug: null
+about: null
+createdAt: null
+updatedAt: null
+tags: []
+published: false
+---
+`,
+    )
+    const result = await loadBlogPost('id')
+    expect(result).toEqual<Result>({
+      success: true,
+      data: {
+        id: 'id',
+        title: undefined,
+        about: undefined,
+        article: '\n',
+        createdAt: undefined,
+        updatedAt: undefined,
+        slug: undefined,
+        tags: [],
+        published: false,
+      },
+    })
+  })
+
+  describe('title', () => {
+    test('string でなければならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: 1
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['title'],
+            message: 'Expected string, received number',
+          }),
+        ],
+      })
+    })
+
+    test('256 文字以上だとバリデーションエラー', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: ${'a'.repeat(256)}
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['title'],
+            message: 'String must contain at most 255 character(s)',
+          }),
+        ],
+      })
+    })
+
+    test('255 文字ならバリデーションエラーにならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: ${'a'.repeat(255)}
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result.success).toBe(true)
+    })
+
+    test('公開済みの場合 null だとバリデーションエラー', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: null
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['title'],
+            message: 'Required',
+          }),
+        ],
+      })
+    })
+  })
+
+  describe('about', () => {
+    test('string でなければならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: 1
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['about'],
+            message: 'Expected string, received number',
+          }),
+        ],
+      })
+    })
+
+    test('256 文字以上だとバリデーションエラー', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: ${'a'.repeat(256)}
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['about'],
+            message: 'String must contain at most 255 character(s)',
+          }),
+        ],
+      })
+    })
+
+    test('255 文字ならバリデーションエラーにならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: ${'a'.repeat(255)}
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result.success).toBe(true)
+    })
+
+    test('公開済みの場合 null だとバリデーションエラー', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: null
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['about'],
+            message: 'Required',
+          }),
+        ],
+      })
+    })
+  })
+
+  describe('slug', () => {
+    test('string でなければならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: 1
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['slug'],
+            message: 'Expected string, received number',
+          }),
+        ],
+      })
+    })
+
+    test('51 文字以上だとバリデーションエラー', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: ${'a'.repeat(51)}
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['slug'],
+            message: 'String must contain at most 50 character(s)',
+          }),
+        ],
+      })
+
+      test('50 文字ならバリデーションエラーにならない', async () => {
+        mockedReadFile.mockResolvedValue(
+          `---
+id: id
+title: "title"
+slug: ${'a'.repeat(50)}
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+        )
+
+        const result = await loadBlogPost('id')
+
+        expect(result.success).toBe(true)
+      })
+    })
+
+    test('slug の形式が正しくないとバリデーションエラー', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "不適切なスラッグ"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['slug'],
+            message: 'Invalid',
+          }),
+        ],
+      })
+    })
+
+    test('公開済みの場合 null だとバリデーションエラー', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: null
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['slug'],
+            message: 'Required',
+          }),
+        ],
+      })
+    })
+  })
+
+  describe('createdAt', () => {
+    test('string でなければならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: 1
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['createdAt'],
+            message: 'Expected string, received number',
+          }),
+        ],
+      })
+
+      test('公開済みの場合 null だとバリデーションエラー', async () => {
+        mockedReadFile.mockResolvedValue(
+          `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: null
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+        )
+
+        const result = await loadBlogPost('id')
+
+        expect(result).toEqual({
+          success: false,
+          error: [
+            expect.objectContaining({
+              path: ['createdAt'],
+              message: 'Required',
+            }),
+          ],
+        })
+      })
+    })
+  })
+
+  describe('updateedAt', () => {
+    test('string でなければならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: 1
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['updatedAt'],
+            message: 'Expected string, received number',
+          }),
+        ],
+      })
+
+      test('公開済みの場合 null だとバリデーションエラー', async () => {
+        mockedReadFile.mockResolvedValue(
+          `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: null
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+        )
+
+        const result = await loadBlogPost('id')
+
+        expect(result).toEqual({
+          success: false,
+          error: [
+            expect.objectContaining({
+              path: ['updatedAt'],
+              message: 'Required',
+            }),
+          ],
+        })
+      })
+    })
+  })
+
+  describe('tags', () => {
+    test('string の配列 でなければならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: "tag1"
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['tags'],
+            message: 'Expected array, received string',
+          }),
+        ],
+      })
+    })
+
+    test('配列の要素が string でなければならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: [1]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['tags', 0],
+            message: 'Expected string, received number',
+          }),
+        ],
+      })
+    })
+
+    test('タグ名は 50 文字以内でなければならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["${'a'.repeat(51)}"]
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['tags', 0],
+            message: 'String must contain at most 50 character(s)',
+          }),
+        ],
+      })
+    })
+  })
+
+  describe('published', () => {
+    test('boolean でなければならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: 1
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['published'],
+            message: 'Invalid discriminator value. Expected true | false',
+          }),
+        ],
+      })
+    })
+  })
+
+  describe('article', () => {
+    test('50,000 文字以内でなければならない', async () => {
+      mockedReadFile.mockResolvedValue(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+${'a'.repeat(50001)}
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['article'],
+            message: 'String must contain at most 50000 character(s)',
+          }),
+        ],
+      })
+    })
+  })
+
+  test('yaml が不正な場合はバリデーションエラー', async () => {
+    mockedReadFile.mockResolvedValue(
+      `---
+id: id
+title: "tit"le"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+published: true
+---
+article
+`,
+    )
+
+    const result = await loadBlogPost('id')
+
+    expect(result).toEqual({
+      success: false,
+      error: expect.any(Error),
+    })
   })
 })

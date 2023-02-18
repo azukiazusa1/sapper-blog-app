@@ -1,30 +1,41 @@
 import type { MetaSysProps, MetaLinkProps } from 'contentful-management'
+import { z } from 'zod'
 
-export type PublishedBlogPost = {
-  id: string
-  about: string
-  article: string
-  createdAt: string
-  updatedAt: string
-  title: string
-  slug: string
-  tags: string[]
-  published: true
-}
+export const BlogPostSchema = z.discriminatedUnion('published', [
+  z.object({
+    id: z.string(),
+    about: z.string().max(255),
+    article: z.string().max(50000),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    title: z.string().max(255),
+    slug: z
+      .string()
+      .max(50)
+      .regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/),
+    tags: z.array(z.string().max(50)),
+    published: z.literal(true),
+  }),
+  z.object({
+    id: z.string(),
+    about: z.string().max(255).optional(),
+    article: z.string().max(50000).optional(),
+    createdAt: z.string().optional(),
+    updatedAt: z.string().optional(),
+    title: z.string().max(255).optional(),
+    slug: z
+      .string()
+      .max(50)
+      .regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/)
+      .optional(),
+    tags: z.array(z.string().max(50)),
+    published: z.literal(false),
+  }),
+])
 
-export type DraftBlogPost = {
-  id: string
-  about: string | undefined
-  article: string | undefined
-  createdAt: string | undefined
-  updatedAt: string | undefined
-  title: string | undefined
-  slug: string | undefined
-  tags: string[]
-  published: false
-}
-
-export type BlogPost = PublishedBlogPost | DraftBlogPost
+export type BlogPost = z.infer<typeof BlogPostSchema>
+export type PublishedBlogPost = Extract<BlogPost, { published: true }>
+export type DraftBlogPost = Extract<BlogPost, { published: false }>
 
 export type FieldValue<T> = {
   'en-US': T

@@ -3,7 +3,7 @@ import path from 'path'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import yamlFront from 'yaml-front-matter'
-import type { BlogPost } from './types'
+import { BlogPost, BlogPostSchema } from './types'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -56,21 +56,50 @@ export const deletePublishedBlogFile = async (blog: BlogPost) => {
   await fs.unlink(dirname)
 }
 
-export const getBlogFile = async (filename: string): Promise<BlogPost> => {
-  const dirname = path.join(__dirname, `../../../contents/blogPost/${filename}.md`)
-  const content = await fs.readFile(dirname, 'utf-8')
-  const blogPost = yamlFront.loadFront(content)
+export type Result = { success: true; data: BlogPost } | { success: false; error: unknown }
 
-  // TODO: Zod で型チェック
-  return {
-    id: blogPost['id'] as string,
-    title: blogPost['title'] as string,
-    about: blogPost['about'] as string,
-    article: blogPost.__content,
-    createdAt: blogPost['createdAt'] as string,
-    updatedAt: blogPost['updatedAt'] as string,
-    slug: blogPost['slug'] as string,
-    tags: blogPost['tags'] as string[],
-    published: blogPost['published'] as boolean,
-  } satisfies BlogPost
+export const loadBlogPost = async (filename: string): Promise<Result> => {
+  const dirname = path.join(__dirname, `../../../contents/blogPost/${filename}.md`)
+
+  try {
+    const content = await fs.readFile(dirname, 'utf-8')
+    const markdown = yamlFront.loadFront(content)
+    const blogPost = {
+      id: markdown['id'],
+      title: markdown['title'] ?? undefined,
+      about: markdown['about'] ?? undefined,
+      article: markdown.__content,
+      createdAt: markdown['createdAt'] ?? undefined,
+      updatedAt: markdown['updatedAt'] ?? undefined,
+      slug: markdown['slug'] ?? undefined,
+      tags: markdown['tags'],
+      published: markdown['published'],
+    }
+
+    const result = BlogPostSchema.safeParse(blogPost)
+
+    if (!result.success) {
+      return {
+        success: false,
+        error: result.error.errors,
+      }
+    }
+
+    return {
+      success: true,
+      data: result.data,
+    }
+  } catch (e) {
+    if (e instanceof Error) {
+      return {
+        success: false,
+        error: e,
+      }
+    } else {
+      return {
+        success: false,
+        error: new Error('unknown error'),
+      }
+    }
+  }
 }
