@@ -168,8 +168,15 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
   }
 }
 
-export const deleteBlogPost = async (id: string): Promise<void> => {
-  const entry = await environment.getEntry(id)
+export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
+  const entities = await environment.getEntries({
+    content_type: 'blogPost',
+    'fields.slug': slugOrId,
+  })
+
+  // slug で検索してもヒットしなかった場合は id で検索する
+  const entry = entities.items[0] ? entities.items[0] : await environment.getEntry(slugOrId)
+
   await entry.unpublish()
   await entry.delete()
 }
