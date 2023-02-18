@@ -10,7 +10,7 @@
 
   $: totalPage = Math.ceil(total / limit)
   $: hasPrev = page !== 1
-  $: hasNext = page !== totalPage
+  $: hasNext = page !== totalPage && totalPage !== 0
   $: prevPage = page - 1
   $: nextPage = page + 1
 </script>
