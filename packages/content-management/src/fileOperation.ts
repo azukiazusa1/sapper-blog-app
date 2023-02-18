@@ -3,7 +3,7 @@ import path from 'path'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import yamlFront from 'yaml-front-matter'
-import { BlogPost, BlogPostSchema } from './types'
+import { BlogPost, BlogPostSchema } from './types.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
