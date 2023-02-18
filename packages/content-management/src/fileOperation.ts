@@ -6,6 +6,11 @@ import yamlFront from 'yaml-front-matter'
 import type { BlogPost } from './types'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+
+const excape = (str: string) => {
+  return str.replace(/"/g, '\\"')
+}
+
 /**
  * Contentful から取得したブログ記事を yaml front matter 形式でファイルに書き出す
  */
@@ -13,12 +18,12 @@ export const createBlogFile = async (blog: BlogPost) => {
   const { title, about, article, createdAt, updatedAt, slug, tags, published } = blog
   const content = `---
 id: ${blog.id}
-title: "${title ? title : 'null'}"
-slug: ${slug ? `"${slug}"` : 'null'}
-about: "${about ? about : 'null'}"
+title: ${title ? `"${excape(title)}"` : 'null'}
+slug: ${slug ? `"${excape(slug)}"` : 'null'}
+about: ${about ? `"${excape(about)}"` : 'null'}
 createdAt: ${createdAt ? `"${createdAt}"` : 'null'}
 updatedAt: ${updatedAt ? `"${updatedAt}"` : 'null'}
-tags: [${tags.map((t) => `"${t}"`).join(', ')}]
+tags: [${tags.map((t) => `"${excape(t)}"`).join(', ')}]
 published: ${published}
 ---
 ${article ?? ''}

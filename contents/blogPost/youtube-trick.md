@@ -34,6 +34,7 @@ published: true
 Tab キーでページを操作した時のみ表示される「ナビゲーションをスキップ」は一般に[スキップリンク](https://weba11y.jp/glossary/sa/skip-link/)と呼ばれるものであり、ウェブアクセシビリティのガイドライン (W3C 勧告) である WCAG 2.0にある[ブロックスキップ](https://waic.jp/docs/UNDERSTANDING-WCAG20/navigation-mechanisms-skip.html)と呼ばれる達成基準を達成する方法として上げられています。
 
 > 2.4.1 ブロックスキップ: 複数のウェブページ上で繰り返されているコンテンツのブロックをスキップするメカニズムが利用できる。 (レベル A)
+
 これは、スクリーンリーダーを利用しているユーザーのために提供されてきたものであり [Techniques for WCAG 2.0](https://www.w3.org/TR/WCAG20-SCRIPT-TECHS/) では画面を見てキーボードだけで操作しているユーザーによっても有用なメカニズムの一つとして上げられました。
 
 なお、今日のスクリーンリーダーは見出し要素間の移動や WAI-ARIA ランドマーク間の移動ができるようになっており、適切に見出しや WAI=ARIA ランドマークがマークアップされていれば、スキップリンクは無くとも概ね問題ないと言えます。
@@ -194,6 +195,7 @@ Tab キーを使い要素が選択され操作できるような状態になっ�
   display: none;
   z-index: 50;
 }
+
 #skip-button:focus {
   display: block;
 }
@@ -210,6 +212,7 @@ Tab キーを使い要素が選択され操作できるような状態になっ�
   left: -1000px;
   z-index: 50;
 }
+
 #skip-button:focus {
   top: auto;
   left: auto;
@@ -228,6 +231,7 @@ Tab キーを使い要素が選択され操作できるような状態になっ�
 
 ```js
 const skipButton = document.getElementById('skip-button')
+
 skipButton.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault()
@@ -241,6 +245,7 @@ skipButton.addEventListener('keydown', (e) => {
 ```js
 const skipButton = document.getElementById('skip-button')
 const main = document.getElementById('main')
+
 skipButton.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault()
@@ -280,6 +285,7 @@ skipButton.addEventListener('keydown', (e) => {
       left: -1000px;
       z-index: 50;
     }
+
     #skip-button:focus {
       top: auto;
       left: auto;
@@ -334,6 +340,7 @@ skipButton.addEventListener('keydown', (e) => {
 <script>
   const skipButton = document.getElementById('skip-button')
   const main = document.getElementById('main')
+
   skipButton.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       e.preventDefault()
@@ -349,3 +356,4 @@ skipButton.addEventListener('keydown', (e) => {
 
 - [スキップリンク](https://weba11y.jp/glossary/sa/skip-link/)
 - [ブロックスキップを考える](https://accessible-usable.net/2018/03/entry_180302.html)
+

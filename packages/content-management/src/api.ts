@@ -129,15 +129,28 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
 
 export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
   const entry = await environment.getEntry(blog.id)
+
   const tags = await fetchTags()
   const fields = entry.fields
 
-  fields['title']['en-US'] = blog.title
-  fields['slug']['en-US'] = blog.slug
-  fields['about']['en-US'] = blog.about
-  fields['article']['en-US'] = blog.article
-  fields['createdAt']['en-US'] = blog.createdAt
-  fields['updatedAt']['en-US'] = blog.updatedAt
+  if (blog.title) {
+    fields['title']['en-US'] = blog.title
+  }
+  if (blog.slug) {
+    fields['slug']['en-US'] = blog.slug
+  }
+  if (blog.about) {
+    fields['about']['en-US'] = blog.about
+  }
+  if (blog.article) {
+    fields['article']['en-US'] = blog.article
+  }
+  if (blog.createdAt) {
+    fields['createdAt']['en-US'] = blog.createdAt
+  }
+  if (blog.updatedAt) {
+    fields['updatedAt']['en-US'] = blog.updatedAt
+  }
   fields['tags']['en-US'] = blog.tags.map((tag) => {
     return {
       sys: {

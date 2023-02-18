@@ -11,6 +11,7 @@ if (ADDED_FILES) {
   for (const file of addedFiles) {
     const filename = getFilename(file)
     const result = await getBlogFile(filename)
+    console.log(result)
     // await createBlogPost(result)
   }
 }
@@ -20,6 +21,7 @@ if (MODIFIED_FILES) {
   for (const file of modifiedFiles) {
     const filename = getFilename(file)
     const result = await getBlogFile(filename)
+    console.log(result)
     // await updateBlogPost(result)
   }
 }
@@ -29,6 +31,7 @@ if (DELETED_FILES) {
   for (const file of deletedFiles) {
     const filename = getFilename(file)
     const result = await getBlogFile(filename)
+    console.log(result)
     // await deleteBlogPost(result)
   }
 }

@@ -10,3 +10,4 @@ app/node_modules
 .vercel
 .turbo
 storybook-static/
+packages/content-management/node_modules/

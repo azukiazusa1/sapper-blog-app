@@ -4,12 +4,14 @@ on:
   pull_request:
     branches:
       - main
+    types: [closed]
     paths:
       - contents/**
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     name: Update changed-files
     steps:
       - uses: actions/checkout@v3
