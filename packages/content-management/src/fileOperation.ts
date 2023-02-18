@@ -15,10 +15,10 @@ const excape = (str: string) => {
  * コンテンツの末尾に改行コードがないなら追加する
  */
 const addNewLine = (content: string) => {
-  if (!content.endsWith('/n')) {
-    return content + '/n'
+  if (!content.endsWith('\n')) {
+    return content + '\n'
   }
-
+}
 /**
  * Contentful から取得したブログ記事を yaml front matter 形式でファイルに書き出す
  */
@@ -35,7 +35,7 @@ updatedAt: ${updatedAt ? `"${updatedAt}"` : 'null'}
 tags: [${tags.map((t) => `"${excape(t)}"`).join(', ')}]
 published: ${published}
 ---
-${addNewLine(article) ?? ''}
+${article ? addNewLine(article) : ''}
 `
   // 下書き記事の場合は slug がない可能性があるので、id をファイル名にする
   const pathName = published ? slug : blog.id

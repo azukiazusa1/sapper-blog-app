@@ -52,7 +52,7 @@ updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
 published: true
 ---
-article
+article\n
 `,
     )
   })
@@ -116,7 +116,7 @@ updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1 \\"tag1\\"", "tag2 \\"tag2\\""]
 published: true
 ---
-article "article"
+article "article"\n
 `,
     )
   })
@@ -135,8 +135,7 @@ updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
 published: true
 ---
-article
-`,
+article\n`,
     )
 
     const result = await loadBlogPost('slug')
