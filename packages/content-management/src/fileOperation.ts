@@ -14,10 +14,11 @@ const excape = (str: string) => {
 /**
  * コンテンツの末尾に改行コードがないなら追加する
  */
-const addNewLine = (content: string) => {
+const addNewLine = (content: string): string => {
   if (!content.endsWith('\n')) {
     return content + '\n'
   }
+  return content
 }
 /**
  * Contentful から取得したブログ記事を yaml front matter 形式でファイルに書き出す
