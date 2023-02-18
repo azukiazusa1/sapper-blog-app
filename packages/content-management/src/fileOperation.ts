@@ -58,6 +58,13 @@ export const deletePublishedBlogFile = async (blog: BlogPost) => {
 
 export type Result = { success: true; data: BlogPost } | { success: false; error: unknown }
 
+/**
+ * 先頭と末尾の改行コードを削除する
+ */
+const rmLFCode = (str: string) => {
+  return str.replace(/^\n+|\n+$/g, '')
+}
+
 export const loadBlogPost = async (filename: string): Promise<Result> => {
   const dirname = path.join(__dirname, `../../../contents/blogPost/${filename}.md`)
 
@@ -68,7 +75,7 @@ export const loadBlogPost = async (filename: string): Promise<Result> => {
       id: markdown['id'],
       title: markdown['title'] ?? undefined,
       about: markdown['about'] ?? undefined,
-      article: markdown.__content,
+      article: rmLFCode(markdown.__content),
       createdAt: markdown['createdAt'] ?? undefined,
       updatedAt: markdown['updatedAt'] ?? undefined,
       slug: markdown['slug'] ?? undefined,
