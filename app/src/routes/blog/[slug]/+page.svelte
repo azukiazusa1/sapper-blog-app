@@ -5,6 +5,7 @@
   import PostList from '../../../components/PostList.svelte'
   import TwitterShareButton from '../../../components/TwitterShareButton.svelte'
   import HatenaShareButton from '../../../components/HatenaShareButton.svelte'
+  import GitHUbEditButton from '../../../components/GitHubEditButton.svelte'
   import type { PageData } from './$types'
   import variables from '$lib/variables'
 
@@ -34,7 +35,8 @@
 <div class="my-12">
   <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />
   <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg mt-2 max-w-5xl mx-auto">
-    <div class="flex">
+    <GitHUbEditButton slug={post.slug} />
+    <div class="flex mt-4">
       <div>この記事をシェアする</div>
       <div class="ml-4">
         <TwitterShareButton {url} text={post.title} />
