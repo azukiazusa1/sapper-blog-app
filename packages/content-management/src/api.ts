@@ -35,6 +35,7 @@ const fetchTags = async (): Promise<ContentfulTag[]> => {
 const fetchBlogs = async (): Promise<ContentfulBlogPost[]> => {
   const posts = await environment.getEntries({
     content_type: 'blogPost',
+    limit: 1000,
   })
   return posts.items as unknown as ContentfulBlogPost[]
 }
