@@ -3,9 +3,6 @@ import { getBlogFile } from './src/fileOperation.js'
 import { basename } from 'path'
 
 const { ADDED_FILES, MODIFIED_FILES, DELETED_FILES } = process.env
-console.log('ADDED_FILES: ', ADDED_FILES)
-console.log('MODIFIED_FILES: ', MODIFIED_FILES)
-console.log('DELETED_FILES: ', DELETED_FILES)
 
 const getFilename = (path: string) => basename(path, '.md')
 
@@ -21,11 +18,8 @@ if (ADDED_FILES) {
 if (MODIFIED_FILES) {
   const modifiedFiles = MODIFIED_FILES.split(' ')
   for (const file of modifiedFiles) {
-    console.log('file: ', file)
     const filename = getFilename(file)
-    console.log('filename: ', filename)
     const result = await getBlogFile(filename)
-    console.log('result: ', result)
     // await updateBlogPost(result)
   }
 }
