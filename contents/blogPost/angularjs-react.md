@@ -1740,3 +1740,4 @@ describe('PhoneList', () => {
 ここまでのコミットログは以下のとおりです。
 
 https://github.com/azukiazusa1/angular-phonecat/commit/b8ba2be4f1c7dadd65265b89c5fc6398b50ea815
+

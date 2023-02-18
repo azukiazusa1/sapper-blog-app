@@ -310,3 +310,4 @@ user.id = 2 // Cannot assign to 'id' because it is a read-only property.
 
 - [TypeScriptを活用したJSプロジェクト](https://www.typescriptlang.org/ja/docs/handbook/intro-to-js-ts.html)
 - [JSDocリファレンス](https://www.typescriptlang.org/ja/docs/handbook/jsdoc-supported-types.html)
+

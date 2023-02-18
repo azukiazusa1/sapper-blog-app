@@ -442,3 +442,4 @@ func main() {
 ```go
 c.toCelsius() // c.toCelsius undefined (type celsius has no field or method toCelsius)
 ```
+

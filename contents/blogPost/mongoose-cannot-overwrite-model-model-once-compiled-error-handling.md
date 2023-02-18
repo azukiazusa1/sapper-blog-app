@@ -92,3 +92,4 @@ interface UserModel extends Model<UserDoc> {}
 TypeScriptを使用している場合、`models`に登録されているモデルは`statics`などをモデルに追加している場合正しい型が得られないので型アサーションをする必要があるでしょう。
 
 `models`に登録されていなかった場合、通常通りモデルを作成して`export`します。
+

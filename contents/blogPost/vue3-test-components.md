@@ -215,3 +215,4 @@ Googleでログインボタンをクリックした際に発火する`clickGoogl
 
 [Vue Test Utils（2.0.0-beta.10）](https://vue-test-utils.vuejs.org/v2/guide/introduction.html)
 [Vue Testing Handbook](https://lmiller1990.github.io/vue-testing-handbook/v3/)
+

@@ -330,3 +330,4 @@ https://eslint.org/docs/rules/no-return-await
 - ['return await promise' vs 'return promise' in JavaScript](https://dmitripavlutin.com/return-await-promise-javascript/)
 - [徹底解説！　return promiseとreturn await promiseの違い](https://zenn.dev/uhyo/articles/return-await-promise)
 - [JavaScriptの非同期処理をじっくり理解する (3) async/await](https://zenn.dev/qnighy/articles/3a999fdecc3e81)
+

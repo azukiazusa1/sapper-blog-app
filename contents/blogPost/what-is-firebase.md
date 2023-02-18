@@ -262,3 +262,4 @@ logoutBtn.addEventListener('click', () => {
 以上のように、普通に実装したらまあまあめんどくさい認証機能も簡単に実装することができました。
 
 ここまででまあまあ長くなったのでFire StrageとFirestoreは来週に回します。
+

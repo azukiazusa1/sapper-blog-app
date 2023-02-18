@@ -126,3 +126,4 @@ el.setHTML("<b>1</b><i>2</i>", { sanitizer });
 ```
 
 https://codesandbox.io/embed/billowing-snowflake-cm7f01?fontsize=14&hidenavigation=1&theme=dark
+

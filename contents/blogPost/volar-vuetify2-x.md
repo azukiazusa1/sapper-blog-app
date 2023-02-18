@@ -164,3 +164,4 @@ https://marketplace.visualstudio.com/items?itemName=Vue.volar
 Node.js v16.14.0 <= にアップデートしてください。
 
 スクリプトでは [import assersion](https://simonplend.com/import-json-in-es-modules/) 構文を使用しているためです。 
+

@@ -408,3 +408,4 @@ const { open, close, isOpen, handleSelect, activeIndex, selectedOption } =
 - [Listbox](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/)
 - [Select-Only Combobox Example](https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html)
 - [Building accessible Select component in React](https://medium.com/lego-engineering/building-accessible-select-component-in-react-b61dbdf5122f)
+

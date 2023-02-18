@@ -200,3 +200,4 @@ const Blue = () => {
 今度はRedコンポーネントのみにフォールバックUIが描画されました。
 
 ![スクリーンショット 2021-06-20 20.55.32](//images.ctfassets.net/in6v9lxmm5c8/6CMIDmoRcH0sVLiL4zqAsE/e66656278e0f042fd86aa3ecf6f15149/____________________________2021-06-20_20.55.32.png)
+

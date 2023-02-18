@@ -284,3 +284,4 @@ expect(jest.getTimerCount()).toEqual(1)
 
 - [タイマーモック・Jest](https://jestjs.io/ja/docs/timer-mocks)
 - [Jestオブジェクト・Jest](https://jestjs.io/ja/docs/jest-object#%E3%83%A2%E3%83%83%E3%82%AF%E3%82%BF%E3%82%A4%E3%83%9E%E3%83%BC)
+

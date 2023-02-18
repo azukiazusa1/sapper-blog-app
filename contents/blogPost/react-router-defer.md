@@ -207,3 +207,4 @@ type LoaderData = {
 図で表すと以下のとおりです。
 
 ![スクリーンショット 2022-11-12 15.53.16](//images.ctfassets.net/in6v9lxmm5c8/3OrcJRDCeOon8l6xmhnsOt/5c082175fdf466f1ddb0c49877a89307/____________________________2022-11-12_15.53.16.png)
+

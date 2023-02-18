@@ -252,3 +252,4 @@ const getTop3 = (users: readonly Readonly<User>[]) => {
     return sortedUsers.slice(0, 3)
 }
 ```
+

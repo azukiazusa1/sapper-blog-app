@@ -111,3 +111,4 @@ https://docs.sentry.io/platforms/javascript/enriching-events/user-feedback/#cust
 ユーザーフィードバックが送信された場合、Sentryから確認することができます。
 
 ![user-feed-back](//images.ctfassets.net/in6v9lxmm5c8/2zAcU1MC0cGzUBGoy6NHEL/341a03b969716fcb59c6dbd633c34b6f/____________________________2021-06-06_23.03.38.png)
+

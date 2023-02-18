@@ -512,3 +512,4 @@ func main() {
 	fmt.Println(newFruits) // map[apple:150 banana:20000 melon:500]
 }
 ```
+

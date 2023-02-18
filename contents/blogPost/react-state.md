@@ -108,3 +108,4 @@ const Counter = () => {
 
 - [React re-renders guide: everything, all at once](https://www.developerway.com/posts/react-re-renders-guide)
 - [Before You memo()](https://overreacted.io/before-you-memo/)
+

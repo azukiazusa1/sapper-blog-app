@@ -380,3 +380,4 @@ describe('Counter', () => {
 テストは依然として成功しています。
 
 ![スクリーンショット 2021-04-11 23.41.33](//images.ctfassets.net/in6v9lxmm5c8/52cDmB876DHkvJbGlFDqpf/ae77a143c90ca0960091ef62b1cb388f/____________________________2021-04-11_23.41.33.png)
+

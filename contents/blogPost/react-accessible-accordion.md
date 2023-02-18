@@ -277,3 +277,4 @@ const Accordion: React.FC<AccordionProps> = ({ children, level = 2 }) => {
 
 - [Accordion (Sections With Show/Hide Functionality)](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
 - [アクセシブルなアコーディオンの実装について考える](https://zenn.dev/yend724/articles/20220710-y5c9rgsmah5j78n3)
+

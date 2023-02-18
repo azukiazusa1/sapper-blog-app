@@ -65,3 +65,4 @@ Aggregation Pipelineでは合計やグループ化など様々な集計処理を
         h: { $hour: { $add: ['$createdAt', 9 * 60 * 60 * 1000] } }
       })
 ```
+

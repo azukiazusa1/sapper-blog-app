@@ -342,3 +342,4 @@ Vite 製のツールはやっぱり早く動作するので良いですね。エ
 サンプルコードは以下のレポジトリにあります。
 
 https://github.com/azukiazusa1/histoire-example
+

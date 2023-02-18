@@ -356,3 +356,4 @@ func (mux *ServeMux) Handle(pattern string, handler Handler) {
 [Package http](https://golang.org/pkg/net/http/)
 [GoのHTTPサーバーの実装](https://tutuz-tech.hatenablog.com/entry/2020/03/23/162831)
 [Goのhttp.Handlerやhttp.HandlerFuncをちゃんと理解する](https://journal.lampetty.net/entry/understanding-http-handler-in-go)
+

@@ -213,3 +213,4 @@ const lol = messages.lol
 `noUncheckedIndexedAccess` オプションを途中から有効にするのはなかなか手間がかかります。実際に手元のプロパティでためしに `noUncheckedIndexedAccess` オプションを有効にしてみるとよいでしょう。きっと大量のコンパイルエラーが報告されるはずです😉
 
 ただし、途中からこのオプションを有効に
+

@@ -55,3 +55,4 @@ published: true
 - [ARIA Authoring Practices Guide (APG) Dialog (Modal)](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/)
 - [ARIA Authoring Practices Guide (APG) Modal Dialog Example](https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog)
 - [モーダルウィンドウを考える](https://accessible-usable.net/2015/07/entry_150706.html)
+

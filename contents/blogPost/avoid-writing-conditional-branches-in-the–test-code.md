@@ -273,3 +273,4 @@ describe("validPassword", () => {
 - [過度なDRYを行わず、APIドキュメントだと思って書く　脳内メモリを消費させない“リーダブルなテストコード”の書き方 - ログミーTech](https://logmi.jp/tech/articles/327449)
 - [第2回　偽陽性と偽陰性 ～自動テストの信頼性をむしばむ現象を理解する～ | gihyo.jp](https://gihyo.jp/dev/serial/01/savanna-letter/0002)
 - [単体テストの考え方/使い方 | マイナビブックス](https://book.mynavi.jp/ec/products/detail/id=134252)
+

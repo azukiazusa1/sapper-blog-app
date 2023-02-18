@@ -61,3 +61,4 @@ fetchUsers().then(data => console.log(data));
 ![banzai kids boy1](//images.ctfassets.net/in6v9lxmm5c8/2ifFc8N2HSP36VufbatYOP/cbebe58495ce8a3ea2fb947f2623a3e5/banzai_kids_boy1.png)
 
 ![スクリーンショット 2022-02-06 20.25.49](//images.ctfassets.net/in6v9lxmm5c8/2qAMo4phbaNmmC5cglWY0l/88a4bea57cc0427ed3afbd3e453d6fcc/____________________________2022-02-06_20.25.49.png)
+

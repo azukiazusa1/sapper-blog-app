@@ -619,3 +619,4 @@ https://github.com/azukiazusa1/sample-micro-frontend
 - https://medium.com/swlh/webpack-5-module-federation-a-game-changer-to-javascript-architecture-bcdd30e02669
 - https://blog.hiroppy.me/entry/module-federation
 - https://www.youtube.com/watch?v=lKKsjpH09dU
+

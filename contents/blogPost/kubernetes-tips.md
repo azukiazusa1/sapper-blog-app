@@ -103,3 +103,4 @@ $ kubectl describe deployment some-deployment | grep -i image
 ```
 
 パイプで出力結果を`grep`に渡す。`-i`オプションは、大文字小文字を区別しない。
+

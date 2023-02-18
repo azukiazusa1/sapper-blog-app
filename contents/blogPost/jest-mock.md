@@ -139,3 +139,4 @@ Ran all test suites matching /fetchUser/i.
 Jestの強力なモック機能を見てきました。今回紹介したのは本の一部分にしかすぎません。例えば、モックの実装を`__mocks__`フォルダに配置してテストファイル全体で使用することも可能です。ぜひより深く調べてみてください。
 
 [Jest](https://jestjs.io/docs/ja/getting-started)
+

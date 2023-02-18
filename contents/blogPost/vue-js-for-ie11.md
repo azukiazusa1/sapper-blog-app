@@ -222,3 +222,4 @@ module.exports = {
 
 [Is your Vue app not working in IE 11? Here’s how to fix it.](https://jacklyons.me/how-to-fix-vuejs-not-working-in-ie11/)
 [Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法](https://aloerina01.github.io/blog/2019-06-21-1)
+

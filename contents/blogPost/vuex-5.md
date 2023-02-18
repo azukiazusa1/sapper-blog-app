@@ -478,3 +478,4 @@ Vuex の TypeScript サポートもようやく来たって感じですね。若
 
 https://github.com/kiaking/rfcs/blob/vuex-5/active-rfcs/0000-vuex-5.md
 https://www.youtube.com/watch?v=WmgQH4pOhUc
+

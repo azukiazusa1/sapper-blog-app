@@ -167,3 +167,4 @@ const result = func({ id: 'id', name: 'name' })
 `firebase.functions().httpsCallable()`の返り値の関数を呼び出すことで、実際にリクエストが送られます。 この引数に渡した値は、`onCall`の第一引数の`data`から受け取ることができます。
 
 見ての通り、認証情報に関する処理は全くありません。Firebase Authenticationでログインしていれば自動的にAuthentication Headerにトークンを付与してくれます。
+

@@ -216,3 +216,4 @@ OGP の情報の設定は `<head>` タグ内に記述します。SvelteKit で�
 ここまでの作業が完了したら、OGP 画像を生成できるはずです。`npm run build` コマンドでアプリケーションをビルドして成果物に OGP 画像が含まれていることを確認できます。このブログでも同様のことを行って OGP 画像を生成しているので、参考にしてみてください。
 
 https://github.com/azukiazusa1/sapper-blog-app
+

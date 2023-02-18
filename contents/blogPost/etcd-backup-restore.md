@@ -118,3 +118,4 @@ volumes:
 etcdはstatc Podとして動いているので、マニフェストを修正すると自動でpodが再作成されます。
 
 https://github.com/mmumshad/kubernetes-the-hard-way/blob/master/practice-questions-answers/cluster-maintenance/backup-etcd/etcd-backup-and-restore.md#3-restore-etcd-snapshot-to-a-new-folder
+

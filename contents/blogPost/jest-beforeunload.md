@@ -47,3 +47,4 @@ expect(beforeUnloadEvent.preventDefault).toHaveBeenCalled();
 全体のコードは次のようになります。
 
 <iframe src="https://stackblitz.com/edit/react-ts-ef2qbb?embed=1&file=Form.spec.tsx" height="500" width="100%"></iframe>
+

@@ -523,3 +523,4 @@ const Pabel = ({ children, index }: TabProps) => {
 - [Example of Tabs with Automatic Activation](https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-automatic.html)
 - [ARIA: tab ロール](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/Tab_Role)
 - [Tabs - Headless UI](https://headlessui.com/react/tabs)
+

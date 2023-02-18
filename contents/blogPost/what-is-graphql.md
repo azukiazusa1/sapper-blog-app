@@ -221,3 +221,4 @@ GraphQLには、常に1つのエンドポイントしか存在しません。つ
 また、GraphQLのドキュメントはスキーマに応じて自動で作成されます。プレイグラウンドの右上にあるDocをクリックしてみてください。
 
 ![スクリーンショット 20210117 22.17.48.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FlSuZhRyzmCa3Ez9TGjFS%2Fa069f50ae2ec6187c3e45e3ecfb631eb.png?alt=media&token=200a745f-4ffa-42fd-962d-5a8d92b5cc42)
+

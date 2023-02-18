@@ -800,3 +800,4 @@ const users = [
 const user = users.find((user) => user.id === 4);
 console.log(user?.name);
 ```
+

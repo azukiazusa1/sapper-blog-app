@@ -332,3 +332,4 @@ npm run e2e
 ここまでのコミットログは以下のとおりです。
 
 https://github.com/azukiazusa1/angular-phonecat/commit/86c6de50218205702c6e7e839489bd284ddb35f6
+

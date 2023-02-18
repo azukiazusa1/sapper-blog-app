@@ -937,3 +937,4 @@ type Merge<F extends Record<string, unknown>, S extends Record<string, unknown>>
   [P in keyof F | keyof S]: P extends keyof S ? S[P] : P extends keyof F ? F[P]: never
 };
 ```
+

@@ -61,3 +61,4 @@ SvelteKit において画面遷移を行っているかどうかは、[$app/stor
 ## デモ
 
 ![リンクをクリックして画面遷移をするたびに、画面上部にプログレスバーが表示されている様子](//images.ctfassets.net/in6v9lxmm5c8/3Oc6tbPk1TqMDw7jEJcXz8/623405d35e25643f884cff84a58d7f8b/sveltekit-progressbar.gif)
+

@@ -374,3 +374,4 @@ Ingressのリソースを作成するだけではなにもしないので、Ingr
 [Kubernetes完全ガイド 第2版](https://www.amazon.co.jp/dp/4295004804)
 [Kubernetes Tutorial for Beginners [FULL COURSE in 4 Hours]
 ](https://www.youtube.com/watch?v=X48VuDVv0do)
+
