@@ -119,7 +119,7 @@ npm install hono
 
 はじめに簡単な Hello World を表示するコードを作成しましょう。`src/index.ts` に以下を記述します。
 
-```ts
+```ts:src/index.ts
 import { Hono } from "hono";
 
 const app = new Hono(); // ①
@@ -152,7 +152,7 @@ npm start
 
 それでは Hono を使用して簡単な CRUD 操作を備えた API サーバーを作成してみましょう。`src/todos/api.ts` ファイルを作成します。
 
-```ts
+```ts:src/todos/api.ts
 import { Hono } from "hono";
 
 let todoList = [
@@ -171,7 +171,7 @@ export { todos };
 
 `index.ts` ファイルにおいて作成した `todos` ルーティングを使用するように変更します。
 
-```ts
+```ts:index.ts
 import { Hono } from "hono";
 import { todos } from "./todos/api";
 
@@ -192,7 +192,7 @@ http://localhost:8787/api/todos に対して GET リクエストを送信しま�
 
 続いて Todo を作成するエンドポイントを実装しましょう。`src/todos/api.ts` の続きに書いていきます。
 
-```ts
+```ts:src/todos/api.ts
 todos.post("/", async (c) => {
   const param = await c.req.json<{ title: string }>();
   const newTodo = {
@@ -220,7 +220,7 @@ Todo の作成には POST リクエストを使用するので `app.post()` メ�
 
 続いて ID を指定して Todo を更新するエンドポイントを実装します。
 
-```ts
+```ts:src/todos/api.ts
 todos.put("/:id", async (c) => {
   const id = c.req.param("id");
   const todo = todoList.find((todo) => todo.id === id);
@@ -261,7 +261,7 @@ Todo の更新が完了したら `204 No Content` を返却します。ルーテ
 
 最後に ID を指定して Todo を削除するエンドポイントです。
 
-```ts
+```ts:src/todos/api.ts
 todos.delete("/:id", async (c) => {
   const id = c.req.param("id");
   const todo = todoList.find((todo) => todo.id === id);
@@ -290,7 +290,7 @@ Hono はルーティングの他にミドルウェアを備えています。ミ
 
 ここまで Todo API の実装を行ってきましたが、世界中の誰でも Todo の閲覧・作成・削除が行えることを望むユーザーはほとんどいないでしょう。通常このような操作は認証したユーザーのみが実行できるはずです。ここでは認証機能として Basic 認証を導入してみましょう。通常 Cloudflare Workers に Basic 認証を実装するのは案外面倒なのですが、Hono のビルドインミドルウェアを使用すれば簡単に実装できます。`src/index.ts` に以下のようにミドルウェアを記述します。
 
-```ts
+```ts:src/index.ts
 app.use(
   "/api/*",
   basicAuth({
@@ -326,7 +326,7 @@ npm install @honojs/validator
 
 Todo を作成する際にはタイトルを必須項目とするように修正しましょう。以下のように Todo 作成 API に対してバリデーションミドルウェアを挟み込みます。
 
-```ts
+```ts:src/todos/api.ts
 import { validation } from "@honojs/validator";
 
 todos.post(
@@ -384,7 +384,7 @@ Add the following to your configuration file in your kv_namespaces array:
 
 ここでは「HONO_TODO」という名前で KV を作成しました。`--preview` を付与したものは開発環境用の KV です。それぞれコマンドの実行結果に `id` と `preview_id` が記載されているので、これを `wrangler.toml` に追記します。
 
-```toml
+```toml:wrangler.toml
 kv_namespaces = [
   { binding = "HONO_TODO", preview_id = "9d766fea526043be8e40f6550436bc96", id = "1a136855b23f4b14aab395ab6247282a" }
 ]
@@ -394,7 +394,7 @@ kv_namespaces = [
 
 Workers KV の作成が完了したのでアプリケーションコードから KV からデータを取得したり保存したりできるように修正しましょう。`wrangler.toml` にバインディング（binding）した nemespace はハンドラ関数の `c.env` から利用できるようになります。`bindings.d.ts` ファイルを作成して `c.env` の型定義を作成しましょう。
 
-```ts
+```ts:bindings.d.ts
 export interface Bindings {
   HONO_TODO: KVNamespace;
 }
@@ -412,7 +412,7 @@ const todos = new Hono<Bindings>();
 
 データの操作は `Model` 層で抽象化するように実装しましょう。`src/todos/model.ts` ファイルを作成します。
 
-```ts
+```ts:src/todos/model.ts
 export interface Todo {
   id: string;
   title: string;
@@ -435,7 +435,7 @@ export const PREFIX = "v1:todo:";
 
 はじめに Todo の一覧を取得する関数です。
 
-```ts
+```ts:src/todos/model.ts
 export const getTodos = async (KV: KVNamespace): Promise<Todo[]> => {
   const list = await KV.list({ prefix: PREFIX });
   const todos: Todo[] = [];
@@ -457,7 +457,7 @@ export const getTodos = async (KV: KVNamespace): Promise<Todo[]> => {
 
 続いて `id` を指定して特定の Todo を取得する関数です。ただ単にラップしているだけですので、あまり特筆すべき点もないでしょう。
 
-```ts
+```ts:src/todos/model.ts
 export const getTodo = (KV: KVNamespace, id: string): Promise<Todo | null> => {
   return KV.get<Todo>(`${PREFIX}${id}`, "json");
 };
@@ -465,7 +465,7 @@ export const getTodo = (KV: KVNamespace, id: string): Promise<Todo | null> => {
 
 Todo を作成する関数は引数にボディパラメータを受け取ります。
 
-```ts
+```ts:src/todos/model.ts
 export const createTodo = async (KV: KVNamespace, param: CreateTodo): Promise<Todo> => {
   const id = crypto.randomUUID();
   const newTodo: Todo = {
@@ -485,7 +485,7 @@ KV にデータを保存するには `KV.put()` メソッドを使用します�
 
 続いて Todo を更新する関数です。
 
-```ts
+```ts:src/todos/model.ts
 export const updateTodo = async (
   KV: KVNamespace,
   id: string,
@@ -509,15 +509,15 @@ export const updateTodo = async (
 
 最後に Todo の削除を行う関数です。この関数も単に KV の操作をラップしています。
 
-```ts
+```ts:src/todos/model.ts
 export const deleteTodo = (KV: KVNamespace, id: string) => {
   return KV.delete(`${PREFIX}${id}`);
 };
 ```
 
-モデルの作成が完了したら `src/todos/api.ts` ファイルでモデルを使用するように修正しましょう。
+モデルの作成が完了したら `src/todos/model.ts` ファイルでモデルを使用するように修正しましょう。
 
-```ts
+```ts:src/todos/model.ts
 import { Hono } from "hono";
 import { validation } from "@honojs/validator";
 import {
@@ -604,7 +604,7 @@ npm install -D jest jest-environment-miniflare @types/jest esbuild-jest
 
 `jest.config.js` に Jest の設定を記述します。
 
-```js
+```js:jest.config.js
 module.exports = {
   testEnvironment: "miniflare",
   testMatch: ["**/*.test.ts"],
@@ -633,7 +633,7 @@ module.exports = {
 
 テストファイルの中では `env` は `getMiniflareBindings()` という関数から取得できます。このグローバル関数が存在することを TypeScript に伝えるために `src/bindings.d.ts` ファイルで宣言します。
 
-```ts
+```ts:src/bindings.d.ts
 declare global {
   function getMiniflareBindings(): Bindings
 }
@@ -641,7 +641,7 @@ declare global {
 
 `package.json` にテスト用のコマンドを追加します。
 
-```json
+```json:package.json
 {
   "scripts": {
     "test": "jest --verbose --watch"
@@ -653,7 +653,7 @@ declare global {
 
 テスト環境の準備が完了したので、実際にテストを記述していきましょう。`src/todos/api.spec.ts` ファイルを作成します。
 
-```ts
+```ts:src/todos/api.spec.ts
 import { Hono } from "hono";
 import { todos, app } from "./api";
 import { PREFIX, Todo } from "./model";
@@ -681,7 +681,7 @@ describe("Todos API", () => {
 
 はじめに Todo 一覧を取得するテストです。
 
-```ts
+```ts:src/todos/api.spec.ts
 test("Todo 一覧を取得する", async () => {
   const res = await app.fetch(new Request("http://localhost"), env);
   expect(res.status).toBe(200);
@@ -714,7 +714,7 @@ Time:        2.488 s
 
 この調子で残りのテストも実装していきます。
 
-```ts
+```ts:src/todos/api.spec.ts
 
 test("Todo を作成する", async () => {
   const newTodo: CreateTodo = { title: "new-todo" };
