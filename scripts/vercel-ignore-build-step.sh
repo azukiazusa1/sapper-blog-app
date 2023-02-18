@@ -6,4 +6,4 @@ if [ "$VERCEL_GITHUB_COMMIT_REF" = "gh-pages" ]; then
   exit 0
 fi
 
-eval "git diff --quiet HEAD^ HEAD ./app"
+eval "git diff --quiet HEAD^ HEAD ./"
