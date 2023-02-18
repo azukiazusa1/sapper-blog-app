@@ -161,10 +161,12 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
     }
   })
 
-  await entry.update()
+  const updateEntry = await entry.update()
 
   if (blog.published) {
-    await entry.publish()
+    await updateEntry.publish()
+  } else {
+    await updateEntry.unpublish()
   }
 }
 
@@ -177,6 +179,5 @@ export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
   // slug で検索してもヒットしなかった場合は id で検索する
   const entry = entities.items[0] ? entities.items[0] : await environment.getEntry(slugOrId)
 
-  await entry.unpublish()
   await entry.delete()
 }
