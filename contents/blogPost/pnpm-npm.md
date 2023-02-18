@@ -99,8 +99,7 @@ node_modules/
 
 pnpm の厳格さを証明するために、実験をしてみましょう。まずは npm で `express` をインストールしたプロジェクトで以下のようなコードを作成します。
 
-```js
-// npm-repo/index.mjs
+```js:npm-repo/index.mjs
 import bodyParser from "body-parser";
 import assert from "node:assert/strict";
 
@@ -120,8 +119,7 @@ assert.ok(bodyParser);
 
 一方 pnpm の場合はどうでしょう。先程と全く同じコードを実行しています。
 
-```js
-// pnpm-repo/index.mjs
+```js:pnpm-repo/index.mjs
 import bodyParser from "body-parser";
 import assert from "node:assert/strict";
 
