@@ -1,5 +1,7 @@
 ---
+id: 1hY0XPJuC1XEwPK25stMBV
 title: "Jest setTimeout()のようなでタイマー関数をテストする"
+slug: "jest-timer-test"
 about: "JavaScriptには、setTimeout()のような時間に関する便利な機能が用意されています。しかし、これらの関数はユニットテストを記述する際に厄介です。Jestのタイマーモックはこのような場合に利用できる便利な機能です。"
 createdAt: "2021-08-01T00:00+09:00"
 updatedAt: "2021-08-01T00:00+09:00"

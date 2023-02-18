@@ -1,5 +1,7 @@
 ---
+id: 5IKf4XU2ELx5O4JlSl9SH9
 title: "Jest で beforeunload イベントをテストする"
+slug: "jest-beforeunload"
 about: "beforeunload イベントをテストする方法を紹介します"
 createdAt: "2022-09-25T00:00+09:00"
 updatedAt: "2022-09-25T00:00+09:00"

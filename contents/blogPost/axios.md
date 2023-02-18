@@ -1,5 +1,7 @@
 ---
+id: 1jpYc1E3cWfVB7IvhKHbrh
 title: "あの日見たaxiosの機能を僕達はまだ知らない。"
+slug: "axios"
 about: "axiosは、JavaScriptにおけるHTTPクライアントのデファクトスタンダードといえるでしょう。  Promiseベースで非同期通信を行えるHTTPクライアントとして、ブラウザ標準のfatchやjQuery.ajaxなどがありますが、特にaxiosがよく使われているのには豊富なオプションや設定に理由付けられるでしょう。  axiosの機能について私のように詳しくなくても直感的にHTTPリクエストを送れるのも良い点の1つですが、せっかくなのでaxiosでどのようなことができるのがを見ていきましょう。"
 createdAt: "2021-08-29T00:00+09:00"
 updatedAt: "2021-08-29T00:00+09:00"

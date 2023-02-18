@@ -1,5 +1,7 @@
 ---
+id: 2ukqc0KtB1lcVXLajOIbLp
 title: "Vite だと require() が使えないよ〜"
+slug: "vite-require"
 about: "皆様はすでにプロジェクトに Vite は導入されていらっしゃいますでしょうか？私はできていません。  Vite はフロントエンドのビルディングツールであり、従来の Webpack 等と比較して高速に動作するといった特徴があります。Vue.js を開発した Evan You 氏によって開発ツールではありますが Vue.js に限らず React や Svelte にも対応しています。"
 createdAt: "2022-01-16T00:00+09:00"
 updatedAt: "2022-01-16T00:00+09:00"

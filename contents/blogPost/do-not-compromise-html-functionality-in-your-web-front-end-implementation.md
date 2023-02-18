@@ -1,5 +1,7 @@
 ---
+id: 2XqLY2qwZEQOpkhRjzOzUr
 title: "Web フロントエンドの実装において本来の機能を損なってはいけない"
+slug: "do-not-compromise-html-functionality-in-your-web-front-end-implementation"
 about: "データの取得・ルーティング・フォームの値の管理に至るまで JavaScript で制御するようになった結果、本来備わっていた機能を損なう形で実装されるような間違いが起きるケースも発生してしまいました。見た目上操作に不都合がないのですが、修飾キーが有効でなかったりと、とある要素が当然に持っているべき機能が失われていることがよくあります。"
 createdAt: "2022-12-25T00:00+09:00"
 updatedAt: "2022-12-25T00:00+09:00"

@@ -1,5 +1,7 @@
 ---
+id: 5LuDAaXF8dvP7ge4Ew0biR
 title: "君は return と await return の違いを理解して使っているか"
+slug: "return-await-return"
 about: "`Promise` を返す非同期関数を扱う時 `Promise` をそのまま返す書き方と `Promise` を `await` してから返す二通りの方法があります。これらは一見同じように動作するように見えますが異なる点が存在します。"
 createdAt: "2022-04-03T00:00+09:00"
 updatedAt: "2022-04-03T00:00+09:00"

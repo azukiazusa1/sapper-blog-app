@@ -1,5 +1,7 @@
 ---
+id: 5GQ7QBbcMR9aA3pr1Qvb5i
 title: "Sanitizer API で HTML を安全に使用する"
+slug: "sanitizer-api-html"
 about: "ユーザーが入力した情報をそのまま表示するとクロスサイトスクリプティング（XSS）脆弱性につながる問題があることはよく知られています文字列の無害化はこのようにライブラリの実装に頼っている状況でしたが、WING により Sanitizer API という仕様が策定されました。Sanitizer API により外部ライブラリの依存無しで XSS の対策が可能となります。"
 createdAt: "2022-09-04T00:00+09:00"
 updatedAt: "2022-09-04T00:00+09:00"

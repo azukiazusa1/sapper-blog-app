@@ -1,5 +1,7 @@
 ---
+id: 6iHWiOe5YUb2juuLbQZJIs
 title: "テストコード内では条件分岐を書かないようにする"
+slug: "avoid-writing-conditional-branches-in-the–test-code"
 about: "誰でも読める愚直なコードであることの 1 つの目安として、テストコードの中に if 文や三項演算子などの条件分岐が入り込んでいていないことが上げられます。if 文が存在するコードはアンチパターンであるといえます。実際に if 文がテストコードの中に入り込んだ例を見てみましょう。"
 createdAt: "2023-01-22T00:00+09:00"
 updatedAt: "2023-01-22T00:00+09:00"

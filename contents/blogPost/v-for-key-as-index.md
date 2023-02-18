@@ -1,5 +1,7 @@
 ---
+id: 5MU4yGlnQJYqkAeXib7W20
 title: "Q：v-for の key に 配列のインデックスを使うのは犯罪ですか？#Shorts"
+slug: "v-for-key-as-index"
 about: "結論：  - `v-for` ディレクティブに渡す配列要素が決して変わらないことがわかっているのであれば使っても良い。 - `id` 属性を持っているのであれば常に `id` 属性を `key` に使用するべき。"
 createdAt: "2022-02-20T00:00+09:00"
 updatedAt: "2022-02-20T00:00+09:00"

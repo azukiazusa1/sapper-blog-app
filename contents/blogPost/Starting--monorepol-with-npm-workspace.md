@@ -1,5 +1,7 @@
 ---
+id: 6n06Hq4mrLydu5FE8lDAKw
 title: "npm workspace で始めるモノレポ生活"
+slug: "Starting--monorepol-with-npm-workspace"
 about: "workspace は複数のパッケージ（`package.json`）をレポジトリを管理するために使用されます。このようなレポジトリは**モノレポ**として知られています。"
 createdAt: "2022-04-10T00:00+09:00"
 updatedAt: "2022-04-10T00:00+09:00"

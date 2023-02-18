@@ -1,5 +1,7 @@
 ---
+id: 1FMUhOBAbzyXSkF0mcqJBh
 title: "【React】アクセシビリティに考慮したリストボックスを実装する"
+slug: "Implement-accessibil-listbox-in-react"
 about: "リストボックスにアクセシビリティ上求められる要件を確認した後に、React で実際に要件に従った実装をおこないます。"
 createdAt: "2022-10-23T00:00+09:00"
 updatedAt: "2022-10-23T00:00+09:00"

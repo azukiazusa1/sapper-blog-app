@@ -1,5 +1,7 @@
 ---
+id: 1N8xAP9te1MOoqkldLcYnw
 title: "【JavaScript】Objectがプリミティブに変換されるとき"
+slug: "javascript-object"
 about: "JavaScriptがプリミティブな値に変換されるとき、string型に変換されようとするか、number型に変換されようとするかで挙動が変化する"
 createdAt: "2021-06-27T00:00+09:00"
 updatedAt: "2021-06-27T00:00+09:00"

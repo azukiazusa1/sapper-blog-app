@@ -1,5 +1,7 @@
 ---
+id: 3Mtv7V8TMzj1oRjnQV4zd5
 title: "イベントのバブリングは DOM ツリーではなく React ツリーに従う"
+slug: "event-bubbling-follows-the-react-tree-not-the-dom-tree"
 about: "イベントのバブリングとは、ある要素で発生したイベントがその親要素まで伝播することです。React でポータルを使用した場合、DOM ツリー状親子関係でなかったとしても、React ツリー上親子関係であればイベントがバブリングされます。"
 createdAt: "2022-10-09T00:00+09:00"
 updatedAt: "2022-10-09T00:00+09:00"

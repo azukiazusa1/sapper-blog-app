@@ -16,10 +16,19 @@ const client = contentful.createClient({
 const space = await client.getSpace(Env.space)
 const environment = await space.getEnvironment(Env.environments)
 
+const cache = new Map<string, ContentfulTag[]>()
+
 const fetchTags = async (): Promise<ContentfulTag[]> => {
+  if (cache.has('tags')) {
+    return cache.get('tags') as ContentfulTag[]
+  }
+
   const tags = await environment.getEntries({
     content_type: 'tag',
   })
+
+  cache.set('tags', tags.items as unknown as ContentfulTag[])
+
   return tags.items as unknown as ContentfulTag[]
 }
 
@@ -58,7 +67,6 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
         article: flattenField(blog.fields.article),
         createdAt: flattenField(blog.fields.createdAt),
         updatedAt: flattenField(blog.fields.updatedAt),
-        thumbnail: flattenField(blog.fields.thumbnail),
         published: true,
         tags: blogTags,
       } satisfies PublishedBlogPost
@@ -71,10 +79,97 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
         article: flattenOptionalField(blog.fields.article),
         createdAt: flattenOptionalField(blog.fields.createdAt),
         updatedAt: flattenOptionalField(blog.fields.updatedAt),
-        thumbnail: flattenOptionalField(blog.fields.thumbnail),
         published: false,
         tags: blogTags,
       } satisfies DraftBlogPost
     }
   })
+}
+
+export const createBlogPost = async (blog: BlogPost): Promise<void> => {
+  const tags = await fetchTags()
+  const entry = await environment.createEntry('blogPost', {
+    fields: {
+      title: {
+        'en-US': blog.title,
+      },
+      slug: {
+        'en-US': blog.slug,
+      },
+      about: {
+        'en-US': blog.about,
+      },
+      article: {
+        'en-US': blog.article,
+      },
+      createdAt: {
+        'en-US': blog.createdAt,
+      },
+      updatedAt: {
+        'en-US': blog.updatedAt,
+      },
+      tags: {
+        'en-US': blog.tags.map((tag) => {
+          return {
+            sys: {
+              type: 'Link',
+              linkType: 'Entry',
+              id: tags.find((t) => flattenField(t.fields.name) === tag)?.sys.id,
+            },
+          }
+        }),
+      },
+    },
+  })
+
+  if (blog.published) {
+    await entry.publish()
+  }
+}
+
+export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
+  const entry = await environment.getEntry(blog.id)
+
+  const tags = await fetchTags()
+  const fields = entry.fields
+
+  if (blog.title) {
+    fields['title']['en-US'] = blog.title
+  }
+  if (blog.slug) {
+    fields['slug']['en-US'] = blog.slug
+  }
+  if (blog.about) {
+    fields['about']['en-US'] = blog.about
+  }
+  if (blog.article) {
+    fields['article']['en-US'] = blog.article
+  }
+  if (blog.createdAt) {
+    fields['createdAt']['en-US'] = blog.createdAt
+  }
+  if (blog.updatedAt) {
+    fields['updatedAt']['en-US'] = blog.updatedAt
+  }
+  fields['tags']['en-US'] = blog.tags.map((tag) => {
+    return {
+      sys: {
+        type: 'Link',
+        linkType: 'Entry',
+        id: tags.find((t) => flattenField(t.fields.name) === tag)?.sys.id,
+      },
+    }
+  })
+
+  await entry.update()
+
+  if (blog.published) {
+    await entry.publish()
+  }
+}
+
+export const deleteBlogPost = async (id: string): Promise<void> => {
+  const entry = await environment.getEntry(id)
+  await entry.unpublish()
+  await entry.delete()
 }

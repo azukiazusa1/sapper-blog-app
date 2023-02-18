@@ -1,5 +1,7 @@
 ---
+id: 23IYL21xo8P5VJYr2oHk5R
 title: "CSS 擬似クラス「:focus-within」"
+slug: "css-pseudo-class-focus-within"
 about: ":focus-within は CSS の擬似クラスであり、その要素または子孫要素にフォーカスがある場合に一致します。"
 createdAt: "2022-09-18T00:00+09:00"
 updatedAt: "2022-09-18T00:00+09:00"

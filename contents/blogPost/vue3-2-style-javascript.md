@@ -1,5 +1,7 @@
 ---
+id: 1LJPP3iVeEd2I1PwxWDdCM
 title: "【Vue3.2】styleタグ内でJavaScript変数をバインドできる"
+slug: "vue3-2-style-javascript"
 about: "Vue.js3.2からは、JavaScriptの変数をCSS変数としてバインドできるようになりました。  つまりは、CSSの値を動的に設定できるということです。  ものは試しのやってみましょう。"
 createdAt: "2021-09-19T00:00+09:00"
 updatedAt: "2021-09-19T00:00+09:00"

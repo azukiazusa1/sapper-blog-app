@@ -6,7 +6,6 @@ export type PublishedBlogPost = {
   article: string
   createdAt: string
   updatedAt: string
-  thumbnail: MetaLinkProps
   title: string
   slug: string
   tags: string[]
@@ -19,7 +18,6 @@ export type DraftBlogPost = {
   article: string | undefined
   createdAt: string | undefined
   updatedAt: string | undefined
-  thumbnail: MetaLinkProps | undefined
   title: string | undefined
   slug: string | undefined
   tags: string[]

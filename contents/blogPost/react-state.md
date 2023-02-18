@@ -1,5 +1,7 @@
 ---
+id: 3xfuFbX8qkyTYaQQa3hdAQ
 title: "【React】state のリフトダウンパターン"
+slug: "react-state"
 about: "React において不要な再レンダリングを避けるためのいくつかのパターンを紹介します"
 createdAt: "2022-10-02T00:00+09:00"
 updatedAt: "2022-10-02T00:00+09:00"

@@ -1,5 +1,7 @@
 ---
+id: 2CNRswAgaDeeBKo7jfniPm
 title: "アクセシビリティを自動で検査する仕組みを整える"
+slug: "vue-a11y-testing"
 about: "様々な方法でアクセシビリティを自動で検査します"
 createdAt: "2022-01-30T00:00+09:00"
 updatedAt: "2022-01-30T00:00+09:00"

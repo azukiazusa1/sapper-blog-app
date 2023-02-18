@@ -1,6 +1,8 @@
 ---
+id: 3Y6v86FgAJgfTI6QqyZMJC
 title: "スタイル無しでアクセシブルなコンポーネントを提供する UI ライブラリ"
-about: "null"
+slug: "ui"
+about: null
 createdAt: null
 updatedAt: null
 tags: []

@@ -1,5 +1,7 @@
 ---
+id: y3YylqX9JfHoeNUvBfvbV
 title: "TailwindCSS のダークモードでページ読み込み時に一瞬ライトモードで表示されてしまうときの対応法"
+slug: "what-to-do-when-tailwindcss-is-momentarily-displayed-in-light-mode-in-dark-mode"
 about: "ユーザーの OS の設定や LocalStorage の値をもとにダークモードかどうか判定する場合、コンテンツが読み込まれる前にスクリプトの実行が完了している必要があります。"
 createdAt: "2022-12-11T00:00+09:00"
 updatedAt: "2022-12-11T00:00+09:00"

@@ -1,5 +1,7 @@
 ---
+id: 7bANHvvWNHjr9qeq6BNhhm
 title: "Rust の魅力に感じた点"
+slug: "what-i-found-attractive-aboutr-rust"
 about: "最近は [Rust](https://www.rust-lang.org/) と呼ばれるプログラミング言語を趣味として触っています。[SWC](https://swc.rs/) や [Rome](https://rome.tools/) のように Rust で作成されたフロントエンドツールが増えていることから興味を持ったのですが、実際に触ってみて Rust が高い人気を誇る理由がよく分かるようになりました。  この記事では私が Rust を触ってみて魅力に感じた点を列挙していきます。"
 createdAt: "2022-05-01T00:00+09:00"
 updatedAt: "2022-05-01T00:00+09:00"

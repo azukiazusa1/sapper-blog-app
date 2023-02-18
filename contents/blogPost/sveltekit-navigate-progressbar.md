@@ -1,5 +1,7 @@
 ---
+id: 3tATxZH0jXTQW72zPVb5pz
 title: "SvelteKit でページ遷移時のプログレスバーを表示する"
+slug: "sveltekit-navigate-progressbar"
 about: "SPA で画面遷移をする場合、MPA の場合と違い、ブラウザがローディングの表示を行ってくれません。リンクをクリックしてから画面遷移が完了するまで何も表示されないので、ユーザーからすると何も反応していないように感じてしまいます。 SPA で画面遷移した時にプログレスバーを表示したい場合には NProgress が最適です。コンパクトな JavaScript ライブラリでフレームワークを選ばず利用できます。この記事では SvelteKit で NProgress を使用する方法を紹介します。"
 createdAt: "2023-02-06T00:00+09:00"
 updatedAt: "2023-02-06T00:00+09:00"

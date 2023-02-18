@@ -1,5 +1,7 @@
 ---
+id: 3IPQMXCi1PmQroEGShwB9J
 title: "Jest Preview がけっこーすごい"
+slug: "jest-preview"
 about: "Jest Preview とは Jest で実行中のテストに debug() 関数を仕込むことで、実行中のテストが作成した HTML をブラウザでプレビューしながらデバッグできるライブラリです。"
 createdAt: "2022-05-29T00:00+09:00"
 updatedAt: "2022-05-29T00:00+09:00"

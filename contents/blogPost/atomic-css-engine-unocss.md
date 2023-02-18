@@ -1,5 +1,7 @@
 ---
+id: 6i6snQMi1Wul2B4tnUm5ym
 title: "Atomic CSS エンジン - UnoCSS"
+slug: "atomic-css-engine-unocss"
 about: "UnoCSS はフレームワークではなく、Atomic CSS エンジンです。全ては柔軟性とパフォーマンスを考慮して設計されています。UnoCSS にはコアユーティリティはなく、すべての機能はプリセットで提供されます。"
 createdAt: "2022-06-11T00:00+09:00"
 updatedAt: "2022-06-11T00:00+09:00"

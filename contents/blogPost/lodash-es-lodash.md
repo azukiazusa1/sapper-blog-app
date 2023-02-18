@@ -1,5 +1,7 @@
 ---
+id: 3DlJcuelhusvXM5Da2y8Z
 title: "lodash-es lodash 違い"
+slug: "lodash-es-lodash"
 about: "[lodash-es](https://www.npmjs.com/package/lodash-es) とは [lodash](https://lodash.com/) を `ES module` 形式で提供しているライブラリです。"
 createdAt: "2021-10-10T00:00+09:00"
 updatedAt: "2021-10-10T00:00+09:00"

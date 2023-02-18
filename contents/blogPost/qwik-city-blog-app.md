@@ -1,5 +1,7 @@
 ---
+id: 7oZHTejplMpwDVU6l3aaOM
 title: "Qwik City でブログアプリを作る"
+slug: "qwik-city-blog-app"
 about: "Qwik City は Qwik のメタフレームワークです。React における Next.js、Vue.js における Nuxt.js のような関係と同等です。"
 createdAt: "2022-10-16T00:00+09:00"
 updatedAt: "2022-10-16T00:00+09:00"

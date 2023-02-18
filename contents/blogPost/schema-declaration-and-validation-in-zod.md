@@ -1,5 +1,7 @@
 ---
+id: 1yBTTmMT3SNtOaL8FywbmX
 title: "【TypeScript】Zod でスキーマ宣言とバリデーションを実施する"
+slug: "schema-declaration-and-validation-in-zod"
 about: "[Zod](https://github.com/colinhacks/zod) は TypeScript first でスキーマ宣言とバリデーションを実施するためのライブラリです。  一度バリデータを宣言すれば、Zod が自動的に TypeScript の型を推論してくれるという特徴があります。このおかげで重複した型宣言を排除できます。  また、Zod はエコシステムも多く存在しており、OpenApi、Nest.js、Prisma、react-hook-form などと組み合わせて使うことができます。"
 createdAt: "2022-07-03T00:00+09:00"
 updatedAt: "2022-07-03T00:00+09:00"

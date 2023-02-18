@@ -1,5 +1,7 @@
 ---
+id: 6gIUwYEpor0pOejMnxBNVz
 title: "Kubernetes用語集"
+slug: "kubernetes-glossary"
 about: " 仕事上kubernetesを学ぶ必要が出てきました。 筆者のレベルは、Docker・kubernetesの概念・必要性をやんわりと理解している状態です。  勉強をすすめる上で、わからない用語が次々と出てきたて頭の中がパンクしそうになったので、簡潔に随時まとめることとしました。"
 createdAt: "2021-03-07T00:00+09:00"
 updatedAt: "2021-03-07T00:00+09:00"

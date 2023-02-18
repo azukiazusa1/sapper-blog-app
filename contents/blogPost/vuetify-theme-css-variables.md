@@ -1,5 +1,7 @@
 ---
+id: 1OhUFZZTmft8nVWO8EWjOG
 title: "VuetifyのテーマをCSS変数として使用する"
+slug: "vuetify-theme-css-variables"
 about: "VuetifyのテーマをCSSの変数として生成して使用します。"
 createdAt: "2021-08-22T00:00+09:00"
 updatedAt: "2021-08-22T00:00+09:00"

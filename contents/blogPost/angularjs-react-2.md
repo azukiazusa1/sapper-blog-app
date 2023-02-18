@@ -1,5 +1,7 @@
 ---
+id: 6PJwVyCBYkVcL0Yeerg69k
 title: "AngularJS のチュートリアルを React にリプレイスしてみた②"
+slug: "angularjs-react-2"
 about: "AngularJS のチュートリアルを React にリプレイスします。今回の記事では AngularJS のコンポーネントをすべてリプレイスして、angular-resorce の代わりに API クライアントを実装します。"
 createdAt: "2022-08-07T00:00+09:00"
 updatedAt: "2022-08-07T00:00+09:00"

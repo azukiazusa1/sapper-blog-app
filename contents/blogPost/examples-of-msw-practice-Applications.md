@@ -1,5 +1,7 @@
 ---
+id: 5v8Y64R9XV7V3q7zmuzvfx
 title: "MSW の実践活用例"
+slug: "examples-of-msw-practice-Applications"
 about: "msw の実践で活用する例を紹介します"
 createdAt: "2022-07-17T00:00+09:00"
 updatedAt: "2022-07-10T00:00+09:00"

@@ -1,5 +1,7 @@
 ---
+id: 5TGGZDETuHgmscU2CjgB1d
 title: "アクセシブルなダイアログに必要なこと"
+slug: "dialog-accessibility"
 about: "ダイアログをアクセシビルに実装するための要件を確認しましょう。"
 createdAt: "2022-09-11T00:00+09:00"
 updatedAt: "2022-09-11T00:00+09:00"

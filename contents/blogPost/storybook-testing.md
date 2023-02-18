@@ -1,5 +1,7 @@
 ---
+id: ogyaJAeyrZRJfA56wjUMT
 title: "Storybook 単体でインタラクションテストを実施する"
+slug: "storybook-testing"
 about: "Storybook の Component Story Format 3.0 では新機能として play() 関数が追加されました。  `play()` 関数は Storybook 上で ユーザーのインタラクションな操作を表現することができます。  以前は composeStories() 関数により Storybook 上で作成したストーリーを Jest で再利用する方法を書いたのですが、どうやら Storybook のみで完結してテストを実行することができるようですのでこちらを試してみます。"
 createdAt: "2022-03-06T00:00+09:00"
 updatedAt: "2022-03-06T00:00+09:00"

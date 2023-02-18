@@ -1,5 +1,7 @@
 ---
+id: 5jHdComiCglVEkBkOeQANu
 title: "モノレポで GitHub Actions の jest coverage report を動かす"
+slug: "monorepo-github-actions-jest-coverage-report-action"
 about: "jest coverage reportは GitHuba Actions のワークフローの1つで Jest で実行したテストのコードカバレッジをプルリクエスト上にコメントしてくれます。  この記事では yarn workspaces 使用して作成したモノレポ構築のレポジトリで jest coverage report を動かしてみます。"
 createdAt: "2022-11-27T00:00+09:00"
 updatedAt: "2022-11-27T00:00+09:00"
