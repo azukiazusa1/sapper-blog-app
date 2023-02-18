@@ -4,6 +4,10 @@ import { basename } from 'path'
 
 const { ADDED_FILES, MODIFIED_FILES, DELETED_FILES } = process.env
 
+console.log('Added files:', ADDED_FILES)
+console.log('Modified files:', MODIFIED_FILES)
+console.log('Deleted files:', DELETED_FILES)
+
 const getFilename = (path: string) => basename(path, '.md')
 
 if (ADDED_FILES) {
