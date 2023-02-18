@@ -1,4 +1,4 @@
-name: lint
+name: test
 on:
   pull_request:
 

@@ -18,7 +18,7 @@
     "gen": "graphql-codegen --config codegen.yml -r dotenv/config",
     "test": "exit 0",
     "test:e2e": "playwright test",
-    "test:e2e:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.29.1-focal /bin/bash -c 'npm test -- -u'",
+    "test:e2e:update": "cd ../ && docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.30.0-focal /bin/bash -c 'npm run test:e2e -w=app -- -u'",
     "typecheck": "tsc --noEmit && svelte-check",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
