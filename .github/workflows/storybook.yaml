@@ -1,28 +1,30 @@
-# name: deploy
+name: deploy
 
-# on:
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'app/**/*.stories.ts'
 
-# env:
-#   GH_PAGE: 'true'
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version-file: package.json
-#           cache: npm
-#       - name: Install dependencies
-#         run: npm ci
-#       - name: build storybook
-#         run: npm run build-storybook
-#       - name: deploy storybook
-#         uses: JamesIves/github-pages-deploy-action@v4.4.1
-#         with:
-#           branch: gh-pages
-#           folder: storybook-static
+env:
+  GH_PAGE: 'true'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: package.json
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: build storybook
+        run: npm run build-storybook -w=app
+      - name: deploy storybook
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: gh-pages
+          folder: ./app/storybook-static
