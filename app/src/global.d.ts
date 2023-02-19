@@ -1,9 +1,10 @@
-/// <reference types="@sveltejs/kit" />
-
-interface ImportMetaEnv {
-  VITE_API_KEY: string
-  VITE_SPACE: string
-  VITE_ENVIRONMENTS: string
-  VITE_ANALYTICS_ID: string
-  VITE_BASE_URL: string
+declare module '$env/static/private' {
+  const API_KEY: string | undefined
+  const PREVIEW_API_KEY: string | undefined
+  const SPACE: string | undefined
+  const ENVIRONMENTS: string | undefined
+}
+declare module '$env/static/public' {
+  export const PUBLIC_ANALYTICS_ID: string | undefined
+  export const PUBLIC_BASE_URL: string | undefined
 }

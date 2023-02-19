@@ -21,8 +21,8 @@ jobs:
         run: npm run sync -w=packages/content-management
         env:
           MANAGEMENT_TOKEN: ${{ secrets.MANAGEMENT_TOKEN }}
-          VITE_SPACE: ${{ secrets.PREVIEW_SPACE }}
-          VITE_ENVIRONMENTS: master
+          SPACE: ${{ secrets.PREVIEW_SPACE }}
+          ENVIRONMENTS: master
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"

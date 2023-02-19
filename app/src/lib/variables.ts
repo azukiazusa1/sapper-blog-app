@@ -1,6 +1,16 @@
+import { PUBLIC_ANALYTICS_ID, PUBLIC_BASE_URL } from '$env/static/public'
+
+if (typeof PUBLIC_ANALYTICS_ID === 'undefined') {
+  throw new Error('PUBLIC_ANALYTICS_ID is undefined')
+}
+
+if (typeof PUBLIC_BASE_URL === 'undefined') {
+  throw new Error('PUBLIC_BASE_URL is undefined')
+}
+
 const variables = {
-  analyticsId: import.meta.env.VITE_ANALYTICS_ID,
-  baseURL: import.meta.env.VITE_BASE_URL,
+  analyticsId: PUBLIC_ANALYTICS_ID,
+  baseURL: PUBLIC_BASE_URL,
 } as const
 
 export default variables

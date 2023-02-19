@@ -5,10 +5,10 @@ on:
       - app/**
 
 env:
-  VITE_API_KEY: ${{ secrets.PREVIEW_API_KEY }}
-  VITE_SPACE: ${{ secrets.PREVIEW_SPACE }}
-  VITE_ENVIRONMENTS: test
-  VITE_BASE_URL: http://localhost:3000
+  API_KEY: ${{ secrets.PREVIEW_API_KEY }}
+  SPACE: ${{ secrets.PREVIEW_SPACE }}
+  ENVIRONMENTS: test
+  PUBLIC_BASE_URL: http://localhost:3000
 
 jobs:
   build:
