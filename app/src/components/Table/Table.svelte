@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      {#each data.blogPostCollection?.items as draft (draft.sys.id)}
+      {#each data.blogPostCollection?.items ?? [] as draft (draft.sys.id)}
         <tr
           class="bg-white border-b dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-500 dark:border-gray-600 cursor-pointer"
           on:click={() => goto(`/drafts/${draft.sys.id}`)}
