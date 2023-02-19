@@ -10,6 +10,7 @@ env:
   SPACE: ${{ secrets.PREVIEW_SPACE }}
   ENVIRONMENTS: test
   PUBLIC_BASE_URL: http://localhost:3000
+  PUBLIC_ANALYTICS_ID: ''
 
 jobs:
   build:
