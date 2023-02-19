@@ -3,7 +3,7 @@ import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
 import type { Config } from '@sveltejs/adapter-vercel'
 const PostRepository = RepositoryFactory[POST]
 
-export const prerender = false
+export const prerender = 'auto'
 export const config = {
   isr: {
     expiration: 60,
