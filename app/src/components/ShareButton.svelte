@@ -6,7 +6,7 @@
   export let url: string
 
   // Twitter でシェアしやすいように 140 文字に制限
-  $: trucatedText = `${text.slice(0, 135)}...`
+  $: trucatedText = text.length > 140 ? `${text.slice(0, 137)}...` : text
 
   const share = async () => {
     if (!navigator.share) return
