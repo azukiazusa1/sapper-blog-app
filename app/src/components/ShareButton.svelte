@@ -2,13 +2,15 @@
   import ShareIcon from './Icons/Share.svelte'
   import { browser } from '$app/environment'
 
-  export let title: string
   export let text: string
   export let url: string
 
+  // Twitter でシェアしやすいように 140 文字に制限
+  $: trucatedText = `${text.slice(0, 135)}...`
+
   const share = async () => {
     if (!navigator.share) return
-    await navigator.share({ title, text, url }).catch(() => {
+    await navigator.share({ title: trucatedText, text: trucatedText, url }).catch(() => {
       // noop
     })
   }

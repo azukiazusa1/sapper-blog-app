@@ -36,7 +36,7 @@
   <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg mt-2 max-w-5xl mx-auto">
     <GitHubEditButton slug={post.slug} />
     <div class="flex mt-4">
-      <ShareButton {url} title={post.title} text={post.about}>
+      <ShareButton {url} text={post.title}>
         <svelte:fragment slot="fallback">
           <div>この記事をシェアする</div>
           <div class="ml-4">
