@@ -34,7 +34,15 @@
       </a>
     </div>
     <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-      <img src={Heroimage} alt="" width="400" height="400" />
+      <picture>
+        <source media="(min-width: 1024px)" srcset={Heroimage} width="400" height="400" />
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
+          alt=""
+          width="1"
+          height="1"
+        />
+      </picture>
     </div>
   </div>
 </section>
