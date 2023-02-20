@@ -15,7 +15,7 @@
   $: nextPage = page + 1
 </script>
 
-<nav class="flex flex-col items-center my-12">
+<nav class="flex flex-col items-center my-12" aria-label="ページネーション">
   <div class="flex">
     {#if hasPrev}
       <a
