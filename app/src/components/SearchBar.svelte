@@ -1,14 +1,12 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
-  import SearchInput from './SearchInput/SearchInput.svelte'
-  import DropDownMenu from './DropDown/DropDownMenu.svelte'
   import type { SearchPostsQuery } from '../generated/graphql'
+  import Combobox from './Combobox/Combobox.svelte'
+  import type { Item } from './Combobox/types'
 
   let value = ''
   let posts: SearchPostsQuery
-  let isFocus = false
   let loading = true
-  $: showDropDownMenu = isFocus && value.trim()
 
   const search = async () => {
     loading = true
@@ -21,23 +19,23 @@
   $: {
     if (value.trim()) {
       search()
+    } else {
+      posts = undefined
     }
   }
 
   $: items = posts
     ? posts.blogPostCollection.items.map((item) => {
         return {
-          href: `/blog/${item.slug}`,
           imageUrl: item.thumbnail.url,
           text: item.title,
+          key: item.slug,
         }
       })
     : []
 
-  const handleBlur = () => {
-    setTimeout(() => {
-      isFocus = false
-    }, 300)
+  const handleSelect = (e: CustomEvent<Item>) => {
+    goto(`/blog/${e.detail.key}`)
   }
 
   const handleSubmit = () => {
@@ -47,8 +45,5 @@
 </script>
 
 <form role="search" on:submit|preventDefault={handleSubmit}>
-  <SearchInput bind:value on:focus={() => (isFocus = true)} on:blur={handleBlur} />
+  <Combobox bind:value on:select={handleSelect} {items} {loading} />
 </form>
-{#if showDropDownMenu}
-  <DropDownMenu {items} {loading} />
-{/if}
