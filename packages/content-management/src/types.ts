@@ -11,7 +11,7 @@ export const BlogPostSchema = z.discriminatedUnion('published', [
     title: z.string().max(255),
     slug: z
       .string()
-      .max(50)
+      .max(255)
       .regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/),
     tags: z.array(z.string().max(50)),
     published: z.literal(true),
@@ -25,7 +25,7 @@ export const BlogPostSchema = z.discriminatedUnion('published', [
     title: z.string().max(255).optional(),
     slug: z
       .string()
-      .max(50)
+      .max(255)
       .regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/)
       .optional(),
     tags: z.array(z.string().max(50)),
