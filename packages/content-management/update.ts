@@ -12,27 +12,37 @@ const getFilename = (path: string) => basename(path, '.md')
 
 if (ADDED_FILES) {
   const addedFiles = ADDED_FILES.split(' ')
+  let hasError = false
   for (const file of addedFiles) {
     const filename = getFilename(file)
     const result = await loadBlogPost(filename)
     if (!result.success) {
+      hasError = true
       console.error(result.error)
       continue
     }
     await createBlogPost(result.data)
   }
+  if (hasError) {
+    process.exit(1)
+  }
 }
 
 if (MODIFIED_FILES) {
   const modifiedFiles = MODIFIED_FILES.split(' ')
+  let hasError = false
   for (const file of modifiedFiles) {
     const filename = getFilename(file)
     const result = await loadBlogPost(filename)
     if (!result.success) {
+      hasError = true
       console.error(result.error)
       continue
     }
     await updateBlogPost(result.data)
+  }
+  if (hasError) {
+    process.exit(1)
   }
 }
 

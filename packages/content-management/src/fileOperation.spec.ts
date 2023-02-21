@@ -436,12 +436,12 @@ article
       })
     })
 
-    test('51 文字以上だとバリデーションエラー', async () => {
+    test('256 文字以上だとバリデーションエラー', async () => {
       mockedReadFile.mockResolvedValue(
         `---
 id: id
 title: "title"
-slug: ${'a'.repeat(51)}
+slug: ${'a'.repeat(256)}
 about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
@@ -459,17 +459,17 @@ article
         error: [
           expect.objectContaining({
             path: ['slug'],
-            message: 'String must contain at most 50 character(s)',
+            message: 'String must contain at most 255 character(s)',
           }),
         ],
       })
 
-      test('50 文字ならバリデーションエラーにならない', async () => {
+      test('255 文字ならバリデーションエラーにならない', async () => {
         mockedReadFile.mockResolvedValue(
           `---
 id: id
 title: "title"
-slug: ${'a'.repeat(50)}
+slug: ${'a'.repeat(255)}
 about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
