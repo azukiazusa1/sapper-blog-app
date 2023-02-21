@@ -459,7 +459,7 @@ article
         error: [
           expect.objectContaining({
             path: ['slug'],
-            message: 'String must contain at most 50 character(s)',
+            message: 'String must contain at most 255 character(s)',
           }),
         ],
       })
