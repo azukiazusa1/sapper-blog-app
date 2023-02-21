@@ -10,15 +10,14 @@
       window.LOGLEVEL = 'info';
       window.FRAMEWORK_OPTIONS = {};
       window.CHANNEL_OPTIONS = {};
-      window.FEATURES = {"warnOnLegacyHierarchySeparator":true,"buildStoriesJson":false,"storyStoreV7":true,"breakingChangesV7":true,"interactionsDebugger":false,"argTypeTargetsV7":true};
+      window.FEATURES = {"warnOnLegacyHierarchySeparator":true,"buildStoriesJson":false,"storyStoreV7":true,"breakingChangesV7":true,"argTypeTargetsV7":true};
       window.STORIES = [{"titlePrefix":"","directory":"./src","files":"**/*.mdx","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"","directory":"./src","files":"**/*.stories.@(js|jsx|ts|tsx)","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(js|jsx|ts|tsx))$"}];
-      window.DOCS_OPTIONS = {"disable":false,"defaultName":"Docs","autodocs":"tag"};
       window.SERVER_CHANNEL_URL = undefined;
-      
+
       // We do this so that "module && module.hot" etc. in Storybook source code
       // doesn't fail (it will simply be disabled)
       window.module = undefined;
-      </script>
+    </script>
     <base target="_parent" />
 
 <style>
@@ -351,8 +350,26 @@
 <script>
   window.global = window;
 </script>
-    <script type="module" crossorigin src="/sapper-blog-app/assets/iframe-026cc1c8.js"></script>
-  </head>
+    <script type="module" crossorigin src="/sapper-blog-app/assets/iframe-9e541ec2.js"></script>
+  <style>
+    .sb-show-preparing-story:not(.sb-show-main) > :not(.sb-preparing-story) {
+      display: none;
+    }
+    .sb-show-preparing-docs:not(.sb-show-main) > :not(.sb-preparing-docs) {
+      display: none;
+    }
+    :not(.sb-show-preparing-story) > .sb-preparing-story,
+    :not(.sb-show-preparing-docs) > .sb-preparing-docs,
+    :not(.sb-show-nopreview) > .sb-nopreview,
+    :not(.sb-show-errordisplay) > .sb-errordisplay {
+      display: none;
+    }
+    #root[hidden],
+    #docs-root[hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
   <body>
     <div class="sb-preparing-story sb-wrapper">
   <div class="sb-loader"></div>
@@ -442,9 +459,8 @@
   <pre class="sb-errordisplay_code"><code id="error-stack"></code></pre>
 </div>
 
-    <div id="storybook-root"></div>
-    <div id="storybook-docs"></div>
-    
+    <div id="root"></div>
+    <div id="docs-root"></div>
     
   </body>
 </html>

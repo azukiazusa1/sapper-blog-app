@@ -4,15 +4,20 @@
     <meta charset="utf-8" />
 
     <title>@storybook/cli - Storybook</title>
-
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    
+
+    <link rel="preload" href="./sb-common-assets/nunito-sans-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./sb-common-assets/nunito-sans-bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="./sb-common-assets/fonts.css" />
 
       
 
     <style>
-      #storybook-root[hidden]{
+      #storybook-root[hidden] {
         display: none !important;
       }
     </style>
@@ -31,7 +36,6 @@
   "buildStoriesJson": false,
   "storyStoreV7": true,
   "breakingChangesV7": true,
-  "interactionsDebugger": false,
   "argTypeTargetsV7": true
 };
         
@@ -71,30 +75,30 @@
       import './sb-manager/runtime.mjs';
 
       
-      import './sb-addons/%40storybook/addon-links/dist/manager-bundle.mjs';
+      import './sb-addons/links-0/manager-bundle.mjs';
       
-      import './sb-addons/%40storybook/addon-essentials/dist/controls/manager-bundle.mjs';
+      import './sb-addons/essentials-controls-1/manager-bundle.mjs';
       
-      import './sb-addons/%40storybook/addon-essentials/dist/actions/manager-bundle.mjs';
+      import './sb-addons/essentials-actions-2/manager-bundle.mjs';
       
-      import './sb-addons/%40storybook/addon-essentials/dist/backgrounds/manager-bundle.mjs';
+      import './sb-addons/essentials-backgrounds-3/manager-bundle.mjs';
       
-      import './sb-addons/%40storybook/addon-essentials/dist/viewport/manager-bundle.mjs';
+      import './sb-addons/essentials-viewport-4/manager-bundle.mjs';
       
-      import './sb-addons/%40storybook/addon-essentials/dist/toolbars/manager-bundle.mjs';
+      import './sb-addons/essentials-toolbars-5/manager-bundle.mjs';
       
-      import './sb-addons/%40storybook/addon-essentials/dist/measure/manager-bundle.mjs';
+      import './sb-addons/essentials-measure-6/manager-bundle.mjs';
       
-      import './sb-addons/%40storybook/addon-essentials/dist/outline/manager-bundle.mjs';
+      import './sb-addons/essentials-outline-7/manager-bundle.mjs';
       
-      import './sb-addons/%40storybook/addon-interactions/dist/manager-bundle.mjs';
+      import './sb-addons/interactions-8/manager-bundle.mjs';
       
-      import './sb-addons/%40storybook/addon-a11y/manager-bundle.mjs';
+      import './sb-addons/a11y-9/manager-bundle.mjs';
       
-      import './sb-addons/storybook-addon-themes/register-bundle.mjs';
-           
-    </script>    
+      import './sb-addons/themes-10/register-bundle.mjs';
+      
+    </script>
 
-    <link href="./sb-preview/runtime.mjs" rel="preload" as="script">
+    <link href="./sb-preview/runtime.mjs" rel="preload" as="script" />
   </body>
 </html>
