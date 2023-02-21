@@ -20,7 +20,9 @@
   <span class="font-bold">{tagName}</span>の記事一覧
 </h1>
 
-<PostList posts={posts.blogPostCollection.items} />
+<div class="mt-6">
+  <PostList posts={posts.blogPostCollection.items} />
+</div>
 
 <Pagination
   total={posts.blogPostCollection.total}

@@ -8,7 +8,7 @@
     bind:value
     on:focus
     on:blur
-    class="bg-white h-10 px-5 pr-16 text-sm rounded-l-lg focus:outline-none dark:bg-gray-800 w-full"
+    class="bg-white h-10 px-5 pr-16 rounded-l-lg focus:outline-none dark:bg-gray-800 w-full"
     type="search"
     name="search"
     placeholder="Search"

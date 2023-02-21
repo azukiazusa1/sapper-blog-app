@@ -54,14 +54,16 @@
     {:else if empty}
       <div class="mt-8 text-center">検索結果が見つかりませんでした</div>
     {:else}
-      <PostList posts={posts.blogPostCollection.items} />
+      <div class="mt-8">
+        <PostList posts={posts.blogPostCollection.items} />
 
-      <Pagination
-        page={currentPage}
-        total={posts.blogPostCollection.total}
-        limit={posts.blogPostCollection.limit}
-        href={`/blog/search?q=${q}&page=`}
-      />
+        <Pagination
+          page={currentPage}
+          total={posts.blogPostCollection.total}
+          limit={posts.blogPostCollection.limit}
+          href={`/blog/search?q=${q}&page=`}
+        />
+      </div>
     {/if}
   {/await}
 </div>

@@ -14,7 +14,7 @@
   border-bottom: 1px solid #ddd;
   padding-bottom: 0.1rem;
   margin-bottom: 2.1rem;
-  padding-top: calc(1.5rem);
+  padding-top: 1.5rem;
 }
 
 #contents h2 {
@@ -35,18 +35,27 @@
 }
 
 #contents h4 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
   padding-top: 1.5rem;
 }
 
 #contents h5 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding-bottom: 0.1rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 #contents h6 {
-  font-size: 1.125rem;
+  font-size: 1rem;
+  font-weight: 700;
+  padding-bottom: 0.1rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 #contents ul {
@@ -258,7 +267,7 @@ html.dark #contents code:not(pre > *) {
   border-radius: 6px;
   background-color: #2d2d2d;
   color: #ccc;
-  margin: 0.5em 0;
+  margin: 1.5em 0;
   padding: 1em;
 }
 
@@ -316,7 +325,7 @@ html.dark #contents code:not(pre > *) {
 }
 
 .link-card__url {
-  @apply text-slate-900 dark:text-white ml-2;
+  @apply text-neutral-900 dark:text-white ml-2;
 }
 
 .link-card__thumbnail {

@@ -30,9 +30,15 @@
 
 <style>
   img {
-    height: 18rem;
+    height: 12rem;
     display: block;
     margin: 0 auto;
     object-fit: contain;
+  }
+
+  @media (min-width: 768px) {
+    img {
+      height: 18rem;
+    }
   }
 </style>
