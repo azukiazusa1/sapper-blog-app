@@ -1,2 +1,0 @@
-import{w as a,e as o}from"./index-7e1bcbaf.js";import{T as s}from"./Time-6963fb80.js";import"./iframe-9e541ec2.js";import"./index-903bf68d.js";const p={title:"Time",component:s,tags:["autodocs"],argTypes:{date:{control:{type:"text"},describe:"日付"}}},d={args:{date:"2021-01-01T00:00:00.000Z"},play:({canvasElement:t})=>{const e=a(t).getByText("2021.01.01");o(e).toHaveAttribute("datetime","2021-01-01T00:00:00.000Z")}},T=["Default"];export{d as Default,T as __namedExportsOrder,p as default};
-//# sourceMappingURL=Time.stories-e36a367c.js.map
