@@ -11,7 +11,17 @@ exec('git diff --quiet HEAD^ HEAD .', (error, stdout, stderr) => {
   }
 })
 
-let vercelEnv = process.env.VERCEL_ENV
+if (process.env.VERCEL_GIT_COMMIT_REF === 'gf-pages') {
+  console.log('branch is gf-pages')
+  console.log('🛑 - Build cancelled')
+  process.exit(0)
+}
+
+if (process.env.VERCEL_ENV !== 'production') {
+  console.log('VERCEL_ENV: ', process.env.VERCEL_ENV)
+  console.log('🛑 - Build cancelled')
+  process.exit(0)
+}
 
 const options = {
   hostname: 'api.vercel.com',
@@ -31,21 +41,20 @@ const req = https.request(options, (res) => {
   })
   res.on('end', (d) => {
     let parsedData = JSON.parse(data)
-    let prodRunningFromDeployHook
-
-    prodRunningFromDeployHook = parsedData.target === 'production' && parsedData.meta.deployHookName === 'contentful'
+    const prodRunningFromDeployHook =
+      parsedData.target === 'production' && parsedData.meta.deployHookName === 'contentful'
 
     console.log({
       target: parsedData.target,
       hook: parsedData.meta.deployHookName,
     })
 
-    if (vercelEnv === 'production' && !prodRunningFromDeployHook) {
-      console.log('🛑 - Build cancelled')
-      process.exit(0)
-    } else {
+    if (prodRunningFromDeployHook) {
       console.log('✅ - Build can proceed')
       process.exit(1)
+    } else {
+      console.log('🛑 - Build cancelled')
+      process.exit(0)
     }
   })
 })
