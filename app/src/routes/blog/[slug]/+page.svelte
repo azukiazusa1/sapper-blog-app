@@ -8,11 +8,14 @@
   import type { PageData } from './$types'
   import variables from '$lib/variables'
   import ShareButton from '../../../components/ShareButton.svelte'
+  import Box from '../../../components/Box/Box.svelte'
+  import Contributors from '../../../components/Contributors/Contributors.svelte'
 
   export let data: PageData
 
   $: post = data.post
   $: contents = data.contents
+  $: contributors = data.contributors
   $: tagNames = post.tagsCollection.items.map((t) => encodeURIComponent(t.name))
 
   $: url = `${variables.baseURL}/blog/${post.slug}`
@@ -33,21 +36,24 @@
 
 <div class="my-12">
   <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />
-  <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg mt-2 max-w-5xl mx-auto">
-    <GitHubEditButton slug={post.slug} />
-    <div class="flex mt-4">
-      <ShareButton {url} text={post.title}>
-        <svelte:fragment slot="fallback">
-          <div>この記事をシェアする</div>
-          <div class="ml-4">
-            <TwitterShareButton {url} text={post.title} />
-          </div>
-          <div class="ml-4">
-            <HatenaShareButton {url} text={post.title} />
-          </div>
-        </svelte:fragment>
-      </ShareButton>
-    </div>
+  <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mt-4 max-w-5xl mx-auto">
+    <Contributors {contributors} />
+    <Box>
+      <GitHubEditButton slug={post.slug} />
+      <div class="flex mt-4">
+        <ShareButton {url} text={post.title}>
+          <svelte:fragment slot="fallback">
+            <div>この記事をシェアする</div>
+            <div class="ml-4">
+              <TwitterShareButton {url} text={post.title} />
+            </div>
+            <div class="ml-4">
+              <HatenaShareButton {url} text={post.title} />
+            </div>
+          </svelte:fragment>
+        </ShareButton>
+      </div>
+    </Box>
   </div>
 </div>
 
