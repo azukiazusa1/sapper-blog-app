@@ -64,7 +64,8 @@ export const Default: Story = {
 export const Loading: Story = {
   args: {
     items,
-    value: '',
+    value: 'hoge',
+    loading: true,
   },
 }
 
@@ -72,6 +73,6 @@ export const noResults: Story = {
   args: {
     items: [],
     loading: false,
-    value: '',
+    value: 'hoge',
   },
 }

@@ -1,8 +1,8 @@
 overwrite: true
 schema:
-  - 'https://graphql.contentful.com/content/v1/spaces/${VITE_SPACE}/environments/${VITE_ENVIRONMENTS}':
+  - 'https://graphql.contentful.com/content/v1/spaces/${SPACE}/environments/${ENVIRONMENTS}':
       headers:
-        Authorization: Bearer ${VITE_API_KEY}
+        Authorization: Bearer ${API_KEY}
 documents: 'src/**/*.ts'
 generates:
   src/generated/graphql.ts:

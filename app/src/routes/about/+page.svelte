@@ -1,5 +1,6 @@
 <script>
   import variables from '$lib/variables'
+  import Avatar from '../../components/Avatar/Avatar.svelte'
   import author from '../../assets/images/azukiazusa.jpeg'
   const content =
     'このブログはSvelteKit + Contentful + Vercelによって作成されています。学んだ技術についてつらつらと書いてきます。毎週日曜日夜くらいに更新されます。JavaScript/TypeScript/Vue.js/React/Svelte/PHP/Laravel/CakePHPあたり。趣味は読書と麻雀。'
@@ -17,7 +18,7 @@
       <div class="flex flex-col sm:flex-row mt-10">
         <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
           <div class="inline-flex items-center justify-center">
-            <img class="object-cover w-24 h-24 mx-2 rounded-full" alt="author" src={author} />
+            <Avatar size="lg" alt="azukiazusa1" src={author} />
           </div>
           <div class="flex flex-col items-center text-center justify-center">
             <h2 class="font-medium mt-4 text-lg">azukiazusa1</h2>

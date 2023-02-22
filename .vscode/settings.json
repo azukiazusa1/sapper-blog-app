@@ -13,5 +13,6 @@
       "directory": "./packages/content-management",
       "changeProcessCWD": true
     }
-  ]
+  ],
+  "vitest.enable": true
 }
