@@ -1,6 +1,7 @@
 import { PlaywrightTestConfig, devices } from '@playwright/test'
 
 const config: PlaywrightTestConfig = {
+  testDir: 'tests',
   fullyParallel: true,
   webServer: {
     command: 'npm run serve',

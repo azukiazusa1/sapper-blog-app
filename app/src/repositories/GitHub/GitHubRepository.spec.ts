@@ -1,9 +1,9 @@
 import { describe, test, expect, vi } from 'vitest'
 import { rest } from 'msw'
-import { createDummyGitHubCommit } from '../../test/createDummyGitHub'
+import { createDummyGitHubCommit } from '../../test-utils/createDummyGitHub'
 import type { Contributor } from './types'
 import { GitHubRepository } from './GitHubRepository'
-import { server } from '../../test/server'
+import { server } from '../../test-utils/server'
 const gitHubRepository = new GitHubRepository()
 
 describe('GitHubRepository', () => {

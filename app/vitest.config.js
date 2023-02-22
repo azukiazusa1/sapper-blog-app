@@ -10,6 +10,6 @@ export default defineConfig({
       '**/.{idea,git,cache,output,temp}/**',
       '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
     ],
-    setupFiles: './src/test/setup.ts',
+    setupFiles: './src/test-utils/setup.ts',
   },
 })
