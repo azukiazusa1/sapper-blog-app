@@ -4,6 +4,7 @@ import { TagRepository } from './tag'
 import type { TagsRepositoryInterFace } from './tag'
 import type { GitHubRepositoryInterface } from './GitHub/types'
 import { GitHubRepository } from './GitHub/GitHubRepository'
+import { MockGitHubRepository } from './GitHub'
 
 export const POST = Symbol('post')
 export const TAG = Symbol('tag')
@@ -20,5 +21,5 @@ const isMock = false
 export default {
   [POST]: isMock ? new MockPostRepository() : new PostRepository(),
   [TAG]: new TagRepository(),
-  [GITHUB]: new GitHubRepository(),
+  [GITHUB]: process.env.VERCEL_ENV === 'production' ? new GitHubRepository() : new MockGitHubRepository(),
 } satisfies Repositories

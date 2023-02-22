@@ -42,7 +42,7 @@ describe('GitHubRepository', () => {
         url: 'url2',
       },
     ])
-    expect(fn).toBeCalledWith('content/blogPost/slug.mdx')
+    expect(fn).toBeCalledWith('contents/blogPost/slug.md')
   })
 
   test('bot の commit は除外する', async () => {

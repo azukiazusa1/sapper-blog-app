@@ -1,3 +1,4 @@
+import secrets from '$lib/server/secrets'
 import type { CommitResponse, Contributor, GitHubRepositoryInterface } from './types'
 
 export class GitHubRepository implements GitHubRepositoryInterface {
@@ -12,7 +13,7 @@ export class GitHubRepository implements GitHubRepositoryInterface {
   }
 
   private getFilePath(slug: string): string {
-    return `content/blogPost/${slug}.mdx`
+    return `contents/blogPost/${slug}.md`
   }
 
   private botUsers = ['github-actions[bot]', 'actions-user', 'dependabot[bot]', 'renovate[bot]']
@@ -20,6 +21,11 @@ export class GitHubRepository implements GitHubRepositoryInterface {
   async getContributorsByFile(slug: string) {
     const res = await fetch(
       `https://api.github.com/repos/azukiazusa1/sapper-blog-app/commits?path=${this.getFilePath(slug)}`,
+      {
+        headers: {
+          Authorization: `Bearer ${secrets.githubToken}`,
+        },
+      },
     )
     const json: CommitResponse[] = await res.json()
     const contributors = json
