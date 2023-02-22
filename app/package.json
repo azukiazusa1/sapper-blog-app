@@ -55,9 +55,9 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@graphql-codegen/cli": "3.0.0",
-    "@graphql-codegen/introspection": "3.0.0",
-    "@graphql-codegen/typescript": "3.0.0",
+    "@graphql-codegen/cli": "3.1.0",
+    "@graphql-codegen/introspection": "3.0.1",
+    "@graphql-codegen/typescript": "3.0.1",
     "@graphql-codegen/typescript-operations": "^3.0.0",
     "@storybook/addon-a11y": "^7.0.0-beta.50",
     "@storybook/addon-essentials": "^7.0.0-beta.50",
