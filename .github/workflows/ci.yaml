@@ -11,6 +11,9 @@ env:
   ENVIRONMENTS: test
   PUBLIC_BASE_URL: http://localhost:3000
   PUBLIC_ANALYTICS_ID: ''
+  # Turborepo Remote Cache
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
   build:
@@ -26,7 +29,7 @@ jobs:
       - name: Build
         uses: preactjs/compressed-size-action@v2
         with:
-          pattern: '.vercel/output/static/**/*.{js,css,html.json}'
+          pattern: 'app/.vercel/output/static/**/*.{js,css,html.json}'
 
   lighthouse:
     name: Lighthouse
