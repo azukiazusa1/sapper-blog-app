@@ -57,11 +57,11 @@
 
 <svelte:window on:scroll={handleScroll} />
 
+<SideMenu {isOpen} {darkMode} {segment} {routes} on:close={closeSideMenu} on:clickMoon={handleMoonClick} />
 <header
-  class={`sticky left-0 w-full bg-white dark:bg-gray-700 shadow border-b border-gray-200 dark:border-gray-600 transition-all ease-in-out duration-300`}
+  class={`sticky left-0 w-full bg-white dark:bg-gray-700 shadow border-b border-gray-200 dark:border-gray-600 transition-all ease-in-out duration-300 z-10`}
   style={fixedHeader ? 'top: 0;' : 'top: -64px;'}
 >
-  <SideMenu {isOpen} {darkMode} {segment} {routes} on:close={closeSideMenu} on:clickMoon={handleMoonClick} />
   <div class="px-6 h-14 md:h-16 flex justify-between items-center">
     <button class="md:invisible md:hidden" on:click={openSideMenu} aria-label="サイドメニューを開く">
       <MenuIcon className="h-6 w-6" />
