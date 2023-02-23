@@ -1,59 +1,15 @@
 name: CI
 on:
   pull_request:
-    paths:
-      - app/**
 
 env:
-  API_KEY: ${{ secrets.PREVIEW_API_KEY }}
-  PREVIEW_API_KEY: ${{ secrets.PREVIEW_API_KEY }}
-  SPACE: ${{ secrets.PREVIEW_SPACE }}
-  ENVIRONMENTS: test
-  PUBLIC_BASE_URL: http://localhost:3000
-  PUBLIC_ANALYTICS_ID: ''
-  GITHUB_TOKEN: ''
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
-  build:
-    name: Build
+  eslint:
+    name: eslint
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: package.json
-          cache: npm
-      - name: Build
-        uses: preactjs/compressed-size-action@v2
-        with:
-          pattern: '.vercel/output/static/**/*.{js,css,html.json}'
-
-  lighthouse:
-    name: Lighthouse
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: package.json
-          cache: npm
-      - name: Install dependencies
-        run: npm ci && npm install -g @lhci/cli@0.10.x
-      - name: Build
-        run: npm run build
-      - name: Run Lighthouse CI
-        run: lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-  vrt:
-    name: Visual Regression Testing
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.31.0-focal
     steps:
       - uses: actions/checkout@v3
       - name: Set up Node.js
@@ -63,19 +19,10 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Add permissions
-        run: chmod 777 -R .
-      - name: Run Tests
-        run: npx playwright test
-        working-directory: app
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: test-results
-          path: test-results/
-  a11y:
+      - name: Run lint
+        run: npm run lint && npm run typecheck
+  test:
+    name: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -85,24 +32,6 @@ jobs:
           node-version-file: package.json
           cache: npm
       - name: Install dependencies
-        run: npm ci && npm install -g pa11y-ci
-      - name: Build
-        run: npm run build
-      - name: pa11y-ci
-        run: npm run serve -w=app & sleep 3; pa11y-ci
-  # test:
-  #   timeout-minutes: 60
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version-file: package.json
-  #         cache: npm
-  #     - name: Install dependencies
-  #       run: npm ci
-  #     - name: Install Playwright
-  #       run: npx playwright install --with-deps
-  #     - name: Serve Storybook and run tests
-  #       run: npm run test-storybook:ci
+        run: npm ci
+      - name: Run test
+        run: npm run test

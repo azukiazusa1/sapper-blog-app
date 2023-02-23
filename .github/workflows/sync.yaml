@@ -25,8 +25,8 @@ jobs:
           ENVIRONMENTS: master
       - name: Commit changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.email "59350345+github-actions@users.noreply.github.com"
+          git config --local user.name "azukiazusa1"
           git add .
           git commit -m "Sync blog posts"
           git push
