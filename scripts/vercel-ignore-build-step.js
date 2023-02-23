@@ -17,12 +17,6 @@ if (process.env.VERCEL_GIT_COMMIT_REF === 'gf-pages') {
   process.exit(0)
 }
 
-if (process.env.VERCEL_ENV !== 'production') {
-  console.log('VERCEL_ENV: ', process.env.VERCEL_ENV)
-  console.log('🛑 - Build cancelled')
-  process.exit(0)
-}
-
 const options = {
   hostname: 'api.vercel.com',
   port: 443,

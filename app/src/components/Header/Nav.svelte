@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { removeTrailingSlash } from '$lib/utils'
+  import { isMatchPath } from '$lib/utils'
 
   export let segment: string
   export let routes: string[]
@@ -10,7 +10,7 @@
     {#each routes as route}
       <li>
         <a
-          aria-current={removeTrailingSlash(segment) === `${route}` ? 'page' : undefined}
+          aria-current={isMatchPath(route, segment) ? 'page' : undefined}
           href={route}
           class="capitalize px-3 hover:opacity-75"
         >
