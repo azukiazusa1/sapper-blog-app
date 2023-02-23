@@ -2,15 +2,6 @@ name: test
 on:
   pull_request:
 
-env:
-  API_KEY: ${{ secrets.PREVIEW_API_KEY }}
-  PREVIEW_API_KEY: ${{ secrets.PREVIEW_API_KEY }}
-  SPACE: ${{ secrets.PREVIEW_SPACE }}
-  ENVIRONMENTS: test
-  PUBLIC_BASE_URL: http://localhost:3000
-  PUBLIC_ANALYTICS_ID: ''
-  GITHUB_TOKEN: ''
-
 jobs:
   test:
     name: test
@@ -24,7 +15,5 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Build
-        run: npm run build
       - name: Run test
         run: npm run test
