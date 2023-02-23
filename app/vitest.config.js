@@ -12,4 +12,9 @@ export default defineConfig({
     ],
     setupFiles: './src/test-utils/setup.ts',
   },
+  resolve: {
+    alias: {
+      $lib: '/src/lib',
+    },
+  },
 })
