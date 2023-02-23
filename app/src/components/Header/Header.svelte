@@ -2,44 +2,70 @@
   import SearchBar from '../SearchBar.svelte'
   import Nav from './Nav.svelte'
   import Title from './Title.svelte'
-  import MoonIcon from '../Icons/Moon.svelte'
-  import SunIcon from '../Icons/Sun.svelte'
+  import ToggleDarkMode from './ToggleDarkMode.svelte'
   import SearchIcon from '../Icons/Search.svelte'
   import MenuIcon from '../Icons/Menu.svelte'
-  import RsssIcon from '../Icons/Rss.svelte'
-  import { createEventDispatcher } from 'svelte'
+  import RssIcon from '../Icons/Rss.svelte'
+  import { createEventDispatcher, onMount } from 'svelte'
   import SideMenu from './SideMenu.svelte'
   import GitHub from '../Icons/GitHub.svelte'
 
   let routes = ['/blog', '/about', '/tags', '/drafts']
+  let html: HTMLElement
+  let lastScrollY = 0
+  let fixedHeader = true
+
+  onMount(() => {
+    html = document.documentElement
+    if (window.screenY > 0) {
+      fixedHeader = false
+    }
+  })
 
   export let segment: string
   export let darkMode: boolean
 
   let isOpen = false
 
+  const handleScroll = () => {
+    // 上にスクロールしたらヘッダーを表示する
+    if (window.scrollY < lastScrollY) {
+      fixedHeader = true
+    } else {
+      fixedHeader = false
+    }
+    lastScrollY = window.scrollY
+  }
+
   const openSideMenu = () => {
     isOpen = true
+    html.classList.add('overflow-hidden')
   }
 
   const closeSideMenu = () => {
     isOpen = false
+    html.classList.remove('overflow-hidden')
   }
 
-  const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher<{
+    clickMoon: void
+  }>()
   const handleMoonClick = () => {
     dispatch('clickMoon')
   }
 </script>
 
-<header class="top-0 left-0 w-full bg-white dark:bg-gray-700 shadow border-b border-gray-200 dark:border-gray-600">
-  <SideMenu {isOpen} {segment} {routes} on:close={closeSideMenu} />
-  <div class="px-6 h-16 flex justify-between items-center">
-    <div class="md:invisible md:hidden">
-      <button on:click={openSideMenu} aria-label="サイドメニューを開く">
-        <MenuIcon className="h-6 w-6" />
-      </button>
-    </div>
+<svelte:window on:scroll={handleScroll} />
+
+<header
+  class={`sticky left-0 w-full bg-white dark:bg-gray-700 shadow border-b border-gray-200 dark:border-gray-600 transition-all ease-in-out duration-300`}
+  style={fixedHeader ? 'top: 0;' : 'top: -999px;'}
+>
+  <SideMenu {isOpen} {darkMode} {segment} {routes} on:close={closeSideMenu} on:clickMoon={handleMoonClick} />
+  <div class="px-6 h-14 md:h-16 flex justify-between items-center">
+    <button class="md:invisible md:hidden" on:click={openSideMenu} aria-label="サイドメニューを開く">
+      <MenuIcon className="h-6 w-6" />
+    </button>
     <Title />
     <div class="invisible hidden md:visible md:block">
       <SearchBar />
@@ -51,26 +77,24 @@
       <a href="/blog/search" class="md:invisible md:hidden mx-2" aria-label="検索ページ">
         <SearchIcon className="h-6 w-6" />
       </a>
-      <button
-        on:click={handleMoonClick}
-        aria-label={`${darkMode ? 'ライトモードに切り替える' : 'ダークモードに切り替える'}`}
-        class="mx-2"
+      <div class="mx-2 invisible hidden md:visible md:block">
+        <ToggleDarkMode on:click={handleMoonClick} {darkMode} />
+      </div>
+      <a
+        href="/rss.xml"
+        target="_blank"
+        class="mx-2 invisible hidden md:visible md:block"
+        rel="noopener noreferrer"
+        aria-label="RSS"
       >
-        {#if darkMode}
-          <SunIcon className="h-6 w-6" />
-        {:else}
-          <MoonIcon className="h-6 w-6" />
-        {/if}
-      </button>
-      <a href="/rss.xml" target="_blank" class="mx-2" rel="noopener noreferrer" aria-label="RSS">
-        <RsssIcon className="h-6 w-6" />
+        <RssIcon className="h-6 w-6" />
       </a>
       <a
         href="https://github.com/azukiazusa1/sapper-blog-app"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
-        class="mx-2"
+        class="mx-2 invisible hidden md:visible md:block"
       >
         <GitHub className="h-6 w-6" />
       </a>

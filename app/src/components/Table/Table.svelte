@@ -6,7 +6,7 @@
   export let data: PreviewPostsQuery
 </script>
 
-<div class="relative overflow-x-auto rounded-lg">
+<div class="overflow-x-auto rounded-lg">
   <table class="w-full text-sm text-left">
     <thead class="text-xs uppercase bg-gray-200 dark:bg-gray-600">
       <tr>

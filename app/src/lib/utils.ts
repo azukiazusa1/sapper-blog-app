@@ -17,3 +17,12 @@ export const removeTrailingSlash = (path: string): string => {
   }
   return path
 }
+
+/**
+ * 現在のルートの1つ目の階層が一致していれば true を返す
+ */
+export const isMatchPath = (path: string, current: string): boolean => {
+  const [, currentFirst] = current.split('/')
+  const [, pathFirst] = path.split('/')
+  return pathFirst === currentFirst
+}
