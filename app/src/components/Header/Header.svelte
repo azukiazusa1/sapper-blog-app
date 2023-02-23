@@ -59,7 +59,7 @@
 
 <header
   class={`sticky left-0 w-full bg-white dark:bg-gray-700 shadow border-b border-gray-200 dark:border-gray-600 transition-all ease-in-out duration-300`}
-  style={fixedHeader ? 'top: 0;' : 'top: -999px;'}
+  style={fixedHeader ? 'top: 0;' : 'top: -64px;'}
 >
   <SideMenu {isOpen} {darkMode} {segment} {routes} on:close={closeSideMenu} on:clickMoon={handleMoonClick} />
   <div class="px-6 h-14 md:h-16 flex justify-between items-center">
