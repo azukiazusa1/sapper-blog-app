@@ -7,12 +7,14 @@
   import SearchInput from '../../../components/SearchInput/SearchInput.svelte'
   import type { SearchPostsQuery } from '../../../generated/graphql'
   import variables from '$lib/variables'
+  import { onDestroy, onMount } from 'svelte'
 
   let posts: SearchPostsQuery
   let value = ''
   let q = ''
   let promise: Promise<void>
   let currentPage = 1
+  let unsubscribe: () => void
 
   $: empty = !posts || posts.blogPostCollection.total === 0
 
@@ -24,12 +26,21 @@
     goto(`/blog/search?q=${value}`)
   }
 
-  page.subscribe((page) => {
-    q = page.url.searchParams.get('q') || ''
-    const p = Number(page.url.searchParams.get('page'))
-    currentPage = !Number.isNaN(p) && p > 0 ? p : 1
-    if (q.trim()) {
-      promise = search()
+  onMount(() => {
+    unsubscribe = page.subscribe((page) => {
+      q = page.url.searchParams.get('q') || ''
+      const p = Number(page.url.searchParams.get('page'))
+      currentPage = !Number.isNaN(p) && p > 0 ? p : 1
+      if (q.trim()) {
+        value = q
+        promise = search()
+      }
+    })
+  })
+
+  onDestroy(() => {
+    if (unsubscribe) {
+      unsubscribe()
     }
   })
 </script>
