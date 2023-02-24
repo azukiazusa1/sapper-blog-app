@@ -26,8 +26,14 @@ $ npn run lint
 $ npm run typecheck
 ```
 
-### vrt
+### test
 
 ```sh
 $ npm run test
+```
+
+### e2e
+
+```sh
+$ npm run e2e
 ```
