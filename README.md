@@ -35,5 +35,5 @@ $ npm run test
 ### e2e
 
 ```sh
-$ npm run e2e
+$ npm run test:e2e -w=app
 ```
