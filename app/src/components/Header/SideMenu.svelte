@@ -38,7 +38,7 @@
   }`}
 >
   <div>
-    <div class="flex justify-between w-full h-14 items-center p-4 border-b border-gray-200 dark:border-gray-600">
+    <div class="flex justify-between w-full h-12 items-center p-4 border-b border-gray-200 dark:border-gray-600">
       <Title />
       <ToggleDarkMode {darkMode} on:click={() => dispatch('clickMoon')} />
     </div>
