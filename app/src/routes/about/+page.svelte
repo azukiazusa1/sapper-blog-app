@@ -2,6 +2,7 @@
   import variables from '$lib/variables'
   import Avatar from '../../components/Avatar/Avatar.svelte'
   import author from '../../assets/images/azukiazusa.jpeg'
+  import Link from '../../components/Link/Link.svelte'
   const content =
     'このブログはSvelteKit + Contentful + Vercelによって作成されています。学んだ技術についてつらつらと書いてきます。毎週日曜日夜くらいに更新されます。JavaScript/TypeScript/Vue.js/React/Svelte/PHP/Laravel/CakePHPあたり。趣味は読書と麻雀。'
 </script>
@@ -52,8 +53,8 @@
           <p class="leading-relaxed text-lg mb-4 break-words">
             {content}
           </p>
-          <a class="dark:text-indigo-400  text-indigo-800 inline-flex items-center" href="/blog"
-            >記事を読む
+          <Link href="/blog">
+            記事を読む
             <svg
               fill="none"
               stroke="currentColor"
@@ -65,7 +66,7 @@
             >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
