@@ -45,6 +45,6 @@
     "find-config": "^1.0.0",
     "regenerator-runtime": "^0.13.11",
     "ts-node": "^10.9.1",
-    "vitest": "^0.28.5"
+    "vitest": "^0.29.0"
   }
 }
