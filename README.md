@@ -16,7 +16,7 @@ https://azukiazusa.dev
 | ├ `content-management`               | Contentful のデータとレポジトリの記事データを同期するスクリプト |
 | ├ `content-preview` | ローカルで編集したマークダウンファイルをプレビューするアプリ |
 | ├ `remark-link-card`| マークダウンをリンクカードに変換する remark のプラグイン |
-| ├ `remark-contentful-image | contentful の画像を最適化する remark のプラグイン |
+| ├ `remark-contentful-image` | contentful の画像を最適化する remark のプラグイン |
 | ├ `eslint-config-custom` | `packages` 共通の `eslint` の設定ファイル                      |
 | └ `tsconfig`             | `packages` 共通の `tsconfig.json`                              |
 
