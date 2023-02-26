@@ -1,7 +1,6 @@
 <script lang="ts">
   import AppTag from '../Tag/Tag.svelte'
   import Time from '../Time/Time.svelte'
-  import 'prismjs/themes/prism-tomorrow.css'
   import type { Tag } from '../../generated/graphql'
   import Box from '../Box/Box.svelte'
 

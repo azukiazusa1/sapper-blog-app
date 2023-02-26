@@ -1,0 +1,20 @@
+{
+  "name": "packages-content-preview",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "preview": "astro dev",
+    "astro": "astro",
+    "lint": "npm run format:check",
+    "format:check": "prettier --check --plugin-search-dir=. ./src",
+    "format": "prettier --write --plugin-search-dir=. ./src"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^0.17.2",
+    "@astrojs/rss": "^2.1.1",
+    "@astrojs/sitemap": "^1.1.0",
+    "@astrojs/tailwind": "^3.0.1",
+    "astro": "^2.0.15",
+    "remark-link-card": "^0.0.0"
+  }
+}

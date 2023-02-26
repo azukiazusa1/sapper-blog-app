@@ -3,6 +3,7 @@
     "svelte.svelte-vscode",
     "zixuanchen.vitest-explorer",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "astro-build.astro-vscode"
   ]
 }

@@ -9,5 +9,6 @@ app/node_modules
 .env
 .vercel
 .turbo
+build
+node_modules
 storybook-static/
-packages/content-management/node_modules/

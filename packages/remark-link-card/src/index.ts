@@ -34,7 +34,7 @@ const faviconImageSrc = async (url: URL) => {
   return faviconUrl
 }
 
-const h = (type: string, attrs = {}, children = []) => {
+const h = (type: string, attrs = {}, children: any[] = []) => {
   return {
     type: 'element',
     tagName: type,

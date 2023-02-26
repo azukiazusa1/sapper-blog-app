@@ -2,14 +2,18 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "outputs": [".svelte-kit/**", ".vercel/**"]
+      "outputs": [".svelte-kit/**", ".vercel/**", "build/**"],
+      "dependsOn": ["^build"]
     },
     "lint": {},
     "test": {},
     "dev": {
       "cache": false
     },
+    "format": {},
     "typecheck": {},
-    "format": {}
+    "app#typecheck": {
+      "dependsOn": ["remark-link-card#build", "remark-contentful-image#build"]
+    }
   }
 }
