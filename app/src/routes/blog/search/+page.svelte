@@ -1,18 +1,20 @@
 <script lang="ts">
   import { page } from '$app/stores'
+  import { goto } from '$app/navigation'
   import Loading from '../../../components/Icons/Loading.svelte'
   import PostList from '../../../components/PostList.svelte'
   import Pagination from '../../../components/Pagination/Pagination.svelte'
   import SearchInput from '../../../components/SearchInput/SearchInput.svelte'
   import type { SearchPostsQuery } from '../../../generated/graphql'
-  import { onMount } from 'svelte'
   import variables from '$lib/variables'
+  import { onDestroy, onMount } from 'svelte'
 
   let posts: SearchPostsQuery
   let value = ''
   let q = ''
   let promise: Promise<void>
   let currentPage = 1
+  let unsubscribe: () => void
 
   $: empty = !posts || posts.blogPostCollection.total === 0
 
@@ -21,17 +23,24 @@
   }
 
   const handleSubmit = () => {
-    q = value
-    if (!q.trim()) return
-    promise = search()
+    goto(`/blog/search?q=${value}`)
   }
 
   onMount(() => {
-    value = $page.url.searchParams.get('q') || ''
-    q = value
-    currentPage = $page.url.searchParams.get('page') ? Number($page.url.searchParams.get('page')) : 1
-    if (q.trim()) {
-      promise = search()
+    unsubscribe = page.subscribe((page) => {
+      q = page.url.searchParams.get('q') || ''
+      const p = Number(page.url.searchParams.get('page'))
+      currentPage = !Number.isNaN(p) && p > 0 ? p : 1
+      if (q.trim()) {
+        value = q
+        promise = search()
+      }
+    })
+  })
+
+  onDestroy(() => {
+    if (unsubscribe) {
+      unsubscribe()
     }
   })
 </script>
