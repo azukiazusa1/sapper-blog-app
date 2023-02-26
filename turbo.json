@@ -10,9 +10,10 @@
     "dev": {
       "cache": false
     },
-    "typecheck": {
-      "dependsOn": ["build"]
-    },
-    "format": {}
+    "format": {},
+    "typecheck": {},
+    "app#typecheck": {
+      "dependsOn": ["remark-link-card#build", "remark-contentful-image#build"]
+    }
   }
 }
