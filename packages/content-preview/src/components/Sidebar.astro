@@ -1,0 +1,82 @@
+---
+import type { BlogPostFromtMatter } from '../types'
+
+const blogPosts = await Astro.glob<BlogPostFromtMatter>('../../../../contents/blogPost/*.md')
+const sortedBlogPosts = blogPosts.sort((a, b) => {
+  // unpublished posts go to the top
+  if (!a.frontmatter.createdAt) return -1
+  if (!b.frontmatter.createdAt) return 1
+  return new Date(b.frontmatter.createdAt).getTime() - new Date(a.frontmatter.createdAt).getTime()
+})
+---
+
+<aside class="h-screen" aria-label="サイドバー">
+  <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-700 border-r border-gray-200 dark:border-gray-600">
+    <div class="flex py-2 justify-between sticky top-0 left-0 z-10 bg-white/70 dark:bg-gray-700/70 backdrop-blur">
+      <button
+        id="close-sidebar"
+        class="w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-500"
+        aria-label="サイバーを閉じる"
+      >
+        ⬅️
+      </button>
+      <button
+        id="toggle-theme"
+        class="w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-500"
+        aria-label="テーマを切り替える"
+      >
+        🌙
+      </button>
+    </div>
+    <nav>
+      <h3 class="text font-semibold text-gray-500 dark:text-gray-300">Blog</h3>
+      <ul class="space-y-1">
+        {
+          sortedBlogPosts.map((post) => (
+            <li>
+              <a
+                href={`/blog/${post.frontmatter.published ? post.frontmatter.slug : post.frontmatter.id}`}
+                class="p-2 text-sm block rounded-lg text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-500"
+              >
+                {!post.frontmatter.published && '📝'}
+                {post.frontmatter.title || 'Untitled'}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</aside>
+
+<script async>
+  const toggleThemeButton = document.getElementById('toggle-theme')
+  if (!toggleThemeButton) {
+    throw new Error('id="toggle-theme" is not found')
+  }
+  const toggleTheme = () => {
+    const isDark = document.documentElement.classList.contains('dark')
+    if (isDark) {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    } else {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    }
+
+    toggleThemeButton.innerText = isDark ? '🌙' : '🌞'
+  }
+
+  if (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    document.documentElement.classList.add('dark')
+    toggleThemeButton.innerText = '🌞'
+  } else {
+    document.documentElement.classList.remove('dark')
+    toggleThemeButton.innerText = '🌙'
+  }
+
+  toggleThemeButton.addEventListener('click', toggleTheme)
+</script>

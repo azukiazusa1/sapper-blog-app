@@ -264,7 +264,6 @@ html.dark #contents code:not(pre > *) {
   overflow: auto;
   border-radius: 6px;
   background: #263238;
-  color: #ccc;
   margin: 1.5em 0;
   padding: 1em;
 }

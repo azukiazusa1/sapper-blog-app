@@ -12,7 +12,15 @@
     {
       "directory": "./packages/content-management",
       "changeProcessCWD": true
-    }
+    },
+    {
+      "directory": "./packages/remark-contentful-image",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./packages/remark-link-card",
+      "changeProcessCWD": true
+    },
   ],
   "vitest.enable": true
 }

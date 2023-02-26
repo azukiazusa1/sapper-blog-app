@@ -1,5 +1,5 @@
 ---
-id: null
+id: "this-is-test-article"
 title: "article title"
 slug: "this-is-test-article"
 about: "Hoge"
