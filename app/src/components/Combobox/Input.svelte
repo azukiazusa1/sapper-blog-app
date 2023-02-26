@@ -6,6 +6,8 @@
   export let isOpen = false
   export let inputId = ''
   export let listboxId = ''
+  export let optionId = ''
+  export let activeIndex: number | null
 
   export const focus = () => {
     input.focus()
@@ -31,6 +33,7 @@
     aria-autocomplete="both"
     aria-expanded={isOpen}
     aria-controls={listboxId}
+    aria-activedescendant={activeIndex !== null ? `${optionId}-${activeIndex}` : undefined}
   />
   <button class="flex justify-end p-2 rounded-r-lg dark:bg-gray-700" aria-label="検索">
     <SearchIcon className="text-gray-600 dark:text-gray-50 h-6 w-6" />
