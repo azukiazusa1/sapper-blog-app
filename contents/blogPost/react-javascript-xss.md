@@ -2,13 +2,12 @@
 id: 1l19jpuolirH7VefmyYepD
 title: "React は javascript スキームを使った XSS を防ぐことができない"
 slug: "react-javascript-xss"
-about: null
-createdAt: null
-updatedAt: null
-tags: []
-published: false
+about: "React を使用していた場合に引き起こす可能性がある XSS 脆弱性の例として、javascript スキームを使った XSS があります。この記事では、javascript スキームを使った XSS についての説明とその対策について紹介します。"
+createdAt: "2023-02-26T00:00+09:00"
+updatedAt: "2023-02-26T00:00+09:00"
+tags: ["React", "セキュリティ"]
+published: true
 ---
-
 多くのフロントエンドのフレームワークはデフォルトで XSS 対策をしてくれます。例えば、React,Vue.js,Angular といったフレームワークは自動的にエスケープ処理を行ってくれます。
 
 ただし、フレームワークの使用方法を間違えると XSS を引き起こすことがあります。例えば React の `dangerouslySetInnerHTML` というプロパティを使うと、HTML をエスケープ処理をせずにそのまま埋め込むため、XSS を引き起こすことができます。
@@ -182,7 +181,7 @@ CSP では `default-src` や `script-src`、`style-src` のような「ディレ
 <p style="color: red">Hello World</p>
 ```
 
-![赤文字で Hello World と表示されている]([./images/inline-style.png](https://images.ctfassets.net/in6v9lxmm5c8/2exV1UWri1vyeEj1GtYxYs/e8d39b1ab3fe04e4ec97c4fff9d48438/____________________________2023-02-26_17.08.42.png))
+![赤文字で Hello World と表示されている](https://images.ctfassets.net/in6v9lxmm5c8/2exV1UWri1vyeEj1GtYxYs/e8d39b1ab3fe04e4ec97c4fff9d48438/____________________________2023-02-26_17.08.42.png)
 
 ここで `style-src` ディレクトリを用いて、インラインスタイルの読み込みをを許可しないように設定してみましょう。簡易的に `<meta>` タグを使用して設定してみます。
 
@@ -200,7 +199,7 @@ CSP では `default-src` や `script-src`、`style-src` のような「ディレ
 
 以下のように、インラインスタイルの読み込みが許可されていないため、スタイルが適用されていないことがわかります。デベロッパーツールのコンソールには CSP によりインラインスタイルの読み込みがブロックされたことが表示されます。
 
-![黒文字で Hello World と表示されている。デベロッパーツールにはインラインスタイルの読み込みがブロックされたことが表示される]([./images/csp.png](https://images.ctfassets.net/in6v9lxmm5c8/3PjpN5jUZPP4iUfV1OTlpz/c9f163ae1c1a03814db7c1097960bc54/____________________________2023-02-26_16.43.54.png))
+![黒文字で Hello World と表示されている。デベロッパーツールにはインラインスタイルの読み込みがブロックされたことが表示される](https://images.ctfassets.net/in6v9lxmm5c8/3PjpN5jUZPP4iUfV1OTlpz/c9f163ae1c1a03814db7c1097960bc54/____________________________2023-02-26_16.43.54.png)
 
 CSP を使用しながらインラインスタイルを使用したい場合は、以下のように `unsafe-inline` を指定します。しかし、インラインスタイルを許可することは CSP が提供する最大のセキュリティ上の利点を損なうため、どうしても必要な場合を除いては使用しないようにしましょう。
 
@@ -265,3 +264,4 @@ javascript スキームを使用した XSS　脆弱性の話に戻りましょ�
 
 - [フロントエンド開発のためのセキュリティ入門 知らなかったでは済まされない脆弱性対策の必須知識（平野 昌士 はせがわ ようすけ 後藤 つぐみ）｜翔泳社の本](https://www.shoeisha.co.jp/book/detail/9784798169477)
 - [コンテンツセキュリティポリシー (CSP) - HTTP | MDN](https://developer.mozilla.org/ja/docs/Web/HTTP/CSP)
+
