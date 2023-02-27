@@ -12,13 +12,13 @@ published: true
 
 一度バリデータを宣言すれば、Zod が自動的に TypeScript の型を推論してくれるという特徴があります。このおかげで重複した型宣言を排除できます。
 
-また、Zod はエコシステムも多く存在しており、OpenApi、Nest.js、Prisma、react-hook-form などと組み合わせて使うことができます。
+また Zod はエコシステムも多く存在しており、OpenApi、Nest.js、Prisma、react-hook-form などと組み合わせて使うことができます。
 
 https://github.com/colinhacks/zod#ecosystem
 
 ## 簡単な使い方
 
-まずは１番簡単な使い方から見ていきましょう。Zod は TypeScript 4.1 以上が必要です。また、`strict` モードを有効にする必要があります。
+まずは 1 番簡単な使い方から見ていきましょう。Zod は TypeScript 4.1 以上が必要です。また `strict` モードを有効にする必要があります。
 
 ```json
 // tsconfig.json
@@ -39,7 +39,7 @@ yarn add zod          # yarn
 pnpm add zod          # pnpm
 ```
 
-１番簡単な `string` 型のスキーマを定義します。
+1 番簡単な `string` 型のスキーマを定義します。
 
 ```ts
 import { z, ZodError } from 'zod' // ①
@@ -65,13 +65,13 @@ if (import.meta.vitest) {
 
 ② `z.string()` 関数でスキーマを宣言します。`z.string()` は名前のとおり `string` 型のスキーマを作成します。
 
-③ `z.infer` の型引数に宣言したスキーマを渡すことでスキーマから TypeScript の型を生成することができます。`usernameSchema` は `string` 型のスキーマなので `string` 型に推論されます。
+③ `z.infer` の型引数に宣言したスキーマを渡すことでスキーマから TypeScript の型を生成できます。`usernameSchema` は `string` 型のスキーマなので `string` 型に推論されます。
 
 ④ 定義したスキーマの使い方をテストしています。`usernameSchema.parse()` 関数を使うことで値を検証できます。ここでは　`'john'` という `string` 型の値を渡しているのでバリデーションをパスしてそのまま値が返されます。
 
 ⑤ 続いて `usernameSchema.parse()` 関数に `1` を渡しています。`usernameSchema` には `string` 型が期待されていますが、実際には `number` 型が渡されているため `ZodError` が例外として投げられます。
 
-また、`usernameSchema.scheme()` で返される値の型は `string` 型となるので `unkown` 型を安全に使用することができます。
+また `usernameSchema.scheme()` で返される値の型は `string` 型となるので `unkown` 型を安全に使用できます。
 
 ```ts
 const toUpper = (value: unknown): stirng => {
@@ -91,9 +91,9 @@ const toUpper = (value: unknown): stirng => {
 
 ## 詳細なバリデーション
 
-それぞれのプリミティブ型に合わせて、もう少し詳細なバリデーションを定義することができます。例えば `z.string().max()` や `z.string().min()` は文字列の長さを検証したり、`z.number.positive()` は `0` より大きい値であることを検証します。
+それぞれのプリミティブ型に合わせて、もう少し詳細なバリデーションを定義できます。例えば `z.string().max()` や `z.string().min()` は文字列の長さを検証したり、`z.number.positive()` は `0` より大きい値であることを検証します。
 
-また、`{ message: '...' }` オプションを引数に渡すことで、エラーメッセージをカスタマイズすることができます。
+また `{ message: '...' }` オプションを引数に渡すことで、エラーメッセージをカスタマイズできます。
 
 ```ts
 import { z, ZodError } from 'zod'
@@ -127,7 +127,7 @@ if (import.meta.vitest) {
 
 ## API のレスポンスの値を検証する
 
-もう少し実践的な例を見ていきましょう。普段 `fetch API` や `axios` など HTTP クライアントを使用するときは API が返すレスポンスを信頼して型を付けることが多いかと思います。ただし、実際にスキーマどおりのレスポンスが返却されるかどうかはランタイムになってみないとわかりません。期待されたスキーマのレスポンスが返って来ないことを考えるとゾッとしますよね・[^1]
+もう少し実践的な例を見ていきましょう。普段 `fetch API` や `axios` など HTTP クライアントを使用するときは API が返すレスポンスを信頼して型を付けることが多いかと思います。ただし、実際にスキーマどおりのレスポンスが返却されるかどうかはランタイムになってみないとわかりません。期待されたスキーマのレスポンスが返ってこないことを考えるとゾッとしますよね・[^1]
 
 API のレスポンスのスキーマを `Zod` で作成し検証も実行できるようにしてみましょう。`z.object` でオブジェクト型のスキーマを宣言できます。
 
@@ -184,7 +184,7 @@ const fetchTodos = async (): Promise<TodoResponse> => {
 }
 ```
 
-`fetch` のレスポンスにバリデーションを実施した上で型を付けることができるので、`res.json() as TodoResponse` のように API を信頼して型を付けるよりはるかに安全に使用することができます。
+`fetch` のレスポンスにバリデーションを実施したうえで型を付けることができるので、`res.json() as TodoResponse` のように API を信頼して型を付けるよりはるかに安全に使用できます。
 
 また TypeScript の型を Zod のスキーマから生成できるので、重複したコードを書いたりバリデーションをと型情報の整合性が取れないといったことが発生することがありません。
 

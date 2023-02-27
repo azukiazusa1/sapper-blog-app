@@ -8,7 +8,7 @@ updatedAt: "2021-12-05T00:00+09:00"
 tags: ["CSS"]
 published: true
 ---
-大抵のブラウザでは Web ページを印刷することができます。
+大抵のブラウザでは Web ページを印刷できます。
 しかし Web ページをそのまま印刷しようとすると改ページがおかしくなったりレイアウトがおかしくなってしまうことがあるでしょう。そもそも Web ページはディスプレイで表示することを目的としているので印刷には不向きなものです。
 
 とはいえ Web ページを印刷したいというニーズは少なからずあることでしょう。そのような場合には `@media print` のような印刷用の CSS を利用することで見た目を整えることができます。
@@ -19,7 +19,7 @@ published: true
 
 ![スクリーンショット 2021-12-04 23.52.46](//images.contentful.com/in6v9lxmm5c8/3Sr2gIGxqleugBNI49yphK/f876ce5bfe48b0cf200fa47961fea3af/____________________________2021-12-04_23.57.34.png)
 
-コードは以下の通りです。
+コードは以下のとおりです。
 
 ```html
 <!DOCTYPE html>
@@ -47,9 +47,9 @@ published: true
 
 クラス `.no-print` はメディアクエリ `print` の中で指定されています。このスタイルはプリント時のみに適用されます。赤文字で表示されている箇所にはクラス `.no-print` を指定しているので印刷のプレビュー時だけこの文字は表示されなくなります。
 
-実際に表示を確認してみましょう。Google Chrome において印刷プレビューを表示するには[ファイル] > [印刷] をクリックするか、次のキーボード ショートカットを使用します。
-- Windows と Linux の場合: `Ctrl+P`
-- Mac の場合: `⌘+P`
+実際に表示を確認してみましょう。Google Chrome において印刷プレビューを表示するには［ファイル］>[印刷]をクリックするか、次のキーボード ショートカットを使用します。
+- Windows と Linux の場合： `Ctrl+P`
+- Mac の場合： `⌘+P`
 
 [Chrome から印刷する](https://support.google.com/chrome/answer/1069693?hl=ja&co=GENIE.Platform%3DDesktop)
 
@@ -63,7 +63,7 @@ published: true
 
 #### link/style media="print"
 
-`<link>` で CSS ファイルを読み込み時や `<style>` タグ内に CSS を記述する際に `media` 属性を指定できます。
+`<link>` で CSS ファイルを読み込みときや `<style>` タグ内に CSS を記述する際に `media` 属性を指定できます。
 
 ```html
 <style media="print">
@@ -110,21 +110,21 @@ published: true
 
 https://developer.mozilla.org/ja/docs/Web/CSS/@page/size#browser_compatibility
 
-実際に Google Chrome で `size` プロパティを指定してみるとたしかにプレビュー時のサイズが異なっていることがわかります。また `size` プロパティを指定すると印刷時の詳細設定でユーザーが用紙のサイズを選択することができなくなっています。
+実際に Google Chrome で `size` プロパティを指定してみるとたしかにプレビュー時のサイズが異なっていることがわかります。また `size` プロパティを指定すると印刷時の詳細設定でユーザーが用紙のサイズを選択できなくなっています。
 
 ![スクリーンショット 2021-12-05 0.15.13](//images.contentful.com/in6v9lxmm5c8/H1Mk26Mgf9DYZnqLWXNkV/a91f1a41815d84b04804d64f594e755c/____________________________2021-12-05_0.15.13.png)
 
 ## 印刷時の改ページを制御する
 
-以下の CSS プロパティを使用すると印刷時の改ページを制御することができます。
+以下の CSS プロパティを使用すると印刷時の改ページを制御できます。
 
 - [break-before](https://developer.mozilla.org/ja/docs/Web/CSS/break-before) 指定した要素の直前の改ページを制御
 - [break-inside](https://developer.mozilla.org/ja/docs/Web/CSS/break-inside) 指定した要素の途中の改ページを制御
 - [break-after](https://developer.mozilla.org/ja/docs/Web/CSS/break-after) 指定した要素の後の改ページを制御
 
-`break-before`,`break-inside` には区切りを強制する値(`always`, `left`, `right`, `page`, `column`, `region`)または区切りを防止する値(`avoid`, `avoid-page`, `avoid-region`, `avoid-column`)を指定できます。`break-inside` には区切りを防止する値のみを指定できます。
+`break-before`,`break-inside` には区切りを強制する値（`always`・`left`・`right`・`page`・`column`・`region`)または区切りを防止する値（`avoid`・`avoid-page`・`avoid-region`・`avoid-column`）を指定できます。`break-inside` には区切りを防止する値のみを指定できます。
 
-また同時に複数のプロパティが指定された場合には以下の優先度の通りに適用されます。
+また同時に複数のプロパティが指定された場合には以下の優先度のとおりに適用されます。
 
 ```
 break-before > break-inside > break-after
@@ -171,7 +171,7 @@ break-before > break-inside > break-after
 
 ## JavaScript から印刷プレビューを呼びだす
 
-ブラウザの既定の方法から印刷を実行するのは慣れていない人にとっては少々分かりにくい操作です。「このページを印刷する」といったボタンを設置してボタンをクリックしたときに印刷ができるようにしたいところです。
+ブラウザの既定の方法から印刷をするのは慣れていない人にとっては少々分かりにくい操作です。「このページを印刷する」といったボタンを設置してボタンをクリックしたときに印刷ができるようにしたいところです。
 
 そのような場合には [window.print()](https://developer.mozilla.org/ja/docs/Web/API/Window/print) メソッドを使用します。このメソッドを呼び出すと印刷ダイアログを表示します。
 
@@ -191,9 +191,9 @@ break-before > break-inside > break-after
 
 ## プリント画面のデバッグ
 
-開発時に印刷ダイアログを毎回開いて表示を確認するのは非常に面倒です。ブラウザの開発者ツールを使用すれば印刷画面をエミュレートして表示することができます。
+開発時に印刷ダイアログを毎回開いて表示を確認するのは非常に面倒です。ブラウザの開発者ツールを使用すれば印刷画面をエミュレートして表示できます。
 
-まずは開発者ツールを開いて「⋮」> 「More tools」> 「Rendering」を選択します。
+まずは開発者ツールを開いて「⋮」>「More tools」>「Rendering」を選択します。
 
 ![スクリーンショット 2021-12-05 10.37.23](//images.contentful.com/in6v9lxmm5c8/5eQF3Ix2svG7Do0DgIvtRj/c8b150a26698fb4ff3b595df63297bf3/____________________________2021-12-05_10.37.23.png)
 

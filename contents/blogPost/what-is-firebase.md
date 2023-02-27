@@ -11,39 +11,39 @@ published: true
 # Firebaseとは
 ![firebase.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2F5017a38035f48029213844b30ee39d76.png?alt=media&token=b338c943-2119-481a-9e2e-0d9bca87b324)
 
-Firebaseは、Googleが提供するバックエンドサービスです。いわゆる、**BaaS**(Backend as a Service)です。
-Firebaseは、バックエンドのサービスを担ってくれるので、開発者はアプリケーションの開発に専念することができ、バックエンドで動くサービスを作成、管理する必要はありません。
+Firebase は、Google が提供するバックエンドサービスです。いわゆる、**BaaS**(Backend as a Service)です。
+Firebase は、バックエンドのサービスを担ってくれるので、開発者はアプリケーションの開発に専念でき、バックエンドで動くサービスを作成、管理する必要はありません。
 そのため、素早くアプリケーションをリリースるることができます。
-Firebaseは、iOS/AndroidアプリからWebサービスまで幅広く使えます。
+Firebase は、iOS/Android アプリから Web サービスまで幅広く使えます。
 
-Firebaseには、以下のような様々な機能が提供されています。
+Firebase には、以下のようなさまざまな機能が提供されています。
 
 - Firebase Authentication
-アカウント機能を提供します。メールアドレスとパスワードを使用した一般的な認証の他に、電話番号、匿名認証、TwitterやGoogleアカウント、FacebookなどのSNS認証を使用できます。
+アカウント機能を提供します。メールアドレスとパスワードを使用した一般的な認証の他に、電話番号、匿名認証、Twitter や Google アカウント、Facebook などの SNS 認証を使用できます。
 
 - Realtime Database 
- オブジェクト型のNoSQLデータベースです。その名の通り、リアルタイムでクライアント全体の情報を同期することができます。データベースの状態を監視して変更があった場合、自動で更新してくれるので、簡単にチャット機能を実装することができます。
+ オブジェクト型の NoSQL データベースです。その名のとおり、リアルタイムでクライアント全体の情報を同期できます。データベースの状態を監視して変更があった場合、自動で更新してくれるので、簡単にチャット機能を実装できます。
 
 - Cloud Firestore
-上記のRealtime Databaseの性能をさらに向上させた、新しいデータベースです。基本的に特別な事情がない限りこちらがおすすめされています。Realtime Databaseと異なり、データをドキュメントで保存します。
+上記の Realtime Database の性能をさらに向上させた、新しいデータベースです。基本的に特別な事情がない限りこちらがおすすめされています。Realtime Database と異なり、データをドキュメントで保存します。
 
 - Cloud Storage
 写真や動画など、バイナリーデータを保存するストレージです。
 
 - Firebase Hosting
-HTML、CSS、JavaScriptで構成されたWebアプリケーションなど、静的なページを公開するためのホスティングサービスです。CDNを利用して、コンテンツを高速に配信することができます。
+HTML、CSS、JavaScript で構成された Web アプリケーションなど、静的なページを公開するためのホスティングサービスです。CDN を利用して、コンテンツを高速に配信できます。
 
 - Firebase Analytics
-アプリの使用状況や、ユーザーの行動などを把握することができます。
-500以上のイベントに関するレポートを無制限に生成できます。
+アプリの使用状況や、ユーザーの行動などを把握できます。
+500 以上のイベントに関するレポートを無制限に生成できます。
 
 - Firebase Crashlytics
 アプリケーションのクラッシュレポートを送信します。
 
-これらの機能はFirebaseの提供するすべての機能のほんの一部にしかすぎません。すべての機能を知りたい場合には、ぜひ[公式サイト](https://firebase.google.com/?hl=ja)を確認してみてください。
+これらの機能は Firebase の提供するすべての機能のほんの一部にしかすぎません。すべての機能を知りたい場合には、ぜひ[公式サイト](https://firebase.google.com/?hl=ja)を確認してみてください。
 
 # プロジェクトを作成する
-実際にFirebaseのプロジェクトを作成します。Googleアカウントがない場合には先に作成しておく必要があります。
+実際に Firebase のプロジェクトを作成します。Google アカウントがない場合には先に作成しておく必要があります。
 
 ## プロジェクトの追加
 まずは[Firebaseのコンソール](https://console.firebase.google.com/?hl=ja)へ移動します。
@@ -54,29 +54,29 @@ HTML、CSS、JavaScriptで構成されたWebアプリケーションなど、静
 適当にプロジェクトの名前を付けます。
 ![スクリーンショット 20200412 21.47.39.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2Fccf60d20a09db3bfc67b47f2d6506a15.png?alt=media&token=9dfc0fd0-babf-4968-81c0-cbdb24a47190)
 
-いくつかの項目を聞かれるので(Google Analticsの使用の有無など)確認したら続行をクリックします。
+いくつかの項目を聞かれるので（Google Analtics の使用の有無など）確認したら続行をクリックします。
 
 以下のような画面になったらプロジェクトの作成は完了です。
 ![スクリーンショット 20200412 21.48.28.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2F7645011104b0258e89adf3f284b68f87.png?alt=media&token=636d757f-6dad-4182-9b26-96ee58083e6f)
 
-Firebaseを利用するためのAPIキーを取得しましょう。今回は`JavaScript`使用するので、Webアプリケーションのアイコンをクリックします。
+Firebase を利用するための API キーを取得しましょう。今回は `JavaScript` 使用するので、Web アプリケーションのアイコンをクリックします。
 
 ![スクリーンショット 20200412 21.55.10.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2Ff0a4eeb6fd2c296026e62144636ef7f2.png?alt=media&token=5671b4ac-cfce-4e54-8153-c5941697bc25)
 
 適当なアプリケーションの名前を付けましょう。
 ![スクリーンショット 20200412 21.51.43.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2F1a1336faf83f188d5fcecc60e4be0d24.png?alt=media&token=b15f9a41-78da-4d2b-9de7-6e097a703f9c)
 
-JavaSriptのコードが出てくるので、コピペして使用します。
+JavaSript のコードが出てくるので、コピペして使用します。
 ![スクリーンショット 20200412 21.52.12.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2F6b065d4471796ff9dea3e7cbb7dd837f.png?alt=media&token=a0c37c0d-3b7d-4ffe-becb-365e93864e1f)
 
-これで基本的なFirebaseの設定は完了です。
+これで基本的な Firebase の設定は完了です。
 
 # Firebase Authentication
-実際にFirebase Authenticationを試してみます。
-ログイン認証に様々な方法が使えますが、今回はGoogleアカウントを用いた認証を行います。
-理由はAPIキー等の入手の必要がなく、とても簡単だからです。(ちなみにTwitter APIはAPIの利用に審査が必要で、審査の申請を出すために利用理由を英語で200文字以上入力する必要があるなどかなり面倒です)
+実際に Firebase Authentication を試してみます。
+ログイン認証にさまざまな方法が使えますが、今回は Google アカウントを用いた認証します。
+理由は API キーなどの入手の必要がなく、とても簡単だからです。（ちなみに Twitter API は API の利用に審査が必要で、審査の申請を出すために利用理由を英語で 200 文字以上入力する必要があるなどかなり面倒です）。
 
-次のような簡単なログインボタンとログアウトボタンだけが表示されるHTMLファイルを用意しました。
+次のような簡単なログインボタンとログアウトボタンだけが表示される HTML ファイルを用意しました。
 
 ```html
 <!DOCTYPE html>
@@ -118,21 +118,21 @@ JavaSriptのコードが出てくるので、コピペして使用します。
 </html>
 ````
 
-これをもとに`firebase.js`にコーディングしていきましょう。
+これをもとに `firebase.js` にコーディングしていきましょう。
 
 ## Googleプロバイダオブジェクトのインスタンスを作成
-Firebase Authentication機能を利用するためには、基本的には`firebase.auth()`の名前空間で作業をします。
-auth用のCDNも忘れずに`firebase-app.js`の後に読み込むようにします。
+Firebase Authentication 機能を利用するためには、基本的には `firebase.auth()` の名前空間で作業をします。
+auth 用の CDN も忘れずに `firebase-app.js` の後に読み込むようにします。
 `<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>`
-Firebase Auth 自体は多くのサービスプロバイダのOAuthのラッパーとなっています。
-Googleアカウントを利用するので、Googleサービスプロバイダを呼び出しましょう。
+Firebase Auth 自体は多くのサービスプロバイダの OAuth のラッパーとなっています。
+Google アカウントを利用するので、Google サービスプロバイダを呼び出しましょう。
 
 ```js
 const provider = new firebase.auth.GoogleAuthProvider()
 ```
 
 ## ログインボタンがクリックされたときに認証を行う
-早速認証を行いましょう。ログインボタンが押されたときに認証がされるようにしたいので、ログインボタンのDOMを取得して`click`イベントを購読しましょう。
+早速認証を行いましょう。ログインボタンが押されたときに認証がされるようにしたいので、ログインボタンの DOM を取得して `click` イベントを購読しましょう。
 
 ```js
 const loginBtn = document.getElementById('login')
@@ -145,10 +145,10 @@ loginBtn.addEventListener('click', () => {
 認証するさいには、ポップアップウィンドウを表示するか、ログインページにリダイレクトするか選択できます。
 
 - ポップアップでログイン
-`signInWithPopup`を呼び出す。
+`signInWithPopup` を呼び出す。
 
 - ログインページにリダイレクトでログイン
-`signInWithRedirect`を呼び出す。
+`signInWithRedirect` を呼び出す。
 
 今回はポップアップをでログインをしましょう。以下のように呼び出します。
 
@@ -172,7 +172,7 @@ loginBtn.addEventListener('click', () => {
 ![スクリーンショット 20200412 23.08.41.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2F7d21c1643f59789360a577dffed82bea.png?alt=media&token=202bb39e-ec3b-4f0c-9943-fce4973a99b7)
 
 この認証方法は使えない、みたいなことが書いてあります。
-そうです、うっかりしてましたFirebase Authenticationによる認証を利用するにはコンソールから利用する認証方法を有効化する必要があります。一度コンソールへ戻りましょう。
+そうです、うっかりしてました Firebase Authentication による認証を利用するにはコンソールから利用する認証方法を有効化する必要があります。一度コンソールへ戻りましょう。
 
 左のメニューバーから「Authentication」を選択します。
 次に、上のタブから「Sign-in method」を選択しましょう。
@@ -186,17 +186,17 @@ loginBtn.addEventListener('click', () => {
 
 ![スクリーンショット 20200412 23.17.37.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2Fbf5ab6971f7d34efa9a5cf93aa061ab6.png?alt=media&token=68593e81-6fd6-4547-b569-2ab95e56ec1e)
 
-これで、Googleプロパイダが有効になりました。
+これで、Google プロパイダが有効になりました。
 
 ![スクリーンショット 20200412 23.20.52.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2F7c384c395379a237126f9bd60e2b36af.png?alt=media&token=b2f4c489-9df6-48d6-9a14-e3859523c01a)
 
 もう一度ログインボタンをクリックしてみましょう。
-Googleアカウントの選択画面がでてきて、ログインができるはずです。
+Google アカウントの選択画面がでてきて、ログインができるはずです。
 
 ## 現在ログインしているユーザーを取得する
 通常、ログイン機能が必要なアプリケーションの場合、ユーザーが現在ログインしているかどうか、またログインしているユーザーの情報を知りたいはずです。
 
-そのような場合、Authオブジェクトでオブザーバーを設定します。
+そのような場合、Auth オブジェクトでオブザーバーを設定します。
 
 ```js
 firebase.auth().onAuthStateChanged(user => {
@@ -208,11 +208,11 @@ firebase.auth().onAuthStateChanged(user => {
 })
 ```
 
-`onAuthStateChanged`はユーザーのログイン状態を監視します。
-どうやらログイン情報は`IndexedDB`に保存されているようです。
+`onAuthStateChanged` はユーザーのログイン状態を監視します。
+どうやらログイン情報は `IndexedDB` に保存されているようです。
 [firebase.auth().onAuthStateChangedはどうやってログイン中であることを判定しているんでしょうか？](https://teratail.com/questions/193911)
 
-`firebase.auth().currentUser`でも現在ログインしているユーザーが取得できるみたいですが、ログインしているはずなのに`currentUser`が`null`になることがあるのでおすすめはしません。
+`firebase.auth().currentUser` でも現在ログインしているユーザーが取得できるみたいですが、ログインしているはずなのに `currentUser` が `null` になることがあるのでおすすめはしません。
 
 ユーザーインスタンスからはユーザーの情報が取得できます。
 
@@ -240,12 +240,12 @@ user.isAnonymous
 ```
 
 さらに、ユーザープロフィールなど、これ以上のユーザーの情報をもたせたいと思うかもしれません。
-そのような場合には、`Realtime DB`かCloud Firestore`を利用します。
-`user`コレクションを作成して、`uid`をキーにドキュメントを追加すれば、ログインユーザーのさらなる情報を取得することができます。
+そのような場合には、`Realtime DB` か Cloud Firestore`を利用します。
+`user`コレクションを作成して、`uid`をキーにドキュメントを追加すれば、ログインユーザーのさらなる情報を取得できます。
 
 ## ログアウト
 ログインしたなら当然ログアウトもしたはずです。
-ログアウトは`singOut`を呼び出すだけです。
+ログアウトは `singOut` を呼び出すだけです。
 
 ```js
 const logoutBtn = document.getElementById('logout')
@@ -259,7 +259,7 @@ logoutBtn.addEventListener('click', () => {
 })
 ```
 
-以上のように、普通に実装したらまあまあめんどくさい認証機能も簡単に実装することができました。
+以上のように、普通に実装したらめんどくさい認証機能も簡単に実装できました。
 
-ここまででまあまあ長くなったのでFire StrageとFirestoreは来週に回します。
+ここまで長くなったので Fire Strage と Firestore は来週に回します。
 

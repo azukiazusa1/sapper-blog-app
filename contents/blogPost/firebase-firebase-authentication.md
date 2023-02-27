@@ -8,36 +8,36 @@ updatedAt: "2020-04-19T00:00+09:00"
 tags: ["firebase", "JavaScript", "Vue.js"]
 published: true
 ---
-先週は、Firebase Authenticationによる、Googleアカウントでのログインについて取り上げました。今回は、メールアドレスとパスワードによるログインについて取り上げます。
+先週は、Firebase Authentication による、Google アカウントでのログインについて取り上げました。今回は、メールアドレスとパスワードによるログインについて取り上げます。
 
 # メールアドレスとパスワードによる認証
-## メールアドレスとパスワードによる認証を有効にする。
-まずはじめに、前回同様認証を利用するには、その認証方法をコンソール上で有効にする必要があります。`メール/パスワード`プロパイダを有効にします。
+## メールアドレスとパスワードによる認証を有効にする
+まずはじめに、前回同様認証を利用するには、その認証方法をコンソール上で有効にする必要があります。`メール/パスワード` プロパイダを有効にします。
 
 ![スクリーンショット 20200419 17.20.55.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fa51lPE293EOY2F6iaXjM%2F45f61101c61bf4b11f4b265af703c466.png?alt=media&token=1e2424b5-147e-4b28-b500-3af480745260)
 
 ![スクリーンショット 20200419 17.24.05.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fa51lPE293EOY2F6iaXjM%2Fbfc6c29e5429dfefe9e59a5caf4bd838.png?alt=media&token=327350ea-22b5-4906-bc3f-60e9169783a4)
 
-`メール/パスワード`プロパイダを有効にすると、コンソール上でユーザーを追加することができます。
+`メール/パスワード` プロパイダを有効にすると、コンソール上でユーザーを追加できます。
 
-`Users`タグをクリックして`ユーザーを追加`ボタンをクリックします。
+`Users` タグをクリックして `ユーザーを追加` ボタンをクリックします。
 
 ![スクリーンショット 20200419 17.25.08.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fa51lPE293EOY2F6iaXjM%2F9b5eb143393ff38f596283e1bb8ad617.png?alt=media&token=aef1747f-7966-4d1c-853f-766c842feabb)
 
-適当なメールアドレスとパスワードを入力して、`ユーザーを追加`ボタンをクリックします。
-ユーザーの一意となる`UID`が付与され、今後このユーザーを利用してログインができるようになります。
+適当なメールアドレスとパスワードを入力して、`ユーザーを追加` ボタンをクリックします。
+ユーザーの一意となる `UID` が付与され、今後このユーザーを利用してログインができるようになります。
 
-## ログインフォームを構築する。
-### 予め用意されたUIを利用する
-ログインフォームには、`Firebase`に予め用意されているUIを利用することができます。
-UIを利用するためには追加で以下のCDNを読み込みます。
+## ログインフォームを構築する
+### あらかじめ用意されたUIを利用する
+ログインフォームには、`Firebase` にあらかじめ用意されている UI を利用できます。
+UI を利用するためには追加で以下の CDN を読み込みます。
 
 ```html
 <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 ```
 
-jsファイルに、次のようにUIを初期化するコードを書きます。
+js ファイルに、次のように UI を初期化するコードを書きます。
 ログイン方法には、メールアドレスとパスワードによる認証を指定します。
 
 ```js
@@ -50,9 +50,9 @@ ui.start('#firebaseui-auth-container', {
 })
 ```
 
-ログインウィジェットがレンダリングされるDOMを用意します。`ui.start`の第一引数に指定されているセレクターに描画されます。（この例では`#firebaseui-auth-container`）
+ログインウィジェットがレンダリングされる DOM を用意します。`ui.start` の第一引数に指定されているセレクターに描画されます。（この例では `#firebaseui-auth-container`）
 
-最終的なHTMLは次のようになります。
+最終的な HTML は次のようになります。
 
 ```html
 <!DOCTYPE html>
@@ -98,24 +98,24 @@ ui.start('#firebaseui-auth-container', {
 （ログイン後の処理を書いていないため、とくになにもおきませんが）
 ![スクリーンショット 20200419 18.11.08.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fa51lPE293EOY2F6iaXjM%2F5e0488099bf013b9bb2b4b69df55c685.png?alt=media&token=39171719-f9da-4ca1-b794-ac7bc5367f3e)
 
-また、存在しないユーザーのメールアドレスを入力した場合、そのまま新しいユーザーを作成することができます。
+また存在しないユーザーのメールアドレスを入力した場合、そのまま新しいユーザーを作成できます。
 
 ![スクリーンショット 20200419 18.13.15.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fa51lPE293EOY2F6iaXjM%2Fd7e13649510cce8d14edf4e2e84aae0f.png?alt=media&token=f70ec2bd-7a4d-47bb-99f3-7e22f08e2e2b)
 
 ## 独自のUIコンポーネントを利用する
 
-FirebaseのUIを利用して、簡単にログイン機能を利用することができました。
-しかし、独自のUIコンポーネントを利用したいことでしょう。
-また、ここからは`Vue.js`を利用したWebアプリケーションを例にして説明していきます。(すでに作ったものを利用したいので)
+Firebase の UI を利用して、簡単にログイン機能を利用できました。
+しかし、独自の UI コンポーネントを利用したいことでしょう。
+またここからは `Vue.js` を利用した Web アプリケーションを例にして説明します。（すでに作ったものを利用したいので）
 
 ### Vue CLIアプリ作成
-いつもどおり`Vue CLI`によりVueアプリを作成します。
+いつもどおり `Vue CLI` により Vue アプリを作成します。
 
 ```
 vue create firebase-app
 ```
 
-どうせ使うので`Router`と`Vuex`も入れておきましょう。
+どうせ使うので `Router` と `Vuex` も入れておきましょう。
 ```
 ? Please pick a preset: 
   default (babel, eslint) 
@@ -137,13 +137,13 @@ vue create firebase-app
 
 #### firebase初期化
 
-FireStoreモジュールをnpmでインストールします。
+FireStore モジュールを npm でインストールします。
 
 ```
 npm install firebase
 ```
 
-`src/plugins/firebase.js`ファイルを作成して初期化コードを作成して、`export defaut`してアプリケーションで`firebase`を利用できるようにします。
+`src/plugins/firebase.js` ファイルを作成して初期化コードを作成して、`export defaut` してアプリケーションで `firebase` を利用できるようにします。
 
 ```js
 import firebase from 'firebase'
@@ -166,7 +166,7 @@ if (!firebase.apps.length) {
 export default firebase
 ```
 
-APIキーはクライアントアプリケーションで利用される前提なので、そのまま書いても構いませんが、なんとなく`.env.local`から読み込みます。
+API キーはクライアントアプリケーションで利用される前提なので、そのまま書いても構いませんが、なんとなく `.env.local` から読み込みます。
 
 ```.env.local
 VUE_APP_APIKEY=MY_API_KEY
@@ -179,7 +179,7 @@ VUE_APP_APPID=MY_APPID
 VUE_APP_MEASUREMENTID=MY_MEMEASUREMENTID
 ```
 
-`Firebase`の認証機能を提供するモジュールを`src/plugins/auth.js`に書きましょう。
+`Firebase` の認証機能を提供するモジュールを `src/plugins/auth.js` に書きましょう。
 
 ```js
 import firebase from '@/plugins/firebase'
@@ -205,10 +205,10 @@ export function auth () {
 }
 ```
 
-メールアドレスとパスワードによるログインを利用するには、`firebase.auth().signInWithEmailAndPassword`を利用するので、これをラップした関数を`export`します。
+メールアドレスとパスワードによるログインを利用するには、`firebase.auth().signInWithEmailAndPassword` を利用するので、これをラップした関数を `export` します。
 
-ログアウトは前回と同じく、`firebase.auth().signOut`を利用します。これもラップします。
-`reAuth`関数は後ほど使用します。
+ログアウトは前回と同じく、`firebase.auth().signOut` を利用します。これもラップします。
+`reAuth` 関数は後ほど使用します。
 
 #### ログイン画面
 [ここから](https://github.com/vuetifyjs/vuetify/blob/master/packages/docs/src/layouts/layouts/demos/centered.vue)コピペしたログインフォームをちょっといじって利用します。
@@ -216,7 +216,7 @@ export function auth () {
 こんな感じです。
 ![スクリーンショット 20200419 19.01.43.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fa51lPE293EOY2F6iaXjM%2Fd4d523a8ddcc042fbe0fcff6181c93dc.png?alt=media&token=95bed646-e357-428e-9fc6-c640243124b2)
 スクリプト部分このようになっています。
-なお、バリデーションやエラー処理などは省いています。
+なおバリデーションやエラー処理などは省いています。
 
 ```js
 <script>
@@ -253,33 +253,33 @@ export default {
 </script>
 ```
 
-はじめにインポートしている
+はじめにインポートしている。
 ```js
 import { validationMixin } from 'vuelidate'
 import { required, email } from 'vuelidate/lib/validators'
 ```
 これらは、[Vuelidate](https://vuelidate.js.org/)という軽量バリデーションライブラリです。ここでは詳細は割愛します。
 
-また、先程作成した`authモジュール`から`login`関数をインポートしましょう。
+またさきほど作成した `authモジュール` から `login` 関数をインポートしましょう。
 ```
 import { login } from '@/plugins/auth'
 ```
 
-`data`プロパティの`email`と`password`は`v-model`によってフォーム入力とバインディングされます。
+`data` プロパティの `email` と `password` は `v-model` によってフォーム入力とバインディングされます。
 
-`methods`プロパティの`onSubmit`メソッドは、`submitイベント`によって呼び出されます。
+`methods` プロパティの `onSubmit` メソッドは、`submitイベント` によって呼び出されます。
 
-バリデーションが通過したなら、`login`関数を呼び出しましょう。
-先程見たとおり、`login`関数は`firebase.auth().signInWithEmailAndPassword`のラッパー関数です。
-`firebase.auth().signInWithEmailAndPassword`は、メールアドレスとパスワードを渡すこによって、ログインをすることができます。
+バリデーションが通過したなら、`login` 関数を呼び出しましょう。
+さきほど見たとおり、`login` 関数は `firebase.auth().signInWithEmailAndPassword` のラッパー関数です。
+`firebase.auth().signInWithEmailAndPassword` は、メールアドレスとパスワードを渡すこによって、ログインをできます。
 
-`firebase.auth().signInWithEmailAndPassword`は、`Promise`を返すので、ログインが成功していることを確認できたなら、ログイン後リダイレクトをさせます。
+`firebase.auth().signInWithEmailAndPassword` は、`Promise` を返すので、ログインが成功していることを確認できたなら、ログイン後リダイレクトをさせます。
 
 なんらかの理由でログインに失敗しているのなら、（メールアドレスかパスワードが間違っている、ネットワークエラーなど）エラーをキャッチしてエラー処理を行います。
 
 #### ログインユーザーの取得
-現在ログインしているユーザーは、先週と同じく`firebase.auth().onAuthStateChanged`で取得します。
-これも、`authモジュール`の`auth`関数によって`Promise`を返すようにラップしています。
+現在ログインしているユーザーは、先週と同じく `firebase.auth().onAuthStateChanged` で取得します。
+これも、`authモジュール` の `auth` 関数によって `Promise` を返すようにラップしています。
 
 ユーザープロフィールを取得できます。
 
@@ -298,7 +298,7 @@ async () => {
 ```
 
 #### ユーザーのプロフィールを更新する
-`updateProfile`メソッドを利用すれば、ユーザーのプロフィールを更新することができます。
+`updateProfile` メソッドを利用すれば、ユーザーのプロフィールを更新できます。
 
 ```js
 import { auth } from `@/plugins/auth`
@@ -314,17 +314,15 @@ async () => {
 ```
 
 #### メールアドレスを更新する
-ユーザーのメールアドレスを更新するには、`updateEmail`を利用します。
+ユーザーのメールアドレスを更新するには、`updateEmail` を利用します。
 注意しなければいけないところは、メールアドレスやパスワードの更新など、セキュリティ上重要な操作はユーザーが再認証する必要があるところです。
 
 再認証をするためには、まずは新しい認証情報を取得します。
 
-そのためには、`firebase.auth.EmailAuthProvider.credential`に`email`と`password`を渡します。
-取得した認証情報を`user`メソッドの`reauthenticateWithCredential`にわたすことで、再認証が完了します。
+そのためには、`firebase.auth.EmailAuthProvider.credential` に `email` と `password` を渡します。
+取得した認証情報を `user` メソッドの `reauthenticateWithCredential` にわたすことで、再認証が完了します。
 
-これは`authモジュール`の`reAuth`関数でラップしてるので、次のように新しい認証情報を取得できます。
-
-取得した
+これは `authモジュール` の `reAuth` 関数でラップしてるので、次のように新しい認証情報を取得できます。
 
 ```js
 import { reAuth } from '@/src/plugins/auth'
@@ -351,16 +349,16 @@ methods: {
 #### ユーザーのパスワードを更新する
 
 パスワードの更新も、同じく再認証をする必要があります。
-`user`メソッドの`updatePassword`を利用します。
+`user` メソッドの `updatePassword` を利用します。
 
 # Cloud Storage
-次はStorageを利用します。
-`Cloud Storage`は写真や動画など、ユーザーが作成したコンテンツを保管、提供します。
-AWSのS3のように使用できます。
+次は Storage を利用します。
+`Cloud Storage` は写真や動画など、ユーザーが作成したコンテンツを保管、提供します。
+AWS の S3 のように使用できます。
 
 ## Storageの設定を初期化する
-`storage`も`auth`と同じようにモジュールで初期化して利用します。
-`src/plugins/storage.js`に以下のようにかきます。
+`storage` も `auth` と同じようにモジュールで初期化して利用します。
+`src/plugins/storage.js` に以下のようにかきます。
 
 ```js
 import firebase from '@/plugins/firebase'
@@ -369,8 +367,8 @@ export const storage = firebase.storage()
 ```
 
 ## Cloud Storageを利用する
-実際にStorageを利用してみます。
-例として、ブログ作成CMSでサムネイルを設定する機能を作成します。
+実際に Storage を利用してみます。
+例として、ブログ作成 CMS でサムネイルを設定する機能を作成します。
 
 ![スクリーンショット 20200419 22.44.31.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fa51lPE293EOY2F6iaXjM%2Fe30d4d855cf5553bed1264930d7a12b0.png?alt=media&token=7ff157a1-10d0-4184-98c8-9f494e30329c)
 
@@ -379,7 +377,7 @@ export const storage = firebase.storage()
 ## 画像をアップロードする
 まずは、画像をアップロードしてサムネイルを設定する機能を作成します。
 
-`<template>`は次のようになっています。
+`<template>` は次のようになっています。
 
 ```html
 <template>
@@ -415,10 +413,10 @@ export const storage = firebase.storage()
           </v-row>
 ```
 
-注目すべき点は、`<v-file-input>`によってファイルがアップロードされたら、`onFileUpload`イベントが発火するところです。
-(`<v-file-input>`は`<input type="file">`を提供する`Vuetify`のコンポーネントです。)
+注目すべき点は、`<v-file-input>` によってファイルがアップロードされたら、`onFileUpload` イベントが発火するところです。
+（`<v-file-input>` は `<input type="file">` を提供する `Vuetify` のコンポーネントです）
 
-`onFileUpload`イベントを見ていきます。
+`onFileUpload` イベントを見ていきます。
 
 ```js
 onFileUpload(file) {
@@ -453,30 +451,30 @@ onFileUpload(file) {
     },
 ```
 
-`@change`イベントは[file API](https://developer.mozilla.org/ja/docs/Web/API/File)を受け取ります。
-`getFileType`と`this['flash/setFlash']`は独自で作成したメソッドです。
+`@change` イベントは[file API](https://developer.mozilla.org/ja/docs/Web/API/File)を受け取ります。
+`getFileType` と `this['flash/setFlash']` は独自で作成したメソッドです。
 ファイルの拡張子を取得する機能と、フラッシュメッセージ機能を提供します。
 
 ### ファイルの参照を作成
-ファイルを`Cloud Storage`にアップロードするには、まずファイル名を含むファイルの完全パスへの参照を作成します。
+ファイルを `Cloud Storage` にアップロードするには、まずファイル名を含むファイルの完全パスへの参照を作成します。
 
-ファイルの参照を作成するために、`storage.ref()`メソッドを利用します。
+ファイルの参照を作成するために、`storage.ref()` メソッドを利用します。
 
 ```js
 const storageRef = storage.ref(`articles/${this.article.id}/thumbnail.${fileType}`)
 ```
 
 ### ファイルをアップロード
-参照を作成したら、`storageRef.put()`メソッドでファイルをアップロードします。
+参照を作成したら、`storageRef.put()` メソッドでファイルをアップロードします。
 
-`put()`は先程取得した[file API](https://developer.mozilla.org/ja/docs/Web/API/File)や[Blob API](https://developer.mozilla.org/ja/docs/Web/API/Blob)経由でファイルを取得し、`Cloud Storage`にアップロードします。
+`put()` はさきほど取得した[file API](https://developer.mozilla.org/ja/docs/Web/API/File)や[Blob API](https://developer.mozilla.org/ja/docs/Web/API/Blob)経由でファイルを取得し、`Cloud Storage` にアップロードします。
 
 ```js
 const uploadTask = storageRef.put(file)
 ```
 
 ### ファイルのアップロード状況を監視する
-`Cloud Storage`でファイルをアップロードしている最中には、アップロード状況を監視することができます。
+`Cloud Storage` でファイルをアップロードしている最中には、アップロード状況を監視できます。
 
 ```js
 uploadTask.on('state_changed', 
@@ -500,19 +498,19 @@ uploadTask.on('state_changed',
         )
 ```
 
-進行率を取得するには、転送済みのバイト数(`snapshot.bytesTransferred`)をアップロード予定のバイト数(`snapshot.totalBytes`)の合計で割って100をかけて算出します。
+進行率を取得するには、転送済みのバイト数（`snapshot.bytesTransferred`）をアップロード予定のバイト数（`snapshot.totalBytes`）の合計で割って 100 をかけて算出します。
 
-2つ目の関数では、エラー処理を担当することになります。
+2 つ目の関数では、エラー処理を担当することになります。
 
-最終的にアップロードが完了した場合には、3つ目の関数が呼び出されます。
-アップロードが完了したら`getDownloadURL`メソッドから、画像へアクセスするためのURLを取得できます。
+最終的にアップロードが完了した場合には、3 つ目の関数が呼び出されます。
+アップロードが完了したら `getDownloadURL` メソッドから、画像へアクセスするための URL を取得できます。
 
-このURLを新たにサムネイルプロパティに設定して、データベースに保存したらサムネイルの設定は完了です。
+この URL を新たにサムネイルプロパティに設定して、データベースに保存したらサムネイルの設定は完了です。
 
-## ブログ内で使用した画像をサムネイルに設定できるようにする。
+## ブログ内で使用した画像をサムネイルに設定できるようにする
 こんどは、ブログ内で使用した画像を取得して設定するよういします。
 
-次のような`<template>`をです。
+次のような `<template>` をです。
 
 ```html
           <v-card-subtitle>記事内の画像から設定する。</v-card-subtitle>
@@ -562,10 +560,10 @@ uploadTask.on('state_changed',
           </v-row>
 ```
 
-`images`配列を`v-for`でループして、使用した画像一覧を表示します。
-`images`配列に画像を渡しましょう。
+`images` 配列を `v-for` でループして、使用した画像一覧を表示します。
+`images` 配列に画像を渡しましょう。
 
 ### 画像のリストをダウンロードする
 
-日付が変わりそうなので今週はここまで
+日付が変わりそうなので今週はここまで。
 

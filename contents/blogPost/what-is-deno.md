@@ -8,45 +8,39 @@ updatedAt: "2020-05-17T00:00+09:00"
 tags: ["JavaScript", "Deno", "Node.js"]
 published: true
 ---
----
-title: Denoとはなにか - 実際につかってみる
-tags: JavaScript deno Node.js
-author: azukiazusa
-slide: false
----
 # はじめに
-`Deno`というものが面白そうだったので、これを書きたいと思います。
+`Deno` というものが面白そうだったので、これを書きたいと思います。
 
 # Denoとはなにか
 ![deno.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FF2z5J7aePghFMh2hqfVK%2Fc5f6e76283924635826976de979b2243.png?alt=media&token=9dd400da-b863-4435-b486-58bc8fc259e3)
 
-↑かわいい
+↑かわいい。
 
-[Deno(ディーノ)](https://deno.land/)という名前について、聞いたことがありますでしょうか。私も最近まで知りませんでしたが、実はv1.0がリリースされたのが2020/5/13とごく最近のことです。開発自体は2年前から行われておりましたが、結構新しめの技術です。
-その証拠(?)に[Denoでググる](https://www.google.com/search?q=deno&sxsrf=ALeKk0123LZ8I95_5DE5Mjms6B7ZSrcAPw:1589727721603&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiBw4qhlbvpAhWO-mEKHchCDxYQ_AUoBHoECBUQBg&biw=1440&bih=717)と担々麺ばっかりでてきます。(2019/5/18現在)
+[Deno(ディーノ)](https://deno.land/)という名前について、聞いたことがありますでしょうか。私も最近まで知りませんでしたが、実は v1.0 がリリースされたのが 2020/5/13 とごく最近のことです。開発自体は 2 年前から行われておりましたが、結構新しめの技術です。
+その証拠（?）に[Denoでググる](https://www.google.com/search?q=deno&sxsrf=ALeKk0123LZ8I95_5DE5Mjms6B7ZSrcAPw:1589727721603&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiBw4qhlbvpAhWO-mEKHchCDxYQ_AUoBHoECBUQBg&biw=1440&bih=717)と担々麺ばっかりでてきます。（2019/5/18 現在）
 
 ![スクリーンショット 20200518 0.02.53.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FF2z5J7aePghFMh2hqfVK%2F0d8f32bffa9a2ca42846152a503a9f6d.png?alt=media&token=6a3ce549-6d1c-4a39-9bf5-5edce64982b1)
 
 ## 結局Denoってなんなの？
-`Deno`は、`Node.js`の製作者であるRyan Dahlによって作られた、新しいJS/TSランタイムです。すっごい雑に説明すると、`Node.js`のイケてなかったところを改良したものが`Deno`になります。`Deno`って文字を並べ替えると`Node`になりますね。
+`Deno` は、`Node.js` の製作者である Ryan Dahl によって作られた、新しい JS/TS ランタイムです。すっごい雑に説明すると、`Node.js` のイケてなかったところを改良したものが `Deno` になります。`Deno` って文字を並べ替えると `Node` になりますね。
 
 ```js
 const deno = 'node'.split('').sort().join('')
 ```
 
 ## Denoがつくられた背景
-`Deno`はJSConf EU 2018でのRyan Dahlによる講演「Node.jsに関する10の反省点」において発表されました。
+`Deno` は JSConf EU 2018 での Ryan Dahl による講演「Node.js に関する 10 の反省点」において発表されました。
 
 [10 Things I Regret About Node.js - Ryan Dahl - JSConf EU](https://www.youtube.com/watch?v=M3BM9TB-8yA&t=1319s)
 [Node.js における設計ミス By Ryan Dahl](https://yosuke-furukawa.hatenablog.com/entry/2018/06/07/080335)
 
-Ryan Dahlは講演の中で、自身が開発した`Node.js`における10個の後悔している点について言及しました。それらの設計ミスに基づいて開発されたのが、`Deno`です。
+Ryan Dahl は講演の中で、自身が開発した `Node.js` における 10 個の後悔している点について言及しました。それらの設計ミスに基づいて開発されたのが、`Deno` です。
 
 # 実際にDenoを使ってみる🦕
-なにはともあれ、実際に`Deno`を使ってみて`Node.js`との違いについて見ていきましょう。
+なにはともあれ、実際に `Deno` を使ってみて `Node.js` との違いについて見ていきましょう。
 
 ## インストール
-まずは[インストール](https://deno.land/#installation)をします。私はMacを使っているので、`Homebrew`を使用してインストールしました。
+まずは[インストール](https://deno.land/#installation)をします。私は Mac を使っているので、`Homebrew` を使用してインストールしました。
 
 ```sh
 $ brew install deno
@@ -60,7 +54,7 @@ deno 1.0.0
 ```
 
 ## Denoを実行する
-`Deno`を簡単に実行してみるために、公式のサンプルコードを利用してみます。
+`Deno` を簡単に実行してみるために、公式のサンプルコードを利用してみます。
 
 ```sh
 $ deno run https://deno.land/std/examples/welcome.ts
@@ -70,28 +64,28 @@ Compile https://deno.land/std/examples/welcome.ts
 Welcome to Deno 🦕
 ```
 
-恐竜さんが出てきました。可愛いですね🦕
+恐竜さんが出てきました。可愛いですね🦕。
 
-2回目以降の動作は、初回と変わってきます。
+2 回目以降の動作は、初回と変わってきます。
 
 ```sh
 $ deno run https://deno.land/std/examples/welcome.ts
 Welcome to Deno 🦕
 ```
 
-`Download`や`Compile`などの行がなくなっていますね。
-今回のように、リモートのURLを実行した場合にはローカルにキャッシュされ2回目以降は素早く実行することができます。
-これは後ほど出てくる`import`でパッケージを読み込むときと同じです。
+`Download` や `Compile` などの行がなくなっていますね。
+今回のように、リモートの URL を実行した場合にはローカルにキャッシュされ 2 回目以降は素早く実行できます。
+これは後ほど出てくる `import` でパッケージを読み込むときと同じです。
 
 ### 変更点1　TypeScriptをそのままサポート
-先程実行したプログラム自体はとても簡単なものでしたが、早速`Node.js`との変更点が含まれています。
-先程実行したプログラム`https://deno.land/std/examples/welcome.ts`の拡張子を見ると、`TypeScript`のコードであることがわかります。
-従来では、`TypeScript`を実行するには、`npm`でインストールして、ルート配下に`tsconfig.json`を設置して、コンパイルして...といった作業が必要でした。
-しかし、`Deno`ならそのような設定はすべて必要ありません。デフォルトで`TypeScript`をサポートしているので、そのまま実行することができます。
+さきほど実行したプログラム自体はとても簡単なものでしたが、早速 `Node.js` との変更点が含まれています。
+さきほど実行したプログラム `https://deno.land/std/examples/welcome.ts` の拡張子を見ると、`TypeScript` のコードであることがわかります。
+従来では `TypeScript` を実行するには、`npm` でインストールして、ルート配下に `tsconfig.json` を設置して、コンパイルして。といった作業が必要でした。
+しかし、`Deno` ならそのような設定はすべて必要ありません。デフォルトで `TypeScript` をサポートしているので、そのまま実行できます。
 
 ## サンプルコードを見てみる
 簡単なプログラムだけではつまらないので、次はローカルにサーバーを立ててみます。以下のコードは公式サイトからのコピペで持ってきました。
-8000ポートでサーバを立てて、Hello Worldと表示させます。
+8000 ポートでサーバーを立てて、Hello World と表示させます。
 
 ```js:server.js
 import { serve } from "https://deno.land/std@0.50.0/http/server.ts";
@@ -102,7 +96,7 @@ for await (const req of s) {
 }
 ```
 
-次に、下記のコードが`Node.js`で書いた同じようなコードです。
+次に、下記のコードが `Node.js` で書いた同じようなコードです。
 
 ```js
 const http = require('http');
@@ -114,33 +108,33 @@ const server = http.createServer((req, res) => {
 server.listen(8000)
 ```
 
-この2つのコードを比べていきましょう。
+この 2 つのコードを比べていきましょう。
 
 ### 変更点2 npmがない
 
 と、先にコードの方を提出しましたが、その前にやることがありましたね。
-まずは`npm init`で`package.json`を作ってそれから...えっ`Deno`では必要ないって?
+まずは `npm init` で `package.json` を作ってそれから。.。えっ `Deno` では必要ないって？
 
-そうなんです、`Deno`はインストールさえ済ませれば先に見たようにそのままコードを実行することができます。
-驚くなかれ、そもそも`Deno`には**npmがありません**。
-`npm`がないということは当然`node_modules`や`package.json`なんてものも存在しません。
+そうなんです、`Deno` はインストールさえ済ませれば先に見たようにそのままコードを実行できます。
+驚くなかれ、そもそも `Deno` には**npmがありません**。
+`npm` がないということは当然 `node_modules` や `package.json` なんてものも存在しません。
 
-`node_modules`ってかなり巨大なファイルでしたし、こいつがなくなるだけでフォルダ構成が結構スッキリしてくるんじゃないでしょうか。
-`node_modules`と`package.json`の採用は、`Node.js`の設計ミスとしても上げられていた点です。
+`node_modules` ってかなり巨大なファイルでしたし、こいつがなくなるだけでフォルダ構成が結構スッキリしてくるんじゃないでしょうか。
+`node_modules` と `package.json` の採用は、`Node.js` の設計ミスとしても上げられていた点です。
 
-では、`npm`を使用しないとなれば、どのようにして外部モジュールを使用するのでしょうか。
-その答えは、サンプルコードにもあるように、`import`にURLを渡します。
+では、`npm` を使用しないとなれば、どのようにして外部モジュールを使用するのでしょうか。
+その答えは、サンプルコードにもあるように、`import` に URL を渡します。
 
 ```js
 import { serve } from "https://deno.land/std@0.50.0/http/server.ts";
 ```
 
-これは、`Deno`で外部モジュールを使用する唯一の方法です。もう`npm install`は必要としません。
+これは、`Deno` で外部モジュールを使用する唯一の方法です。もう `npm install` は必要としません。
 ダウンロードは実行時に行われ、結果はキャッシュされます。
 
 ### 変更点3 requireがなくなった
 
-関連して、今まで`Node.js`で利用されてきた`require`が廃止されました。
+関連して、今まで `Node.js` で利用されてきた `require` が廃止されました。
 
 Node.js
 
@@ -155,7 +149,7 @@ Deno
 import { serve } from "https://deno.land/std@0.50.0/http/server.ts";
 ```
 
-[CommonJS](https://ja.wikipedia.org/wiki/CommonJS)の代わりに`ES Module`(`import`と`export`)をデフォルトのモジュールとシステムとして使用します。
+[CommonJS](https://ja.wikipedia.org/wiki/CommonJS)の代わりに `ES Module`(`import` と `export`)をデフォルトのモジュールとシステムとして使用します。
 
 ### 変更点4 トップレベルのawait
 
@@ -167,23 +161,23 @@ for await (const req of s) {
 }
 ```
 
-`await`は`async`関数の中でしか動作できないんですよー、ほら`VSCode`だって怒ってる。
+`await` は `async` 関数の中でしか動作できないんですよー、ほら `VSCode` だって怒ってる。
 
 ![スクリーンショット 20200518 1.40.50.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FF2z5J7aePghFMh2hqfVK%2Fb9f9d424a89a2b8ec279e2ee04aca1b0.png?alt=media&token=2d87f1d9-ba5c-4961-95e2-14893eb07993)
 
-...え、これができるようになった？
+..。え、これができるようになった？
 
-そうです、もう`await`使いたさにわざわざ`async`関数で囲む必要はありません。やったね。
+そうです、もう `await` 使いたさにわざわざ `async` 関数で囲む必要はありません。やったね。
 
-このトップレベルawaitに関してはDenoでの特徴ではなく、ECMAScriptの仕様と言うほうが正しいですね。
+このトップレベル await に関しては Deno での特徴ではなく、ECMAScript の仕様と言うほうが正しいですね。
 
 https://github.com/tc39/proposal-top-level-await
 
-（@YoshiTheChinchillaさんご指摘ありがとうございます！）
+（@YoshiTheChinchilla さんご指摘ありがとうございます！）
 
 ## 実行してみる
-コードベースでの変更点はここまでにして、実際にコードを実行してローカルサーバを立ち上げてみましょう。
-`deno run`で実行できます。
+コードベースでの変更点はここまでにして、実際にコードを実行してローカルサーバーを立ち上げてみましょう。
+`deno run` で実行できます。
 
 ```sh
 $ deno run server.js
@@ -227,9 +221,9 @@ error: Uncaught PermissionDenied: network access to "0.0.0.0:8000", run again wi
 ### 変更点5 セキュリティルールの変更
 
 なぜエラーが発生したのでしょうか。
-実は、`Deno`デフォルトでセキュアであり、明示的に有効にしない限り、ファイル、ネットワーク、環境変数等にアクセスすることができません。
+実は、`Deno` デフォルトでセキュアであり、明示的に有効にしない限り、ファイル、ネットワーク、環境変数などにアクセスできません。
 
-ネットワークを許可するには`--allow-net`フラグを付与して実行する必要があります。
+ネットワークを許可するには `--allow-net` フラグを付与して実行する必要があります。
 もう一度やってみましょう。
 
 ```sh
@@ -238,18 +232,18 @@ http://localhost:8000/
 ```
 
 無事成功しましたね。
-`http://localhost:8000/`にアクセスすると次のように表示されているはずです！
+`http://localhost:8000/` にアクセスすると次のように表示されているはずです！
 ![スクリーンショット 20200518 1.56.19.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FF2z5J7aePghFMh2hqfVK%2F30318c8d890e66997ffe751265148cca.png?alt=media&token=8c70892b-43c0-4f8c-9af8-3c53f4df4a40)
 
 ### 変更点5 Web APIの実装によるブラウザとの互換性の向上
-[Web API](https://developer.mozilla.org/ja/docs/Learn/JavaScript/Client-side_web_APIs)はWebブラウザに組み込まれている機能です。ブラウザやコンピュータの環境の情報を取得し、これを使って役に立つややこしい事を行えるようにするものです。
-代表的なものでいえば、`DOM`,`Canvas API`,`Storage`,`fetch API`などがあります。
+[Web API](https://developer.mozilla.org/ja/docs/Learn/JavaScript/Client-side_web_APIs)は Web ブラウザに組み込まれている機能です。ブラウザやコンピュータの環境の情報を取得し、これを使って役に立つややこしいことを行えるようにするものです。
+代表的なものでいえば、`DOM`,`Canvas API`,`Storage`,`fetch API` などがあります。
 
-これらのAPIは日常的に使用していて、JavaScriptを覚えたての頃はJavaScript標準のモノだと思いこんでしまうほどですが、`Node.js`ではこれらを使用することはできません。理由は簡単で、これらのAPIはブラウザ(Google Chrome, Firefox)で利用できるものであり、`Node.js`はブラウザではないからです。
+これらの API は日常的に使用していて、JavaScript を覚えたての頃は JavaScript 標準のモノだと思いこんでしまうほどですが、`Node.js` ではこれらを使用できません。理由は簡単で、これらの API はブラウザ（Google Chrome, Firefox）で利用できるものであり、`Node.js` はブラウザではないからです。
 
 #### Node.jsの場合
 
-例えば、次のように`Node.js`で`Fetch API`を利用しようとすると失敗します。
+例えば、次のように `Node.js` で `Fetch API` を利用しようとすると失敗します。
 
 ```js
 fetch('https://pokeapi.co/api/v2/pokemon/')
@@ -273,8 +267,8 @@ ReferenceError: fetch is not defined
     at internal/main/run_main_module.js:17:11
 ```
 
-`fetch`が定義されていないと怒られていますね。
-これを解決するには、外部モジュールである`node-fetch`をインストールする必要があります。
+`fetch` が定義されていないと怒られていますね。
+これを解決するには、外部モジュールである `node-fetch` をインストールする必要があります。
 
 ```bash
 npm i node-fetch
@@ -307,7 +301,7 @@ $ node node-fetch.js
 ```
 
 #### Denoの場合
-`Deno`の場合には、標準で`Fetch API`がサポートされているため、インストールすることなく使用することができます。
+`Deno` の場合には、標準で `Fetch API` がサポートされているため、インストールすることなく使用できます。
 
 ```js:fetch.js
 const res = await fetch('https://pokeapi.co/api/v2/pokemon/1')
@@ -316,7 +310,7 @@ const data = await json
 console.log(data)
 ```
 
-おっと、実行するときには`--allow-net`フラグを渡すことを忘れないでください！
+おっと、実行するときには `--allow-net` フラグを渡すことを忘れないでください！
 
 ```bash
 $ deno run --allow-net fetch.js
@@ -335,12 +329,12 @@ $ deno run --allow-net fetch.js
     { name: "squirtle", url: "https://pokeapi.co/api/v2/pokemon/7/" },
 ```
 
-`fetch API`の他にも幅広いWeb APIを実装していることにより、ブラウザとの互換性を向上させました。
+`fetch API` の他にも幅広い Web API を実装していることにより、ブラウザとの互換性を向上させました。
 
 ### Denoによるテスト
-`Deno`にはテストランナーも含まれています。
+`Deno` にはテストランナーも含まれています。
 
-`Deno.test`を呼ぶことでテストをすることができます。
+`Deno.test` を呼ぶことでテストをできます。
 
 ```js:test.js
 Deno.test("hello world", () => {
@@ -351,7 +345,7 @@ Deno.test("hello world", () => {
 });
 ```
 
- [標準テストモジュール](https://deno.land/std/testing)から、アサーションを使用することができます。
+ [標準テストモジュール](https://deno.land/std/testing)から、アサーションを使用できます。
 
 ```js:test.js
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
@@ -362,7 +356,7 @@ Deno.test("hello world", () => {
 });
 ```
 
-テストを実行するときは、`Deno test`です。
+テストを実行するときは、`Deno test` です。
 
 ```bash
 $ deno test test.js
@@ -415,7 +409,7 @@ Deno.test("hello world", () => {
 });
 ```
 
-2回目以降のテストはすぐに実行できます。
+2 回目以降のテストはすぐに実行できます。
 
 ```js
 $ deno test test.js
@@ -425,9 +419,9 @@ test hello world ... ok (6ms)
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out (8ms)
 ```
 
-これでOKですね。
+これで OK ですね。
 
 # おわりに
-新しいJavaScriptのランタイムである`Deno`についてざっくりと触れてみました。
-いつの日か、`Node.js`に取って代わる日が来るのでしょうか、とても気になりますね。
+新しい JavaScript のランタイムである `Deno` についてざっくりと触れてみました。
+いつの日か、`Node.js` に取って代わる日が来るのでしょうか、とても気になりますね。
 

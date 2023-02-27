@@ -8,15 +8,15 @@ updatedAt: "2022-02-27T00:00+09:00"
 tags: ["Rust", "Yew"]
 published: true
 ---
-!> 筆者はこの記事を書き始めてから Rust を学び始めた初心者です
+!> 筆者はこの記事を書き始めてから Rust を学び始めた初心者です。
 
-Rust と呼ばれる言語はわりかし新し目の言語であり、2016–2021 年の間 Stack Overflow Developer Survey で「最も愛されているプログラミング言語」で一位を獲得し続けている人気の高い言語であります。
+Rust と呼ばれる言語はわりかし新し目の言語であり、2016–2021 年の間 Stack Overflow Developer Survey で「もっとも愛されているプログラミング言語」で一位を獲得し続けている人気の高い言語であります。
 
-Rust の得意とする分野は OS やコンパイラなどのいわゆる低レイヤーの領域ですが、Web サーバー、機械学習、コマンドラインアプリケーションなど様々な用途で利用されます。
+Rust の得意とする分野は OS やコンパイラなどのいわゆる低レイヤーの領域ですが、Web サーバー、機械学習、コマンドラインアプリケーションなどさまざまな用途で利用されます。
 
-Web フロントエンドの領域では高速化を目的として Rust から WebAssembly（以下、WASM） を生成して JavaScript から実行する用途がよく知られています。その他にも [SWC](https://swc.rs/) と呼ばれる Rust ベースで作成されているビルドツールが高速に動作することで注目を集めています。（実際に [jestの実行](https://swc.rs/docs/usage/jest) に試してみたところ実行時間が3倍ほどになって驚いています）
+Web フロントエンドの領域では高速化を目的として Rust から WebAssembly（以下、WASM）を生成して JavaScript から実行する用途がよく知られています。その他にも [SWC](https://swc.rs/) と呼ばれる Rust ベースで作成されているビルドツールが高速に動作することで注目を集めています。（実際に [jestの実行](https://swc.rs/docs/usage/jest) に試してみたところ実行時間が 3 倍ほどになって驚いています）
 
-現状 WASM では JavaScript のように DOM や Web API を直接操作することができないので計算負荷の高い特定の領域のパフォーマンスを改善する用途で使用されるのが主流となっています。そのため単に現状のコードを単に Rust に置き換えるだけでは望まれているパフォーマンスの工場は得られないでしょうし、単に複雑性をもたらすだけの結果になってしまうことでしょう。
+現状 WASM では JavaScript のように DOM や Web API を直接操作できないので計算負荷の高い特定の領域のパフォーマンスを改善する用途で使用されるのが主流となっています。そのため単に現状のコードを単に Rust に置き換えるだけでは望まれているパフォーマンスの工場は得られないでしょうし、単に複雑性をもたらすだけの結果になってしまうことでしょう。
 
 そんな中、以下のような Rust で　Web フロントアプリケーションを作成するフレームワークも登場しています。
 
@@ -34,7 +34,7 @@ Yew を始めるには以下ツールが必要です。
 
 - [Rust](https://www.rust-lang.org/)
 - [Trunk](https://trunkrs.dev/) - Rust 用の WASM バンドラ
-- [wasm32-unknown-unknown](https://doc.rust-lang.org/rustc/platform-support/wasm64-unknown-unknown.html) - 64ビットメモリを使用するWebAssemblyターゲット。
+- [wasm32-unknown-unknown](https://doc.rust-lang.org/rustc/platform-support/wasm64-unknown-unknown.html) - 64 ビットメモリを使用する WebAssembly ターゲット。
 
 まずは Rust のインストールが必要です。Yew を利用するには `1.56.0` 以上のバージョンが必要です。まだ Rust をインストールしていない場合には以下手順を参考にインストールします。
 
@@ -79,7 +79,7 @@ $ rustup target add wasm32-unknown-unknown
 
 ## プロジェクトの作成
 
-ツールのインストールが完了したら、初めての Cargo のプロジェクトを作成しましょう！
+ツールのインストールが完了したら、はじめての Cargo のプロジェクトを作成しましょう！
 
 ```sh
 $ cargo new yew-app
@@ -148,7 +148,7 @@ fn main() {
 
 関数 `app` に対する `#[function_component(App)]` という表記は関数に対する [Attriutes](https://doc.rust-lang.org/reference/attributes.html) であり、この Attributes は関数コンポーネントであることを明示します。関数コンポーネントは React のそれとよく似ており Props を受け取り [Html](https://docs.rs/yew/latest/yew/) を返却します。
 
-関数 `app` 内では `html!` マクロを使用しており `html!` マクロを使用することで jsx ライクなテンプレートを記述することができます。
+関数 `app` 内では `html!` マクロを使用しており `html!` マクロを使用することで jsx ライクなテンプレートを記述できます。
 
 さらにルートディレクトリに `index.html` ファイルを生成します。
 
@@ -180,7 +180,7 @@ $ trunk serve --open
 
 ![スクリーンショット 2022-02-26 17.29.00](//images.ctfassets.net/in6v9lxmm5c8/7JuvUw2p51zGikGweTRCVw/9f7221494d89f4d7d7cf10185065f05b/____________________________2022-02-26_17.29.00.png)
 
-また、ファイルを編集すると HMR のように変更を検知して自動で再ビルドされブラウザに反映されます。
+またファイルを編集すると HMR のように変更を検知して自動で再ビルドされブラウザに反映されます。
 
 ![yew](//images.ctfassets.net/in6v9lxmm5c8/JaxWGxPP2AoHStCbtMk7s/4064294e67d2d963439891705a4d4630/yew.gif)
 
@@ -233,11 +233,11 @@ pub fn header() -> Html {
 }
 ```
 
-`#[function_component(_)]` Attributes を用いて関数コンポーネントであるということを明示します。`function_component` 関数の引数にはコンポーネントの名前を渡します。上記例では `Header` という名前を渡しているのでこのコンポーネントは `<Header />` として使用することができます。
+`#[function_component(_)]` Attributes を用いて関数コンポーネントであるということを明示します。`function_component` 関数の引数にはコンポーネントの名前を渡します。上記例では `Header` という名前を渡しているのでこのコンポーネントは `<Header />` として使用できます。
 
 関数コンポーネントは必ず `Html` を返す必要があるので `html!` マクロを使用してテンプレートを定義します。
 
-もう一つ大事な点として `fn` の関数宣言の前に `pub` を修飾していることに注意してください。これはパブリックな要素であることを意味します。デフォルトではモジュール内の要素はすべてプライベートとなっておりモジュールの外の要素からはアクセスすることができません。`pub` を修飾することによって初めてモジュール外からアクセスすることができます。
+もう 1 つ大事な点として `fn` の関数宣言の前に `pub` を修飾していることに注意してください。これはパブリックな要素であることを意味します。デフォルトではモジュール内の要素はすべてプライベートとなっておりモジュールの外の要素からはアクセスできません。`pub` を修飾することによってはじめてモジュール外からアクセスできます。
 
 #### モジュールを宣言する
 
@@ -245,7 +245,7 @@ pub fn header() -> Html {
 
 Rust ではルートファイル（この例では `src/main.rs`）において `mod` キーワードを用いてモジュールを宣言する必要があります。この宣言がなけらばそのファイルはないものとして扱われます。
 
-また、`src/main.ts` から見ると `header.rs` は `components/header.rs` という階層に存在しますが次のように階層的にモジュールを宣言することはできません。
+また `src/main.ts` から見ると `header.rs` は `components/header.rs` という階層に存在しますが次のように階層的にモジュールを宣言することはできません。
 
 ```
 mod components::Header; // error: expected one of `;` or `{`, found `/`
@@ -263,7 +263,7 @@ pub mod header;
 
 このファイルの中で `components` フォルダの中で公開したいモジュールをすべて宣言します。ここでも `pub` を修飾する必要があります。
 
-その後ルートファイル（`scr/main.rs`）において `components` モジュールを宣言することで `components/header.rs` を使用することができます。
+その後ルートファイル（`scr/main.rs`）において `components` モジュールを宣言することで `components/header.rs` を使用できます。
 
 - main.rs
 
@@ -341,13 +341,13 @@ pub struct Todo {
 
 構造体の各フィールドに対しても `pub` 修飾子を付与する必要があることに注意してください。
 
-続いて `TodoItem` コンポーネントを作成します。これは1つの TODO アイテムを Props として受け取り描画することとします。
+続いて `TodoItem` コンポーネントを作成します。これは 1 つの TODO アイテムを Props として受け取り描画することとします。
 
-Props を定義するには `Properties` トレイト を継承（[Derive](https://doc.rust-lang.org/reference/attributes/derive.html#derive)）する必要があります
+Props を定義するには `Properties` トレイトを継承（[Derive](https://doc.rust-lang.org/reference/attributes/derive.html#derive)）する必要があります。
 
-トレイトとはある任意の型に対して抽象的な共通の振る舞いを定義する仕組みです。これは他の言語におけるインターフェイスと呼ばれる機能によｋ似ています。
+トレイトとはある任意の型に対して抽象的な共通の振る舞いを定義する仕組みです。これは他の言語におけるインターフェイスと呼ばれる機能によく似ています。
 
-トレイトは `impl トレイトA for 型B` という構文で型 B に対してトレイトの振る舞いを実装することができ、型 B はトレイト A のインスタンスであるということを制約します。
+トレイトは `impl トレイトA for 型B` という構文で型 B に対してトレイトの振る舞いを実装でき、型 B はトレイト A のインスタンスであるということを制約します。
 
 トレイトを実装するたびに毎回 `imple` キーワードを用いるのは面倒ですので `derive` アトリビュートがよく使用されます。
 
@@ -383,7 +383,7 @@ pub fn todo_item(props: &TodoItemProps) -> Html {
 }
 ```
 
-`String` 型の変数を `html!` マクロを用いて描画する際には `{&props.title}` のように参照を渡さなけばいけないことに注意してください。`String` 型コピートレイトと呼ばれるトレイト（トレイトについては後述）を実装していないので値のコピーをすることができず所有権が `props.title` に残り続けているためコンパイルエラーとなります。`&` を付与して参照を渡すことにより所有権を借用させなければなりません。
+`String` 型の変数を `html!` マクロを用いて描画する際には `{&props.title}` のように参照を渡さなけばいけないことに注意してください。`String` 型コピートレイトと呼ばれるトレイト（トレイトについては後述）を実装していないので値のコピーをできず所有権が `props.title` に残り続けているためコンパイルエラーとなります。`&` を付与して参照を渡すことにより所有権を借用させなければなりません。
 
 正しく描画されているか確認してみましょう。`components/todo/todo_list.rs` ファイルを編集します。
 
@@ -409,7 +409,7 @@ pub fn todo_list() -> Html {
 }
 ```
 
-`TodoItem` コンポーネントと `Todo` 構造体を読み込み簡単に1つだけ TODO を作成して描画しています。
+`TodoItem` コンポーネントと `Todo` 構造体を読み込み簡単に 1 つだけ TODO を作成して描画しています。
 
 ` Todo { ... } ` の箇所で Todo 構造体のインスタンスを作成して `todo` 変数に代入しています。
 
@@ -421,9 +421,9 @@ pub fn todo_list() -> Html {
   };
 ```
 
-`title` には `String` 型が要求されますが Rust において ダブルクォート `" "` で文字リテラルを宣言した場合には UTF-8 の配列のスライスである `&str` 型として生成されます。そのため `to_string()` メソッドを呼び出して `String` 型に変換する必要があります。
+`title` には `String` 型が要求されますが Rust においてダブルクォート `" "` で文字リテラルを宣言した場合には UTF-8 の配列のスライスである `&str` 型として生成されます。そのため `to_string()` メソッドを呼び出して `String` 型に変換する必要があります。
 
-Props を渡すときは React と同じように属性として渡します
+Props を渡すときは React と同じように属性として渡します。
 
 ```rs
 <TodoItem title={todo.title} completed={todo.completed} />  
@@ -458,7 +458,7 @@ Props を渡すときは React と同じように属性として渡します
 
 `html!` マクロの中ではルート要素はただ一つである必要があるのでフラグメント `<></>` を追加しています。ブラウザから表示を確認してみましょう。
 
-一つのリストが表示されているはずです。
+1 つのリストが表示されているはずです。
 
 ![スクリーンショット 2022-02-27 9.49.25](//images.ctfassets.net/in6v9lxmm5c8/548eTBmyIpVE4PP05waXXo/8b2c03b18185067b65a52bd497fb10b9/____________________________2022-02-27_9.49.25.png)
 
@@ -514,7 +514,7 @@ html! {
 }
 ```
 
-一つ見ていきましょう。
+1 つ見ていきましょう。
 
 `iter()` はベクタの要素に対するイテレータを生成します。イテレータを使用することでおなじみに `map`,`filter`,`for_each` のような連続の要素に対して一連の作業を行うことができます。
 
@@ -623,7 +623,7 @@ pub fn todo_item() -> Html {
 
 ![スクリーンショット 2022-02-27 13.40.32](//images.ctfassets.net/in6v9lxmm5c8/6N6TGo1esnfbngf9ZfOfPL/9345924a873f47ea222185d1c3b3c275/____________________________2022-02-27_13.40.32.png)
 
-続いて、ユーザーの入力した値を保持することができるように hooks を利用しましょう。そう、あの hooks です。
+続いて、ユーザーの入力した値を保持できるように hooks を利用しましょう。そう、あの hooks です。
 
 関数コンポーネント内で状態を管理するために [use_state](https://yew.rs/docs/concepts/function-components/pre-defined-hooks#use_state) フックを使用します。`use_state@ は初期値を返却する関数を引数に受け取ります。下記例では初期値を返す関数に[クロージャー](https://doc.rust-jp.rs/book-ja/ch13-01-closures.html)使用しています。クロージャーは簡単に言うと匿名関数です。クロージャーは `||` で定義され引数があれば `|arg1, arg2|` のように `||` の間に入れます。
 
@@ -631,7 +631,7 @@ pub fn todo_item() -> Html {
 let counter = use_state(|| 0)
 ```
 
-`use_state` は `UseStateHandle` を返します。`UseStateHandle` は `set` メソッドにより値を設定します。また、`UseStateHandle` より現在の状態を取得するには `*` 演算子により参照を外す必要があります。
+`use_state` は `UseStateHandle` を返します。`UseStateHandle` は `set` メソッドにより値を設定します。また `UseStateHandle` より現在の状態を取得するには `*` 演算子により参照を外す必要があります。
 
 ```re
 let counter = use_state(|| 0)
@@ -723,9 +723,9 @@ let oninput = {
 
 初めに `title.clone()` で `title` のコピーを取得します。コピーを取得する理由は後ほど出現する `move` キーワードによって所有権が移動するためです。
 
-`Callback::from()` ではクロージャーを使用していますがここでは `move` キーワードが出現しています。`move` キーワードを使用することでクロージャの外の環境からキャプチャして変数の所有権を奪うことをクロージャに強制することができます。`move` キーワードがなければ所有権を単に借用するにすぎません。
+`Callback::from()` ではクロージャーを使用していますがここでは `move` キーワードが出現しています。`move` キーワードを使用することでクロージャの外の環境からキャプチャして変数の所有権を奪うことをクロージャに強制できます。`move` キーワードがなければ所有権を単に借用するにすぎません。
 
-まず、前提として Rust では値の所有権を有していなければその値を更新することができません。クロージャーの中で `title` に値をセットしたいので所有権を奪う必要があるのです。
+まず、前提として Rust では値の所有権を有していなければその値を更新できません。クロージャーの中で `title` に値をセットしたいので所有権を奪う必要があるのです。
 
 詳しくは以下を参照ください。
 
@@ -754,13 +754,13 @@ match value {
 
 `Some(value)` にマッチした場合には入力された文字列が得られるのでこれを現在の状態に結合して新たな状態としてセットします。
 
-うまくいけば、次のようにフォームをコントロールすることができます。
+うまくいけば、次のようにフォームをコントロールできます。
 
 ![form-control](//images.ctfassets.net/in6v9lxmm5c8/6Ar1MtUWkyuYMeicQ3CCZR/e15b8480af0ad95d6934233eda083e42/form-control.gif)
 
 ### コンポーネントをインタラクティブにする
 
-現在の入力値を保持することができたので、追加ボタンをクリックした時に TODO リストに追加されるようにしましょう。まずは `onclick` イベントを購読するようにしましょう。
+現在の入力値を保持できたので、追加ボタンをクリックしたときに TODO リストに追加されるようにしましょう。まずは `onclick` イベントを購読するようにしましょう。
 
 ```rs
   let onclick = {
@@ -776,7 +776,7 @@ match value {
   }
 ```
 
-ここで本当にボタンが押された時に `onclick` が呼ばれているのかどうか確認したいのですが、Rust からは直接 `console.log()` のような Web API にはアクセスできません。`console.log()` を呼び出せないのはちょっと不便なので [https://crates.io/crates/wasm-logger](https://crates.io/crates/wasm-logger) と呼ばれるクリートを追加しましょう。`Cargo.toml` ファイルを編集して `
+ここで本当にボタンが押されたときに `onclick` が呼ばれているのかどうか確認したいのですが、Rust からは直接 `console.log()` のような Web API にはアクセスできません。`console.log()` を呼び出せないのはちょっと不便なので [https://crates.io/crates/wasm-logger](https://crates.io/crates/wasm-logger) と呼ばれるクリートを追加しましょう。`Cargo.toml` ファイルを編集して `
 [dependencies]` に追加します。
 
 - Carto.toml
@@ -869,9 +869,9 @@ fn app() -> Html {
 
 ![on add](//images.ctfassets.net/in6v9lxmm5c8/7kTNfxQKraOxKtF3QS6JYT/f7846b2d42cc1218e53375e700b23f92/on_add.gif)
 
-最後に、`on_add` 関数が呼ばれた時に `todo_items` ベクタに要素を追加するようにしましょう。
+最後に、`on_add` 関数が呼ばれたときに `todo_items` ベクタに要素を追加するようにしましょう。
 
-`main.rs` ファイルを編集します・
+`main.rs` ファイルを編集します。
 
 - main.rs
 
@@ -964,7 +964,7 @@ dist
 
 ## 感想
 
-Rust に触れるのは初めてでしたが、React に近い感じの要素が多かったので思ったよりも迷わず進められた感じですね。
+Rust に触れるのははじめてでしたが、React に近い感じの要素が多かったので思ったよりも迷わず進められた感じですね。
 
 まだまだ Web フロントエンドの分野での Rust は発展途上ではありますが、JavaScript/TypeScript 以外の選択肢が増えるのは好ましいことですので今後の動向に期待指定ですね。
 

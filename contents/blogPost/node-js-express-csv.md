@@ -10,7 +10,7 @@ published: true
 ---
 # json2csvのインストール
 
-json2csvというパッケージを使用します。
+json2csv というパッケージを使用します。
 
 https://www.npmjs.com/package/json2csv
 
@@ -65,19 +65,19 @@ const output = parse(data, {
 console.log(output)
 ```
 
-変換処理は、json2csvの`parse`が行います。
-`parse`の第一引数には処理するオブジェクトを、第二引数にはオプションが渡せます。
+変換処理は、json2csv の `parse` が行います。
+`parse` の第一引数には処理するオブジェクトを、第二引数にはオプションが渡せます。
 
 今回渡しているオプションは以下のとおりです。
 
 | オプション  | 説明 |
 | ---------- | ---------- |
 | fields     | CSVで出力するフィールドをオブジェクトのキーで指定できます。 | 
-| withBOM    | `true`を指定するとBOMヘッダを付与します。BOMヘッダを付与するとExcelで開く際にUTF-8が使われていることを認識させることができます。つまりは文字化け対策です。 |
+| withBOM    | `true` を指定するとBOMヘッダを付与します。BOMヘッダを付与するとExcelで開く際にUTF-8が使われていることを認識させることができます。つまりは文字化け対策です。 |
 
 他の使用可能なオプションは[公式ドキュメント](https://github.com/zemirco/json2csv#javascript-module)を参照してください。
 
-ログを確認すると、期待どおりCSVで出力されています。
+ログを確認すると、期待どおり CSV で出力されています。
 
 ```sh
 "id","name","price","date"
@@ -88,7 +88,7 @@ console.log(output)
 
 # ExpressでCSVをダウンロード
 
-CSVに変換したものをダウンロードさせるようにします。
+CSV に変換したものをダウンロードさせるようにします。
 そのためには、以下ヘッダーを設定する必要があります。
 
 ```ts
@@ -153,7 +153,7 @@ app.listen(3000, () => {
 })
 ```
 
-http://localhost:3000/csv にアクセスすると、CSVファイルがダウンロードされます。
+http://localhost:3000/csv にアクセスすると、CSV ファイルがダウンロードされます。
 
 # 参考
 

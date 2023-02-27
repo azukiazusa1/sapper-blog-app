@@ -8,7 +8,7 @@ updatedAt: "2022-05-22T00:00+09:00"
 tags: ["playwright"]
 published: true
 ---
-[Playwright](https://playwright.dev/) は [Cypress](https://www.cypress.io/) [Puppeteer](https://pptr.dev/) と並ぶ E2E テストのための Node.js フレームワークです。Chromium, Chrome, Edge, Firefox, Webkit (Safari)と多くのブラウザに対応しているという特徴があります。
+[Playwright](https://playwright.dev/) は [Cypress](https://www.cypress.io/) [Puppeteer](https://pptr.dev/) と並ぶ E2E テストのための Node.js フレームワークです。Chromium・Chrome・Edge・Firefox・Webkit (Safari)と多くのブラウザに対応しているという特徴があります。
 
 そんな Playwright ですが [v1.22.0](https://github.com/microsoft/playwright/releases/tag/v1.22.0) から React,Vue.js,Svelte のコンポーネントに対してテストを実行できるようになりました。つまりもともと備えていた E2E レベルのテストに加えて、結合レベルのテストまでカバーできるようになったということです。
 
@@ -20,13 +20,13 @@ Playwright のコンポーネントテスティングの特徴と使い方を見
 
 Tesing Library と比較してあげられる Playwright のメリットとして、**実際のブラウザ上でコンポーネントテストを実行できる**という点があります。通常 Testing Library は Node.js 上で実行されており [jsdom](https://github.com/jsdom/jsdom) により DOM を再現しています。
 
-Playwright は実際のブラウザを外から操作するため、`jsdom` では発見できないブラウザ特有の問題を自動テストで発見できるメリットがあります。また、`viewport` の指定や `prefers-colors-scheme` のエミュレートも可能なので、例えばモバイルでのみ要素が表示されることをテストすることもできます。
+Playwright は実際のブラウザを外から操作するため、`jsdom` では発見できないブラウザ特有の問題を自動テストで発見できるメリットがあります。また `viewport` の指定や `prefers-colors-scheme` のエミュレートも可能なので、例えばモバイルでのみ要素が表示されることをテストできます。
 
 ## テストを書いてみる
 
 ### Playwright のインストール
 
-Playwright は React,Vue.js,Svelte で作成したプロジェクトに簡単に追加することができます。試しに以下のコマンドで作成した React プロジェクトを使用します。
+Playwright は React,Vue.js,Svelte で作成したプロジェクトに簡単に追加できます。試しに以下のコマンドで作成した React プロジェクトを使用します。
 
 ```sh
 npx create-react-app my-app --template typescript
@@ -49,7 +49,7 @@ npm init playwright@latest -- --ct
 
 #### `playwright/index.html`
 
-この `html` ファイルはテスト実行時ににコンポーネントが描画するために使用されます。この ファイルには必ず `id="root"` 属性を持つ要素を含める必要があります。このファイルはビルド時に使用される `index.html` ファイルと内容を合わせておくと良いでしょう。
+この `html` ファイルはテスト実行時にコンポーネントが描画するために使用されます。このファイルには必ず `id="root"` 属性を持つ要素を含める必要があります。このファイルはビルド時に使用される `index.html` ファイルと内容を合わせておくと良いでしょう。
 
 #### `playwright/index.ts`
 
@@ -61,7 +61,7 @@ npm init playwright@latest -- --ct
 
 ### 簡単なテストを書いてみる
 
-それでは playwright のインストールも済みましたので、簡単なコンポーネントのテストを実行してみましょう。次のようなカウンターアプリをテストの対象とします。ボタンを押すと表示されるカウントが1つづつ増えていくものです。更に「You clicked {count} times」という文字は PC のみに表示しモバイル画面で表示したときには「{count}」だけ表示することとします。
+それでは playwright のインストールも済みましたので、簡単なコンポーネントのテストを実行してみましょう。次のようなカウンターアプリをテストの対象とします。ボタンを押すと表示されるカウントが 1 つづつ増えていくものです。さらに「You clicked {count} times」という文字は PC のみに表示しモバイル画面で表示したときには「{count}」だけ表示することとします。
 
 ```ts
 // Counter.tsx
@@ -105,7 +105,7 @@ test("increments the counter", async ({ mount }) => {
 
 ② `test` メソッドの関数の引数では `playwright` の設定を受け取ります。この引数には `mount` メソッドが含まれているのでこれを使用してテスト対象のコンポーネントをマウントします。`mount` メソッドは [Locator](https://playwright.dev/docs/locators) オブジェクトを返します。
 
-③ `component` の `locator` メソッドでボタン要素を取得します。`locator` メソッドはテキスト・CSS セレクタ・Accessible Name 等を用いてマウントされたコンポーネント内に存在する要素を取得できます。④要素の取得後は `click` メソッドでボタンクリックを再現します。
+③ `component` の `locator` メソッドでボタン要素を取得します。`locator` メソッドはテキスト・CSS セレクタ・Accessible Name などを用いてマウントされたコンポーネント内に存在する要素を取得できます。④要素の取得後は `click` メソッドでボタンクリックを再現します。
 
 ボタンクリック後テキストが変化しているはずなので④ paragraph ロールを取得してその中のテキストが「You clicked 1 times」に変化していることを検査します。
 
@@ -115,7 +115,7 @@ test("increments the counter", async ({ mount }) => {
 npm run test-ct
 ```
 
-デフォルトでは `chromium`、`firefox`、`webkit` の3つのブラウザそれぞれテストが実行されます。結果を見てみるとテストが失敗していることがわかります。
+デフォルトでは `chromium`、`firefox`、`webkit` の 3 つのブラウザそれぞれテストが実行されます。結果を見てみるとテストが失敗していることがわかります。
 
 ```sh
   1) [chromium] › src/Counter.spec.tsx:4:1 › increments the counter ================================
@@ -133,7 +133,7 @@ npm run test-ct
       14 |
 ```
 
-テストが一つでも失敗すると、レポートがブラウザで表示されます。
+テストが 1 つでも失敗すると、レポートがブラウザで表示されます。
 
 ![スクリーンショット 2022-05-22 23.01.11](//images.ctfassets.net/in6v9lxmm5c8/4cS8CXGWktxul0R7bY2SSc/c56358603c9475f7ca7262d59aff1520/____________________________2022-05-22_23.01.11.png)
 
@@ -148,11 +148,11 @@ npm run test-ct
 + <button onClick={() => setCount((prev) => prev + 1)}>Click me</button>
 ```
 
-再度テストを実行すると、全てのテストがパスするはずです。
+再度テストを実行すると、すべてのテストがパスするはずです。
 
 ### Viewport に関するテストを書く
 
-[Playwright](https://playwright.dev/docs/test-configuration) の設定をテストごとに上書きすることで、テストごとにブラウザの状態を変更してテストを実行することができます。
+[Playwright](https://playwright.dev/docs/test-configuration) の設定をテストごとに上書きすることで、テストごとにブラウザの状態を変更してテストを実行できます。
 
 設定を上書きするにはテストファイルのルートレベルまたは `test.describe` ブロックないで `test.use()` メソッドを呼び出します。
 

@@ -8,17 +8,17 @@ updatedAt: "2021-12-26T00:00+09:00"
 tags: ["JavaScript", "Vite", "Vitest"]
 published: true
 ---
-?> Vitest は現在(2021/12/27時点)開発中であり stable ではあり、本番環境での使用は推奨されません。
+?> Vitest は現在（2021/12/27 時点）開発中であり stable ではあり、本番環境での使用は推奨されません。
 
 Vitest は [Vite](https://vitejs.dev/) ベースの JavaScript のテスティングフレームワークです。
 
 https://vitest.dev/
 
-Vite の強みとして周囲のエコシステムがあるのですが、ユニットテストを記述するときには Vite のエコシステムを活用することができませんでした。 多くの場合 [Jest](https://jestjs.io/) などのようなテスティングフレームワークが使用されるのですが、その場合 Vite の設定と Jest の設定をそれぞれに記述しなければいけなかったり開発者にとって煩わしいものでした。
+Vite の強みとして周囲のエコシステムがあるのですが、ユニットテストを記述するときには Vite のエコシステムを活用できませんでした。 多くの場合 [Jest](https://jestjs.io/) などのようなテスティングフレームワークが使用されるのですが、その場合 Vite の設定と Jest の設定をそれぞれに記述しなければいけなかったり開発者にとって煩わしいものでした。
 
 Vitest の目標は Vite プロジェクトにおける最適なテストランナーとして、また Vite を使用していないプロジェクトでも代替手段としての地位を獲得することです。
 
-Vite を搭載しているため非常に高速にテストを実行できることが大きな特徴の一つです。また Vitest は Jest の API とも互換性があるためほとんどのプロジェクトにおいて代替として使用することができます。
+Vite を搭載しているため非常に高速にテストを実行できることが大きな特徴の 1 つです。また Vitest は Jest の API とも互換性があるためほとんどのプロジェクトにおいて代替として使用できます。
 
 ## Vitest を始める
 
@@ -35,7 +35,7 @@ Vitest を使用するには以下の環境が必要です。
 - Vite v2.7
 - Node v14
 
-まずは [Viteのドキュメント](https://ja.vitejs.dev/guide/#%E6%9C%80%E5%88%9D%E3%81%AE-vite-%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B) の通りに Vite のプロジェクトを作成しましょう。
+まずは [Viteのドキュメント](https://ja.vitejs.dev/guide/#%E6%9C%80%E5%88%9D%E3%81%AE-vite-%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B) のとおりに Vite のプロジェクトを作成しましょう。
 
 ```sh
 npm init vite@latest my-vitest-app --template vue-ts
@@ -59,13 +59,13 @@ npm install -D vitest
 
 ### 設定ファイル
 
-Vitest の特徴の1つとして Vite と使用する場合新たな設定ファイルが不要なことが挙げられます。Vitest は `vite.config.ts` を見にいきます。
+Vitest の特徴の 1 つとして Vite と使用する場合新たな設定ファイルが不要なことが挙げられます。Vitest は `vite.config.ts` を見にいきます。
 
 詳細な設定は以下を参照ください。
 
 https://vitest.dev/config/
 
-### 初めてのテストを書く
+### はじめてのテストを書く
 
 それでは実際に Vitest を使ってテストを書いてみましょう。
 
@@ -146,7 +146,7 @@ press any key to exit...
  export default add;
 ```
 
-watch モードで実行しているのでファイルを保存したら一瞬でテストが再実行(3ms)されました。今度は正しく成功していますね。
+watch モードで実行しているのでファイルを保存したら一瞬でテストが再実行（3ms）されました。今度は正しく成功していますね。
 
 ```sh
 Re-running tests... [ src/add.ts ]
@@ -176,7 +176,7 @@ export default defineConfig({
 })
 ```
 
-TypeScriptを使用している場合には `tsconfig.json` に Vitest の型を追加します。
+TypeScript を使用している場合には `tsconfig.json` に Vitest の型を追加します。
 
 - tsconfig.json
 
@@ -234,7 +234,7 @@ describe('fetchUsers', () => {
 })
 ```
 
-（ axios をモックすると原因不明のエラーで失敗します...）
+（axios をモックすると原因不明のエラーで失敗します。..）
 
 https://github.com/vitest-dev/vitest/issues/284
 

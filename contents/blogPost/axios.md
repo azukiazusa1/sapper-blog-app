@@ -8,18 +8,18 @@ updatedAt: "2021-08-29T00:00+09:00"
 tags: ["JavaScript"]
 published: true
 ---
-[axios](https://github.com/axios/axios)は、JavaScriptにおけるHTTPクライアントのデファクトスタンダードといえるでしょう。
+[axios](https://github.com/axios/axios)は、JavaScript における HTTP クライアントのデファクトスタンダードといえるでしょう。
 
-Promiseベースで非同期通信を行えるHTTPクライアントとして、ブラウザ標準の[fatch](https://developer.mozilla.org/ja/docs/Web/API/Fetch_API)や[jQuery.ajax](https://api.jquery.com/jquery.ajax/)などがありますが、特にaxiosがよく使われているのには豊富なオプションや設定に理由付けられるでしょう。
+Promise ベースで非同期通信を行える HTTP クライアントとして、ブラウザ標準の[fatch](https://developer.mozilla.org/ja/docs/Web/API/Fetch_API)や[jQuery.ajax](https://api.jquery.com/jquery.ajax/)などがありますが、特に axios がよく使われているのには豊富なオプションや設定に理由付けられるでしょう。
 
-axiosの機能について私のように詳しくなくても直感的にHTTPリクエストを送れるのも良い点の1つですが、せっかくなのでaxiosでどのようなことができるのがを見ていきましょう。
+axios の機能について私のように詳しくなくても直感的に HTTP リクエストを送れるのも良い点の 1 つですが、せっかくなので axios でどのようなことができるのがを見ていきましょう。
 
 # 共通の設定を使用する
 
 ## axios.create
 
-`axios.create()`はaxiosの設定を引数に受け取りaxiosのインスタンスを作成します。
-このとき`axios.create()`に渡された設定はすべてのインスタンスでデフォルトの設定として引き継がれて使用されます。
+`axios.create()` は axios の設定を引数に受け取り axios のインスタンスを作成します。
+このとき `axios.create()` に渡された設定はすべてのインスタンスでデフォルトの設定として引き継がれて使用されます。
 
 ```ts
 import axios  from "axios";
@@ -52,7 +52,7 @@ export const paymentApi = axios.create({
 
 ## axios.defaults
 
-`axios.defaults`に対して特定の設定に対する値を設定しておけば、同様にインスタンスのすべてのリクエストに対して設定が適用されます。
+`axios.defaults` に対して特定の設定に対する値を設定しておけば、同様にインスタンスのすべてのリクエストに対して設定が適用されます。
 
 ```ts
 import axios  from "axios";
@@ -64,7 +64,7 @@ const userApi = axios.create({
 userApi.defaults.withCredentials = true
 ```
 
-このデフォルトの設定は`import`した`axios`に対して設定することで、すべてのリクエストに対するグローバルなデフォルト設定として利用できます。
+このデフォルトの設定は `import` した `axios` に対して設定することで、すべてのリクエストに対するグローバルなデフォルト設定として利用できます。
 
 ```ts
 import axios  from "axios";
@@ -87,7 +87,7 @@ console.log(paymentApi.defaults.withCredentials) // true
 
 ## Interceptors
 
-`axios.interceptors`を使えば、リクエストの送信前とレスポンスの取得後にそれぞれ文字通り処理を挟むこむことができます。
+`axios.interceptors` を使えば、リクエストの送信前とレスポンスの取得後にそれぞれ文字通り処理を挟むこむことができます。
 
 ```ts
 import axios from "axios";
@@ -133,7 +133,7 @@ axios.interceptors.request.use(config => {
 })
 ```
 
-`axios.interceptors`は`axios.defaults`と同様に`axios.create()`で作成したインスタンスに対して設定するとそのインスタンスのみ適用させることができます。
+`axios.interceptors` は `axios.defaults` と同様に `axios.create()` で作成したインスタンスに対して設定するとそのインスタンスのみ適用させることができます。
 
 ```ts
 import axios from "axios";
@@ -155,11 +155,11 @@ userApi.interceptors.request.use(config => {
 
 ## CancelToken
 
-axiosの`CancelToken`を使用すれば、HTTPリクエストをキャンセルする処理を簡単に実装することができます。
+axios の `CancelToken` を使用すれば、HTTP リクエストをキャンセルする処理を簡単に実装できます。
 
 ### キャンセルトークンを作成する
 
-キャンセルトークンは、`CancelToken.source`によって生成されたソースにプロパティとして生成されます。生成したキャンセルトークンはaxiosの設定の`cancelToken`に対して渡します。生成したキャンセルトークンは処理をキャンセルする際に後々使用するのでどこかに保持しておく必要があります。
+キャンセルトークンは、`CancelToken.source` によって生成されたソースにプロパティとして生成されます。生成したキャンセルトークンは axios の設定の `cancelToken` に対して渡します。生成したキャンセルトークンは処理をキャンセルする際に後々使用するのでどこかに保持しておく必要があります。
 
 ```ts
 import axios from "axios";
@@ -177,7 +177,7 @@ const fakeApi = axios.create({
 ### リクエストをキャンセルする
 
 実際にリクエストをキャンセルする処理を実装していきましょう。
-単純に、「リクエスト」ボタンをクリックしたらリクエストを送信し「キャンセル」ボタンをクリックしたら処理をキャンセルするようにしました。
+単純に「リクエスト」ボタンをクリックしたらリクエストを送信し「キャンセル」ボタンをクリックしたら処理をキャンセルするようにしました。
 
 ```ts
 import axios from "axios";
@@ -215,26 +215,26 @@ cancelBtn.addEventListener('click', () => {
 })
 ```
 
-`source.cancel()`メソッドを呼び出すことによってリクエストをキャンセルすることができます。
-リクエストがキャンセルされた場合にはエラーとして扱われるので、`catch`ブロックへ入ることになります。
+`source.cancel()` メソッドを呼び出すことによってリクエストをキャンセルできます。
+リクエストがキャンセルされた場合にはエラーとして扱われるので、`catch` ブロックへ入ることになります。
 
-`catch`ブロックにおいて`source.cancel()`によって意図的に発生させたエラーかどうか判定するために、`axios.isCancel()`を使用します。
+`catch` ブロックにおいて `source.cancel()` によって意図的に発生させたエラーかどうか判定するために、`axios.isCancel()` を使用します。
 
-`axios.isCancel()`が`true`を返すのであればリクエストをキャンセルしたことによる例外なのでキャンセルときの処理を記載しましょう。
+`axios.isCancel()` が `true` を返すのであればリクエストをキャンセルしたことによる例外なのでキャンセルときの処理を記載しましょう。
 
-実際に処理がキャンセルされているのはdevtoolのネットワークタブを見ればわかります。
+実際に処理がキャンセルされているのは devtool のネットワークタブを見ればわかります。
 
 ![スクリーンショット 2021-08-29 19.05.06](//images.contentful.com/in6v9lxmm5c8/2rHoeHDXFje8WHYN3CQLxO/12be33562e927dbefaa1d94b266f93c4/____________________________2021-08-29_19.05.06.png)
 
 ### コンストラクタでトークンを生成する
 
-上記の方法によるキャンセル方法には一つ問題があります。
+上記の方法によるキャンセル方法には 1 つ問題があります。
 
-一つのキャンセルトークンをすべてのリクエストで使用しているため一度リクエストをキャンセルした場合それ以降のリクエストはすべてキャンセルされてしまいます。(キャンセルのキャンセルはできません)
+1 つのキャンセルトークンをすべてのリクエストで使用しているため一度リクエストをキャンセルした場合それ以降のリクエストはすべてキャンセルされてしまいます。（キャンセルのキャンセルはできません）。
 
 問題の解決方法はいろいろありますが。ここではコンストラクタによる方法でキャンセルトークンを生成する方法を使用します。
 
-axiosの設定にキャンセルトークンを渡す際に毎回コンストラクタによりキャンセルトークンを生成するようにします。コンストラクタの引数にはコールバック関数を受け取り。コールバック関数の引数として処理をキャンセルする関数を受け取ります。
+axios の設定にキャンセルトークンを渡す際に毎回コンストラクタによりキャンセルトークンを生成するようにします。コンストラクタの引数にはコールバック関数を受け取り。コールバック関数の引数として処理をキャンセルする関数を受け取ります。
 
 受け取ったキャンセルする関数を変数として保持し、それをキャンセル時に使用します。
 
@@ -281,8 +281,8 @@ cancelBtn.addEventListener('click', () => {
 
 ## onUploadProgress・onDownloadProgress
 
-axiosの設定に渡せる項目としてonUploadProgress・onDownloadProgressがあります。
-コールバック関数を受け取りそれぞれファイルのアップロード時とダウンロード時の進捗状況を取得することができます。
+axios の設定に渡せる項目として onUploadProgress・onDownloadProgress があります。
+コールバック関数を受け取りそれぞれファイルのアップロード時とダウンロード時の進捗状況を取得できます。
 
 適当にファイルをアップロードする処理を書きます。
 
@@ -325,7 +325,7 @@ submitBtn.addEventListener('click', async (e) => {
 })
 ```
 
-`progressEvent`は進捗状況が変化するたびにいかのような形式のオブジェクトを受け取ります。
+`progressEvent` は進捗状況が変化するたびにいかのような形式のオブジェクトを受け取ります。
 
 ```js
 {
@@ -338,9 +338,9 @@ submitBtn.addEventListener('click', async (e) => {
 }
 ```
 
-`total`がアップロードするファイルサイズで、`loaded`が現在アップロードできているファイルサイズです。
+`total` がアップロードするファイルサイズで、`loaded` が現在アップロードできているファイルサイズです。
 
-後はプログレスバーを表示させ、`progressEvent`を受け取るたびに現在の進捗割合を割り当てて上げればそれっぽいものができます。
+後はプログレスバーを表示させ、`progressEvent` を受け取るたびに現在の進捗割合を割り当てて上げればそれっぽいものができます。
 
 ```html
 <progress id="progress" value="0">
@@ -365,9 +365,9 @@ const fakeApi = axios.create({
 ## isAxiosError
 
 例えば、次のようなコードを想定します。
-以下のコードは`catch`によってaxiosのリクエストエラーだけではなく、それ以外のエラーを取得する可能性があります。
+以下のコードは `catch` によって axios のリクエストエラーだけではなく、それ以外のエラーを取得する可能性があります。
 
-このように、複数のエラーがキャッチされる可能性があるときには`axios.isAxiosError()`を使うと、axiosによるエラーかどうか判定して処理を書けます。
+このように、複数のエラーがキャッチされる可能性があるときには `axios.isAxiosError()` を使うと、axios によるエラーかどうか判定して処理を書けます。
 
 ```js
 import axios from "axios";
@@ -397,13 +397,13 @@ const getComments = async (postId?:  number) => {
 getComments()
 ```
 
-`axios.isAxiosError`はType Guard関数なのでついでのインテリセンスも得られます。
+`axios.isAxiosError` は Type Guard 関数なのでついでのインテリセンスも得られます。
 
 ![スクリーンショット 2021-08-29 23.28.37](//images.contentful.com/in6v9lxmm5c8/2dsXlWZGtCIbvLuSqTN7BR/6fa6b0786f6feb77224867717abfb389/____________________________2021-08-29_23.28.37.png)
 
 ## toJSON
 
-axiosのエラーに対して`toJSON()`メソッドを呼ぶとエラーの詳細情報が得られます。
+axios のエラーに対して `toJSON()` メソッドを呼ぶとエラーの詳細情報が得られます。
 
 ```json
 {
@@ -437,7 +437,7 @@ axiosのエラーに対して`toJSON()`メソッドを呼ぶとエラーの詳�
 
 # クエリパラメータを変換する
 
-axiosでgetリクエストを送信する際に`params`に配列を渡すと次のようにクエリパラメータに`[]`を付与したものが生成されます。余計なお世話ですのでどうにか外したいところです。
+axios で get リクエストを送信する際に `params` に配列を渡すと次のようにクエリパラメータに `[]` を付与したものが生成されます。余計なお世話ですのでどうにか外したいところです。
 
 ```ts
 import axios from "axios";
@@ -462,7 +462,7 @@ const getComments = async (postIds: number[]) => {
 getComments([1, 2, 3])
 ```
 
-このような場合には`paramsSerializer`の設定を追加します。
+このような場合には `paramsSerializer` の設定を追加します。
 
 ```sh
 npm i qs # クエリパラメータをパースするライブラリ
@@ -492,13 +492,13 @@ const getComments = async (postIds: number[]) => {
 getComments([1, 2, 3])
 ```
 
-望んだ形でクエリパラメータを送信することができます。
+望んだ形でクエリパラメータを送信できます。
 
 # レスポンス結果をキャッシュする
 
 ## axios-extensions
 
-axios本体の機能ではないですが、[axios-extensions](https://github.com/kuitos/axios-extensions)を利用するとGETリクエストの結果をキャッシュすることが可能です。
+axios 本体の機能ではないですが、[axios-extensions](https://github.com/kuitos/axios-extensions)を利用すると GET リクエストの結果をキャッシュすることが可能です。
 
 簡単な使い方を紹介します。
 

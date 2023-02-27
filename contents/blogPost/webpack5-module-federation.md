@@ -14,7 +14,7 @@ Module Feaderation は Webpack 5 からコア機能として導入されまし�
 
 https://webpack.js.org/concepts/module-federation/
 
-Module Feaderation を使用すると、異なる JavaScript アプリケーションから動的にコードをロードすることができます。これは複数の個別のビルドによって単一のアプリケーションを構築する手段を目的としています。
+Module Feaderation を使用すると、異なる JavaScript アプリケーションから動的にコードをロードできます。これは複数の個別のビルドによって単一のアプリケーションを構築する手段を目的としています。
 
 これは**マイクロフロントエンド**という言葉でよく知られていると思いますが Module Federation の目的としてはそれに限定されません。
 
@@ -27,7 +27,7 @@ https://micro-frontends.org/
 ## マイクロフロントエンドアプリケーションを作成する
 
 それでは、実際に Module Feaderation を使ってアプリケーションを作成してみましょう。
-例として、以下の3つのフロントエンドチームが存在すると仮定しましょう。
+例として、以下の 3 つのフロントエンドチームが存在すると仮定しましょう。
 
 - ヘッダーチーム：ヘッダー部分を作成するチーム。React
 - フッターチーム：フッター部分を作成するチーム。Vue.js
@@ -104,7 +104,7 @@ yarn add -D babel-loader @babel/core @babel/preset-env @babel/preset-react
 yarn add -D css-loader style-loader @svgr/webpack style-loader url-loader
 ```
 
-`webpack.config.js` ファイルを作成しましょう
+`webpack.config.js` ファイルを作成しましょう。
 
 ```js
 const path = require("path");
@@ -150,7 +150,7 @@ module.exports = {
 };
 ```
 
-続いて Module Federation の設定を記述していきます。引き続き `webpack.config.js` ファイルを編集します。
+続いて Module Federation の設定を記述します。引き続き `webpack.config.js` ファイルを編集します。
 
 - `header-app/webpack.config.js`
 
@@ -325,7 +325,7 @@ module.exports = {
 
 `remote` プロパティはオブジェクト形式で指定し、取り込みたい名前をキーとし Module Federation によって出力したファイルを値に設定します。
 
-もう一つ変更する点があります。`src/index.js` ファイルの内容をそのまま`src/bootstrap.js` ファイルを作成してペーストします。
+もう 1 つ変更する点があります。`src/index.js` ファイルの内容をそのまま `src/bootstrap.js` ファイルを作成してペーストします。
 
 - `main-contents/src/bootstrap.js`
 
@@ -387,7 +387,7 @@ cd main_contents
 yarn start
 ```
 
-http://localhost:3000 を見てください！ヘッダーチームが作成したコンポーネントがしっかりと表示されています！！
+http://localhost:3000 を見てください！ヘッダーチームが作成したコンポーネントがしっかりと表示されています！
 
 ![スクリーンショット 2021-11-21 23.58.44](//images.contentful.com/in6v9lxmm5c8/3qbZibLRtRpePaPoguvWP1/b0796b87684a439db44edbf72b3e4964/____________________________2021-11-21_23.58.44.png)
 
@@ -415,7 +415,7 @@ http://localhost:3000 を見てください！ヘッダーチームが作成し�
  export default Header;
 ```
 
-メインコンテンツ側ではホットリロードは効かないのでブラウザを更新する必要があります。先程ヘッダーコンポーネントで行った変更が反映されているはずです！
+メインコンテンツ側ではホットリロードは効かないのでブラウザを更新する必要があります。さきほどヘッダーコンポーネントで行った変更が反映されているはずです！
 
 ![スクリーンショット 2021-11-22 0.03.53](//images.contentful.com/in6v9lxmm5c8/3EgG63QFn0PZXgtRCGiqM9/ef31be6c7708bd9a48cc49c67a18afb0/____________________________2021-11-22_0.03.53.png)
 
@@ -423,7 +423,7 @@ http://localhost:3000 を見てください！ヘッダーチームが作成し�
 
 メインコンテンツアプリケーションとヘッダーアプリケーションは互いに React に依存していますが、どちらのアプリケーションでも React のソースコードを読み込んでしまうので結果的にファイルサイズが大きくなってしまいます。
 
-`shared` というプロパティを設定することで依存関係を共有することができます。このオプションを設定するとヘッダーアプリケーションはメインコンテンツアプリケーションの依存関係を優先的に参照します。メインコンテンツアプリケーション依存関係が存在しない場合には、ヘッダーアプリケーションが独自にソースコードのダウンロードを行います。
+`shared` というプロパティを設定することで依存関係を共有できます。このオプションを設定するとヘッダーアプリケーションはメインコンテンツアプリケーションの依存関係を優先的に参照します。メインコンテンツアプリケーション依存関係が存在しない場合には、ヘッダーアプリケーションが独自にソースコードのダウンロードを行います。
 
 メインコンテンツアプリケーションとヘッダーアプリケーションのどちらにも以下のコードを追加します。
 
@@ -456,7 +456,7 @@ module.exports = {
 - `requiredVersion`
   - 実際に依存しているライブラリのバージョンを記載しています。
 - `singleton`
-  - `true` にすると1つのバージョンのみのライブラリをシェアするように強制することができます。例としては `react` や `react-dom` などのグルーバルな内部状態を持つライブラリはこのオプションを指定するべきです。
+  - `true` にすると 1 つのバージョンのみのライブラリをシェアするように強制できます。例としては `react` や `react-dom` などのグルーバルな内部状態を持つライブラリはこのオプションを指定するべきです。
 
 また `shared` を設定した場合ヘッダーアプリケーションも `bootstrap.js` を作成してアプリケーションが非同期に開始するようにする必要があります。
 
@@ -527,7 +527,7 @@ defineProps({
 </style>
 ```
 
-Vue.js のコンポーネントは React アプリケーションでそのまま使用することができないので Web Components に変換する必要があります。同ディレクトリ内に `TheFooter.js` ファイルを作成します。
+Vue.js のコンポーネントは React アプリケーションでそのまま使用できないので Web Components に変換する必要があります。同ディレクトリ内に `TheFooter.js` ファイルを作成します。
 
 - `footer-app/src/components/TheFooter.js`
 
@@ -540,7 +540,7 @@ const TheFooterElement = defineCustomElement(TheFooter);
 customElements.define("the-footer", TheFooterElement);
 ```
 
-Vue.js の `defineCustomElement` を呼び出せば Vue.js コンポーネントを Web Components に変換することができます。 Web Components に変換した要素を `customElements.define` で登録して使用できるようにしています。Vue.js と Web Components の関係についてもう少し詳しく知りたい場合には以下を参照してください。
+Vue.js の `defineCustomElement` を呼び出せば Vue.js コンポーネントを Web Components に変換できます。 Web Components に変換した要素を `customElements.define` で登録して使用できるようにしています。Vue.js と Web Components の関係についてもう少し詳しく知りたい場合には以下を参照してください。
 
 https://v3.ja.vuejs.org/guide/web-components.html
 
@@ -581,7 +581,7 @@ npm start
        },
 ```
 
-`App.js` でフッターコンポーネントを import しましょう。(インターフェイスが異なるのが微妙なのでもう少し工夫したほうが良いかもしれません）
+`App.js` でフッターコンポーネントを import しましょう。（インターフェイスが異なるのが微妙なのでもう少し工夫したほうが良いかもしれません）
 
 - `main-contents/src/App.js`
 
@@ -604,7 +604,7 @@ npm start
  export default App;
 ```
 
-メインコンテンツアプリケーションを再起動してみてください。望み通り、フッターコンポーネントが表示されているはずです！！
+メインコンテンツアプリケーションを再起動してみてください。望み通り、フッターコンポーネントが表示されているはずです！
 
 ![スクリーンショット 2021-11-22 16.05.22](//images.contentful.com/in6v9lxmm5c8/1qMkcJJemwqA14S2APWJ8w/631289d8543627e50196f432efd96067/____________________________2021-11-22_16.05.22.png)
 

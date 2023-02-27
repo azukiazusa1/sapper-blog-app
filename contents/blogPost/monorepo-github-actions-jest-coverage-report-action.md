@@ -8,7 +8,7 @@ updatedAt: "2022-11-27T00:00+09:00"
 tags: ["GitHub Actions"]
 published: true
 ---
-[jest coverage report](https://github.com/ArtiomTr/jest-coverage-report-action) は GitHuba Actions のワークフローの1つで Jest で実行したテストのコードカバレッジをプルリクエスト上にコメントしてくれます。
+[jest coverage report](https://github.com/ArtiomTr/jest-coverage-report-action) は GitHuba Actions のワークフローの 1 つで Jest で実行したテストのコードカバレッジをプルリクエスト上にコメントしてくれます。
 
 この記事では [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) を使用して作成したモノレポ構築のレポジトリで jest coverage report を動かしてみます。
 
@@ -18,7 +18,7 @@ https://github.com/azukiazusa1/monorepo-jest-actions-example
 
 ## .github/workflows の設定
 
-モノレポのレポジトリに対するワークフローを記述したファイルは以下の通りになります。
+モノレポのレポジトリに対するワークフローを記述したファイルは以下のとおりになります。
 
 ```yaml
 name: Coverage Report
@@ -94,7 +94,7 @@ jobs:
           - ./packages/server
  ```
 
-しかし、上記のようにマトリックスの変数をハードコーディングしていると、新たにパッケージを追加した時に修正を忘れる可能性がありますし、なによりファイルが変更されているかどうかに関わらず、すべてのテストが実行されてしまいます。モノレポ構成のレポジトリで GitHub Actions を実行する場合、変更のないディレクトリに対する無駄な実行は避けたいところでしょう。
+しかし、上記のようにマトリックスの変数をハードコーディングしていると、新たにパッケージを追加したときに修正を忘れる可能性があります。なによりファイルが変更されているかどうかに関わらず、すべてのテストが実行されてしまいます。モノレポ構成のレポジトリで GitHub Actions を実行する場合、変更のないディレクトリに対する無駄な実行は避けたいところでしょう。
 
 そこで、`generate_matrix` ジョブ変更されたモノレポのパッケージの一覧を取得して、その値を後続のジョブでマトリックスの変数として使用できるように準備を行います。
 

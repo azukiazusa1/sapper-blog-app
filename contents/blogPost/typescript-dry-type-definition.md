@@ -8,23 +8,23 @@ updatedAt: "2021-08-08T00:00+09:00"
 tags: ["TypeScript"]
 published: true
 ---
-DRY原則とは、「Don't repeat yourself」の略でコードの重複をさけるというな原則の一つです。DRY原則は非常に有名な原則ですし、普段から特に考えずとも自然と重複をさけるようなコードを書いている方も多いことでしょう。
+DRY 原則とは「Don't repeat yourself」の略でコードの重複をさけるというな原則の 1 つです。DRY 原則は非常に有名な原則ですし、普段から特に考えずとも自然と重複をさけるようなコードを書いているほうも多いことでしょう。
 
-とはいえ、TypeScriptにおいて`interface`や`type`などを用いて型定義を行う際に重複した型定義を行ってしまうことはないでしょうか？
+とはいえ、TypeScript において `interface` や `type` などを用いて型定義を行う際に重複した型定義を行ってしまうことはないでしょうか？
 
-確かに、型定義を行う際には普段コードを書くときのように関数で同じ表現のロジックをまとめたり、抽象化を行って重複をを避けるようなことはできません。
+確かに、型定義を行う際には普段コードを書くときのように関数で同じ表現のロジックをまとめたり、抽象化を行って重複を避けるようなことはできません。
 
-ですが、TypeScriptには型定義をする際に重複を抑える手段は確かに存在します。そのようないくつかの方法を紹介します。
+ですが、TypeScript には型定義をする際に重複を抑える手段は確かに存在します。そのようないくつかの方法を紹介します。
 
 # Utility Types
 
-Utility Typesとは、TypeScriptに標準で用意されている便利な型表現で、いわば便利な関数群のようなものです。Utility Typesを利用するとベースとなる型を変換して新しい型を定義できます。
+Utility Types とは、TypeScript に標準で用意されている便利な型表現で、いわば便利な関数群のようなものです。Utility Types を利用するとベースとなる型を変換して新しい型を定義できます。
 
 いくつかよく使う例を見ていきましょう。
 
 ## `Partial<Type>`
 
-例えば、一般的なCRUD操作を考えてみてください。あるオブジェクトを作成する際にはすべてのプロパティを必須項目とするけれど、更新処理を行う際には更新を行うプロパティだけ項目として渡したといことでしょう。
+例えば、一般的な CRUD 操作を考えてみてください。あるオブジェクトを作成する際にはすべてのプロパティを必須項目とするけれど、更新処理を行う際には更新を行うプロパティだけ項目として渡したといことでしょう。
 
 単純に考えれば、元の型をすべてオプショナルなプロパティにすればこの要件は満たすことができます。
 
@@ -62,11 +62,11 @@ const updateTodo = (id: number, payload: UpdateTodo) => {
 updateTodo(1, { done: true })
 ```
 
-確かに上手くいきますが、`Todo`型の持つプロパティを再度列挙しているので重複が生じています。
+確かに上手くいきますが、`Todo` 型の持つプロパティを再度列挙しているので重複が生じています。
 
-再度同じプロパティを書くのも面倒ですし、何よりこの状態ですと元の`Todo`型のプロパティに変更が生じた際に`UpdateTodo`側を更新し忘れて不具合が生じる可能性があります。
+再度同じプロパティを書くのも面倒ですし、何よりこの状態ですと元の `Todo` 型のプロパティに変更が生じた際に `UpdateTodo` 側を更新し忘れて不具合が生じる可能性があります。
 
-（それから、`updateAt`とタイポしていることには気が付きましたか？）
+（それから、`updateAt` とタイポしていることには気が付きましたか？）
 
 ```ts
 type Todo = {
@@ -86,7 +86,7 @@ type UpdateTodo = {
 }
 ```
 
-このような場合には、`Partial`が使えます。`Partial`は型を1つ受け取りすべてをオプショナルにしたものを返します。
+このような場合には、`Partial` が使えます。`Partial` は型を 1 つ受け取りすべてをオプショナルにしたものを返します。
 
 ```ts
 type Todo = {
@@ -110,7 +110,7 @@ type UpdateTodo = Partial<Todo>
 
 ## `Required<Type>`
 
-`Required`は`Partial`とは反対に、すべて必須の型にしたものを返します。
+`Required` は `Partial` とは反対に、すべて必須の型にしたものを返します。
 
 ```ts
 type UpdateTodo = {
@@ -133,9 +133,9 @@ type Todo = Required<UpdateTodo>
 
 ## Pick<Type, Keys>
 
-もう一つ別の例を考えてみましょう。
+もう 1 つ別の例を考えてみましょう。
 
-`Todo`型は`id`・`createdAt`・`updatedAt`というプロパティを持っていますが、これらはおそらくデータベースで自動生成されるものでしょう。であれば、ユーザーの入力させる型としてはこれらのプロパティを除いたものを定義したいでしょう。
+`Todo` 型は `id`・`createdAt`・`updatedAt` というプロパティを持っていますが、これらはおそらくデータベースで自動生成されるものでしょう。であれば、ユーザーの入力させる型としてはこれらのプロパティを除いたものを定義したいでしょう。
 
 ```ts
 type Todo = {
@@ -154,8 +154,8 @@ type TodoPayload = {
 
 この例でも同じく重複が生じてしまっています。
 
-これは、`Pick`を使うことで解決します。
-`Pick`はある型から必要な部分だけを抽出します。
+これは、`Pick` を使うことで解決します。
+`Pick` はある型から必要な部分だけを抽出します。
 
 ```ts
 type Todo = {
@@ -174,11 +174,11 @@ type TodoPayload = Pick<Todo, 'title' | 'done'>
 // }
 ```
 
-こうしておけば、元の型が変更されたときに追従することができます。また、`Pick`を定義する際にインテリセンスが効くのでプロパティ名のタイポを防げる点もメリットの一つでしょう。
+こうしておけば、元の型が変更されたときに追従できます。また `Pick` を定義する際にインテリセンスが効くのでプロパティ名のタイポを防げる点もメリットの 1 つでしょう。
 
 ## Omit<Type, Keys>
 
-`Omit`は`Pick`とは逆に除外するべきプロパティを選択します。
+`Omit` は `Pick` とは逆に除外するべきプロパティを選択します。
 
 ```ts
 ype Todo = {
@@ -197,15 +197,15 @@ type TodoPayload = Omit<Todo, 'id' | 'createdAt' | 'updatedAt'>
 // }
 ```
 
-`Omit`は`Pick`とは異なり`Keys`に存在しないプロパティ名を指定できてしまうことに注意してください。つまり、インテリセンスは効きませんしタイポを警告してくれません。
+`Omit` は `Pick` とは異なり `Keys` に存在しないプロパティ名を指定できてしまうことに注意してください。つまり、インテリセンスは効きませんしタイポを警告してくれません。
 
-この他にも、たくさんのUtility Typesが存在しますがこの記事の趣旨からは少しそれるので残りは省略します。
+この他にも、たくさんの Utility Types が存在しますがこの記事の趣旨からは少しそれるので残りは省略します。
 
-気になる方は、以下のリンクをご参照ください。
+気になるほうは、以下のリンクをご参照ください。
 
 [TypeScript: Documentation - Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 
-自分で型定義を行う際には、Utility Typesを思い出してまずは適用させられないか考えて見る癖をつけるのが良いでしょう。
+自分で型定義を行う際には、Utility Types を思い出してまずは適用させられないか考えて見る癖をつけるのが良いでしょう。
 
 # ライブラリの提供する型定義を利用する
 
@@ -217,7 +217,7 @@ type TodoPayload = Omit<Todo, 'id' | 'createdAt' | 'updatedAt'>
 
 例として、[Vuetifyのv-data-table](https://vuetifyjs.com/ja/api/v-data-table/#api-props)を見てみましょう。
 
-ヘッダーを定義するために、次のようなオブジェクトの配列を`header`プロパティに渡す必要があることが書かれています。
+ヘッダーを定義するために、次のようなオブジェクトの配列を `header` プロパティに渡す必要があることが書かれています。
 
 ```ts
 {
@@ -236,7 +236,7 @@ type TodoPayload = Omit<Todo, 'id' | 'createdAt' | 'updatedAt'>
 }
 ```
 
-このようなドキュメントに記載されている型定義は`vuetify`モジュールからインポートすることができるので、ありがたく使わせていただきましょう。
+このようなドキュメントに記載されている型定義は `vuetify` モジュールからインポートできるので、ありがたく使わせていただきましょう。
 
 ```ts
 import { DataTableHeader } from 'vuetify'
@@ -258,17 +258,17 @@ const myHeaders = (): DataTableHeader[] => {
 
 やはり、一番ベストな方法は自分で型定義を作成せずにすべて任せる方法です。
 
-OpenAPIやGraphQLを利用してバックエンドの型情報を自動生成する方法を記載します。
+OpenAPI や GraphQL を利用してバックエンドの型情報を自動生成する方法を記載します。
 
 ## OpenAPI Generator
 
-OpenAPIとはRest APIを記述するためのフォーマットのことで、以下のようにAPI全体を記述できます。
+OpenAPI とは Rest API を記述するためのフォーマットのことで、以下のように API 全体を記述できます。
 - 使用可能なエンドポイント（/users）と各エンドポイントでの操作（GET /users、POST /users）
 - 操作パラメータ各操作の入力と出力
 - 認証方法
 - 連絡先情報、ライセンス、利用規約およびその他の情報。
 
-OpenAPIは`JSON`か`YAML`で記述されるので、人間と機械どちらでも読むことができます。
+OpenAPI は `JSON` か `YAML` で記述されるので、人間と機械どちらでも読むことができます。
 
 例として以下のような構造を持ちます。
 
@@ -301,9 +301,9 @@ paths:
 
 https://swagger.io/docs/specification/basic-structure/
 
-そして、このOpenAPIの使用にそって記述されたYAMLファイルを用いて型定義を自動生成することができます。その中でも、[openapi-genarator](https://github.com/OpenAPITools/openapi-generator)はデファクトスタンダードといえるでしょう。
+そして、この OpenAPI の使用にそって記述された YAML ファイルを用いて型定義を自動生成できます。その中でも、[openapi-genarator](https://github.com/OpenAPITools/openapi-generator)はデファクトスタンダードといえるでしょう。
 
-実際に`openapi-generator`を元にTypeScriptの型定義を生成してみましょう。
+実際に `openapi-generator` を元に TypeScript の型定義を生成してみましょう。
 
 ### パッケージのインストール
 
@@ -317,7 +317,7 @@ https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/
 npm install @openapitools/openapi-generator-cli -D
 ```
 
-インストールが完了したら、`package.json`に以下スクリプトを追加します。
+インストールが完了したら、`package.json` に以下スクリプトを追加します。
 
 ```json
   "scripts": {
@@ -325,12 +325,12 @@ npm install @openapitools/openapi-generator-cli -D
   },
 ```
 
-コマンドのオプションはそれぞれ以下の通りです。
+コマンドのオプションはそれぞれ以下のとおりです。
 
 | オプション    | Header     |
 | ---------- | ---------- |
 | -i       | 生成元のOpenAPIのファイル      |
-| -g       | 利用するジェネレーター。open-api-generatorは複数の言語の出力に対応しているのでTypeScript用のジェネレーターを指定する。今回は`axios`を選択しているが他にもTypeScirpt用のジェネレーターにはAnguar, AnguarJS, fetch, jqueryなどがある       |
+| -g       | 利用するジェネレーター。open-api-generatorは複数の言語の出力に対応しているのでTypeScript用のジェネレーターを指定する。今回は `axios` を選択しているが他にもTypeScirpt用のジェネレーターにはAnguar, AnguarJS, fetch, jqueryなどがある       |
 | -o       | 生成した型定義の出力先      |
 
 コマンドを実行します。
@@ -341,7 +341,7 @@ npm run generate
 
 ### 自動生成されたファイルを確認する
 
-成功すると、アウトプット先に指定して`src/model`配下に以下のようなファイルが生成されます。
+成功すると、アウトプット先に指定して `src/model` 配下に以下のようなファイルが生成されます。
 
 ```sh
 src/model/
@@ -353,7 +353,7 @@ src/model/
 └── index.ts
 ```
 
-`api.ts`ファイルを見てみるとリクエストとレスポンスの`interface`が生成されていることがわかります。
+`api.ts` ファイルを見てみるとリクエストとレスポンスの `interface` が生成されていることがわかります。
 
 ```ts
 /**
@@ -406,11 +406,11 @@ export interface Category {
 
 ### 生成されたクライアントを使用する
 
-`openapi-generator`によって生成されるのは型定義だけではなく、APIクライアントも生成されます。
+`openapi-generator` によって生成されるのは型定義だけではなく、API クライアントも生成されます。
 
-APIクライアントのクラスはグルーピングに使用される`tags`ごとに生成されます。
+API クライアントのクラスはグルーピングに使用される `tags` ごとに生成されます。
 
-後は、インスタンスのエンドポイントに対応したメソッドを呼び出せばAPIリクエストを送信することができます。
+後は、インスタンスのエンドポイントに対応したメソッドを呼び出せば API リクエストを送信できます。
 
 ```ts
 import { PetApi } from "./model/api";
@@ -421,11 +421,11 @@ petApi.addPet({ name: 'pet', photoUrls: ['aaa.jpg'] })`
 
 ## GraphQL
 
-つづいてGraphQLからTypeScriptの型定義を生成します。
+つづいて GraphQL から TypeScript の型定義を生成します。
 
-GraphQLではOpenAPIのようにスキーマから型定義を生成するほか他にサーバーのエンドポイントからも型定義を生成することができます。
+GraphQL では OpenAPI のようにスキーマから型定義を生成するほか他にサーバーのエンドポイントからも型定義を生成できます。
 
-GraphQLから型定義を生成するライブラリはいくつかありますが、以下が有名どころです。
+GraphQL から型定義を生成するライブラリはいくつかありますが、以下が有名どころです。
 
 - graphql-codegen
 - Apollo
@@ -434,10 +434,10 @@ GraphQLから型定義を生成するライブラリはいくつかあります�
 
 ### パッケージのインストール
 
-例として、`GraphQL Content API`から型定義を生成します。
-これはHeadless CMSの一つである「Contentful」が提供するGraphQLのエンドポイントです。
+例として、`GraphQL Content API` から型定義を生成します。
+これは Headless CMS の 1 つである「Contentful」が提供する GraphQL のエンドポイントです。
 
-ひとまず必要なパッケージをインストールしましょう。とりあえず`graphql`は必要です。
+ひとまず必要なパッケージをインストールしましょう。とりあえず `graphql` は必要です。
 
 ```sh
 npm install --save graphql gql
@@ -457,7 +457,7 @@ npm install --save-dev @graphql-codegen/cli @graphql-codegen/typescript
 npx graphql-codegen init
 ```
 
-`codegen.yaml`ファイルが生成されます。例として以下のように設定しました。
+`codegen.yaml` ファイルが生成されます。例として以下のように設定しました。
 
 ```yaml
 overwrite: true
@@ -476,7 +476,7 @@ generates:
       - "introspection"
 ```
 
-`package.json`にスクリプトを追加しましょう。
+`package.json` にスクリプトを追加しましょう。
 
 ```json
 {
@@ -486,13 +486,13 @@ generates:
 }
 ```
 
-`codegen.yaml`内で環境変数を使用している箇所があるので(`${}`で囲われているところ)`-r dotenv/config`オプションを付与します。
+`codegen.yaml` 内で環境変数を使用している箇所があるので（`${}` で囲われているところ）`-r dotenv/config` オプションを付与します。
 
 ### Query・Mutationsを定義
 
-GraphQLはQuery・Mutationsを定義してリソースを操作するのですが、`@graphql-codegen/typescript`パッケージによりそのような操作に対しても型を付与できます。
+GraphQL は Query・Mutations を定義してリソースを操作するのですが、`@graphql-codegen/typescript` パッケージによりそのような操作に対しても型を付与できます。
 
-例として`src/queries`内に投稿(Post)一覧を取得する以下のようなクエリを定義します。
+例として `src/queries` 内に投稿（Post）一覧を取得する以下のようなクエリを定義します。
 
 ```ts
 import { gql } from "@urql/core"
@@ -555,7 +555,7 @@ on". Did you mean "total"?
 npm run generate
 ```
 
-実行に成功すると、`src/generated/graphql.ts`に型定義ファイルが生成されています。
+実行に成功すると、`src/generated/graphql.ts` に型定義ファイルが生成されています。
 
 ```ts
 export type BlogPostCollection = {
@@ -611,5 +611,5 @@ export type PostsQuery = (
 );
 ```
 
-以上のような型定義が生成さました。(Queryの方は難解すぎてよくわからんですが、しっかりと使えます）
+以上のような型定義が生成さました。（Query の方は難解すぎてよくわからんですが、しっかりと使えます）
 

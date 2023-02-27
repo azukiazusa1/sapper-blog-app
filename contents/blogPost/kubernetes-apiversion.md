@@ -8,18 +8,18 @@ updatedAt: "2021-05-09T00:00+09:00"
 tags: ["Kubernetes"]
 published: true
 ---
-Kubernetesのマニフェストを作成するときには、`apiVersion`フィールドを指定する必要があります。
-例えば`Pod`の場合には`v1`を、`Deployment`の場合には`apps/v1`を指定しますが、これらはどのようなルールで記述するのでしょうか。
+Kubernetes のマニフェストを作成するときには、`apiVersion` フィールドを指定する必要があります。
+例えば `Pod` の場合には `v1` を、`Deployment` の場合には `apps/v1` を指定しますが、これらはどのようなルールで記述するのでしょうか。
 
 # APIグループとAPIバージョンの指定
 
-KubernetesのAPIはAPIの種類に応じてAPIグループに分類されます。さらにAPIバージョンによって世代管理されています。
-マニフェストに`apiVersion`を記述するときには`APIグループ/APIバージョン`というルールに従って記述します。
+Kubernetes の API は API の種類に応じて API グループに分類されます。さらに API バージョンによって世代管理されています。
+マニフェストに `apiVersion` を記述するときには `APIグループ/APIバージョン` というルールに従って記述します。
 
-例えば、`Deployment`は`apps`グループに所属しているので`apps/v1`のようになります。
-リソースとAPIグループの対応は`kubectl api-resources`で出力できます。
+例えば、`Deployment` は `apps` グループに所属しているので `apps/v1` のようになります。
+リソースと API グループの対応は `kubectl api-resources` で出力できます。
 
-Kubectlのバージョンは`v1.20.0`で確認しました。
+Kubectl のバージョンは `v1.20.0` で確認しました。
 
 ```sh
 kubectl api-resources 
@@ -82,14 +82,14 @@ storageclasses                    sc           storage.k8s.io/v1                
 volumeattachments                              storage.k8s.io/v1                      false        VolumeAttachment
 ```
 
-## `core`グループ
+## `core` グループ
 
-ところで、`Pod`や`Service`などのリソースは`v1`とだけ指定します。これはなぜでしょうか。
-これらは、`core`グループに属していますが、`core`グループの場合だけAPIグループ名を省略し、バージョンだけを記載するようになっています。
+ところで、`Pod` や `Service` などのリソースは `v1` とだけ指定します。これはなぜでしょうか。
+これらは、`core` グループに属していますが、`core` グループの場合だけ API グループ名を省略し、バージョンだけを記載するようになっています。
 
 ## APIバージョニング
 
-KubernetesのAPIのバージョンは`Alpha`・`Beta`・`Stable`の3種類に分類されます。
+Kubernetes の API のバージョンは `Alpha`・`Beta`・`Stable` の 3 種類に分類されます。
 
 | APIバージョン | 例 | 
 | ---------- | ---------- |

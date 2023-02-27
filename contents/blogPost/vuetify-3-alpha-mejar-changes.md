@@ -98,7 +98,7 @@ vue add vuetify
 ### Vuetify の初期化
 
 `Vuetify 2` までは `new Vuetify()` のように Vuetify インスタンスを生成していましたが `Vuetify 3` からは `Vue 3` の `createApp` のように `createVuetify` をインポートして Vuetify インスタンスを生成します。
-（ `Vue 3` と同じく tree shaking を効かせるためかと思います）
+（`Vue 3` と同じく tree shaking を効かせるためかと思います）
 
 - Vuetify 2
 
@@ -134,7 +134,7 @@ createApp(App)
 
 ## デフォルト Prop
 
-Vuetify のインスタンスを生成する際にオプションとしてあるコンポーネントに対してデフォルトの Props を設定することができるようになりました。
+Vuetify のインスタンスを生成する際にオプションとしてあるコンポーネントに対してデフォルトの Props を設定できるようになりました。
 
 例えば、以下のようにボタンに対するデフォルトの props を設定できます。
 
@@ -174,7 +174,7 @@ Props は以下の優先度で適用されます。
 
 #### Defaults providers
 
-`<v-defaults-provider>` コンポーネントを利用すると Default providers 配下のコンポーネントにのみ上書きして `defaults` の設定を適用することができます。
+`<v-defaults-provider>` コンポーネントを利用すると Default providers 配下のコンポーネントにのみ上書きして `defaults` の設定を適用できます。
 
 ```vue
 <template>
@@ -263,7 +263,7 @@ const theme = ref("light");
 
 ### Theme providres
 
-`<v-theme-provider>` コンポーネントは配下のコンポーネントのみにテーマを適用することができます。
+`<v-theme-provider>` コンポーネントは配下のコンポーネントのみにテーマを適用できます。
 
 デフォルトでは `<v-theme-provider>` 内では背景色は元のテーマのままとなります。背景色にもテーマを適用させるには、`with-background` props を渡します。
 
@@ -327,7 +327,7 @@ const theme = ref("light");
 
 ## ブレークポイント
 
-`Vuetify 2` では JavaScript から現在のブレークポイントにアクセスするために `this.$vuetify.breakpoints` からアクセスすることができました。例えば現在の画面サイズが `sm` 以下の場合にのみ実行したい場合には以下のようにします。
+`Vuetify 2` では JavaScript から現在のブレークポイントにアクセスするために `this.$vuetify.breakpoints` からアクセスできました。例えば現在の画面サイズが `sm` 以下の場合にのみ実行したい場合には以下のようにします。
 
 - Vuetify 2
 
@@ -428,7 +428,7 @@ if (display.platform.value.chrome) {
 
 `<v-img>` の `contain` props は削除されデフォルトで `contain` が挙動となるようになりました。`Vuetify 2` までの挙動を維持するために新たに `cover` props が追加されました。
 
-つまり、以下の2つのコードは同等のものとなります。
+つまり、以下の 2 つのコードは同等のものとなります。
 
 - Vuetify 2
 
@@ -596,7 +596,7 @@ export interface PositionProps {
 </template>
 ```
 
-![スクリーンショット 2021-12-19 18.41.58](//images.ctfassets.net/in6v9lxmm5c8/6MVe9Tpb7jcATvIXaPtIr4/d88b7fa10d34232dfedf03b0bf523f30/____________________________2021-12-19_18.41.58.png)[
+![スクリーンショット 2021-12-19 18.41.58](//images.ctfassets.net/in6v9lxmm5c8/6MVe9Tpb7jcATvIXaPtIr4/d88b7fa10d34232dfedf03b0bf523f30/____________________________2021-12-19_18.41.58.png)
 
 `position` 以外にも以下の props はコンポーネントの共通の props と定義されているっぽい？
 

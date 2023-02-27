@@ -9,14 +9,14 @@ tags: ["CSS", "tailwindcss"]
 published: true
 ---
 昨今のアプリケーションでは、ダークモードを提供しているのがもはや当たり前になってきました。
-OSのレベルでダークモードを設定することができ、ダークモードが提供されていないサイトは眩しく感じしてしまって敬遠してしまうなんて経験はあるのではないでしょうか？
+OS のレベルでダークモードを設定でき、ダークモードが提供されていないサイトは眩しく感じしてしまって敬遠してしまうなんて経験はあるのではないでしょうか？
 
-そんな一般化されたダークモードの提供をTailwind CSSで実装します。
+そんな一般化されたダークモードの提供を Tailwind CSS で実装します。
 
 # tailwind.config.jsの設定の変更
 
-Tailwind CSSでタークモードを有効化するためには、`tailwind.config.js`ファイルを修正します。
-`darkMode`の値に`media`または`class`を設定します。
+Tailwind CSS でタークモードを有効化するためには、`tailwind.config.js` ファイルを修正します。
+`darkMode` の値に `media` または `class` を設定します。
 
 ```js
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
 
 ## media
 
-`media`を指定した場合には、OSの設定に基づいてダークモードを適用するかどうか決定します。
+`media` を指定した場合には、OS の設定に基づいてダークモードを適用するかどうか決定します。
 
 ```js
 module.exports = {
@@ -41,14 +41,14 @@ module.exports = {
 }
 ```
 
-OSのダークモードの設定値は[prefers-color-scheme](https://developer.mozilla.org/ja/docs/Web/CSS/@media/prefers-color-scheme)によって取得されます。
+OS のダークモードの設定値は[prefers-color-scheme](https://developer.mozilla.org/ja/docs/Web/CSS/@media/prefers-color-scheme)によって取得されます。
 
-`media`を指定した場合には、手動でダークモードとライトモードを切り替えることができません。
-そのため、次に説明する`class`を指定することが一般的でしょう。
+`media` を指定した場合には、手動でダークモードとライトモードを切り替えることができません。
+そのため、次に説明する `class` を指定することが一般的でしょう。
 
 ## class
 
-ユーザーによって手動できダークモードに切り替えられるようにするためには、`class`を指定します。
+ユーザーによって手動できダークモードに切り替えられるようにするためには、`class` を指定します。
 
 ```js
 module.exports = {
@@ -57,8 +57,8 @@ module.exports = {
 }
 ```
 
-`class`が指定された場合には、自身の祖先要素に対して`dark`というクラスが付与されている場合に限り、ダークモードが適用されます。
-実際には、`<html>`タグに対して`dark`クラスを不要することになるでしょう。
+`class` が指定された場合には、自身の祖先要素に対して `dark` というクラスが付与されている場合に限り、ダークモードが適用されます。
+実際には、`<html>` タグに対して `dark` クラスを不要することになるでしょう。
 
 ```html
 <html class="dark">
@@ -68,7 +68,7 @@ module.exports = {
 </html>
 ```
 
-公式サイトにJavaScriptによってダークモードを切り替える方法が記載されているので抜粋します。
+公式サイトに JavaScript によってダークモードを切り替える方法が記載されているので抜粋します。
 
 ```js
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -89,13 +89,13 @@ localStorage.removeItem('theme')
 ```
 [https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually)
 
- はじめに、ローカルストレージの`theme`の値を確認します。
- その値が`dark`であった場合には、`<html>`タグに`dark`クラスを付与します。
+ はじめに、ローカルストレージの `theme` の値を確認します。
+ その値が `dark` であった場合には、`<html>` タグに `dark` クラスを付与します。
 
- ローカルストレージに値が存在しない場合には、`window.matchMedia('(prefers-color-scheme: dark)').matches`によってOSのダークモードの設定を確認します。
+ ローカルストレージに値が存在しない場合には、`window.matchMedia('(prefers-color-scheme: dark)').matches` によって OS のダークモードの設定を確認します。
 
  [window.matchMedia](https://developer.mozilla.org/ja/docs/Web/API/Window/matchMedia)は、指定されたメディアクエリのパースされた値を返します。
- `window.matchMedia('(prefers-color-scheme: dark)').matches`は、OSの設定がダークモードのときには`true`を返します。
+ `window.matchMedia('(prefers-color-scheme: dark)').matches` は、OS の設定がダークモードのときには `true` を返します。
 
 ボタンクリックなどによってダークモードを切り替える場合には、次のような例で良いでしょう。
 
@@ -121,7 +121,7 @@ localStorage.removeItem('theme')
 # ダークモード時のスタイルの指定
 
 ダークモード時に適用されるスタイルの指定の仕方を見ていきましょう。
-至って単純で、ダークモード適用時に上書きしたいスタイルに対して`dark:`のプレフィックスを指定するだけです。
+至って単純で、ダークモード適用時に上書きしたいスタイルに対して `dark:` のプレフィックスを指定するだけです。
 
 ```html
 <body class="min-h-screen bg-gray-100 dark:bg-gray-800 dark:text-gray-50">
@@ -141,6 +141,6 @@ localStorage.removeItem('theme')
 
 # 終わりに
 
-以上のように、Tailwind CSSでは簡単にダークモードを提供できます。
-また、ユーティリティクラスの使いやすさはそのままダークモードのスタイルの指定にも適用できるので、細かい調整もしやすく嬉しい限りです。
+以上のように、Tailwind CSS では簡単にダークモードを提供できます。
+またユーティリティクラスの使いやすさはそのままダークモードのスタイルの指定にも適用できるので、細かい調整もしやすく嬉しい限りです。
 

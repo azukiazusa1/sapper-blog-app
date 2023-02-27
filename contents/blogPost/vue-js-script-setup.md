@@ -10,7 +10,7 @@ published: true
 ---
 # `<script setup`> 構文とは
 
-Vue.js 3.2 から `<script setup>` 構文が使えるようになりました。これは単一ファイルコンポーネント(SFC)内で Composition API を使用している際に使える糖衣構文です。下記のようなメリットを得ることができ、公式からも使用が推奨されています。
+Vue.js 3.2 から `<script setup>` 構文が使えるようになりました。これは単一ファイルコンポーネント（SFC）内で Composition API を使用している際に使える糖衣構文です。下記のようなメリットを得ることができ、公式からも使用が推奨されています。
 
 - ポイラープレートが減りより簡潔になる
 - props と emit を定義する際に純粋な TypeScript の構文が使える
@@ -19,9 +19,9 @@ Vue.js 3.2 から `<script setup>` 構文が使えるようになりました。
 
 ## 基本的な構文
 
-`<script setup>` 構文をざっくりと説明すると、従来の Composition API における `setup()` 関数内部を `<script>` 直下に直接記述することができるという構文です。
+`<script setup>` 構文をざっくりと説明すると、従来の Composition API における `setup()` 関数内部を `<script>` 直下に直接記述できるという構文です。
 
-単一ファイルコンポーネントの `<script>` タグに`setup`属性を付与することでこの糖衣構文を使用することができます。
+単一ファイルコンポーネントの `<script>` タグに `setup` 属性を付与することでこの糖衣構文を使用できます。
 
 `<script setup>` 構文によってどれほど記述が簡潔になったかを従来の Options API と Composition API の書き方と比較してみましょう。
 
@@ -56,7 +56,7 @@ export default defineComponent({
 </script>
 ```
 
-簡単なカウンターアプリですが、概ねこのような感じになるでしょう。
+簡単なカウンターアプリですが、おおむねこのような感じになるでしょう。
 これを Composition API に置き換えたものが以下となります。
 
 - Composition API
@@ -125,7 +125,7 @@ Vue.js 特有の構文が少なくなって、純粋なの JavaScript の構文�
 Composition API との比較をすると以下の点が異なっていることがわかります。
 
 - `export default` で Vue.js のオブジェクトを export する必要がなくなった
-- `setup()` 関数内で定義した変数や関数を `return` しないと `<template>` 内で使用することができなかったが、 `<script setup>` 内で宣言した場合すべて使用可能となる
+- `setup()` 関数内で定義した変数や関数を `return` しないと `<template>` 内で使用できなかったが、 `<script setup>` 内で宣言した場合すべて使用可能となる
 
 他にも従来の書き方といくつか異なる点があるので見ていきましょう。
 
@@ -210,7 +210,7 @@ import * as Form from "./components/Forms";
 
 ## Props と emit
 
-個人的に一番嬉しかった点です。`props` と `emit` を純粋な TypeScript で定義することができるようになりました。
+個人的に一番嬉しかった点です。`props` と `emit` を純粋な TypeScript で定義できるようになりました。
 
 ### Props
 
@@ -248,13 +248,13 @@ const disabledClass = computed(() => {
 
 props は `defineProps()` で定義されます。 `defindProps` と後述する `defineEmits` ・ `widhDefaults` は `<script setup`> 内で使用できるコンパイラマクロであり、どこかから import する必要はありません。
 
-TypeScriptを使用している場合には、　`defineProps()` は型引数を受け取ることができ、渡した型定義は従来のプロパティのバリデーションの代わりに使用することができます。
+TypeScript を使用している場合には、　`defineProps()` は型引数を受け取ることができ、渡した型定義は従来のプロパティのバリデーションの代わりに使用できます。
 
-`string` ・ `boolean` 等のはそのまま従来の `type` で `String` や `Boolean` のように定義していたところに対応します。
+`string` ・ `boolean` などのはそのまま従来の `type` で `String` や `Boolean` のように定義していたところに対応します。
 
 プロパティをオプショナルにした場合には従来の　`required: false` と同じであり、オプショナルでない場合には `required: true` と同じです。
 
-ここの型定義はコンポーネントを利用する時もタイプヒントが効いています。
+ここの型定義はコンポーネントを利用するときもタイプヒントが効いています。
 
 ![スクリーンショット 2021-09-21 21.26.07](//images.ctfassets.net/in6v9lxmm5c8/6DscWVuhhZxBMXcnbvUaZJ/48c4d4528d8f57e371c071e1c661ad9e/____________________________2021-09-21_21.26.07.png)
 
@@ -271,7 +271,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 ## emit
 
-emit も props と同様に、TypeScriptにより型定義をすることが可能です。
+emit も props と同様に、TypeScript により型定義をすることが可能です。
 
 ```vue
  <script setup lang="ts">
@@ -311,7 +311,7 @@ const handleInput = ({ target }: { target: HTMLInputElement }) => {
 
 ## useSlots と useAttrs
 
-Composition APIでは、 `setup()`　関数の第2引数から `$slots` と `$attrs` を取得していましたが、 `<script setup>` では代わりに `useSlots()` と `useAttrs()` を使用します。
+Composition API では、 `setup()`　関数の第 2 引数から `$slots` と `$attrs` を取得していましたが、 `<script setup>` では代わりに `useSlots()` と `useAttrs()` を使用します。
 
 ```vue
 <script setup>
@@ -324,11 +324,11 @@ const attrs = useAttrs()
 
 ## 通常の `<script>` と使う
 
-`<script setup>` と通常の `<script>` は一つの単一ファイルコンポーネントに同時に定義することができます。
+`<script setup>` と通常の `<script>` は 1 つの単一ファイルコンポーネントに同時に定義できます。
 これは以下の用途で使用されます。
 
 - `inferitAttrs` オプションなど `<script setup>` では設定できないオプションを定義するとき
-- 副作用のある操作を**一度だけ**実行したいとき ( `<script setup>` はコンポーネントが作成されるたびに実行されます)
+- 副作用のある操作を**一度だけ**実行したいとき（`<script setup>` はコンポーネントが作成されるたびに実行されます）
 
 ```vue
 <script setup lang="ts">

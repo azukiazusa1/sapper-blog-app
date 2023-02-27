@@ -10,22 +10,22 @@ published: true
 ---
 # Cypressとは
 
-Cypressは、JavaScript製のE2Eテスティングフレームワークです。
-実行速度が早い、HTTPリクエストの実行を待つなどテストが壊れにくい仕組みが整っています。
+Cypress は、JavaScript 製の E2E テスティングフレームワークです。
+実行速度が早い、HTTP リクエストの実行を待つなどテストが壊れにくい仕組みが整っています。
 
 # Seleniumとの違い
 
-Seleniumは、HTTPリクエストでブラウザのドライバーにJSONファイルを送信しテストを実行します。
-テストの結果はHTTPブラウザのドライバーからHTTPリクエストで受け取ります。
+Selenium は、HTTP リクエストでブラウザのドライバーに JSON ファイルを送信しテストを実行します。
+テストの結果は HTTP ブラウザのドライバーから HTTP リクエストで受け取ります。
 ![Screenshot-2018-10-19-21.33.55](//images.ctfassets.net/in6v9lxmm5c8/3lPZme0wZCW7bhJbUa3Bgc/8a88072a586b0eacace71e3190d30951/Screenshot-2018-10-19-21.33.55.png)
 
 つまりは、ブラウザの外からネットワークを利用して操作することになります。
 
-対して、Cypressはブラウザの内部から直接実行する。そのため、Seleniumに比べて実行速度が早くなる。ブラウザのローディングアイコンを監視してその間操作をストップさせたり、デベロッパーツールで行うようにDOMを修正することができます。
-また、ネットワークのリクエストレスポンスモッキングできるのも大きな特徴の一つです。
+対して、Cypress はブラウザの内部から直接実行する。そのため、Selenium に比べて実行速度が早くなる。ブラウザのローディングアイコンを監視してその間操作をストップさせたり、デベロッパーツールで行うように DOM を修正できます。
+またネットワークのリクエストレスポンスモッキングできるのも大きな特徴の 1 つです。
 
-一方で、CypressはやIEなどのブラウザをサポートしていない欠点があります。
-Cypressのサポートブラウザは以下のとおり。
+一方で、Cypress はや IE などのブラウザをサポートしていない欠点があります。
+Cypress のサポートブラウザは以下のとおり。
 
 - chrome
 - chromium
@@ -33,19 +33,19 @@ Cypressのサポートブラウザは以下のとおり。
 - electron
 - firefox
 
-CypressはElectornを使用することを推奨しています。より高速に動作するためです。
+Cypress は Electorn を使用することを推奨しています。より高速に動作するためです。
 
-また、要素を取得するさいにSeleniumと違いCSS セレクタしか使うことができません。
+また要素を取得するさいに Selenium と違い CSS セレクタしか使うことができません。
 
 # Cypressのインストール
 
-CypressのインストールにはNode.jsを使用します。
+Cypress のインストールには Node.js を使用します。
 
 ```sh
 npm install --save-dev cypress
 ```
 
-インストールが完了すると、プロジェクトルートに`cypress.json`と`cypress`フォルダが生成されています。
+インストールが完了すると、プロジェクトルートに `cypress.json` と `cypress` フォルダが生成されています。
 
 ```sh
 cypress
@@ -60,11 +60,11 @@ cypress
 │   └── index.js
 ```
 
-テストファイルは`integration`フォルダ配下に配置します。
+テストファイルは `integration` フォルダ配下に配置します。
 
 ## コマンド
 
-`package.json`に、cypressのコマンドを定義しておきます。
+`package.json` に、cypress のコマンドを定義しておきます。
 
 ```json
 {
@@ -87,19 +87,19 @@ cypress
 }
 ```
 
-`cypress open`は、Cypressのダッシュボードを起動するためのコマンドです。ダッシュボードからはGUI上でブラウザを確認しながらテストを実行することができます。
+`cypress open` は、Cypress のダッシュボードを起動するためのコマンドです。ダッシュボードからは GUI 上でブラウザを確認しながらテストを実行できます。
 
-`cypress run`コマンドでヘッドレスでテストを実行することができます。`--browser`オプションを付与することで実行するブラウザを指定することができます。
-テストを実行することで自動的にスクリーンショットと.mp4ファイルが生成されます。
+`cypress run` コマンドでヘッドレスでテストを実行できます。`--browser` オプションを付与することで実行するブラウザを指定できます。
+テストを実行することで自動的にスクリーンショットと。mp4 ファイルが生成されます。
 
 ## cypress.json
 
-`cypress.json`ファイルでは、デフォルトのオプションをオーバーライドすることができます。
+`cypress.json` ファイルでは、デフォルトのオプションをオーバーライドできます。
 利用可能なすべてのオプションは以下を参照してください。
 
 https://docs.cypress.io/guides/references/configuration#Options
 
-例えば、以下のように記述すると.mp4ファイルとスクリーンショットの出力をしないように設定できます。
+例えば、以下のように記述すると。mp4 ファイルとスクリーンショットの出力をしないように設定できます。
 
 - cypress.json
 
@@ -112,7 +112,7 @@ https://docs.cypress.io/guides/references/configuration#Options
 
 # テストを書く
 
-今回はVue.jsでささっとカウンターアプリを作ってcypressでテストを書いてみます。
+今回は Vue.js でささっとカウンターアプリを作って cypress でテストを書いてみます。
 コードは下記にあります。
 
 https://github.com/azukiazusa1/vue-cypress
@@ -124,7 +124,7 @@ $ npm install
 $ npm run dev
 ```
 
-Cypressのダッシュボードを起動します。
+Cypress のダッシュボードを起動します。
 
 ```sh
 $ npm open
@@ -136,8 +136,8 @@ $ npm open
 $ rm -rf cypress/integration/examples
 ```
 
-`cypress.json`を編集します。`baseUrl`を設定すると、`cy.visit()`などのメソッドを利用する際にプレフィックスとして利用されます。
-また、`.js`ファイルの代わりに`.ts`ファイルを使用するので修正しておきます。
+`cypress.json` を編集します。`baseUrl` を設定すると、`cy.visit()` などのメソッドを利用する際にプレフィックスとして利用されます。
+また `.js` ファイルの代わりに `.ts` ファイルを使用するので修正しておきます。
 
 ```json
 {
@@ -148,10 +148,10 @@ $ rm -rf cypress/integration/examples
 
 ```
 
-## 初めてのテスト
+## はじめてのテスト
 
-テストファイルは`cypress/integration`配下に配置します。
-`counter.spec.ts`という名前でファイルを作成します。
+テストファイルは `cypress/integration` 配下に配置します。
+`counter.spec.ts` という名前でファイルを作成します。
 
 ```ts
 import { expect } from "chai"
@@ -163,11 +163,11 @@ describe('Counter', () => {
 })
 ```
 
-Cypressにはテストに必要なライブラリ一式がはじめから組み込まれています。
+Cypress にはテストに必要なライブラリ一式がはじめから組み込まれています。
 [Mocha](http://mochajs.org/)と[Chai](http://chaijs.com/)がライブラリとして含まれているのでその構文を使用できます。
-内容は見ての通り必ず失敗するテストです。
+内容は見てのとおり必ず失敗するテストです。
 
-Cypressのダッシュボードからファイル名をクリックするとテストを実行できます。
+Cypress のダッシュボードからファイル名をクリックするとテストを実行できます。
 
 ![スクリーンショット 2021-04-11 22.49.47](//images.ctfassets.net/in6v9lxmm5c8/5QgmEupTDgSx41qOqkAJsd/c70c5ce036a41b2519bea24e452c7e9f/____________________________2021-04-11_22.49.47.png)
 
@@ -183,7 +183,7 @@ Cypressのダッシュボードからファイル名をクリックするとテ�
 
 ## 要素を取得してテストする
 
-ここからCypressっぽいテストを記述しています。
+ここから Cypress っぽいテストを記述しています。
 テスト対象のソースコードはいかになります。
 
 - App.vue
@@ -222,8 +222,8 @@ export default defineComponent({
 </script>
 ```
 
-`cy.visit()`メソッドでテスト対象のWebページを訪問します。
-はじめに`cypress.json`で`baseUrl`を設定しているので`/`を指定します。
+`cy.visit()` メソッドでテスト対象の Web ページを訪問します。
+はじめに `cypress.json` で `baseUrl` を設定しているので `/` を指定します。
 
 ```ts
 
@@ -242,11 +242,11 @@ describe('Counter', () => {
 
 ![スクリーンショット 2021-04-11 23.18.21](//images.ctfassets.net/in6v9lxmm5c8/1jS9UCBmobTMF7Og2lnxac/b279491ba8f81ef6b8716ffc56baefc2/____________________________2021-04-11_23.18.21.png)
 
-Webページ上の要素を取得するには、`cy.get()`メソッドの使用します。
-`cy.get()`メソッドにはCSSセレクタのみを指定することができます。
-ここでは[Cypressのベストプラクティス](https://docs.cypress.io/guides/references/best-practices#How-It-Works)に従って`data`属性で要素を取得することにします。
+Web ページ上の要素を取得するには、`cy.get()` メソッドの使用します。
+`cy.get()` メソッドには CSS セレクタのみを指定できます。
+ここでは[Cypressのベストプラクティス](https://docs.cypress.io/guides/references/best-practices#How-It-Works)に従って `data` 属性で要素を取得することにします。
 
-取得した要素に特定のテキストが含まれているかどうかは`.contains()`メソッドを使います。
+取得した要素に特定のテキストが含まれているかどうかは `.contains()` メソッドを使います。
 はじめはあえて失敗するコードを書きます。
 
 ```ts
@@ -285,10 +285,10 @@ describe('Counter', () => {
 ## 要素をクリックする
 
 それではさらにテストを書いていきます。
-お察しのとおり「increment」というボタンを押すとカウンターの値が1増えて「decrement」というボタンを押すとカウンターの値が1減るという実装です。
+お察しのとおり「increment」というボタンを押すとカウンターの値が 1 増えて「decrement」というボタンを押すとカウンターの値が 1 減るという実装です。
 仕様を満たしているか確認しましょう。
 
-要素をクリックするには、`cy.get()`で取得した後に`click()`を呼び出します。
+要素をクリックするには、`cy.get()` で取得した後に `click()` を呼び出します。
 
 ```ts
 
@@ -320,11 +320,11 @@ describe('Counter', () => {
 ## テストコードをリファクタリングする
 
 テストは成功しましたが、テストコードからは不吉な匂いが感じられます。
-カウンタの値を確認するための`cy.get('[data-cy=count]').contains()`という共通の処理がが複数に渡って登場しているためです。
+カウンタの値を確認するための `cy.get('[data-cy=count]').contains()` という共通の処理が複数に渡って登場しているためです。
 
-嬉しいことに、Cypressには[Custom Commands](https://docs.cypress.io/api/cypress-api/custom-commands)という機能があります。これは、Cypressのメソッドの自作できるというものです。なんども現れるような共通処理はCustom Commandsとして定義しておくとよいでしょう。
+嬉しいことに、Cypress には[Custom Commands](https://docs.cypress.io/api/cypress-api/custom-commands)という機能があります。これは、Cypress のメソッドの自作できるというものです。なんども現れるような共通処理は Custom Commands として定義しておくとよいでしょう。
 
-Custom Commandsは`cypress/cupport/command.ts`に記述します。(デフォルトでは`cypress/support/command.js`と`cypress/support/command.ts`が配置されているのでそれぞれ`.ts`ファイルにリネームします。)
+Custom Commands は `cypress/cupport/command.ts` に記述します。（デフォルトでは `cypress/support/command.js` と `cypress/support/command.ts` が配置されているのでそれぞれ `.ts` ファイルにリネームします）
 
 - cypress/support/command.ts
 
@@ -334,7 +334,7 @@ Cypress.Commands.add('countShoud', (count: string) => {
 })
 ```
 
-Custom Commandsを作成した場合、そのことをTypeScriptに知らせる必要があります。`cypress/support/index.d.ts`ファイルを作成します。
+Custom Commands を作成した場合、そのことを TypeScript に知らせる必要があります。`cypress/support/index.d.ts` ファイルを作成します。
 
 - cupress/support/index.d.ts
 
@@ -347,7 +347,7 @@ declare namespace Cypress {
 ```
 
 それでは作成したコマンドを使用するようにテストコードを修正しましょう。
-TypeScriptのエラーを避けるためにファイルの先頭に`reference path`コメントを追加しています。
+TypeScript のエラーを避けるためにファイルの先頭に `reference path` コメントを追加しています。
 
 - counter.spec.ts
 

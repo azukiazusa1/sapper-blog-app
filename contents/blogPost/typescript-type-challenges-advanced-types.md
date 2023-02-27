@@ -14,13 +14,13 @@ published: true
 
 問題の回答は [Playground](https://www.typescriptlang.org/play) 上で行えるので実際に手を動かしながら問題を解くことができます。
 
-https://github.com/type-challenges/type-challenges にアクセスすると README.md に難易度別に問題が並んでいるので好きな問題を選択することができます。
+https://github.com/type-challenges/type-challenges にアクセスすると README.md に難易度別に問題が並んでいるので好きな問題を選択できます。
 
 ![スクリーンショット 2021-10-17 21.54.19](//images.contentful.com/in6v9lxmm5c8/3qAVi9TcPTIHc7YH7APBaP/f504dfb93add3ac6e0490ed4aee26fd9/____________________________2021-10-17_21.54.19.png)
 
 問題を選択したら詳細ページへ遷移します。`Take the Challenge` をクリックすると回答画面へ遷移し問題を解くことができます。
 
-`Check out Solutions` をクリックすると他の人の回答を確認することができます。
+`Check out Solutions` をクリックすると他の人の回答を確認できます。
 
 ![スクリーンショット 2021-10-17 21.55.33](//images.contentful.com/in6v9lxmm5c8/4ZVDUu6zuLcRhnViUJSeO2/49f562013a6cfc75f2da1103ba2a5842/____________________________2021-10-17_21.55.33.png)
 
@@ -30,7 +30,7 @@ https://github.com/type-challenges/type-challenges にアクセスすると READ
 
 ちなみにこの問題の回答は `type HelloWorld = string` とすれば十分です。回答が正しいかどうかはエラーが出ていないことで確認しましょう。
 
-それでは実際に easy レベルから問題を解いていきます。型パズルを通じてTypeScript の高度な型について学んでいきましょう。
+それでは実際に easy レベルから問題を解いていきます。型パズルを通じて TypeScript の高度な型について学んでいきましょう。
 
 [カワイイボク](https://dic.nicovideo.jp/a/%E8%BC%BF%E6%B0%B4%E5%B9%B8%E5%AD%90)にかかればこれくらい余裕ですけどねー！
 
@@ -76,21 +76,21 @@ keyof はあるオブジェクトからそのキーを `string` または `numbe
 type K = keyof Todo // 'title' | 'description' | 'completed'
 ```
 
-回答例ではジェネリクスの2つ目の引数は `K extends keyof T` であり、つまり `MyPick` の2つ目の型引数は1つ目の型引数のキーのみを受け取るよう制約を設けています。
+回答例ではジェネリクスの 2 つ目の引数は `K extends keyof T` であり、つまり `MyPick` の 2 つ目の型引数は 1 つ目の型引数のキーのみを受け取るよう制約を設けています。
 
 ### Mapped Types
 
-Mapped Types の基本形は ` { [P in K]: T }`であり、それぞれの型変数は以下の通りです。
+Mapped Types の基本形は ` { [P in K]: T }` であり、それぞれの型変数は以下のとおりです。
 
 - P パラメーター型
 - K 制約型
 - T 付与される型
 
-まず `[P in K]` という部分はオブジェクトの取りうるキーを反復処理します。`in` というキーワードは`for...in` で使われている `in` と同じような意味であると考えるとわかりやすいと思います。
+まず `[P in K]` という部分はオブジェクトの取りうるキーを反復処理します。`in` というキーワードは `for...in` で使われている `in` と同じような意味であると考えるとわかりやすいと思います。
 
 このとき `K` は `string` or `number` or `symbol` のユニオン型であり、そのユニオンの取りうる数だけオブジェクトのキーが生成されます。
 
-回答例で `K` として使われている型変数はジェネリクスの1つ目の型引数のキーのユニオンとなっているのでした。このユニオンで指定した数だけキーが反復処理されるので `Pick` の2つ目の型引数で指定キーだけからなるオブジェクトを生成するという目的を達成できていることがわかるかと思います。
+回答例で `K` として使われている型変数はジェネリクスの 1 つ目の型引数のキーのユニオンとなっているのでした。このユニオンで指定した数だけキーが反復処理されるので `Pick` の 2 つ目の型引数で指定キーだけからなるオブジェクトを生成するという目的を達成できていることがわかるかと思います。
 
 `T` はそのままオブジェクトのプロパティとして付与される型を表現しています。以下の例を確認してみましょう。
 
@@ -121,7 +121,7 @@ type Person = { age: number; name: string; alive: boolean };
 type Age = Person["age"]; // number
 ```
 
-この課題の回答例では `T[P]` という形でアクセスされていますが、 `P` は2つ目の形引数 `K` の取りうる型を反復処理したものですので、これによりそれぞれのキーに対応する適切な型を指定することができます。
+この課題の回答例では `T[P]` という形でアクセスされていますが、 `P` は 2 つ目の形引数 `K` の取りうる型を反復処理したものですので、これによりそれぞれのキーに対応する適切な型を指定できます。
 
 `for...in` でオブジェクトの個々のプロパティの要素にアクセスする処理を考えてみると、理解しやすいのではないでしょうか？
 
@@ -173,7 +173,7 @@ https://github.com/type-challenges/type-challenges/blob/master/questions/7-easy-
 
 ## 解説
 
-Pick では私達は以下の使い方を学びました。そのことを覚えていれば、簡単に回答できるはずです。
+Pick では私たちは以下の使い方を学びました。そのことを覚えていれば、簡単に回答できるはずです。
 
 - [keyof](https://www.typescriptlang.org/docs/handbook/2/keyof-types.html)
 - [Mapped Types](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html)
@@ -209,7 +209,7 @@ Pick, Readonly と同じように以下を利用します。
 - [Mapped Types](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html)
 - [Indexed Access Types](https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html)
 
-`Mapped Types` を使用して反復処理をするのはお決まりのパターンです。ただし、今回は渡される型引数がオブジェクトではなくタプルなので `K` に `keyof T`のパターンは使用できません。
+`Mapped Types` を使用して反復処理をするのはお決まりのパターンです。ただし、今回は渡される型引数がオブジェクトではなくタプルなので `K` に `keyof T` のパターンは使用できません。
 
 代わりに Indexed Access Types を利用して `T[number]` という型制約を利用します。配列に対して `T[number]` とアクセスすると配列から型を取得できます。
 
@@ -221,7 +221,7 @@ type Arr = typeof array // ['apple', 'banana', 'strawberry']
 type Fruits = Arr[number] // "apple" | "banana" | "strawberry"
 ```
 
-得られた配列の取りうる値をキーとして反復処理を行えばのぞみのオブジェクトを生成することができます。
+得られた配列の取りうる値をキーとして反復処理を行えばのぞみのオブジェクトを生成できます。
 
 ## 回答例
 
@@ -264,7 +264,7 @@ JavaScript で配列の先頭にアクセスするためには `Arr[0]` と添�
 type First<T extends any[]> = T[0]
 ```
 
-しかし、現状の実装では型引数として空の配列を渡された時に対応できません。空の配列は `0` というプロパティを持っていないからですね。
+しかし、現状の実装では型引数として空の配列を渡されたときに対応できません。空の配列は `0` というプロパティを持っていないからですね。
 
 このケースに対応するため配列が空かどうかチェックし空の配列なら `never` を返し、そうでないなら配列の先頭の型を返すという条件分岐が必要です。型システム上で条件分岐を実装するには `Conditional Types` を使用します。空の配列かどうかの条件部には `T extends []`  と記述します。
 
@@ -298,7 +298,7 @@ https://github.com/type-challenges/type-challenges/blob/master/questions/18-easy
 
 ## 解説
 
-`Indexed Access Types` のことをすでに知っているのであれば、この課題は驚くほど簡単です。普段配列の要素の数を取得するために `Array.length` プロパティにアクセスしています。同じように、型変数に対して `length` プロパティにアクセスすれば タプルの要素数を取得することができます。
+`Indexed Access Types` のことをすでに知っているのであれば、この課題は驚くほど簡単です。普段配列の要素の数を取得するために `Array.length` プロパティにアクセスしています。同じように、型変数に対して `length` プロパティにアクセスすればタプルの要素数を取得できます。
 
 ```typescript
 type Length<T extends any> = T['length']
@@ -310,7 +310,7 @@ type Length<T extends any> = T['length']
 Type '"length"' cannot be used to index type 'T'.
 ```
 
-`T` が`length` プロパティを持っていることを伝えるために `extends { length: number }` のように制約を持たせることも可能ですが、この指定方法ですとタプルだけでなく `string` のような型も引数として渡せてしますので、適切ではありません。これを踏まえた回答例は以下になります。 
+`T` が `length` プロパティを持っていることを伝えるために `extends { length: number }` のように制約を持たせることも可能ですが、この指定方法ですとタプルだけでなく `string` のような型も引数として渡せてしますので、適切ではありません。これを踏まえた回答例は以下になります。 
 
 ## 回答例
 
@@ -339,7 +339,7 @@ https://github.com/type-challenges/type-challenges/blob/master/questions/268-eas
 
 ## 解説
 
-型引数 `C`,`T`,`F` を受け取り `C` が `true` なら `T`を、`C` が `false` なら `F` を返す `If` 型を作成します。
+型引数 `C`,`T`,`F` を受け取り `C` が `true` なら `T` を、`C` が `false` なら `F` を返す `If` 型を作成します。
 
 まず、問題文から `C` は `true` もしくは `false` である必要があるのでまずはここから埋めてしまいましょう。
 
@@ -347,7 +347,7 @@ https://github.com/type-challenges/type-challenges/blob/master/questions/268-eas
 type If<C extends boolean, T, F> = any
 ```
 
-型システム上で `if` のような条件分岐を実装するためには **Conditional Types** と呼ばれる機能を使います。構文は以下の通りで、三項演算子と同様の演算子なので直感的に理解しやすいと思います。
+型システム上で `if` のような条件分岐を実装するためには **Conditional Types** と呼ばれる機能を使います。構文は以下のとおりで、三項演算子と同様の演算子なので直感的に理解しやすいと思います。
 
 ```typescript
 SomeType extends OtherType ? TrueType : FalseType;
@@ -376,7 +376,7 @@ https://github.com/type-challenges/type-challenges/blob/master/questions/43-easy
 
 ## 解説
 
-[Exclude<T, U>](https://www.typescriptlang.org/docs/handbook/utility-types.html#excludetype-excludedunion) は `U` に割り当て可能な型を`T` から除外する型です。 Union Types から特定の型を取り除く際に使われます。
+[Exclude<T, U>](https://www.typescriptlang.org/docs/handbook/utility-types.html#excludetype-excludedunion) は `U` に割り当て可能な型を `T` から除外する型です。 Union Types から特定の型を取り除く際に使われます。
 
 ```ts
 type T0 = Exclude<"a" | "b" | "c", "a">; // "b" | "c"
@@ -387,7 +387,7 @@ type T2 = Exclude<string | number | (() => void), Function>; // string | number
 ```
 
 この課題を解くにあたり重要になるポイントは `Conditional Types` が**分配法則(Distributive)** に従うと
-いう点です。`Conditional Types` の条件部において `T extends U` の `T` が ユニオン型である場合 `T` に対して反復処理を行い各要素に条件を適用します。
+いう点です。`Conditional Types` の条件部において `T extends U` の `T` がユニオン型である場合 `T` に対して反復処理を行い各要素に条件を適用します。
 
 ```ts
 type ToArray<Type> = Type extends any ? Type[] : never;
@@ -435,7 +435,7 @@ type Awaited<T extends Promise<any>> = T extends Promise<boolean> ? boolean : ne
 
 この型を特定の型だけでなく一般性を持たせるためには `T` が `Promise<U>` を拡張可能であるならば `U` を返すという記述をすればよさそうです。しかし、`U` という型変数はどこから取得すればよいのでしょうか？ `Promise<any>` という型を受け取ったうえで、実際に条件が評価されるタイミングになったらその具体的な型を代入したいということをしたいのです。
 
-このような場合には `infer` キーワードが使えます。`infer` は `conditional type` のみで使用することができます。`infer` は「推論」を意味する単語であり、その型になにかわかった時点で型変数にその値を代入します。
+このような場合には `infer` キーワードが使えます。`infer` は `conditional type` のみで使用できます。`infer` は「推論」を意味する単語であり、その型になにかわかった時点で型変数にその値を代入します。
 
 ## 回答例
 
@@ -512,7 +512,7 @@ const result = [...arr1, ...arr2] // [1, 2, 3, 4, 5, 6]
 
 型システムの中でスプレット構文が使えるとあれば、すでに答えは見えてきているのではないでしょうか？
 
-`...T` の書き方ができる型システムは `extends any[]` という条件を満たす必要があります。このことを踏まえた回答例は以下の通りです。
+`...T` の書き方ができる型システムは `extends any[]` という条件を満たす必要があります。このことを踏まえた回答例は以下のとおりです。
 
 ## 回答例
 
@@ -577,9 +577,9 @@ type Unshift<T extends any[], U> = [U, ...T]
 ```
 # 完走した感想
 
-easy レベルといいながら普通に難しくないですか・・・？ちなみに easy レベルにはもう一つ [Includes](https://github.com/type-challenges/type-challenges/blob/master/questions/898-easy-includes/README.md) という問題があるのですが明らかに難易度詐称なのでこの記事には載せていません（
+easy レベルといいながら普通に難しくないですか・・・？ちなみに easy レベルにはもう 1 つ [Includes](https://github.com/type-challenges/type-challenges/blob/master/questions/898-easy-includes/README.md) という問題があるのですが明らかに難易度詐称なのでこの記事には載せていません。
 
-実際にはこの辺りの知識はライブラリ作成者が使用するような型なので解けなくても特に困るようなことはないです（
+実際にはこの辺りの知識はライブラリ作成者が使用するような型なので解けなくても特に困るようなことはないです。
 
-実際手を動かしながら考えることでより知識が定着することができたのが良い点でした。
+実際手を動かしながら考えることでより知識が定着できたのが良い点でした。
 

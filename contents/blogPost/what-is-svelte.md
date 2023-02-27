@@ -8,18 +8,18 @@ updatedAt: "2021-01-24T00:00+09:00"
 tags: ["Svelte", "JavaScript", "TypeScript"]
 published: true
 ---
-Svelteとは、ReactやVue.js・Angularのような宣言的UIライブラリの一種です。
-その最大の特徴は、ReactやVue.js・Angularと異なりSvelteは**コンパイラ**であることを謳っているところです。Svelteによってコンパイルされたコードは、すべてVanilla JS  - ネイティブのJavaScript- にで生成されます。
+Svelte とは、React や Vue.js・Angular のような宣言的 UI ライブラリの一種です。
+その最大の特徴は、React や Vue.js・Angular と異なり Svelte は**コンパイラ**であることを謳っているところです。Svelte によってコンパイルされたコードは、すべて Vanilla JS  - ネイティブの JavaScript- にで生成されます。
 
-そのため、コンパイル後のファイルサイズも小さくパフォーマンス上での利点が期待されています。 実際にReactの**35倍**、Vue.jsの**50倍**のベンチマークが計測されているようです。
+そのため、コンパイル後のファイルサイズも小さくパフォーマンス上での利点が期待されています。 実際に React の**35倍**、Vue.js の**50倍**のベンチマークが計測されているようです。
 
-また、 2020/07/17には公式でTypeScriptに対応しています。
+また 2020/07/17 には公式で TypeScript に対応しています。
 
 # プロジェクトを作成する
 
-＊ Node.jsがインストールされていることが前提です。
+＊ Node.js がインストールされていることが前提です。
 
-下記コマンドでTypeScriptでのSvelteプロジェクトを作成します。
+下記コマンドで TypeScript での Svelte プロジェクトを作成します。
 
 ```sh
 npx degit sveltejs/template svelte-typescript-app
@@ -38,13 +38,13 @@ npm run dev
 
 ![スクリーンショット 20210124 17.03.01.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FX2ytUqIKXThYYQgTuAq3%2F0d4f8f7c2e8f2ee353bbfcbaa8347b15.png?alt=media&token=ebabd5f7-fa22-42d3-9f4e-d94a8eede63b)
 
-もしvscodeを利用しているのならば、公式の拡張を導入することをおすすめします。
+もし vscode を利用しているのならば、公式の拡張を導入することをおすすめします。
 
 [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode)
 
 # ファイルの中身を確認する
 
-作成したSvelteプロジェクトがどのような構造になっているのか見ていきましょう。
+作成した Svelte プロジェクトがどのような構造になっているのか見ていきましょう。
 ディレクトリ構成は次のとおりです。
 
 ```sh
@@ -65,7 +65,7 @@ npm run dev
 └── tsconfig.json
 ```
 
-Svelteもまた、コンポーネント指向のライブラリです。最初コンポーネントは`src/App.svelte`です。Svelteのコンポーネントは`.svelte`という拡張子を使います。
+Svelte もまたコンポーネント指向のライブラリです。最初コンポーネントは `src/App.svelte` です。Svelte のコンポーネントは `.svelte` という拡張子を使います。
 
 ```html:App.svelte
 <script lang="ts">
@@ -100,19 +100,19 @@ Svelteもまた、コンポーネント指向のライブラリです。最初�
 </style>
 ```
 
-1つのファイルにHTML・JavaScript・CSSがまとまっており、Vue.jsの単一ファイルコンポーネントによく似ています。
+1 つのファイルに HTML・JavaScript・CSS がまとまっており、Vue.js の単一ファイルコンポーネントによく似ています。
 
-`<style>`タグは、常にscopedとして扱われる - そのコンポーネント内のみに適応される - ことに注意してください。
+`<style>` タグは、常に scoped として扱われる - そのコンポーネント内のみに適応される - ことに注意してください。
 
-ブラウザのデバッグツールで見てみると、コンポーネントの`<style>`タグで宣言したスタイルにはランダムな文字列が付与されていることがわかります。
+ブラウザのデバッグツールで見てみると、コンポーネントの `<style>` タグで宣言したスタイルにはランダムな文字列が付与されていることがわかります。
 
 ![スクリーンショット 20210124 17.38.30.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FX2ytUqIKXThYYQgTuAq3%2Fa1ada3d72dad432587a387e1b9360c4b.png?alt=media&token=5102a8de-187d-46d9-bb45-80fb117e662d)
 
-ざっくりとした説明として、`<script>`タグ内で宣言された変数はテンプレート内で`{}`で囲って参照できます。このとき、変数の値は常にリアクティブであり、変数の値が変更されるたびにHTMLでの描画が更新されます。
+ざっくりとした説明として、`<script>` タグ内で宣言された変数はテンプレート内で `{}` で囲って参照できます。このとき、変数の値は常にリアクティブであり、変数の値が変更されるたびに HTML での描画が更新されます。
 
-ここで一つ奇妙なのが、たしかに`name`という変数は宣言されているもののそこに値は代入されていないことです。なぜWORLDと表示されているのでしょうか？
+ここで 1 つ奇妙なのが、たしかに `name` という変数は宣言されているもののそこに値は代入されていないことです。なぜ WORLD と表示されているのでしょうか？
 
-実は、exportされている変数はpropsとして外から値を渡すことができます。実際にApp.svelteを生成している`src/main.ts`のコードを見てみましょう。
+実は、export されている変数は props として外から値を渡すことができます。実際に App.svelte を生成している `src/main.ts` のコードを見てみましょう。
 
 ```ts:main.ts
 import App from './App.svelte';
@@ -127,9 +127,9 @@ const app = new App({
 export default app;
 ```
 
-確かに、propsとして`name: 'world'`が渡されています。`src/main.ts`は`<body>`要素に対してApp.svelteをマウントするコードです。
+確かに、props として `name: 'world'` が渡されています。`src/main.ts` は `<body>` 要素に対して App.svelte をマウントするコードです。
 
-ここまで理解したところで、試しに`name`の値を変更してみましょう。
+ここまで理解したところで、試しに `name` の値を変更してみましょう。
 画面の表示も変更された値に切り替わるはずです。
 
 ```ts
@@ -149,9 +149,9 @@ export default app;
 
 # カウンターアプリの作成
 
-Svelteのリアクティブ性を確認するために、おなじみのカウンターアプリを作成してみましょう。
+Svelte のリアクティブ性を確認するために、おなじみのカウンターアプリを作成してみましょう。
 
-まずは、`count`変数を宣言して単純に表示します。
+まずは、`count` 変数を宣言して単純に表示します。
 
 ```html
 <script lang="ts">
@@ -165,10 +165,10 @@ Svelteのリアクティブ性を確認するために、おなじみのカウ�
 
 ## イベントハンドリング
 
-ボタンをクリックした際に、`count`の数を増やしたり減らしたりするようにできるようにします。
-ボタンがクリックされたイベントを購読するには、`on:click`属性を付与します。
+ボタンをクリックした際に、`count` の数を増やしたり減らしたりするようにできるようにします。
+ボタンがクリックされたイベントを購読するには、`on:click` 属性を付与します。
 
-属性の値をして渡す関数は、単純に`<script>`ないでJavaScriptの関数を宣言します。
+属性の値をして渡す関数は、単純に `<script>` ないで JavaScript の関数を宣言します。
 
 ```html
 <script lang="ts">
@@ -194,10 +194,10 @@ Svelteのリアクティブ性を確認するために、おなじみのカウ�
 
 ## リアクティブな値を宣言する
 
-宣言した変数の状態が変化すると即座にDOMが再描画されることがわかりました。
-おそらくあなたはVue.jsのcomputedのように依存された値が変化したときに再描画される値が欲しいことでしょう。
+宣言した変数の状態が変化すると即座に DOM が再描画されることがわかりました。
+おそらくあなたは Vue.js の computed のように依存された値が変化したときに再描画される値が欲しいことでしょう。
 
-Svelteでは`$:`を用いて宣言します。
+Svelte では `$:` を用いて宣言します。
 
 ```html
 <script lang="ts">
@@ -220,11 +220,11 @@ Svelteでは`$:`を用いて宣言します。
 </main>
 ```
 
-`$:`用いた奇妙な構文はSvelte特有のものに見えますが、実はネイティブJavaScriptのれっきとした構文です。（とはいえ実際にこの構文を利用することはほとんどないかと思いますが・・・）
+`$:` 用いた奇妙な構文は Svelte 特有のものに見えますが、実はネイティブ JavaScript のれっきとした構文です。（とはいえ実際にこの構文を利用することはほとんどないかと思いますが・・・）
 
 [label](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/label)
 
-`$:`は、ブロックスコープで宣言することも可能です。
+`$:` は、ブロックスコープで宣言することも可能です。
 
 ```ts
 $: {
@@ -235,9 +235,9 @@ $: {
 
 # 制御構文 (if,each)
 
-カウンターの数をマイナスにはしたくないので、decrementボタンは`count`の数が1以上のときのみ表示するようにしましょう。
+カウンターの数をマイナスにはしたくないので、decrement ボタンは `count` の数が 1 以上のときのみ表示するようにしましょう。
 
-if文はHTML内で`{#if condition} {/if}`で囲って使うことができます。
+if 文は HTML 内で `{#if condition} {/if}` で囲って使うことができます。
 
 ```html
 <main>
@@ -249,7 +249,7 @@ if文はHTML内で`{#if condition} {/if}`で囲って使うことができます
 </main>
 ```
 
-`{#each }{/each}`ブロックを用いて、繰り返し処理を記述することができます。
+`{#each }{/each}` ブロックを用いて、繰り返し処理を記述できます。
 
 ```html
 <script lang="ts">
@@ -267,7 +267,7 @@ if文はHTML内で`{#if condition} {/if}`で囲って使うことができます
 </main>
 ```
 
-また、各要素の一意な属性としてkeyを与えることができます。
+また各要素の一意な属性として key を与えることができます。
 
 ```html
 
@@ -280,7 +280,7 @@ if文はHTML内で`{#if condition} {/if}`で囲って使うことができます
 
 # おわりに
 
-以上が、Svelteの簡単な構文の紹介でした。触ってみた感想ですが、ReactやVue.jsなど既存のJavaScriptフレームワークに慣れている場合には少ない学習コストで理解できると思います。
+以上が、Svelte の簡単な構文の紹介でした。触ってみた感想ですが、React や Vue.js など既存の JavaScript フレームワークに慣れている場合には少ない学習コストで理解できると思います。
 
 [公式のチュートリアル](https://svelte.dev/tutorial/basics)も充実しているので、ぜひ一度触ってみてはいかがでしょうか？
 

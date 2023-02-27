@@ -22,5 +22,6 @@
       "changeProcessCWD": true
     },
   ],
-  "vitest.enable": true
+  "vitest.enable": true,
+  "textlint.configPath": "./contents/.textlintrc",
 }

@@ -16,13 +16,13 @@ published: true
 - Jasmine + Karma → Jest
 - Protractor → Playwright
 
-また、レポジトリは以下に存在します。作業のはじめから行いたい場合には `01.start` のタグにチェックアウトしてください。
+またレポジトリは以下に存在します。作業のはじめから行いたい場合には `01.start` のタグにチェックアウトしてください。
 
 https://github.com/azukiazusa1/angular-phonecat/tree/01.start
 
 ## E2E テストを導入する
 
-大規模なリファクタリングを行う上で、何かが壊れていないことを保証してくれるのが、自動化されたテストです。特に E2E（エンドツーエンド）テストは内部の構造を気にせず、ユーザーの目線からアプリケーションが期待通りに動作することを検証します。そのため、今回のようにフレームワークをリプレイスする場合でも。テストコード自体を修正せずに前後で動作が変わらないことを確認できます。
+大規模なリファクタリングを行ううえで、何かが壊れていないことを保証してくれるのが、自動化されたテストです。特に E2E（エンドツーエンド）テストは内部の構造を気にせず、ユーザーの目線からアプリケーションが期待通りに動作することを検証します。そのため、今回のようにフレームワークをリプレイスする場合でも。テストコード自体を修正せずに前後で動作が変わらないことを確認できます。
 
 今回の対象のコードには E2E テストが含まれているのですが、使用されているテスティングフレームワークである [Protractor](https://www.protractortest.org/#/) が Angular に依存してしまっています。このままですと React に置き換えた際にテストコードが動かなくなってしまうので、特定のフレームワークに依存しないテストコードに書き換えることとします。
 
@@ -43,7 +43,7 @@ rm -rf tests-examples
 rm tests/example.spec.ts
 ```
 
-デフォルトの設定では、Chrome・Firefox・webkit の3つのブラウザでテストが実行されますが、もともとのテストは Chrome のみで実行されていたので合わせて Chrome のみで十分でしょう。`playwright.config.ts` ファイルを修正します。
+デフォルトの設定では、Chrome・Firefox・webkit の 3 つのブラウザでテストが実行されますが、もともとのテストは Chrome のみで実行されていたので合わせて Chrome のみで十分でしょう。`playwright.config.ts` ファイルを修正します。
 
 ```ts diff
   projects: [
@@ -68,7 +68,7 @@ rm tests/example.spec.ts
 -     },
 ```
 
-また、テストが失敗したときにスクリーンショットを撮影するように設定しておきましょう。
+またテストが失敗したときにスクリーンショットを撮影するように設定しておきましょう。
 
 ```ts diff
   use: {
@@ -132,7 +132,7 @@ To open last HTML report run:
   npx playwright show-report
 ```
 
-更にテストを追加していきましょう。電話一覧のページのテストです。
+さらにテストを追加していきましょう。電話一覧のページのテストです。
 「should filter the phone list as a user types into the search box」はサーチボックスにテキストを入力したとき、フィルタリングが行われるか確認するテストです。
 
 ```ts
@@ -164,13 +164,13 @@ test.describe('View: Phone list', () => {
 
 `locator` で要素を取得する際のベストプラクティスは、ARIA ロールやラベルのようにのようにユーザー目線のセレクターを使用し、詳細なセレクターを控えることです。例えば `class` 属性などは CSS のリファクタリングにより、仕様と関係ない理由で変更される可能性がありますが、ユーザー目線の属性が変更されることは稀です。そのため、メンテナンス性の高いテストコードをとなります。
 
-初めに、`expect(phoneList).toHaveCount(20)` を使用しサーチボックスに何も入力していない場合（初期状態に）には20個のリストが存在することを検証しています。 
+初めに、`expect(phoneList).toHaveCount(20)` を使用しサーチボックスに何も入力していない場合（初期状態に）には 20 個のリストが存在することを検証しています。 
 
-続いて `input.fill('nexus')` でサーチボックスに「nexus」という文字列を入力します。ここで文字列を入力したことによりリストの数が変化することを確認したいのですが、リストの数の増減に応じてアニメーションが始まるので、完了するまで正しいリストの数を取得することができません。そのため、`page.waitForTimeout(1000)` を入れてアニメーションの完了を待機しています。
+続いて `input.fill('nexus')` でサーチボックスに「nexus」という文字列を入力します。ここで文字列を入力したことによりリストの数が変化することを確認したいのですが、リストの数の増減に応じてアニメーションが始まるので、完了するまで正しいリストの数を取得できません。そのため、`page.waitForTimeout(1000)` を入れてアニメーションの完了を待機しています。
 
-「nexus」という文字列によりリストは1つにフィルタリングされるはずです。さらに、今後は「motorola」という文字列を入力し8つのリストにフィルタリングされることを検証しています。
+「nexus」という文字列によりリストは 1 つにフィルタリングされるはずです。さらに、今後は「motorola」という文字列を入力し 8 つのリストにフィルタリングされることを検証しています。
 
-次に、セレクトボックスによりリストが並び替えらることをテストします。このテストも同様に `  describe('View: Phone list)` ブロック内に記述します。
+次に、セレクトボックスによりリストが並べ替えらることをテストします。このテストも同様に `  describe('View: Phone list)` ブロック内に記述します。
 
 ```ts
   test.describe('View: Phone list', () => {
@@ -205,7 +205,7 @@ test.describe('View: Phone list', () => {
   })
 ```
 
-まずはセレクトボックスとサーチボックス要素を取得します。`page.locator('role=listitem').locator('role=link')` のように `locator` を連鎖することでリスト要素の中ののリンク要素（電話の名前）を取得しています。
+まずはセレクトボックスとサーチボックス要素を取得します。`page.locator('role=listitem').locator('role=link')` のように `locator` を連鎖することでリスト要素の中のリンク要素（電話の名前）を取得しています。
 
 `getNames` 関数では、`allInnerTexts()` メソッドにより電話の名前の一覧を取得しています。その文字列も一緒に取得してしまうため `filter` で弾いています。
 
@@ -213,7 +213,7 @@ test.describe('View: Phone list', () => {
 
 続いて `dropdown.selectOption('name')` でセレクトボックスの要素を選択しています。フィルタリング時と同様にアニメーションが始めるので、完了するまで待機しています。
 
-セレクトボックスで `name` を選択した場合、アルファベット順で並び替えされるはずですので、そのことを再度 `expect(await getNames()).toEqual()` で検証しています。
+セレクトボックスで `name` を選択した場合、アルファベット順で並べ替えされるはずですので、そのことを再度 `expect(await getNames()).toEqual()` で検証しています。
 
 最後に、電話ごとに正しいリンクが設定されているかどうか検証するテストです。
 
@@ -236,7 +236,7 @@ test.describe('View: Phone list', () => {
   })
 ```
 
-サーチボックスに「nexus」と入力した後、`page.locator('role=listitem').locator('role=link').first()` で1番目のリスト要素を取得します。
+サーチボックスに「nexus」と入力した後、`page.locator('role=listitem').locator('role=link').first()` で 1 番目のリスト要素を取得します。
 
 リンク要素をクリックした後、` expect(page).toHaveURL()` 現在の URL が期待しているものであるか検証しています。
 
@@ -272,11 +272,11 @@ test.describe('View: Phone detail', () => {
 
 電話一覧ページと同様に `test.beforeEach` で毎回詳細ページへ遷移するようにしています。
 
-１つ目のテストは「nexus-s」のページが正しく描画されているかどうか、ヘディング要素のテキストで検証しています。
+1 つ目のテストは「nexus-s」のページが正しく描画されているかどうか、ヘディング要素のテキストで検証しています。
 
-2つ目テストではメインイメージに1番初めの画像が使用されているかどうかを検証しています。
+2 つ目テストではメインイメージに 1 番初めの画像が使用されているかどうかを検証しています。
 
-3つ目のテストはサムネイル画像をクリックした時、メインイメージの画像がクリックしたサムネイル画像に変更されるかどうかの検証です。
+3 つ目のテストはサムネイル画像をクリックしたとき、メインイメージの画像がクリックしたサムネイル画像に変更されるかどうかの検証です。
 
 ここまでの流れでなんとなく何をやっているかつかめれば大丈夫です。もともとあった `e2e-tests/scenarios.js` とも比較してみてください。
 
@@ -442,7 +442,7 @@ module.exports = {
 
 ### `devServer`
 
-[webpack-dev-server](https://github.com/webpack/webpack-dev-server) を使用するための設定です。`webpack-dev-server` は開発用サーバーを立ち上げ、にホットリロード等を提供してくれます。
+[webpack-dev-server](https://github.com/webpack/webpack-dev-server) を使用するための設定です。`webpack-dev-server` は開発用サーバーを立ち上げ、にホットリロードなどを提供してくれます。
 
 `static.directory` にサーバーの起点となるディレクトリを指定します。この値の `output` と同様で構いません。`port` にはポート番号を指定します。
 
@@ -516,7 +516,7 @@ import './core/phone/phone.module'
 import './core/phone/phone.service'
 ```
 
-`app/main.ts` でモジュールを読み込むように修正しましたので、`app/index.html` において`<script>` や `<linl>` タグで個別に読み込む必要はありません。すべて削除しましょう。
+`app/main.ts` でモジュールを読み込むように修正しましたので、`app/index.html` において `<script>` や `<linl>` タグで個別に読み込む必要はありません。すべて削除しましょう。
 
 ```html diff
 -  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
@@ -547,9 +547,9 @@ import './core/phone/phone.service'
 rm -rf app/lib
 ```
 
-最後に、アプリケーションコードを修正する必要があります。AngularJS のコンポーネントでは `templateUrl` により外部の HTML ファイルを HTTP リクエストで読み込んでいます。Webpack では1つのファイルにバンドルする必要があるので、`templateUrl` を指定している箇所をインポートするように変更します。
+最後に、アプリケーションコードを修正する必要があります。AngularJS のコンポーネントでは `templateUrl` により外部の HTML ファイルを HTTP リクエストで読み込んでいます。Webpack では 1 つのファイルにバンドルする必要があるので、`templateUrl` を指定している箇所をインポートするように変更します。
 
-以下の2つのファイルを変更します。
+以下の 2 つのファイルを変更します。
 
 - `app/phone-list/phone-list.component.js`
 - `app/phone-detail/phone-detail.component.js`
@@ -690,7 +690,7 @@ AngularJS・Jasmine を使用しているので、グローバル変数に対し
 + },
 ```
 
-また、現状のルールですとリントを成功させることができないので、少しルールを緩和します。
+また現状のルールですとリントを成功させることができないので、少しルールを緩和します。
 
 ```js
 "rules": {
@@ -869,7 +869,7 @@ angular
 
 特に、`class` から `className` の変換は頻出するので [converter](https://transform.tools/html-to-jsx) を利用して機械的に行うのが良いでしょう。
 
-作成した React コンポーネントは `react2angular` で AngularJS のコンポーネントに変換して登録します。渡す予定の Props は第2引数で明示する必要があります。
+作成した React コンポーネントは `react2angular` で AngularJS のコンポーネントに変換して登録します。渡す予定の Props は第 2 引数で明示する必要があります。
 
 ```ts
 angular
@@ -924,7 +924,7 @@ import './phone-list/PhoneItems';
 
 `this.phoens = Phone.query()` は[$resource サービス](https://docs.angularjs.org/api/ngResource/service/$resource) を使用しているのですが、`resouce` オブジェクトの各メソッド（`query`, `get`）は変数に空の参照を返し、サーバーから応答を得たタイミングで参照先に実データが格納されるという実装となっています。
 
-サーバーからデータ取得後も参照は変わらないため、React で変更を検知することができません。そのため、データ取得後は新しいオブジェクトを再代入する方法に修正しています。
+サーバーからデータ取得後も参照は変わらないため、React で変更を検知できません。そのため、データ取得後は新しいオブジェクトを再代入する方法に修正しています。
 
 ここまで完了したら、開発サーバーで確認してみましょう。一見問題ないように見えますが、アニメーションが行われなくなってしまっています。
 
@@ -980,7 +980,7 @@ return (
 
 リストアイテム内では [CSSTransiton](http://reactcommunity.org/react-transition-group/css-transition) を使用しています。このコンポーネントは `ng-animate` と同様にクラスを付与することで CSS トランジションでアニメーションを制御します。
 
-また、`classNames` プロパティにより `ng-animate` と同様のクラス名が付与されるようにしています。
+また `classNames` プロパティにより `ng-animate` と同様のクラス名が付与されるようにしています。
 
 ```js
 classNames={{
@@ -1000,15 +1000,15 @@ classNames={{
 
 ![phone-list-animation](//images.ctfassets.net/in6v9lxmm5c8/5xua4ClnjWP2NbmlKEy0jv/52c1d89d642db7fa75987f247bf48920/phone-list-animation.gif)
 
-しかしながら、要素の並び替えを行った際のアニメーションが適用されておりません。`ng-animate` ではリストのアイテムの位置が変わる時に `ng-move` クラスが付与されていたのですが、 `TransitionGroup` ではそのようなクラスが提供されていないためです。
+しかしながら、要素の並べ替えを行った際のアニメーションが適用されておりません。`ng-animate` ではリストのアイテムの位置が変わるときに `ng-move` クラスが付与されていたのですが、 `TransitionGroup` ではそのようなクラスが提供されていないためです。
 
-並び替えのアニメーションを適用するために [react-flip-toolkit](https://www.npmjs.com/package/react-flip-toolkit) と呼ばれるライブラリを使用します。[FLIP](https://aerotwist.com/blog/flip-your-animations/) とは、First、Last、Invert、Play の頭文字からなる造語で、複雑なアニメーションをスムーズに実行する手順のことです。
+並べ替えのアニメーションを適用するために [react-flip-toolkit](https://www.npmjs.com/package/react-flip-toolkit) と呼ばれるライブラリを使用します。[FLIP](https://aerotwist.com/blog/flip-your-animations/) とは、First、Last、Invert、Play の頭文字からなる造語で、複雑なアニメーションをスムーズに実行する手順のことです。
 
 ```sh
 npm i react-flip-toolkit
 ```
 
-まずは全てのアニメーション対象の要素を `<Flipper>` コンポーネントでラップします。`<Flipper>` コンポーネントは `flipKey` prop を受け取り、このキーの値が変更されるたびにアニメーションが発生します。ここでは、`orderProp` をキーに指定して、並び順対象のプロパティが変更されるたびにアニメーションが発生するようにします。
+まずはすべてのアニメーション対象の要素を `<Flipper>` コンポーネントでラップします。`<Flipper>` コンポーネントは `flipKey` prop を受け取り、このキーの値が変更されるたびにアニメーションが発生します。ここでは、`orderProp` をキーに指定して、並び順対象のプロパティが変更されるたびにアニメーションが発生するようにします。
 
 次にアニメーションされるべき要素を `<Flipped>` コンポーネントでラップしますこのコンポーネントは一意となる `flipId` prop を受け取ります。
 
@@ -1052,7 +1052,7 @@ const PhoneItems: React.FC<Props> = ({ phones, query, orderProp }) => {
 }
 ```
 
-これで、並び替え時のアニメーションも適用されるようになりました。確認してみましょう。
+これで、並べ替え時のアニメーションも適用されるようになりました。確認してみましょう。
 
 ![phone-list-reorder-animation](//images.ctfassets.net/in6v9lxmm5c8/4ze4mdSAB4xyyNBArzYkuz/4e4bd9055a4a555d812570dedd80832c/phone-list-reorder-animation.gif)
 
@@ -1126,7 +1126,7 @@ global.jasmine = true;
 
 ここでは、DOM テストのために便利なカスタムマッチャーである [testing-libary/jest-dom](https://github.com/testing-library/jest-dom) をインポートしています。
 
-もう一つ、`global.jasmine = true;` という記述は見慣れない方も多いでしょう。これは `angular-mocks` を使用するために必要な記述です。`angular-mocks` の実装では、以下のように `Jasmine` または `Mocha` がフレームワークに使われている場合のみに必要なロジックを読み込むようになっています。
+もう 1 つ、`global.jasmine = true;` という記述は見慣れないほうも多いでしょう。これは `angular-mocks` を使用するために必要な記述です。`angular-mocks` の実装では、以下のように `Jasmine` または `Mocha` がフレームワークに使われている場合のみに必要なロジックを読み込むようになっています。
 
 ```js
 (function(jasmineOrMocha) {
@@ -1159,9 +1159,9 @@ https://dev.to/elpddev/using-jest-with-angularjs-4lcm
 
 既存の単体テストコードでは [Jasmine](https://jasmine.github.io/) と [Karma](https://karma-runner.github.io/latest/index.html) を使用されていますので、これを Jest で動くように修正しましょう。Jasmine の API（`describe`,`it`）は Jest とよく似ているので、大きな修正は必要ありません。
 
-まずは、`app/core/checkmark/checkmark.filter.spec.js` を修正します。修正する箇所はは2つです。
+まずは、`app/core/checkmark/checkmark.filter.spec.js` を修正します。修正する箇所は 2 つです。
 
-1つ目は、`karma.conf.js` 依存ファイルをまとめて読み込んでいたのを各ファイルで `import` するように修正します。
+1 つ目は、`karma.conf.js` 依存ファイルをまとめて読み込んでいたのを各ファイルで `import` するように修正します。
 
 ```js diff
 - 'use strict';
@@ -1174,7 +1174,7 @@ https://dev.to/elpddev/using-jest-with-angularjs-4lcm
 + import './checkmark.filter';
 ```
 
-2つ目の修正では、AngularJS のモジュールをモックするための記述を `module('core')` から `angular.mock.module('core')` に修正します。
+2 つ目の修正では、AngularJS のモジュールをモックするための記述を `module('core')` から `angular.mock.module('core')` に修正します。
 
 ```js diff
   describe('checkmark', function () {
@@ -1246,7 +1246,7 @@ Ran all test suites matching /checkmark/i.
 npm run test phone.service
 ```
 
-最後に、`app/phone-list/phone-list.component.spec.js` の修正と `app/phone-detail/phone-detail.component.spec.js` の修正をまとめて行ってしまいましょう。ここまで出てきたことと同じ修正を行えば大丈夫です。
+最後に、`app/phone-list/phone-list.component.spec.js` の修正と `app/phone-detail/phone-detail.component.spec.js` の修正をまとめていってしまいましょう。ここまで出てきたことと同じ修正を行えば大丈夫です。
 
 ```js diff
   // app/phone-list/phone-list.component.spec.js
@@ -1376,13 +1376,13 @@ describe('PhoneItems', () => {
 
 `app/phone-list/PhoneItems.tsx` ファイル内では AngularJS もモジュールにコンポーネントを登録しているので、`angular` と `../phone-list/phone-list.module` を import する必要があることに注意してください。
 
-1つ目のテストは `query` prop が存在しない場合（=フィルタリングされない場合）すべてのアイテムが描画されることを検証しています。`@testing-library/react` の `render` 関数によりコンポーネントが描画されます。要素を取得するために `screen.getAllByRole('listitem')` を使用しています。Testing Library はこのようにユーザー目線のロールやラベルを使用して要素を取得するのが特徴です。
+1 つ目のテストは `query` prop が存在しない場合（=フィルタリングされない場合）すべてのアイテムが描画されることを検証しています。`@testing-library/react` の `render` 関数によりコンポーネントが描画されます。要素を取得するために `screen.getAllByRole('listitem')` を使用しています。Testing Library はこのようにユーザー目線のロールやラベルを使用して要素を取得するのが特徴です。
 
-クエリを指定していないのでリストアイテムの要素数は20、並び順は「age」なので最初の要素は「Motorola XOOM™ with Wi-Fi」であるはずです。
+クエリを指定していないのでリストアイテムの要素数は 20、並び順は「age」なので最初の要素は「Motorola XOOM™ with Wi-Fi」であるはずです。
 
-2つ目のテストでは `query` props として「motorola」を渡して正しくフィルタリングされるかどうかを検証しています。
+2 つ目のテストでは `query` props として「motorola」を渡して正しくフィルタリングされるかどうかを検証しています。
 
-3つ目のテストは `orderProp` に「name」を渡して並び順がアルファベット順となっているかどうかを検証します。
+3 つ目のテストは `orderProp` に「name」を渡して並び順がアルファベット順となっているかどうかを検証します。
 
 それではテストを実行してみましょう。
 
@@ -1401,7 +1401,7 @@ Time:        10.809 s
 Ran all test suites.
 ```
 
-問題なくテストが PASS していますね！アプリケーションのコードは変更していないですが、念の為 E2E テストも実行しておくと安全です。
+問題なくテストが PASS していますね！アプリケーションのコードは変更していないですが、念のため E2E テストも実行しておくと安全です。
 
 ```sh
 npm run e2e
@@ -1413,7 +1413,7 @@ https://github.com/azukiazusa1/angular-phonecat/commit/5581eb4329bedd4b949bd580b
 
 ## 電話一覧画面を React コンポーネントにする
 
-それでは、電話一覧画面全体を React コンポーネントに移行しましょう。AngularJS の `$resource` は引き続き利用するので、型定義ファイルをインストールしておきます。
+それでは、電話一覧画面を React コンポーネントに移行しましょう。AngularJS の `$resource` は引き続き利用するので、型定義ファイルをインストールしておきます。
 
 ```sh
 npm install --save @types/angular-resource
@@ -1475,7 +1475,7 @@ export default PhoneList;
 angular.module('phoneList').component('phoneList', react2angular(PhoneList, [], ['Phone']));
 ```
 
-まずは、Props の型として `Phone` を定義しています。`Phone` は`phone-list.component.js` でコントローラーに DI されていた AngularJS の Resource クラスです。後ほど出てきますが、`react2angular` では AngularJS のサービス等を簡単に引き渡すことができます。
+まずは、Props の型として `Phone` を定義しています。`Phone` は `phone-list.component.js` でコントローラーに DI されていた AngularJS の Resource クラスです。後ほど出てきますが、`react2angular` では AngularJS のサービスなどを簡単に引き渡すことができます。
 
 ```ts
 type Props = {
@@ -1530,7 +1530,7 @@ return (
 <PhoneItems phones={phones} query={query} orderProp={orderProp} />
 ```
 
-最後に `angular2react` でコンポーネントを AngularJS のコンポーネントに変換します。Props のところで述べたとおり、`angular2react` では第3引数に AngularJS のサービス名を指定することで、Dependency Injection を行え、React では props として受け取ることができます。
+最後に `angular2react` でコンポーネントを AngularJS のコンポーネントに変換します。Props のところで述べたとおり、`angular2react` では第 3 引数に AngularJS のサービス名を指定することで、Dependency Injection を行え、React では props として受け取ることができます。
 
 ```ts
 angular.module('phoneList').component('phoneList', react2angular(PhoneList, [], ['Phone']));
@@ -1552,7 +1552,7 @@ rm app/phone-list/phone-list.compoment.spec.js
 rm app/phone-list/phone-list.template.html
 ```
 
-`app/app.config.js` で`<phone-list>` コンポーネントが使用されています。AngularJS のコンポーネントと同じ名前で作成したので、ここは修正する必要はありません。開発サーバーで確認してみましょう。問題がなけらば、前と変わらないことが確認できるはずです。
+`app/app.config.js` で `<phone-list>` コンポーネントが使用されています。AngularJS のコンポーネントと同じ名前で作成したので、ここは修正する必要はありません。開発サーバーで確認してみましょう。問題がなけらば、前と変わらないことが確認できるはずです。
 
 ![スクリーンショット 2022-07-31 20.43.04](//images.ctfassets.net/in6v9lxmm5c8/6osJRVGYUqxZIXpNuSu8VM/3d9d3cf0353b55660d4db4dfaf080fe7/____________________________2022-07-31_20.43.04.png)
 
@@ -1678,7 +1678,7 @@ describe('PhoneList', () => {
   });
 ```
 
-1つ目のテストでは電話一覧を正常に取得でき、並び替えの初期値が「新しい順」であることを検証しています。元々のテストでは ` expect(ctrl.phones).toEqual([{ name: 'Nexus S' }, { name: 'Motorola DROID' }])` や `expect(ctrl.orderProp).toBe('age')` のようにコントローラー内に変数を直接参照して検証していました。
+1 つ目のテストでは電話一覧を正常に取得でき、並べ替えの初期値が「新しい順」であることを検証しています。もともとのテストでは ` expect(ctrl.phones).toEqual([{ name: 'Nexus S' }, { name: 'Motorola DROID' }])` や `expect(ctrl.orderProp).toBe('age')` のようにコントローラー内に変数を直接参照して検証していました。
 
 しかし、このように実装の詳細をテストするのは好ましくありません。例えば、内部の構造をリファクタリングして、外部の仕様が変更されていないに場合でもテストが fail していまうため、壊れやすテストとなってしまいます。ソートの値にどのような値を設定した結果、どのように描画されるかのように、外部から見た振る舞いをテストすると壊れにくいテストコードになります。
 
@@ -1695,9 +1695,9 @@ describe('PhoneList', () => {
   });
 ```
 
-`$httpBackend` でモックしたレスポンスを返却するためには `$httpBackend.flush()` メソッドを呼び出します。また、描画内容を更新する関数を呼び出す場合には、`act` でラッピングします。
+`$httpBackend` でモックしたレスポンスを返却するためには `$httpBackend.flush()` メソッドを呼び出します。また描画内容を更新する関数を呼び出す場合には、`act` でラッピングします。
 
-2つ目のテストはサーチボックスにテキストを入力した時要素がフィルタリングされるかどうかを検証します。フォームの入力や、クリックなどのイベントを発生させる場合には `@testing-library/user-event` を使用します。このパッケージは、よりユーザーの実際の操作に近い書き方でイベントを発生させることができます。
+2 つ目のテストはサーチボックスにテキストを入力したとき要素がフィルタリングされるかどうかを検証します。フォームの入力や、クリックなどのイベントを発生させる場合には `@testing-library/user-event` を使用します。このパッケージは、よりユーザーの実際の操作に近い書き方でイベントを発生させることができます。
 
 `userEvent.type` でサーチボックスに「motorola」と入力した後、`waitFor` で `expect` をラップして、期待した描画の更新があるまで待機する必要があります。
 
@@ -1716,7 +1716,7 @@ describe('PhoneList', () => {
   });
 ```
 
-最後3爪のテストは、セレクトボックスを操作して並び替えされるかテストしています。セレクトボックスの操作は `userEvent.selectOptions` を呼び出します。
+最後 3 爪のテストは、セレクトボックスを操作して並べ替えされるかテストしています。セレクトボックスの操作は `userEvent.selectOptions` を呼び出します。
 
 ```ts
   it('should sort phone items', async () => {

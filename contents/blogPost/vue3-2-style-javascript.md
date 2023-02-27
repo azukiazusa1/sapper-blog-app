@@ -8,9 +8,9 @@ updatedAt: "2021-09-19T00:00+09:00"
 tags: ["CSS", "Vue.js"]
 published: true
 ---
-Vue.js3.2からは、JavaScriptの変数をCSS変数としてバインドできるようになりました。
+Vue.js3.2 からは、JavaScript の変数を CSS 変数としてバインドできるようになりました。
 
-つまりは、CSSの値を動的に設定できるということです。
+つまりは、CSS の値を動的に設定できるということです。
 
 ものは試しのやってみましょう。
 
@@ -32,16 +32,16 @@ const color = ref("#000000");
 </style>
 ```
 
-`<script>`タグ内で宣言した`color`という変数を`<style>`タグ内で`v-bind(color);`として使用しています。
+`<script>` タグ内で宣言した `color` という変数を `<style>` タグ内で `v-bind(color);` として使用しています。
 
-生成されたCSSを見てみると、以下のような感じになっています。
+生成された CSS を見てみると、以下のような感じになっています。
 
 ![スクリーンショット 2021-09-19 22.41.48](//images.contentful.com/in6v9lxmm5c8/3m4rIIOwj1HDzFkxVt5GUS/2d8df58ddea780714b7fbafd15355b4d/____________________________2021-09-19_22.41.48.png)
 
-1. `--7ba5bd90-color`のようにハッシュ化されたCSS変数がインラインスタイルとして定義されます。
-2. `<style>`タグでバインドしたJavaScippt変数は上記のハッシュ化されたCSS変数が適用されます。
+1. `--7ba5bd90-color` のようにハッシュ化された CSS 変数がインラインスタイルとして定義されます。
+2. `<style>` タグでバインドした JavaScippt 変数は上記のハッシュ化された CSS 変数が適用されます。
 
-もちろん、JavaScriptで宣言したリアクティブな変数の値が変更されるたびにCSS変数の値も変化されます。
+もちろん、JavaScript で宣言したリアクティブな変数の値が変更されるたびに CSS 変数の値も変化されます。
 
 ![css-bind](//images.contentful.com/in6v9lxmm5c8/5zACPhuaBBkRFwAf1Si9q8/a9c25531c0e612ddfe26be426719d76c/css-bind.gif)
 
@@ -49,9 +49,9 @@ const color = ref("#000000");
 
 ## JavaScript式の展開
 
-VSCodeにはなにか怒られるけれど、`<template>`での`v-bind`と同じく三項演算子等JavaScriptの式を評価させることができます。
+VSCode にはなにか怒られるけれど、`<template>` での `v-bind` と同じく三項演算子など JavaScript の式を評価させることができます。
 
-JavaSciptの式を評価させる場合にはクォートで加工必要があるようです。
+JavaScipt の式を評価させる場合にはクォートで加工必要があるようです。
 
 ```vue
 <script setup lang="ts">
@@ -90,7 +90,7 @@ const toggleTheme = () => {
 
 ## 配列やオブジェクトを渡す
 
-`v-bind`に配列を渡すとカンマ区切りで展開されます。単純に`array#toString`が呼ばれているようです。
+`v-bind` に配列を渡すとカンマ区切りで展開されます。単純に `array#toString` が呼ばれているようです。
 
 ```css
 .title {
@@ -135,7 +135,7 @@ style attribute {
 
 ## v-bindが使える場所
 
-`<style>`タグ内ならどこでも`v-bind`が使えるわけではないっぽい。
+`<style>` タグ内ならどこでも `v-bind` が使えるわけではないっぽい。
 
 ```css
 <style scoped>
@@ -155,7 +155,7 @@ v-bind(container)
 
 ## 関数呼び出し
 
-JavaScriptの式を評価できるので、こちらも当然できますね。
+JavaScript の式を評価できるので、こちらも当然できますね。
 
 ```vue
 <script setup lang="ts">
@@ -177,7 +177,7 @@ const textColor = () => {
 </style>
 ```
 
-関数宣言でも有効です
+関数宣言でも有効です。
 
 ```vue
 <script setup lang="ts">
@@ -201,7 +201,7 @@ function textColor() {
 
 ## CSSのコメントで囲った文字列をバインドする
 
-CSSのコメントで囲った箇所はしっかり消えていますね。
+CSS のコメントで囲った箇所はしっかり消えていますね。
 
 ```vue
 <script setup lang="ts">
@@ -285,7 +285,7 @@ const color = "var(--main-bg-color)";
 
 ## バインドしたCSSクラスを使用している要素のstyleを動的nullに変更すると・・・?
 
-つまりこういうこと
+つまりこういうこと。
 
 ```vue
 <script setup lang="ts">
@@ -311,11 +311,11 @@ const color = "red";
 </style>
 ```
 
-正しい動作なのかよくわからないですが、`style`をバインドしていた場合その値を`null`にするとインラインスタイルに展開されていたCSS変数も消えてしましまいます。
+正しい動作なのかよくわからないですが、`style` をバインドしていた場合その値を `null` にするとインラインスタイルに展開されていた CSS 変数も消えてしましまいます。
 
 ![style-binding](//images.contentful.com/in6v9lxmm5c8/7k9GqQRi1P8nAwHwU2xtMo/d6a2f49fa2cdfe06d131d06946d6d5e2/style-binding.gif)
 
-ちなみに、`<template>`にルート要素がある場合その要素に対してCSS変数が展開されるので、ルート要素のstyleを`null`にするとすべてのCSS変数が消えてしまいます。
+ちなみに、`<template>` にルート要素がある場合その要素に対して CSS 変数が展開されるので、ルート要素の style を `null` にするとすべての CSS 変数が消えてしまいます。
 
 ```vue
 <script setup lang="ts">

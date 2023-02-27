@@ -46,7 +46,7 @@ interface UserModel extends Model<UserDoc> {}
 
 export default mongoose.model<UserDoc, UserModel>('User', userSchema)
 ```
-`mongoose`では、同じスキーマを使用して`mongoose.model()`で2度以上インスタンスを作成することができません。
+`mongoose` では、同じスキーマを使用して `mongoose.model()` で 2 度以上インスタンスを作成できません。
 
 次のように修正することでエラーを解消できます。
 
@@ -85,11 +85,11 @@ interface UserModel extends Model<UserDoc> {}
 +   : mongoose.model<UserDoc, UserModel>('User', userSchema)
 ```
 
-`mongoose`も`models`は、すでに登録済のモデル名をキーとして取得できます。
+`mongoose` も `models` は、すでに登録済のモデル名をキーとして取得できます。
 
-`models`にすでに存在するには、それを`export`することによって、同じモデルを再登録することによる生じるエラーを解消することができます。
+`models` にすでに存在するには、それを `export` することによって、同じモデルを再登録することによる生じるエラーを解消できます。
 
-TypeScriptを使用している場合、`models`に登録されているモデルは`statics`などをモデルに追加している場合正しい型が得られないので型アサーションをする必要があるでしょう。
+TypeScript を使用している場合、`models` に登録されているモデルは `statics` などをモデルに追加している場合正しい型が得られないので型アサーションをする必要があるでしょう。
 
-`models`に登録されていなかった場合、通常通りモデルを作成して`export`します。
+`models` に登録されていなかった場合、通常通りモデルを作成して `export` します。
 

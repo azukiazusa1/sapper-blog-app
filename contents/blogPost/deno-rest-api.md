@@ -8,13 +8,13 @@ updatedAt: "2021-02-28T00:00+09:00"
 tags: ["TypeScript", "Deno", "MongoDB"]
 published: true
 ---
-この記事では、Denoを使い簡単なCRUD操作を行うREST APIを構築します。
+この記事では、Deno を使い簡単な CRUD 操作を行う REST API を構築します。
 
 # 環境構築
 
 ## Denoのインストール
 
-はじめにDenoをインストールする必要があります。インストール方法は以下のリンクを参照してください。
+はじめに Deno をインストールする必要があります。インストール方法は以下のリンクを参照してください。
 [https://deno.land/#installation](https://deno.land/#installation)
 
 よく使いそうな方法をいくつか記載しておきます。
@@ -52,10 +52,10 @@ typescript 4.1.4
 [Deno for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno)
 （これを入れないと型が全く効きません・・・）
 
-拡張をインストールしたら、プロジェクトのルートディレクトリで`Ctrl+Shift+P`でコマンドパレットを開き、`Deno Initialize Workspace Configuration`を選択します。
+拡張をインストールしたら、プロジェクトのルートディレクトリで `Ctrl+Shift+P` でコマンドパレットを開き、`Deno Initialize Workspace Configuration` を選択します。
 
-いくつか対話形式で選択肢が表示されますが、すべてYesで大丈夫です。
-完了したら、`.vscode/setting.json`が生成されているはずです。
+いくつか対話形式で選択肢が表示されますが、すべて Yes で大丈夫です。
+完了したら、`.vscode/setting.json` が生成されているはずです。
 
 ```json:.vscode/setting.json
 {
@@ -65,16 +65,16 @@ typescript 4.1.4
 }
 ```
 
-APIを叩くために、下記拡張も使用します。
+API を叩くために、下記拡張も使用します。
 
 [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
-curlやPostmanなどが好きなツールでも問題ありません。
+curl や Postman などが好きなツールでも問題ありません。
 
 # サーバーのセットアップ
 
-まずは簡単な`Hello World!`を返すアプリケーションを構築します。
-ルートディレクトリに`src`フォルダを作成しその中に`server.ts`ファイルを作成します。
+まずは簡単な `Hello World!` を返すアプリケーションを構築します。
+ルートディレクトリに `src` フォルダを作成しその中に `server.ts` ファイルを作成します。
 
 ```ts:src/server.ts
 import { Application, Router, RouterContext } from "https://deno.land/x/oak@v6.5.0/mod.ts";
@@ -103,48 +103,48 @@ app.use(router.allowedMethods());
 await app.listen({ port: 8080 });
 ```
 
-サーバーのルーティングフレームワークには[Ork](https://github.com/oakserver/oak)を使います。Orkは、[Koa](https://github.com/koajs/koa/)に影響を受けています。
+サーバーのルーティングフレームワークには[Ork](https://github.com/oakserver/oak)を使います。Ork は、[Koa](https://github.com/koajs/koa/)に影響を受けています。
 
-DenoではパッケージはURLからインポートします。このとき、`oak@v6.5.0`のように明示的にバージョンを指定するのがよいでしょう。
+Deno ではパッケージは URL からインポートします。このとき、`oak@v6.5.0` のように明示的にバージョンを指定するのがよいでしょう。
 
-`Application`クラスは、`http`パッケージの`serve()`メソッドをラップしたものです。これは`use()`メソッドと`listen()`メソッドを持っています。
-`use()`メソッドはミドルウェアの登録を、`listen()`はサーバーの起動します。
+`Application` クラスは、`http` パッケージの `serve()` メソッドをラップしたものです。これは `use()` メソッドと `listen()` メソッドを持っています。
+`use()` メソッドはミドルウェアの登録を、`listen()` はサーバーの起動します。
 
-また、`Application`クラスのインスタンスは`.addEventListener()`メソッドでイベントを購読することもできます。
-`listen`イベントはサーバーが起動した際に呼び出され、`error`イベントはサーバーでエラーが発生した際に呼び出されます。
+また `Application` クラスのインスタンスは `.addEventListener()` メソッドでイベントを購読することもできます。
+`listen` イベントはサーバーが起動した際に呼び出され、`error` イベントはサーバーでエラーが発生した際に呼び出されます。
 
-`Router`クラスはルーティング機能を提供します。
+`Router` クラスはルーティング機能を提供します。
 
 第一引数にはルートのパス名を受け取り、第二引数のコールバック関数でリクエストの処理を行います。
 
 コールバック関数の引数には[Context](https://github.com/oakserver/oak#context)オブジェクトが渡されます。
 
-この簡単な例では、`ctx.response.body`でリクエストボディに`Hello World!`という文字列を代入することで`Hello World!`と返すようにしています。
+この簡単な例では、`ctx.response.body` でリクエストボディに `Hello World!` という文字列を代入することで `Hello World!` と返すようにしています。
 
-サーバーを起動してみましょう。Denoを実行する際に、`--allow-net`フラグを付与してパーミッションを与える必要があります。
+サーバーを起動してみましょう。Deno を実行する際に、`--allow-net` フラグを付与してパーミッションを与える必要があります。
 
 ```sh
 deno run --allow-net server.ts
 ```
 
-APIをテストします。
-`request.http`というファイルを作成します。
+API をテストします。
+`request.http` というファイルを作成します。
 
 ```http:request.http
 ### echo Hello World!
 http://localhost:8080
 ```
 
-`Send Request`と表示されていると思いますのでクリックしてください。
+`Send Request` と表示されていると思いますのでクリックしてください。
 レスポンス結果が表示されます。
 
 ![hello-world-response](//images.ctfassets.net/in6v9lxmm5c8/5PuD6vadJY82w4R2cTFARy/a820ab29b13fc855c1f55f673978343d/____________________________2021-02-27_23.02.06.png)
 
-しっかりと`Hello World!`という文字列が返されていることがわかります。
+しっかりと `Hello World!` という文字列が返されていることがわかります。
 
 # denonの導入
 
-セットアップが完了したのでここからどんどん実装していきたいところですが、今の状態ですと変更がある度に手動でサーバーを再起動しなければいけません。
+セットアップが完了したのでここからどんどん実装していきたいところですが、今の状態ですと変更があるたびに手動でサーバーを再起動しなければいけません。
 
 それでは面倒ですので、[denon](https://deno.land/x/denon@2.4.7)と呼ばれるパッケージを利用します。
 
@@ -157,13 +157,13 @@ deno install -qAf --unstable https://deno.land/x/denon/denon.ts
 ```
 
 :::message
-インストールにはdenoのバージョン1.4.0以上が必要です。インストールに失敗した人は、`deno upgrade`コマンドを実行してみてください。
+インストールには deno のバージョン 1.4.0 以上が必要です。インストールに失敗した人は、`deno upgrade` コマンドを実行してみてください。
 :::
 
 ## パスを通す
 
-bashで実行できるようにパスを通します。
-(Macの場合です）
+bash で実行できるようにパスを通します。
+（Mac の場合です）
 
 ```sh
 echo 'export PATH="$HOME/.deno/bin:$PATH"' >> ~/.bash_profile
@@ -173,7 +173,7 @@ source ~/.bash_profile
 ## 設定ファイルの生成
 
 下記コマンドで設定ファイルを生成します。
-設定ファイルは必須ではないですが、生成しておくと毎回長いフラグオプションを指定しなくてもよくなります。`npm-scripts`に近いようなものです。
+設定ファイルは必須ではないですが、生成しておくと毎回長いフラグオプションを指定しなくてもよくなります。`npm-scripts` に近いようなものです。
 
 ```sh
 denon init --typescript
@@ -224,12 +224,12 @@ export default config;
 denon start
 ```
 
-これで変更を加える度に自動でサーバーが再起動してくれるようになります。
+これで変更を加えるたびに自動でサーバーが再起動してくれるようになります。
 
 # ルーティングの作成
 
-API用のルーティングを追加していきましょう。
-`src/router.ts`を作成してそこにルーティングを記述していきます。
+API 用のルーティングを追加していきましょう。
+`src/router.ts` を作成してそこにルーティングを記述します。
 
 ```ts:src/router.ts
 import { Router } from "https://deno.land/x/oak@v6.5.0/mod.ts";
@@ -245,7 +245,7 @@ router.delete('/api/v1/books/:id', () => {})
 export { router }
 ```
 
-`server.ts`では、`router.ts`から`router`オブジェクトをインポートして使用します。
+`server.ts` では、`router.ts` から `router` オブジェクトをインポートして使用します。
 
 ```diff:src/server.ts
 - import { Application, Router, RouterContext } from "https://deno.land/x/oak@v6.5.0/mod.ts";
@@ -280,7 +280,7 @@ await app.listen({ port: 8080 });
 
 ルーティングの実際の処理は直接コールバックを記述するのではなく、コントローラーに任せます。
 
-`src/controllers`フォルダを作成して、`booksController.ts`ファイルを作成します。
+`src/controllers` フォルダを作成して、`booksController.ts` ファイルを作成します。
 
 ```ts:src/controllers/booksController.ts
 import { RouterContext, helpers } from "https://deno.land/x/oak@v6.5.0/mod.ts";
@@ -311,7 +311,7 @@ export const booksController = {
 }
 ```
 
-`router.ts`において、コントローラーの処理と対応させます。
+`router.ts` において、コントローラーの処理と対応させます。
 
 ```ts:src/rotuer.ts
 import { Router } from "https://deno.land/x/oak@v6.5.0/mod.ts";
@@ -327,8 +327,8 @@ router.delete('/api/v1/books/:id', booksController.delete)
 export { router }
 ```
 
-ここまで完了したら、APIをテストしてみましょう。
-`request.http`を編集します。
+ここまで完了したら、API をテストしてみましょう。
+`request.http` を編集します。
 
 ```http:request.http
 ### echo Hello World!
@@ -357,14 +357,14 @@ DELETE http://localhost:8080/api/v1/books/1
 # MongoDBのセットアップ
 
 コントローラーの実装に入る前に、データベースを使えるようにしておきます。
-データベースにはMongoDBを利用します。MondoDBはドキュメント型のNoSQLであり、JSONの構造をそのままデータとして保存することができます。
+データベースには MongoDB を利用します。MondoDB はドキュメント型の NoSQL であり、JSON の構造をそのままデータとして保存できます。
 
 ## MondoDBのインストール
 
 ### Mac
 
-次のコマンドを実行して、MongoDBをインストールします。
-ここではHomebrewを使用してインストールしています。
+次のコマンドを実行して、MongoDB をインストールします。
+ここでは Homebrew を使用してインストールしています。
 
 ```sh
 brew tap mongodb/brew
@@ -385,9 +385,9 @@ brew services start mongodb-community@4.2
 
 ## deno_mongoの設定
 
-[deno_mongo](https://deno.land/x/mongo@v0.21.2)は、DenoのMongoDBのデータベースドライバーです。
+[deno_mongo](https://deno.land/x/mongo@v0.21.2)は、Deno の MongoDB のデータベースドライバーです。
 
-`src`フォルダに`db.ts`ファイルを作成します。
+`src` フォルダに `db.ts` ファイルを作成します。
 
 ```ts: src/db.ts
 import { MongoClient } from "https://deno.land/x/mongo@v0.21.0/mod.ts";
@@ -400,21 +400,21 @@ export const db = client.database("deno_rest_api");
 
 接続先は各自の環境に合わせてください。
 
-公式のREADMEには`mongodb://localhost:27017`と記載されていますが、localhostを指定するとエラーになるので`mongodb://127.0.0.1:27017`にする必要がありました。
+公式の README には `mongodb://localhost:27017` と記載されていますが、localhost を指定するとエラーになるので `mongodb://127.0.0.1:27017` にする必要がありました。
 
 ## envの導入
 
-データベースへの接続先は、セキュアな属性でもありますので、`.env`ファイルを作成してそこから読み取るようにします。
+データベースへの接続先は、セキュアな属性でもありますので、`.env` ファイルを作成してそこから読み取るようにします。
 
-`.env`ファイルを作成します。
+`.env` ファイルを作成します。
 
 ```.env
 MONGO_URI=mongodb://localhost:27017
 ```
 
-`.env`ファイルを読み取るために[Dotenv](https://deno.land/x/dotenv@v2.0.0)パッケージを使用します。
+`.env` ファイルを読み取るために[Dotenv](https://deno.land/x/dotenv@v2.0.0)パッケージを使用します。
 
-`db.ts`を修正します。
+`db.ts` を修正します。
 
 ```diff:src/db.ts
 import { MongoClient } from "https://deno.land/x/mongo@v0.21.0/mod.ts";
@@ -427,8 +427,8 @@ const client = new MongoClient();
 export const db = client.database("deno_rest_api");
 ```
 
-さらに、Deno`.env`ファイルを読み取るためには`--allow-env`フラグと`--allow-read`フラグを付与する必要があります。
-`scripts.config.ts`を修正しましょう。
+さらに、Deno`.env` ファイルを読み取るためには `--allow-env` フラグと `--allow-read` フラグを付与する必要があります。
+`scripts.config.ts` を修正しましょう。
 
 ```diff:scripts.config.ts
 
@@ -449,13 +449,13 @@ const config: DenonConfig = {
 export default config;
 ```
 
-`scripts.config.ts`を修正したら、`Ctrl + c`で一旦denonプロセスを終了し再度起動する必要があります。
+`scripts.config.ts` を修正したら、`Ctrl + c` でいったん denon プロセスを終了し再度起動する必要があります。
 
 # モデルの作成
 
-MongoDBに接続できるようにしたので、DBとのやり取りを行うためのモデルを作成します。
+MongoDB に接続できるようにしたので、DB とのやり取りを行うためのモデルを作成します。
 
-`src/models`ファイルを作成し、`Books.ts`ファイルを作成します。
+`src/models` ファイルを作成し、`Books.ts` ファイルを作成します。
 
 ```ts: src/models/Books.ts
 import { db } from "../db.ts";
@@ -506,7 +506,7 @@ export class Book {
 
 ## createアクションの実装
 
-それでは、コントローラーの実装に入ります。まずは、createアクションから実装していきます。
+それでは、コントローラーの実装に入ります。まずは、create アクションから実装します。
 
 ```ts:src/controller.ts
 import { RouterContext, helpers } from "https://deno.land/x/oak@v6.5.0/mod.ts";
@@ -528,10 +528,10 @@ import { Book } from '../models/Book.ts'
   },
 ```
 
-`request.body()`からリクエストボディを取得して、`result.value`で値を取得します。
-`result.value`は`Promise`を返しますので`await`する必要があります。
+`request.body()` からリクエストボディを取得して、`result.value` で値を取得します。
+`result.value` は `Promise` を返しますので `await` する必要があります。
 
-モデルの`save()`メソッドも実装しましょう。
+モデルの `save()` メソッドも実装しましょう。
 
 ```ts:src/models/Book.ts
 export class Book {
@@ -548,9 +548,9 @@ export class Book {
 }
 ```
 
-コレクションの`insertOne()`メソッドでプロパティを指定して挿入することができます。
+コレクションの `insertOne()` メソッドでプロパティを指定して挿入できます。
 
-`request.http`からPOSTリクエストを送信してみましょう。
+`request.http` から POST リクエストを送信してみましょう。
 
 ```http:request.http
 ### Create Book
@@ -581,23 +581,23 @@ content-type: application/json; charset=utf-8
 
 データベースにデータが挿入されているか確認してみましょう。
 
-ターミナルで以下のコマンドにより対話形式でMongoDBを操作できます。
+ターミナルで以下のコマンドにより対話形式で MongoDB を操作できます。
 
 ```sh
 mongo
 ```
 
-`use [データベース名]`でデータベースを切り替えます。今回は`deno_rest_api`というデータベース名で作成しています。
-(`db.ts`において、`client.database()`に指定した名前です)
+`use [データベース名]` でデータベースを切り替えます。今回は `deno_rest_api` というデータベース名で作成しています。
+（`db.ts` において、`client.database()` に指定した名前です）
 
 ```sh
 > use deno_rest_api
 switched to db deno_rest_api
 ```
 
-データベースのコレクションのドキュメント一覧を参照するには、`db.[コレクション名].find();`というコマンドを使用します。
-コレクション名は`books`です。
-(`models/Book.ts`において`db.collection<T>()`で指定した名前です）
+データベースのコレクションのドキュメント一覧を参照するには、`db.[コレクション名].find();` というコマンドを使用します。
+コレクション名は `books` です。
+（`models/Book.ts` において `db.collection<T>()` で指定した名前です）
 
 ```sh
 > db.books.find()
@@ -609,7 +609,7 @@ switched to db deno_rest_api
 
 ## getAllアクションの実装
 
-続いていgetAllアクションを実装します。このアクションではbooksコレクションの全てのドキュメントを返すようにします。
+続いてい getAll アクションを実装します。このアクションでは books コレクションのすべてのドキュメントを返すようにします。
 
 ```ts:src/controllers/booksController.ts
   async getAll(ctx: RouterContext) {
@@ -618,7 +618,7 @@ switched to db deno_rest_api
   },
 ```
 
-モデルの`findAll()`メソッドを実装します。
+モデルの `findAll()` メソッドを実装します。
 
 ```ts:src/models/Book.ts
 export class Book {
@@ -668,12 +668,12 @@ content-type: application/json; charset=utf-8
 
 ## getアクションの実装
 
-getアクションでは、IDを指定して特定のbookを取得します。
-IDは動的パス`:id`から取得します。
+get アクションでは、ID を指定して特定の book を取得します。
+ID は動的パス `:id` から取得します。
 
-これは`context.params.id`でも取得できますが、`helpers.getQuery()`メソッドを使うとよしなにオブジェクトで取得できます。
+これは `context.params.id` でも取得できますが、`helpers.getQuery()` メソッドを使うとよしなにオブジェクトで取得できます。
 
-ドキュメントが取得できなかった場合には404を返すようにします。
+ドキュメントが取得できなかった場合には 404 を返すようにします。
 
 ```ts:src/controllers/booksController.ts
   async get(ctx: RouterContext) {
@@ -689,7 +689,7 @@ IDは動的パス`:id`から取得します。
   },
 ```
 
-モデルの`findById()`メソッド実装です。
+モデルの `findById()` メソッド実装です。
 
 ```ts:src/models/Book.ts
 export class Book {
@@ -708,9 +708,9 @@ export class Book {
 }  
 ```
 
-MongoDBのオブジェクトIDで取得する際には、文字列で渡された`id`を`mongo`パッケージの`Bson`によって変換する必要があります。
+MongoDB のオブジェクト ID で取得する際には、文字列で渡された `id` を `mongo` パッケージの `Bson` によって変換する必要があります。
 
-IDを指定してリクエストを送信しましょう。
+ID を指定してリクエストを送信しましょう。
 
 ```
 ### Get Books by ID
@@ -732,10 +732,10 @@ content-type: application/json; charset=utf-8
 
 ## updateアクション
 
-続いてupdateアクションです。
-`findById()`でドキュメントを取得してから`update`メソッドを呼び出します。
+続いて update アクションです。
+`findById()` でドキュメントを取得してから `update` メソッドを呼び出します。
 
-リクエストパラメータの取得はcreateアクションと同様です。
+リクエストパラメータの取得は create アクションと同様です。
 
 ```ts: src/controllers.ts
   async update(ctx: RouterContext) {
@@ -754,7 +754,7 @@ content-type: application/json; charset=utf-8
   },
 ```
 
-モデルの`update`メソッドです。
+モデルの `update` メソッドです。
 
 ```ts: src/models/Book.ts
 export class Book {
@@ -772,7 +772,7 @@ export class Book {
 }
 ```
 
-コレクションの`updateOne()`メソッドは第一引数にクエリの条件を指定して、第二引数にセットするデータを渡します。
+コレクションの `updateOne()` メソッドは第一引数にクエリの条件を指定して、第二引数にセットするデータを渡します。
 
 リクエストを送信してみましょう。
 
@@ -803,7 +803,7 @@ content-type: application/json; charset=utf-8
 
 ## deleteアクション
 
-最後にdeleteアクションです。
+最後に delete アクションです。
 
 ```ts:src/controllers/booksController.ts
   async delete(ctx: RouterContext) {
@@ -814,7 +814,7 @@ content-type: application/json; charset=utf-8
   }
 ```
 
-モデルの`delete()`メソッドのジッどうです。
+モデルの `delete()` メソッドのジッどうです。
 
 ```ts:src/models/Book.ts
 export class Book {
@@ -841,12 +841,12 @@ content-length: 0
 
 # 終わりに
 
-簡単なREST APIをDenoで作成してみました。
+簡単な REST API を Deno で作成してみました。
 
 すべてのソースコードはこちらから参照できます。
 
 [https://github.com/azukiazusa1/deno-rest-api](https://github.com/azukiazusa1/deno-rest-api)
 
-サードパーティのパッケージも揃っていた特に困ることがなく実装することができました。
-とはいえ、`unstatable`オプションを付与する必要があるのでまだ時期尚早といったところでしょうか。
+サードパーティのパッケージも揃っていた特に困ることがなく実装できました。
+とはいえ、`unstatable` オプションを付与する必要があるのでまだ時期尚早といったところでしょうか。
 

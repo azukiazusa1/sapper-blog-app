@@ -8,13 +8,13 @@ updatedAt: "2021-05-02T00:00+09:00"
 tags: ["Kubernetes"]
 published: true
 ---
-etcdは、kubernetesのクラスターの情報を保存するkey-valueストアです。
+etcd は、kubernetes のクラスターの情報を保存する key-value ストアです。
 
-etcdのバックアップ・リストアなどの操作は`etcdctl`コマンドを使用します。
+etcd のバックアップ・リストアなどの操作は `etcdctl` コマンドを使用します。
 
-[etcdctlのドキュメント](https://etcd.io/docs/)はCKAやCKADの試験中には参照することができないので注意してください。
+[etcdctlのドキュメント](https://etcd.io/docs/)は CKA や CKAD の試験中には参照できないので注意してください。
 
-普通にコマンドを実行しようとするとv2のコマンドが使われてしまうので、v3 APIを使うために基本的に`ETCDCTL_API=3`と環境変数を設定します。
+普通にコマンドを実行しようとすると v2 のコマンドが使われてしまうので、v3 API を使うために基本的に `ETCDCTL_API=3` と環境変数を設定します。
 
 # etcdのバックアップ
 
@@ -25,7 +25,7 @@ $ /etc/kubernetes/manifests
 $ cat etcd.yamlcat etcd.yaml
 ```
 
-`command`を確認します。
+`command` を確認します。
 
 ```sh
 spec:
@@ -51,7 +51,7 @@ spec:
     - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
 ```
 
-下記のetcdのバックアップのコマンドを`command`で確認した値で置き換えて実行します。
+下記の etcd のバックアップのコマンドを `command` で確認した値で置き換えて実行します。
 
 ```sh
 ETCDCTL_API=3 etcdctl --endpoints=<advertise-client-urls> \
@@ -61,7 +61,7 @@ ETCDCTL_API=3 etcdctl --endpoints=<advertise-client-urls> \
 
 https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster
 
-例えば、`<trusted-ca-file>`の部分は`--trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt`の値で置き換えます。
+例えば、`<trusted-ca-file>` の部分は `--trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt` の値で置き換えます。
 
 ```sh
 $ ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 \
@@ -83,7 +83,7 @@ $ ETCDCTL_API=3 etcdctl --write-out=table snapshot status backup.db
 
 # etcdのリストア
 
-etcdのリストア方法には、リストア対象のファイルが先程の
+etcd のリストア方法には、リストア対象のファイルがさきほどの
 バックアップの操作から続けて行われているか、別のディレクトリから行われているかで操作が異なります。
 まずは前者の方法から見ていきます。
 
@@ -97,15 +97,15 @@ ETCDCTL_API=3 etcdctl --endpoints <advertise-client-urls> snapshot restore backu
 
 ## リストア対象のファイルが別のディレクトリの場合
 
-`--data-dir`オプションでリストア先を指定します。
+`--data-dir` オプションでリストア先を指定します。
 
 ```sh
 ETCDCTL_API=3 etcdctl  --data-dir /var/lib/etcd-from-backup \
      snapshot restore backup.db
 ```
 
-その後、`/etc/kubernetes/manifests/etcd.yaml`を編集します。
-先程`--data-dir`で指定したリストア先のディレクトリで`etcd-data`ボリュームを置き換えます。
+その後、`/etc/kubernetes/manifests/etcd.yaml` を編集します。
+さきほど `--data-dir` で指定したリストア先のディレクトリで `etcd-data` ボリュームを置き換えます。
 
 ```yaml
 volumes:

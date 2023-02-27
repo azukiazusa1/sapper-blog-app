@@ -14,7 +14,7 @@ https://pnpm.io/ja/
 
 npm と互換性を持ち、以下のような特徴があります。
 
-- 他のツールと比較して最大2倍高速
+- 他のツールと比較して最大 2 倍高速
 - ディスク容量を効率化
 - 厳格なパッケージ管理で、`package.json` に記載のあるものにしかアクセスできない
 
@@ -52,7 +52,7 @@ dependencies:
 
 ### ディスク容量が節約された node_modules
 
-「Packages are hard linked from the content-addressable store to the virtual store.」と表示されているとおり、パッケージの実態ファイルははすべてグローバルに管理される Content-addressable store（コンテンツ探索可能なストア）に配置されます。MacOS では `~/Library/pnpm/store/v3` がデフォルトの配置場所となります。`node_modules` に存在するすべてのパッケージに含まれるファイルはコンテンツストアへのハードリンクです。
+「Packages are hard linked from the content-addressable store to the virtual store.」と表示されているとおり、パッケージの実態ファイルはすべてグローバルに管理される Content-addressable store（コンテンツ探索可能なストア）に配置されます。MacOS では `~/Library/pnpm/store/v3` がデフォルトの配置場所となります。`node_modules` に存在するすべてのパッケージに含まれるファイルはコンテンツストアへのハードリンクです。
 
 すべてのパッケージについて `node_moduels` にハードリンクを作成したら、入れ子になった依存関係のグラフ構造を反映するシンボリックリンクを作成します。
 
@@ -77,7 +77,7 @@ node_modules/
 └── .modules.yaml
 ```
 
-このように、npm や yarn と異なりパッケージはすべてコンテンツ探索可能なストアに格納されるので、異なるプロジェクト間で同じバージョンのパッケージがある場合共有することができます。そのため、ディスク容量を節約と、インストールの高層化が実現できます。
+このように、npm や yarn と異なりパッケージはすべてコンテンツ探索可能なストアに格納されるので、異なるプロジェクト間で同じバージョンのパッケージがある場合共有できます。そのため、ディスク容量を節約と、インストールの高層化が実現できます。
 
 ### 厳格なパッケージ管理
 
@@ -117,7 +117,7 @@ assert.ok(bodyParser);
 
 上記のような問題を防ぐ唯一の方法は、`body-parser` もまた明示的にインストールして使用することです。
 
-一方 pnpm の場合はどうでしょう。先程と全く同じコードを実行しています。
+一方 pnpm の場合はどうでしょう。さきほどと全く同じコードを実行しています。
 
 ```js:pnpm-repo/index.mjs
 import bodyParser from "body-parser";
@@ -161,7 +161,7 @@ pnpm install body-parser
 
 https://pnpm.io/benchmarks
 
-また、Yarn が公開しているベンチマークも確認できます。こちらも同様に pnpm が良い結果を残しています。
+また Yarn が公開しているベンチマークも確認できます。こちらも同様に pnpm が良い結果を残しています。
 
 ![スクリーンショット 2022-07-24 17.25.42](//images.ctfassets.net/in6v9lxmm5c8/2x2bjDHwP3rAnRwzEKOsO0/da986bb780ee2e9a0e80a2c68dffe6cf/____________________________2022-07-24_17.25.42.png)
 

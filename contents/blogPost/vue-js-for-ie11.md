@@ -8,11 +8,11 @@ updatedAt: "2021-04-18T00:00+09:00"
 tags: ["Babel", "JavaScript", "Vue.js", "IE11"]
 published: true
 ---
-Vue CLI3の使用を前提としています。
+Vue CLI3 の使用を前提としています。
 
 # browserslist
 
-`package.json`の`browerlist`を修正します。
+`package.json` の `browerlist` を修正します。
 
 ```json
   "browserslist": [
@@ -23,19 +23,19 @@ Vue CLI3の使用を前提としています。
   ]
 ```
 
-`browserlist`とは、`Babel`や`Autoprefixer`などのツールがどのブラウザを対象にするか決定する設定です。複数のツールに対して開発対象ブラウザを共有できるのが特徴です。
-`package.json`に記載する代わりに`.browserslistrc`ファイルを作成して記載することもできます。
+`browserlist` とは、`Babel` や `Autoprefixer` などのツールがどのブラウザを対象にするか決定する設定です。複数のツールに対して開発対象ブラウザを共有できるのが特徴です。
+`package.json` に記載する代わりに `.browserslistrc` ファイルを作成して記載することもできます。
 
 - `> 1%`
-  -  これは世界の使用状況統計で1%より上のブラウザを対象とする設定。
+  -  これは世界の使用状況統計で 1%より上のブラウザを対象とする設定。
 - `last 2 versions`
-  - `設定によって対象になったブラウザの2バージョン前までを対象とする設定。
+  - `設定によって対象になったブラウザの 2 バージョン前までを対象とする設定。
 - `not dead`
-  - 24ヶ月以内に公式のサポートがされていないブラウザを対象から外す設定。例えば、IE 10`など
+  - 24 ヶ月以内に公式のサポートがされていないブラウザを対象から外す設定。例えば、IE 10`など
 - `ie 11`
-  - このように特定のブラウザを対象とすることもできます。`> 1%`と`last 2 versions`でO`IE 11`は対象となるはずですが、念の為記載しておきます。
+  - このように特定のブラウザを対象とすることもできます。`> 1%` と `last 2 versions` で O`IE 11` は対象となるはずですが、念のため記載しておきます。
 
-設定ファイルによって実際にどのブラウザが対象とされるのかを確認することができます。
+設定ファイルによって実際にどのブラウザが対象とされるのかを確認できます。
 
 ```sh
 $ npx browserslist
@@ -67,16 +67,16 @@ samsung 13.0
 samsung 12.0
 ```
 
-すべての設定方法は公式のREADMEから確認してください。
+すべての設定方法は公式の README から確認してください。
 
 https://github.com/browserslist/browserslist
 
 ### 小ネタ 本当に1%のシェアのブラウザを対象とする必要があるの？
 
-`browserlist`はデフォルトで`"> 1%", "last 2 versions","not dead"`と設定されているので大抵のブラウザでJavaScriptを動作させることが可能です。
+`browserlist` はデフォルトで `"> 1%", "last 2 versions","not dead"` と設定されているので大抵のブラウザで JavaScript を動作させることが可能です。
 
 しかし、常にトランスパイル後のファイルサイズが増大するという欠点があります。
-例えば、`async/await`を利用した簡単なコード例でも、上記の設定だとファイルサイズが大きく膨れ上がっていることがわかります。
+例えば、`async/await` を利用した簡単なコード例でも、上記の設定だとファイルサイズが大きく膨れ上がっていることがわかります。
 
 - before
 ```js
@@ -133,15 +133,15 @@ var api = /*#__PURE__*/function () {
 console.log(api());
 ```
 
-`async/await`構文が利用できるのは、ES2017からですが実は**95%**のブラウザではすでに対応済です。つまり、ほとんどのブラウザに対しても対応している構文であるにも関わらず、不要なトランスパイルによってファイルサイズを増大させてしまっているとも言えます。
+`async/await` 構文が利用できるのは、ES2017 からですが実は**95%**のブラウザではすでに対応済です。つまり、ほとんどのブラウザに対しても対応している構文であるにも関わらず、不要なトランスパイルによってファイルサイズを増大させてしまっているとも言えます。
 
-実際に、対象ブラウザをシェア98%から95%にすることによって、**9%**パフォーマンスが改善したという結果が報告されている興味深い記事があります。
+実際に、対象ブラウザをシェア 98%から 95%にすることによって、**9%**パフォーマンスが改善したという結果が報告されている興味深い記事があります。
 
 https://web.dev/publish-modern-javascript/
 
 # babel.config.js
 
-次に`babel.config.js`の設定を変更します。
+次に `babel.config.js` の設定を変更します。
 
 ```js
 module.exports = {
@@ -156,8 +156,8 @@ module.exports = {
 }
 ```
 
-`"useBuiltIns": "entry"`の設定にすると、**すべてのpolyfill**を読み込むようになります。この場合、エントリーファイルの先頭で手動でpolyfillをimportする必要があります。
-`main.{j,t}s`ファイルが実際の記述箇所となるでしょう。
+`"useBuiltIns": "entry"` の設定にすると、**すべてのpolyfill**を読み込むようになります。この場合、エントリーファイルの先頭で手動で polyfill を import する必要があります。
+`main.{j,t}s` ファイルが実際の記述箇所となるでしょう。
 
 - main.ts
 
@@ -166,12 +166,12 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 ```
 
-`@babel/polyfil`をimportするように書いてある記事もありますが、これはBabel 7.4.0から非推奨となっています。
-`core-js`は様々なpolifillを含んでいるライブラリです。`regenerator-runtime/runtime`ではyield構文、つまりは`async/await`をサポートします。
+`@babel/polyfil` を import するように書いてある記事もありますが、これは Babel 7.4.0 から非推奨となっています。
+`core-js` はさまざまな polifill を含んでいるライブラリです。`regenerator-runtime/runtime` では yield 構文、つまりは `async/await` をサポートします。
 
 # vue.config.js
 
-`vue.config.js`ファイルで`transpileDependencies`オプションを設定します。デフォルトではBabelは`node_modules`配下のファイルをトランスパイル対象に含みません。依存関係を明示的にトランスパイルするためには、このオプションのリストに追加する必要があります。
+`vue.config.js` ファイルで `transpileDependencies` オプションを設定します。デフォルトでは Babel は `node_modules` 配下のファイルをトランスパイル対象に含みません。依存関係を明示的にトランスパイルするためには、このオプションのリストに追加する必要があります。
 
 例えば、[Vuetiry](https://vuetifyjs.com/en/getting-started/browser-support/#vue-cli)を利用している場合には以下のように追加します。
 
@@ -187,14 +187,14 @@ module.exports = {
 
 # AutoPrefixer
 
-IE 11を完全に攻略するためにはJavaScriptだけでなくCSSも気にかける必要があるでしょう。
-例えば、[grid](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout)はとても強力な機能ですが、IE 11には対応していません。
+IE 11 を完全に攻略するためには JavaScript だけでなく CSS も気にかける必要があるでしょう。
+例えば、[grid](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout)はとても強力な機能ですが、IE 11 には対応していません。
 
-IE 11でgridを適応させるためにはベンダープレフィックスを付与する必要がありますが、それを自動的に行なってくれるのがAutoPrefixerです。
+IE 11 で grid を適用させるためにはベンダープレフィックスを付与する必要がありますが、それを自動的に行なってくれるのが AutoPrefixer です。
 
 https://github.com/postcss/autoprefixer
 
-Vue CLI3ではルートディレクトリに`postcss.config.js`か`.postcssrc`を設置すればよしなに読みこでくれます。
+Vue CLI3 ではルートディレクトリに `postcss.config.js` か `.postcssrc` を設置すればよしなに読みこでくれます。
 
 ```sh
 $ npm install --save-dev autoprefixer
@@ -214,7 +214,7 @@ module.exports = {
 
 # IE 11に対応しているけど表示がおかしくなるCSS
 
-表題の通り、[position: absolte](https://stackoverflow.com/questions/30335052/absolute-positioning-error-in-internet-explorer-11)や[display: flex](https://qiita.com/hashrock/items/189db03021b0f565ae27)や[calc](https://anote.work/2978)などIE 11で表示したときだけ表示が崩れる涙を流したくなるような現実があります。
+表題のとおり、[position: absolte](https://stackoverflow.com/questions/30335052/absolute-positioning-error-in-internet-explorer-11)や[display: flex](https://qiita.com/hashrock/items/189db03021b0f565ae27)や[calc](https://anote.work/2978)など IE 11 で表示したときだけ表示が崩れる涙を流したくなるような現実があります。
 
 これはもはやツールではどうしようもないので手動で確認しながら対応していく必要があります。辛い。
 

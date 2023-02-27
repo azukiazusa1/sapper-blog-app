@@ -42,7 +42,7 @@ ESModules として扱いたいので `package.json` に `"type": "module"` を�
 npm i -D typescript @tsconfig/node-lts-strictest-esm ts-node
 ```
 
-`@tsconfig/node-lts-strictest-esm` は [TSConfig bases](https://github.com/tsconfig/bases) から提供されているパッケージの1つです。TSConifg bases はフレームワークごとに最適な設定の TSConfig を公開しているレポジトリです。それぞれの TSConfig は npm パッケージとして提供されています。今回使用している `@tsconfig/node-lts-strictest-esm` は Node LTS + ESM かつ厳格な設定となっています。
+`@tsconfig/node-lts-strictest-esm` は [TSConfig bases](https://github.com/tsconfig/bases) から提供されているパッケージの 1 つです。TSConifg bases はフレームワークごとに最適な設定の TSConfig を公開しているレポジトリです。それぞれの TSConfig は npm パッケージとして提供されています。今回使用している `@tsconfig/node-lts-strictest-esm` は Node LTS + ESM かつ厳格な設定となっています。
 
 TSConfig bases は `tsconfig.json` を作成して `extends` にパッケージを記述するだけで設定を適用できます。
 
@@ -282,7 +282,7 @@ VSCode の拡張子の画面から歯車アイコン → Add to Workspace Recomm
 
 ![VSCode の Vitest 拡張子のページ。歯車アイコンを押した後のポップアップメニューが表示されている。ポップアップメニューの中に「Add to Workspace Recommendations」がある](//images.ctfassets.net/in6v9lxmm5c8/6mFXPoAQLwDxEZM5i1gNuB/0e786d68409ec44060c311ef71598813/____________________________2023-02-19_10.50.34.png)
 
-おすすめの拡張子として ESLint,Prettier,Vitest の3つを追加しておきました。
+おすすめの拡張子として ESLint,Prettier,Vitest の 3 つを追加しておきました。
 
 ```json:.vscode/extensions.json
 {

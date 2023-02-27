@@ -8,28 +8,21 @@ updatedAt: "2021-08-01T00:00+09:00"
 tags: ["Jest"]
 published: true
 ---
----
-title: "Jest setTimeout()のようなでタイマー関数をテストする"
-emoji: "⏱️"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["jest", "typescript"]
-published: false
----
 
- JavaScriptには、以下のような時間に関する関数が用意されています。
+ JavaScript には、以下のような時間に関する関数が用意されています。
 
  - `setTimeout`
  - `setInterval`
  - `clearTimeout`
  - `clearInterval`
 
-例えば、`setTimeout`は第1引数で渡したコールバック関数を第2引数で渡したミリ秒後に実行します。
+例えば、`setTimeout` は第 1 引数で渡したコールバック関数を第 2 引数で渡したミリ秒後に実行します。
 
-標準で用意されている非常に便利な関数群ですが、ユニットテストを記述するときには少々困りものです。`setTimeout`のコールバック関数に渡した処理が正しく呼び出されているかどうか調べたいようない場合には、`setTimeout`のコールバックが呼び出されるまで待機する処理を挟む必要があります。
+標準で用意されている非常に便利な関数群ですが、ユニットテストを記述するときには少々困りものです。`setTimeout` のコールバック関数に渡した処理が正しく呼び出されているかどうか調べたいようない場合には、`setTimeout` のコールバックが呼び出されるまで待機する処理を挟む必要があります。
 
-`setTimeout`に渡したミリ秒の値が大きい場合はタイムアウトを起こす可能性がありますし、何よりテストのたびに長時間待つには耐えられません。
+`setTimeout` に渡したミリ秒の値が大きい場合はタイムアウトを起こす可能性がありますし、何よりテストのたびに長時間待つには耐えられません。
 
-以上の問題を解決するために、Jestにはタイマー関数をモックする便利な機能が備わっています。
+以上の問題を解決するために、Jest にはタイマー関数をモックする便利な機能が備わっています。
 
 - `jest.useFakeTimers()`
 - `jest.useRealTimers()`
@@ -54,9 +47,9 @@ export const echoAfterMinutes = (word: string, minutes: number) => {
 }
 ```
 
-`echo`関数に渡したワードと何分後に呼び出すかを決める引数を受け取るシンプルな関数です。
+`echo` 関数に渡したワードと何分後に呼び出すかを決める引数を受け取るシンプルな関数です。
 
-テストコードは以下の通りです
+テストコードは以下のとおりです。
 
 ```ts
 import { echoAfterMinutes } from '../echoAfterMinutes'
@@ -79,10 +72,10 @@ describe('echoAfterMinutes', () => {
 })
 ```
 
-`jest.useFakeTimers()`を呼び出していることに注目してください。この関数を呼び出すことによって偽のタイマーを有効化しています。
+`jest.useFakeTimers()` を呼び出していることに注目してください。この関数を呼び出すことによって偽のタイマーを有効化しています。
 
 偽のタイマーが有効になっているときには、いかなるタイマーがストップします。
-そのため、以下のように`setTimeout`のコールバック関数のなかでモック関数が正しく呼び出されているかどうかのテストは失敗します。
+そのため、以下のように `setTimeout` のコールバック関数のなかでモック関数が正しく呼び出されているかどうかのテストは失敗します。
 
 ```ts
 import { echo } from '../echo'
@@ -137,7 +130,7 @@ describe('echoAfterMinutes', () => {
 
 ## すべてのモックタイマーを実行する
 
-上記の問題を解決するために、`jest.runAllTimers()`を呼び出しすべての偽のタイマーを即時に実行するようにします。
+上記の問題を解決するために、`jest.runAllTimers()` を呼び出しすべての偽のタイマーを即時に実行するようにします。
 
 ```ts
   it('引数で指定した時間(分)後に指定したワードでechoを呼び出す', () => {
@@ -159,7 +152,7 @@ describe('echoAfterMinutes', () => {
 
 ## 指定した時間だけタイマーをすすめる
 
-`jest.advanceTimersByTime(msToRun)`を使うと、タイマーを即座に実行するのではなく、指定したミリ秒分だけタイマーをすすめることができます。
+`jest.advanceTimersByTime(msToRun)` を使うと、タイマーを即座に実行するのではなく、指定したミリ秒分だけタイマーをすすめることができます。
 
 ```ts
 it('3分経過するまでは呼ばれない', () => {
@@ -181,9 +174,9 @@ it('3分経過するまでは呼ばれない', () => {
 
 ## 待機中のタイマーのみを実行する
 
-`jest.runAllTimers()`ではすべてのタイマーを一度に実行します。
+`jest.runAllTimers()` ではすべてのタイマーを一度に実行します。
 
-そのため、例えば以下のように`setTimeout`が再帰的に実行されるとき、すべてのタイマーを呼び出してしまうと無限ループが発生してしまいます。
+そのため、例えば以下のように `setTimeout` が再帰的に実行されるとき、すべてのタイマーを呼び出してしまうと無限ループが発生してしまいます。
 
 ```ts
 export const recursionEchoAfterMinutes = (word: string, minutes: number) => {
@@ -209,9 +202,9 @@ export const recursionEchoAfterMinutes = (word: string, minutes: number) => {
   })
 ```
 
-このような場合には`jest.runAllTimers()`の代わりに`jest.runOnlyPendingTimers()`を使用します。
+このような場合には `jest.runAllTimers()` の代わりに `jest.runOnlyPendingTimers()` を使用します。
 
-`jest.runOnlyPendingTimers()`は現時点で保留中のタイマーのみを実行するので、一度に一回ずつタイマーを進めることができます。
+`jest.runOnlyPendingTimers()` は現時点で保留中のタイマーのみを実行するので、一度に 1 回ずつタイマーを進めることができます。
 
 ```ts
   test('setTimeoutがネストしているとき', () => {
@@ -239,9 +232,9 @@ export const recursionEchoAfterMinutes = (word: string, minutes: number) => {
 
 ## タイマーを通常の動作に復元する
 
-`jest.useFakeTimers()`で偽のタイマーを有効化した場合には、**呼び出した場所に関係なく、すべてのテストに影響を与えます。**（例え`it()`ブロックの中で呼び出したとしてです）
+`jest.useFakeTimers()` で偽のタイマーを有効化した場合には、**呼び出した場所に関係なく、すべてのテストに影響を与えます。**（例え `it()` ブロックの中で呼び出したとしてです）
 
-タイマーを通常の動作に復元したい場合には`jest.useRealTimers()`を呼び出します。`jest.useRealTimers()`もまたすべてのテストに影響を与えます。
+タイマーを通常の動作に復元したい場合には `jest.useRealTimers()` を呼び出します。`jest.useRealTimers()` もまたすべてのテストに影響を与えます。
 
 ## その他のモックタイマー
 
@@ -253,11 +246,11 @@ export const recursionEchoAfterMinutes = (word: string, minutes: number) => {
 
 ### `jest.runAllImmediates()`
 
-`setImmediate()`によってキューイングされたすべてのタスクを処理します。
+`setImmediate()` によってキューイングされたすべてのタスクを処理します。
 
 ### `jest.advanceTimersToNextTimer(steps)`
 
-`jest.runOnlyPendingTimers()`のように働きますが、引数によって1度に複数のタイマーを進めることができます。
+`jest.runOnlyPendingTimers()` のように働きますが、引数によって 1 度に複数のタイマーを進めることができます。
 
 ```ts
 recursionEchoAfterMinutes('test', 5);
