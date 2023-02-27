@@ -8,43 +8,43 @@ updatedAt: "2021-09-12T00:00+09:00"
 tags: ["Vue.js"]
 published: true
 ---
-Vue 3が正式リリースされてから約1年が経過しました。
+Vue 3 が正式リリースされてから約 1 年が経過しました。
 
-Vuetifyのリリース目標である2021年Q3も近づく中でそろそろVue3へのアップデートを検討されている方もいらっしゃることでしょうか？
+Vuetify のリリース目標である 2021 年 Q3 も近づく中でそろそろ Vue3 へのアップデートを検討されているほうもいらっしゃることでしょうか？
 
-この記事ではVue 2からVue 3への移行手順を記述していきます。
+この記事では Vue 2 から Vue 3 への移行手順を記述します。
 
 参考用のプロジェクトとして以下レポジトリを用意しました。
 
 https://github.com/azukiazusa1/vue3-migrate-test
 
-Vue 2からの移行を体験してみたい場合には、`vue-todo-app`のタグにチェックアウトしてください。
+Vue 2 からの移行を体験してみたい場合には、`vue-todo-app` のタグにチェックアウトしてください。
 
 # 移行ビルドを使用する
 
-Vue 2からVue 3へ移行するためのツールとして、公式から[@vue/compat](https://www.npmjs.com/package/@vue/compat)が提供されています。
+Vue 2 から Vue 3 へ移行するためのツールとして、公式から[@vue/compat](https://www.npmjs.com/package/@vue/compat)が提供されています。
 
-`@vue/compat`を使用すると、Vue 2モードで動作するため、Vue 3で削除や非推奨になったAPIも一部の例外を除いてそのまま使用することができます。Vue3 で削除で非推奨になった機能は実行時に警告が出力されるようになります。この動作は、コンポーネントごと有効と無効を設定することもできます。
+`@vue/compat` を使用すると、Vue 2 モードで動作するため、Vue 3 で削除や非推奨になった API も一部の例外を除いてそのまま使用できます。Vue3 で削除で非推奨になった機能は実行時に警告が出力されるようになります。この動作は、コンポーネントごと有効と無効を設定することもできます。
 
-移行ビルドは将来のマイナーバージョン(2021年の年末移行)で終了する予定なので、それまでに標準ビルドへの切り替えを目指す必要があります。
+移行ビルドは将来のマイナーバージョン（2021 年の年末移行）で終了する予定なので、それまでに標準ビルドへの切り替えを目指す必要があります。
 
-また、アプリケーションの規模が大きく複雑な場合には移行ビルドを使用しても移行困難な場合があります。バージョン2.7のリリース(2021年第3四半期後半予定)でComposiiton APIやその他のVue 3の機能が利用できる予定ですので、Vue 3へ移行をしない選択肢もあるでしょう。
+またアプリケーションの規模が大きく複雑な場合には移行ビルドを使用しても移行困難な場合があります。バージョン 2.7 のリリース（2021 年第 3 四半期後半に予定）で Composiiton API やその他の Vue 3 の機能が利用できる予定ですので、Vue 3 へ移行をしない選択肢もあるでしょう。
 
 ## 注意事項
 
-現在次のような制限事項が存在しているため、マイグレーションツールを適用することができない可能性があります。
+現在次のような制限事項が存在しているため、マイグレーションツールを適用できない可能性があります。
 
-- [Vuetify](https://vuetifyjs.com/en/)・[Quasar](https://quasar.dev/)・[ElemenntUI](https://element.eleme.io/#/en-US)などのコンポーネントライブラリに依存している場合。Vue 3と互換性のあるバージョンがリリースされることを待つ必要があるでしょう。
-- IE11サポート。Vue 3はIE11にサポートを中止しているので、IE11のサポートの必要がある場合にはVue 3への移行できないでしょう。
-- Nuxt.js。Nuxt 3のリリースを待ちましょう。
+- [Vuetify](https://vuetifyjs.com/en/)・[Quasar](https://quasar.dev/)・[ElemenntUI](https://element.eleme.io/#/en-US)などのコンポーネントライブラリに依存している場合。Vue 3 と互換性のあるバージョンがリリースされることを待つ必要があるでしょう。
+- IE11 サポート。Vue 3 は IE11 にサポートを中止しているので、IE11 のサポートの必要がある場合には Vue 3 への移行できないでしょう。
+- Nuxt.js。Nuxt 3 のリリースを待ちましょう。
 
 ## アップグレードの実施
 
-それでは実施にVue 2のアプリケーションをVue 2へ移行する手順を実施してみましょう。
+それでは実施に Vue 2 のアプリケーションを Vue 2 へ移行する手順を実施してみましょう。
 
 ### 非推奨スロット構文の削除
 
-移行手順実施前の手順として、2.6.0で非推奨となった[スロット構文](https://jp.vuejs.org/v2/guide/components-slots.html#%E9%9D%9E%E6%8E%A8%E5%A5%A8%E3%81%AE%E6%A7%8B%E6%96%87)を削除する必要があります。
+移行手順を実施する前の手順として、2.6.0 で非推奨となった[スロット構文](https://jp.vuejs.org/v2/guide/components-slots.html#%E9%9D%9E%E6%8E%A8%E5%A5%A8%E3%81%AE%E6%A7%8B%E6%96%87)を削除する必要があります。
 
 [コミットログ](https://github.com/azukiazusa1/vue3-migrate-test/commit/513bee9967ec9af2633af3697632181704cf01ff)
 
@@ -60,18 +60,18 @@ Vue 2からVue 3へ移行するためのツールとして、公式から[@vue/c
 ### ツールのインストール
 
 必要に応じてツールをアップグレードします。
-参考用のプロジェクトでは`vue-cli`を使用しているので、`vue upgrage`で最新の`@vue/cli-service`アップグレードします。
+参考用のプロジェクトでは `vue-cli` を使用しているので、`vue upgrage` で最新の `@vue/cli-service` アップグレードします。
 
 ```sh
 $ vue upgrage
 ```
 
-今回はすでに最新の`vue-cli`を使用していたので差分は特にありません。
+今回はすでに最新の `vue-cli` を使用していたので差分は特にありません。
 
 続いて以下のバージョンのパッケージをインストールします。
 
 - `vue` => 3.1
-- `@vue/compat` => 3.1（`vue`と同じバージョン）
+- `@vue/compat` => 3.1（`vue` と同じバージョン）
 - `vue-template-compiler` => `@vue/compiler-sfc@3.1.0` に置き換える
 
 ```sh
@@ -86,15 +86,15 @@ $ npm i -D @vue/compiler-sfc@3.1.0
 $ npm uninstall vue-template-compiler -D
 ```
 
-!> `vue-compiler-sfc`の3.2.xを使用していると`Uncaught TypeError: Object(...) is not a function`のようなエラーが発生するので注意します。ここのコミット時点では失敗して1時間くらい溶かしました。
+!> `vue-compiler-sfc` の 3.2.x を使用していると `Uncaught TypeError: Object(...) is not a function` のようなエラーが発生するので注意します。ここのコミット時点では失敗して 1 時間くらい溶かしました。
 
 [コミットログ](https://github.com/azukiazusa1/vue3-migrate-test/commit/5e95cd31f65a6f76d564fdef49b5d2e6ff5146a9)
 
 ### ビルド設定の修正
 
-ビルド設定で、`vue`を`@vue/compat`にエイリアスし、Vueのコンパイラオプションでcompatモードを有効にします。
+ビルド設定で、`vue` を `@vue/compat` にエイリアスし、Vue のコンパイラオプションで compat モードを有効にします。
 
-`vue-cliPでのサンプルは以下の通りです。
+`vue-cliP でのサンプルは以下のとおりです。
 
 - vue.config.js
 
@@ -125,12 +125,12 @@ module.exports = {
 
 ### コンパイルエラーの修正
 
-ここまでの手順を進めた上で、たくさんのコンパイルエラーに遭遇しています。
-それらを1つずつ修正していきましょう。
+ここまでの手順を進めたうえで、たくさんのコンパイルエラーに遭遇しています。
+それらを 1 つずつ修正していきましょう。
 
 #### eslintの修正
 
-`eslint-plugin-vue`の7.xをインストールし、`'plugin:vue/vue3-recommended'`に設定を置き換えます。
+`eslint-plugin-vue` の 7.x をインストールし、`'plugin:vue/vue3-recommended'` に設定を置き換えます。
 
 ```sh
 $ npm i eslint-plugin-vue@7 -D
@@ -149,14 +149,14 @@ extends: [
 ],
 ```
 
-lintを実行してみましょう。いくつかの修正不可能なエラーが出力されますが、後ほど修正します。
+lint を実行してみましょう。いくつかの修正不可能なエラーが出力されますが、後ほど修正します。
 
 ```sh
 $ npm run lint
 ```
 
-lintによって自動で修正された項目もあります。
-`.sync`修飾子が削除され、`v-model`に置き換えられた項目ですね
+lint によって自動で修正された項目もあります。
+`.sync` 修飾子が削除され、`v-model` に置き換えられた項目ですね。
 
 [コンポーネントでの v-model の使用方法が作り直され、 v-bind.sync が置き換えられました](https://v3.ja.vuejs.org/guide/migration/v-model.html#%E6%A6%82%E8%A6%81)
 
@@ -178,17 +178,17 @@ lintによって自動で修正された項目もあります。
 
 #### vue-routerのアップグレード
 
-`vue-router`を使用している場合には、v4へアップグレードします。
+`vue-router` を使用している場合には、v4 へアップグレードします。
 
 ```sh
 npm i vue-router@4
 ```
 
-`vue-router`をアップグレードしたことによっていろいろコンパイルエラーが発生しているの修正していきましょう。
+`vue-router` をアップグレードしたことによっていろいろコンパイルエラーが発生しているの修正していきましょう。
 
 ##### new VueRouter => createRouter
 
-`VueRouter`はクラスではなくなったので、`new VueRouter()`の代わりに`createRouter`を使用します。
+`VueRouter` はクラスではなくなったので、`new VueRouter()` の代わりに `createRouter` を使用します。
 
 - src/router/index.ts
 
@@ -208,8 +208,8 @@ npm i vue-router@4
 
 #### mode: history => history: createWebHistory()
 
-`mode` オプションは削除され、`history` に置き換わります。`mode`に`history`を指定していた場合には、`createWebHistory()`を指定します。
-また、`base`オプションは、`createWebHistory()`の引数として受け取るようになります。
+`mode` オプションは削除され、`history` に置き換わります。`mode` に `history` を指定していた場合には、`createWebHistory()` を指定します。
+また `base` オプションは、`createWebHistory()` の引数として受け取るようになります。
 
 - src/router/index.ts
 
@@ -229,7 +229,7 @@ const router = createRouter({
 
 ##### RouteConfig => RouteRecordRaw
 
-これはそのままTypeScriptのタイプの名前の変更です。
+これはそのまま TypeScript のタイプの名前の変更です。
 
 - src/router/index.ts
 
@@ -245,7 +245,7 @@ Vue.use(VueRouter);
 
 ##### Vue.use(VueRouter)の削除
 
-`Vue.use(VueRouter)`は不要なので削除します。(後ほど正しいrouterの登録方法に置き換えます)
+`Vue.use(VueRouter)` は不要なので削除します。（後ほど正しい router の登録方法に置き換えます）
 
 - src/router/index.ts
 
@@ -260,14 +260,14 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 #### vuexのアップグレード
 
-`vuex`も同様にv4へアップグレードします。
+`vuex` も同様に v4 へアップグレードします。
 
 ```sh
 $ npm i vuex@4
 ```
 
-`vue-router`に比べて差分は少ないので一つにまとめてしまいます。
-`new Vuex.Store`の代わりに`createStore`を使用するのと、`Vue.use(Vuex)`を削除します。
+`vue-router` に比べて差分は少ないので 1 つにまとめてしまいます。
+`new Vuex.Store` の代わりに `createStore` を使用するのと、`Vue.use(Vuex)` を削除します。
 
 - src/store/index.ts
 
@@ -288,17 +288,17 @@ export default createStore({
 
 [コミットログ](https://github.com/azukiazusa1/vue3-migrate-test/commit/f2df7750e2553511e9bfd047ede15d60a71240f2)
 
-#### `Vue`グローバルAPIの修正
+#### `Vue` グローバルAPIの修正
 
-Vue 3の大きな変更点の一つとして、`Vue`グローバルインスタンスが廃止になった点があります。
+Vue 3 の大きな変更点の 1 つとして、`Vue` グローバルインスタンスが廃止になった点があります。
 
-例えば、`new Vue({})`は`createApp`に、`Vue.use()`は`app.use()`に置き換わります。(`app`は`createApp`によって生成されたインスタンスです)
+例えば、`new Vue({})` は `createApp` に、`Vue.use()` は `app.use()` に置き換わります。（`app` は `createApp` によって生成されたインスタンスです）
 
-また、`Vue.config.productionTip`は廃止になっています。
+また `Vue.config.productionTip` は廃止になっています。
 
-##### `main.ts`の修正
+##### `main.ts` の修正
 
-まずは`main.ts`を修正します。
+まずは `main.ts` を修正します。
 
 - src/main.ts 修正前
 
@@ -333,7 +333,7 @@ app.use(store)
 app.mount("#app")
 ```
 
-型エラーが発生するので`shims-vue.d.ts`もついでに修正しておきます
+型エラーが発生するので `shims-vue.d.ts` もついでに修正しておきます。
 
 - 修正前
 
@@ -356,10 +356,10 @@ declare module '*.vue' {
 
 ##### Vue.extendの削除
 
-`Options API`でTypeScriptを使っていた場合、`Vue.extend`を使ってコンポーネントの型推論を提供していました、これも削除されています。
-代わりに`defineComponent`を使用します。
+`Options API` で TypeScript を使っていた場合、`Vue.extend` を使ってコンポーネントの型推論を提供していました、これも削除されています。
+代わりに `defineComponent` を使用します。
 
-コンポーネントすべて置き換える必要があるのでかなり面倒ですね...
+コンポーネントすべて置き換える必要があるのでかなり面倒ですね。.。
 
 ```ts
 - import Vue from "vue";
@@ -371,7 +371,7 @@ declare module '*.vue' {
 
 ##### $storeの型定義
 
-`this.$store`の型定義が失われているので、`vuex.d.ts`ファイルを作成して`this.$store`に型定義を与えます。
+`this.$store` の型定義が失われているので、`vuex.d.ts` ファイルを作成して `this.$store` に型定義を与えます。
 
 ```ts
 import { Store } from "vuex";
@@ -383,9 +383,9 @@ declare module "@vue/runtime-core" {
 }
 ```
 
-#### `$listeners`の削除
+#### `$listeners` の削除
 
-`$listeners`オブジェクトはVue 3で削除され、単に`$attrs`オブジェクトの一部になりました。
+`$listeners` オブジェクトは Vue 3 で削除され、単に `$attrs` オブジェクトの一部になりました。
 
 - src/components/AppInput.vue
 
@@ -413,7 +413,7 @@ export default defineComponent({
 
 #### フィルターの削除
 
-Vue 3ではフィルター構文が削除されました。
+Vue 3 ではフィルター構文が削除されました。
 代わりに単純なメソッドか算出プロパティに置き換えます。
 
 - src/components/TodoItem.vue 変更前
@@ -511,7 +511,7 @@ export default defineComponent({
 
 `VueCompilerError: <template v-for> key should be placed on the <template> tag.`
 
-Vue 2では`<template>`タグに`key`を含めることができなかったため、それぞれの子要素に`key`を配置していました。Vue 3では`<template>`タグに`key`を含めることができるようになったのでこれを修正します。
+Vue 2 では `<template>` タグに `key` を含めることができなかったため、それぞれの子要素に `key` を配置していました。Vue 3 では `<template>` タグに `key` を含めることができるようになったのでこれを修正します。
 
 - src/pages/TodoList.vue
 
@@ -524,21 +524,21 @@ Vue 2では`<template>`タグに`key`を含めることができなかったた�
 +   <todo-item :todo="todo" @delete="deleteTodo" />
 ```
 
-ここまでの手順で問題なくアプリケーションが動作してるかと思います🎉
+ここまでの手順で問題なくアプリケーションが動作してるかと思います🎉。
 
 [コミットログ](https://github.com/azukiazusa1/vue3-migrate-test/commit/a6375bc3da683f365e4cdb78e20053df15d539c9)
 
 ### 個々の警告の修正
 
-`@vue/compat`によってアプリケーションは動作していますが、完全にVue 3へ移行するためにはwarningレベルのエラーも修正する必要があります。
+`@vue/compat` によってアプリケーションは動作していますが、完全に Vue 3 へ移行するためには warning レベルのエラーも修正する必要があります。
 
 ![スクリーンショット 2021-09-12 14.18.22](//images.contentful.com/in6v9lxmm5c8/4w6yp8WBDpUk7UQmT8zyF5/14a6c54420d1c971749c0e15a80e05ee/____________________________2021-09-12_14.18.22.png)
 
-試しに2つ目の`deprecation COMPONENT_V_MODEL`を修正しましょう。
-これは、カスタムコンポーネントで`v-model`を使用する際にプロパティとイベント名が変更になったものです。
+試しに 2 つ目の `deprecation COMPONENT_V_MODEL` を修正しましょう。
+これは、カスタムコンポーネントで `v-model` を使用する際にプロパティとイベント名が変更になったものです。
 
-- プロパティ: value -> modelValue
-- イベント: input -> update:modelValue
+- プロパティ： value -> modelValue
+- イベント： input -> update:modelValue
 
 以下のように修正しました。
 
@@ -576,8 +576,8 @@ export default defineComponent({
 
 ![スクリーンショット 2021-09-12 14.26.05](//images.contentful.com/in6v9lxmm5c8/3U3P7boN3xmsDY22crK1g6/f9c263375a916562c5e6058378d26e21/____________________________2021-09-12_14.26.05.png)
 
-現在Vue 2のモードで動作させているもののVue 3の構文を使用しているために発生しているエラーです。
-これを取り除くために`compatConfig`のオプションを修正します。
+現在 Vue 2 のモードで動作させているものの Vue 3 の構文を使用しているために発生しているエラーです。
+これを取り除くために `compatConfig` のオプションを修正します。
 
 - src/components/AppInput.vue
 
@@ -600,7 +600,7 @@ export default defineComponent({
 });
 ```
 
-`compatConfig`に`COMPONENT_V_MODEL: false`を追加しました。上記のように、コンポーネントごとにVue 3の動作をオプトインすることが可能です。
+`compatConfig` に `COMPONENT_V_MODEL: false` を追加しました。上記のように、コンポーネントごとに Vue 3 の動作をオプトインすることが可能です。
 
 コンポーネント単位ではなく、グローバル設定で変更することも可能です。
 
@@ -618,7 +618,7 @@ configureCompat({
 
 ### 完全な移行
 
-すべての警告を削除することができたら、移行ツールを取り除くことができます！
+すべての警告を削除できたら、移行ツールを取り除くことができます！
 
 ```sh
 $ npm uninstall @vue/compat

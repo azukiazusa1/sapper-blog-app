@@ -1,0 +1,49 @@
+{
+  "filters": {
+    "comments": true
+  },
+  "plugins": {
+    "@textlint/markdown": {
+      "extensions": [
+        ".md"
+      ]
+    }
+  },
+  "rules": {
+    "preset-ja-technical-writing": {
+      "no-exclamation-question-mark": false,
+      "no-doubled-joshi": false,
+      "ja-no-successive-word": {
+        "allow": [
+          "・"
+        ]
+      },
+      "ja-no-mixed-period": {
+        "allowPeriodMarks": [
+          ":"
+        ]
+      },
+      "max-comma": false,
+      "ja-no-weak-phrase": {
+        "severity": "warning"
+      },
+      "ja-no-redundant-expression": {
+        "severity": "warning"
+      }
+    },
+    "preset-ja-spacing": {
+      "ja-space-between-half-and-full-width": {
+        "space": "always",
+        "exceptPunctuation": true
+      },
+      "ja-space-around-code": {
+        "before": true,
+        "after": true
+      }
+    },
+    "ja-technical-writing/sentence-length": false
+  },
+  "@proofdict/proofdict": {
+    "dictURL": "https://azu.github.io/proof-dictionary/"
+  }
+}

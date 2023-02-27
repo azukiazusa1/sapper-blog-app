@@ -10,7 +10,7 @@ published: true
 ---
 近年の Web アクセシビリティはますます重要な要素となっています。フロントエンドの開発を行う中でアクセシビリティに興味を持った人も多いことでしょう。
 
-アクセシビリティを確認するためには実際のデバイスで手動で確認することが最も正確なのですが、それを行うには専門的な知識の多くの時間が必要です。
+アクセシビリティを確認するためには実際のデバイスで手動で確認することがもっとも正確なのですが、それを行うには専門的な知識の多くの時間が必要です。
 
 そこでアクセシビリティに関して自動テストと手動テストを組み合わせて実践するのが効果的です。Deque 社の調査によると、自動テストによってアクセシビリティの問題の 57% がカバーされていることが発見されています。
 
@@ -52,7 +52,7 @@ Eslint による検査はコードを書いている最中にすぐにフィー�
 
 ## Vue Axe
 
-[Vue Axe](https://axe.vue-a11y.com/) は React-axe に影響を受けたライブラリであり Vue.js アプリケーションの開発中にアクセシビリティをチェックすることができます。Vue Axe は[Deque 社](https://www.deque.com/) によって開発された [axe-core](https://github.com/dequelabs/axe-core) を使用しています。
+[Vue Axe](https://axe.vue-a11y.com/) は React-axe に影響を受けたライブラリであり Vue.js アプリケーションの開発中にアクセシビリティをチェックできます。Vue Axe は[Deque 社](https://www.deque.com/) によって開発された [axe-core](https://github.com/dequelabs/axe-core) を使用しています。
 
 Vue.js 3 を使用している場合には [vue-axe-next](https://github.com/vue-a11y/vue-axe-next) を使用する必要があります。
 
@@ -109,13 +109,13 @@ export default defineConfig({
 
 ```
 
-これで準備は整いました。いつもの通りに開発モードでアプリケーションを起動してみます。
+これで準備は整いました。いつものとおりに開発モードでアプリケーションを起動してみます。
 
 ```sh
 npm run dev
 ```
 
-画面の右下にアクセシビリティのボタンが追加されていることがわかります。表示を見るに、2件のアクセシビリティのエラーが検出されているようです。
+画面の右下にアクセシビリティのボタンが追加されていることがわかります。表示を見るに、2 件のアクセシビリティのエラーが検出されているようです。
 
 ![スクリーンショット 2022-01-29 22.56.35](//images.ctfassets.net/in6v9lxmm5c8/2lkmL11PNtrtUFMTaVy6eY/613d95264642fb1b163bca02814513f0/____________________________2022-01-29_22.56.35.png)
 
@@ -158,7 +158,7 @@ https://dequeuniversity.com/rules/axe/4.3/image-alt?application=vue-axe
 
 ## Storybook
 
-Storybook のアドオンである [storybook-addon-a11y](https://storybook.js.org/addons/@storybook/addon-a11y) を使用すれば Storybook 上でアクセシビリティに問題がないか確認することができます。
+Storybook のアドオンである [storybook-addon-a11y](https://storybook.js.org/addons/@storybook/addon-a11y) を使用すれば Storybook 上でアクセシビリティに問題がないか確認できます。
 
 まずはアドオンをインストールします。
 
@@ -252,7 +252,7 @@ Storybook を開いてみましょう・画面下部の Accessibility のタブ�
 
 https://dequeuniversity.com/rules/axe/4.3/color-contrast?application=axeAPI
 
-更に画面上部のアクセシビリティのアイコンをクリックすると色覚特性がある場合の見え方をシミュレーションすることができます。Blurred Virsion を選択するとぼやけた状態をシミュレーションできます。
+さらに画面上部のアクセシビリティのアイコンをクリックすると色覚特性がある場合の見え方をシミュレーションできます。Blurred Virsion を選択するとぼやけた状態をシミュレーションできます。
 
 ![スクリーンショット 2022-01-30 10.43.06](//images.ctfassets.net/in6v9lxmm5c8/4KERdSVWy1USsftitWPFqo/9c9a6ac798d1270c8c7898479c625dc3/____________________________2022-01-30_10.43.06.png)
 
@@ -320,7 +320,7 @@ describe("components/BadInput", () => {
 });
 ```
 
-普段のテストと同じように Testing-library を利用してコンポーネントをレンダリングします。レンダリング結果を `axe` 関数の引数として渡す必要があります。`toHaveNoViolations` を呼び出すことによってコンポーネントのアクセシビリティをテストすることができます。
+普段のテストと同じように Testing-library を利用してコンポーネントをレンダリングします。レンダリング結果を `axe` 関数の引数として渡す必要があります。`toHaveNoViolations` を呼び出すことによってコンポーネントのアクセシビリティをテストできます。
 
 テストを実行してみましょう。
 
@@ -379,7 +379,7 @@ Ran all test suites.
 
 ## 終わりに
 
-以上、アクセシビリティを自動でテストする4つの方法について紹介しました。サンプルコードは以下のレポジトリを参照してください。
+以上、アクセシビリティを自動でテストする 4 つの方法について紹介しました。サンプルコードは以下のレポジトリを参照してください。
 
 https://github.com/azukiazusa1/vue-a11y-testing
 

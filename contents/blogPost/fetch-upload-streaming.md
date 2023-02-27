@@ -22,7 +22,7 @@ fetch(`/send?room=${roomId}`, {
 });
 ```
 
-かねてより Fetch API ではレスポンスを `ReadableStream` で取得することはできたのですが、反対にリクエスト時に `body` に Stream データを渡すことはできませんでしたが、[Chrome 105](https://blog.chromium.org/2022/08/chrome-105-beta-custom-highlighting.html) から有効となります。Fetch Upload Streaming を使用すれば、WebSocket のようなリアルタイムなデータのやり取りも `Fetch API` だけで可能となります。今回は `Fetch API` を利用してリアルタイムなチャットアプリを作成してみます。
+かねてより Fetch API ではレスポンスを `ReadableStream` で取得できたのですが、反対にリクエスト時に `body` に Stream データを渡すことはできませんでした。[Chrome 105](https://blog.chromium.org/2022/08/chrome-105-beta-custom-highlighting.html) から有効となります。Fetch Upload Streaming を使用すれば、WebSocket のようなリアルタイムなデータのやり取りも `Fetch API` だけで可能となります。今回は `Fetch API` を利用してリアルタイムなチャットアプリを作成してみます。
 
 ![fetch-chat](//images.ctfassets.net/in6v9lxmm5c8/4DWp1ZqYKVbksjMQVPCygc/0b8d20373649396268a51e207dd6bf53/fetch-chat.gif)
 
@@ -67,7 +67,7 @@ const stream = new ReadableStream({
 }).pipeThrough(new TextEncoderStream());
 ```
 
-`form` が submit された時、`input` の入力値を取得します。`controller.enqueue` メソッドで stream に文字列を追加します。stream の生成を停止するためには　`controller.close()` を呼び出します。これは「quit」ボタンをクリックした時に呼び出すようにしています。
+`form` が submit されたとき、`input` の入力値を取得します。`controller.enqueue` メソッドで stream に文字列を追加します。stream の生成を停止するためには　`controller.close()` を呼び出します。これは「quit」ボタンをクリックしたときに呼び出すようにしています。
 
 stream は最終的に [ReadableStream.pipeThrough()](https://developer.mozilla.org/ja/docs/Web/API/ReadableStream/pipeThrough) により別の形式に変換されます。ここでは [TextEncoderStream()](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream/TextEncoderStream) により文字列の stream を UTF=8 エンコーディングでバイトに変換されます。
 
@@ -82,7 +82,7 @@ fetch(`/send?room=${roomId}`, {
 });
 ```
 
-stream を 使用するためには `duplex: "half"` を設定する必要があります。HTTP の機能では「リクエストを送信している間にレスポンスを受信し始めることができるかどうか」というものがあります。`duplex: "half"` はリクエストボディが完全に送信されるまでレスポンスは受信することができません。これはブラウザのデフォルトのパターンです。
+stream を使用するためには `duplex: "half"` を設定する必要があります。HTTP の機能では「リクエストを送信している間にレスポンスを受信し始めることができるかどうか」というものがあります。`duplex: "half"` はリクエストボディが完全に送信されるまでレスポンスは受信できません。これはブラウザのデフォルトのパターンです。
 
 しかし、例えば [Deno の Fetch](https://doc.deno.land/deno/stable/~/fetch) などの実装はリクエストが庵寮する間にレスポンスが利用可能となる `deplex: "full"` がデフォルトとなっています。
 
@@ -138,7 +138,7 @@ if (!supportsRequestStreams) {
 
 もしブラウザが Fetch Upload Streaming をサポートしていない場合、`body` に `ReadableStream` のインスタンスを渡した際に `ReadableStream` のインスタンスの `toString()` メソッドが呼ばれます。その結果 `body` には `'[object ReadableStream]'` という `string` 型が指定されることになります。`body` に `string` 型が渡された場合には、`Content-Type` ヘッダーに `text/plain;charset=UTF-8` という値が自動的に設定されます。つまりは、`Content-Type` ヘッダーが設定されている（`headers.has('Content-Type')` が `true`）ときにはブラウザが Fetch Upload Streaming をサポートしていないと判定できます。
 
-Safari は少々やっかいで、`body` に stream をを指定することをサポートしているものの、Fetch API において使用することは許可されていません。そのため、現在 Safari がサポートしていない `duplex` オプションが有効かどうかで判定しています。
+Safari は少々やっかいで、`body` に stream を指定することをサポートしているものの、Fetch API において使用することは許可されていません。そのため、現在 Safari がサポートしていない `duplex` オプションが有効かどうかで判定しています。
 
 ### HTML
 
@@ -280,7 +280,7 @@ res.status(200);
 
 `req.on("data")` で stream data イベントを購読します。クライアントから `controller.close()` で接続が閉じられた場合には `req.on("end")` イベントがコールされます。
 
-stream data を受信した時、`receivers` Map オブジェクトから `room` ID を使用して対応する `/revice` パスの `res` オブジェクトに対して受信した chunk データを送信します。
+stream data を受信したとき、`receivers` Map オブジェクトから `room` ID を使用して対応する `/revice` パスの `res` オブジェクトに対して受信した chunk データを送信します。
 
 ```js
 req.on("data", (chunk) => {
@@ -341,7 +341,7 @@ spdy
 
 ## 感想
 
-やっている事自体は WebSocket で実現できることとほとんど変わらないのですが、HTTP の技術のみで実装でいるのが嬉しいですね。WebSocket 用のサーバー建てるのって結構面倒だったりしますしね。
+やっていること自体は WebSocket で実現できることとほとんど変わらないのですが、HTTP の技術のみで実装でいるのが嬉しいですね。WebSocket 用のサーバー建てるのって結構面倒だったりしますしね。
 
 ## 参考
 

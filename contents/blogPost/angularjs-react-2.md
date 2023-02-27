@@ -337,7 +337,7 @@ type Props = {
 const checkmark = $filter('checkmark') as (input: boolean) => string;
 ```
 
-テンプレート内の変更部分としては、`ng-repeat` は `AArray#map` に置き換えるのと
+テンプレート内の変更部分としては、`ng-repeat` は `AArray#map` に置き換えるのと。
 
 ```diff
   <dl>
@@ -357,7 +357,7 @@ const checkmark = $filter('checkmark') as (input: boolean) => string;
 + <dd>{checkmark(phone.connectivity.gps)}</dd>
 ```
 
-最後に、react2angular で AngularJS のコンポーネントに変換します。Props として第2引数に `phone` を渡すのと、注入 するために第3引数に `$filter` 渡す必要があります。
+最後に、react2angular で AngularJS のコンポーネントに変換します。Props として第 2 引数に `phone` を渡すのと、注入するために第 3 引数に `$filter` 渡す必要があります。
 
 ```ts
 angular
@@ -369,7 +369,7 @@ export default Specifiction;
 
 angular
   .module('phoneDetail')
-  .component('specification', react2angular(Specifiction, ['phone'], ['$filter']));
+  .component('specification', react2angular(Specifiction,['phone'],['$filter']));
 ```
 
 `app/main.ts` で追加したモジュールを import しましょう。
@@ -564,9 +564,9 @@ angular.module('phonecatApp').animation('.phone', function phoneAnimationFactory
 });
 ```
 
-詳しい説明は省きますが、`animateIn` 関数は `.selected` クラスが付与された際のアニメーションを、`animateOut` 関数は `.selected` クラスが削除された時のアニメーションを jQuery の `animate()` メソッドで定義しています。
+詳しい説明は省きますが、`animateIn` 関数は `.selected` クラスが付与された際のアニメーションを、`animateOut` 関数は `.selected` クラスが削除されたときのアニメーションを jQuery の `animate()` メソッドで定義しています。
 
-続いて `<ul class="phone-thumbs">` はサムネイル画像の一覧を `ng-repeat` で表示しています。サムネイル画像がクリックされた時 AngularJS のイベントハンドラである `ng-click` が発火し、`$ctrl.setImage` 関数で現在選択されている画像を更新します。
+続いて `<ul class="phone-thumbs">` はサムネイル画像の一覧を `ng-repeat` で表示しています。サムネイル画像がクリックされたとき AngularJS のイベントハンドラである `ng-click` が発火し、`$ctrl.setImage` 関数で現在選択されている画像を更新します。
 
 概要を把握したところで React コンポーネントを作成しましょう。まずはアニメーションを再現するために使用するライブラリをインストールします。[Framer Motion](https://www.framer.com/motion/) はたくさんの API が提供されており、基本的なアニメーションを簡単に実装できます。
 
@@ -632,7 +632,7 @@ angular
 
 ```
 
-メイン画像を表示している箇所は大きく変更しています。`ng-repeat` すべての画像を表示する代わりに [AnimatePresence](https://www.framer.com/docs/animate-presence/) コンポーネントでアニメーション対象の要素をラップしています。`AnimatePresence` はコンポーネントがReact ツリーから取り除かれる時にアニメーションを有効にします。React ではコンポーネントのキーを変更すると全く新しいコンポーネントとして扱われるため、`AnimatePresence` の子要素のキーを変更することで、元のスライドショーのようなアニメーションを簡単に作ることができます。`initial` Props に `false` を渡すことで初回のみアニメーションを無効にすることができます。
+メイン画像を表示している箇所は大きく変更しています。`ng-repeat` すべての画像を表示する代わりに [AnimatePresence](https://www.framer.com/docs/animate-presence/) コンポーネントでアニメーション対象の要素をラップしています。`AnimatePresence` はコンポーネントが React ツリーから取り除かれる時にアニメーションを有効にします。React ではコンポーネントのキーを変更すると全く新しいコンポーネントとして扱われるため、`AnimatePresence` の子要素のキーを変更することで、元のスライドショーのようなアニメーションを簡単に作ることができます。`initial` Props に `false` を渡すことで初回のみアニメーションを無効にできます。
 
 アニメーション対象の要素は `<motion>` コンポーネントを使用します。`<motion>` コンポーネントにアニメーション用の Props を渡すことでアニメーションを実装できます。
 
@@ -715,7 +715,7 @@ angular
 
 これは、AngularJS の管轄外で `mainImageUrl` を更新したためです。AngularJS は内部でコントローラーの保持する変数を監視して、その変更に応じてビューを更新する手続きをとっていましたが、`setImage` 関数は React コンポーネント内で呼ばれているため AngularJS はその変更を監視できていませんでした。
 
-これを修正するためには、`setImage` 関数を呼び出した時にビューを強制的に更新する必要があります。強制的にビューを変更するにはよく `$timeout` サービスが使われます。`$timeout` サービスは `setTimeout` のラッパーなのですが、コールバック関数内で行われた変更は AngularJS に伝えられます。
+これを修正するためには、`setImage` 関数を呼び出したときにビューを強制的に更新する必要があります。強制的にビューを変更するにはよく `$timeout` サービスが使われます。`$timeout` サービスは `setTimeout` のラッパーなのですが、コールバック関数内で行われた変更は AngularJS に伝えられます。
 
 `app/phone-detail/phone-detail-component.js` を修正して `$timeout` サービスを使うように修正しましょう。
 
@@ -745,13 +745,13 @@ angular
   });
 ```
 
-アノテーションに `$timeout` サービスを追加して、`$timeout` サービスを使用することを伝えます。コントローラーの引数で `$timeout` サービスを受け取りましょう。後は `setImage` 関数内で `self.mainImageUrl` に代入する箇所を `$timeout` でラップするだけど OK です。なお、API コールが完了した後に `setImage` 関数を呼び出す箇所がありますが、ここでは即座に変更を反映してほしいので `setImage` 関数を使わないように修正しています。
+アノテーションに `$timeout` サービスを追加して、`$timeout` サービスを使用することを伝えます。コントローラーの引数で `$timeout` サービスを受け取りましょう。後は `setImage` 関数内で `self.mainImageUrl` に代入する箇所を `$timeout` でラップするだけど OK です。なお API コールが完了した後に `setImage` 関数を呼び出す箇所がありますが、ここでは即座に変更を反映してほしいので `setImage` 関数を使わないように修正しています。
 
 実際に動かして確認してみましょう。正しく画像の選択とアニメーションが機能しているはずです。
 
 ![setImage](//images.ctfassets.net/in6v9lxmm5c8/4psbzraC8ttRpxr9Yni29R/8b60d39bfd4a602c878d8cad4c1b925f/setImage.gif)
 
-e2e テストを実行する前にテストの内容を少し修正します。サムネイルをクリックした時のテストにおいてアニメーションが完了するまでの間 `.selected` が付与される要素が、新たに追加される要素と削除される要素の2つになってしまったので、クリックしてからアニメーションの完了を待つようにします。
+e2e テストを実行する前にテストの内容を少し修正します。サムネイルをクリックしたときのテストにおいてアニメーションが完了するまでの間 `.selected` が付与される要素が、新たに追加される要素と削除される要素の 2 つになってしまったので、クリックしてからアニメーションの完了を待つようにします。
 
 ```diff
   test('should swap main image if a thumbnail is clicked', async ({ page }) => {
@@ -776,7 +776,7 @@ e2e テストを実行する前にテストの内容を少し修正します。�
 
 #### PhoneImags コンポーネントのテスト
 
-コンポーネントのテストも作成しましょう。メイン画像に `mainImageUrl` Props で渡した値を使用しているか、サムネイル画像がクリックした時 `setImage` Props が正しく呼ばれるかをテストします。
+コンポーネントのテストも作成しましょう。メイン画像に `mainImageUrl` Props で渡した値を使用しているか、サムネイル画像がクリックしたとき `setImage` Props が正しく呼ばれるかをテストします。
 
 `app/phone-detail/PhoneImages.spec.tsx` ファイルを作成します。
 
@@ -813,13 +813,13 @@ describe('PhoneImages', () => {
 });
 ```
 
-1つ目のテストでは `data-testid` 属性を指定してメイン画像要素を取得しています。取得した要素に対して `toHaveAttribute` で `src` 属性に Props で渡した `mainImageUrl` が設定されているか確認しています。
+1 つ目のテストでは `data-testid` 属性を指定してメイン画像要素を取得しています。取得した要素に対して `toHaveAttribute` で `src` 属性に Props で渡した `mainImageUrl` が設定されているか確認しています。
 
 ```ts
 expect(screen.getByTestId('main-image')).toHaveAttribute('src', 'img/phones/nexus-s.0.jpg');
 ```
 
-1つ目のテストは `listitem` ロールからサムネイル一覧を取得しています。`within(thumbnails[1]).getByRole('img')` で2つ目のリスト要素の子要素となる画像を取得して、` userEvent.click()` でクリックしています。画像をクリックした後 `setImage` Props がクリックした画像の URL を引数に呼ばれるかを検証しています。
+1 つ目のテストは `listitem` ロールからサムネイル一覧を取得しています。`within(thumbnails[1]).getByRole('img')` で 2 つ目のリスト要素の子要素となる画像を取得して、` userEvent.click()` でクリックしています。画像をクリックした後 `setImage` Props がクリックした画像の URL を引数に呼ばれるかを検証しています。
 
 ```ts
 const thumbnails = screen.getAllByRole('listitem');
@@ -842,7 +842,7 @@ https://github.com/angular/angular-phonecat/commit/5ee9579112e631d9d15c9551f3b39
 
 ### PhoneDetail コンポーネント
 
-AngularJS の `phoneDetail` コンポーネントのテンプレートの2箇所を React コンポーネントに置き換えてきました。最後に `phoneDetail` コンポーネント自体を React コンポーネントに置き換えましょう。
+AngularJS の `phoneDetail` コンポーネントのテンプレートの 2 箇所を React コンポーネントに置き換えてきました。最後に `phoneDetail` コンポーネント自体を React コンポーネントに置き換えましょう。
 
 まずは `$routeParams` サービスをコンポーネントに注入する必要があるので、型定義をインストールしておきます。
 
@@ -912,7 +912,7 @@ type Props = {
 };
 ```
 
-`this.phone` と `this.mainImageUrl` の代わりに `useState` で `phone` と `mainImageUrl` を状態として保持します。`useEffect` 内で `Phone` resource サービスを利用して電話詳細情報を取得します。API コールが完了したら `Phone.get` の第2引数のコールバック関数が呼ばれるので、電話詳細情報と1つ目の画像をセットします。
+`this.phone` と `this.mainImageUrl` の代わりに `useState` で `phone` と `mainImageUrl` を状態として保持します。`useEffect` 内で `Phone` resource サービスを利用して電話詳細情報を取得します。API コールが完了したら `Phone.get` の第 2 引数のコールバック関数が呼ばれるので、電話詳細情報と 1 つ目の画像をセットします。
 
 ```tsx
 const [phone, setPhone] = useState<PhoneDetail | null>(null);
@@ -952,7 +952,7 @@ return (
 );
 ```
 
-いつものとおり、作成した React コンポーネントを `react2angular` で AngularJS のコンポーネントに変換します。第3引数で `Phone` サービスと `$routeParams` サービスを注入しています。
+いつものとおり、作成した React コンポーネントを `react2angular` で AngularJS のコンポーネントに変換します。第 3 引数で `Phone` サービスと `$routeParams` サービスを注入しています。
 
 ```tsx
 angular
@@ -992,7 +992,7 @@ npm run e2e
 いつもどおり、コンポーネントのテストも作成しておきましょう。以下の観点のテストを作成します。
 
 - `$routeParams` の `phoneId` の値を利用して電話詳細情報を取得できる
-- メイン画像に電話詳細情報の1番目の画像が設定される
+- メイン画像に電話詳細情報の 1 番目の画像が設定される
 - サムネイル画像をクリックしたらメイン画像が置き換わる
 
 `app/phone-detail/PhoneDetail.spec.tsx` ファイルを作成します。
@@ -1076,7 +1076,7 @@ describe('PhoneList', () => {
 });
 ```
 
-`PhoneList` コンポーネン同様に Props として `Phone` resource サービス を渡す必要があるので、`anguar-mocks` を利用し `beforeEach` 内で作成しています。API をモックするために `$httpBackend` も用意しています。
+`PhoneList` コンポーネン同様に Props として `Phone` resource サービスを渡す必要があるので、`anguar-mocks` を利用し `beforeEach` 内で作成しています。API をモックするために `$httpBackend` も用意しています。
 
 ルーティングのパラメータのモックである `$routeParams` も用意して、`phoneId` パラメータを `'nexus-s'` で固定しています。
 
@@ -1110,7 +1110,7 @@ describe('PhoneList', () => {
   });
 ```
 
-1つ目のテストでは、ルートパラメータが `'nexus-s'` であるため、「Nexus S」の情報が取得されるかどうかを検証します。正しく「Nexus S」をフェッチできていれば、ヘディング要素に `'Nexus S`' と表示されるはずです。
+1 つ目のテストでは、ルートパラメータが `'nexus-s'` であるため「Nexus S」の情報が取得されるかどうかを検証します。正しく「Nexus S」をフェッチできていれば、ヘディング要素に `'Nexus S`' と表示されるはずです。
 
 `$httpBackend` でモックしたレスポンスを返却するために `act` 内で `$httpBackend.flush()` メソッドを呼び出します。
 
@@ -1127,7 +1127,7 @@ it('should fetch the `nexus-s`', async () => {
 });
 ```
 
-2つ目のテストはメイン画像に1つ目の画像が設定されているか確認します。1つ目のテストと大きく変わりません。モックしたレスポンスを返却した後、`data-testid` 属性からメイン画像要素を取得して `src` 属性を検証します。
+2 つ目のテストはメイン画像に 1 つ目の画像が設定されているか確認します。1 つ目のテストと大きく変わりません。モックしたレスポンスを返却した後、`data-testid` 属性からメイン画像要素を取得して `src` 属性を検証します。
 
 ```tsx
 it('should display the first phone image as the main phone image', async () => {
@@ -1141,7 +1141,7 @@ it('should display the first phone image as the main phone image', async () => {
 });
 ```
 
-3つ目のテストではサムネイルをクリックした時、メイン画像が置き換わるかどうかの検証です。3つ目のサムネイル画像を `useEvent.click()` でクリックした後、`waitFor` でアニメーションの完了を待ってからメイン画像の `src` 属性を検証しています。
+3 つ目のテストではサムネイルをクリックしたとき、メイン画像が置き換わるかどうかの検証です。3 つ目のサムネイル画像を `useEvent.click()` でクリックした後、`waitFor` でアニメーションの完了を待ってからメイン画像の `src` 属性を検証しています。
 
 ```tsx
 it('should swap main image if a thumbnail is clicked', () => {
@@ -1190,7 +1190,7 @@ export const fetcher = async <T>(input: RequestInfo, init?: RequestInit): Promis
 
 API クライアントのライブラリとして [SWR](https://swr.vercel.app/ja) を使用します。SWR はデータフェッチのための React Hooks ライブラリです。“SWR” という名前は、 HTTP [RFC 5861](https://www.rfc-editor.org/rfc/rfc5861.html) で提唱された HTTP キャッシュ無効化戦略である stale-while-revalidate に由来しています。
 
-SWR は `useSWR` フックに `key` 文字列と `fetcher` 関数を受け取ります。`key` はデータの一意な識別子で、`fetcher` はデータを返す非同期関数です。このフックはリクエストの状態に応じで以下のように `data` と `error` の2つの値を返します。
+SWR は `useSWR` フックに `key` 文字列と `fetcher` 関数を受け取ります。`key` はデータの一意な識別子で、`fetcher` はデータを返す非同期関数です。このフックはリクエストの状態に応じで以下のように `data` と `error` の 2 つの値を返します。
 
 ```tsx
 import useSWR from 'swr'
@@ -1283,9 +1283,9 @@ export default usePhones;
 + angular.module('phoneList').component('phoneList', react2angular(PhoneList, []));
 ```
 
-`Phone` resource サービスをもはや注入する必要がなくなったので、Props を削除しています。`phones` の状態管理は `const { phones } = usePhones()` の1行だけになり、煩雑な `useEffect` のコードが不要になったことが見てわかるかと思います。`react2angular` で AngularJS コンポーネントに変換する際に、`Phone` resource サービスを注入しないよう第3引数を削除しました。
+`Phone` resource サービスをもはや注入する必要がなくなったので、Props を削除しています。`phones` の状態管理は `const { phones } = usePhones()` の 1 行だけになり、煩雑な `useEffect` のコードが不要になったことが見てわかるかと思います。`react2angular` で AngularJS コンポーネントに変換する際に、`Phone` resource サービスを注入しないよう第 3 引数を削除しました。
 
-テストコードである `app/phone-list/PhoneList.spec.tsx` ファイル内で `Phone` を Props で渡しているのでこの箇所が肩エラーとなってしまい、これが原因で開発サーバーを起動時にエラーとなってしまいます。後ほどテストコードを修正するので、ここは一旦 `Phone` を Props として渡している箇所を削除しておきましょう。
+テストコードである `app/phone-list/PhoneList.spec.tsx` ファイル内で `Phone` を Props で渡しているのでこの箇所が肩エラーとなってしまい、これが原因で開発サーバーを起動時にエラーとなってしまいます。後ほどテストコードを修正するので、ここはいったん `Phone` を Props として渡している箇所を削除しておきましょう。
 
 ```diff
 - render(<PhoneList Phone={Phone} />);
@@ -1315,13 +1315,13 @@ Time:        23.607 s
 
 このテストコードは `Phone` resource サービスを注入するために AngularJS に依存していたところがあったので、ある程度仕方のないことでしょう。ここは、特定のライブラリ・HTTP クライアントに依存しないテストコードに修正して、より安定したテストコードにしましょう。
 
-特定のライブラリ・HTTP クライアントに依存しない方法として、[Mock Service Worker](https://mswjs.io/)（msw） が最適です。msw はサービスワーカーレベルでリクエストをインターセプトしてリクエストを返却するという特徴があります。例えば `fetch` や `axios` など特定の HTTP クライアントに対してモックしないので、抽象度の高いテストコードを作成することができます。まずはパッケージをインストールしましょう。
+特定のライブラリ・HTTP クライアントに依存しない方法として、[Mock Service Worker](https://mswjs.io/)（msw）が最適です。msw はサービスワーカーレベルでリクエストをインターセプトしてリクエストを返却するという特徴があります。例えば `fetch` や `axios` など特定の HTTP クライアントに対してモックしないので、抽象度の高いテストコードを作成できます。まずはパッケージをインストールしましょう。
 
 ```sh
 npm install --save-dev msw
 ```
 
-`app/mocks` ディレクトリを作成して、その中にモックサーバーの実装を行います。`app/mocks/resolvers/phones.ts` では実際にモックサーバーがどのような値を返すのかを実装します。
+`app/mocks` ディレクトリを作成して、その中にモックサーバーを実装します。`app/mocks/resolvers/phones.ts` では実際にモックサーバーがどのような値を返すのかを実装します。
 
 ```ts
 import { ResponseResolver, RestContext, RestRequest } from 'msw';
@@ -1368,7 +1368,7 @@ afterAll(() => server.close());
 global.jasmine = true;
 ```
 
-これで msw の準備は整いました。もう一つ、SWR をテストで使うために修正が必要です。SWR はリクエストをキャッシュするので、各テスト間で独立したテストでなくなってしまいます。そのため、`SWRConfig` コンポーネントでキャッシュをさせない処理を入れます。この修正のために、`render` 関数ですべてのコンポーネントを `SWRConfig` でラップする必要があるのでカスタムレンダーを使用するようにします。
+これで msw の準備は整いました。もう 1 つ、SWR をテストで使うために修正が必要です。SWR はリクエストをキャッシュするので、各テスト間で独立したテストでなくなってしまいます。そのため、`SWRConfig` コンポーネントでキャッシュをさせない処理を入れます。この修正のために、`render` 関数ですべてのコンポーネントを `SWRConfig` でラップする必要があるのでカスタムレンダーを使用するようにします。
 
 `app/test-utils.tsx` ファイルを作成します。
 
@@ -1404,7 +1404,7 @@ afterEach(() => {
 });
 ```
 
-また、テストが実行される環境は Node.js なのですが `fetch` が使用できるのは Node.js 18 以降に限ります。そのため、`fetch` の polyfill が必要となります。
+またテストが実行される環境は Node.js なのですが `fetch` が使用できるのは Node.js 18 以降に限ります。そのため、`fetch` の polyfill が必要となります。
 
 ```sh
 npm install --save-dev whatwg-fetch
@@ -1467,7 +1467,7 @@ import 'whatwg-fetch';
   });
 ```
 
-修正箇所の大部分ははモックしている箇所の削除で、テストコード自体の修正はほとんど必要ありません。再度テストを実行してみましょう。
+修正箇所の大部分はモックしている箇所の削除で、テストコード自体の修正はほとんど必要ありません。再度テストを実行してみましょう。
 
 ```sh
 npm run test
@@ -1522,7 +1522,7 @@ const usePhone = ({ id }: UsePhoneParams): UsePhonesReturn => {
 export default usePhone;
 ```
 
-`usePhone` 関数は引数に `phoneId` を受け取ります。`useSWR` の引数に渡す `fetcher` 関数は引数に `useSWR` の第1引数である `key` を受け取ります。そのため `key` を API のパスに設定することで、`fetcher` 関数では引数で受けとった値をそのまま `url` として利用できます。
+`usePhone` 関数は引数に `phoneId` を受け取ります。`useSWR` の引数に渡す `fetcher` 関数は引数に `useSWR` の第 1 引数である `key` を受け取ります。そのため `key` を API のパスに設定することで、`fetcher` 関数では引数で受けとった値をそのまま `url` として利用できます。
 
 ```ts
 const getPhoneById = async (url: string) => {
@@ -1574,7 +1574,7 @@ API のコールが完了したらメイン画像をセットする必要があ�
   }, [phone]);
 ```
 
-`react2angular` の第3引数から `Phone` resource サービスを取り除きましょう。
+`react2angular` の第 3 引数から `Phone` resource サービスを取り除きましょう。
 
 ```diff
   angular
@@ -1600,7 +1600,7 @@ E2E テストも PASS することが確認できるかと思います。
 
 ### PhoneDetail コンポーネントのテストの修正
 
-`PhoneDetail` コンポーネントのテストも同様に、`$httpBackend` モックを使わないように修正しましょう。まずはモックサーバーに 詳細取得用のハンドラを用意します。`app/mocks/resolvers/phone.ts` ファイルを作成します。
+`PhoneDetail` コンポーネントのテストも同様に、`$httpBackend` モックを使わないように修正しましょう。まずはモックサーバーに詳細取得用のハンドラを用意します。`app/mocks/resolvers/phone.ts` ファイルを作成します。
 
 ```ts
 import { ResponseResolver, RestContext, RestRequest } from 'msw';
@@ -1631,7 +1631,7 @@ export const phoneDetail: ResponseResolver<RestRequest, RestContext> = async (re
   ];
 ```
 
-テストコードである `app/phone-detail/PhoneDetail.spec.tsx` ファイルを修正します。まずは `@testing-library/react` の代わりに先程作成した `test-utils` を import します。
+テストコードである `app/phone-detail/PhoneDetail.spec.tsx` ファイルを修正します。まずは `@testing-library/react` の代わりにさきほど作成した `test-utils` を import します。
 
 ```diff
 - import { act, render, screen, waitFor, within } from '@testing-library/react';
@@ -1737,7 +1737,7 @@ rm -rf app/core/core.module.js
 + angular.module('phoneDetail', ['ngRoute']);
 ```
 
-また、`main.ts` と `app/phone-detail/PhoneDetail.spec.tsx` 内の import も削除しましょう。
+また `main.ts` と `app/phone-detail/PhoneDetail.spec.tsx` 内の import も削除しましょう。
 
 ```diff
   // main.ts

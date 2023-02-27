@@ -10,7 +10,7 @@ published: true
 ---
 >! Fresh は現在（2022/06/19）プロダクション環境で使用することは推奨されません
 
-Fresh は Deno 製の Web フレームワークです。事前のビルドを必要せず、エッジでレンダリングを提供するという特徴があります。また、Islands Architecture を採用しており、デフォルトではクライアントに JavaScript が配信されることがありません。
+Fresh は Deno 製の Web フレームワークです。事前のビルドを必要せず、エッジでレンダリングを提供するという特徴があります。また Islands Architecture を採用しており、デフォルトではクライアントに JavaScript が配信されることがありません。
 
 https://fresh.deno.dev/
 
@@ -77,7 +77,7 @@ http://localhost:8080 にアクセスしてみましょう。以下の画面が�
 
 ### `main.ts`
 
-本番時のエントリーポイントです。このファイルは Deno Deploy でリンクします。###  
+本番時のエントリーポイントです。このファイルは Deno Deploy でリンクします。
 
 ### `fresh.gen.ts`
 
@@ -95,7 +95,7 @@ import chunk from "https://deno.land/x/lodash@4.17.15-es/chunk.js";
 console.log(chunk(["a", "b", "c", "d"], 2));
 ```
 
-この方法は書き捨てのスクリプトならば問題ないのですが、大きなプロジェクトになった際に問題が発生します。`lodash` が複数のファイルにおいて import されている場合、バージョンアップのたびにすべてのファイルを修正する必要があるためです。この問題を解決するために慣例的に `deps.ts` という名前のファイルを作成して依存関係を1つにまとめるという方法がありました。
+この方法は書き捨てのスクリプトならば問題ないのですが、大きなプロジェクトになった際に問題が発生します。`lodash` が複数のファイルにおいて import されている場合、バージョンアップのたびにすべてのファイルを修正する必要があるためです。この問題を解決するために慣例的に `deps.ts` という名前のファイルを作成して依存関係を 1 つにまとめるという方法がありました。
 
 https://deno.land/manual/examples/manage_dependencies
 
@@ -126,9 +126,9 @@ $ deno run test.ts --import-map=import_map.json
 
 ### `deno.json`
 
-[deno.json](https://deno.land/manual/getting_started/configuration_file) は Deno の設定ファイルです。TypeScriptコンパイラ、フォーマッタ、リンタをカスタマイズするために使われます。`deno.json` ファイルは必須の機能ではなく、あくまでオプションの立ち位置です。
+[deno.json](https://deno.land/manual/getting_started/configuration_file) は Deno の設定ファイルです。TypeScript コンパイラ、フォーマッタ、リンタをカスタマイズするために使われます。`deno.json` ファイルは必須の機能ではなく、あくまでオプションの立ち位置です。
 
-自動生成された `deno.json` ファイルでは以下の2つの設定が記載されています。
+自動生成された `deno.json` ファイルでは以下の 2 つの設定が記載されています。
 
 - `tasks`：npm scripts と同じように、プロジェクトで使用するコマンドをまとめることができます。ここの記述したコマンドは `deno task` コマンドで使用できます。
 - `importMap`：Import map の配置場所をコマンドオプションで指定する代わりに記述します。
@@ -146,16 +146,16 @@ $ deno run test.ts --import-map=import_map.json
 
 Next.js のようなファイルベースのルーティングを提供します。例えば `routes/articles/create.tsx` に配置したファイルは `/articles/create` のパスに対応しています。
 
-また、`routes/` ディレクトリ中のコードはクライアントに配信されることはありません。クライアント上で動作させたいコードは `islands/` ディレクトリに配置します。
+また `routes/` ディレクトリ中のコードはクライアントに配信されることはありません。クライアント上で動作させたいコードは `islands/` ディレクトリに配置します。
 
 ### `islands/`
 
 `islands` はもう少し先で説明する Islands Architecture に由来するディレクトリです。
-このフォルダの中のコードは、クライアントとサーバーの両方から実行することができます。
+このフォルダの中のコードは、クライアントとサーバーの両方から実行できます。
 
 ### `statis/`
 
-静的なファイルを配置するディレクトリです。このディレクトリに配置した静的ファイルは自動では配信されます。また、`routes/` ディレクトリも高い優先順位で提供されます。
+静的なファイルを配置するディレクトリです。このディレクトリに配置した静的ファイルは自動では配信されます。また `routes/` ディレクトリも高い優先順位で提供されます。
 
 ## トップページの作成
 
@@ -219,13 +219,13 @@ export default function Home({ data }: PageProps<Article[]>) {
 
 ```
 
-①：最初の1行では `/** @jsx h */` というコメントと `$fresh/runtime.ts` から `h` 関数を import しています。これらは JSX をレンダリングするためのボイラープレートです。React における `import React from 'react` と見たようなものだと考えてよいでしょう。
+①：最初の 1 行では `/** @jsx h */` というコメントと `$fresh/runtime.ts` から `h` 関数を import しています。これらは JSX をレンダリングするためのボイラープレートです。React における `import React from 'react` と見たようなものだと考えてよいでしょう。
 
-②：ルートモジュールではカスタムハンドラを作成することができます。カスタムハンドラは `handler` という名前で名前付きエクスポートを行う必要があります。
+②：ルートモジュールではカスタムハンドラを作成できます。カスタムハンドラは `handler` という名前で名前付きエクスポートを行う必要があります。
 
-カスタムハンドラは第1引数に `Request` オブジェクトを受け取り `Response` オブジェクトを返す関数です。この例では `GET` ハンドラを定義し `ctx.render` 関数に `articles` 配列を渡しています。（今のところはベタ書きです）`ctx.render` 関数に渡したデータはページコンポーネントの `props.data` からアクセスできます。
+カスタムハンドラは第 1 引数に `Request` オブジェクトを受け取り `Response` オブジェクトを返す関数です。この例では `GET` ハンドラを定義し `ctx.render` 関数に `articles` 配列を渡しています。（今のところはベタ書きです）`ctx.render` 関数に渡したデータはページコンポーネントの `props.data` からアクセスできます。
 
-③：JSX コンポーネントを作成します。ルートモジュールではコンポーネントを default export することで HTML のレンダリングを行います。なお、Fresh では React ではなく [Preact](https://preactjs.com/) を使用しています。
+③：JSX コンポーネントを作成します。ルートモジュールではコンポーネントを default export することで HTML のレンダリングを行います。なお Fresh では React ではなく [Preact](https://preactjs.com/) を使用しています。
 
 コンポーネント内部ではカスタムハンドラから受け取った `articles` 配列をリストレンダリングしています。また `$fresh/src/runtime/head.ts` から import した `<Head>` タグを使用することでページの `head` に要素を追加できます。
 
@@ -253,7 +253,7 @@ export default function Home({ data }: PageProps<Article[]>) {
 
 ```
 
-[twind](https://github.com/tw-in-js/twind) は Tailwind ライクな CSS フレームワークです。Tailwind CSS と異なりビルドステップが不要で Deno でも使用することができます。
+[twind](https://github.com/tw-in-js/twind) は Tailwind ライクな CSS フレームワークです。Tailwind CSS と異なりビルドステップが不要で Deno でも使用できます。
 
 [dayjs](https://deno.land/x/dayjs@v1.11.3) は npm でもおなじみの日付操作ライブラリです。
 
@@ -470,7 +470,7 @@ New Project から新しいプロジェクトを作成しましょう。
 
 ### Deno から Postgress に接続する
 
-それでは、作成したデータベースに対して接続します。ここでは [deno-postgres](https://deno.land/x/postgres@v0.16.1) ライブラリを使用します。また、環境変数を使用するために [dotenv](https://deno.land/x/dotenv@v3.2.0) ライブラリも追加します。
+それでは、作成したデータベースに対して接続します。ここでは [deno-postgres](https://deno.land/x/postgres@v0.16.1) ライブラリを使用します。また環境変数を使用するために [dotenv](https://deno.land/x/dotenv@v3.2.0) ライブラリも追加します。
 
 `import_map.json` に記述しましょう。
 
@@ -485,7 +485,7 @@ New Project から新しいプロジェクトを作成しましょう。
 }
 ```
 
-`.env` ファイルを作成して先程の手順で保存しておいたパスワードとホスト名を記述します。
+`.env` ファイルを作成してさきほどの手順で保存しておいたパスワードとホスト名を記述します。
 
 ```
 DB_USER=postgres
@@ -592,7 +592,7 @@ export const handler: Handlers<Article[]> = {
 
 続いて、記事の詳細を取得するページを作成しましょう。Fresh は Next.js のようなファイルベースのルーティングを採用しています。
 
-`routes/articles/[id].tsx` という名前のファイルを作成すれば動的なルーティングを作成することができます。早速試してみましょう。
+`routes/articles/[id].tsx` という名前のファイルを作成すれば動的なルーティングを作成できます。早速試してみましょう。
 
 ```ts
 /** @jsx h */
@@ -841,7 +841,7 @@ export const handler: Handlers<Data | null> = {
 };
 ```
 
-コンポーネント内では `<Head>` タグ内で先程作成した `article.css` ファイルを読み込みます。パース済みの内容は `dangerouslySetInnerHTML` で表示します。
+コンポーネント内では `<Head>` タグ内でさきほど作成した `article.css` ファイルを読み込みます。パース済みの内容は `dangerouslySetInnerHTML` で表示します。
 
 ```ts
 export default function ArticlePage({ data }: PageProps<Data | null>) {
@@ -922,7 +922,7 @@ export default function CreateArticlePage() {
 ```
 ![スクリーンショット 2022-06-18 20.50.01](//images.ctfassets.net/in6v9lxmm5c8/2dOmHOuDI4TjGLHwqFYlIZ/6a0cd533540b29e89ae8b906fc885f99/____________________________2022-06-18_20.50.01.png)
 
-続いて `ruotes/articles/create` でコンテンツを入力できるようにフォームを追加しましょう。Fresh はネイティブの `<form>` 要素を利用します。つまり、クライアント側の JavaScript は一切使用せず、入力中の状態を保持したり `e.preventDefault()` 等を呼び出す必要はありません。
+続いて `ruotes/articles/create` でコンテンツを入力できるようにフォームを追加しましょう。Fresh はネイティブの `<form>` 要素を利用します。つまり、クライアント側の JavaScript は一切使用せず、入力中の状態を保持したり `e.preventDefault()` などを呼び出す必要はありません。
 
 ```ts
 /** @jsx h */
@@ -1036,13 +1036,13 @@ export const handler: Handlers<Data> = {
 };
 ```
 
-カスタムハンドラに `POST` メソッドを定義します。これにより POST リクエストが送信された時にハンドラが呼び出されます。
+カスタムハンドラに `POST` メソッドを定義します。これにより POST リクエストが送信されたときにハンドラが呼び出されます。
 
 ハンドラ内ではまず `req.formData()` 関数を呼び出してフォームの入力値を取り出します。`title` または `content` のどちらかが未入力であった場合はバリデーションエラーとして処理を中断します。ここで `ctx.render` 関数を呼び出す際にどの項目にエラーがあったのかの情報と前回の入力値を引数で渡すようにしておきます。
 
 `title` と `content` どちらも入力されている場合には `createArticle` 関数を呼び出してデータベースに保存します。その後 `Response.redirect` を呼び出してトップページへリダイレクトさせます。カスタムハンドラは `ctx.render` だけでなく `Response` 型であれば返り値にできます。
 
-バリデーションエラー発生時に値を返却することにしたので、コンポーネント側も値を受け取るように修正しましょう。
+バリデーションエラー発生時に値を返すことにしたので、コンポーネント側も値を受け取るように修正しましょう。
 
 ```ts
 export default function CreateArticlePage({
@@ -1085,7 +1085,7 @@ export default function CreateArticlePage({
 }
 ```
 
-`data.title` の値をタイトルの input の初期値として `value` に渡します。また、`data.error.title` の値が存在する場合にはエラーメッセージを表示します。コンテンツ入力欄も同様に修正します。
+`data.title` の値をタイトルの input の初期値として `value` に渡します。また `data.error.title` の値が存在する場合にはエラーメッセージを表示します。コンテンツ入力欄も同様に修正します。
 
 それでは実際に試してみましょう。タイトルとコンテンツどちらも未入力の場合、フォームをサブミットした後エラーメッセージが表示されます。
 
@@ -1100,7 +1100,7 @@ export default function CreateArticlePage({
 
 このことはパフォーマンス上メリットが得られますが、とはいえインタラクティブな操作を提供することの制限にもなりかねません。例えば、記事の内容を入力している最終にプレビューが表示できればより便利なアプリケーションとなるでしょう。
 
-現在の多くの Web フレームワークでは、クライアントに JavaScript を提供しないか、ページ全体のレンダラーを提供するかを選択することができます。
+現在の多くの Web フレームワークでは、クライアントに JavaScript を提供しないか、ページ全体のレンダラーを提供するかを選択できます。
 
 しかし、この選択はページの一部分でのみインタラクティブ性を持たせたい場合を考えると、あまり柔軟ではありません。Fresh では静的なページの中の一部分で JavaScript を与える [Islands Architecture](https://jasonformat.com/islands-architecture/) を採用しています。大半の静的なコンテンツはサーバーでレンダリングし、動的な部分のみをプレースホルダーに挿入するというシンプルな考え方です。
 
@@ -1108,9 +1108,9 @@ export default function CreateArticlePage({
 
 その他 Ilands Architecture を採用している　Web フレームワークに [Astro](https://astro.build/) が存在します。
 
-Fresh では Islands Architecture を実現するために `islands/` ディレクトリを使用しています。このフォルダ内のモジュールは、それぞれ一つの Islands コンポーネントをカプセル化します。また、このモジュールのファイル名はパスカルケースとする必要があります。
+Fresh では Islands Architecture を実現するために `islands/` ディレクトリを使用しています。このフォルダ内のモジュールは、それぞれ 1 つの Islands コンポーネントをカプセル化します。またこのモジュールのファイル名はパスカルケースとする必要があります。
 
-そｒでは実際に Islands コンポーネントを作成しましょう。`islands/ContentForm.tsx` ファイルを作成します。
+それでは実際に Islands コンポーネントを作成しましょう。`islands/ContentForm.tsx` ファイルを作成します。
 
 ```ts
 /** @jsx h */
@@ -1182,7 +1182,7 @@ export default function ContentForm({ initialValue = "" }: Props) {
 
 `useState` で `preview` という状態も保持しており、この値はチェックボックスにより操作されます。`preview` が `true` の場合には入力値のプレビューを表示し、`false` の場合には入力フォームを表示するようにしました。
 
-続いて `routes/articles/create.tsx` において `ContentForm` コンポーネントを利用するように修正します。また、プレビューを表示させるので `article.css` を読み込む必要があります。
+続いて `routes/articles/create.tsx` において `ContentForm` コンポーネントを利用するように修正します。またプレビューを表示させるので `article.css` を読み込む必要があります。
 
 ```diff
 export default function CreateArticlePage({

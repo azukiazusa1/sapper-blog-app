@@ -18,7 +18,7 @@ https://nodejs.org/en/blog/announcements/v18-release-announce/#test-runner-modul
 
 ## 基本的な使い方
 
-Node.js のテストランナーの基本的な使い方を見ていきましょう。最も簡単なコード例は以下のとおりです。
+Node.js のテストランナーの基本的な使い方を見ていきましょう。もっとも簡単なコード例は以下のとおりです。
 
 ```js
 import test from "node:test"; // ①
@@ -35,9 +35,9 @@ test("add", (t) => { // ②
 
 ①で `node:test` モジュールからテストランナーをインポートします。Node.js のコアモジュールなので `node:` プレフィックスが付与されていますが、その他のコアモジュールのように `node:` を外してインポートすると動作が変わることに注意してください。例えば、`fs` モジュールは `import fs from node:fs`、`import fs from fs` どちらでも動作は変わりません。しかしながら、`import test from test` と書くとユーザーランドの `test` モジュールを探索します。
 
-続いて②の行で `test` 関数を呼び出してテストの内容を記述します。これは Jest の `describe` に相当するものなのでわかりやすいでしょう。1つ異なる点として、関数の引数として [TestContext](https://nodejs.org/dist/latest-v18.x/docs/api/test.html#class-testcontext) オブジェクトを受け取ります。この引数 `t` はサブテスト内でテストを記述する際に使用されます。③ではこの引数 `t` を利用して `t.test` とテストを記述しています。`t.test` 関数はトップレベルで使用している `test` 関数と同一のものです。
+続いて②の行で `test` 関数を呼び出してテストの内容を記述します。これは Jest の `describe` に相当するものなのでわかりやすいでしょう。1 つ異なる点として、関数の引数として [TestContext](https://nodejs.org/dist/latest-v18.x/docs/api/test.html#class-testcontext) オブジェクトを受け取ります。この引数 `t` はサブテスト内でテストを記述する際に使用されます。③ではこの引数 `t` を利用して `t.test` とテストを記述しています。`t.test` 関数はトップレベルで使用している `test` 関数と同一のものです。
 
-最後に④では [assert](https://nodejs.org/api/assert.html) モジュールを使用してアサーションを実行します。[strictEqual](https://nodejs.org/api/assert.html#assertstrictequalactual-expected-message）は2つの引数が厳密に等しいか検査します。
+最後に④では [assert](https://nodejs.org/api/assert.html) モジュールを使用してアサーションを実行します。[strictEqual](https://nodejs.org/api/assert.html#assertstrictequalactual-expected-message)は 2 つの引数が厳密に等しいか検査します。
 
 テストを実行するには `--test` フラグを付与して実行します。
 
@@ -197,13 +197,13 @@ ok 1 - /work/node-test/index.mjs
 # duration_ms 0.306012913
 ```
 
-全てのテストがパスしていることが確認できました。この例では特定のファイル `index.mjs` を指定してテストを実行しましたが、コマンドの引数を指定しなかった場合には以下の命名規則に従うことでそのファイルを対象にテストを実行します。
+すべてのテストがパスしていることが確認できました。この例では特定のファイル `index.mjs` を指定してテストを実行しましたが、コマンドの引数を指定しなかった場合には以下の命名規則に従うことでそのファイルを対象にテストを実行します。
 
-- `test` ディレクトリ配下に存在する `.js`、`.cjs`、`.mjs` ファイルは全てテストファイルとして扱われ再帰的に実行される
+- `test` ディレクトリ配下に存在する `.js`、`.cjs`、`.mjs` ファイルはすべてテストファイルとして扱われ再帰的に実行される
 - その他のディレクトリにおいて以下にマッチする `.js`、`.cjs`、`.mjs`　ファイル
   - `^test$` - 例：`test.js`, `test.cjs`, `test.mjs`
-  - `^test-.+` - 'test-' で始まるファイル名。例: `test-example.js`、`test-another-example.mjs`
-  - `.+[\.\-\_]test$` - `.test`、`-test`、`_test` で終わるファイル名。例: 
+  - `^test-.+` - 'test-' で始まるファイル名。例： `test-example.js`、`test-another-example.mjs`
+  - `.+[\.\-\_]test$` - `.test`、`-test`、`_test` で終わるファイル名。例： 
 
 また `node_modules` 配下のファイルはテストの対象となりません。
 
@@ -303,7 +303,7 @@ not ok 1 - /work/node-test/index.test.mjs
 # duration_ms 0.136012341
 ```
 
-失敗した理由には `cancelledByParent` となっており、「test did not finish before its parent and was cancelled」つまり「テストは親より先に終了せず、キャンセルされた」とエラーメッセージが出力されています。
+失敗した理由には `cancelledByParent` となっており「test did not finish before its parent and was cancelled」つまり「テストは親より先に終了せず、キャンセルされた」とエラーメッセージが出力されています。
 
 これはデフォルトでは親のテストは子のテストの終了を待たずに終了してしまうためです。親のテストが終了すると子のテストはキャンセルされ失敗扱いとなります。この挙動を回避する他には子テストを `await` する必要があります。
 
@@ -329,7 +329,7 @@ test("math tests", async (t) => {
 
 ## テストのスキップ
 
-`skip`、`todo` オプションにより特定のテストの実行をスキップすることができます。
+`skip`、`todo` オプションにより特定のテストの実行をスキップできます。
 
 ```js
 import test from "node:test";
@@ -366,7 +366,7 @@ test("divide", (t) => {
 
 ## 特定のテストのみを実行
 
-`only` オプションを設定したうえで `--test-only` オプションを付与して実行することで特定のテストのみを実行することができます。
+`only` オプションを設定したうえで `--test-only` オプションを付与して実行することで特定のテストのみを実行できます。
 
 ```js
 import test from "node:test";

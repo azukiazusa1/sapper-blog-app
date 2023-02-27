@@ -10,8 +10,8 @@ published: true
 ---
 # Viteとは
 
-Viteは、一言でいうとフロントエンドのめっちゃ早いビルドツールです。
-v2.xでは以下のテンプレートに対応しています。
+Vite は、一言でいうとフロントエンドのめっちゃ早いビルドツールです。
+v2.x では以下のテンプレートに対応しています。
 
 - vanilla
 - vue
@@ -29,11 +29,11 @@ v2.xでは以下のテンプレートに対応しています。
 
 ## vue-cli-plugin-viteをインストール
 
-Vue CLIで作成したプロジェクトをViteに置き換えるためにvue-cli-plugin-viteをというプラグインを使います。
+Vue CLI で作成したプロジェクトを Vite に置き換えるために vue-cli-plugin-vite をというプラグインを使います。
 
 https://www.npmjs.com/package/vue-cli-plugin-vite
 
-これは開発ビルドのみにViteによるビルドを適用するパッケージであり、コードベースへの変更なしに適用できることを謳っています。
+これは開発ビルドのみに Vite によるビルドを適用するパッケージであり、コードベースへの変更なしに適用できることを謳っています。
 
 以下のコマンドを実施します。
 
@@ -44,9 +44,9 @@ $ vue add vite
 ```
 
 まだコミットされたいない変更がある場合、先にコミットかスタッシュすることを推奨されます。
-コミットされていない変更はないので`y`を入力します。
+コミットされていない変更はないので `y` を入力します。
 
-インストールが完了すると、`bin/vite`というファイルが生成され、`package.json`に`vite`コマンドが追加されます。
+インストールが完了すると、`bin/vite` というファイルが生成され、`package.json` に `vite` コマンドが追加されます。
 
 ```diff
   "scripts": {
@@ -57,11 +57,11 @@ $ vue add vite
   },
 ```
 
-`npm run vite`コマンドで開発サーバーを起動できます。
+`npm run vite` コマンドで開発サーバーを起動できます。
 
 ## Vue CLIとの比較
 
-正確に計測はできてないですが、概ね以下の通りでした。
+正確に計測はできてないですが、おおむね以下のとおりでした。
 
 |  | Vue CLI | Vite |
 |:---|:---:|---:|
@@ -74,18 +74,18 @@ $ vue add vite
 
 ### コンポーネントをimportする際に拡張子を省略しない
 
-以下のような`import`の書き方をしているとファイルを読み込むことができずエラーとなりました。
+以下のような `import` の書き方をしているとファイルを読み込むことができずエラーとなりました。
 
 ```diff
 - import AppButton from '@/components/AppButton
 + import AppButton from '@/components/AppButton.vue
 ```
 
-TypeScriptでSFCを記述している場合には大丈夫かと思われますが、注意が必要です。
+TypeScript で SFC を記述している場合には大丈夫かと思われますが、注意が必要です。
 
 ### requireは使えない
 
-`require('xxx')`の構文は使うことができないので、該当の箇所は`import`文に置き換える必要があります。
+`require('xxx')` の構文は使うことができないので、該当の箇所は `import` 文に置き換える必要があります。
 
 ```diff
 - require('vue-flash-message/dist/vue-flash-message.min.css')

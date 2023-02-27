@@ -10,14 +10,14 @@ published: true
 ---
 # Firebase Fuctionsとは
 
-Firebase Functionsとは、Firebaseの提供するサーバレスフレームワークです。HTTPSリクエストによって関数を実行したり、FireStore・Cloud Storage・AuthenticationのCRUDイベントをトリガーに関数を実行することができます。（残念ながら、無料プランでは利用することはできません・・・）AWS Lambdaに近い機能だと言えます。使用できる言語はJavaScript・TypeScriptに限られているというデメリットはあるものの、手軽にデプロイでき簡単にプロジェクトの他のFirebaseの機能と統合できるメリットがあります。
+Firebase Functions とは、Firebase の提供するサーバーレスフレームワークです。HTTPS リクエストによって関数を実行したり、FireStore・Cloud Storage・Authentication の CRUD イベントをトリガーに関数を実行できます。（残念ながら、無料プランでは利用することはできません・・・）AWS Lambda に近い機能だと言えます。使用できる言語は JavaScript・TypeScript に限られているというデメリットはあるものの、手軽にデプロイでき簡単にプロジェクトの他の Firebase の機能と統合できるメリットがあります。
 
 # 環境構築
 
 ## firebase CLIのインストール
 
-Node.jsがインストールされていることが前提です。
-まずは、firebase CLIをインストールします。
+Node.js がインストールされていることが前提です。
+まずは、firebase CLI をインストールします。
 
 ```sh
 npm install -g firebase-tools
@@ -32,7 +32,7 @@ firebase --version
 
 ## プロジェクトの初期化
 
-まずははじめに、下記コマンドでfirebaseツールを認証する必要があります。
+まずははじめに、下記コマンドで firebase ツールを認証する必要があります。
 
 ```sh
 firebase login
@@ -40,7 +40,7 @@ firebase login
 
 ブラウザに遷移するのでログインします。
 
-次に、プロジェクトを作成します。コマンドを実行したディレクトリに作成されるので、予めディレクトリをほっておきましょう。
+次に、プロジェクトを作成します。コマンドを実行したディレクトリに作成されるので、あらかじめディレクトリをほっておきましょう。
 
 ```sh
 firebase init functions
@@ -48,7 +48,7 @@ firebase init functions
 
 # 通常のHTTPリクエスト
 
-HTTPリクエストを処理する場合には、`firebase.https`を使用します。この関数は、[Express](https://expressjs.com/ja/)と統合することも可能です。
+HTTP リクエストを処理する場合には、`firebase.https` を使用します。この関数は、[Express](https://expressjs.com/ja/)と統合することも可能です。
 
 ```ts
 import { https } from 'firebase-functions'
@@ -58,10 +58,10 @@ export const hello = https.onRequest((req, res) => {
 })
 ```
 
-`npm run serve`コマンドで、ローカル環境で実行することができます。
-エンドポイントは`http://localhost:5001/<project-id>/us-central1/<exoprtした関数名>(hello)`です。
+`npm run serve` コマンドで、ローカル環境で実行できます。
+エンドポイントは `http://localhost:5001/<project-id>/us-central1/<exoprtした関数名>(hello)` です。
 
-アプリから呼び出すときは、通常のREST API同様axiosなどを用いてリクエストを送ることになるでしょう。この例では省略をしていますが実際にはサーバー側で[CORS](https://developer.mozilla.org/ja/docs/Web/HTTP/CORS)の設定をする必要があるでしょう。
+アプリから呼び出すときは、通常の REST API 同様 axios などを用いてリクエストを送ることになるでしょう。この例では省略をしていますが実際にはサーバー側で[CORS](https://developer.mozilla.org/ja/docs/Web/HTTP/CORS)の設定をする必要があるでしょう。
 
 ```ts
 const { data } = axios.get('http://localhost:5001/<project-id>/us-central1/hello`
@@ -69,9 +69,9 @@ const { data } = axios.get('http://localhost:5001/<project-id>/us-central1/hello
 
 # onCallを利用する
 
-これだけでもサーバレスとしての機能として申し分ないですが、`https.onCall`関数を利用することでさらに簡単に処理を行うことができます。
+これだけでもサーバーレスとしての機能として申し分ないですが、`https.onCall` 関数を利用することでさらに簡単に処理を行うことができます。
 
-`onCall`関数は次のようになります。
+`onCall` 関数は次のようになります。
 
 ```ts
 import { https } from 'firebase-functions'
@@ -81,7 +81,7 @@ export const hello = https.onCall((data, context) => {
 })
 ```
 
-`onCall`関数は、2つの引数を受け取ります。`data`には送信されたパラメータが、`context`にはFirebase Authenticationによる認証情報が含まれています。
+`onCall` 関数は、2 つの引数を受け取ります。`data` には送信されたパラメータが、`context` には Firebase Authentication による認証情報が含まれています。
 
 ```ts
 import { https } from 'firebase-functions'
@@ -95,9 +95,9 @@ export const hello = https.onCall((data, context) => {
 })
 ```
 
-簡単に認証情報が利用できるのが`onCall`関数の特徴です。通常認証情報を付与してHTTPリクエストを送信するには、Authentication Headerに bearer tokenといった形で付与して検証するのが一般的ですが、このようなめんどくさい決まりきった処理をすべて行ってくれます。
+簡単に認証情報が利用できるのが `onCall` 関数の特徴です。通常認証情報を付与して HTTP リクエストを送信するには、Authentication Header に bearer token といった形で付与して検証するのが一般的ですが、このようなめんどくさい決まりきった処理をすべて行ってくれます。
 
-レスポンスを返すには、JSONエンコード可能なデータをreturnすればOKです。
+レスポンスを返すには、JSON エンコード可能なデータを return すれば OK です。
 
 ```ts
 import { https } from 'firebase-functions'
@@ -113,8 +113,8 @@ export const user = https.onCall(async (data, context) => {
 })
 ```
 
-エラーを処理するには、`https.HttpsError`をスローします。`https.HttpsError`の第一引数にエラーコードを、第二引数にエラーメッセージを渡します。
-第一引数に渡せるエラーコードは以下の通りです。
+エラーを処理するには、`https.HttpsError` をスローします。`https.HttpsError` の第一引数にエラーコードを、第二引数にエラーメッセージを渡します。
+第一引数に渡せるエラーコードは以下のとおりです。
 
 >FunctionsErrorCode: "ok" | "cancelled" | "unknown" | "invalid-argument" | "deadline-exceeded" | "not-found" | "already-exists" | "permission-denied" | "resource-exhausted" | "failed-precondition" | "aborted" | "out-of-range" | "unimplemented" | "internal" | "unavailable" | "data-loss" | "unauthenticated"
 
@@ -139,7 +139,7 @@ export const user = https.onCall(async (data, context) => {
 
 ## アプリから呼び出す
 
-`onCall`で作成した関数をアプリから呼び出してみましょう。
+`onCall` で作成した関数をアプリから呼び出してみましょう。
 
 ```ts
 import firebase from 'firebase'
@@ -162,9 +162,9 @@ const func = functions.httpsCallable('user')
 const result = func({ id: 'id', name: 'name' })
 ```
 
-`firebase.functions().httpCallable()`で、`onCall()`で作成した関数を呼び出すことができます。デフォルトの呼び出しですと、デプロイされたFirebase FunctionsのURLを見に行きますので、ローカル環境でFirebase Functionsを利用している際には`firebase.functions().useEmulator()`でリクエストを送るURLを指定します。
+`firebase.functions().httpCallable()` で、`onCall()` で作成した関数を呼び出すことができます。デフォルトの呼び出しですと、デプロイされた Firebase Functions の URL を見に行きますので、ローカル環境で Firebase Functions を利用している際には `firebase.functions().useEmulator()` でリクエストを送る URL を指定します。
 
-`firebase.functions().httpsCallable()`の返り値の関数を呼び出すことで、実際にリクエストが送られます。 この引数に渡した値は、`onCall`の第一引数の`data`から受け取ることができます。
+`firebase.functions().httpsCallable()` の返り値の関数を呼び出すことで、実際にリクエストが送られます。 この引数に渡した値は、`onCall` の第一引数の `data` から受け取ることができます。
 
-見ての通り、認証情報に関する処理は全くありません。Firebase Authenticationでログインしていれば自動的にAuthentication Headerにトークンを付与してくれます。
+見てのとおり、認証情報に関する処理は全くありません。Firebase Authentication でログインしていれば自動的に Authentication Header にトークンを付与してくれます。
 

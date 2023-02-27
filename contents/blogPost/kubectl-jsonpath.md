@@ -10,7 +10,7 @@ published: true
 ---
 # JSON Path
 
-kubectlはアウトプットの形式としてJSONPathをサポートしています。
+kubectl はアウトプットの形式として JSONPath をサポートしています。
 
 https://kubernetes.io/docs/reference/kubectl/jsonpath/
 
@@ -20,7 +20,7 @@ kubectl get pods -o=jsonpath='{ .items[0].spec.containers[0].image }'
 
 ## 例
 
-次のNodeの定義に対するjsonpathの出力結果を確認します。
+次の Node の定義に対する jsonpath の出力結果を確認します。
 
 ```json
 {
@@ -77,7 +77,7 @@ $ kubectl get nodes -o=jsonpath='{.items[*].metadata.name} {.items[*].status.cap
 master node01 4 4
 ```
 
-`{"\n"}`で改行を`{"\t"}`でタブを出力することができます。
+`{"\n"}` で改行を `{"\t"}` でタブを出力できます。
 ```sh
 $ kubectl get nodes -o=jsonpath='{.items[*].metadata.name} {"\n"} {.items[*].status.capacity.cpu}'
 master node01 

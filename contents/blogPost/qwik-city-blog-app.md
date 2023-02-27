@@ -8,7 +8,7 @@ updatedAt: "2022-10-16T00:00+09:00"
 tags: ["qwik", "qwik-city"]
 published: true
 ---
-[Qwik City](https://qwik.builder.io/qwikcity/overview/)（またの名を Qwik Router） は [Qwik](https://qwik.builder.io/docs/overview/) のメタフレームワークです。React における Next.js、Vue.js における Nuxt.js のような関係と同等です。Qwik は長期的で安定したプリミティブに焦点を当てており、breaking changes なしで安定した状態を保つことができます。一方 Qwik City は大規模なサイトを構築するための意見とパフォーマンスの高い方法をもたらします。
+[Qwik City](https://qwik.builder.io/qwikcity/overview/)（またの名を Qwik Router）は [Qwik](https://qwik.builder.io/docs/overview/) のメタフレームワークです。React における Next.js、Vue.js における Nuxt.js のような関係と同等です。Qwik は長期的で安定したプリミティブに焦点を当てており、breaking changes なしで安定した状態を保つことができます。一方 Qwik City は大規模なサイトを構築するための意見とパフォーマンスの高い方法をもたらします。
 
 Qwik City は Qwik のアーキテクチャのおかげで、余分な JavaScript をブラウザに配信することはありません。体感として、[Remix](https://remix.run/) のアーキテクチャによく似ているようにも感じます。
 
@@ -47,7 +47,7 @@ http://localhost:5173 を訪れてみましょう。次のように表示され�
 
 ### Static Site Generation (SSG) インテグレーションの追加
 
-`qwik add` コマンドにより、様々なインテグレーションを追加することができます。現在追加可能なインテグレーションは次のとおりです。
+`qwik add` コマンドにより、さまざまなインテグレーションを追加できます。現在追加可能なインテグレーションは次のとおりです。
 
 - [Cloudflare Pages Server](https://developers.cloudflare.com/pages)
 - [Nodejs Express Server](https://expressjs.com/)
@@ -122,9 +122,9 @@ export default component$(() => {
 
 ![スクリーンショット 2022-10-15 9.53.46](//images.ctfassets.net/in6v9lxmm5c8/6Jo7WM1ej4GoCydyqMP8ur/e2c0fb7e3e64a0a62033bc4c6222c296/____________________________2022-10-15_9.53.46.png)
 
-Qwik City ではその他のファイルシステムベースのルーティングとは異なり、ファイル名は必ず`index.[filetype]` とする必要があります。例えば、`src/routes/contact.tsx` というファイルを作成しても、`/contract` というパスは登録されません。必ず `src/routes/contract/index.tsx` のような形式にする必要があります。
+Qwik City ではその他のファイルシステムベースのルーティングとは異なり、ファイル名は必ず `index.[filetype]` とする必要があります。例えば、`src/routes/contact.tsx` というファイルを作成しても、`/contract` というパスは登録されません。必ず `src/routes/contract/index.tsx` のような形式にする必要があります。
 
-この方式を採用する利点として、`routes` フォルダ配下にページに関連するコンポーネントなどを配置できる点があげられます。Next.js の方式の場合、`pages` ディレクトリ配下に作成したファイルはすべて自動的にルーティングが登録されてしまうため、ページ関連以外のファイルを配置することができません。Qwik City の形式の場合、`index.[filetype]` 以外の形式のファイルは無視されるため、気にせず配置することができます。
+この方式を採用する利点として、`routes` フォルダ配下にページに関連するコンポーネントなどを配置できる点があげられます。Next.js の方式の場合、`pages` ディレクトリ配下に作成したファイルはすべて自動的にルーティングが登録されてしまうため、ページ関連以外のファイルを配置できません。Qwik City の形式の場合、`index.[filetype]` 以外の形式のファイルは無視されるため、気にせず配置できます。
 
 Qwik City は `.mdx` 形式のファイルもサポートしています。MDX はマークダウンと jsx でページを作成する機能です。`src/routes/contact/index.mdx` ファイルを作成して Contarct ページを MDX で作ってみましょう。
 
@@ -143,7 +143,7 @@ For more information, _please contact_:
 
 ```
 
-一般的なマークダウン記法とともに jsx を書くことができるので、`<Form />` コンポーネントをインポートして問い合わせフォームを表示しています。`<Form />` コンポーネントを作成しましょう。前述の通り、Qwik City では `src/routes` 配下にページ以外のファイルを配置できるので、`src/pages/contact/Form.tsx` に作成します。
+一般的なマークダウン記法とともに jsx を書くことができるので、`<Form />` コンポーネントをインポートして問い合わせフォームを表示しています。`<Form />` コンポーネントを作成しましょう。前述のとおり、Qwik City では `src/routes` 配下にページ以外のファイルを配置できるので、`src/pages/contact/Form.tsx` に作成します。
 
 ```tsx
 import { component$, useStylesScoped$ } from "@builder.io/qwik";
@@ -267,7 +267,7 @@ export default component$(() => {
 });
 ```
 
-内部のリンクは `@builder.io/qwik-city` からインポートして `<Link />` コンポーネントを使用します。1つ注意しなければいけない点として、コンポーネントはすべて `export` する必要があります。`<NavItem />` コンポーネントはこのヘッダーコンポーネント内部でのみ使用するのにも関わらず `export` しているのはそのためです。これは Qwik の遅延ロードのためのオプティマイザの制約によるものです。詳しくは以下を参照してください。
+内部のリンクは `@builder.io/qwik-city` からインポートして `<Link />` コンポーネントを使用します。1 つ注意しなければいけない点として、コンポーネントはすべて `export` する必要があります。`<NavItem />` コンポーネントはこのヘッダーコンポーネント内部でのみ使用するのにも関わらず `export` しているのはそのためです。これは Qwik の遅延ロードのためのオプティマイザの制約によるものです。詳しくは以下を参照してください。
 
 https://qwik.builder.io/docs/advanced/optimizer#optimizer-rules
 
@@ -368,7 +368,7 @@ API のスキーマを作成します。ヘッドレス CMS ではコンテン�
 
 ![スクリーンショット 2022-10-15 16.58.32](//images.ctfassets.net/in6v9lxmm5c8/26xHgBZRG8F7HTcsxrfP4N/de2b3c7455b4e7ad08bfc22fd92aeb43/____________________________2022-10-15_16.58.32.png)
 
-サイドメニュの「1個のAPIキー」から API キーを取得して控えておきます。この API キーは公開されてはいけません。
+サイドメニュの「1 個の API キー」から API キーを取得して控えておきます。この API キーは公開されてはいけません。
 
 ![スクリーンショット 2022-10-15 17.03.18](//images.ctfassets.net/in6v9lxmm5c8/59bPsIPUI65cPThNyGxirr/53357751d0a19135a3088ddc017e1453/____________________________2022-10-15_17.03.18.png)
 
@@ -433,7 +433,7 @@ export const getPost = async (id: string): Promise<Post> => {
 
 `ContentsResponse` は microCMS コンテンツ API のレスポンスの型で、`Post` がコンテンツの形式です。
 
-APIのエンドポイントは `https://{サービスドメイン名}.microcms.io/api/v1/{エンドポイント名}` の形式となっております。このエンドポイントを `baseUrl` として設定しておきます。
+API のエンドポイントは `https://{サービスドメイン名}.microcms.io/api/v1/{エンドポイント名}` の形式となっております。このエンドポイントを `baseUrl` として設定しておきます。
 
 リクエストヘッダーには `X-MICROCMS-API-KEY: {API キー}` を認証情報として含める必要があります。共通のヘッダーを `requestInit` そして設定します。
 
@@ -448,9 +448,9 @@ microCMS のセットアップが完了したので、早速トップ画面で�
 - `onPut`
 - `onRequest`
 
-`GET` メソッドでルートが呼び出された場合には `onGet` 関数が、`Post` メソッドでルートが呼び出された場合には `onPost` 関数がそれぞれ呼ばれます。`onRequest` 関数はすべての リクエストメソッドに対応しており、フォールバックとして使用できます。
+`GET` メソッドでルートが呼び出された場合には `onGet` 関数が、`Post` メソッドでルートが呼び出された場合には `onPost` 関数がそれぞれ呼ばれます。`onRequest` 関数はすべてのリクエストメソッドに対応しており、フォールバックとして使用できます。
 
-また、これらのリクエストハンドラ関数はページコンポーネントやレイアウトコンポーネントなど `pages` ディレクトリ配下のみで利用できます。
+またこれらのリクエストハンドラ関数はページコンポーネントやレイアウトコンポーネントなど `pages` ディレクトリ配下のみで利用できます。
 
 記事一覧ページにおいては、以下のように `onGet` 関数を実装して export します。
 
@@ -500,7 +500,7 @@ export default component$(() => {
 });
 ```
 
-一覧ペ0時の全体像は以下のとおりです。
+一覧ペ 0 時の全体像は以下のとおりです。
 
 ```tsx
 import { component$, Resource } from "@builder.io/qwik";
@@ -742,13 +742,13 @@ Environment Variables には `.env` に設定した値を設定します。
 
 ![スクリーンショット 2022-10-16 13.07.55](//images.ctfassets.net/in6v9lxmm5c8/7IZlue6qm205oAaZECs51f/955713ff665f85fb769b98ca1b39366a/____________________________2022-10-16_13.07.55.png)
 
-設定が完了したら「Deploy」ボタンでデプロイを実行します
+設定が完了したら「Deploy」ボタンでデプロイを実行します。
 
 以下の画面が表示されていればデプロイは成功しています。
 
 ![スクリーンショット 2022-10-16 13.33.56](//images.ctfassets.net/in6v9lxmm5c8/4NwBYZhDDts3bbvysSfoBa/53f43d501063ecdab9c593e8d8c9a9a4/____________________________2022-10-16_13.33.56.png)
 
-デプロイしたアプリケーションを確認してみましょう!
+デプロイしたアプリケーションを確認してみましょう！
 
 https://qwik-city-blog-app.vercel.app/
 

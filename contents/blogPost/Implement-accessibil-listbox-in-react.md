@@ -8,7 +8,7 @@ updatedAt: "2022-10-23T00:00+09:00"
 tags: ["React", "アクセシビリティ"]
 published: true
 ---
-[リストボックス](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/listbox_role) は1つまたは複数の静的な項目をユーザーが選択できるリストです。役割は `<select>` 要素と同等ですが、`<select>` は CSS による装飾が困難であるため、独自にリストボックスを作成することが多いでしょう。
+[リストボックス](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/listbox_role) は 1 つまたは複数の静的な項目をユーザーが選択できるリストです。役割は `<select>` 要素と同等ですが、`<select>` は CSS による装飾が困難であるため、独自にリストボックスを作成することが多いでしょう。
 
 ## アクセシブルなリストボックスの要件
 
@@ -17,17 +17,17 @@ published: true
 ### ロール・ステート・プロパティ
 
 - オプションを持つ要素に [listbox](https://w3c.github.io/aria/#listbox) ロールを付与する
-- リストボックスの子要素には1つ以上の[option](https://w3c.github.io/aria/#option) ロールが必要
+- リストボックスの子要素には 1 つ以上の[option](https://w3c.github.io/aria/#option) ロールが必要
 - listbox ロールを付与した要素には [aria-labelledby](https://w3c.github.io/aria/#aria-labelledby) または [aria-label](https://w3c.github.io/aria/#aria-label) 属性を付与してアクセシブルな名前をつける（画面上で可視化されるため、`aria-labelledby` がより良い）
 - もしリストボックスが複数選択可能であるならば、`listbox` ロールを持った要素に対して [aria-bultiselectable="true"](https://w3c.github.io/aria/#aria-multiselectable) を設定する（デフォルトでは `false`）
-- option ロールを付与した要素の中で、現在アクティブな要素には [aria-selected="true"](https://w3c.github.io/aria/#aria-selected) を付与する。アクティブでない要素には aria-selected="false" を付与する（もしくは [aria-checked](https://w3c.github.io/aria/#aria-checked)
+- option ロールを付与した要素の中で、現在アクティブな要素には [aria-selected="true"](https://w3c.github.io/aria/#aria-selected) を付与する。アクティブでない要素には aria-selected="false" を付与する（もしくは [aria-checked](https://w3c.github.io/aria/#aria-checked)）
 - ドロップダウンメニューを表示させる要素（コンボボックス）には以下を付与する
   - [combobox](https://w3c.github.io/aria/#combobox) ロール 
-  - [aria-controls](https://w3c.github.io/aria/#aria-controls)：listboxロールの id
+  - [aria-controls](https://w3c.github.io/aria/#aria-controls)：listbox ロールの id
   - [aria-expanded](https://w3c.github.io/aria/#aria-expanded)：現在リストボックスが開いているなら true、そうでないなら false
   - [aria-haspopup="listbox"](https://w3c.github.io/aria/#aria-haspopup)
   - 現在アクティブな option ロールがある場合 [aria-activedescendant](https://w3c.github.io/aria/#aria-activedescendant) 属性でアクティブな要素を `id` で指定する
-- もしオプションが水平に表示される場合、listbox ロールを付与した要素に[aria-orientation](https://w3c.github.io/aria/#aria-orientation) 属性に `horizontal` を設定する（デフォルトは `vertical`（垂直））
+- もしオプションが水平に表示される場合、listbox ロールを付与した要素に[aria-orientation](https://w3c.github.io/aria/#aria-orientation) 属性に `horizontal` を設定する（デフォルトは `vertical` 垂直）
 
 ### キーボード操作
 
@@ -40,13 +40,13 @@ published: true
 - `↑`：前のオプションにフォーカスを移動する
 - `Space`：フォーカスされたオプションの選択状態を変更する
 - `Esc`：リストボックスが開いている場合閉じ、コンボボックスにフォーカスを戻す
-- `Tab`：リスナーをが開いている場合とき、通常の `Tab` キーが押された時の動作（次の要素のフォーカスを移す）を実行します。
+- `Tab`：リスナーをが開いている場合とき、通常の `Tab` キーが押されたときの動作（次の要素のフォーカスを移す）を実行します。
 
 #### 複数選択リストボックスの場合
 
 - フォーカスを受け取ったとき
   - どのオプションも選択されていない場合、最初のオプションがフォーカスを受け取る
-  - フォーカスを受け取る前に1つ以上のオプションが選択されていた場合、リストの中で最初に選択されているオプションがフォーカスを受け取る
+  - フォーカスを受け取る前に 1 つ以上のオプションが選択されていた場合、リストの中で最初に選択されているオプションがフォーカスを受け取る
 - `Shift + ↓`：現在の選択状態を変更しつつ、次のオプションにフォーカスを移動する
 - `Shift + ↑`：現在の選択状態を変更しつつ、前のオプションにフォーカスを移動する
 - `Control + ↓`：現在の選択状態を変更せずに次のオプションにフォーカスを移動する
@@ -138,9 +138,9 @@ export const ListBox: React.FC<ListBoxProps> = ({
 
 ### ロール・ステート・プロパティの付与
 
-まずはそれぞれの要素に適切なロールなどを付与していきます。ステートやプロパティは通常 JavaScript を用いて適宜更新する必要があるのですが、React の宣言的なスタイルのおかげでさほど難しいものではありません。
+まずはそれぞれの要素に適切なロールなどを付与します。ステートやプロパティは通常 JavaScript を用いて適宜更新する必要があるのですが、React の宣言的なスタイルのおかげでさほど難しいものではありません。
 
-まずはリストボックスを表示させる要素に付与していきます。
+まずはリストボックスを表示させる要素に付与します。
 
 ```tsx
 const labelId = useId();
@@ -176,9 +176,9 @@ return (
 >
 ```
 
-リストボックスであることをユーザーに示すために `listbox` ロールを付与しています。コンボボックスとの関連付けのために `id` を指定する必要があるのは前述の通りです。コンボボックスと同様に `aria-labelledby` でラベルを紐付けします。さらに、`tabIndex={-1}` を指定して JavaScript からフォーカスが可能であるように指定します。
+リストボックスであることをユーザーに示すために `listbox` ロールを付与しています。コンボボックスとの関連付けのために `id` を指定する必要があるのは前述のとおりです。コンボボックスと同様に `aria-labelledby` でラベルを紐付けします。さらに、`tabIndex={-1}` を指定して JavaScript からフォーカスが可能であるように指定します。
 
-さらにもう一つ、リストボックスの表示制御についてやるべきことがあります。ベースとなるリストボックスでは下記のように jsx の制御構文を用いて表示・非表示を切り替えていました。
+さらにもう 1 つ、リストボックスの表示制御についてやるべきことがあります。ベースとなるリストボックスでは下記のように jsx の制御構文を用いて表示・非表示を切り替えていました。
 
 ```tsx
 {open && (
@@ -213,7 +213,7 @@ button:not([aria-expanded=true]) + ul {
 >
 ```
 
-`option` ロールを付与してオプション要素であることを伝えます。現在選択されている要素かどうか、`aria-selected` で表現をしています。また、コンボボックスの `aria_activedescendant` 属性から指定するために `id` を付与する必要があります。
+`option` ロールを付与してオプション要素であることを伝えます。現在選択されている要素かどうか、`aria-selected` で表現をしています。またコンボボックスの `aria_activedescendant` 属性から指定するために `id` を付与する必要があります。
 
 ### キーボード操作
 
@@ -286,9 +286,9 @@ const useListBox = ({
 
 `isOpen` はポップアップが表示されているかどうかの状態です。`activeIndex` では現在アクティブなオプション（カーソル操作で選択された）のインデックスを保持します。
 
-`open` 関数でポップアップが表示されたとき、どのオプションがアクティブとなるかを決定します。キーボード操作の要件より、現在なにかしらのオプションが選択されている場合にはそのオプションのインデックスをアクティブとします。オプションが選択されていない場合、最初のオプション（＝インデックスは0）をアクティブとします。`close` 関数でポップアップを戻す際にはアクティブなオプションのインデックスを `-1` に設定しておきます。
+`open` 関数でポップアップが表示されたとき、どのオプションがアクティブとなるかを決定します。キーボード操作の要件より、現在なにかしらのオプションが選択されている場合にはそのオプションのインデックスをアクティブとします。オプションが選択されていない場合、最初のオプション（＝インデックスは 0）をアクティブとします。`close` 関数でポップアップを戻す際にはアクティブなオプションのインデックスを `-1` に設定しておきます。
 
-`useEffect` 内では `keydown` イベントを購読してユーザーのキーボード操作を受け付けます。ポップアップが開いているときと閉じているときでそれぞれ別のイベントをハンドリングする必要があるため、`openedKeydownHandler` と `closedKeydownHandler` でそれぞれイベントのリスナーを取得しています。また、ポップアップが閉じている場合のイベントはコンボボックスにアクティブがある場合のみ受け付ける必要があるので、`isFocused` でコンボボックスにフォーカスがあるかどうかを判定します。（フォーカスの状態の操作は後ほどコンポーネントで実装します）
+`useEffect` 内では `keydown` イベントを購読してユーザーのキーボード操作を受け付けます。ポップアップが開いているときと閉じているときでそれぞれ別のイベントをハンドリングする必要があるため、`openedKeydownHandler` と `closedKeydownHandler` でそれぞれイベントのリスナーを取得しています。またポップアップが閉じている場合のイベントはコンボボックスにアクティブがある場合のみ受け付ける必要があるので、`isFocused` でコンボボックスにフォーカスがあるかどうかを判定します。（フォーカスの状態の操作は後ほどコンポーネントで実装します）
 
 まずは簡単な `closedKeydownHandler` から見てきましょう。`↑`,`↓`,`Space`,`Enter` いずれかのキーが押された場合、ポップアップを表示します。
 
@@ -360,7 +360,7 @@ const { open, close, isOpen, handleSelect, activeIndex, selectedOption } =
   });
 ```
 
-コンボボックスの `aria-activedescendant` は現在アクティブなインデックスが `-1` の場合は `undefined` を、それ以外の場合は現在アクティブなオプションの `value` を利用してオプションの `id` を指定します。また、コンボボックスがフォーカスした時のフォーカスが離れた時の処理も追加します。
+コンボボックスの `aria-activedescendant` は現在アクティブなインデックスが `-1` の場合は `undefined` を、それ以外の場合は現在アクティブなオプションの `value` を利用してオプションの `id` を指定します。またコンボボックスがフォーカスしたときのフォーカスが離れたときの処理も追加します。
 
 ```tsx
 <button

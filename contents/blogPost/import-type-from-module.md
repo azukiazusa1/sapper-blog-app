@@ -10,7 +10,7 @@ published: true
 ---
 TypeScript のプロジェクトにおいて `import type { ... } from "./module"` という記述を見たことはないでしょうか？
 
-これは [Type-Only imports and export](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export) と呼ばれる機能で TypeScript3.8 より導入されました。これは名前の通りモジュールから型情報のみをインポートするために使用されます。これは通常の利用用途ではあまり考慮する必要はないのですが、特定の問題に立ち向かうために利用されることがあります。
+これは [Type-Only imports and export](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export) と呼ばれる機能で TypeScript3.8 より導入されました。これは名前のとおりモジュールから型情報のみをインポートするために使用されます。これは通常の利用用途ではあまり考慮する必要はないのですが、特定の問題に立ち向かうために利用されることがあります。
 
 ## 型情報のみのインポートステートメントは削除される
 
@@ -68,17 +68,17 @@ console.log(fullName);
 
 ## Type-Only imports and export が解決する問題
 
-前述の通り型情報のみをインポートしている場合にはインポートステートメントごとまるごと削除されるのですが、これが特定の状況下において問題になることがあります。例えば。`isolatedModules` フラグをオンにしている、`transpileModuleAPI` または Babel を使用しているなどの状況があげられます。
+前述のとおり型情報のみをインポートしている場合にはインポートステートメントごとまるごと削除されるのですが、これが特定の状況下において問題になることがあります。例えば。`isolatedModules` フラグをオンにしている、`transpileModuleAPI` または Babel を使用しているなどの状況があげられます。
 
 ### isolatedModules フラグによるエラー
 
-[isolatedModules](https://www.typescriptlang.org/tsconfig#isolatedModules) フラグは TypeScript のコンパイラオプションの一つであり、これをオンにするとすべてのファイルを独立したモジュールとしてトランスパイルします。言い換えると、すべての ts ファイルが単独でトランスパイルできる必要があります。`isolatedModules` フラグは、曖昧に解決されたimportを含むことを防ぎます。
+[isolatedModules](https://www.typescriptlang.org/tsconfig#isolatedModules) フラグは TypeScript のコンパイラオプションの 1 つであり、これをオンにするとすべてのファイルを独立したモジュールとしてトランスパイルします。言い換えると、すべての ts ファイルが単独でトランスパイルできる必要があります。`isolatedModules` フラグは、曖昧に解決された import を含むことを防ぎます。
 
 `isolatedModules` をオンにしている場合には、`export` ステートメントをが含まれないファイルはコンパイルエラーとなります。
 
 この挙動は [Babel のデフォルトの挙動であり](https://babeljs.io/docs/en/babel-plugin-transform-typescript#:~:text=%2D%2DisolatedModules%20This%20is%20the%20default%20Babel%20behavior%2C%20and%20it%20can%27t%20be%20turned%20off%20because%20Babel%20doesn%27t%20support%20cross%2Dfile%20analysis.) `isolatedModules` フラグをオンにすることで Babel を安全に動作させることができます。
 
-ところで、TypeScript では複数のモジュールのエクスポートを一つにまとめる手法が使われることがあります。（これは Barrel エクスポートと呼ばれます）具体例として前述のコードを使用しましょう。
+ところで、TypeScript では複数のモジュールのエクスポートを 1 つにまとめる手法が使われることがあります。（これは Barrel エクスポートと呼ばれます）具体例として前述のコードを使用しましょう。
 
 `/user` ディレクトリ配下に `/user/index.ts` ファイルを追加します。このファイルでは `/user` ディレクトリのモジュールをそれぞれ再エクスポートする役割を担います。
 
@@ -88,7 +88,7 @@ export { User } from './types'
 export { getFullName } from './user'
 ```
 
-これにより、`main.ts` ファイルからは一つのファイルからのみインポートするようにまとめることができます。
+これにより、`main.ts` ファイルからは 1 つのファイルからのみインポートするようにまとめることができます。
 
 ```diff
 // main.ts
@@ -106,7 +106,7 @@ export { getFullName } from './user' // これはOK
 
 `./types` ファイルには型情報のみが含まれており、トランスパイル時にこのファイルは取り除かれるのですがコンパイラはその情報を知ることができないので、何も存在しないモジュールをエクスポートしようとしているためコンパイルエラーとなるわけです。
 
-この挙動は `Type-Only imports and export` により解決することができます。`import` または `export` に `type` キーワードを付与することによりコンパイラにそのモジュールには型情報のみが含まれておりビルド時に不要なことを教えることができます。先程の型情報のみの再エクスポートは以下のように修正することでできます。
+この挙動は `Type-Only imports and export` により解決できます。`import` または `export` に `type` キーワードを付与することによりコンパイラにそのモジュールには型情報のみが含まれておりビルド時に不要なことを教えることができます。さきほどの型情報のみの再エクスポートは以下のように修正することでできます。
 
 ```diff
 - export { User } from './types'
@@ -116,7 +116,7 @@ export { getFullName } from './user' // これはOK
 
 ### 循環依存
 
-他にも、循環依存を解決する目的でも使用することができます。以下の例をご参照ください。
+他にも、循環依存を解決する目的でも使用できます。以下の例をご参照ください。
 
 ```ts
 // Foo.ts
@@ -146,7 +146,7 @@ export default Bar
 
 上記例のようにファイル同士で互いにインポート・エクスポートをしている場合循環依存としてエラーとなる場合があります。この例においては、`Bar.ts` ファイル内ではクラス `Foo` をただ単に型情報として扱いたいだけで実際にランタイム上では循環依存は発生しえないです。
 
-このような場合には `import type` を使用することで問題を解決することができます。
+このような場合には `import type` を使用することで問題を解決できます。
 
 ```diff
 // Bar.ts
@@ -190,7 +190,7 @@ const user1: User = {
 const user2: User = new User('John', 'Doe')
 ```
 
-ここで、`import type` の注釈を使用した場合には `User` クラスは型情報としてのみ使用されるため `User` クラスを値として使用することができなくなります。つまり、new 演算子でインスタンスを作成したりクラスを拡張して使用できなくなります。
+ここで、`import type` の注釈を使用した場合には `User` クラスは型情報としてのみ使用されるため `User` クラスを値として使用できなくなります。つまり、new 演算子でインスタンスを作成したりクラスを拡張して使用できなくなります。
 
 ```ts
 import type User from './User'
@@ -211,7 +211,7 @@ class Admin extends User {
 
 ## type Modifiers on Import Names
 
-`import type` 構文には制限があり、値のインポートと同時に使用することはできず、一つのモジュールから型情報と値どちらもインポートする場合にはそれぞれインポートを別に書かなくてはいけませんでした。
+`import type` 構文には制限があり、値のインポートと同時に使用することはできず、1 つのモジュールから型情報と値どちらもインポートする場合にはそれぞれインポートを別に書かなくてはいけませんでした。
 
 ```ts
 import type { User } from './User';

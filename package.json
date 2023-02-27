@@ -4,6 +4,7 @@
   "license": "MIT",
   "workspaces": [
     "app",
+    "contents",
     "packages/*"
   ],
   "scripts": {
@@ -20,6 +21,6 @@
   },
   "devDependencies": {
     "prettier": "^2.8.4",
-    "turbo": "^1.7.4"
+    "turbo": "^1.8.2"
   }
 }

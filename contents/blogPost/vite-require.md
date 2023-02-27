@@ -10,21 +10,21 @@ published: true
 ---
 皆様はすでにプロジェクトに Vite は導入されていらっしゃいますでしょうか？私はできていません。
 
-Vite はフロントエンドのビルディングツールであり、従来の Webpack 等と比較して高速に動作するといった特徴があります。Vue.js を開発した Evan You 氏によって開発ツールではありますが Vue.js に限らず React や Svelte にも対応しています。
+Vite はフロントエンドのビルディングツールであり、従来の Webpack などと比較して高速に動作するといった特徴があります。Vue.js を開発した Evan You 氏によって開発ツールではありますが Vue.js に限らず React や Svelte にも対応しています。
 
 Vue.js は 3.x しかサポートをしていないのですが [Vue 2.x 向けのプラグイン](https://www.npmjs.com/package/vite-plugin-vue2) をしようすれば Vue CLI 環境に開発ビルド時にのみ Vite を使用するといったことも可能になります。
 
 しかし、Vite はビルドの高速化のために[Native ES Modules](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules) を使用しているといった事情もあり Webpack からの移行にはひと手間かかります。
 
-Webpack と比較した時に変更する必要がある機能について見てみましょう。
+Webpack と比較したときに変更する必要がある機能について見てみましょう。
 
 ## require() が使えない
 
-記事のタイトルにもあります通り、まず大きな特徴として `require()` によるモジュールの読み込みができないという点があります。「`require` は未定義です」（`Uncaught ReferenceError: require is not defined`）という JavaScript のおなじみのエラーが発生します。
+記事のタイトルにもありますとおり、まず大きな特徴として `require()` によるモジュールの読み込みができないという点があります。「`require` は未定義です」（`Uncaught ReferenceError: require is not defined`）という JavaScript のおなじみのエラーが発生します。
 
 エラーの原因は単純明快で `require` はブラウザには存在しないためです。
 
-`require()` 関数と `module.exports` オブジェクトは [CommonJS](https://ja.wikipedia.org/wiki/CommonJS) による仕様です。CommonJS とはブラウザ外における JavaScript （つまり Node.js など）のモジュールシステムの仕様を策定することを目的としたプロジェクトです。「ブラウザ外における JavaScript 」とはっきり書かれている通り、当然ブラウザはこの仕様には従わないのでブラウザには `require` は定義されていないというわけです。
+`require()` 関数と `module.exports` オブジェクトは [CommonJS](https://ja.wikipedia.org/wiki/CommonJS) による仕様です。CommonJS とはブラウザ外における JavaScript（つまり Node.js など）のモジュールシステムの仕様を策定することを目的としたプロジェクトです。「ブラウザ外における JavaScript」とはっきり書かれているとおり、当然ブラウザはこの仕様には従わないのでブラウザには `require` は定義されていないというわけです。
 
 さて、前述のとおり Vite は Native ES Moduels によって動作しています。Native ES Modules とは ECMAScript の仕様として定義されたモジュールであり、普段からよく使われている `import` と `export` を用いたやつです。
 
@@ -36,9 +36,9 @@ Native ES Modules の Native は何を意味するかといえば、バンドル
 </script>
 ```
 
-上記の ES Modules は初めからブラウザで利用できるわけではありませんでした。そのため従来のバンドルツールは `import` 構文をブラウザで利用可能にするためには一度 Node.js 環境で一つのファイルに「バンドル」された後に実行されるという仕組みになっていました、このバンドルにかかる時間が開発サーバーの起動のボトルネックとなっていました。
+上記の ES Modules は初めからブラウザで利用できるわけではありませんでした。そのため従来のバンドルツールは `import` 構文をブラウザで利用可能にするためには一度 Node.js 環境で 1 つのファイルに「バンドル」された後に実行されるという仕組みになっていました、このバンドルにかかる時間が開発サーバーの起動のボトルネックとなっていました。
 
-Vite ではこのバンドルの手間を防ぐために Native ES Moduels を使用しているので基本的にブラウザのみで実行されます。そのため「ブラウザ外における JavaScript 」のための仕様である `require()` は Vite において使用できないというわけです。 
+Vite ではこのバンドルの手間を防ぐために Native ES Moduels を使用しているので基本的にブラウザのみで実行されます。そのため「ブラウザ外における JavaScript」のための仕様である `require()` は Vite において使用できないというわけです。 
 
 その他 Nagive ES MOdules については以下記事が詳しいです。
 
@@ -61,7 +61,7 @@ https://zenn.dev/uhyo/articles/what-is-native-esm-era
 
 ### Dynamic import
 
-少々ややこしいのは `require()` が `if` や 関数内 などのブロック内で使用されている場合です。前述の Static import はトップレベルのスコープでしか使えないという制限があります。
+少々ややこしいのは `require()` が `if` や関数内などのブロック内で使用されている場合です。前述の Static import はトップレベルのスコープでしか使えないという制限があります。
 
 ```ts
 const someFunc = () => {
@@ -89,7 +89,7 @@ createApp(App).mount("#app");
 
 さて、Static import ではそのまま置き換えることができないのでこのような状況では Dynamic import を使用する必要があります。Dynamic import は `import` を関数としてどこからでも呼び出すことができます。
 
-ただし、一つ重要な点として `require()` は常に同期的に読み込むのに対して `import()` 関数は**非同期で読み込む - Promiseを返す** といった違いがあります。
+ただし、1 つ重要な点として `require()` は常に同期的に読み込むのに対して `import()` 関数は**非同期で読み込む - Promiseを返す** といった違いがあります。
 
 これは ES Modules がサーバーサイドだけでなくブラウザにも使われることを考えてこのような仕様となっています。
 
@@ -135,11 +135,11 @@ setup().then(() => createApp(App).mount("#app"));
 
 このように Vite プロジェクトにおいても CommonJS の構文を使用しているファイルは拡張子を `.cjs` とすることが推奨されます。
 
-拡張子が `.cjs` のものは CommonJSとして、`.mjs` のものは　ES Modules として扱うことを明示的に示しています。
+拡張子が `.cjs` のものは CommonJS として、`.mjs` のものは　ES Modules として扱うことを明示的に示しています。
 
 https://nodejs.medium.com/announcing-a-new-experimental-modules-1be8d2d6c2ff
 
-また、拡張子が `.js` のものは `package.json` の `type` の記述によって扱いが異なります。`type: "module"` を指定している場合には ES Modules として扱われ、`commonjs` または記述しない場合には CommonJS として扱われます。
+また拡張子が `.js` のものは `package.json` の `type` の記述によって扱いが異なります。`type: "module"` を指定している場合には ES Modules として扱われ、`commonjs` または記述しない場合には CommonJS として扱われます。
 
 ## import.meta.env による環境変数の読み込み
 
@@ -148,13 +148,13 @@ Vite がブラウザのみで動作するということは、`process.env` に�
 Vite において環境変数を利用するには `import.meta.env` を使います。`import.meta.env` はビルドイン変数として以下を公開しています。
 
 - `import.meta.env.MODE`: {string} アプリが動作しているモード。
-- `import.meta.env.BASE_URL`: {string} アプリが配信されているベース URL。これは base 設定オプション によって決まります。
+- `import.meta.env.BASE_URL`: {string} アプリが配信されているベース URL。これは base 設定オプションによって決まります。
 - `import.meta.env.PROD`: {boolean} アプリがプロダクションで動作しているかどうか。
 - `import.meta.env.DEV`: {boolean} アプリが開発で動作しているかどうか（常に - - `import.meta.env.PROD` の逆）
 
 https://ja.vitejs.dev/guide/env-and-mode.html#env-variables
 
-`import.meta` は ES2020 で策定されたモジュールのメタ情報を取得するための機能です。これは ES Moduels 内のみで使用することができます。
+`import.meta` は ES2020 で策定されたモジュールのメタ情報を取得するための機能です。これは ES Moduels 内のみで使用できます。
 
 https://qiita.com/uhyo/items/7b00ad577618554d3276
 https://numb86-tech.hatenablog.com/entry/2020/08/08/232535

@@ -78,7 +78,7 @@ https://github.com/type-challenges/type-challenges/blob/master/questions/3-mediu
 
 ## 解説
 
-やりたいことは `Pick` と同じで `Mapped Types` を使って新しいオブジェクトを作成すればよいわけですが、第2引数で渡されたキーを除外しなければいけないので、単純な `Mapped Type` を使うだけでは回答できません。
+やりたいことは `Pick` と同じで `Mapped Types` を使って新しいオブジェクトを作成すればよいわけですが、第 2 引数で渡されたキーを除外しなければいけないので、単純な `Mapped Type` を使うだけでは回答できません。
 
 とりあえず現時点でわかるところだけを埋めておきましょう。
 
@@ -86,13 +86,13 @@ https://github.com/type-challenges/type-challenges/blob/master/questions/3-mediu
 type MyOmit<T, K extends keyof T> = any
 ```
 
-ここでやりたいことは `keyof T` を反復した上で反復時の型 `P` が `P extends K` を満たさないときだけオブジェクトのプロパティに追加することです。
+ここでやりたいことは `keyof T` を反復したうえで反復時の型 `P` が `P extends K` を満たさないときだけオブジェクトのプロパティに追加することです。
 
 条件分岐が出てきたのでなんとなく `Conditional Types` を使えばよいことは想像できますが、どうすれば反復処理の中で条件分岐を使うことができるのでしょうか？
 
 `Mapped Types` 元のプロパティから新しいプロパティを生成したり、あるプロパティを除外するためには `as` 句を使用します。
 
-`as` 句は2通りの使い方があります。1つ目は以下の例の通り `template literal types` を用いてプロパティ名をリネームすることができます。
+`as` 句は 2 通りの使い方があります。1 つ目は以下の例のとおり `template literal types` を用いてプロパティ名をリネームできます。
 
 ```ts
 type Getters<T> = {
@@ -114,7 +114,7 @@ type LazyPerson = {
 }
 ```
 
-2つ目の使い方として、`as` 句の中で `never` を返した場合にはそのプロパティを除外することができます。今回の課題の場合には `as` 句の中で `P` が `K` に対して拡張可能であるか検査しそうであるなら `never` を返せばよいわけです。
+2 つ目の使い方として、`as` 句の中で `never` を返した場合にはそのプロパティを除外できます。今回の課題の場合には `as` 句の中で `P` が `K` に対して拡張可能であるか検査しそうであるなら `never` を返せばよいわけです。
 
 ## 回答例
 
@@ -168,7 +168,7 @@ type MyReadonly2<T, K> = {
 }
 ```
 
-通常の `Readonly` と異なる点は第2引数で受け取る型のみを `readonly` とする点です。 `Mapped Types` の反復処理させる集合を `K` に変更しましょう。また `K` は `T` のプロパティ型のみを受け取るように制約を設けます。
+通常の `Readonly` と異なる点は第 2 引数で受け取る型のみを `readonly` とする点です。 `Mapped Types` の反復処理させる集合を `K` に変更しましょう。また `K` は `T` のプロパティ型のみを受け取るように制約を設けます。
 
 ```ts
 type MyReadonly2<T, K extends keyof T> = {
@@ -176,13 +176,13 @@ type MyReadonly2<T, K extends keyof T> = {
 }
 ```
 
-一方で第2引数で指定されなかった型はどのように表現するのか考えてみましょう。 `readonly` を付与しない、ということはなにもしないでそのまま返せばよいのです。
+一方で第 2 引数で指定されなかった型はどのように表現するのか考えてみましょう。 `readonly` を付与しない、ということはなにもしないでそのまま返せばよいのです。
 
 ```typescript
 type MyReadonly2<T, K> = T
 ```
 
-これで `K` で指定されたプロパティと指定されなかったプロパティどちらも表すことができました。最終的にこれらの型を結合して返したいのですから、交差型(Intersection Types) を使いましょう。交差型は同じプロパティ名を持つ時後ろの型が優先されるので順番が重要です。
+これで `K` で指定されたプロパティと指定されなかったプロパティどちらも表すことができました。最終的にこれらの型を結合して返したいのですから、交差型（Intersection Types）を使いましょう。交差型は同じプロパティ名を持つとき後ろの型が優先されるので順番が重要です。
 
 ```ts
 type MyReadonly2<T, K extends keyof T> = T & {
@@ -259,7 +259,7 @@ type DeepReadonly<T> = {
 
 `T[P]` がオブジェクトかどうかの判定のために組み込み型である [Record<Keys, Type>](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)を使用しています。`Record<Keys, Type>` はプロパティが `Keys` 型あり、値が `Type` 型であるオブジェクト型を生成します。
 
-最後に `T[P]` がオブジェクトだったときの処理を埋めましょう。問題文がヒントとなっているように `conditional types` おいては再帰的な型を定義することができます。
+最後に `T[P]` がオブジェクトだったときの処理を埋めましょう。問題文がヒントとなっているように `conditional types` おいては再帰的な型を定義できます。
 
 ## 回答例
 
@@ -287,7 +287,7 @@ type DeepReadonly<T> = {
 
 ## 解説
 
-配列型に`number` でアクセスすると配列の要素の型を取得できます。
+配列型に `number` でアクセスすると配列の要素の型を取得できます。
 
 ```ts
 const array = ['apple', 'banana', 'strawberry'] as const
@@ -321,18 +321,18 @@ type Fruits = Arr[number] // "apple" | "banana" | "strawberry"
 
 ## 解説
 
-配列から最後の要素を取り出す方法をいくつか考えてみましょう。真っ先に思いつくのが `arr[arr.length - 1]` のように「配列の長さ - 1の添字でアクセスする」という方法ですが、型システム上で四則演算はできません。
+配列から最後の要素を取り出す方法をいくつか考えてみましょう。真っ先に思いつくのが `arr[arr.length - 1]` のように「配列の長さ - 1 の添字でアクセスする」という方法ですが、型システム上で四則演算はできません。
 
 ```ts
 type Last<T extends any[]> = T[T['length'] - 1] // ']' expected.
 ```
 
-その他の方法を考えてみましょう。単純に配列の先頭の要素から1つずつ取得していって最後に残った要素は配列の最後の要素になります。これを型システム上で表現するには `Variadic Tuple Types` を使います。JavaScript では構文エラーになる書き方なので、ちょっと気が付きにくいかもしれないですね。
+その他の方法を考えてみましょう。単純に配列の先頭の要素から 1 つずつ取得していって最後に残った要素は配列の最後の要素になります。これを型システム上で表現するには `Variadic Tuple Types` を使います。JavaScript では構文エラーになる書き方なので、ちょっと気が付きにくいかもしれないですね。
 
 ```ts
 [...any, L]
 ```
-この形から `L` を取得できればよさそうです。最後の要素の型を推測するためには `infer` が使えます、
+この形から `L` を取得できればよさそうです。最後の要素の型を推測するためには `infer` が使えます。
 
 ## 回答例
 
@@ -416,9 +416,9 @@ declare function PromiseAll<T extends any[]>(values: [...T]): Promise<T>
 declare function PromiseAll<T extends any[]>(values: readonly [...T]): Promise<T>
 ```
 
-この時点で1つ目のテストケースは成功しますが、残りはエラーとなっています。これは `Promise.all` は渡された型の配列に `Promise` でラップされている型が含まれている場合それをアンラップする必要があるためです。1つ目のテストケースには `Promise` が含まれていないので成功しているわけです。
+この時点で 1 つ目のテストケースは成功しますが、残りはエラーとなっています。これは `Promise.all` は渡された型の配列に `Promise` でラップされている型が含まれている場合それをアンラップする必要があるためです。1 つ目のテストケースには `Promise` が含まれていないので成功しているわけです。
 
-それではこのエラーを修正しましょう。配列の要素を1つづつ検査し、その要素の型が `Promise` であった場合 [Awaited](https://github.com/type-challenges/type-challenges/blob/master/questions/189-easy-awaited/README.md) でやったように `Promise<T>` から `T` を取り出せばよいわけです。
+それではこのエラーを修正しましょう。配列の要素を 1 つづつ検査し、その要素の型が `Promise` であった場合 [Awaited](https://github.com/type-challenges/type-challenges/blob/master/questions/189-easy-awaited/README.md) でやったように `Promise<T>` から `T` を取り出せばよいわけです。
 
 ## 回答例
 
@@ -485,7 +485,7 @@ type TrimLeft<S> = S extends ` ${infer L}` ? TrimLeft<L> : S;
 
 しかし、この回答だと最後のテストをパスしません。`\n` や `\t` も取り除く必要があります。
 
-条件部を「先頭文字が ` ` または `\n` または `\t`」のように OR 条件で判定する必要がありそうです。嬉しいことに、 `Template Literal Types` の補完(`${}`) にはユニオン型を使うこともできます。
+条件部を「先頭文字が ` ` または `\n` または `\t`」のように OR 条件で判定する必要がありそうです。嬉しいことに、 `Template Literal Types` の補完（`${}`）にはユニオン型を使うこともできます。
 
 以下の例のように補完にユニオン型が使われた場合にはユニオンによって取りうるすべての文字列のユニオン型として表現されます。
 
@@ -577,7 +577,7 @@ type Replace<S extends string, From extends string, To extends string> = S exten
 type Replace<S extends string, From extends string, To extends string> = S extends `${infer L}${From}${infer R}`  ? `${L}${To}${R}` : S
 ```
 
-しかし、まだ1つのテストに失敗します。どうやら `From` に 空文字 `''` が渡されると具合が悪いようです。ここは早期リターンのように `From` が 空文字 `''` だった場合には早々に元の文字列を返してしまいましょう。
+しかし、まだ 1 つのテストに失敗します。どうやら `From` に空文字 `''` が渡されると具合が悪いようです。ここは早期リターンのように `From` が空文字 `''` だった場合には早々に元の文字列を返してしまいましょう。
 
 ## 回答例
 
@@ -608,9 +608,9 @@ https://github.com/type-challenges/type-challenges/blob/master/questions/119-med
 
 ## 解説
 
-Replacehttps://zenn.dev/link/comments/3aa1315a72a7ba を元に考えてみましょう。`Replace` は1度文字列にマッチしたらその場で打ち切っていましたが `ReplaceAll` はすべての対象の文字列を置換する必要があります。
+Replacehttps://zenn.dev/link/comments/3aa1315a72a7ba を元に考えてみましょう。`Replace` は 1 度文字列にマッチしたらその場で打ち切っていましたが `ReplaceAll` はすべての対象の文字列を置換する必要があります。
 
-勘のいい方ならもうお分かりかもしれないですが、このような場合は再帰が使えます。
+勘のいいほうならもうお分かりかもしれないですが、このような場合は再帰が使えます。
 
 ## 回答例
 
@@ -668,13 +668,13 @@ LengthOfString<'kumiko'> //  number
 
 どうにかして文字数を数える方法はないでしょうか？
 
-考えられる手段として文字列を先頭から1つづつ取り出し再帰的に `LengthOfString` を呼び出し再帰が行われた回数を数えることができればよさそうです。
+考えられる手段として文字列を先頭から 1 つづつ取り出し再帰的に `LengthOfString` を呼び出し再帰が行われた回数を数えることができればよさそうです。
 
 ```ts
 type LengthOfString<S extends string> = S extends `${infer F}${infer L}` ? LengthOfString<L> : S
 ```
 
-問題はどのように再帰した回数を数えるかです。 型パラメーターにもう一つ `number` 型の形変数を加えてみるのはどうでしょう？初めはデフォルト引数として `0` を渡しておき、再帰として `LengthOfString` を呼び出すときには引数とで渡された値 + 1して渡すと再帰した回数を数えられそうです。文字列の最後に達して再帰が終了したときには回数をカウントしていた型変数を返します。
+問題はどのように再帰した回数を数えるかです。 型パラメーターにもう 1 つ `number` 型の形変数を加えてみるのはどうでしょう？初めはデフォルト引数として `0` を渡しておき、再帰として `LengthOfString` を呼び出すときには引数とで渡された値 + 1 して渡すと再帰した回数を数えられそうです。文字列の最後に達して再帰が終了したときには回数をカウントしていた型変数を返します。
 
 ```ts
 type LengthOfString<S extends string, Count extends number = 0> = S extends `${infer F}${infer L}` 
@@ -684,7 +684,7 @@ type LengthOfString<S extends string, Count extends number = 0> = S extends `${i
 
 良い方法に思えたのですが、これではうまくいきません。型システム上では演算をすることはできないので `Count + 1` の部分が不正になります。
 
-他にカウントすることができる方法はないでしょうか？そういえば `Length of Tuple` では配列の要素の数だけ `T['length']` が値を返すことを知ったのでした。これを使えばうまくいきそうです。つまり、再帰があるたびに配列の要素を1つづつ追加していき、文字列の最後に達したなら `T['length']`  を返せばよいのです。
+他にカウントできる方法はないでしょうか？そういえば `Length of Tuple` では配列の要素の数だけ `T['length']` が値を返すことを知ったのでした。これを使えばうまくいきそうです。つまり、再帰があるたびに配列の要素を 1 つづつ追加していき、文字列の最後に達したなら `T['length']`  を返せばよいのです。
 
 ## 回答例
 
@@ -770,7 +770,7 @@ test1 & {
 }
 ```
 
-あるオブジェクト型から新しいオブジェクト型を生成するためには `Mapped Types` を使いましょう。まず第1引数のオブジェクト型をそのまま返すには以下のように記述します。
+あるオブジェクト型から新しいオブジェクト型を生成するためには `Mapped Types` を使いましょう。まず第 1 引数のオブジェクト型をそのまま返すには以下のように記述します。
 
 ```ts
 type AppendToObject<T extends Record<string, unknown>, U extends string, V> = {
@@ -778,7 +778,7 @@ type AppendToObject<T extends Record<string, unknown>, U extends string, V> = {
 }
 ```
 
-`Mapped Types` はオブジェクト型のプロパティを反復処理して型を生成します。オブジェクト型に新たなプロパティを追加するには反復処理するプロパティに第2引数の `U` を追加すればよいでしょう。ユニオン型を使用し `Mapped Types` の取りうるプロパティに追加します。
+`Mapped Types` はオブジェクト型のプロパティを反復処理して型を生成します。オブジェクト型に新たなプロパティを追加するには反復処理するプロパティに第 2 引数の `U` を追加すればよいでしょう。ユニオン型を使用し `Mapped Types` の取りうるプロパティに追加します。
 
 ```ts
 type AppendToObject<T extends Record<string, unknown>, U extends string, V> = {
@@ -825,7 +825,7 @@ type Absolute<T extends number | string | bigint> = `${T}`
 
 これで `<Absolute<10>, '10'>` や `Absolute<9_999n>, '9999'>` などの `-` 符号のついていないテストケースはパスします。
 
-`-` 符号を取り除くためにはまず `string` に変換した `T` が 先頭に `-` がついているある文字列にマッチするかどうかを検査します。`Template Literal Types` を使えば `-${infer R}` という形式で検査をすることができます。
+`-` 符号を取り除くためにはまず `string` に変換した `T` が先頭に `-` がついているある文字列にマッチするかどうかを検査します。`Template Literal Types` を使えば `-${infer R}` という形式で検査をできます。
 
 条件に当てはまった場合には `-` を除いた残りの文字列である `R` を返しそうでないなら `string` に変換した `T` を返します。
 
@@ -857,14 +857,14 @@ https://github.com/type-challenges/type-challenges/blob/master/questions/531-med
 
 ## 解説
 
-文字列を先頭から一つづつ取り出して処理します。まずは再帰処理の下地を記述しましょう。
+文字列を先頭から 1 つづつ取り出して処理します。まずは再帰処理の下地を記述しましょう。
 
 ```ts
 type StringToUnion<T extends string> = T extends `${infer L}${infer R}`
   ? StringToUnion<R> : /** 文字列を最後まで処理したら最終結果を返す */
 ```
 
-文字列を最後まで処理した時にユニオン型を返す必要がありますが、どこかで取得した文字を保持する必要があります。Tuple to Union でタプル型はユニオン型に変換できることはわかっているので、タプルとして文字を保持しておけば良さそうです。
+文字列を最後まで処理したときにユニオン型を返す必要がありますが、どこかで取得した文字を保持する必要があります。Tuple to Union でタプル型はユニオン型に変換できることはわかっているので、タプルとして文字を保持しておけば良さそうです。
 
 型システム上でなにか保持しておきたいときのパターンとして初めに空の配列をデフォルト引数を渡しておいて、再帰処理で呼び出すたびに要素を追加するという方法が使えます。
 
@@ -899,7 +899,7 @@ type Merge<F extends Record<string, unknown>, S extends Record<string, unknown>>
 };
 ```
 
-反復処理の中で `P` が `T` のプロパティなら `F[P]` を そうでないなら `S[P]` を返すようにします。
+反復処理の中で `P` が `T` のプロパティなら `F[P]` をそうでないなら `S[P]` を返すようにします。
 
 ```ts
 type Merge<F extends Record<string, unknown>, S extends Record<string, unknown>> = {
@@ -926,9 +926,9 @@ type result = {
 }
 ```
 
-よく見るとプロパティ `b` は `Foo` と `Bar` どちらにも存在します。プロパティが重複する場合には2つ目の型のプロパティで上書きする必要があるので　`b` の型は `number` でなければいけません。
+よく見るとプロパティ `b` は `Foo` と `Bar` どちらにも存在します。プロパティが重複する場合には 2 つ目の型のプロパティで上書きする必要があるので　`b` の型は `number` でなければいけません。
 
-2つ目の型のプロパティで上書きするようにするには、条件部で先に `S` が持つプロパティかどうかを検査する必要があります。
+2 つ目の型のプロパティで上書きするようにするには、条件部で先に `S` が持つプロパティかどうかを検査する必要があります。
 
 ## 回答例
 

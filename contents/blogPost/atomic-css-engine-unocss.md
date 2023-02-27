@@ -10,7 +10,7 @@ published: true
 ---
 [UnoCSS](https://github.com/unocss/unocss) は [Windi CSS](https://windicss.org/)、[Tailwind CSS](https://tailwindcss.com/) それと [Twind](https://github.com/tw-in-js/twind) に影響を受けた機能を持っています。
 
-しかし、UnoCSS はフレームワークではなく、Atomic CSS エンジンです。全ては柔軟性とパフォーマンスを考慮して設計されています。UnoCSS にはコアユーティリティはなく、すべての機能はプリセットで提供されます。
+しかし、UnoCSS はフレームワークではなく、Atomic CSS エンジンです。すべては柔軟性とパフォーマンスを考慮して設計されています。UnoCSS にはコアユーティリティはなく、すべての機能はプリセットで提供されます。
 
 ## インストール
 
@@ -33,11 +33,11 @@ https://marketplace.visualstudio.com/items?itemName=antfu.unocss
 
 ## プリセットの導入
 
-UnoCSS のインストールは完了しましたが、前述のとおり UnoCSS はフレームワークではないので単体ではユーティリティクラスを提供していません。カスタムルールを定義することもできますが、ここではプリセットを導入しましょう。プリセットは予め作成されたユーティリティクラスを提供してくれます。
+UnoCSS のインストールは完了しましたが、前述のとおり UnoCSS はフレームワークではないので単体ではユーティリティクラスを提供していません。カスタムルールを定義することもできますが、ここではプリセットを導入しましょう。プリセットはあらかじめ作成されたユーティリティクラスを提供してくれます。
 
 公式のプリセットでは以下が提供されています。
 
-- [@unocss/preset-uno](https://github.com/unocss/unocss/tree/main/packages/preset-uno) - デフォルトのプリセット (`@unocss/preset-wind` と同等)
+- [@unocss/preset-uno](https://github.com/unocss/unocss/tree/main/packages/preset-uno) - デフォルトのプリセット（`@unocss/preset-wind` と同等）
 - [@unocss/preset-mini](https://github.com/unocss/unocss/tree/main/packages/preset-mini) - 最低限必要なルールと変数
 - [@unocss/preset-wind](https://github.com/unocss/unocss/tree/main/packages/preset-wind) - Tailwind / Windi のコンパクトプリセット
 - [@unocss/preset-attributify](https://github.com/unocss/unocss/tree/main/packages/preset-attributify) - Windi CSS の [Attributify Mode](https://windicss.org/posts/v30.html#attributify-mode) を有効にするプリセット
@@ -65,7 +65,7 @@ export default defineConfig({
 })
 ```
 
-それでは追加したデフォルトプリセットを使用してみましょう。デフォルトプリセットは Tailwind CSS、Windi CSS、Bootstrap、Tachyons などの共通のスーパーセットを提供します。また、詳細なユーティリティクラスは以下のドキュメントから参照できます。
+それでは追加したデフォルトプリセットを使用してみましょう。デフォルトプリセットは Tailwind CSS、Windi CSS、Bootstrap、Tachyons などの共通のスーパーセットを提供します。また詳細なユーティリティクラスは以下のドキュメントから参照できます。
 
 https://uno.antfu.me/
 
@@ -87,7 +87,7 @@ export default App;
 
 ### Attributify Mode
 
-[@unocss/preset-attributify](https://github.com/unocss/unocss/tree/main/packages/preset-attributify) プリセットを使用するとユーティリティクラスを使用する代わりに HTML 属性を利用することができます。設定ファイルから `preset-attributify` ルールを追加します。
+[@unocss/preset-attributify](https://github.com/unocss/unocss/tree/main/packages/preset-attributify) プリセットを使用するとユーティリティクラスを使用する代わりに HTML 属性を利用できます。設定ファイルから `preset-attributify` ルールを追加します。
 
 ```ts
 // vite.config.ts
@@ -196,7 +196,7 @@ export default defineConfig({
 
 ## ショートカット
 
-設定ファイルで `shortcuts` を定義すればユーティリティクラスの組み合わせを定義することができます。
+設定ファイルで `shortcuts` を定義すればユーティリティクラスの組み合わせを定義できます。
 
 ```ts
 // vite.config.ts
@@ -271,7 +271,7 @@ https://github.com/unocss/unocss/tree/main/packages/reset
 
 ## デバッグ
 
-Vite で開発サーバーを起動している時、http://localhost:3000/__unocss にアクセスすると UI 上で適用される CSS を確認することができます。
+Vite で開発サーバーを起動しているとき、http://localhost:3000/__unocss にアクセスすると UI 上で適用される CSS を確認できます。
 
 ![スクリーンショット 2022-06-11 20.34.28](//images.ctfassets.net/in6v9lxmm5c8/6K8MY5AQ1GijLbRQ3ZVUQG/e90093d677285726d04de14e43ce3d0c/____________________________2022-06-11_20.34.28.png)
 

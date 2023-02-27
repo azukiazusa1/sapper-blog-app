@@ -19,17 +19,17 @@ model.aggregate()
     })
 ```
 
-mongooseの`aggregate`メソッドは、MongoDBの[Aggregation Pipeline](https://docs.mongodb.com/manual/core/aggregation-pipeline/)と同一です。
+mongoose の `aggregate` メソッドは、MongoDB の[Aggregation Pipeline](https://docs.mongodb.com/manual/core/aggregation-pipeline/)と同一です。
 
-Aggregation Pipelineでは合計やグループ化など様々な集計処理を行うことができます。
+Aggregation Pipeline では合計やグループ化などさまざまな集計処理を行うことができます。
 
-その中でも、[日付に関する演算](https://docs.mongodb.com/manual/reference/operator/aggregation/#date-expression-operators)を行うことで、日付型のカラムを年単位、時間単位、秒単位などで表現することができます。
+その中でも、[日付に関する演算](https://docs.mongodb.com/manual/reference/operator/aggregation/#date-expression-operators)を行うことで、日付型のカラムを年単位、時間単位、秒単位などで表現できます。
 
-`$hour`を使用することで、0〜23の時間単位に変換し、その次の処理で変換した結果に対してグループ化することで時間単位でグループ化することができます。
+`$hour` を使用することで、0〜23 の時間単位に変換し、その次の処理で変換した結果に対してグループ化することで時間単位でグループ化できます。
 
-グループ別ドキュメント数を数えるために、`{ $sum : 1 }`とすることでカウントできます。
+グループ別ドキュメント数を数えるために、`{ $sum : 1 }` とすることでカウントできます。
 
-!> MongoDBのVersion 5.0からは[$count](https://docs.mongodb.com/manual/reference/operator/aggregation/count-accumulator/#mongodb-group-grp.-count)で同様のことが行なえます。
+!> MongoDB の Version 5.0 からは[$count](https://docs.mongodb.com/manual/reference/operator/aggregation/count-accumulator/#mongodb-group-grp.-count)で同様のことが行なえます。
 
 例として、以下のような結果が返されます。
 
@@ -58,7 +58,7 @@ Aggregation Pipelineでは合計やグループ化など様々な集計処理を
 
 該当する時間にドキュメントが存在しない場合には、結果自体が返されないので注意してください。
 
-なお、タイムゾーンを変更したい場合には以下のようにします。
+なおタイムゾーンを変更したい場合には以下のようにします。
 
 ```js
       .project({

@@ -8,7 +8,7 @@ updatedAt: "2021-12-12T00:00+09:00"
 tags: ["Nuxt.js", "Vue.js"]
 published: true
 ---
-現在 Nuxt.js は バージョン3がパブリックベータ版として提供されています。 Nuxt.js が 2 → 3 に移行するにあたってたくさんの新機能が追加されました。
+現在 Nuxt.js はバージョン 3 がパブリックベータ版として提供されています。 Nuxt.js が 2 → 3 に移行するにあたってたくさんの新機能が追加されました。
 
 - パフォーマンスの向上
 - Nitro engine
@@ -19,7 +19,7 @@ published: true
 - Nuxt CLI
 - TypeScript のネイティブサポート
 - ESM サポート
-- Nuxt devtool(まだ)
+- Nuxt devtool（まだ）
 - and more...
 
 上記以外にも新たに追加された機能はどれも興味深いものばかりで今すぐにも使いたいものが揃っています。Nuxt3 で追加された新機能を体験してみましょう！
@@ -33,7 +33,7 @@ npx nuxi init nuxt3-app
 ```
 
 生成されたフォルダを確認すると初めから TypeScript になっていることがわかります✨
-フォルダの構成は Nuxt2 の頃のようにすべて予め用意されているわけではなく随分控えめになっています。
+フォルダの構成は Nuxt2 の頃のようにすべてあらかじめ用意されているわけではなく随分控えめになっています。
 
 ```
 .
@@ -69,7 +69,7 @@ https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar
 
 ### TypeScript の Strict type checks を有効にする
 
-初めから TypeScript を用意してくれているのは嬉しいのですが、なぜだか `Strict type checks` （厳格モード)が有効になっていないです。例えば、以下のようなコードは `Strict type checks` が有効になっていれば `noImplicitAny` によりエラーを検出してくれるはずなのですが、現状の設定ではそうはなってくれません。
+初めから TypeScript を用意してくれているのは嬉しいのですが、なぜだか `Strict type checks`（厳格モード）が有効になっていないです。例えば、以下のようなコードは `Strict type checks` が有効になっていれば `noImplicitAny` によりエラーを検出してくれるはずなのですが、現状の設定ではそうはなってくれません。
 
 ```vue
 <script setup lang="ts">
@@ -135,13 +135,13 @@ Found 1 error.
 
 ## app.vue
 
-自動生成されたフォルダには存在しないことから分かる通り `pages` ディレクトリは必須ではなくなりました。
+自動生成されたフォルダには存在しないことから分かるとおり `pages` ディレクトリは必須ではなくなりました。
 
-`pages` ディレクトリを使用しない場合には Nuxt はビルド時に `vue-router` を依存関係に含めなくなるためバンドルファイルを削減することができます。
+`pages` ディレクトリを使用しない場合には Nuxt はビルド時に `vue-router` を依存関係に含めなくなるためバンドルファイルを削減できます。
 
 `pages` ディレクトリを使用しない場合にはトップページの表示には `app.vue` ファイルが使われます。
 
-`app.vue` と `pages` ディレクトリを同時に使用する場合 `app.vue` で `<NuxtPages>` コンポーネントを配置することによってそこに現在のページを表示することができます。
+`app.vue` と `pages` ディレクトリを同時に使用する場合 `app.vue` で `<NuxtPages>` コンポーネントを配置することによってそこに現在のページを表示できます。
 
 - app.vue
 
@@ -189,7 +189,7 @@ Nuxt2 までは各ページの `<title>` タグや `<meta>` タグを設定す�
 </script>
 ```
 
-Nuxt3 では Next.js の `pages/_document.js` のように以下のコンポーネントを提供しているため宣言的な方法で `<title>` タグを設定することができます。
+Nuxt3 では Next.js の `pages/_document.js` のように以下のコンポーネントを提供しているため宣言的な方法で `<title>` タグを設定できます。
 
 - `<Title>` 
 - `<Base>`
@@ -201,7 +201,7 @@ Nuxt3 では Next.js の `pages/_document.js` のように以下のコンポー�
 - `<HTml>`
 - `<Head>`
 
-上記のコンポーネントは通常の html タグと区別するため全て大文字で開始する必要があることに注意してください。これらはコンポーネントは以下のように使用できます。
+上記のコンポーネントは通常の html タグと区別するためすべて大文字で開始する必要があることに注意してください。これらはコンポーネントは以下のように使用できます。
 
 ```vue
 <script setup lang="ts">
@@ -246,14 +246,14 @@ useMeta({
 
 ### API Routes
 
-Nuxt2 においては [serverMiddleware](https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/) を利用して外部サーバーを利用せずにちょっとした API サーバーを作成することができました。
+Nuxt2 においては [serverMiddleware](https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/) を利用して外部サーバーを利用せずにちょっとした API サーバーを作成できました。
 
-Nuxt3 の [API Routes](https://v3.nuxtjs.org/docs/directory-structure/server) を使用すれば Next.js の API Routes のような API サーバーを作成することができます。
+Nuxt3 の [API Routes](https://v3.nuxtjs.org/docs/directory-structure/server) を使用すれば Next.js の API Routes のような API サーバーを作成できます。
 
 API Route は `~/server/api` 配下に作成する必要があります。
 `~/server/api` 配下に配置した各ファイルは `req`,`res` を受け取る関数をデフォルトエクスポートする必要があります。
 
-以下のように最も簡単な echo サーバーを作成してみましょう。
+以下のようにもっとも簡単な echo サーバーを作成してみましょう。
 
 - server/api/hello.ts
 
@@ -277,7 +277,7 @@ export default (req: IncomingMessage, res: ServerResponse) => {
 }
 ```
 
-Nuxt 上ではどこでも `$fetch` メソッドを使用できます。これは [ohmyfetch](https://github.com/unjs/ohmyfetch) を使用しておりサーバー上かブラウザ上を区別せずに `fetch` メソッドを利用することができます。
+Nuxt 上ではどこでも `$fetch` メソッドを使用できます。これは [ohmyfetch](https://github.com/unjs/ohmyfetch) を使用しておりサーバー上かブラウザ上を区別せずに `fetch` メソッドを利用できます。
 
 ```ts
 import type { IncomingMessage, ServerResponse } from 'http'
@@ -322,7 +322,7 @@ http://localhost:3000/api/users にアクセスするとデータが問題なく
 
 ### Server middleware
 
-`~/server/middleware` 配下に作成したファイルはサーバーミドルウェアとして扱うことができます。サーバーミドルウェアは全てのリクエストに対して実行されます。例えば、ミドルウェア上で認証処理を実行したりログを採取する目的で使用できます。
+`~/server/middleware` 配下に作成したファイルはサーバーミドルウェアとして扱うことができます。サーバーミドルウェアはすべてのリクエストに対して実行されます。例えば、ミドルウェア上で認証処理を実行したりログを採取する目的で使用できます。
 
 API ルートと同様に `req`,`res` を受け取る関数をデフォルトエクスポートします。
 
@@ -344,7 +344,7 @@ Nuxt3 ではサーバーからデータを取得する処理として `useFetch`
 
 `useFetch` は `$fetch` の利用に特化した `useAsyncData` のラッパー関数です。
 
-つまりは、以下の2つは行は同等の処理を実行します。
+つまりは、以下の 2 つは行は同等の処理を実行します。
 
 ```ts
 const { data } = await useAsyncData('count', () => $fetch('/api/users'))
@@ -352,7 +352,7 @@ const { data } = await useFetch('/api/users'))
 ```
 
 `useFetch` の返り値の `data` は `ref()` に包まれたデータとして返却されるのでリアクティブな値として使用できます。
-`useFetch` を使えば以下のように簡単にデータ取得処理を記述することができます。`API Routes` で作成したユーザー一覧を取得します。
+`useFetch` を使えば以下のように簡単にデータ取得処理を記述できます。`API Routes` で作成したユーザー一覧を取得します。
 
 ```ts
 <script setup lang="ts">
@@ -376,7 +376,7 @@ const { data: users } = await useFetch("/api/users/1");
 ### Pick
 
 `useFetch`,`useAsyncData` はオプションを指定することでもっとすごいこともできます。
-まずは `pick` オプションです。レスポンスがオブジェクトの場合に限り、配列でプロパティ名を指定し GraphQL のように取得するデータを絞り込むことができます。（配列でデータを取得するときにも指定できたら嬉しかった、、、）
+まずは `pick` オプションです。レスポンスがオブジェクトの場合に限り、配列でプロパティ名を指定し GraphQL のように取得するデータを絞り込むことができます。（配列でデータを取得するときにも指定できたら嬉しかった）
 
 ```vue
 <script setup lang="ts">
@@ -396,7 +396,7 @@ const { data: user } = await useFetch("/api/users", {
 
 ### transform
 
-取得したデータを変換関数を受け取ります。以下の例では全てのユーザーの `username` を大文字に変換する処理を実行します。
+取得したデータを変換関数を受け取ります。以下の例ではすべてのユーザーの `username` を大文字に変換する処理を実行します。
 
 ```vue
 <script setup lang="ts">
@@ -424,9 +424,9 @@ const { data: users } = await useFetch("/api/users", {
 
 どこかで聞いたことがあるような関数名ですが `useState` は SSR に適した状態管理を行います。
 
-Vue3 での Composition API ではコンポーネント外にリアクティブなデータを定義して状態を管理できることが特徴の一つでした。これにより `vuex` などの状態管理ライブラリに頼らずとも簡単な状態管理を記述することができました。
+Vue3 での Composition API ではコンポーネント外にリアクティブなデータを定義して状態を管理できることが特徴の 1 つでした。これにより `vuex` などの状態管理ライブラリに頼らずとも簡単な状態管理を記述できました。
 
-以下の例では `useCounter` を呼び出すことで `count` の状態をコンポーネント間で共有することができます。
+以下の例では `useCounter` を呼び出すことで `count` の状態をコンポーネント間で共有できます。
 
 - composables/useCounter.ts
 
@@ -466,11 +466,11 @@ const { count, increment, decrement } = useCounter();
 
 このコードは通常の Vue3 アプリケーションで使用する分には問題ありませんが **Nuxt などの SSR を提供するフレームワークで使用すると問題になります。**
 
-コンポーネント外 `ref()` でリアクティブなデータ定義した場合その状態はアプリケーションに訪れる全てのユーザー間で共有されてしまうため、メモリリークにつながる恐れがあります。
+コンポーネント外 `ref()` でリアクティブなデータ定義した場合その状態はアプリケーションに訪れるすべてのユーザー間で共有されてしまうため、メモリリークにつながる恐れがあります。
 
 Nuxt では `setup` 関数外では `ref()` を使用してはいけません。
 
-上記のように Nuxt では `ref()` を使用して状態管理をすることができないのでその代わりに使用するのが `useState` ということです。
+上記のように Nuxt では `ref()` を使用して状態管理をできないのでその代わりに使用するのが `useState` ということです。
 
 `useState` は引数として一意となるキーと初期値を返す関数を受け取ります。`useState` の返す値は `Ref` で包まれているので `ref()` で定義したときと同じ用意使えます。
 
@@ -492,13 +492,13 @@ const useCounter = () => {
 export default useCounter
 ```
 
-`ref()` を使用するときには状態を共有するために `useCounter` 関数の外で定義していましたが `useState` では `uesCounter` 関数内で定義してもその状態を共有することができます。
+`ref()` を使用するときには状態を共有するために `useCounter` 関数の外で定義していましたが `useState` では `uesCounter` 関数内で定義してもその状態を共有できます。
 
 ## Composables directory
 
 Vue3 Composition API ではカスタムフックを慣例的に `composables` ディレクトリ配下に配置しますが Nuxt3 では `composables` ディレクトリは特別な意味を持っています。
 
-`composables` ディレクトリ配下で名前付エクスポートまたはデフォルトエクスポートした関数は コンポーネント内で `import` せずに使うことができます。
+`composables` ディレクトリ配下で名前付エクスポートまたはデフォルトエクスポートした関数はコンポーネント内で `import` せずに使うことができます。
 
 - composables/useFoo.ts
 
@@ -528,7 +528,7 @@ const foo = useFoo();
 ## Plugins directory
 
 `plugins` ディレクトリに配置したファイルは `nuxt.config.ts` に登録する必要がなく使うことができるようになりました。
-また ファイル名に `.client` を付与するとブラウザのみ、 `.server` を付与すると サーバーのみで実行されます。
+またファイル名に `.client` を付与するとブラウザのみ、 `.server` を付与するとサーバーのみで実行されます。
 
 - plugins/hello.server.ts
 
@@ -550,9 +550,9 @@ export default defineNuxtPlugin(nuxtApp => {
 })
 ```
 
-`Plugins directory` は全てのリクエストの前に実行されるので Nuxt2 の `Middleware` の代わりとして使うことができます。(`Middleware` は廃止されました)
+`Plugins directory` はすべてのリクエストの前に実行されるので Nuxt2 の `Middleware` の代わりとして使うことができます。（`Middleware` は廃止されました）
 
-また `nuxtApp.hook()` はコールバックに渡した関数を以下の指定した Nuxt ライフサイクルで実行することができます。
+また `nuxtApp.hook()` はコールバックに渡した関数を以下の指定した Nuxt ライフサイクルで実行できます。
 
 - app:beforeMounnt
 - app:created
@@ -572,7 +572,7 @@ export default defineNuxtPlugin(nuxtApp => {
 
 ### provide
 
-プラグイン内部では `provide` というプロパティを持つオブジェクトを `return` することで Nuxt アプリケーション全体に `provide` したヘルパーを提供することができます。
+プラグイン内部では `provide` というプロパティを持つオブジェクトを `return` することで Nuxt アプリケーション全体に `provide` したヘルパーを提供できます。
 
 - plugins/http.ts
 
@@ -613,10 +613,10 @@ const { data } = await $http.get('/users')
 
 ## 感想
 
-1年前に Nuxt で作成したアプリケーションが古代遺物になってしまった...
+1 年前に Nuxt で作成したアプリケーションが古代遺物になってしまった。..
 TypeScript 入れるのに複雑な設定しなくていいし `useFetch` で型が付くのとか結構すごくて TypeScript と相性が悪いのはもはや過去の話となりましたね。
 
 Next.js にあった機能もいろいろ入ってきてる感じですね。
 
-一つ思ったのは auto-import だったり Nuxt のコア機能は明示的に `import` しないで使える関数が多いと感じましたね。こういう暗黙的な挙動はあまり好きではないのですが、やっぱみんな楽できるのがよいのでしょうか。
+1 つ思ったのは auto-import だったり Nuxt のコア機能は明示的に `import` しないで使える関数が多いと感じましたね。こういう暗黙的な挙動はあまり好きではないのですが、やっぱみんな楽できるのがよいのでしょうか。
 

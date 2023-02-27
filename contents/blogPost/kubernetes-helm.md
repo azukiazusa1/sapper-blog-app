@@ -8,20 +8,20 @@ updatedAt: "2021-03-14T00:00+09:00"
 tags: ["Kubernetes"]
 published: true
 ---
-Helmは、Kubernetsのパッケージマネージャーです。
-例えば、npmを利用して第三者が作成したパッケージをレポジトリで管理して検索・インストールするように、Helmでは**チャート(Chart)**と呼ばれる設定ファイルをレポジトリで管理しています。
+Helm は、Kubernets のパッケージマネージャーです。
+例えば、npm を利用して第三者が作成したパッケージをレポジトリで管理して検索・インストールするように、Helm では**チャート（Chart）**と呼ばれる設定ファイルをレポジトリで管理しています。
 
-Docker Hubのようにイメージ自体を直接扱わないで、あくまで設定ファイルのみを管理しています。
+Docker Hub のようにイメージ自体を直接扱わないで、あくまで設定ファイルのみを管理しています。
 
-今回はHelmを利用してWordPress環境を構築してみます。
+今回は Helm を利用して WordPress 環境を構築してみます。
 
 # インストール
 
 公式の手順を参考にインストールします。
 
-[Helm のインストール][1]
+[Helm のインストール］[1]。
 
-MacOSの場合、Homebrewでインストールできるようです。
+MacOS の場合、Homebrew でインストールできるようです。
 
 ```sh
 $ brew install helm
@@ -29,8 +29,8 @@ $ brew install helm
 
 # Helm チャートリポジトリの追加
 
-Helmを利用するために、チャートを管理するためのリポジトリを追加する必要があります。
-最も一般的な公式のstableチャートレポジトリを追加します。
+Helm を利用するために、チャートを管理するためのリポジトリを追加する必要があります。
+もっとも一般的な公式の stable チャートレポジトリを追加します。
 
 ```sh
 $ helm repo add stable https://charts.helm.sh/stable
@@ -39,8 +39,8 @@ $ helm repo add stable https://charts.helm.sh/stable
 
 # チャートの検索
 
-追加したチャートレポジトリから、WordPressのチャートを検索してみます。
-チャートを探すには、`helm search`コマンドを利用します。
+追加したチャートレポジトリから、WordPress のチャートを検索してみます。
+チャートを探すには、`helm search` コマンドを利用します。
 
 ```sh
 $ helm search repo wordpress
@@ -48,10 +48,10 @@ NAME            	CHART VERSION	APP VERSION	DESCRIPTION
 stable/wordpress	9.0.3        	5.3.2      	DEPRECATED Web publishing platform for building...
 ```
 
-チャートレポジトリ上に公開されているWordPressチャートが見つかりました。
+チャートレポジトリ上に公開されている WordPress チャートが見つかりました。
 
-なお、登録したレポジトリはローカルにキャッシュされるため最新の情報が入手できない可能性があります。
-そのような場合には、`helm repo update`コマンドでレポジトリの情報を更新にします。
+なお登録したレポジトリはローカルにキャッシュされるため最新の情報が入手できない可能性があります。
+そのような場合には、`helm repo update` コマンドでレポジトリの情報を更新にします。
 
 ```sh
 $ helm repo update
@@ -62,11 +62,11 @@ Update Complete. ⎈Happy Helming!⎈
 
 # チャートのインストール
 
-Helmでは、チャートを使ってアプリケーションをデプロイすることを**インストール(install)**と呼び、インストールされたアプリケーションのインスタンスは**リリース(Release)**と呼びます。
+Helm では、チャートを使ってアプリケーションをデプロイすることを**インストール（install)**と呼び、インストールされたアプリケーションのインスタンスは**リリース（Release）**と呼びます。
 
-レポジトリで公開されているチャートを使ってインストールする場合には。`helm install ＜Release名＞ ＜Chart名＞`コマンドを実行します。
+レポジトリで公開されているチャートを使ってインストールする場合には。`helm install ＜Release名＞ ＜Chart名＞` コマンドを実行します。
 
-先ほど検索でヒットしたWordPressチャートをインストールしましょう。
+先ほど検索でヒットした WordPress チャートをインストールしましょう。
 
 ```sh
 $ helm install wordpress stable/wordpress
@@ -82,9 +82,9 @@ This Helm chart is deprecated
 # 省略
 ```
 
-どうやらDeprecatedのようです。
+どうやら Deprecated のようです。
 
-公式レポジトリの他に、[Chart Hub][2]と呼ばれる複数のHelmレポジトリを統合して検索可能なサービスがあります。
+公式レポジトリの他に、[Chart Hub][2]と呼ばれる複数の Helm レポジトリを統合して検索可能なサービスがあります。
 こちらを追加して検索してみましょう。
 
 ```sh
@@ -100,7 +100,7 @@ https://hub.helm.sh/charts/seccurecodebox/wpscan  	2.5.2         	latest        
 https://hub.helm.sh/charts/presslabs/stack        	0.10.4        	v0.10.4       	Open-Source WordPress Infrastructure on Kubernetes
 ```
 
-いくつか見つかりましたが、https://hub.helm.sh/charts/bitnami/wordpress のレポジトリがWordPress公式が出しているチャートのようです。
+いくつか見つかりましたが、https://hub.helm.sh/charts/bitnami/wordpress のレポジトリが WordPress 公式が出しているチャートのようです。
 このレポジトリを追加します。
 
 ```sh
@@ -114,9 +114,9 @@ $ helm install my-release bitnami/wordpress
 
 # インストール時のステータス設定
 
-インストールする際に、`--set`オプションでパラメータ設定をするか、YAMLファイルの設定を`-f ＜YAMLファイル＞`オプションで適用できます。
+インストールする際に、`--set` オプションでパラメータ設定をするか、YAML ファイルの設定を `-f ＜YAMLファイル＞` オプションで適用できます。
 
-WordPressの場合は、以下のようにユーザーネーム・パスワード・データベースのパスワードを設定ｓることができます。
+WordPress の場合は、以下のようにユーザーネーム・パスワード・データベースのパスワードを設定できます。
 
 ```sh
 helm install my-release \
@@ -128,8 +128,8 @@ helm install my-release \
 
 # リリースのアップグレート
 
-一度デプロイしたリリースをアップグレードすることも可能です。
-これによって、アプリケーションを更新したり、インストール時に指定したパラメータを変更することができます。
+一度デプロイしたリリースをアップグレード可能です。
+これによって、アプリケーションを更新したり、インストール時に指定したパラメータを変更できます。
 
 下記の例では、リリースのアップグレードによってブログ名を変更しています。
 
@@ -139,8 +139,8 @@ $ helm upgrade my-release stable/wordpress --set wordpressBlogName=MyBlog
 
 # リリースのテスト
 
-インストールしたチャートが適切に動作しているかどうか確認するために、`helm test`コマンドを利用できます。
-なお、チャートによっては提供されていないものもあります。
+インストールしたチャートが適切に動作しているかどうか確認するために、`helm test` コマンドを利用できます。
+なおチャートによっては提供されていないものもあります。
 
 ```sh
 helm test my-releasse
@@ -149,13 +149,13 @@ helm test my-releasse
 # チャートを確認
 
 それでは、今回利用したチャートが実際にどのような構造で作られているのか確認してみましょう。
-`helm pull`コマンドでチャートをダウンロードすることができます。
+`helm pull` コマンドでチャートをダウンロードできます。
 
 ```sh
 $ bitnami/wordpress bitnami/wordpress
 ```
 
-ダウンロードされたチャートはgzipで圧縮されているので解凍します。
+ダウンロードされたチャートは gzip で圧縮されているので解凍します。
 
 ```sh
 $ ls
@@ -163,14 +163,14 @@ wordpress-10.6.12.tgz
 $ tar xvzf wordpress-10.6.12.tgz
 ```
 
-解凍されたファイルの次のようなパッケージ構造は次の通りです。
+解凍されたファイルの次のようなパッケージ構造は次のとおりです。
 
 | Header     | Header     |
 | ---------- | ---------- |
 | `template/*.yaml`       | インストールするマニフェストのテンプレート       |
 | `template/tests/*.yaml`       | インストールしたチャートが正常に動作するかテストするマニフェスト       |
 | `values.yaml`       | ユーザーが後から上書き可能なデフォルト定義       |
-| `templates/NOTES.txt`       | `helm install`時に出力するメッセージ       |
+| `templates/NOTES.txt`       | `helm install` 時に出力するメッセージ       |
 | `requirements.yaml`       | 依存するチャートとそのバージョンを記載       |
 | `templates/_helpers.tpl`       | リリースの名前をもとに変数を定義するなど、ヘルパー変数の定義      |
 | `Chart.yaml`       | チャートのメタデータ    |
@@ -191,12 +191,12 @@ metadata:
   {{- end }}
 ```
 
-このテンプレートに埋め込まれる値が`values.yaml`に定義されています。
+このテンプレートに埋め込まれる値が `values.yaml` に定義されています。
 
 # 独自チャートの作成
 
-1からチャートを作成したい場合は、`chart create`コマンドを使用します。
-このコマンドは、先程のようなチャートのひな形を作成してくれます。
+1 からチャートを作成したい場合は、`chart create` コマンドを使用します。
+このコマンドは、さきほどのようなチャートのひな形を作成してくれます。
 
 ```sh
 $ helm create my-chart
@@ -220,7 +220,7 @@ my-chart/
 3 directories, 10 files
 ```
 
-作成したチャートをHelmレポジトリで提供する際には、taz形式でパッケージ化しておく必要があります。パッケージ化を行う場合には、`helm package`コマンドを利用します。
+作成したチャートを Helm レポジトリで提供する際には、taz 形式でパッケージ化しておく必要があります。パッケージ化を行う場合には、`helm package` コマンドを利用します。
 
 ```sh
 $ helm package my-chart

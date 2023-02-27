@@ -64,13 +64,13 @@ const App: React.FC = () => {
 export default App;
 ```
 
-`<TransitionGroup>` と `<CSSTransition>` は `PhoneItem.tsx` コンポーネントにおいてもtランジションアニメーションを実現するために使用しました。`<TransitionGroup>` は `<Transition>` や `<CSSTransition>` のようなトランジショングループのリストを管理し、複数の要素のの追加や削除によりトランジションが発生するようにします。`<CSSTransiton>` コンポーネントは ng-animate と同様にクラスを付与することで CSS トランジションでアニメーションを制御します。これにより AnguarJS のルーティングが変化した時のアニメーションを再現しています。
+`<TransitionGroup>` と `<CSSTransition>` は `PhoneItem.tsx` コンポーネントにおいても t ランジションアニメーションを実現するために使用しました。`<TransitionGroup>` は `<Transition>` や `<CSSTransition>` のようなトランジショングループのリストを管理し、複数の要素の追加や削除によりトランジションが発生するようにします。`<CSSTransiton>` コンポーネントは ng-animate と同様にクラスを付与することで CSS トランジションでアニメーションを制御します。これにより AnguarJS のルーティングが変化したときのアニメーションを再現しています。
 
 `<TransitionGroup>` の子要素を識別するための `key` には `location.pathname` で現在ページ URL のパス名を使用しています。`location` は React Router の `useLocation` フックから取得しています。
 
-実際のルーティングの定義は `<Switch>` コンポーネント配下で行っています。`<Switch>` コンポーネントは子要素のルートの中の1つのみにマッチするように制御しています。
+実際のルーティングの定義は `<Switch>` コンポーネント配下で行っています。`<Switch>` コンポーネントは子要素のルートの中の 1 つのみにマッチするように制御しています。
 
-`<Route>` コンポーネントは `path` で指定したパスにマッチした時に、`component` で指定したコンポーネントを表示します。通常 `<Route>` コンポーネントはパスに部分一致した場合にも表示されますが、`exact` を指定した場合パスに完全一致した場合のみ表示されるようになります。
+`<Route>` コンポーネントは `path` で指定したパスにマッチしたときに、`component` で指定したコンポーネントを表示します。通常 `<Route>` コンポーネントはパスに部分一致した場合にも表示されますが、`exact` を指定した場合パスに完全一致した場合のみ表示されるようになります。
 
 最後に `<Redirect>` コンポーネントを配置することで、どのパスにも一致しなかった場合 `/phones` にリダイレクトするようにしています。
 
@@ -95,7 +95,7 @@ ReactDOM.render(
 );
 ```
 
-`app/index.tsx`は新たにエントリーポイントとなるファイルです。`ReactDOM.render()` メソッドで React を指定された DOM 要素にマウントしています。先程ルーティングを設定した `<App>` コンポーネントを `<HashRouter>` でラップしています。`<HashRouter>` は URL Hash を利用したルーティングを提供します。`hashType` に `"hashbang"` を指定することで以前と変わらない形式のルーティング `http://localhost:80000/#!` を使用することができます。
+`app/index.tsx` は新たにエントリーポイントとなるファイルです。`ReactDOM.render()` メソッドで React を指定された DOM 要素にマウントしています。さきほどルーティングを設定した `<App>` コンポーネントを `<HashRouter>` でラップしています。`<HashRouter>` は URL Hash を利用したルーティングを提供します。`hashType` に `"hashbang"` を指定することで以前と変わらない形式のルーティング `http://localhost:80000/#!` を使用できます。
 
 続いて、`app/index.html` を修正します。
 
@@ -117,7 +117,7 @@ ReactDOM.render(
   </html>
 ```
 
-`app/index.tsx` でマウント対象の DOM を `document.getElementById('root')` で取得しているので `id="root"` 属性を付与した要素を用意します。また、`ng-app` と `ng-view` は AngularJS のための記述なのでこちらも削除します。
+`app/index.tsx` でマウント対象の DOM を `document.getElementById('root')` で取得しているので `id="root"` 属性を付与した要素を用意します。また `ng-app` と `ng-view` は AngularJS のための記述なのでこちらも削除します。
 
 エントリーポイントを変更したので、`webpack.config.js` の `entry` を修正します。
 
@@ -181,7 +181,7 @@ ReactDOM.render(
       11 |
 ```
 
-これを修正するために、`test-utils.tsx` ファイルを修正します。`customRender` に使用する `Wrapper` に `<MemoryRouter>` を追加します。また、テストごとに異なるルーティングの設定を行えるように `customRender` で `routeOptions` を受け取るように修正します。
+これを修正するために、`test-utils.tsx` ファイルを修正します。`customRender` に使用する `Wrapper` に `<MemoryRouter>` を追加します。またテストごとに異なるルーティングの設定を行えるように `customRender` で `routeOptions` を受け取るように修正します。
 
 ```tsx
 import { MemoryRouter, MemoryRouterProps, Route } from 'react-router-dom';
@@ -270,7 +270,7 @@ const customRender = (
 -   });
 ```
 
-各テストの `render` 関数では Props で渡していた `$routeParams` を削除します。更に、`PhoneItems` コンポーネントのテストの修正時に現在のルーティングの設定を渡せるようにしておいたのでこれを利用します。`path` はコンポーネントが描画されるべきルートのパスを指定します。`initialEntries` には [history](https://developer.mozilla.org/ja/docs/Web/API/History) のスタックが渡せるので、現在のパスとして `'phones/nexus-s` を渡しています。
+各テストの `render` 関数では Props で渡していた `$routeParams` を削除します。さらに、`PhoneItems` コンポーネントのテストの修正時に現在のルーティングの設定を渡せるようにしておいたのでこれを利用します。`path` はコンポーネントが描画されるべきルートのパスを指定します。`initialEntries` には [history](https://developer.mozilla.org/ja/docs/Web/API/History) のスタックが渡せるので、現在のパスとして `'phones/nexus-s` を渡しています。
 
 ```diff
 - render(<PhoneDetail $routeParams={$routeParams} />);
@@ -296,7 +296,7 @@ npm run test PhoneDetail
 npm run dev
 ```
 
-もう AngularJS に依存するコードは存在しないですが、以前と変わりなく動作するはずです。ここで真っ白な画面が表示される場合、`react2angular` のコードどこかに残っている可能性があるので、全て取り除いてください。
+もう AngularJS に依存するコードは存在しないですが、以前と変わりなく動作するはずです。ここで真っ白な画面が表示される場合、`react2angular` のコードどこかに残っている可能性があるので、すべて取り除いてください。
 
 ![phoneCatApp](//images.ctfassets.net/in6v9lxmm5c8/7Fp5FBtHUNflNKJBmcGTOV/045fdcde1761eba6e4e3b4cbc2ea42a0/phoneCatApp.gif)
 
@@ -320,7 +320,7 @@ npm uninstall angular angular-animate jquery react2angular @types/angular-mocks 
 - `app/phone-list/phone-list.module.js`
 - `app/phone-detail/phone-detail.module.js`
 
-パッケージ・ファイルの削除跡には念の為テストを実行しておきましょう。
+パッケージ・ファイルの削除跡には念のためテストを実行しておきましょう。
 
 ```sh
 npm run test

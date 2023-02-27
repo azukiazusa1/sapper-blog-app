@@ -36,7 +36,7 @@ https://codesandbox.io/embed/proud-platform-75qzsr?fontsize=14&hidenavigation=1&
 
 `DomPurify` や `sanitize-html` などのライブラリと `Sanitizer API` の違いとして、結果をどのように返すかという点が挙げられます。`DomPurify` は結果としてサニタイズされた文字列を返しますが、`Sanitizer API` は DOM 要素を返却します。これは処理パフォーマンスや脆弱性、HTML のコンテキストを考慮した結果です。例えば、`<td>` 要素は `<table>` 要素の配下に存在することが期待されますが、単純に文字列を返す実装ではこのことは考慮されません。
 
-それでは実際の使用方法を見てみましょう。`Sanitizer API` 以下の2通りの使用方法があります。
+それでは実際の使用方法を見てみましょう。`Sanitizer API` 以下の 2 通りの使用方法があります。
 
 - [setHTML](https://developer.mozilla.org/ja/docs/Web/API/Element/setHTML) の引数として渡す
 - [sanitizeFor](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/sanitizeFor) メソッドでサニタイズした結果を受け取る
@@ -66,7 +66,7 @@ https://codesandbox.io/embed/quirky-meadow-frwtg1?fontsize=14&hidenavigation=1&t
 el.setHTML(dirty);
 ```
 
-また、解釈処理において現在の要素のコンテキストで無効な HTML 文字列の要素を削除します。`<td>` は `<table>` 要素の配下に存在する必要があるので、`setHTML` で挿入した場合には `<td>` が取り除かれています。
+また解釈処理において現在の要素のコンテキストで無効な HTML 文字列の要素を削除します。`<td>` は `<table>` 要素の配下に存在する必要があるので、`setHTML` で挿入した場合には `<td>` が取り除かれています。
 
 ```js
 const el = document.getElementById("app"); // これは<div>要素
@@ -82,7 +82,7 @@ https://codesandbox.io/embed/jolly-kowalevski-9rys14?fontsize=14&hidenavigation=
 
 無害化した HTML をまだ DOM に挿入したくない場合には、`Sanitizer API` の `sanitizeFor` メソッドを使用してサニタイズされた `HTMLElement` 要素を得られます。
 
-このメソッドは第1引数に HTML 要素のタグ名、第2引数に HTML 文字列を受け取りタグ名に対応した HTML 要素を返却します。
+このメソッドは第 1 引数に HTML 要素のタグ名、第 2 引数に HTML 文字列を受け取りタグ名に対応した HTML 要素を返却します。
 
 ```js
 const sanitizer = new Sanitizer();
@@ -103,7 +103,7 @@ console.log(clean.innerHTML) // <img src='x'>
 サニタイザーが削除する必要があるが、それらの子要素を維持する要素を示す文字列の配列。
 
 #### dropElements
-サニタイザーが削除すべき要素 (ネストされた要素を含む) を示す文字列の配列。
+サニタイザーが削除すべき要素（ネストされた要素を含む）を示す文字列の配列。
 
 #### allowAttributes
 各キーが属性名であり、値が許可されたタグ名の配列であるオブジェクト。一致する属性は削除されません。配列に含まれない属性は、すべて削除されます。
@@ -112,10 +112,10 @@ console.log(clean.innerHTML) // <img src='x'>
 各キーが属性名で、値が削除されるタグ名の配列であるオブジェクト。一致する属性は削除されます。
 
 #### allowCustomElements
-false（デフォルト）に設定されたブール値は、カスタム要素とその子要素を削除します。trueに設定すると、カスタム要素は組み込みとカスタムの設定チェックの対象となります（そして、それらのチェックに基づいて保持または削除されます）。
+false（デフォルト）に設定されたブール値は、カスタム要素とその子要素を削除します。true に設定すると、カスタム要素は組み込みとカスタムの設定チェックの対象となります（そして、それらのチェックに基づいて保持または削除されます）。
 
 #### allowComments
-ブール値を false (デフォルト) に設定すると、HTMLコメントが削除されます。コメントを残すにはtrueを指定します。
+ブール値を false（デフォルト）に設定すると、HTML コメントが削除されます。コメントを残すには true を指定します。
 
 例えば、`allowElements` に `["b"]` を指定舌倍、`<b>` タグはそのまま残りますが `<i>` タグが取り除かれていることがわかります。
 

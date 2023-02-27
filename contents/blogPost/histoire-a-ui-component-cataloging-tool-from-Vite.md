@@ -13,9 +13,9 @@ published: true
 Histoire は以下のような特徴を謳っています。
 
 - Vite にネイティブ対応
-  - Histoire は Vite 向けのツールであるので、`vite.config.ts` の設定を再利用することができます。このあたりの特徴は [Vitest](https://vitest.dev/) と同様ですね
+  - Histoire は Vite 向けのツールであるので、`vite.config.ts` の設定を再利用できます。このあたりの特徴は [Vitest](https://vitest.dev/) と同様ですね
 - Story をフレームワークそのままの書き方で作成できる
-  - Storybook の場合 Vue でコンポーネントを作成していたとしても Story を作成する場合には `.stories.ts` のような拡張子でファイルを作成して Storybook 向けのコンポーネントの記述をする必要があります。一方 Histoire は Story を作成する際にも `.vue` や `.svelte` のような拡張子を使用することができ、フレームワークの特徴に合わせた書き方ができます。
+  - Storybook の場合 Vue でコンポーネントを作成していたとしても Story を作成する場合には `.stories.ts` のような拡張子でファイルを作成して Storybook 向けのコンポーネントの記述をする必要があります。一方 Histoire は Story を作成する際にも `.vue` や `.svelte` のような拡張子を使用でき、フレームワークの特徴に合わせた書き方ができます。
 - 早くて軽い
   - やはり Vite を使っているだけあってビルド速度は高速なようです
 - 拡張性が高い
@@ -66,7 +66,7 @@ $ npm i -D histoire
 
 ### グローバル CSS を設定する
 
-グローバルに読み込む CSS がある場合 Histoire の設定ファイルを作成する必要があります。設定ファイルは `vite.config.ts` の `histoire` プロパティとして記載するか、`histoire.config.ts` ファイルを新たに作成して設定を記載する2通りの方法があります。ここでは後者の方法を使用します。
+グローバルに読み込む CSS がある場合 Histoire の設定ファイルを作成する必要があります。設定ファイルは `vite.config.ts` の `histoire` プロパティとして記載するか、`histoire.config.ts` ファイルを新たに作成して設定を記載する 2 通りの方法があります。ここでは後者の方法を使用します。
 
 ```ts
 // histoire.config.ts
@@ -86,7 +86,7 @@ import './index.css
 
 ### Story を作成する
 
-それでは実際に Story を作成しましょう。全ての Story は `.story.vue` 拡張子を使用します。
+それでは実際に Story を作成しましょう。すべての Story は `.story.vue` 拡張子を使用します。
 
 ```vue
 <script lang="ts" setup>
@@ -100,9 +100,9 @@ import AppButton from "./AppButton.vue";
 </template>
 ```
 
-上記のように通常の Vue の SFC ファイルと全く同じスタイルで Story を記述することができます。Story は `<template>` タグ内の `<Story>` タグの中に記述する必要があります。
+上記のように通常の Vue の SFC ファイルと全く同じスタイルで Story を記述できます。Story は `<template>` タグ内の `<Story>` タグの中に記述する必要があります。
 
-`<Story>` タグは `title` Props を受け取ることができ、これを指定すると任意のタイトルを付与することができます。
+`<Story>` タグは `title` Props を受け取ることができ、これを指定すると任意のタイトルを付与できます。
 
 Story を作成したら開発サーバーを起動しましょう。
 
@@ -116,7 +116,7 @@ http:://localhost:3000 にアクセスすると作成した `buttons` ストー�
 
 ![スクリーンショット 2022-06-04 20.11.21](//images.ctfassets.net/in6v9lxmm5c8/47uJ47BWJ4OHtnsA97RKIK/c75f494e2af215e5e7f2c35a127e6484/____________________________2022-06-04_20.11.21.png)
 
-Storybook と同じように Controls タブが存在し、Props を変更することができます。
+Storybook と同じように Controls タブが存在し、Props を変更できます。
 
 ![controls](//images.ctfassets.net/in6v9lxmm5c8/3ArUCQRJPJnDCVb3GVeeBd/1011794d73d5dfef45bcee028634e2bd/controls.gif)
 
@@ -130,7 +130,7 @@ Storybook と同じように Controls タブが存在し、Props を変更する
 
 ### Story を複数作成する
 
-`<Variants>` タグを使用することで、1つのコンポーネントに対して複数の表示を作成することができます。`<Variants>` タグも `<Story>` タグと同様に `title` Props を与えることができます。
+`<Variants>` タグを使用することで、1 つのコンポーネントに対して複数の表示を作成できます。`<Variants>` タグも `<Story>` タグと同様に `title` Props を与えることができます。
 
 ```ts
 <script lang="ts" setup>
@@ -158,9 +158,9 @@ import AppButton from "./AppButton.vue";
 
 #### レイアウトの変更
 
-デフォルトでは `<Variant>` タグを使用した場合、1つの `variant` につき一つのメニュが追加され、それぞれ別のページに表示されます。ですが、時には全ての `variant` を横に並べて表示して比較したいこともあるでしょう。
+デフォルトでは `<Variant>` タグを使用した場合、1 つの `variant` につき 1 つのメニュが追加され、それぞれ別のページに表示されます。ですが、時にはすべての `variant` を横に並べて表示して比較したいこともあるでしょう。
 
-そのような場合には、`<Story>` に `layout` Props を渡して `{ type: 'grid' }` を指定することで、全ての `variant` を1つのページに グリッドレイアウトで表示できます。
+そのような場合には、`<Story>` に `layout` Props を渡して `{ type: 'grid' }` を指定することで、すべての `variant` を 1 つのページにグリッドレイアウトで表示できます。
 
 ```diff
   <script lang="ts" setup>
@@ -187,7 +187,7 @@ import AppButton from "./AppButton.vue";
 
 ### コンポーネントに状態を渡す
 
-デフォルトでは Controls タブで Props の状態を変更することができますが、それ以外の状態をコンポーネントに渡して操作したいこともあるでしょう。例えば、次の例ではボタンコンポーネントのスロットに渡す文字列を状態として保持するようにしています。
+デフォルトでは Controls タブで Props の状態を変更できますが、それ以外の状態をコンポーネントに渡して操作したいこともあるでしょう。例えば、次の例ではボタンコンポーネントのスロットに渡す文字列を状態として保持するようにしています。
 
 ```vue
 <script lang="ts" setup>
@@ -204,11 +204,11 @@ const label = ref("Hello World");
 </template>
 ```
 
-あまり難しいことは考えずに、普段の Vue で行っている方法と同じく `ref` で状態を定義しています。このままでは状態を更新することができないので Controls タブに `label` を更新できるようにします。
+あまり難しいことは考えずに、普段の Vue で行っている方法と同じく `ref` で状態を定義しています。このままでは状態を更新できないので Controls タブに `label` を更新できるようにします。
 
-`<Story>` タグ又は `<Variant>` タグの `controls` スロットを使用することで Controls タブにフォームを追加することができます。`<Story>` タグ直下にスロットを配置した場合全ての `variant` の Controls タブにフォームが追加され、`<Variant>` タグ配下にスロットを配置した場合にはその `variant` の Controls タブのみにフォームが追加されます。
+`<Story>` タグまたは `<Variant>` タグの `controls` スロットを使用することで Controls タブにフォームを追加できます。`<Story>` タグ直下にスロットを配置した場合すべての `variant` の Controls タブにフォームが追加され、`<Variant>` タグ配下にスロットを配置した場合にはその `variant` の Controls タブのみにフォームが追加されます。
 
-`<HstText>` は Histoire に予め用意されているコンポーネントで、 Controls タグ向けの UI のフォームを利用することができます。
+`<HstText>` は Histoire にあらかじめ用意されているコンポーネントで、 Controls タグ向けの UI のフォームを利用できます。
 
 ```vue
 <script lang="ts" setup>
@@ -235,7 +235,7 @@ Controls タブに `label` フォームが追加され、ボタン内部のテ�
 
 ### イベント
 
-Histoire の `hstEvent` 関数を使用することでコンポーネントが emit するイベントの一覧を Events タブに表示することができます。
+Histoire の `hstEvent` 関数を使用することでコンポーネントが emit するイベントの一覧を Events タブに表示できます。
 
 ```vue
 <script lang="ts" setup>
@@ -254,7 +254,7 @@ import { hstEvent } from "histoire/client";
 
 ### ドキュメント
 
-ファイルのルートレベルに `<doc>` タグを追加することでコンポーネントのドキュメントをマークダウン記法で記述することができます。ドキュメントは Docs タグに表示されます。
+ファイルのルートレベルに `<doc>` タグを追加することでコンポーネントのドキュメントをマークダウン記法で記述できます。ドキュメントは Docs タグに表示されます。
 
 ```vue
 <script lang="ts" setup>
@@ -304,7 +304,7 @@ import AppButton from "./AppButton.vue";
 
 ### プラグイン
 
-Storybook の Addons のようにプラグインにより機能を拡張することができます。例としてスクリーンショットを撮影してビジュアルリグレッションテストを実施する [https://histoire.dev/guide/plugins.html](https://github.com/histoire-dev/histoire/tree/main/packages/histoire-plugin-screenshot) を使ってみましょう。
+Storybook の Addons のようにプラグインにより機能を拡張できます。例としてスクリーンショットを撮影してビジュアルリグレッションテストを実施する [https://histoire.dev/guide/plugins.html](https://github.com/histoire-dev/histoire/tree/main/packages/histoire-plugin-screenshot) を使ってみましょう。
 
 まずはパッケージをインストールします。
 

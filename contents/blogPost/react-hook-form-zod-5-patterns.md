@@ -49,7 +49,7 @@ export const isUniqueEmail = async (email: string) => {
 };
 ```
 
-以下のようにフォームを組み立てることができます。メールアドレスの重複チェックの API をコールしている時にローディングインディケーターを表示する場合には、`formState.isValidating` の値を参照します。`formState.isValidating` はバリデーションを実行中の場合 `true` になります。
+以下のようにフォームを組み立てることができます。メールアドレスの重複チェックの API をコールしているときにローディングインディケーターを表示する場合には、`formState.isValidating` の値を参照します。`formState.isValidating` はバリデーションを実行中の場合 `true` になります。
 
 ```tsx:Form.tsx
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -319,7 +319,7 @@ type Checkbox = {
 }
 ```
 
-これでチェックボックスにチェックをしなかった時（= `terms` が `false` の時）、以下のようなエラーが返されるようになります。
+これでチェックボックスにチェックをしなかったとき（= `terms` が `false` の時）、以下のようなエラーが返されるようになります。
 
 ```json
 {
@@ -341,11 +341,10 @@ type Checkbox = {
 ### リテラル値で分岐する場合
 
 フォームの他のフィールドの値によって、バリデーションを実施するかどうか決定する場合があると思います。例えば、通常会員として登録する場合クレジットカード情報を入力する必要はないけれど、プレミアム会員として登録する場合にはクレジット情報が必須となるような場合が考えられます。
-フォームの他のフィールドの値によって、バリデーションを実施するかどうか決定する場合があると思います。例えば、通常会員として登録する場合クレジットカード情報を入力する必要はないけれど、プレミアム会員として登録する場合にはクレジット情報が必須となるような場合が考えられます。
 
 チェックボックスの ON/OFF やラジオボタンの選択値のようなリテラルの値で分岐したい場合には [z.discriminatedUnion](https://zod.dev/?id=discriminated-unions) を使用するのがおすすめです。これは TypeScript のユニオン型に相当し、タグ付きユニオンのような使い方ができます。
 
-`z.discriminatedUnion` の第 1 引数にはバリデーションにどちらのスキーマを使用するか判別するためのキーを指定します。これにより、[z.union](https://zod.dev/?id=unions) を使用するよりも高速に評価をすることができ、パース処理がより高速になります。
+`z.discriminatedUnion` の第 1 引数にはバリデーションにどちらのスキーマを使用するか判別するためのキーを指定します。これにより、[z.union](https://zod.dev/?id=unions) を使用するよりも高速に評価をでき、パース処理がより高速になります。
 
 ```ts:validation.ts
 import { z } from "zod";
@@ -467,7 +466,7 @@ export const RegistrationSchema = z
 export type Registration = z.infer<typeof RegistrationSchema>;
 ```
 
-`refine()` メソッドは複数定義することができるので、例えば保護者の同意に加えて保護者の名前、続柄のように複数の項目を必須にしたい場合でも対応できます。
+`refine()` メソッドは複数定義できるので、例えば保護者の同意に加えて保護者の名前、続柄のように複数の項目を必須にしたい場合でも対応できます。
 
 ```ts:validation.tsx
 import { z } from "zod";

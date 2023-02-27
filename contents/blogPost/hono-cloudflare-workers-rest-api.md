@@ -32,7 +32,7 @@ Hono の特徴としては以下の点が挙げられています。
 
 ### 依存関係なし
 
-Serviec Worker と Web Standard API に準拠して提供されています。例えばルーティングのハンドラにおいてレスポンスを返却する際には Web API の [Response](https://developer.mozilla.org/ja/docs/Web/API/Response) を返却することができます。
+Serviec Worker と Web Standard API に準拠して提供されています。例えばルーティングのハンドラにおいてレスポンスを返却する際には Web API の [Response](https://developer.mozilla.org/ja/docs/Web/API/Response) を返却できます。
 
 ```ts
 app.get("/", () => {
@@ -47,7 +47,7 @@ app.get("/", () => {
 
 ### ミドルウェア
 
-多くの[ビルドインミドルウェア](https://honojs.dev/docs/builtin-middleware/)、[サードパーティミドルウェア](https://honojs.dev/docs/third-party-middleware/)を備えており、またカスタムミドルウェアも簡単に定義することができます。
+多くの[ビルドインミドルウェア](https://honojs.dev/docs/builtin-middleware/)、[サードパーティミドルウェア](https://honojs.dev/docs/third-party-middleware/)を備えており、またカスタムミドルウェアも簡単に定義できます。
 
 ### TypeScript 
 
@@ -64,13 +64,13 @@ Hono は現在以下のプラットフォームをサポートしています。
 
 import やエントリーポイントはプラットフォームごとに若干頃なるものの、大半のコードは全く同じコードで多くのプラットフォームで動作するのは大きな特徴です。
 
-## 初めての Hono
+## はじめての Hono
 
-それでは早速 Hono を使用してアプリケーションを作成してみましょう。前述のとおり Hono は様々なプラットフォームで実行させることができるのですが、今回は [Cloudflare Workers](https://developers.cloudflare.com/workers/) を選択します。Cloudflare Workers はエッジサーバーで JavaScript を実行してくれるサーバーレスのサービスです。
+それでは早速 Hono を使用してアプリケーションを作成してみましょう。前述のとおり Hono はさまざまなプラットフォームで実行させることができるのですが、今回は [Cloudflare Workers](https://developers.cloudflare.com/workers/) を選択します。Cloudflare Workers はエッジサーバーで JavaScript を実行してくれるサーバーレスのサービスです。
 
 ### Cloudflare Workers アカウントの作成
 
-Cloudflare Workersを動かすためには（ローカル環境も含めて）Cloudflare Workers のアカウントを作成する必要があります。アカウントを作成するには下記サイトから「Sign up」をクリックします。
+Cloudflare Workers を動かすためには（ローカル環境も含めて）Cloudflare Workers のアカウントを作成する必要があります。アカウントを作成するには下記サイトから「Sign up」をクリックします。
 
 https://workers.cloudflare.com/
 
@@ -130,7 +130,7 @@ export default app; // ③
 
 ①：`new Hono()` で `Hono` インスタンスを作成します。`Hono` インスタンスに対してルーティングやミドルウェアを追加することでサーバーの処理を記述します。
 
-②：ルーティング関数は指定したルートと HTTP メソッドへのリクエストを受け取った時に呼び出されるコールバック関数（ハンドラ）を指定します。ここでは `app.get("/", (c) => c.text("Hello 🔥"));` で `/` パスへの GET リクエストに対するハンドラを記述します。このような書き方は [Express](https://expressjs.com/) のルーティング関数ともよく似ていています。
+②：ルーティング関数は指定したルートと HTTP メソッドへのリクエストを受け取ったときに呼び出されるコールバック関数（ハンドラ）を指定します。ここでは `app.get("/", (c) => c.text("Hello 🔥"));` で `/` パスへの GET リクエストに対するハンドラを記述します。このような書き方は [Express](https://expressjs.com/) のルーティング関数ともよく似ていています。
 
 コールバック関数の引数に [Context](https://honojs.dev/docs/api/context/) オブジェクトを受け取ります。Context オブジェクトはリクエストとレスポンスをハンドリングするために使用されます。例えば `c.req.query()` メソッドからクエリパラメータを取得したり、`c.body()` メソッドでレスポンスボディを返却したりなどです。ここでは `c.text()` メソッドを呼び出しています。これは `Content-Type:text/plain` としてテキストをレスポンスとして返却します。
 
@@ -144,7 +144,7 @@ export default app; // ③
 npm start
 ```
 
-ブラウザに次のように表示されているはずです🔥
+ブラウザに次のように表示されているはずです🔥。
 
 ![スクリーンショット 2022-08-27 12.14.51](//images.ctfassets.net/in6v9lxmm5c8/2yMg4zcNi7u5IC0MO9JhJp/42a7340ef5ce2e714449ba6141f470d0/____________________________2022-08-27_12.14.51.png)
 
@@ -167,7 +167,7 @@ todos.get("/", (c) => c.json(todoList));
 export { todos };
 ```
 
-先程の Hello World と同様に `Hono` のインスタンスを作成してルーティングを設定しています。まずはじめに TODO の一覧を返却するエンドポイントを作成します。ひとまずダミーデータとして `todoList` を定義して `c.json()` メソッドで JSON 形式として返却しています。
+さきほどの Hello World と同様に `Hono` のインスタンスを作成してルーティングを設定しています。まずはじめに TODO の一覧を返却するエンドポイントを作成します。ひとまずダミーデータとして `todoList` を定義して `c.json()` メソッドで JSON 形式として返却しています。
 
 `index.ts` ファイルにおいて作成した `todos` ルーティングを使用するように変更します。
 
@@ -180,9 +180,9 @@ app.route("/api/todos", todos)
 export default app;
 ```
 
-`app.route()` メソッドで先程作成した `todos` インスタンスを指定しています。`app.route()` を使用すると、ルーティングの定義をモジュール化できます。Todo 一覧取得のパスは `/api/todos/` としてマッチングします。
+`app.route()` メソッドでさきほど作成した `todos` インスタンスを指定しています。`app.route()` を使用すると、ルーティングの定義をモジュール化できます。Todo 一覧取得のパスは `/api/todos/` としてマッチングします。
 
-作成したエンドポイントを実際にテストしてみましょう。この記事では HTTP クライアントに [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) と呼ばれる VSCode の拡張機能を使用しますが、お好みのツールを使用して頂いて構いません。
+作成したエンドポイントを実際にテストしてみましょう。この記事では HTTP クライアントに [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) と呼ばれる VSCode の拡張機能を使用しますが、お好みのツールを使用していただいて構いません。
 
 http://localhost:8787/api/todos に対して GET リクエストを送信します。Thunder Client の拡張機能をインストールしたら左のメニューから Thunder Client のアイコンをクリックします。その後、サイドメニューから「New Request」ボタンをクリックすると API をコールする画面が表示されます。上部の入力欄に `http://localhost:8787/api/todos` と入力した後「Send」ボタンをクリックしましょう。ここまででうまくいけば、`TodoList` がレスポンスとして返却されるはずです。
 
@@ -206,7 +206,7 @@ todos.post("/", async (c) => {
 });
 ```
 
-Todo の作成には POST リクエストを使用するので `app.post()` メソッドを使用します。リクエストボディを取得するためには `c.req.json()` メソッドを使用します。その後 `todoList` の末尾に追加した後新たに作成した Todo を `c.json()` で返却します。`c.json()` の第2引数には HTTP ステータスコードを渡すことができるので、`201 Created` を指定しています。
+Todo の作成には POST リクエストを使用するので `app.post()` メソッドを使用します。リクエストボディを取得するためには `c.req.json()` メソッドを使用します。その後 `todoList` の末尾に追加した後新たに作成した Todo を `c.json()` で返却します。`c.json()` の第 2 引数には HTTP ステータスコードを渡すことができるので、`201 Created` を指定しています。
 
 作成したエンドポイントをテストしましょう。Thunder Client では「Body」タブからリクエストボディを指定できます。「Json」形式を選択して `title` プロパティを持った JSON を記述し POST リクエストを送信してみましょう。
 
@@ -278,7 +278,7 @@ todos.delete("/:id", async (c) => {
 
 ![スクリーンショット 2022-08-27 22.40.13](//images.ctfassets.net/in6v9lxmm5c8/50IbkwTmLbPGz1cIPrB6GE/77267b55e830aa731f0b10be4b06473f/____________________________2022-08-27_22.40.13.png)
 
-DELETE リクエストの送信後一覧取得 API から要素が取り除かれていることを確認しておきましょう。
+DELETE リクエストの送信後、一覧取得 API から要素が取り除かれていることを確認しておきましょう。
 
 ![スクリーンショット 2022-08-27 22.41.32](//images.ctfassets.net/in6v9lxmm5c8/c0rXi5Fk6OAP7baWLAnIF/048c8145d3ccd8e8dac0e199f3e43014/____________________________2022-08-27_22.41.32.png)
 
@@ -300,7 +300,7 @@ app.use(
 );
 ```
 
-`app.use()` メソッドでミドルウェアを登録することができます。`app.use()` の第1引数はミドルウェアを適用させるパスです。ここでは `/api` 配下のすべてのパスに対して Basic 認証を有効にします。
+`app.use()` メソッドでミドルウェアを登録できます。`app.use()` の第 1 引数はミドルウェアを適用させるパスです。ここでは `/api` 配下のすべてのパスに対して Basic 認証を有効にします。
 
 Basic 認証が有効となっているか確認しましょう。Todo 一覧取得 API にリクエストを送信すると `401 Unauthorized` が返却されます。
 
@@ -312,7 +312,7 @@ Thunder Client では「Auth」のタブから「Basic」を選択すること�
 
 #### バリデーションミドルウェア
 
-更にミドルウェアを追加してみましょう。サードパーティのミドルウェアであるバリデーションミドルウェアを導入します。
+さらにミドルウェアを追加してみましょう。サードパーティのミドルウェアであるバリデーションミドルウェアを導入します。
 
 https://github.com/honojs/validator
 
@@ -358,7 +358,7 @@ todos.post(
 
 ### Workers KV に永続化する
 
-ここまでは Todo のデータを変数に保存していたため、プロセスを終了するたびにデータが失われてしまいます。[Workers KV](https://developers.cloudflare.com/workers/runtime-apis/kv/) にデータを保存して永続化されるように実装しましょう。Workers KV は Cloudflare のエッジサーバからアクセスできる、グローバルなキーバリューストアです。
+ここまでは Todo のデータを変数に保存していたため、プロセスを終了するたびにデータが失われてしまいます。[Workers KV](https://developers.cloudflare.com/workers/runtime-apis/kv/) にデータを保存して永続化されるように実装しましょう。Workers KV は Cloudflare のエッジサーバーからアクセスできる、グローバルなキーバリューストアです。
 
 #### Workers KV の作成
 
@@ -431,7 +431,7 @@ export interface UpdateTodo {
 export const PREFIX = "v1:todo:";
 ```
 
-はじめに TODO の型定義と、定数として `PREFIX` を定義しています。`PREFIX` は KV のキーのプレフィックで、KV からリストで値を取得する際にプレフィックを使用してフィルタリングすることができます。プレフィックはキー名をコロンで区切って構成します（`v1:todo:<key>`）。
+はじめに TODO の型定義と、定数として `PREFIX` を定義しています。`PREFIX` は KV のキーのプレフィックで、KV からリストで値を取得する際にプレフィックを使用してフィルタリングできます。プレフィックはキー名をコロンで区切って構成します（`v1:todo:<key>`）。
 
 はじめに Todo の一覧を取得する関数です。
 
@@ -453,7 +453,7 @@ export const getTodos = async (KV: KVNamespace): Promise<Todo[]> => {
 
 引数として `KV` を受け取っています。これはルーティングのハンドラ関数から `e.env.HONO_TODO` を渡してもらうことで Workers KV の API にアクセスするために使用します。引数として `KV` を受け取るのはすべての関数で共通です。
 
-`KV.list()` メソッドで特定のプレフィックを持つキーを全て取得しています。`list.keys` からキーの一覧を取得できるので `for...of` でループしてすべての値を取得しています。キーから値を取得するためには　`KV.get()` メソッドを使用します。`KV.get()` の第2引数ではどのような形式に値を取得するかを指定することができます。デフォルトは `"text"` として取得しますが、`"json"` 形式を選択するとオブジェクトに変換してから値を返却してくれます。
+`KV.list()` メソッドで特定のプレフィックを持つキーをすべて取得しています。`list.keys` からキーの一覧を取得できるので `for...of` でループしてすべての値を取得しています。キーから値を取得するためには　`KV.get()` メソッドを使用します。`KV.get()` の第 2 引数ではどのような形式に値を取得するかを指定できます。デフォルトは `"text"` として取得しますが、`"json"` 形式を選択するとオブジェクトに変換してから値を返却してくれます。
 
 続いて `id` を指定して特定の Todo を取得する関数です。ただ単にラップしているだけですので、あまり特筆すべき点もないでしょう。
 
@@ -583,7 +583,7 @@ export { todos };
 
 ### テストコードの実装
 
-最後に作成したコードに対してテストコードを実装しましょう。`Hono` では `app.fetch()` メソッドを使用することで API に対するリクエストを送信し、テストを記述することができます。
+最後に作成したコードに対してテストコードを実装しましょう。`Hono` では `app.fetch()` メソッドを使用することで API に対するリクエストを送信し、テストを記述できます。
 
 ```ts
 test('GET /hello is ok', async () => {
@@ -695,7 +695,7 @@ test("Todo 一覧を取得する", async () => {
 });
 ```
 
-`app.fetch()` メソッドでリクエストを送信しています。ハンドラ関数がバインディングされた KV を使用するために `app.fetch` の第2引数に `getMiniflareBindings` 関数から取得した `env` を含める必要がある点に注意してください。
+`app.fetch()` メソッドでリクエストを送信しています。ハンドラ関数がバインディングされた KV を使用するために `app.fetch` の第 2 引数に `getMiniflareBindings` 関数から取得した `env` を含める必要がある点に注意してください。
 
 テストを実行して Pass するか確認してみましょう。
 
@@ -712,7 +712,7 @@ Snapshots:   0 total
 Time:        2.488 s
 ```
 
-この調子で残りのテストも実装していきます。
+この調子で残りのテストも実装します。
 
 ```ts:src/todos/api.spec.ts
 

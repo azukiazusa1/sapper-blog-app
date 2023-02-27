@@ -14,10 +14,10 @@ published: true
 $ kubectl get all --no-headeres | wc -l
 ```
 
-`get all`コマンドはすべてのリソースを得るコマンド。`--no-headers`オプションを渡すとヘッダーの行が出力されなくなるので、行数を数えればそれがリソースの数と一致することになる。
-パイプで`wc`コマンドに渡して行数をカウントを出力する。`-l`オプションは外業の数を表示する。
+`get all` コマンドはすべてのリソースを得るコマンド。`--no-headers` オプションを渡すとヘッダーの行が出力されなくなるので、行数を数えればそれがリソースの数と一致することになる。
+パイプで `wc` コマンドに渡して行数をカウントを出力する。`-l` オプションは外業の数を表示する。
 
-# 作成するリソースの雛形をyamlとして出力する
+# 作成するリソースのひな形をyamlとして出力する
 
 ```sh
 $ kubectl run nginx --image nginx -0=yaml --dry-run=client > nginx.yaml
@@ -43,7 +43,7 @@ spec:
 status: {}
 ```
 
-ドライラン(`--dry-run=client`)した結果をyamlとして出力(`-o=yaml')して、結果をファイルに保存`> nginx.yaml`することで簡単にyamlファイルの雛形を出力できる。
+ドライラン（`--dry-run=client`）した結果を yaml として出力（`-o=yaml`）して、結果をファイルに保存 `> nginx.yaml` することで簡単に yaml ファイルのひな形を出力できる。
 
 ### その他の例
 
@@ -96,11 +96,11 @@ $ alias k="kubectl"
 
 # describeの出力結果を絞り込む
 
-例えば、deploymentに適用されているImageを出力したいとき
+例えば、deployment に適用されている Image を出力したいとき。
 
 ```sh
 $ kubectl describe deployment some-deployment | grep -i image
 ```
 
-パイプで出力結果を`grep`に渡す。`-i`オプションは、大文字小文字を区別しない。
+パイプで出力結果を `grep` に渡す。`-i` オプションは、大文字小文字を区別しない。
 

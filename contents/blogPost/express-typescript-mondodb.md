@@ -10,23 +10,23 @@ published: true
 ---
 # はじめに
 
-Expressは、Node.jsのWebアプリケーションでもっとも利用されているフレームワークです。Expressは、HTTPによるWeb上の相互作用とNOde.jsプラットフォームの中間に位置するので、ある種のミドルウェアと言えます。
-Expressを利用して、MVCモデルのアプリケーションを開発してみます。
+Express は、Node.js の Web アプリケーションでもっとも利用されているフレームワークです。Express は、HTTP による Web 上の相互作用と NOde.js プラットフォームの中間に位置するので、ある種のミドルウェアと言えます。
+Express を利用して、MVC モデルのアプリケーションを開発してみます。
 
-データベースにはMongoDBを利用します。MondoDBは**ドキュメント型**のNoSQLであり、JSONの構造をそのままデータとして保存することができます。
-MongoDBは以下のような特徴を持ちます。
+データベースには MongoDB を利用します。MondoDB は**ドキュメント型**の NoSQL であり、JSON の構造をそのままデータとして保存できます。
+MongoDB は以下のような特徴を持ちます。
 
-- トランザクションを持っていないが、データの読み書きはRDBよりも早い
+- トランザクションを持っていないが、データの読み書きは RDB よりも早い
 - スキーマがない
-- クエリはJavaScriptで行う
-- SQLの`GROUP BY`のような集約クエリを持っている
+- クエリは JavaScript で行う
+- SQL の `GROUP BY` のような集約クエリを持っている
 
-さらに、今回TypeScriptを導入してみます。
-TypeScriptの型定義により、より安全なコードとエディタのインテリセンスによる開発体験の向上を狙います。
+さらに、今回 TypeScript を導入してみます。
+TypeScript の型定義により、より安全なコードとエディタのインテリセンスによる開発体験の向上を狙います。
 
 # 開発環境の構築
 
-さっそく初めていきますが、まずはコードが動く最小限のところから初めます。
+さっそくはじめていきますが、まずはコードが動く最小限のところから初めます。
 
 適当な場所でディレクトリを作成して移動しましょう。
 
@@ -35,7 +35,7 @@ mkdir express-ts
 cd express-ts
 ```
 
-`npm init -y`でプロジェクトルートに`package.json`を設置します。
+`npm init -y` でプロジェクトルートに `package.json` を設置します。
 
 ```json
 {
@@ -51,19 +51,19 @@ cd express-ts
 }
 ```
 
-expressをインストールします。
+express をインストールします。
 
 ```hs
 npm i express 
 ```
 
-TypeScriptや型定義、TypeScriptコードのままExpressサーバーを実行するための`ts-node-deb`をインストールします。
+TypeScript や型定義、TypeScript コードのまま Express サーバーを実行するための `ts-node-deb` をインストールします。
 
 ```sh
 npm i -D typescript @types/node @types/express ts-node-dev
 ```
 
-サーバーを起動するためのnpm scriptを`package.json`に記述しておきましょう。
+サーバーを起動するための npm script を `package.json` に記述しておきましょう。
 
 ```json
 "scripts": {
@@ -72,7 +72,7 @@ npm i -D typescript @types/node @types/express ts-node-dev
   },
 ```
 
-最終的に`package.json`は次のようになります。
+最終的に `package.json` は次のようになります。
 
 ```json
 {
@@ -98,9 +98,9 @@ npm i -D typescript @types/node @types/express ts-node-dev
 }
 ```
 
-最後に、`tsconfig.json`を`tsc --init`で生成します。
+最後に、`tsconfig.json` を `tsc --init` で生成します。
 
-生成できたら、`"moduleResolution": "node"`のコメントを外します。
+生成できたら、`"moduleResolution": "node"` のコメントを外します。
 
 ```json
 {
@@ -173,9 +173,9 @@ npm i -D typescript @types/node @types/express ts-node-dev
 
 # 簡単なExpressサーバー
 
-これで環境構築は終了です。ちゃんと動くか試しに簡単な「Hello」と出力するサーバを構築してみます。
+これで環境構築は終了です。ちゃんと動くか試しに簡単な「Hello」と出力するサーバーを構築してみます。
 
-`src`フォルダを作成し、その中に`main.ts`というファイルを作成してください。
+`src` フォルダを作成し、その中に `main.ts` というファイルを作成してください。
 
 ```typescript
 import Express from 'express'
@@ -193,18 +193,18 @@ app.listen(port, () => {
 })
 ```
 
-Expressモジュールには、Webサーバー機能を組み込んだクラスが含まれています。そのExpressアプリケーションを実体化したものを慣例的に`app`という変数に代入して使用します。
+Express モジュールには、Web サーバー機能を組み込んだクラスが含まれています。その Express アプリケーションを実体化したものを慣例的に `app` という変数に代入して使用します。
 
-`app.get()`はGETリクエストを処理します。第一引数でパスを受け取り、第二引数でコールバックをうけとります。
+`app.get()` は GET リクエストを処理します。第一引数でパスを受け取り、第二引数でコールバックをうけとります。
 
-`npm serve`でアプリケーションを実行して、[http://localhost:3000](http://localhost:3000)へアクセスしましょう。メッセージがレスポンスとして帰ってきているはずです。
+`npm serve` でアプリケーションを実行して、[http://localhost:3000](http://localhost:3000)へアクセスしましょう。メッセージがレスポンスとして帰ってきているはずです。
 
 # ルーティングを設定する
 
 サーバーからのレスポンスを受け取ることができたので、ルーティングを設定しましょう。
 
-`src`フォルダの下に`routes`フォルダを作成し、`index.ts`ファイルを配置します。
-`router/index.ts`はすべてのルートをまとめるファイルです。
+`src` フォルダの下に `routes` フォルダを作成し、`index.ts` ファイルを配置します。
+`router/index.ts` はすべてのルートをまとめるファイルです。
 
 ## `routes/index.ts`
 
@@ -221,11 +221,11 @@ router.use('/', homeRoutes)
 export default router
 ```
 
-`Express.Router()`はルーティングに関する機能を提供します。
-`router.use()`で名前空間を追加します。
-`/users`というプレフィックがついたルートは、すべて`userRoutes`モジュールのルートを利用します。
+`Express.Router()` はルーティングに関する機能を提供します。
+`router.use()` で名前空間を追加します。
+`/users` というプレフィックがついたルートは、すべて `userRoutes` モジュールのルートを利用します。
 
-`routes`フォルダ配下に`userRoutes.ts`ファイルを作成して、`/users`ルートを作成します。
+`routes` フォルダ配下に `userRoutes.ts` ファイルを作成して、`/users` ルートを作成します。
 
 ## `routes/userRoutes.ts`
 
@@ -240,11 +240,11 @@ router.get('/', usersController.index)
 export default router
 ```
 
-`router.get('/', usersController.index)`のルートは、`/users/`へGETリクエストを送ったときに処理されます。
+`router.get('/', usersController.index)` のルートは、`/users/` へ GET リクエストを送ったときに処理されます。
 
-ここでは、実際処理は直接コールバックを記述するのではなく、`usersController`に任せます。コントローラーは、ビューとモデルを結びつけ。リクエストを受信した時、適切なレスポンスを返します。
+ここでは、実際処理は直接コールバックを記述するのではなく、`usersController` に任せます。コントローラーは、ビューとモデルを結びつけ。リクエストを受信したとき、適切なレスポンスを返します。
 
-`src`フォルダの下に`controllers`フォルダを作成し、`usersController.ts`を作成します。
+`src` フォルダの下に `controllers` フォルダを作成し、`usersController.ts` を作成します。
 
 ## `usersController.ts`
 
@@ -258,9 +258,9 @@ export default {
 }
 ```
 
-今はまだ簡単なレスポンスを返すだけです。型指定のために`express`をインポートしています。
+今はまだ簡単なレスポンスを返すだけです。型指定のために `express` をインポートしています。
 
-`homeRoutes.ts`、`homeController.ts`も同じように作成します。
+`homeRoutes.ts`、`homeController.ts` も同じように作成します。
 
 ```ts
 import Express from 'express'
@@ -298,9 +298,9 @@ export default {
 ルーティングを作成したところで、ルーティングとビューを接続してみましょう。
 まずは、静的ファイルを使用するフォルダを作成します。
 
-ここでは、`src`フォルダに`public`フォルダを配置して、その中に`images`、`css`、`js`フォルダを作成します。
+ここでは、`src` フォルダに `public` フォルダを配置して、その中に `images`、`css`、`js` フォルダを作成します。
 
-そうしたら、`src/main.ts`ファイル内で`app.use(Express.static('public'))`と記述し、Expressに静的ファイルの置き場を教えます。
+そうしたら、`src/main.ts` ファイル内で `app.use(Express.static('public'))` と記述し、Express に静的ファイルの置き場を教えます。
 
 ```ts
 import Express from 'express'
@@ -317,23 +317,23 @@ app.listen(port, () => {
 })
 ```
 
-`public/css`には[Bootstrap](https://getbootstrap.com/)をダウンロードして、`bootstrap.css`というファイル名で保存しておきます。
+`public/css` には[Bootstrap](https://getbootstrap.com/)をダウンロードして、`bootstrap.css` というファイル名で保存しておきます。
 
 ## テンプレートエンジンを使用する
 
-通常のHTMLファイルの代わりに、EJSと呼ばれるテンプレートエンジンを使用します。
+通常の HTML ファイルの代わりに、EJS と呼ばれるテンプレートエンジンを使用します。
 
-EJSJavaScriptのテンプレートエンジンの一つで、動的に変数を受け渡したり、共通のレイアウトファイルを設定したり、再利用できるパーシャルを利用することができます。
+EJSJavaScript のテンプレートエンジンの 1 つで、動的に変数を受け渡したり、共通のレイアウトファイルを設定したり、再利用できるパーシャルを利用できます。
 
-まずは、`npm i express-ejs-layouts ejs`を実行してEJSテンプレートパッケージをインストールします。
+まずは、`npm i express-ejs-layouts ejs` を実行して EJS テンプレートパッケージをインストールします。
 
-`express-ejs-layouts`の型定義もインストールします。
+`express-ejs-layouts` の型定義もインストールします。
 
 ```sh
 npm i -D @types/express-ejs-layouts
 ```
 
-さらに、`main.ts`でテンプレートエンジンとしてEJSを利用することを伝えます。
+さらに、`main.ts` でテンプレートエンジンとして EJS を利用することを伝えます。
 
 ```ts
 import Express from 'express'
@@ -358,8 +358,8 @@ app.listen(port, () => {
 
 ### ejsファイルの作成
 
-プロジェクトルートに`views`フォルダを作成し、`layout.ejs`ファイルを作成します。
-`.ejs`はEJSの拡張子です。
+プロジェクトルートに `views` フォルダを作成し、`layout.ejs` ファイルを作成します。
+`.ejs` は EJS の拡張子です。
 
 ```html
 <!DOCTYPE html>
@@ -402,10 +402,10 @@ app.listen(port, () => {
 </html>
 ```
 
-レイアウトファイルには、`<head>`タグと全ページ共通であるヘッダーとフッターを配置します。
-ボディ部分は、`<%- body %>`と記述されているところに描画されます。
+レイアウトファイルには、`<head>` タグと全ページ共通であるヘッダーとフッターを配置します。
+ボディ部分は、`<%- body %>` と記述されているところに描画されます。
 
-ついで、`users`フォルダを作成し、`index.ejs`を作成します。`/users`にリクエストが送られたときに描画するビューを作成します。
+ついで、`users` フォルダを作成し、`index.ejs` を作成します。`/users` にリクエストが送られたときに描画するビューを作成します。
 
 ```html
 <h1>ユーザー一覧</h1>
@@ -429,8 +429,8 @@ app.listen(port, () => {
 </table>
 ```
 
-`<% %>`で囲まれている部分は、JavaScriptとして解釈されます。
-コントローラーから渡されたデータを使用することができるので、受け取った`users`変数をforEachでループして個々のユーザーデータを表示しています。
+`<% %>` で囲まれている部分は、JavaScript として解釈されます。
+コントローラーから渡されたデータを使用できるので、受け取った `users` 変数を forEach でループして個々のユーザーデータを表示しています。
 
 コントローラーに戻り、データを渡してみましょう。
 
@@ -446,11 +446,11 @@ export default {
 }
 ```
 
-`res.render()`の第一引数に`views`フォルダからみたパスを、第二引数にビューへ渡す変数をオブジェクトで渡します。
+`res.render()` の第一引数に `views` フォルダからみたパスを、第二引数にビューへ渡す変数をオブジェクトで渡します。
 
 受け渡すデータはモデルから取得します。
 
-`src`フォルダ下に`models`フォルダを作成し、`userModel.ts`ファイルを作成します。
+`src` フォルダ下に `models` フォルダを作成し、`userModel.ts` ファイルを作成します。
 
 ```ts
 type Sex = '男' | '女'
@@ -489,7 +489,7 @@ export function find(): Array<User> {
 ```
 
 とりあえず、適当なダミーデータを用意しておきます。
-Userモデルの`find()`関数を実行すると、ユーザーデータを取得できます。
+User モデルの `find()` 関数を実行すると、ユーザーデータを取得できます。
 
 それでは、[http://localhost:3000/users](http://localhost:3000/users)を見てみましょう。
 ユーザー一覧が表示されているはずです。
@@ -499,14 +499,14 @@ Userモデルの`find()`関数を実行すると、ユーザーデータを取�
 # MongoDBでユーザーのCRUD操作
 
 とりあえず、ユーザー一覧を表示させるところまで進みました。
-しかし、予め用意していたデータのみしか表示できないのはあまりにも不便なため、MongoDBを導入してデータの永続化ができるようにします。
+しかし、あらかじめ用意していたデータのみしか表示できないのはあまりにも不便なため、MongoDB を導入してデータの永続化ができるようにします。
 
-最終的には、CRUD操作ができるようにルートを作成します。
+最終的には、CRUD 操作ができるようにルートを作成します。
 
 ## MondoDBのインストール
 
-次のコマンドを実行して、MongoDBをインストールします。
-ここではHomebrewを使用してインストールしています。
+次のコマンドを実行して、MongoDB をインストールします。
+ここでは Homebrew を使用してインストールしています。
 
 ```sh
 brew tap mongodb/brew
@@ -521,9 +521,9 @@ brew services start mongodb-community@4.2
 
 ## Mongooseをインストールして、Node.jsアプリケーションに接続
 
-Mongooseは、アプリケーションでMongoDBを使いやすくしてくれるためのODM(オブジェクトとドキュメントを対応させるためのツール)です。ORMと似たようなものです。
+Mongoose は、アプリケーションで MongoDB を使いやすくしてくれるための ODM（オブジェクトとドキュメントを対応させるためのツール）です。ORM と似たようなものです。
 
-MongoDBは、本来はスキーマはありませんが、実際にアプリケーションを運営するうえでスキーマがあったほうがよいでしょう。Mongooseはドキュメントをモデル化してスキーマの構築を手助けしてくれます。
+MongoDB は、本来はスキーマはありませんが、実際にアプリケーションを運営するうえでスキーマがあったほうがよいでしょう。Mongoose はドキュメントをモデル化してスキーマの構築を手助けしてくれます。
 
 次のコマンドでインストールします。
 
@@ -537,7 +537,7 @@ npm i mongoose
 npm i @types/mongoose
 ```
 
-インストールが完了したら、`main.ts`で次のように接続します。
+インストールが完了したら、`main.ts` で次のように接続します。
 
 ```ts
 import Express from 'express'
@@ -567,14 +567,14 @@ app.listen(port, () => {
 })
 ```
 
-`mongodb://localhost:27017/`はMongoDBのローカルの接続先です。その後にデータベース名をしていします。このデータベース名は存在しなければ自動で作成してくれます。
+`mongodb://localhost:27017/` は MongoDB のローカルの接続先です。その後にデータベース名をしていします。このデータベース名は存在しなければ自動で作成してくれます。
 
-その後、MonngooseでPromiseを使用するために`mongoose.Promise = global.Promise`で代入しています。
+その後、Monngoose で Promise を使用するために `mongoose.Promise = global.Promise` で代入しています。
 
 ## ユーザーモデルを構築する
 
-Monngoseを使用して、ユーザースキーマモデルを構築します。
-`models/userModel`に実装します。
+Monngose を使用して、ユーザースキーマモデルを構築します。
+`models/userModel` に実装します。
 
 ```ts
 import mongoose, { Schema, Document } from 'mongoose'
@@ -627,21 +627,21 @@ userSchema.virtual('fullName').get(function(this: User) {
 export default mongoose.model<User>('User', userSchema)
 ```
 
-TypeScriptでスキーマを構築するためには、スキーマとは別に`Document`を継承したインターフェースをを作成する必要があります。
+TypeScript でスキーマを構築するためには、スキーマとは別に `Document` を継承したインターフェースを作成する必要があります。
 
-`mongoose.Schema`が提供するコンストラクタにパラメータを渡すことでスキーマを構築することができます。
-スキーマでは型定義だけでなく、`required`や`unique`などのオプションも使用可能です。
-`timestams`オプションを設定すると、自動で`created_at`、`updated_at`フィールドを設定してくれます。
+`mongoose.Schema` が提供するコンストラクタにパラメータを渡すことでスキーマを構築できます。
+スキーマでは型定義だけでなく、`required` や `unique` などのオプションも使用可能です。
+`timestams` オプションを設定すると、自動で `created_at`、`updated_at` フィールドを設定してくれます。
 
-`mongoose.Schema`メソッドの`virtual`はデータベースが提供しない仮想のフィールドを使用することができます。
-この例ではユーザーのフルネームを返し、`fullName`というプロパティでアクセスできます。
+`mongoose.Schema` メソッドの `virtual` はデータベースが提供しない仮想のフィールドを使用できます。
+この例ではユーザーのフルネームを返し、`fullName` というプロパティでアクセスできます。
 
-最後に、`mongoose.model()`にスキーマを渡して、モデルが作成されます。
+最後に、`mongoose.model()` にスキーマを渡して、モデルが作成されます。
 このとき、ジェネリクスで呼び出すようにします。
 
 ## ユーザー一覧の修正
 
-モデルをmongooseで構築するように修正したので、コントローラーの実装も修正します。
+モデルを mongoose で構築するように修正したので、コントローラーの実装も修正します。
 
 ```ts
 import Express from 'express'
@@ -667,13 +667,13 @@ export default {
 }
 ```
 
-データベースへの接続は失敗することがあるので、`index()`はミドルウェア関数として実装します。
-ミドルウェアはリクエスト(req)、レスポンス(res)と次のミドルウェアの呼び出し関数(next)を受け取る関数でリクエストに処理を挟むことができます。
-ミドルウェアで例えばロギングをしたり、認証をしたあとに、`next()`を呼び出すことで、次のミドルウェア関数へ処理を渡します。
+データベースへの接続は失敗することがあるので、`index()` はミドルウェア関数として実装します。
+ミドルウェアはリクエスト（req）、レスポンス（res）と次のミドルウェアの呼び出し関数（next）を受け取る関数でリクエストに処理を挟むことができます。
+ミドルウェアで例えばロギングをしたり、認証をしたあとに、`next()` を呼び出すことで、次のミドルウェア関数へ処理を渡します。
 
-ミドルウェア関数では、確実に`next()`を呼ばなければいけないことに注意してください。さもないと、無限ループに陥りスタックオーバーフローが発生します。
+ミドルウェア関数では、確実に `next()` を呼ばなければいけないことに注意してください。さもないと、無限ループに陥りスタックオーバーフローが発生します。
 
-try/catch構文で処理をし、エラーは発生した場合には`next()`にエラーを渡しミドルウェア関数でエラーは発生したことを伝えます。
+try/catch 構文で処理をし、エラーは発生した場合には `next()` にエラーを渡しミドルウェア関数でエラーは発生したことを伝えます。
 
 ルーティングも次のように修正します。
 
@@ -690,9 +690,9 @@ export default router
 
 ## データを入れて確認
 
-MongoDBにデータを入れてみて表示を確認してみましょう。
+MongoDB にデータを入れてみて表示を確認してみましょう。
 
-MongoDBのGUI操作には、[MongoDB compass](https://www.mongodb.com/products/compass)が便利です。
+MongoDB の GUI 操作には、[MongoDB compass](https://www.mongodb.com/products/compass)が便利です。
 
 ローカルに接続し、データベースとテーブルを選んでインサートします。
 
@@ -708,7 +708,7 @@ MongoDBのGUI操作には、[MongoDB compass](https://www.mongodb.com/products/c
 
 ### フォームの作成
 アプリケーションから新規ユーザーを作成できるように、作成フォームを作りましょう。
-`views/users`フォルダの下に、`new.ejs`というファイルを作成します。
+`views/users` フォルダの下に、`new.ejs` というファイルを作成します。
 
 ```html
 <div class="data-form">
@@ -774,13 +774,13 @@ router.get('/new', usersController.new)
 export default router
 ```
 
-`users/new`にアクセスして確認します。
+`users/new` にアクセスして確認します。
 
 ![スクリーンショット 20200614 14.54.08.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FRshdHD6LGzEVXnbjoL6p%2Fb43de8514999fea2ca6c4a733d585c98.png?alt=media&token=1dc55d23-f92b-41d9-82d8-945eb1d7d78b)
 
 ### リクエストを受け取れるようにする
 
-Expressでリクエストパラメータを受け取れるようにするために、`main.ts`に次のように追記します。
+Express でリクエストパラメータを受け取れるようにするために、`main.ts` に次のように追記します。
 
 ```ts
 import bodyParser from 'body-parser'
@@ -790,8 +790,8 @@ app.use(bodyParser())
 
 ### createアクション
 
-実際にリクエストパラメータを受け取りデータベースに保存する`create`アクションを実装します。
-リクエストパラメータは`res.body`から受け取ることができます。
+実際にリクエストパラメータを受け取りデータベースに保存する `create` アクションを実装します。
+リクエストパラメータは `res.body` から受け取ることができます。
 
 ```ts
 import Express from 'express'
@@ -846,8 +846,8 @@ export default {
 }
 ```
 
-ドキュメントの作成は、`create()`メソッドを使用します。
-ユーザーの作成に成功したら`redirectView`アクションへ渡します。
+ドキュメントの作成は、`create()` メソッドを使用します。
+ユーザーの作成に成功したら `redirectView` アクションへ渡します。
 
 ルーティングを追記しましょう。
 
@@ -866,7 +866,7 @@ export default router
 
 ## ユーザーデータを読み出して更新
 
-次は、`update`アクションを作成します。`edit.ejs`ファイルを作成します。
+次は、`update` アクションを作成します。`edit.ejs` ファイルを作成します。
 作成用のフォームとよく似ていますが、初期値としてユーザーのデータを埋め込みます。
 
 ```html
@@ -894,9 +894,9 @@ export default router
 </div>
 ```
 
-更新フォームへのパスは`users/:id/edit`です。ルーティングにコロン(:)を使うと動的にルーティングさせることができます。
+更新フォームへのパスは `users/:id/edit` です。ルーティングにコロン（:）を使うと動的にルーティングさせることができます。
 
-`index.ejs`から更新フォームへアクセスできるようにしておきましょう。
+`index.ejs` から更新フォームへアクセスできるようにしておきましょう。
 
 ```html
 <td>
@@ -904,17 +904,17 @@ export default router
 </td>
 ```
 
-さて、更新のリクエストを送信するときには、PUTリクエストを送信できるようにしたいです。
-しかし。HTMLフォームがサポートしているリクエストはGETとPOSTだけだのでこのままでは実現できません。
+さて、更新のリクエストを送信するときには、PUT リクエストを送信できるようにしたいです。
+しかし。HTML フォームがサポートしているリクエストは GET と POST だけだのでこのままでは実現できません。
 
-そのため、HTTPリクエストを書き換えるパッケージを使用します。
+そのため、HTTP リクエストを書き換えるパッケージを使用します。
 
 ```sh
 npm i method-override
 npm i -D @types/method-override
 ```
 
-`main.ts`にmethod-overrideを使うように追記します。
+`main.ts` に method-override を使うように追記します。
 
 ```ts
 import methodOverride from 'method-override'
@@ -924,17 +924,17 @@ app.use(methodOverride('_method', {
 }))
 ```
 
-method-overrideは、URLに`_method`というクエリパラメータを見つけたら、そのパラメータの値として指定されたメソッドを使ってそのリクエストを解釈します。
-フォームのアクションパスに、`?_method=PUT`を加えれば、それはPUTリクエストとして解釈されます。
+method-override は、URL に `_method` というクエリパラメータを見つけたら、そのパラメータの値として指定されたメソッドを使ってそのリクエストを解釈します。
+フォームのアクションパスに、`?_method=PUT` を加えれば、それは PUT リクエストとして解釈されます。
 
 ### editアクションを作成
 
-コントローラーにeditアクションを作成しましょう。
+コントローラーに edit アクションを作成しましょう。
 
-`req.params.id`からユーザーのID受け取り、findById()`メソッドでデータベースから特定のユーザーを捜索します。
+`req.params.id` からユーザーの ID 受け取り、findById()`メソッドでデータベースから特定のユーザーを捜索します。
 ユーザーが見つからない場合には、エラーを送出します。
 
-また、`res.locals`オブジェクトに代入した値はビューで変数として使用することができます。
+また `res.locals` オブジェクトに代入した値はビューで変数として使用できます。
 
 ```ts
 edit: async (
@@ -958,8 +958,8 @@ edit: async (
 
 ### updateアクション
 
-updateアクションも作成しましょう。
-`findByIdAdUpdate()`メソッドを使用すれば、ユーザーをIDで見つけたあとに更新することができます。
+update アクションも作成しましょう。
+`findByIdAdUpdate()` メソッドを使用すれば、ユーザーを ID で見つけたあとに更新できます。
 
 ```ts
 update: async (
@@ -982,8 +982,8 @@ update: async (
   },
 ```
 
-ルーティングに、editとupdateを追加しましょう。
-updateアクションはPUTリクエストを受け取ります。
+ルーティングに、edit と update を追加しましょう。
+update アクションは PUT リクエストを受け取ります。
 
 ```ts
 router.get('/:id/edit', usersController.edit, usersController.editView)
@@ -992,7 +992,7 @@ router.put('/:id/update', usersController.update, usersController.redirectView)
 
 ## ユーザーを削除する
 
-最後に、deletアクションを作成しましょう。
+最後に、delet アクションを作成しましょう。
 ユーザーを削除するために、ビューは作成しません。
 インデックスページに削除のために動線を用意します。
 
@@ -1009,9 +1009,9 @@ router.put('/:id/update', usersController.update, usersController.redirectView)
 
 ### deleteアクション
 
-ユーザーを削除するためのdeleteアクションをコントローラーに追加します。
+ユーザーを削除するための delete アクションをコントローラーに追加します。
 
-特定のユーザーを削除するために`findByIdAndRemove`を呼び出します。
+特定のユーザーを削除するために `findByIdAndRemove` を呼び出します。
 
 ```ts
 delete: async (
@@ -1031,7 +1031,7 @@ delete: async (
   },
 ```
 
-今までの流れと同じく、ユーザの削除に成功したら次のミドルウェア関数を呼び出し、失敗したらエラーを渡します。
+今までの流れと同じく、ユーザーの削除に成功したら次のミドルウェア関数を呼び出し、失敗したらエラーを渡します。
 
 最後に、ルーティングに追加しましょう。
 
@@ -1039,5 +1039,5 @@ delete: async (
 router.delete('/:id/delete', usersController.delete, usersController.redirectView)
 ```
 
-これで、基本的なCRUD操作は完了です。
+これで、基本的な CRUD 操作は完了です。
 

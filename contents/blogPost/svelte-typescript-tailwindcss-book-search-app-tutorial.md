@@ -9,41 +9,41 @@ tags: ["Svelte", "JavaScript", "tailwindcss", "TypeScript"]
 published: true
 ---
 # はじめに
-この記事でははSvelte + TypeScript + tailwindcssで本検索サイトを作成します。
+この記事では Svelte + TypeScript + tailwindcss で本検索サイトを作成します。
 
 成果物は以下のようなアプリケーションです。
 
-本の検索ページ
+本の検索ページ。
 
 ![svelte-book.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/496565/4342d3a4-f513-d44b-a9a6-4f02d646f572.gif)
 
-本の詳細ページ
+本の詳細ページ。
 
 ![スクリーンショット 2021-02-07 19.11.10.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/496565/adc3acde-c092-5e18-4ac5-9fa01680a4ec.png)
 
-Svelteを使ってアプリケーションを作成1から作成することができます。
+Svelte を使ってアプリケーションを作成 1 から作成できます。
 以下のことが学べます。
 
-- Svelteの基礎文法
-- Svelteのルーティング
-- Svelteのストア
+- Svelte の基礎文法
+- Svelte のルーティング
+- Svelte のストア
 
-HTML・CSS・JavaScriptの基礎的な理解がある人が対象です。
+HTML・CSS・JavaScript の基礎的な理解がある人が対象です。
 
-また、完成したソースコードはこちらから参照できます。
+また完成したソースコードはこちらから参照できます。
 
 https://github.com/azukiazusa1/svelte-book-review-app
 
 # 0 Node.jsのインストール
 
-環境構築にはNode.jsのインストールが必要です。
-もしNode.jsがインストールされていない場合には、こちらからインストールを済ませていおいてください。
+環境構築には Node.js のインストールが必要です。
+もし Node.js がインストールされていない場合には、こちらからインストールを済ませていおいてください。
 
 https://nodejs.org/ja/download/
 
 # Svelteプロジェクトの準備
-まずはSvelteプロジェクトを作成しましょう。
-本書ではCSSフレームワークとしてtailwingcssを利用しますが、はじめから組み込まれているテンプレートが存在するのでこちらを利用します。
+まずは Svelte プロジェクトを作成しましょう。
+本書では CSS フレームワークとして tailwingcss を利用しますが、はじめから組み込まれているテンプレートが存在するのでこちらを利用します。
 
 https://github.com/sarioglu/svelte-tailwindcss-template
 
@@ -51,7 +51,7 @@ https://github.com/sarioglu/svelte-tailwindcss-template
 npx degit sarioglu/svelte-tailwindcss-template svelte-book-review-app
 cd svelte-book-review-app
 ```
-TypeScriptに変換します。
+TypeScript に変換します。
 
 ```sh
 node scripts/setupTypeScript.js
@@ -62,9 +62,9 @@ node scripts/setupTypeScript.js
 ```sh
 npm install
 ```
-2021/02/06の時点でこのままですとエラーになる箇所が存在するので修正を行います。
+2021/02/06 の時点でこのままですとエラーになる箇所が存在するので修正を行います。
 
-`rollup.config.js`の以下の部分を削除してください。。
+`rollup.config.js` の以下の部分を削除してください。
 
 ```diff
 import svelte from 'rollup-plugin-svelte';
@@ -172,8 +172,8 @@ https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 # Svelteの基礎の確認
 
 最初に自動生成されたコードを確認してみましょう。
-Svelteのコンポーネントは`.svelte`という拡張子が使われています。
-`App.svelte`ファイルを開きます。
+Svelte のコンポーネントは `.svelte` という拡張子が使われています。
+`App.svelte` ファイルを開きます。
 
 ```html:App.svelte
 <script lang="ts">
@@ -211,15 +211,15 @@ Svelteのコンポーネントは`.svelte`という拡張子が使われてい�
 </style>
 ```
 
-1つのファイルにHTML・JavaScript・CSSがまとまっており、Vue.jsの単一ファイルコンポーネントによく似ています。
+1 つのファイルに HTML・JavaScript・CSS がまとまっており、Vue.js の単一ファイルコンポーネントによく似ています。
 
-`<style>`タグは、常にscopedとして扱われる - そのコンポーネント内のみに適応される - ことに注意してください。
+`<style>` タグは、常に scoped として扱われる - そのコンポーネント内のみに適応される - ことに注意してください。
 
-ざっくりとした説明として、`<script>`タグ内で宣言された変数はテンプレート内で{}で囲って参照できます。このとき、変数の値は常にリアクティブであり、変数の値が変更されるたびにHTMLでの描画が更新されます。
+ざっくりとした説明として、`<script>` タグ内で宣言された変数はテンプレート内で{}で囲って参照できます。このとき、変数の値は常にリアクティブであり、変数の値が変更されるたびに HTML での描画が更新されます。
 
-ここで一つ奇妙なのが、たしかにnameという変数は宣言されているもののそこに値は代入されていないことです。なぜWORLDと表示されているのでしょうか？
+ここで 1 つ奇妙なのが、たしかに name という変数は宣言されているもののそこに値は代入されていないことです。なぜ WORLD と表示されているのでしょうか？
 
-実は、exportされている変数はpropsとして外から値を渡すことができます。実際にApp.svelteを生成しているmain.tsのコードを見てみましょう。
+実は、export されている変数は props として外から値を渡すことができます。実際に App.svelte を生成している main.ts のコードを見てみましょう。
 
 ```ts:main.ts
 import App from './App.svelte';
@@ -234,9 +234,9 @@ const app = new App({
 export default app;
 ```
 
-確かに、propsとしてname: 'world'が渡されています。`main.ts`は`<body>`要素に対してApp.svelteをマウントするコードです。
+確かに、props として name: 'world'が渡されています。`main.ts` は `<body>` 要素に対して App.svelte をマウントするコードです。
 
-ここまで理解したところで、試しにnameの値を変更してみましょう。
+ここまで理解したところで、試しに name の値を変更してみましょう。
 画面の表示も変更された値に切り替わるはずです。
 
 ```ts:main.ts
@@ -256,7 +256,7 @@ export default app;
 # ヘッダーコンポーネントの作成
 
 それでは、一番最初のコンポーネントを作成しましょう。
-`src`フォルダ配下に`components`ディレクトリを作成して`Header.svelte`ファイルを作成します。
+`src` フォルダ配下に `components` ディレクトリを作成して `Header.svelte` ファイルを作成します。
 
 ```html:Header.svelte
 <header class="top-0 lef-0 w-full z-40 bg-gray-900 shadow fixed border-b border-gray-200">
@@ -268,8 +268,8 @@ export default app;
 </header>
 ```
 
-App.svelteからヘッダーコンポーネントを利用します。
-作成したsvelteファイルを`import`してHTMLタグのように利用します。
+App.svelte からヘッダーコンポーネントを利用します。
+作成した svelte ファイルを `import` して HTML タグのように利用します。
 
 ```html:App.svelte
 <script lang="ts">
@@ -289,8 +289,8 @@ App.svelteからヘッダーコンポーネントを利用します。
 </main>
 ```
 
-このとき、もともと存在していた`<style>`タグは不要なので消してしまいましょう。
-`public/global.css`も同様に削除します。
+このとき、もともと存在していた `<style>` タグは不要なので消してしまいましょう。
+`public/global.css` も同様に削除します。
 
 ```sh
 rm public/global.css
@@ -301,13 +301,13 @@ rm public/global.css
 
 # svelte-spa-routerのインストール
 
-このアプリケーションでは複数ページを扱う予定ですので、Vue RouterやReact Routerのようなルーティングライブラリを導入します。
+このアプリケーションでは複数ページを扱う予定ですので、Vue Router や React Router のようなルーティングライブラリを導入します。
 
-今回はsvelte-spa-routerを利用します。
+今回は svelte-spa-router を利用します。
 https://github.com/ItalyPaleAle/svelte-spa-router
 
-svelte-spa-routerは、ハッシュを用いてルーティングを管理します。
-例えば`/books/123`へルーティングをさせたい場合にはhttp://localhost:5000/#/books/123 というURLにマッチすることになります。
+svelte-spa-router は、ハッシュを用いてルーティングを管理します。
+例えば `/books/123` へルーティングをさせたい場合にはhttp://localhost:5000/#/books/123 という URL にマッチすることになります。
 
 下記コマンドでインストールしましょう。
 
@@ -318,7 +318,7 @@ npm install svelte-spa-router
 # ルーティングの定義の作成
 
 どのコンポーネントをどのルーティングに結びつけるのかの対応を作成します。
-`src`フォルダ配下に`router/index.ts`を作成します。
+`src` フォルダ配下に `router/index.ts` を作成します。
 
 ```ts:router/index.ts
 import SearchBook from '../pages/SearchBook.svelte'
@@ -328,9 +328,9 @@ export const routes = {
 }
 ```
 
-`/`というパスにアクセスした場合に、`SearchBook`コンポーネントにマッチするように定義します。
+`/` というパスにアクセスした場合に、`SearchBook` コンポーネントにマッチするように定義します。
 
-`/pages/SearchBook.svelte`も作成しておきましょう。
+`/pages/SearchBook.svelte` も作成しておきましょう。
 
 ```html:pages/SearchBook.svelte
 <div>
@@ -341,7 +341,7 @@ export const routes = {
 # Router Viewの作成
 
 ルートを定義したら、定義したルートを描画するようにしましょう。
-`App.svelte`を修正します。
+`App.svelte` を修正します。
 
 ```html:App.svelte
 <script lang="ts">
@@ -360,9 +360,9 @@ export const routes = {
 </main>
 ```
 
-`Router`コンポーネントに、先程作成したルート定義を`routes`propとして渡します。
+`Router` コンポーネントに、さきほど作成したルート定義を `routes`prop として渡します。
 
-Svelteでは、propsと渡す変数名が一致するとき省略記法を利用することができます。
+Svelte では、props と渡す変数名が一致するとき省略記法を利用できます。
 つまり、次のように記述は同一です。
 
 ```html
@@ -370,7 +370,7 @@ Svelteでは、propsと渡す変数名が一致するとき省略記法を利用
 <Router {routes} />
 ```
 
-ここまで進めたら、SearchBookコンポーネントの内容が表示されているはずです。
+ここまで進めたら、SearchBook コンポーネントの内容が表示されているはずです。
 
 ![スクリーンショット 2021-02-06 16.19.25.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/496565/42429273-735e-ee85-e20a-3e186a6f152d.png)
 
@@ -379,36 +379,37 @@ Svelteでは、propsと渡す変数名が一致するとき省略記法を利用
 それでは、機能を実装していきましょう。
 まずは本の一覧を検索するページからです。
 
-本のデータはGoogle Books APIを利用して取得します。
-通常の利用ではAPI KEYなどは必要ありません。
+本のデータは Google Books API を利用して取得します。
+通常の利用では API KEY などは必要ありません。
 https://developers.google.com/books
 
-Web APIを利用するにあたって、本書ではRepositoryFactory パターンを採用します。
+Web API を利用するにあたって、本書では RepositoryFactory パターンを採用します。
 
-APIとの通信を行うAxiosのようなライブラリと後述するストアから直接利用すると以下のような問題が生じます。
+API との通信を行う Axios のようなライブラリと後述するストアから直接利用すると以下のような問題が生じます。
 
-- 単体テストがやりずらい
+- 単体テストがやりづらい
 - モックに処理を置き換えづらい
 - ストアが肥大化する
 - 再利用しづらい
 - エンドポイントなどが変わったときに変更箇所が多くなる
 
-そこで、APIとの通信をRepositoryによって抽象化することでこれらの問題の解決を図ります。
+そこで、API との通信を Repository によって抽象化することでこれらの問題の解決を図ります。
 RepositoryFactory パターンについてはこちらの記事が詳しいです。
 
 https://medium.com/backenders-club/consuming-apis-using-the-repository-pattern-in-vue-js-e64671b27b09
 
 ## httpClientの作成
 
-まずはAxiosをラップする単純なモジュールを作成します。
-まずはAxiosをインストールします。
+まずは Axios をラップする単純なモジュールを作成します。
+
+はじめに Axios をインストールします。
 
 ```sh
 npm install axios
 ```
 
-`repositories`フォルダを作成して、その中に`httpClient.ts`ファイルを作成します。
-`httpClient.ts`ではaxiosのbaseURLやheadersなどを設定して作成されたインスタンスを返します。
+`repositories` フォルダを作成して、その中に `httpClient.ts` ファイルを作成します。
+`httpClient.ts` では axios の baseURL や headers などを設定して作成されたインスタンスを返します。
 
 ```ts:repositories/httpClient.ts
 import axios from 'axios'
@@ -422,8 +423,8 @@ export { httpClient }
 
 ## Book Repositoryの作成
 
-個別のモデルごとにRepositoryを作成していきます。
-`repositories/book`ディレクトリを作成して、以下の3ファイルを作成します。
+個別のモデルごとに Repository を作成します。
+`repositories/book` ディレクトリを作成して、以下の 3 ファイルを作成します。
 
 - types.ts
 - BookRepository.ts
@@ -431,8 +432,8 @@ export { httpClient }
 
 ### types.ts
 
-`types.ts`では対応するモデルに関する型定義やRepositoryのインターフェースを提供します。
-Repository自体のインターフェースを公開することで環境によってモックRepositoryに置き換える際にも実装の詳細を抽象化することができます。
+`types.ts` では対応するモデルに関する型定義や Repository のインターフェースを提供します。
+Repository 自体のインターフェースを公開することで環境によってモック Repository に置き換える際にも実装の詳細を抽象化できます。
 
 ```ts:repositories/book/types.ts
 /**
@@ -485,8 +486,8 @@ export interface BookRepositoryInterface {
 
 ### BookRepository.ts
 
-`BookRepository.ts`に実装の詳細を記述していきます。
-`BookRepositoryInterface`を継承するようにします。
+`BookRepository.ts` に実装の詳細を記述します。
+`BookRepositoryInterface` を継承するようにします。
 
 ```ts:repositories/book/BookRepository.ts
 import type { BookItem, BookRepositoryInterface, Params, Result } from './types'
@@ -507,7 +508,7 @@ export class BookRepository implements BookRepositoryInterface {
 
 ### index.ts
 
-`index.ts`で作成したモジュールを一つにまとめてエクポートします。
+`index.ts` で作成したモジュールを 1 つにまとめてエクポートします。
 
 ```ts:repositories/book/index.ts
 export * from './types'
@@ -516,8 +517,8 @@ export * from './BookRepository'
 
 ## Repository Factoryの作成
 
-作成したRepositoryはすべてRepository　Factoryからインポートして利用するようにします。
-`repositories`フォルダ配下に`RepositoryFactory.ts`を作成します。
+作成した Repository はすべて Repository　Factory からインポートして利用するようにします。
+`repositories` フォルダ配下に `RepositoryFactory.ts` を作成します。
 
 ```ts:repositories/RepositoryFactory.ts
 import { BookRepository, BookRepositoryInterface } from './book'
@@ -533,7 +534,7 @@ export default {
 } as Repositories
 ````
 
-Book Repositoryを利用するときには、以下のように使います。
+Book Repository を利用するときには、以下のように使います。
 
 ```ts
 import RepositoryFactory { BOOK } from '../repositories/RepositoryFactory.ts'
@@ -543,8 +544,8 @@ const BookRepository = RepositoryFactory[BOOK]
 const book = async BookRespotirosy.get(id)
 ```
 
-Repository Factoryを介してRepositoryを生成することによって、環境によって実装を取り替えやすくなります。
-例えば、test環境でモックデータを返すRepositoryを使用する場合には、次のように記述することができます。
+Repository Factory を介して Repository を生成することによって、環境によって実装を取り替えやすくなります。
+例えば、test 環境でモックデータを返す Repository を使用する場合には、次のように記述できます。
 
 ```ts:repositories/RepositoryFactory.ts
 import { BookRepository, BookRepositoryInterface, MockBookRepository } from './book'
@@ -562,13 +563,13 @@ export default {
 } as Repositories
 ```
 
-本記事ではMockRepositoryは作成しないので、元の状態ままで構いません。
+本記事では MockRepository は作成しないので、元の状態ままで構いません。
 
 # SearchBar コンポーネント
 
 少々回り道をしましたが、画面の実装を進めていきましょう。
 
-SearchBarコンポーネントを作成します。
+SearchBar コンポーネントを作成します。
 
 ```html:components/SearchBar.svelte
 <div class="shadow flex">
@@ -595,10 +596,10 @@ SearchBarコンポーネントを作成します。
 
 ## 値のバインディング
 
-見た目はこれでよさそうなので、親子間で値を受け渡しできるようにロジックを実装していきます。
-まずはpropsとしてSearchBar コンポーネントが値を受け取れるようにしましょう。
+見た目はこれでよさそうなので、親子間で値を受け渡しできるようにロジックを実装します。
+まずは props として SearchBar コンポーネントが値を受け取れるようにしましょう。
 
-propsはexportする変数として定義するのでした。
+props は export する変数として定義するのでした。
 
 ```diff:SearchBar.svelte
 <script lang="ts">
@@ -634,13 +635,13 @@ propsはexportする変数として定義するのでした。
 </div>
 ```
 
-propsとして渡した値が初期値として表示されています。
+props として渡した値が初期値として表示されています。
 
 ![スクリーンショット 2021-02-06 18.49.35.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/496565/f02204cf-ed04-cc6c-9554-1b421d367ee6.png)
 
 親から子に値を渡すことに成功したので、次は子コンポーネントで入力が行われたときに親に値を渡せるようにしましょう。
 
-`<input>`の入力をバインドさせる - Vue.jsにおけるv-modelに相当するもの - には`bind:value`ディレクティブを使用します。
+`<input>` の入力をバインドさせる - Vue.js における v-model に相当するもの - には `bind:value` ディレクティブを使用します。
 
 ```diff:SearchBar.svelte
 <script lang="ts">
@@ -658,10 +659,10 @@ propsとして渡した値が初期値として表示されています。
 </div>
 ```
 
-`bind:value`は`bind:value={value}`のショートハンドです。
+`bind:value` は `bind:value={value}` のショートハンドです。
 
 子コンポーネントで発生したイベントは親コンポーネントへフォワーディングさせることができます。
-親コンポーネントで`bind:value`イベントを受け取ります。
+親コンポーネントで `bind:value` イベントを受け取ります。
 
 ```diff:SearchBook.svelte
 <script lang="ts">
@@ -686,9 +687,9 @@ propsとして渡した値が初期値として表示されています。
 
 # 本一覧を取得する
 
-続いて入力した値に応じてWeb APIから本一覧を取得してみましょう。
+続いて入力した値に応じて Web API から本一覧を取得してみましょう。
 
-まずはsubmitイベントを購読しましょう。
+まずは submit イベントを購読しましょう。
 
 ```diff:SearchBool.svelte
 <script lang="ts">
@@ -712,12 +713,12 @@ propsとして渡した値が初期値として表示されています。
 </div>
 ```
 
-DOMイベントは`on:`ディレクティブで受け取ります。
-さらに、`on:`ディレクティブにパイプ`|`でイベント修飾子を付け加えることができます。
+DOM イベントは `on:` ディレクティブで受け取ります。
+さらに、`on:` ディレクティブにパイプ `|` でイベント修飾子を付け加えることができます。
 
-今回のように`on:submit|preventDefault`とpreventDefault修飾子を付け加えると`event.preventDefault()`を実行する前に呼び出します。
+今回のように `on:submit|preventDefault` と preventDefault 修飾子を付け加えると `event.preventDefault()` を実行する前に呼び出します。
 
-それでは、BookRepositoryから本一覧を取得しましょう。
+それでは、BookRepository から本一覧を取得しましょう。
 以下のような実装になります。
 
 ```html:SearchBook.svelte
@@ -769,36 +770,36 @@ DOMイベントは`on:`ディレクティブで受け取ります。
 ```
 
 いくつか興味深い構文が出現しています。
-一つづつ確認してみましょう。
+1 つづつ確認してみましょう。
 
 ## {#if ...}
 
-ifブロックは分岐処理を提供します。
-`{#if condition}`で始まり、`{/if}`で終了します。
-`condition`の値が`true`を返す場合のみブロックの内容を描画します。
+if ブロックは分岐処理を提供します。
+`{#if condition}` で始まり、`{/if}` で終了します。
+`condition` の値が `true` を返す場合のみブロックの内容を描画します。
 
-ifブロックの間に`{:else}`や`{:else if}`を挿入することができます。
+if ブロックの間に `{:else}` や `{:else if}` を挿入できます。
 
 ## {#each ...}
 
-eachブロックは繰り返し処理を提供します。
-一番基本的な文法は以下の通りです。
+each ブロックは繰り返し処理を提供します。
+一番基本的な文法は以下のとおりです。
 
 `{#each expression as name} {/each}`
 
-expressionに渡せるのはarray likeな変数、つまり`length`プロパティを持つオブジェクトに限られます。
+expression に渡せるのは array like な変数、つまり `length` プロパティを持つオブジェクトに限られます。
 
-配列のインデックスを取得することができます。
+配列のインデックスを取得できます。
 
 `{#each expression as name, index} {/each}`
 
-さらに、ループの中で一意の値となるキーを指定することができます。
+さらに、ループの中で一意の値となるキーを指定できます。
 キーが提供されている場合には配列の要素が変更されたときにそれを最後に追加・削除するのではなく、リストを比較するために使用されます。
 
 `{#each expression as name, index, (key)} {/each}`
 
-さらに、eachブロックは`{:else}`を挿入することができます。
-`{:else}`は渡された配列の要素が空の場合に描画されます。
+さらに、each ブロックは `{:else}` を挿入できます。
+`{:else}` は渡された配列の要素が空の場合に描画されます。
 
 ```
 {#each todos as todo}
@@ -810,13 +811,13 @@ expressionに渡せるのはarray likeな変数、つまり`length`プロパテ�
 
 ## {#await ...}
 
-awaitブロックは、Promiseの3つの状態(pending・fulfilled・rejected）によって分岐されます。
+await ブロックは、Promise の 3 つの状態（pending・fulfilled・rejected）によって分岐されます。
 
 `{#await expression} {:then name} {:catch error}`
 
-expressionにはPromise要素を渡す必要があります。
+expression には Promise 要素を渡す必要があります。
 
-awaitブロックを利用すると、loading・errorのような状態変数を持つ必要がなくなるので便利です。
+await ブロックを利用すると、loading・error のような状態変数を持つ必要がなくなるので便利です。
 
 実際に検索結果を取得できるかどうか試してみてください。
 
@@ -826,7 +827,7 @@ awaitブロックを利用すると、loading・errorのような状態変数を
 
 ## Spinner.svelte
 
-ローディングアニメーションをSpinnerコンポーネントとして作成します。
+ローディングアニメーションを Spinner コンポーネントとして作成します。
 
 ```html:components/Spinner.svelte
 <svg class="animate-spin h-20 w-20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -867,8 +868,8 @@ awaitブロックを利用すると、loading・errorのような状態変数を
 
 ## BookCardコンポーネント
 
-次にBookCardコンポーネントを作成します。
-`components`フォルダに`BookCard.svelte`ファイルを作成します。
+次に BookCard コンポーネントを作成します。
+`components` フォルダに `BookCard.svelte` ファイルを作成します。
 
 ```html:components/BookCard.svelte
 <script lang="ts">
@@ -899,12 +900,12 @@ awaitブロックを利用すると、loading・errorのような状態変数を
 </div>
 ```
 
-本の情報を表示するので`book`という変数でpropsを親から受け取ります。
+本の情報を表示するので `book` という変数で props を親から受け取ります。
 
-さて、`$:`という見慣れない構文が出現しました。
-これはラベルと呼ばれる構文で`$:`ラベルが付与された式や文は、変数の更新のたびに再計算されるようになります。
+さて、`$:` という見慣れない構文が出現しました。
+これはラベルと呼ばれる構文で `$:` ラベルが付与された式や文は、変数の更新のたびに再計算されるようになります。
 
-Vue.jsにおける`comupted`や`watch`などの役割に近い処理をはたしてくれます。
+Vue.js における `comupted` や `watch` などの役割に近い処理をはたしてくれます。
 
 このコンポーネントをループでしようするように修正しましょう。
 
@@ -946,7 +947,7 @@ Vue.jsにおける`comupted`や`watch`などの役割に近い処理をはたし
 
 ここまでに実装でどうやら正しく検索処理が働き描画できているようです！
 
-しかしながらすでにお気づきかもしれないですが、取得結果がいくつであろうと得られるのは最初の10件だけです。
+しかしながらすでにお気づきかもしれないですが、取得結果がいくつであろうと得られるのは最初の 10 件だけです。
 追加のデータをさらに取得できるようにページネーション処理を実装しましょう。
 
 # ライブラリのインストール
@@ -960,7 +961,7 @@ npm i svelte-infinite-scroll
 ```
 
 次のように使います。
-`<InfinteScroll>`要素が検出された際に`loadMore`イベントが発火します。
+`<InfinteScroll>` 要素が検出された際に `loadMore` イベントが発火します。
 
 ```diff:pages/SearchBook.svelte
 <script lang="ts">
@@ -1023,9 +1024,9 @@ npm i svelte-infinite-scroll
 
 # 次の要素を取得して配列に追加する
 
-`handleLoadMore`関数が呼び出されることが確認できたら、処理を実装していきましょう。
+`handleLoadMore` 関数が呼び出されることが確認できたら、処理を実装していきましょう。
 
-Google Books APIのドキュメントを見ると、ページネーションをするには`startIndex`をパラメータに渡せば良さそうです。
+Google Books API のドキュメントを見ると、ページネーションをするには `startIndex` をパラメータに渡せば良さそうです。
 
 > Pagination
 You can paginate the volumes list by specifying two values in the parameters for the request:
@@ -1035,19 +1036,19 @@ maxResults - The maximum number of results to return. The default is 10, and the
 
 https://developers.google.com/books/docs/v1/using#pagination_1
 
-`startIndex`は0から開始するようです。
-`startIndex`変数を定義して初期値には0を設定しておきましょう。
+`startIndex` は 0 から開始するようです。
+`startIndex` 変数を定義して初期値には 0 を設定しておきましょう。
 
 ```ts
 let startIndex = 0
 ```
 
-`handleLoadMore`関数が呼ばれる度に、`startIndex`の値を`maxResults`（ここでは10固定)を加算していけば良さそうですね。
+`handleLoadMore` 関数が呼ばれる度に、`startIndex` の値を `maxResults`（ここでは 10 固定）を加算していけば良さそうですね。
 
-また、`getNextPage`関数を作成してそこでAPIから取得する処理を実装し、初回取得時と同じように返り値を`promise`変数に代入してます。
+また `getNextPage` 関数を作成してそこで API から取得する処理を実装し、初回取得時と同じように返り値を `promise` 変数に代入してます。
 
-Svelteでは配列の値をリアクティブにするには必ず変数を直接置き換えなければならないことに注意してください。
-つまり、リアクティブな配列に対して`push()・`splice()`などで操作しても自動更新されません。
+Svelte では配列の値をリアクティブにするには必ず変数を直接置き換えなければならないことに注意してください。
+つまり、リアクティブな配列に対して `push()・`splice()`などで操作しても自動更新されません。
 
 ```ts
   const handleLoadMore = () => {
@@ -1067,7 +1068,7 @@ Svelteでは配列の値をリアクティブにするには必ず変数を直�
   }
  ```
 
- フォームのsubmitによる初回取得時には`startIndex`の値を0に戻さなければいけないことを忘れないようにしてください。
+ フォームの submit による初回取得時には `startIndex` の値を 0 に戻さなければいけないことを忘れないようにしてください。
 
 ```diff
   const getBooks = async () => {
@@ -1080,8 +1081,8 @@ Svelteでは配列の値をリアクティブにするには必ず変数を直�
   }
  ```
 
- これ以上データが存在するかどうか`hasMore`変数を`$:`ラベルで定義します。
- `totalItems`変数を定義しておき、現在の取得数が`totalItems`以上なら、これ以上はデータが存在しないということにします。
+ これ以上データが存在するかどうか `hasMore` 変数を `$:` ラベルで定義します。
+ `totalItems` 変数を定義しておき、現在の取得数が `totalItems` 以上なら、これ以上はデータが存在しないということにします。
 
  ```diff
 +  let totalItems = 0
@@ -1108,17 +1109,17 @@ Svelteでは配列の値をリアクティブにするには必ず変数を直�
 
 ![infinte-scroll.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/496565/0fb0bcb3-76c1-1665-7091-8ddf8955d1bf.gif)
 
-一旦本を探す画面はこれでよさそうです。
+いったん本を探す画面はこれでよさそうです。
 
 今度はコンポーネント内で扱っていた状態管理をストアで行うように修正しましょう。
 
-Svelteのストアはすべて本体に取り込まれているので、追加のライブラリのインストールは不要です。
+Svelte のストアはすべて本体に取り込まれているので、追加のライブラリのインストールは不要です。
 
 # ストアの作成
 
 まずはストアを作成します。
 
-`src`フォルダに`store/book/index.ts`ファイルを作成します。
+`src` フォルダに `store/book/index.ts` ファイルを作成します。
 
 ```ts:store/book/index.ts
 import { writable } from 'svelte/store'
@@ -1151,8 +1152,8 @@ const dummyBooks = [
 export const books = writable<BookItem[]>(dummyBooks)
 ```
 
-`writable`によってストアのオブジェクトを作成します。
-ひとまず`writable`で作成したオブジェクトを表示できるかどうか確認するためにダミーデータを渡しています。
+`writable` によってストアのオブジェクトを作成します。
+ひとまず `writable` で作成したオブジェクトを表示できるかどうか確認するためにダミーデータを渡しています。
 
 # ストアをコンポーネントから使用する
 
@@ -1179,22 +1180,22 @@ export const books = writable<BookItem[]>(dummyBooks)
 </div>
 ```
 
-ストアから`writable`で作成したオブジェクトを、`svelte`から`onDestroy`関数をインポートします。
+ストアから `writable` で作成したオブジェクトを、`svelte` から `onDestroy` 関数をインポートします。
 
-`onDestroy`はコンポーネントが破棄されたときに呼ばれるライフサイクルフックです。
+`onDestroy` はコンポーネントが破棄されたときに呼ばれるライフサイクルフックです。
 
-さらに、コンポーネント内で使用する変数として`_books`を定義しました。
+さらに、コンポーネント内で使用する変数として `_books` を定義しました。
 
-`writable`オブジェクトに対して`subscribe`メソッドを呼び事でストアのオブジェクトを監視します。ストアのオブジェクトに変更がある度にコールバックが呼ばれるので、その値をコンポーネント内で定義した`_books`変数に代入することによってストアのオブジェクトの値を利用します。
+`writable` オブジェクトに対して `subscribe` メソッドを呼び事でストアのオブジェクトを監視します。ストアのオブジェクトに変更があるたびにコールバックが呼ばれるので、その値をコンポーネント内で定義した `_books` 変数に代入することによってストアのオブジェクトの値を利用します。
 
-`subscribe`メソッドは返り値としてストアのオブジェクトの監視を破棄するメソッドを返します。`onDestory`関数でコンポーネントが破棄された際に呼び出すことで確実に監視を取りやめるようにします。
+`subscribe` メソッドは返り値としてストアのオブジェクトの監視を破棄するメソッドを返します。`onDestory` 関数でコンポーネントが破棄された際に呼び出すことで確実に監視を取りやめるようにします。
 
 # ストアの糖衣構文
 
-ストアを利用する度に毎回同じような処理を記述するのは退屈です。
-喜ばしいことに、Svelteはストアの糖衣構文を用意しています。
+ストアを利用するたびに毎回同じような処理を記述するのは退屈です。
+喜ばしいことに、Svelte はストアの糖衣構文を用意しています。
 
-以下の構文は先程のものと同じ処理を行います。
+以下の構文はさきほどのものと同じ処理を行います。
 
 ```html:pages/SearchBook.svelte
 <script lang="ts">
@@ -1210,7 +1211,7 @@ export const books = writable<BookItem[]>(dummyBooks)
 </div>
 ```
 
-ストアのオブジェクトにプレフィックスとして`$`を付与することで、同様にリアクティブな値を手に入れることができます！
+ストアのオブジェクトにプレフィックスとして `$` を付与することで、同様にリアクティブな値を手に入れることができます！
 
 以下のように、ダミーで用意したデータが表示されています。
 
@@ -1229,8 +1230,8 @@ import type { BookItem } from '../../repositories/book'
 export const books = writable<BookItem[]>([])
 ```
 
-`$`プレフィックスをつけたストアの変数は、コンポーネントの変数を扱うのとほとんど同じように使用できます。
-つまりは、`books`変数を`$books`に一括置換するだけでこの章の作業はほどんど終わりです！
+`$` プレフィックスをつけたストアの変数は、コンポーネントの変数を扱うのとほとんど同じように使用できます。
+つまりは、`books` 変数を `$books` に一括置換するだけでこの章の作業はほどんど終わりです！
 
 ```diff:pages/SearchBook.svelte
 <script lang="ts">
@@ -1315,15 +1316,15 @@ export const books = writable<BookItem[]>([])
 </div>
 ```
 
-`$`プレフィックスの変数に値を代入している場合には、それへ`writable`オブジェクトに対して`set()`メソッドを呼び出しているのと同じことになります。
+`$` プレフィックスの変数に値を代入している場合には、それへ `writable` オブジェクトに対して `set()` メソッドを呼び出しているのと同じことになります。
 
-前回までの実装を見て、きっと他のJavaScriptフレームワークのストアを実装したことがある人ならコンポーネントから直接状態を更新しているをを見て不安で仕方がないことでしょう。
+前回までの実装を見て、きっと他の JavaScript フレームワークのストアを実装したことがある人ならコンポーネントから直接状態を更新しているを見て不安で仕方がないことでしょう。
 
-この章ではストアを外部から直接更新できなくするようにリファクタリングしていきます。
+この章ではストアを外部から直接更新できなくするようにリファクタリングします。
 
 # ストアを更新不可能にする
 
-ストアを更新できなくする方法は簡単です。`set()`・`update()`のように値を状態を更新するメソッドを外部へ公開しなければよいのです。
+ストアを更新できなくする方法は簡単です。`set()`・`update()` のように値を状態を更新するメソッドを外部へ公開しなければよいのです。
 
 ストアを作成する処理を修正します。
 
@@ -1339,18 +1340,18 @@ const useBookStore = () => {
 export const books = useBookStore()
 ```
 
-このように、ストアを作成する際に関数でラップしてラップした関数からは`subscribe`メソッドのみを返すようにしています。
+このように、ストアを作成する際に関数でラップしてラップした関数からは `subscribe` メソッドのみを返すようにしています。
 
-ご覧のように、`set()`メソッドが存在しないためコンポーネントから値を更新することができなくなりました。
+ご覧のように、`set()` メソッドが存在しないためコンポーネントから値を更新できなくなりました。
 
 ![スクリーンショット 2021-02-07 16.54.02.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/496565/83861183-eff1-ab02-fbfa-47f8ff23c071.png)
 
 # 更新メソッドを公開する
 
-ストアを更新するメソッドを`useBookStore`内に定義します。
-`useBookStore`関数内では`set()`・`update`関数を使うことができます。
+ストアを更新するメソッドを `useBookStore` 内に定義します。
+`useBookStore` 関数内では `set()`・`update` 関数を使うことができます。
 
-更新メソッドのみをreturnするようにしましょう。
+更新メソッドのみを return するようにしましょう。
 
 ```ts:store/book/index.ts
 import { writable } from 'svelte/store'
@@ -1467,10 +1468,10 @@ export const routes = {
 }
 ```
 
-`/books/:id`というパスを追加します。
-動的なセグメントは`:`コロンを使って使って表します。この値はコンポーネントから取得することができます。
+`/books/:id` というパスを追加します。
+動的なセグメントは `:` コロンを使って使って表します。この値はコンポーネントから取得できます。
 
-`pages/DetailsBook.svelte`を作成しましょう。
+`pages/DetailsBook.svelte` を作成しましょう。
 
 ```html:pages/DetailsBook.svelte
 <script lang="ts">
@@ -1483,7 +1484,7 @@ export const routes = {
 </div>
 ```
 
-`params`という名前のpropsを公開することでURLパラメータを受け取ることができます。
+`params` という名前の props を公開することで URL パラメータを受け取ることができます。
 
 http://localhost:5000/#/books/123 にアクセスしてみてください。
 
@@ -1492,7 +1493,7 @@ http://localhost:5000/#/books/123 にアクセスしてみてください。
 # リンクを追加する
 
 本一覧ページから詳細ページへ遷移できるようにリンクを追加しましょう。
-`components/BookCard.svelte`を修正します。
+`components/BookCard.svelte` を修正します。
 
 ```diff:components/BookCard.svelte
 <script lang="ts">
@@ -1526,16 +1527,16 @@ http://localhost:5000/#/books/123 にアクセスしてみてください。
 </div>
 ```
 
-リンクは`<a>`タグを使用します。`link`を`svelte-spa-router`からインポートして`use:link`属性を与えることによってハッシュ付きのルートにマッチさせることができます。
+リンクは `<a>` タグを使用します。`link` を `svelte-spa-router` からインポートして `use:link` 属性を与えることによってハッシュ付きのルートにマッチさせることができます。
 
 例 `/books/${book.id}` => `/#/books/${book.id}`
 
 # IDから本を取得
 
-ルーティングパラメータによって取得したIDを使ってストアから本を取得しましょう。
+ルーティングパラメータによって取得した ID を使ってストアから本を取得しましょう。
 
-`derived`というメソッドを使用して、ストアにIDによって本を取得する処理を追加します。
-`derived`は`writable`の値から他の値を取得する関数で、Vue.jsにおける`getters`に相当します。
+`derived` というメソッドを使用して、ストアに ID によって本を取得する処理を追加します。
+`derived` は `writable` の値から他の値を取得する関数で、Vue.js における `getters` に相当します。
 
 ```diff:store/book/index.ts
 - import { writable } from 'svelte/store'
@@ -1563,10 +1564,10 @@ export const books = useBookStore()
 + }
 ```
 
-`pages/DetailsBook.svelte`を修正しましょう。
-ストアに存在しなかった場合には、APIから取得してストアに追加するのを待つ必要があります。
+`pages/DetailsBook.svelte` を修正しましょう。
+ストアに存在しなかった場合には、API から取得してストアに追加するのを待つ必要があります。
 
-そのため、`{#await}`ブロックの`{/then}`の中に`$book`を配置しています。
+そのため、`{#await}` ブロックの `{/then}` の中に `$book` を配置しています。
 
 ```html:pages/DetailsBook.svelte
 <script lang="ts">
@@ -1610,7 +1611,7 @@ export const books = useBookStore()
 
 # BookInfo コンポーネント
 
-詳細情報を表示するBookInfoコンポーネントを作成しましょう。
+詳細情報を表示する BookInfo コンポーネントを作成しましょう。
 ここでは特に新しい要素は出現しません。
 
 ```html:components/BookInfo.svelte
@@ -1677,7 +1678,7 @@ export const books = useBookStore()
 </div>
 ```
 
-さらに、`Row`コンポーネントは次のようになります。
+さらに、`Row` コンポーネントは次のようになります。
 
 ```html:components/Row.svelte
 <script lang="ts">
@@ -1694,10 +1695,10 @@ export const books = useBookStore()
 </div>
 ```
 
-ここでは、`<slot />`という要素が出てきました。
-スロットは、HTMLタグの中に子要素を入れるように、コンポーネント中に子要素を入れることができる仕組みです。
+ここでは、`<slot />` という要素が出てきました。
+スロットは、HTML タグの中に子要素を入れるように、コンポーネント中に子要素を入れることができる仕組みです。
 
-`<Row>{book.volumeInfo.description}</Row>`のようにタグの中にある要素が、`<Row>`コンポーネント内の`<slot />`に置換されて描画されます。
+`<Row>{book.volumeInfo.description}</Row>` のようにタグの中にある要素が、`<Row>` コンポーネント内の `<slot />` に置換されて描画されます。
 
 これで詳細ページも完成です！
 お疲れさまでした！

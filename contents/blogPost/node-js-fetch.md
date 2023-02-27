@@ -14,7 +14,7 @@ published: true
 
 リソースを取得するためのリクエストを実施する [Fetch API](https://developer.mozilla.org/ja/docs/Web/API/Fetch_API) も同様にブラウザにのみ存在する API でした。
 
-`Document.querySelector()` のようなそもそも DOM の存在しないサーバーの API として提供されていないのわかりやすいですが、いかにも普遍的に使用できそうな `Fetch()` が Node.js の API に存在しないというのは初心者にとってはわかりづらく（確かに `fetch()` はブラウザの提供する API ではなく JavaScript 自体に内包されているグローバル関数に思えてもおかしくはない） stack overflow でも Node.js に `fetch()` が存在しないという質問が多くの票を集めています。
+`Document.querySelector()` のようなそもそも DOM の存在しないサーバーの API として提供されていないのわかりやすいですが、いかにも普遍的に使用できそうな `Fetch()` が Node.js の API に存在しないというのは初心者にとってはわかりづらく（確かに `fetch()` はブラウザの提供する API ではなく JavaScript 自体に内包されているグローバル関数に思えてもおかしくはない）stack overflow でも Node.js に `fetch()` が存在しないという質問が多くの票を集めています。
 
 [ReferenceError: fetch is not defined](https://stackoverflow.com/questions/48433783/referenceerror-fetch-is-not-defined)
 
@@ -26,9 +26,9 @@ https://github.com/nodejs/node/pull/41749
 
 ## fetch() の使いかた
 
-Fetch API を利用するには Node.js のバージョンが 17.5.0 以上であることが必要です。現時点(2022/2/07)ではまだリリースされてないのでまだ使えません🤷‍♂️
+Fetch API を利用するには Node.js のバージョンが 17.5.0 以上であることが必要です。現時点（2022/2/07）ではまだリリースされてないのでまだ使えません🤷‍♂️。
 
-また、互換性を保つために Fetch API を利用するには `--experimental-fetch` フラグを付与して実行する必要があります。
+また互換性を保つために Fetch API を利用するには `--experimental-fetch` フラグを付与して実行する必要があります。
 
 ```sh
 node fetch.js --experimental-fetch

@@ -35,7 +35,7 @@ console.log(upperCase(fruit)) // APPLE
 
 https://www.typescriptlang.org/play?#code/PQKhCgAIUxZRMdCVB2DICUVC0GYwgZGAJfQSQyDXlQKIZAvxUE0GKEYcAMwFcA7AYwBcBLAezsgAsBTAQwAmAHgAqAPgAUfAE7SAXJBEBtALoBKBSMgBvKJGk8mNaZxnSlABhXgAvuHCgI0SIHJNQOGmgdW1A1gyBITUDbxiSA0QzklLSMrByQNAAO0TzSAMJ8AM48EslM8pAZ0ix0AOYa2Zl5+Tp6BkYmxdIAdExsAKqx8UmpEmq29gwcGZBU0jQsTMmQALyQSgDkfLEANjxTADSQUwBGfHSbfMurCwC2bPt0U9bgPXR9A0NM49z8AhLXw8mdwMD9g8MKOaXdvWwFrU5mx8hIYnFEik0s8mGo1JB3pAAIIABVRABkAKJAA
 
-しかし、このコードには1つ罠が存在します。`head` 関数に空の配列を渡してみてください。
+しかし、このコードには 1 つ罠が存在します。`head` 関数に空の配列を渡してみてください。
 
 ```ts
 /**
@@ -68,7 +68,7 @@ https://www.typescriptlang.org/play?#code/PQKhCgAIUxZRMdCVB2DICUVC0GYwgZGAJfQSQy
 [ERR]: Cannot read properties of undefined (reading 'toUpperCase') 
 ```
 
-`strict` オプションを有効にしている上に、`any` や `as` のような危険な機能を使用していないのにも関わらず、なぜコンパイル時にエラーを検出できなかったのでしょうか？
+`strict` オプションを有効にしているうえに、`any` や `as` のような危険な機能を使用していないのにも関わらず、なぜコンパイル時にエラーを検出できなかったのでしょうか？
 
 ## TypeScript はインデックスアクセスに危険性がある
 
@@ -210,7 +210,4 @@ const lol = messages.lol
 
 毎回 `undefined` でないことを確認する手間は増えますが、安全性を得られることを考えると安い代償でしょう。あるいは、`for...of` を使うなどなるべくインデックスアクセスに頼らないコードを意識してみるとよいでしょう。
 
-`noUncheckedIndexedAccess` オプションを途中から有効にするのはなかなか手間がかかります。実際に手元のプロパティでためしに `noUncheckedIndexedAccess` オプションを有効にしてみるとよいでしょう。きっと大量のコンパイルエラーが報告されるはずです😉
-
-ただし、途中からこのオプションを有効に
-
+`noUncheckedIndexedAccess` オプションを途中から有効にするのはなかなか手間がかかります。実際に手元のプロパティでためしに `noUncheckedIndexedAccess` オプションを有効にしてみるとよいでしょう。きっと大量のコンパイルエラーが報告されるはずです😉。

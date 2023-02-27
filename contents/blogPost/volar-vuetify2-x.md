@@ -16,7 +16,7 @@ Vue2.7 では 3.x の機能である [Composition](https://vuejs.org/guide/extra
 
 https://github.com/vuejs/vue/blob/main/CHANGELOG.md#volar-compatibility
 
-Volar は template 内での型サポートがあるなど、Vuter よりも更に高い開発者体験を提供してくれます。早速 Volar を導入してみたのですが、1つ問題が発生しました。
+Volar は template 内での型サポートがあるなど、Vuter よりもさらに高い開発者体験を提供してくれます。早速 Volar を導入してみたのですが、1 つ問題が発生しました。
 
 ## Vuetify の補完が効かない
 
@@ -59,7 +59,7 @@ https://marketplace.visualstudio.com/items?itemName=Vue.volar
 
 もし Vue 2.6.14 <= を使っている場合には `@vue/runtime-core` の代わりに `@vue/runtime-dom` と記載します。
 
-上記の構文に従って Vuetify に存在するコンポーネントを記述していけばよいわけなのですが、1つづつ手作業で行うのは骨が折れます。
+上記の構文に従って Vuetify に存在するコンポーネントを記述していけばよいわけなのですが、1 つづつ手作業で行うのは骨が折れます。
 
 有志の方が Vuetify の型定義を作成するスクリプトを作成しているので、ありがたく使わせていただきましょう。
 

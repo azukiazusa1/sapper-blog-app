@@ -10,7 +10,7 @@ published: true
 ---
 Storybook の [Component Story Format 3.0](https://storybook.js.org/blog/component-story-format-3-0/) では新機能として `play()` 関数が追加されました。
 
-`play()` 関数は Storybook 上で ユーザーのクリックやフォーム入力のようなインタラクションな操作を表現することができます。
+`play()` 関数は Storybook 上でユーザーのクリックやフォーム入力のようなインタラクションな操作を表現できます。
 
 `play()` 関数の大きな特徴としては [Component Story Format](https://storybook.js.org/blog/component-story-format/) の移植性の高さを利用して Storybook 上で定義したインタラクションを `Jest` など他の領域においても再利用できることです。
 
@@ -28,8 +28,8 @@ npm install
 
 ## Storybook のインストール
 
-続いて以下コマンドで Storybook の雛形を作成します。
-なお、CSF3.0 を利用するには Storybook version が 6.4.0 以降である必要があります。
+続いて以下コマンドで Storybook のひな形を作成します。
+なお CSF3.0 を利用するには Storybook version が 6.4.0 以降である必要があります。
 
 ```sh
 npx sb init
@@ -111,7 +111,7 @@ npm run storybook
 
 ## インタラクションを追加する
 
-それでは本題のインタラクションを追加してみましょう。新たに `InputFilled` というStory を追加して `play` 関数を定義します。
+それでは本題のインタラクションを追加してみましょう。新たに `InputFilled` という Story を追加して `play` 関数を定義します。
 
 - src/components/TaskList.stories.ts
 
@@ -135,7 +135,7 @@ InputFilled.play = async ({ canvasElement }) => {
 }
 ```
 
-`play` 関数は `StoryContext` という型の引数を受け取り分割代入で `canvasElement` を取得しています。この `canvasElement` を使用することでコンポーネントのルートから実行を開始するようにインタラクションを調整することができます。`@storybook/testing-library` からインポートした `screen` オブジェクトを用いるとトップレベルの要素から要素を取得します。
+`play` 関数は `StoryContext` という型の引数を受け取り分割代入で `canvasElement` を取得しています。この `canvasElement` を使用することでコンポーネントのルートから実行を開始するようにインタラクションを調整できます。`@storybook/testing-library` からインポートした `screen` オブジェクトを用いるとトップレベルの要素から要素を取得します。
 
 前述の `canvas` から対象の要素を取得して `@storybook/testing-library` からインポートした `useEvent` オブジェクトを利用して入力やクリックなどのイベントを発生させることができます。要素の取得方法は [testing-library](https://testing-library.com/docs/react-testing-library/cheatsheet/#queries) の Query とほぼ同じですので普段テストを記述しているときと変わらない感じで `play` 関数を記述できます。
 
@@ -145,7 +145,7 @@ InputFilled.play = async ({ canvasElement }) => {
 
 ![スクリーンショット 2022-01-23 10.20.38](//images.ctfassets.net/in6v9lxmm5c8/7EP6kIz2DBLU0tc130bHBv/5398dcbe173deed7e988a69dec9129a0/____________________________2022-01-23_10.20.38.png)
 
-Interactions タブを確認してみると `<li>` 要素が存在しないためエラーが発生していることが確認できます。このように Storybook を通じてイベントが壊れていないかどうかを確認することができます。
+Interactions タブを確認してみると `<li>` 要素が存在しないためエラーが発生していることが確認できます。このように Storybook を通じてイベントが壊れていないかどうかを確認できます。
 
 インタラクションが成功するように実装を修正しましょう。
 
@@ -177,13 +177,13 @@ const onSubmit = () => {
 </template>
 ```
 
-全てのインタラクションが成功していることが確認できます。
+すべてのインタラクションが成功していることが確認できます。
 
 ![スクリーンショット 2022-01-23 10.31.08 1](//images.ctfassets.net/in6v9lxmm5c8/6X0hVTrJDzADRQWa8qqEXv/99eae49fb6a34ca688a9b292536f0ae3/____________________________2022-01-23_10.31.08_1.png)
 
 ## インタラクションをデバッグする
 
-Storybook 上で UI の状態を巻き戻してデバッグすることができます。この機能を有効にするには `.storybook/main.js` において `features.interactionsDebugger` を `true` にする必要があります。
+Storybook 上で UI の状態を巻き戻してデバッグできます。この機能を有効にするには `.storybook/main.js` において `features.interactionsDebugger` を `true` にする必要があります。
 
 - .storybook/main.js
 
@@ -263,9 +263,9 @@ setGlobalConfig(globalStorybookConfig);
 
 ## テストファイルの作成
 
-それではテストファイルを作成しましょう。通常のコンポーネントのテストを書く時と異なりコンポーネントを直接インポートするのではなく、作成した Storybook のファイルから Story をインポートして `composeStories` 関数を使用することで作成した Story を Jest で再利用することができます。
+それではテストファイルを作成しましょう。通常のコンポーネントのテストを書くときと異なりコンポーネントを直接インポートするのではなく、作成した Storybook のファイルから Story をインポートして `composeStories` 関数を使用することで作成した Story を Jest で再利用できます。
 
-対象の Story の `play` 関数を呼び出すことが Jest で改めてイベントを記述せずとも実行してくれます。
+対象の Story の `play` 関数を呼び出すことが Jest であらためてイベントを記述せずとも実行してくれます。
 
 - src/components/TaskList.spec.ts
 
@@ -287,7 +287,7 @@ test('タスク名を入力して追加ボタンをクリックするとリス�
 });
 ```
 
-テストを実行して、全てのテストが成功していることが確認できました。
+テストを実行して、すべてのテストが成功していることが確認できました。
 
 ```sh
 npm run test
@@ -416,7 +416,7 @@ Ran all test suites.
 
 ## 感想
 
-Storybook 上でインタラクションをテストできるようになることで更に活用の幅を広げることができるようになりました。実際に描画内容を目視しながらテストをすることができるので testing-library でテストを記述するのと比べてより取り組みやすくなっていると思います。
+Storybook 上でインタラクションをテストできるようになることでさらに活用の幅を広げることができるようになりました。実際に描画内容を目視しながらテストをできるので testing-library でテストを記述するのと比べてより取り組みやすくなっていると思います。
 
 Story を再利用可能なところも嬉しい点ですね。
 

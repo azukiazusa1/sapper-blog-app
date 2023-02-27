@@ -8,22 +8,22 @@ updatedAt: "2021-06-20T00:00+09:00"
 tags: ["JavaScript", "React"]
 published: true
 ---
-Error Boundaryとは、自身の子コンポーネントツリーで発生したJavaScriptのエラーをキャッチ・記録しフォールバックのUIを表示するコンポーネントです。
+Error Boundary とは、自身の子コンポーネントツリーで発生した JavaScript のエラーをキャッチ・記録しフォールバックの UI を表示するコンポーネントです。
 
-例えるなら、`try/catch`構文を行うコンポーネントのようなものと言えます。
+例えるなら、`try/catch` 構文を行うコンポーネントのようなものと言えます。
 
-!> ErrorBoundaryは次のエラーをキャッチすることができないことに中止してください。
+!> ErrorBoundary は次のエラーをキャッチできないことに中止してください。
 
 - イベントハンドラ
 - 非同期コード（例：setTimeout や requestAnimationFrame のコールバック）
-- サーバサイドレンダリング
--（子コンポーネントではなく）error boundary 自身がスローしたエラー
+- サーバーサイドレンダリング
+- （子コンポーネントではなく）error boundary 自身がスローしたエラー
 
 # エラーがキャッチされない場合の動作
 
-ErrorBoundaryの詳細を見る前に、エラーがキャッチされない場合の動作を確認しておきましょう。
+ErrorBoundary の詳細を見る前に、エラーがキャッチされない場合の動作を確認しておきましょう。
 
-React16からコンポーネントツリー全体がアンマウントされます。
+React16 からコンポーネントツリー全体がアンマウントされます。
 
 下記の簡単なコードを使って確認してみます。
 
@@ -60,7 +60,7 @@ export default App;
 
 ![スクリーンショット 2021-06-20 20.16.22](//images.ctfassets.net/in6v9lxmm5c8/3xZO0rROt5FoBQaKuZ95Vq/8b39663c9543ec4631c8a60fc1416027/____________________________2021-06-20_20.16.22.png)
 
-Redコンポーネント内で恣意的にエラーを発生させます。
+Red コンポーネント内で恣意的にエラーを発生させます。
 
 ```js
 const BadComponent = () => { throw new Error("something went wrong") }
@@ -81,14 +81,14 @@ const Red = () => {
 
 # Error Boundaryコンポーネントの作成
 
-真っ白な画面が表示されてしまうのはユーザーにとってあまりにも不便ですので、Error Boundaryコンポーネントを作成してエラーが発生した際のUIを用意しましょう。
+真っ白な画面が表示されてしまうのはユーザーにとってあまりにも不便ですので、Error Boundary コンポーネントを作成してエラーが発生した際の UI を用意しましょう。
 
-以下いずれかののライフサイクルメソッドを実装したクラスコンポーネントはError Boundaryコンポーネントとして扱われます。
+以下いずれかのライフサイクルメソッドを実装したクラスコンポーネントは Error Boundary コンポーネントとして扱われます。
 
 - [static getDerivedStateFromError()](https://ja.reactjs.org/docs/react-component.html#static-getderivedstatefromerror)
 - [componentDidCatch()]()
 
-[公式](https://ja.reactjs.org/docs/error-boundaries.html)のError Boundaryコンポーネントの例をそのまま掲載します。
+[公式](https://ja.reactjs.org/docs/error-boundaries.html)の Error Boundary コンポーネントの例をそのまま掲載します。
 
 ```js
 export default class ErrorBoundary extends React.Component {
@@ -120,20 +120,20 @@ export default class ErrorBoundary extends React.Component {
 
 ### static getDerivedStateFromError
 
-このライフサイクルはフォールバックUIを描画するために使用されます。
+このライフサイクルはフォールバック UI を描画するために使用されます。
 
-`getDerivedStateFromError()`は子孫コンポーネントによってエラーがスローされた際に呼び出されます。パラメーターとしてスローされたエラー受け取り、stateを更新するための値を返す必要があります。
+`getDerivedStateFromError()` は子孫コンポーネントによってエラーがスローされた際に呼び出されます。パラメーターとしてスローされたエラー受け取り、state を更新するための値を返す必要があります。
 
 ### componentDidCatch
 
 このライフサイクルは主にロギングなどの処理に使用されます。
 
-`componentDidCatch`は同じく子孫コンポーネントによってエラーがスローされた際に呼び出されます。
+`componentDidCatch` は同じく子孫コンポーネントによってエラーがスローされた際に呼び出されます。
 パラメーターとしてスローされたエラーとスタックトレース情報を受け取ります。
 
 ### render
 
-`render`メソッドでは、`getDerivedStateFromError`によってエラーをキャッチした状態であるならば、フォールバックUIを描画するようにします。
+`render` メソッドでは、`getDerivedStateFromError` によってエラーをキャッチした状態であるならば、フォールバック UI を描画するようにします。
 
 それ以外の場合には、子要素をそのまま描画します。
 
@@ -141,10 +141,10 @@ export default class ErrorBoundary extends React.Component {
 
 ## トップレベルに配置
 
-作成したError Boundaryコンポーネントを配置します。
-まずはトップレベルに配置してみましょう。その場合には、すべての子孫コンポーネントのエラーをキャッチしてアプリケーション全体にフォールバックのUIが描画されます。
+作成した Error Boundary コンポーネントを配置します。
+まずはトップレベルに配置してみましょう。その場合には、すべての子孫コンポーネントのエラーをキャッチしてアプリケーション全体にフォールバックの UI が描画されます。
 
-`index.js`を編集します。
+`index.js` を編集します。
 
 ```js
 import React from 'react';
@@ -166,8 +166,8 @@ ReactDOM.render(
 
 ## 個別のコンポーネントに配置
 
-Error Boundaryコンポーネントは、個別のコンポーネントずつラップして配置することができます。
-その場合、エラーが発生したコンポーネント以外の箇所はフォールバックのUIを表示せずにそのままの状態を維持することになります。
+Error Boundary コンポーネントは、個別のコンポーネントずつラップして配置できます。
+その場合、エラーが発生したコンポーネント以外の箇所はフォールバックの UI を表示せずにそのままの状態を維持することになります。
 
 ```js
 const Red = () => {
@@ -197,7 +197,7 @@ const Blue = () => {
 }
 ```
 
-今度はRedコンポーネントのみにフォールバックUIが描画されました。
+今度は Red コンポーネントのみにフォールバック UI が描画されました。
 
 ![スクリーンショット 2021-06-20 20.55.32](//images.ctfassets.net/in6v9lxmm5c8/6CMIDmoRcH0sVLiL4zqAsE/e66656278e0f042fd86aa3ecf6f15149/____________________________2021-06-20_20.55.32.png)
 
