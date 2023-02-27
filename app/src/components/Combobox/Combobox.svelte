@@ -48,6 +48,16 @@
     value = e.detail.text
     dispatch('select', e.detail)
   }
+  /**
+   * 選択された要素が見えるようにスクロール
+   */
+  const scrollToOption = (index: number) => {
+    const listboxNode = document.getElementById(listboxId)
+    const opt = document.getElementById(`${optionId}-${index}`)
+    if (!listboxNode || !opt) return
+
+    opt.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+  }
 
   const navigateList = (e: KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
@@ -60,6 +70,7 @@
       } else {
         activeIndex = 0
       }
+      scrollToOption(activeIndex)
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
       if (activeIndex === null) {
@@ -70,6 +81,7 @@
       } else {
         activeIndex = itemCount - 1
       }
+      scrollToOption(activeIndex)
     } else if (e.key === 'Enter') {
       isOpen = false
       if (activeIndex !== null) {
@@ -100,6 +112,8 @@
   on:input={handleInput}
   {inputId}
   {listboxId}
+  {optionId}
+  {activeIndex}
   placeholder="Search"
 />
 {#if isOpen}
