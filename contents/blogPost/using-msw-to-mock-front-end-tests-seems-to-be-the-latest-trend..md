@@ -8,6 +8,16 @@ updatedAt: "2022-01-09T00:00+09:00"
 tags: ["Vue.js", "Jest", "msw"]
 published: true
 ---
+---
+id: 55BBFuys9ZkddolY3fleLZ
+title: "フロントエンドのテストのモックには msw を使うのが最近の流行りらしい"
+slug: "using-msw-to-mock-front-end-tests-seems-to-be-the-latest-trend."
+about: "最近のテスト手法として API コールをモックする際に Jest ではなく [Mock Service Worker](https://mswjs.io/) (以下 `msw` ）を使用する手法が注目されています。実施にどのように使用されているのか見ていきましょう。"
+createdAt: "2022-01-09T00:00+09:00"
+updatedAt: "2022-01-09T00:00+09:00"
+tags: ["Vue.js", "Jest", "msw"]
+published: true
+---
 皆様フロントエンドのテストを書いていらっしゃしますでしょうか？
 
 フロントエンドのテストを書くときには API コールする処理をすべてモックする必要があります。外部の API をコールする処理をテストに含めると API サーバーが落ちているなどの外部の要因によってテストが失敗してしまう可能性がありますし、テストを実行するたびに実際に API をコールしてしまうとサーバーに負荷がかかってしまうなど外部に対しても悪影響を与えてしまいます。
@@ -61,7 +71,7 @@ https://storybook.js.org/addons/msw-storybook-addon/
 <script setup lang="ts">
 import useFetch from '@/composables/useFetch'
 
-const { isLoading, data: users } = useFetch('/api/users)
+const { isLoading, data: users } = useFetch('/api/users')
 
 </script>
 
