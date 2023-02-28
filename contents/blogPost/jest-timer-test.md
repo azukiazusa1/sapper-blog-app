@@ -8,7 +8,6 @@ updatedAt: "2021-08-01T00:00+09:00"
 tags: ["Jest"]
 published: true
 ---
-
  JavaScript には、以下のような時間に関する関数が用意されています。
 
  - `setTimeout`
