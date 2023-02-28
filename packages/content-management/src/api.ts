@@ -135,32 +135,47 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
   const fields = entry.fields
 
   if (blog.title) {
-    fields['title']['en-US'] = blog.title
+    fields['title'] = {
+      'en-US': blog.title,
+    }
   }
   if (blog.slug) {
-    fields['slug']['en-US'] = blog.slug
+    fields['slug'] = {
+      'en-US': blog.slug,
+    }
   }
   if (blog.about) {
-    fields['about']['en-US'] = blog.about
+    fields['about'] = {
+      'en-US': blog.about,
+    }
   }
   if (blog.article) {
-    fields['article']['en-US'] = blog.article
+    fields['article'] = {
+      'en-US': blog.article,
+    }
   }
   if (blog.createdAt) {
-    fields['createdAt']['en-US'] = blog.createdAt
+    fields['createdAt'] = {
+      'en-US': blog.createdAt,
+    }
   }
   if (blog.updatedAt) {
-    fields['updatedAt']['en-US'] = blog.updatedAt
-  }
-  fields['tags']['en-US'] = blog.tags.map((tag) => {
-    return {
-      sys: {
-        type: 'Link',
-        linkType: 'Entry',
-        id: tags.find((t) => flattenField(t.fields.name) === tag)?.sys.id,
-      },
+    fields['updatedAt'] = {
+      'en-US': blog.updatedAt,
     }
-  })
+  }
+
+  fields['tags'] = {
+    'en-US': blog.tags.map((tag) => {
+      return {
+        sys: {
+          type: 'Link',
+          linkType: 'Entry',
+          id: tags.find((t) => flattenField(t.fields.name) === tag)?.sys.id,
+        },
+      }
+    }),
+  }
 
   const updateEntry = await entry.update()
 

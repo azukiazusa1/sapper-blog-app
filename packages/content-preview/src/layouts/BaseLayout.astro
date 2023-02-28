@@ -26,7 +26,17 @@ import '../styles/global.css'
   </body>
 </html>
 
-<script>
+<script async>
+  let isOpen = localStorage.getItem('sidebar') === 'open'
+  if (!isOpen) {
+    const sidebar = document.querySelector('#sidebar')
+    const miniSidebar = document.querySelector('#mini-sidebar')
+    const main = document.querySelector('main')
+    sidebar.classList.add('hidden')
+    miniSidebar.classList.remove('hidden')
+    main.classList.remove('col-span-6')
+    main.classList.add('col-span-7')
+  }
   const toggleSidebar = () => {
     const sidebar = document.querySelector('#sidebar')
     const miniSidebar = document.querySelector('#mini-sidebar')
@@ -35,6 +45,8 @@ import '../styles/global.css'
     miniSidebar.classList.toggle('hidden')
     main.classList.toggle('col-span-6')
     main.classList.toggle('col-span-7')
+    isOpen = !isOpen
+    localStorage.setItem('sidebar', isOpen ? 'open' : 'close')
   }
   const button = document.querySelector('#close-sidebar')
   const openButton = document.querySelector('#open-sidebar')
