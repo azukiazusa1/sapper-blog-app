@@ -29,7 +29,8 @@
       },
       "ja-no-redundant-expression": {
         "severity": "warning"
-      }
+      },
+      "sentence-length": false
     },
     "preset-ja-spacing": {
       "ja-space-between-half-and-full-width": {
@@ -40,8 +41,7 @@
         "before": true,
         "after": true
       }
-    },
-    "ja-technical-writing/sentence-length": false
+    }
   },
   "@proofdict/proofdict": {
     "dictURL": "https://azu.github.io/proof-dictionary/"
