@@ -34,9 +34,9 @@
   image={`${variables.baseURL}/blog/ogp/${encodeURIComponent(post.title)}/${tagNames.join('/')}.png`}
 />
 
-<div class="my-12">
+<div class="my-12 max-w-3xl mx-auto">
   <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />
-  <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mt-4 max-w-5xl mx-auto">
+  <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mt-4">
     <Contributors {contributors} />
     <Box>
       <GitHubEditButton slug={post.slug} />
