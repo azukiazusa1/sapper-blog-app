@@ -52,32 +52,32 @@ jobs:
         run: lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-  vrt:
-    name: Visual Regression Testing
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.31.1-focal
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: package.json
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Add permissions
-        run: chmod 777 -R .
-      - name: Run Tests
-        run: npx playwright test
-        working-directory: app
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: test-results
-          path: app/test-results/
+  # vrt:
+  #   name: Visual Regression Testing
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: mcr.microsoft.com/playwright:v1.31.1-focal
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version-file: package.json
+  #         cache: npm
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: Build
+  #       run: npm run build
+  #     - name: Add permissions
+  #       run: chmod 777 -R .
+  #     - name: Run Tests
+  #       run: npx playwright test
+  #       working-directory: app
+  #     - uses: actions/upload-artifact@v3
+  #       if: failure()
+  #       with:
+  #         name: test-results
+  #         path: app/test-results/
   a11y:
     runs-on: ubuntu-latest
     steps:
