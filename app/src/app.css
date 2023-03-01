@@ -315,7 +315,7 @@ code .line::before {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  @apply text-sm font-normal text-gray-700 dark:text-gray-400 mt-1;
+  @apply text-sm font-normal text-gray-700 dark:text-gray-300 mt-1;
 }
 
 .link-card__meta {
