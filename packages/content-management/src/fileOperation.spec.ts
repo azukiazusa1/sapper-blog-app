@@ -59,8 +59,7 @@ thumbnail:
   title: "title"
 published: true
 ---
-article\n
-`,
+article\n`,
     )
   })
 
@@ -93,7 +92,6 @@ tags: []
 thumbnail: null
 published: false
 ---
-
 `,
     )
   })
@@ -132,8 +130,7 @@ thumbnail:
   title: "ti\\"tle"
 published: true
 ---
-article "article"\n
-`,
+article "article"\n`,
     )
   })
 })
