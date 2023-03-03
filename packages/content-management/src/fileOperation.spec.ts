@@ -35,6 +35,10 @@ describe('createBlogFile', () => {
       updatedAt: '2023-02-05T00:00+09:00',
       slug: 'slug',
       tags: ['tag1', 'tag2'],
+      thumbnail: {
+        url: 'https://images.ctfassets.net/3',
+        title: 'title',
+      },
       published: true,
     } satisfies PublishedBlogPost
 
@@ -50,6 +54,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article\n
@@ -67,6 +74,7 @@ article\n
       updatedAt: undefined,
       slug: undefined,
       tags: [],
+      thumbnail: undefined,
       published: false,
     } satisfies DraftBlogPost
 
@@ -82,6 +90,7 @@ about: "about"
 createdAt: null
 updatedAt: null
 tags: []
+thumbnail: null
 published: false
 ---
 
@@ -99,6 +108,10 @@ published: false
       updatedAt: '2023-02-05T00:00+09:00',
       slug: `slug-"slug"`,
       tags: [`tag1 "tag1"`, `tag2 "tag2"`],
+      thumbnail: {
+        url: `https://images.ctfassets.net/"3"`,
+        title: `ti"tle`,
+      },
       published: true,
     } satisfies PublishedBlogPost
 
@@ -114,6 +127,9 @@ about: "about \\"about\\""
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1 \\"tag1\\"", "tag2 \\"tag2\\""]
+thumbnail:
+  url: "https://images.ctfassets.net/\\"3\\""
+  title: "ti\\"tle"
 published: true
 ---
 article "article"\n
@@ -124,7 +140,7 @@ article "article"\n
 
 describe('loadBlogPost', () => {
   test('ファイル名からファイルを取得して BlogPost の形式で取得する', async () => {
-    mockedReadFile.mockResolvedValue(
+    mockedReadFile.mockResolvedValueOnce(
       `---
 id: id
 title: "title"
@@ -133,6 +149,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article\n`,
@@ -151,13 +170,17 @@ article\n`,
         updatedAt: '2023-02-05T00:00+09:00',
         slug: 'slug',
         tags: ['tag1', 'tag2'],
+        thumbnail: {
+          url: 'https://images.ctfassets.net/3',
+          title: 'title',
+        },
         published: true,
       },
     })
   })
 
   test('下書きのファイルを取得してブログポストの形式で取得する', async () => {
-    mockedReadFile.mockResolvedValue(
+    mockedReadFile.mockResolvedValueOnce(
       `---
 id: id
 title: null
@@ -166,6 +189,7 @@ about: null
 createdAt: null
 updatedAt: null
 tags: []
+thumbnail: null
 published: false
 ---
 `,
@@ -182,6 +206,7 @@ published: false
         updatedAt: undefined,
         slug: undefined,
         tags: [],
+        thumbnail: undefined,
         published: false,
       },
     })
@@ -189,7 +214,7 @@ published: false
 
   describe('title', () => {
     test('string でなければならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: 1
@@ -198,6 +223,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -217,7 +245,7 @@ article
     })
 
     test('256 文字以上だとバリデーションエラー', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: ${'a'.repeat(256)}
@@ -226,6 +254,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -246,7 +277,7 @@ article
     })
 
     test('255 文字ならバリデーションエラーにならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: ${'a'.repeat(255)}
@@ -255,6 +286,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -267,7 +301,7 @@ article
     })
 
     test('公開済みの場合 null だとバリデーションエラー', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: null
@@ -276,6 +310,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -298,7 +335,7 @@ article
 
   describe('about', () => {
     test('string でなければならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -307,6 +344,9 @@ about: 1
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -327,7 +367,7 @@ article
     })
 
     test('256 文字以上だとバリデーションエラー', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -336,6 +376,9 @@ about: ${'a'.repeat(256)}
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -356,7 +399,7 @@ article
     })
 
     test('255 文字ならバリデーションエラーにならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -365,6 +408,9 @@ about: ${'a'.repeat(255)}
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -377,7 +423,7 @@ article
     })
 
     test('公開済みの場合 null だとバリデーションエラー', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -386,6 +432,9 @@ about: null
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -408,7 +457,7 @@ article
 
   describe('slug', () => {
     test('string でなければならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -417,6 +466,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -437,7 +489,7 @@ article
     })
 
     test('256 文字以上だとバリデーションエラー', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -446,6 +498,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -465,7 +520,7 @@ article
       })
 
       test('255 文字ならバリデーションエラーにならない', async () => {
-        mockedReadFile.mockResolvedValue(
+        mockedReadFile.mockResolvedValueOnce(
           `---
 id: id
 title: "title"
@@ -474,6 +529,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -487,7 +545,7 @@ article
     })
 
     test('slug の形式が正しくないとバリデーションエラー', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -496,6 +554,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -516,7 +577,7 @@ article
     })
 
     test('公開済みの場合 null だとバリデーションエラー', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -525,6 +586,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -547,7 +611,7 @@ article
 
   describe('createdAt', () => {
     test('string でなければならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -556,6 +620,9 @@ about: "about"
 createdAt: 1
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -575,7 +642,7 @@ article
       })
 
       test('公開済みの場合 null だとバリデーションエラー', async () => {
-        mockedReadFile.mockResolvedValue(
+        mockedReadFile.mockResolvedValueOnce(
           `---
 id: id
 title: "title"
@@ -584,6 +651,9 @@ about: "about"
 createdAt: null
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -607,7 +677,7 @@ article
 
   describe('updateedAt', () => {
     test('string でなければならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -616,6 +686,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: 1
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -635,7 +708,7 @@ article
       })
 
       test('公開済みの場合 null だとバリデーションエラー', async () => {
-        mockedReadFile.mockResolvedValue(
+        mockedReadFile.mockResolvedValueOnce(
           `---
 id: id
 title: "title"
@@ -644,6 +717,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: null
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -667,7 +743,7 @@ article
 
   describe('tags', () => {
     test('string の配列 でなければならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -676,6 +752,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: "tag1"
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -696,7 +775,7 @@ article
     })
 
     test('配列の要素が string でなければならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -705,6 +784,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: [1]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -725,7 +807,7 @@ article
     })
 
     test('タグ名は 50 文字以内でなければならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -734,6 +816,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["${'a'.repeat(51)}"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article
@@ -754,9 +839,9 @@ article
     })
   })
 
-  describe('published', () => {
-    test('boolean でなければならない', async () => {
-      mockedReadFile.mockResolvedValue(
+  describe('thumbnail', () => {
+    test('url filed が必須', async () => {
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -765,6 +850,231 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  title: "title"
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['thumbnail', 'url'],
+            message: 'Required',
+          }),
+        ],
+      })
+    })
+
+    test('url filed は string でなければならない', async () => {
+      mockedReadFile.mockResolvedValueOnce(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: 1
+  title: "title"
+published: true
+---
+article
+  `,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['thumbnail', 'url'],
+            message: 'Expected string, received number',
+          }),
+        ],
+      })
+    })
+
+    test('url は URL の形式でなければならない', async () => {
+      mockedReadFile.mockResolvedValueOnce(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "hoge"
+  title: "title"
+published: true
+---
+article
+  `,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['thumbnail', 'url'],
+            message: 'Invalid url',
+          }),
+        ],
+      })
+    })
+
+    test('title filed が必須', async () => {
+      mockedReadFile.mockResolvedValueOnce(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['thumbnail', 'title'],
+            message: 'Required',
+          }),
+        ],
+      })
+    })
+
+    test('title は文字列', async () => {
+      mockedReadFile.mockResolvedValueOnce(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: 1
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['thumbnail', 'title'],
+            message: 'Expected string, received number',
+          }),
+        ],
+      })
+    })
+
+    test('title は 255 文字以内', async () => {
+      mockedReadFile.mockResolvedValueOnce(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "${'a'.repeat(256)}"
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['thumbnail', 'title'],
+            message: 'String must contain at most 255 character(s)',
+          }),
+        ],
+      })
+    })
+
+    test('公開済みなら thumbnail は必須', async () => {
+      mockedReadFile.mockResolvedValueOnce(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail: null
+published: true
+---
+article
+`,
+      )
+
+      const result = await loadBlogPost('id')
+
+      expect(result).toEqual({
+        success: false,
+        error: [
+          expect.objectContaining({
+            path: ['thumbnail'],
+            message: 'Required',
+          }),
+        ],
+      })
+    })
+  })
+
+  describe('published', () => {
+    test('boolean でなければならない', async () => {
+      mockedReadFile.mockResolvedValueOnce(
+        `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: 1
 ---
 article
@@ -787,7 +1097,7 @@ article
 
   describe('article', () => {
     test('50,000 文字以内でなければならない', async () => {
-      mockedReadFile.mockResolvedValue(
+      mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
@@ -796,6 +1106,9 @@ about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 ${'a'.repeat(50001)}
@@ -817,7 +1130,7 @@ ${'a'.repeat(50001)}
   })
 
   test('yaml が不正な場合はバリデーションエラー', async () => {
-    mockedReadFile.mockResolvedValue(
+    mockedReadFile.mockResolvedValueOnce(
       `---
 id: id
 title: "tit"le"
@@ -825,6 +1138,9 @@ slug: "slug"
 about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
 published: true
 ---
 article

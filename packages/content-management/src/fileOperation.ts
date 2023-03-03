@@ -7,6 +7,9 @@ import { BlogPost, BlogPostSchema } from './types.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+/**
+ * yaml の文字列の " はエスケープする必要がある
+ */
 const excape = (str: string) => {
   return str.replace(/"/g, '\\"')
 }
@@ -34,6 +37,13 @@ about: ${about ? `"${excape(about)}"` : 'null'}
 createdAt: ${createdAt ? `"${createdAt}"` : 'null'}
 updatedAt: ${updatedAt ? `"${updatedAt}"` : 'null'}
 tags: [${tags.map((t) => `"${excape(t)}"`).join(', ')}]
+thumbnail:${
+    blog.thumbnail
+      ? `
+  url: "${excape(blog.thumbnail.url)}"
+  title: "${excape(blog.thumbnail.title)}"`
+      : ' null'
+  }
 published: ${published}
 ---
 ${article ? addNewLine(article) : ''}
@@ -90,6 +100,7 @@ export const loadBlogPost = async (filename: string): Promise<Result> => {
       updatedAt: markdown['updatedAt'] ?? undefined,
       slug: markdown['slug'] ?? undefined,
       tags: markdown['tags'],
+      thumbnail: markdown['thumbnail'] ?? undefined,
       published: markdown['published'],
     }
 
