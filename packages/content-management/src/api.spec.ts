@@ -383,7 +383,7 @@ describe('updateBlogPost', () => {
     const entryId = vi.fn()
     const body = vi.fn()
     server.use(
-      rest.get(contentful('/entries/:entryId'), (req, res, ctx) => {
+      rest.get(contentful('/entries/:entryId'), (_, res, ctx) => {
         return res(
           ctx.json({
             metadata: { tags: [] },
