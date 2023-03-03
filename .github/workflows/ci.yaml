@@ -35,3 +35,7 @@ jobs:
         run: npm ci
       - name: Run test
         run: npm run test
+        env:
+          MANAGEMENT_TOKEN: management-token
+          SPACE: space
+          ENVIRONMENTS: environments

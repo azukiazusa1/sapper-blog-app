@@ -7,6 +7,9 @@ import { BlogPost, BlogPostSchema } from './types.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+/**
+ * yaml の文字列の " はエスケープする必要がある
+ */
 const excape = (str: string) => {
   return str.replace(/"/g, '\\"')
 }
@@ -15,7 +18,8 @@ const excape = (str: string) => {
  * コンテンツの末尾に改行コードがないなら追加する
  */
 const addNewLine = (content: string): string => {
-  if (!content.endsWith('\n')) {
+  console.log(content[content.length - 1])
+  if (!content.endsWith('\n') || !content.endsWith('\r') || !content.endsWith('\r\n')) {
     return content + '\n'
   }
   return content
@@ -34,10 +38,16 @@ about: ${about ? `"${excape(about)}"` : 'null'}
 createdAt: ${createdAt ? `"${createdAt}"` : 'null'}
 updatedAt: ${updatedAt ? `"${updatedAt}"` : 'null'}
 tags: [${tags.map((t) => `"${excape(t)}"`).join(', ')}]
+thumbnail:${
+    blog.thumbnail
+      ? `
+  url: "${excape(blog.thumbnail.url)}"
+  title: "${excape(blog.thumbnail.title)}"`
+      : ' null'
+  }
 published: ${published}
 ---
-${article ? addNewLine(article) : ''}
-`
+${article ? addNewLine(article) : ''}`
   // 下書き記事の場合は slug がない可能性があるので、id をファイル名にする
   const pathName = published ? slug : blog.id
 
@@ -90,6 +100,7 @@ export const loadBlogPost = async (filename: string): Promise<Result> => {
       updatedAt: markdown['updatedAt'] ?? undefined,
       slug: markdown['slug'] ?? undefined,
       tags: markdown['tags'],
+      thumbnail: markdown['thumbnail'] ?? undefined,
       published: markdown['published'],
     }
 

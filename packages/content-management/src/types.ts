@@ -1,6 +1,13 @@
 import type { MetaSysProps, MetaLinkProps } from 'contentful-management'
 import { z } from 'zod'
 
+export const thumbnailSchema = z.object({
+  url: z.string().url(),
+  title: z.string().max(255),
+})
+
+export type Thumbnail = z.infer<typeof thumbnailSchema>
+
 export const BlogPostSchema = z.discriminatedUnion('published', [
   z.object({
     id: z.string(),
@@ -14,6 +21,7 @@ export const BlogPostSchema = z.discriminatedUnion('published', [
       .max(255)
       .regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/),
     tags: z.array(z.string().max(50)),
+    thumbnail: thumbnailSchema,
     published: z.literal(true),
   }),
   z.object({
@@ -29,6 +37,7 @@ export const BlogPostSchema = z.discriminatedUnion('published', [
       .regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/)
       .optional(),
     tags: z.array(z.string().max(50)),
+    thumbnail: thumbnailSchema.optional(),
     published: z.literal(false),
   }),
 ])
@@ -49,11 +58,10 @@ export type ContentfulBlogPost = {
     article: FieldValue<string>
     createdAt: FieldValue<string>
     updatedAt: FieldValue<string>
-    thumbnail: FieldValue<MetaLinkProps>
+    thumbnail: FieldValue<{ sys: MetaLinkProps }>
     title: FieldValue<string>
     slug: FieldValue<string>
     tags: FieldValue<{ sys: MetaLinkProps }[]>
-    relatedArticle: FieldValue<{ sys: MetaLinkProps[] }>
   }
 }
 
