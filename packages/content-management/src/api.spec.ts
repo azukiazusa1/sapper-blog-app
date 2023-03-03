@@ -34,6 +34,75 @@ const tags = [
 ] satisfies ContentfulTag[]
 
 const server = setupServer(
+  rest.get('https://api.contentful.com/spaces/:spaceId', (_, res, ctx) => {
+    return res(
+      ctx.json({
+        sys: {
+          type: 'Space',
+          id: 'space',
+          version: 3,
+          organization: {
+            sys: {
+              type: 'Link',
+              linkType: 'Organization',
+              id: 'org-id',
+            },
+          },
+          createdAt: '2015-05-18T11:29:46.809Z',
+          createdBy: {
+            sys: {
+              type: 'Link',
+              linkType: 'User',
+              id: 'user-id',
+            },
+          },
+          updatedAt: '2015-05-18T11:29:46.809Z',
+          updatedBy: {
+            sys: {
+              type: 'Link',
+              linkType: 'User',
+              id: 'user-id',
+            },
+          },
+        },
+        name: 'Contentful Example API',
+      }),
+    )
+  }),
+  rest.get(contentful(''), (_, res, ctx) => {
+    return res(
+      ctx.json({
+        sys: {
+          type: 'Environment',
+          id: 'staging',
+          version: 1,
+          space: {
+            sys: {
+              type: 'Link',
+              linkType: 'Space',
+              id: 'space',
+            },
+          },
+          createdAt: '2015-05-18T11:29:46.809Z',
+          createdBy: {
+            sys: {
+              type: 'Link',
+              linkType: 'User',
+              id: 'user-id',
+            },
+          },
+          updatedAt: '2015-05-18T11:29:46.809Z',
+          updatedBy: {
+            sys: {
+              type: 'Link',
+              linkType: 'User',
+              id: 'user-id',
+            },
+          },
+        },
+      }),
+    )
+  }),
   rest.get(contentful('/entries'), (req, res, ctx) => {
     if (req.url.searchParams.get('content_type') === 'tag') {
       return res(
@@ -383,11 +452,11 @@ describe('updateBlogPost', () => {
     const entryId = vi.fn()
     const body = vi.fn()
     server.use(
-      rest.get(contentful('/entries/:entryId'), (_, res, ctx) => {
+      rest.get(contentful('/entries/:entryId'), (req, res, ctx) => {
         return res(
           ctx.json({
             metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: 'id', published: false }),
+            sys: createDummyMetaSysProps({ id: req.params['entryId'] as string, published: false }),
             fields: {},
           }),
         )
@@ -401,7 +470,7 @@ describe('updateBlogPost', () => {
           ctx.status(200),
           ctx.json({
             metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: 'id', published: false }),
+            sys: createDummyMetaSysProps({ id: req.params['entryId'] as string, published: false }),
             fields: _body,
           }),
         )

@@ -10,12 +10,20 @@ import type {
   Thumbnail,
 } from './types.js'
 
-const client = contentful.createClient({
-  accessToken: Env.accessToken,
-})
+let environment: contentful.Environment
 
-const space = await client.getSpace(Env.space)
-const environment = await space.getEnvironment(Env.environments)
+const createClient = async () => {
+  if (environment) {
+    return environment
+  }
+  const client = contentful.createClient({
+    accessToken: Env.accessToken,
+  })
+
+  const space = await client.getSpace(Env.space)
+  environment = await space.getEnvironment(Env.environments)
+  return environment
+}
 
 const cache = new Map<string, ContentfulTag[]>()
 
@@ -23,8 +31,9 @@ const fetchTags = async (): Promise<ContentfulTag[]> => {
   if (cache.has('tags')) {
     return cache.get('tags') as ContentfulTag[]
   }
+  const client = await createClient()
 
-  const tags = await environment.getEntries({
+  const tags = await client.getEntries({
     content_type: 'tag',
   })
 
@@ -34,7 +43,8 @@ const fetchTags = async (): Promise<ContentfulTag[]> => {
 }
 
 const fetchBlogs = async (): Promise<ContentfulBlogPost[]> => {
-  const posts = await environment.getEntries({
+  const client = await createClient()
+  const posts = await client.getEntries({
     content_type: 'blogPost',
     limit: 1000,
   })
@@ -136,7 +146,8 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 
 export const createBlogPost = async (blog: BlogPost): Promise<void> => {
   const tags = await fetchTags()
-  const entry = await environment.createEntry('blogPost', {
+  const client = await createClient()
+  const entry = await client.createEntry('blogPost', {
     fields: {
       title: {
         'en-US': blog.title,
@@ -187,7 +198,8 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
 }
 
 export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
-  const entry = await environment.getEntry(blog.id)
+  const client = await createClient()
+  const entry = await client.getEntry(blog.id)
 
   const tags = await fetchTags()
   const fields = entry.fields
@@ -255,13 +267,14 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
 }
 
 export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
-  const entities = await environment.getEntries({
+  const client = await createClient()
+  const entities = await client.getEntries({
     content_type: 'blogPost',
     'fields.slug': slugOrId,
   })
 
   // slug で検索してもヒットしなかった場合は id で検索する
-  const entry = entities.items[0] ? entities.items[0] : await environment.getEntry(slugOrId)
+  const entry = entities.items[0] ? entities.items[0] : await client.getEntry(slugOrId)
 
   await entry.delete()
 }
