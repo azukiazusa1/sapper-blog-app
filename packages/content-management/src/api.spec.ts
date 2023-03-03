@@ -41,6 +41,8 @@ const server = setupServer(
           items: tags,
         }),
       )
+    } else {
+      return res(ctx.status(404))
     }
   }),
   rest.get(contentful('/assets/:assetId'), (req, res, ctx) => {
@@ -385,7 +387,7 @@ describe('updateBlogPost', () => {
         return res(
           ctx.json({
             metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: req.params['entryId'], published: false }),
+            sys: createDummyMetaSysProps({ id: 'id', published: false }),
             fields: {},
           }),
         )
@@ -399,7 +401,7 @@ describe('updateBlogPost', () => {
           ctx.status(200),
           ctx.json({
             metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: req.params['entryId'], published: false }),
+            sys: createDummyMetaSysProps({ id: 'id', published: false }),
             fields: _body,
           }),
         )

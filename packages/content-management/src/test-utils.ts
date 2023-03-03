@@ -3,7 +3,7 @@ import type { MetaSysProps } from 'contentful-management'
 const sysLink = ({ linkType = 'Entry' }) => ({
   sys: {
     type: 'Link',
-    linkType: 'Entry',
+    linkType,
     id: 'dummyId',
   },
 })
