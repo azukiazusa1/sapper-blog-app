@@ -251,8 +251,6 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
 
   if (blog.published) {
     await updateEntry.publish()
-  } else {
-    await updateEntry.unpublish()
   }
 }
 

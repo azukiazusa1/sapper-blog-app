@@ -62,7 +62,6 @@ export type ContentfulBlogPost = {
     title: FieldValue<string>
     slug: FieldValue<string>
     tags: FieldValue<{ sys: MetaLinkProps }[]>
-    relatedArticle: FieldValue<{ sys: MetaLinkProps[] }>
   }
 }
 
