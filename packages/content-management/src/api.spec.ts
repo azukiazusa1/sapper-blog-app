@@ -461,7 +461,7 @@ describe('createBlogPost', () => {
           }),
         )
       }),
-      rest.put(contentful('/entries/:entryId/published'), async (req, res, ctx) => {
+      rest.put(contentful('/entries/:entryId/published'), async (_, res, ctx) => {
         return res(ctx.status(200))
       }),
     )
@@ -535,7 +535,7 @@ describe('createBlogPost', () => {
           }),
         )
       }),
-      rest.put(contentful('/entries/:entryId/published'), async (req, res, ctx) => {
+      rest.put(contentful('/entries/:entryId/published'), async (_, res, ctx) => {
         return res(ctx.status(200))
       }),
     )
