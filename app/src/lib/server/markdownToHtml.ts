@@ -18,7 +18,7 @@ let highlighter: Shiki.Highlighter | undefined
 export const markdownToHtml = async (input: string): Promise<string> => {
   if (!highlighter) {
     highlighter = await Shiki.getHighlighter({
-      theme: 'material-default',
+      theme: 'material-theme-default',
     })
   }
   const processor = unified()

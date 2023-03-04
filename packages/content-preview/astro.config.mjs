@@ -6,7 +6,7 @@ import react from '@astrojs/react'
 let highlighter
 if (!highlighter) {
   highlighter = await Shiki.getHighlighter({
-    theme: 'material-default',
+    theme: 'material-theme-default',
   })
 }
 
