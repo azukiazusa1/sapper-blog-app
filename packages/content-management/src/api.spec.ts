@@ -114,29 +114,33 @@ const server = setupServer(
       return res(ctx.status(404))
     }
   }),
-  rest.get(contentful('/assets/:assetId'), (req, res, ctx) => {
+  rest.get(contentful('/assets'), (_, res, ctx) => {
     return res(
       ctx.json({
-        sys: {
-          id: req.params['assetId'],
-          type: 'Asset',
-          version: 1,
-        },
-        fields: {
-          title: {
-            'en-US': 'title',
-          },
-          description: {
-            'en-US': 'description',
-          },
-          file: {
-            'en-US': {
-              url: '//images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png',
-              fileName: 'image.png',
-              contentType: 'image/png',
+        items: [
+          {
+            sys: {
+              id: 'asset1',
+              type: 'Asset',
+              version: 1,
+            },
+            fields: {
+              title: {
+                'en-US': 'title',
+              },
+              description: {
+                'en-US': 'description',
+              },
+              file: {
+                'en-US': {
+                  url: '//images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png',
+                  fileName: 'image.png',
+                  contentType: 'image/png',
+                },
+              },
             },
           },
-        },
+        ],
       }),
     )
   }),

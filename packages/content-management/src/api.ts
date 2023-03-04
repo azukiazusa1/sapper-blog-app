@@ -11,26 +11,34 @@ import type {
   Thumbnail,
 } from './types.js'
 
-let environment: contentful.Environment
+type Cache = {
+  tags?: ContentfulTag[]
+  environment?: contentful.Environment
+  assets?: contentful.Asset[]
+}
+
+let cache: Cache = {}
 
 const createClient = async () => {
-  if (environment) {
-    return environment
+  if (cache.environment) {
+    return cache.environment
   }
   const client = contentful.createClient({
     accessToken: Env.accessToken,
   })
 
   const space = await client.getSpace(Env.space)
-  environment = await space.getEnvironment(Env.environments)
+  const environment = await space.getEnvironment(Env.environments)
+  cache = {
+    ...cache,
+    environment,
+  }
   return environment
 }
 
-const cache = new Map<string, ContentfulTag[]>()
-
 const fetchTags = async (): Promise<ContentfulTag[]> => {
-  if (cache.has('tags')) {
-    return cache.get('tags') as ContentfulTag[]
+  if (cache.tags) {
+    return cache.tags
   }
   const client = await createClient()
 
@@ -38,9 +46,31 @@ const fetchTags = async (): Promise<ContentfulTag[]> => {
     content_type: 'tag',
   })
 
-  cache.set('tags', tags.items as unknown as ContentfulTag[])
+  cache = {
+    ...cache,
+    tags: tags.items as unknown as ContentfulTag[],
+  }
 
   return tags.items as unknown as ContentfulTag[]
+}
+
+const fetchAssets = async (): Promise<contentful.Asset[]> => {
+  if (cache.assets) {
+    return cache.assets
+  }
+
+  const client = await createClient()
+
+  const assets = await client.getAssets({
+    limit: 1000,
+  })
+
+  cache = {
+    ...cache,
+    assets: assets.items,
+  }
+
+  return assets.items
 }
 
 const fetchBlogs = async (): Promise<ContentfulBlogPost[]> => {
@@ -50,11 +80,6 @@ const fetchBlogs = async (): Promise<ContentfulBlogPost[]> => {
     limit: 1000,
   })
   return posts.items as unknown as ContentfulBlogPost[]
-}
-
-const fetchAsset = async (id: string): Promise<contentful.Asset | undefined> => {
-  const asset = await environment.getAsset(id)
-  return asset
 }
 
 const flattenField = <T>(field: FieldValue<T>): T => {
@@ -93,12 +118,13 @@ const getAssetIdFromUrl = (url: string): string => {
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   const tags = await fetchTags()
   const blogs = await fetchBlogs()
+  const assets = await fetchAssets()
 
   const result = await Promise.all(
     blogs.map(async (blog) => {
       let thumbnail: Thumbnail | undefined
       if (blog.fields.thumbnail) {
-        const asset = await fetchAsset(blog.fields.thumbnail['en-US'].sys.id)
+        const asset = assets.find((a) => a.sys.id === blog.fields.thumbnail['en-US'].sys.id)
         thumbnail = {
           url: 'https:' + asset?.fields.file['en-US']?.url || '',
           title: asset?.fields.title['en-US'] || '',
