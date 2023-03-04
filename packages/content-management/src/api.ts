@@ -225,7 +225,7 @@ const tagNamesToTagIds = async (tagNames: string[]): Promise<{ sys: MetaLinkProp
 
 export const createBlogPost = async (blog: BlogPost): Promise<void> => {
   const client = await createClient()
-  const entry = await client.createEntry('blogPost', {
+  const entry = await client.createEntryWithId('blogPost', blog.id, {
     fields: {
       title: {
         'en-US': blog.title,
