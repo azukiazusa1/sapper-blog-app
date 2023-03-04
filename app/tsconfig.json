@@ -28,6 +28,6 @@
       "$lib/*": ["src/lib/*"]
     }
   },
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.tsx", "src/**/*.svelte", "tests/**/*.ts"],
+  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.tsx", "src/**/*.svelte", "tests/**/*.ts", ".svelte-kit/ambient.d.ts"],
   "extends": "./.svelte-kit/tsconfig.json" 
 }
