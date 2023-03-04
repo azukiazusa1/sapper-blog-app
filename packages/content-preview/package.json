@@ -32,5 +32,8 @@
     "eslint-config-custom": "^0.0.0",
     "eslint-plugin-astro": "^0.23.0",
     "prettier-plugin-astro": "^0.8.0"
+  },
+  "resolutions": {
+    "shiki": "0.14.1"
   }
 }
