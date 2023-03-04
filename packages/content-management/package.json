@@ -27,6 +27,7 @@
   "homepage": "https://github.com/azukiazusa1/sapper-blog-app#readme",
   "dependencies": {
     "contentful-management": "^10.29.3",
+    "slugify": "^1.6.5",
     "typescript": "^4.9.5",
     "yaml-front-matter": "^4.1.1",
     "zod": "^3.20.6"

@@ -445,6 +445,150 @@ describe('createBlogPost', () => {
       },
     })
   })
+
+  test('タグ名は case insensitive で一致する', async () => {
+    const body = vi.fn()
+    server.use(
+      rest.post(contentful('/entries'), async (req, res, ctx) => {
+        const _body = await req.json()
+        body(_body)
+        return res(
+          ctx.status(201),
+          ctx.json({
+            metadata: { tags: [] },
+            sys: createDummyMetaSysProps({ id: 'blog2' }),
+            fields: _body.fields,
+          }),
+        )
+      }),
+      rest.put(contentful('/entries/:entryId/published'), async (_, res, ctx) => {
+        return res(ctx.status(200))
+      }),
+    )
+
+    await createBlogPost({
+      id: 'id',
+      title: 'title',
+      about: 'about',
+      createdAt: '2021-01-01',
+      updatedAt: '2021-01-02',
+      slug: 'slug',
+      article: 'article',
+      published: false,
+      thumbnail: {
+        title: 'title',
+        url: 'https://images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png',
+      },
+      tags: ['tag1-name', 'TAG2-NAME'],
+    })
+
+    expect(body).toHaveBeenCalledWith({
+      fields: expect.objectContaining({
+        tags: {
+          'en-US': [
+            {
+              sys: {
+                id: 'tag1',
+                type: 'Link',
+                linkType: 'Entry',
+              },
+            },
+            {
+              sys: {
+                id: 'tag2',
+                type: 'Link',
+                linkType: 'Entry',
+              },
+            },
+          ],
+        },
+      }),
+    })
+  })
+
+  test('タグが存在しない場合は作成する', async () => {
+    const blogPostBody = vi.fn()
+    const tagBody = vi.fn()
+    server.use(
+      rest.post(contentful('/entries'), async (req, res, ctx) => {
+        if (req.headers.get('X-Contentful-Content-Type') === 'tag') {
+          const body = await req.json()
+          tagBody(body)
+          return res(
+            ctx.status(201),
+            ctx.json({
+              metadata: { tags: [] },
+              sys: createDummyMetaSysProps({ id: 'tag3', published: false }),
+              fields: body.fields,
+            }),
+          )
+        }
+
+        const _body = await req.json()
+        blogPostBody(_body)
+        return res(
+          ctx.status(201),
+          ctx.json({
+            metadata: { tags: [] },
+            sys: createDummyMetaSysProps({ id: 'blog2' }),
+            fields: _body.fields,
+          }),
+        )
+      }),
+      rest.put(contentful('/entries/:entryId/published'), async (_, res, ctx) => {
+        return res(ctx.status(200))
+      }),
+    )
+
+    await createBlogPost({
+      id: 'id',
+      title: 'title',
+      about: 'about',
+      createdAt: '2021-01-01',
+      updatedAt: '2021-01-02',
+      slug: 'slug',
+      article: 'article',
+      published: false,
+      thumbnail: {
+        title: 'title',
+        url: 'https://images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png',
+      },
+      tags: ['tag1-name', 'This is new tag'],
+    })
+
+    expect(tagBody).toHaveBeenCalledWith({
+      fields: {
+        name: {
+          'en-US': 'This is new tag',
+        },
+        slug: {
+          'en-US': 'this-is-new-tag',
+        },
+      },
+    })
+    expect(blogPostBody).toHaveBeenCalledWith({
+      fields: expect.objectContaining({
+        tags: {
+          'en-US': [
+            {
+              sys: {
+                id: 'tag1',
+                type: 'Link',
+                linkType: 'Entry',
+              },
+            },
+            {
+              sys: {
+                id: 'tag3',
+                type: 'Link',
+                linkType: 'Entry',
+              },
+            },
+          ],
+        },
+      }),
+    })
+  })
 })
 
 describe('updateBlogPost', () => {
