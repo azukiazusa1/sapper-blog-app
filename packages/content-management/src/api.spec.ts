@@ -326,6 +326,19 @@ describe('getBlogPosts', () => {
 })
 
 describe('createBlogPost', () => {
+  vi.mock('./searchRelatedArticles.js', () => {
+    return {
+      searchRelatedArticles: async () => {
+        return [
+          {
+            type: 'Link',
+            linkType: 'Entry',
+            id: 'entry-id',
+          },
+        ]
+      },
+    }
+  })
   test('blog post を作成する', async () => {
     const contentTypeHeader = vi.fn()
     const entryId = vi.fn()
@@ -446,6 +459,15 @@ describe('createBlogPost', () => {
                 type: 'Link',
                 linkType: 'Entry',
               },
+            },
+          ],
+        },
+        relatedArticles: {
+          'en-US': [
+            {
+              type: 'Link',
+              linkType: 'Entry',
+              id: 'entry-id',
             },
           ],
         },
@@ -598,6 +620,19 @@ describe('createBlogPost', () => {
 })
 
 describe('updateBlogPost', () => {
+  vi.mock('./searchRelatedArticles.js', () => {
+    return {
+      searchRelatedArticles: async () => {
+        return [
+          {
+            type: 'Link',
+            linkType: 'Entry',
+            id: 'entry-id',
+          },
+        ]
+      },
+    }
+  })
   test('blog post を更新する', async () => {
     const entryId = vi.fn()
     const body = vi.fn()
@@ -688,6 +723,15 @@ describe('updateBlogPost', () => {
                 type: 'Link',
                 linkType: 'Entry',
               },
+            },
+          ],
+        },
+        relatedArticles: {
+          'en-US': [
+            {
+              type: 'Link',
+              linkType: 'Entry',
+              id: 'entry-id',
             },
           ],
         },

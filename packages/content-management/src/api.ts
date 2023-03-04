@@ -261,7 +261,7 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
           }
         : undefined,
       relatedArticles: {
-        'en-US': searchRelatedArticles(blog),
+        'en-US': await searchRelatedArticles(blog),
       },
     },
   })
@@ -313,7 +313,7 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
   }
 
   fields['relatedArticles'] = {
-    'en-US': searchRelatedArticles(blog),
+    'en-US': await searchRelatedArticles(blog),
   }
 
   if (blog.thumbnail) {

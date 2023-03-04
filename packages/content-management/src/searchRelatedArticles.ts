@@ -18,8 +18,8 @@ export const searchRelatedArticles = async (blogPost: BlogPost): Promise<MetaLin
       return a.data.id !== blogPost.id
     })
     .sort((a, b) => {
-      const similaritya = compareTwoStrings(blogPost.article, a.data.article)
-      const similarityb = compareTwoStrings(b.data.article, blogPost.article)
+      const similaritya = compareTwoStrings(blogPost.article || '', a.data.article || '')
+      const similarityb = compareTwoStrings(b.data.article || '', blogPost.article || '')
       return similarityb - similaritya
     })
 
