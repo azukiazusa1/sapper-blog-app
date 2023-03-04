@@ -1,6 +1,7 @@
 import contentful, { MetaLinkProps } from 'contentful-management'
 import slugify from 'slugify'
 import { Env } from './env.js'
+import { searchRelatedArticles } from './searchRelatedArticles.js'
 import type {
   BlogPost,
   ContentfulBlogPost,
@@ -259,6 +260,9 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
             },
           }
         : undefined,
+      relatedArticles: {
+        'en-US': searchRelatedArticles(blog),
+      },
     },
   })
 
@@ -306,6 +310,10 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
 
   fields['tags'] = {
     'en-US': await tagNamesToTagIds(blog.tags),
+  }
+
+  fields['relatedArticles'] = {
+    'en-US': searchRelatedArticles(blog),
   }
 
   if (blog.thumbnail) {

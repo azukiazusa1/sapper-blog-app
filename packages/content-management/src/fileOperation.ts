@@ -130,3 +130,13 @@ export const loadBlogPost = async (filename: string): Promise<Result> => {
     }
   }
 }
+
+export const loadAllBlogPost = async (): Promise<Result[]> => {
+  const dirname = path.join(__dirname, `../../../contents/blogPost`)
+
+  const files = await fs.readdir(dirname)
+
+  const results = await Promise.all(files.map((file) => loadBlogPost(file.replace(/\.md$/, ''))))
+
+  return results
+}
