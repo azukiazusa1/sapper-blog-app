@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import BlogMeta from '../../components/BlogMeta.astro'
+import FileUplod from '../../components/FileUpload/Dialog'
 import type { BlogPostFromtMatter } from '../../types'
 
 export async function getStaticPaths() {
@@ -38,5 +39,6 @@ const { post } = Astro.props
         </div>
       </article>
     </div>
+    <FileUplod client:only />
   </div>
 </BaseLayout>
