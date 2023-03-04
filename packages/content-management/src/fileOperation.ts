@@ -18,7 +18,6 @@ const excape = (str: string) => {
  * コンテンツの末尾に改行コードがないなら追加する
  */
 const addNewLine = (content: string): string => {
-  console.log(content[content.length - 1])
   if (!content.endsWith('\n') || !content.endsWith('\r') || !content.endsWith('\r\n')) {
     return content + '\n'
   }

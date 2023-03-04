@@ -1,4 +1,5 @@
-import contentful from 'contentful-management'
+import contentful, { MetaLinkProps } from 'contentful-management'
+import slugify from 'slugify'
 import { Env } from './env.js'
 import type {
   BlogPost,
@@ -144,8 +145,59 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
   return result
 }
 
-export const createBlogPost = async (blog: BlogPost): Promise<void> => {
+const createTag = async (tagName: string): Promise<contentful.Entry> => {
+  const client = await createClient()
+  const tag = await client.createEntry('tag', {
+    fields: {
+      name: {
+        'en-US': tagName,
+      },
+      slug: {
+        'en-US': slugify(tagName, { lower: true }),
+      },
+    },
+  })
+  await tag.publish().catch(() => {
+    // テスト時にでなぜかライブラリ側のバグで publish が失敗するので無視する
+  })
+  return tag
+}
+
+/**
+ * タグの名前から Contentful で登録されている ID を取得する
+ * case insensitive で比較する
+ * 存在しないタグ名があれば新しく作成する
+ * @param tagNames タグの名前
+ * @returns Contentful の MetaLink の形式
+ */
+const tagNamesToTagIds = async (tagNames: string[]): Promise<{ sys: MetaLinkProps }[]> => {
   const tags = await fetchTags()
+  return Promise.all(
+    tagNames.map(async (tagName) => {
+      const tag = tags.find((t) => flattenField(t.fields.name).toLowerCase() === tagName.toLowerCase())
+      if (tag) {
+        return {
+          sys: {
+            type: 'Link',
+            linkType: 'Entry',
+            id: tag.sys.id,
+          },
+        }
+      } else {
+        const result = await createTag(tagName)
+        return {
+          sys: {
+            type: 'Link',
+            linkType: 'Entry',
+            id: result.sys.id,
+          },
+        }
+      }
+    }),
+  )
+}
+
+export const createBlogPost = async (blog: BlogPost): Promise<void> => {
   const client = await createClient()
   const entry = await client.createEntry('blogPost', {
     fields: {
@@ -168,15 +220,7 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
         'en-US': blog.updatedAt,
       },
       tags: {
-        'en-US': blog.tags.map((tag) => {
-          return {
-            sys: {
-              type: 'Link',
-              linkType: 'Entry',
-              id: tags.find((t) => flattenField(t.fields.name) === tag)?.sys.id,
-            },
-          }
-        }),
+        'en-US': await tagNamesToTagIds(blog.tags),
       },
       thumbnail: blog.thumbnail
         ? {
@@ -201,7 +245,6 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
   const client = await createClient()
   const entry = await client.getEntry(blog.id)
 
-  const tags = await fetchTags()
   const fields = entry.fields
 
   if (blog.title) {
@@ -236,15 +279,7 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
   }
 
   fields['tags'] = {
-    'en-US': blog.tags.map((tag) => {
-      return {
-        sys: {
-          type: 'Link',
-          linkType: 'Entry',
-          id: tags.find((t) => flattenField(t.fields.name) === tag)?.sys.id,
-        },
-      }
-    }),
+    'en-US': await tagNamesToTagIds(blog.tags),
   }
 
   if (blog.thumbnail) {
