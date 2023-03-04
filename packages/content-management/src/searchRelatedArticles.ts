@@ -5,7 +5,6 @@ import type { BlogPost } from './types'
 
 export const searchRelatedArticles = async (blogPost: BlogPost): Promise<MetaLinkProps[]> => {
   const allBlogPost = await loadAllBlogPost()
-  console.log('loaded')
 
   const result = allBlogPost
     .filter((a): a is Extract<Result, { success: true }> => {
