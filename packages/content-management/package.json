@@ -30,6 +30,7 @@
     "contentful-management": "^10.29.3",
     "nanoid": "^4.0.1",
     "slugify": "^1.6.5",
+    "string-similarity": "^4.0.4",
     "typescript": "^4.9.5",
     "yaml-front-matter": "^4.1.1",
     "zod": "^3.20.6"
@@ -39,6 +40,7 @@
     "@swc/helpers": "^0.4.14",
     "@tsconfig/node-lts-strictest-esm": "^18.12.1",
     "@types/find-config": "^1.0.1",
+    "@types/string-similarity": "^4.0.0",
     "@types/yaml-front-matter": "^4.1.0",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
