@@ -6,6 +6,9 @@ about: "ツールチップとは、ある要素に対する補足情報を与え
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["アクセシビリティ", "React"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6pfSeWoPkJQo9YqAt3jomK/e1c7562eab9d5ab5e3ddcdf8ed773b18/_Pngtree_gold_coin_number_money_dollar_5324212.png"
+  title: "gold"
 published: true
 ---
 ツールチップとは、ある要素に対する補足情報を与える UI です。通常ある要素に対してマウスホバーまたはキーボードでフォーカスしたとき少しのディレイの後に、ユーザーの操作によらず自動的にポップアップして表示されます。このポップアップはユーザーの操作をブロッキングするものではありません。ユーザーがマウスのホバー外すかフォーカスが外れた場合にツールチップは非表示となります。
@@ -374,4 +377,3 @@ export const Tooltip = {
 
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.3](https://w3c.github.io/aria/#tooltip)
 - [ARIA: tooltip role - Accessibility | MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tooltip_role)
-

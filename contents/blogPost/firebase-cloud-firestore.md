@@ -6,6 +6,9 @@ about: "Cloud FireStore(以下FireStore)とは、FireBaseの提供するドキ�
 createdAt: "2020-04-26T00:00+09:00"
 updatedAt: "2020-04-26T00:00+09:00"
 tags: ["firebase", "JavaScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2kQrXA9Amina8TOc9oC4PF/9033b78047d09b10c90b126439e33287/firestore.png"
+  title: "firestore"
 published: true
 ---
 # Cloud FireStoreとは
@@ -492,4 +495,3 @@ userRef.doc(user.uid).get()
 ### クエリを発行する
 
 今週はここまで🤔。
-

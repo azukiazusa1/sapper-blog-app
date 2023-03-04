@@ -6,6 +6,9 @@ about: "Node.js(Express)でCSVファイルを生成してダウンロードさ�
 createdAt: "2021-05-30T00:00+09:00"
 updatedAt: "2021-05-30T00:00+09:00"
 tags: ["Express", "JavaScript", "Node.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2Lpar83pMJR1yGyxUUiDQP/dbf365e89432b966f827cacfc4d5891e/articles_2FRshdHD6LGzEVXnbjoL6p_2Fthumbnail_7D.png"
+  title: "express"
 published: true
 ---
 # json2csvのインストール
@@ -159,4 +162,3 @@ http://localhost:3000/csv にアクセスすると、CSV ファイルがダウ�
 
 [expressでCSVファイルをダウンロードさせる](https://blog.kozakana.net/2018/04/express-csv-download/)
 [【Node.js】JSON文字列をCSVファイルとして吐き出す](https://qiita.com/kum44/items/d11f97ecee3e46d3195d)
-

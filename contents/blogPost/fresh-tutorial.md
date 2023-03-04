@@ -6,6 +6,9 @@ about: "Fresh は Deno 製の Web フレームワークです。事前のビル�
 createdAt: "2022-06-19T00:00+09:00"
 updatedAt: "2022-06-19T00:00+09:00"
 tags: ["Deno", "TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6fPJ5Ah5oHsWbvScuggrCh/899629af347facfc74e95006dae6b617/deno.png"
+  title: "Deno"
 published: true
 ---
 >! Fresh は現在（2022/06/19）プロダクション環境で使用することは推奨されません
@@ -1300,4 +1303,3 @@ https://github.com/denoland/dotland
 https://eh-career.com/engineerhub/entry/2022/06/17/093000
 
 https://zenn.dev/uki00a/articles/frontend-development-in-deno-2022-spring
-

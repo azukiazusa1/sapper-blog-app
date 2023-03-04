@@ -6,6 +6,9 @@ about: "CSS にはボックスという概念があります。ブラウザは�
 createdAt: "2021-10-31T00:00+09:00"
 updatedAt: "2021-10-31T00:00+09:00"
 tags: ["CSS"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2lwyC5xUSMgwbu56Pnt7tW/f64addf2d52d9adfebaa7e57ca9f6f18/____________________________2021-10-31_20.31.05.png"
+  title: "スクリーンショット 2021-10-31 20.31.05"
 published: true
 ---
 CSS にはボックスという概念があります。ブラウザは文書をレイアウトする際に、それぞれの要素を
@@ -261,4 +264,3 @@ body {
 - [Box Model](https://web.dev/learn/css/box-model/)
 - [マージンの相殺](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing)
 - [CSSにおけるマージンの相殺を徹底解説](https://coliss.com/articles/build-websites/operation/css/rules-of-margin-collapse.html)
-

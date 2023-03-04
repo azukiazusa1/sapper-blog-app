@@ -6,6 +6,9 @@ about: "様々な方法でアクセシビリティを自動で検査します"
 createdAt: "2022-01-30T00:00+09:00"
 updatedAt: "2022-01-30T00:00+09:00"
 tags: ["アクセシビリティ", "Vue.js", "storybook", "Jest"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/r6513NBn4sCbGq4sYPhA0/02c228b5c22ce862bbf3c24a62ff86c8/wheelchair-symbol_267f.png"
+  title: "accesibility"
 published: true
 ---
 近年の Web アクセシビリティはますます重要な要素となっています。フロントエンドの開発を行う中でアクセシビリティに興味を持った人も多いことでしょう。
@@ -386,4 +389,3 @@ https://github.com/azukiazusa1/vue-a11y-testing
 最後に自動テストのみではアプリケーションがアクセシブルであることを保証できないという点に注意してください。あくまで自動テストの役割は一般的な問題を解決するだけです。
 
 真のアクセシビリティを獲得するためには実際のユーザーのデバイスで手動でテストする、ユーザー調査に障がい者を含めるといったことを必ず実施する必要があります。
-

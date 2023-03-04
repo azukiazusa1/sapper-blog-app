@@ -6,6 +6,9 @@ about: "Vue.js 3.x から script setup 構文が使えるようになりまし�
 createdAt: "2021-09-26T00:00+09:00"
 updatedAt: "2021-09-26T00:00+09:00"
 tags: ["Vue.js", "TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4LlOrDdEXyxqi7wjIKAhgp/7bc2ba8009965c9fa02bf49493a13226/vite.svg"
+  title: "vite"
 published: true
 ---
 # `<script setup`> 構文とは
@@ -422,4 +425,3 @@ import AsyncUserList from "./components/AsyncUserList.vue";
 ```
 
 紹介しておいてなんですが `<Suspense>` 自体が実験的な機能であるので、トップレベル await の使用は控えたほうがよいでしょう。
-

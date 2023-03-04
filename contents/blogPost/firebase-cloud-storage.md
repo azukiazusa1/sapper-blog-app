@@ -6,6 +6,9 @@ about: "Firebase3週目の記事です。 今回は、主に画像などのデ�
 createdAt: "2020-05-03T00:00+09:00"
 updatedAt: "2020-05-03T00:00+09:00"
 tags: ["Vue.js", "firebase", "JavaScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/57MXX73Nx2rUnUI730EykA/8d13236943bb46948155f92f2325369e/firebase.png"
+  title: "firebase"
 published: true
 ---
 # はじめに
@@ -300,4 +303,3 @@ computed: {
 あれ、なんだか Cloud Storage の説明をしていたはずなのに Vue.js の説明のほうが多かった気がします🤔。
 
 来週はついに、FireStore を取り上げる予定です。かなり長くなりそうなので一週じゃ終わらない気がしますが。
-

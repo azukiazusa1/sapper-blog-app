@@ -6,6 +6,9 @@ about: "Error Boundaryとは、自身の子コンポーネントツリーで発�
 createdAt: "2021-06-20T00:00+09:00"
 updatedAt: "2021-06-20T00:00+09:00"
 tags: ["JavaScript", "React"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2c9EyCXfherkq4ICwfDHaM/13bcad3dd62573b050eb8ad25dce4275/1200px-React-icon.svg.png"
+  title: "React"
 published: true
 ---
 Error Boundary とは、自身の子コンポーネントツリーで発生した JavaScript のエラーをキャッチ・記録しフォールバックの UI を表示するコンポーネントです。
@@ -200,4 +203,3 @@ const Blue = () => {
 今度は Red コンポーネントのみにフォールバック UI が描画されました。
 
 ![スクリーンショット 2021-06-20 20.55.32](//images.ctfassets.net/in6v9lxmm5c8/6CMIDmoRcH0sVLiL4zqAsE/e66656278e0f042fd86aa3ecf6f15149/____________________________2021-06-20_20.55.32.png)
-

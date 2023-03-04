@@ -6,6 +6,9 @@ about: "コンポーネントのテストをするのフレームワークとし
 createdAt: "2021-02-03T00:00+09:00"
 updatedAt: "2021-02-03T00:00+09:00"
 tags: ["Jest", "Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
+  title: "Vue.js"
 published: true
 ---
 Component の単体テストは書くべきでしょうか？UI のテストは割りに合わない、ロジックはコンポーネントの外のモジュールに記述している（特に composition API では）などの理由から、コンポーネントに対するテストは書かない選択肢もあるでしょう。
@@ -215,4 +218,3 @@ Google でログインボタンをクリックした際に発火する `clickGoo
 
 [Vue Test Utils（2.0.0-beta.10）](https://vue-test-utils.vuejs.org/v2/guide/introduction.html)
 [Vue Testing Handbook](https://lmiller1990.github.io/vue-testing-handbook/v3/)
-

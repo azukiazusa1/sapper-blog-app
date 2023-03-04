@@ -6,6 +6,9 @@ about: "jest coverage reportは GitHuba Actions のワークフローの1つで 
 createdAt: "2022-11-27T00:00+09:00"
 updatedAt: "2022-11-27T00:00+09:00"
 tags: ["GitHub Actions"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/56MNfpVr3IVjfC5j2vdoMJ/1df017aa704c67b06b1742f3595abbcc/hb-sun-3q5qSKpyXGQ-unsplash.jpg"
+  title: "hb-sun-3q5qSKpyXGQ-unsplash"
 published: true
 ---
 [jest coverage report](https://github.com/ArtiomTr/jest-coverage-report-action) は GitHuba Actions のワークフローの 1 つで Jest で実行したテストのコードカバレッジをプルリクエスト上にコメントしてくれます。
@@ -172,4 +175,3 @@ https://github.com/azukiazusa1/monorepo-jest-actions-example/pull/2
 ## 参考
 
 [Monorepo or yarnWorkspaces support? #260](https://github.com/ArtiomTr/jest-coverage-report-action/discussions/260)
-

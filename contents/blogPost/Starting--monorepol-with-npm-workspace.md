@@ -6,6 +6,9 @@ about: "workspace は複数のパッケージ（`package.json`）をレポジト
 createdAt: "2022-04-10T00:00+09:00"
 updatedAt: "2022-04-10T00:00+09:00"
 tags: ["JavaScript", "npm"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/5aBvLSXirDOkziSXDURioE/e547110fe258417a05556347c142e813/npm.png"
+  title: "npm"
 published: true
 ---
 workspace とは npmv7 から追加された機能で、 [yarn](https://classic.yarnpkg.com/lang/en/docs/workspaces/) や [pnpm](https://pnpm.io/workspaces) の workspace を追従した機能です。

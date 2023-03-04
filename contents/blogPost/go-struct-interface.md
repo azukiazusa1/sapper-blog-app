@@ -6,6 +6,9 @@ about: "構造体(Struct)とは、フィールドの集まりです。JavaScript
 createdAt: "2020-10-25T00:00+09:00"
 updatedAt: "2020-10-25T00:00+09:00"
 tags: ["Go"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7J6X29QCpCjoReVMQFOC1D/f091383d411092eaa4487bad33560ca6/golang.png"
+  title: "go"
 published: true
 ---
 # 構造体(Struct)
@@ -357,4 +360,3 @@ func main() {
 	someFunc([]int{1, 2, 3})
 }
 ```
-

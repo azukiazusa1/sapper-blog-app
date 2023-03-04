@@ -6,6 +6,9 @@ about: "イベントのバブリングとは、ある要素で発生したイベ
 createdAt: "2022-10-09T00:00+09:00"
 updatedAt: "2022-10-09T00:00+09:00"
 tags: ["React"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2c9EyCXfherkq4ICwfDHaM/13bcad3dd62573b050eb8ad25dce4275/1200px-React-icon.svg.png"
+  title: "React"
 published: true
 ---
 ## イベントのバブリングとは
@@ -64,4 +67,3 @@ https://www.w3.org/TR/DOM-Level-3-Events/#event-flow
 これはポータルは DOM ツリーのどこにも存在できますが、他のあら言うる点では通常の React の子要素と変わらず振る舞うためです。つまり、ポータルの内部で発火したイベントは DOM ツリー上の親要素でなくとも React ツリー上の親要素であれば伝播されるということです。
 
 このことは一見直感に反するようにも思えますが、ポータルに本質的に依存することのない、より柔軟な抽象化が可能であること示していると説明されています。つまり、`<Modal>` の実装がポータルを使っているかどうか関係なく、親コンポーネントからは `<Modal>` コンポーネントのイベントを捕捉できるということです。
-

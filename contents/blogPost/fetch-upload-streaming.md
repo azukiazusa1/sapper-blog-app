@@ -6,6 +6,9 @@ about: "Fetch Upload Streaming とは、ブラウザの JavaScript の POST リ�
 createdAt: "2022-08-21T00:00+09:00"
 updatedAt: "2022-08-21T00:00+09:00"
 tags: ["JavaScript", "Fetch"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
+  title: "JavaScript"
 published: true
 ---
 ## Fetch Upload Streaming とは
@@ -349,4 +352,3 @@ spdy
 - [fetch() upload streaming は WebSocket の代替になるのか。Fetch を使ってカメラから取得した映像をストリーミングで送信する](https://shisama.hatenablog.com/entry/2020/07/28/090000)
 - [Webブラウザ上で純粋なHTTPだけで単方向リアルタイム通信を可能にするHTTPのストリーミングアップロードが遂にやってくる](https://scrapbox.io/nwtgck/Web%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E4%B8%8A%E3%81%A7%E7%B4%94%E7%B2%8B%E3%81%AAHTTP%E3%81%A0%E3%81%91%E3%81%A7%E5%8D%98%E6%96%B9%E5%90%91%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E9%80%9A%E4%BF%A1%E3%82%92%E5%8F%AF%E8%83%BD%E3%81%AB%E3%81%99%E3%82%8BHTTP%E3%81%AE%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%8C%E9%81%82%E3%81%AB%E3%82%84%E3%81%A3%E3%81%A6%E3%81%8F%E3%82%8B)
 - [Getting Started with HTTP/2 in Node.js](https://www.section.io/engineering-education/http2-in-nodejs/)
-

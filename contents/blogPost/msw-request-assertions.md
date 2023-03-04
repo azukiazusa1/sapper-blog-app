@@ -6,6 +6,9 @@ about: "msw 使ってテストを記述した時期待したリクエストが�
 createdAt: "2022-03-13T00:00+09:00"
 updatedAt: "2022-03-13T00:00+09:00"
 tags: ["msw", "Jest", "Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2ie3bCh5ilbItvjAFAjObY/f38d0128a76903dcb8ceb9d068652de4/64637271.jpeg"
+  title: "msw2"
 published: true
 ---
 [msw](https://mswjs.io/) を使ってテストを記述したとき期待したリクエストが送信されているのか検査したくなるかもしれません。
@@ -337,4 +340,3 @@ msw をテストで使用した際にリクエストを検証する方法を紹�
 今回記載したコードは以下をご参照ください。
 
 https://github.com/azukiazusa1/msw-request-assertions-sample
-

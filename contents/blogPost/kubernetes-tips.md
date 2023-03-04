@@ -6,6 +6,9 @@ about: "知っていると時間を短縮できるようなkubectlコマンド�
 createdAt: "2021-04-04T00:00+09:00"
 updatedAt: "2021-04-04T00:00+09:00"
 tags: ["Kubernetes"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4NwI8gjd802es2aMCmWay7/5b1d1468d43c4ffc3623b33decec3eea/k8s.png"
+  title: "kubernets"
 published: true
 ---
 # 現在存在するすべてのリソースの数を得る
@@ -103,4 +106,3 @@ $ kubectl describe deployment some-deployment | grep -i image
 ```
 
 パイプで出力結果を `grep` に渡す。`-i` オプションは、大文字小文字を区別しない。
-

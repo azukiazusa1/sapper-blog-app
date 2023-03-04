@@ -6,6 +6,9 @@ about: "DRY原則は非常に有名な原則ですし、普段から特に考え
 createdAt: "2021-08-08T00:00+09:00"
 updatedAt: "2021-08-08T00:00+09:00"
 tags: ["TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
+  title: "typescript"
 published: true
 ---
 DRY 原則とは「Don't repeat yourself」の略でコードの重複をさけるというな原則の 1 つです。DRY 原則は非常に有名な原則ですし、普段から特に考えずとも自然と重複をさけるようなコードを書いているほうも多いことでしょう。
@@ -612,4 +615,3 @@ export type PostsQuery = (
 ```
 
 以上のような型定義が生成さました。（Query の方は難解すぎてよくわからんですが、しっかりと使えます）
-

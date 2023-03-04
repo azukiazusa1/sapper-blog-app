@@ -6,6 +6,9 @@ about: "React Hook Form で Zod を使用する時によくあるバリデーシ
 createdAt: "2023-02-12T00:00+09:00"
 updatedAt: "2023-02-12T00:00+09:00"
 tags: ["TypeScript", "Zod"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/HwTFMkoAmZ6qo2gIea9Nw/e9ccce37ebbdfa7cdf560b1ff393305f/___Pngtree___lightning_bolt_yellow_transparent_images_8995404.png"
+  title: "lightning bolt"
 published: true
 ---
 ## 非同期バリデーション
@@ -581,4 +584,3 @@ export const Form: React.FC = () => {
 
 - [React Hook Form + Zodでcheckboxのvalidationをする](https://zenn.dev/cozynooks/articles/3b37cda72a7149)
 - [react-hook-form と Zod で条件分岐のあるフォームを構築する方法6選 - Qiita](https://qiita.com/kalbeekatz/items/09df07f78420ab6b6e57)
-

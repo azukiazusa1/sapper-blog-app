@@ -6,6 +6,9 @@ about: "皆さん Node.js のバージョン管理ツールには何を使って
 createdAt: "2022-04-17T00:00+09:00"
 updatedAt: "2022-04-17T00:00+09:00"
 tags: ["Node.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4z6cPW6RU0f0O22jxIVINl/7c4bc80d99a5ad11e02d1cc83b42a2b5/articles_2FmDVbWFeXeln9BJXqBa76_2F027ab8d7dc7cdb4ab9c09c0a057af2e7.png"
+  title: "Node.js"
 published: true
 ---
 皆さん Node.js のバージョン管理ツールには何を使っておりますでしょうか？私が知る限りにおいてもこれだけの選択肢が存在します。
@@ -139,4 +142,3 @@ v16.14.2
 ```
 
 欠点としては、プロジェクトの開発者全員が volta を使用していなければいけないところです。例えば `node-version` というファイルであれば複数の Node.js バージョン管理ツールに対応しています。
-

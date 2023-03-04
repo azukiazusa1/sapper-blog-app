@@ -6,6 +6,9 @@ about: "Histoireはフランス語で「Story」という意味の単語であ�
 createdAt: "2022-06-05T00:00+09:00"
 updatedAt: "2022-06-05T00:00+09:00"
 tags: ["Vue.js", "Histoire"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/VtA12UmYSnuVCHdFqa96V/390679a1977d3e5f9bc88369fa249eae/histoire.svg"
+  title: "histoire"
 published: true
 ---
 [Histoire](https://histoire.dev/) はフランス語で「Story」という意味の単語であり、[Storybook](https://storybook.js.org/) のように UI コンポーネントのカタログを作成するツールです。
@@ -342,4 +345,3 @@ Vite 製のツールはやっぱり早く動作するので良いですね。エ
 サンプルコードは以下のレポジトリにあります。
 
 https://github.com/azukiazusa1/histoire-example
-

@@ -6,6 +6,9 @@ about: "最近のテスト手法として API コールをモックする際に 
 createdAt: "2022-01-09T00:00+09:00"
 updatedAt: "2022-01-09T00:00+09:00"
 tags: ["Vue.js", "Jest", "msw"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/30CBESZ69ymPrUEBtoubnw/733e90c8a33905f356ca66ffe2f0fb0d/64637271.png"
+  title: "msw"
 published: true
 ---
 ---

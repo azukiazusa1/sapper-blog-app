@@ -6,6 +6,9 @@ about: "大抵のブラウザでは Web ページを印刷することができ�
 createdAt: "2021-12-05T00:00+09:00"
 updatedAt: "2021-12-05T00:00+09:00"
 tags: ["CSS"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2JzEE4h7Xe5SHRr9iCPv4s/ac8cdc859f3af3a4c53cb7e5ba7af455/chounouryoku_woman.png"
+  title: "pointer"
 published: true
 ---
 大抵のブラウザでは Web ページを印刷できます。
@@ -205,4 +208,3 @@ break-before > break-inside > break-after
 非表示となります。
 
 ![スクリーンショット 2021-12-05 10.41.24](//images.contentful.com/in6v9lxmm5c8/cUzDP9ATLKEGtYYIt9kvE/776b38158f7c0c322ec1a7148bf3a492/____________________________2021-12-05_10.41.24.png)
-

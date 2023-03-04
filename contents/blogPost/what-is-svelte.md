@@ -6,6 +6,9 @@ about: "Svelteとは、ReactやVue.jsのような宣言的UIライブラリの�
 createdAt: "2021-01-24T00:00+09:00"
 updatedAt: "2021-01-24T00:00+09:00"
 tags: ["Svelte", "JavaScript", "TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/10yOrB3tXKM12ZJbJdJlw5/e7d9e7de67e916bb0a59695d9882f061/1200px-Svelte_Logo.svg.png"
+  title: "Svelte"
 published: true
 ---
 Svelte とは、React や Vue.js・Angular のような宣言的 UI ライブラリの一種です。
@@ -283,4 +286,3 @@ if 文は HTML 内で `{#if condition} {/if}` で囲って使うことができ�
 以上が、Svelte の簡単な構文の紹介でした。触ってみた感想ですが、React や Vue.js など既存の JavaScript フレームワークに慣れている場合には少ない学習コストで理解できると思います。
 
 [公式のチュートリアル](https://svelte.dev/tutorial/basics)も充実しているので、ぜひ一度触ってみてはいかがでしょうか？
-

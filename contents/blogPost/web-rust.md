@@ -6,6 +6,9 @@ about: "本記事では Yew を利用して Web アプリケーションを作�
 createdAt: "2022-02-27T00:00+09:00"
 updatedAt: "2022-02-27T00:00+09:00"
 tags: ["Rust", "Yew"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/79b4Pw5CDux1cMaTBi224f/3e993498c3f4c30a18a2164a4947c9ee/________________________.png"
+  title: "rust"
 published: true
 ---
 !> 筆者はこの記事を書き始めてから Rust を学び始めた初心者です。
@@ -967,4 +970,3 @@ dist
 Rust に触れるのははじめてでしたが、React に近い感じの要素が多かったので思ったよりも迷わず進められた感じですね。
 
 まだまだ Web フロントエンドの分野での Rust は発展途上ではありますが、JavaScript/TypeScript 以外の選択肢が増えるのは好ましいことですので今後の動向に期待指定ですね。
-

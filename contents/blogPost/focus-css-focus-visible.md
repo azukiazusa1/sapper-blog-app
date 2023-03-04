@@ -6,6 +6,9 @@ about: ":focus-visible 擬似クラスはユーザーの入力方法によって
 createdAt: "2023-01-29T00:00+09:00"
 updatedAt: "2023-01-29T00:00+09:00"
 tags: ["CSS"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4ZtFORIkatlJkfuZwTLWUC/b2f96ca0fb8957f0524edf28983a9391/_Pngtree_rock_489662.png"
+  title: "rock"
 published: true
 ---
 ## test
@@ -65,4 +68,3 @@ https://github.com/whatwg/html/issues/7830
   focus() focus-visible</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
-

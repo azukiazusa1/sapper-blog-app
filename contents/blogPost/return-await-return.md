@@ -6,6 +6,9 @@ about: "`Promise` を返す非同期関数を扱う時 `Promise` をそのまま
 createdAt: "2022-04-03T00:00+09:00"
 updatedAt: "2022-04-03T00:00+09:00"
 tags: ["JavaScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
+  title: "JavaScript"
 published: true
 ---
 `Promise` を返す非同期関数を扱うとき `Promise` をそのまま返す書き方と `Promise` を `await` してから返す二通りの方法があります。
@@ -328,4 +331,3 @@ https://eslint.org/docs/rules/no-return-await
 - ['return await promise' vs 'return promise' in JavaScript](https://dmitripavlutin.com/return-await-promise-javascript/)
 - [徹底解説！　return promiseとreturn await promiseの違い](https://zenn.dev/uhyo/articles/return-await-promise)
 - [JavaScriptの非同期処理をじっくり理解する (3) async/await](https://zenn.dev/qnighy/articles/3a999fdecc3e81)
-

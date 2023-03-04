@@ -6,6 +6,9 @@ about: "Hono は TypeScript/JavaScript のシンプルな Web フレームワー
 createdAt: "2022-08-28T00:00+09:00"
 updatedAt: "2022-08-28T00:00+09:00"
 tags: ["TypeScript", "Cloudflare Workers", "Hono"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2IiZnVjRizCrlOWaHw4ChQ/c514cfbbd9b013aae9c086e7264fb0f2/hono-title.png"
+  title: "hono-title"
 published: true
 ---
 ## Hono とは？
@@ -816,4 +819,3 @@ Published hono-todo (0.22 sec)
 ```
 
 デプロイが完了すると URL が表示されるので確認してみましょう。
-

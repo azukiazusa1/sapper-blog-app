@@ -6,6 +6,9 @@ about: "SPA で画面遷移をする場合、MPA の場合と違い、ブラウ�
 createdAt: "2023-02-06T00:00+09:00"
 updatedAt: "2023-02-06T00:00+09:00"
 tags: ["SvelteKit", "Svelte"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2JoFak2DQvCgUZF7FHWIBD/60bb32f80539f0b04a255b4086ac2b65/_Pngtree_game_gradient_progress_bar_4478927.png"
+  title: "progress-bar"
 published: true
 ---
 SPA で画面遷移をする場合、MPA の場合と違い、ブラウザがローディングの表示を行ってくれません。リンクをクリックしてから画面遷移が完了するまで何も表示されないので、ユーザーからすると何も反応していないように感じてしまいます。この問題を解消するには、自前のプログレスバーを表示するのがよいでしょう。Youtube や GitHub でも画面遷移をする際にページ上部にプログレスバーが表示されます。
@@ -61,4 +64,3 @@ SvelteKit において画面遷移を行っているかどうかは、[$app/stor
 ## デモ
 
 ![リンクをクリックして画面遷移をするたびに、画面上部にプログレスバーが表示されている様子](//images.ctfassets.net/in6v9lxmm5c8/3Oc6tbPk1TqMDw7jEJcXz8/623405d35e25643f884cff84a58d7f8b/sveltekit-progressbar.gif)
-

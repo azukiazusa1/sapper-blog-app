@@ -6,6 +6,9 @@ about: "現在 Nuxt.js は バージョン3がパブリックベータ版とし�
 createdAt: "2021-12-12T00:00+09:00"
 updatedAt: "2021-12-12T00:00+09:00"
 tags: ["Nuxt.js", "Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1k06xmemaflciysjQUGW5a/93ff22b895d94d261db91155376c7db8/b23f135d4e.png"
+  title: "b23f135d4e"
 published: true
 ---
 現在 Nuxt.js はバージョン 3 がパブリックベータ版として提供されています。 Nuxt.js が 2 → 3 に移行するにあたってたくさんの新機能が追加されました。
@@ -619,4 +622,3 @@ TypeScript 入れるのに複雑な設定しなくていいし `useFetch` で型
 Next.js にあった機能もいろいろ入ってきてる感じですね。
 
 1 つ思ったのは auto-import だったり Nuxt のコア機能は明示的に `import` しないで使える関数が多いと感じましたね。こういう暗黙的な挙動はあまり好きではないのですが、やっぱみんな楽できるのがよいのでしょうか。
-

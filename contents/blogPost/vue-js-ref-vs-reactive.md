@@ -6,6 +6,9 @@ about: "さて、そんな Compositon API ですがリアクティブなデー�
 createdAt: "2022-01-02T00:00+09:00"
 updatedAt: "2022-01-02T00:00+09:00"
 tags: ["Vue.js", "TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
+  title: "Vue.js"
 published: true
 ---
 Vue.js の Composition API が登場してから 1 年とちょっとが経過しており、すでに使いこなしているほうもいらっしゃるのではないでしょう？
@@ -339,4 +342,3 @@ const { data, loading, error } = useFetch('/api/users')
 
 ![ref-value1](//images.ctfassets.net/in6v9lxmm5c8/6ET7Oxr7Gw0ElaZKbnuJeo/b62ca13c5677b1551b1565c4eb77eba3/ref-value1.gif)
 例外としては、Composables 関数内で状態を定義する際にはカプセル化されているため、必ず `toRefs()` を使用して返すことを条件に `reactive` を使用してもよいかもしれません。
-

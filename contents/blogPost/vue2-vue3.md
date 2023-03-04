@@ -6,6 +6,9 @@ about: "Vue 3が正式リリースされてから約1年が経過しました。
 createdAt: "2021-09-12T00:00+09:00"
 updatedAt: "2021-09-12T00:00+09:00"
 tags: ["Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
+  title: "Vue.js"
 published: true
 ---
 Vue 3 が正式リリースされてから約 1 年が経過しました。
@@ -638,4 +641,3 @@ module.exports = {};
 - [Vue 3の変更点](https://v3.ja.vuejs.org/guide/migration/introduction.html#%E6%A6%82%E8%A6%81)
 - [Vue Router 移行ガイド](https://next.router.vuejs.org/guide/migration/index.html)
 - [Vuex 移行ガイド](https://next.vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html) 
-

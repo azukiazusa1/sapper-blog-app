@@ -6,6 +6,6 @@ about: null
 createdAt: null
 updatedAt: null
 tags: []
+thumbnail: null
 published: false
 ---
-

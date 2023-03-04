@@ -6,6 +6,9 @@ about: "HTML の構文チェックを実施するには適切なツールを導�
 createdAt: "2022-04-24T00:00+09:00"
 updatedAt: "2022-04-24T00:00+09:00"
 tags: ["HTML"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2jTJ8590TS2jyEx1nIU3OH/72bb06379c1a8a02fcd4d95dab5bf238/36771858.png"
+  title: "markuplint"
 published: true
 ---
 ブラウザが HTML を解釈する方法はその他のプログラミング言語と比べてはるかに寛容です。つまりはブラウザは HTML 内に構文エラーを発見しても大抵の場合は問題なくページに表示されます。ブラウザには、誤って書かれたマークアップを解釈する方法を決定するための組み込みのルールがあるためです。
@@ -328,4 +331,3 @@ markuplint は厳格に HTML 構文をチェックしてくれたり、カスタ
 markuplint には playground もあるので普段 HTML の構文にあまり気を使っていなかったような場合には、一度試してみるとよいでしょう。
 
 https://playground.markuplint.dev/
-

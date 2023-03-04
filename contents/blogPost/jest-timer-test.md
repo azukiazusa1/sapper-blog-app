@@ -6,6 +6,9 @@ about: "JavaScriptには、setTimeout()のような時間に関する便利な�
 createdAt: "2021-08-01T00:00+09:00"
 updatedAt: "2021-08-01T00:00+09:00"
 tags: ["Jest"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/5mjRp0X25FDsK1P9n4okz2/59e4bdf8f9773263fc5ab0c75ff5b443/jest.png"
+  title: "jest"
 published: true
 ---
  JavaScript には、以下のような時間に関する関数が用意されています。
@@ -276,4 +279,3 @@ expect(jest.getTimerCount()).toEqual(1)
 
 - [タイマーモック・Jest](https://jestjs.io/ja/docs/timer-mocks)
 - [Jestオブジェクト・Jest](https://jestjs.io/ja/docs/jest-object#%E3%83%A2%E3%83%83%E3%82%AF%E3%82%BF%E3%82%A4%E3%83%9E%E3%83%BC)
-

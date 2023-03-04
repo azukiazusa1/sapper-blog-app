@@ -6,6 +6,9 @@ about: "HTMLは書いたことがありますか？プログラミング初心�
 createdAt: "2021-06-13T00:00+09:00"
 updatedAt: "2021-06-13T00:00+09:00"
 tags: ["html5"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/ti40guO0PbS4j9ylbZzyd/7b200f6489fbb2d58009476df22f53be/hair_innercolor.png"
+  title: "hair innercolor"
 published: true
 ---
 # はじめに
@@ -108,4 +111,3 @@ HTML 要素に contentEditable 属性を指定すると、その要素が編集�
   See the Pen <a href='https://codepen.io/azukiazusa1/pen/bGwNMVq'>bGwNMVq</a> by azukiazusa1
   (<a href='https://codepen.io/azukiazusa1'>@azukiazusa1</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-

@@ -6,6 +6,9 @@ about: "beforeunload イベントをテストする方法を紹介します"
 createdAt: "2022-09-25T00:00+09:00"
 updatedAt: "2022-09-25T00:00+09:00"
 tags: ["Jest"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1heYpRmzwajvNTwZ04dXNT/696cb14cdc33a40d080857e416adf5c9/____________________________2022-09-25_12.47.28.png"
+  title: "スクリーンショット 2022-09-25 12.47.28"
 published: true
 ---
 [beforeunload](https://developer.mozilla.org/ja/docs/Web/API/Window/beforeunload_event) イベントはウインドウがアンロードされる直前に発生します。アンロードとはブラウザのダブを閉じたり、リロードしたときなどが含まれます。イベントハンドラーで `preventDefault()` を呼び出すことにより、以下のような確認ダイアログを表示できます。ユーザーが「キャンセル」をクリックするとページ遷移をキャンセルし、そうでない場合ンはブラウザは新しいページへ遷移します。
@@ -47,4 +50,3 @@ expect(beforeUnloadEvent.preventDefault).toHaveBeenCalled();
 全体のコードは次のようになります。
 
 <iframe src="https://stackblitz.com/edit/react-ts-ef2qbb?embed=1&file=Form.spec.tsx" height="500" width="100%"></iframe>
-

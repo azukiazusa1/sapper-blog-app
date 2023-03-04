@@ -6,6 +6,9 @@ about: "人生でときにはIE11に対応させなければいけない時が�
 createdAt: "2021-04-18T00:00+09:00"
 updatedAt: "2021-04-18T00:00+09:00"
 tags: ["Babel", "JavaScript", "Vue.js", "IE11"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7dTaK0hk8bKcWr83rNUSEl/5d70107c16241398b941a7c05e035d9f/IE_symbol_Cyan_rgb.png"
+  title: "ie11"
 published: true
 ---
 Vue CLI3 の使用を前提としています。
@@ -222,4 +225,3 @@ module.exports = {
 
 [Is your Vue app not working in IE 11? Here’s how to fix it.](https://jacklyons.me/how-to-fix-vuejs-not-working-in-ie11/)
 [Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法](https://aloerina01.github.io/blog/2019-06-21-1)
-

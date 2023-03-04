@@ -6,6 +6,9 @@ about: "Node.jsは、V8 Javascriptエンジン上に構築されたJavaScriptの
 createdAt: "2020-06-07T00:00+09:00"
 updatedAt: "2021-02-07T00:00+09:00"
 tags: ["Node.js", "JavaScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4z6cPW6RU0f0O22jxIVINl/7c4bc80d99a5ad11e02d1cc83b42a2b5/articles_2FmDVbWFeXeln9BJXqBa76_2F027ab8d7dc7cdb4ab9c09c0a057af2e7.png"
+  title: "Node.js"
 published: true
 ---
 # Node.jsとは
@@ -28,7 +31,7 @@ Node.js をサーバーサイドの言語として採用する利点として、
 
 - チャット機能や連続的なストリーミングを実装する際に有利。WebSocket 通信を簡単に記述できる Socket.io というライブラリがあります。
 - 大量のリクエストを処理することができる
-- ライブラリ/エコシステできるライブラリできるライブラリムが（npm）が充実している
+- ライブラリ/エコシステできるライブラリムが（npm）が充実している
 - フロントエンド/サーバーサイドで同じ言語を使用できるため、学習コストが低い
 
 # Node.jsのインストール
@@ -307,4 +310,3 @@ http.createServer((req, res) => {
 そこで、次からは Node.js のフレームワークとして有名な Express.js を使用してアプリケーションを構築します。
 
 また来週へ。
-

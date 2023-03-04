@@ -6,6 +6,9 @@ about: "アクセシビリティの対応は、要件定義段階から設計し
 createdAt: "2022-12-31T00:00+09:00"
 updatedAt: "2022-12-31T00:00+09:00"
 tags: ["アクセシビリティ"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/r6513NBn4sCbGq4sYPhA0/02c228b5c22ce862bbf3c24a62ff86c8/wheelchair-symbol_267f.png"
+  title: "accesibility"
 published: true
 ---
 アクセシビリティの対応は、要件定義段階から設計したりなど大変そうなイメージはあります。実際に本格的に対応するにはどの達成基準を目標にするか決めたり、入念なテストが必要になるなど確かに一朝一夕で対応できるわけではないでしょう。
@@ -225,4 +228,3 @@ tabIndex に正の値をつけてはいけない理由は、キーボード操�
 - [フォームの input 要素には表示可能なラベルが必要です ](https://dequeuniversity.com/rules/axe/4.3/label-title-only?lang=ja)
 - [alt属性の良い事例(つけ方・書き方)｜情報バリアフリーポータルサイト](http://jis8341.net/jirei_sample/jirei_chapter_01.html)
 - [フォーカスの分類 | アクセシビリティBlog | ミツエーリンクス](https://www.mitsue.co.jp/knowledge/blog/a11y/201912/23_0000.html)
-

@@ -6,6 +6,9 @@ about: "Go言語の提供するテストはシンプルです。テストのた�
 createdAt: "2020-11-15T00:00+09:00"
 updatedAt: "2020-11-15T00:00+09:00"
 tags: ["Go"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1D7xedE6EH0DDEbsL2eWlM/52e352d672de9f157c0e2b260e201db2/go-language-icon.png"
+  title: "go-http"
 published: true
 ---
 # Go言語におけるテスト
@@ -400,4 +403,3 @@ func tearDown() {
 ```
 
 `setUp` と `tearDown` は慣例的な名前ですので、特に決まりはありません。`setUp` と `tearDown` はすべてのテストケースで 1 回だけ実行されます。個々のテストケースは `m.Run()` によって呼び出されています。関数 `Run` を呼び出すと終了コードが返されるので、関数 `os.Exit` に渡しています。
-

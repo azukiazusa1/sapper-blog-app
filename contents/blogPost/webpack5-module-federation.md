@@ -6,6 +6,9 @@ about: "Webpack5 の Module Federation を使用してマイクロフロント�
 createdAt: "2021-11-21T00:00+09:00"
 updatedAt: "2021-11-21T00:00+09:00"
 tags: ["JavaScript", "Webpack", "マイクロフロントエンド"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/5NT8E7PgZDxasOSSy1i8Ms/8e071586104d34a79016773c1d45e90f/__________________________4_.png"
+  title: "webpack"
 published: true
 ---
 ## Module Feaderation とは
@@ -619,4 +622,3 @@ https://github.com/azukiazusa1/sample-micro-frontend
 - https://medium.com/swlh/webpack-5-module-federation-a-game-changer-to-javascript-architecture-bcdd30e02669
 - https://blog.hiroppy.me/entry/module-federation
 - https://www.youtube.com/watch?v=lKKsjpH09dU
-

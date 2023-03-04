@@ -6,6 +6,9 @@ about: "開発者向けのK8sの試験であるCKADにも合格したので同�
 createdAt: "2021-05-23T00:00+09:00"
 updatedAt: "2021-05-23T00:00+09:00"
 tags: ["Kubernetes"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4NwI8gjd802es2aMCmWay7/5b1d1468d43c4ffc3623b33decec3eea/k8s.png"
+  title: "kubernets"
 published: true
 ---
 [前回CKAを受験して合格した記事](https://zenn.dev/azukiazusa/articles/30e5a2988c2dd9)を Zenn に書きました。
@@ -60,4 +63,3 @@ CKAD の受験範囲が改定される予定らしいのです。
 Helm を使ったデプロイなどより実践的な内容になっていますね。
 
 https://training.linuxfoundation.org/ja/ckad-program-change-2021/
-

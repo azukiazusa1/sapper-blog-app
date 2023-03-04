@@ -6,6 +6,9 @@ about: "フォーカストラップ(またはループ)とは、ウェbページ
 createdAt: "2021-11-28T00:00+09:00"
 updatedAt: "2021-11-28T00:00+09:00"
 tags: ["アクセシビリティ"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2fnYK4McTOVwoOcE9bd6fk/134ffadfac1e4fd50ce0e1c58b41d298/modal2.gif"
+  title: "modal2"
 published: true
 ---
 ## フォーカストラップとは？
@@ -258,4 +261,3 @@ export default Modal;
 ```
 
 また例えば Vuetify や MUI などの UI フレームワークが提供するダイアログを使っている場合には大抵の場合すでにフォーカストラップは実装済です。ですので、実際にフォーカストラップを意識して実装する場面はそう多くはないでしょう。それでも、アクセシブルなモーダルを作成するために行われている工夫を知っておくのはよいことでしょう。
-

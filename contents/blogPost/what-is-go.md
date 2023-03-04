@@ -6,6 +6,9 @@ about: "Go言語(Golang）は、2009年にGoogleによって開発されたオ�
 createdAt: "2020-09-27T00:00+09:00"
 updatedAt: "2020-09-27T00:00+09:00"
 tags: ["Go"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7J6X29QCpCjoReVMQFOC1D/f091383d411092eaa4487bad33560ca6/golang.png"
+  title: "go"
 published: true
 ---
 # Go言語とは
@@ -354,4 +357,3 @@ func main() {
 
 なお Go 言語では while または do while によるループを提供していません。
 おそらく for 文で機能を代替できるからでしょう。シンプルさを目指した Go 言語らしさが出ています。
-

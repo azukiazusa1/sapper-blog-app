@@ -6,6 +6,9 @@ about: "JamstackのJamはJavaScript/APIs/Markupの頭文字です。 従来の�
 createdAt: "2021-02-14T00:00+09:00"
 updatedAt: "2021-02-14T00:00+09:00"
 tags: ["Sapper", "graphQL", "JavaScript", "Svelte"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2nVc0113aL8VwYQwWLDPyl/90bc28445ce7ff4ee2c190a858defee5/contentful.jpg"
+  title: "contentful"
 published: true
 ---
 # ブログ引っ越しました！
@@ -114,4 +117,3 @@ SSG に Sapper・GraphQL を使用しましたが、この構成なら Gatsby �
 なんでわざわざ Sapper 使ったんだ。
 
 とはいえ Sapper の使いごこちはかなりよいので、来週あたり記事にしようと思います。
-

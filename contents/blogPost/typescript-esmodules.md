@@ -6,6 +6,9 @@ about: "ほぼ設定なしで TypeScript + ESModules の開発環境をシュッ
 createdAt: "2023-02-19T00:00+09:00"
 updatedAt: "2023-02-19T00:00+09:00"
 tags: ["TypeScript", "Vitest"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7lLOLI2gyBtTYgZLlKSdu3/27b5cb3659a10058e4e730001448a91c/_Pngtree_a_green_leaf_7049657.png"
+  title: "leaf"
 published: true
 ---
 ## プロジェクトの作成
@@ -302,4 +305,3 @@ VSCode の拡張子の画面から歯車アイコン → Add to Workspace Recomm
   "vitest.enable": true
 }
 ```
-

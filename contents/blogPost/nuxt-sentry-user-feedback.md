@@ -6,6 +6,9 @@ about: "Sentryでは、エラーが発生した際に簡単にユーザーフォ
 createdAt: "2021-06-06T00:00+09:00"
 updatedAt: "2021-06-06T00:00+09:00"
 tags: ["Vue.js", "Nuxt.js", "Sentry"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2ZX9dm3CTG5TopZ3a6ueL6/835658999c0b4b2ed24ccc2adc5906a5/Sentry.png"
+  title: "Sentry"
 published: true
 ---
 Sentry では、エラーが発生した際に簡単にユーザーフォードバックを求めるダイアログを表示できます。
@@ -111,4 +114,3 @@ https://docs.sentry.io/platforms/javascript/enriching-events/user-feedback/#cust
 ユーザーフィードバックが送信された場合、Sentry から確認できます。
 
 ![user-feed-back](//images.ctfassets.net/in6v9lxmm5c8/2zAcU1MC0cGzUBGoy6NHEL/341a03b969716fcb59c6dbd633c34b6f/____________________________2021-06-06_23.03.38.png)
-

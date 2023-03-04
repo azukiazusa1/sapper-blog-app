@@ -6,6 +6,9 @@ about: "Firebase第二弾です。 Firebase Authenticationのメールアドレ�
 createdAt: "2020-04-19T00:00+09:00"
 updatedAt: "2020-04-19T00:00+09:00"
 tags: ["firebase", "JavaScript", "Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/57MXX73Nx2rUnUI730EykA/8d13236943bb46948155f92f2325369e/firebase.png"
+  title: "firebase"
 published: true
 ---
 先週は、Firebase Authentication による、Google アカウントでのログインについて取り上げました。今回は、メールアドレスとパスワードによるログインについて取り上げます。
@@ -566,4 +569,3 @@ uploadTask.on('state_changed',
 ### 画像のリストをダウンロードする
 
 日付が変わりそうなので今週はここまで。
-

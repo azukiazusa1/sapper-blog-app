@@ -6,6 +6,9 @@ about: " 仕事上kubernetesを学ぶ必要が出てきました。 筆者のレ
 createdAt: "2021-03-07T00:00+09:00"
 updatedAt: "2021-03-07T00:00+09:00"
 tags: ["Kubernetes", "Docker"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4NwI8gjd802es2aMCmWay7/5b1d1468d43c4ffc3623b33decec3eea/k8s.png"
+  title: "kubernets"
 published: true
 ---
 # はじめに
@@ -374,4 +377,3 @@ Ingress のリソースを作成するだけではなにもしないので、Ing
 [Kubernetes完全ガイド 第2版](https://www.amazon.co.jp/dp/4295004804)
 [Kubernetes Tutorial for Beginners [FULL COURSE in 4 Hours]
 ](https://www.youtube.com/watch?v=X48VuDVv0do)
-

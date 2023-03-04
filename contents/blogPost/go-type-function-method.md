@@ -6,6 +6,9 @@ about: " Go言語は静的型付け言語であり、全ての変数は何らか
 createdAt: "2020-10-04T00:00+09:00"
 updatedAt: "2020-10-04T00:00+09:00"
 tags: ["Go"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7J6X29QCpCjoReVMQFOC1D/f091383d411092eaa4487bad33560ca6/golang.png"
+  title: "go"
 published: true
 ---
 # 型
@@ -442,4 +445,3 @@ func main() {
 ```go
 c.toCelsius() // c.toCelsius undefined (type celsius has no field or method toCelsius)
 ```
-

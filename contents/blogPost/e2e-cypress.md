@@ -6,6 +6,9 @@ about: "Cypressは、JavaScript製のE2Eテスティングフレームワーク�
 createdAt: "2021-04-11T00:00+09:00"
 updatedAt: "2021-04-11T00:00+09:00"
 tags: ["cypress", "TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4uRtBocKePGUE7UUwBtaVa/c6499be195b0dc6f56b827c21f9a4b30/cypress-1324440144114984250.png"
+  title: "cypress"
 published: true
 ---
 # Cypressとは
@@ -380,4 +383,3 @@ describe('Counter', () => {
 テストは依然として成功しています。
 
 ![スクリーンショット 2021-04-11 23.41.33](//images.ctfassets.net/in6v9lxmm5c8/52cDmB876DHkvJbGlFDqpf/ae77a143c90ca0960091ef62b1cb388f/____________________________2021-04-11_23.41.33.png)
-

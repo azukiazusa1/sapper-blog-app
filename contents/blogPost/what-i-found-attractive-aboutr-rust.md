@@ -6,6 +6,9 @@ about: "最近は [Rust](https://www.rust-lang.org/) と呼ばれるプログラ
 createdAt: "2022-05-01T00:00+09:00"
 updatedAt: "2022-05-01T00:00+09:00"
 tags: ["Rust"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4F5i0hDzQGUebgQJyMLvRt/12f1c0e03fd5f3aec0a7720f02e59f35/Rust_programming_language_black_logo.svg.png"
+  title: "rust"
 published: true
 ---
 最近は [Rust](https://www.rust-lang.org/) と呼ばれるプログラミング言語を趣味として触っています。[SWC](https://swc.rs/) や [Rome](https://rome.tools/) のように Rust で作成されたフロントエンドツールが増えていることから興味を持ったのですが、実際に触ってみて Rust が高い人気を誇る理由がよく分かるようになりました。
@@ -96,4 +99,3 @@ error: could not compile `hello1` due to previous error
 ## 終わりに
 
 簡単にですが、Rust を触ってみて魅力に感じた点をあげてみました。Rust は幅広い分野で活躍しているプログラミング言語であり、今後も活躍の幅が広がることが予想されるので、ぜひ一度触ってみてはいかがでしょうか？
-

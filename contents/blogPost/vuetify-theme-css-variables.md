@@ -6,6 +6,9 @@ about: "VuetifyのテーマをCSSの変数として生成して使用します�
 createdAt: "2021-08-22T00:00+09:00"
 updatedAt: "2021-08-22T00:00+09:00"
 tags: ["Vue.js", "Vuetify"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2syUTBqt1yNSCib7itM2j3/ae8f0d236741f62a03f953532436f0e3/22138497.png"
+  title: "vuetify"
 published: true
 ---
 # 結論
@@ -197,4 +200,3 @@ export default new Vuetify({
 ```
 
 ![スクリーンショット 2021-08-22 22.06.04](//images.contentful.com/in6v9lxmm5c8/3DzSbX387Ck1CXkZtvWLVF/a06a39fc0b37ed270114f12c876b7025/____________________________2021-08-22_22.06.04.png)
-

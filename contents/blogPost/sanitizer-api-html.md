@@ -6,6 +6,9 @@ about: "ユーザーが入力した情報をそのまま表示するとクロス
 createdAt: "2022-09-04T00:00+09:00"
 updatedAt: "2022-09-04T00:00+09:00"
 tags: ["SanitizerAPI"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/5vAcBQlytpjsH06swnWX6X/8f48de8d9e5ed2d796f3374f3c5fcc66/raphael-wild-TfzrBcO4XBY-unsplash.jpg"
+  title: "raphael-wild-TfzrBcO4XBY-unsplash"
 published: true
 ---
 ユーザーが入力した情報をそのまま表示するとクロスサイトスクリプティング（XSS）脆弱性につながる問題があることはよく知られています。例えば [Element.innerHTML](https://developer.mozilla.org/ja/docs/Web/API/Element/innerHTML) を使用して HTML 要素を追加する場合潜在的なセキュリティリスクが生じます。以下のコードを実行するとスクリプトが実行されアラートが表示されます。
@@ -126,4 +129,3 @@ el.setHTML("<b>1</b><i>2</i>", { sanitizer });
 ```
 
 https://codesandbox.io/embed/billowing-snowflake-cm7f01?fontsize=14&hidenavigation=1&theme=dark
-

@@ -6,6 +6,9 @@ about: "JavaScriptで配列操作をする際には、まずはJavascriptが持�
 createdAt: "2020-11-29T00:00+09:00"
 updatedAt: "2020-11-29T00:00+09:00"
 tags: ["JavaScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1oOuwue6Ki0IRZkFa6y6Qi/5359bf10fca29a24eaf9260cc78240bc/es2015-001.jpg"
+  title: "JavaScript"
 published: true
 ---
 # はじめに
@@ -204,4 +207,3 @@ console.log(flatten);
 以上 7 つの JavaScript のメソッドを紹介しました。
 これらのメソッドは同じ名前で他言語でも提供されていることもあり、`for` 文は `forEach` で同じ処理を実装するよりも意図がより伝わりやすいと思います。
 また紹介例ではすべてワンライナーで実装できているという簡潔さも魅力的です。
-

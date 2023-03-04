@@ -6,6 +6,9 @@ about: "今この文章を読んでいる人ならば、少なくともCSSには
 createdAt: "2020-09-13T00:00+09:00"
 updatedAt: "2020-09-13T00:00+09:00"
 tags: ["CSS"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/38bhfWoHjLRISI99Hevjdx/c53728dc664036f5316ec3a80b5a2df1/visual-home.jpg"
+  title: "visual-home"
 published: true
 ---
 # はじめに
@@ -252,4 +255,3 @@ CSS の設計がなぜ必要なのかと代表的な CSS の設計を見てき�
 さらに CSS の開発を効率化してくれるツールや、スタイルガイドジェネレーターなど触れていない箇所も多くあります。
 
 「なんとなく CSS を書いていた」状態から「しっかりと CSS を設計できる」状態に切り替えられるようにしたいです。
-

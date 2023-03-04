@@ -6,6 +6,9 @@ about: "時には、TypeScriptという概念が存在しない退屈な世界�
 createdAt: "2021-08-15T00:00+09:00"
 updatedAt: "2021-08-15T00:00+09:00"
 tags: ["JavaScript", "TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
+  title: "typescript"
 published: true
 ---
 普段から TypeScript で開発されているほうならば、TypeScript の恩恵を十分に堪能されていることと思います。
@@ -310,4 +313,3 @@ user.id = 2 // Cannot assign to 'id' because it is a read-only property.
 
 - [TypeScriptを活用したJSプロジェクト](https://www.typescriptlang.org/ja/docs/handbook/intro-to-js-ts.html)
 - [JSDocリファレンス](https://www.typescriptlang.org/ja/docs/handbook/jsdoc-supported-types.html)
-

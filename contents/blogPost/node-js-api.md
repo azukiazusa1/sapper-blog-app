@@ -6,6 +6,9 @@ about: "JavaScript のテストランナーといえば、Jest　がデファク
 createdAt: "2022-05-08T00:00+09:00"
 updatedAt: "2022-05-08T00:00+09:00"
 tags: ["Node.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4z6cPW6RU0f0O22jxIVINl/7c4bc80d99a5ad11e02d1cc83b42a2b5/articles_2FmDVbWFeXeln9BJXqBa76_2F027ab8d7dc7cdb4ab9c09c0a057af2e7.png"
+  title: "Node.js"
 published: true
 ---
 !> この機能は現在（2022/05/08）実験的な機能です。
@@ -421,4 +424,3 @@ ok 1 - /work/node-test/index.test.mjs
 ## 感想
 
 Node.js 標準のテストランナーはまだ実験的な機能であり、機能も十分とはいえないので Jest から乗り換えるのは時期尚早と言えるでしょう。とはいえサードパーティのパッケージを必要とせずテストを実行できるというのは魅力的ですので、将来に期待したいですね。
-

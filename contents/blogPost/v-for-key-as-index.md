@@ -6,6 +6,9 @@ about: "結論：  - `v-for` ディレクティブに渡す配列要素が決し
 createdAt: "2022-02-20T00:00+09:00"
 updatedAt: "2022-02-20T00:00+09:00"
 tags: ["Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
+  title: "Vue.js"
 published: true
 ---
 質問来てた👉。
@@ -169,4 +172,3 @@ https://github.com/vuejs/vue/issues/6235#issuecomment-402720536
 https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318
 
 ほかにも知りたいことがあったらコメント欄で教えて👇。
-

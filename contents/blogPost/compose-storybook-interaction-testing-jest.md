@@ -6,6 +6,9 @@ about: "Storybook の Component Story Format 3.0 では新機能として `play(
 createdAt: "2022-01-23T00:00+09:00"
 updatedAt: "2022-01-23T00:00+09:00"
 tags: ["storybook", "Jest", "Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6227wXx8L1Wfr9qr1jtXjk/24c91422719e5745e8df997d14995b90/sOct-Txm_400x400.png"
+  title: "storybook"
 published: true
 ---
 Storybook の [Component Story Format 3.0](https://storybook.js.org/blog/component-story-format-3-0/) では新機能として `play()` 関数が追加されました。
@@ -430,4 +433,3 @@ https://storybook.js.org/docs/vue/writing-stories/play-function
 https://storybook.js.org/docs/vue/writing-tests/interaction-testing
 https://zenn.dev/takepepe/articles/storybook-driven-development
 https://qiita.com/dia/items/3b984afec9a51cc803d1
-

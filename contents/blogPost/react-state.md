@@ -6,6 +6,9 @@ about: "React において不要な再レンダリングを避けるためのい
 createdAt: "2022-10-02T00:00+09:00"
 updatedAt: "2022-10-02T00:00+09:00"
 tags: ["React"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2c9EyCXfherkq4ICwfDHaM/13bcad3dd62573b050eb8ad25dce4275/1200px-React-icon.svg.png"
+  title: "React"
 published: true
 ---
 React のパフォーマンスについて語るとき、コンポーネントの再レンダリングは外せない話題となるでしょう。React は以下の条件のときに再レンダリングが発生します。
@@ -108,4 +111,3 @@ const Counter = () => {
 
 - [React re-renders guide: everything, all at once](https://www.developerway.com/posts/react-re-renders-guide)
 - [Before You memo()](https://overreacted.io/before-you-memo/)
-

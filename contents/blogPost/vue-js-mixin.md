@@ -6,6 +6,9 @@ about: "禁止まで言ってしまうとなんだか強い言葉のように聞
 createdAt: "2021-09-05T00:00+09:00"
 updatedAt: "2021-09-05T00:00+09:00"
 tags: ["Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
+  title: "Vue.js"
 published: true
 ---
 # mixin禁止
@@ -196,4 +199,3 @@ export default Vue.extend({
 フレームワークに依存しないで処理を書けるようになっているので、一石三鳥といったところでしょうか？
 
 私にはどうしても mixin を使わなければ実装できないような処理が思いつかなかったので、なにかあれば教えてください。
-

@@ -6,6 +6,9 @@ about: "Volar + Vuetify 2.x を利用する場合、型定義ファイルを作�
 createdAt: "2022-07-10T00:00+09:00"
 updatedAt: "2022-07-10T00:00+09:00"
 tags: ["Vuetify"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2syUTBqt1yNSCib7itM2j3/ae8f0d236741f62a03f953532436f0e3/22138497.png"
+  title: "vuetify"
 published: true
 ---
 先日 [Vue2.7](https://github.com/vuejs/vue/blob/main/CHANGELOG.md#270-2022-07-01) がリリースされたので早速アップデートしてきました。
@@ -164,4 +167,3 @@ https://marketplace.visualstudio.com/items?itemName=Vue.volar
 Node.js v16.14.0 <= にアップデートしてください。
 
 スクリプトでは [import assersion](https://simonplend.com/import-json-in-es-modules/) 構文を使用しているためです。 
-

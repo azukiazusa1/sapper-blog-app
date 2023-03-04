@@ -6,6 +6,9 @@ about: "GraphQLとは、Facebookが開発したAPI向けのクエリ言語です
 createdAt: "2021-02-17T00:00+09:00"
 updatedAt: "2021-02-17T00:00+09:00"
 tags: ["graphQL"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/20rVGECVoaOHWGAsGCnTa/94bb349a41d63575a4549fdb6fa18a24/GraphQL_Logo.png"
+  title: "graphQL"
 published: true
 ---
 # GraphQLとは
@@ -221,4 +224,3 @@ GraphQL には、常に 1 つのエンドポイントしか存在しません。
 また GraphQL のドキュメントはスキーマに応じて自動で作成されます。プレイグラウンドの右上にある Doc をクリックしてみてください。
 
 ![スクリーンショット 20210117 22.17.48.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FlSuZhRyzmCa3Ez9TGjFS%2Fa069f50ae2ec6187c3e45e3ecfb631eb.png?alt=media&token=200a745f-4ffa-42fd-962d-5a8d92b5cc42)
-

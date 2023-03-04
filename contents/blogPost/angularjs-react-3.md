@@ -6,6 +6,9 @@ about: "それではいよいよ、AnguarJS のルーティングモジュール
 createdAt: "2022-08-14T00:00+09:00"
 updatedAt: "2022-08-14T00:00+09:00"
 tags: ["AngularJS", "React"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2c9EyCXfherkq4ICwfDHaM/13bcad3dd62573b050eb8ad25dce4275/1200px-React-icon.svg.png"
+  title: "React"
 published: true
 ---
 ## ルーティングを置き換える
@@ -332,4 +335,3 @@ npm run e2e
 ここまでのコミットログは以下のとおりです。
 
 https://github.com/azukiazusa1/angular-phonecat/commit/86c6de50218205702c6e7e839489bd284ddb35f6
-

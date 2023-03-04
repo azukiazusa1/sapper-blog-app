@@ -6,6 +6,9 @@ about: "`anonymous default export` とは名前の通り匿名でデフォルト
 createdAt: "2022-03-20T00:00+09:00"
 updatedAt: "2022-03-20T00:00+09:00"
 tags: ["JavaScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
+  title: "JavaScript"
 published: true
 ---
 ## anonymous default export?
@@ -65,4 +68,3 @@ export default login;
 anonymous default export は Eslint の import plugin のルールの `no-anonymous-default-export` により使用を禁止できます。
 
 https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-anonymous-default-export.md
-

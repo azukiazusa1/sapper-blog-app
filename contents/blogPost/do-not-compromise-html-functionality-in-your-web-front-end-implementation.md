@@ -6,6 +6,9 @@ about: "データの取得・ルーティング・フォームの値の管理に
 createdAt: "2022-12-25T00:00+09:00"
 updatedAt: "2022-12-25T00:00+09:00"
 tags: ["HTML", "アクセシビリティ", "React"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/twgcVOWA9HjJC68kQLWeM/76bbd55bc8d4f55e1d7963bc19954fe9/_Pngtree_creative_christmas_snowman_8618319.png"
+  title: "雪だるま"
 published: true
 ---
 昨今の Web フロントエンドの開発においては、React や Vue.js などを利用した SPA を採用することが多くなりました。従来の MPA と比較して、リンククリック時やフォーム送信時にページリロードを挟まないので、高速な画面遷移を実現できるため、快適な操作を実現できます。
@@ -393,4 +396,3 @@ export const Root = () => {
 - [SPA(Next.js)のスクリーンリーダーによる画面遷移で工夫したこと](https://zenn.dev/ubie_dev/articles/499d3ecff708c0)
 - [Accessibility • Docs • SvelteKit](https://kit.svelte.jp/docs/accessibility#route-announcements)
 - [What we learned from user testing of accessible client-side routing techniques with Fable Tech Labs | Gatsby](https://www.gatsbyjs.com/blog/2019-07-11-user-testing-accessible-client-routing/)
-

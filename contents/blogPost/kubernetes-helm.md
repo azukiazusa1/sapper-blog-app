@@ -6,6 +6,9 @@ about: "Helmは、Kubernetsのパッケージマネージャーです。 例え�
 createdAt: "2021-03-14T00:00+09:00"
 updatedAt: "2021-03-14T00:00+09:00"
 tags: ["Kubernetes"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/5SVnaTCg0x9gXHebUIB3AU/1367f3bbb858326bb26c704c97f0a095/helm.svg"
+  title: "helm"
 published: true
 ---
 Helm は、Kubernets のパッケージマネージャーです。
@@ -231,4 +234,3 @@ Successfully packaged chart and saved it to: /my-chart-0.1.0.tgz
 
 [事実上の標準ツールとなっているKubernetes向けデプロイツール「Helm」入門](https://knowledge.sakura.ad.jp/23603/)
 [Kubernetes完全ガイド 第2版](https://www.amazon.co.jp/dp/4295004804)
-

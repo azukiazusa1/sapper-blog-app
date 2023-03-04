@@ -6,6 +6,9 @@ about: "ユーザーの OS の設定や LocalStorage の値をもとにダーク
 createdAt: "2022-12-11T00:00+09:00"
 updatedAt: "2022-12-11T00:00+09:00"
 tags: ["tailwindcss", "ダークモード"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1fU89aRBH4MAakN0HQtUK9/703645f396295d93d07322857ad125ed/_Pngtree_crescent_moon_and_star_8390658.png"
+  title: "moon and star"
 published: true
 ---
 ## TL;DR
@@ -79,4 +82,3 @@ published: true
   </script>
 </svelte:head>
 ```
-

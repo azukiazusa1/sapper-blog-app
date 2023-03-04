@@ -6,6 +6,9 @@ about: "[Vuetify](https://vuetifyjs.com/) は Vue.js で多く使われている
 createdAt: "2021-12-19T00:00+09:00"
 updatedAt: "2021-12-19T00:00+09:00"
 tags: ["Vuetify", "Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2syUTBqt1yNSCib7itM2j3/ae8f0d236741f62a03f953532436f0e3/22138497.png"
+  title: "vuetify"
 published: true
 ---
 [Vuetify](https://vuetifyjs.com/) は Vue.js で多く使われている UI コンポーネントです。現在のバージョンは Vue 3 には対応していません。
@@ -637,4 +640,3 @@ export interface PositionProps {
 ```
 
 ![スクリーンショット 2021-12-19 19.13.08](//images.ctfassets.net/in6v9lxmm5c8/7akePmW3jtXOHSv2LJRR3p/cee00a695b54f1c5401ab1cbf54ab3e6/____________________________2021-12-19_19.13.08.png)
-

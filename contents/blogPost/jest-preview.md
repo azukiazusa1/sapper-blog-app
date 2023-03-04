@@ -6,6 +6,9 @@ about: "Jest Preview とは Jest で実行中のテストに debug() 関数を�
 createdAt: "2022-05-29T00:00+09:00"
 updatedAt: "2022-05-29T00:00+09:00"
 tags: ["Jest"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6XGdxMPQ12Pu17IomOIN2p/36659845da975d239492a5a08210d8e9/0b854a8294c3f93903ceb507a26ac214.webp"
+  title: "jest-preview"
 published: true
 ---
 テスト駆動開発（TDD）と呼ばれる開発手法は、開発者が仕様を理解できる、安全にリファクタリングのサイクルを回すことが得られるといったメリットを享受できます。
@@ -148,4 +151,3 @@ jestPreviewConfigure({
 気づいたら私が欲しいものが来てた。もともと Jest で実行されるテストは `jsdom` で実行される都合上テストがあっても多少の不安要素があったのですが、実際にブラウザで描画を確認できるのは安心ですね。
 
 まだまだ対応範囲は狭いのですが、将来は Jest Preview に使用がスタンダードになったりするのでしょうか。とりあえず Vitest で使えるようになってほしいです。
-

@@ -6,6 +6,9 @@ about: "質問来てた👉  Q: TypeScript を使っているのに関数の引�
 createdAt: "2021-10-03T00:00+09:00"
 updatedAt: "2021-10-03T00:00+09:00"
 tags: ["TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
+  title: "typescript"
 published: true
 ---
 質問来てた👉。
@@ -252,4 +255,3 @@ const getTop3 = (users: readonly Readonly<User>[]) => {
     return sortedUsers.slice(0, 3)
 }
 ```
-

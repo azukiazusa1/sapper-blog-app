@@ -6,6 +6,9 @@ about: " Expressは、Node.jsのWebアプリケーションでもっとも利用
 createdAt: "2020-06-14T00:00+09:00"
 updatedAt: "2020-06-14T00:00+09:00"
 tags: ["Express", "MongoDB", "Node.js", "TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2Lpar83pMJR1yGyxUUiDQP/dbf365e89432b966f827cacfc4d5891e/articles_2FRshdHD6LGzEVXnbjoL6p_2Fthumbnail_7D.png"
+  title: "express"
 published: true
 ---
 # はじめに
@@ -1040,4 +1043,3 @@ router.delete('/:id/delete', usersController.delete, usersController.redirectVie
 ```
 
 これで、基本的な CRUD 操作は完了です。
-

@@ -6,6 +6,9 @@ about: "配列は決まった長さを持つ要素を並べた順序のあるコ
 createdAt: "2020-10-18T00:00+09:00"
 updatedAt: "2020-10-18T00:00+09:00"
 tags: ["Go"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7J6X29QCpCjoReVMQFOC1D/f091383d411092eaa4487bad33560ca6/golang.png"
+  title: "go"
 published: true
 ---
 # 配列
@@ -512,4 +515,3 @@ func main() {
 	fmt.Println(newFruits) // map[apple:150 banana:20000 melon:500]
 }
 ```
-

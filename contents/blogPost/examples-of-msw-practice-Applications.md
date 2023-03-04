@@ -6,6 +6,9 @@ about: "msw の実践で活用する例を紹介します"
 createdAt: "2022-07-17T00:00+09:00"
 updatedAt: "2022-07-10T00:00+09:00"
 tags: ["msw"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2ie3bCh5ilbItvjAFAjObY/f38d0128a76903dcb8ceb9d068652de4/64637271.jpeg"
+  title: "msw2"
 published: true
 ---
 ## `handlers.ts` にモックの実装を書かない
@@ -384,4 +387,3 @@ const get: ResponseResolver<RestRequest<never, PathParams<string>>, RestContext>
   )
 }
 ```
-

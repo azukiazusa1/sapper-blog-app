@@ -6,6 +6,9 @@ about: "Kubernetesのマニフェストを作成するときには、`apiVersion
 createdAt: "2021-05-09T00:00+09:00"
 updatedAt: "2021-05-09T00:00+09:00"
 tags: ["Kubernetes"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4NwI8gjd802es2aMCmWay7/5b1d1468d43c4ffc3623b33decec3eea/k8s.png"
+  title: "kubernets"
 published: true
 ---
 Kubernetes のマニフェストを作成するときには、`apiVersion` フィールドを指定する必要があります。
@@ -96,4 +99,3 @@ Kubernetes の API のバージョンは `Alpha`・`Beta`・`Stable` の 3 種�
 | Alpha      | `v1alpha1` | 
 | Beta       | `v2beta3`  |
 | Stable     | `v1`       |
-

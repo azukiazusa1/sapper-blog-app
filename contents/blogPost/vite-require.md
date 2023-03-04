@@ -6,6 +6,9 @@ about: "皆様はすでにプロジェクトに Vite は導入されていらっ
 createdAt: "2022-01-16T00:00+09:00"
 updatedAt: "2022-01-16T00:00+09:00"
 tags: ["Vite"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4LlOrDdEXyxqi7wjIKAhgp/7bc2ba8009965c9fa02bf49493a13226/vite.svg"
+  title: "vite"
 published: true
 ---
 皆様はすでにプロジェクトに Vite は導入されていらっしゃいますでしょうか？私はできていません。
@@ -180,4 +183,3 @@ interface ImportMeta {
   readonly env: ImportMetaEnv
 }
 ```
-

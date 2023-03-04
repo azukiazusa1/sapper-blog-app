@@ -6,6 +6,9 @@ about: "etcdは、kubernetesのクラスターの情報を保存するkey-value�
 createdAt: "2021-05-02T00:00+09:00"
 updatedAt: "2021-05-02T00:00+09:00"
 tags: ["Kubernetes"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4NwI8gjd802es2aMCmWay7/5b1d1468d43c4ffc3623b33decec3eea/k8s.png"
+  title: "kubernets"
 published: true
 ---
 etcd は、kubernetes のクラスターの情報を保存する key-value ストアです。
@@ -118,4 +121,3 @@ volumes:
 etcdはstatc Podとして動いているので、マニフェストを修正すると自動でpodが再作成されます。
 
 https://github.com/mmumshad/kubernetes-the-hard-way/blob/master/practice-questions-answers/cluster-maintenance/backup-etcd/etcd-backup-and-restore.md#3-restore-etcd-snapshot-to-a-new-folder
-

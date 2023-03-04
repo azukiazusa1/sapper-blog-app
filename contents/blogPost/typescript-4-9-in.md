@@ -6,6 +6,9 @@ about: "TypeScript において `in` 演算子を `unknown` 型に対して使�
 createdAt: "2022-11-20T00:00+09:00"
 updatedAt: "2022-11-20T00:00+09:00"
 tags: ["TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
+  title: "typescript"
 published: true
 ---
 TypeScript は `if` 文などの制御フロー分析することで、自動的に型を絞り込んでくれます。この仕組みは「型ガード」と呼ばれます。
@@ -90,4 +93,3 @@ const isUser = (x: unknown): x is User => {
     }
 }
 ```
-

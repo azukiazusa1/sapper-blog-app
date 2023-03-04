@@ -6,6 +6,9 @@ about: "Viteは、一言でいうとフロントエンドのめっちゃ早い�
 createdAt: "2021-05-16T00:00+09:00"
 updatedAt: "2021-05-16T00:00+09:00"
 tags: ["Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4LlOrDdEXyxqi7wjIKAhgp/7bc2ba8009965c9fa02bf49493a13226/vite.svg"
+  title: "vite"
 published: true
 ---
 # Viteとは
@@ -91,4 +94,3 @@ TypeScript で SFC を記述している場合には大丈夫かと思われま�
 - require('vue-flash-message/dist/vue-flash-message.min.css')
 + import 'vue-flash-message/dist/vue-flash-message.min.css'
 ```
-

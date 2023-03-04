@@ -6,6 +6,9 @@ about: "タブとは、ページ内でコンテンツを切り替えるために
 createdAt: "2022-11-06T00:00+09:00"
 updatedAt: "2022-11-06T00:00+09:00"
 tags: ["React", "アクセシビリティ"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/5Hsgor2TDfU85R6hP9dVgb/ff43360e1824c5c717d858c9e4e06abb/surface-h108eyMxbxw-unsplash.jpg"
+  title: "surface-h108eyMxbxw-unsplash"
 published: true
 ---
 タブとは、ページ内でコンテンツを切り替えるために使用する UI です。タブ初期表示ではいずれか 1 つのタブパネルが表示されており、関連するタブがアクティブなスタイルで表示されます。それぞれのタブには関連するタブパネルがあり、タブを選択することで表示されるタブパネルがタブに関連するものに切り替わります。
@@ -523,4 +526,3 @@ const Pabel = ({ children, index }: TabProps) => {
 - [Example of Tabs with Automatic Activation](https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-automatic.html)
 - [ARIA: tab ロール](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/Tab_Role)
 - [Tabs - Headless UI](https://headlessui.com/react/tabs)
-

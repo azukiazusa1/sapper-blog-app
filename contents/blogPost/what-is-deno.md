@@ -6,6 +6,9 @@ about: "Denoは、Node.jsの製作者であるRyan Dahlによって作られた�
 createdAt: "2020-05-17T00:00+09:00"
 updatedAt: "2020-05-17T00:00+09:00"
 tags: ["JavaScript", "Deno", "Node.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6fPJ5Ah5oHsWbvScuggrCh/899629af347facfc74e95006dae6b617/deno.png"
+  title: "Deno"
 published: true
 ---
 # はじめに
@@ -424,4 +427,3 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out (8ms)
 # おわりに
 新しい JavaScript のランタイムである `Deno` についてざっくりと触れてみました。
 いつの日か、`Node.js` に取って代わる日が来るのでしょうか、とても気になりますね。
-

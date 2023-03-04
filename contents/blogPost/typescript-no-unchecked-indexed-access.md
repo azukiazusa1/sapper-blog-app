@@ -6,6 +6,9 @@ about: "TypeScript 4.1 から noUncheckedIndexedAccess オプションが追加�
 createdAt: "2022-06-26T00:00+09:00"
 updatedAt: "2022-06-26T00:00+09:00"
 tags: ["TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
+  title: "typescript"
 published: true
 ---
 まずは次のコードを見てください。一見コンパイルエラーも発生していないので安全なコードに見えます。
@@ -211,4 +214,3 @@ const lol = messages.lol
 毎回 `undefined` でないことを確認する手間は増えますが、安全性を得られることを考えると安い代償でしょう。あるいは、`for...of` を使うなどなるべくインデックスアクセスに頼らないコードを意識してみるとよいでしょう。
 
 `noUncheckedIndexedAccess` オプションを途中から有効にするのはなかなか手間がかかります。実際に手元のプロパティでためしに `noUncheckedIndexedAccess` オプションを有効にしてみるとよいでしょう。きっと大量のコンパイルエラーが報告されるはずです😉。
-

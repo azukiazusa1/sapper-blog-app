@@ -6,6 +6,9 @@ about: "Go言語には、ポインタがあります。 ポインタとは、メ
 createdAt: "2020-11-01T00:00+09:00"
 updatedAt: "2020-11-01T00:00+09:00"
 tags: ["Go"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2JzEE4h7Xe5SHRr9iCPv4s/ac8cdc859f3af3a4c53cb7e5ba7af455/chounouryoku_woman.png"
+  title: "pointer"
 published: true
 ---
 # ポインタ
@@ -118,4 +121,3 @@ fmt.Println((*array)[1]) // 2
 
 ポインタを使用する際に、常に明示的に指定しているわけはありません。
 例えば、マップやスライスは宣言していなくても舞台裏でポインタが使用されています。
-

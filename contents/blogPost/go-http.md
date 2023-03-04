@@ -6,6 +6,9 @@ about: "Go言語は、標準パッケージでHTTPサーバーと基本的なHTT
 createdAt: "2020-11-08T00:00+09:00"
 updatedAt: "2020-11-08T00:00+09:00"
 tags: ["Go"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1D7xedE6EH0DDEbsL2eWlM/52e352d672de9f157c0e2b260e201db2/go-language-icon.png"
+  title: "go-http"
 published: true
 ---
 # はじめに
@@ -356,4 +359,3 @@ func (mux *ServeMux) Handle(pattern string, handler Handler) {
 [Package http](https://golang.org/pkg/net/http/)
 [GoのHTTPサーバーの実装](https://tutuz-tech.hatenablog.com/entry/2020/03/23/162831)
 [Goのhttp.Handlerやhttp.HandlerFuncをちゃんと理解する](https://journal.lampetty.net/entry/understanding-http-handler-in-go)
-

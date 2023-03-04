@@ -6,6 +6,9 @@ about: "Firebaseは、Googleが提供するバックエンドサービスです�
 createdAt: "2020-04-12T00:00+09:00"
 updatedAt: "2020-04-12T00:00+09:00"
 tags: ["firebase", "JavaScript", "Vue.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/57MXX73Nx2rUnUI730EykA/8d13236943bb46948155f92f2325369e/firebase.png"
+  title: "firebase"
 published: true
 ---
 # Firebaseとは
@@ -262,4 +265,3 @@ logoutBtn.addEventListener('click', () => {
 以上のように、普通に実装したらめんどくさい認証機能も簡単に実装できました。
 
 ここまで長くなったので Fire Strage と Firestore は来週に回します。
-

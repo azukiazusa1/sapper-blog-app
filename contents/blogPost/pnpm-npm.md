@@ -6,6 +6,9 @@ about: "pnpm は npm、yarn と並ぶ JavaScript のパッケージマネージ�
 createdAt: "2022-07-24T00:00+09:00"
 updatedAt: "2022-07-24T00:00+09:00"
 tags: ["pnpm"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/3SMzFbXXLHrhxkFBSv9fQf/1aed4069c1a0706129bf5d64d9a57163/pnpm-standard-79c9dbb2e99b8525ae55174580061e1b.svg"
+  title: "pnpm"
 published: true
 ---
 pnpm は [npm](https://www.npmjs.com/)、[yarn](https://yarnpkg.com/) と並ぶ JavaScript のパッケージマネージャーです。pnpm と言う名前は「performant npm」に由来します。
@@ -170,4 +173,3 @@ https://p.datadoghq.eu/sb/d2wdprp9uki7gfks-c562c42f4dfd0ade4885690fa719c818?tpl_
 ## 感想
 
 pnpm はその他のパッケージマネージャーと `node_modules` の構造が大きく異なるのが特徴ですね。パッケージマネージャーにより厳格な管理ができるのが興味深いポイントです。
-

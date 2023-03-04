@@ -6,6 +6,9 @@ about: "Satori とは Vercel が公開している OGP 画像生成ライブラ�
 createdAt: "2022-12-18T00:00+09:00"
 updatedAt: "2022-12-18T00:00+09:00"
 tags: ["Svelte", "SvelteKit", "OGP"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1EU8H77Fm4VPXNwhQoNV8M/ca8c727bc40d8203c2736dd36d85b615/card.png"
+  title: "satori"
 published: true
 ---
 Satori とは Vercel が公開している OGP 画像生成ライブラリです。
@@ -216,4 +219,3 @@ OGP の情報の設定は `<head>` タグ内に記述します。SvelteKit で�
 ここまでの作業が完了したら、OGP 画像を生成できるはずです。`npm run build` コマンドでアプリケーションをビルドして成果物に OGP 画像が含まれていることを確認できます。このブログでも同様のことを行って OGP 画像を生成しているので、参考にしてみてください。
 
 https://github.com/azukiazusa1/sapper-blog-app
-

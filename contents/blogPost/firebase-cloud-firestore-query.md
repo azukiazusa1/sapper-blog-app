@@ -6,6 +6,9 @@ about: "Firebase4回目の記事です。 前回は、Firebaseにおける単一
 createdAt: "2020-05-24T00:00+09:00"
 updatedAt: "2020-05-24T00:00+09:00"
 tags: ["firebase", "JavaScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2kQrXA9Amina8TOc9oC4PF/9033b78047d09b10c90b126439e33287/firestore.png"
+  title: "firestore"
 published: true
 ---
 ### クエリを発行する
@@ -557,4 +560,3 @@ articleRef
 またさきほどのページネーションと組み合わせたりするときも注意が必要です。ページ送りをしている最中にデータの並び順が変わった場合、再度同じドキュメント取得してしまったりなどページ付がおかしくなったりすることがあります。
 
 さらに、データが頻繁に更新されるような場合、データが次々と追加されたり入れ替わるさまを眺めるのは楽しいかもしれませんが、バッテリーや通信量の面でユーザーからは不評を得るかもしれません。
-

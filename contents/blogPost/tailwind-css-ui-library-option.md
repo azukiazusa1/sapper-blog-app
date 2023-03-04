@@ -6,6 +6,9 @@ about: "この記事を読んでいるみなさんも、Vuetify や MUI のよ�
 createdAt: "2022-05-15T00:00+09:00"
 updatedAt: "2022-05-15T00:00+09:00"
 tags: ["tailwindcss"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2GQfDJKqG7T0kWVwn1DZeJ/679ebd658ac716ded2dd61bb200e4780/tailwindcss.png"
+  title: "tailwindcss"
 published: true
 ---
 この記事を読んでいるみなさんも、[Vuetify](https://vuetifyjs.com/) や [MUI](https://mui.com/) のような UI フレームワークを使用したことがあるでしょう。これらの UI フレームワークは Web アプリケーションでよく使われる UI パーツを非常に高機能で提供しており、多大な工数の削減に貢献しています。
@@ -48,4 +51,3 @@ daisyUI は Bootstrap のようにクラスを付与して UI パーツを提供
 高機能な UI フレームワークの課題点と Tailwind CSS ベースのフレームワークの利点を述べてきました。内容としてはだいぶ Tailwind CSS を持ち上げていましたが、もちろん高機能な UI フレームワークにも利点はあります。初期の立ち上げのスピードでいえば、ほとんどカスタマイズなしで実装できる点で勝っているとも言えますし、Tailwind CSS 自身はほぼユーティリティクラスしか提供していないので CSS 自体にあまり精通していないのであればスタイリングで苦戦する可能性もあります。
 
 私の意見としては、記事の内容であげているとおりにスタイルの調整のしやすさや、依存性の低さから Tailwind CSS 側に利点があるように思えます。ここで紹介した以外にも Tailwind CSS ベースの UI フレームワークは数多くあるので調べてみるとよいでしょう。
-

@@ -6,6 +6,9 @@ about: "あるページの中で重要ではない付随的なデータの取得
 createdAt: "2022-11-12T00:00+09:00"
 updatedAt: "2022-11-12T00:00+09:00"
 tags: ["React"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6RAzMcZhOs2gvsbreObAWW/1f602565d9de76c6ab9eca4941206123/mike-lewis-headsmart-media-waAAaeC9hns-unsplash.jpg"
+  title: "waterfall"
 published: true
 ---
 あるページの中で重要ではない付随的なデータの取得を待たずに、重要なデータの取得が完了したタイミングでページを表示させたい場合があります。例えば、ブログの記事のページを遷移する場合、ユーザーにとって記事のコンテンツは重要なデータですが、それに付随するコメントやいいねの数はそれほど重要ではないので、それらのデータの取得を待つ必要がありません。
@@ -207,4 +210,3 @@ type LoaderData = {
 図で表すと以下のとおりです。
 
 ![スクリーンショット 2022-11-12 15.53.16](//images.ctfassets.net/in6v9lxmm5c8/3OrcJRDCeOon8l6xmhnsOt/5c082175fdf466f1ddb0c49877a89307/____________________________2022-11-12_15.53.16.png)
-

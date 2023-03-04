@@ -6,6 +6,9 @@ about: "JavaScriptがプリミティブな値に変換されるとき、string�
 createdAt: "2021-06-27T00:00+09:00"
 updatedAt: "2021-06-27T00:00+09:00"
 tags: ["JavaScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
+  title: "JavaScript"
 published: true
 ---
 JavaScript がプリミティブな値に変換されるとき、次のようなルールが適用される。
@@ -97,4 +100,3 @@ console.log(date1 < date2) // true
 
 ## 参考
 https://stackoverflow.com/questions/62717437/behavior-of-greater-than-and-another-inequality-comparison-operators-on-arra
-

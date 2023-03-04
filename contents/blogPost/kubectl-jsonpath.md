@@ -6,6 +6,9 @@ about: "kubectlはアウトプットの形式としてJSONPathをサポートし
 createdAt: "2021-04-25T00:00+09:00"
 updatedAt: "2021-04-25T00:00+09:00"
 tags: ["Kubernetes"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4NwI8gjd802es2aMCmWay7/5b1d1468d43c4ffc3623b33decec3eea/k8s.png"
+  title: "kubernets"
 published: true
 ---
 # JSON Path
@@ -111,4 +114,3 @@ NAME   STATUS ROLES  AGE VERSION
 master Ready  master 5m  v1.11.3
 node01 Ready  <none> 5m  v1.11.3
 ```
-

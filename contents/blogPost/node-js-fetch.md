@@ -6,6 +6,9 @@ about: "Node.js で fetch が使えるようになる"
 createdAt: "2022-02-06T00:00+09:00"
 updatedAt: "2022-02-06T00:00+09:00"
 tags: ["Node.js"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4z6cPW6RU0f0O22jxIVINl/7c4bc80d99a5ad11e02d1cc83b42a2b5/articles_2FmDVbWFeXeln9BJXqBa76_2F027ab8d7dc7cdb4ab9c09c0a057af2e7.png"
+  title: "Node.js"
 published: true
 ---
 ブラウザで実行される JavaScript とサーバーサイドで実行される Node.js では提供される API に違いがあります。
@@ -61,4 +64,3 @@ fetchUsers().then(data => console.log(data));
 ![banzai kids boy1](//images.ctfassets.net/in6v9lxmm5c8/2ifFc8N2HSP36VufbatYOP/cbebe58495ce8a3ea2fb947f2623a3e5/banzai_kids_boy1.png)
 
 ![スクリーンショット 2022-02-06 20.25.49](//images.ctfassets.net/in6v9lxmm5c8/2qAMo4phbaNmmC5cglWY0l/88a4bea57cc0427ed3afbd3e453d6fcc/____________________________2022-02-06_20.25.49.png)
-

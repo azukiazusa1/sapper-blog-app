@@ -6,6 +6,9 @@ about: "[type-challengs](https://github.com/type-challenges/type-challenges) の
 createdAt: "2021-10-24T00:00+09:00"
 updatedAt: "2021-10-24T00:00+09:00"
 tags: ["TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
+  title: "typescript"
 published: true
 ---
 [type-challengs](https://github.com/type-challenges/type-challenges) の medium レベルをやります。
@@ -937,4 +940,3 @@ type Merge<F extends Record<string, unknown>, S extends Record<string, unknown>>
   [P in keyof F | keyof S]: P extends keyof S ? S[P] : P extends keyof F ? F[P]: never
 };
 ```
-

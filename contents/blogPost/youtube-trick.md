@@ -6,6 +6,9 @@ about: "Tab キーでページを操作した時のみ表示される「ナビ�
 createdAt: "2021-11-14T00:00+09:00"
 updatedAt: "2021-11-14T00:00+09:00"
 tags: ["アクセシビリティ"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1Rrq4dYjjLnClW3LUAFbCE/203a9b8bde93b1b61252b0ed4fb9df99/____________________________2021-11-14_12.49.32.png"
+  title: "スクリーンショット 2021-11-14 12.49.32"
 published: true
 ---
 既出だったらごめんなさい。
@@ -356,4 +359,3 @@ skipButton.addEventListener('keydown', (e) => {
 
 - [スキップリンク](https://weba11y.jp/glossary/sa/skip-link/)
 - [ブロックスキップを考える](https://accessible-usable.net/2018/03/entry_180302.html)
-

@@ -6,6 +6,9 @@ about: "アコーディオンは見出しであるヘッダーとコンテンツ
 createdAt: "2022-10-29T00:00+09:00"
 updatedAt: "2022-10-29T00:00+09:00"
 tags: ["React", "アクセシビリティ"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/5G85deKmS7cjf2IVZGQhX2/e3998cde3c053c249644c25c5909d610/________________________.jpeg"
+  title: "アコーディオン"
 published: true
 ---
 アコーディオンは見出しである**ヘッダー**とコンテンツである**パネル**から構成された UI が垂直に積み重ねられたセットです。ユーザーはヘッダーをクリックすることで、ヘッダーに関連付けられたパネルの表示・非表示を切り替えることができます。
@@ -277,4 +280,3 @@ const Accordion: React.FC<AccordionProps> = ({ children, level = 2 }) => {
 
 - [Accordion (Sections With Show/Hide Functionality)](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
 - [アクセシブルなアコーディオンの実装について考える](https://zenn.dev/yend724/articles/20220710-y5c9rgsmah5j78n3)
-

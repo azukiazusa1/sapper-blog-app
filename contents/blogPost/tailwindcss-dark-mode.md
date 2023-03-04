@@ -6,6 +6,9 @@ about: "昨今のアプリケーションでは、ダークモードを提供し
 createdAt: "2021-02-21T00:00+09:00"
 updatedAt: "2021-02-21T00:00+09:00"
 tags: ["CSS", "tailwindcss"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2GQfDJKqG7T0kWVwn1DZeJ/679ebd658ac716ded2dd61bb200e4780/tailwindcss.png"
+  title: "tailwindcss"
 published: true
 ---
 昨今のアプリケーションでは、ダークモードを提供しているのがもはや当たり前になってきました。
@@ -143,4 +146,3 @@ localStorage.removeItem('theme')
 
 以上のように、Tailwind CSS では簡単にダークモードを提供できます。
 またユーティリティクラスの使いやすさはそのままダークモードのスタイルの指定にも適用できるので、細かい調整もしやすく嬉しい限りです。
-

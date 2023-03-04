@@ -6,6 +6,9 @@ about: "UnoCSS はフレームワークではなく、Atomic CSS エンジンで
 createdAt: "2022-06-11T00:00+09:00"
 updatedAt: "2022-06-11T00:00+09:00"
 tags: ["CSS"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/62Rm9VoIOW7mjUVoyY7bxg/d0e5bfc94f47dd45cbabad251c705b08/icon-gray.svg"
+  title: "uno-css"
 published: true
 ---
 [UnoCSS](https://github.com/unocss/unocss) は [Windi CSS](https://windicss.org/)、[Tailwind CSS](https://tailwindcss.com/) それと [Twind](https://github.com/tw-in-js/twind) に影響を受けた機能を持っています。
@@ -284,4 +287,3 @@ UnoCSS の提供している機能は Windi CSS に近い感じですね。Tailw
 UnoCSS の作成された動機や思想については以下の作者の記事を参照するとよいでしょう。
 
 https://antfu.me/posts/reimagine-atomic-css
-

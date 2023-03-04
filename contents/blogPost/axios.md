@@ -6,6 +6,9 @@ about: "axiosは、JavaScriptにおけるHTTPクライアントのデファク�
 createdAt: "2021-08-29T00:00+09:00"
 updatedAt: "2021-08-29T00:00+09:00"
 tags: ["JavaScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
+  title: "JavaScript"
 published: true
 ---
 [axios](https://github.com/axios/axios)は、JavaScript における HTTP クライアントのデファクトスタンダードといえるでしょう。
@@ -532,4 +535,3 @@ getPostById(1) // 最初のリクエストなので送信される
 getPostById(1) // 2度目以降のリクエストはキャッシュから取得するのでリクエストを行わない
 getPostById(2) // クエリパラメータが異なるので送信される
 ```
-

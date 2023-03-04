@@ -6,6 +6,9 @@ about: "SassはCSSのメタ言語です。CSSに比べてコード量が減り�
 createdAt: "2021-03-28T00:00+09:00"
 updatedAt: "2021-03-28T00:00+09:00"
 tags: ["CSS", "Sass"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/6ADze8mrjH8iV9pCLekDeQ/27220daee3fa492a828aeae3a3cdb5d3/1200px-Sass_Logo_Color.svg.png"
+  title: "sass"
 published: true
 ---
 # SASS記法とSCSS記法
@@ -699,4 +702,3 @@ $values: 300px, 200px;
   height: 200px;
 }
 ```
-
