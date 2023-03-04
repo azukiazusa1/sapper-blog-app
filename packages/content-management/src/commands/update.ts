@@ -1,10 +1,8 @@
-import { createBlogPost, updateBlogPost, deleteBlogPost } from './src/api.js'
-import { loadBlogPost } from './src/fileOperation.js'
+import { createBlogPost, updateBlogPost, deleteBlogPost } from '../api.js'
+import { loadBlogPost } from '../fileOperation.js'
 import { basename } from 'path'
 
-const { ADDED_FILES, DELETED_FILES } = process.env
-
-const MODIFIED_FILES = 'what-is-graphql.md'
+const { ADDED_FILES, MODIFIED_FILES, DELETED_FILES } = process.env
 
 console.log('Added files:', ADDED_FILES)
 console.log('Modified files:', MODIFIED_FILES)

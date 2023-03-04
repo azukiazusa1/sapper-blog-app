@@ -328,11 +328,13 @@ describe('getBlogPosts', () => {
 describe('createBlogPost', () => {
   test('blog post を作成する', async () => {
     const contentTypeHeader = vi.fn()
+    const entryId = vi.fn()
     const body = vi.fn()
     const publish = vi.fn()
     server.use(
-      rest.post(contentful('/entries'), async (req, res, ctx) => {
+      rest.put(contentful('/entries/:entryId'), async (req, res, ctx) => {
         contentTypeHeader(req.headers.get('X-Contentful-Content-Type'))
+        entryId(req.params['entryId'])
         body(await req.json())
 
         return res(
@@ -399,6 +401,7 @@ describe('createBlogPost', () => {
     })
 
     expect(contentTypeHeader).toHaveBeenCalledWith('blogPost')
+    expect(entryId).toHaveBeenCalledWith('id')
     expect(body).toHaveBeenCalledWith({
       fields: {
         title: {
@@ -453,7 +456,7 @@ describe('createBlogPost', () => {
   test('タグ名は case insensitive で一致する', async () => {
     const body = vi.fn()
     server.use(
-      rest.post(contentful('/entries'), async (req, res, ctx) => {
+      rest.put(contentful('/entries/:entryId'), async (req, res, ctx) => {
         const _body = await req.json()
         body(_body)
         return res(
@@ -515,19 +518,18 @@ describe('createBlogPost', () => {
     const tagBody = vi.fn()
     server.use(
       rest.post(contentful('/entries'), async (req, res, ctx) => {
-        if (req.headers.get('X-Contentful-Content-Type') === 'tag') {
-          const body = await req.json()
-          tagBody(body)
-          return res(
-            ctx.status(201),
-            ctx.json({
-              metadata: { tags: [] },
-              sys: createDummyMetaSysProps({ id: 'tag3', published: false }),
-              fields: body.fields,
-            }),
-          )
-        }
-
+        const body = await req.json()
+        tagBody(body)
+        return res(
+          ctx.status(201),
+          ctx.json({
+            metadata: { tags: [] },
+            sys: createDummyMetaSysProps({ id: 'tag3', published: false }),
+            fields: body.fields,
+          }),
+        )
+      }),
+      rest.put(contentful('/entries/:entryId'), async (req, res, ctx) => {
         const _body = await req.json()
         blogPostBody(_body)
         return res(
