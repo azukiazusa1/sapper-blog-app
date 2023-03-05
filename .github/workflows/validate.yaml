@@ -37,3 +37,7 @@ jobs:
         env:
           ADDED_FILES: ${{ steps.changed-files-specific.outputs.added_files }}
           MODIFIED_FILES: ${{ steps.changed-files-specific.outputs.modified_files }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          PR_NUMBER: ${{ github.event.number }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,17 +1,16 @@
 import { loadBlogPost } from '../fileOperation.js'
 import { basename } from 'path'
-import * as core from '@actions/core'
 import { getOctokit } from '@actions/github'
 
-const { ADDED_FILES, MODIFIED_FILES } = process.env
+const { ADDED_FILES, MODIFIED_FILES, OWNER, REPO, PR_NUMBER, TOKEN } = process.env
 
 console.log('Added files:', ADDED_FILES)
 console.log('Modified files:', MODIFIED_FILES)
 
-const owner = core.getInput('owner', { required: true })
-const repo = core.getInput('repo', { required: true })
-const pr_number = core.getInput('pr_number', { required: true })
-const token = core.getInput('token', { required: true })
+const owner = OWNER as string
+const repo = REPO as string
+const pr_number = Number(PR_NUMBER)
+const token = TOKEN as string
 
 const octokit = getOctokit(token)
 
@@ -28,7 +27,7 @@ if (ADDED_FILES) {
       octokit.rest.issues.createComment({
         owner,
         repo,
-        issue_number: Number(pr_number),
+        issue_number: pr_number,
         body: JSON.stringify(result.error, null, 2),
       })
     }
@@ -49,7 +48,7 @@ if (MODIFIED_FILES) {
       octokit.rest.issues.createComment({
         owner,
         repo,
-        issue_number: Number(pr_number),
+        issue_number: pr_number,
         body: JSON.stringify(result.error, null, 2),
       })
     }
