@@ -1,13 +1,13 @@
 ---
 id: 63HSy1rYYvz67eNKwiTpv2
 title: "SvelteKit で環境変数を使う"
-slug: "sveltekit--invalid-slug-yo"
+slug: "sveltekit"
 about: null
 createdAt: null
 updatedAt: null
 tags: []
 thumbnail: null
-published: true
+published: false
 ---
 SvelteKit プロジェクトは Vite を使用しているので、[Vite を使った環境変数の参照](https://ja.vitejs.dev/guide/env-and-mode.html) ができます。しかし、この方法はクライアントに公開してよい値とサーバーに隠しおきたい機密データを区別できません。そのため、機密データを誤ってクライアント側から参照してしまうミスが起こりうります。
 

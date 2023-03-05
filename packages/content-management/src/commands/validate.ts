@@ -15,6 +15,15 @@ const token = TOKEN as string
 const octokit = getOctokit(token)
 
 const getFilename = (path: string) => basename(path, '.md')
+const bodyTemplate = (file: string, error: unknown) => `## ファイルの検証に失敗しました。
+### ファイル名
+\`${file}\`
+### エラー内容
+\`\`\`json
+${JSON.stringify(error, null, 2)}
+\`\`\`
+`
+
 let hasError = false
 
 if (ADDED_FILES) {
@@ -28,13 +37,7 @@ if (ADDED_FILES) {
         owner,
         repo,
         issue_number: pr_number,
-        body: `## ファイルの検証に失敗しました。
-ファイル名: ${filename}.md
-エラー内容: 
-\`\`\`json
-${JSON.stringify(result.error, null, 2)}
-\`\`\`
-        `,
+        body: bodyTemplate(file, result.error),
       })
     }
   }
@@ -51,13 +54,7 @@ if (MODIFIED_FILES) {
         owner,
         repo,
         issue_number: pr_number,
-        body: `## ファイルの検証に失敗しました。
-ファイル名: ${file}
-エラー内容: 
-\`\`\`json
-${JSON.stringify(result.error, null, 2)}
-\`\`\`
-`,
+        body: bodyTemplate(file, result.error),
       })
     }
   }
