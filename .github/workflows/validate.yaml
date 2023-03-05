@@ -32,15 +32,8 @@ jobs:
         env:
           ADDED_FILES: ${{ steps.changed-files-specific.outputs.added_files }}
           MODIFIED_FILES: ${{ steps.changed-files-specific.outputs.modified_files }}
-      - name: comment
-        if: always()
-        uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `${{join(steps.validate.outputs.*, '\n')}}`
-            })
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          pr_number: ${{ github.event.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
