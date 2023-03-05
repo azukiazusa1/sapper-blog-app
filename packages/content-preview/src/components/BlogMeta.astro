@@ -22,9 +22,28 @@ const { post } = Astro.props
     </button>
   </div>
   <div class="flex flex-col gap-2">
+    <div class="flex items-center mb-2">
+      {
+        post.frontmatter.thumbnail && (
+          <img
+            src={post.frontmatter.thumbnail.url}
+            width={400}
+            height={300}
+            class="w-48 h-auto"
+            alt={post.frontmatter.thumbnail.title}
+          />
+        )
+      }
+    </div>
     <div class="flex items-center">
       <div class="font-bold w-40">Slug</div>
-      <div class="ml-2 text-gray-500 dark:text-gray-300">{post.frontmatter.slug}</div>
+      <div class="ml-2 w-96 text-gray-500 dark:text-gray-300">{post.frontmatter.slug}</div>
+      <div class="ml-4 text-gray-500 dark:text-gray-300">{post.frontmatter.slug.length} / 255</div>
+    </div>
+    <div class="flex items-center">
+      <div class="font-bold w-40">About</div>
+      <div class="ml-2 w-96 text-gray-500 dark:text-gray-300">{post.frontmatter.about}</div>
+      <div class="ml-4 text-gray-500 dark:text-gray-300">{post.frontmatter.about.length} / 255</div>
     </div>
     <div class="flex items-center">
       <div class="font-bold w-40">公開済み</div>
