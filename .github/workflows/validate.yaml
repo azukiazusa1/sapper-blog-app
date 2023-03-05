@@ -28,11 +28,6 @@ jobs:
         run: npm ci
       - name: validate changed files
         run: npm run validate -w=packages/content-management
-        with:
-          owner: ${{ github.repository_owner }}
-          repo: ${{ github.event.repository.name }}
-          pr_number: ${{ github.event.number }}
-          token: ${{ secrets.GITHUB_TOKEN }}
         id: validate
         env:
           ADDED_FILES: ${{ steps.changed-files-specific.outputs.added_files }}
