@@ -28,12 +28,12 @@ jobs:
         run: npm ci
       - name: validate changed files
         run: npm run validate -w=packages/content-management
-        id: validate
-        env:
-          ADDED_FILES: ${{ steps.changed-files-specific.outputs.added_files }}
-          MODIFIED_FILES: ${{ steps.changed-files-specific.outputs.modified_files }}
-        inputs:
+        with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           pr_number: ${{ github.event.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
+        id: validate
+        env:
+          ADDED_FILES: ${{ steps.changed-files-specific.outputs.added_files }}
+          MODIFIED_FILES: ${{ steps.changed-files-specific.outputs.modified_files }}
