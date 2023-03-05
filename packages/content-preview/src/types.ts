@@ -6,5 +6,9 @@ export type BlogPostFromtMatter = {
   createdAt: string
   updatedAt: string
   tags: string[]
+  thumbnail?: {
+    url: string
+    title: string
+  }
   published: boolean
 }
