@@ -34,11 +34,11 @@ jobs:
           MODIFIED_FILES: ${{ steps.changed-files-specific.outputs.modified_files }}
       - name: comment
         if: always()
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
