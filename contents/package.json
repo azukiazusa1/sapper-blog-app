@@ -3,7 +3,7 @@
   "scripts": {
     "lint": "npm run lint:textlint",
     "lint:fix": "npm run lint:textlint:fix",
-    "lint:textlint": "textlint blogPost/63HSy1rYYvz67eNKwiTpv2.md",
+    "lint:textlint": "textlint blogPost/",
     "lint:textlint:fix": "textlint --fix blogPost/"
   },
   "dependencies": {
