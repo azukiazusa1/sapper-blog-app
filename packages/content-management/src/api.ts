@@ -260,7 +260,7 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
             },
           }
         : undefined,
-      relatedArticles: {
+      ['relatedArticle']: {
         'en-US': await searchRelatedArticles(blog),
       },
     },
@@ -312,7 +312,7 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
     'en-US': await tagNamesToTagIds(blog.tags),
   }
 
-  fields['relatedArticles'] = {
+  fields['relatedArticle'] = {
     'en-US': await searchRelatedArticles(blog),
   }
 
