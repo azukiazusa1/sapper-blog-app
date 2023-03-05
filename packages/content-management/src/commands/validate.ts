@@ -28,7 +28,12 @@ if (ADDED_FILES) {
         owner,
         repo,
         issue_number: pr_number,
-        body: JSON.stringify(result.error, null, 2),
+        body: `ファイルの検証に失敗しました。
+          ファイル名: ${filename}
+          エラー内容: \`\`\`
+          ${JSON.stringify(result.error, null, 2)}
+          \`\`\`
+        `,
       })
     }
   }
@@ -45,7 +50,12 @@ if (MODIFIED_FILES) {
         owner,
         repo,
         issue_number: pr_number,
-        body: JSON.stringify(result.error, null, 2),
+        body: `ファイルの検証に失敗しました。
+        ファイル名: ${filename}
+        エラー内容: \`\`\`
+        ${JSON.stringify(result.error, null, 2)}
+        \`\`\`
+      `,
       })
     }
   }
