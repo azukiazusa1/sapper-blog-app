@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "sync": "ts-node src/commands/sync.ts",
     "update": "ts-node src/commands/update.ts",
-    "new": "ts-node src/commands/new.ts"
+    "new": "ts-node src/commands/new.ts",
+    "validate": "ts-node src/commands/validate.ts"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,8 @@
   },
   "homepage": "https://github.com/azukiazusa1/sapper-blog-app#readme",
   "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
     "contentful-management": "^10.29.3",
     "nanoid": "^4.0.1",
     "slugify": "^1.6.5",

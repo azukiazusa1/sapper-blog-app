@@ -1,0 +1,38 @@
+name: Validate Blog Post
+
+on:
+  pull_request:
+    paths:
+      - contents/**
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate changed-files
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Get changed files in the contents folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v35
+        with:
+          files: |
+            contents/**
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: package.json
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: validate changed files
+        run: npm run validate -w=packages/content-management
+        id: validate
+        env:
+          ADDED_FILES: ${{ steps.changed-files-specific.outputs.added_files }}
+          MODIFIED_FILES: ${{ steps.changed-files-specific.outputs.modified_files }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          PR_NUMBER: ${{ github.event.number }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
