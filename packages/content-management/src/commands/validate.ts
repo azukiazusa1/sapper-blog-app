@@ -15,37 +15,33 @@ const token = TOKEN as string
 const octokit = getOctokit(token)
 
 const getFilename = (path: string) => basename(path, '.md')
+let hasError = false
 
 if (ADDED_FILES) {
   const addedFiles = ADDED_FILES.split(' ')
-  let hasError = false
   for (const file of addedFiles) {
     const filename = getFilename(file)
     const result = await loadBlogPost(filename)
     if (!result.success) {
       hasError = true
-      octokit.rest.issues.createComment({
+      await octokit.rest.issues.createComment({
         owner,
         repo,
         issue_number: pr_number,
         body: JSON.stringify(result.error, null, 2),
       })
     }
-  }
-  if (hasError) {
-    process.exit(1)
   }
 }
 
 if (MODIFIED_FILES) {
   const modifiedFiles = MODIFIED_FILES.split(' ')
-  let hasError = false
   for (const file of modifiedFiles) {
     const filename = getFilename(file)
     const result = await loadBlogPost(filename)
     if (!result.success) {
       hasError = true
-      octokit.rest.issues.createComment({
+      await octokit.rest.issues.createComment({
         owner,
         repo,
         issue_number: pr_number,
@@ -53,7 +49,8 @@ if (MODIFIED_FILES) {
       })
     }
   }
-  if (hasError) {
-    process.exit(1)
-  }
+}
+
+if (hasError) {
+  process.exit(1)
 }
