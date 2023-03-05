@@ -110,7 +110,7 @@
     "vitest": "^0.29.0",
     "wait-on": "^7.0.1"
   },
-  "resolutions": {
+  "overrides": {
     "shiki": "0.14.1"
   }
 }

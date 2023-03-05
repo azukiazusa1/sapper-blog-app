@@ -22,5 +22,8 @@
   "devDependencies": {
     "prettier": "^2.8.4",
     "turbo": "^1.8.2"
+  },
+  "overrides": {
+    "shiki": "0.14.1"
   }
 }
