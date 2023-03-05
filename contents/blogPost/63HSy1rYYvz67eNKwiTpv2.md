@@ -1,7 +1,7 @@
 ---
 id: 63HSy1rYYvz67eNKwiTpv2
 title: "SvelteKit で環境変数を使う"
-slug: "sveltekit--invalid-slug"
+slug: "sveltekit--invalid-slug-yo"
 about: null
 createdAt: null
 updatedAt: null

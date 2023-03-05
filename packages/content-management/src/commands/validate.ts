@@ -29,7 +29,7 @@ if (ADDED_FILES) {
         owner,
         repo,
         issue_number: Number(pr_number),
-        body: `${result.error}`,
+        body: JSON.stringify(result.error, null, 2),
       })
     }
   }
@@ -50,7 +50,7 @@ if (MODIFIED_FILES) {
         owner,
         repo,
         issue_number: Number(pr_number),
-        body: `${result.error}`,
+        body: JSON.stringify(result.error, null, 2),
       })
     }
   }

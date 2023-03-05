@@ -32,7 +32,7 @@ jobs:
         env:
           ADDED_FILES: ${{ steps.changed-files-specific.outputs.added_files }}
           MODIFIED_FILES: ${{ steps.changed-files-specific.outputs.modified_files }}
-        with:
+        inputs:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           pr_number: ${{ github.event.number }}
