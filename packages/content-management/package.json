@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "sync": "ts-node src/commands/sync.ts",
     "update": "ts-node src/commands/update.ts",
-    "new": "ts-node src/commands/new.ts"
+    "new": "ts-node src/commands/new.ts",
+    "validate": "ts-node src/commands/validate.ts"
   },
   "repository": {
     "type": "git",
