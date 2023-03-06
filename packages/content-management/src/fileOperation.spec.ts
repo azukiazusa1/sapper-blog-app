@@ -638,6 +638,38 @@ article
         ],
       })
 
+      test('日付の形式でなくてはならない', async () => {
+        mockedReadFile.mockResolvedValueOnce(
+          `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00:+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
+published: true
+---
+article
+`,
+        )
+
+        const result = await loadBlogPost('id')
+
+        expect(result).toEqual({
+          success: false,
+          error: [
+            expect.objectContaining({
+              path: ['createdAt'],
+              message: 'Invalid',
+            }),
+          ],
+        })
+      })
+
       test('公開済みの場合 null だとバリデーションエラー', async () => {
         mockedReadFile.mockResolvedValueOnce(
           `---
@@ -702,6 +734,38 @@ article
             message: 'Expected string, received number',
           }),
         ],
+      })
+
+      test('日付の形式でなくてはならない', async () => {
+        mockedReadFile.mockResolvedValueOnce(
+          `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00:+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
+published: true
+---
+article
+`,
+        )
+
+        const result = await loadBlogPost('id')
+
+        expect(result).toEqual({
+          success: false,
+          error: [
+            expect.objectContaining({
+              path: ['updatedAt'],
+              message: 'Invalid',
+            }),
+          ],
+        })
       })
 
       test('公開済みの場合 null だとバリデーションエラー', async () => {

@@ -13,8 +13,8 @@ export const BlogPostSchema = z.discriminatedUnion('published', [
     id: z.string(),
     about: z.string().max(255),
     article: z.string().max(50000),
-    createdAt: z.string(),
-    updatedAt: z.string(),
+    createdAt: z.string().refine((v) => new Date(v).toString() !== 'Invalid Date'),
+    updatedAt: z.string().refine((v) => new Date(v).toString() !== 'Invalid Date'),
     title: z.string().max(255),
     slug: z
       .string()
@@ -28,8 +28,14 @@ export const BlogPostSchema = z.discriminatedUnion('published', [
     id: z.string(),
     about: z.string().max(255).optional(),
     article: z.string().max(50000).optional(),
-    createdAt: z.string().optional(),
-    updatedAt: z.string().optional(),
+    createdAt: z
+      .string()
+      .refine((v) => new Date(v).toString() !== 'Invalid Date')
+      .optional(),
+    updatedAt: z
+      .string()
+      .refine((v) => new Date(v).toString() !== 'Invalid Date')
+      .optional(),
     title: z.string().max(255).optional(),
     slug: z
       .string()

@@ -16,11 +16,6 @@ const octokit = getOctokit(token)
 
 const getFilename = (path: string) => basename(path, '.md')
 
-const validateDate = (date: string) => {
-  const d = new Date(date)
-  return Number.isNaN(d.getTime())
-}
-
 const bodyTemplate = (file: string, error: unknown) => `## ファイルの検証に失敗しました。
 ### ファイル名
 \`${file}\`
@@ -45,37 +40,6 @@ if (ADDED_FILES) {
         issue_number: pr_number,
         body: bodyTemplate(file, result.error),
       })
-    } else if (result.data.published) {
-      if (validateDate(result.data.createdAt)) {
-        hasError = true
-        await octokit.rest.issues.createComment({
-          owner,
-          repo,
-          issue_number: pr_number,
-          body: bodyTemplate(file, {
-            code: 'invalid_type',
-            expected: 'date',
-            received: result.data.createdAt,
-            path: ['createdAt'],
-            message: 'createdAt must be a valid date',
-          }),
-        })
-      }
-      if (validateDate(result.data.updatedAt)) {
-        hasError = true
-        await octokit.rest.issues.createComment({
-          owner,
-          repo,
-          issue_number: pr_number,
-          body: bodyTemplate(file, {
-            code: 'invalid_type',
-            expected: 'date',
-            received: result.data.updatedAt,
-            path: ['updatedAt'],
-            message: 'updatedAt must be a valid date',
-          }),
-        })
-      }
     }
   }
 }
@@ -93,37 +57,6 @@ if (MODIFIED_FILES) {
         issue_number: pr_number,
         body: bodyTemplate(file, result.error),
       })
-    } else if (result.data.published) {
-      if (validateDate(result.data.createdAt)) {
-        hasError = true
-        await octokit.rest.issues.createComment({
-          owner,
-          repo,
-          issue_number: pr_number,
-          body: bodyTemplate(file, {
-            code: 'invalid_type',
-            expected: 'date',
-            received: result.data.createdAt,
-            path: ['createdAt'],
-            message: 'createdAt must be a valid date',
-          }),
-        })
-      }
-      if (validateDate(result.data.updatedAt)) {
-        hasError = true
-        await octokit.rest.issues.createComment({
-          owner,
-          repo,
-          issue_number: pr_number,
-          body: bodyTemplate(file, {
-            code: 'invalid_type',
-            expected: 'date',
-            received: result.data.updatedAt,
-            path: ['updatedAt'],
-            message: 'updatedAt must be a valid date',
-          }),
-        })
-      }
     }
   }
 }
