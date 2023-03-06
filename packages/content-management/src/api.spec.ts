@@ -5,6 +5,21 @@ import { createBlogPost, getBlogPosts, updateBlogPost } from './api'
 import type { BlogPost, ContentfulBlogPost, ContentfulTag } from './types'
 import { createDummyMetaSysProps } from './test-utils'
 
+vi.mock('./searchRelatedArticles.js', () => {
+  return {
+    searchRelatedArticles: async () => {
+      return [
+        {
+          sys: {
+            type: 'Link',
+            linkType: 'Entry',
+            id: 'entry-id',
+          },
+        },
+      ]
+    },
+  }
+})
 const contentful = (path: string) => 'https://api.contentful.com/spaces/:space_id/environments/:environment_id' + path
 const tags = [
   {
@@ -326,19 +341,6 @@ describe('getBlogPosts', () => {
 })
 
 describe('createBlogPost', () => {
-  vi.mock('./searchRelatedArticles.js', () => {
-    return {
-      searchRelatedArticles: async () => {
-        return [
-          {
-            type: 'Link',
-            linkType: 'Entry',
-            id: 'entry-id',
-          },
-        ]
-      },
-    }
-  })
   test('blog post を作成する', async () => {
     const contentTypeHeader = vi.fn()
     const entryId = vi.fn()
@@ -462,12 +464,14 @@ describe('createBlogPost', () => {
             },
           ],
         },
-        relatedArticles: {
+        relatedArticle: {
           'en-US': [
             {
-              type: 'Link',
-              linkType: 'Entry',
-              id: 'entry-id',
+              sys: {
+                type: 'Link',
+                linkType: 'Entry',
+                id: 'entry-id',
+              },
             },
           ],
         },
@@ -620,19 +624,6 @@ describe('createBlogPost', () => {
 })
 
 describe('updateBlogPost', () => {
-  vi.mock('./searchRelatedArticles.js', () => {
-    return {
-      searchRelatedArticles: async () => {
-        return [
-          {
-            type: 'Link',
-            linkType: 'Entry',
-            id: 'entry-id',
-          },
-        ]
-      },
-    }
-  })
   test('blog post を更新する', async () => {
     const entryId = vi.fn()
     const body = vi.fn()
@@ -726,12 +717,14 @@ describe('updateBlogPost', () => {
             },
           ],
         },
-        relatedArticles: {
+        relatedArticle: {
           'en-US': [
             {
-              type: 'Link',
-              linkType: 'Entry',
-              id: 'entry-id',
+              sys: {
+                type: 'Link',
+                linkType: 'Entry',
+                id: 'entry-id',
+              },
             },
           ],
         },

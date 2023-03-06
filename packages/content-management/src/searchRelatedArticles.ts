@@ -3,7 +3,7 @@ import { compareTwoStrings } from 'string-similarity'
 import { loadAllBlogPost, Result } from './fileOperation.js'
 import type { BlogPost } from './types.js'
 
-export const searchRelatedArticles = async (blogPost: BlogPost): Promise<MetaLinkProps[]> => {
+export const searchRelatedArticles = async (blogPost: BlogPost): Promise<{ sys: MetaLinkProps }[]> => {
   const allBlogPost = await loadAllBlogPost()
 
   const result = allBlogPost
@@ -24,9 +24,11 @@ export const searchRelatedArticles = async (blogPost: BlogPost): Promise<MetaLin
 
   return result.slice(0, 3).map((a) => {
     return {
-      type: 'Link',
-      linkType: 'Entry',
-      id: a.data.id,
+      sys: {
+        type: 'Link',
+        linkType: 'Entry',
+        id: a.data.id,
+      },
     }
   })
 }

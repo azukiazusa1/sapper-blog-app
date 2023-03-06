@@ -15,6 +15,7 @@ const token = TOKEN as string
 const octokit = getOctokit(token)
 
 const getFilename = (path: string) => basename(path, '.md')
+
 const bodyTemplate = (file: string, error: unknown) => `## ファイルの検証に失敗しました。
 ### ファイル名
 \`${file}\`

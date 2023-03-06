@@ -15,7 +15,7 @@ export const createClient = async () => {
   })
 
   const space = await client.getSpace(Env.space)
-  const environment = await space.getEnvironment('test')
+  const environment = await space.getEnvironment(Env.environment)
   cache = {
     ...cache,
     environment,
