@@ -29,7 +29,13 @@
                 class="underline hover:opacity-75"
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://qiita.com/azukiazusa">Qiita</a
+                href="https://twitter.com/azukiazusa9">Twitter</a
+              >&nbsp;/
+              <a
+                class="underline hover:opacity-75"
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://github.com/azukiazusa1">GitHub</a
               >&nbsp;/
               <a
                 class="underline hover:opacity-75"
@@ -41,7 +47,7 @@
                 class="underline hover:opacity-75"
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://github.com/azukiazusa1">GitHub</a
+                href="https://qiita.com/azukiazusa">Qiita</a
               >
             </p>
             <p class="mt-2">3年目のエンジニアです。</p>
