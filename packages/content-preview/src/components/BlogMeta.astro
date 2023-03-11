@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { post } = Astro.props
+console.log(post.frontmatter.thumbnail)
 ---
 
 <div class="bg-white dark:bg-gray-700 py-10 px-24 mb-4 border border-gray-200 dark:border-gray-600">
@@ -38,12 +39,12 @@ const { post } = Astro.props
     <div class="flex items-center">
       <div class="font-bold w-40">Slug</div>
       <div class="ml-2 w-96 text-gray-500 dark:text-gray-300">{post.frontmatter.slug}</div>
-      <div class="ml-4 text-gray-500 dark:text-gray-300">{post.frontmatter.slug.length} / 255</div>
+      <div class="ml-4 text-gray-500 dark:text-gray-300">{post.frontmatter.slug?.length ?? 0} / 255</div>
     </div>
     <div class="flex items-center">
       <div class="font-bold w-40">About</div>
       <div class="ml-2 w-96 text-gray-500 dark:text-gray-300">{post.frontmatter.about}</div>
-      <div class="ml-4 text-gray-500 dark:text-gray-300">{post.frontmatter.about.length} / 255</div>
+      <div class="ml-4 text-gray-500 dark:text-gray-300">{post.frontmatter.about?.length ?? 0} / 255</div>
     </div>
     <div class="flex items-center">
       <div class="font-bold w-40">公開済み</div>
@@ -69,7 +70,6 @@ const { post } = Astro.props
 <script>
   const openVscode = () => {
     const filepath = document.getElementById('open-vscode').dataset.file
-    console.log(filepath)
     window.open(`vscode://file${filepath}`)
   }
   document.getElementById('open-vscode').addEventListener('click', openVscode)
