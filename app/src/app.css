@@ -260,7 +260,7 @@ html.dark #contents code:not(pre > *) {
   @apply bg-gray-500 text-gray-50;
 }
 
-#contents pre:has(code) {
+#contents pre {
   overflow: auto;
   border-radius: 6px;
   background: #263238;
