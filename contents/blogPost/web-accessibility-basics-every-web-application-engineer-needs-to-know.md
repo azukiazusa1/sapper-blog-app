@@ -2,7 +2,7 @@
 id: 6yMQgLEn1ir5MgJE6B96Dv
 title: "Web アプリケーションエンジニアのためのウェブアクセシビリティの基礎"
 slug: "web-accessibility-basics-every-web-application-engineer-needs-to-know"
-about: "この記事は、ウェブアプリケーションエンジニアとして仕事をされている方を対象に書かれています。日々のウェブフロントエンドの開発の中で意識しておきたい基礎的な内容をメインに記載しています。"
+about: "ウェブアプリケーションエンジニアを対象に、アクセシビリティの対応について解説した記事。アクセシビリティを向上させるためには、正しいHTMLの書き方が必要である。HTML要素には、アクセシビリティに関する機能が元々備わっているため、適切なHTMLを選択し使用することが大切だ。複雑なUIの場合はWAI-ARIAを使用し、ARIA Authoring Practices Guideに基づき適切に実装する必要がある。UIライブラリ選びの際には、WAI-ARIAに従った実装を行っているかが基準の1つとなる。"
 createdAt: "2023-02-19T00:00+09:00"
 updatedAt: "2023-02-19T00:00+09:00"
 tags: ["アクセシビリティ"]
