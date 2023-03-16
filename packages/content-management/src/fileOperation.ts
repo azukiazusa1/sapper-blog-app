@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 /**
  * yaml の文字列の " はエスケープする必要がある
  */
-const excape = (str: string) => {
+const escape = (str: string) => {
   return str.replace(/"/g, '\\"')
 }
 
@@ -31,17 +31,17 @@ export const createBlogFile = async (blog: BlogPost) => {
 
   const content = `---
 id: ${blog.id}
-title: ${title ? `"${excape(title)}"` : 'null'}
-slug: ${slug ? `"${excape(slug)}"` : 'null'}
-about: ${about ? `"${excape(about)}"` : 'null'}
+title: ${title ? `"${escape(title)}"` : 'null'}
+slug: ${slug ? `"${escape(slug)}"` : 'null'}
+about: ${about ? `"${escape(about)}"` : 'null'}
 createdAt: ${createdAt ? `"${createdAt}"` : 'null'}
 updatedAt: ${updatedAt ? `"${updatedAt}"` : 'null'}
-tags: [${tags.map((t) => `"${excape(t)}"`).join(', ')}]
+tags: [${tags.map((t) => `"${escape(t)}"`).join(', ')}]
 thumbnail:${
     blog.thumbnail
       ? `
-  url: "${excape(blog.thumbnail.url)}"
-  title: "${excape(blog.thumbnail.title)}"`
+  url: "${escape(blog.thumbnail.url)}"
+  title: "${escape(blog.thumbnail.title)}"`
       : ' null'
   }
 published: ${published}

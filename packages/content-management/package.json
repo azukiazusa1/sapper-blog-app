@@ -15,7 +15,8 @@
     "sync": "ts-node src/commands/sync.ts",
     "update": "ts-node src/commands/update.ts",
     "new": "ts-node src/commands/new.ts",
-    "validate": "ts-node src/commands/validate.ts"
+    "validate": "ts-node src/commands/validate.ts",
+    "summarize": "ts-node src/commands/summarize.ts"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "@actions/github": "^5.1.1",
     "contentful-management": "^10.29.3",
     "nanoid": "^4.0.1",
+    "openai": "^3.2.1",
     "slugify": "^1.6.5",
     "string-similarity": "^4.0.4",
     "typescript": "^4.9.5",
