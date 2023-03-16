@@ -24,24 +24,46 @@ function summaryPrompt(text: string): string {
   return `以下の文章を200字程度の日本語で要約してください。\n\n${text}`
 }
 
+/**
+ * Get a summary of the text, using GPT-
+ * @param text The text to summarize
+ * @param level The current recursion level (used to prevent infinite recursion)
+ * @returns The summary
+ */
 export async function getSummary(text: string, level = 1): Promise<string> {
-  // 再帰的要約
   if (text.length <= maxSummaryLength || level > maxRecursion) {
     return text
   }
-  const textChunks = chunkString(text, maxInputLength)
-  const summaryChunks = await Promise.all(
-    textChunks.map(async (chunk) => {
-      const messages: ChatCompletionRequestMessage[] = [{ role: 'user', content: summaryPrompt(chunk) }]
-      const completion = await openai.createChatCompletion({
-        model: 'gpt-3.5-turbo',
-        max_tokens: maxSummaryLength,
-        messages: messages,
-      })
-      const chunkSummary = completion.data.choices[0]?.message?.content || ''
-      return chunkSummary
-    }),
-  )
+
+  const summaryChunks = await generateSummaryChunks(text)
   const joinedSummary = summaryChunks.join('\n')
   return getSummary(joinedSummary, level + 1)
+}
+
+/**
+ * Generates summary chunks from a given text
+ * @param text A string containing the text to summarize
+ * @param maxInputLength The maximum length of the input text
+ * @param generateSummaryChunk A function that generates a summary chunk from a given chunk of text
+ */
+async function generateSummaryChunks(text: string): Promise<string[]> {
+  const textChunks = chunkString(text, maxInputLength)
+  const summaryChunks = await Promise.all(textChunks.map((chunk) => generateSummaryChunk(chunk)))
+  return summaryChunks
+}
+
+// function to generate a summary chunk from a given text
+// uses OpenAI's GPT-3 3.5 Turbo model to generate a summary
+// of a given text
+// maxSummaryLength is the number of tokens that the summary should have
+// at most
+async function generateSummaryChunk(text: string): Promise<string> {
+  const messages: ChatCompletionRequestMessage[] = [{ role: 'user', content: summaryPrompt(text) }]
+  const completion = await openai.createChatCompletion({
+    model: 'gpt-3.5-turbo',
+    max_tokens: maxSummaryLength,
+    messages: messages,
+  })
+  const chunkSummary = completion.data.choices[0]?.message?.content || ''
+  return chunkSummary
 }
