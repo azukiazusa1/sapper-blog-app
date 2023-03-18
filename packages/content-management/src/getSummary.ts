@@ -67,3 +67,22 @@ async function generateSummaryChunk(text: string): Promise<string> {
   const chunkSummary = completion.data.choices[0]?.message?.content || ''
   return chunkSummary
 }
+
+export async function getSlug(text: string): Promise<string> {
+  const completion = await openai.createChatCompletion({
+    model: 'gpt-3.5-turbo',
+    messages: [
+      {
+        role: 'user',
+        content: `(入力値)を英訳してからスラッグに変換してください。
+例: (入力値)こんにちは、世界
+(出力)hello-world
+
+(入力値)${text}
+(出力)`,
+      },
+    ],
+  })
+  const slug = completion.data.choices[0]?.message?.content || ''
+  return slug
+}
