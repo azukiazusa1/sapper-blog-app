@@ -36,7 +36,7 @@ output:
 
 ![Convert input to English and then to a slug. input:Check for completeness with TypeScript Output:Check-for-comp](https://images.ctfassets.net/in6v9lxmm5c8/72PslQKObe8Hkaj7PWiaPu/1938d5d986a15754231ae2cdc010bd3c/__________2023-03-19_13.01.43.png)
 
-![convert input to English: "Check for comprehensiveness with TypeScript" convert to slug: "check-for-comprehensiveness-with-typescript"](https://images.ctfassets.net/in6v9lxmm5c8/5UtO5DMCUGnKTqMYnLhD7N/d80519456ee249c66156d4f01af9f405/__________2023-03-19_13.39.50.png)
+![convert input to English: Check for comprehensiveness with TypeScript convert to slug: check-for-comprehensiveness-with-typescript](https://images.ctfassets.net/in6v9lxmm5c8/5UtO5DMCUGnKTqMYnLhD7N/d80519456ee249c66156d4f01af9f405/__________2023-03-19_13.39.50.png)
 
 ![typescript-to-check-code-coverage](https://images.ctfassets.net/in6v9lxmm5c8/6F0yJcbh3PbihPAbz54Y0l/674623d38d5a29d2328ff63c63132912/__________2023-03-19_13.00.30.png)
 
