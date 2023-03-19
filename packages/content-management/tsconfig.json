@@ -5,6 +5,8 @@
     "esm": true
   },
   "compilerOptions": {
+    "moduleResolution": "bundler",
+    "ignoreDeprecations": "5.0",
     "types": [
       "vitest/importMeta"
     ]

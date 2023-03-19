@@ -1,7 +1,7 @@
 import contentful, { MetaLinkProps } from 'contentful-management'
 import slugify from 'slugify'
-import { Env } from './env.js'
-import { searchRelatedArticles } from './searchRelatedArticles.js'
+import { Env } from './env'
+import { searchRelatedArticles } from './searchRelatedArticles'
 import type {
   BlogPost,
   ContentfulBlogPost,
@@ -10,7 +10,7 @@ import type {
   FieldValue,
   PublishedBlogPost,
   Thumbnail,
-} from './types.js'
+} from './types'
 
 type Cache = {
   tags?: ContentfulTag[]

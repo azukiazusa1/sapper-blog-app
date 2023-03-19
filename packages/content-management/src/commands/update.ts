@@ -1,5 +1,5 @@
-import { createBlogPost, updateBlogPost, deleteBlogPost } from '../api.js'
-import { loadBlogPost } from '../fileOperation.js'
+import { createBlogPost, updateBlogPost, deleteBlogPost } from '../api'
+import { loadBlogPost } from '../fileOperation'
 import { basename } from 'path'
 
 const { ADDED_FILES, MODIFIED_FILES, DELETED_FILES } = process.env

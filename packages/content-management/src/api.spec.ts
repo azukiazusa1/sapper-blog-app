@@ -5,7 +5,7 @@ import { createBlogPost, getBlogPosts, updateBlogPost } from './api'
 import type { BlogPost, ContentfulBlogPost, ContentfulTag } from './types'
 import { createDummyMetaSysProps } from './test-utils'
 
-vi.mock('./searchRelatedArticles.js', () => {
+vi.mock('./searchRelatedArticles', () => {
   return {
     searchRelatedArticles: async () => {
       return [
