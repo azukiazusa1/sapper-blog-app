@@ -15,7 +15,7 @@ published: true
 
 ChatGPT で出力の形式を固定したい場合には、出力の例を提示すると決まった形式で回答を得やすい。
 
-![inputを英訳してからスラッグに変換してください。例"""input:こんにちは、世界output:hello-world"""input:TypeScript で網羅性をチェックするoutput:typescript-check-code-coverage](https://images.ctfassets.net/in6v9lxmm5c8/1zJHs4hawyoNOMKh0m7WxB/e7b779c94bdef94b089574bb3dfeebfb/__________2023-03-19_13.52.31.png)
+![inputを英訳してからスラッグに変換してください。例input:こんにちは、世界output:hello-worldinput:TypeScript で網羅性をチェックするoutput:typescript-check-code-coverage](https://images.ctfassets.net/in6v9lxmm5c8/1zJHs4hawyoNOMKh0m7WxB/e7b779c94bdef94b089574bb3dfeebfb/__________2023-03-19_13.52.31.png)
 
 ## ChatGPT の出力は都度異なる
 
