@@ -1,5 +1,5 @@
 import { createBlogFile, loadBlogPost } from '../fileOperation'
-import { getSummary } from '../getSummary'
+import { getSlug, getSummary } from '../getSummary'
 
 const args = process.argv.slice(2)
 if (!args[0]) {
