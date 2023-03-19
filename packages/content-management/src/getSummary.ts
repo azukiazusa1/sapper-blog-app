@@ -58,7 +58,10 @@ async function generateSummaryChunks(text: string): Promise<string[]> {
 // maxSummaryLength is the number of tokens that the summary should have
 // at most
 async function generateSummaryChunk(text: string): Promise<string> {
-  const messages: ChatCompletionRequestMessage[] = [{ role: 'user', content: summaryPrompt(text) }]
+  const messages: ChatCompletionRequestMessage[] = [
+    { role: 'system', content: 'あなたはプロの編集者です。' },
+    { role: 'user', content: summaryPrompt(text) },
+  ]
   const completion = await openai.createChatCompletion({
     model: 'gpt-3.5-turbo',
     max_tokens: maxSummaryLength,
