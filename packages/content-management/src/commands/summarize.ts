@@ -1,5 +1,5 @@
 import { createBlogFile, loadBlogPost } from '../fileOperation.js'
-import { getSummary } from '../getSummary.js'
+import { getSlug, getSummary } from '../getSummary.js'
 
 const args = process.argv.slice(2)
 if (!args[0]) {
@@ -19,11 +19,14 @@ if (!markdown.data.article) {
   process.exit(1)
 }
 
-const reuslt = await getSummary(markdown.data.article)
+const slug = await getSlug(markdown.data.title ?? '')
+const about = await getSummary(markdown.data.article)
 
-console.log(reuslt)
+console.log(slug)
+console.log(about)
 
 await createBlogFile({
   ...markdown.data,
-  about: reuslt,
+  about,
+  slug,
 })
