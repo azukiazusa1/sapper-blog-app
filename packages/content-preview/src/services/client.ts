@@ -1,5 +1,5 @@
 import * as contentful from 'contentful-management'
-import { Env } from './env.js'
+import { Env } from './env'
 
 type Cache = {
   environment?: contentful.Environment
