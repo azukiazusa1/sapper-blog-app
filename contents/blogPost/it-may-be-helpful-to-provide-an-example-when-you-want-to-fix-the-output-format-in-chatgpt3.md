@@ -8,7 +8,7 @@ updatedAt: "2023-03-19T13:13+09:00"
 tags: ["ChatGPT"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1BQhtWPxcrcgJ8yXSaSX6s/2db2b19fd059a3fc0618e70174d4d8ac/_Pngtree_vector_map_and_treasure_chest_946585.png"
-  title: "treasure-chest"
+  title: "—Pngtree—vector map and treasure chest_946585.png"
 published: true
 ---
 ## TL;DR
