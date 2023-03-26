@@ -5,11 +5,6 @@ import html from 'remark-html'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import remarkLinkCard from './index'
-import _fetch from 'node-fetch'
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-global.fetch = _fetch
 
 const server = setupServer(
   rest.get('https://example.com', (req, res, ctx) => {
