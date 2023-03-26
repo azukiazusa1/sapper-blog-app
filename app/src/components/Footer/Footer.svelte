@@ -1,4 +1,4 @@
-<footer class="md:h-24 border-t border-gray-400 dark:border-gray-600 text-sm text-gray-600 dark:text-gray-400">
+<footer class="md:h-24 border-t border-gray-300 dark:border-zinc-700 text-sm text-gray-600 dark:text-gray-400">
   <div class="container flex flex-col justify-center gap-4 mx-auto p-4 h-full">
     <p>
       © {new Date().getFullYear()} - Copyright azukiazusa, All Rights Reserved.

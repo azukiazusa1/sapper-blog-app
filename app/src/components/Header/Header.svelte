@@ -59,7 +59,7 @@
 
 <SideMenu {isOpen} {darkMode} {segment} {routes} on:close={closeSideMenu} on:clickMoon={handleMoonClick} />
 <header
-  class={`sticky md:static left-0 w-full bg-white/70 dark:bg-gray-700/70 backdrop-blur shadow border-b border-gray-200 dark:border-gray-600 transition-all ease-in-out duration-300 z-10
+  class={`sticky md:static left-0 w-full backdrop-blur border-b border-gray-200 dark:border-zinc-700 transition-all ease-in-out duration-300 z-10
     ${hideHeader ? '-top-14 md:top-0' : 'top-0'}
   `}
 >

@@ -8,7 +8,7 @@
 
 <div class="relative overflow-x-auto rounded-lg">
   <table class="w-full text-sm text-left">
-    <thead class="text-xs uppercase bg-gray-200 dark:bg-gray-600">
+    <thead class="text-xs uppercase bg-gray-200 dark:bg-zinc-600">
       <tr>
         <th scope="col" class="px-6 py-3">Title</th>
         <th scope="col" class="px-6 py-3 text-center">Thumbnail</th>
@@ -19,7 +19,7 @@
     <tbody>
       {#each data.blogPostCollection?.items ?? [] as draft (draft.sys.id)}
         <tr
-          class="bg-white border-b dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-500 dark:border-gray-600 cursor-pointer"
+          class="border-b hover:bg-gray-50 dark:hover:bg-zinc-700 dark:border-zinc-700 cursor-pointer"
           on:click={() => goto(`/drafts/${draft.sys.id}`)}
         >
           <th scope="row" class="px-6 py-4 whitespace-nowrap">

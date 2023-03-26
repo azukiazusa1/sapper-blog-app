@@ -16,7 +16,7 @@
   let input: HTMLInputElement
 </script>
 
-<div class="flex border-2 border-gray-300 dark:border-gray-600 rounded-lg w-full">
+<div class="flex border-2 border-gray-300 dark:border-zinc-700 rounded-lg w-full">
   <input
     bind:value
     bind:this={input}
@@ -24,7 +24,7 @@
     on:blur
     on:keydown
     on:input
-    class="bg-white h-10 px-5 rounded-l-lg focus:outline-none dark:bg-gray-800 w-60"
+    class="h-10 px-5 rounded-l-lg focus:outline-none w-60 dark:bg-zinc-900"
     type="text"
     id={inputId}
     {name}
@@ -35,7 +35,7 @@
     aria-controls={listboxId}
     aria-activedescendant={activeIndex !== null ? `${optionId}-${activeIndex}` : undefined}
   />
-  <button class="flex justify-end p-2 rounded-r-lg dark:bg-gray-700" aria-label="検索">
+  <button class="flex justify-end p-2 rounded-r-lg" aria-label="検索">
     <SearchIcon className="text-gray-600 dark:text-gray-50 h-6 w-6" />
   </button>
 </div>
