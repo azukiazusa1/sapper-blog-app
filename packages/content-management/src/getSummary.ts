@@ -1,5 +1,5 @@
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
-import { Env } from './env'
+import { Env } from './env.ts'
 
 const configuration = new Configuration({
   apiKey: Env.openaiApiKey,
