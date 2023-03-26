@@ -13,7 +13,7 @@ published: false
 ---
 2023 年 3 月 24 日に [HTML Standard](https://html.spec.whatwg.org/multipage/) に `<search>` 要素が追加されました。
 `
-?> この記事が公開された時点（2023年 3 月 26日）で、ブラウザの実装はまだ完了していません。現在の実装状況は [Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/?search=%3Csearch%3E) を参照してください。
+?> この記事が公開された時点（2023 年 3 月 26 日）で、ブラウザの実装はまだ完了していません。現在の実装状況は [Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/?search=%3Csearch%3E) を参照してください。
 
 ## 背景
 
@@ -45,7 +45,7 @@ ARIA は 8 つのランドマークロールを定義していますが、唯一
 
 通常、`<search>` 要素は少なくとも 1 つの入力要素を含んでいるはずです。また必須ではないものの、検索を開始するためのボタンも存在することが期待されています。
 
-`<search>` 要素を使用した例として、以下のような検索フォームを作成することができます。
+`<search>` 要素を使用した例として、以下のような検索フォームを作成できます。
 
 ```html
 <search>
