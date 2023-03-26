@@ -12,7 +12,7 @@ thumbnail:
 published: true
 ---
 2023 年 3 月 24 日に [HTML Standard](https://html.spec.whatwg.org/multipage/) に `<search>` 要素が追加されました。
-`
+
 ?> この記事が公開された時点（2023 年 3 月 26 日）で、ブラウザの実装はまだ完了していません。現在の実装状況は [Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/?search=%3Csearch%3E) を参照してください。
 
 ## 背景
@@ -31,7 +31,6 @@ ARIA は 8 つのランドマークロールを定義していますが、唯一
 | navigation             | `<nav>`            |
 | region                 | `<section>`        |
 | search                 | `<search>`         |
-
 
 ## 使い方
 
