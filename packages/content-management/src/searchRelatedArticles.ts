@@ -1,7 +1,7 @@
 import type { MetaLinkProps } from 'contentful-management'
 import { compareTwoStrings } from 'string-similarity'
-import { loadAllBlogPost, Result } from './fileOperation'
-import type { BlogPost } from './types'
+import { loadAllBlogPost, Result } from './fileOperation.ts'
+import type { BlogPost } from './types.ts'
 
 export const searchRelatedArticles = async (blogPost: BlogPost): Promise<{ sys: MetaLinkProps }[]> => {
   const allBlogPost = await loadAllBlogPost()

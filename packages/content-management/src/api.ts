@@ -1,7 +1,7 @@
 import contentful, { MetaLinkProps } from 'contentful-management'
 import slugify from 'slugify'
-import { Env } from './env'
-import { searchRelatedArticles } from './searchRelatedArticles'
+import { Env } from './env.ts'
+import { searchRelatedArticles } from './searchRelatedArticles.ts'
 import type {
   BlogPost,
   ContentfulBlogPost,

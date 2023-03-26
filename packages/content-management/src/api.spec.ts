@@ -1,9 +1,9 @@
 import { setupServer } from 'msw/node'
 import { rest } from 'msw'
 import { afterAll, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
-import { createBlogPost, getBlogPosts, updateBlogPost } from './api'
-import type { BlogPost, ContentfulBlogPost, ContentfulTag } from './types'
-import { createDummyMetaSysProps } from './test-utils'
+import { createBlogPost, getBlogPosts, updateBlogPost } from './api.ts'
+import type { BlogPost, ContentfulBlogPost, ContentfulTag } from './types.ts'
+import { createDummyMetaSysProps } from './test-utils.ts'
 
 vi.mock('./searchRelatedArticles', () => {
   return {

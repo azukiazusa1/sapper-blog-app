@@ -1,7 +1,7 @@
-import { createBlogFile, loadBlogPost, Result } from './fileOperation'
+import { createBlogFile, loadBlogPost, Result } from './fileOperation.ts'
 import { vi, describe, test, expect, afterEach, MockedFunction } from 'vitest'
 import { promises as fs } from 'fs'
-import type { DraftBlogPost, PublishedBlogPost } from './types'
+import type { DraftBlogPost, PublishedBlogPost } from './types.ts'
 
 const mockedWriteFile = fs.writeFile as MockedFunction<typeof fs.writeFile>
 const mockedReadFile = fs.readFile as MockedFunction<typeof fs.readFile>

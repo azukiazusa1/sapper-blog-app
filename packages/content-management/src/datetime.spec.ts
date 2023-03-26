@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
-import { now } from './datetime'
+import { now } from './datetime.ts'
 
 describe('datetime', () => {
   beforeEach(() => {

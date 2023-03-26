@@ -1,4 +1,4 @@
-import { loadBlogPost } from '../fileOperation'
+import { loadBlogPost } from '../fileOperation.ts'
 import { basename } from 'path'
 import { getOctokit } from '@actions/github'
 

@@ -1,6 +1,6 @@
-import { createBlogFile } from '../fileOperation'
+import { createBlogFile } from '../fileOperation.ts'
 import { nanoid } from 'nanoid'
-import { now } from '../datetime'
+import { now } from '../datetime.ts'
 
 const id = nanoid()
 

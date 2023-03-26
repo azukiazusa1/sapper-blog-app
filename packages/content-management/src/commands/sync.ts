@@ -1,5 +1,5 @@
-import { getBlogPosts } from '../api'
-import { createBlogFile, deletePublishedBlogFile } from '../fileOperation'
+import { getBlogPosts } from '../api.ts'
+import { createBlogFile, deletePublishedBlogFile } from '../fileOperation.ts'
 
 const blogPosts = await getBlogPosts()
 for (const blogPost of blogPosts) {
