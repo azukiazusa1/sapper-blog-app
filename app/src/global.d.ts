@@ -1,9 +1,9 @@
 declare module '$env/static/private' {
-  const API_KEY: string
-  const PREVIEW_API_KEY: string
-  const SPACE: string
-  const ENVIRONMENTS: string
-  const GITHUB_TOKEN: string
+  export const API_KEY: string
+  export const PREVIEW_API_KEY: string
+  export const SPACE: string
+  export const ENVIRONMENTS: string
+  export const GITHUB_TOKEN: string
 }
 declare module '$env/static/public' {
   export const PUBLIC_ANALYTICS_ID: string
