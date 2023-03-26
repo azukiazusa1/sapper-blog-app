@@ -14,14 +14,12 @@
   export let lazy = true
 </script>
 
-<article
-  class="overflow-hidden h-full w-10/12 md:w-full m-auto bg-white dark:bg-gray-700 rounded-lg shadow-lg border dark:border-gray-600"
->
+<article class="overflow-hidden h-full w-10/12 md:w-full m-auto rounded-lg border dark:border-zinc-700">
   <a href={`/blog/${slug}`}>
     <Image alt={thumbnail.title} src={thumbnail.url} width={400} height={300} {lazy} />
   </a>
 
-  <header class="flex-row items-center justify-between leading-tight p-4 border-t border-gray-300 dark:border-gray-600">
+  <header class="flex-row items-center justify-between leading-tight p-4 border-t dark:border-zinc-700">
     <h1 class="text-2xl">
       <a class="no-underline hover:underline" href={`/blog/${slug}`}>{title}</a>
     </h1>

@@ -9,7 +9,7 @@
   role="option"
   aria-selected={selected}
   {id}
-  class={`cursor-pointer flex items-center px-4 py-3 -mx-2 transition-colors duration-200 transform border-b last:border-0 hover:bg-gray-100 dark:hover:bg-gray-500 dark:border-gray-600 ${
+  class={`cursor-pointer flex items-center px-4 py-3 -mx-2 transition-colors duration-200 transform border-b last:border-0 hover:bg-gray-100 dark:hover:bg-gray-500 dark:border-zinc-700 ${
     selected ? 'bg-gray-100 dark:bg-gray-500' : ''
   }`}
   on:mousedown

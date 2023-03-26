@@ -1,1 +1,1 @@
-<div class="min-h-screen bg-gray-100 dark:bg-gray-800 dark:text-gray-50"><slot /></div>
+<div class="min-h-screen bg-white dark:bg-gray-800 dark:bg-zinc-900/95"><slot /></div>

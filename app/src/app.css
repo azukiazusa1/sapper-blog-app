@@ -11,19 +11,19 @@
 #contents h1 {
   font-size: 1.8rem;
   font-weight: 700;
-  border-bottom: 1px solid #ddd;
   padding-bottom: 0.1rem;
   margin-bottom: 2.1rem;
   padding-top: 1.5rem;
+  @apply border-b border-gray-300 dark:border-zinc-700;
 }
 
 #contents h2 {
   font-size: 1.6em;
   font-weight: 700;
-  border-bottom: 1px solid #ddd;
   padding-bottom: 0.1rem;
   margin-bottom: 2.1rem;
   padding-top: 1.5rem;
+  @apply border-b border-gray-300 dark:border-zinc-700;
 }
 
 #contents h3 {
@@ -122,15 +122,13 @@ html.dark #contents a {
 
 #contents th {
   font-weight: 700;
-  color: black;
   padding: 0.5rem;
-  border: 1px solid #cfdce6;
-  background: #edf2f7;
+  @apply bg-gray-200 dark:bg-zinc-600 border border-gray-300 dark:border-zinc-700;
 }
 
 #contents td {
   padding: 0.5rem;
-  border: 1px solid #cfdce6;
+  @apply border border-gray-300 dark:border-zinc-700;
 }
 
 .toc {
@@ -206,7 +204,7 @@ h6 .icon-link::before {
 .rehype-code-title {
   display: table;
   max-width: 100%;
-  background: #263238;
+  background: #212121;
   color: #ccc;
   font-size: 14px;
   line-height: 1.3;
@@ -285,7 +283,7 @@ code .line::before {
 }
 
 .link-card {
-  @apply flex flex-auto items-center justify-between bg-gray-50 border rounded-lg md:flex-row hover:bg-gray-100 dark:border-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600 h-32 max-w-full;
+  @apply flex flex-auto items-center justify-between bg-white border rounded-lg md:flex-row hover:bg-gray-100 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 h-32 max-w-full;
 }
 
 .link-card:hover {

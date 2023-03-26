@@ -30,15 +30,15 @@
 <svelte:window on:keydown={handleWindowKeyDown} />
 {#if isOpen}
   <!-- eslint-disable-next-line svelte/valid-compile -->
-  <div on:click|self={close} class="fixed z-10 inset-0 overflow-y-auto bg-gray-900 opacity-50" />
+  <div on:click|self={close} class="fixed z-10 inset-0 overflow-y-auto bg-zinc-900 opacity-50" />
 {/if}
 <aside
-  class={`flex flex-col border-r border-gray-200 dark:border-gray-600 justify-between transform top-0 left-0 w-64 bg-white dark:bg-gray-700 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
+  class={`flex flex-col border-r border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 justify-between transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
     isOpen ? 'translate-x-0 visible ' : '-translate-x-full invisible'
   }`}
 >
   <div>
-    <div class="flex justify-between w-full h-12 items-center p-4 border-b border-gray-200 dark:border-gray-600">
+    <div class="flex justify-between w-full h-12 items-center p-4 border-b border-gray-200 dark:border-zinc-700">
       <Title />
       <ToggleDarkMode {darkMode} on:click={() => dispatch('clickMoon')} />
     </div>
@@ -57,7 +57,7 @@
       {/each}
     </ul>
   </div>
-  <div class="flex w-full items-center p-4 border-t border-gray-200 dark:border-gray-600">
+  <div class="flex w-full items-center p-4 border-t border-gray-200 dark:border-zinc-700">
     <a href="/rss.xml" target="_blank" class="mr-2" rel="noopener noreferrer" aria-label="RSS">
       <RssIcon className="h-6 w-6" />
     </a>

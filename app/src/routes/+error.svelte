@@ -14,10 +14,10 @@
   </title>
 </svelte:head>
 
-<div class="bg-white dark:bg-gray-700 pt-10 pb-20 rounded-lg shadow-lg max-w-5xl mx-auto">
+<div class="pt-10 pb-20 max-w-5xl mx-auto">
   <div class="flex flex-col items-center justify-between min-h-full">
     <div class="mb-20">
-      <h1 class="font-bold text-9xl italic tracking-wide text-center">{title}</h1>
+      <h1 class="font-bold text-6xl italic tracking-wide text-center">{title}</h1>
       <p
         class="max-w-2xl mt-4 mb-6 font-light text-gray-500 leading-relaxed lg:mb-8 md:text-lg lg:text-xl dark:text-gray-300"
       >
@@ -27,7 +27,7 @@
     <div>
       <a
         href="/"
-        class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-600 dark:hover:bg-gray-800 dark:focus:ring-gray-900"
+        class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 dark:text-white dark:border-zinc-700 dark:hover:bg-zinc-700"
       >
         トップに戻る
       </a>
