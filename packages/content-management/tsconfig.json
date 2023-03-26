@@ -6,6 +6,7 @@
   },
   "compilerOptions": {
     "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "ignoreDeprecations": "5.0",
     "types": [
       "vitest/importMeta"
