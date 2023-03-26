@@ -35,8 +35,6 @@ jobs:
       - name: Install dependencies
         if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
         run: npm ci
-      - name: Build
-        run: npm run build
       - name: Run lint
         run: npm run lint && npm run typecheck
   test:
