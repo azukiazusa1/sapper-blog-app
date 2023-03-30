@@ -222,7 +222,7 @@ h6 .icon-link::before {
 }
 
 .tip::before {
-  content: "i";
+  content: 'i';
   @apply bg-blue-400 dark:bg-blue-600;
 }
 
