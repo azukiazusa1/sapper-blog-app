@@ -91,6 +91,24 @@
   line-height: 1.9;
 }
 
+#contents details {
+  margin: 0 0 1.125rem 0;
+}
+
+#contents details[open] {
+  @apply border border-gray-300 dark:border-zinc-700 rounded-lg;
+}
+
+#contents details > * {
+  @apply p-4;
+}
+
+#contents summary {
+  padding: 0.5rem 1rem;
+  margin: 0 0 1.125rem 0;
+  @apply bg-gray-200 dark:bg-zinc-600 rounded-t-lg cursor-pointer;
+}
+
 #contents img {
   margin: 1.5rem auto;
 }
