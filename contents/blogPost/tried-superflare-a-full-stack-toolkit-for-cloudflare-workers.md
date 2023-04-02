@@ -1,17 +1,16 @@
 ---
 id: lMyVvUVkcpBVP-_VGoZSn
-title: Cloudflare Workers のためのフルスタックツールキット Superflare を試してみた
+title: "Cloudflare Workers のためのフルスタックツールキット Superflare を試してみた"
 slug: "tried-superflare-a-full-stack-toolkit-for-cloudflare-workers"
-about: Superflare は Cloudflare Workers 用のフルスタックツールキットです。D1 Database 向けの ORM や R2 Storage 向けのユーティリティなどの機能を提供しています。Superflare 自体はフレームワークを謳っておりません。実際に、Superflare は Remix、Next.js、Nuxt.js などのフレームワークと組み合わせることで効果を発揮します。
+about: "Superflare は Cloudflare Workers 用のフルスタックツールキットです。D1 Database 向けの ORM や R2 Storage 向けのユーティリティなどの機能を提供しています。Superflare 自体はフレームワークを謳っておりません。実際に、Superflare は Remix、Next.js、Nuxt.js などのフレームワークと組み合わせることで効果を発揮します。"
 createdAt: "2023-04-02T11:23+09:00"
 updatedAt: "2023-04-02T11:23+09:00"
-tags: [Cloudflare Workers,superflare]
+tags: ["Cloudflare Workers", "superflare"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2MPSlG6x2kH4O0jxQ7TON8/306b1b56a9cb14a32b3a7e41071edb2e/shikun20220402_114719-2_TP_V4.jpg"
-  title: "cat"
+  title: "shikun20220402_114719-2_TP_V4.jpg"
 published: true
 ---
-
 Superflare は Cloudflare Workers 用のフルスタックツールキットです。[D1 Database](https://developers.cloudflare.com/d1/) 向けの ORM や [R2 Storage](https://developers.cloudflare.com/r2/) 向けのユーティリティなどの機能を提供しています。
 
 https://superflare.dev/
