@@ -99,7 +99,7 @@
   @apply border border-gray-300 dark:border-zinc-700 rounded-lg;
 }
 
-#contents details > * {
+#contents details > p {
   @apply p-4;
 }
 

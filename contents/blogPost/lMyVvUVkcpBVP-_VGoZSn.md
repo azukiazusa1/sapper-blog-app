@@ -1,13 +1,15 @@
 ---
 id: lMyVvUVkcpBVP-_VGoZSn
 title: Cloudflare Workers のためのフルスタックツールキット Superflare を試してみた
-slug: null
-about: null
-createdAt: "2023-04-01T11:23+09:00"
-updatedAt: "2023-04-01T11:23+09:00"
+slug: "tried-superflare-a-full-stack-toolkit-for-cloudflare-workers"
+about: Superflare は Cloudflare Workers 用のフルスタックツールキットです。D1 Database 向けの ORM や R2 Storage 向けのユーティリティなどの機能を提供しています。Superflare 自体はフレームワークを謳っておりません。実際に、Superflare は Remix、Next.js、Nuxt.js などのフレームワークと組み合わせることで効果を発揮します。
+createdAt: "2023-04-02T11:23+09:00"
+updatedAt: "2023-04-02T11:23+09:00"
 tags: [Cloudflare Workers,superflare]
-thumbnail: null
-published: false
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2MPSlG6x2kH4O0jxQ7TON8/306b1b56a9cb14a32b3a7e41071edb2e/shikun20220402_114719-2_TP_V4.jpg"
+  title: "cat"
+published: true
 ---
 
 Superflare は Cloudflare Workers 用のフルスタックツールキットです。[D1 Database](https://developers.cloudflare.com/d1/) 向けの ORM や [R2 Storage](https://developers.cloudflare.com/r2/) 向けのユーティリティなどの機能を提供しています。
@@ -18,8 +20,6 @@ Superflare 自体はフレームワークを謳っておりません。実際に
 
 !> 2023 年 4 月 1 日現在、Superflare Remix のみに対応しています。
 
-## Superflare の設計思想
-
 ## Getting Started
 
 ### Cloudflare Workers アカウントの作成
@@ -28,13 +28,13 @@ Cloudflare Workers を動かすためには（ローカル環境も含めて）C
 
 https://workers.cloudflare.com/
 
-![スクリーンショット 2022-08-27 20.53.23](//images.ctfassets.net/in6v9lxmm5c8/2B5th0yGYIcqVVlytjIe8h/bc718884e967478637bf5624058ed973/____________________________2022-08-27_20.53.23.png)
+![](//images.ctfassets.net/in6v9lxmm5c8/2B5th0yGYIcqVVlytjIe8h/bc718884e967478637bf5624058ed973/____________________________2022-08-27_20.53.23.png)
 
 プランの選択は無料プランである「Free」プランで問題ありません。
 
 ### プロジェクトの作成
 
-Cloudflare Workers のプロジェクトを作成するためにはコマンドラインツールである [wrangler](https://www.npmjs.com/package/wrangler) をインストールします。
+Cloudflare Workers のプロジェクトを作成するためにはコマンドラインツールである [wrangler](https://developers.cloudflare.com/workers/wrangler/) をインストールします。
 
 ```sh
 npm install -g wrangler
@@ -44,7 +44,7 @@ npm install -g wrangler
 
 ```sh
 wrangler --version
- ⛅️ wrangler 2.0.27 
+ ⛅️ wrangler 2.13.0 
 --------------------
 ```
 
@@ -83,15 +83,15 @@ Cloudflare のリソースにアクセスするためには認証が必要です
 └
 ```
 
-Hands-up にあるように、R2、Queues、Durable objects を使用する前に Cloudflare のダッシュボードで有効化する必要があります。今回のチュートリアルでは R2 を使用するため、ダッシュボードで有効化しておきます。https://dash.cloudflare.com/ にアクセスして、左のメニューから「R2」を選択し、「Purchase R2 Plan」をクリックします。
+Hands-up にあるように、R2、Queues、Durable objects を使用する前に Cloudflare のダッシュボードで有効化する必要があります。今回のチュートリアルでは R2 を使用するため、ダッシュボードで R2 を有効化しておきます。https://dash.cloudflare.com/ にアクセスして、左のメニューから「R2」を選択し、「Purchase R2 Plan」をクリックします。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/13sxkxZxTxVjpdXAAg8O11/7b11fbcc562fb6f22276de85f260fb86/__________2023-04-01_11.42.46.png)
 
 x> R2 プランを有効にすると、利用料に応じて課金が発生します。[R2 の Pricing](https://developers.cloudflare.com/r2/pricing) をよく確認して自己責任で有効化してください。
 
-有効化が完了したら、ターミナルに戻りプロジェクトのディレクトリ名（ここでは `./my-superflare-app` ）を入力して Enter キーを押します。
+有効化が完了したら、ターミナルに戻りプロジェクトのディレクトリ名（ここでは `./my-superflare-app`）を入力して Enter キーを押します。
 
-有効化する機能を選択する画面が表示されます。`Database Models ` と `Storage` のみを選択します。
+有効化する機能を選択する画面が表示されます。`Database Models` と `Storage` のみを選択します。
 
 ```bash
 ◆  What features of Superflare do you plan to use? We'll create the resources
@@ -198,11 +198,13 @@ http://127.0.0.1:8788 にアクセスすると、以下のように表示され�
 
 ![ブラウザで表示される画面。Hello, Superflare と表示されている](https://images.ctfassets.net/in6v9lxmm5c8/67DiAyaAwa3m8UjWqVcWV4/cb19b4888b92331b936a8b5af09c7dd7/__________2023-04-01_12.17.42.png)
 
+`npx superflare@latest new` で作成したプロジェクトは Remix の上に構築されています。ですので、基本的な機能やディレクトリ構造などは Remix のドキュメントを参考にするとよいでしょう。
+
 ## 認証機能
 
-新しく Superflare のプロジェクトを作成したときのデフォルトのコードを見て見ましょう。Superflare ではデフォルトで認証機能が備わっています。
+新しく Superflare のプロジェクトを作成したときのコードを見てみましょう。Superflare ではデフォルトで認証機能が備わっています。
 
-`/auth/regiser/` と `/auth/login/` は Superflare により提供された基本的な認証画面です。`/auth/register` にアクセスすると素朴なユーザー登録画面が表示されます。適当なメールアドレスとパスワードを入力して登録してみましょう。
+`/auth/regiser` と `/auth/login` は Superflare により提供された基本的な認証画面です。`/auth/register` にアクセスすると素朴なユーザー登録画面が表示されます。適当なメールアドレスとパスワードを入力して登録してみましょう。
 
 ![ユーザー登録画面。Register という見出しが表示され、その下に Email と Password を入力するフォームが表示されている。](https://images.ctfassets.net/in6v9lxmm5c8/3GDGtjHb7dUdGUEufWgiYa/fa179bf30c5dc068bdb63fc86afc1286/__________2023-04-01_12.25.48.png)
 
@@ -210,9 +212,9 @@ http://127.0.0.1:8788 にアクセスすると、以下のように表示され�
 
 ![ログイン後の画面。Dashboard You're logged in as test@example.com と表示されている](https://images.ctfassets.net/in6v9lxmm5c8/5JePgXnPic0IB5brG266S8/cf06606d90c85391d37243e3a3485816/__________2023-04-01_12.39.35.png)
 
-「Log out」ボタンをクリックするとログアウトできます。ログアウト後再度ダッシュボードにアクセスし用とすると、ログイン画面にリダイレクトされます。ログイン画面では登録画面で入力したメールアドレスとパスワードを入力することでログインできます。
+「Log out」ボタンをクリックするとログアウトできます。ログアウト後再度ダッシュボードに訪れると、ログイン画面にリダイレクトされます。ログイン画面では登録画面で入力したメールアドレスとパスワードを入力することでログインできます。
 
-### 登録画面の実装
+### 登録画面
 
 それでは、Superflare ではどのように認証機能が実装されているのかを見ていきましょう。まずは、ユーザー登録画面です。Remix はファイルベースのルーティングを提供しています。`/auth/register` に該当するファイルは `app/routes/auth/register.tsx` です。
 
@@ -224,23 +226,28 @@ import { User } from "~/models/User";
 import { hash } from "superflare";
 
 export async function action({ request, context: { auth } }: ActionArgs) {
+  //  既にログインしている場合はダッシュボードにリダイレクト
   if (await auth.check(User)) {
     return redirect("/dashboard");
   }
 
+  // フォームから送信されたデータを受け取る
   const formData = new URLSearchParams(await request.text());
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
+  // メールアドレスが既に登録されているかどうかをチェック
   if (await User.where("email", email).count()) {
     return json({ error: "Email already exists" }, { status: 400 });
   }
 
+  // ユーザーを作成
   const user = await User.create({
     email,
     password: await hash().make(password),
   });
 
+  // ログイン状態にする
   auth.login(user);
 
   return redirect("/dashboard");
@@ -251,11 +258,11 @@ export async function action({ request, context: { auth } }: ActionArgs) {
 
 https://remix.run/docs/en/main/route/action
 
-`action` 関数の中引数では `request` と `context` が渡されています。`request` は [Fetch API の Request オブジェクト](https://developer.mozilla.org/ja/docs/Web/API/Request) であり、フォームから送信したデータを取得できます。
+`action` 関数の引数では `request` と `context` が渡されています。`request` は [Fetch API の Request オブジェクト](https://developer.mozilla.org/ja/docs/Web/API/Request) であり、フォームから送信したデータを取得できます。
 
 `context` に含まれる `auth` は Superflare により提供されている [Superflare Auth](https://superflare.dev/security/authentication#superflare-auth-api) です。API は Laravel の [Auth Facade](https://laravel.com/api/9.x/Illuminate/Support/Facades/Auth.html) とよく似ています。
 
-`auth.check` はログイン状態を確認する関数です。`UserModel` を引数に受け取り、ログインしている場合は `true` を返します。
+`auth.check()` はログイン状態を確認する関数です。`User` モデルを引数に受け取り、ログインしている場合は `true` を返します。
 
 ```tsx:app/routes/auth/register.tsx
 import { User } from "~/models/User";
@@ -265,11 +272,11 @@ if (await auth.check(User)) {
 }
 ```
 
-#### `UserModel`
+#### `User` モデル
 
-この `UserModel` は認証機能を利用する場合必須です。モデルとは D1 データベースのテーブルに対応するアプリケーション層の抽象化されたレイヤーです。Superflare ではモデルを作成することで、モデル間の関係を定義したり、データの操作が簡単に行えます。
+この `User` モデルは認証機能を利用する場合必須です。モデルとは D1 データベースのテーブルに対応するアプリケーション層の抽象化されたレイヤーです。Superflare ではモデルを作成することで、データベースのリレーションを定義したり、データの操作が簡単に行えます。
 
-`UserModel` は `users` テーブルに対応するモデルです。プロジェクトを作成したときにあらかじめ `UserModel` に対応する `users` テーブルのマイグレーションが作成されているはずです。
+`User` は `users` テーブルに対応するモデルです。プロジェクトを作成したときにあらかじめ `UserModel` に対応する `users` テーブルのマイグレーションが作成されているはずです。
 
 `users` テーブルは `id`、`email`、`password` カラムを持っています。
 
@@ -288,7 +295,7 @@ export default function () {
 
 モデルは TypeScript の Class として定義されています。モデルのクラス名はテーブル名の単数形として対応しており、`Model` クラスを継承しています。モデルクラスを作成した後 `Model.register` を呼び出すことでモデルを登録し、モデルを利用できるようになります。
 
-`UserModel` のクラスは `app/models/User.ts` にあります。
+`User` モデルのクラスは `app/models/User.ts` にあります。
 
 ```ts:app/models/User.ts
 import { Model } from "superflare";
@@ -321,9 +328,11 @@ interface UserRow {
 
 `toJSON` メソッドは `User` モデルのインスタンスがどのように JSON にシリアライズされるかを定義しています。デフォルトではリレーションを含む全てのカラムがプロパティとして返されます。ここでは `password` カラムを除外してシリアライズされるようにしています。
 
+モデルのシリアライズは Remix ではサーバー側の `loader` 関数からクライアントに渡されるときに行われます。
+
 #### ユーザーの作成
 
-`UserModel` の機能を一通り説明したので、`action` 関数の実装に戻りましょう。`request` オブジェクトからフォームから送信されたデータを取得してします。前述の通り、`request` オブジェクトは Fetch API の `Request` オブジェクトですから、Web API の標準的な方法でフォームデータを取得できます。
+`User` モデルの機能を一通り説明したので、`action` 関数の実装に戻りましょう。`request` オブジェクトよりフォームから送信されたデータを取得してします。前述の通り、`request` オブジェクトは Fetch API の `Request` オブジェクトですから、Web API の標準的な方法でフォームデータを取得できます。
 
 ```ts:app/routes/auth/register.tsx
 const formData = new URLSearchParams(await request.text());
@@ -356,7 +365,7 @@ auth.login(user);
 return redirect("/dashboard");
 ```
 
-ログイン状態は [SuperflareSession](https://superflare.dev/sessions) クラスにより保存されています。
+ログイン状態は [SuperflareSession](https://superflare.dev/sessions) クラスによりセッションに｀保存されています。
 
 ### ダッシュボード画面
 
@@ -441,9 +450,11 @@ export async function action({ request, context: { auth } }: ActionArgs) {
 
 ## アルバムアプリの作成
 
-ここまで Superflare プロジェクトを作成した時点での基本的な実装を確認しました。ここからは実際に簡単なアルバムアプリを作成していきましょう。
+ここまで Superflare プロジェクトを作成した時点での基本的な実装を確認しました。ここからは実際に簡単なアルバムアプリを作成していきましょう。このアプリケーションでは、ユーザーは自由に画像をアップロードして、アルバムを作成できます。また、アルバムにはタイトルと説明をつけることができます。
 
-このアプリケーションでは、ユーザーは自由に画像をアップロードして、アルバムを作成することができます。また、アルバムにはタイトルと説明をつけることができます。
+完成したコードは以下のレポジトリを参照してください。
+
+https://github.com/azukiazusa1/superflare-album-app
 
 テーブルの設計は以下のように提案していただきました。この設計を元に、モデルを作成していきます。
 
@@ -473,9 +484,9 @@ ID (主キー)
 
 ### マイグレーションの作成
 
-まずはアルバムモデルから作成しましょう。まず始めにモデルに対応するテーブルを作成する必要があります。テーブルを作成するには、マイグレーションファイルを作成して、マイグレーションを実行します。
+アルバムモデルから作成しましょう。まずはモデルに対応するテーブルを作成する必要があります。テーブルを作成するには、マイグレーションファイルを作成して、マイグレーションを実行します。
 
-以下のコマンドでマイグレーションを作成できます。
+以下のコマンドでマイグレーションを作成できます。`albums` は作成するテーブル名です。
 
 ```bash
 npx superflare generate migration albums
@@ -509,7 +520,7 @@ export default function () {
 
 `id` はテーブルの主キーになります。Superflare ではテーブルの主キーは必ず `id` という名前であることが求められます。
 
-`userId` は `users` テーブルの `id` と紐付けるための外部キーです。`users` テーブルと `albums` テーブルは、1対多の関係となります。
+`userId` は `users` テーブルの `id` と紐付けるための外部キーです。`users` テーブルと `albums` テーブルは、1 対多の関係となります。
 
 `timestamps()` メソッドを呼び出すと、`createdat` と `updatedAt` のカラムが追加されます。これらのカラムは、レコードの作成日時と更新日時を自動で管理するためのものです。
 
@@ -554,6 +565,19 @@ CREATE TABLE albums (
 );
 ```
 
+```sql:migrations/0002_images.sql
+-- Migration number: 0002 	 2023-04-01T06:45:58.421Z
+-- Autogenerated by Superflare. Do not edit this file directly.
+CREATE TABLE images (
+  id INTEGER PRIMARY KEY,
+  key TEXT NOT NULL,
+  albumId INTEGER NOT NULL,
+  userId INTEGER NOT NULL,
+  createdAt DATETIME NOT NULL,
+  updatedAt DATETIME NOT NULL
+);
+```
+
 ### モデルの作成
 
 `--create` オプションを渡してマイグレーションを実行した場合、`app/models` ディレクトリに `Album.ts` と `Image.ts` が作成されます。モデル同士のリレーションを定義するために、それぞれのファイルを編集する必要があります。
@@ -587,33 +611,7 @@ CREATE TABLE albums (
   }
 ```
 
-`one-to-many` の many 側のモデルには、`belongsTo()` メソッドを使います。
-
-```ts:app/models/Album.ts
-import { Model } from "superflare";
-import { Image } from "./Image";
-import { User } from "./User";
-
-export class Album extends Model {
-  images!: Image[] | Promise<Image[]>;
-  user!: User | Promise<User>;
-
-  $images() {
-    return this.hasMany(Image);
-  }
-
-  $user() {
-    return this.belongsTo(User);
-  }
-
-  toJSON(): AlbumRow {
-    return super.toJSON();
-  }
-}
-Model.register(Album);
-
-export interface Album extends AlbumRow {}
-```
+`one-to-many` の many 側のモデルには、`belongsTo()` メソッドを使いモデルに所属していること表します。
 
 ```ts:app/models/Image.ts
 import { Model } from "superflare";
@@ -640,6 +638,32 @@ export class Image extends Model {
 Model.register(Image);
 
 export interface Image extends ImageRow {}
+```
+
+```ts:app/models/Album.ts
+import { Model } from "superflare";
+import { Image } from "./Image";
+import { User } from "./User";
+
+export class Album extends Model {
+  images!: Image[] | Promise<Image[]>;
+  user!: User | Promise<User>;
+
+  $images() {
+    return this.hasMany(Image);
+  }
+
+  $user() {
+    return this.belongsTo(User);
+  }
+
+  toJSON(): AlbumRow {
+    return super.toJSON();
+  }
+}
+Model.register(Album);
+
+export interface Album extends AlbumRow {}
 ```
 
 これでモデルの定義が完了しました。
@@ -733,7 +757,7 @@ export async function action({ request, context: { auth, session } }: LoaderArgs
 
 フラッシュメッセージを表示するためには、`session.getFlash()` メソッドでセッションから読み取る必要があります。フラッシュメッセージが存在する場合にはその要素が、存在しない場合には `undefined` が返ります。
 
-フラッシュメッセージはすべてのページに共通で存在すれば表示したいため、`app/routes/root.tsx` ファイル内の `loader` 関数内でフラッシュメッセージを読み取ります。コンポーネント側では `undefined` 以外の場合にのみフラッシュメッセージを表示するように制御します。
+フラッシュメッセージが存在すれば、すべてのページに共通で表示したいため `app/routes/root.tsx` ファイル内の `loader` 関数内でフラッシュメッセージを読み取ります。コンポーネント側では `undefined` 以外の場合にのみフラッシュメッセージを表示するように制御します。
 
 ```tsx:app/root.tsx
 import { json, LoaderArgs, MetaFunction } from "@remix-run/cloudflare";
@@ -770,11 +794,17 @@ export default function App() {
 }
 ```
 
+試しにアルバムを作成してみましょう。フラッシュメッセージが表示されれば成功です。
+
 ![](https://images.ctfassets.net/in6v9lxmm5c8/2rWUb8VkI0kl9o7738UeLd/7661aaf4d55a385118d1490edce8d7d4/__________2023-04-01_18.03.56.png)
 
 ### アルバム一覧を表示する
 
-ダッシュボード画面で作成したアルバムの一覧を表示するようにします。`app/routes/dashboard.tsx` ファイルの `loader` 関数内で `Album` の `where()` メソッドを使ってログインしているユーザーに属するアルバムをすべて取得します。
+ダッシュボード画面で作成したアルバムの一覧を表示するようにします。`app/routes/dashboard.tsx` ファイルの `loader` 関数内で `Album` モデルの `where()` メソッドを使って、ログインしているユーザーに属するアルバムをすべて取得します。
+
+`where` の第一引数にはフィールド名、第二引数には条件値を指定します。また、`orderBy` メソッドを使って、作成日時の降順でソートします。
+
+このようにモデルではメソッドチェーンを使ってクエリを組み立てることができます。
 
 ```diff:app/routes/dashboard.tsx
 + import { Album } from "~/models/Album";
@@ -799,7 +829,7 @@ export default function App() {
 
 コンポーネント側では `useLoaderData` 関数から取得した `albums` プロパティを使ってアルバムの一覧を表示します。
 
-```diff tsx:app/routes/dashboard.tsx
+```diff:app/routes/dashboard.tsx
   export default function Dashboard() {
 -   const { user } = useLoaderData<typeof loader>();
 +   const { user, albums } = useLoaderData<typeof loader>();
@@ -836,7 +866,7 @@ export default function App() {
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/2rVj8LVtzOwfHImDbrVhxO/5e7694368631d0a613dbc3cc199c3552/__________2023-04-01_18.19.47.png)
 
-もう少し一覧から情報を取得できるように、アルバムが持っている写真の数を表示するようにします。アルバムと写真のリレーションは `one-to-many` です。クエリを発行する際にリレーションを先にロードするため `with` メソッドを使います。
+もう少し一覧から情報を取得できるように、アルバムが持っている写真の数を表示するようにしましょう。アルバムと写真のリレーションは `one-to-many` です。クエリを発行する際にリレーションを先にロードするため `with` メソッドを使います。
 
 これは eager load と呼ばれるもので、N + 1 問題を回避するために ORM でよく使われる手法です。
 
@@ -847,6 +877,8 @@ export default function App() {
 ```
 
 さらに、`Album` モデルの仮想プロパティとして `imageCount` を定義します。あるモデルに対してゲッターメソッドとして定義することで、データベースに保存されていないフィールドも追加できます。
+
+仮想プロパティもシリアライズされるように、`toJSON()` メソッドの返り値のプロパティに追加します。
 
 ```ts:app/models/Album.ts
 export class Album extends Model {
@@ -876,7 +908,7 @@ export class Album extends Model {
 
 アルバムの一覧を表示している箇所に `album.imageCount` を表示するようにします。
 
-```diff tsx:app/routes/dashboard.tsx
+```diff:app/routes/dashboard.tsx
   <ul>
     {albums.map((album) => (
       <li key={album.id}>
@@ -891,9 +923,384 @@ export class Album extends Model {
 
 ### アルバム詳細ページを作成する
 
+アルバムに画像をアップロードできるように、詳細ページを作成します。動的なルーティングを使って、アルバムの ID に応じてアルバムの詳細ページを表示します。Remix では動的なセグメントは `$id` のように先頭に `$` をつけて定義します。
+
+`app/routes/albums/$id.tsx` という名前でファイルを作成します。
+
+```tsx:app/routes/albums/[id].tsx
+import { type LoaderArgs, redirect, json } from "@remix-run/cloudflare";
+import { useCatch, useLoaderData, useParams } from "@remix-run/react";
+import { Album } from "~/models/Album";
+import { User } from "~/models/User";
+
+export async function loader({ params, context: { auth } }: LoaderArgs) {
+  if (!(await auth.check(User))) {
+    return redirect("/auth/login");
+  }
+
+  // ログインしているユーザーのIDを取得
+  const userId = await auth.id();
+  // パスパラメーターからアルバムのIDを取得
+  const albumId = Number(params.id);
+
+  // アルバムのIDとユーザーのIDをもとにアルバムを取得
+  const album = await Album.where("id", albumId)
+    .where("userId", userId)
+    .first(); // first() は最初の1件のみを取得するメソッド
+
+  // アルバムが存在しない場合、404を返す
+  if (!album) {
+    throw new Response("Not found", { status: 404 });
+  }
+
+  return json({ album });
+}
+
+export default function AlbumPage() {
+  const { album } = useLoaderData<typeof loader>();
+
+  return (
+    <>
+      <h1>{album.title}</h1>
+      <p>{album.description}</p>
+    </>
+  );
+}
+```
+
+ダッシュボード画面と同様に、ログイン状態をチェックしてログインしていない場合はログインページにリダイレクトします。
+
+動的なパラメーターは `loader` 関数の引数 `params` から受け取ります。ルーティングから受け取った `albumId` とログインしているユーザーの `userId` をもとにアルバムを取得します。もしアルバムが存在しない場合は `404` として `Response` オブジェクトを throw します。
+
+コンポーネントでは `useLoaderData` フックを使って `loader` 関数から返されたアルバムを取得して表示します。
+
+![](https://images.ctfassets.net/in6v9lxmm5c8/Ywv1qJ6b6jVvCn6iUuCoB/b3aece6403c0af4da494b13eab1aea42/__________2023-04-02_11.27.33.png)
+
+`loader` 関数内で `Response` オブジェクトを throw した場合には [CatchBoundary](https://remix.run/docs/en/main/route/catch-boundary) でキャッチしてエラー画面を描画します。throw された `Response` オブジェクトは `useCatch` フックで取得できます。
+
+さらに、`Catchboundary` でもキャッチされない想定外の例外は、`ErrorBoundary` でキャッチされます。
+
+```tsx:app/routes/albums/[id].tsx
+import { useCatch, useParams } from "@remix-run/react";
+
+export function CatchBoundary() {
+  const caught = useCatch();
+  const params = useParams();
+  if (caught.status === 404) {
+    return (
+      <>
+        <h1>404</h1>
+        <p>Album {params.id} is not found.</p>
+      </>
+    );
+  }
+
+  throw new Error("Something went wrong");
+}
+
+export function ErrorBoundary() {
+  return (
+    <>
+      <h1>Something went wrong</h1>
+    </>
+  );
+}
+```
+
+![](https://images.ctfassets.net/in6v9lxmm5c8/1ySGL8NFCytDhe5HzsXBbY/02b6c169d636181ea0ba29c66359bbd4/__________2023-04-02_11.35.23.png)
+
 ### 画像をアップロードする
+
+アルバムの詳細ページに画像をアップロードするフォームを追加して、アルバムに画像を追加できるようにしましょう。ファイルをアップロードするには `multipart/form-data` でフォームを送信する必要があります。
+
+```diff:app/routes/albums/[id].tsx
+  export default function AlbumPage() {
+    const { album } = useLoaderData<typeof loader>();
+
+    return (
+      <>
+        <h1>{album.title}</h1>
+        <p>{album.description}</p>
+
++       <form method="post" encType="multipart/form-data">
++         <fieldset>
++           <legend>Upload Photo</legend>
++           <div>
++             <label htmlFor="file">Photo</label>
++             <input name="file" type="file" required />
++           </div>
++         </fieldset>
++       </form>
+      </>
+    );
+  }
+```
+
+同ファイルの `action` 関数内でファイルアップロードを処理します。Superflare より提供されている `parseMultipartFormData` 関数を使うことで、ファイルをメモリに展開せず、R2 にファイルを直接ストリーミングできます。
+
+R2 ストレージの操作は `storage` オブジェクトを使用します。`storage().putRandom()` メソッドはランダムな名前を生成してファイルをアップロードします。`extension` オプションを指定することで、ファイルの拡張子を指定できます。
+
+```ts:app/routes/albums/[id].tsx
+import { storage, parseMultipartFormData } from "superflare";
+
+export async function action({ request }: LoaderArgs) {
+  if (!(await auth.check(User))) {
+    return redirect("/auth/login");
+  }
+
+  const formData = await parseMultipartFormData(
+    request,
+    async ({ name, filename, stream }) => {
+      // ファイル以外のフィールドは無視
+      if (name !== "file") {
+        return undefined;
+      }
+      const r2Object = await storage().putRandom(stream, {
+        extension: filename?.split(".").pop(),
+      });
+      return r2Object.key;
+    }
+  );
+}
+```
+
+ファイルのアップロードに成功したら、ストレージのキーを取得して `Image` モデルに保存します。
+
+```ts:app/routes/albums/[id].tsx
+import { storage, parseMultipartFormData } from "superflare";
+
+export async function action({
+  request,
+  params,
+  context: { auth, session },
+}: LoaderArgs) {
+  const formData = // ...
+
+  const albumId = Number(params.id);
+  const userId = await auth.id();
+
+  // データベースに画像のパスを保存
+  await Image.create({
+    key: formData.get("file") as string,
+    albumId,
+    userId,
+  });
+
+  session.flash("success", "Photo uploaded successfully");
+
+  return redirect(`/albums/${albumId}`);
+}
+```
+
+### 画像一覧を表示する
+
+アルバムに紐づく画像を表示できるようにしましょう。はじめに、ストレージのキーを受け取り画像データを返すエンドポイントを作成します。
+
+`app/routes/images/[key].ts` を作成します。
+
+```ts:app/routes/images/[key].ts
+import { type LoaderArgs, redirect, json } from "@remix-run/cloudflare";
+import { User } from "~/models/User";
+import { storage } from "superflare";
+
+const getContentTypes = (extension: string) => {
+  switch (extension) {
+    case "png":
+      return "image/png";
+    case "jpg":
+    case "jpeg":
+      return "image/jpeg";
+    case "gif":
+      return "image/gif";
+    case "svg":
+      return "image/svg+xml";
+    default:
+      return "application/octet-stream";
+  }
+};
+
+export async function loader({ context: { auth }, params }: LoaderArgs) {
+  if (!(await auth.check(User))) {
+   throw new Response("Unauthorized", { status: 401 });
+  }
+
+  // パスパラメーターからストレージのキーを取得
+  const storageKey = params.key as string;
+  // ストレージから画像を取得
+  const obj = await storage().get(storageKey);
+
+  // 存在しないキーの場合は 404 を返す
+  if (!obj) {
+    return new Response("Not found", { status: 404 });
+  }
+
+  const extension = obj.key.split(".").pop() || "";
+
+  return new Response(obj.body, {
+    headers: {
+      "Content-Type": getContentTypes(extension),
+    },
+  });
+}
+```
+
+パスパラメーターからストレージのキーを取得して、`storage().get()` メソッドでキーを指定して画像を取得します。`obj.body` にはストリームが入っているので、`Response` に渡すことで画像を返すことができます。
+
+アルバム詳細画面に戻りましょう。`await album.images` でアルバムに紐づくすべての画像を取得します。
+
+```diff:app/routes/album/$id.tsx
+  export async function loader({ params, context: { auth } }: LoaderArgs) {
+    // ...
+
+    const album = await Album.where("id", albumId)
+      .where("userId", userId)
+      .first();
+
+    // アルバムが存在しない場合、404を返す
+    if (!album) {
+      throw new Response("Not found", { status: 404 });
+    }
+
+    return json({
+      album,
++     images: await album.images,
+    });
+  }
+```
+
+コンポーネントで `useLoaderData` から `images` を受け取り画像を表示します。`src` のパスには先程作成したストレージのキーを受け取り画像データを返すエンドポイントを指定します。
+
+```diff:app/routes/album/$id.tsx
+  export default function AlbumPage() {
+    const { album, images } = useLoaderData<typeof loader>();
+
+    return (
+      <>
+        <h1>{album.title}</h1>
+        <p>{album.description}</p>
+
+        { // ...}
+
++       <h2>Photos</h2>
++       <ul
++          style={{
++            display: "grid",
++            gridTemplateColumns: "repeat(auto-fill, minmax(256px, 1fr))",
++            gap: "1rem",
++          }}
++        >
++         {images.map((image) => (
++           <li key={image.id}>
++             <img src={`/images/${image.key}`} alt="" width="256" height="144" />
++           </li>
++         ))}
++       </ul>
+      </>
+    );
+  }
+```
+
+![](https://images.ctfassets.net/in6v9lxmm5c8/5NKdTwco7Re5HyzNjrjBJi/96d5940ca3b0d12857f65bfa314a1fdd/__________2023-04-02_13.56.49.png)
 
 ### 画像を削除する
 
+最後に、画像を削除する機能を実装します。画像を削除するエンドポイントは `app/routes/images/[id].ts` に作成します。
 
+HTML のフォームでは `DELETE` メソッドを送信できないので、`POST` メソッドで送信してサブミットボタンの `value` で削除リクエストかどうかを判定します。
 
+```ts:app/routes/images/[id].ts
+import { type LoaderArgs, redirect } from "@remix-run/cloudflare";
+import { Image } from "~/models/Image";
+import { storage } from "superflare";
+
+export async function action({
+  request,
+  params,
+  context: { auth },
+}: LoaderArgs) {
+  if (!(await auth.check(User))) {
+    throw new Response("Unauthorized", { status: 401 });
+  }
+
+  const formData = await request.formData();
+  const intent = formData.get("intent") as string;
+
+  // 削除リクエストでない場合はエラーを返す
+  if (intent !== "delete") {
+    throw new Response(`The intent ${intent} is not supported`, {
+      status: 400,
+    });
+  }
+
+  // パスパラメーターからストレージのキーを取得
+  const storageKey = params.key as string;
+  // データベースから画像データを取得
+  const image = await Image.where("key", storageKey).first();
+
+  if (!image) {
+    throw new Response("Not found", { status: 404 });
+  }
+
+  // リダイレクト先のアルバムID
+  const albumId = image.albumId;
+
+  // 画像を作成したユーザー以外は削除できない
+  if (image.userId !== (await auth.id())) {
+    throw new Response("Forbidden", { status: 403 });
+  }
+
+  // データベースとストレージから画像を削除
+  await Promise.all([image.delete(), storage().delete(storageKey)]);
+
+  return redirect(`/albums/${albumId}`);
+}
+```
+
+### デプロイ
+
+Cloudflare Workers にデプロイするには `npx wrangler` コマンドを使用します。`npx superflare@latest new` コマンドでプロジェクトを作成していると `wrangler.json` が設定ファイルになります。設定ファイルに `wrangler.json` を使用している場合には `-j` オプションを指定する必要があります。
+
+デプロイを実行する前に、以下を実行する必要があります。
+
+- 本番 DB のマイグレーション：`npx wrangler d1 migrations apply <DB_NAME>`
+- シークレットに `APP_KEY` を設定（`dev.vars` の値）：`npx wrangler secret put APP_KEY`
+
+```bash
+npx wrangler d1 migrations apply my-superflare-app-db -j
+npx wrangler secret put APP_KEY -j
+```
+
+また、`wrangler.json` に以下の設定を追加します。
+
+```json:wrangler.json
+{
+  "compatibility_date": "2023-04-02",
+  "site": {
+    "bucket": "./public"
+  }
+}
+```
+
+`compatibility_data` は Cloudflare Workers における API の互換性を制御するための設定です。このフィールドには、特定の日付を指定できます。Cloudflare Workers は日々ランタイムの更新が行われますが、その中には互換性のない変更も含まれています。
+
+`compatibility_date` に設定した日付より後にリリースされた API は適用されなりので、互換性を壊す変更を避けることができます通常、プロジェクトを作成した日付を指定することになります。
+
+https://developers.cloudflare.com/workers/platform/compatibility-dates/
+
+準備ができたら、以下のコマンドを実行してデプロイします。
+
+```bash
+npm run build && npx wrangler publish -j
+```
+
+デプロイに成功すると、URL が表示されるのでブラウザでアクセスしてみましょう。
+
+## 感想
+
+Superflare の作者は長い間 Laravel で開発しており、また Laravel からも影響を受けていると述べられているだけあって、設計はだいぶ Laravel に似ている気がします。`with` メソッドを使った eager loading や、Auth などの機能も Laravel を触ったことがある人ならすぐに馴染めるかと思います。
+
+フレームワークとして必要な機能が一通り揃っていますので、手軽にフルスタックなアプリケーションを作成したい場合には Superflare を使うのも良いかもしれません。
+
+設計思想の中で、Verndor Lock-in as a Feature と述べられているのも興味深いです。Superflare は Cloudflare の上で構築されているのでベンダーロックインを回避するすべはありません。しかし、ベンダーロックインを受け入れることにより、物事をシンプルに解決できるメリットがあると主張されています。
+
+https://superflare.dev/design
