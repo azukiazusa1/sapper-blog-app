@@ -16,10 +16,10 @@
 </script>
 
 <nav class="flex flex-col items-center my-12" aria-label="ページネーション">
-  <div class="flex">
+  <div class="flex -space-x-px">
     {#if hasPrev}
       <a
-        class="h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-white dark:bg-gray-700"
+        class="h-12 w-12 flex justify-center items-center border border-gray-200 dark:border-zinc-600 rounded-l-lg"
         href={`${href}${prevPage}`}
         data-sveltekit-preload-data
       >
@@ -27,17 +27,17 @@
         <PrevIcon />
       </a>
     {/if}
-    <div class="flex h-12 font-medium rounded-full bg-white dark:bg-gray-700">
+    <div class="flex font-medium rounded-full -space-x-px">
       {#each Array(totalPage) as _, i (i)}
         <Page href={`${href}${i + 1}`} current={page === i + 1}>
           {i + 1}
         </Page>
       {/each}
-      <Page current sm>{page}</Page>
+      <Page current sm>Page {page} of {totalPage}</Page>
     </div>
     {#if hasNext}
       <a
-        class="h-12 w-12 ml-1 flex justify-center items-center rounded-full cursor-pointer bg-white dark:bg-gray-700"
+        class="h-12 w-12 ml-1 flex justify-center items-center border border-gray-200 dark:border-zinc-600 rounded-r-lg"
         href={`${href}${nextPage}`}
         data-sveltekit-preload-data
       >
