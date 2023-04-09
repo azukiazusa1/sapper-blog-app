@@ -27,7 +27,7 @@
     "rimraf": "^4.1.2",
     "tsconfig": "^0.0.0",
     "typescript": "^5.0.0",
-    "vitest": "^0.29.1"
+    "vitest": "^0.30.0"
   },
   "dependencies": {
     "open-graph-scraper": "^5.0.1",
