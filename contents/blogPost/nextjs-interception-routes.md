@@ -1,17 +1,16 @@
 ---
 id: G29-HEGEE84BayZunZJKR
-title: Next.js の Interception Routes について
-slug: nextjs-interception-routes
-about: Intercepting routes は Next.js 13.3 から追加された機能で、App Router（app ディレクトリ）において使用できます。Intercepting routes ではブラウザの URL を遷移先のものに上書きしつつ、現在のレイアウトに新しいページを表示できます。これは例えば Instagram のように、ユーザーのプロフィールから写真をクリックすると、写真をモーダルを開き、ページを更新したり共通したりするとデフォルトのレイアウトで表示する場合などに便利です。
+title: "Next.js の Interception Routes について"
+slug: "nextjs-interception-routes"
+about: "Intercepting routes は Next.js 13.3 から追加された機能で、App Router（app ディレクトリ）において使用できます。Intercepting routes ではブラウザの URL を遷移先のものに上書きしつつ、現在のレイアウトに新しいページを表示できます。これは例えば Instagram のように、ユーザーのプロフィールから写真をクリックすると、写真をモーダルを開き、ページを更新したり共通したりするとデフォルトのレイアウトで表示する場合などに便利です。"
 createdAt: "2023-04-09T13:38+09:00"
 updatedAt: "2023-04-09T13:38+09:00"
-tags: [Next.js]
+tags: ["Next.js"]
 thumbnail:
-  url: https://images.ctfassets.net/in6v9lxmm5c8/4Sxp9WBwpkArsZj3vTXnE1/0fc392ade0505df2688b32ca95db303e/___Pngtree___samurai_japan_warrior_8177656.png
-  title: samurai japan warrior
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4Sxp9WBwpkArsZj3vTXnE1/0fc392ade0505df2688b32ca95db303e/___Pngtree___samurai_japan_warrior_8177656.png"
+  title: "samurai japan warrior"
 published: true
 ---
-
 Intercepting routes は Next.js 13.3 から追加された機能で、App Router（app ディレクトリ）において使用できます。
 
 Intercepting routes ではブラウザの URL を遷移先のものに上書きしつつ、現在のレイアウトに新しいページを表示できます。これは例えば以下のようなケースで便利です。
