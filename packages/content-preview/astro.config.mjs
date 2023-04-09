@@ -42,4 +42,7 @@ export default defineConfig({
       'rehype-autolink-headings',
     ],
   },
+  server: {
+    port: 3333,
+  },
 })
