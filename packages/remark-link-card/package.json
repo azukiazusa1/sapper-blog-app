@@ -24,7 +24,7 @@
     "node-fetch": "^3.3.0",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
-    "rimraf": "^4.1.2",
+    "rimraf": "^5.0.0",
     "tsconfig": "^0.0.0",
     "typescript": "^5.0.0",
     "vitest": "^0.30.0"
