@@ -64,14 +64,14 @@
   `}
 >
   <div class="px-6 h-12 md:h-14 flex justify-between items-center">
-    <button class="md:invisible md:hidden" on:click={openSideMenu} aria-label="サイドメニューを開く">
+    <button class="lg:invisible lg:hidden" on:click={openSideMenu} aria-label="サイドメニューを開く">
       <MenuIcon className="h-6 w-6" />
     </button>
     <Title />
     <div class="invisible hidden md:visible md:block">
       <SearchBar />
     </div>
-    <div class="invisible hidden md:visible md:block">
+    <div class="invisible hidden lg:visible lg:block">
       <Nav {segment} {routes} />
     </div>
     <div class="flex">
@@ -84,7 +84,7 @@
       <a
         href="/rss.xml"
         target="_blank"
-        class="mx-2 invisible hidden md:visible md:block"
+        class="mx-2 invisible hidden lg:visible lg:block"
         rel="noopener noreferrer"
         aria-label="RSS"
       >
@@ -95,7 +95,7 @@
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
-        class="mx-2 invisible hidden md:visible md:block"
+        class="mx-2 invisible hidden lg:visible lg:block"
       >
         <GitHub className="h-6 w-6" />
       </a>
