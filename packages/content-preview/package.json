@@ -10,7 +10,7 @@
     "format": "prettier --write --plugin-search-dir=. ./src"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.18.0",
+    "@astrojs/mdx": "^0.19.0",
     "@astrojs/react": "^2.0.2",
     "@astrojs/rss": "^2.1.1",
     "@astrojs/sitemap": "^1.1.0",
