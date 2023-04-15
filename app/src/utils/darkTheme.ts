@@ -37,6 +37,7 @@ export const getTheme = (): Theme => {
 export const changeTheme = (value: Theme) => {
   switch (value) {
     case 'system':
+      localStorage.setItem('theme', 'system')
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.documentElement.classList.add('dark')
       } else {
@@ -45,10 +46,12 @@ export const changeTheme = (value: Theme) => {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', mediaQueryLlistener)
       break
     case 'light':
+      localStorage.setItem('theme', 'light')
       document.documentElement.classList.remove('dark')
       window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', mediaQueryLlistener)
       break
     case 'dark':
+      localStorage.setItem('theme', 'dark')
       document.documentElement.classList.add('dark')
       window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', mediaQueryLlistener)
       break

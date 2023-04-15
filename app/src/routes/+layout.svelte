@@ -31,7 +31,7 @@
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.documentElement.classList.add('dark')
       }
-      localStorage.theme = 'system'
+      localStorage.setItem('theme', 'system')
     } else if (localStorage.theme === 'dark') {
       document.documentElement.classList.add('dark')
     } else {
