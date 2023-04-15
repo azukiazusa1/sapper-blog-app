@@ -37,6 +37,18 @@
     } else {
       document.documentElement.classList.remove('dark')
     }
+
+    const mediaQueryLlistener = (e) => {
+      if (localStorage.theme === 'system') {
+        if (e.matches) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+      }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', mediaQueryLlistener)
   </script>
 </svelte:head>
 <Header segment={$page.url.pathname} />

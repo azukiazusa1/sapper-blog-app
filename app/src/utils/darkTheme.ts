@@ -1,13 +1,5 @@
 export type Theme = 'system' | 'light' | 'dark'
 
-const mediaQueryLlistener = (e: MediaQueryListEvent) => {
-  if (e.matches) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-}
-
 export const initTheme = () => {
   if (!('theme' in localStorage) || localStorage.theme === 'system') {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -43,17 +35,14 @@ export const changeTheme = (value: Theme) => {
       } else {
         document.documentElement.classList.remove('dark')
       }
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', mediaQueryLlistener)
       break
     case 'light':
       localStorage.setItem('theme', 'light')
       document.documentElement.classList.remove('dark')
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', mediaQueryLlistener)
       break
     case 'dark':
       localStorage.setItem('theme', 'dark')
       document.documentElement.classList.add('dark')
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', mediaQueryLlistener)
       break
   }
 }
