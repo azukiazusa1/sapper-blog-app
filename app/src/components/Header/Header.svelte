@@ -6,7 +6,7 @@
   import SearchIcon from '../Icons/Search.svelte'
   import MenuIcon from '../Icons/Menu.svelte'
   import RssIcon from '../Icons/Rss.svelte'
-  import { createEventDispatcher, onMount } from 'svelte'
+  import { onMount } from 'svelte'
   import SideMenu from './SideMenu.svelte'
   import GitHub from '../Icons/GitHub.svelte'
 
@@ -23,8 +23,6 @@
   })
 
   export let segment: string
-  export let darkMode: boolean
-
   let isOpen = false
 
   const handleScroll = () => {
@@ -46,18 +44,11 @@
     isOpen = false
     html.classList.remove('overflow-hidden')
   }
-
-  const dispatch = createEventDispatcher<{
-    clickMoon: void
-  }>()
-  const handleMoonClick = () => {
-    dispatch('clickMoon')
-  }
 </script>
 
 <svelte:window on:scroll={handleScroll} />
 
-<SideMenu {isOpen} {darkMode} {segment} {routes} on:close={closeSideMenu} on:clickMoon={handleMoonClick} />
+<SideMenu {isOpen} {segment} {routes} on:close={closeSideMenu} />
 <header
   class={`sticky md:static left-0 w-full backdrop-blur border-b border-gray-200 dark:border-zinc-700 transition-all ease-in-out duration-300 z-10
     ${hideHeader ? '-top-14 md:top-0' : 'top-0'}
@@ -74,12 +65,12 @@
     <div class="invisible hidden lg:visible lg:block">
       <Nav {segment} {routes} />
     </div>
-    <div class="flex">
+    <div class="flex items-center">
       <a href="/blog/search" class="md:invisible md:hidden mx-2" aria-label="検索ページ">
         <SearchIcon className="h-6 w-6" />
       </a>
       <div class="mx-2 invisible hidden md:visible md:block">
-        <ToggleDarkMode on:click={handleMoonClick} {darkMode} />
+        <ToggleDarkMode />
       </div>
       <a
         href="/rss.xml"
