@@ -29,6 +29,7 @@
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@leafac/rehype-shiki": "^2.2.1",
     "@playwright/test": "^1.31.0",
+    "@rgossiaux/svelte-headlessui": "^1.0.2",
     "@sveltejs/adapter-vercel": "^2.0.2",
     "@types/react": "^18.0.26",
     "@urql/core": "^4.0.0",

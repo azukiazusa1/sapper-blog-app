@@ -16,7 +16,7 @@
 
 <div
   on:keydown
-  class="absolute z-20 overflow-hiddenrounded-br-md rounded-bl-md shadow-lg w-72 max-h-96 overflow-y-scroll bg-white dark:bg-zinc-900 border-2 border-t-0 border-gray-300 dark:border-zinc-700"
+  class="absolute z-20 overflow-hiddenrounded-br-md rounded-bl-md shadow-lg w-72 max-h-96 overflow-y-scroll bg-white dark:bg-zinc-700 border-2 border-t-0 border-gray-200 dark:border-zinc-700"
 >
   {#if loading}
     <div class="py-2 text-center" aria-live="polite" aria-atomic="true">
