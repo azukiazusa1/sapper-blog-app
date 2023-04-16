@@ -1,17 +1,16 @@
 ---
 id: BC6OoivwIVxijGdhJVcyE
-title: Tailwind CSS のダークモードで System, Light, Dark を切り替える
-slug: tailwind-css-dark-mode-system-light-dark
-about: ダークモードの設定では、OS の設定と同期させるか、ライトモードまたはダークモードに手動で切り替えるかの 3 つの選択肢が用意されていることがあります。手動でライトモードとダークモードを切り替える場合に比べて、OS の設定を自動で反映できるメリットがあります。
+title: "Tailwind CSS のダークモードで System, Light, Dark を切り替える"
+slug: "tailwind-css-dark-mode-system-light-dark"
+about: "ダークモードの設定では、OS の設定と同期させるか、ライトモードまたはダークモードに手動で切り替えるかの 3 つの選択肢が用意されていることがあります。手動でライトモードとダークモードを切り替える場合に比べて、OS の設定を自動で反映できるメリットがあります。"
 createdAt: "2023-04-16T10:49+09:00"
 updatedAt: "2023-04-16T10:49+09:00"
-tags: [tailwindcss, css]
+tags: ["tailwindcss", "CSS"]
 thumbnail:
-  url: https://images.ctfassets.net/in6v9lxmm5c8/EUS3y9frdMdKA1y2rKDOx/e9502a9256e63fd899d6bdeb849589f6/_Pngtree_halo_moon_5336581.png
-  title: Pngtree halo moon 5336581
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/EUS3y9frdMdKA1y2rKDOx/e9502a9256e63fd899d6bdeb849589f6/_Pngtree_halo_moon_5336581.png"
+  title: "—Pngtree—halo moon_5336581.png"
 published: true
 ---
-
 ダークモードを設定できるサイトやアプリケーションでは、大きくわけて 3 つの方法が考えられます。
 
 - OS の設定に合わせてダークモードに切り替える
