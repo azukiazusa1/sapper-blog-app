@@ -31,11 +31,8 @@
 
 <Listbox on:change={handleChange} value={theme}>
   <ListboxButton class="flex items-center p-2 border border-gray-300 dark:border-zinc-600 rounded-lg">
-    {#if isDark}
-      <Moon className="h-6 w-6" />
-    {:else}
-      <Sun className="h-6 w-6" />
-    {/if}
+    <Moon className="h-6 w-6 hidden dark:block" />
+    <Sun className="h-6 w-6 block dark:hidden" />
   </ListboxButton>
   <ListboxOptions
     class={`absolute z-20 overflow-hidden rounded-br-md rounded-bl-md shadow-lg w-24 md:w-28 overflow-y-scroll bg-white dark:bg-zinc-700 border-2 border-t-0 border-gray-200 dark:border-zinc-700 ${
