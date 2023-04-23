@@ -13,7 +13,10 @@ await createBlogFile({
   createdAt: now(),
   updatedAt: now(),
   tags: [],
-  thumbnail: undefined,
+  thumbnail: {
+    url: '',
+    title: '',
+  },
   published: false,
 })
 
