@@ -1,8 +1,8 @@
 ---
 id: PgSsnmpQ-gUQh6ev5kSgs
-title: Array.prototype.with() とは
-slug: what-is-array-prototype-with
-about: `Array.prototype.with()` は、非破壊的に配列の要素を置き換えるためのメソッドです。非破壊的とは、元の配列を変更せずに新しい配列を返すということです。`arr` に対して `with()` を実行しても、`arr` は変更されず、新しい配列のコピーが返されます。
+title: "Array.prototype.with() とは"
+slug: "what-is-array-prototype-with"
+about: "`Array.prototype.with()` は、非破壊的に配列の要素を置き換えるためのメソッドです。非破壊的とは、元の配列を変更せずに新しい配列を返すということです。`arr` に対して `with()` を実行しても、`arr` は変更されず、新しい配列のコピーが返されます。"
 createdAt: "2023-04-23T12:00+09:00"
 updatedAt: "2023-04-23T12:00+09:00"
 tags: [JavaScript]
