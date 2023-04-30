@@ -283,7 +283,8 @@ return {
 + 	use:enhance={({ form, data, action, cancel, submitter }) => {
 + 		loading = true;
 +
-+ 		return (({ result, update })) => {
++ 		return async ({ result, update }) => {
++       await update();
 + 			loading = false;
 + 		};
   	}}
