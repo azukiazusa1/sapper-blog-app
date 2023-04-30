@@ -14,7 +14,7 @@ published: true
 
 SvelteKit のフォームは Web 標準の機能のみで完結しています。つまり、クライアントサイドでは JavaScript を一切使用せずにサーバーにデータを送信できるのです。
 
-さらに、JavaScript を利用できる環境であるならばリッチなユーザー体験を追加できます。例えば、フォームを送信した後ページ全体の再読み込みを行わずに、フォームの送信結果を表示することができたり、バリデーションメッセージを即座に表示できたりします。
+さらに、JavaScript を利用できる環境であるならばリッチなユーザー体験を追加できます。例えば、フォームを送信した後ページ全体の再読み込みを行わずに、フォームの送信結果を表示できたり、バリデーションメッセージを即座に表示できたりします。
 
 このように古いブラウザや機能の限られた端末のユーザーをサポートしつつ　、モダンなブラウザのユーザーにはリッチなユーザー体験を提供することは[プログレッシブエンハンスメント](https://developer.mozilla.org/ja/docs/Glossary/Progressive_Enhancement)と呼ばれています。
 SveltKit のフォームは簡単にプログレッシブエンハンスメントを実現できるように設計されています。
@@ -45,9 +45,9 @@ SveltKit のフォームは簡単にプログレッシブエンハンスメン�
 
 ## actions でサーバー側の処理を記述する
 
-続いてフォームが送信された時に処理を行うサーバー側の実装を行います。サーバー側の処理を記述する場合には `+page.server.ts` という名前のファイルを作成します。先程作成した `+page.svelte` と同じディレクトリに `+page.server.ts` を作成すると、`+page.svelte` と同じ URL に対応するサーバー側の処理を記述することができます。
+続いてフォームが送信された時に処理を行うサーバー側の実装を行います。サーバー側の処理を記述する場合には `+page.server.ts` という名前のファイルを作成します。先程作成した `+page.svelte` と同じディレクトリに `+page.server.ts` を作成すると、`+page.svelte` と同じ URL に対応するサーバー側の処理を記述できます。
 
-フォームの送信結果をサーバー側で受け取る場合には `actions` という名前のオブジェクトを export します。実際の処理は `default` という名前の関数内に記述します。この `default` とはフォームに名前が付与されていない場合に呼び出される関数の名前です。`default` 以外の名前のプロパティとすることで、フォームに名前を付与することができ、同じ　URL に対して複数のフォームを作成できます。
+フォームの送信結果をサーバー側で受け取る場合には `actions` という名前のオブジェクトを export します。実際の処理は `default` という名前の関数内に記述します。この `default` とはフォームに名前が付与されていない場合に呼び出される関数の名前です。`default` 以外の名前のプロパティとすることで、フォームに名前を付与でき、同じ　URL に対して複数のフォームを作成できます。
 
 ```ts:src/routes/todo/add/+page.server.ts
 import { fail, type Actions } from '@sveltejs/kit';
@@ -96,7 +96,7 @@ export const actions = {
 } satisfies Actions;
 ```
 
-ここでは擬似的に作成した Todo を DB に保存する処理を実行しています。`actions` オブジェクトのそれぞれのプロパティは [RequestEvent](https://kit.svelte.jp/docs/types#public-types-requestevent) オブジェクトを引数に受け取ります。プロパティの 1 つとして [Request](https://developer.mozilla.org/ja/docs/Web/API/Request) オブジェクトを受け取るので、`await request.formData()` とすることでフォームのデータを取得することができます。
+ここでは擬似的に作成した Todo を DB に保存する処理を実行しています。`actions` オブジェクトのそれぞれのプロパティは [RequestEvent](https://kit.svelte.jp/docs/types#public-types-requestevent) オブジェクトを引数に受け取ります。プロパティの 1 つとして [Request](https://developer.mozilla.org/ja/docs/Web/API/Request) オブジェクトを受け取るので、`await request.formData()` とすることでフォームのデータを取得できます。
 
 `data.get('title')` でフォームの `name` 属性が `title` である要素の値を取得できます。
 
@@ -244,7 +244,7 @@ return {
 <div use:foo></div>
 ```
 
-ここで `<form>` に渡している `enhance` 関数は SvelteKitの [$app/forms](https://kit.svelte.jp/docs/modules#$app-forms) モジュールからインポートしています。`use:enhance` を使用している場合、フォームを送信してページを再読み込みする代わりに、`fetch` 関数を用いてフォームデータを送信するようになります。このとき、ブラウザネイティブの動作が JavaScript でエミュレートされます。
+ここで `<form>` に渡している `enhance` 関数は SvelteKit の [$app/forms](https://kit.svelte.jp/docs/modules#$app-forms) モジュールからインポートしています。`use:enhance` を使用している場合、フォームを送信してページを再読み込みする代わりに、`fetch` 関数を用いてフォームデータを送信するようになります。このとき、ブラウザネイティブの動作が JavaScript でエミュレートされます。
 
 - actions が送信元のページと同じ場所にある場合に限り、成功レスポンスまたは不正なレスポンスにおじて `form` プロパティ、`$page.form`、`$page.status` の値が更新される
 - 成功レスポンスの場合 `<form>` をリセットし、[invalidateAll](https://kit.svelte.jp/docs/modules#$app-navigation-invalidateall) でデータを最新化する
