@@ -262,7 +262,7 @@ h6 .icon-link::before {
 }
 
 html.dark #contents code:not(pre > *) {
-  @apply bg-gray-500 text-gray-50;
+  @apply bg-zinc-600 text-gray-50;
 }
 
 #contents pre {
