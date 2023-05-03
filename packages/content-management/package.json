@@ -56,6 +56,6 @@
     "msw": "^1.0.1",
     "regenerator-runtime": "^0.13.11",
     "ts-node": "^10.9.1",
-    "vitest": "^0.30.0"
+    "vitest": "^0.31.0"
   }
 }
