@@ -1,17 +1,16 @@
 ---
 id: At6sKZoxNvUMIplTRlo8T
 title: "Next.js の Server Actions について"
-slug: nextjs-server-action
-about: Next.js の Server Actions はサーバーサイドのデータのミューテーション、クライアント JavaScript の削減、プログレッシブエンハンスメントなフォームを実現します。
+slug: "nextjs-server-action"
+about: "Next.js の Server Actions はサーバーサイドのデータのミューテーション、クライアント JavaScript の削減、プログレッシブエンハンスメントなフォームを実現します。"
 createdAt: "2023-05-06T14:13+09:00"
 updatedAt: "2023-05-06T14:13+09:00"
-tags: [Next.js, React, Server Actions]
+tags: ["Next.js", "React", "Server Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5V2x2ggL5WcHuQ0q6BciJk/65a66ea2f5b02c508c07e1feb4965e5f/___Pngtree___blue_bird_flying_bird_cartoon_3926050.png"
-  title: "blue bird"
+  title: "blue-bird"
 published: true
 ---
-
 x> Server Actions は 2023/05/06 現在 Alpha 版の機能です。この記事で紹介している内容は今後変更される可能性があります。
 
 Next.js の Server Actions はクライアントサイドのフォームの送信やボタンクリックなどのイベントからサーバーサイドで実行される関数を呼び出せます。クライアント JavaScript の削減、プログレッシブエンハンスメントなフォームを実現します。
