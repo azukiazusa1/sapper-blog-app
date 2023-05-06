@@ -14,7 +14,7 @@ published: true
 
 x> Server Actions は 2023/05/06 現在 Alpha 版の機能です。この記事で紹介している内容は今後変更される可能性があります。
 
-Next.js の Server Actions はサーバーサイドのデータのミューテーション、クライアント JavaScript の削減、プログレッシブエンハンスメントなフォームを実現します。
+Next.js の Server Actions はクライアントサイドのフォームの送信やボタンクリックなどのイベントからサーバーサイドで実行される関数を呼び出せます。クライアント JavaScript の削減、プログレッシブエンハンスメントなフォームを実現します。
 
 ## Server Actions をはじめる
 
@@ -59,9 +59,9 @@ export default async function Home() {
 
 `Home` コンポーネントのフォームは `JavaScript` で状態管理を行わない非制御コンポーネントとなっています。Remix や SvelteKit のフォームのようにネイティブの HTML の要素のみで完結しています。実際にブラウザの設定で JavaScript を無効にしてもフォームは動作することを確認できます。
 
-JavaScript が使えない環境においては、HTML の機能でフォームを送信してページ全体が再読み込みされます。JavaScript が有効となっている場合、JavaScript によりフォームの送信が実施されるので、ページ全体が再読み込みされないなど、よりよいユーザー体験を提供できます。このようのこのように古いブラウザや機能の限られた端末のユーザーをサポートしつつ　、モダンなブラウザのユーザーにはリッチなユーザー体験を提供することは[プログレッシブエンハンスメント](https://developer.mozilla.org/ja/docs/Glossary/Progressive_Enhancement)と呼ばれています。 
+JavaScript が使えない環境においては、HTML の機能でフォームを送信してページ全体が再読み込みされます。JavaScript が有効となっている場合、JavaScript によりフォームの送信が実施されるので、ページ全体が再読み込みされないなど、よりよいユーザー体験を提供できます。このようのこのように古いブラウザや機能の限られた端末のユーザーをサポートしつつ、モダンなブラウザのユーザーにはリッチなユーザー体験を提供することは[プログレッシブエンハンスメント](https://developer.mozilla.org/ja/docs/Glossary/Progressive_Enhancement)と呼ばれています。 
 
-通常の HTML のフォームと唯一異なる点は、`<form>` タグの `action` 属性に `addTweet` という JavaScript の関数を指定している点です。`addTweet` 関数はフォームがサブミットした際に*サーバーサイド*で実行されます。実際にこの例においては、`sql` タグを使ってサーバーサイドのみでアクセスできるデータベースにツイートを追加しています。このように、サーバーサイドでのみ実行される関数を Server Actions 関数と呼びます。
+通常の HTML のフォームと唯一異なる点は、`<form>` タグの `action` 属性に `addTweet` という JavaScript の関数を指定している点です。`addTweet` 関数はフォームがサブミットした際に**サーバーサイド**で実行されます。実際にこの例においては、`sql` タグを使ってサーバーサイドのみでアクセスできるデータベースに insert しています。このように、サーバーサイドでのみ実行される関数を Server Actions 関数と呼ぶことにします。
 
 ### `"use server"` ディレクティブ
 
@@ -113,7 +113,11 @@ Warning: Only plain objects can be passed to Client Components from Server Compo
   {: Error}
 ```
 
-引数として [FormData](https://developer.mozilla.org/ja/docs/Web/API/FormData) オブジェクトを受け取るので通常のフォームを処理するのと同様に実装できます。
+React Sever Component のシリアライズについては以下の記事が参考になります。
+
+https://postd.cc/how-react-server-components-work/
+
+`<form>` の `action` 属性に関数を渡した場合、引数として [FormData](https://developer.mozilla.org/ja/docs/Web/API/FormData) オブジェクトを受け取るので通常のフォームを処理するのと同様に実装できます。
 
 ```ts:app/page.tsx
 async function addTweet(formData: FormData) {
@@ -154,11 +158,11 @@ async function addTweet(formData: FormData) {
   }
 ```
 
-投稿したツイートの一覧を表示できるようになりましたが、1 つ問題があります。`tweet` ボタンでフォームを送信した後もツイートの一覧が表示されず、再度ページを読み込み必要があります。
+投稿したツイートの一覧を表示できるようになりましたが、1 つ問題があります。`tweet` ボタンでフォームを送信した後もツイートの一覧が表示されず、再度ページを読み込み必要があるのです。
 
 <video src="https://videos.ctfassets.net/in6v9lxmm5c8/1Mefwh4a4ClWgmFIUCAeXK/d08d6564d08e9792fd6491fbcacc970b/_____________2023-05-06_16.22.06.mov" controls></video>
 
-Server Actions 関数内でデータの更新を実施した場合には `redirect` を呼び出すか、[revalidatePath](https://nextjs.org/docs/app/api-reference/functions/revalidatePath) または [revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag) を呼び出してデータのキャッシュを更新する必要があります。
+Server Actions 関数内でデータの更新を実施した場合には `redirect` を呼び出すか、[revalidatePath](https://nextjs.org/docs/app/api-reference/functions/revalidatePath) または [revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag) を呼び出してデータの再検証を行いキャッシュを更新する必要があります。
 
 Server Actions 関数内で `revalidatePath` を呼び出すように修正してみましょう。`revalidatePath` は引数として渡したパスに紐づくデータを再検証します。`sql` でデータを更新した後に `revalidatePath` を呼び出すように修正します。
 
@@ -185,7 +189,9 @@ Server Actions 関数内で `revalidatePath` を呼び出すように修正し�
 
 ## `useTransition` を使用したカスタム Server Actions
 
-Server Actions フックはフォーム内の `action` や `formAction` 以外の場所でも使用できます。例として、ボタンをクリックしたときにいいね数を更新するような処理を実装してましょう。これは [useTransition](https://react.dev/reference/react/useTransition) フックが提供する `startTrantion` 関数を使用して実装できます。`useTransition` 関数はクライアントコンポーネントでのみ使用できるフックですので、いいねボタンの部分をクライアントコンポーネントして分割する必要があります。`app/LikeButton.tsx` ファイルを作成しましょう。
+Server Actions フックはフォーム内の `action` や submit button の `formAction` 以外の場所でも使用できます。例として、ボタンをクリックしたときにいいね数を更新するような処理を実装してましょう。これは [useTransition](https://react.dev/reference/react/useTransition) フックが提供する `startTrantion` 関数を使用して実装できます。
+
+`useTransition` 関数はクライアントコンポーネントでのみ使用できるフックですので、いいねボタンの部分をクライアントコンポーネントして分割する必要があります。`app/LikeButton.tsx` ファイルを作成し、先頭で `"use client"` ディレクティブを宣言します。
 
 ```tsx:app/LikeButton.tsx
 "use client";
@@ -207,7 +213,7 @@ export default function LikeButton({ tweet }: Props) {
 }
 ```
 
-"`use client`" ディレクティブを宣言しているファイル内には `Server Actions` 関数を配置することはできません。そのため、`likeTweet` 関数は `app/actions.ts` に配置しています。`app/actions` ファイルは先頭に `"use server"` ディレクティブを宣言しているため、`likeTweet` 関数は `Server Actions` として実行されます。
+`"use client"` ディレクティブを宣言しているファイル内には `Server Actions` 関数を配置することはできません。そのため、ツイートのいいね数の更新を行う `likeTweet` 関数は `app/actions.ts` に配置しています。`app/actions` ファイルは先頭に `"use server"` ディレクティブを宣言しているため、`likeTweet` 関数は `Server Actions` として実行されます。
 
 ```ts:app/actions.ts
 "use server";
@@ -231,7 +237,7 @@ export async function likeTweet(id: string) {
 
 `app/page.tsx` ファイルを修正して `LikeButton` コンポーネントを使用するようにします。
 
-```diff :app/page.tsx
+```diff:app/page.tsx
   export default async function Home() {
     const { rows } = await sql`SELECT * FROM tweets ORDER BY created_at DESC`;
 
@@ -295,7 +301,9 @@ export default function LikeButton({ tweet }: Props) {
 }
 ```
 
-`useOptimistic` フックの第 1 引数には現在の状態を、第 2 引数には状態を更新する関数を渡します。`useOptimistic` フックはの返り値の配列の 2 つ目の関数を呼び出すことで状態を更新できます。ここではボタンがクリックされたときに `addOptimisticLikes` を呼び出して状態をクライアント側の状態を更新した後に `likeTweet` 関数でサーバーにリクエストを送信しています。これにより、ボタンをクリックしたとき即座にいいね数が更新されるようになりました。
+`useOptimistic` フックの第 1 引数には現在の状態を、第 2 引数には状態を更新する関数を渡します。`useOptimistic` フックの返り値の配列の 2 つ目の関数を呼び出すことで状態を更新できます。
+
+ここではボタンがクリックされたときに `addOptimisticLikes` を呼び出してクライアント側の状態を更新した後に `likeTweet` 関数でサーバーにリクエストを送信しています。これにより、ボタンをクリックしたとき即座にいいね数が更新されるようになりました。
 
 <video src="https://videos.ctfassets.net/in6v9lxmm5c8/3cHYFr7IS4RbT5rKOyiYF1/a0f63e043d02e93b93bcee69e1ca7653/_____________2023-05-06_20.57.47.mov" controls></video>
 
@@ -343,9 +351,9 @@ export default function TweetForm() {
 
 ## バリデーション
 
-フォームのバリデーションはクライアントサイドで行うものと、サーバサイドで行うものの 2 つがあるでしょう。例えば、ツイートの文字列制限（1 文字以上 140 文字以下など）はクライアントサイドでも検証できるため、サーバーにデータを送信する前に即座にフィードバックを返すことができます。一方で、1　日のツイート数に制限がある場合は、サーバサイドでなければ検証できません。
+フォームのバリデーションはクライアントサイドで行うものと、サーバサイドで行うものの 2 つがあるでしょう。例えば、ツイートの文字列制限（1 文字以上 140 文字以下など）はクライアントサイドでも検証できるため、サーバーにデータを送信する前に即座にフィードバックを返すことができます。一方で、1 日のツイート数に制限がある場合は、サーバサイドでなければ検証できません。
 
-まずはクライアントサイドで実施するバリデーションを見てみましょう。以下のように、Server Actions 関数を呼び出す前にクライアント側でバリデーションを行います。`addTweet` の前に呼び出される関数は "`use server`" ディレクティブを宣言しないので、クライアントサイドで実行されます。
+まずはクライアントサイドで実施するバリデーションを見てみましょう。以下のように、Server Actions 関数を呼び出す前にクライアント側でバリデーションを行います。`addTweet` の前に呼び出されるインラインの関数は `"use server"` ディレクティブを宣言しないので、クライアントサイドで実行されます。
 
 
 ```diff:app/TweetForm.tsx
@@ -397,6 +405,7 @@ export default function TweetForm() {
 
 ```diff:app/TweetForm.tsx
 + import { useRef } from "react";
+
   export default function TweetForm() {
     const [error, setError] = useState<string | null>(null);
 +   const formRef = useRef<HTMLFormElement>(null);
@@ -422,7 +431,7 @@ export default function TweetForm() {
         >
 ```
 
-続いてサーバサイドのバリデーションを考えてみましょう。Server Actions 関数内で `Error` を throw してもクライアント側でキャッチできないので、関数の返り値としてエラー情報を返すようにします。ここでは、関数の引数と返り値は React Server Component のプロトコルとしてシリアライズ可能形式でなければいけないことに注意してください。
+続いてサーバサイドのバリデーションを考えてみましょう。Server Actions 関数内で `Error` を throw してもクライアント側でキャッチできないので、関数の返り値としてエラー情報を返すようにします。ここでは、関数の引数と返り値は React Server Component のプロトコルとしてシリアライズ可能な形式でなければいけないことに注意してください。
 
 ```diff:app/TweetForm.tsx
   export default function TweetForm() {
@@ -459,6 +468,16 @@ export default function TweetForm() {
 const maxDailyTweets = 10;
 let tweetCount = 0;
 
+type Result =
+  | {
+      success: true;
+    }
+  | {
+      success: false;
+      error: string;
+    };
+
+
 export async function addTweet(tweet: string): Promise<Result> {
   "use server";
   if (tweetCount > maxDailyTweets) {
@@ -486,7 +505,8 @@ export async function addTweet(tweet: string): Promise<Result> {
 
 - Server Actions により、フォームの送信やボタンクリックなどクライアントサイドのイベントから、データベースの更新のようにサーバサイドの処理を呼び出すことができる
 - データの更新後は `revalidatePath` または `revalidateTag` を呼び出してキャッシュを更新する
-- `useOptimistic` で楽観的な更新を、`useFormStatus` フックを使うとフォームの送信状態を、
+- `useOptimistic` で楽観的な更新を、`useFormStatus` フックを使うとフォームの送信状態を取得できる
+- クライアントサイドのバリデーションの Server Actions 関数を呼び出す前に、サーバサイドのバリデーションの Server Actions 関数の返り値によって実施する
 
 今回使用したコードは以下のレポジトリから参照できます。
 
