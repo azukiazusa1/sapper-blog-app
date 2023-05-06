@@ -76,7 +76,7 @@ async function addTweet(formData: FormData) {
 
 `"use server"` ディレクティブを宣言していない関数を `<form>` の `action` 属性に指定した場合、クライアントサイドで実行される関数として扱わてしまうためエラーが発生します。
 
-![Unhandled Runtime Error Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server".](https://images.ctfassets.net/in6v9lxmm5c8/x8QhWomOUMeRztbJstb1z/cbd9875b9a02c3f491f0bd333320d303/__________2023-05-06_15.56.32.png)
+![Unhandled Runtime Error Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with use server.](https://images.ctfassets.net/in6v9lxmm5c8/x8QhWomOUMeRztbJstb1z/cbd9875b9a02c3f491f0bd333320d303/__________2023-05-06_15.56.32.png)
 
 `"use server"` ディレクティブはファイルのトップレベルに宣言することも可能です。この場合、ファイル内のすべての関数がサーバーサイドで実行される関数として扱われるので、ファイル内にクライアントコンポーネントを配置できません。
 
@@ -354,7 +354,6 @@ export default function TweetForm() {
 
 まずはクライアントサイドで実施するバリデーションを見てみましょう。以下のように、Server Actions 関数を呼び出す前にクライアント側でバリデーションを行います。`addTweet` の前に呼び出されるインラインの関数は `"use server"` ディレクティブを宣言しないので、クライアントサイドで実行されます。
 
-
 ```diff:app/TweetForm.tsx
   export default function TweetForm() {
 +   const [error, setError] = useState<string | null>(null);
@@ -475,7 +474,6 @@ type Result =
       success: false;
       error: string;
     };
-
 
 export async function addTweet(tweet: string): Promise<Result> {
   "use server";
