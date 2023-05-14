@@ -5,7 +5,7 @@ slug: "vitest-browser-test"
 about: "Vitest は実験的な機能として、ブラウザモードをサポートしています。ブラウザテストは Node.js 上で jsdom を用いてテストを実効するよりも信頼性の高い方法ですが、テストのセットアップに時間がかかるといったデメリットも存在します。"
 createdAt: "2023-05-14T14:04+09:00"
 updatedAt: "2023-05-14T14:04+09:00"
-tags: ["Vitest", "test"]
+tags: ["Vitest", "テスト"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5jIecuXE6KmUTSMGdvPWqz/5e1f1eefd7af16f915054d0aa29be50c/___Pngtree___summer_iced_lemon_tea_9054209.png"
   title: "summer iced lemon tea"
