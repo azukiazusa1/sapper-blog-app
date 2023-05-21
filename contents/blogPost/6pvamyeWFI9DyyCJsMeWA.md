@@ -1,7 +1,7 @@
 ---
 id: 6pvamyeWFI9DyyCJsMeWA
 title: "list-style: none スタイルを指定した ul 要素には list ロールを指定すべき"
-slug: "list-style:-none-styled-ul-element-should-have-a-list-role"
+slug: "list-style-none-styled-ul-element-should-have-a-list-role"
 about: WAI-ARIA における role 属性を使用する際のプラクティスとして、暗黙のロールを明示しないというものがあります。しかし、`<ul>` 要素は暗黙のロールとして `list` ロールを持っていますが、明示的に `list` ロールを宣言するべきです。
 createdAt: "2023-05-21T14:13+09:00"
 updatedAt: "2023-05-21T14:13+09:00"
