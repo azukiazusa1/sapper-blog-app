@@ -2,7 +2,7 @@
 id: 6pvamyeWFI9DyyCJsMeWA
 title: "list-style: none スタイルを指定した ul 要素には list ロールを指定すべき"
 slug: "list-style-none-styled-ul-element-should-have-a-list-role"
-about: WAI-ARIA における role 属性を使用する際のプラクティスとして、暗黙のロールを明示しないというものがあります。しかし、`<ul>` 要素は暗黙のロールとして `list` ロールを持っていますが、明示的に `list` ロールを宣言するべきです。
+about: "WAI-ARIA における role 属性を使用する際のプラクティスとして、暗黙のロールを明示しないというものがあります。しかし、`<ul>` 要素は暗黙のロールとして `list` ロールを持っていますが、明示的に `list` ロールを宣言するべきです。"
 createdAt: "2023-05-21T14:13+09:00"
 updatedAt: "2023-05-21T14:13+09:00"
 tags: ["アクセシビリティ", "WAI-ARIA", "HTML"]
@@ -11,7 +11,6 @@ thumbnail:
   title: "パソコンの前で寝てる猫"
 published: true
 ---
-
 WAI-ARIA における role 属性を使用する際のプラクティスとして、**暗黙のロールを明示しない**というものがあります。暗黙のロールとは、HTML の各要素に暗黙的に（明示せずとも）規定されているロールのことです。HTML の各要素には何かしらの WAI-ARIA で規定されたロールが対応しています。例えば、`<button>` 要素なら `button` ロール、`<nav>` 要素なら `navigation` ロールといった感じです。
 
 暗黙的に持っているロールをあえて `role` 属性で明示することは、冗長なので避けるべきだとされています。
