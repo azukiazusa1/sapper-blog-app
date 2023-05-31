@@ -35,7 +35,14 @@
 />
 
 <div class="my-12 max-w-3xl mx-auto">
-  <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} />
+  <Card
+    slug={post.slug}
+    title={post.title}
+    tags={post.tagsCollection.items}
+    createdAt={post.createdAt}
+    thumbnail={post.thumbnail}
+    {contents}
+  />
   <hr class="my-4 border-gray-300 dark:border-zinc-700" />
   <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mt-4">
     <Contributors {contributors} />

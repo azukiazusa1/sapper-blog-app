@@ -16,11 +16,11 @@
 
 <article class="overflow-hidden h-full w-10/12 md:w-full m-auto rounded-lg border dark:border-zinc-700">
   <a href={`/blog/${slug}`}>
-    <Image alt={thumbnail.title} src={thumbnail.url} width={400} height={300} {lazy} />
+    <Image {slug} alt={thumbnail.title} src={thumbnail.url} width={400} height={300} {lazy} />
   </a>
 
   <header class="flex-row items-center justify-between leading-tight p-4 border-t dark:border-zinc-700">
-    <h1 class="text-2xl">
+    <h1 class="text-2xl font-bold" style:--tag="h-{slug}">
       <a class="no-underline hover:underline" href={`/blog/${slug}`}>{title}</a>
     </h1>
     <p class="mt-2">
@@ -31,7 +31,7 @@
   {#if !small}
     <p class="mx-4 break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80">{about}</p>
 
-    <footer class="flex flex-wrap items-center leading-none mt-2 p-2 md:p-4">
+    <footer class="flex flex-wrap items-center leading-none mt-2 p-2 md:p-4" style:--tag="tag-{slug}">
       {#each tags as tag (tag.slug)}
         <Tag name={tag.name} slug={tag.slug} />
       {/each}
