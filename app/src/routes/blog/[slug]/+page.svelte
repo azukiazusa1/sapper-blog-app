@@ -38,6 +38,7 @@
   <Card
     slug={post.slug}
     title={post.title}
+    about={post.about}
     tags={post.tagsCollection.items}
     createdAt={post.createdAt}
     thumbnail={{
