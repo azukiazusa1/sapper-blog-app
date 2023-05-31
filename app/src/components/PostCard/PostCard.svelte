@@ -14,7 +14,11 @@
   export let lazy = true
 </script>
 
-<article class="overflow-hidden h-full w-10/12 md:w-full m-auto rounded-lg border dark:border-zinc-700">
+<!-- なぜか preload すると View Transition API がバグる -->
+<article
+  class="overflow-hidden h-full w-10/12 md:w-full m-auto rounded-lg border dark:border-zinc-700"
+  data-sveltekit-preload-data="off"
+>
   <a href={`/blog/${slug}`}>
     <Image {slug} alt={thumbnail.title} src={thumbnail.url} width={400} height={300} {lazy} />
   </a>
