@@ -4,11 +4,13 @@
   export let width: number
   export let height: number
   export let lazy = true
+  export let slug: string
 </script>
 
 <img
   {src}
   {alt}
+  style:--tag="image-{slug}"
   srcset={`${src}&w=100 100w,
     ${src}&w=200 200w,
     ${src}&w=300 300w,

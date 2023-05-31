@@ -1,8 +1,6 @@
 <script lang="ts">
   import '../app.css'
   import 'nprogress/nprogress.css'
-  import NProgress from 'nprogress'
-  import { navigating } from '$app/stores'
   import Header from '../components/Header/Header.svelte'
   import Footer from '../components/Footer/Footer.svelte'
   import { page } from '$app/stores'
@@ -10,19 +8,9 @@
   import Visual from '../components/Visual.svelte'
   import image from '../assets/images/road-984251_1280.jpg'
   import { removeTrailingSlash } from '$lib/utils'
+  import { preparePageTransition } from '$lib/pageTransition'
 
-  NProgress.configure({
-    showSpinner: false,
-  })
-
-  $: {
-    if ($navigating) {
-      NProgress.start()
-    }
-    if (!$navigating) {
-      NProgress.done()
-    }
-  }
+  preparePageTransition()
 </script>
 
 <svelte:head>

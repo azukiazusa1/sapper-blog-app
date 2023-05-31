@@ -2,18 +2,21 @@
   import AppTag from '../Tag/Tag.svelte'
   import Time from '../Time/Time.svelte'
   import type { Tag } from '../../generated/graphql'
-  import Box from '../Box/Box.svelte'
+  import Image from '../Image/Image.svelte'
 
   export let title: string
   export let contents: string
   export let tags: Pick<Tag, 'name' | 'slug'>[]
   export let createdAt: string
   export let preview = false
+  export let thumbnail: { title: string; url: string }
+  export let slug: string
 </script>
 
 <article>
   <div class="p-4">
-    <h1 class="text-2xl md:text-4xl font-bold mb-8">{title}</h1>
+    <Image src={thumbnail.url} alt={thumbnail.title} width={480} height={270} {slug} />
+    <h1 class="text-2xl md:text-4xl font-bold mb-8 mt-4" style:--tag="h-{slug}">{title}</h1>
     <div class="flex flex-wrap items-center leading-none mt-2 mb-2">
       {#each tags as tag (tag.slug)}
         <AppTag {...tag} />
