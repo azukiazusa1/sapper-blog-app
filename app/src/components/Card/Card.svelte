@@ -5,6 +5,7 @@
   import Image from '../Image/Image.svelte'
 
   export let title: string
+  export let about: string
   export let contents: string
   export let tags: Pick<Tag, 'name' | 'slug'>[]
   export let createdAt: string
@@ -16,15 +17,22 @@
 <article>
   <div class="p-4">
     <Image src={thumbnail.url} alt={thumbnail.title} width={480} height={270} {slug} />
-    <h1 class="text-2xl md:text-4xl font-bold mb-8 mt-4" style:--tag="h-{slug}">{title}</h1>
-    <div class="flex flex-wrap items-center leading-none mt-2 mb-2">
+    <h1 class="text-2xl md:text-4xl font-bold mt-4" style:--tag="h-{slug}">{title}</h1>
+    <p class="my-2" style:--tag="time-{slug}">
+      <Time date={createdAt} />
+    </p>
+    <p
+      class="break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80"
+      style:--tag="about-{slug}"
+    >
+      {about}
+    </p>
+    <div class="flex flex-wrap items-center leading-none mt-4" style:--tag="tag-{slug}">
       {#each tags as tag (tag.slug)}
         <AppTag {...tag} />
       {/each}
     </div>
-    <p class="my-2">
-      <Time date={createdAt} />
-    </p>
+
     {#if preview}
       <p class="hint error my-4">これは下書き記事のプレビューです。内容は不正確な恐れがあります。</p>
     {/if}

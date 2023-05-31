@@ -27,13 +27,18 @@
     <h1 class="text-2xl font-bold" style:--tag="h-{slug}">
       <a class="no-underline hover:underline" href={`/blog/${slug}`}>{title}</a>
     </h1>
-    <p class="mt-2">
+    <p class="mt-2" style:--tag="time-{slug}">
       <Time date={createdAt} />
     </p>
   </header>
 
   {#if !small}
-    <p class="mx-4 break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80">{about}</p>
+    <p
+      class="mx-4 break-words text-sm text-opacity-80 text-black dark:text-gray-50 dark:text-opacity-80"
+      style:--tag="about-{slug}"
+    >
+      {about}
+    </p>
 
     <footer class="flex flex-wrap items-center leading-none mt-2 p-2 md:p-4" style:--tag="tag-{slug}">
       {#each tags as tag (tag.slug)}
