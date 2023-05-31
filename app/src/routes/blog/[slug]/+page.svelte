@@ -40,7 +40,10 @@
     title={post.title}
     tags={post.tagsCollection.items}
     createdAt={post.createdAt}
-    thumbnail={post.thumbnail}
+    thumbnail={{
+      title: post.thumbnail?.title ?? '',
+      url: post.thumbnail?.url ?? '',
+    }}
     {contents}
   />
   <hr class="my-4 border-gray-300 dark:border-zinc-700" />

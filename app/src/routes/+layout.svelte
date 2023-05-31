@@ -1,8 +1,6 @@
 <script lang="ts">
   import '../app.css'
   import 'nprogress/nprogress.css'
-  import NProgress from 'nprogress'
-  import { navigating } from '$app/stores'
   import Header from '../components/Header/Header.svelte'
   import Footer from '../components/Footer/Footer.svelte'
   import { page } from '$app/stores'
@@ -13,19 +11,6 @@
   import { preparePageTransition } from '$lib/pageTransition'
 
   preparePageTransition()
-
-  NProgress.configure({
-    showSpinner: false,
-  })
-
-  $: {
-    if ($navigating) {
-      NProgress.start()
-    }
-    if (!$navigating) {
-      NProgress.done()
-    }
-  }
 </script>
 
 <svelte:head>
