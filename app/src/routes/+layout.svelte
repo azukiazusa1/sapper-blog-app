@@ -11,6 +11,10 @@
   import image from '../assets/images/road-984251_1280.jpg'
   import { removeTrailingSlash } from '$lib/utils'
   import { preparePageTransition } from '$lib/pageTransition'
+  import { dev } from '$app/environment'
+  import { inject } from '@vercel/analytics'
+
+  inject({ mode: dev ? 'development' : 'production' })
 
   preparePageTransition()
 
