@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { beforeNavigate } from '$app/navigation'
 import { navigating } from '$app/stores'
 import { onDestroy } from 'svelte'
@@ -9,7 +10,7 @@ function getNavigationStore() {
   const navigation = {
     ...navigating,
     complete: async () => {
-      await new Promise((res, _) => {
+      await new Promise((res) => {
         callbacks.push(res)
       })
     },
@@ -36,11 +37,13 @@ export const preparePageTransition = () => {
 
   beforeNavigate(() => {
     // ブラウザが ViewTransition API をサポートしていない場合は何もしない
+    // @ts-ignore
     if (!document.startViewTransition) {
       return
     }
     const navigationComplete = navigation.complete()
 
+    // @ts-ignore
     document.startViewTransition(async () => {
       await navigationComplete
     })
