@@ -37,7 +37,19 @@
 <svelte:window on:keydown={handleKeyDown} />
 
 <div class="my-12">
-  <Card title={post.title} tags={post.tagsCollection.items} createdAt={post.createdAt} {contents} preview />
+  <Card
+    title={post.title}
+    about={post.about}
+    slug={post.slug}
+    tags={post.tagsCollection.items}
+    createdAt={post.createdAt}
+    {contents}
+    preview
+    thumbnail={{
+      url: '',
+      title: '',
+    }}
+  />
   <FloatingActionButton on:click={reloadPage}>
     <div class="sr-only">リロード</div>
     <ReloadIcon className="h-6 w-6 inline-block" />
