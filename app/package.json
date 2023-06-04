@@ -49,7 +49,7 @@
     "remark-link-card": "^0.0.0",
     "remark-parse": "^10.0.0",
     "remark-rehype": "^10.1.0",
-    "satori": "^0.9.0",
+    "satori": "^0.10.0",
     "sharp": "^0.32.0",
     "shiki": "^0.11.1",
     "unified": "^10.1.2"
