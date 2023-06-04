@@ -37,7 +37,7 @@ jobs:
         run: npm ci
       - name: Run lint
         env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
+          NODE_OPTIONS: '--max_old_space_size=4096'
         run: npm run lint && npm run typecheck
   test:
     name: test
@@ -59,8 +59,6 @@ jobs:
       - name: Install dependencies
         if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
         run: npm ci
-      - name: Build
-        run: npm run build
       - name: Run test
         run: npm run test
         env:
