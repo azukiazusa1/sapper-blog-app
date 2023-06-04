@@ -30,6 +30,6 @@
     "eslint": "^8.34.0",
     "eslint-config-custom": "^0.0.0",
     "eslint-plugin-astro": "^0.27.0",
-    "prettier-plugin-astro": "^0.9.0"
+    "prettier-plugin-astro": "^0.10.0"
   }
 }
