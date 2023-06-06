@@ -27,7 +27,7 @@
     "tsconfig": "^0.0.0",
     "typescript": "^5.0.0",
     "unist-util-visit": "^4.1.2",
-    "vitest": "^0.31.0"
+    "vitest": "^0.32.0"
   },
   "dependencies": {
     "unified": "^10.1.2"
