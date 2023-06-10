@@ -1,0 +1,1 @@
+{"version":3,"file":"Box-44c66bac.js","sources":["../../src/components/Box/Box.svelte"],"sourcesContent":["<div class=\"p-4\">\n  <slot />\n</div>\n"],"names":["insert_hydration","target","div","anchor"],"mappings":"oVAAAA,EAEKC,EAAAC,EAAAC,CAAA"}
