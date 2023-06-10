@@ -1,4 +1,10 @@
-import { API_KEY, PREVIEW_API_KEY, SPACE, ENVIRONMENTS, GITHUB_TOKEN } from '$env/static/private'
+import {
+  API_KEY,
+  PREVIEW_API_KEY,
+  SPACE,
+  ENVIRONMENTS,
+  GITHUB_TOKEN,
+} from "$env/static/private";
 
 const secrets = {
   apiKey: API_KEY,
@@ -6,6 +12,6 @@ const secrets = {
   space: SPACE,
   environments: ENVIRONMENTS,
   githubToken: GITHUB_TOKEN,
-} as const
+} as const;
 
-export default secrets
+export default secrets;

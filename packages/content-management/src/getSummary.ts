@@ -1,27 +1,27 @@
-import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
-import { Env } from './env.ts'
+import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
+import { Env } from "./env.ts";
 
 const configuration = new Configuration({
   apiKey: Env.openaiApiKey,
-})
-const openai = new OpenAIApi(configuration)
+});
+const openai = new OpenAIApi(configuration);
 
-const maxInputLength = 3500
-const maxSummaryLength = 400
-const maxRecursion = 10 // 念のため
+const maxInputLength = 3500;
+const maxSummaryLength = 400;
+const maxRecursion = 10; // 念のため
 
 function chunkString(str: string, chunkLength: number): string[] {
-  const chunks: string[] = []
-  let index = 0
+  const chunks: string[] = [];
+  let index = 0;
   while (index < str.length) {
-    chunks.push(str.slice(index, index + chunkLength))
-    index += chunkLength
+    chunks.push(str.slice(index, index + chunkLength));
+    index += chunkLength;
   }
-  return chunks
+  return chunks;
 }
 
 function summaryPrompt(text: string): string {
-  return `以下の文章を200字程度の日本語で要約してください。\n\n${text}`
+  return `以下の文章を200字程度の日本語で要約してください。\n\n${text}`;
 }
 
 /**
@@ -32,12 +32,12 @@ function summaryPrompt(text: string): string {
  */
 export async function getSummary(text: string, level = 1): Promise<string> {
   if (text.length <= maxSummaryLength || level > maxRecursion) {
-    return text
+    return text;
   }
 
-  const summaryChunks = await generateSummaryChunks(text)
-  const joinedSummary = summaryChunks.join('\n')
-  return getSummary(joinedSummary, level + 1)
+  const summaryChunks = await generateSummaryChunks(text);
+  const joinedSummary = summaryChunks.join("\n");
+  return getSummary(joinedSummary, level + 1);
 }
 
 /**
@@ -47,9 +47,11 @@ export async function getSummary(text: string, level = 1): Promise<string> {
  * @param generateSummaryChunk A function that generates a summary chunk from a given chunk of text
  */
 async function generateSummaryChunks(text: string): Promise<string[]> {
-  const textChunks = chunkString(text, maxInputLength)
-  const summaryChunks = await Promise.all(textChunks.map((chunk) => generateSummaryChunk(chunk)))
-  return summaryChunks
+  const textChunks = chunkString(text, maxInputLength);
+  const summaryChunks = await Promise.all(
+    textChunks.map((chunk) => generateSummaryChunk(chunk))
+  );
+  return summaryChunks;
 }
 
 // function to generate a summary chunk from a given text
@@ -59,24 +61,24 @@ async function generateSummaryChunks(text: string): Promise<string[]> {
 // at most
 async function generateSummaryChunk(text: string): Promise<string> {
   const messages: ChatCompletionRequestMessage[] = [
-    { role: 'system', content: 'あなたはプロの編集者です。' },
-    { role: 'user', content: summaryPrompt(text) },
-  ]
+    { role: "system", content: "あなたはプロの編集者です。" },
+    { role: "user", content: summaryPrompt(text) },
+  ];
   const completion = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
+    model: "gpt-3.5-turbo",
     max_tokens: maxSummaryLength,
     messages: messages,
-  })
-  const chunkSummary = completion.data.choices[0]?.message?.content || ''
-  return chunkSummary
+  });
+  const chunkSummary = completion.data.choices[0]?.message?.content || "";
+  return chunkSummary;
 }
 
 export async function getSlug(text: string): Promise<string> {
   const completion = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
+    model: "gpt-3.5-turbo",
     messages: [
       {
-        role: 'user',
+        role: "user",
         content: `(入力値)を英訳してからスラッグに変換してください。
 例: (入力値)こんにちは、世界
 (出力)hello-world
@@ -85,7 +87,7 @@ export async function getSlug(text: string): Promise<string> {
 (出力)`,
       },
     ],
-  })
-  const slug = completion.data.choices[0]?.message?.content || ''
-  return slug
+  });
+  const slug = completion.data.choices[0]?.message?.content || "";
+  return slug;
 }

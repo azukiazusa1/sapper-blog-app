@@ -1,5 +1,5 @@
-import type { CommitResponse } from '../repositories/GitHub'
-import { faker } from '@faker-js/faker'
+import type { CommitResponse } from "../repositories/GitHub";
+import { faker } from "@faker-js/faker";
 
 export const createDummyGitHubCommit = ({
   username = faker.internet.userName(),
@@ -83,5 +83,5 @@ export const createDummyGitHubCommit = ({
         sha: faker.random.alpha(),
       },
     ],
-  }
-}
+  };
+};

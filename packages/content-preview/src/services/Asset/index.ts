@@ -1,31 +1,31 @@
-import { createClient } from '../client'
+import { createClient } from "../client";
 
 type Params = {
-  fileName: string
-  contentType: string
-  file: string | ArrayBuffer
-}
+  fileName: string;
+  contentType: string;
+  file: string | ArrayBuffer;
+};
 
 export const uploadFile = async ({ fileName, file, contentType }: Params) => {
-  const client = await createClient()
+  const client = await createClient();
   const asset = await client.createAssetFromFiles({
     fields: {
       title: {
-        'en-US': fileName,
+        "en-US": fileName,
       },
       description: {
-        'en-US': '',
+        "en-US": "",
       },
       file: {
-        'en-US': {
+        "en-US": {
           contentType,
           fileName,
           file,
         },
       },
     },
-  })
-  const processedAsset = await asset.processForAllLocales()
-  await processedAsset.publish()
-  return processedAsset
-}
+  });
+  const processedAsset = await asset.processForAllLocales();
+  await processedAsset.publish();
+  return processedAsset;
+};

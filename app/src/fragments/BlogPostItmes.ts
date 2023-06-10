@@ -1,4 +1,4 @@
-import { gql } from '@urql/core'
+import { gql } from "@urql/core";
 
 export const blogPostItem = gql`
   fragment BlogPostItem on BlogPost {
@@ -17,4 +17,4 @@ export const blogPostItem = gql`
       }
     }
   }
-`
+`;

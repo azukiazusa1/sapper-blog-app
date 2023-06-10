@@ -1,16 +1,23 @@
 <script lang="ts">
-  export let image: string
-  export let title: string
+  export let image: string;
+  export let title: string;
 </script>
 
-<div class="w-full bg-center bg-cover h-72 md:h-96 rounded-lg" style={`background-image: url(${image});`}>
-  <div class="flex items-center justify-center w-full h-full">
+<div
+  class="h-72 w-full rounded-lg bg-cover bg-center md:h-96"
+  style={`background-image: url(${image});`}
+>
+  <div class="flex h-full w-full items-center justify-center">
     <div class="text-center">
-      <h1 class="text-2xl italic tracking-wider font-semibold text-white uppercase md:text-3xl">{title}</h1>
+      <h1
+        class="text-2xl font-semibold uppercase italic tracking-wider text-white md:text-3xl"
+      >
+        {title}
+      </h1>
     </div>
   </div>
 </div>
-<div class="text-right mt-2">
+<div class="mt-2 text-right">
   <span class="text-sm">
     <a
       class="underline hover:opacity-75"

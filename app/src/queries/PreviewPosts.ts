@@ -1,8 +1,11 @@
-import { gql } from '@urql/core'
+import { gql } from "@urql/core";
 
 export const PreviewPosts = gql`
   query PreviewPosts {
-    blogPostCollection(preview: true, where: { sys: { firstPublishedAt_exists: false } }) {
+    blogPostCollection(
+      preview: true
+      where: { sys: { firstPublishedAt_exists: false } }
+    ) {
       items {
         sys {
           id
@@ -22,4 +25,4 @@ export const PreviewPosts = gql`
       }
     }
   }
-`
+`;

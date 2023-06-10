@@ -1,11 +1,11 @@
 <script lang="ts">
-  import variables from '$lib/variables'
-  import HeroSection from '../components/HeroSection/HeroSection.svelte'
-  import PostList from '../components/PostList.svelte'
-  import Link from '../components/Link/Link.svelte'
-  import type { PageData } from './$types'
+  import variables from "$lib/variables";
+  import HeroSection from "../components/HeroSection/HeroSection.svelte";
+  import PostList from "../components/PostList.svelte";
+  import Link from "../components/Link/Link.svelte";
+  import type { PageData } from "./$types";
 
-  export let data: PageData
+  export let data: PageData;
 </script>
 
 <svelte:head>
@@ -19,7 +19,11 @@
 
 <HeroSection />
 
-<h2 class="max-w-2xl mt-10 text-2xl font-extrabold leading-none md:text-4xl dark:text-white">最新の記事</h2>
+<h2
+  class="mt-10 max-w-2xl text-2xl font-extrabold leading-none dark:text-white md:text-4xl"
+>
+  最新の記事
+</h2>
 <div class="container my-4 md:mx-auto">
   <PostList posts={data.blogPostCollection.items} />
 </div>
@@ -32,7 +36,7 @@
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="2"
-      class="w-4 h-4 ml-2"
+      class="ml-2 h-4 w-4"
       viewBox="0 0 24 24"
     >
       <path d="M5 12h14M12 5l7 7-7 7" />

@@ -1,29 +1,29 @@
-import type { Meta, StoryObj } from '@storybook/svelte'
+import type { Meta, StoryObj } from "@storybook/svelte";
 
-import Link from './LinkView.svelte'
+import Link from "./LinkView.svelte";
 
 const meta: Meta<Link> = {
-  title: 'Link',
+  title: "Link",
   component: Link,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     slot: {
-      control: { type: 'text' },
+      control: { type: "text" },
     },
     href: {
-      control: { type: 'text' },
+      control: { type: "text" },
     },
     target: {
-      control: { type: 'text' },
+      control: { type: "text" },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<Link>
+export default meta;
+type Story = StoryObj<Link>;
 
 export const Primary: Story = {
   args: {
-    slot: 'リンク',
+    slot: "リンク",
   },
-}
+};

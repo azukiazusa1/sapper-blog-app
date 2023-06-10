@@ -1,23 +1,23 @@
-import type { Meta, StoryObj } from '@storybook/svelte'
+import type { Meta, StoryObj } from "@storybook/svelte";
 
-import BadgeView from './BadgeView.svelte'
+import BadgeView from "./BadgeView.svelte";
 
 const meta: Meta<BadgeView> = {
-  title: 'Badge',
+  title: "Badge",
   component: BadgeView,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     slot: {
-      control: { type: 'text' },
+      control: { type: "text" },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<BadgeView>
+export default meta;
+type Story = StoryObj<BadgeView>;
 
 export const Primary: Story = {
   args: {
-    slot: '3',
+    slot: "3",
   },
-}
+};

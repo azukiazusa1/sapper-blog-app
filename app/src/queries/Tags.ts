@@ -1,4 +1,4 @@
-import { gql } from '@urql/core'
+import { gql } from "@urql/core";
 
 export const tagsQuery = gql`
   query Tags {
@@ -14,4 +14,4 @@ export const tagsQuery = gql`
       }
     }
   }
-`
+`;

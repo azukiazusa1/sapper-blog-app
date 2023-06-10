@@ -1,29 +1,37 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import BlogMeta from '../../components/BlogMeta.astro'
-import FileUplod from '../../components/FileUpload/Dialog'
-import type { BlogPostFromtMatter } from '../../types'
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogMeta from "../../components/BlogMeta.astro";
+import FileUplod from "../../components/FileUpload/Dialog";
+import type { BlogPostFromtMatter } from "../../types";
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob<BlogPostFromtMatter>('../../../../../contents/blogPost/*.md')
+  const posts = await Astro.glob<BlogPostFromtMatter>(
+    "../../../../../contents/blogPost/*.md"
+  );
   return posts.map((post) => {
-    const slug = post.frontmatter.published ? post.frontmatter.slug : post.frontmatter.id
+    const slug = post.frontmatter.published
+      ? post.frontmatter.slug
+      : post.frontmatter.id;
     if (slug === null) {
-      throw new Error(`slug is null. id: ${post.frontmatter.id}`)
+      throw new Error(`slug is null. id: ${post.frontmatter.id}`);
     }
     return {
-      params: { slug: post.frontmatter.published ? post.frontmatter.slug : post.frontmatter.id },
+      params: {
+        slug: post.frontmatter.published
+          ? post.frontmatter.slug
+          : post.frontmatter.id,
+      },
 
       props: { post },
-    }
-  })
+    };
+  });
 }
 
 interface Props {
-  post: Awaited<ReturnType<typeof getStaticPaths>>[number]['props']['post']
+  post: Awaited<ReturnType<typeof getStaticPaths>>[number]["props"]["post"];
 }
 
-const { post } = Astro.props
+const { post } = Astro.props;
 ---
 
 <BaseLayout>
@@ -31,7 +39,7 @@ const { post } = Astro.props
     <BlogMeta post={post} />
 
     <div class="my-12">
-      <article class="max-w-3xl mx-auto">
+      <article class="mx-auto max-w-3xl">
         <div class="p-4">
           <div id="contents">
             <post.Content />
