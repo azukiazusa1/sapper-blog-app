@@ -1,22 +1,22 @@
-import * as Dialog from '@radix-ui/react-dialog'
-import useFiles from './useFiles'
-import FileUpload from './FileUploader'
-import FileRow from './FileRow'
+import * as Dialog from "@radix-ui/react-dialog";
+import useFiles from "./useFiles";
+import FileUpload from "./FileUploader";
+import FileRow from "./FileRow";
 
 const FileUploadDialog = () => {
-  const { files, addFiles, deleteFile } = useFiles()
+  const { files, addFiles, deleteFile } = useFiles();
 
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button className="p-0 w-16 h-16 flex justify-center items-center text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900 rounded-full mouse shadow-2xl transition ease-in duration-200 focus:outline-none fixed bottom-10 right-10 z-50">
+        <button className="mouse fixed bottom-10 right-10 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-700 p-0 text-white shadow-2xl transition duration-200 ease-in hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="h-6 w-6"
           >
             <path
               strokeLinecap="round"
@@ -29,7 +29,7 @@ const FileUploadDialog = () => {
       <Dialog.Portal>
         <div className="fixed inset-0 z-50 flex items-start justify-center sm:items-center">
           <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm" />
-          <Dialog.Content className="fixed z-50 flex flex-col w-full gap-8 rounded-lg bg-white p-6 max-w-4xl">
+          <Dialog.Content className="fixed z-50 flex w-full max-w-4xl flex-col gap-8 rounded-lg bg-white p-6">
             <div className="flex items-center justify-center">
               <FileUpload addFiles={addFiles} />
             </div>
@@ -38,7 +38,7 @@ const FileUploadDialog = () => {
         </div>
       </Dialog.Portal>
     </Dialog.Root>
-  )
-}
+  );
+};
 
-export default FileUploadDialog
+export default FileUploadDialog;

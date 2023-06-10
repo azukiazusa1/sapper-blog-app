@@ -1,22 +1,22 @@
 <script lang="ts">
-  import DropDownItem from './DropDownItem.svelte'
-  import Loading from '../Icons/Loading.svelte'
-  import type { Item } from './types'
-  import { createEventDispatcher } from 'svelte'
+  import DropDownItem from "./DropDownItem.svelte";
+  import Loading from "../Icons/Loading.svelte";
+  import type { Item } from "./types";
+  import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher<{
-    select: Item
-  }>()
+    select: Item;
+  }>();
 
-  export let items: Item[]
-  export let loading = false
-  export let listboxId: string
-  export let optionId: string
-  export let activeIndex: number | null = null
+  export let items: Item[];
+  export let loading = false;
+  export let listboxId: string;
+  export let optionId: string;
+  export let activeIndex: number | null = null;
 </script>
 
 <div
   on:keydown
-  class="absolute z-20 overflow-hiddenrounded-br-md rounded-bl-md shadow-lg w-72 max-h-96 overflow-y-scroll bg-white dark:bg-zinc-700 border-2 border-t-0 border-gray-200 dark:border-zinc-700"
+  class="overflow-hiddenrounded-br-md absolute z-20 max-h-96 w-72 overflow-y-scroll rounded-bl-md border-2 border-t-0 border-gray-200 bg-white shadow-lg dark:border-zinc-700 dark:bg-zinc-700"
 >
   {#if loading}
     <div class="py-2 text-center" aria-live="polite" aria-atomic="true">
@@ -36,7 +36,7 @@
           selected={index === activeIndex}
           id={`${optionId}-${index}`}
           on:mousedown={() => {
-            dispatch('select', item)
+            dispatch("select", item);
           }}
         />
       {/each}

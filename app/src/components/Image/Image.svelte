@@ -1,10 +1,10 @@
 <script lang="ts">
-  export let src: string
-  export let alt: string
-  export let width: number
-  export let height: number
-  export let lazy = true
-  export let slug: string
+  export let src: string;
+  export let alt: string;
+  export let width: number;
+  export let height: number;
+  export let lazy = true;
+  export let slug: string;
 </script>
 
 <img
@@ -24,8 +24,8 @@
     ${src}&w=1100 1100w,
     ${src}&w=1200 1200w`}
   sizes="(max-width: 600px) 100vw, 600px"
-  loading={lazy ? 'lazy' : 'eager'}
-  decoding={lazy ? 'async' : 'auto'}
+  loading={lazy ? "lazy" : "eager"}
+  decoding={lazy ? "async" : "auto"}
   height={width}
   width={height}
 />

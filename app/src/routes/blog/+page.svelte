@@ -1,10 +1,10 @@
 <script lang="ts">
-  import PostList from '../../components/PostList.svelte'
-  import Pagination from '../../components/Pagination/Pagination.svelte'
-  import type { PageData } from './$types'
-  import variables from '$lib/variables'
+  import PostList from "../../components/PostList.svelte";
+  import Pagination from "../../components/Pagination/Pagination.svelte";
+  import type { PageData } from "./$types";
+  import variables from "$lib/variables";
 
-  export let data: PageData
+  export let data: PageData;
 </script>
 
 <svelte:head>
@@ -20,4 +20,7 @@
   <PostList posts={data.blogPostCollection.items} />
 </div>
 
-<Pagination total={data.blogPostCollection.total} limit={data.blogPostCollection.limit} />
+<Pagination
+  total={data.blogPostCollection.total}
+  limit={data.blogPostCollection.limit}
+/>

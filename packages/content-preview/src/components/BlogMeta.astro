@@ -1,65 +1,73 @@
 ---
-import type { MarkdownInstance } from 'astro'
-import type { BlogPostFromtMatter } from '../types'
+import type { MarkdownInstance } from "astro";
+import type { BlogPostFromtMatter } from "../types";
 interface Props {
-  post: MarkdownInstance<BlogPostFromtMatter>
+  post: MarkdownInstance<BlogPostFromtMatter>;
 }
 
-const { post } = Astro.props
-console.log(post.frontmatter.thumbnail)
+const { post } = Astro.props;
+console.log(post.frontmatter.thumbnail);
 ---
 
-<div class="py-10 px-24 mb-4 border border-gray-200 dark:border-zinc-700">
-  <div class="flex flex-col items-start mb-8">
-    <h1 class="text-2xl md:text-4xl font-bold mb-4">
+<div class="mb-4 border border-gray-200 px-24 py-10 dark:border-zinc-700">
+  <div class="mb-8 flex flex-col items-start">
+    <h1 class="mb-4 text-2xl font-bold md:text-4xl">
       {post.frontmatter.title}
     </h1>
     <button
       id="open-vscode"
-      class="px-4 py-2 border border-gray-400 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:text-gray-50 dark:border-zinc-700 dark:hover:bg-zinc-700 dark:focus:ring-gray-900"
+      class="rounded-lg border border-gray-400 px-4 py-2 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-zinc-700 dark:text-gray-50 dark:hover:bg-zinc-700 dark:focus:ring-gray-900"
       data-file={post.file}
     >
       VS Code で開く
     </button>
   </div>
   <div class="flex flex-col gap-2">
-    <div class="flex items-center mb-2">
+    <div class="mb-2 flex items-center">
       {
         post.frontmatter.thumbnail && (
           <img
             src={post.frontmatter.thumbnail.url}
             width={400}
             height={300}
-            class="w-48 h-auto"
+            class="h-auto w-48"
             alt={post.frontmatter.thumbnail.title}
           />
         )
       }
     </div>
     <div class="flex items-center">
-      <div class="font-bold w-40">Slug</div>
-      <div class="ml-2 w-96 text-gray-500 dark:text-gray-300">{post.frontmatter.slug}</div>
-      <div class="ml-4 text-gray-500 dark:text-gray-300">{post.frontmatter.slug?.length ?? 0} / 255</div>
-    </div>
-    <div class="flex items-center">
-      <div class="font-bold w-40">About</div>
-      <div class="ml-2 w-96 text-gray-500 dark:text-gray-300">{post.frontmatter.about}</div>
-      <div class="ml-4 text-gray-500 dark:text-gray-300">{post.frontmatter.about?.length ?? 0} / 255</div>
-    </div>
-    <div class="flex items-center">
-      <div class="font-bold w-40">公開済み</div>
-      <div class="ml-2 text-gray-500 dark:text-gray-300">
-        {post.frontmatter.published ? '✅' : '❌'}
+      <div class="w-40 font-bold">Slug</div>
+      <div class="ml-2 w-96 text-gray-500 dark:text-gray-300">
+        {post.frontmatter.slug}
+      </div>
+      <div class="ml-4 text-gray-500 dark:text-gray-300">
+        {post.frontmatter.slug?.length ?? 0} / 255
       </div>
     </div>
     <div class="flex items-center">
-      <div class="font-bold w-40">作成日</div>
+      <div class="w-40 font-bold">About</div>
+      <div class="ml-2 w-96 text-gray-500 dark:text-gray-300">
+        {post.frontmatter.about}
+      </div>
+      <div class="ml-4 text-gray-500 dark:text-gray-300">
+        {post.frontmatter.about?.length ?? 0} / 255
+      </div>
+    </div>
+    <div class="flex items-center">
+      <div class="w-40 font-bold">公開済み</div>
+      <div class="ml-2 text-gray-500 dark:text-gray-300">
+        {post.frontmatter.published ? "✅" : "❌"}
+      </div>
+    </div>
+    <div class="flex items-center">
+      <div class="w-40 font-bold">作成日</div>
       <div class="ml-2 text-gray-500 dark:text-gray-300">
         {post.frontmatter.createdAt}
       </div>
     </div>
     <div class="flex items-center">
-      <div class="font-bold w-40">タグ</div>
+      <div class="w-40 font-bold">タグ</div>
       <div class="ml-2 text-gray-500 dark:text-gray-300">
         {post.frontmatter.tags.map((tag) => <span class="mr-2">{tag}</span>)}
       </div>
@@ -69,8 +77,8 @@ console.log(post.frontmatter.thumbnail)
 
 <script>
   const openVscode = () => {
-    const filepath = document.getElementById('open-vscode').dataset.file
-    window.open(`vscode://file${filepath}`)
-  }
-  document.getElementById('open-vscode').addEventListener('click', openVscode)
+    const filepath = document.getElementById("open-vscode").dataset.file;
+    window.open(`vscode://file${filepath}`);
+  };
+  document.getElementById("open-vscode").addEventListener("click", openVscode);
 </script>

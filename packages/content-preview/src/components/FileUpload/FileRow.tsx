@@ -1,47 +1,54 @@
-import type { UploadedFile } from './types'
-import { Popover, PopoverContent, PopoverTrigger } from './Popover'
+import type { UploadedFile } from "./types";
+import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
 
 type Props = {
-  files: UploadedFile[]
-  deleteFile: (id: string) => void
-}
+  files: UploadedFile[];
+  deleteFile: (id: string) => void;
+};
 
 const readablizeBytes = (bytes: number) => {
-  const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-  let l = 0
-  let n = parseInt(String(bytes), 10) || 0
+  const units = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+  let l = 0;
+  let n = parseInt(String(bytes), 10) || 0;
 
   while (n >= 1024 && ++l) {
-    n = n / 1024
+    n = n / 1024;
   }
 
-  return `${n.toFixed(n < 10 && l > 0 ? 1 : 0)} ${units[l]}`
-}
+  return `${n.toFixed(n < 10 && l > 0 ? 1 : 0)} ${units[l]}`;
+};
 
 const FileRow: React.FC<Props> = ({ files, deleteFile }) => {
   const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text)
-  }
+    navigator.clipboard.writeText(text);
+  };
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="mx-auto w-10/12">
       {files.map((file) => (
         <div
-          className="flex items-center justify-between mb-4
+          className="mb-4 flex items-center justify-between
         "
           key={file.id}
         >
           <div className="flex items-center gap-4">
-            <img width={40} height={40} className="w-10 h-10 rounded-md object-cover" src={file.url} />
+            <img
+              width={40}
+              height={40}
+              className="h-10 w-10 rounded-md object-cover"
+              src={file.url}
+            />
             <div className="flex flex-col">
               <p className="text-sm font-medium">{file.name}</p>
-              <p className="text-xs text-gray-500">{readablizeBytes(file.size)}</p>
+              <p className="text-xs text-gray-500">
+                {readablizeBytes(file.size)}
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-4">
             <Popover>
               <PopoverTrigger asChild>
                 <button
-                  className="p-2 text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900 rounded-full mouse shadow-2xl transition ease-in duration-200 focus:outline-none"
+                  className="mouse rounded-full bg-indigo-700 p-2 text-white shadow-2xl transition duration-200 ease-in hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900"
                   onClick={() => copyToClipboard(file.url)}
                 >
                   <svg
@@ -50,7 +57,7 @@ const FileRow: React.FC<Props> = ({ files, deleteFile }) => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="h-6 w-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -65,24 +72,29 @@ const FileRow: React.FC<Props> = ({ files, deleteFile }) => {
               </PopoverContent>
             </Popover>
             <button
-              className="p-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900 rounded-full mouse shadow-2xl transition ease-in duration-200 focus:outline-none"
+              className="mouse rounded-full bg-red-700 p-2 text-white shadow-2xl transition duration-200 ease-in hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900"
               onClick={() => deleteFile(file.id)}
             >
               <svg
-                className="w-6 h-6"
+                className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
               </svg>
             </button>
           </div>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default FileRow
+export default FileRow;

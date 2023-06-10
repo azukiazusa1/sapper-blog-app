@@ -1,4 +1,4 @@
-import { gql } from '@urql/core'
+import { gql } from "@urql/core";
 
 export const previewPost = gql`
   query PreviewPost($id: String!) {
@@ -22,4 +22,4 @@ export const previewPost = gql`
       }
     }
   }
-`
+`;

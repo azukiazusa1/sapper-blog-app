@@ -1,6 +1,6 @@
-import type { Handle } from '@sveltejs/kit'
-import { building } from '$app/environment'
-import { minify, type Options } from 'html-minifier'
+import type { Handle } from "@sveltejs/kit";
+import { building } from "$app/environment";
+import { minify, type Options } from "html-minifier";
 
 const minification_options: Options = {
   collapseBooleanAttributes: true,
@@ -19,17 +19,17 @@ const minification_options: Options = {
   removeStyleLinkTypeAttributes: true,
   sortAttributes: true,
   sortClassName: true,
-}
+};
 
 export const handle: Handle = async ({ event, resolve }) => {
-  let page = ''
+  let page = "";
 
   return resolve(event, {
     transformPageChunk: ({ html, done }) => {
-      page += html
+      page += html;
       if (done) {
-        return building ? minify(page, minification_options) : page
+        return building ? minify(page, minification_options) : page;
       }
     },
-  })
-}
+  });
+};

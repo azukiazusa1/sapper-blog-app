@@ -1,4 +1,4 @@
-import { gql } from '@urql/core'
+import { gql } from "@urql/core";
 
 export const allPostsQuery = gql`
   query AllPosts($order: BlogPostOrder = createdAt_DESC) {
@@ -11,4 +11,4 @@ export const allPostsQuery = gql`
       }
     }
   }
-`
+`;

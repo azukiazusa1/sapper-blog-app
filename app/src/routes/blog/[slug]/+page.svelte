@@ -1,24 +1,26 @@
 <script lang="ts">
-  import Card from '../../../components/Card/Card.svelte'
-  import Ogp from '../../../components/Ogp.svelte'
-  import PostList from '../../../components/PostList.svelte'
-  import TwitterShareButton from '../../../components/TwitterShareButton.svelte'
-  import HatenaShareButton from '../../../components/HatenaShareButton.svelte'
-  import GitHubEditButton from '../../../components/GitHubEditButton.svelte'
-  import type { PageData } from './$types'
-  import variables from '$lib/variables'
-  import ShareButton from '../../../components/ShareButton.svelte'
-  import Box from '../../../components/Box/Box.svelte'
-  import Contributors from '../../../components/Contributors/Contributors.svelte'
+  import Card from "../../../components/Card/Card.svelte";
+  import Ogp from "../../../components/Ogp.svelte";
+  import PostList from "../../../components/PostList.svelte";
+  import TwitterShareButton from "../../../components/TwitterShareButton.svelte";
+  import HatenaShareButton from "../../../components/HatenaShareButton.svelte";
+  import GitHubEditButton from "../../../components/GitHubEditButton.svelte";
+  import type { PageData } from "./$types";
+  import variables from "$lib/variables";
+  import ShareButton from "../../../components/ShareButton.svelte";
+  import Box from "../../../components/Box/Box.svelte";
+  import Contributors from "../../../components/Contributors/Contributors.svelte";
 
-  export let data: PageData
+  export let data: PageData;
 
-  $: post = data.post
-  $: contents = data.contents
-  $: contributors = data.contributors
-  $: tagNames = post.tagsCollection.items.map((t) => encodeURIComponent(t.name))
+  $: post = data.post;
+  $: contents = data.contents;
+  $: contributors = data.contributors;
+  $: tagNames = post.tagsCollection.items.map((t) =>
+    encodeURIComponent(t.name)
+  );
 
-  $: url = `${variables.baseURL}/blog/${post.slug}`
+  $: url = `${variables.baseURL}/blog/${post.slug}`;
 </script>
 
 <svelte:head>
@@ -31,10 +33,12 @@
   title={post.title}
   description={post.about}
   {url}
-  image={`${variables.baseURL}/blog/ogp/${encodeURIComponent(post.title)}/${tagNames.join('/')}.png`}
+  image={`${variables.baseURL}/blog/ogp/${encodeURIComponent(
+    post.title
+  )}/${tagNames.join("/")}.png`}
 />
 
-<div class="my-12 max-w-3xl mx-auto">
+<div class="mx-auto my-12 max-w-3xl">
   <Card
     slug={post.slug}
     title={post.title}
@@ -42,17 +46,17 @@
     tags={post.tagsCollection.items}
     createdAt={post.createdAt}
     thumbnail={{
-      title: post.thumbnail?.title ?? '',
-      url: post.thumbnail?.url ?? '',
+      title: post.thumbnail?.title ?? "",
+      url: post.thumbnail?.url ?? "",
     }}
     {contents}
   />
   <hr class="my-4 border-gray-300 dark:border-zinc-700" />
-  <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mt-4">
+  <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
     <Contributors {contributors} />
     <Box>
       <GitHubEditButton slug={post.slug} />
-      <div class="flex mt-4">
+      <div class="mt-4 flex">
         <ShareButton {url} text={post.title}>
           <svelte:fragment slot="fallback">
             <div>この記事をシェアする</div>
@@ -73,4 +77,6 @@
 
 <PostList posts={post.relatedArticleCollection?.items} small />
 <!-- svelte-ignore a11y-missing-content -->
-<a href={`/blog/ogp/${encodeURIComponent(post.title)}/${tagNames.join('/')}.png`} />
+<a
+  href={`/blog/ogp/${encodeURIComponent(post.title)}/${tagNames.join("/")}.png`}
+/>

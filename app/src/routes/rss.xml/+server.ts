@@ -1,13 +1,15 @@
-import type { RequestHandler } from '@sveltejs/kit'
-import type { AllPostsQuery } from '../../generated/graphql'
-import RepositoryFactory, { POST } from '../../repositories/RepositoryFactory'
-import variables from '$lib/variables'
-const PostRepository = RepositoryFactory[POST]
-export const prerender = true
+import type { RequestHandler } from "@sveltejs/kit";
+import type { AllPostsQuery } from "../../generated/graphql";
+import RepositoryFactory, { POST } from "../../repositories/RepositoryFactory";
+import variables from "$lib/variables";
+const PostRepository = RepositoryFactory[POST];
+export const prerender = true;
 
-const siteUrl = variables.baseURL
+const siteUrl = variables.baseURL;
 
-const renderXmlRssFeed = (posts: AllPostsQuery) => `<?xml version="1.0" encoding="UTF-8" ?>
+const renderXmlRssFeed = (
+  posts: AllPostsQuery
+) => `<?xml version="1.0" encoding="UTF-8" ?>
   <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title>azukiazusa のテックブログ2</title>
@@ -33,23 +35,23 @@ const renderXmlRssFeed = (posts: AllPostsQuery) => `<?xml version="1.0" encoding
         <description><![CDATA[${post.about}]]></description>
         <pubDate>${new Date(post.createdAt).toUTCString()}</pubDate>
       </item>
-    `,
+    `
       )
-      .join('\n')}
+      .join("\n")}
     </channel>
   </rss>
-`
+`;
 
 export const GET: RequestHandler = async () => {
-  const posts = await PostRepository.findAll()
-  const feed = renderXmlRssFeed(posts)
+  const posts = await PostRepository.findAll();
+  const feed = renderXmlRssFeed(posts);
 
   const headers = {
-    'Content-Type': 'application/rss+xml',
-    'Cache-Control': 'max-age=0, s-max-age=3600',
-  }
+    "Content-Type": "application/rss+xml",
+    "Cache-Control": "max-age=0, s-max-age=3600",
+  };
 
   return new Response(feed, {
     headers,
-  })
-}
+  });
+};

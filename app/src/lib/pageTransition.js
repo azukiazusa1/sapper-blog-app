@@ -1,51 +1,51 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { beforeNavigate } from '$app/navigation'
-import { navigating } from '$app/stores'
-import { onDestroy } from 'svelte'
+import { beforeNavigate } from "$app/navigation";
+import { navigating } from "$app/stores";
+import { onDestroy } from "svelte";
 
 function getNavigationStore() {
   /** @type {((val?: any) => void)[]} */
-  const callbacks = []
+  const callbacks = [];
 
   const navigation = {
     ...navigating,
     complete: async () => {
       await new Promise((res) => {
-        callbacks.push(res)
-      })
+        callbacks.push(res);
+      });
     },
-  }
+  };
 
   const unsub = navigating.subscribe((n) => {
     if (n === null) {
       while (callbacks.length > 0) {
-        const res = callbacks.pop()
-        res?.()
+        const res = callbacks.pop();
+        res?.();
       }
     }
-  })
+  });
 
   onDestroy(() => {
-    unsub()
-  })
+    unsub();
+  });
 
-  return navigation
+  return navigation;
 }
 
 export const preparePageTransition = () => {
-  const navigation = getNavigationStore()
+  const navigation = getNavigationStore();
 
   beforeNavigate(() => {
     // ブラウザが ViewTransition API をサポートしていない場合は何もしない
     // @ts-ignore
     if (!document.startViewTransition) {
-      return
+      return;
     }
-    const navigationComplete = navigation.complete()
+    const navigationComplete = navigation.complete();
 
     // @ts-ignore
     document.startViewTransition(async () => {
-      await navigationComplete
-    })
-  })
-}
+      await navigationComplete;
+    });
+  });
+};

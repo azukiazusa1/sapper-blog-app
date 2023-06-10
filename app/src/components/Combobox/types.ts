@@ -1,5 +1,5 @@
 export type Item = {
-  imageUrl: string
-  text: string
-  key: string
-}
+  imageUrl: string;
+  text: string;
+  key: string;
+};

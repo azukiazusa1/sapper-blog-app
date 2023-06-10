@@ -1,7 +1,7 @@
-import contentful, { MetaLinkProps } from 'contentful-management'
-import slugify from 'slugify'
-import { Env } from './env.ts'
-import { searchRelatedArticles } from './searchRelatedArticles.ts'
+import contentful, { MetaLinkProps } from "contentful-management";
+import slugify from "slugify";
+import { Env } from "./env.ts";
+import { searchRelatedArticles } from "./searchRelatedArticles.ts";
 import type {
   BlogPost,
   ContentfulBlogPost,
@@ -10,86 +10,88 @@ import type {
   FieldValue,
   PublishedBlogPost,
   Thumbnail,
-} from './types'
+} from "./types";
 
 type Cache = {
-  tags?: ContentfulTag[]
-  environment?: contentful.Environment
-  assets?: contentful.Asset[]
-}
+  tags?: ContentfulTag[];
+  environment?: contentful.Environment;
+  assets?: contentful.Asset[];
+};
 
-let cache: Cache = {}
+let cache: Cache = {};
 
 const createClient = async () => {
   if (cache.environment) {
-    return cache.environment
+    return cache.environment;
   }
   const client = contentful.createClient({
     accessToken: Env.accessToken,
-  })
+  });
 
-  const space = await client.getSpace(Env.space)
-  const environment = await space.getEnvironment(Env.environments)
+  const space = await client.getSpace(Env.space);
+  const environment = await space.getEnvironment(Env.environments);
   cache = {
     ...cache,
     environment,
-  }
-  return environment
-}
+  };
+  return environment;
+};
 
 const fetchTags = async (): Promise<ContentfulTag[]> => {
   if (cache.tags) {
-    return cache.tags
+    return cache.tags;
   }
-  const client = await createClient()
+  const client = await createClient();
 
   const tags = await client.getEntries({
-    content_type: 'tag',
-  })
+    content_type: "tag",
+  });
 
   cache = {
     ...cache,
     tags: tags.items as unknown as ContentfulTag[],
-  }
+  };
 
-  return tags.items as unknown as ContentfulTag[]
-}
+  return tags.items as unknown as ContentfulTag[];
+};
 
 const fetchAssets = async (): Promise<contentful.Asset[]> => {
   if (cache.assets) {
-    return cache.assets
+    return cache.assets;
   }
 
-  const client = await createClient()
+  const client = await createClient();
 
   const assets = await client.getAssets({
     limit: 1000,
-  })
+  });
 
   cache = {
     ...cache,
     assets: assets.items,
-  }
+  };
 
-  return assets.items
-}
+  return assets.items;
+};
 
 const fetchBlogs = async (): Promise<ContentfulBlogPost[]> => {
-  const client = await createClient()
+  const client = await createClient();
   const posts = await client.getEntries({
-    content_type: 'blogPost',
+    content_type: "blogPost",
     limit: 1000,
-  })
-  return posts.items as unknown as ContentfulBlogPost[]
-}
+  });
+  return posts.items as unknown as ContentfulBlogPost[];
+};
 
 const flattenField = <T>(field: FieldValue<T>): T => {
-  return field['en-US']
-}
+  return field["en-US"];
+};
 
-const flattenOptionalField = <T>(field: FieldValue<T> | undefined): T | undefined => {
-  return field ? field['en-US'] : undefined
-}
+const flattenOptionalField = <T>(
+  field: FieldValue<T> | undefined
+): T | undefined => {
+  return field ? field["en-US"] : undefined;
+};
 
 /**
  * Contentful の Asset の ID を URL から取得する
@@ -110,36 +112,41 @@ const getAssetIdFromUrl = (url: string): string => {
   ] = url.split('/')
 
   if (!assetId) {
-    throw new Error('Invalid asset url' + url)
+    throw new Error("Invalid asset url" + url);
   }
 
-  return assetId
-}
+  return assetId;
+};
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
-  const tags = await fetchTags()
-  const blogs = await fetchBlogs()
-  const assets = await fetchAssets()
+  const tags = await fetchTags();
+  const blogs = await fetchBlogs();
+  const assets = await fetchAssets();
 
   const result = await Promise.all(
     blogs.map(async (blog) => {
-      let thumbnail: Thumbnail | undefined
+      let thumbnail: Thumbnail | undefined;
       if (blog.fields.thumbnail) {
-        const asset = assets.find((a) => a.sys.id === blog.fields.thumbnail['en-US'].sys.id)
+        const asset = assets.find(
+          (a) => a.sys.id === blog.fields.thumbnail["en-US"].sys.id
+        );
         thumbnail = {
-          url: 'https:' + asset?.fields.file['en-US']?.url || '',
-          title: asset?.fields.title['en-US'] || '',
-        }
+          url: "https:" + asset?.fields.file["en-US"]?.url || "",
+          title: asset?.fields.title["en-US"] || "",
+        };
       }
 
       const blogTags: string[] =
-        blog.fields.tags?.['en-US']?.map((tag) => {
-          const foundTag = tags.find((t) => t.sys.id === tag.sys.id)
-          return foundTag ? flattenField(foundTag.fields.name) : ''
-        }) ?? []
+        blog.fields.tags?.["en-US"]?.map((tag) => {
+          const foundTag = tags.find((t) => t.sys.id === tag.sys.id);
+          return foundTag ? flattenField(foundTag.fields.name) : "";
+        }) ?? [];
 
       if (contentful.isPublished(blog)) {
-        if (thumbnail === undefined) throw new Error('公開済みの記事なら thumbnail は必ず存在するはず' + blog.sys.id)
+        if (thumbnail === undefined)
+          throw new Error(
+            "公開済みの記事なら thumbnail は必ず存在するはず" + blog.sys.id
+          );
 
         return {
           id: blog.sys.id,
@@ -152,7 +159,7 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
           published: true,
           tags: blogTags,
           thumbnail,
-        } satisfies PublishedBlogPost
+        } satisfies PublishedBlogPost;
       } else {
         return {
           id: blog.sys.id,
@@ -165,30 +172,30 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
           published: false,
           tags: blogTags,
           thumbnail,
-        } satisfies DraftBlogPost
+        } satisfies DraftBlogPost;
       }
-    }),
-  )
-  return result
-}
+    })
+  );
+  return result;
+};
 
 const createTag = async (tagName: string): Promise<contentful.Entry> => {
-  const client = await createClient()
-  const tag = await client.createEntry('tag', {
+  const client = await createClient();
+  const tag = await client.createEntry("tag", {
     fields: {
       name: {
-        'en-US': tagName,
+        "en-US": tagName,
       },
       slug: {
-        'en-US': slugify(tagName, { lower: true }),
+        "en-US": slugify(tagName, { lower: true }),
       },
     },
-  })
+  });
   await tag.publish().catch(() => {
     // テスト時にでなぜかライブラリ側のバグで publish が失敗するので無視する
-  })
-  return tag
-}
+  });
+  return tag;
+};
 
 /**
  * タグの名前から Contentful で登録されている ID を取得する
@@ -197,153 +204,160 @@ const createTag = async (tagName: string): Promise<contentful.Entry> => {
  * @param tagNames タグの名前
  * @returns Contentful の MetaLink の形式
  */
-const tagNamesToTagIds = async (tagNames: string[]): Promise<{ sys: MetaLinkProps }[]> => {
-  const tags = await fetchTags()
+const tagNamesToTagIds = async (
+  tagNames: string[]
+): Promise<{ sys: MetaLinkProps }[]> => {
+  const tags = await fetchTags();
   return Promise.all(
     tagNames.map(async (tagName) => {
-      const tag = tags.find((t) => flattenField(t.fields.name).toLowerCase() === tagName.toLowerCase())
+      const tag = tags.find(
+        (t) =>
+          flattenField(t.fields.name).toLowerCase() === tagName.toLowerCase()
+      );
       if (tag) {
         return {
           sys: {
-            type: 'Link',
-            linkType: 'Entry',
+            type: "Link",
+            linkType: "Entry",
             id: tag.sys.id,
           },
-        }
+        };
       } else {
-        const result = await createTag(tagName)
+        const result = await createTag(tagName);
         return {
           sys: {
-            type: 'Link',
-            linkType: 'Entry',
+            type: "Link",
+            linkType: "Entry",
             id: result.sys.id,
           },
-        }
+        };
       }
-    }),
-  )
-}
+    })
+  );
+};
 
 export const createBlogPost = async (blog: BlogPost): Promise<void> => {
-  const client = await createClient()
-  const entry = await client.createEntryWithId('blogPost', blog.id, {
+  const client = await createClient();
+  const entry = await client.createEntryWithId("blogPost", blog.id, {
     fields: {
       title: {
-        'en-US': blog.title,
+        "en-US": blog.title,
       },
       slug: {
-        'en-US': blog.slug,
+        "en-US": blog.slug,
       },
       about: {
-        'en-US': blog.about,
+        "en-US": blog.about,
       },
       article: {
-        'en-US': blog.article,
+        "en-US": blog.article,
       },
       createdAt: {
-        'en-US': blog.createdAt,
+        "en-US": blog.createdAt,
       },
       updatedAt: {
-        'en-US': blog.updatedAt,
+        "en-US": blog.updatedAt,
       },
       tags: {
-        'en-US': await tagNamesToTagIds(blog.tags),
+        "en-US": await tagNamesToTagIds(blog.tags),
       },
       thumbnail: blog.thumbnail
         ? {
-            'en-US': {
+            "en-US": {
               sys: {
-                type: 'Link',
-                linkType: 'Asset',
+                type: "Link",
+                linkType: "Asset",
                 id: getAssetIdFromUrl(blog.thumbnail.url),
               },
             },
           }
         : undefined,
-      ['relatedArticle']: {
-        'en-US': await searchRelatedArticles(blog),
+      ["relatedArticle"]: {
+        "en-US": await searchRelatedArticles(blog),
       },
     },
-  })
+  });
 
   if (blog.published) {
-    await entry.publish()
+    await entry.publish();
   }
-}
+};
 
 export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
-  const client = await createClient()
-  const entry = await client.getEntry(blog.id)
+  const client = await createClient();
+  const entry = await client.getEntry(blog.id);
 
-  const fields = entry.fields
+  const fields = entry.fields;
 
   if (blog.title) {
-    fields['title'] = {
-      'en-US': blog.title,
-    }
+    fields["title"] = {
+      "en-US": blog.title,
+    };
   }
   if (blog.slug) {
-    fields['slug'] = {
-      'en-US': blog.slug,
-    }
+    fields["slug"] = {
+      "en-US": blog.slug,
+    };
   }
   if (blog.about) {
-    fields['about'] = {
-      'en-US': blog.about,
-    }
+    fields["about"] = {
+      "en-US": blog.about,
+    };
   }
   if (blog.article) {
-    fields['article'] = {
-      'en-US': blog.article,
-    }
+    fields["article"] = {
+      "en-US": blog.article,
+    };
   }
   if (blog.createdAt) {
-    fields['createdAt'] = {
-      'en-US': blog.createdAt,
-    }
+    fields["createdAt"] = {
+      "en-US": blog.createdAt,
+    };
   }
   if (blog.updatedAt) {
-    fields['updatedAt'] = {
-      'en-US': blog.updatedAt,
-    }
+    fields["updatedAt"] = {
+      "en-US": blog.updatedAt,
+    };
   }
 
-  fields['tags'] = {
-    'en-US': await tagNamesToTagIds(blog.tags),
-  }
+  fields["tags"] = {
+    "en-US": await tagNamesToTagIds(blog.tags),
+  };
 
-  fields['relatedArticle'] = {
-    'en-US': await searchRelatedArticles(blog),
-  }
+  fields["relatedArticle"] = {
+    "en-US": await searchRelatedArticles(blog),
+  };
 
   if (blog.thumbnail) {
-    fields['thumbnail'] = {
-      'en-US': {
+    fields["thumbnail"] = {
+      "en-US": {
         sys: {
-          type: 'Link',
-          linkType: 'Asset',
+          type: "Link",
+          linkType: "Asset",
           id: getAssetIdFromUrl(blog.thumbnail.url),
         },
       },
-    }
+    };
   }
 
-  const updateEntry = await entry.update()
+  const updateEntry = await entry.update();
 
   if (blog.published) {
-    await updateEntry.publish()
+    await updateEntry.publish();
   }
-}
+};
 
 export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
-  const client = await createClient()
+  const client = await createClient();
   const entities = await client.getEntries({
-    content_type: 'blogPost',
-    'fields.slug': slugOrId,
-  })
+    content_type: "blogPost",
+    "fields.slug": slugOrId,
+  });
 
   // slug で検索してもヒットしなかった場合は id で検索する
-  const entry = entities.items[0] ? entities.items[0] : await client.getEntry(slugOrId)
+  const entry = entities.items[0]
+    ? entities.items[0]
+    : await client.getEntry(slugOrId);
 
-  await entry.delete()
-}
+  await entry.delete();
+};

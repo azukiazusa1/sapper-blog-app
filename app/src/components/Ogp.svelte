@@ -1,11 +1,11 @@
 <script lang="ts">
-  export let locale = 'ja_JP'
-  export let type = 'article'
-  export let title = ''
-  export let url = ''
-  export let image = ''
-  export let description = ''
-  export let card = 'summary_large_image'
+  export let locale = "ja_JP";
+  export let type = "article";
+  export let title = "";
+  export let url = "";
+  export let image = "";
+  export let description = "";
+  export let card = "summary_large_image";
 </script>
 
 <svelte:head>

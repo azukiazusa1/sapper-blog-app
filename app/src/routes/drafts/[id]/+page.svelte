@@ -1,31 +1,31 @@
 <script lang="ts">
-  import Card from '../../../components/Card/Card.svelte'
-  import FloatingActionButton from '../../../components/FloatingActionButton/FloatingActionButton.svelte'
-  import ReloadIcon from '../../../components/Icons/Reload.svelte'
-  import type { PageData } from './$types'
-  import variables from '$lib/variables'
-  import { invalidateAll } from '$app/navigation'
-  import NProgress from 'nprogress'
+  import Card from "../../../components/Card/Card.svelte";
+  import FloatingActionButton from "../../../components/FloatingActionButton/FloatingActionButton.svelte";
+  import ReloadIcon from "../../../components/Icons/Reload.svelte";
+  import type { PageData } from "./$types";
+  import variables from "$lib/variables";
+  import { invalidateAll } from "$app/navigation";
+  import NProgress from "nprogress";
   const reloadPage = async () => {
-    NProgress.start()
-    await invalidateAll()
-    NProgress.done()
-  }
+    NProgress.start();
+    await invalidateAll();
+    NProgress.done();
+  };
   const handleKeyDown = (e: KeyboardEvent) => {
     // ⌘ + shift + r のときは普通にリロード
-    if (e.key === 'r' && e.metaKey && e.shiftKey) {
-      return
+    if (e.key === "r" && e.metaKey && e.shiftKey) {
+      return;
     }
-    if (e.key === 'r' && e.metaKey) {
-      e.preventDefault()
-      reloadPage()
+    if (e.key === "r" && e.metaKey) {
+      e.preventDefault();
+      reloadPage();
     }
-  }
+  };
 
-  export let data: PageData
+  export let data: PageData;
 
-  $: post = data.post
-  $: contents = data.contents
+  $: post = data.post;
+  $: contents = data.contents;
 </script>
 
 <svelte:head>
@@ -46,8 +46,8 @@
     {contents}
     preview
     thumbnail={{
-      url: '',
-      title: '',
+      url: "",
+      title: "",
     }}
   />
   <FloatingActionButton on:click={reloadPage}>

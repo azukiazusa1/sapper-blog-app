@@ -1,4 +1,4 @@
-import { gql } from '@urql/core'
+import { gql } from "@urql/core";
 
 export const postBySlugQuery = gql`
   query postBySlug($slug: String!) {
@@ -33,4 +33,4 @@ export const postBySlugQuery = gql`
       }
     }
   }
-`
+`;

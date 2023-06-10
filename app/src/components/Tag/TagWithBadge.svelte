@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Tag from './Tag.svelte'
-  import Badge from '../Badge/Badge.svelte'
+  import Tag from "./Tag.svelte";
+  import Badge from "../Badge/Badge.svelte";
 
-  export let name = ''
-  export let slug = ''
+  export let name = "";
+  export let slug = "";
 </script>
 
 <Tag {name} {slug}>

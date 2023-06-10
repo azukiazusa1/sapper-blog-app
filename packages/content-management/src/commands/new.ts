@@ -1,8 +1,8 @@
-import { createBlogFile } from '../fileOperation.ts'
-import { nanoid } from 'nanoid'
-import { now } from '../datetime.ts'
+import { createBlogFile } from "../fileOperation.ts";
+import { nanoid } from "nanoid";
+import { now } from "../datetime.ts";
 
-const id = nanoid()
+const id = nanoid();
 
 await createBlogFile({
   id,
@@ -14,10 +14,10 @@ await createBlogFile({
   updatedAt: now(),
   tags: [],
   thumbnail: {
-    url: '',
-    title: '',
+    url: "",
+    title: "",
   },
   published: false,
-})
+});
 
-console.log(`Created new blog post: ${id}`)
+console.log(`Created new blog post: ${id}`);

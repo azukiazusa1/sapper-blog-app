@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Tag from '../../components/Tag/Tag.svelte'
-  import Badge from '../../components/Badge/Badge.svelte'
-  import type { PageData } from './$types'
-  import variables from '$lib/variables'
+  import Tag from "../../components/Tag/Tag.svelte";
+  import Badge from "../../components/Badge/Badge.svelte";
+  import type { PageData } from "./$types";
+  import variables from "$lib/variables";
 
-  export let data: PageData
+  export let data: PageData;
 </script>
 
 <svelte:head>

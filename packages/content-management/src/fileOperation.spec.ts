@@ -1,48 +1,48 @@
-import { createBlogFile, loadBlogPost, Result } from './fileOperation.ts'
-import { vi, describe, test, expect, afterEach, MockedFunction } from 'vitest'
-import { promises as fs } from 'fs'
-import type { DraftBlogPost, PublishedBlogPost } from './types.ts'
+import { createBlogFile, loadBlogPost, Result } from "./fileOperation.ts";
+import { vi, describe, test, expect, afterEach, MockedFunction } from "vitest";
+import { promises as fs } from "fs";
+import type { DraftBlogPost, PublishedBlogPost } from "./types.ts";
 
-const mockedWriteFile = fs.writeFile as MockedFunction<typeof fs.writeFile>
-const mockedReadFile = fs.readFile as MockedFunction<typeof fs.readFile>
+const mockedWriteFile = fs.writeFile as MockedFunction<typeof fs.writeFile>;
+const mockedReadFile = fs.readFile as MockedFunction<typeof fs.readFile>;
 
-vi.mock('fs', () => {
+vi.mock("fs", () => {
   return {
     promises: {
       writeFile: vi.fn(),
       readFile: vi.fn(),
     },
-  }
-})
+  };
+});
 
-vi.mock('url', () => ({
-  fileURLToPath: () => '/path/to/file',
-}))
+vi.mock("url", () => ({
+  fileURLToPath: () => "/path/to/file",
+}));
 
 afterEach(() => {
-  mockedWriteFile.mockClear()
-  mockedReadFile.mockClear()
-})
+  mockedWriteFile.mockClear();
+  mockedReadFile.mockClear();
+});
 
-describe('createBlogFile', () => {
-  test('公開済のブログポストをファイルに書き出せる', async () => {
+describe("createBlogFile", () => {
+  test("公開済のブログポストをファイルに書き出せる", async () => {
     const blog = {
-      id: 'id',
-      title: 'title',
-      about: 'about',
-      article: 'article',
-      createdAt: '2023-02-05T00:00+09:00',
-      updatedAt: '2023-02-05T00:00+09:00',
-      slug: 'slug',
-      tags: ['tag1', 'tag2'],
+      id: "id",
+      title: "title",
+      about: "about",
+      article: "article",
+      createdAt: "2023-02-05T00:00+09:00",
+      updatedAt: "2023-02-05T00:00+09:00",
+      slug: "slug",
+      tags: ["tag1", "tag2"],
       thumbnail: {
-        url: 'https://images.ctfassets.net/3',
-        title: 'title',
+        url: "https://images.ctfassets.net/3",
+        title: "title",
       },
       published: true,
-    } satisfies PublishedBlogPost
+    } satisfies PublishedBlogPost;
 
-    await createBlogFile(blog)
+    await createBlogFile(blog);
 
     expect(mockedWriteFile).toHaveBeenCalledWith(
       `/contents/blogPost/slug.md`,
@@ -59,15 +59,15 @@ thumbnail:
   title: "title"
 published: true
 ---
-article\n`,
-    )
-  })
+article\n`
+    );
+  });
 
-  test('下書きのブログポストをファイルに書き出せる', async () => {
+  test("下書きのブログポストをファイルに書き出せる", async () => {
     const blog = {
-      id: 'id',
-      title: 'title',
-      about: 'about',
+      id: "id",
+      title: "title",
+      about: "about",
       article: undefined,
       createdAt: undefined,
       updatedAt: undefined,
@@ -75,9 +75,9 @@ article\n`,
       tags: [],
       thumbnail: undefined,
       published: false,
-    } satisfies DraftBlogPost
+    } satisfies DraftBlogPost;
 
-    await createBlogFile(blog)
+    await createBlogFile(blog);
 
     expect(mockedWriteFile).toHaveBeenCalledWith(
       `/contents/blogPost/id.md`,
@@ -92,18 +92,18 @@ tags: []
 thumbnail: null
 published: false
 ---
-`,
-    )
-  })
+`
+    );
+  });
 
   test(`" はエスケープされる`, async () => {
     const blog = {
-      id: 'id',
+      id: "id",
       title: 'title "title"',
       about: 'about "about"',
       article: `article "article"`, // 本文はエスケープしない
-      createdAt: '2023-02-05T00:00+09:00',
-      updatedAt: '2023-02-05T00:00+09:00',
+      createdAt: "2023-02-05T00:00+09:00",
+      updatedAt: "2023-02-05T00:00+09:00",
       slug: `slug-"slug"`,
       tags: [`tag1 "tag1"`, `tag2 "tag2"`],
       thumbnail: {
@@ -111,9 +111,9 @@ published: false
         title: `ti"tle`,
       },
       published: true,
-    } satisfies PublishedBlogPost
+    } satisfies PublishedBlogPost;
 
-    await createBlogFile(blog)
+    await createBlogFile(blog);
 
     expect(mockedWriteFile).toHaveBeenCalledWith(
       `/contents/blogPost/slug-"slug".md`,
@@ -130,13 +130,13 @@ thumbnail:
   title: "ti\\"tle"
 published: true
 ---
-article "article"\n`,
-    )
-  })
-})
+article "article"\n`
+    );
+  });
+});
 
-describe('loadBlogPost', () => {
-  test('ファイル名からファイルを取得して BlogPost の形式で取得する', async () => {
+describe("loadBlogPost", () => {
+  test("ファイル名からファイルを取得して BlogPost の形式で取得する", async () => {
     mockedReadFile.mockResolvedValueOnce(
       `---
 id: id
@@ -151,32 +151,35 @@ thumbnail:
   title: "title"
 published: true
 ---
-article\n`,
-    )
+article\n`
+    );
 
-    const result = await loadBlogPost('slug')
-    expect(mockedReadFile).toHaveBeenCalledWith(`/contents/blogPost/slug.md`, 'utf-8')
+    const result = await loadBlogPost("slug");
+    expect(mockedReadFile).toHaveBeenCalledWith(
+      `/contents/blogPost/slug.md`,
+      "utf-8"
+    );
     expect(result).toEqual<Result>({
       success: true,
       data: {
-        id: 'id',
-        title: 'title',
-        about: 'about',
-        article: 'article',
-        createdAt: '2023-02-05T00:00+09:00',
-        updatedAt: '2023-02-05T00:00+09:00',
-        slug: 'slug',
-        tags: ['tag1', 'tag2'],
+        id: "id",
+        title: "title",
+        about: "about",
+        article: "article",
+        createdAt: "2023-02-05T00:00+09:00",
+        updatedAt: "2023-02-05T00:00+09:00",
+        slug: "slug",
+        tags: ["tag1", "tag2"],
         thumbnail: {
-          url: 'https://images.ctfassets.net/3',
-          title: 'title',
+          url: "https://images.ctfassets.net/3",
+          title: "title",
         },
         published: true,
       },
-    })
-  })
+    });
+  });
 
-  test('下書きのファイルを取得してブログポストの形式で取得する', async () => {
+  test("下書きのファイルを取得してブログポストの形式で取得する", async () => {
     mockedReadFile.mockResolvedValueOnce(
       `---
 id: id
@@ -189,16 +192,16 @@ tags: []
 thumbnail: null
 published: false
 ---
-`,
-    )
-    const result = await loadBlogPost('id')
+`
+    );
+    const result = await loadBlogPost("id");
     expect(result).toEqual<Result>({
       success: true,
       data: {
-        id: 'id',
+        id: "id",
         title: undefined,
         about: undefined,
-        article: '',
+        article: "",
         createdAt: undefined,
         updatedAt: undefined,
         slug: undefined,
@@ -206,11 +209,11 @@ published: false
         thumbnail: undefined,
         published: false,
       },
-    })
-  })
+    });
+  });
 
-  describe('title', () => {
-    test('string でなければならない', async () => {
+  describe("title", () => {
+    test("string でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -226,26 +229,26 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['title'],
-            message: 'Expected string, received number',
+            path: ["title"],
+            message: "Expected string, received number",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('256 文字以上だとバリデーションエラー', async () => {
+    test("256 文字以上だとバリデーションエラー", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
-title: ${'a'.repeat(256)}
+title: ${"a".repeat(256)}
 slug: "slug"
 about: "about"
 createdAt: "2023-02-05T00:00+09:00"
@@ -257,27 +260,27 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['title'],
-            message: 'String must contain at most 255 character(s)',
+            path: ["title"],
+            message: "String must contain at most 255 character(s)",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('255 文字ならバリデーションエラーにならない', async () => {
+    test("255 文字ならバリデーションエラーにならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
-title: ${'a'.repeat(255)}
+title: ${"a".repeat(255)}
 slug: "slug"
 about: "about"
 createdAt: "2023-02-05T00:00+09:00"
@@ -289,15 +292,15 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
-      expect(result.success).toBe(true)
-    })
+      expect(result.success).toBe(true);
+    });
 
-    test('公開済みの場合 null だとバリデーションエラー', async () => {
+    test("公開済みの場合 null だとバリデーションエラー", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -313,25 +316,25 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['title'],
-            message: 'Required',
+            path: ["title"],
+            message: "Required",
           }),
         ],
-      })
-    })
-  })
+      });
+    });
+  });
 
-  describe('about', () => {
-    test('string でなければならない', async () => {
+  describe("about", () => {
+    test("string でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -347,29 +350,29 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['about'],
-            message: 'Expected string, received number',
+            path: ["about"],
+            message: "Expected string, received number",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('256 文字以上だとバリデーションエラー', async () => {
+    test("256 文字以上だとバリデーションエラー", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
 slug: "slug"
-about: ${'a'.repeat(256)}
+about: ${"a".repeat(256)}
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
@@ -379,29 +382,29 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['about'],
-            message: 'String must contain at most 255 character(s)',
+            path: ["about"],
+            message: "String must contain at most 255 character(s)",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('255 文字ならバリデーションエラーにならない', async () => {
+    test("255 文字ならバリデーションエラーにならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
 slug: "slug"
-about: ${'a'.repeat(255)}
+about: ${"a".repeat(255)}
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
@@ -411,15 +414,15 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
-      expect(result.success).toBe(true)
-    })
+      expect(result.success).toBe(true);
+    });
 
-    test('公開済みの場合 null だとバリデーションエラー', async () => {
+    test("公開済みの場合 null だとバリデーションエラー", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -435,25 +438,25 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['about'],
-            message: 'Required',
+            path: ["about"],
+            message: "Required",
           }),
         ],
-      })
-    })
-  })
+      });
+    });
+  });
 
-  describe('slug', () => {
-    test('string でなければならない', async () => {
+  describe("slug", () => {
+    test("string でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -469,28 +472,28 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['slug'],
-            message: 'Expected string, received number',
+            path: ["slug"],
+            message: "Expected string, received number",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('256 文字以上だとバリデーションエラー', async () => {
+    test("256 文字以上だとバリデーションエラー", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
 title: "title"
-slug: ${'a'.repeat(256)}
+slug: ${"a".repeat(256)}
 about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
@@ -501,27 +504,27 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['slug'],
-            message: 'String must contain at most 255 character(s)',
+            path: ["slug"],
+            message: "String must contain at most 255 character(s)",
           }),
         ],
-      })
+      });
 
-      test('255 文字ならバリデーションエラーにならない', async () => {
+      test("255 文字ならバリデーションエラーにならない", async () => {
         mockedReadFile.mockResolvedValueOnce(
           `---
 id: id
 title: "title"
-slug: ${'a'.repeat(255)}
+slug: ${"a".repeat(255)}
 about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
@@ -532,16 +535,16 @@ thumbnail:
 published: true
 ---
 article
-`,
-        )
+`
+        );
 
-        const result = await loadBlogPost('id')
+        const result = await loadBlogPost("id");
 
-        expect(result.success).toBe(true)
-      })
-    })
+        expect(result.success).toBe(true);
+      });
+    });
 
-    test('slug の形式が正しくないとバリデーションエラー', async () => {
+    test("slug の形式が正しくないとバリデーションエラー", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -557,23 +560,23 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['slug'],
-            message: 'Invalid',
+            path: ["slug"],
+            message: "Invalid",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('公開済みの場合 null だとバリデーションエラー', async () => {
+    test("公開済みの場合 null だとバリデーションエラー", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -589,25 +592,25 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['slug'],
-            message: 'Required',
+            path: ["slug"],
+            message: "Required",
           }),
         ],
-      })
-    })
-  })
+      });
+    });
+  });
 
-  describe('createdAt', () => {
-    test('string でなければならない', async () => {
+  describe("createdAt", () => {
+    test("string でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -623,22 +626,22 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['createdAt'],
-            message: 'Expected string, received number',
+            path: ["createdAt"],
+            message: "Expected string, received number",
           }),
         ],
-      })
+      });
 
-      test('日付の形式でなくてはならない', async () => {
+      test("日付の形式でなくてはならない", async () => {
         mockedReadFile.mockResolvedValueOnce(
           `---
 id: id
@@ -654,23 +657,23 @@ thumbnail:
 published: true
 ---
 article
-`,
-        )
+`
+        );
 
-        const result = await loadBlogPost('id')
+        const result = await loadBlogPost("id");
 
         expect(result).toEqual({
           success: false,
           error: [
             expect.objectContaining({
-              path: ['createdAt'],
-              message: 'Invalid',
+              path: ["createdAt"],
+              message: "Invalid",
             }),
           ],
-        })
-      })
+        });
+      });
 
-      test('公開済みの場合 null だとバリデーションエラー', async () => {
+      test("公開済みの場合 null だとバリデーションエラー", async () => {
         mockedReadFile.mockResolvedValueOnce(
           `---
 id: id
@@ -686,26 +689,26 @@ thumbnail:
 published: true
 ---
 article
-`,
-        )
+`
+        );
 
-        const result = await loadBlogPost('id')
+        const result = await loadBlogPost("id");
 
         expect(result).toEqual({
           success: false,
           error: [
             expect.objectContaining({
-              path: ['createdAt'],
-              message: 'Required',
+              path: ["createdAt"],
+              message: "Required",
             }),
           ],
-        })
-      })
-    })
-  })
+        });
+      });
+    });
+  });
 
-  describe('updateedAt', () => {
-    test('string でなければならない', async () => {
+  describe("updateedAt", () => {
+    test("string でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -721,22 +724,22 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['updatedAt'],
-            message: 'Expected string, received number',
+            path: ["updatedAt"],
+            message: "Expected string, received number",
           }),
         ],
-      })
+      });
 
-      test('日付の形式でなくてはならない', async () => {
+      test("日付の形式でなくてはならない", async () => {
         mockedReadFile.mockResolvedValueOnce(
           `---
 id: id
@@ -752,23 +755,23 @@ thumbnail:
 published: true
 ---
 article
-`,
-        )
+`
+        );
 
-        const result = await loadBlogPost('id')
+        const result = await loadBlogPost("id");
 
         expect(result).toEqual({
           success: false,
           error: [
             expect.objectContaining({
-              path: ['updatedAt'],
-              message: 'Invalid',
+              path: ["updatedAt"],
+              message: "Invalid",
             }),
           ],
-        })
-      })
+        });
+      });
 
-      test('公開済みの場合 null だとバリデーションエラー', async () => {
+      test("公開済みの場合 null だとバリデーションエラー", async () => {
         mockedReadFile.mockResolvedValueOnce(
           `---
 id: id
@@ -784,26 +787,26 @@ thumbnail:
 published: true
 ---
 article
-`,
-        )
+`
+        );
 
-        const result = await loadBlogPost('id')
+        const result = await loadBlogPost("id");
 
         expect(result).toEqual({
           success: false,
           error: [
             expect.objectContaining({
-              path: ['updatedAt'],
-              message: 'Required',
+              path: ["updatedAt"],
+              message: "Required",
             }),
           ],
-        })
-      })
-    })
-  })
+        });
+      });
+    });
+  });
 
-  describe('tags', () => {
-    test('string の配列 でなければならない', async () => {
+  describe("tags", () => {
+    test("string の配列 でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -819,23 +822,23 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['tags'],
-            message: 'Expected array, received string',
+            path: ["tags"],
+            message: "Expected array, received string",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('配列の要素が string でなければならない', async () => {
+    test("配列の要素が string でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -851,23 +854,23 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['tags', 0],
-            message: 'Expected string, received number',
+            path: ["tags", 0],
+            message: "Expected string, received number",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('タグ名は 50 文字以内でなければならない', async () => {
+    test("タグ名は 50 文字以内でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -876,32 +879,32 @@ slug: "slug"
 about: "about"
 createdAt: "2023-02-05T00:00+09:00"
 updatedAt: "2023-02-05T00:00+09:00"
-tags: ["${'a'.repeat(51)}"]
+tags: ["${"a".repeat(51)}"]
 thumbnail:
   url: "https://images.ctfassets.net/3"
   title: "title"
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['tags', 0],
-            message: 'String must contain at most 50 character(s)',
+            path: ["tags", 0],
+            message: "String must contain at most 50 character(s)",
           }),
         ],
-      })
-    })
-  })
+      });
+    });
+  });
 
-  describe('thumbnail', () => {
-    test('url filed が必須', async () => {
+  describe("thumbnail", () => {
+    test("url filed が必須", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -916,23 +919,23 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['thumbnail', 'url'],
-            message: 'Required',
+            path: ["thumbnail", "url"],
+            message: "Required",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('url filed は string でなければならない', async () => {
+    test("url filed は string でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -948,23 +951,23 @@ thumbnail:
 published: true
 ---
 article
-  `,
-      )
+  `
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['thumbnail', 'url'],
-            message: 'Expected string, received number',
+            path: ["thumbnail", "url"],
+            message: "Expected string, received number",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('url は URL の形式でなければならない', async () => {
+    test("url は URL の形式でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -980,23 +983,23 @@ thumbnail:
 published: true
 ---
 article
-  `,
-      )
+  `
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['thumbnail', 'url'],
-            message: 'Invalid url',
+            path: ["thumbnail", "url"],
+            message: "Invalid url",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('title filed が必須', async () => {
+    test("title filed が必須", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -1011,23 +1014,23 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['thumbnail', 'title'],
-            message: 'Required',
+            path: ["thumbnail", "title"],
+            message: "Required",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('title は文字列', async () => {
+    test("title は文字列", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -1043,23 +1046,23 @@ thumbnail:
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['thumbnail', 'title'],
-            message: 'Expected string, received number',
+            path: ["thumbnail", "title"],
+            message: "Expected string, received number",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('title は 255 文字以内', async () => {
+    test("title は 255 文字以内", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -1071,27 +1074,27 @@ updatedAt: "2023-02-05T00:00+09:00"
 tags: ["tag1", "tag2"]
 thumbnail:
   url: "https://images.ctfassets.net/3"
-  title: "${'a'.repeat(256)}"
+  title: "${"a".repeat(256)}"
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['thumbnail', 'title'],
-            message: 'String must contain at most 255 character(s)',
+            path: ["thumbnail", "title"],
+            message: "String must contain at most 255 character(s)",
           }),
         ],
-      })
-    })
+      });
+    });
 
-    test('公開済みなら thumbnail は必須', async () => {
+    test("公開済みなら thumbnail は必須", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -1105,25 +1108,25 @@ thumbnail: null
 published: true
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['thumbnail'],
-            message: 'Required',
+            path: ["thumbnail"],
+            message: "Required",
           }),
         ],
-      })
-    })
-  })
+      });
+    });
+  });
 
-  describe('published', () => {
-    test('boolean でなければならない', async () => {
+  describe("published", () => {
+    test("boolean でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -1139,25 +1142,25 @@ thumbnail:
 published: 1
 ---
 article
-`,
-      )
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['published'],
-            message: 'Invalid discriminator value. Expected true | false',
+            path: ["published"],
+            message: "Invalid discriminator value. Expected true | false",
           }),
         ],
-      })
-    })
-  })
+      });
+    });
+  });
 
-  describe('article', () => {
-    test('50,000 文字以内でなければならない', async () => {
+  describe("article", () => {
+    test("50,000 文字以内でなければならない", async () => {
       mockedReadFile.mockResolvedValueOnce(
         `---
 id: id
@@ -1172,25 +1175,25 @@ thumbnail:
   title: "title"
 published: true
 ---
-${'a'.repeat(50001)}
-`,
-      )
+${"a".repeat(50001)}
+`
+      );
 
-      const result = await loadBlogPost('id')
+      const result = await loadBlogPost("id");
 
       expect(result).toEqual({
         success: false,
         error: [
           expect.objectContaining({
-            path: ['article'],
-            message: 'String must contain at most 50000 character(s)',
+            path: ["article"],
+            message: "String must contain at most 50000 character(s)",
           }),
         ],
-      })
-    })
-  })
+      });
+    });
+  });
 
-  test('yaml が不正な場合はバリデーションエラー', async () => {
+  test("yaml が不正な場合はバリデーションエラー", async () => {
     mockedReadFile.mockResolvedValueOnce(
       `---
 id: id
@@ -1205,14 +1208,14 @@ thumbnail:
 published: true
 ---
 article
-`,
-    )
+`
+    );
 
-    const result = await loadBlogPost('id')
+    const result = await loadBlogPost("id");
 
     expect(result).toEqual({
       success: false,
       error: expect.any(Error),
-    })
-  })
-})
+    });
+  });
+});

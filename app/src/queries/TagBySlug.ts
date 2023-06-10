@@ -1,4 +1,4 @@
-import { gql } from '@urql/core'
+import { gql } from "@urql/core";
 
 export const tagBySlugQuery = gql`
   query TagBySlug($slug: String!, $skip: Int = 0) {
@@ -32,4 +32,4 @@ export const tagBySlugQuery = gql`
       }
     }
   }
-`
+`;

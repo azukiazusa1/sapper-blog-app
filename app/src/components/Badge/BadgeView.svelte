@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Badge from './Badge.svelte'
+  import Badge from "./Badge.svelte";
 
-  export let slot: string
+  export let slot: string;
 </script>
 
 <Badge>

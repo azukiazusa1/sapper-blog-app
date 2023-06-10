@@ -1,7 +1,7 @@
 <script lang="ts">
-  export let className = ''
-  export let href = ''
-  export let target = '_self'
+  export let className = "";
+  export let href = "";
+  export let target = "_self";
 </script>
 
 <svg class={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
