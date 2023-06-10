@@ -1,13 +1,13 @@
 <script lang="ts">
-  import PostList from '../../../components/PostList.svelte'
-  import Pagination from '../../../components/Pagination/Pagination.svelte'
-  import variables from '$lib/variables'
-  import type { PageData } from './$types'
-  export let data: PageData
+  import PostList from "../../../components/PostList.svelte";
+  import Pagination from "../../../components/Pagination/Pagination.svelte";
+  import variables from "$lib/variables";
+  import type { PageData } from "./$types";
+  export let data: PageData;
 
-  $: tagName = data.tagCollection.items[0].name
-  $: tagSlug = data.tagCollection.items[0].slug
-  $: posts = data.tagCollection.items[0].linkedFrom
+  $: tagName = data.tagCollection.items[0].name;
+  $: tagSlug = data.tagCollection.items[0].slug;
+  $: posts = data.tagCollection.items[0].linkedFrom;
 </script>
 
 <svelte:head>

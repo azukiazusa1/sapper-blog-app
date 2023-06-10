@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let className = ''
+  export let className = "";
 </script>
 
 <svg fill="currentColor" viewBox="0 0 24 24" class={className}>

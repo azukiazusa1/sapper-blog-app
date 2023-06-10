@@ -1,17 +1,17 @@
 <script lang="ts">
-  import PostList from '../../../../../components/PostList.svelte'
-  import Pagination from '../../../../../components/Pagination/Pagination.svelte'
-  import type { PageData } from './$types'
-  import variables from '$lib/variables'
+  import PostList from "../../../../../components/PostList.svelte";
+  import Pagination from "../../../../../components/Pagination/Pagination.svelte";
+  import type { PageData } from "./$types";
+  import variables from "$lib/variables";
 
-  export let data: PageData
+  export let data: PageData;
 
-  $: tag = data.tag
-  $: page = data.page
+  $: tag = data.tag;
+  $: page = data.page;
 
-  $: tagName = tag.tagCollection.items[0].name
-  $: tagSlug = tag.tagCollection.items[0].slug
-  $: posts = tag.tagCollection.items[0].linkedFrom
+  $: tagName = tag.tagCollection.items[0].name;
+  $: tagSlug = tag.tagCollection.items[0].slug;
+  $: posts = tag.tagCollection.items[0].linkedFrom;
 </script>
 
 <svelte:head>
@@ -19,7 +19,10 @@
   {#if page === 1}
     <link rel="canonical" href={`${variables.baseURL}/tags/${tagSlug}`} />
   {:else}
-    <link rel="canonical" href={`${variables.baseURL}/tags/${tagSlug}/page/${page}`} />
+    <link
+      rel="canonical"
+      href={`${variables.baseURL}/tags/${tagSlug}/page/${page}`}
+    />
   {/if}
 </svelte:head>
 

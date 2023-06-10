@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
-  import Tag from '../Tag/Tag.svelte'
-  import type { PreviewPostsQuery } from '../../generated/graphql'
+  import { goto } from "$app/navigation";
+  import Tag from "../Tag/Tag.svelte";
+  import type { PreviewPostsQuery } from "../../generated/graphql";
 
-  export let data: PreviewPostsQuery
+  export let data: PreviewPostsQuery;
 </script>
 
 <div class="relative overflow-x-auto rounded-lg">
-  <table class="w-full text-sm text-left">
-    <thead class="text-xs uppercase bg-gray-200 dark:bg-zinc-600">
+  <table class="w-full text-left text-sm">
+    <thead class="bg-gray-200 text-xs uppercase dark:bg-zinc-600">
       <tr>
         <th scope="col" class="px-6 py-3">Title</th>
         <th scope="col" class="px-6 py-3 text-center">Thumbnail</th>
@@ -19,22 +19,27 @@
     <tbody>
       {#each data.blogPostCollection?.items ?? [] as draft (draft.sys.id)}
         <tr
-          class="border-b hover:bg-gray-50 dark:hover:bg-zinc-700 dark:border-zinc-700 cursor-pointer"
+          class="cursor-pointer border-b hover:bg-gray-50 dark:border-zinc-700 dark:hover:bg-zinc-700"
           on:click={() => goto(`/drafts/${draft.sys.id}`)}
         >
-          <th scope="row" class="px-6 py-4 whitespace-nowrap">
+          <th scope="row" class="whitespace-nowrap px-6 py-4">
             <a href={`/drafts/${draft.sys.id}`}>
-              {draft.title || 'No title'}
+              {draft.title || "No title"}
             </a>
           </th>
           <td class="px-6 py-4">
             {#if draft.thumbnail}
               <div class="flex justify-center">
-                <img src={draft.thumbnail.url} alt={draft.thumbnail.title} width="32" height="32" />
+                <img
+                  src={draft.thumbnail.url}
+                  alt={draft.thumbnail.title}
+                  width="32"
+                  height="32"
+                />
               </div>
             {/if}
           </td>
-          <td class="px-6 py-4 max-w-18">{draft.about || ''}</td>
+          <td class="max-w-18 px-6 py-4">{draft.about || ""}</td>
           <td class="px-6 py-4">
             {#each draft.tagsCollection?.items as tag (tag.slug)}
               <Tag name={tag.name} slug={tag.slug} />

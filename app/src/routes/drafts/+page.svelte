@@ -1,9 +1,9 @@
 <script lang="ts">
-  import variables from '$lib/variables'
-  import type { PageData } from './$types'
-  import Table from '../../components/Table/Table.svelte'
+  import variables from "$lib/variables";
+  import type { PageData } from "./$types";
+  import Table from "../../components/Table/Table.svelte";
 
-  export let data: PageData
+  export let data: PageData;
 </script>
 
 <svelte:head>

@@ -1,43 +1,48 @@
 <script lang="ts">
-  import { isMatchPath } from '$lib/utils'
-  import { createEventDispatcher } from 'svelte'
-  import Title from './Title.svelte'
-  import ToggleDarkMode from './ToggleDarkMode.svelte'
-  import GitHub from '../Icons/GitHub.svelte'
-  import RssIcon from '../Icons/Rss.svelte'
+  import { isMatchPath } from "$lib/utils";
+  import { createEventDispatcher } from "svelte";
+  import Title from "./Title.svelte";
+  import ToggleDarkMode from "./ToggleDarkMode.svelte";
+  import GitHub from "../Icons/GitHub.svelte";
+  import RssIcon from "../Icons/Rss.svelte";
 
   const dispatch = createEventDispatcher<{
-    close: void
-    clickMoon: void
-  }>()
+    close: void;
+    clickMoon: void;
+  }>();
 
   const close = () => {
-    dispatch('close')
-  }
+    dispatch("close");
+  };
 
   function handleWindowKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
-      close()
+    if (event.key === "Escape") {
+      close();
     }
   }
 
-  export let isOpen = false
-  export let segment: string
-  export let routes: string[]
+  export let isOpen = false;
+  export let segment: string;
+  export let routes: string[];
 </script>
 
 <svelte:window on:keydown={handleWindowKeyDown} />
 {#if isOpen}
   <!-- eslint-disable-next-line svelte/valid-compile -->
-  <div on:click|self={close} class="fixed z-10 inset-0 overflow-y-auto bg-zinc-900 opacity-50" />
+  <div
+    on:click|self={close}
+    class="fixed inset-0 z-10 overflow-y-auto bg-zinc-900 opacity-50"
+  />
 {/if}
 <aside
-  class={`flex flex-col border-r border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 justify-between transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
-    isOpen ? 'translate-x-0 visible ' : '-translate-x-full invisible'
+  class={`fixed left-0 top-0 z-30 flex h-full w-64 transform flex-col justify-between overflow-auto border-r border-gray-200 bg-white transition-all duration-300 ease-in-out dark:border-zinc-700 dark:bg-zinc-800 ${
+    isOpen ? "visible translate-x-0 " : "invisible -translate-x-full"
   }`}
 >
   <div>
-    <div class="flex justify-between w-full h-12 items-center p-2 border-b border-gray-200 dark:border-zinc-700">
+    <div
+      class="flex h-12 w-full items-center justify-between border-b border-gray-200 p-2 dark:border-zinc-700"
+    >
       <Title />
       <ToggleDarkMode right={true} />
     </div>
@@ -46,9 +51,9 @@
         <li class="py-4">
           <a
             on:click={close}
-            aria-current={isMatchPath(route, segment) ? 'page' : undefined}
+            aria-current={isMatchPath(route, segment) ? "page" : undefined}
             href={route}
-            class="capitalize px-7 hover:opacity-75 block"
+            class="block px-7 capitalize hover:opacity-75"
           >
             {route.slice(1)}
           </a>
@@ -56,8 +61,16 @@
       {/each}
     </ul>
   </div>
-  <div class="flex w-full items-center p-4 border-t border-gray-200 dark:border-zinc-700">
-    <a href="/rss.xml" target="_blank" class="mr-2" rel="noopener noreferrer" aria-label="RSS">
+  <div
+    class="flex w-full items-center border-t border-gray-200 p-4 dark:border-zinc-700"
+  >
+    <a
+      href="/rss.xml"
+      target="_blank"
+      class="mr-2"
+      rel="noopener noreferrer"
+      aria-label="RSS"
+    >
       <RssIcon className="h-6 w-6" />
     </a>
     <a
@@ -73,13 +86,13 @@
 </aside>
 
 <style>
-  [aria-current='page'] {
+  [aria-current="page"] {
     position: relative;
   }
 
-  [aria-current='page']::after {
+  [aria-current="page"]::after {
     position: absolute;
-    content: '';
+    content: "";
     width: 2.5rem;
     height: 2px;
     background-color: #df3600;

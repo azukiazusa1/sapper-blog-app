@@ -8,7 +8,7 @@
   stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="feather feather-chevron-left w-6 h-6"
+  class="feather feather-chevron-left h-6 w-6"
 >
   <polyline points="15 18 9 12 15 6" />
 </svg>
