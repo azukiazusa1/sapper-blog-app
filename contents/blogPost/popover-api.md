@@ -1,7 +1,7 @@
 ---
 id: 9CTiQWW7hhTtmwyFOdsga
 title: "ポップオーバー API で JavaScript を使わずにポップアップを表示する"
-slug: "popover-api"
+slug: popover-api
 about: "Chrome 114 から追加されたポップオーバー API を使うと、JavaScript を使わずに簡単にポップアップを表示することができます。"
 createdAt: "2023-06-11T14:12+09:00"
 updatedAt: "2023-06-11T14:12+09:00"
@@ -11,6 +11,7 @@ thumbnail:
   title: "toast"
 published: true
 ---
+
 [Chrome 114](https://developer.chrome.com/blog/new-in-chrome-114/) から追加された [ポップオーバー API](https://developer.mozilla.org/ja/docs/Web/API/Popover_API) を使うと、JavaScript を使わずに簡単にポップアップを表示できます。ただポップアップとして表示・非表示を切り替えられるだけでなく、以下のような複雑な要素もデフォルトでサポートしています。
 
 - ポップアップの外側をクリックするとポップアップが閉じる
@@ -180,12 +181,11 @@ popover.addEventListener('toggle', (event) => {
 
 DOM 上であるポップオーバーが別のポップオーバーの直接の子要素になっている場合、入れ子のポップオーバーとして扱われます。
 
-<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="WNYvOMO" data-user="azukiazusa1" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/azukiazusa1/pen/WNYvOMO">
+<iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/azukiazusa1/embed/WNYvOMO?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/azukiazusa1/pen/WNYvOMO">
   Untitled</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 
 ## コントロール要素が入れ子の関係にある
 
@@ -201,12 +201,11 @@ child ポップオーバーをコントロールする要素が、parent ポッ�
 
 ポップオーバー要素が `anchor` 属性で別のポップオーバー要素を指定していた場合、ポップオーバー要素は入れ子の関係とみなされます。 `anchor` 属性は祖先となる要素を id で指定します。
 
-<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="abQOwKM" data-user="azukiazusa1" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/azukiazusa1/pen/abQOwKM">
+<iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/azukiazusa1/embed/abQOwKM?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/azukiazusa1/pen/abQOwKM">
   Untitled</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 
 ## アクセシビリティ上の観点
 
