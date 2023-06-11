@@ -1,7 +1,7 @@
 ---
 id: ELllcwANhaRjSRYxMk07E
-title: Vue.js でジェネリックコンポーネントを使う
-slug: vue-generic-component
+title: "Vue.js でジェネリックコンポーネントを使う"
+slug: "vue-generic-component"
 about: "Vue.js 3.3 から `<script setup>` 構文を使用してコンポーネントを記述する際に、型引数を指定することができるようになりました。TypeScript で関数に型引数を指定するのと同じように、コンポーネントの props の型を指定することができます。"
 createdAt: "2023-06-04T14:16+09:00"
 updatedAt: "2023-06-04T14:16+09:00"
@@ -11,7 +11,6 @@ thumbnail:
   title: "white diamond"
 published: true
 ---
-
 Vue.js 3.3 から `<script setup>` 構文を使用してコンポーネントを記述する際に、型引数を指定することができるようになりました。TypeScript で関数に型引数を指定するのと同じように、コンポーネントの props の型を指定することができます。
 
 すでに React においては、コンポーネントに型引数を指定してジェネリックコンポーネントとして扱うことができましたが、Vue.js でも同様のことができるようになりました。
