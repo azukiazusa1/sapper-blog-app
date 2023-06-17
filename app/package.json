@@ -19,7 +19,7 @@
     "test": "svelte-kit sync && vitest",
     "test:e2e": "playwright test",
     "test:e2e:update": "cd ../ && docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.31.0-focal /bin/bash -c 'npm run test:e2e -w=app -- -u'",
-    "typecheck": "tsc --noEmit && svelte-kit sync && svelte-check",
+    "typecheck": "svelte-kit sync && tsc --noEmit && svelte-check",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",

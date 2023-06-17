@@ -12,6 +12,9 @@ vi.mock("$env/static/private", () => ({
   SPACE: "SPACE",
   ENVIRONMENTS: "ENVIRONMENTS",
   GITHUB_TOKEN: "GITHUB_TOKEN",
+  PRIVATE_KEY: "PRIVATE_KEY",
+  CLIENT_EMAIL: "CLIENT_EMAIL",
+  PROPERTY_ID: "PROPERTY_ID",
 }));
 
 vi.mock("$env/static/public", () => ({
