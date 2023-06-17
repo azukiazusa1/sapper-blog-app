@@ -1,10 +1,21 @@
 import type { PageServerLoad } from "./$types";
-import RepositoryFactory, { POST } from "../repositories/RepositoryFactory";
+import RepositoryFactory, {
+  ANALYTICS_DATA,
+  POST,
+} from "../repositories/RepositoryFactory";
 const PostRepository = RepositoryFactory[POST];
+const AnalyticsDataRepository = RepositoryFactory[ANALYTICS_DATA];
 
 export const load: PageServerLoad = async () => {
-  const posts = await PostRepository.get({
-    limit: 3,
-  });
-  return posts;
+  const [latestPosts, popularPosts] = await Promise.all([
+    PostRepository.get({
+      limit: 3,
+    }),
+    AnalyticsDataRepository.getPopularPosts(),
+  ]);
+
+  return {
+    latestPosts,
+    popularPosts,
+  };
 };
