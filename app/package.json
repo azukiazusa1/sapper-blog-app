@@ -19,13 +19,14 @@
     "test": "svelte-kit sync && vitest",
     "test:e2e": "playwright test",
     "test:e2e:update": "cd ../ && docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.31.0-focal /bin/bash -c 'npm run test:e2e -w=app -- -u'",
-    "typecheck": "tsc --noEmit && svelte-kit sync && svelte-check",
+    "typecheck": "svelte-kit sync && tsc --noEmit && svelte-check",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
     "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run build-storybook --quiet && npx http-server storybook-static --port 6006 --silent\" \"npx wait-on http://127.0.0.1:6006 && npx test-storybook --url http://127.0.0.1:6006\""
   },
   "dependencies": {
+    "@google-analytics/data": "^3.2.2",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@leafac/rehype-shiki": "^2.2.1",
     "@playwright/test": "^1.31.0",

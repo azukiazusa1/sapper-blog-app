@@ -6,6 +6,7 @@
   import type { PageData } from "./$types";
 
   export let data: PageData;
+  $: ({ latestPosts, popularPosts } = data);
 </script>
 
 <svelte:head>
@@ -20,12 +21,12 @@
 <HeroSection />
 
 <h2
-  class="mt-10 max-w-2xl text-2xl font-extrabold leading-none dark:text-white md:text-4xl"
+  class="mt-10 max-w-2xl text-2xl font-extrabold leading-none dark:text-white"
 >
-  最新の記事
+  最新記事
 </h2>
 <div class="container my-4 md:mx-auto">
-  <PostList posts={data.blogPostCollection.items} />
+  <PostList posts={latestPosts.blogPostCollection.items} />
 </div>
 <div class="flex flex-row-reverse">
   <Link href="/blog">
@@ -42,4 +43,21 @@
       <path d="M5 12h14M12 5l7 7-7 7" />
     </svg>
   </Link>
+</div>
+
+<h2
+  class="mt-10 max-w-2xl text-2xl font-extrabold leading-none dark:text-white"
+>
+  人気記事
+</h2>
+<div class="container mx-auto my-4 px-4">
+  <ol class="list-inside list-decimal space-y-2">
+    {#each popularPosts as post}
+      <li>
+        <a class="text-lg font-semibold hover:underline" href={post.path}>
+          {post.title}
+        </a>
+      </li>
+    {/each}
+  </ol>
 </div>
