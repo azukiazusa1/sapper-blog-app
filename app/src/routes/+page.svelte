@@ -54,7 +54,7 @@
   <ol class="list-inside list-decimal space-y-2">
     {#each popularPosts as post}
       <li>
-        <a class="text-lg font-semibold hover:underline" href={post.path}>
+        <a class="text-lg hover:underline" href={post.path}>
           {post.title}
         </a>
       </li>
