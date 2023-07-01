@@ -87,7 +87,7 @@
     "concurrently": "^8.0.0",
     "cssnano": "^6.0.0",
     "dotenv": "^16.0.0",
-    "esbuild": "^0.18.0",
+    "esbuild": "^0.18.11",
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte": "^2.13.1",
