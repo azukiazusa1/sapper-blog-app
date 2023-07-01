@@ -129,4 +129,3 @@ node main.js
           ^
 TypeError: expected a number
 ```
-
