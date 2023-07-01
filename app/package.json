@@ -101,7 +101,7 @@
     "serve": "^14.1.2",
     "storybook": "^7.0.0-beta.50",
     "storybook-addon-themes": "^6.1.0",
-    "svelte": "^3.53.1",
+    "svelte": "^4.0.0",
     "svelte-check": "^3.0.1",
     "svelte-preprocess": "^5.0.0",
     "svelte-sitemap": "^2.6.0",
