@@ -4,7 +4,7 @@ import { loadAllBlogPost, Result } from "./fileOperation.ts";
 import type { BlogPost } from "./types.ts";
 
 export const searchRelatedArticles = async (
-  blogPost: BlogPost
+  blogPost: BlogPost,
 ): Promise<{ sys: MetaLinkProps }[]> => {
   const allBlogPost = await loadAllBlogPost();
 
@@ -21,11 +21,11 @@ export const searchRelatedArticles = async (
     .sort((a, b) => {
       const similaritya = compareTwoStrings(
         blogPost.article || "",
-        a.data.article || ""
+        a.data.article || "",
       );
       const similarityb = compareTwoStrings(
         b.data.article || "",
-        blogPost.article || ""
+        blogPost.article || "",
       );
       return similarityb - similaritya;
     });

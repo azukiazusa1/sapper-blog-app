@@ -27,10 +27,10 @@ describe("GitHubRepository", () => {
                 avatar: "avatar2",
                 url: "url2",
               }),
-            ])
+            ]),
           );
-        }
-      )
+        },
+      ),
     );
     const contributors = await gitHubRepository.getContributorsByFile("slug");
     expect(contributors).toEqual<Contributor[]>([
@@ -81,10 +81,10 @@ describe("GitHubRepository", () => {
                 avatar: "avatar4",
                 url: "url4",
               }),
-            ])
+            ]),
           );
-        }
-      )
+        },
+      ),
     );
     const contributors = await gitHubRepository.getContributorsByFile("slug");
     expect(contributors).toEqual<Contributor[]>([
@@ -102,8 +102,8 @@ describe("GitHubRepository", () => {
         "https://api.github.com/repos/azukiazusa1/sapper-blog-app/commits",
         (req, res, ctx) => {
           return res(ctx.status(200), ctx.json([]));
-        }
-      )
+        },
+      ),
     );
     const contributors = await gitHubRepository.getContributorsByFile("slug");
     expect(contributors).toEqual<Contributor[]>([
@@ -148,10 +148,10 @@ describe("GitHubRepository", () => {
                 avatar: "avatar",
                 url: "url3",
               }),
-            ])
+            ]),
           );
-        }
-      )
+        },
+      ),
     );
     const contributors = await gitHubRepository.getContributorsByFile("slug");
     expect(contributors).toEqual<Contributor[]>([

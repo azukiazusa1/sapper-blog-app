@@ -49,7 +49,7 @@ export async function getSummary(text: string, level = 1): Promise<string> {
 async function generateSummaryChunks(text: string): Promise<string[]> {
   const textChunks = chunkString(text, maxInputLength);
   const summaryChunks = await Promise.all(
-    textChunks.map((chunk) => generateSummaryChunk(chunk))
+    textChunks.map((chunk) => generateSummaryChunk(chunk)),
   );
   return summaryChunks;
 }

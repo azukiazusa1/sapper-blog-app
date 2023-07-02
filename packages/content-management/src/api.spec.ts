@@ -91,7 +91,7 @@ const server = setupServer(
           },
         },
         name: "Contentful Example API",
-      })
+      }),
     );
   }),
   rest.get(contentful(""), (_, res, ctx) => {
@@ -125,7 +125,7 @@ const server = setupServer(
             },
           },
         },
-      })
+      }),
     );
   }),
   rest.get(contentful("/entries"), (req, res, ctx) => {
@@ -133,7 +133,7 @@ const server = setupServer(
       return res(
         ctx.json({
           items: tags,
-        })
+        }),
       );
     } else {
       return res(ctx.status(404));
@@ -166,9 +166,9 @@ const server = setupServer(
             },
           },
         ],
-      })
+      }),
     );
-  })
+  }),
 );
 
 beforeAll(() => {
@@ -191,7 +191,7 @@ describe("getBlogPosts", () => {
           return res(
             ctx.json({
               items: tags,
-            })
+            }),
           );
         }
 
@@ -286,9 +286,9 @@ describe("getBlogPosts", () => {
                 },
               },
             ],
-          })
+          }),
         );
-      })
+      }),
     );
 
     const result = await getBlogPosts();
@@ -318,7 +318,7 @@ describe("getBlogPosts", () => {
           return res(
             ctx.json({
               items: tags,
-            })
+            }),
           );
         }
 
@@ -331,9 +331,9 @@ describe("getBlogPosts", () => {
                 fields: {},
               },
             ],
-          })
+          }),
         );
-      })
+      }),
     );
 
     const result = await getBlogPosts();
@@ -399,7 +399,7 @@ describe("createBlogPost", () => {
                 "en-US": [],
               },
             },
-          })
+          }),
         );
       }),
       rest.put(
@@ -408,8 +408,8 @@ describe("createBlogPost", () => {
           publish(req.params["entryId"]);
 
           return res(ctx.status(200));
-        }
-      )
+        },
+      ),
     );
 
     await createBlogPost({
@@ -504,15 +504,15 @@ describe("createBlogPost", () => {
             metadata: { tags: [] },
             sys: createDummyMetaSysProps({ id: "blog2" }),
             fields: _body.fields,
-          })
+          }),
         );
       }),
       rest.put(
         contentful("/entries/:entryId/published"),
         async (_, res, ctx) => {
           return res(ctx.status(200));
-        }
-      )
+        },
+      ),
     );
 
     await createBlogPost({
@@ -568,7 +568,7 @@ describe("createBlogPost", () => {
             metadata: { tags: [] },
             sys: createDummyMetaSysProps({ id: "tag3", published: false }),
             fields: body.fields,
-          })
+          }),
         );
       }),
       rest.put(contentful("/entries/:entryId"), async (req, res, ctx) => {
@@ -580,15 +580,15 @@ describe("createBlogPost", () => {
             metadata: { tags: [] },
             sys: createDummyMetaSysProps({ id: "blog2" }),
             fields: _body.fields,
-          })
+          }),
         );
       }),
       rest.put(
         contentful("/entries/:entryId/published"),
         async (_, res, ctx) => {
           return res(ctx.status(200));
-        }
-      )
+        },
+      ),
     );
 
     await createBlogPost({
@@ -656,7 +656,7 @@ describe("updateBlogPost", () => {
               published: false,
             }),
             fields: {},
-          })
+          }),
         );
       }),
       rest.put(contentful("/entries/:entryId"), async (req, res, ctx) => {
@@ -673,9 +673,9 @@ describe("updateBlogPost", () => {
               published: false,
             }),
             fields: _body,
-          })
+          }),
         );
-      })
+      }),
     );
 
     await updateBlogPost({

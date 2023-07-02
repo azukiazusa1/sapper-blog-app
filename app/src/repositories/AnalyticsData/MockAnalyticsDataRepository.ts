@@ -1,4 +1,3 @@
-import { vi } from "vitest";
 import type { AnalyticsDataRepositoryInterface, PopularPost } from "./types";
 
 export class MockAnalyticsDataRepository

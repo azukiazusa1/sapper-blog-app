@@ -265,7 +265,12 @@ h6 .icon-link::before {
   padding: 0.1em 0.25em;
   word-break: break-all;
   border-radius: 0.125rem;
-  font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+  font-family:
+    Consolas,
+    Monaco,
+    Andale Mono,
+    Ubuntu Mono,
+    monospace;
 }
 
 html.dark #contents code:not(pre > *) {

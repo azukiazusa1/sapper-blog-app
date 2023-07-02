@@ -92,7 +92,7 @@ export const generateOgpImage = async (title: string, tags: string[]) => {
           weight: 600,
         },
       ],
-    }
+    },
   );
 
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
