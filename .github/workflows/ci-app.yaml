@@ -57,7 +57,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
-        run: npm ci
+        run: npm ci --force
       - name: Install Lighthouse CI
         run: npm install -g @lhci/cli@0.10.x
       - name: Build
@@ -79,7 +79,7 @@ jobs:
   #         node-version-file: package.json
   #         cache: npm
   #     - name: Install dependencies
-  #       run: npm ci
+  #       run: npm ci --force
   #     - name: Build
   #       run: npm run build
   #     - name: Add permissions
@@ -110,7 +110,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
-        run: npm ci
+        run: npm ci --force
       - name: Install pa11y-ci
         run: npm install -g pa11y-ci
       - name: Build
@@ -128,7 +128,7 @@ jobs:
   #         node-version-file: package.json
   #         cache: npm
   #     - name: Install dependencies
-  #       run: npm ci
+  #       run: npm ci --force
   #     - name: Install Playwright
   #       run: npx playwright install --with-deps
   #     - name: Serve Storybook and run tests
