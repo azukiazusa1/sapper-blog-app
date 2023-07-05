@@ -15,7 +15,7 @@ published: true
 
 ```html
 <button>
-  <i class="icon icon--heart"></i>
+  <svg aria-hidden="true">...</svg>
 </button>
 ```
 
