@@ -23,7 +23,7 @@ published: true
 
 ```html
 <button aria-label="いいね">
-  <i class="icon icon--heart"></i>
+  <svg aria-hidden="true">...</svg>
 </button>
 ```
 
