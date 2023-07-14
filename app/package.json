@@ -72,7 +72,7 @@
     "@storybook/preview-web": "^7.0.0-beta.50",
     "@storybook/svelte": "^7.0.0-beta.50",
     "@storybook/sveltekit": "^7.0.0-beta.50",
-    "@storybook/test-runner": "^0.10.0",
+    "@storybook/test-runner": "^0.11.0",
     "@storybook/testing-library": "^0.1.0",
     "@sveltejs/kit": "^1.5.6",
     "@tsconfig/svelte": "^4.0.0",
