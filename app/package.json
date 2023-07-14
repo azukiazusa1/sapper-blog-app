@@ -93,7 +93,7 @@
     "eslint-plugin-svelte": "^2.13.1",
     "http-server": "^14.1.1",
     "msw": "1.0.1",
-    "node-fetch": "^3.3.0",
+    "node-fetch": "^2.6.11",
     "postcss": "^8.4.5",
     "postcss-cli": "^10.0.0",
     "react": "^18.2.0",
