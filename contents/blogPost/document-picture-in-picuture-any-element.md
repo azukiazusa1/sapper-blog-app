@@ -23,7 +23,7 @@ Document Picture-in-Picture は、`<video>` 要素に限らず任意の要素を
 
 まずは最も簡単な使い方を見てみましょう。2023 年 7 月 16 日現在、Document Picture-in-Picture は Google Chrome の origin trial で提供されています。ローカル環境で実験したい場合には、`chrome://flags/#document-picture-in-picture-api` を有効にすることで Document Picture-in-Picture を使用できます。
 
-![https://images.ctfassets.net/in6v9lxmm5c8/4VMy4RXc16Nlm8ER5jDGx9/3c8d2a887600b84b8615f86e1bfc6e7b/____________________________2023-07-16_15.00.53.png](Google Chrome の設定画面 Document-Picuture-in-Picture が Enabled になっている)
+![Google Chrome の設定画面 Document-Picuture-in-Picture が Enabled になっている](https://images.ctfassets.net/in6v9lxmm5c8/4VMy4RXc16Nlm8ER5jDGx9/3c8d2a887600b84b8615f86e1bfc6e7b/____________________________2023-07-16_15.00.53.png)
 
 以下のようなコードで任意の要素を PiP できます。
 
@@ -41,10 +41,10 @@ Document Picture-in-Picture は、`<video>` 要素に限らず任意の要素を
   const pipButton = document.getElementById('pip-button')
   pipButton.addEventListener('click', async () => {
     const content = document.getElementById('content')
-  
+
     // Picture-in-Picture Window を開く
     const pipWindow = await documentPictureInPicture.requestWindow();
-  
+
     // 任意の要素を Picture-in-Picture Window に追加する
     pipWindow.document.body.append(content);
   });
@@ -99,7 +99,7 @@ Picture-in-Picture のウィンドウが閉じられたとき、Picture-in-Pictu
   const pipButton = document.getElementById('pip-button')
   pipButton.addEventListener('click', async () => {
     const content = document.getElementById('content')
-  
+
     const pipWindow = await documentPictureInPicture.requestWindow();
     pipWindow.document.body.append(content);
 
@@ -142,7 +142,7 @@ Picture-in-Picture のウィンドウが閉じられたとき、Picture-in-Pictu
     const player = document.getElementById('player')
     // Picture-in-Picture ではメディア・コントロールを使用しないため、コントロールを非表示にする
     player.controls = false;
-  
+
     // Picture-in-Picture Window を開く
     // ウィンドウを開くときに width と heigth のサイズを合わせる
     const pipWindow = await documentPictureInPicture.requestWindow({
@@ -207,5 +207,5 @@ Picture-in-Picture のウィンドウが閉じられたとき、Picture-in-Pictu
 
 ## 参考
 
-- [Picture-in-Picture for any Element, not just <video> - Chrome Developers](https://developer.chrome.com/docs/web-platform/document-picture-in-picture/)
+- [Picture-in-Picture for any Element, not just video - Chrome Developers](https://developer.chrome.com/docs/web-platform/document-picture-in-picture/)
 - [document-pip-explainer/explainer.md at main · steimelchrome/document-pip-explainer · GitHub](https://github.com/steimelchrome/document-pip-explainer/blob/main/explainer.md)
