@@ -5,7 +5,7 @@ slug: "document-picture-in-picuture-any-element"
 about: "Document Picture-in-Picture は、`<video>` 要素に限らず任意の要素を PiP できるようにする提案です。これにより、動画以外の要素を PiP できるようになります。主なユースケースとして、カスタムのメディア・コントロールを使用したり、プレイリストとともに動画を PiP することが挙げられます。"
 createdAt: "2023-07-16T14:38+09:00"
 updatedAt: "2023-07-16T14:38+09:00"
-tags: [HTML]
+tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/516xpMCy886VKyeH8rqNNS/801ec7599d233d7f6e0aeb32442c7c3b/cute_frog_melody_11441.png"
   title: "雨の中歌っているかわいいカエルのイラスト"
