@@ -1,7 +1,7 @@
 ---
 id: gNIodqa7n5ubUaAZBPpMA
 title: "【書評】RustとWebAssemblyによるゲーム開発は Rust 開発における設計を学べる良書"
-slug: rust-wasm-game-dev-book
+slug: "rust-wasm-game-dev-book"
 about: "本のタイトルは「Rust と WebAssembly によるゲーム開発」となっていますが、反して WebAssembly についての話題はほとんど出てきません。主に Rust における開発の設計についての話題が中心となっています。"
 createdAt: "2023-07-30T22:39+09:00"
 updatedAt: "2023-07-30T22:39+09:00"
@@ -11,7 +11,6 @@ thumbnail:
   title: "松葉ガニ"
 published: true
 ---
-
 本のタイトルは「Rust と WebAssembly によるゲーム開発」となっていますが、反して WebAssembly についての話題はほとんど出てきません。主に Rust における開発の設計についての話題が中心となっています。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/4Rg0PcIpc8wRfw8kVhKSud/63f55a52663152ebab85d3c9f9818b01/51xr5OIL9-L._SX218_BO1_204_203_200_QL40_ML2_.jpg)
