@@ -238,23 +238,23 @@ VoiceOver でテーブルにフォーカスを当てると、テーブルの概�
 <table>
   <thead>
     <tr>
-      <th>1月<th>
-      <th>2月<th>
-      <th>3月<th>
+      <th>1月</th>
+      <th>2月</th>
+      <th>3月</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-    <th scope="row">東京<th>
-    <td>4.9<td>
-    <td>5.2<td>
-    <td>10.9<td>
+    <th scope="row">東京</th>
+    <td>4.9</td>
+    <td>5.2</td>
+    <td>10.9</td>
     </tr>
     <tr>
-    <th scope="row">札幌<th>
-    <td>-3.2<td>
-    <td>-2.2<td>
-    <td>2.6<td>
+    <th scope="row">札幌</th>
+    <td>-3.2</td>
+    <td>-2.2</td>
+    <td>2.6</td>
     </tr>  
   </tbody>
 </table>
