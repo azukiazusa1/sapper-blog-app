@@ -189,6 +189,7 @@ const datasetsText = datasets.reduce((acc, dataset) => {
   </caption>
   <thead>
       <tr>
+      <td></td>
       {labels.map((label) => (
           <th key={label}>{label}</th>
       ))}
@@ -238,6 +239,7 @@ VoiceOver でテーブルにフォーカスを当てると、テーブルの概�
 <table>
   <thead>
     <tr>
+      <td></td>
       <th>1月</th>
       <th>2月</th>
       <th>3月</th>
