@@ -16,17 +16,19 @@ published: true
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/4Rg0PcIpc8wRfw8kVhKSud/63f55a52663152ebab85d3c9f9818b01/51xr5OIL9-L._SX218_BO1_204_203_200_QL40_ML2_.jpg)
 
+![ゲーム画面のスクリーンショット。緑の木や山の背景、左に赤い帽子の男の子、すぐ右隣に岩が、画面右端に見切れる形で台座が描画されている](https://images.ctfassets.net/in6v9lxmm5c8/3p2uxCz6nx7oNlEHFWgkk5/a2aa25efcce93b805231f70c6b0e0bf1/____________________________2023-07-29_23.28.22.png)
+
 本書籍の中で Rust の基本を理解していることを前提としており、文法などの説明は行われていません。もし Rust に全く触れたことがない場合には、[Rust ツアー](https://tourofrust.com/00_ja.html) のようなチュートリアルをひと通り進めると良いでしょう。
 
 ## 本書の内容
 
-HTML の `<canvas>` を用いて 1 つのゲームを完成させることが本書の目的の一つです。実際に完成させるゲームは以下からプレイできます。
+HTML の `<canvas>` を用いて 1 つのゲームを完成させることが本書の目的の 1 つです。実際に完成させるゲームは以下からプレイできます。
 
 https://rust-games-webassembly.netlify.app/
 
 Rust から WebAssembly を通じて DOM にアクセスする際には [web-sys](https://rustwasm.github.io/wasm-bindgen/api/web_sys/) クレートによりバインディングされた JavaScript の関数を呼び出すことになるのですが、JavaScript と同じコードを Rust で再現すると以下に「ノイズが多い」かを初っ端から思い知らされます。
 
-例えば JavaScript で `<canvas>` のコンテキストを取得するには次のように書きますが：
+例えば JavaScript で `<canvas>` のコンテキストを取得するには次のように書きます。
 
 ```js
 const canvas = document.getElementById("canvas");
