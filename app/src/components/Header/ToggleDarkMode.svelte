@@ -37,7 +37,7 @@
 <Listbox on:change={handleChange} value={theme}>
   <ListboxButton
     class="flex items-center rounded-lg border border-gray-300 p-2 dark:border-zinc-600"
-    aria-label="カラーテーマ選択する"
+    aria-label="カラーテーマを選択する"
   >
     <Moon className="h-6 w-6 hidden dark:block" />
     <Sun className="h-6 w-6 block dark:hidden" />
