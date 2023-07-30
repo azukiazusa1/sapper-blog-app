@@ -24,5 +24,9 @@
     "prettier-plugin-svelte": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "turbo": "^1.8.2"
+  },
+  "dependencies": {
+    "@sveltejs/kit": "^1.22.3",
+    "svelte": "^4.1.1"
   }
 }
