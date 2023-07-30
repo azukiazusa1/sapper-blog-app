@@ -88,7 +88,7 @@ const flattenField = <T>(field: FieldValue<T>): T => {
 };
 
 const flattenOptionalField = <T>(
-  field: FieldValue<T> | undefined
+  field: FieldValue<T> | undefined,
 ): T | undefined => {
   return field ? field["en-US"] : undefined;
 };
@@ -128,7 +128,7 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
       let thumbnail: Thumbnail | undefined;
       if (blog.fields.thumbnail) {
         const asset = assets.find(
-          (a) => a.sys.id === blog.fields.thumbnail["en-US"].sys.id
+          (a) => a.sys.id === blog.fields.thumbnail["en-US"].sys.id,
         );
         thumbnail = {
           url: "https:" + asset?.fields.file["en-US"]?.url || "",
@@ -145,7 +145,7 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
       if (contentful.isPublished(blog)) {
         if (thumbnail === undefined)
           throw new Error(
-            "公開済みの記事なら thumbnail は必ず存在するはず" + blog.sys.id
+            "公開済みの記事なら thumbnail は必ず存在するはず" + blog.sys.id,
           );
 
         return {
@@ -174,7 +174,7 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
           thumbnail,
         } satisfies DraftBlogPost;
       }
-    })
+    }),
   );
   return result;
 };
@@ -205,14 +205,14 @@ const createTag = async (tagName: string): Promise<contentful.Entry> => {
  * @returns Contentful の MetaLink の形式
  */
 const tagNamesToTagIds = async (
-  tagNames: string[]
+  tagNames: string[],
 ): Promise<{ sys: MetaLinkProps }[]> => {
   const tags = await fetchTags();
   return Promise.all(
     tagNames.map(async (tagName) => {
       const tag = tags.find(
         (t) =>
-          flattenField(t.fields.name).toLowerCase() === tagName.toLowerCase()
+          flattenField(t.fields.name).toLowerCase() === tagName.toLowerCase(),
       );
       if (tag) {
         return {
@@ -232,7 +232,7 @@ const tagNamesToTagIds = async (
           },
         };
       }
-    })
+    }),
   );
 };
 

@@ -8,7 +8,7 @@ export const prerender = true;
 const siteUrl = variables.baseURL;
 
 const renderXmlRssFeed = (
-  posts: AllPostsQuery
+  posts: AllPostsQuery,
 ) => `<?xml version="1.0" encoding="UTF-8" ?>
   <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
@@ -35,7 +35,7 @@ const renderXmlRssFeed = (
         <description><![CDATA[${post.about}]]></description>
         <pubDate>${new Date(post.createdAt).toUTCString()}</pubDate>
       </item>
-    `
+    `,
       )
       .join("\n")}
     </channel>

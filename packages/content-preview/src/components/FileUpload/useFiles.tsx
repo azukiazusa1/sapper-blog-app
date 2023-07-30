@@ -16,7 +16,7 @@ const useFiles = () => {
       setFiles((files) => [...files, ...newFiles]);
       sessionStorage.setItem("files", JSON.stringify([...files, ...newFiles]));
     },
-    [files]
+    [files],
   );
 
   const deleteFile = useCallback(
@@ -25,7 +25,7 @@ const useFiles = () => {
       setFiles(newFiles);
       sessionStorage.setItem("files", JSON.stringify(newFiles));
     },
-    [files]
+    [files],
   );
 
   return { files, addFiles, deleteFile };

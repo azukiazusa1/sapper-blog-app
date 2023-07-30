@@ -37,14 +37,14 @@ export const client = (preview: boolean) =>
 export const request = (
   query: DocumentNode | TypedDocumentNode<any, object> | string,
   variables = {},
-  { preview = false } = {}
+  { preview = false } = {},
 ) => {
   return new Promise((r) => {
     pipe(
       client(preview).query(query, variables),
       subscribe((result) => {
         r(result.data);
-      })
+      }),
     );
   });
 };

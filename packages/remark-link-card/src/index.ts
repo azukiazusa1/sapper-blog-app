@@ -126,7 +126,7 @@ const remarkLinkCard: Plugin = () => async (tree) => {
                         }),
                       ])
                     : h("div"),
-                ]
+                ],
               ),
             ]),
           ];
@@ -134,7 +134,7 @@ const remarkLinkCard: Plugin = () => async (tree) => {
         })
         .catch(() => {
           // noop
-        })
+        }),
     );
   });
   await Promise.all(transfroms);
