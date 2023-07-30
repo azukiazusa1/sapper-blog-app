@@ -59,7 +59,7 @@ thumbnail:
   title: "title"
 published: true
 ---
-article\n`
+article\n`,
     );
   });
 
@@ -92,7 +92,7 @@ tags: []
 thumbnail: null
 published: false
 ---
-`
+`,
     );
   });
 
@@ -130,7 +130,7 @@ thumbnail:
   title: "ti\\"tle"
 published: true
 ---
-article "article"\n`
+article "article"\n`,
     );
   });
 });
@@ -151,13 +151,13 @@ thumbnail:
   title: "title"
 published: true
 ---
-article\n`
+article\n`,
     );
 
     const result = await loadBlogPost("slug");
     expect(mockedReadFile).toHaveBeenCalledWith(
       `/contents/blogPost/slug.md`,
-      "utf-8"
+      "utf-8",
     );
     expect(result).toEqual<Result>({
       success: true,
@@ -192,7 +192,7 @@ tags: []
 thumbnail: null
 published: false
 ---
-`
+`,
     );
     const result = await loadBlogPost("id");
     expect(result).toEqual<Result>({
@@ -229,7 +229,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -260,7 +260,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -292,7 +292,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -316,7 +316,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -350,7 +350,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -382,7 +382,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -414,7 +414,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -438,7 +438,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -472,7 +472,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -504,7 +504,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -535,7 +535,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
         );
 
         const result = await loadBlogPost("id");
@@ -560,7 +560,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -592,7 +592,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -626,7 +626,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -657,7 +657,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
         );
 
         const result = await loadBlogPost("id");
@@ -689,7 +689,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
         );
 
         const result = await loadBlogPost("id");
@@ -724,7 +724,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -755,7 +755,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
         );
 
         const result = await loadBlogPost("id");
@@ -787,7 +787,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
         );
 
         const result = await loadBlogPost("id");
@@ -822,7 +822,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -854,7 +854,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -886,7 +886,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -919,7 +919,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -951,7 +951,7 @@ thumbnail:
 published: true
 ---
 article
-  `
+  `,
       );
 
       const result = await loadBlogPost("id");
@@ -983,7 +983,7 @@ thumbnail:
 published: true
 ---
 article
-  `
+  `,
       );
 
       const result = await loadBlogPost("id");
@@ -1014,7 +1014,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -1046,7 +1046,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -1078,7 +1078,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -1108,7 +1108,7 @@ thumbnail: null
 published: true
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -1142,7 +1142,7 @@ thumbnail:
 published: 1
 ---
 article
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -1176,7 +1176,7 @@ thumbnail:
 published: true
 ---
 ${"a".repeat(50001)}
-`
+`,
       );
 
       const result = await loadBlogPost("id");
@@ -1208,7 +1208,7 @@ thumbnail:
 published: true
 ---
 article
-`
+`,
     );
 
     const result = await loadBlogPost("id");

@@ -36,12 +36,12 @@ const server = setupServer(
 <body>
 </body>
 </html>
-`)
+`),
     );
   }),
   rest.head("https://www.google.com/s2/favicons", (req, res, ctx) => {
     return res(ctx.status(200));
-  })
+  }),
 );
 
 beforeAll(() => {
@@ -96,7 +96,7 @@ describe("remark-link-card", () => {
     server.use(
       rest.head("https://www.google.com/s2/favicons", (req, res, ctx) => {
         return res(ctx.status(404));
-      })
+      }),
     );
     const { value } = await processor.process(`
 ## test
@@ -127,9 +127,9 @@ describe("remark-link-card", () => {
 <body>
 </body>
 </html>
-`)
+`),
         );
-      })
+      }),
     );
     const { value } = await processor.process(`
 ## test
@@ -161,9 +161,9 @@ describe("remark-link-card", () => {
 <body>
 </body>
 </html>
-`)
+`),
         );
-      })
+      }),
     );
     const { value } = await processor.process(`
 ## test

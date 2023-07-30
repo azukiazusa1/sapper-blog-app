@@ -57,7 +57,7 @@ ${article ? addNewLine(article) : ""}`;
 
   const outDir = path.join(
     __dirname,
-    `../../../contents/blogPost/${pathName}.md`
+    `../../../contents/blogPost/${pathName}.md`,
   );
   await fs.writeFile(outDir, content);
 };
@@ -73,7 +73,7 @@ export const deletePublishedBlogFile = async (blog: BlogPost) => {
   const pathName = blog.id;
   const dirname = path.join(
     __dirname,
-    `../../../contents/blogPost/${pathName}.md`
+    `../../../contents/blogPost/${pathName}.md`,
   );
 
   // ファイルが存在しない場合は何もしない
@@ -100,7 +100,7 @@ const rmLFCode = (str: string) => {
 export const loadBlogPost = async (filename: string): Promise<Result> => {
   const dirname = path.join(
     __dirname,
-    `../../../contents/blogPost/${filename}.md`
+    `../../../contents/blogPost/${filename}.md`,
   );
 
   try {
@@ -153,7 +153,7 @@ export const loadAllBlogPost = async (): Promise<Result[]> => {
   const files = await fs.readdir(dirname);
 
   const results = await Promise.all(
-    files.map((file) => loadBlogPost(file.replace(/\.md$/, "")))
+    files.map((file) => loadBlogPost(file.replace(/\.md$/, ""))),
   );
 
   return results;

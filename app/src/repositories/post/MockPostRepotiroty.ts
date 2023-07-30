@@ -12,12 +12,12 @@ import type { PostRepositoryInterFace } from "./types";
 export class MockPostRepository implements PostRepositoryInterFace {
   get(queryVariables: PostsQueryVariables) {
     return Promise.resolve(
-      createDummyPosts(100, queryVariables.limit, queryVariables.skip)()
+      createDummyPosts(100, queryVariables.limit, queryVariables.skip)(),
     );
   }
   search(queryVariables: PostsQueryVariables) {
     return Promise.resolve(
-      createDummyPosts(100, queryVariables.limit, queryVariables.skip)()
+      createDummyPosts(100, queryVariables.limit, queryVariables.skip)(),
     );
   }
   find(slug: string) {

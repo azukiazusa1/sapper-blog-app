@@ -24,7 +24,7 @@ const FileUpload: React.FC<Props> = ({ addFiles }) => {
           size: file.size,
           url: "https:" + result.fields.file["en-US"].url || "",
         } satisfies UploadedFile;
-      })
+      }),
     );
     addFiles(newFiles);
     setLoading(false);

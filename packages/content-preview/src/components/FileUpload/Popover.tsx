@@ -11,7 +11,7 @@ const PopoverContent = React.forwardRef<
 >(
   (
     { className, align = "center", side = "top", sideOffset = 4, ...props },
-    ref
+    ref,
   ) => (
     <PopoverPrimitive.Portal>
       <PopoverPrimitive.Content
@@ -23,7 +23,7 @@ const PopoverContent = React.forwardRef<
         {...props}
       />
     </PopoverPrimitive.Portal>
-  )
+  ),
 );
 PopoverContent.displayName = PopoverPrimitive.Content.displayName;
 

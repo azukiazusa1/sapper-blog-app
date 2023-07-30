@@ -7,14 +7,14 @@ import type {
 
 export class GitHubRepository implements GitHubRepositoryInterface {
   private removeDeplicateContributors(
-    contributors: Contributor[]
+    contributors: Contributor[],
   ): Contributor[] {
     const uniqueContributors: Contributor[] = [];
     contributors.forEach((contributor) => {
       if (
         !uniqueContributors.some(
           (uniqueContributor) =>
-            uniqueContributor.username === contributor.username
+            uniqueContributor.username === contributor.username,
         )
       ) {
         uniqueContributors.push(contributor);
@@ -37,13 +37,13 @@ export class GitHubRepository implements GitHubRepositoryInterface {
   async getContributorsByFile(slug: string) {
     const res = await fetch(
       `https://api.github.com/repos/azukiazusa1/sapper-blog-app/commits?path=${this.getFilePath(
-        slug
+        slug,
       )}`,
       {
         headers: {
           Authorization: `Bearer ${secrets.githubToken}`,
         },
-      }
+      },
     );
     const json: CommitResponse[] = await res.json();
     const contributors = json
