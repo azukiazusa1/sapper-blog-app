@@ -19,7 +19,7 @@
   class="m-auto h-full w-10/12 overflow-hidden rounded-lg border dark:border-zinc-700 md:w-full"
   data-sveltekit-preload-data="off"
 >
-  <a href={`/blog/${slug}`}>
+  <a href={`/blog/${slug}`} aria-hidden="true">
     <Image
       {slug}
       alt={thumbnail.title}
@@ -33,9 +33,9 @@
   <header
     class="flex-row items-center justify-between border-t p-4 leading-tight dark:border-zinc-700"
   >
-    <h1 class="text-2xl font-bold" style:--tag="h-{slug}">
+    <h2 class="text-2xl font-bold" style:--tag="h-{slug}">
       <a class="no-underline hover:underline" href={`/blog/${slug}`}>{title}</a>
-    </h1>
+    </h2>
     <p class="mt-2" style:--tag="time-{slug}">
       <Time date={createdAt} />
     </p>
