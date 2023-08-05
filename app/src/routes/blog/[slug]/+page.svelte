@@ -16,9 +16,7 @@
   $: post = data.post;
   $: contents = data.contents;
   $: contributors = data.contributors;
-  $: tagNames = post.tagsCollection.items.map((t) =>
-    encodeURIComponent(t.name)
-  );
+  $: tagNames = []
 
   $: url = `${variables.baseURL}/blog/${post.slug}`;
 </script>
@@ -34,7 +32,7 @@
   description={post.about}
   {url}
   image={`${variables.baseURL}/blog/ogp/${encodeURIComponent(
-    post.title
+    post.title,
   )}/${tagNames.join("/")}.png`}
 />
 

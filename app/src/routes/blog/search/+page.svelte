@@ -20,7 +20,7 @@
 
   const search = async () => {
     posts = await fetch(`/api/search?q=${q}&page=${currentPage}`).then((res) =>
-      res.json()
+      res.json(),
     );
   };
 
