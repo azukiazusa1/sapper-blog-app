@@ -1,4 +1,4 @@
-import { MockPostRepository, PostRepository } from "./post";
+import { PostRepository } from "./post";
 import type { PostRepositoryInterFace } from "./post";
 import { TagRepository } from "./tag";
 import type { TagsRepositoryInterFace } from "./tag";
@@ -24,7 +24,7 @@ export interface Repositories {
 }
 
 export default {
-  [POST]: new MockPostRepository(),
+  [POST]: new PostRepository(),
   [TAG]: new TagRepository(),
   [GITHUB]:
     process.env.VERCEL_ENV === "production"

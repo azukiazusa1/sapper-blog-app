@@ -16,7 +16,7 @@
   $: post = data.post;
   $: contents = data.contents;
   $: contributors = data.contributors;
-  $: tagNames = []
+  $: tagNames = [];
 
   $: url = `${variables.baseURL}/blog/${post.slug}`;
 </script>
