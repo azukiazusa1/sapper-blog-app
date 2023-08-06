@@ -11,7 +11,6 @@ thumbnail:
   title: "打ち上げ花火のイラスト"
 published: true
 ---
-
 ## prefers-reduced-motion とは
 
 prefers-reduced-motion とは、ユーザーの環境設定によって余計な動きを抑制することを要求したことを検出するメディアクエリです。この設定は各 OS ごとに以下のように設定できます。
