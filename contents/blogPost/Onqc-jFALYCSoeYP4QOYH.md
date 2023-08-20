@@ -7,8 +7,8 @@ createdAt: "2023-08-20T17:41+09:00"
 updatedAt: "2023-08-20T17:41+09:00"
 tags: ["JavaScript", "Promise"]
 thumbnail:
-  url: "金魚すくいのイラスト"
-  title: "https://images.ctfassets.net/in6v9lxmm5c8/2okG3Yt0KXmAOz1xECemkd/4705c28d4b1a453ad56a5fe628f371c0/kingyo-sukui_18384.png"
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2okG3Yt0KXmAOz1xECemkd/4705c28d4b1a453ad56a5fe628f371c0/kingyo-sukui_18384.png"
+  title: "金魚すくいのイラスト"
 published: true
 ---
 
