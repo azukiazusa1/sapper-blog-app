@@ -11,7 +11,6 @@ thumbnail:
   title: "金魚すくいのイラスト"
 published: true
 ---
-
 `await` キーワードを使用することで、Promise が fulfilled または rejected 状態になるまで実行を中断できます。これにより、Promise を用いた非同期処理をあたかも同期処理のように記述できます。
 
 ```js
