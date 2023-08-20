@@ -2,7 +2,7 @@
 id: Onqc-jFALYCSoeYP4QOYH
 title: "await は Promise 以外のオブジェクトでも値を取り出せる"
 slug: "await-is-not-only-for-promise"
-about: null
+about: "await キーワードは `then()` という名前のメソッドを持つオブジェクトに対して使用できます。このようなオブジェクトを thenable object と呼びます。await キーワードが Promise オブジェクトではなく thenable オブジェクトを対象としているのは、ライブラリの相互運用のためです。"
 createdAt: "2023-08-20T17:41+09:00"
 updatedAt: "2023-08-20T17:41+09:00"
 tags: ["JavaScript", "Promise"]
