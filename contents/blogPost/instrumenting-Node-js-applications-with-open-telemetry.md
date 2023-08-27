@@ -5,13 +5,12 @@ slug: "instrumenting-Node-js-applications-with-open-telemetry"
 about: "OpenTelemetry は Observability のフレームワークであり、トレース・メトリクス・ログなどのテレメトリーデータを作成、管理するためのツールキットです。OpenTelemetry はベンダーに依存しない形で標準化されたプロトコルとツールを提供していることが特徴です。この記事では Node.js アプリケーションを計装して Prometheus にデータを送信する方法を紹介します。"
 createdAt: "2023-08-26T17:38+09:00"
 updatedAt: "2023-08-26T17:38+09:00"
-tags: ["Node.js", "express", "OpenTelemetry", "Prometheus"]
+tags: ["Node.js", "Express", "OpenTelemetry", "Prometheus"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1qlV5YaQMXGezxdLlDOL2A/de11f74cbe267a54645fae315f27eae2/taue_18898-768x768.png"
   title: "田植えのイラスト"
 published: true
 ---
-
 OpenTelemetry は Observability のフレームワークであり、トレース・メトリクス・ログなどのテレメトリーデータを作成、管理するためのツールキットです。OpenTelemetry はベンダーに依存しない形で標準化されたプロトコルとツールを提供していることが特徴です。
 
 https://opentelemetry.io/
