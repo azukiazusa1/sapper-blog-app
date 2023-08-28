@@ -356,3 +356,7 @@ code .line::before {
   margin: 0 !important;
   @apply h-full w-full rounded-r-lg object-cover;
 }
+
+span[style="color: #545454"] {
+  color: #898989 !important;
+}
