@@ -20,8 +20,6 @@
     });
   });
 
-  preparePageTransition();
-
   NProgress.configure({
     showSpinner: false,
   });
