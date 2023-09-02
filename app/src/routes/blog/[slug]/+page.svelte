@@ -76,7 +76,3 @@
 <h2 class="text-2xl">関連記事</h2>
 
 <PostList posts={post.relatedArticleCollection?.items} small />
-<!-- svelte-ignore a11y-missing-content -->
-<a
-  href={`/blog/ogp/${encodeURIComponent(post.title)}/${tagNames.join("/")}.png`}
-/>
