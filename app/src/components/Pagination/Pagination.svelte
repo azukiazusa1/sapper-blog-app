@@ -21,7 +21,6 @@
       <a
         class="flex h-12 w-12 items-center justify-center rounded-l-lg border border-gray-200 dark:border-zinc-600"
         href={`${href}${prevPage}`}
-        data-sveltekit-preload-data
       >
         <div class="sr-only">前のページ</div>
         <PrevIcon />
@@ -39,7 +38,6 @@
       <a
         class="ml-1 flex h-12 w-12 items-center justify-center rounded-r-lg border border-gray-200 dark:border-zinc-600"
         href={`${href}${nextPage}`}
-        data-sveltekit-preload-data
       >
         <div class="sr-only">次のページ</div>
         <NextIcon />

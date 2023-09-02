@@ -10,9 +10,15 @@
   import Visual from "../components/Visual.svelte";
   import image from "../assets/images/road-984251_1280.jpg";
   import { removeTrailingSlash } from "$lib/utils";
-  import { preparePageTransition } from "$lib/pageTransition";
+  import { onNavigate } from "$app/navigation";
 
-  preparePageTransition();
+  onNavigate(() => {
+    if (!document.startViewTransition) return;
+
+    return new Promise((fulfil) => {
+      document.startViewTransition(() => new Promise(fulfil));
+    });
+  });
 
   NProgress.configure({
     showSpinner: false,
