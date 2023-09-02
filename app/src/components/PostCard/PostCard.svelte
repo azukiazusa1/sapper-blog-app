@@ -17,7 +17,6 @@
 <!-- なぜか preload すると View Transition API がバグる -->
 <article
   class="m-auto h-full w-10/12 overflow-hidden rounded-lg border dark:border-zinc-700 md:w-full"
-  data-sveltekit-preload-data="off"
 >
   <a href={`/blog/${slug}`} aria-hidden="true">
     <Image
