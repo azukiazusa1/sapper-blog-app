@@ -1,7 +1,6 @@
 import React from "react";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
-import fs from "fs/promises";
 import variables from "$lib/variables";
 
 export const generateOgpImage = async (title: string, tags: string[]) => {
