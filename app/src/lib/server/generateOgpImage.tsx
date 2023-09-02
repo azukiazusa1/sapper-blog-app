@@ -1,11 +1,11 @@
 import React from "react";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
-import fs from "fs";
+import fs from "fs/promises";
 
 export const generateOgpImage = async (title: string, tags: string[]) => {
-  const fontRegular = fs.readFileSync("./fonts/NotoSansJP-Regular.otf");
-  const fontBold = fs.readFileSync("./fonts/NotoSansJP-Bold.otf");
+  const fontRegular = await fs.readFile("./fonts/NotoSansJP-Regular.otf");
+  const fontBold = await fs.readFile("./fonts/NotoSansJP-Bold.otf");
   const svg = await satori(
     <div
       style={{
