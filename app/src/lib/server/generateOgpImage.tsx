@@ -1,6 +1,6 @@
 import React from "react";
 import satori from "satori";
-import sharp from "sharp";
+import { Resvg } from "@resvg/resvg-js";
 import fs from "fs";
 
 export const generateOgpImage = async (title: string, tags: string[]) => {
@@ -95,7 +95,14 @@ export const generateOgpImage = async (title: string, tags: string[]) => {
     },
   );
 
-  const png = await sharp(Buffer.from(svg)).png().toBuffer();
+  const resvg = new Resvg(svg, {
+    fitTo: {
+      mode: "width",
+      value: 1200,
+    },
+  });
 
-  return png;
+  const image = resvg.render();
+
+  return image.asPng();
 };

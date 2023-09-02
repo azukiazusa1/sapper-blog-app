@@ -30,6 +30,7 @@
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@leafac/rehype-shiki": "^2.2.1",
     "@playwright/test": "^1.31.0",
+    "@resvg/resvg-js": "^2.4.1",
     "@rgossiaux/svelte-headlessui": "^1.0.2",
     "@sveltejs/adapter-vercel": "^3.0.3",
     "@types/react": "^18.0.26",
@@ -50,7 +51,6 @@
     "remark-parse": "^10.0.0",
     "remark-rehype": "^10.1.0",
     "satori": "^0.10.0",
-    "sharp": "^0.32.0",
     "shiki": "^0.11.1",
     "unified": "^10.1.2"
   },
