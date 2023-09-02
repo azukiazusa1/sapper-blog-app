@@ -54,7 +54,7 @@
     "eslint-config-custom": "^0.0.0",
     "find-config": "^1.0.0",
     "msw": "^1.0.1",
-    "regenerator-runtime": "^0.13.11",
+    "regenerator-runtime": "^0.14.0",
     "ts-node": "^10.9.1",
     "vitest": "^0.32.0"
   }
