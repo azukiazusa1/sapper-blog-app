@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "mock": "NODE_MOCK=true vite dev",
-    "postbuild": "cp node_modules/sharp/build/Release/*.node .vercel_build_output/functions/node/render/;cp prisma/schema.prisma .vercel_build_output/functions/node/render/;ls .vercel_build_output/functions/node/render/",
+    "postbuild": "npx svelte-sitemap --domain $PUBLIC_BASE_URL --out-dir ./.vercel/output/static",
     "build": "vite build",
     "preview": "vite preview --port 3000",
     "serve": "npx serve ./.vercel/output/static",
