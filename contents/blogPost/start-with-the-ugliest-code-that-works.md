@@ -976,7 +976,7 @@ const EditingUserRow = ({ user, onCanceled, onSaved }: EditingUserRowProps) => {
 
 おっけー、これで編集機能は完成だ。ブラウザで確認してみよう。編集ボタンを押してフォームを表示し、フォームで値を変更して保存ボタンを押すと、ユーザーの一覧が再取得されて編集モードが終了して、元の表示に戻るはずだ。まだコードの中でちょっと気に入らないところがあるかもしれない、だがとりあえず完成だ。おめでとう！
 
-<video src="https://videos.ctfassets.net/in6v9lxmm5c8/5IbZrKvirdZVJmvSfVoelW/44d08e018e1397c0fcfe73bcf36ccde9/_____2023-09-03_15.55.15.mov" controls>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/5IbZrKvirdZVJmvSfVoelW/44d08e018e1397c0fcfe73bcf36ccde9/_____2023-09-03_15.55.15.mov" controls></video>
 
 ## ユーザーの削除
 
@@ -1056,7 +1056,7 @@ const UserList = () => {
 
 削除処理はそんなに難しくない。一旦こんなものでいいだろう。ブラウザで確認してみよう。削除ボタンを押して確認ダイアログが表示され、OK を押すとユーザーが削除されるはずだ。
 
-<video src="https://videos.ctfassets.net/in6v9lxmm5c8/3r6YuloHRduWpA2l4svrj2/80fce75075b05e9383b2d6807d0cb1ea/_____2023-09-03_16.02.45.mov" controls>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/3r6YuloHRduWpA2l4svrj2/80fce75075b05e9383b2d6807d0cb1ea/_____2023-09-03_16.02.45.mov" controls></video>
 
 ## リファクタリング！
 
