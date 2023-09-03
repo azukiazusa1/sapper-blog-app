@@ -1120,7 +1120,30 @@ export const EditingUserRow = () => {
 最後に、もう 1 箇所変更したいところがある。ユーザーの更新処理と削除処理では直接 `fetch()` 関数を呼び出しているが、`useUser` のようにフックで抽象化しておきたい。API クライアントが実際に何が使われているかコンポーネントからは意識したくないからだ。`useUserMutations` というフックを作成して、`{ updateUser, deleteUser }` というオブジェクトを返すようにする。
 
 ```tsx:useUserMutations.ts
+import { UserInput } from "./types";
 
+export const useUserMutations = () => {
+  const updateUser = (input: UserInput) => {
+    return fetch(`http://localhost:3000/api/users/${input.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(input),
+    });
+  };
+
+  const deleteUser = (id: number) => {
+    return fetch(`http://localhost:3000/api/users/${id}`, {
+      method: "DELETE",
+    });
+  };
+
+  return {
+    updateUser,
+    deleteUser,
+  };
+};
 ```
 
 `type.ts` に `UserInput` という型も追加しておこう。
