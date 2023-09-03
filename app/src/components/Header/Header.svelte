@@ -10,7 +10,7 @@
   import SideMenu from "./SideMenu.svelte";
   import GitHub from "../Icons/GitHub.svelte";
 
-  let routes = ["/blog", "/about", "/tags", "/drafts"];
+  let routes = ["/blog", "/about", "/tags"];
   let html: HTMLElement;
   let lastScrollY = 0;
   let hideHeader = false;
