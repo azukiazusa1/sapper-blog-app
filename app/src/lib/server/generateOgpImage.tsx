@@ -3,14 +3,39 @@ import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import variables from "$lib/variables";
 
-export const generateOgpImage = async (title: string, tags: string[]) => {
-  const baseURL = variables.baseURL;
-  const fontRegular = await fetch(
-    baseURL + "/fonts/NotoSansJP-Regular.otf",
-  ).then((res) => res.arrayBuffer());
-  const fontBold = await fetch(baseURL + "/fonts/NotoSansJP-Bold.otf").then(
-    (res) => res.arrayBuffer(),
+const fontCache = new Map<string, ArrayBuffer>();
+
+async function getFontData(url: string) {
+  const css = await (
+    await fetch(url, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; de-at) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1",
+      },
+    })
+  ).text();
+
+  const resource = css.match(
+    /src: url\((.+)\) format\('(opentype|truetype)'\)/,
   );
+
+  if (!resource) return;
+
+  return await fetch(resource[1]).then((res) => res.arrayBuffer());
+}
+export const generateOgpImage = async (title: string, tags: string[]) => {
+  if (fontCache.size === 0) {
+    const fontRegular = await getFontData(
+      "https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap",
+    );
+    const fontBold = await getFontData(
+      "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap",
+    );
+
+    fontCache.set("regular", fontRegular);
+    fontCache.set("bold", fontBold);
+  }
+
   const svg = await satori(
     <div
       style={{
@@ -86,13 +111,13 @@ export const generateOgpImage = async (title: string, tags: string[]) => {
       fonts: [
         {
           name: "Noto Sans JP",
-          data: fontRegular,
+          data: fontCache.get("regular")!,
           style: "normal",
           weight: 400,
         },
         {
           name: "Noto Sans JP",
-          data: fontBold,
+          data: fontCache.get("bold")!,
           style: "normal",
           weight: 600,
         },
