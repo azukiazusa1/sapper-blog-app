@@ -29,7 +29,7 @@ export const generateOgpImage = async (title: string, tags: string[]) => {
       "https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap",
     );
     const fontBold = await getFontData(
-      "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap",
     );
 
     fontCache.set("regular", fontRegular);
