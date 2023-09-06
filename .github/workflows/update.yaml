@@ -14,7 +14,7 @@ jobs:
     if: github.event.pull_request.merged == true
     name: Update changed-files
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Get changed files in the contents folder
