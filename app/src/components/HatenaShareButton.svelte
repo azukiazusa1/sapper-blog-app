@@ -1,4 +1,6 @@
 <script lang="ts">
+  import HatenaBookmarkIcon from "../assets/images/hatenabookmark_symbolmark.png";
+
   export let url: string;
   export let text: string;
 
@@ -7,8 +9,8 @@
 
 <a {href} target="_blank" rel="noopener noreferrer">
   <img
-    src="https://b.st-hatena.com/images/v4/public/entry-button/button-only.png"
-    alt="Hatena"
+    src={HatenaBookmarkIcon}
+    alt="はてなブックマークに追加"
     class="h-6 w-6"
   />
 </a>
