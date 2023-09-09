@@ -383,3 +383,7 @@ Count Connector で設定した `error_log_count` という名前のメトリッ
 - OpenTelemetry Collector における Connector は異なるパイプラインを接続する役割を担う。
 - OpenTelemetry には、メトリック、トレース、ログの 3 つの形式がある。これらの形式はそれぞれ別のパイプラインで処理される。Connector を使うことで、別の形式に変換してから別のパイプラインにデータを渡すことができる。
 - OpenTelemetry におけるログでは、大きく分けて 2 つの方法でログを収集できる。1 つは標準出力にログを出力する方法、もう 1 つは OTLP を使用してアプリケーションから直接ログを送信する方法。
+
+今回作成したサンプルコードは以下のリポジトリで公開しています。
+
+https://github.com/azukiazusa1/counter-connector-example
