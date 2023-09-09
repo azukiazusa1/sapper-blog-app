@@ -13,6 +13,7 @@
     "format": "turbo run format",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
+    "new:article": "npm run new -w=packages/content-management",
     "test": "turbo run test"
   },
   "volta": {
