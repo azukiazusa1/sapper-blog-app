@@ -1,5 +1,5 @@
 <script lang="ts">
-  import HatenaBookmarkIcon from "../assets/hatenabookmark_symbolmark.png";
+  import HatenaBookmarkIcon from "../assets/images/hatenabookmark_symbolmark.png";
 
   export let url: string;
   export let text: string;
