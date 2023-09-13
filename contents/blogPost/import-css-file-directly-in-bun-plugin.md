@@ -1,6 +1,6 @@
 ---
 id: Q2mOpVeqjNwCWrbc49tdf
-title: "Bun の Plugins で CSS ファイルを直接 import する"
+title: "Bun の Plugins で CSV ファイルを直接 import する"
 slug: "import-css-file-directly-in-bun-plugin"
 about: "Bun の Plugins API を使用することで、任意の拡張子のファイルのサポートを追加できます。例えば Bun の公式の動画では、Plugins API を使用して Rust ファイル（.rs）を直接 import できる仕組みも作れることが紹介されています。"
 createdAt: "2023-09-13T21:11+09:00"
@@ -79,9 +79,9 @@ preload = ["./plugins/yaml.ts"]
 preload = ["./plugins/yaml.ts"]
 ```
 
-## CSS ファイルを直接 import する
+## CSV ファイルを直接 import する
 
-それでは例として、Plugins API を使用して CSS ファイルを直接 import できるようにしてみましょう。npm によりいくつか Plugin のパッケージが公開されているので、それを使ってみましょう。[bun-plugin-csv](https://www.npmjs.com/package/bun-plugin-csv) パッケージを使ってみます。
+それでは例として、Plugins API を使用して CSV ファイルを直接 import できるようにしてみましょう。npm によりいくつか Plugin のパッケージが公開されているので、それを使ってみましょう。[bun-plugin-csv](https://www.npmjs.com/package/bun-plugin-csv) パッケージを使ってみます。
 
 ```sh
 bun install bun-plugin-csv
