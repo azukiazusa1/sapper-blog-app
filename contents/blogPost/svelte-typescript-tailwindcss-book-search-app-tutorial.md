@@ -799,7 +799,7 @@ if ブロックは分岐処理を提供します。
 `{#if condition}` で始まり、`{/if}` で終了します。
 `condition` の値が `true` を返す場合のみブロックの内容を描画します。
 
-if ブロックの間に `{:else}` や `{:else if}` を挿入できます。
+if ブロックの間に {:else} や {:else if} を挿入できます。
 
 ## {#each ...}
 
@@ -819,8 +819,8 @@ expression に渡せるのは array like な変数、つまり `length` プロ�
 
 `{#each expression as name, index, (key)} {/each}`
 
-さらに、each ブロックは `{:else}` を挿入できます。
-`{:else}` は渡された配列の要素が空の場合に描画されます。
+さらに、each ブロックは {:else} を挿入できます。
+{:else} は渡された配列の要素が空の場合に描画されます。
 
 ```html
 {#each todos as todo}
