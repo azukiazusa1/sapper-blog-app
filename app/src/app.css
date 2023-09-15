@@ -283,7 +283,7 @@ html.dark #contents code:not(pre > *) {
   background: #263238;
   color: #ccc;
   margin: 1.5em 0;
-  padding: 1em;
+  padding: 1em 1em 1em 0;
 }
 
 code {
@@ -363,7 +363,7 @@ span[style="color: #545454"] {
 }
 
 [data-line] {
-  @apply border-l-2 border-l-transparent pr-6 pl-2;
+  @apply border-l-2 border-l-transparent pr-6 pl-3;
 }
 
 [data-highlighted-line] {

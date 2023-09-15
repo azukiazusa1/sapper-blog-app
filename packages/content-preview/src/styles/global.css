@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (prefers-reduced-motion: no-preference) {
+  [style*="--tag"] {
+    view-transition-name: var(--tag);
+    contain: paint;
+  }
+}
+
 /* style for Markdown */
 
 #contents {
@@ -276,7 +283,7 @@ html.dark #contents code:not(pre > *) {
   background: #263238;
   color: #ccc;
   margin: 1.5em 0;
-  padding: 1em;
+  padding: 1em 1em 1em 0;
 }
 
 code {
@@ -293,6 +300,7 @@ code > [data-line]::before {
   text-align: right;
   color: rgb(99, 119, 119);
 }
+
 
 .link-card {
   @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-gray-100 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 md:flex-row;
@@ -355,7 +363,7 @@ span[style="color: #545454"] {
 }
 
 [data-line] {
-  @apply border-l-2 border-l-transparent pr-6 pl-2;
+  @apply border-l-2 border-l-transparent pr-6 pl-3;
 }
 
 [data-highlighted-line] {
