@@ -1,48 +1,39 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig } from "astro/config";
 // https://astro.build/config
-import tailwind from '@astrojs/tailwind'
-import * as Shiki from 'shiki'
-import react from '@astrojs/react'
-let highlighter
-if (!highlighter) {
-  highlighter = await Shiki.getHighlighter({
-    theme: 'material-darker',
-  })
-}
-
-// https://astro.build/config
+import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: "https://example.com",
   integrations: [tailwind(), react()],
   markdown: {
     shikiConfig: {
-      theme: 'nord',
+      theme: "nord",
     },
     remarkPlugins: [
-      'remark-parse',
-      'remark-link-card',
-      'remark-gfm',
-      'remark-hint',
-      'remark-contentful-image',
-      'remark-rehype',
+      "remark-parse",
+      "remark-link-card",
+      "remark-gfm",
+      "remark-hint",
+      "remark-contentful-image",
+      "remark-rehype",
     ],
     rehypePlugins: [
-      'rehype-stringify',
-      'rehype-code-titles',
+      "rehype-stringify",
+      "rehype-code-titles",
       [
-        '@leafac/rehype-shiki',
+        "rehype-pretty-code",
         {
-          highlighter,
+          theme: "material-darker",
         },
       ],
-      'rehype-slug',
-      '@jsdevtools/rehype-toc',
-      'rehype-autolink-headings',
+      "rehype-slug",
+      "@jsdevtools/rehype-toc",
+      "rehype-autolink-headings",
     ],
   },
   server: {
     port: 3333,
   },
-})
+});
