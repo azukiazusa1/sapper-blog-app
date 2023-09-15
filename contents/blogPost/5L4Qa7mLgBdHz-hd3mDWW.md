@@ -2,7 +2,7 @@
 id: 5L4Qa7mLgBdHz-hd3mDWW
 title: "Bun workspace で始めるモノレポ生活"
 slug: "bun-workspace"
-about: "Bun では `package.json` の `workspaces` を使用することでモノレポの管理が可能です。この記事では Bun によるモノレポを試してみます。
+about: "Bun では `package.json` の `workspaces` を使用することでモノレポの管理が可能です。この記事では Bun によるモノレポを試してみます。"
 createdAt: "2023-09-15T20:53+09:00"
 updatedAt: "2023-09-15T20:53+09:00"
 tags: ["Bun", "モノレポ"]
