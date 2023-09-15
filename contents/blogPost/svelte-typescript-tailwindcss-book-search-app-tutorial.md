@@ -11,7 +11,22 @@ thumbnail:
   title: "Svelte"
 published: true
 ---
+---
+id: 3n1WbmUGqodJpX5yJ1ACsQ
+title: "【Svelte + TypeScript + tailwindcss】本検索サイト チュートリアル"
+slug: "svelte-typescript-tailwindcss-book-search-app-tutorial"
+about: "この記事でははSvelte + TypeScript + tailwindcssで本検索サイトを作成します。 Svelteを使ってアプリケーションを作成1から作成することができます。 以下のことが学べます。  - Svelteの基礎文法 - Svelteのルーティング - Svelteのストア  HTML・CSS・JavaScriptの基礎的な理解がある人が対象です。"
+createdAt: "2021-02-07T00:00+09:00"
+updatedAt: "2021-02-07T00:00+09:00"
+tags: ["Svelte", "JavaScript", "tailwindcss", "TypeScript"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/10yOrB3tXKM12ZJbJdJlw5/e7d9e7de67e916bb0a59695d9882f061/1200px-Svelte_Logo.svg.png"
+  title: "Svelte"
+published: true
+---
+
 # はじめに
+
 この記事では Svelte + TypeScript + tailwindcss で本検索サイトを作成します。
 
 成果物は以下のようなアプリケーションです。
@@ -45,6 +60,7 @@ https://github.com/azukiazusa1/svelte-book-review-app
 https://nodejs.org/ja/download/
 
 # Svelteプロジェクトの準備
+
 まずは Svelte プロジェクトを作成しましょう。
 本書では CSS フレームワークとして tailwingcss を利用しますが、はじめから組み込まれているテンプレートが存在するのでこちらを利用します。
 
@@ -54,6 +70,7 @@ https://github.com/sarioglu/svelte-tailwindcss-template
 npx degit sarioglu/svelte-tailwindcss-template svelte-book-review-app
 cd svelte-book-review-app
 ```
+
 TypeScript に変換します。
 
 ```sh
@@ -65,6 +82,7 @@ node scripts/setupTypeScript.js
 ```sh
 npm install
 ```
+
 2021/02/06 の時点でこのままですとエラーになる箇所が存在するので修正を行います。
 
 `rollup.config.js` の以下の部分を削除してください。
@@ -254,6 +272,7 @@ const app = new App({
 
 export default app;
 ```
+
 ![スクリーンショット 2021-02-06 14.51.40.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/496565/0ce5d366-f3fd-17ee-1a7d-448b7feea5e8.png)
 
 # ヘッダーコンポーネントの作成
@@ -369,8 +388,7 @@ Svelte では、props と渡す変数名が一致するとき省略記法を利�
 つまり、次のように記述は同一です。
 
 ```html
-<Router routes={routes} />
-<Router {routes} />
+<Router routes="{routes}" /> <Router {routes} />
 ```
 
 ここまで進めたら、SearchBook コンポーネントの内容が表示されているはずです。
@@ -535,7 +553,7 @@ export interface Repositories {
 export default {
   [BOOK]: new BookRepository()
 } as Repositories
-````
+```
 
 Book Repository を利用するときには、以下のように使います。
 
@@ -804,11 +822,11 @@ expression に渡せるのは array like な変数、つまり `length` プロ�
 さらに、each ブロックは `{:else}` を挿入できます。
 `{:else}` は渡された配列の要素が空の場合に描画されます。
 
-```
+```html
 {#each todos as todo}
-  <p>{todo.text}</p>
+<p>{todo.text}</p>
 {:else}
-  <p>No tasks today!</p>
+<p>No tasks today!</p>
 {/each}
 ```
 
@@ -879,7 +897,7 @@ await ブロックを利用すると、loading・error のような状態変数�
   import type { BookItem } from '../repositories/book'
   export let book: BookItem
 
-  $: src = book.volumeInfo.imageLinks 
+  $: src = book.volumeInfo.imageLinks
     ? book.volumeInfo.imageLinks.smallThumbnail
     : 'http://placehold.jp/eeeeee/cccccc/160x120.png?text=No%20Image'
 
@@ -1032,10 +1050,10 @@ npm i svelte-infinite-scroll
 Google Books API のドキュメントを見ると、ページネーションをするには `startIndex` をパラメータに渡せば良さそうです。
 
 > Pagination
-You can paginate the volumes list by specifying two values in the parameters for the request:
+> You can paginate the volumes list by specifying two values in the parameters for the request:
 
 > startIndex - The position in the collection at which to start. The index of the first item is 0.
-maxResults - The maximum number of results to return. The default is 10, and the maximum allowable value is 40.
+> maxResults - The maximum number of results to return. The default is 10, and the maximum allowable value is 40.
 
 https://developers.google.com/books/docs/v1/using#pagination_1
 
@@ -1043,7 +1061,7 @@ https://developers.google.com/books/docs/v1/using#pagination_1
 `startIndex` 変数を定義して初期値には 0 を設定しておきましょう。
 
 ```ts
-let startIndex = 0
+let startIndex = 0;
 ```
 
 `handleLoadMore` 関数が呼ばれる度に、`startIndex` の値を `maxResults`（ここでは 10 固定）を加算していけば良さそうですね。
@@ -1054,24 +1072,24 @@ Svelte では配列の値をリアクティブにするには必ず変数を直�
 つまり、リアクティブな配列に対して `push()・`splice()`などで操作しても自動更新されません。
 
 ```ts
-  const handleLoadMore = () => {
-    startIndex += 10
-    promise = getNextPage()
-  }
+const handleLoadMore = () => {
+  startIndex += 10;
+  promise = getNextPage();
+};
 
-  const getNextPage = async () => {
-    const result = await BookRepository.get({ q, startIndex })
+const getNextPage = async () => {
+  const result = await BookRepository.get({ q, startIndex });
 
-    // 取得データが既に存在するものを含む可能性があるので、idでフィルタリングしてます。
-    const bookIds = books.map(book => book.id)
-    const filteredItems = result.items.filter(item => {
-      return !bookIds.includes(item.id)
-    })
-    books = [...books, ...filteredItems]
-  }
- ```
+  // 取得データが既に存在するものを含む可能性があるので、idでフィルタリングしてます。
+  const bookIds = books.map((book) => book.id);
+  const filteredItems = result.items.filter((item) => {
+    return !bookIds.includes(item.id);
+  });
+  books = [...books, ...filteredItems];
+};
+```
 
- フォームの submit による初回取得時には `startIndex` の値を 0 に戻さなければいけないことを忘れないようにしてください。
+フォームの submit による初回取得時には `startIndex` の値を 0 に戻さなければいけないことを忘れないようにしてください。
 
 ```diff
   const getBooks = async () => {
@@ -1082,33 +1100,33 @@ Svelte では配列の値をリアクティブにするには必ず変数を直�
     empty = result.totalItems === 0
     books = result.items
   }
- ```
+```
 
- これ以上データが存在するかどうか `hasMore` 変数を `$:` ラベルで定義します。
- `totalItems` 変数を定義しておき、現在の取得数が `totalItems` 以上なら、これ以上はデータが存在しないということにします。
+これ以上データが存在するかどうか `hasMore` 変数を `$:` ラベルで定義します。
+`totalItems` 変数を定義しておき、現在の取得数が `totalItems` 以上なら、これ以上はデータが存在しないということにします。
 
- ```diff
+```diff
 +  let totalItems = 0
 
 +  $: hasMore = totalItems > books.length
 
-  const getBooks = async () => {
-    books = []
-    empty = false
-    startIndex = 0
-    const result = await BookRepository.get({ q, startIndex })
-    empty = result.totalItems === 0
+ const getBooks = async () => {
+   books = []
+   empty = false
+   startIndex = 0
+   const result = await BookRepository.get({ q, startIndex })
+   empty = result.totalItems === 0
 +    totalItems = result.totalItems
-    books = result.items
-  }
+   books = result.items
+ }
 
-  // 省略
+ // 省略
 
-  // <InfiniteScroll>にhasMoreをpropsとして渡す
-  <InfiniteScroll window threshold={100} on:loadMore={handleLoadMore} {hasMore} />
-  ```
+ // <InfiniteScroll>にhasMoreをpropsとして渡す
+ <InfiniteScroll window threshold={100} on:loadMore={handleLoadMore} {hasMore} />
+```
 
-  それでは確認してみましょう！
+それでは確認してみましょう！
 
 ![infinte-scroll.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/496565/0fb0bcb3-76c1-1665-7091-8ddf8955d1bf.gif)
 
@@ -1162,7 +1180,7 @@ export const books = writable<BookItem[]>(dummyBooks)
 
 これを次のように使用します。
 
-```hmtl:pages/SearchBooks.svelte
+```html:pages/SearchBooks.svelte
 <script lang="ts">
   import BookCard from '../components/BookCard.svelte'
   import { books } from '../store/book'
@@ -1300,7 +1318,7 @@ export const books = writable<BookItem[]>([])
     <div>検索結果が見つかりませんでした。</div>
   {:else}
   <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
--    {#each books as book (book.id}  
+-    {#each books as book (book.id}
 +    {#each $books as book (book.id)}
       <BookCard {book} />
     {/each}
@@ -1366,7 +1384,7 @@ const useBookStore = () => {
   const add = (newBooks: BookItem[]) => update((books: BookItem[]) => {
     return [...books, ...newBooks]
   })
-  return { 
+  return {
     subscribe,
     reset,
     add
@@ -1409,7 +1427,7 @@ export const books = useBookStore()
     const result = await BookRepository.get({ q, startIndex })
     empty = result.totalItems === 0
     totalItems = result.totalItems
--    $books = retuls.items    
+-    $books = retuls.items
 +    books.add(result.items)
   }
 
@@ -1426,7 +1444,7 @@ export const books = useBookStore()
     const filteredItems = result.items.filter(item => {
       return !bookIds.includes(item.id)
     })
--    $books = [...$books, ...filterdItems]    
+-    $books = [...$books, ...filterdItems]
 +    books.add(filteredItems)
   }
 </script>
@@ -1456,6 +1474,7 @@ export const books = useBookStore()
   {/await}
 </div>
 ```
+
 # ルーティングの追加
 
 最後に、本の詳細ページを実装しましょう。
@@ -1504,7 +1523,7 @@ http://localhost:5000/#/books/123 にアクセスしてみてください。
 +  import { link } from 'svelte-spa-router'
   export let book: BookItem
 
-  $: src = book.volumeInfo.imageLinks 
+  $: src = book.volumeInfo.imageLinks
     ? book.volumeInfo.imageLinks.smallThumbnail
     : 'http://placehold.jp/eeeeee/cccccc/160x120.png?text=No%20Image'
 
@@ -1553,7 +1572,7 @@ const useBookStore = () => {
     return [...books, ...newBooks]
   })
 
-  return { 
+  return {
     subscribe,
     reset,
     add
@@ -1631,7 +1650,7 @@ export const books = useBookStore()
     ? formatter.format(book.saleInfo.listPrice.amount)
     : ''
 
-  $: src = book.volumeInfo.imageLinks 
+  $: src = book.volumeInfo.imageLinks
     ? book.volumeInfo.imageLinks.thumbnail
     : 'http://placehold.jp/eeeeee/cccccc/160x120.png?text=No%20Image'
 
@@ -1661,13 +1680,13 @@ export const books = useBookStore()
         </Row>
         <Row dt="ページ数">
           {book.volumeInfo.pageCount}
-        </Row>  
+        </Row>
         <Row dt="出版日">
           {book.volumeInfo.publishedDate}
         </Row>
         <Row dt="出版社">
           {book.volumeInfo.publisher}
-        </Row>  
+        </Row>
         <Row dt="プレビュー">
           {#if book.volumeInfo.previewLink}
             <a href={book.volumeInfo.previewLink} class="text-blue-400">
@@ -1707,3 +1726,4 @@ export const books = useBookStore()
 お疲れさまでした！
 
 ![スクリーンショット 2021-02-07 19.11.10.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/496565/d39db159-2a24-565d-6278-d73a831bee03.png)
+
