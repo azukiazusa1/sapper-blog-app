@@ -22,7 +22,7 @@ export const markdownToHtml = async (input: string): Promise<string> => {
     .use(remark2rehype, { allowDangerousHtml: true })
     .use(rehypeCodeTitles)
     .use(rehypePrettyCode, {
-      theme: "material-darker"
+      theme: "material-darker",
     })
     .use(rehypeSlug)
     .use(rehypeAutoLinkHeadings)

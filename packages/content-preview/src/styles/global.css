@@ -301,7 +301,6 @@ code > [data-line]::before {
   color: rgb(99, 119, 119);
 }
 
-
 .link-card {
   @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-gray-100 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 md:flex-row;
 }
@@ -384,14 +383,14 @@ span[style="color: #545454"] {
   @apply !text-inherit;
 }
 
-[data-chars-id='v'] {
+[data-chars-id="v"] {
   @apply !text-pink-300 bg-rose-800/50 border-b-pink-600 font-bold;
 }
 
-[data-chars-id='s'] {
+[data-chars-id="s"] {
   @apply !text-yellow-300 bg-yellow-800/50 border-b-yellow-600 font-bold;
 }
 
-[data-chars-id='i'] {
+[data-chars-id="i"] {
   @apply !text-purple-200 bg-purple-800/50 border-b-purple-600 font-bold;
 }
