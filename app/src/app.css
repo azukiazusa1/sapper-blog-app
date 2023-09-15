@@ -363,7 +363,7 @@ span[style="color: #545454"] {
 }
 
 [data-line] {
-  @apply border-l-2 border-l-transparent px-6 border-l-2 border-l-transparent;
+  @apply border-l-2 border-l-transparent pr-6 pl-2;
 }
 
 [data-highlighted-line] {
