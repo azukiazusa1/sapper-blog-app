@@ -280,13 +280,13 @@ html.dark #contents code:not(pre > *) {
 }
 
 code {
-  counter-reset: step;
+  counter-reset: line;
   counter-increment: step 0;
 }
 
-code .line::before {
-  content: counter(step);
-  counter-increment: step;
+code > [data-line]::before {
+  content: counter(line);
+  counter-increment: line;
   width: 1rem;
   margin-right: 1.5rem;
   display: inline-block;
@@ -348,4 +348,42 @@ code .line::before {
 .link-card__image {
   margin: 0 !important;
   @apply h-full w-full rounded-r-lg object-cover;
+}
+
+span[style="color: #545454"] {
+  color: #898989 !important;
+}
+
+[data-line] {
+  @apply border-l-2 border-l-transparent px-6 border-l-2 border-l-transparent;
+}
+
+[data-highlighted-line] {
+  background: rgba(200, 200, 255, 0.1);
+  @apply border-l-blue-400;
+}
+
+[data-highlighted-chars] {
+  @apply bg-zinc-600/50 rounded;
+  box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+}
+
+[data-chars-id] {
+  @apply shadow-none p-1 border-b-2;
+}
+
+[data-chars-id] span {
+  @apply !text-inherit;
+}
+
+[data-chars-id='v'] {
+  @apply !text-pink-300 bg-rose-800/50 border-b-pink-600 font-bold;
+}
+
+[data-chars-id='s'] {
+  @apply !text-yellow-300 bg-yellow-800/50 border-b-yellow-600 font-bold;
+}
+
+[data-chars-id='i'] {
+  @apply !text-purple-200 bg-purple-800/50 border-b-purple-600 font-bold;
 }
