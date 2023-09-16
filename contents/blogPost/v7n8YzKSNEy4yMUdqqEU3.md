@@ -1030,6 +1030,20 @@ export const cleanUpDatabase = () => {
 };
 ```
 
+もう 1 つ、ユーザーを生成するファクトリー関数も作成しておきましょう。
+
+```ts:db/test-utils.ts
+export const createUser = async ({
+  username = "test-user",
+  password = "password",
+}) => {
+  const hashedPassword = await Bun.password.hash(password);
+  db.exec(`
+    INSERT INTO users (id, username, password) VALUES (?, ?, ?);
+  `, [crypto.randomUUID(), username, hashedPassword]);
+}
+```
+
 `tests/e2e/auth.test.ts` を作成して、認証機能のテストを実装しましょう。
 
 ```ts:tests/e2e.test.ts
