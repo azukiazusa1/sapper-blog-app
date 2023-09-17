@@ -20,7 +20,7 @@ https://elysiajs.com/
 
 ## プロジェクトの作成
 
-ElysiaJS は Bun で動作するために作られたフレームワークですので、まずは Bun をインストールする必要があります。
+ElysiaJS は Bun で動作するために作られたフレームワークです。まずは Bun をインストールしましょう。
 
 ```sh
 curl https://bun.sh/install | bash
@@ -32,9 +32,9 @@ curl https://bun.sh/install | bash
 bun create elysia eliysiajs-task-api
 ```
 
-`src/index.ts` ファイルを開くと、以下のようなコードが生成されています。
+`eliysiajs-task-api` に移動して `src/index.ts` ファイルを開くと、以下のようなコードが生成されています。
 
-```ts
+```ts:src/index.ts
 import { Elysia } from "elysia";
 
 const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
@@ -59,14 +59,14 @@ Hello Elysia
 
 ## タスク一覧の取得
 
-タスク一覧を取得するための API を作成してみましょう。ElysiaJS は Express や Fastify とよく似ているルーティング API を提供しています。 `new Eliysia(){:js}` でインスタンスとして作成した `app` に対して、`get` や `post` といった、HTTP メソッドに合わせたメソッドを呼び出すことで、ルーティングを定義できます。`get` メソッドの第一引数には、ルーティングのパスを指定します。第二引数には、ルーティングにマッチした際に実行される `Handler{:js}` 関数を指定します。
+それでは、タスク管理アプリの API を作成していきましょう。まずは、タスク一覧を取得するための API を作成します。物事を簡単に進めるために、DB などはまだ使わずにハードコーディングされたタスク一覧を返します。
+
+ElysiaJS は Express や Fastify とよく似ているルーティング API を提供しています。 `new Eliysia(){:js}` でインスタンスとして作成した `app` に対して、`get` や `post` といった、HTTP メソッドに合わせたメソッドを呼び出すことで、ルーティングを定義できます。`get` メソッドの第一引数には、ルーティングのパスを指定します。第二引数には、ルーティングにマッチした際に実行される `Handler{:js}` 関数を指定します。
 
 例として GET メソッドで `/tasks` にアクセスした際に、タスク一覧を返す API を作成してみましょう。ルーティングの定義例にならい、`src/index.ts` を以下のように変更します。
 
-```ts:src/index.ts {5-16}
+```ts:src/index.ts {3-15}
 import { Elysia } from "elysia";
-
-const app = new Elysia();
 
 const tasks = [
   { id: "1", name: "Buy milk", status: "done" },
@@ -74,7 +74,8 @@ const tasks = [
   { id: "3", name: "Buy bread", status: "pending" },
 ];
 
-app.get("/tasks", () => {
+const app = new Elysia()
+  .get("/tasks", () => {
 
   return {
     tasks,
@@ -94,6 +95,17 @@ console.log(
 new Response(JSON.stringify({ tasks }), {
   headers: { "Content-Type": "application/json" },
 });
+```
+
+ElysiaJS の特徴として、メソッドチェーンによる方法を推奨している点があげられます。これは、`.state(){:js}` などで新たに Context に注入された型情報を、後続のメソッドに伝えるためです。メソッドチェーンを使用しない場合には、型情報が失われてしまいます。
+
+```ts
+const app = new Elysia();
+
+app.state("build", 1);
+
+// build 型は存在しない
+app.get("/", ({ store: { build } }) => build);
 ```
 
 実際に API をコールして結果を確認してみましょう。GUI の API クライアントとして [HTTPie](https://httpie.io/) を利用します。上部の入力欄に `http://localhost:3000/tasks` と入力して、`Send` ボタンをクリックします。
@@ -133,7 +145,7 @@ HTTPie を使ってリクエストを送信する場合には、入力欄の左�
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/2WrOBEsp0j2agpielNvvgb/2ef6d8a633e8b20344a9d368ab6ec91a/__________2023-09-16_13.20.23.png)
 
-また、アプリケーションを起動しているターミナルには、リクエストボディの内容が出力されていることが確認できます。
+アプリケーションを起動しているターミナルには、リクエストボディの内容が出力されていることが確認できます。
 
 ```sh
 🦊 Elysia is running at localhost:3000
@@ -237,7 +249,7 @@ app.post("/tasks", ({ body }) => {
 
 ### Task モデルの作成
 
-先程はルートレベルでスキーマを作成して利用していましたが、このままではスキーマの再利用ができません。ElysiaJS では `.model` メソッドでスキーマを 1 つの場所で定義でき、後から文字列で参照が可能です。`src/tasks/task.model.ts` を作成して、以下のようにスキーマを定義します。
+先程はルートレベルでスキーマを作成して利用していましたが、このままではスキーマの再利用ができません。ElysiaJS では `.model` メソッドでスキーマを 1 つの場所で定義して、後から文字列で参照が可能です。`src/tasks/task.model.ts` を作成して、以下のようにスキーマを定義します。
 
 ```ts:src/tasks/task.model.ts
 import { Elysia, t } from "elysia";
@@ -251,6 +263,7 @@ const task = t.Object({
   status,
 })
 
+// Static は型スキーマから TypeScript の型を生成するヘルパー関数
 export type Task = Static<typeof task>
 
 const taskDto = t.Object({
@@ -272,7 +285,7 @@ export const taskModel = app.model({
 
 スキーマは `body` だけでなく、`response` に対しても定義できます。`response` のスキーマを定義することで、誤ったレスポンスを返すことを防ぐことができます。
 
-```ts:src/index.ts {12, 17-19, 33-36}
+```ts:src/index.ts {11, 17, 33-34}
 import { Elysia } from "elysia";
 import { Task, taskModel } from "./tasks/task.model";
 
@@ -311,13 +324,13 @@ const app = new Elysia()
   );
 ```
 
-`app.use(){:js}` で登録したモデルにアクセスするためには、必ずメソッドチェーンの形式でルートを呼び出さなければいけないことに注意してください。ElysiaJS では複雑な型システムをメソッドチェーンにより解決しているため、メソッドチェーンの利用が強く推奨されています。
+`app.use(){:js}` で登録したモデルにアクセスするためには、必ずメソッドチェーンの形式でルートを呼び出さなければいけないことに注意してください。
 
 ## sqlite3 を使ったデータベースの操作
 
 ここまではタスクを保存するために、メモリ上の配列を利用していました。しかし、メモリ上に保存されたデータはアプリケーションを再起動すると消えてしまいます。データを永続化するために、sqlite3 を使ったデータベースの操作を実装してみましょう。
 
-Bun ではビルドインのモジュールで sqlite3 のドライバーを提供しています。型による安全性は提供されていないものの、簡単な CRUD 操作を実装するには十分でしょう。
+Bun ではビルドインのモジュールで [sqlite3 のドライバー](https://bun.sh/docs/api/sqlite)を提供しています。型による安全性は提供されていないものの、簡単な CRUD 操作を実装するには十分でしょう。
 
 まずは、データベースのテーブルを作成するために、`src/db/create-tables.ts` を作成します。
 
@@ -395,11 +408,11 @@ export const TaskRepository = {
 }
 ```
 
-### Task Repository を Dependency Injection する
+### Task Repository を Context に登録する
 
-作成した Task Repository をそのまま利用しても良いのですが、データベースを操作するクラスはテストの容易性や関心の分離などの目的のために [Dependency Injection（DI）](https://ja.wikipedia.org/wiki/%E4%BE%9D%E5%AD%98%E6%80%A7%E3%81%AE%E6%B3%A8%E5%85%A5) パターンがよく利用されます。ElysiaJS では、[State や Decorate](https://elysiajs.com/concept/state-decorate.html) を利用して、DI を実現できます。
+作成した Task Repository をそのまま利用しても良いのですが、データベースを操作するクラスはテストの容易性や関心の分離などの目的のために [Dependency Injection（DI）](https://ja.wikipedia.org/wiki/%E4%BE%9D%E5%AD%98%E6%80%A7%E3%81%AE%E6%B3%A8%E5%85%A5) パターンがよく利用されます。ElysiaJS では、[State や Decorate](https://elysiajs.com/concept/state-decorate.html) を利用して、DI 近いことを実現できます。
 
-`state` や `decorate` を利用した DI を実装するためには、メインのアプリケーションのインスタンスとそれぞれのルートを定義するインスタンスを分離する必要があります。`src/tasks/index.ts` ファイルを作成して、今まで `src/index.ts` に記述していたルート定義を移動しましょう。ここでは ElysiaJS のインスタンスとして `taskRoute` を export します。
+`state` や `decorate` を利用した DI を実装する前に、メインのアプリケーションのインスタンスと、それぞれのルートを定義するインスタンスを分離しておきましょう。`src/tasks/index.ts` ファイルを作成して、今まで `src/index.ts` に記述していたルート定義を移動します。ここでは ElysiaJS のインスタンスとして `taskRoute` を export します。
 
 ```ts:src/tasks/index.ts {10}
 import { Elysia } from "elysia";
@@ -456,8 +469,9 @@ console.log(
 );
 ```
 
+メインアプリケーションのインスタンスにより `.decorate(){:js}` で登録したオブジェクトには、サブモジュールはアクセスできません。型情報がサブモジュールに伝わらないためです。
 
-メインアプリケーションのインスタンスにより `.decorate(){:js}` で登録されたオブジェクトには、サブモジュールはアクセスできません。サブモジュールから `state` や `decorate` で登録したオブジェクトにアクセスするため、`state` や `decorate` のみを含んだプラグインを作成します。`src/setup.ts` を作成して、以下のように `.decorate(){:js}` で `TaskRepository` を登録します。
+サブモジュールから `state` や `decorate` で登録したオブジェクトにアクセスするため、`state` や `decorate` のみを含んだプラグインを作成し、サブモジュールごとにプラグインを適用します。`src/setup.ts` を作成して、以下のように `.decorate(){:js}` で `TaskRepository` を登録します。
 
 ```ts:src/setup.ts
 import Elysia from "elysia";
@@ -488,25 +502,23 @@ export const taskRoute = new Elysia()
   .use(taskModel)
   .use(setup)
   .get("/tasks", ({ taskRepository }) => {
-      const tasks = taskRepository.getAll();
-      return {
-        tasks,
-      };
-    }, {
-      response: "task.tasks",
-    }
-  )
+    const tasks = taskRepository.getAll();
+    return {
+      tasks,
+    };
+  }, {
+    response: "task.tasks",
+  })
   .post("/tasks", ({ body, taskRepository }) => {
-      const newTask = taskRepository.create(body);
+    const newTask = taskRepository.create(body);
 
-      return {
-        task: newTask,
-      };
-    }, {
-      body: "task.taskDto",
-      response: "task.task",
-    }
-  );
+    return {
+      task: newTask,
+    };
+  }, {
+    body: "task.taskDto",
+    response: "task.task",
+  });
 ```
 
 いくつかタスクを作成してから、タスク一覧で取得できるか確認してみましょう。
@@ -515,9 +527,17 @@ export const taskRoute = new Elysia()
 
 ユーザーが自分が作成したタスクのみを取得・更新できるように、認証機能を実装しましょう。ElysiaJS により提供されている [JWT Plugin](https://elysiajs.com/plugins/jwt.html) を利用して、JWT トークンを使った認証機能を実装します。
 
-### ユーザーテーブルの作成
+### ユーザーを登録する
 
-まずはユーザーの登録を行うための API を作成します。`src/auth/auth.model.ts` を作成して、以下のようにスキーマを定義します。
+認証機能を実装する前に、まずはユーザーを登録してデータベースに保存する処理が必要です。以下の 3 つの作業を行います。
+
+- ユーザーのスキーマを定義する
+- AuthRepository でユーザーの登録・ログインを行うデータベースの操作を実装する
+- データベースのテーブル定義を変更して、ユーザーテーブルを追加する
+
+#### ユーザーのスキーマを定義する
+
+まずはユーザーのスキーマを定義します。`src/auth/auth.model.ts` を作成して、以下のコードを記述します。
 
 ```ts:src/auth/auth.model.ts
 import { Elysia, t } from "elysia";
@@ -544,6 +564,8 @@ export const authModel = app.model({
 })
 ```
 
+#### AuthRepository でユーザーの登録・ログインを行うデータベースの操作を実装する
+
 `src/auth/auth.repository.ts` を作成して、以下のようにユーザーの登録やログインを行う処理を実装します。
 
 ```ts:src/auth/auth.repository.ts
@@ -569,6 +591,7 @@ export const AuthRepository = {
    * ユーザーを登録する
    */
   async create(userDto: UserDto): Promise<Result> {
+    // 既に同じユーザー名のユーザーが存在する場合にはエラーを返す
     const existingUser = getUserByUsernameQuery.get(userDto.username);
     if (existingUser) {
       return {
@@ -577,6 +600,7 @@ export const AuthRepository = {
       }
     }
     const id = crypto.randomUUID();
+    // パスワードをハッシュ化
     const hashedPassword = await Bun.password.hash(userDto.password);
     insertQuery.run(id, userDto.username, hashedPassword);
     const record = getUserByIdQuery.get(id);
@@ -598,8 +622,10 @@ export const AuthRepository = {
    * ユーザーログイン
    */
   async login(userDto: UserDto): Promise<Result> {
+    // ユーザー名からユーザーを取得
     const record = getUserByUsernameQuery.get(userDto.username) as User | null;
 
+    // 存在しないユーザー名の場合にはエラーを返す
     if (!record) {
       return {
         success: false,
@@ -607,8 +633,10 @@ export const AuthRepository = {
       }
     }
 
+    // パスワードを検証
     const isValid = await Bun.password.verify(userDto.password, record.password);
 
+    // パスワードが一致しない場合にはエラーを返す
     if (!isValid) {
       return {
         success: false,
@@ -624,7 +652,7 @@ export const AuthRepository = {
 }
 ```
 
-パスワードをハッシュ化する処理は、Bun のビルドイン関数として `Bun.password.hash(){:js}` が提供されています。パスワードを検証するためには、`Bun.password.verify(){:js}` 関数を利用します。`src/db/create-table.ts` で `users` テーブルを作成し、`tasks` テーブルに `user_id` カラムを追加します。
+パスワードをハッシュ化する処理は、Bun のビルドイン関数として `Bun.password.hash(){:js}` が提供されています。パスワードを検証するためには、`Bun.password.verify(){:js}` 関数を利用します。
 
 作成した `AuthRepository` は `src/setup.ts` 内で `decorate` として登録します。
 
@@ -641,6 +669,10 @@ export const setup = new Elysia({ name: "setup" })
     authRepository: AuthRepository,
   })
 ```
+
+#### データベースのテーブル定義を変更して、ユーザーテーブルを追加する
+
+最後にデータベースのテーブル定義を変更します。`src/db/create-table.ts` で `users` テーブルを作成し、`tasks` テーブルに `user_id` カラムを追加するように変更します。
 
 ```ts:src/db/create-table.ts {14-22}
 import { Database } from "bun:sqlite";
@@ -669,7 +701,7 @@ db.exec(`
 db.close();
 ```
 
-再度 `bun run create-tables` を実行して、テーブルの作成に成功したことを確認します。
+再度 `bun run create-tables` を実行して、テーブルの作成に成功したことを確認しましょう。
 
 ```sh
 bun run create-tables
@@ -706,7 +738,7 @@ export const authRoute = new Elysia()
   })
 ```
 
-`authRepository.crate(){:js}` を呼び出してユーザーの登録処理を行います。同じユーザー名が既に存在するなど、ユーザーの作成に失敗した場合には `400 Bad Request` を返却します。ヘッダーのステータスコードを設定するためには、`set` オブジェクトを変更します。
+`authRepository.crate(){:js}` を呼び出してユーザーの登録処理を行います。同じユーザー名が既に存在するなど、ユーザーの作成に失敗した場合には `400 Bad Request` を返却します。のステータスコードを設定するためには、`set` オブジェクトを変更します。
 
 作成したユーザー登録 API を有効にするために、`src/index.ts` ファイルを変更して `authRoute` を `app.use(){:js}` で登録します。
 
@@ -735,7 +767,6 @@ app.listen(3000);
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/4RTJZ1MDy0561tLW9I6aqa/3738768e7fd2eec718a2ce143a9371d6/__________2023-09-16_16.24.51.png)
 
-
 ### ログイン API の作成
 
 続いてログイン API を実装します。ログイン時には JWT トークンを発行して、Cookie に保存します。`bun add` コマンドで JWT プラグインと Cookie プラグインをインストールします。
@@ -746,7 +777,7 @@ bun add @elysiajs/jwt @elysiajs/cookie
 
 `authRoute` で JWT プラグインと Cookie プラグインを使用するように修正しましょう。
 
-```ts:src/auth/index.ts {4-5, 10-13}
+```ts:src/auth/index.ts {4-5, 10-14}
 import { Elysia } from "elysia";
 import { authModel } from "./auth.model";
 import { setup } from "../setup";
@@ -758,8 +789,10 @@ export const authRoute = new Elysia()
   .use(setup)
   .use(cookie())
   .use(jwt({
+    // 本番環境では秘密鍵を環境変数から取得するなど、安全な方法で管理してください
     secret: "super-secret-key",
   }))
+  .post("/auth/signup", async ({ body, authRepository, set }) => {
 ```
 
 ユーザーがログインするためのルートを `/auth/signin` に作成します。
@@ -772,8 +805,10 @@ export const authRoute = new Elysia()
     secret: "super-secret-key",
   }))
   .post("/auth/signin", async ({ jwt, body, authRepository, set, setCookie }) => {
+    // ユーザーのログイン処理
     const result = await authRepository.login(body);
 
+    // ログインに失敗したら、400 Bad Request を返却
     if (result.success === false) {
       set.status = 400;
       return {
@@ -781,11 +816,13 @@ export const authRoute = new Elysia()
       }
     }
 
+    // ログインに成功したら、JWT トークンを発行
     const token = await jwt.sign({
       id: result.user.id,
       username: result.user.username,
     });
 
+    // JWT トークンを Cookie に保存
     setCookie("token", token, {
       httpOnly: true,
       maxAge: 15 * 60, // 15 minutes
@@ -803,7 +840,7 @@ export const authRoute = new Elysia()
   });
 ```
 
-`authRepository.login(){:js}` を呼び出して、ユーザーのログイン処理を行います。ログインに失敗場合には `400 Bad Request` を返却します。ユーザーが存在する場合には、JWT トークンを発行し `setCookie(){:js}` メソッドでクッキーを登録します。先程作成したユーザーでログイン API を実行してみましょう。
+`authRepository.login(){:js}` を呼び出して、ユーザーのログイン処理を行います。ログインに失敗した場合には `400 Bad Request` を返却します。ユーザーが存在する場合には、JWT トークンを発行し `setCookie(){:js}` メソッドでクッキーを登録します。先程作成したユーザーでログイン API を実行してみましょう。
 
 ```json
 {
@@ -877,8 +914,7 @@ export const isAuthenticated = new Elysia()
 
 ### タスクの一覧・作成 API の修正
 
-まずはユーザーに紐づいたタスクを取得・作成できるように `UserRepository` を修正しましょう。`getAll(){:js}` メソッドの引数に `userId` を追加して、取得条件に `user_id` を追加します。また、`SELECT` 句では `user_id` を取得しないように修正します。
-
+まずはユーザーに紐づいたタスクを取得・作成できるように `TaskRepository` を修正しましょう。`getAll(){:js}` メソッドの引数に `userId` を追加して、取得条件に `user_id` を追加します。また、`SELECT` 句では `user_id` を取得しないように修正します。
 
 ```ts:src/tasks/task.repository.ts {3-4, 12}
 const db = new Database("db.sqlite");
@@ -923,7 +959,9 @@ export const TaskRepository = {
 }
 ```
 
-これで `UserRepository` の修正は完了です。続いて、タスクの一覧・作成 API を修正して、先程作成した `isAuthenticated` プラグインを利用して、ユーザーがログインしているかどうかを判定します。
+これで `UserRepository` の修正は完了です。一旦型エラーが発生する状況になりますが、後ほど修正します。
+
+`taskRoute` において先程作成した `isAuthenticated` プラグインを利用して、ユーザーがログインしているかどうかを判定し、`Context` で `user` オブジェクトを利用できるようにします。
 
 ```ts:src/tasks/index.ts {4, 9}
 import { Elysia } from "elysia";
@@ -935,9 +973,12 @@ export const taskRoute = new Elysia()
   .use(taskModel)
   .use(setup)
   .use(isAuthenticated)
+  .get("/tasks", ({ taskRepository }) => {
 ```
 
-`isAuthenticated` プラグインが `user` オブジェクトを返さない場合には、`401 Unauthorized` を返却します。この処理は `/tasks` のすべてのルートに対して実装することになります。複数のルートに対して同じ処理を実装する場合には、`app.guard(){:js}` メソッドを利用できます。`app.guard(){:js}` メソッド内で `beforeHandle` 関数を定義することによって、各ルートの `Handler` 関数が実行される前のフックを定義できます。
+`isAuthenticated` プラグインが `user` オブジェクトを返さない場合には、`401 Unauthorized` を返却します。この処理は `/tasks` のすべてのルートに対して実装することになります。
+
+複数のルートに対して同じ処理を実装する場合には、`app.guard(){:js}` メソッドを利用できます。`app.guard(){:js}` メソッド内で `beforeHandle` 関数を定義することによって、各ルートの `Handler` 関数が実行される前のフックを定義できます。
 
 ```ts:src/tasks/index.ts {5-14}
 export const taskRoute = new Elysia()
@@ -954,6 +995,7 @@ export const taskRoute = new Elysia()
       }
     }]
   })
+  .get("/tasks", ({ taskRepository }) => {
 ```
 
 それでは、タスクの取得と作成のルートを修正しましょう。`isAuthenticated` プラグインにより、`user` オブジェクトが `Context` に追加されているため、`Handler` 関数の引数から `user` オブジェクトを取得できます。取得した `user` オブジェクトの `user.id` を `TaskRepository` の `.getAll(){:js}` と `.create(){:js}` メソッドに渡します。
@@ -1013,6 +1055,19 @@ export const taskRoute = new Elysia()
 
 最後に、作成した API のテストを実装します。Bun には [bun:test](https://bun.sh/docs/cli/test) モジュールがビルドインで提供されていますので、追加のライブラリのインストールを必要せずにテストを実行できます。`bun:test` は [Jest](https://jestjs.io/ja/) に似た API を提供しています。
 
+`package.json` の `scripts` にテストを実行するコマンドを追加しましょう。
+
+```json:package.json {3-4}
+{
+  "scripts": {
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "dev": "bun run --watch src/index.ts",
+    "create-table": "bun src/db/create-table.ts"
+  },
+}
+```
+
 テストではデータベースを使用するので、お互いのテストでデータベースの状態が影響しないように、テストごとにデータベースを初期化するメソッドを用意しておきます。`db/test-utils.ts` ファイルを作成して、すべてのテーブルのデータを削除する `cleanUpDatabase(){:js}` 関数を実装します。
 
 ```ts:db/test-utils.ts
@@ -1044,6 +1099,8 @@ export const createUser = async ({
 }
 ```
 
+### 認証機能のテスト
+
 `tests/e2e/auth.test.ts` を作成して、認証機能のテストを実装しましょう。
 
 ```ts:tests/e2e.test.ts
@@ -1052,11 +1109,15 @@ import { app } from "../../src";
 import { cleanUpDatabase } from "../../src/db/test-utils";
 
 describe("auth", () => {
+  // テストの前後でデータベースを初期化
   beforeAll(() => {
     cleanUpDatabase();
   })
 
+  // ユーザーの作成 API のテスト
   it("should create a user", async () => {
+    // Elysia インスタンスの .handle() メソッドを利用して、API を呼び出す
+    // .handle() メソッドは Request オブジェクトを受け取り、Response オブジェクトを返却する
     const response = await app
       .handle(new Request("http://localhost/auth/signup", {
         method: "POST",
@@ -1077,6 +1138,7 @@ describe("auth", () => {
     });
   });
 
+  // 同名のユーザーを作成できないことを確認するテスト
   it("should not create a user with the same username", async () => {
     const response = await app
       .handle(new Request("http://localhost/auth/signup", {
@@ -1104,13 +1166,69 @@ describe("auth", () => {
 });
 ```
 
-`beforeAll(){:js}` と `afterAll(){:js}` フックを利用して、テストの前後でデータベースを初期化します。Elysia インスタンスの `.handle(){:js}` メソッドは `Request` オブジェクトを受け取り、`Response` オブジェクトを返却します。これは HTTP リクエストを送信しているのと同じ挙動です。この `.handle(){:js}` メソッドを利用して、API の呼び出しをテストしています。
+`beforeAll(){:js}` と `afterAll(){:js}` フックを利用して、テストの前後でデータベースを初期化します。Elysia インスタンスの `.handle(){:js}` メソッドは `Request` オブジェクトを受け取り、`Response` オブジェクトを返却します。これにより、HTTP リクエストをシミュレートできます。この `.handle(){:js}` メソッドを利用して、API の呼び出しをテストしています。
 
-同様に、ログイン API のテストを実装しましょう。
+Elysia インスタンスである `app` を `src/index.ts` から import するために、`src/index.ts` の `app` を `export` するように修正します。
+
+```ts:src/index.ts {5}
+import { Elysia } from "elysia";
+import { taskRoute } from "./tasks";
+import { authRoute } from "./auth";
+
+export const app = new Elysia()
+  .use(taskRoute)
+  .use(authRoute);
+
+app.listen(3000);
+
+console.log(
+  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+);
+```
+
+ここで、`src/index.ts` から `app` を import したことで 1 つ問題が生じます。`src/index.ts` ファイルを import したことによる副作用で、`app.listen(3000){:js}` が実行されてしまい、サーバーが起動してしまうのです。
+
+この問題を解決するために、[Bun.main](https://bun.sh/docs/api/utils#bun-main) 変数を利用します。`Bun.main` 変数はエントリーポイントとなっているファイルの絶対パスを保持しています。`import.meta.path` 変数と比較することで、ファイルが直接実行されているか、他のファイルから import されているかを判定できます。ファイルが直接実行されている場合のみ `app.listen(3000){:js}` を実行するように修正します。
+
+```ts:src/index.ts {5-11}
+export const app = new Elysia()
+  .use(taskRoute)
+  .use(authRoute);
+
+if (import.meta.path === Bun.main) {
+  app.listen(3000);
+
+  console.log(
+    `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+  );
+}
+```
+
+`bun run test` コマンドを実行して、テストが実行されることを確認します。
+
+```sh
+bun run test
+bun run test
+$ bun test
+bun test v1.0.1 (31aec4eb)
+
+tests/e2e/auth.test.ts:
+✓ auth > should create a user [76.37ms]
+✓ auth > should not create a user with the same username [0.25ms]
+
+tests/e2e/tasks.test.ts:
+
+ 2 pass
+ 0 fail
+ 4 expect() calls
+Ran 2 tests across 2 files. [141.00ms]
+```
+
+すべてのテストがパスしたことが確認できました。同様に、ログイン API のテストを実装しましょう。
 
 ```ts:tests/e2e/auth.test.ts
 describe("auth", () => {
-   it("should login a user", async () => {
+  it("should login a user", async () => {
     const response = await app
       .handle(new Request("http://localhost/auth/signin", {
         method: "POST",
@@ -1128,6 +1246,7 @@ describe("auth", () => {
     expect(body).toEqual({
       message: "User logged in successfully",
     });
+    // ログインに成功した場合、Cookie に JWT トークンが含まれていることを確認
     expect(response.headers.get("set-cookie")).toMatch(/token=.+;/);
   });
 
@@ -1164,7 +1283,7 @@ describe("auth", () => {
         })
       }))
     const body = await response.json();
-      
+
     expect(response.status).toEqual(400);
     expect(body).toEqual({
       message: "User not found",
@@ -1172,6 +1291,8 @@ describe("auth", () => {
   });
 });
 ```
+
+### タスク管理機能のテスト
 
 最後に、タスクの一覧・作成 API のテストを実装します。これらの API をコールする際には、Cookie に JWT トークンを含める必要があるので、`beforeAll(){:js}` フックでログイン API を呼び出して JWT トークンを取得します。
 
@@ -1181,14 +1302,17 @@ import { app } from "../../src";
 import { cleanUpDatabase, createUser } from "../../src/db/test-utils";
 
 describe("tasks", () => {
+  // ログイン API をコールした際に取得した Cookie を保持する変数
   let cookie: string;
 
   beforeAll(async () => {
     cleanUpDatabase();
+    // あらかじめダミーのユーザーを作成しておく
     await createUser({
       username: "alice",
       password: "password",
     });
+    // ダミーユーザーでログイン API をコールして JWT トークンを取得
     const response = await app
       .handle(new Request("http://localhost/auth/signin", {
         method: "POST",
@@ -1200,9 +1324,12 @@ describe("tasks", () => {
           password: "password",
         })
       }))
+    // ヘッダーに含まれる Cookie を取得
     cookie = response.headers.get("set-cookie")!;
   })
 
+  // クッキーがヘッダーに含まれていない場合には、
+  // 401 Unauthorized が返却されることを確認
   it("should not create a task without a cookie", async () => {
     const response = await app
       .handle(new Request("http://localhost/tasks", {
@@ -1223,12 +1350,14 @@ describe("tasks", () => {
     });
   });
 
+  // ボディリクエストのバリデーションのテスト
   it("should create a task", async () => {
     const response = await app
       .handle(new Request("http://localhost/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          // Cookie にログイン API で取得したクッキーを含める
           Cookie: cookie
         },
         body: JSON.stringify({
@@ -1306,6 +1435,29 @@ describe("tasks", () => {
     });
   });
 });
+```
+
+テストの実装が完了したら、`bun run test` コマンドを実行して、テストがパスすることを確認します。
+
+```sh
+$ bun test
+bun test v1.0.1 (31aec4eb)
+
+tests/e2e/auth.test.ts:
+✓ auth > should create a user [84.16ms]
+✓ auth > should not create a user with the same username [0.23ms]
+
+tests/e2e/tasks.test.ts:
+✓ tasks > should not create a task without a cookie [0.44ms]
+✓ tasks > should create a task [1.52ms]
+✓ tasks > should validate task dto [1.73ms]
+✓ tasks > should not get tasks without a cookie [0.14ms]
+✓ tasks > should get tasks [0.26ms]
+
+ 7 pass
+ 0 fail
+ 14 expect() calls
+Ran 7 tests across 2 files. [279.00ms]
 ```
 
 ## まとめ
