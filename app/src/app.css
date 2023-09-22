@@ -283,6 +283,7 @@ html.dark #contents code:not(pre > *) {
   background: #263238;
   color: #ccc;
   margin: 1.5em 0;
+  position: relative;
   padding: 1em 1em 1em 0;
 }
 
