@@ -3,6 +3,7 @@
   import Time from "../Time/Time.svelte";
   import type { Tag } from "../../generated/graphql";
   import Image from "../Image/Image.svelte";
+  import { onMount } from "svelte";
 
   export let title: string;
   export let about: string;
@@ -12,6 +13,38 @@
   export let preview = false;
   export let thumbnail: { title: string; url: string };
   export let slug: string;
+
+  onMount(() => {
+    // コードブロックに、コピー用のボタンを追加
+    const codeBlocks = document.querySelectorAll("pre");
+    codeBlocks.forEach((block) => {
+      const button = document.createElement("button");
+      button.classList.add(
+        "absolute",
+        "right-2",
+        "top-2",
+        "p-1",
+        "rounded-md",
+        "bg-gray-100",
+        "dark:bg-zinc-500",
+        "text-gray-500",
+        "dark:text-gray-300",
+        "hover:bg-gray-200",
+        "dark:hover:bg-zinc-400",
+        "focus:outline-none",
+        "focus:ring-2",
+        "focus:ring-gray-200",
+        "dark:focus:ring-zinc-400",
+        "focus:ring-opacity-50",
+        "dark:focus:ring-opacity-50",
+      );
+      button.textContent = "Copy";
+      button.addEventListener("click", () => {
+        navigator.clipboard.writeText(block.textContent);
+      });
+      block.appendChild(button);
+    });
+  })
 </script>
 
 <article>
