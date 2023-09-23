@@ -11,7 +11,6 @@ thumbnail:
   title: "Svelte"
 published: true
 ---
-
 # はじめに
 
 この記事では Svelte + TypeScript + tailwindcss で本検索サイトを作成します。
