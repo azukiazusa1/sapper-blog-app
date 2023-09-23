@@ -68,7 +68,8 @@
       popup.textContent = "Copied!";
       block.appendChild(popup);
       button.addEventListener("click", () => {
-        navigator.clipboard.writeText(block.textContent);
+        const text = block.querySelector("code")?.textContent;
+        navigator.clipboard.writeText(text);
 
         button.innerHTML = checkIcon;
         button.classList.remove("text-gray-200");
