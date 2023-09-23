@@ -51,7 +51,7 @@
       popup.classList.add(
         "absolute",
         "top-2",
-        "right-14",
+        "right-12",
         "px-2",
         "py-1",
         "rounded-md",
@@ -66,7 +66,6 @@
         "pointer-events-none",
       );
       popup.textContent = "Copied!";
-      block.appendChild(popup);
       button.addEventListener("click", () => {
         const text = block.querySelector("code")?.textContent;
         navigator.clipboard.writeText(text);
@@ -90,7 +89,9 @@
           button.classList.add("focus:text-gray-500");
         }, 1000);
       });
-      block.appendChild(button);
+
+      block.insertAdjacentElement("afterend", button);
+      button.insertAdjacentElement("afterend", popup);
     });
   });
 </script>
