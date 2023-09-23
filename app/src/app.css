@@ -276,6 +276,10 @@ h6 .icon-link::before {
 html.dark #contents code:not(pre > *) {
   @apply bg-zinc-600 text-gray-50;
 }
+/* コードブロックのコンテナ */
+div[data-rehype-pretty-code-fragment] {
+  position: relative;
+}
 
 #contents pre {
   overflow: auto;
@@ -283,7 +287,6 @@ html.dark #contents code:not(pre > *) {
   background: #263238;
   color: #ccc;
   margin: 1.5em 0;
-  position: relative;
   padding: 1em 1em 1em 0;
 }
 
