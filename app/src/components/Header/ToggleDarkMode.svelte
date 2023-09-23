@@ -11,12 +11,10 @@
   import Sun from "../Icons/Sun.svelte";
   import System from "../Icons/system.svelte";
   let theme: Theme = "system";
-  let isDark: boolean;
   export let right = false;
 
   onMount(() => {
     theme = getTheme();
-    isDark = document.documentElement.classList.contains("dark");
   });
   const items = [
     { value: "system", label: "System" },
@@ -30,7 +28,6 @@
   const handleChange = (e: CustomEvent<Theme>) => {
     theme = e.detail;
     changeTheme(theme);
-    isDark = document.documentElement.classList.contains("dark");
   };
 </script>
 

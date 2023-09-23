@@ -11,19 +11,6 @@ thumbnail:
   title: "Svelte"
 published: true
 ---
----
-id: 3n1WbmUGqodJpX5yJ1ACsQ
-title: "【Svelte + TypeScript + tailwindcss】本検索サイト チュートリアル"
-slug: "svelte-typescript-tailwindcss-book-search-app-tutorial"
-about: "この記事でははSvelte + TypeScript + tailwindcssで本検索サイトを作成します。 Svelteを使ってアプリケーションを作成1から作成することができます。 以下のことが学べます。  - Svelteの基礎文法 - Svelteのルーティング - Svelteのストア  HTML・CSS・JavaScriptの基礎的な理解がある人が対象です。"
-createdAt: "2021-02-07T00:00+09:00"
-updatedAt: "2021-02-07T00:00+09:00"
-tags: ["Svelte", "JavaScript", "tailwindcss", "TypeScript"]
-thumbnail:
-  url: "https://images.ctfassets.net/in6v9lxmm5c8/10yOrB3tXKM12ZJbJdJlw5/e7d9e7de67e916bb0a59695d9882f061/1200px-Svelte_Logo.svg.png"
-  title: "Svelte"
-published: true
----
 
 # はじめに
 
@@ -1726,4 +1713,3 @@ export const books = useBookStore()
 お疲れさまでした！
 
 ![スクリーンショット 2021-02-07 19.11.10.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/496565/d39db159-2a24-565d-6278-d73a831bee03.png)
-
