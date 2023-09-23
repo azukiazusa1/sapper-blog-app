@@ -30,7 +30,7 @@ export class MockPostRepository implements PostRepositoryInterFace {
     return Promise.resolve(null);
   }
 
-  getPreview(id: string): Promise<PreviewPostQuery> {
+  getPreview(_id: string): Promise<PreviewPostQuery> {
     return Promise.resolve(null);
   }
 }

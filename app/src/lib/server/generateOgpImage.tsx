@@ -1,7 +1,6 @@
 import React from "react";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
-import variables from "$lib/variables";
 
 const fontCache = new Map<string, ArrayBuffer>();
 

@@ -1,4 +1,3 @@
-import exp from "constants";
 import { describe, test, expect } from "vitest";
 import { isMatchPath, removeTrailingSlash } from "./utils";
 
