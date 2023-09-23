@@ -92,7 +92,6 @@
 
       block.insertAdjacentElement("afterend", button);
       button.insertAdjacentElement("afterend", popup);
-      
     });
   });
 </script>
