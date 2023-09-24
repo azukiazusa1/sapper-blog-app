@@ -8,10 +8,9 @@ updatedAt: "2023-09-24T16:38+09:00"
 tags: ["React", "Next.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5Ekkx2HI8CGzI4EO8JJP3J/69d2554e1c746ddf8b07902393521da3/fish_sanma_5367.png"
-  title: "さんまのイラスト"
+  title: "fish sanma 5367"
 published: true
 ---
-
 よくあるモーダルの実装について考えてみましょう。モーダルは名前のとおり、現在開いているか閉じているかの状態（モード）があります。状態を管理するときには、React の `useState` フックを利用する方法がまっさきに思い浮かぶのではないでしょうか？
 
 ```tsx
