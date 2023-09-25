@@ -151,7 +151,7 @@ export const AddTodoDialog = ({ open }: { open: boolean }) => {
 
 この `<Home>{:tsx}` コンポーネントをページコンポーネントから使用しましょう。`/` という URL でページにアクセスした場合にはモーダルは閉じているはずです。そのため、`app/page.tsx` で `<Home>{:tsx}` コンポーネントを使用する際には `open` Props に `false` を渡します。
 
-```tsx:app/pages/index.tsx
+```tsx:app/page.tsx
 import { Home } from "./Home";
 export default function App() {
   return (
@@ -164,7 +164,7 @@ export default function App() {
 
 `/todos/add` という URL でページにアクセスした場合にはモーダルは開いているはずです。そのため、`app/todos/add/page.tsx` では `<Home>{:tsx}` の `open` Props に `true` を渡します。
 
-```tsx:app/pages/todos/add.tsx
+```tsx:app/todos/add/page.tsx
 import { Home } from "@/app/Home";
 
 export default function AddTodo() {
