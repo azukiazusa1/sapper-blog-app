@@ -13,7 +13,7 @@ published: true
 ---
 [history.replaceState()](https://developer.mozilla.org/ja/docs/Web/API/History/replaceState) は、ブラウザの履歴を変更するための API です。使用例としてユーザーのアクションによる UI の状態の変更に合わせて、URL のクエリパラメータを変更することが挙げられます。例えば、検索フォームに入力したキーワードをクエリパラメータに設定することで、検索結果をブックマークしたり、URL を共有したりできるようになります。
 
-<video src="https://videos.ctfassets.net/in6v9lxmm5c8/J14e0ba32tZ4hrhu75gFG/edd6c54d1bc5687b92b81bae3b676f56/_____2023-10-01_13.25.32.mov" controls>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/J14e0ba32tZ4hrhu75gFG/edd6c54d1bc5687b92b81bae3b676f56/_____2023-10-01_13.25.32.mov" controls></video>
 
 ## `history.replaceState()` にはブラウザによって制限がある
 
