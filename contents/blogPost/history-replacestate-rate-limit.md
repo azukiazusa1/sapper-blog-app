@@ -5,13 +5,12 @@ slug: "history-replacestate-rate-limit"
 about: "`history.replaceState()` は、ブラウザの履歴を変更するための API です。使用例としてユーザーのアクションによる UI の状態の変更に合わせて、URL のクエリパラメータを変更することが挙げられます。この API はブラウザにより呼び出し回数に制限が設けられており、使い方を誤ると予期せぬ挙動が発生するおそれがあります。"
 createdAt: "2023-10-01T13:11+09:00"
 updatedAt: "2023-10-01T13:11+09:00"
-tags: ["javascript"]
+tags: ["JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1qt8GP6Vy9x7afq87NiRsp/52b7c3a7ac5976e5b3bf66368db39957/sukiyaki_16090.png"
   title: "すき焼き鍋のイラスト"
 published: true
 ---
-
 [history.replaceState()](https://developer.mozilla.org/ja/docs/Web/API/History/replaceState) は、ブラウザの履歴を変更するための API です。使用例としてユーザーのアクションによる UI の状態の変更に合わせて、URL のクエリパラメータを変更することが挙げられます。例えば、検索フォームに入力したキーワードをクエリパラメータに設定することで、検索結果をブックマークしたり、URL を共有したりできるようになります。
 
 <video src="https://videos.ctfassets.net/in6v9lxmm5c8/J14e0ba32tZ4hrhu75gFG/edd6c54d1bc5687b92b81bae3b676f56/_____2023-10-01_13.25.32.mov" controls>
