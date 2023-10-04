@@ -94,7 +94,7 @@ published: true
 
 `aria-labelledby` 属性を使用して可視のテキストを紐付けるもう 1 つのメリットとして、将来の変更に対応しやすくなるという点があります。例えば、ダイアログのタイトルを変更したいとします。この場合、`aria-labelledby` 属性を使用している場合は、`id` 属性を持つ要素のテキストを変更するだけで済みます。一方で、`aria-label` 属性を使用している場合は、`aria-label` 属性の内容を変更する必要があります。`aria-label` 属性を使用している場合、ダイアログのタイトルを変更するときに `aria-label` の内容の変更を忘れてしまうと、ダイアログのタイトルとアクセシブルな名前の内容が異なってしまいます。
 
-このように `aria-labelledby` 属性を使用してタイトルと同じテキストを参照する方法は、ダイアログに限らず `role="search"` や `role="nav"` など [ランドマークロール](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles#3._landmark_roles) を持つ要素に対しても効果的です。
+このように `aria-labelledby` 属性を使用してタイトルと同じテキストを参照する方法は、ダイアログに限らず `role="search"` や `role="navigation"` など [ランドマークロール](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles#3._landmark_roles) を持つ要素に対しても効果的です。
 
 ## `<input>` 要素に `aria-label` 属性を使用している
 
