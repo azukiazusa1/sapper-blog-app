@@ -15,6 +15,7 @@
   <meta property="og:title" content={title} />
   <meta property="og:url" content={url} />
   <meta property="og:image" content={image} />
+  <meta property="og:image:alt" content={title} />
   <meta property="og:description" content={description} />
   <meta name="twitter:card" content={card} />
 </svelte:head>
