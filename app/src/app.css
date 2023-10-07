@@ -171,7 +171,8 @@ html.dark #contents article a {
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
     overscroll-behavior: contain;
-    @apply sticky left-0 top-8 ml-16 p-4 text-sm;
+    font-size: 14px;
+    @apply sticky left-0 top-8 ml-16 p-4;
   }
 }
 
