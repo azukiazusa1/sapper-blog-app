@@ -10,7 +10,6 @@
   export let contents: string;
   export let tags: Pick<Tag, "name" | "slug">[];
   export let createdAt: string;
-  export let preview = false;
   export let thumbnail: { title: string; url: string };
   export let slug: string;
 
@@ -94,10 +93,45 @@
       button.insertAdjacentElement("afterend", popup);
     });
   });
+
+  // スクロールした時に、目次のアクティブなリンクを変更する
+  onMount(() => {
+    const contents = document.getElementById("contents");
+    const headings = contents?.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    const links = document.querySelectorAll(".toc-link");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach((link) => {
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("text-indigo-600");
+                link.classList.add("dark:text-indigo-400");
+              } else {
+                link.classList.remove("text-indigo-600");
+                link.classList.remove("dark:text-indigo-400");
+              }
+            });
+          }
+        });
+      },
+      {
+        rootMargin: "-1px 0px -99% 0px",
+      },
+    );
+    headings?.forEach((heading) => {
+      observer.observe(heading);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  });
 </script>
 
-<article>
-  <div class="p-4">
+<div class="p-4">
+  <div class="mx-auto max-w-3xl">
     <Image
       src={thumbnail.url}
       alt={thumbnail.title}
@@ -125,13 +159,8 @@
         <AppTag {...tag} />
       {/each}
     </div>
-
-    {#if preview}
-      <p class="hint error my-4">
-        これは下書き記事のプレビューです。内容は不正確な恐れがあります。
-      </p>
-    {/if}
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    <p id="contents" class="mt-6">{@html contents}</p>
   </div>
-</article>
+
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  <p id="contents" class="mx-auto mt-20 max-w-5xl">{@html contents}</p>
+</div>

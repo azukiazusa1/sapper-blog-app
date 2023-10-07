@@ -38,7 +38,7 @@
   )}/${tagNames.join("/")}.png`}
 />
 
-<div class="mx-auto my-12 max-w-3xl">
+<div class="my-12">
   <Card
     slug={post.slug}
     title={post.title}
@@ -51,25 +51,27 @@
     }}
     {contents}
   />
-  <hr class="my-4 border-gray-300 dark:border-zinc-700" />
-  <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-    <Contributors {contributors} />
-    <Box>
-      <GitHubEditButton slug={post.slug} />
-      <div class="mt-4 flex">
-        <ShareButton {url} text={post.title}>
-          <svelte:fragment slot="fallback">
-            <div>この記事をシェアする</div>
-            <div class="ml-4">
-              <TwitterShareButton {url} text={post.title} />
-            </div>
-            <div class="ml-4">
-              <HatenaShareButton {url} text={post.title} />
-            </div>
-          </svelte:fragment>
-        </ShareButton>
-      </div>
-    </Box>
+  <div class="mx-auto max-w-5xl">
+    <hr class="my-4 border-gray-300 dark:border-zinc-700" />
+    <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <Contributors {contributors} />
+      <Box>
+        <GitHubEditButton slug={post.slug} />
+        <div class="mt-4 flex">
+          <ShareButton {url} text={post.title}>
+            <svelte:fragment slot="fallback">
+              <div>この記事をシェアする</div>
+              <div class="ml-4">
+                <TwitterShareButton {url} text={post.title} />
+              </div>
+              <div class="ml-4">
+                <HatenaShareButton {url} text={post.title} />
+              </div>
+            </svelte:fragment>
+          </ShareButton>
+        </div>
+      </Box>
+    </div>
   </div>
 </div>
 
