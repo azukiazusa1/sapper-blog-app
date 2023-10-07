@@ -162,12 +162,16 @@ html.dark #contents article a {
   }
 
   #contents article {
-    width: calc(100% - 300px);
+    width: calc(100% - 330px);
   }
 
   .toc {
     width: 300px;
-    @apply sticky left-0 top-8 ml-16;
+    padding: 1rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    @apply sticky left-0 top-8 ml-16 p-4 text-sm;
   }
 }
 
