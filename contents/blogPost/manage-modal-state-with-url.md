@@ -174,7 +174,7 @@ export default function AddTodo() {
 
 これで URL でモーダルの開閉状態を管理する実装は完了です。モーダルを開いたり閉じたりする基本的な動作は変わりません。http://localhost:3000/todos/add に直接アクセスすると、はじめからモーダルが閉じた状態で表示されることがわかります。
 
-<video src="https://videos.ctfassets.net/in6v9lxmm5c8/7b3S7Xq4DzIEtOFSCO3pYP/9381d7695610b48a8ed0ab0d9bc06cab/_____2023-09-24_18.42.47.mov" controls>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/7b3S7Xq4DzIEtOFSCO3pYP/9381d7695610b48a8ed0ab0d9bc06cab/_____2023-09-24_18.42.47.mov" controls></video>
 
 ## まとめ
 
