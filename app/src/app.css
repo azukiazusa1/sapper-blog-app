@@ -160,15 +160,15 @@ html.dark #contents article a {
   #contents {
     @apply flex flex-row-reverse items-start;
   }
-  
+
   #contents article {
     width: calc(100% - 300px);
   }
-  
+
   .toc {
     width: 300px;
-    @apply sticky top-8 left-0 ml-16;
-  }  
+    @apply sticky left-0 top-8 ml-16;
+  }
 }
 
 .toc {
