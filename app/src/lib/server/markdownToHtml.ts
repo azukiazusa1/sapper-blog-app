@@ -28,9 +28,9 @@ export const markdownToHtml = async (input: string): Promise<string> => {
     .use(rehypeAutoLinkHeadings)
     // 目次のを挿入する要素を設定
     .use(() => (tree) => {
-      const aside = {
+      const toc = {
         type: "element",
-        tagName: "aside",
+        tagName: "div",
         properties: {},
         children: [
           {
@@ -38,17 +38,16 @@ export const markdownToHtml = async (input: string): Promise<string> => {
             value: "[toc]",
           },
         ],
-      };
-      const article = {
+      } as any;
+      const body = {
         type: "element",
-        tagName: "article",
-        properties: {},
+        tagName: "div",
+        properties: {
+          className: "markdown-body",
+        },
         children: [...tree.children],
-      };
-
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      tree.children = [aside, article];
+      } as any;
+      tree.children = [toc, body];
     })
     .use(rehypeToc, {
       placeholder: "[toc]",
