@@ -120,12 +120,12 @@
   margin: 1.5rem auto;
 }
 
-#contents article a {
+#contents .markdown-body a {
   color: #0d74df;
   word-break: break-all;
 }
 
-html.dark #contents article a {
+html.dark #contents .markdown-body a {
   color: #67b2ff;
 }
 
@@ -161,7 +161,7 @@ html.dark #contents article a {
     @apply flex flex-row-reverse items-start;
   }
 
-  #contents article {
+  #contents .markdown-body {
     width: calc(100% - 330px);
   }
 
