@@ -5,13 +5,12 @@ slug: "details-name-attribute-accordion"
 about: "`<details>` 要素の `name` 属性を利用してグループ化することにより、排他的なアコーディオンを JavaScript なしで実装できます。"
 createdAt: "2023-10-08T15:00+09:00"
 updatedAt: "2023-10-08T15:00+09:00"
-tags: ["html"]
+tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3QFLH315wDCOBd0pQ43yDr/ef51686c64b5f807b2c854b8d932b578/accordion_11614.png"
   title: "アコーディオンのイラスト"
 published: true
 ---
-
 !> `<details>` 要素の `name` 属性は 2023 年 10 月 8 日現在 Chrome Canary のみ実装されています。
 
 アコーディオンは [Disclosure](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/)（コンテンツを折りたたむ、または展開することを可能にするウィジェット） が垂直に並べられた UI の総称です。いくつかのアコーディオンはグループ化された Disclosure の中でただ 1 つしか開くことができないという制約を持っています（排他的なアコーディオン）。つまり、ある Disclosure が開いているときに、他の Disclosure を開いた場合には、開いている Disclosure は閉じられるという挙動を実装する必要があります。
