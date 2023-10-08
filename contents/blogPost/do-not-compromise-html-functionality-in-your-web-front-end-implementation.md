@@ -288,7 +288,7 @@ ARIA ライブリージョンは `aria-live` 属性により明示されます�
 
 それでは実際に画面遷移時に ARIA ライブリージョンによる通知とフォーカス管理をする実装見てみましょう。ARIA ライブリージョンの実装は NextJS の [Route Announcements](https://nextjs.org/docs/accessibility#route-announcements) の実装を参考にします。Route Announcements は SPA による画面遷移が発生したとき、`document.title` > `<h1>` > `URL pathname` の順番で要素を探してその名前を ARIA ライブリージョンにより通知します。
 
-https://github.com/vercel/next.js/blob/canary/packages/next/client/route-announcer.tsx
+https://github.com/vercel/next.js/blob/canary/packages/next/src/client/route-announcer.tsx
 
 React Router で同様の実装をしてみましょう。まずはページ遷移をフックする必要があります。これは [useLocation](https://reactrouter.com/en/main/hooks/use-location) が返却する [location](https://reactrouter.com/en/main/utils/location) オブジェクトを監視することで実現できます。
 
