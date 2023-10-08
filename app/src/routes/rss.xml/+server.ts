@@ -29,7 +29,7 @@ const renderXmlRssFeed = (
       .map(
         (post) => `
       <item>
-        <title>${post.title}</title>
+        <title><![CDATA[${post.title}]]></title>
       <link>${siteUrl}/blog/${post.slug}</link>
       <guid isPermaLink="false">${siteUrl}/blog/${post.slug}</guid>
         <description><![CDATA[${post.about}]]></description>
