@@ -162,5 +162,5 @@
   </div>
 
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-  <p id="contents" class="mx-auto mt-20 max-w-5xl">{@html contents}</p>
+  <div id="contents" class="mx-auto mt-20 max-w-5xl">{@html contents}</div>
 </div>
