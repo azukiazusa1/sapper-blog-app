@@ -15,7 +15,7 @@ published: true
 
 アコーディオンは [Disclosure](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/)（コンテンツを折りたたむ、または展開することを可能にするウィジェット） が垂直に並べられた UI の総称です。いくつかのアコーディオンはグループ化された Disclosure の中でただ 1 つしか開くことができないという制約を持っています（排他的なアコーディオン）。つまり、ある Disclosure が開いているときに、他の Disclosure を開いた場合には、開いている Disclosure は閉じられるという挙動を実装する必要があります。
 
-単純な Disclosure の場合には [<details>](https://developer.mozilla.org/ja/docs/Web/HTML/Element/details) 要素を利用することで JavaScript を用いずとも実装できます。しかし、排他的なアコーディオンを実装する場合には、他の Disclosure が開いているかどうかの状態を保持する必要があるため、JavaScript を用いた実装が必要でした。
+単純な Disclosure の場合には [`<details>`](https://developer.mozilla.org/ja/docs/Web/HTML/Element/details) 要素を利用することで JavaScript を用いずとも実装できます。しかし、排他的なアコーディオンを実装する場合には、他の Disclosure が開いているかどうかの状態を保持する必要があるため、JavaScript を用いた実装が必要でした。
 
 ですが、[HTML Living Standard に追加された](https://github.com/whatwg/html/pull/9400) `name` 属性を利用して `<details>` 要素をグループ化することによって、JavaScript を用いずとも排他的なアコーディオンを実装できるようになりました。
 
@@ -109,7 +109,8 @@ https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-ele
 </section>
 ```
 
-## 参考 - [Accordion | Open
+## 参考 
 
-UI](https://open-ui.org/components/accordion.research/) - [4.11.1 The details
+- [Accordion | OpenUI](https://open-ui.org/components/accordion.research/)
+- [4.11.1 The details
 element(WHATWG)](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element)
