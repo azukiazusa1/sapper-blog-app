@@ -156,6 +156,10 @@ html.dark #contents .markdown-body a {
   @apply border border-gray-300 dark:border-zinc-700;
 }
 
+.toc {
+  margin: 0 0 2rem;
+}
+
 @media (min-width: 1024px) {
   #contents {
     @apply flex flex-row-reverse items-start;
@@ -172,12 +176,8 @@ html.dark #contents .markdown-body a {
     overflow-y: auto;
     overscroll-behavior: contain;
     font-size: 14px;
-    @apply sticky left-0 top-8 ml-16 p-4;
+    @apply sticky left-0 top-8 ml-16 mb-0 p-4;
   }
-}
-
-.toc {
-  margin: 0 0 2rem;
 }
 
 #toc-title {
