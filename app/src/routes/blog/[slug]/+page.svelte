@@ -51,7 +51,7 @@
     }}
     {contents}
   />
-  <div class="mx-auto max-w-6xl">
+  <div class="mx-auto max-w-5xl">
     <hr class="my-4 border-gray-300 dark:border-zinc-700" />
     <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
       <Contributors {contributors} />
