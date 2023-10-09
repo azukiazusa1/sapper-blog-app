@@ -176,7 +176,7 @@ html.dark #contents .markdown-body a {
     overflow-y: auto;
     overscroll-behavior: contain;
     font-size: 14px;
-    @apply sticky left-0 top-8 ml-16 mb-0 p-4;
+    @apply sticky left-0 top-8 mb-0 ml-16 p-4;
   }
 }
 
