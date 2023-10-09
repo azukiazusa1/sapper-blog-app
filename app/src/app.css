@@ -177,11 +177,12 @@ html.dark #contents .markdown-body a {
 }
 
 .toc {
-  margin-bottom: 2rem !important;
+  margin: 0 0 2rem;
 }
 
 #toc-title {
   padding: 0 !important;
+  margin-bottom: 1rem !important;
 }
 
 .toc-item {
@@ -196,12 +197,6 @@ html.dark #contents .markdown-body a {
   margin: 0.4rem 0 !important;
   padding-left: 1.5em !important;
   line-height: 1.9 !important;
-}
-
-@media (max-width: 768px) {
-  .toc {
-    margin: 0 !important;
-  }
 }
 
 h1 .icon-link::before {
