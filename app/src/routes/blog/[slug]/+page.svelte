@@ -75,6 +75,6 @@
   </div>
 </div>
 
-<h2 class="text-2xl">関連記事</h2>
+<h2 class="mb-4 text-2xl font-extrabold leading-none">関連記事</h2>
 
 <PostList posts={post.relatedArticleCollection?.items} small />
