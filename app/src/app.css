@@ -166,7 +166,7 @@ html.dark #contents .markdown-body a {
   }
 
   #contents .markdown-body {
-    width: calc(100% - 330px);
+    width: calc(100% - 300px);
   }
 
   .toc {
