@@ -65,7 +65,7 @@ export const markdownToHtml = async (input: string): Promise<string> => {
             },
           ],
         });
-        toc.properties["aria-labeledby"] = "toc-title";
+        toc.properties["aria-labelledby"] = "toc-title";
         return toc;
       },
     })
