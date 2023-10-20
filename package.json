@@ -17,7 +17,7 @@
     "test": "turbo run test"
   },
   "volta": {
-    "node": "18.18.0",
+    "node": "18.18.2",
     "npm": "9.8.1"
   },
   "devDependencies": {
