@@ -11,7 +11,6 @@ thumbnail:
   title: "どんぐりのイラスト"
 published: true
 ---
-
 !> この記事で紹介している機能は Chrome Canary の Experimental Web Platform features フラグを有効にした場合のみ利用可能です。将来にわたって API が変更される可能性があります。
 
 カスタム UI ウィジェットを実装する際には、ウィジェットのロールに応じたキーボード操作によるフォーカスナビゲーションを実装することが求められています。例として [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/patterns/) を参照すると、以下のようなキーボード操作が求められていることがわかります。

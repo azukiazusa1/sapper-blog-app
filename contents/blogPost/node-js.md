@@ -11,7 +11,6 @@ thumbnail:
   title: "Node.js"
 published: true
 ---
-
 # Node.jsとは
 
 Node.js は、[V8 Javascriptエンジン](<https://ja.wikipedia.org/wiki/V8_(JavaScript%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3)>)上に構築された JavaScript の実行環境です。**サーバーサイド**の JavaScript 環境であり、**非同期**、**イベント駆動**といった特徴があります。

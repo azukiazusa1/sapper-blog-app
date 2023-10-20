@@ -11,7 +11,6 @@ thumbnail:
   title: "松茸のイラスト"
 published: true
 ---
-
 !> `<selectlist>` 要素は 2023 年 10 月 7 日現在 Chrome Canary の Experimental Web Platform features flag を有効にした場合のみ使用できる実験的な機能です。この記事の内容は将来変更されるおそれがあります。
 
 ## `<selectlist>` 要素とは

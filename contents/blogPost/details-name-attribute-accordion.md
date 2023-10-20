@@ -11,7 +11,6 @@ thumbnail:
   title: "アコーディオンのイラスト"
 published: true
 ---
-
 !> `<details>` 要素の `name` 属性は 2023 年 10 月 8 日現在 Chrome Canary のみ実装されています。
 
 アコーディオンは [Disclosure](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/)（コンテンツを折りたたむ、または展開することを可能にするウィジェット）が垂直に並べられた UI の総称です。いくつかのアコーディオンはグループ化された Disclosure の中でただ 1 つしか開くことができないという制約を持っています（排他的なアコーディオン）。つまり、ある Disclosure が開いているときに、他の Disclosure を開いた場合には、開いている Disclosure は閉じられるという挙動を実装する必要があります。
