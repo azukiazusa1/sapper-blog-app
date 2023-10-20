@@ -31,7 +31,7 @@ OS の設定に合わせてダークモードに切り替える場合には、`p
 
 手動でライトモードとダークモードを切り替える場合に比べて、`System` はどのようなメリットが有るのでしょうか？それは OS の設定を変更した時に自動で反映してくれることにあるでしょう。
 
-例えば、Mac OS のダークモードの設定では時間帯によって自動で切り替わるように設定することができます。このような場合には、ユーザーが手動でライトモードとダークモードを切り替えるよりも、OS の設定に合わせて自動で切り替わる方が便利です。
+例えば、Mac OS のダークモードの設定では時間帯によって自動で切り替わるように設定できます。このような場合には、ユーザーが手動でライトモードとダークモードを切り替えるよりも、OS の設定に合わせて自動で切り替わる方が便利です。
 
 それでは、Tailwind CSS のダークモードで `System` と `Light` と `Dark` の 3 値を切り替える方法を見ていきましょう。
 
@@ -80,7 +80,7 @@ if (!('theme' in localStorage) || localStorage.theme === 'system') {
 
 OS のダークモードの設定を読み取るには [window.matchMedia](https://developer.mozilla.org/ja/docs/Web/API/Window/matchMedia) を使用します。`window.matchMedia` は[メディアクエリー](https://developer.mozilla.org/ja/docs/Web/CSS/Media_Queries)を引数に受け取り、[MediaQueryList](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList) オブジェクトを返します。
 
-`MediaQueryList` オブジェクトは `matches` プロパティを持っており、メディアクエリに合致するかどうかを表す `boolean` 値を返します。また、`change` イベントを監視することにより、メディアクエリの状態が変化した際にコールバック関数を実行することができます。
+`MediaQueryList` オブジェクトは `matches` プロパティを持っており、メディアクエリに合致するかどうかを表す `boolean` 値を返します。また、`change` イベントを監視することにより、メディアクエリの状態が変化した際にコールバック関数を実行できます。
 
 `window.matchMedia("(prefers-color-scheme: dark)").matches` が `true` を返す場合には OS の設定がダークモードであることを意味します。
 

@@ -11,6 +11,7 @@ thumbnail:
   title: "toast"
 published: true
 ---
+
 [Chrome 114](https://developer.chrome.com/blog/new-in-chrome-114/) から追加された [ポップオーバー API](https://developer.mozilla.org/ja/docs/Web/API/Popover_API) を使うと、JavaScript を使わずに簡単にポップアップを表示できます。ただポップアップとして表示・非表示を切り替えられるだけでなく、以下のような複雑な要素もデフォルトでサポートしています。
 
 - ポップアップの外側をクリックするとポップアップが閉じる
@@ -70,8 +71,12 @@ published: true
 以下の例では、1 つ目のボタンはポップアップを表示するためのボタン、2 つ目のボタンはポップアップを非表示にするためのボタンと、ボタンごとに役割を分けています。
 
 ```html
-<button popovertarget="popover" popovertargetaction="show">ポップアップを表示</button>
-<button popovertarget="popover" popovertargetaction="hide">ポップアップを非表示</button>
+<button popovertarget="popover" popovertargetaction="show">
+  ポップアップを表示
+</button>
+<button popovertarget="popover" popovertargetaction="hide">
+  ポップアップを非表示
+</button>
 <div popover id="popover">ポップアップの中身</div>
 ```
 
@@ -121,18 +126,18 @@ JavaScript を利用した例として、ボタンをマウスオーバーした
 ポップオーバーが表示されている場合には `:popover-open` 擬似クラスが付与されるので、これを利用して判定しています。
 
 ```javascript
-const button = document.querySelector('button');
-const popover = document.querySelector('#popover');
+const button = document.querySelector("button");
+const popover = document.querySelector("#popover");
 
-button.addEventListener('mouseenter', () => {
+button.addEventListener("mouseenter", () => {
   // ポップオーバーが既に表示されている場合は何もしない
-  if (popover.matches(':popover-open')) return;
+  if (popover.matches(":popover-open")) return;
   popover.showPopover();
 });
 
-button.addEventListener('mouseleave', () => {
+button.addEventListener("mouseleave", () => {
   // ポップオーバーが既に表示されていない場合は何もしない
-  if (!popover.matches(':popover-open')) return;
+  if (!popover.matches(":popover-open")) return;
   popover.hidePopover();
 });
 ```
@@ -148,11 +153,11 @@ button.addEventListener('mouseleave', () => {
 もう 1 つ JavaScript を利用した例として、ポップオーバーが表示された後トーストのように数秒経過したら自動で閉じるように変更してみましょう。`beforetoggle` イベントを購読することで、ポップオーバーの表示・非表示の前に処理を実行できます。`beforetoggle` イベントのコールバック内で、3 秒後にポップオーバーを非表示にするようにしています。
 
 ```javascript
-const popover = document.querySelector('#popover');
+const popover = document.querySelector("#popover");
 
-popover.addEventListener('toggle', (event) => {
+popover.addEventListener("toggle", (event) => {
   setTimeout(() => {
-    if (event.target.matches(':popover-open')) {
+    if (event.target.matches(":popover-open")) {
       event.target.hidePopover();
     }
   }, 3000);

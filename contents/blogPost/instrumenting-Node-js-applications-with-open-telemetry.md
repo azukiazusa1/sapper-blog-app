@@ -316,7 +316,7 @@ export const diceRollCounter = meter.createCounter("dice", {
 
 `main.js` を修正して、`app.get("/dice")` 内で `diceRollCounter.add()` を呼び出すように修正します。`diceRollCounter.add()` を呼び出すたびに任意の数だけカウントが増えていきます。また、第 2 引数でラベルを指定できます。ここでは、サイコロの目と環境をラベルとして指定しています。
 
-サイクロの目をラベルとして指定することで、サイクロの目ごとに集計を行えます。例えば Prometheus で `sum(dice{diceRoll="1"})` というクエリを実行することで、サイコロの目が 1 の回数を取得することができます。
+サイクロの目をラベルとして指定することで、サイクロの目ごとに集計を行えます。例えば Prometheus で `sum(dice{diceRoll="1"})` というクエリを実行することで、サイコロの目が 1 の回数を取得できます。
 
 ```diff:main.js
   import express from "express";
