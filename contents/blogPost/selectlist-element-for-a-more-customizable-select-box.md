@@ -11,6 +11,7 @@ thumbnail:
   title: "松茸のイラスト"
 published: true
 ---
+
 !> `<selectlist>` 要素は 2023 年 10 月 7 日現在 Chrome Canary の Experimental Web Platform features flag を有効にした場合のみ使用できる実験的な機能です。この記事の内容は将来変更されるおそれがあります。
 
 ## `<selectlist>` 要素とは
@@ -33,7 +34,7 @@ published: true
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/7bVLxEPCEhZy8c4xxaRnBX/463002bfbb64a1b745ea85b73f6f4a87/__________2023-10-07_18.07.44.png)
 
-https://open-ui.org/components/selectlist/#anatomy-of-the-selectlist-element より引用
+https://open-ui.org/components/selectlist/#anatomy-of-the-selectlist-element より引用。
 
 このように、`<selectbox>` 要素の構成要素は多くの部分が [Web コンポーネントのスロット](https://developer.mozilla.org/ja/docs/Web/API/Web_components/Using_templates_and_slots#%E3%82%B9%E3%83%AD%E3%83%83%E3%83%88%E3%81%AB%E3%82%88%E3%82%8B%E6%9F%94%E8%BB%9F%E6%80%A7%E3%81%AE%E5%BC%B7%E5%8C%96)によく似ている API として提供されているという特徴があります。これによりデフォルトのマークアップを置き換えパーツを拡張したり順番を並び替えたりするなど、高いカスタマイズ性を備えています。
 

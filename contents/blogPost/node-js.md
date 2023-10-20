@@ -11,16 +11,20 @@ thumbnail:
   title: "Node.js"
 published: true
 ---
+
 # Node.jsとは
 
-Node.js は、[V8 Javascriptエンジン](https://ja.wikipedia.org/wiki/V8_(JavaScript%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3))上に構築された JavaScript の実行環境です。**サーバーサイド**の JavaScript 環境であり、**非同期**、**イベント駆動**といった特徴があります。
+Node.js は、[V8 Javascriptエンジン](<https://ja.wikipedia.org/wiki/V8_(JavaScript%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3)>)上に構築された JavaScript の実行環境です。**サーバーサイド**の JavaScript 環境であり、**非同期**、**イベント駆動**といった特徴があります。
 
 ![node.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FmDVbWFeXeln9BJXqBa76%2F027ab8d7dc7cdb4ab9c09c0a057af2e7.png?alt=media&token=f5b5ceea-a420-4f3e-9d25-eef821d45145)
+
 ## シングルスレッド
+
 Node.js はシングルスレッドで動作します。つまりは、一度に 1 つの処理しかできないということです。しかし、それでは困るので（商品一覧ページを閲覧するために、他の誰かが商品の購入が完了するのを待ちたいですか？）ノンブロッキング I/O がそれを解決します。
 ノンブロッキング I/O は、データの送受信（I/O)の完了を待たず（ブロックせず）に、次の処理を受け付け、並列に実行します。前の処理が終わったら、その結果はコールバックで受け取ります。
 
 ## イベント駆動
+
 イベント駆動とは、イベントや状態の変化によって決定されるアプリケーションのフロー制御です。例えば、フロントエンドで使用される JavaScript はユーザーの「クリック」や「マウスオーバー」といったイベントによって動作します。イベントを監視して、イベントを検知したらコールバックを呼び出します。
 
 Node.js のイベントループは無限に繰り返し実行されています。サーバーによってトリガされるイベント（http リクエストなど）を監視し、イベントを検知した場合にはイベントループのキューへ入れられます。キューに入ったタスク（コールバック）が順番に実行されます。
@@ -31,7 +35,7 @@ Node.js をサーバーサイドの言語として採用する利点として、
 
 - チャット機能や連続的なストリーミングを実装する際に有利。WebSocket 通信を簡単に記述できる Socket.io というライブラリがあります。
 - 大量のリクエストを処理することができる
-- ライブラリ/エコシステできるライブラリムが（npm）が充実している
+- ライブラリ/エコシステムが（npm）が充実している
 - フロントエンド/サーバーサイドで同じ言語を使用できるため、学習コストが低い
 
 # Node.jsのインストール
@@ -71,17 +75,19 @@ npm -v
 
 ```javascript
 // httpモジュールをロード
-const http = require('http')
-const port = 3000
+const http = require("http");
+const port = 3000;
 
-http.createServer((req, res) => {
-  // レスポンスヘッダー
-  res.writeHead(200, {
-    'Content-Type': 'text/html'
+http
+  .createServer((req, res) => {
+    // レスポンスヘッダー
+    res.writeHead(200, {
+      "Content-Type": "text/html",
+    });
+    // レスポンスボディ
+    res.end("<h1>Hello World</h1>");
   })
-  // レスポンスボディ
-  res.end('<h1>Hello World</h1>')
-}).listen(port) // ポート3000で待ち受ける
+  .listen(port); // ポート3000で待ち受ける
 ```
 
 HTTP を使って Web で通信するには、`http` モジュールを利用します。`http` モジュールは、Node.js もコアライブラリの 1 つであるため、Node.js をインストールした際に同時にインストールされています。
@@ -107,7 +113,7 @@ Node.js でモジュールをインストールする際には、CommonJS 仕様
 このコードを実行するには、ファイルに保存して（ここでは `main.js` という名前にしました）ターミナル上で `node <ファイル名>` で実行します。ファイル名の `.js` は省略しても構いません。
 
 ```sh
-node main 
+node main
 ```
 
 無事実行できたら、ブラウザで[http://localhost:3000/](http://localhost:3000/)をアクセスしてみましょう。Hello World と表示されているはずです。
@@ -120,18 +126,20 @@ node main
 リクエストのログを出力してみましょう。
 
 ```javascript
-const http = require('http')
-const port = 3000
+const http = require("http");
+const port = 3000;
 
-http.createServer((req, res) => {
-  res.writeHead(200, {
-    'Content-Type': 'text/html'
+http
+  .createServer((req, res) => {
+    res.writeHead(200, {
+      "Content-Type": "text/html",
+    });
+    console.log(req.method);
+    console.log(req.url);
+    console.log(req.headers);
+    res.end("<h1>Hello World</h1>");
   })
-  console.log(req.method)
-  console.log(req.url)
-  console.log(req.headers)
-  res.end('<h1>Hello World</h1>')
-}).listen(port)
+  .listen(port);
 ```
 
 `req.method` はリクエストメソッド、`req.url` はリクエストした URL、`req.headers` はリクエストヘッダーです。
@@ -176,34 +184,36 @@ GET
 どのルートにもあてはまらなかった場合には、コンテンツが見つからなかったことを表すエラーコド「404」を返します。
 
 ```javascript
-const http = require('http')
-const port = 3000
+const http = require("http");
+const port = 3000;
 
-http.createServer((req, res) => {
-  if (req.url === '/') {
-    res.writeHead(200, {
-      'Content-Type': 'text/html'
-    })
-    res.end('<h1>Hello World</h1>')
-  } else if (req.url === '/users') {
-    res.writeHead(200, {
-      'Content-Type': 'text/html'
-    })
-    res.end(`
+http
+  .createServer((req, res) => {
+    if (req.url === "/") {
+      res.writeHead(200, {
+        "Content-Type": "text/html",
+      });
+      res.end("<h1>Hello World</h1>");
+    } else if (req.url === "/users") {
+      res.writeHead(200, {
+        "Content-Type": "text/html",
+      });
+      res.end(`
       <h1>Users</h1>
       <ul>
         <li>Jone</li>
         <li>Aaron</li>
         <li>Abel</li>
       </ul>
-    `)
-  } else {
-    res.writeHead(400, {
-      'Content-Type': 'text/html'
-    })
-    res.end('<h1>Not Found!</h1>')
-  }
-}).listen(port)
+    `);
+    } else {
+      res.writeHead(400, {
+        "Content-Type": "text/html",
+      });
+      res.end("<h1>Not Found!</h1>");
+    }
+  })
+  .listen(port);
 ```
 
 サーバーを再起動して、`/users` や存在しないルートを訪問してみてください。
@@ -228,16 +238,16 @@ http.createServer((req, res) => {
 例として、`index.html` を次のように作成しました。
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page</title>
-</head>
-<body>
-  <h1>Welcome!</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+  </body>
 </html>
 ```
 
@@ -258,47 +268,49 @@ ECMAScript 2015（ES2015）で `Promise` が仕様に入るまで、非同期処
 最終的なコードは次のようになります。
 
 ```javascript
-const http = require('http')
-const port = 3000
-const fs = require('fs')
+const http = require("http");
+const port = 3000;
+const fs = require("fs");
 
-http.createServer((req, res) => {
-  if (req.url === '/') {
-    fs.readFile('views/index.html', (error, data) => {
-      console.log(error)
-      if (!error) {
-        res.writeHead(200, {
-          'Content-Type': 'text/html'
-        })
-        res.end(data)
-      } else {
-        res.writeHead(404, {
-          'Content-Type': 'text/html'
-        })
-        res.end('<h1>Not Found!</h1>')
-      }
-    })
-  } else if (req.url === '/users') {
-    fs.readFile('./views/users.html', (error, data) => {
-      if (!error) {
-        res.writeHead(200, {
-          'Content-Type': 'text/html'
-        })
-        res.end(data)
-      } else {
-        res.writeHead(404, {
-          'Content-Type': 'text/html'
-        })
-        res.end('<h1>Not Found!</h1>')
-      }
-    })
-  } else {
-    res.writeHead(404, {
-      'Content-Type': 'text/html'
-    })
-    res.end('<h1>Not Found!</h1>')
-  }
-}).listen(port)
+http
+  .createServer((req, res) => {
+    if (req.url === "/") {
+      fs.readFile("views/index.html", (error, data) => {
+        console.log(error);
+        if (!error) {
+          res.writeHead(200, {
+            "Content-Type": "text/html",
+          });
+          res.end(data);
+        } else {
+          res.writeHead(404, {
+            "Content-Type": "text/html",
+          });
+          res.end("<h1>Not Found!</h1>");
+        }
+      });
+    } else if (req.url === "/users") {
+      fs.readFile("./views/users.html", (error, data) => {
+        if (!error) {
+          res.writeHead(200, {
+            "Content-Type": "text/html",
+          });
+          res.end(data);
+        } else {
+          res.writeHead(404, {
+            "Content-Type": "text/html",
+          });
+          res.end("<h1>Not Found!</h1>");
+        }
+      });
+    } else {
+      res.writeHead(404, {
+        "Content-Type": "text/html",
+      });
+      res.end("<h1>Not Found!</h1>");
+    }
+  })
+  .listen(port);
 ```
 
 `fs.readFile()` のコールバックのエラーが存在しないときには通常のレスポンスを送り、エラーがあったときには 404 を返します。
