@@ -12,10 +12,6 @@ const meta: Meta<Card> = {
       control: { type: "array" },
     },
     createdAt: { control: { type: "date" } },
-    preview: {
-      control: { type: "boolean" },
-      describe: "下書き記事のプレビューかどうか",
-    },
   },
 };
 
@@ -299,6 +295,5 @@ Qiitaに投稿すると、自分のコードやノウハウを見やすい形で
       },
     ],
     createdAt: new Date().toISOString(),
-    preview: true,
   },
 };
