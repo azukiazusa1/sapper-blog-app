@@ -5,13 +5,12 @@ slug: "invokers-to-add-interactions-without-javascript"
 about: "Invokers は JavaScript なしでインタラクションを追加するための提案です。`<button>` 要素に `invoketarget` 属性を指定することで、値として指定した id を持つ `<dialog>` などの要素の開閉状態を切り替えることが可能となります。"
 createdAt: "2023-10-22T10:37+09:00"
 updatedAt: "2023-10-22T10:37+09:00"
-tags: [HTML]
+tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3zkGp3ZkX4p7ExPUT1ZvhJ/513dd954ebf55d5a8cad38b534bacd39/susuki_suzumushi_11223.png"
-  title: "鈴虫とすすきのイラスト"
+  title: "鈴虫とススキのイラスト"
 published: true
 ---
-
 !> `invoketarget`、`interesttarget` 属性は 2023 年 10 月 22 日現在実装されていません。
 
 `<button>` 要素に　`invoketarget` 属性を指定することにより、JavaScript を削減し、より宣言的な方法で UI にインタラクションを追加できます。下記の例では `invoketarget` 属性に `<dialog>` の id を指定することで、`<button>` 要素をクリックしたときに `<dialog>` 要素を開くことができます。
