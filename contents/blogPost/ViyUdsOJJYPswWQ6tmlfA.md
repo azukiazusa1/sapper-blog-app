@@ -12,7 +12,7 @@ thumbnail:
 published: true
 ---
 
-!> `invoketarget` 属性は 2023 年 10 月 22 日現在実装されていません。
+!> `invoketarget`、`interesttarget` 属性は 2023 年 10 月 22 日現在実装されていません。
 
 `<button>` 要素に　`invoketarget` 属性を指定することにより、JavaScript を削減し、より宣言的な方法で UI にインタラクションを追加できます。下記の例では `invoketarget` 属性に `<dialog>` の id を指定することで、`<button>` 要素をクリックしたときに `<dialog>` 要素を開くことができます。
 
@@ -22,7 +22,7 @@ published: true
 <dialog id="dialog">Content</dialog>
 ```
 
-また `interesttarget` 属性により、インタラクティブな要素に対してホバー、フォーカスをした際にツールチップを表示する提案もあります。インタラクティブな要素は `<button>`　に限らず、以下の要素が対象となります。
+`interesttarget` 属性は、インタラクティブな要素に対してホバー、フォーカスをした際にツールチップを表示する提案です。インタラクティブな要素は `<button>`　に限らず、以下の要素が対象となります。
 
 - `<a>`
 - `<area>`
