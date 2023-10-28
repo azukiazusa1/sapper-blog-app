@@ -11,7 +11,6 @@ thumbnail:
   title: "ハロウィンのかぼちゃのイラスト"
 published: true
 ---
-
 ## TL;DR
 
 1. `.git-blame-ignore-revs` という名前のファイルを作成して、除外するコミットのハッシュを記述する
