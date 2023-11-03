@@ -25,7 +25,7 @@
 >
   最新記事
 </h2>
-<div class="container my-4 md:mx-auto">
+<div class="container mb-4 mt-8 md:mx-auto">
   <PostList posts={latestPosts.blogPostCollection.items} />
 </div>
 <div class="flex flex-row-reverse">

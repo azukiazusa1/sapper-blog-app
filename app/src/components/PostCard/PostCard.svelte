@@ -14,9 +14,8 @@
   export let lazy = true;
 </script>
 
-<!-- なぜか preload すると View Transition API がバグる -->
 <article
-  class="m-auto h-full w-10/12 overflow-hidden rounded-lg border dark:border-zinc-700 md:w-full"
+  class="m-auto w-10/12 rounded-lg border dark:border-zinc-700 md:w-full"
 >
   <a href={`/blog/${slug}`} aria-hidden="true">
     <Image
@@ -42,19 +41,28 @@
 
   {#if !small}
     <p
-      class="mx-4 break-words text-sm text-black text-opacity-80 dark:text-gray-50 dark:text-opacity-80"
+      class="mx-4 h-fit break-words text-sm text-black text-opacity-80 dark:text-gray-50 dark:text-opacity-80"
       style:--tag="about-{slug}"
     >
       {about}
     </p>
-
-    <footer
-      class="mt-2 flex flex-wrap items-center p-2 leading-none md:p-4"
-      style:--tag="tag-{slug}"
-    >
-      {#each tags as tag (tag.slug)}
-        <Tag name={tag.name} slug={tag.slug} />
-      {/each}
-    </footer>
   {/if}
+
+  <footer
+    class="flex flex-wrap items-center p-2 leading-none md:p-4"
+    style:--tag="tag-{slug}"
+  >
+    {#each tags as tag (tag.slug)}
+      <Tag name={tag.name} slug={tag.slug} />
+    {/each}
+  </footer>
 </article>
+
+<style>
+  article {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    gap: 1rem;
+  }
+</style>
