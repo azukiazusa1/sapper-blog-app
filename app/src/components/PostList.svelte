@@ -15,7 +15,7 @@
   export let small = false;
 </script>
 
-<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class="grid gap-6 px-6">
   {#each posts as post, i (post.slug)}
     <PostCard
       title={post.title}
@@ -29,3 +29,9 @@
     />
   {/each}
 </div>
+
+<style>
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+</style>
