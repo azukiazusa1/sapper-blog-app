@@ -11,6 +11,7 @@ thumbnail:
   title: "ハロウィンのおばけのイラスト"
 published: true
 ---
+
 Next.js の [Server Actions](https://nextjs.org/docs/app/api-reference/functions/server-actions) でフォームを作成する際に、どのような方法でバリデーションを行い、エラーメッセージを表示する際にどのような手段が考えられるでしょうか。
 
 最もシンプルな方法は `required` 属性や `input type="email"` などの HTML のバリデーションを利用することです。HTML のバリデーションは追加の実装を行わずともエラーメッセージを表示したり、フォームの送信をブロックできるため、基本的なバリデーションには十分です。またフォームの検証状態が支援技術に伝えられるため、アクセシビリティの観点からも有効です。
@@ -35,7 +36,7 @@ Server Actions によるフォームにおいては、サーバーサイドで�
 第 1 引数にフォームアクションを、第 2 引数には状態の初期値を渡します。フックの戻り値はタプルであり、第 1 要素現在の状態を、第 2 要素にはフォームアクションを返します。
 
 ```jsx
-const [state, state] = useFormState(action, initialState);
+const [state, dispatch] = useFormState(action, initialState);
 ```
 
 ### 基本的な使い方
