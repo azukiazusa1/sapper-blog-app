@@ -30,8 +30,5 @@ export default {
     process.env.VERCEL_ENV === "production"
       ? new GitHubRepository()
       : new MockGitHubRepository(),
-  [ANALYTICS_DATA]:
-    process.env.VERCEL_ENV === "production"
-      ? new AnalyticsDataRepository()
-      : new MockAnalyticsDataRepository(),
+  [ANALYTICS_DATA]: new AnalyticsDataRepository(),
 } satisfies Repositories;
