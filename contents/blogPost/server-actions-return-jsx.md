@@ -11,7 +11,6 @@ thumbnail:
   title: "コスモスのイラスト"
 published: true
 ---
-
 Server Actions の戻り値には、サーバーからクライアントにデータを渡せるように、シリアライズ可能な形式である必要があります。具体的には、以下の型をサポートしています。
 
 - Primitives
