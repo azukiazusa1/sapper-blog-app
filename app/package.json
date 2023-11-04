@@ -99,7 +99,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "serve": "^14.1.2",
-    "storybook": "^7.0.0-beta.50",
+    "storybook": "^7.0.0-beta.user-valid-and-user-invalid-pseudo-classes.md50",
     "storybook-addon-themes": "^6.1.0",
     "svelte": "^4.0.0",
     "svelte-check": "^3.0.1",
