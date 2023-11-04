@@ -27,24 +27,28 @@ export class AnalyticsDataRepository
           endDate: "today",
         },
       ],
+      dimensionFilter: {
+        filter: {
+          fieldName: "pagePath",
+          stringFilter: {
+            value: "/blog/",
+            matchType: "BEGINS_WITH",
+          },
+        },
+      },
       limit: 10,
     });
 
     const rows = response[0].rows ?? [];
-    const popularPosts: PopularPost[] = rows
-      .map((row) => {
-        const [path, title] = row.dimensionValues;
-        const [views] = row.metricValues;
-        return {
-          title: title.value || "",
-          path: path.value || "",
-          views: Number(views.value ?? 0),
-        };
-      })
-      // /blog 以下の記事のみを取得する
-      .filter((post) => {
-        return post.path.startsWith("/blog/") && post.path !== "/blog/";
-      });
+    const popularPosts: PopularPost[] = rows.map((row) => {
+      const [path, title] = row.dimensionValues;
+      const [views] = row.metricValues;
+      return {
+        title: title.value || "",
+        path: path.value || "",
+        views: Number(views.value ?? 0),
+      };
+    });
 
     return popularPosts;
   }

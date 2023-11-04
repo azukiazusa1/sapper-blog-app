@@ -1,0 +1,54 @@
+<form>
+  <h2>Login</h2>
+
+  <div>
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      aria-describedby="email-error"
+    />
+  </div>
+  <p role="alert" id="email-error" class="error">
+    Please enter a valid email address.
+  </p>
+
+  <div>
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      required
+      aria-describedby="password-error"
+    />
+  </div>
+  <p role="alert" id="password-error" class="error">
+    Please enter a valid password.
+  </p>
+
+  <div>
+    <button type="submit">Login</button>
+  </div>
+</form>
+
+<style>
+  #email:invalid {
+    border: 2px solid red;
+  }
+
+  #password:invalid {
+    border: 2px solid red;
+  }
+
+  .error {
+    display: none;
+    color: red;
+  }
+
+  div:has(:user-invalid) .error {
+    display: block;
+  }
+</style>
