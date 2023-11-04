@@ -31,8 +31,8 @@ export class AnalyticsDataRepository
         filter: {
           fieldName: "pagePath",
           stringFilter: {
-            value: "/blog/",
-            matchType: "BEGINS_WITH",
+            value: "^/blog/.+$",
+            matchType: "FULL_REGEXP",
           },
         },
       },
