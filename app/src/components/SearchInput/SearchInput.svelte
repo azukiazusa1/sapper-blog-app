@@ -1,6 +1,7 @@
 <script lang="ts">
   import SearchIcon from "../Icons/Search.svelte";
   export let value = "";
+  export let required = false;
 </script>
 
 <div
@@ -12,11 +13,12 @@
     on:blur
     class="h-10 w-full rounded-l-lg px-5 pr-16 focus:outline-none dark:bg-zinc-900"
     type="search"
-    name="search"
+    name="q"
     placeholder="Search"
     autocomplete="off"
     aria-label="search"
     enterkeyhint="search"
+    {required}
   />
   <button
     type="submit"

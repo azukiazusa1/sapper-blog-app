@@ -14,8 +14,6 @@
     loading = false;
   };
 
-  $: params = new URLSearchParams({ q: value });
-
   $: {
     if (value.trim()) {
       search();
@@ -37,13 +35,8 @@
   const handleSelect = (e: CustomEvent<Item>) => {
     goto(`/blog/${e.detail.key}`);
   };
-
-  const handleSubmit = () => {
-    if (!value.trim()) return;
-    goto(`/blog/search?${params}`);
-  };
 </script>
 
-<form role="search" on:submit|preventDefault={handleSubmit}>
-  <Combobox bind:value on:select={handleSelect} {items} {loading} />
+<form action="/blog/search" method="get" role="search">
+  <Combobox bind:value on:select={handleSelect} {items} {loading} required />
 </form>
