@@ -3,6 +3,7 @@
   export let value = "";
   export let placeholder = "";
   export let name = "";
+  export let required = false;
   export let isOpen = false;
   export let inputId = "";
   export let listboxId = "";
@@ -30,6 +31,7 @@
     type="text"
     id={inputId}
     {name}
+    {required}
     {placeholder}
     role="combobox"
     aria-autocomplete="both"

@@ -8,6 +8,7 @@
   }>();
 
   export let value = "";
+  export let required = false;
   export let loading = false;
   export let items: Item[] = [];
 
@@ -114,6 +115,8 @@
   {listboxId}
   {optionId}
   {activeIndex}
+  {required}
+  name="q"
   placeholder="Search"
 />
 {#if isOpen}
