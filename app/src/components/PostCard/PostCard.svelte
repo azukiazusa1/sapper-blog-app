@@ -14,7 +14,7 @@
   export let lazy = true;
 </script>
 
-<article class="m-auto rounded-lg border dark:border-zinc-700">
+<article class="m-auto w-full rounded-lg border dark:border-zinc-700">
   <a href={`/blog/${slug}`} aria-hidden="true">
     <Image
       {slug}
