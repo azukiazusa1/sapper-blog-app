@@ -5,13 +5,12 @@ slug: "why-use-server-actions"
 about: "Next.js 14 の Server Actions の stable リリースに発表は大きな反響を呼びました。特に `<button>` の `formAction` 属性内で直接 SQL クエリを実行するコードは多くの人に衝撃を与えていました。Server Actions の是非について語る時、導入の背景にユーザー体験の向上があるという観点を忘れてはいけません。また、セキュリティ上の観点についてどのように考えるべきでしょうか？"
 createdAt: "2023-11-12T14:10+09:00"
 updatedAt: "2023-11-12T14:10+09:00"
-tags: ["next.js", "Server Actions"]
+tags: ["Next.js", "Server Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6oHTYTyG6RM7lw4zKnsQE8/c17eb5c6d66837ffa57e49974a675fac/bird_hirenjaku_13695-768x640.png"
   title: "かわいいヒレンジャクのイラスト"
 published: true
 ---
-
 [Next.js 14](https://nextjs.org/blog/next-14) の Server Actions の stable リリースに発表は大きな反響を呼びました。
 
 特に `<button>` の `formAction` 属性内で直接 SQL クエリを実行するコードは多くの人に衝撃を与えていました。`"use server;"` の部分を PHP やバイナリに置き換えると行った多くのミームも生まれました。
