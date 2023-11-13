@@ -118,6 +118,7 @@ import { useRouter } from "next/router";
 
 function Form() {
   const [tweet, setTweet] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
