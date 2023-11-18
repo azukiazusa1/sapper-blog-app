@@ -119,7 +119,7 @@ https://open-ui.org/components/combobox.explainer/#anatomy より引用。
 
 複数選択可能な `multiple` 属性が今後追加される予定です。
 
-##　アクセシビリティの考慮事項
+## アクセシビリティの考慮事項
 
 `<combobox>` 要素のキーボード操作は [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) のコンボボックスのパターンに従います。具体的には、以下のキーボード操作がサポートされています。
 
