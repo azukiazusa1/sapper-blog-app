@@ -9,9 +9,8 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4iPhizXr67YiwF2rEDUN4s/1ebad5ee0a7515b18d4f526db3a756c6/castella_15340.png"
   title: "カステラのイラスト"
-published: false
+published: true
 ---
-
 コンボボックスとは、テキストボックスとドロップダウンリストを組み合わせた UI コンポーネントです。コンボボックスはユーザーがテキストボックスに入力した文字列に基づいて、ドロップダウンリストのアイテムをフィルタリングできます。
 
 [Open UI](https://open-ui.org/) グループより、コンボボックスを実現するための [`<combobox>`](https://open-ui.org/components/combobox.explainer/) 要素が提案されています。この要素は、HTML の標準でコンボボックスを実現することを目的としています。
