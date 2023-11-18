@@ -9,7 +9,7 @@
 
 <li class="mb-10 ms-6">
   <span
-    class="absolute -start-1.5 mt-2 flex h-3 w-3 items-center justify-center rounded-full bg-indigo-700 ring-2 ring-white dark:ring-gray-900"
+    class="ring-3 absolute -start-1.5 mt-2 flex h-3 w-3 items-center justify-center rounded-full bg-indigo-700 ring-white dark:ring-gray-900"
   >
   </span>
   <h3

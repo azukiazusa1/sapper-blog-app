@@ -69,4 +69,6 @@
   登壇資料
 </h2>
 
-<TalkTimelines />
+<div class="px-4">
+  <TalkTimelines />
+</div>
