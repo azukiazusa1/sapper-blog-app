@@ -4,6 +4,7 @@
   import PostList from "../components/PostList.svelte";
   import Link from "../components/Link/Link.svelte";
   import type { PageData } from "./$types";
+  import TalkTimelines from "../components/TalkTimelines.svelte";
 
   export let data: PageData;
   $: ({ latestPosts, popularPosts } = data);
@@ -60,4 +61,14 @@
       </li>
     {/each}
   </ol>
+</div>
+
+<h2
+  class="my-10 max-w-2xl text-2xl font-extrabold leading-none dark:text-white"
+>
+  登壇資料
+</h2>
+
+<div class="px-4">
+  <TalkTimelines />
 </div>
