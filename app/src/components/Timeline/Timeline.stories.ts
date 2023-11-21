@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/svelte";
 import Timeline from "./Timeline.svelte";
 
 const meta: Meta<Timeline> = {
-  title: "Time",
+  title: "Timline",
   component: Timeline,
   tags: ["autodocs"],
   argTypes: {
