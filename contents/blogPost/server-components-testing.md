@@ -5,13 +5,12 @@ slug: "server-components-testing"
 about: "現代におけるコンポーネントのテストは Testing Library を用いてテストを行うことが一般的です。しかし、2023 年　11 月現在、Testing Library はまだ Server Components のテストを十分にサポートしていません。そのため、Server Components のテストを行うには、別の方法を用いる必要があります。この記事では、Testing Library を用いずに Server Components のテストを行う方法について説明します。"
 createdAt: "2023-11-26T14:21+09:00"
 updatedAt: "2023-11-26T14:21+09:00"
-tags: ["Next.js", "React", "Playwright", "テスト"]
+tags: ["Next.js", "React", "playwright", "テスト"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7tWQTtv8kLxXKOQz2ZW3uH/7ee0bb4945c1c5efb95a314685cf5552/kinoko_autumn_onpu_8930.png"
-  title: "きのこと音楽のイラスト"
+  title: "キノコと音楽のイラスト"
 published: true
 ---
-
 現代では React におけるコンポーネントのテストは [Testing Library](https://testing-library.com/) を用いて、ユーザーの視点からテストを行うことが一般的です。`getByRole` のようなユーザーの視点のセレクタなどを提供しているため、実装の詳細に立ち入らずにテストを書けることが特徴です。
 
 しかし、Server Components においては、2023 年　11 月現在、Testing Library はまだ Server Components のテストを十分にサポートしていません。そのため、Server Components のテストを行うには、別の方法を用いる必要があります。
