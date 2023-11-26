@@ -1,5 +1,5 @@
 import { setupServer } from "msw/node";
-import { HttpResponse, http } from "msw";
+import { HttpResponse, StrictResponse, http } from "msw";
 import {
   afterAll,
   beforeAll,
@@ -179,106 +179,113 @@ afterAll(() => {
 describe("getBlogPosts", () => {
   test("blog post を取得できる", async () => {
     server.use(
-      http.get(contentful("/entries"), ({ request }) => {
-        const url = new URL(request.url);
-        if (url.searchParams.get("content_type") === "tag") {
-          return HttpResponse.json({
-            items: tags,
-          });
-        }
+      http.get(
+        contentful("/entries"),
+        ({
+          request,
+        }): StrictResponse<
+          { items: ContentfulTag[] } | { items: ContentfulBlogPost[] }
+        > => {
+          const url = new URL(request.url);
+          if (url.searchParams.get("content_type") === "tag") {
+            return HttpResponse.json({
+              items: tags,
+            });
+          }
 
-        return HttpResponse.json({
-          items: [
-            {
-              metadata: { tags: [] },
-              sys: createDummyMetaSysProps({ id: "blog1" }),
-              fields: {
-                title: {
-                  "en-US": "title",
-                },
-                about: {
-                  "en-US": "about",
-                },
-                createdAt: {
-                  "en-US": "2021-01-01",
-                },
-                updatedAt: {
-                  "en-US": "2021-01-02",
-                },
-                slug: {
-                  "en-US": "slug",
-                },
-                article: {
-                  "en-US": "article",
-                },
-                thumbnail: {
-                  "en-US": {
-                    sys: {
-                      id: "asset1",
-                      type: "Link",
-                      linkType: "Asset",
-                    },
+          return HttpResponse.json({
+            items: [
+              {
+                metadata: { tags: [] },
+                sys: createDummyMetaSysProps({ id: "blog1" }),
+                fields: {
+                  title: {
+                    "en-US": "title",
                   },
-                },
-                tags: {
-                  "en-US": [
-                    {
+                  about: {
+                    "en-US": "about",
+                  },
+                  createdAt: {
+                    "en-US": "2021-01-01",
+                  },
+                  updatedAt: {
+                    "en-US": "2021-01-02",
+                  },
+                  slug: {
+                    "en-US": "slug",
+                  },
+                  article: {
+                    "en-US": "article",
+                  },
+                  thumbnail: {
+                    "en-US": {
                       sys: {
-                        id: "tag1",
+                        id: "asset1",
                         type: "Link",
-                        linkType: "Entry",
+                        linkType: "Asset",
                       },
                     },
-                    {
-                      sys: {
-                        id: "tag2",
-                        type: "Link",
-                        linkType: "Entry",
+                  },
+                  tags: {
+                    "en-US": [
+                      {
+                        sys: {
+                          id: "tag1",
+                          type: "Link",
+                          linkType: "Entry",
+                        },
                       },
-                    },
-                  ],
-                },
-              },
-            },
-            {
-              metadata: { tags: [] },
-              sys: createDummyMetaSysProps({ id: "blog2" }),
-              fields: {
-                title: {
-                  "en-US": "title",
-                },
-                about: {
-                  "en-US": "about",
-                },
-                createdAt: {
-                  "en-US": "2021-01-01",
-                },
-                updatedAt: {
-                  "en-US": "2021-01-01",
-                },
-                slug: {
-                  "en-US": "slug",
-                },
-                article: {
-                  "en-US": "article",
-                },
-                thumbnail: {
-                  "en-US": {
-                    sys: {
-                      id: "asset1",
-                      type: "Link",
-                      linkType: "Asset",
-                    },
+                      {
+                        sys: {
+                          id: "tag2",
+                          type: "Link",
+                          linkType: "Entry",
+                        },
+                      },
+                    ],
                   },
                 },
-                tags: {
-                  "en-US": [],
+              },
+              {
+                metadata: { tags: [] },
+                sys: createDummyMetaSysProps({ id: "blog2" }),
+                fields: {
+                  title: {
+                    "en-US": "title",
+                  },
+                  about: {
+                    "en-US": "about",
+                  },
+                  createdAt: {
+                    "en-US": "2021-01-01",
+                  },
+                  updatedAt: {
+                    "en-US": "2021-01-01",
+                  },
+                  slug: {
+                    "en-US": "slug",
+                  },
+                  article: {
+                    "en-US": "article",
+                  },
+                  thumbnail: {
+                    "en-US": {
+                      sys: {
+                        id: "asset1",
+                        type: "Link",
+                        linkType: "Asset",
+                      },
+                    },
+                  },
+                  tags: {
+                    "en-US": [],
+                  },
                 },
               },
-            },
-          ],
-        });
-      }),
+            ],
+          });
+        },
+      ),
     );
 
     const result = await getBlogPosts();
@@ -483,7 +490,7 @@ describe("createBlogPost", () => {
     const body = vi.fn();
     server.use(
       http.put(contentful("/entries/:entryId"), async ({ request }) => {
-        const _body = await request.json();
+        const _body = (await request.json()) as any;
         body(_body);
         return HttpResponse.json(
           {
