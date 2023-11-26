@@ -11,6 +11,7 @@ thumbnail:
   title: "キノコと音楽のイラスト"
 published: true
 ---
+
 現代では React におけるコンポーネントのテストは [Testing Library](https://testing-library.com/) を用いて、ユーザーの視点からテストを行うことが一般的です。`getByRole` のようなユーザーの視点のセレクタなどを提供しているため、実装の詳細に立ち入らずにテストを書けることが特徴です。
 
 しかし、Server Components においては、2023 年　11 月現在、Testing Library はまだ Server Components のテストを十分にサポートしていません。そのため、Server Components のテストを行うには、別の方法を用いる必要があります。
@@ -264,9 +265,9 @@ describe("ArticleListContainer", () => {
 });
 ```
 
-先程の TestingLibrary でテストしていた例のように、非同期コンポーネントをネストさせるために `<Author>` コンポーネントを表示するように `<ArticleItem>` コンポーネントを変更を行ってみましょう。単に `<Author>` コンポーネントを表示するだけですと、やはりテストが失敗してしまいます。
+先程の TestingLibrary でテストしていた例と同じく、非同期コンポーネントをネストさせるために `<Author>` コンポーネントを表示変更を行ってみましょう。単に `<Author>` コンポーネントを表示するだけですと、やはりテストが失敗してしまいます。
 
-そこで、`<ArticlePresentation>`　コンポーネントでは、`<Author>` コンポーネントを React Node の Props として渡すように修正を行います。
+そこで、`<ArticlePresentation>` コンポーネントでは、`<Author>` コンポーネントを React Node の Props として渡すように修正を行います。
 
 ```tsx:app/ArticleList.tsx
 export const ArticleListPresentation = ({
@@ -313,7 +314,7 @@ export const ArticleListContainer = async () => {
     <ArticleListPresentation
       articles={articles.map((article) => ({
         ...article,
-        Author: <Author userId={a.userId} />,
+        Author: <Author userId={article.userId} />,
       }))}
     />
   );
@@ -361,7 +362,7 @@ export default defineConfig({
 })
 ```
 
-テストコードを作成しましょ。`next/experimental/testmode/playwright` というモジュールからテストに必要な関数を import します。`test` 関数の第 2 引数のコールバック関数の引数として、`next` が渡されるのが特徴です。この `next` には `msw` との統合機能が備わっており、`next.onFetch` 関数により API のモックを行うことができます。
+テストコードを作成しましょう。`next/experimental/testmode/playwright` というモジュールからテストに必要な関数を import します。`test` 関数の第 2 引数のコールバック関数の引数として、`next` プロパティが渡されるのが特徴です。この `next` には `msw` との統合機能が備わっており、`next.onFetch` 関数により API のモックを行うことができます。
 
 ```tsx:app/ArticleList.test.tsx
 import { test } from "next/experimental/testmode/playwright";
