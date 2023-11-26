@@ -2,13 +2,13 @@
 id: 9v9fGv_kT5zN14cBSa4PQ
 title: "React Server Components のテスト手法"
 slug: "server-components-testing"
-about: "現代では React におけるコンポーネントのテストは Testing Library を用いてユーザーの視点からテストを行うことが一般的です。しかし、Server Components においては、2023 年　11 月現在、Testing Library はまだ Server Components のテストを十分にサポートしていません。そのため、Server Components のテストを行うには、別の方法を用いる必要があります。この記事では、Testing Library を用いずに Server Components のテストを行う方法について説明します。"
+about: "現代におけるコンポーネントのテストは Testing Library を用いてテストを行うことが一般的です。しかし、2023 年　11 月現在、Testing Library はまだ Server Components のテストを十分にサポートしていません。そのため、Server Components のテストを行うには、別の方法を用いる必要があります。この記事では、Testing Library を用いずに Server Components のテストを行う方法について説明します。"
 createdAt: "2023-11-25T14:21+09:00"
 updatedAt: "2023-11-25T14:21+09:00"
 tags: ["Next.js", "React", "Playwright", "テスト"]
 thumbnail:
-  url: ""
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7tWQTtv8kLxXKOQz2ZW3uH/7ee0bb4945c1c5efb95a314685cf5552/kinoko_autumn_onpu_8930.png"
+  title: "きのこと音楽のイラスト"
 published: true
 ---
 
@@ -108,9 +108,9 @@ describe("ArticleList", () => {
 });
 ```
 
-しかし、この方法にはいくつかの問題点が存在します。1 つ目の問題点は、`async` コンポーネントがネストしたときに動作しなくなるということです。今日のコンポーネントの設計では、親コンポーネントですべてのデータをあらかじめ取得しておいて子コンポーネントに渡すという設計は見直されており、子コンポーネントは自身でデータを取得するように設計され、データが本当に必要な場所で `fetch()` を行うようになってきています。
+しかし、この方法にはいくつかの問題点が存在します。1 つ目の問題点は、`async` コンポーネントがネストしたときに動作しなくなるということです。今日のコンポーネントの設計では、親コンポーネントですべてのデータをあらかじめ取得しておいて子コンポーネントに渡すという設計は見直されており、子コンポーネントは自身でデータを取得するように設計され、データが必要な場所で `fetch()` を行うようになってきています。
 
-つまりは、後から子コンポーネントで `fetch()` が必要になる場面はよくある出来事であり、このとき `async` コンポーネントがネストしてしまうようになってしまいます。そのため、コンポーネントのテストが意図せずに動作しなくなるおそれがあるという問題が発生することになります。
+後から子コンポーネントで `fetch()` が必要になる場面はよくある出来事であり、このとき `async` コンポーネントがネストしてしまうようになってしまいます。そのため、コンポーネントのテストが意図せずに動作しなくなるおそれがあるという問題が発生することになります。
 
 具体例を見てみましょう。`<ArticleList>` コンポーネントの中で `<ArticleItem>` コンポーネントをレンダリングしています。この `<ArticleItem>` コンポーネントの中で、`<Author>` コンポーネントを表示するように変更してみましょう。`<Author>` コンポーネントでは `article` に含まれる `userId` から作者のデータを取得して表示するようになっています。
 
@@ -144,7 +144,7 @@ const Author = async ({ userId }: { userId: number }) => {
     ...
 ```
 
-またこのような方法はライブラリの正統な使い方ではないため、将来的に動作しなくなる可能性があります。そのため、この方法はあくまで一時的な対処療法として用いるべきです。次の章からは、Server Components のテストを行うための以下の 2 つｎ方法について説明します。
+またこのような方法はライブラリの正統な使い方ではないため、将来的に動作しなくなる可能性があります。そのため、この方法はあくまで一時的な対処療法として用いるべきです。次の章からは、Server Components のテストを行うための以下の 2 つ方法について説明します。
 
 - Container/Presentational Components パターン
 - Playwright による E2E レベルのテスト
@@ -402,6 +402,60 @@ test("should render a list of articles", async ({ page, next }) => {
   expect(page.getByRole("listitem")).toHaveLength(2);
 });
 ```
+
+または、`next` を使用せずに `next/experimental/testmode/playwright/msw` モジュールから `test` 関数を import することで、`msw` の API を使用して　API のモックを行えます。`next` をコールバック関数の引数として受け取るかわりに、`msw` という引数を受け取るようになります。
+
+```tsx:app/ArticleList.test.ts
+import {
+  test,
+  http,
+  HttpResponse,
+} from "next/experimental/testmode/playwright/msw";
+
+test.use({
+  mswHandlers: [
+    http.get("http://localhost:8080/articles", () => {
+      return HttpResponse.json([
+        {
+          id: 1,
+          title: "title1",
+          body: "body1",
+          userId: 1,
+        },
+        {
+          id: 2,
+          title: "title2",
+          body: "body2",
+          userId: 2,
+        },
+      ]);
+    }),
+    http.get("http://localhost:8080/users/*", () => {
+      return HttpResponse.json({
+        id: 1,
+        name: "name1",
+      });
+    }),
+  ],
+});
+
+test(`show "no articles" when there are no articles`, async ({ page, msw }) => {
+  msw.use(
+    http.get("http://localhost:8080/articles", () => {
+      return HttpResponse.json([]);
+    })
+  );
+
+  await page.goto("/");
+  expect(page.getByRole("listitem")).toHaveLength(2);
+});
+```
+
+## まとめ
+
+- React Server Components は現在 Testing Library によるテストをサポートしていない
+- Container/Presentational Components パターンを用いることで、非同期でデータを取得する処理と描画を担当する処理を分離してテストを行うことができる。この方法は、Storybook などのテスト以外の用途にも親和性が高い
+- Playwright による E2E レベルのテストを行うことで、Server Components が Client Components かの実装の詳細を気にせずにテストを実行できる
 
 ## 参考
 
