@@ -11,7 +11,6 @@ thumbnail:
   title: "キノコと音楽のイラスト"
 published: true
 ---
-
 現代では React におけるコンポーネントのテストは [Testing Library](https://testing-library.com/) を用いて、ユーザーの視点からテストを行うことが一般的です。`getByRole` のようなユーザーの視点のセレクタなどを提供しているため、実装の詳細に立ち入らずにテストを書けることが特徴です。
 
 しかし、Server Components においては、2023 年　11 月現在、Testing Library はまだ Server Components のテストを十分にサポートしていません。そのため、Server Components のテストを行うには、別の方法を用いる必要があります。
