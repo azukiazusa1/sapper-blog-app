@@ -356,45 +356,42 @@ describe("createBlogPost", () => {
         entryId(params["entryId"]);
         body(await request.json());
 
-        return HttpResponse.json(
-          {
-            metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: "blog2" }),
-            fields: {
-              title: {
-                "en-US": "title",
-              },
-              about: {
-                "en-US": "about",
-              },
-              createdAt: {
-                "en-US": "2021-01-01",
-              },
-              updatedAt: {
-                "en-US": "2021-01-01",
-              },
-              slug: {
-                "en-US": "slug",
-              },
-              article: {
-                "en-US": "article",
-              },
-              thumbnail: {
-                "en-US": {
-                  sys: {
-                    id: "asset1",
-                    type: "Link",
-                    linkType: "Asset",
-                  },
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({ id: "blog2" }),
+          fields: {
+            title: {
+              "en-US": "title",
+            },
+            about: {
+              "en-US": "about",
+            },
+            createdAt: {
+              "en-US": "2021-01-01",
+            },
+            updatedAt: {
+              "en-US": "2021-01-01",
+            },
+            slug: {
+              "en-US": "slug",
+            },
+            article: {
+              "en-US": "article",
+            },
+            thumbnail: {
+              "en-US": {
+                sys: {
+                  id: "asset1",
+                  type: "Link",
+                  linkType: "Asset",
                 },
               },
-              tags: {
-                "en-US": [],
-              },
+            },
+            tags: {
+              "en-US": [],
             },
           },
-          { status: 201 },
-        );
+        });
       }),
       http.put(
         contentful("/entries/:entryId/published"),
@@ -492,14 +489,11 @@ describe("createBlogPost", () => {
       http.put(contentful("/entries/:entryId"), async ({ request }) => {
         const _body = (await request.json()) as any;
         body(_body);
-        return HttpResponse.json(
-          {
-            metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: "blog2" }),
-            fields: _body.fields,
-          },
-          { status: 201 },
-        );
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({ id: "blog2" }),
+          fields: _body.fields,
+        });
       }),
       http.put(contentful("/entries/:entryId/published"), async () => {
         return new Response(undefined, { status: 200 });
@@ -553,26 +547,20 @@ describe("createBlogPost", () => {
       http.post(contentful("/entries"), async ({ request }) => {
         const body = (await request.json()) as any;
         tagBody(body);
-        return HttpResponse.json(
-          {
-            metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: "tag3", published: false }),
-            fields: body.fields,
-          },
-          { status: 201 },
-        );
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({ id: "tag3", published: false }),
+          fields: body.fields,
+        });
       }),
       http.put(contentful("/entries/:entryId"), async ({ request }) => {
         const _body = (await request.json()) as any;
         blogPostBody(_body);
-        return HttpResponse.json(
-          {
-            metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: "blog2" }),
-            fields: _body.fields,
-          },
-          { status: 201 },
-        );
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({ id: "blog2" }),
+          fields: _body.fields,
+        });
       }),
       http.put(contentful("/entries/:entryId/published"), async () => {
         return new Response(undefined, { status: 200 });
