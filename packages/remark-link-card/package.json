@@ -20,8 +20,7 @@
   "devDependencies": {
     "eslint": "^8.34.0",
     "eslint-config-custom": "^0.0.0",
-    "msw": "1.0.1",
-    "node-fetch": "^2.6.11",
+    "msw": "^2.0.9",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
     "rimraf": "^5.0.0",

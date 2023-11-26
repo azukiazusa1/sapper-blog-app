@@ -9,20 +9,13 @@ import {
 import { remark } from "remark";
 import markdown from "remark-parse";
 import html from "remark-html";
-import { rest } from "msw";
+import { HttpResponse, http } from "msw";
 import { setupServer } from "msw/node";
 import remarkLinkCard from "./index";
-import _fetch from "node-fetch";
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-global.fetch = _fetch;
 
 const server = setupServer(
-  rest.get("https://example.com", (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.text(`
+  http.get("https://example.com", () => {
+    return HttpResponse.text(`
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,11 +29,10 @@ const server = setupServer(
 <body>
 </body>
 </html>
-`),
-    );
+`);
   }),
-  rest.head("https://www.google.com/s2/favicons", (req, res, ctx) => {
-    return res(ctx.status(200));
+  http.head("https://www.google.com/s2/favicons", () => {
+    return new Response(null, { status: 200 });
   }),
 );
 
@@ -94,8 +86,8 @@ describe("remark-link-card", () => {
 
   test("ファビコン確認のリクエストに失敗した場合、ファビコンを表示しない", async () => {
     server.use(
-      rest.head("https://www.google.com/s2/favicons", (req, res, ctx) => {
-        return res(ctx.status(404));
+      http.head("https://www.google.com/s2/favicons", () => {
+        return new Response(null, { status: 404 });
       }),
     );
     const { value } = await processor.process(`
@@ -110,10 +102,8 @@ describe("remark-link-card", () => {
 
   test("画像の URL の形式が不正な場合、画像を表示しない", async () => {
     server.use(
-      rest.get("https://example.com", (req, res, ctx) => {
-        return res(
-          ctx.status(200),
-          ctx.text(`
+      http.get("https://example.com", () => {
+        return HttpResponse.text(`
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,8 +117,7 @@ describe("remark-link-card", () => {
 <body>
 </body>
 </html>
-`),
-        );
+`);
       }),
     );
     const { value } = await processor.process(`
@@ -144,10 +133,8 @@ describe("remark-link-card", () => {
 
   test("title,description はサニタイズされる", async () => {
     server.use(
-      rest.get("https://example.com", (req, res, ctx) => {
-        return res(
-          ctx.status(200),
-          ctx.text(`
+      http.get("https://example.com", () => {
+        return HttpResponse.text(`
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,8 +148,7 @@ describe("remark-link-card", () => {
 <body>
 </body>
 </html>
-`),
-        );
+`);
       }),
     );
     const { value } = await processor.process(`

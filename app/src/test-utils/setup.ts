@@ -1,10 +1,5 @@
 import { beforeAll, beforeEach, afterAll, vi } from "vitest";
-import _fetch from "node-fetch";
 import { server } from "./server";
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-global.fetch = _fetch;
 
 vi.mock("$env/static/private", () => ({
   API_KEY: "API_KEY",

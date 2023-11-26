@@ -1,5 +1,5 @@
 import { setupServer } from "msw/node";
-import { rest } from "msw";
+import { HttpResponse, StrictResponse, http } from "msw";
 import {
   afterAll,
   beforeAll,
@@ -59,115 +59,108 @@ const tags = [
 ] satisfies ContentfulTag[];
 
 const server = setupServer(
-  rest.get("https://api.contentful.com/spaces/:spaceId", (_, res, ctx) => {
-    return res(
-      ctx.json({
-        sys: {
-          type: "Space",
-          id: "space",
-          version: 3,
-          organization: {
-            sys: {
-              type: "Link",
-              linkType: "Organization",
-              id: "org-id",
-            },
-          },
-          createdAt: "2015-05-18T11:29:46.809Z",
-          createdBy: {
-            sys: {
-              type: "Link",
-              linkType: "User",
-              id: "user-id",
-            },
-          },
-          updatedAt: "2015-05-18T11:29:46.809Z",
-          updatedBy: {
-            sys: {
-              type: "Link",
-              linkType: "User",
-              id: "user-id",
-            },
+  http.get("https://api.contentful.com/spaces/:spaceId", () => {
+    return HttpResponse.json({
+      sys: {
+        type: "Space",
+        id: "space",
+        version: 3,
+        organization: {
+          sys: {
+            type: "Link",
+            linkType: "Organization",
+            id: "org-id",
           },
         },
-        name: "Contentful Example API",
-      }),
-    );
-  }),
-  rest.get(contentful(""), (_, res, ctx) => {
-    return res(
-      ctx.json({
-        sys: {
-          type: "Environment",
-          id: "staging",
-          version: 1,
-          space: {
-            sys: {
-              type: "Link",
-              linkType: "Space",
-              id: "space",
-            },
-          },
-          createdAt: "2015-05-18T11:29:46.809Z",
-          createdBy: {
-            sys: {
-              type: "Link",
-              linkType: "User",
-              id: "user-id",
-            },
-          },
-          updatedAt: "2015-05-18T11:29:46.809Z",
-          updatedBy: {
-            sys: {
-              type: "Link",
-              linkType: "User",
-              id: "user-id",
-            },
+        createdAt: "2015-05-18T11:29:46.809Z",
+        createdBy: {
+          sys: {
+            type: "Link",
+            linkType: "User",
+            id: "user-id",
           },
         },
-      }),
-    );
+        updatedAt: "2015-05-18T11:29:46.809Z",
+        updatedBy: {
+          sys: {
+            type: "Link",
+            linkType: "User",
+            id: "user-id",
+          },
+        },
+      },
+      name: "Contentful Example API",
+    });
   }),
-  rest.get(contentful("/entries"), (req, res, ctx) => {
-    if (req.url.searchParams.get("content_type") === "tag") {
-      return res(
-        ctx.json({
-          items: tags,
-        }),
-      );
+  http.get(contentful(""), () => {
+    return HttpResponse.json({
+      sys: {
+        type: "Environment",
+        id: "staging",
+        version: 1,
+        space: {
+          sys: {
+            type: "Link",
+            linkType: "Space",
+            id: "space",
+          },
+        },
+        createdAt: "2015-05-18T11:29:46.809Z",
+        createdBy: {
+          sys: {
+            type: "Link",
+            linkType: "User",
+            id: "user-id",
+          },
+        },
+        updatedAt: "2015-05-18T11:29:46.809Z",
+        updatedBy: {
+          sys: {
+            type: "Link",
+            linkType: "User",
+            id: "user-id",
+          },
+        },
+      },
+    });
+  }),
+  http.get(contentful("/entries"), ({ request }) => {
+    const url = new URL(request.url);
+    if (url.searchParams.get("content_type") === "tag") {
+      return HttpResponse.json({
+        items: tags,
+      });
     } else {
-      return res(ctx.status(404));
+      return new Response(undefined, { status: 404 });
     }
   }),
-  rest.get(contentful("/assets"), (_, res, ctx) => {
-    return res(
-      ctx.json({
-        items: [
-          {
-            sys: {
-              id: "asset1",
-              type: "Asset",
-              version: 1,
+  http.get(contentful("/assets"), () => {
+    return HttpResponse.json({
+      items: [
+        {
+          sys: {
+            id: "asset1",
+            type: "Asset",
+            version: 1,
+          },
+          fields: {
+            title: {
+              "en-US": "title",
             },
-            fields: {
-              title: {
-                "en-US": "title",
-              },
-              description: {
-                "en-US": "description",
-              },
-              file: {
-                "en-US": {
-                  url: "//images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
-                  fileName: "image.png",
-                  contentType: "image/png",
-                },
+            description: {
+              "en-US": "description",
+            },
+            file: {
+              "en-US": {
+                url: "//images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
+                fileName: "image.png",
+                contentType: "image/png",
               },
             },
           },
-        ],
-      }),
-    );
+        },
+      ],
+    });
   }),
 );
 
@@ -186,17 +179,21 @@ afterAll(() => {
 describe("getBlogPosts", () => {
   test("blog post を取得できる", async () => {
     server.use(
-      rest.get(contentful("/entries"), (req, res, ctx) => {
-        if (req.url.searchParams.get("content_type") === "tag") {
-          return res(
-            ctx.json({
+      http.get(
+        contentful("/entries"),
+        ({
+          request,
+        }): StrictResponse<
+          { items: ContentfulTag[] } | { items: ContentfulBlogPost[] }
+        > => {
+          const url = new URL(request.url);
+          if (url.searchParams.get("content_type") === "tag") {
+            return HttpResponse.json({
               items: tags,
-            }),
-          );
-        }
+            });
+          }
 
-        return res(
-          ctx.json<{ items: ContentfulBlogPost[] }>({
+          return HttpResponse.json({
             items: [
               {
                 metadata: { tags: [] },
@@ -286,9 +283,9 @@ describe("getBlogPosts", () => {
                 },
               },
             ],
-          }),
-        );
-      }),
+          });
+        },
+      ),
     );
 
     const result = await getBlogPosts();
@@ -313,26 +310,23 @@ describe("getBlogPosts", () => {
 
   test("published が false の場合 optional なフィールドがある", async () => {
     server.use(
-      rest.get(contentful("/entries"), (req, res, ctx) => {
-        if (req.url.searchParams.get("content_type") === "tag") {
-          return res(
-            ctx.json({
-              items: tags,
-            }),
-          );
+      http.get(contentful("/entries"), ({ request }) => {
+        const url = new URL(request.url);
+        if (url.searchParams.get("content_type") === "tag") {
+          return HttpResponse.json({
+            items: tags,
+          });
         }
 
-        return res(
-          ctx.json({
-            items: [
-              {
-                metadata: { tags: [] },
-                sys: createDummyMetaSysProps({ id: "blog1", published: false }),
-                fields: {},
-              },
-            ],
-          }),
-        );
+        return HttpResponse.json({
+          items: [
+            {
+              metadata: { tags: [] },
+              sys: createDummyMetaSysProps({ id: "blog1", published: false }),
+              fields: {},
+            },
+          ],
+        });
       }),
     );
 
@@ -357,57 +351,54 @@ describe("createBlogPost", () => {
     const body = vi.fn();
     const publish = vi.fn();
     server.use(
-      rest.put(contentful("/entries/:entryId"), async (req, res, ctx) => {
-        contentTypeHeader(req.headers.get("X-Contentful-Content-Type"));
-        entryId(req.params["entryId"]);
-        body(await req.json());
+      http.put(contentful("/entries/:entryId"), async ({ request, params }) => {
+        contentTypeHeader(request.headers.get("X-Contentful-Content-Type"));
+        entryId(params["entryId"]);
+        body(await request.json());
 
-        return res(
-          ctx.status(201),
-          ctx.json({
-            metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: "blog2" }),
-            fields: {
-              title: {
-                "en-US": "title",
-              },
-              about: {
-                "en-US": "about",
-              },
-              createdAt: {
-                "en-US": "2021-01-01",
-              },
-              updatedAt: {
-                "en-US": "2021-01-01",
-              },
-              slug: {
-                "en-US": "slug",
-              },
-              article: {
-                "en-US": "article",
-              },
-              thumbnail: {
-                "en-US": {
-                  sys: {
-                    id: "asset1",
-                    type: "Link",
-                    linkType: "Asset",
-                  },
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({ id: "blog2" }),
+          fields: {
+            title: {
+              "en-US": "title",
+            },
+            about: {
+              "en-US": "about",
+            },
+            createdAt: {
+              "en-US": "2021-01-01",
+            },
+            updatedAt: {
+              "en-US": "2021-01-01",
+            },
+            slug: {
+              "en-US": "slug",
+            },
+            article: {
+              "en-US": "article",
+            },
+            thumbnail: {
+              "en-US": {
+                sys: {
+                  id: "asset1",
+                  type: "Link",
+                  linkType: "Asset",
                 },
               },
-              tags: {
-                "en-US": [],
-              },
             },
-          }),
-        );
+            tags: {
+              "en-US": [],
+            },
+          },
+        });
       }),
-      rest.put(
+      http.put(
         contentful("/entries/:entryId/published"),
-        async (req, res, ctx) => {
-          publish(req.params["entryId"]);
+        async ({ params }) => {
+          publish(params["entryId"]);
 
-          return res(ctx.status(200));
+          return new Response(undefined, { status: 200 });
         },
       ),
     );
@@ -495,24 +486,18 @@ describe("createBlogPost", () => {
   test("タグ名は case insensitive で一致する", async () => {
     const body = vi.fn();
     server.use(
-      rest.put(contentful("/entries/:entryId"), async (req, res, ctx) => {
-        const _body = await req.json();
+      http.put(contentful("/entries/:entryId"), async ({ request }) => {
+        const _body = (await request.json()) as any;
         body(_body);
-        return res(
-          ctx.status(201),
-          ctx.json({
-            metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: "blog2" }),
-            fields: _body.fields,
-          }),
-        );
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({ id: "blog2" }),
+          fields: _body.fields,
+        });
       }),
-      rest.put(
-        contentful("/entries/:entryId/published"),
-        async (_, res, ctx) => {
-          return res(ctx.status(200));
-        },
-      ),
+      http.put(contentful("/entries/:entryId/published"), async () => {
+        return new Response(undefined, { status: 200 });
+      }),
     );
 
     await createBlogPost({
@@ -559,36 +544,27 @@ describe("createBlogPost", () => {
     const blogPostBody = vi.fn();
     const tagBody = vi.fn();
     server.use(
-      rest.post(contentful("/entries"), async (req, res, ctx) => {
-        const body = await req.json();
+      http.post(contentful("/entries"), async ({ request }) => {
+        const body = (await request.json()) as any;
         tagBody(body);
-        return res(
-          ctx.status(201),
-          ctx.json({
-            metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: "tag3", published: false }),
-            fields: body.fields,
-          }),
-        );
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({ id: "tag3", published: false }),
+          fields: body.fields,
+        });
       }),
-      rest.put(contentful("/entries/:entryId"), async (req, res, ctx) => {
-        const _body = await req.json();
+      http.put(contentful("/entries/:entryId"), async ({ request }) => {
+        const _body = (await request.json()) as any;
         blogPostBody(_body);
-        return res(
-          ctx.status(201),
-          ctx.json({
-            metadata: { tags: [] },
-            sys: createDummyMetaSysProps({ id: "blog2" }),
-            fields: _body.fields,
-          }),
-        );
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({ id: "blog2" }),
+          fields: _body.fields,
+        });
       }),
-      rest.put(
-        contentful("/entries/:entryId/published"),
-        async (_, res, ctx) => {
-          return res(ctx.status(200));
-        },
-      ),
+      http.put(contentful("/entries/:entryId/published"), async () => {
+        return new Response(undefined, { status: 200 });
+      }),
     );
 
     await createBlogPost({
@@ -647,34 +623,29 @@ describe("updateBlogPost", () => {
     const entryId = vi.fn();
     const body = vi.fn();
     server.use(
-      rest.get(contentful("/entries/:entryId"), (req, res, ctx) => {
-        return res(
-          ctx.json({
-            metadata: { tags: [] },
-            sys: createDummyMetaSysProps({
-              id: req.params["entryId"] as string,
-              published: false,
-            }),
-            fields: {},
+      http.get(contentful("/entries/:entryId"), ({ params }) => {
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({
+            id: params["entryId"] as string,
+            published: false,
           }),
-        );
+          fields: {},
+        });
       }),
-      rest.put(contentful("/entries/:entryId"), async (req, res, ctx) => {
-        entryId(req.params["entryId"]);
+      http.put(contentful("/entries/:entryId"), async ({ request, params }) => {
+        entryId(params["entryId"]);
 
-        const _body = await req.json();
+        const _body = await request.json();
         body(_body);
-        return res(
-          ctx.status(200),
-          ctx.json({
-            metadata: { tags: [] },
-            sys: createDummyMetaSysProps({
-              id: req.params["entryId"] as string,
-              published: false,
-            }),
-            fields: _body,
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({
+            id: params["entryId"] as string,
+            published: false,
           }),
-        );
+          fields: _body,
+        });
       }),
     );
 
