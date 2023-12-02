@@ -5,13 +5,12 @@ slug: "msw-v2-httpresponse-json-type-error"
 about: "MSW v2 の `HttpResponse.json()` の第 2 引数の型は `Response` オブジェクトの初期化時に渡すオプションを指定できます。しかし、tsconfig.json の設定によっては、この型がおかしくなることがあります。その場合には、`tsconfig.json` の `compilerOptions.lib` に `dom` を追加するのが一時的な対処法です。"
 createdAt: "2023-12-02T17:42+09:00"
 updatedAt: "2023-12-02T17:42+09:00"
-tags: ["TypeScript", "MSW"]
+tags: ["TypeScript", "msw"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/KtXARcFuPKOL6yOQYO21K/f34d366a5d51109a298e37ce305408be/wood_maki_illust_4174.png"
   title: "薪のイラスト"
 published: true
 ---
-
 ## TL;DR
 
 `tsconfig.json` の `compilerOptions.lib` に `dom` を追加する。
