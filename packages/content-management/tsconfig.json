@@ -5,7 +5,6 @@
     "esm": true
   },
   "compilerOptions": {
-    "module": "ES2022",
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "types": [
