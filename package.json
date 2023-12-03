@@ -18,7 +18,7 @@
   },
   "volta": {
     "node": "18.18.2",
-    "npm": "9.9.0"
+    "npm": "9.9.2"
   },
   "devDependencies": {
     "prettier": "^3.0.0",
