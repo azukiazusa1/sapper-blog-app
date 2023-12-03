@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node-lts-strictest-esm",
+  "extends": "tsconfig/base.json",
   "ts-node": {
     "swc": true,
     "esm": true
@@ -7,7 +7,6 @@
   "compilerOptions": {
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "ignoreDeprecations": "5.0",
     "types": [
       "vitest/importMeta"
     ]

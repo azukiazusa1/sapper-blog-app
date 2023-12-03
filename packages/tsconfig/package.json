@@ -8,8 +8,5 @@
   },
   "files": [
     "base.json"
-  ],
-  "dependencies": {
-    "@tsconfig/node-lts-strictest-esm": "^18.12.1"
-  }
+  ]
 }

@@ -1,12 +1,28 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@tsconfig/node-lts-strictest-esm",
   "compilerOptions": {
     "lib": ["esnext", "dom"],
+    "strict": true,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-    "ignoreDeprecations": "5.0"
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "isolatedModules": true,
+    "checkJs": true,
+    "forceConsistentCasingInFileNames": true,
   }
 }
