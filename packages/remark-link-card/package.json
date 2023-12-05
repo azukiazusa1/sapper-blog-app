@@ -12,7 +12,7 @@
     "format:check": "prettier --check --config=../../.prettierrc ./src",
     "format": "prettier --write --config=../../.prettierrc ./src",
     "dev": "tsc -w",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "prebuild": "rimraf build",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
