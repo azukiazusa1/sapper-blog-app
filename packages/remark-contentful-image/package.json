@@ -13,7 +13,7 @@
     "format": "prettier --write --config=../../.prettierrc ./src",
     "dev": "tsc -w",
     "prebuild": "rimraf build",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
