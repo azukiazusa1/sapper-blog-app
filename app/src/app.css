@@ -291,7 +291,7 @@ html.dark #contents code:not(pre > *) {
   @apply bg-zinc-600 text-gray-50;
 }
 /* コードブロックのコンテナ */
-figure[data-rehype-pretty-code-fragment] {
+figure[data-rehype-pretty-code-figure] {
   position: relative;
 }
 
