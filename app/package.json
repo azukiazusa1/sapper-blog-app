@@ -52,7 +52,7 @@
     "remark-parse": "^10.0.0",
     "remark-rehype": "^10.1.0",
     "satori": "^0.10.0",
-    "shikiji": "^0.8.0",
+    "shikiji": "^0.7.6",
     "unified": "^10.1.2"
   },
   "devDependencies": {
