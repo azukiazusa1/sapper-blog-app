@@ -12,11 +12,11 @@
     "format:check": "prettier --check --config=../../.prettierrc ./src",
     "format": "prettier --write --config=../../.prettierrc ./src",
     "typecheck": "tsc --noEmit",
-    "sync": "ts-node src/commands/sync.ts",
-    "update": "ts-node src/commands/update.ts",
-    "new": "ts-node src/commands/new.ts",
-    "validate": "ts-node src/commands/validate.ts",
-    "summarize": "ts-node src/commands/summarize.ts"
+    "sync": "tsx src/commands/sync.ts",
+    "update": "tsx src/commands/update.ts",
+    "new": "tsx src/commands/new.ts",
+    "validate": "tsx src/commands/validate.ts",
+    "summarize": "tsx src/commands/summarize.ts"
   },
   "repository": {
     "type": "git",
@@ -42,8 +42,6 @@
     "zod": "^3.20.6"
   },
   "devDependencies": {
-    "@swc/core": "^1.3.36",
-    "@swc/helpers": "^0.5.0",
     "@types/find-config": "^1.0.1",
     "@types/string-similarity": "^4.0.0",
     "@types/yaml-front-matter": "^4.1.0",
@@ -54,8 +52,7 @@
     "eslint-config-custom": "^0.0.0",
     "find-config": "^1.0.0",
     "msw": "^2.0.9",
-    "regenerator-runtime": "^0.14.0",
-    "ts-node": "^10.9.1",
+    "tsx": "^4.6.2",
     "vitest": "^0.34.0"
   }
 }
