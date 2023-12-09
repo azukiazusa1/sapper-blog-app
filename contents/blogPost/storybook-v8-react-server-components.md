@@ -5,13 +5,12 @@ slug: "storybook-v8-react-server-components"
 about: "Storybook v8 では `experimentalNextRSC` オプションにより React Server Components をサポートしています。しかし、このオプションは React Server Components としての動作を再現しているわけではありません。サーバーサイドで Storybook が動作してるわけではなく、非同期コンポーネントをクライアントでレンダリングしているに過ぎないことに留意すべきです。"
 createdAt: "2023-12-09T18:17+09:00"
 updatedAt: "2023-12-09T18:17+09:00"
-tags: ["Storybook", "React", "React Server Components", "Next.js"]
+tags: ["storybook", "React", "React Server Components", "Next.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1KsxS6Ik4SjTKxllnuDYes/942fa2154243b3890c8e99e47e927cae/fireplace_renga_danro_illust_4172.png"
   title: "レンガの暖炉のイラスト"
 published: true
 ---
-
 Storybook v8 より、`experimentalNextRSC` というオプションが追加されました。このオプションは `true` に設定することで、実験的に React Server Components をサポートします。
 
 ## Storybook v8 での React Server Components サポートを試す
