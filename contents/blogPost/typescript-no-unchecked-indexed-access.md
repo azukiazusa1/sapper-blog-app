@@ -28,7 +28,7 @@ function upperCase(str: string): string {
   return str.toUpperCase()
 }
 
-const fruits: string = ['apple', 'banana', 'lemomn']
+const fruits: string[] = ['apple', 'banana', 'lemomn']
 
 const fruit = head(fruits)
 // fruit: string
