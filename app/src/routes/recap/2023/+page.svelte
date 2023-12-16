@@ -10,6 +10,15 @@
   export let data: PageData;
 </script>
 
+<svelte:head>
+  <title>2023 年の振り返り | azukiazusa.dev</title>
+  <link rel="canonical" href="https://azukiazusa.dev/recap/2023" />
+  <meta
+    name="description"
+    content="2023 年の azukiazusa.dev の記録を振り返りましょう。"
+  />
+</svelte:head>
+
 <Ogp
   title="azukiazusa.dev 2023 Recap"
   description="2023 年の azukiazusa.dev の記録を振り返りましょう。"
