@@ -13,7 +13,7 @@
       <Tag name="React" slug="react"><Badge>13</Badge></Tag>
       <Tag name="アクセシビリティ" slug="accessibility"><Badge>10</Badge></Tag>
       <Tag name="HTML" slug="html"><Badge>10</Badge></Tag>
-      <Tag name="Next.js" slug="nextjs"><Badge>8</Badge></Tag>
+      <Tag name="Next.js" slug="next.js"><Badge>8</Badge></Tag>
       <Tag name="テスト" slug="test"><Badge>6</Badge></Tag>
     </div>
   </div>
