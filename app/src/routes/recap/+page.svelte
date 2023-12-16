@@ -1,3 +1,9 @@
+<svelte:head>
+  <title>Recap</title>
+  <link rel="canonical" href="https://azukiazusa.dev/recap" />
+  <meta name="description" content="azukiazusa.dev の Recap の一覧。" />
+</svelte:head>
+
 <div class="section flex items-center justify-center">
   <ul>
     <li>
