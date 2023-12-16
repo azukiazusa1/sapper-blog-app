@@ -53,8 +53,8 @@ export const BlogPostSchema = z.discriminatedUnion("published", [
 ]);
 
 export type BlogPost = z.infer<typeof BlogPostSchema>;
-export type PublishedBlogPost = Extract<BlogPost, { published: true }>;
-export type DraftBlogPost = Extract<BlogPost, { published: false }>;
+export type PublishedBlogPost = Extract<BlogPost, { published?: true }>;
+export type DraftBlogPost = Extract<BlogPost, { published?: false }>;
 
 export type FieldValue<T> = {
   "en-US": T;
@@ -82,4 +82,10 @@ export type ContentfulTag = {
     name: FieldValue<string>;
     slug: FieldValue<string>;
   };
+};
+
+export type PopularPost = {
+  title: string;
+  path: string;
+  views: number;
 };
