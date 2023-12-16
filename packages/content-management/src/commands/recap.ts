@@ -40,7 +40,7 @@ const mostFrequentTags = publishedBlogPosts
 console.log(
   `Most frequent tags: ${[...mostFrequentTags.entries()]
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
+    .slice(0, 5)
     .map(([tag, count]) => `${tag} (${count})`)
     .join(", ")}`,
 );
