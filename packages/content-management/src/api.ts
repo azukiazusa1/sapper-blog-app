@@ -1,4 +1,5 @@
 import contentful, { MetaLinkProps } from "contentful-management";
+import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import slugify from "slugify";
 import { Env } from "./env.ts";
 import { searchRelatedArticles } from "./searchRelatedArticles.ts";
@@ -8,6 +9,7 @@ import type {
   ContentfulTag,
   DraftBlogPost,
   FieldValue,
+  PopularPost,
   PublishedBlogPost,
   Thumbnail,
 } from "./types";
@@ -83,6 +85,23 @@ const fetchBlogs = async (): Promise<ContentfulBlogPost[]> => {
   return posts.items as unknown as ContentfulBlogPost[];
 };
 
+const fetchBlogsByCreatedAt = async ({
+  startDate,
+  endDate,
+}: {
+  startDate: string;
+  endDate: string;
+}): Promise<ContentfulBlogPost[]> => {
+  const client = await createClient();
+  const posts = await client.getEntries({
+    content_type: "blogPost",
+    limit: 1000,
+    "fields.createdAt[gte]": startDate,
+    "fields.createdAt[lte]": endDate,
+  });
+  return posts.items as unknown as ContentfulBlogPost[];
+};
+
 const flattenField = <T>(field: FieldValue<T>): T => {
   return field["en-US"];
 };
@@ -118,9 +137,22 @@ const getAssetIdFromUrl = (url: string): string => {
   return assetId;
 };
 
-export const getBlogPosts = async (): Promise<BlogPost[]> => {
+export const getBlogPosts = async ({
+  createdAt,
+}: {
+  createdAt?: {
+    startDate: string;
+    endDate: string;
+  };
+} = {}): Promise<BlogPost[]> => {
   const tags = await fetchTags();
-  const blogs = await fetchBlogs();
+  const blogs =
+    createdAt !== undefined
+      ? await fetchBlogsByCreatedAt({
+          startDate: createdAt.startDate,
+          endDate: createdAt.endDate,
+        })
+      : await fetchBlogs();
   const assets = await fetchAssets();
 
   const result = await Promise.all(
@@ -360,4 +392,64 @@ export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
     : await client.getEntry(slugOrId);
 
   await entry.delete();
+};
+
+const analyticsDataClient = new BetaAnalyticsDataClient({
+  credentials: {
+    private_key: Env.privateKey,
+    client_email: Env.clientEmail,
+  },
+});
+
+export const getPopularPosts = async ({
+  startDate,
+  endDate,
+}: {
+  startDate: string;
+  endDate: string;
+}): Promise<PopularPost[]> => {
+  const response = await analyticsDataClient.runReport({
+    property: "properties/" + Env.propertyId,
+    dimensions: [
+      {
+        name: "pagePath",
+      },
+      {
+        name: "pageTitle",
+      },
+    ],
+    metrics: [
+      {
+        name: "screenPageViews",
+      },
+    ],
+    dateRanges: [
+      {
+        startDate: startDate,
+        endDate: endDate,
+      },
+    ],
+    dimensionFilter: {
+      filter: {
+        fieldName: "pagePath",
+        stringFilter: {
+          value: "^/blog/.+$",
+          matchType: "FULL_REGEXP",
+        },
+      },
+    },
+    limit: 3,
+  });
+
+  const rows = response[0].rows ?? [];
+  const popularPosts = rows.map((row) => {
+    const [path, title] = row.dimensionValues!;
+    const [views] = row.metricValues!;
+    return {
+      title: title?.value || "",
+      path: path?.value || "",
+      views: Number(views?.value ?? 0),
+    };
+  });
+  return popularPosts;
 };
