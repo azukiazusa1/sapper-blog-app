@@ -46,8 +46,8 @@
 
   @supports (animation-timeline: view()) {
     .hero {
-      position: fixed;
-      top: 30%;
+      position: relative;
+      top: 40%;
       width: 100%;
       text-align: center;
       animation: scale-down linear both;
