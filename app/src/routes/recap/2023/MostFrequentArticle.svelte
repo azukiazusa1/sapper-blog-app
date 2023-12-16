@@ -31,7 +31,7 @@
       <li class="fade-in-bottom">
         <Card
           title="Next.js の Server Actions について"
-          slug="nextjs-server-actions"
+          slug="nextjs-server-action"
           views="11,065"
           {isTestBuild}
         />
