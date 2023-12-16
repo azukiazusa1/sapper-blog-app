@@ -15,7 +15,7 @@ export const load: PageServerLoad = async ({ params }) => {
   const data = await PostRepository.find(slug);
   const contributors = await GitHubRepository.getContributorsByFile(slug);
   if (data.blogPostCollection.items.length === 0) {
-    throw error(404, "Not Found");
+    error(404, "Not Found");
   }
   const input = data.blogPostCollection.items[0].article;
   const contents = await markdownToHtml(input);
