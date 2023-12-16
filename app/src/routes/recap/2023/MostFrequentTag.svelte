@@ -7,7 +7,7 @@
 <Section>
   <div>
     <h2 class="mb-16 text-center text-2xl font-bold md:text-7xl">
-      2023 年には以下のタグがよく使われました。
+      2023 年によく使われたタグは...
     </h2>
     <div class="fade-in-right container my-8 md:mx-auto md:px-12">
       <Tag name="React" slug="react"><Badge>13</Badge></Tag>
@@ -21,7 +21,6 @@
 
 <style>
   .fade-in-right {
-    mix-blend-mode: plus-lighter;
     animation: fade-in linear both;
     animation-timeline: view();
     animation-range: cover 30% cover 50%;

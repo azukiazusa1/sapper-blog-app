@@ -42,7 +42,6 @@
 
 <style>
   .fade-in-bottom {
-    mix-blend-mode: plus-lighter;
     animation: fade-in linear both;
     animation-timeline: view();
     animation-range: cover 30% cover 50%;
@@ -51,6 +50,10 @@
   @keyframes fade-in {
     from {
       opacity: 0;
+    }
+
+    to {
+      opacity: 1;
     }
   }
 
