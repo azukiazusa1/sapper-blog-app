@@ -18,7 +18,7 @@ Google Chrome 115 で追加されたスクロールドリブンアニメーシ�
 
 従来の CSS のアニメーションは、ページが読み込まれた後に時間の経過に応じてアニメーションが再生されていました。これはアニメーションタイムラインのデフォルトであるドキュメントタイムラインと呼ばれるものです。
 
-新しい CSS プロパティである [`animation-timeline`](https://developer.mozilla.org/ja/docs/Web/CSS/animation-timeline) を使うことで、以下の 2 種類のタイムラインでアニメーションを再生することができます。
+新しい CSS プロパティである [`animation-timeline`](https://developer.mozilla.org/ja/docs/Web/CSS/animation-timeline) を使うことで、以下の 2 種類のタイムラインでアニメーションを再生できます。
 
 - スクロールの進行状況タイムライン
 - ビューの進行状況（ビューポートの中に要素が入っているかどうか）タイムライン
@@ -130,7 +130,7 @@ https://github.com/azukiazusa1/scroll-driven-animation-example/blob/main/scroll-
 
 ## ビューの進行状況タイムライン
 
-ビューの進行状況タイムラインを使用することで、要素が画面内に入ったタイミングでフェードインするようなアニメーションを実装することができます。要素が画面内に入ったかどうかの判定は、`IntersectionObserver` のものとよく似ています。
+ビューの進行状況タイムラインを使用することで、要素が画面内に入ったタイミングでフェードインするようなアニメーションを実装できます。要素が画面内に入ったかどうかの判定は、`IntersectionObserver` のものとよく似ています。
 
 ビューの進行状況タイムラインを使用するには、[view()](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/view) 関数を `animation-timeline` プロパティに指定します。
 
@@ -156,7 +156,7 @@ https://github.com/azukiazusa1/scroll-driven-animation-example/blob/main/scroll-
 
 このデフォルトの範囲を使用すると、要素が完全に画面外になるまで `opacity` の値が 1 にならないため、画面内に見えている間には要素がフェードインしきっていないように見えてしまいます。
 
-[animation-range](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-range) プロパティを使用することで、アニメーションの範囲を指定することができます。上記の例では、範囲が全範囲であることは変わらず、対象要素が画面内に入ったタイミングから 30% の位置でアニメーションが開始され、50% の位置でアニメーションが終了するようになります。
+[animation-range](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-range) プロパティを使用することで、アニメーションの範囲を指定できます。上記の例では、範囲が全範囲であることは変わらず、対象要素が画面内に入ったタイミングから 30% の位置でアニメーションが開始され、50% の位置でアニメーションが終了するようになります。
 
 <video src="https://videos.ctfassets.net/in6v9lxmm5c8/5ErZdOP2N2nB82cx1aLw8I/3c99f0b49c8d82ddb2e61661e34c9f7f/_____2023-12-17_14.48.17.mov" controls></video>
 
