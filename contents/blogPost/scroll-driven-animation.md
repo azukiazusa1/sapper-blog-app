@@ -86,7 +86,7 @@ https://github.com/azukiazusa1/scroll-driven-animation-example/blob/main/scroll-
 }
 ```
 
-<video src="https://videos.ctfassets.net/in6v9lxmm5c8/6ixZwa3DxoqW8OKdFRVHWU/2a6376faae3e7fe69eba26cafca592b9/_____2023-12-17_15.08.58.mov" controls>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/6ixZwa3DxoqW8OKdFRVHWU/2a6376faae3e7fe69eba26cafca592b9/_____2023-12-17_15.08.58.mov" controls></video>
 
 `scroll(self)` を指定することでその要素自身がアニメーションの進行状況を表すようになります。以下の例ではボックス自体に背景色が変更するアニメーションを指定しています。
 
@@ -112,7 +112,7 @@ https://github.com/azukiazusa1/scroll-driven-animation-example/blob/main/scroll-
 }
 ```
 
-<video src="hhttps://videos.ctfassets.net/in6v9lxmm5c8/2dF78lTNp4zOAMCtX5rNST/974d736f36e71157fe42df664eff2d15/_____2023-12-17_15.13.51.mov" controls>
+<video src="hhttps://videos.ctfassets.net/in6v9lxmm5c8/2dF78lTNp4zOAMCtX5rNST/974d736f36e71157fe42df664eff2d15/_____2023-12-17_15.13.51.mov" controls></video>
 
 ## スクロールの方向
 
