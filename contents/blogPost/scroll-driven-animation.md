@@ -112,7 +112,7 @@ https://github.com/azukiazusa1/scroll-driven-animation-example/blob/main/scroll-
 }
 ```
 
-<video src="hhttps://videos.ctfassets.net/in6v9lxmm5c8/2dF78lTNp4zOAMCtX5rNST/974d736f36e71157fe42df664eff2d15/_____2023-12-17_15.13.51.mov" controls></video>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/2dF78lTNp4zOAMCtX5rNST/974d736f36e71157fe42df664eff2d15/_____2023-12-17_15.13.51.mov" controls></video>
 
 ## スクロールの方向
 
