@@ -92,7 +92,7 @@ vue create vue3-todo-app
  $ npm run serve
 ```
 
-表示されているコマンドを実行してみてください。[localhost:8080](http://localhost:80800)にアクセスして、以下の画面が表示されたら OK です。
+表示されているコマンドを実行してみてください。[localhost:8080](http://localhost:8080)にアクセスして、以下の画面が表示されたら OK です。
 
 ```sh
 cd vue3-todo-app
