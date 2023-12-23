@@ -38,6 +38,8 @@ https://github.com/whatwg/html/pull/9546
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/79eQfVrg2yJl7Yso2Wr5Ho/dc17d105e864ff4ef9291e300bd7e57c/__________2023-12-23_18.16.10.png)
 
+!> `::thumb` と `::track` 疑似要素を使用したスタイリングは 2023 年 12 月現在、Safari Technology Preview 185 で、Develop > Feature Flags... から「:thumb and ::track pseudo-elements」を有効にすることで利用できます。
+
 チェックボックスなどと同じく、スイッチ UI のデフォルトのスタイルを変更しカスタマイズしたい場合には、`appearance: none` を指定してデフォルトのスタイルを無効化する必要があります。スイッチがオンの場合のスタイルは `:checked` 疑似クラスを使って指定できます。
 
 ```css
@@ -116,7 +118,7 @@ input[type="checkbox"][switch]:focus {
 
 ## 未確定の状態（`indeterminate`）のサポート
 
-`input[type="checkbox"]` 要素には `indeterminate` 属性を指定することで、未確定の状態を表すことができます。この属性は HTML から設定することができず、JavaScript から HTMLInputElement オブジェクトの `indeterminate` プロパティを使用して設定する必要があります。
+`input[type="checkbox"]` 要素には `indeterminate` 属性を指定することで、未確定の状態を表すことができます。この属性は HTML から設定できず、JavaScript から HTMLInputElement オブジェクトの `indeterminate` プロパティを使用して設定する必要があります。
 
 ```js
 const checkbox = document.querySelector("input[type='checkbox']");
@@ -124,7 +126,7 @@ const checkbox = document.querySelector("input[type='checkbox']");
 checkbox.indeterminate = true;
 ```
 
-未確定の状態のチェックボックスは多くのブラウザでチェックボックス内に水平線が表示されるようになっています。また [:indeterminate](https://developer.mozilla.org/ja/docs/Web/CSS/:indeterminate) 疑似クラスを使って、未確定の状態のチェックボックスにスタイルを適用することもできます。
+未確定の状態のチェックボックスは多くのブラウザでチェックボックス内に水平線が表示されるようになっています。また [:indeterminate](https://developer.mozilla.org/ja/docs/Web/CSS/:indeterminate) 疑似クラスを使って、未確定の状態のチェックボックスにスタイルを適用できます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/2eMGw9lDEza946sPALwnEu/1b7a4f92ed537fc298180b8db10f168a/__________2023-12-23_18.06.06.png)
 
