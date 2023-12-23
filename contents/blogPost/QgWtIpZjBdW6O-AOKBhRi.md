@@ -1,15 +1,14 @@
 ---
 id: QgWtIpZjBdW6O-AOKBhRi
 title: input 要素の switch 属性によるネイティブなスイッチ
-slug: null
-about: null
+about: 'スイッチは多くのウェブサイトで使われているものの、HTML の標準要素としては存在していませんでした。そのため多くの開発者は、スイッチを実装するために独自の実装を行っていましたが、このような独自の実装はアクセシビリティの問題を引き起こす可能性がありました。この問題を解決するために、WHATWG により `input[type="checkbox"]` 要素に `switch` 属性を追加することが提案されました。この属性を指定することで、チェックボックスをスイッチとして利用できます。'
 createdAt: "2023-12-23T16:31+09:00"
 updatedAt: "2023-12-23T16:31+09:00"
-tags: []
+tags: ["HTML"]
 thumbnail:
-  url: ""
-  title: ""
-published: false
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7JMBg7AGfyKjOq5A9IKtCB/6b734f49345ec2e4d71a1f3136154b30/christmas_tonakai_5266.png"
+  title: "赤い鼻のトナカイのイラスト"
+published: true
 ---
 
 !> input 要素の switch 属性は 2023 年 12 月現在実験的に実装されている機能です。将来的に仕様が変更される可能性があります。
