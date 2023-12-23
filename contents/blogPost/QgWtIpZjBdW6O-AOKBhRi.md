@@ -1,6 +1,7 @@
 ---
 id: QgWtIpZjBdW6O-AOKBhRi
-title: input 要素の switch 属性によるネイティブなスイッチ
+title: "input[type=checkbox] 要素に switch 属性を指定することによる HTML 標準のスイッチ UI の提案"
+slug: "input-type-checkbox-switch"
 about: 'スイッチは多くのウェブサイトで使われているものの、HTML の標準要素としては存在していませんでした。そのため多くの開発者は、スイッチを実装するために独自の実装を行っていましたが、このような独自の実装はアクセシビリティの問題を引き起こす可能性がありました。この問題を解決するために、WHATWG により `input[type="checkbox"]` 要素に `switch` 属性を追加することが提案されました。この属性を指定することで、チェックボックスをスイッチとして利用できます。'
 createdAt: "2023-12-23T16:31+09:00"
 updatedAt: "2023-12-23T16:31+09:00"
