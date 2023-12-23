@@ -25,7 +25,7 @@ https://github.com/whatwg/html/pull/9546
 <input type="checkbox" switch />
 ```
 
-![](https://images.ctfassets.net/in6v9lxmm5c8/1MYjBznOACkctwJ51GhN7a/ba3f12e2ca7a089e89ff00d10a069bf7/__________2023-12-23_16.54.30.png)
+![](https://images.ctfassets.net/in6v9lxmm5c8/6Fizf6vw6IF1QS2WKwYCuq/567062ab7fe7506bb13e4b3dd4dd4935/__________2023-12-23_20.14.04.png)
 
 この提案は現在 [Safari Technology Preview 185](https://developer.apple.com/documentation/safari-technology-preview-release-notes/stp-release-185#HTML) にのみ実験的に実装されています。
 
@@ -135,7 +135,7 @@ checkbox.indeterminate = true;
 - `<input type="radio">` 要素で、フォーム内の同じ `name` の値を持つすべてのラジオボタンが未選択である場合
 - `<progress>` 要素で、中間の状態の場合
 
-ただし、冒頭で述べた通り、スイッチ UI はチェックボックスと異なり未確定の状態を持つことはありません。つまり、`<input type="checkbox">` 要素であっても、`switch` 属性を指定されている場合 `indeterminate` プロパティが `true` に設定されいたとしても `:indeterminate` 疑似クラスは適用されません。
+ただし冒頭で述べた通り、スイッチ UI はチェックボックスと異なり未確定の状態を持つことはありません。つまり `<input type="checkbox">` 要素であっても、`switch` 属性を指定されている場合 `indeterminate` プロパティが `true` に設定されいたとしても `:indeterminate` 疑似クラスは適用されません。
 
 ## `<switch>` 要素としての提案
 
@@ -183,3 +183,4 @@ https://github.com/openui/open-ui/pull/785
 - [switch demos](https://nt1m.github.io/html-switch-demos/)
 - [Switch Pattern | APG | WAI | W3C](https://www.w3.org/WAI/ARIA/apg/patterns/switch/)
 - [ARIA: switch ロール - アクセシビリティ | MDN](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/switch_role)
+
