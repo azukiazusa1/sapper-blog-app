@@ -16,7 +16,7 @@
         <Card
           title="最小限のコードで動く最も汚いコードから始める"
           slug="start-with-the-ugliest-code-that-works"
-          views="18,240"
+          views="18,357"
           {isTestBuild}
         />
       </li>
@@ -24,7 +24,7 @@
         <Card
           title="Web フロントエンドの実装において本来の機能を損なってはいけない"
           slug="do-not-compromise-html-functionality-in-your-web-front-end-implementation"
-          views="11,896"
+          views="12,050"
           {isTestBuild}
         />
       </li>
@@ -32,7 +32,7 @@
         <Card
           title="Next.js の Server Actions について"
           slug="nextjs-server-action"
-          views="11,065"
+          views="11,544"
           {isTestBuild}
         />
       </li>
