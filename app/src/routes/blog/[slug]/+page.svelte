@@ -10,6 +10,7 @@
   import ShareButton from "../../../components/ShareButton.svelte";
   import Box from "../../../components/Box/Box.svelte";
   import Contributors from "../../../components/Contributors/Contributors.svelte";
+  import Prev from "../../../components/Icons/Prev.svelte";
 
   export let data: PageData;
 
@@ -38,7 +39,14 @@
   )}/${tagNames.join("/")}.png`}
 />
 
-<div class="my-12">
+<div class="mx-auto my-5 max-w-5xl">
+  <a href="/blog" class="flex text-opacity-80 hover:underline">
+    <Prev />
+    Back to blog
+  </a>
+</div>
+
+<div class="mb-12">
   <Card
     slug={post.slug}
     title={post.title}
