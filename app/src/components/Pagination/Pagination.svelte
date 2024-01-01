@@ -23,7 +23,7 @@
         href={`${href}${prevPage}`}
       >
         <div class="sr-only">前のページ</div>
-        <PrevIcon />
+        <PrevIcon className="h-6 w-6" />
       </a>
     {/if}
     <div class="flex -space-x-px rounded-full font-medium">
