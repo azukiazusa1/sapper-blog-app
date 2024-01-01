@@ -42,9 +42,9 @@
 <div class="mx-auto my-5 max-w-5xl">
   <a
     href="/blog"
-    class="flex text-sm text-opacity-80 hover:underline md:text-base"
+    class="flex items-center text-sm text-opacity-80 hover:underline md:text-base"
   >
-    <Prev />
+    <Prev className="h-4 w-4 md:h-6 md:w-6" />
     Back to blog
   </a>
 </div>

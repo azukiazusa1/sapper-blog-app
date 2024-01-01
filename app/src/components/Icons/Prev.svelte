@@ -1,3 +1,7 @@
+<script>
+  export let className = "";
+</script>
+
 <svg
   xmlns="http://www.w3.org/2000/svg"
   width="100%"
@@ -8,7 +12,7 @@
   stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="feather feather-chevron-left h-6 w-6"
+  class={className}
 >
   <polyline points="15 18 9 12 15 6" />
 </svg>
