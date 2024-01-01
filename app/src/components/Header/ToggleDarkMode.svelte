@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { type Theme, getTheme, changeTheme } from "../../utils/darkTheme";
-  import { DropdownMenu } from "bits-ui";
+  import { Menubar } from "bits-ui";
   import Moon from "../Icons/Moon.svelte";
   import Sun from "../Icons/Sun.svelte";
   import System from "../Icons/system.svelte";
@@ -36,41 +36,44 @@
   };
 </script>
 
-<!-- ドロワーで表示したときおかしくなるから portal を null にしている -->
-<DropdownMenu.Root portal={null}>
-  <DropdownMenu.Trigger
-    class="flex items-center rounded-lg border border-gray-300 p-2 dark:border-zinc-600"
-    aria-label="カラーテーマを選択する"
-  >
-    <Moon className="h-6 w-6 hidden dark:block" />
-    <Sun className="h-6 w-6 block dark:hidden" />
-  </DropdownMenu.Trigger>
-  <DropdownMenu.Content
-    class="rounded-bl-md rounded-br-md border-2 border-t-0 border-gray-200 bg-white shadow-lg dark:border-zinc-600 dark:bg-zinc-700"
-    transition={fly}
-    {side}
-  >
-    <DropdownMenu.RadioGroup value={theme} onValueChange={handleChange}>
-      {#each items as item}
-        <DropdownMenu.RadioItem
-          value={item.value}
-          class={`z-50 flex w-32 transform cursor-pointer items-center px-2 py-3 transition-colors duration-200 hover:bg-gray-100 data-[highlighted]:bg-gray-100  dark:border-zinc-600 dark:hover:bg-zinc-500 dark:data-[highlighted]:bg-zinc-500`}
-        >
-          {#if item.value === "system"}
-            <System className="h-5 w-5" />
-          {:else if item.value === "light"}
-            <Sun className="h-5 w-5" />
-          {:else if item.value === "dark"}
-            <Moon className="h-5 w-5" />
-          {/if}
-          <span class="ml-2 text-sm">
-            {item.label}
-          </span>
-          <DropdownMenu.RadioIndicator class="ml-auto">
-            <Check className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
-          </DropdownMenu.RadioIndicator>
-        </DropdownMenu.RadioItem>
-      {/each}
-    </DropdownMenu.RadioGroup>
-  </DropdownMenu.Content>
-</DropdownMenu.Root>
+<!-- DropdownMenu を使いたいが、ページをロードした直後にフォーカスされるバグがある -->
+<Menubar.Root>
+  <!-- ドロワーで表示したときおかしくなるから portal を null にしている -->
+  <Menubar.Menu portal={null}>
+    <Menubar.Trigger
+      class="flex items-center rounded-lg border border-gray-300 p-2 dark:border-zinc-600"
+      aria-label="カラーテーマを選択する"
+    >
+      <Moon className="h-6 w-6 hidden dark:block" />
+      <Sun className="h-6 w-6 block dark:hidden" />
+    </Menubar.Trigger>
+    <Menubar.Content
+      class="rounded-bl-md rounded-br-md border-2 border-t-0 border-gray-200 bg-white shadow-lg dark:border-zinc-600 dark:bg-zinc-700"
+      transition={fly}
+      {side}
+    >
+      <Menubar.RadioGroup value={theme} onValueChange={handleChange}>
+        {#each items as item}
+          <Menubar.RadioItem
+            value={item.value}
+            class={`z-50 flex w-32 transform cursor-pointer items-center px-2 py-3 transition-colors duration-200 hover:bg-gray-100 data-[highlighted]:bg-gray-100  dark:border-zinc-600 dark:hover:bg-zinc-500 dark:data-[highlighted]:bg-zinc-500`}
+          >
+            {#if item.value === "system"}
+              <System className="h-5 w-5" />
+            {:else if item.value === "light"}
+              <Sun className="h-5 w-5" />
+            {:else if item.value === "dark"}
+              <Moon className="h-5 w-5" />
+            {/if}
+            <span class="ml-2 text-sm">
+              {item.label}
+            </span>
+            <Menubar.RadioIndicator class="ml-auto">
+              <Check className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            </Menubar.RadioIndicator>
+          </Menubar.RadioItem>
+        {/each}
+      </Menubar.RadioGroup>
+    </Menubar.Content>
+  </Menubar.Menu>
+</Menubar.Root>
