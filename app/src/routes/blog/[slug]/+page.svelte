@@ -40,7 +40,10 @@
 />
 
 <div class="mx-auto my-5 max-w-5xl">
-  <a href="/blog" class="flex text-opacity-80 hover:underline">
+  <a
+    href="/blog"
+    class="flex text-sm text-opacity-80 hover:underline md:text-base"
+  >
     <Prev />
     Back to blog
   </a>
