@@ -13,9 +13,9 @@
 
 <HeroSection>
   <div class="absolute left-0 top-0 p-4">
-    <a href="https://azukiazusa.dev">
+    <a href="/recap">
       <div class="sr-only">戻る</div>
-      <PrevIcon />
+      <PrevIcon className="h-6 w-6" />
     </a>
   </div>
   <div class="hero">
