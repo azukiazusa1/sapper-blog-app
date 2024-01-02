@@ -5,12 +5,13 @@
   export let height: number;
   export let lazy = true;
   export let slug: string;
+  export let small = false;
 </script>
 
 <img
   {src}
   {alt}
-  style:--tag="image-{slug}"
+  style:--tag={small ? null : `image-${slug}`}
   srcset={`${src}&w=100 100w,
     ${src}&w=200 200w,
     ${src}&w=300 300w,

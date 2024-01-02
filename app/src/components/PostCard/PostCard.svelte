@@ -23,16 +23,17 @@
       width={400}
       height={300}
       {lazy}
+      {small}
     />
   </a>
 
   <header
     class="flex-row items-center justify-between border-t p-4 leading-tight dark:border-zinc-700"
   >
-    <h2 class="text-2xl font-bold" style:--tag="h-{slug}">
+    <h2 class="text-2xl font-bold" style:--tag={small ? null : `h-${slug}`}>
       <a class="no-underline hover:underline" href={`/blog/${slug}`}>{title}</a>
     </h2>
-    <p class="mt-2" style:--tag="time-{slug}">
+    <p class="mt-2" style:--tag={small ? null : `time-${slug}`}>
       <Time date={createdAt} />
     </p>
   </header>
@@ -48,7 +49,7 @@
 
   <footer
     class="flex flex-wrap items-center p-2 leading-none md:p-4"
-    style:--tag="tag-{slug}"
+    style:--tag={small ? null : `tag-${slug}`}
   >
     {#each tags as tag (tag.slug)}
       <Tag name={tag.name} slug={tag.slug} />
