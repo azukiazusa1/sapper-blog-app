@@ -14,9 +14,10 @@
   export let activeIndex: number | null = null;
 </script>
 
+<!-- eslint-disable-next-line svelte/valid-compile -->
 <div
   on:keydown
-  class="overflow-hiddenrounded-br-md absolute z-20 max-h-96 w-72 overflow-y-scroll rounded-bl-md border-2 border-t-0 border-gray-200 bg-white shadow-lg dark:border-zinc-700 dark:bg-zinc-700"
+  class="absolute z-20 max-h-96 w-72 overflow-hidden overflow-y-scroll rounded-bl-md rounded-br-md border-2 border-t-0 border-gray-200 bg-white shadow-lg dark:border-zinc-700 dark:bg-zinc-700"
 >
   {#if loading}
     <div class="py-2 text-center" aria-live="polite" aria-atomic="true">
