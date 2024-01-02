@@ -25,7 +25,7 @@
     { value: "system", label: "System" },
     { value: "light", label: "Light" },
     { value: "dark", label: "Dark" },
-  ] as const satisfies {
+  ] as const satisfies readonly {
     value: Theme;
     label: string;
   }[];
