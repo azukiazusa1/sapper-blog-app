@@ -2,6 +2,8 @@
   import PrevIcon from "../Icons/Prev.svelte";
   import NextIcon from "../Icons/Next.svelte";
   import Page from "./Page.svelte";
+  import Ellipsis from "./Ellipsis.svelte";
+  import { getPages } from "./getPages";
 
   export let page = 1;
   export let total: number;
@@ -27,12 +29,15 @@
       </a>
     {/if}
     <div class="flex -space-x-px rounded-full font-medium">
-      {#each Array(totalPage) as _, i (i)}
-        <Page href={`${href}${i + 1}`} current={page === i + 1}>
-          {i + 1}
-        </Page>
+      {#each getPages({ page, totalPage }) as p}
+        {#if p.type === "page"}
+          <Page href={`${href}${p.value}`} current={p.current}>
+            {p.value}
+          </Page>
+        {:else}
+          <Ellipsis />
+        {/if}
       {/each}
-      <Page current sm>Page {page} of {totalPage}</Page>
     </div>
     {#if hasNext}
       <a
