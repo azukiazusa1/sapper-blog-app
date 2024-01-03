@@ -49,8 +49,6 @@ export function getPages({ page, totalPage }: Params): PageItem[] {
       })),
     ];
 
-    console.log(left);
-
     return [
       ...left,
       { type: "ellipsis" },
