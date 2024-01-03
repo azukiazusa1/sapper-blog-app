@@ -3,7 +3,7 @@
   export let current: boolean;
   export let sm = false;
 
-  $: className = `h-12 ${sm ? "px-4 md:hidden flex" : "w-12 md:flex hidden"} 
+  $: className = `h-12 flex ${sm ? "px-4" : "w-12"} 
   ${
     current && !sm
       ? "bg-gray-200 dark:bg-zinc-600"

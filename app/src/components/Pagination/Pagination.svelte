@@ -28,7 +28,7 @@
         <PrevIcon className="h-6 w-6" />
       </a>
     {/if}
-    <div class="flex -space-x-px rounded-full font-medium">
+    <div class="hidden -space-x-px rounded-full font-medium md:flex">
       {#each getPages({ page, totalPage }) as p}
         {#if p.type === "page"}
           <Page href={`${href}${p.value}`} current={p.current}>
@@ -38,6 +38,9 @@
           <Ellipsis />
         {/if}
       {/each}
+    </div>
+    <div class="flex md:hidden">
+      <Page sm current>Page {page} of {totalPage}</Page>
     </div>
     {#if hasNext}
       <a
