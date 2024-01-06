@@ -11,9 +11,6 @@
   import image from "../assets/images/road-984251_1280.jpg";
   import { removeTrailingSlash } from "$lib/utils";
   import { onNavigate } from "$app/navigation";
-  import { injectSpeedInsights } from "@vercel/speed-insights";
-
-  injectSpeedInsights({});
 
   onNavigate(() => {
     if (!document.startViewTransition) return;
