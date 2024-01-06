@@ -68,22 +68,17 @@ interface PagefindUIInterface {
      * The items in square brackets such as SEARCH_TERM will be substituted dynamically when the text is used.
      */
     translations?: Partial<{
-      thanks_to: string;
-      comments: string;
-      direction: "ltr" | "rtl";
-      strings: {
-        placeholder: string;
-        clear_search: string;
-        load_more: string;
-        search_label: string;
-        filters_label: string;
-        zero_results: string;
-        many_results: string;
-        one_result: string;
-        alt_search: string;
-        search_suggestion: string;
-        searching: string;
-      };
+      placeholder: string;
+      clear_search: string;
+      load_more: string;
+      search_label: string;
+      filters_label: string;
+      zero_results: string;
+      many_results: string;
+      one_result: string;
+      alt_search: string;
+      search_suggestion: string;
+      searching: string;
     }>;
     /**
      * Enabling autofocus automatically directs attention to the search input field for enhanced user convenience, particularly beneficial when the UI is loaded within a modal dialog. However, exercise caution, as using autofocus indiscriminately may pose potential accessibility challenges.

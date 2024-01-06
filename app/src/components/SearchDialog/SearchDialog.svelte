@@ -23,6 +23,9 @@
         new PagefindUI({
           element: "#search",
           showSubResults: true,
+          translations: {
+            clear_search: "クリア",
+          },
         });
         document
           .querySelector<HTMLElement>(".pagefind-ui__search-input")
