@@ -43,7 +43,7 @@ Native ES Modules の Native は何を意味するかといえば、バンドル
 
 Vite ではこのバンドルの手間を防ぐために Native ES Moduels を使用しているので基本的にブラウザのみで実行されます。そのため「ブラウザ外における JavaScript」のための仕様である `require()` は Vite において使用できないというわけです。 
 
-その他 Nagive ES MOdules については以下記事が詳しいです。
+その他 Nagive ES Modules については以下記事が詳しいです。
 
 https://zenn.dev/uhyo/articles/what-is-native-esm-era
 
@@ -132,7 +132,7 @@ setup().then(() => createApp(App).mount("#app"));
 
 ## .cjs 拡張子
 
-基本的には `require()` や module.exports` を `import` と `export` に置き換えればよいわけなのですが、 `.eslintrc.js` や `jest.config.js` のように依然として CommonJS を使用しなければいけないファイルも存在します。
+基本的には `require()` や `module.exports` を `import` と `export` に置き換えればよいわけなのですが、 `.eslintrc.js` や `jest.config.js` のように依然として CommonJS を使用しなければいけないファイルも存在します。
 
 理由は単純に ESLint や Jest は Node.js 環境で実行されるためです。
 
