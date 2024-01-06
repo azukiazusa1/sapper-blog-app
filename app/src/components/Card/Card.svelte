@@ -130,7 +130,7 @@
   });
 </script>
 
-<article>
+<article data-pagefind-body>
   <div class="p-4">
     <div class="mx-auto max-w-3xl">
       <Image
@@ -139,6 +139,7 @@
         width={480}
         height={270}
         {slug}
+        main
       />
       <h1 class="mt-4 text-2xl font-bold md:text-4xl" style:--tag="h-{slug}">
         {title}

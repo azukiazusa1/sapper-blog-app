@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "mock": "NODE_MOCK=true vite dev",
-    "postbuild": "npx svelte-sitemap --domain $PUBLIC_BASE_URL --out-dir ./.vercel/output/static",
+    "postbuild": "pagefind --site .vercel/output/static && npx svelte-sitemap --domain $PUBLIC_BASE_URL --out-dir ./.vercel/output/static",
     "build": "vite build",
     "preview": "vite preview --port 3000",
     "serve": "npx serve ./.vercel/output/static",
@@ -40,6 +40,7 @@
     "html-minifier": "^4.0.0",
     "nanoid": "^5.0.4",
     "nprogress": "^0.2.0",
+    "pagefind": "^1.0.4",
     "playwright": "^1.31.0",
     "rehype-autolink-headings": "^6.0.0",
     "rehype-code-titles": "^1.1.0",
