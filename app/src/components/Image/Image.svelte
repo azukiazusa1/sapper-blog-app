@@ -6,6 +6,7 @@
   export let lazy = true;
   export let slug: string;
   export let small = false;
+  export let main = false;
 </script>
 
 <img
@@ -29,6 +30,7 @@
   decoding={lazy ? "async" : "auto"}
   height={width}
   width={height}
+  data-pagefind-meta={main ? "image[src], image_alt[alt]" : undefined}
 />
 
 <style>

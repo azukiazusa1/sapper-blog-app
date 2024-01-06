@@ -8,9 +8,23 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
-    adapter: adapter(),
+    adapter: adapter({}),
     env: {
       dir: "../",
+    },
+    prerender: {
+      handleHttpError: ({ path, referrer, message }) => {
+        // ignore deliberate link to shiny 404 page
+        if (
+          path === "/pagefind/pagefind-ui.css" ||
+          path === "/pagefind/pagefind-ui.js"
+        ) {
+          return;
+        }
+
+        // otherwise fail the build
+        throw new Error(message);
+      },
     },
   },
 };

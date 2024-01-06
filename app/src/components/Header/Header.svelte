@@ -1,5 +1,4 @@
 <script lang="ts">
-  import SearchBar from "../SearchBar.svelte";
   import Nav from "./Nav.svelte";
   import Title from "./Title.svelte";
   import ToggleDarkMode from "./ToggleDarkMode.svelte";
@@ -9,6 +8,8 @@
   import { onMount } from "svelte";
   import SideMenu from "./SideMenu.svelte";
   import GitHub from "../Icons/GitHub.svelte";
+  import SearchDialog from "../SearchDialog/SearchDialog.svelte";
+  import SearchBar from "../SearchDialog/SearchBar.svelte";
 
   let routes = ["/blog", "/about", "/tags", "/recap"];
   let html: HTMLElement;
@@ -64,19 +65,19 @@
     </button>
     <Title />
     <div class="invisible hidden md:visible md:block">
-      <SearchBar />
+      <SearchDialog>
+        <SearchBar />
+      </SearchDialog>
     </div>
     <div class="invisible hidden lg:visible lg:block">
       <Nav {segment} {routes} />
     </div>
     <div class="flex items-center">
-      <a
-        href="/blog/search"
-        class="mx-2 md:invisible md:hidden"
-        aria-label="検索ページ"
-      >
-        <SearchIcon className="h-6 w-6" />
-      </a>
+      <div class="mx-2 flex items-center md:invisible md:hidden">
+        <SearchDialog>
+          <SearchIcon className="h-6 w-6" />
+        </SearchDialog>
+      </div>
       <div class="invisible mx-2 hidden md:visible md:block">
         <ToggleDarkMode />
       </div>
