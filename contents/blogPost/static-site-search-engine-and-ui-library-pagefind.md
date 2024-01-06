@@ -11,6 +11,7 @@ thumbnail:
   title: "ワインソムリエのイラスト"
 published: true
 ---
+
 Pagefind は、静的サイト向けの全文検索エンジンと UI ライブラリです。Cloud CMS を提供している [CloudCannon](https://cloudcannon.com/) 社により開発されています。
 
 特定のフレームワークに依存しない JavaScript ライブラリとして実装されており、静的サイトジェネレーターで生成された HTML ファイルに対して検索機能を追加できます。追加するコードの量も少なく、簡単に検索機能を実装できます。
@@ -250,15 +251,13 @@ Pagefind の UI のラベルに表示されるラベルテキストの言語は�
 
 https://github.com/CloudCannon/pagefind/blob/main/pagefind_ui/translations/ja.json
 
-このテキストの内容を変更したい場合には、`new PagefindUI()` で初期化される UI のオプションに `translations` を指定します。`translations` には上記の JSON をオブジェクトとして指定します。例として `placeholder` のテキストを変更する場合には以下のように指定します。
+このテキストの内容を変更したい場合には、`new PagefindUI()` で初期化される UI のオプションに `translations` を指定します。`translations` には上記の JSON の `strings` プロパティをオブジェクトとして指定します。例として `placeholder` のテキストを変更する場合には以下のように指定します。
 
 ```js
 new PagefindUI({
   element: "#search",
   translations: {
-    strings: {
-      placeholder: "サイト内を検索",
-    },
+    placeholder: "サイト内を検索",
   },
 });
 ```
