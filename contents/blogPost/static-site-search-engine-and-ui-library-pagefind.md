@@ -11,7 +11,6 @@ thumbnail:
   title: "ワインソムリエのイラスト"
 published: true
 ---
-
 Pagefind は、静的サイト向けの全文検索エンジンと UI ライブラリです。Cloud CMS を提供している [CloudCannon](https://cloudcannon.com/) 社により開発されています。
 
 特定のフレームワークに依存しない JavaScript ライブラリとして実装されており、静的サイトジェネレーターで生成された HTML ファイルに対して検索機能を追加できます。追加するコードの量も少なく、簡単に検索機能を実装できます。
