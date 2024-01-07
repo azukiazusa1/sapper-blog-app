@@ -25,6 +25,10 @@
           showSubResults: true,
           translations: {
             clear_search: "クリア",
+            zero_results:
+              "[SEARCH_TERM] に一致する記事は見つかりませんでした。",
+            many_results: "[SEARCH_TERM] の検索結果（[COUNT] 件）",
+            one_result: "[SEARCH_TERM] の検索結果（[COUNT] 件）",
           },
         });
         document
