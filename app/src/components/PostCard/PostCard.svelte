@@ -26,26 +26,29 @@
       {small}
     />
   </a>
-
-  <header
-    class="flex-row items-center justify-between border-t p-4 leading-tight dark:border-zinc-700"
-  >
-    <h2 class="text-2xl font-bold" style:--tag={small ? null : `h-${slug}`}>
-      <a class="no-underline hover:underline" href={`/blog/${slug}`}>{title}</a>
-    </h2>
-    <p class="mt-2" style:--tag={small ? null : `time-${slug}`}>
-      <Time date={createdAt} />
-    </p>
-  </header>
-
-  {#if !small}
-    <p
-      class="mx-4 h-fit break-words text-sm text-black text-opacity-80 dark:text-gray-50 dark:text-opacity-80"
-      style:--tag="about-{slug}"
+  <div>
+    <header
+      class="flex-row items-center justify-between border-t p-4 leading-tight dark:border-zinc-700"
     >
-      {about}
-    </p>
-  {/if}
+      <h2 class="text-xl font-bold" style:--tag={small ? null : `h-${slug}`}>
+        <a class="no-underline hover:underline" href={`/blog/${slug}`}
+          >{title}</a
+        >
+      </h2>
+      <p class="mt-2" style:--tag={small ? null : `time-${slug}`}>
+        <Time date={createdAt} />
+      </p>
+    </header>
+
+    {#if !small}
+      <p
+        class="mx-4 mt-1 h-fit break-words text-sm text-black text-opacity-80 dark:text-gray-50 dark:text-opacity-80"
+        style:--tag="about-{slug}"
+      >
+        {about}
+      </p>
+    {/if}
+  </div>
 
   <footer
     class="flex flex-wrap items-center p-2 leading-none md:p-4"
@@ -61,7 +64,7 @@
   article {
     display: grid;
     grid-template-rows: subgrid;
-    grid-row: span 4;
+    grid-row: span 3;
     gap: 1rem;
   }
 </style>
