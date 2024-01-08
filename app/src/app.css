@@ -13,6 +13,7 @@
 
 #contents {
   font-size: 16px;
+  line-height: 1.9;
 }
 
 #contents h1 {
@@ -77,7 +78,6 @@
 #contents ol {
   padding-left: 1.5em;
   margin: 1.5em 0;
-  line-height: 1.9;
 }
 
 #contents ul ul,
@@ -86,20 +86,19 @@
 }
 
 #contents li {
-  @apply my-1;
+  @apply my-2;
 }
 
 #contents blockquote {
   @apply my-6 border-l-4 border-l-gray-200 py-1 pl-4 text-gray-600 dark:border-l-gray-400 dark:text-gray-300;
 }
 
-#contents p {
-  margin: 0 0 1.125rem 0;
-  line-height: 1.9;
+#contents p + p {
+  @apply mt-6;
 }
 
 #contents details {
-  margin: 0 0 1.125rem 0;
+  @apply my-6;
 }
 
 #contents details[open] {
@@ -112,8 +111,7 @@
 
 #contents summary {
   padding: 0.5rem 1rem;
-  margin: 0 0 1.125rem 0;
-  @apply cursor-pointer rounded-t-lg bg-gray-200 dark:bg-zinc-600;
+  @apply mb-6 cursor-pointer rounded-t-lg bg-gray-200 dark:bg-zinc-600;
 }
 
 #contents img {
@@ -233,6 +231,7 @@ h6 .icon-link::before {
   border-radius: 6px 6px 0 0;
   padding: 6px 12px 12px;
   margin-bottom: -28px;
+  margin-top: 1.5rem;
 }
 
 .icon-link {
@@ -276,15 +275,11 @@ h6 .icon-link::before {
 #contents code:not(pre > *) {
   background-color: #eee;
   color: #333;
-  padding: 0.1em 0.25em;
+  padding: 0.2em 0.4em;
   word-break: break-all;
   border-radius: 0.125rem;
-  font-family:
-    Consolas,
-    Monaco,
-    Andale Mono,
-    Ubuntu Mono,
-    monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 html.dark #contents code:not(pre > *) {
@@ -375,6 +370,7 @@ code > [data-line]::before {
   @apply h-full w-full rounded-r-lg object-cover;
 }
 
+/* コードのコメントのコンストラクト比のために無理やり上書き */
 span[style="color: #545454"] {
   color: #898989 !important;
 }
@@ -411,4 +407,9 @@ span[style="color: #545454"] {
 
 [data-chars-id="i"] {
   @apply border-b-purple-600 bg-purple-800/50 font-bold !text-purple-200;
+}
+
+section[data-footnotes] {
+  font-size: 0.9em;
+  @apply mt-8 border-t border-gray-300 dark:border-zinc-700;
 }

@@ -54,7 +54,7 @@
           </div>
         </div>
         <div
-          class="mt-4 border-t border-gray-200 pt-4 sm:mt-0 sm:w-2/3 sm:border-l sm:border-t-0 sm:py-8 sm:pl-8 sm:text-left"
+          class="mt-4 border-t border-gray-300 pt-4 dark:border-zinc-700 sm:mt-0 sm:w-2/3 sm:border-l sm:border-t-0 sm:py-8 sm:pl-8 sm:text-left"
         >
           <p class="mb-4 break-words text-lg leading-relaxed">
             {content}

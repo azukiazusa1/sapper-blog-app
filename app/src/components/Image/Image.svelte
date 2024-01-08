@@ -12,6 +12,7 @@
 <img
   {src}
   {alt}
+  class={main ? "main" : undefined}
   style:--tag={small ? null : `image-${slug}`}
   srcset={`${src}&w=100 100w,
     ${src}&w=200 200w,
@@ -43,6 +44,9 @@
 
   @media (min-width: 768px) {
     img {
+      height: 14rem;
+    }
+    img.main {
       height: 18rem;
     }
   }
