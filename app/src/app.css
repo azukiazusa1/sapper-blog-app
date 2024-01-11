@@ -314,7 +314,7 @@ div[data-rehype-pretty-code-fragment] {
 }
 
 .link-card {
-  @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-gray-100 md:flex-row dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700;
+  @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-gray-100 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 md:flex-row;
 }
 
 .link-card:hover {
