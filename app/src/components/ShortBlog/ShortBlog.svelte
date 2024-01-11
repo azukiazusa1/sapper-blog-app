@@ -6,6 +6,7 @@
   import Slide from "./Slide.svelte";
   import Indicator from "./Indicator.svelte";
   import { goto } from "$app/navigation";
+  import { onMount } from "svelte";
 
   export let id: string;
   export let title: string;
@@ -15,21 +16,50 @@
   let active = 0;
   $: slidesCount = contents.length;
 
+  function nextSlide() {
+    if (active === slidesCount - 1) {
+      return;
+    }
+    active = (active + 1) % slidesCount;
+  }
+
+  function prevSlide() {
+    if (active === 0) {
+      return;
+    }
+    active = (active - 1) % slidesCount;
+  }
+
   function handleClick(e: MouseEvent) {
+    // テキストを選択しているときは何もしない
+    if (window.getSelection()?.toString()) {
+      return;
+    }
+
     // 左半分をクリックしたら前のスライドへ、右半分をクリックしたら次のスライドへ
     if (e.clientX < window.innerWidth / 2) {
-      if (active === 0) {
-        return;
-      }
-      active = (active - 1 + slidesCount) % slidesCount;
+      prevSlide();
     } else {
-      if (active === slidesCount - 1) {
-        return;
-      }
-      active = (active + 1) % slidesCount;
+      nextSlide();
     }
   }
 
+  function handleKeyDown(e: KeyboardEvent) {
+    if (e.key === "ArrowLeft") {
+      prevSlide();
+    } else if (e.key === "ArrowRight") {
+      nextSlide();
+    } else if (e.shiftKey && e.key === "N") {
+      handleClickNextButton();
+    }
+  }
+
+  onMount(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  });
   /**
    * 今表示しているショートのIDを除いたすべてのショートのIDからランダムに1つ選ぶ
    */
@@ -49,7 +79,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-  class="absolute left-0 top-0 z-20 mx-auto h-screen w-screen sm:static sm:z-0 sm:h-[764px] sm:w-[430px]"
+  class="h-svh absolute left-0 top-0 z-20 mx-auto w-screen sm:static sm:z-0 sm:h-[764px] sm:w-[430px]"
   on:click={handleClick}
 >
   <article

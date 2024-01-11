@@ -1,5 +1,4 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import type { AllPostsQuery } from "../../generated/graphql";
 import RepositoryFactory, {
   POST,
   SHORT,
@@ -73,7 +72,7 @@ export const GET: RequestHandler = async () => {
       const link =
         item.__typename === "BlogPost"
           ? `${siteUrl}/blog/${item.slug}`
-          : `${siteUrl}/blog/short/${item.sys.id}`;
+          : `${siteUrl}/blog/shorts/${item.sys.id}`;
       const description =
         item.__typename === "BlogPost" ? item.about : item.content1;
 
