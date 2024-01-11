@@ -23,7 +23,7 @@
       }
       active = (active - 1 + slidesCount) % slidesCount;
     } else {
-      if (active === 3) {
+      if (active === slidesCount - 1) {
         return;
       }
       active = (active + 1) % slidesCount;
