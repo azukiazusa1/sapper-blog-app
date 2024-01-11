@@ -5,9 +5,10 @@
   import Link from "../components/Link/Link.svelte";
   import type { PageData } from "./$types";
   import TalkTimelines from "../components/TalkTimelines.svelte";
+  import ShortList from "../components/ShortList.svelte";
 
   export let data: PageData;
-  $: ({ latestPosts, popularPosts } = data);
+  $: ({ latestPosts, shorts, popularPosts } = data);
 </script>
 
 <svelte:head>
@@ -44,6 +45,10 @@
       <path d="M5 12h14M12 5l7 7-7 7" />
     </svg>
   </Link>
+</div>
+
+<div class="my-4">
+  <ShortList shorts={shorts.shortCollection.items} />
 </div>
 
 <h2

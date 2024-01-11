@@ -12,7 +12,6 @@
 /* style for Markdown */
 
 #contents {
-  font-size: 16px;
   line-height: 1.9;
 }
 
@@ -299,12 +298,12 @@ div[data-rehype-pretty-code-fragment] {
   padding: 1em 1em 1em 0;
 }
 
-code {
+.show-line-number code {
   counter-reset: line;
   counter-increment: step 0;
 }
 
-code > [data-line]::before {
+.show-line-number code > [data-line]::before {
   content: counter(line);
   counter-increment: line;
   width: 1rem;

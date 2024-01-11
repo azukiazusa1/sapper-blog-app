@@ -1,14 +1,24 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import type { AllPostsQuery } from "../../generated/graphql";
-import RepositoryFactory, { POST } from "../../repositories/RepositoryFactory";
+import RepositoryFactory, {
+  POST,
+  SHORT,
+} from "../../repositories/RepositoryFactory";
 import variables from "$lib/variables";
 const PostRepository = RepositoryFactory[POST];
+const ShortRepository = RepositoryFactory[SHORT];
 export const prerender = true;
 
 const siteUrl = variables.baseURL;
 
+type Item = {
+  title: string;
+  link: string;
+  description: string;
+  pubDate: string;
+};
+
 const renderXmlRssFeed = (
-  posts: AllPostsQuery,
+  items: Item[],
 ) => `<?xml version="1.0" encoding="UTF-8" ?>
   <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
@@ -25,15 +35,15 @@ const renderXmlRssFeed = (
       <language>
         <![CDATA[ja]]>
       </language>
-    ${posts.blogPostCollection.items
+    ${items
       .map(
-        (post) => `
+        (item) => `
       <item>
-        <title><![CDATA[${post.title}]]></title>
-      <link>${siteUrl}/blog/${post.slug}</link>
-      <guid isPermaLink="false">${siteUrl}/blog/${post.slug}</guid>
-        <description><![CDATA[${post.about}]]></description>
-        <pubDate>${new Date(post.createdAt).toUTCString()}</pubDate>
+        <title><![CDATA[${item.title}]]></title>
+        <link><![CDATA[${item.link}]]></link>
+      <guid isPermaLink="false"><![CDATA[${item.link}]]></guid>
+        <description><![CDATA[${item.description}]]></description>
+        <pubDate>${item.pubDate}</pubDate>
       </item>
     `,
       )
@@ -44,7 +54,37 @@ const renderXmlRssFeed = (
 
 export const GET: RequestHandler = async () => {
   const posts = await PostRepository.findAll();
-  const feed = renderXmlRssFeed(posts);
+  const shorts = await ShortRepository.getAll();
+
+  // posts と shorts を結合して、createdAt でソートする
+  const items = [
+    ...posts.blogPostCollection.items,
+    ...shorts.shortCollection.items,
+  ]
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    )
+    .map((item) => {
+      const date = new Date(item.createdAt);
+      const pubDate = `${date.toUTCString()}`;
+
+      const link =
+        item.__typename === "BlogPost"
+          ? `${siteUrl}/blog/${item.slug}`
+          : `${siteUrl}/blog/shorts/${item.sys.id}`;
+      const description =
+        item.__typename === "BlogPost" ? item.about : item.content1;
+
+      return {
+        title: item.title,
+        description,
+        link,
+        pubDate,
+      };
+    });
+
+  const feed = renderXmlRssFeed(items);
 
   const headers = {
     "Content-Type": "application/rss+xml",

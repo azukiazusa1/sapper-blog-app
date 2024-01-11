@@ -22,7 +22,8 @@ async function getFontData(url: string) {
 
   return await fetch(resource[1]).then((res) => res.arrayBuffer());
 }
-export const generateOgpImage = async (title: string, tags: string[]) => {
+
+const generateOgpImage = async (element: React.ReactNode) => {
   if (fontCache.size === 0) {
     const fontRegular = await getFontData(
       "https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap",
@@ -35,7 +36,42 @@ export const generateOgpImage = async (title: string, tags: string[]) => {
     fontCache.set("bold", fontBold);
   }
 
-  const svg = await satori(
+  const svg = await satori(element, {
+    width: 1200,
+    height: 630,
+    fonts: [
+      {
+        name: "Noto Sans JP",
+        data: fontCache.get("regular")!,
+        style: "normal",
+        weight: 400,
+      },
+      {
+        name: "Noto Sans JP",
+        data: fontCache.get("bold")!,
+        style: "normal",
+        weight: 600,
+      },
+    ],
+  });
+
+  const resvg = new Resvg(svg, {
+    fitTo: {
+      mode: "width",
+      value: 1200,
+    },
+  });
+
+  const image = resvg.render();
+
+  return image.asPng();
+};
+
+/**
+ * ブログ記事向けのOGP画像を生成する
+ */
+export const generateBlogOgpImage = async (title: string, tags: string[]) => {
+  return generateOgpImage(
     <div
       style={{
         display: "flex",
@@ -104,34 +140,36 @@ export const generateOgpImage = async (title: string, tags: string[]) => {
         </div>
       </div>
     </div>,
-    {
-      width: 1200,
-      height: 630,
-      fonts: [
-        {
-          name: "Noto Sans JP",
-          data: fontCache.get("regular")!,
-          style: "normal",
-          weight: 400,
-        },
-        {
-          name: "Noto Sans JP",
-          data: fontCache.get("bold")!,
-          style: "normal",
-          weight: 600,
-        },
-      ],
-    },
   );
+};
 
-  const resvg = new Resvg(svg, {
-    fitTo: {
-      mode: "width",
-      value: 1200,
-    },
-  });
-
-  const image = resvg.render();
-
-  return image.asPng();
+/**
+ * ショート記事向けのOGP画像を生成する
+ */
+export const generateShortOgpImage = async (title: string) => {
+  return generateOgpImage(
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "black",
+        color: "white",
+        fontSize: 32,
+        fontWeight: 600,
+      }}
+    >
+      <div
+        style={{
+          padding: 24,
+          textWrap: "balance",
+        }}
+      >
+        {title}
+      </div>
+    </div>,
+  );
 };

@@ -12,8 +12,15 @@ import rehypeSlug from "rehype-slug";
 import rehypeToc from "@atomictech/rehype-toc";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 
-export const markdownToHtml = async (input: string): Promise<string> => {
-  const processor = unified()
+export const markdownToHtml = async (
+  input: string,
+  {
+    toc = true,
+  }: {
+    toc?: boolean;
+  } = {},
+): Promise<string> => {
+  let processor = unified()
     .use(markdown)
     .use(remarkLinkCard)
     .use(remarkGfm)
@@ -23,53 +30,58 @@ export const markdownToHtml = async (input: string): Promise<string> => {
     .use(rehypeCodeTitles)
     .use(rehypePrettyCode, {
       theme: "material-darker",
-    })
-    .use(rehypeSlug)
-    .use(rehypeAutoLinkHeadings)
-    // 目次のを挿入する要素を設定
-    .use(() => (tree) => {
-      const toc = {
-        type: "element",
-        tagName: "div",
-        properties: {},
-        children: [
-          {
-            type: "text",
-            value: "[toc]",
-          },
-        ],
-      } as any;
-      const body = {
-        type: "element",
-        tagName: "div",
-        properties: {
-          className: "markdown-body",
-        },
-        children: [...tree.children],
-      } as any;
-      tree.children = [toc, body];
-    })
-    .use(rehypeToc, {
-      placeholder: "[toc]",
-      customizeTOC(toc) {
-        toc.children.unshift({
+    });
+
+  if (toc) {
+    processor = processor
+      .use(rehypeSlug)
+      .use(rehypeAutoLinkHeadings)
+      // 目次を挿入する要素を設定
+      .use(() => (tree) => {
+        const toc = {
           type: "element",
-          tagName: "h2",
-          properties: {
-            id: "toc-title",
-          },
+          tagName: "div",
+          properties: {},
           children: [
             {
               type: "text",
-              value: "目次",
+              value: "[toc]",
             },
           ],
-        });
-        toc.properties["aria-labelledby"] = "toc-title";
-        return toc;
-      },
-    })
-    .use(html, { allowDangerousHtml: true });
+        } as any;
+        const body = {
+          type: "element",
+          tagName: "div",
+          properties: {
+            className: "markdown-body",
+          },
+          children: [...tree.children],
+        } as any;
+        tree.children = [toc, body];
+      })
+      .use(rehypeToc, {
+        placeholder: "[toc]",
+        customizeTOC(toc) {
+          toc.children.unshift({
+            type: "element",
+            tagName: "h2",
+            properties: {
+              id: "toc-title",
+            },
+            children: [
+              {
+                type: "text",
+                value: "目次",
+              },
+            ],
+          });
+          toc.properties["aria-labelledby"] = "toc-title";
+          return toc;
+        },
+      }) as any;
+  }
+
+  processor = processor.use(html, { allowDangerousHtml: true });
 
   const { value } = await processor.process(input);
   return value.toString();
