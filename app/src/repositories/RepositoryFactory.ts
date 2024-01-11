@@ -1,5 +1,7 @@
 import { PostRepository } from "./post";
 import type { PostRepositoryInterFace } from "./post";
+import { ShortRepository } from "./short";
+import type { ShortRepositoryInterFace } from "./short";
 import { TagRepository } from "./tag";
 import type { TagsRepositoryInterFace } from "./tag";
 import type { GitHubRepositoryInterface } from "./GitHub/types";
@@ -12,12 +14,14 @@ import {
 } from "./AnalyticsData";
 
 export const POST = Symbol("post");
+export const SHORT = Symbol("short");
 export const TAG = Symbol("tag");
 export const GITHUB = Symbol("github");
 export const ANALYTICS_DATA = Symbol("analyticsData");
 
 export interface Repositories {
   [POST]: PostRepositoryInterFace;
+  [SHORT]: ShortRepositoryInterFace;
   [TAG]: TagsRepositoryInterFace;
   [GITHUB]: GitHubRepositoryInterface;
   [ANALYTICS_DATA]: AnalyticsDataRepositoryInterface;
@@ -25,6 +29,7 @@ export interface Repositories {
 
 export default {
   [POST]: new PostRepository(),
+  [SHORT]: new ShortRepository(),
   [TAG]: new TagRepository(),
   [GITHUB]:
     process.env.VERCEL_ENV === "production"

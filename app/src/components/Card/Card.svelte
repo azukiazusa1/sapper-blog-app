@@ -163,7 +163,9 @@
       </div>
     </div>
 
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    <div id="contents" class="mx-auto mt-20 max-w-5xl">{@html contents}</div>
+    <div id="contents" class="show-line-number mx-auto mt-20 max-w-5xl">
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+      {@html contents}
+    </div>
   </div>
 </article>

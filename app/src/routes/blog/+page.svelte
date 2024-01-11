@@ -3,8 +3,11 @@
   import Pagination from "../../components/Pagination/Pagination.svelte";
   import type { PageData } from "./$types";
   import variables from "$lib/variables";
+  import Tabs from "./Tabs.svelte";
+  import ShortList from "../../components/ShortList.svelte";
 
   export let data: PageData;
+  $: ({ posts, shorts } = data);
 </script>
 
 <svelte:head>
@@ -16,11 +19,15 @@
   <link rel="canonical" href={`${variables.baseURL}/blog`} />
 </svelte:head>
 
-<div class="container my-12 md:mx-auto">
-  <PostList posts={data.blogPostCollection.items} />
-</div>
-
-<Pagination
-  total={data.blogPostCollection.total}
-  limit={data.blogPostCollection.limit}
-/>
+<Tabs value="blog">
+  <svelte:fragment slot="blog">
+    <PostList posts={posts.blogPostCollection.items} />
+    <Pagination
+      total={posts.blogPostCollection.total}
+      limit={posts.blogPostCollection.limit}
+    />
+  </svelte:fragment>
+  <svelte:fragment slot="shorts">
+    <ShortList shorts={shorts.shortCollection.items} />
+  </svelte:fragment>
+</Tabs>

@@ -2,7 +2,7 @@ import type { PageServerLoad } from "./$types";
 import RepositoryFactory, {
   POST,
   SHORT,
-} from "../../repositories/RepositoryFactory";
+} from "../../../repositories/RepositoryFactory";
 const PostRepository = RepositoryFactory[POST];
 const ShortRepository = RepositoryFactory[SHORT];
 
