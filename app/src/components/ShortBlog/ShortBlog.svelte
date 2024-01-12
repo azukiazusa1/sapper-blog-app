@@ -79,7 +79,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-  class="h-svh absolute left-0 top-0 z-20 mx-auto w-screen sm:static sm:z-0 sm:h-[764px] sm:w-[430px]"
+  class="momo absolute left-0 top-0 z-20 mx-auto w-screen sm:static sm:z-0 sm:h-[764px] sm:w-[430px]"
   on:click={handleClick}
 >
   <article
@@ -120,3 +120,16 @@
     </FloatingActionButton>
   </article>
 </div>
+
+<style>
+  .momo {
+    height: 100vh;
+  }
+  /* svh 単位がサポートしてたら、height: 100svh */
+  /* そうでなければ、height: 100vh */
+  @supports (height: 100svh) {
+    .momo {
+      height: 100svh;
+    }
+  }
+</style>
