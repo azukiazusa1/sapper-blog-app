@@ -158,7 +158,7 @@ export const generateShortOgpImage = async (title: string) => {
         justifyContent: "center",
         backgroundColor: "black",
         color: "white",
-        fontSize: 32,
+        fontSize: 52,
         fontWeight: 600,
       }}
     >
