@@ -57,7 +57,7 @@ describe("remark-link-card", () => {
 
 `);
     expect(value.toString()).toBe(`<h2>test</h2>
-<p><div><a href="https://example.com/" rel="noreferrer noopener" target="_blank"><div><div><div>Example Site</div><div>This is description</div></div><div><img src="https://www.google.com/s2/favicons?domain=example.com&#x26;sz=14" width="14" height="14" alt=""><span>example.com</span></div></div><div><img src="http://example.com/" alt=""></div></a></div></p>
+<div><a href="https://example.com/" rel="noreferrer noopener" target="_blank"><div><div><div>Example Site</div><div>This is description</div></div><div><img src="https://www.google.com/s2/favicons?domain=example.com&#x26;sz=14" width="14" height="14" alt=""><span>example.com</span></div></div><div><img src="http://example.com/" alt=""></div></a></div>
 `);
   });
 
@@ -96,7 +96,7 @@ describe("remark-link-card", () => {
 [https://example.com](https://example.com)
 `);
     expect(value.toString()).toBe(`<h2>test</h2>
-<p><div><a href="https://example.com/" rel="noreferrer noopener" target="_blank"><div><div><div>Example Site</div><div>This is description</div></div><div><div></div><span>example.com</span></div></div><div><img src="http://example.com/" alt=""></div></a></div></p>
+<div><a href="https://example.com/" rel="noreferrer noopener" target="_blank"><div><div><div>Example Site</div><div>This is description</div></div><div><div></div><span>example.com</span></div></div><div><img src="http://example.com/" alt=""></div></a></div>
 `);
   });
 
@@ -127,7 +127,7 @@ describe("remark-link-card", () => {
 `);
 
     expect(value.toString()).toBe(`<h2>test</h2>
-<p><div><a href="https://example.com/" rel="noreferrer noopener" target="_blank"><div><div><div>Example Site</div><div>This is description</div></div><div><img src="https://www.google.com/s2/favicons?domain=example.com&#x26;sz=14" width="14" height="14" alt=""><span>example.com</span></div></div><div></div></a></div></p>
+<div><a href="https://example.com/" rel="noreferrer noopener" target="_blank"><div><div><div>Example Site</div><div>This is description</div></div><div><img src="https://www.google.com/s2/favicons?domain=example.com&#x26;sz=14" width="14" height="14" alt=""><span>example.com</span></div></div><div></div></a></div>
 `);
   });
 
@@ -157,7 +157,7 @@ describe("remark-link-card", () => {
 [https://example.com](https://example.com)
 `);
     expect(value.toString()).toBe(`<h2>test</h2>
-<p><div><a href="https://example.com/" rel="noreferrer noopener" target="_blank"><div><div><div>evil title</div><div>evil description</div></div><div><img src="https://www.google.com/s2/favicons?domain=example.com&#x26;sz=14" width="14" height="14" alt=""><span>example.com</span></div></div><div></div></a></div></p>
+<div><a href="https://example.com/" rel="noreferrer noopener" target="_blank"><div><div><div>evil title</div><div>evil description</div></div><div><img src="https://www.google.com/s2/favicons?domain=example.com&#x26;sz=14" width="14" height="14" alt=""><span>example.com</span></div></div><div></div></a></div>
 `);
   });
 });

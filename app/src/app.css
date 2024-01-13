@@ -313,6 +313,10 @@ div[data-rehype-pretty-code-fragment] {
   color: rgb(99, 119, 119);
 }
 
+.link-card__wrapper {
+  @apply my-6;
+}
+
 .link-card {
   @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-gray-100 md:flex-row dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700;
 }
