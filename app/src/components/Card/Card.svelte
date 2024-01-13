@@ -146,9 +146,7 @@
 <svelte:head>
   <script>
     const initialState =
-      localStorage.getItem("toc-state") === "open" ? "open" : "close";
-
-    console.log(initialState);
+      localStorage.getItem("toc-state") === "close" ? "close" : "open";
 
     if (initialState === "open") {
       document.documentElement.classList.add("open-toc");
