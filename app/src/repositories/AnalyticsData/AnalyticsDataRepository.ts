@@ -28,12 +28,29 @@ export class AnalyticsDataRepository
         },
       ],
       dimensionFilter: {
-        filter: {
-          fieldName: "pagePath",
-          stringFilter: {
-            value: "^/blog/.+$",
-            matchType: "FULL_REGEXP",
-          },
+        andGroup: {
+          expressions: [
+            {
+              filter: {
+                fieldName: "pagePath",
+                stringFilter: {
+                  value: "^/blog/.+$",
+                  matchType: "FULL_REGEXP",
+                },
+              },
+            },
+            {
+              notExpression: {
+                filter: {
+                  fieldName: "pagePath",
+                  stringFilter: {
+                    value: "/blog/shorts/",
+                    matchType: "EXACT",
+                  },
+                },
+              },
+            },
+          ],
         },
       },
       limit: 10,
