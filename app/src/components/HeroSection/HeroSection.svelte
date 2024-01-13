@@ -8,14 +8,14 @@
   >
     <div class="mr-auto place-self-center lg:col-span-7">
       <h1
-        class="mb-4 max-w-2xl text-4xl font-extrabold leading-none dark:text-white md:text-5xl xl:text-6xl"
+        class="mb-4 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white"
       >
         Hey, I'm <span class="text-indigo-600 dark:text-indigo-400"
           >azukiazusa</span
         >👋
       </h1>
       <p
-        class="mb-6 max-w-2xl font-light leading-relaxed text-gray-500 dark:text-gray-300 md:text-lg lg:mb-8 lg:text-xl"
+        class="mb-6 max-w-2xl font-light leading-relaxed text-gray-500 md:text-lg lg:mb-8 lg:text-xl dark:text-gray-300"
       >
         週に1回 Web
         開発に関する記事をお届けします。フロントエンドに関する分野の記事が中心です。
