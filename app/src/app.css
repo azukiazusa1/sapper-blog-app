@@ -162,6 +162,10 @@ html.dark #contents .markdown-body a {
     @apply flex flex-row-reverse items-start;
   }
 
+  html:not(.open-toc) #contents {
+    @apply flex flex-row-reverse justify-center;
+  }
+
   #contents .markdown-body {
     width: calc(100% - 300px);
   }
@@ -169,11 +173,24 @@ html.dark #contents .markdown-body a {
   .toc {
     width: 300px;
     padding: 1rem;
+    padding-right: 0;
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
     overscroll-behavior: contain;
     font-size: 14px;
     @apply sticky left-0 top-8 mb-0 ml-16 p-4;
+  }
+
+  html:not(.open-toc) .toc {
+    @apply hidden;
+  }
+
+  html:not(.open-toc) .close-toc-button {
+    @apply hidden;
+  }
+
+  html.open-toc .open-toc-button {
+    @apply hidden;
   }
 }
 

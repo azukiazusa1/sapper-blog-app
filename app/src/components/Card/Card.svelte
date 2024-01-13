@@ -3,6 +3,7 @@
   import Time from "../Time/Time.svelte";
   import type { Tag } from "../../generated/graphql";
   import Image from "../Image/Image.svelte";
+  import NavButton from "./NavButton.svelte";
   import { onMount } from "svelte";
 
   export let title: string;
@@ -117,7 +118,7 @@
         });
       },
       {
-        rootMargin: "-1px 0px -99% 0px",
+        rootMargin: "-1px 0px -90% 0px",
       },
     );
     headings?.forEach((heading) => {
@@ -129,82 +130,31 @@
     };
   });
 
-  // 目次の開閉ボタン
-  onMount(() => {
-    const initialState: "open" | "close" =
-      localStorage.getItem("toc-state") === "open" ? "open" : "close";
-    const button = document.createElement("button");
-    button.classList.add(
-      "p-2",
-      "rounded-md",
-      "bg-gray-100",
-      "dark:bg-zinc-500",
-      "text-white",
-      "dark:text-gray-300",
-    );
+  function closeToc() {
+    document.documentElement.classList.remove("open-toc");
 
-    button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-      </svg>
-      `;
-    button.ariaLabel = "目次を開く";
+    localStorage.setItem("toc-state", "close");
+  }
 
-    const tocTitle = document.querySelector("nav #toc-title");
-    tocTitle?.insertAdjacentElement("beforebegin", button);
+  function openToc() {
+    document.documentElement.classList.add("open-toc");
 
-    const openButton = document.createElement("button");
-    openButton.classList.add(
-      "p-2",
-      "rounded-md",
-      "bg-gray-100",
-      "dark:bg-zinc-500",
-      "text-white",
-      "dark:text-gray-300",
-      "sticky",
-      "z-10",
-      "right-0",
-      "top-8",
-      "mt-4",
-      "translate-x-12",
-    );
-    if (initialState === "open") {
-      openButton.classList.add("hidden");
-    }
-    openButton.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-</svg>
-`;
-
-    const toc = document.querySelector("nav.toc");
-    const contents = document.getElementById("contents");
-
-    contents?.insertAdjacentElement("afterbegin", openButton);
-
-    if (initialState === "close") {
-      toc?.classList.add("hidden");
-      contents?.style.setProperty("justify-content", "center");
-      openButton?.classList.remove("hidden");
-    }
-
-    button?.addEventListener("click", () => {
-      toc?.classList.add("hidden");
-      contents?.style.removeProperty("flex-direction");
-      contents?.style.setProperty("justify-content", "center");
-      openButton?.classList.remove("hidden");
-
-      localStorage.setItem("toc-state", "close");
-    });
-
-    openButton?.addEventListener("click", () => {
-      toc?.classList.remove("hidden");
-      contents?.style.removeProperty("justify-content");
-      openButton?.classList.add("hidden");
-
-      localStorage.setItem("toc-state", "open");
-    });
-  });
+    localStorage.setItem("toc-state", "open");
+  }
 </script>
+
+<svelte:head>
+  <script>
+    const initialState =
+      localStorage.getItem("toc-state") === "open" ? "open" : "close";
+
+    console.log(initialState);
+
+    if (initialState === "open") {
+      document.documentElement.classList.add("open-toc");
+    }
+  </script>
+</svelte:head>
 
 <article data-pagefind-body>
   <div class="p-4">
@@ -239,9 +189,54 @@
       </div>
     </div>
 
-    <div id="contents" class="show-line-number mx-auto mt-20 max-w-5xl">
-      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-      {@html contents}
+    <div class="mx-auto max-w-5xl lg:flex">
+      <div
+        id="contents"
+        class="show-line-number open-toc mx-auto mt-20 max-w-5xl"
+      >
+        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+        {@html contents}
+      </div>
+      <NavButton
+        on:click={closeToc}
+        label="目次を閉じる"
+        className="close-toc-button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-7 w-7"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+          />
+        </svg>
+      </NavButton>
+      <NavButton
+        on:click={openToc}
+        label="目次を開く"
+        className="open-toc-button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-7 w-7"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+          />
+        </svg>
+      </NavButton>
     </div>
   </div>
 </article>
