@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/svelte";
 
-import Box from "./ShortCardView.svelte";
+import ShortCard from "./ShortCardView.svelte";
 
 const meta = {
-  title: "Box",
-  component: Box,
+  title: "ShortCard",
+  component: ShortCard,
   tags: ["autodocs"],
 } satisfies Meta<Box>;
 
 export default meta;
-type Story = StoryObj<Box>;
+type Story = StoryObj<ShortCard>;
 
 export const Default: Story = {
   args: {

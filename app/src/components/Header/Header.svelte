@@ -51,7 +51,7 @@
 
 <SideMenu {isOpen} {segment} {routes} on:close={closeSideMenu} />
 <header
-  class={`sticky left-0 z-10 w-full border-b border-gray-200 backdrop-blur transition-all duration-300 ease-in-out dark:border-zinc-700 md:static
+  class={`sticky left-0 z-10 w-full border-b border-gray-200 backdrop-blur transition-all duration-300 ease-in-out md:static dark:border-zinc-700
     ${hideHeader ? "-top-14 md:top-0" : "top-0"}
   `}
 >
