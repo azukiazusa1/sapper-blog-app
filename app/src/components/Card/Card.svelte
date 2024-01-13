@@ -208,18 +208,18 @@
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="h-7 w-7"
+          class="h-6 w-6"
         >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
           />
         </svg>
       </NavButton>
       <NavButton
         on:click={openToc}
-        label="目次を開く"
+        label="目次を表示"
         className="open-toc-button"
       >
         <svg
