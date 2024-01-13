@@ -22,7 +22,7 @@
         {title}
       </h1>
       <p
-        class="mb-6 mt-4 max-w-2xl font-light leading-relaxed text-gray-500 dark:text-gray-300 md:text-lg lg:mb-8 lg:text-xl"
+        class="mb-6 mt-4 max-w-2xl font-light leading-relaxed text-gray-500 md:text-lg lg:mb-8 lg:text-xl dark:text-gray-300"
       >
         {message}
       </p>
