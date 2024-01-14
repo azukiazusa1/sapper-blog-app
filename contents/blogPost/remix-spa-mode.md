@@ -1,17 +1,16 @@
 ---
 id: eUlzvBFiOXchSZ3UGnj4V
-title: Remix の SPA モード
-slug: remix-spa-mode
+title: "Remix の SPA モード"
+slug: "remix-spa-mode"
 about: "Remix は React のフルスタックフレームワークで、Web 標準に基づいた API で構築されていることが特徴です。Node.js のようなサーバーサイドの JavaScript 環境で動作することを前提としています。しかし、現実の世界ではサーバーを用意せずに、静的なファイルをホスティングするだけの環境で Web アプリケーションを構築することが有効な場合も多くあります。このような需要を満たすために、Remix v2.5.0 から実験的に SPA モードが導入されました。"
 createdAt: "2024-01-14T11:22+09:00"
 updatedAt: "2024-01-14T11:22+09:00"
-tags: [Remix, React, Vite]
+tags: ["Remix", "React", "Vite"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1iHj52uiyVL7aWghdvgF35/3f40de12f4d9a942af3f0d690a9a04d0/winter_yuki-usagi_illust_1803.png"
-  title: "雪うさぎのイラスト"
+  title: "winter yuki-usagi illust 1803"
 published: true
 ---
-
 Remix は React のフルスタックフレームワークで、Web 標準に基づいて構築されていることが特徴です。例えばデータのミューテーションはクライアントからサーバーの API をコールするのではなく、HTML のフォームを使って行うといます。また `Response/Request` オブジェクトや `FormData` など、Web 標準の API を活用することで、開発者が学習コストを抑えながら、Web アプリケーションを構築できるようになっています。
 
 Remix は UX や SEO に優れた Web アプリケーションを構築する目的で、Node.js のようなサーバーサイドの JavaScript 環境で動作することを前提としています。
