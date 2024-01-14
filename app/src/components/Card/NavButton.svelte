@@ -9,7 +9,7 @@
   <Tooltip.Trigger asChild let:builder>
     <button
       type="button"
-      class="{className} sticky right-8 top-12 mt-20 hidden h-11 rounded-full p-2 hover:bg-gray-100 lg:block dark:hover:bg-zinc-700"
+      class="{className} sticky right-8 top-8 hidden rounded-full p-2 hover:bg-gray-100 lg:block dark:hover:bg-zinc-700"
       use:builder.action
       {...builder}
       on:click

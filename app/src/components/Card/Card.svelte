@@ -130,6 +130,16 @@
     };
   });
 
+  // nav-button の高さは markdown-body - toc の高さに合わせる
+  onMount(() => {
+    const navButton = document.getElementById("nav-button");
+    const contents = document.getElementById("contents");
+    navButton?.setAttribute(
+      "style",
+      `height: ${contents?.clientHeight - 240}px`,
+    );
+  });
+
   function closeToc() {
     document.documentElement.classList.remove("open-toc");
 
@@ -187,54 +197,53 @@
       </div>
     </div>
 
-    <div class="mx-auto max-w-5xl lg:flex">
-      <div
-        id="contents"
-        class="show-line-number open-toc mx-auto mt-20 max-w-5xl"
-      >
+    <div class="relative mx-auto max-w-5xl">
+      <div id="contents" class="show-line-number mx-auto mt-20 max-w-5xl">
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html contents}
       </div>
-      <NavButton
-        on:click={closeToc}
-        label="目次を閉じる"
-        className="close-toc-button"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="h-6 w-6"
+      <div id="nav-button" class="absolute right-0 top-0">
+        <NavButton
+          on:click={closeToc}
+          label="目次を閉じる"
+          className="close-toc-button"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-          />
-        </svg>
-      </NavButton>
-      <NavButton
-        on:click={openToc}
-        label="目次を表示"
-        className="open-toc-button"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="h-7 w-7"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </NavButton>
+        <NavButton
+          on:click={openToc}
+          label="目次を表示"
+          className="open-toc-button"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-          />
-        </svg>
-      </NavButton>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-7 w-7"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+            />
+          </svg>
+        </NavButton>
+      </div>
     </div>
   </div>
 </article>
