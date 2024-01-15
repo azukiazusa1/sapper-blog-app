@@ -11,7 +11,6 @@ thumbnail:
   title: "winter yuki-usagi illust 1803"
 published: true
 ---
-
 Remix は React のフルスタックフレームワークで、Web 標準に基づいて構築されていることが特徴です。例えばデータのミューテーションはクライアントからサーバーの API をコールするのではなく、HTML のフォームを使って行うといます。また `Response/Request` オブジェクトや `FormData` など、Web 標準の API を活用することで、開発者が学習コストを抑えながら、Web アプリケーションを構築できるようになっています。
 
 Remix は UX や SEO に優れた Web アプリケーションを構築する目的で、Node.js のようなサーバーサイドの JavaScript 環境で動作することを前提としています。
