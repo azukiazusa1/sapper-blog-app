@@ -11,6 +11,7 @@ thumbnail:
   title: "winter yuki-usagi illust 1803"
 published: true
 ---
+
 Remix は React のフルスタックフレームワークで、Web 標準に基づいて構築されていることが特徴です。例えばデータのミューテーションはクライアントからサーバーの API をコールするのではなく、HTML のフォームを使って行うといます。また `Response/Request` オブジェクトや `FormData` など、Web 標準の API を活用することで、開発者が学習コストを抑えながら、Web アプリケーションを構築できるようになっています。
 
 Remix は UX や SEO に優れた Web アプリケーションを構築する目的で、Node.js のようなサーバーサイドの JavaScript 環境で動作することを前提としています。
@@ -293,6 +294,13 @@ export async function clientLoader() {
   const data = await fetchDataFromApi();
   return data;
 }
+
+// loader と clientLoader を併用する場合、
+// hydrate プロパティを true に設定してハイドレーションの実行が必要なことを Remix に伝える
+// ハイドレーションが必要な場合に HydrateFallback が表示される
+// clientLoader のみを使い場合には、自動的に true に設定される
+// https://remix.run/docs/en/main/route/client-loader#clientloaderhydrate
+clientLoader.hydrate = true;
 
 // これはルートコンポーネント
 export default function Blog() {
