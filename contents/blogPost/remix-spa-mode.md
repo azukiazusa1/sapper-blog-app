@@ -8,7 +8,7 @@ updatedAt: "2024-01-14T11:22+09:00"
 tags: ["Remix", "React", "Vite"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1iHj52uiyVL7aWghdvgF35/3f40de12f4d9a942af3f0d690a9a04d0/winter_yuki-usagi_illust_1803.png"
-  title: "winter yuki-usagi illust 1803"
+  title: "雪うさぎのイラスト"
 published: true
 ---
 Remix は React のフルスタックフレームワークで、Web 標準に基づいて構築されていることが特徴です。例えばデータのミューテーションはクライアントからサーバーの API をコールするのではなく、HTML のフォームを使って行うといます。また `Response/Request` オブジェクトや `FormData` など、Web 標準の API を活用することで、開発者が学習コストを抑えながら、Web アプリケーションを構築できるようになっています。

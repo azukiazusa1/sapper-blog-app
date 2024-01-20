@@ -1,7 +1,7 @@
 ---
 id: WIGzx4_G5m7vipQmBHaeT
-title: Bun でクロスプラットフォームなシェルスクリプト
-slug: bun-cross-platform-shell-script
+title: "Bun でクロスプラットフォームなシェルスクリプト"
+slug: "bun-cross-platform-shell-script"
 about: "Bun の `$` を使うと、クロスプラットフォームなシェルスクリプト（Bun Shell）を書くことができます。Bun Shell は macOS (zsh)、Linux (bash)、および Windows (cmd) と OS の違いを気にせずにシェルスクリプトを書ける、JavaScript オブジェクトとのやりとりが可能であることが特徴です。"
 createdAt: "2024-01-20T20:01+09:00"
 updatedAt: "2024-01-20T20:01+09:00"
@@ -11,7 +11,6 @@ thumbnail:
   title: "お雑煮のイラスト"
 published: true
 ---
-
 [Bun v1.0.24](https://bun.sh/blog/bun-v1.0.24) で、クロスプラットフォームなシェルスクリプトを書くための機能（Bun Shell）が追加されました。
 
 !> Bun Shell は現在開発中の機能です。
