@@ -6,7 +6,7 @@ const meta = {
   title: "ShortCard",
   component: ShortCard,
   tags: ["autodocs"],
-} satisfies Meta<Box>;
+} satisfies Meta<ShortCard>;
 
 export default meta;
 type Story = StoryObj<ShortCard>;
