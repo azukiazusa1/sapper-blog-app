@@ -11,6 +11,7 @@ thumbnail:
   title: "お雑煮のイラスト"
 published: true
 ---
+
 [Bun v1.0.24](https://bun.sh/blog/bun-v1.0.24) で、クロスプラットフォームなシェルスクリプトを書くための機能（Bun Shell）が追加されました。
 
 !> Bun Shell は現在開発中の機能です。
@@ -81,7 +82,7 @@ const blob = await $`cat ./package.json`.blob();
 console.log(blob); // => Blob { size: 123, type: "text/plain" }
 ```
 
-stdout, stderr, 終了コードを取得するには `.quite()` メソッドを使います。
+stdout, stderr, 終了コードを取得するには `text()`, `lines()`, `json()`, `blob()` といったメソッドを呼び出さずに単に返り値を参照します。
 
 ```ts
 import { $ } from "bun";
@@ -91,6 +92,14 @@ const { stdout, stderr, exitCode } = await $`echo "Hello, world!"`;
 console.log(stdout); // => Hello, world!
 console.error(stderr); // => Buffer
 console.log(exitCode); // => 0
+```
+
+または `run()`, `quiet()` メソッドを使用しても stdout, stderr, 終了コードを取得できます。`quiet()` は標準出力を抑制して実行するメソッドです。
+
+```ts
+import { $ } from "bun";
+
+const { stdout, stderr, exitCode } = await $`echo "Hello, world!"`.quiet(); // 標準出力には何も出力されない
 ```
 
 ## リダイレクト
