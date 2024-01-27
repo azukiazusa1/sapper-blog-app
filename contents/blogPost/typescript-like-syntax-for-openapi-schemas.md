@@ -298,7 +298,7 @@ components:
           type: string
 ```
 
-ビルドインで用意されているプリミティブな型は [Built-in Types](https://typespec.io/docs/language-basics/built-in-types) を参照してください。別のモデルをデータ型として使うこともできます。
+ビルトインで用意されているプリミティブな型は [Built-in Types](https://typespec.io/docs/language-basics/built-in-types) を参照してください。別のモデルをデータ型として使うこともできます。
 
 ```ts:main.tsp {4, 7-12}
 model User {
@@ -337,7 +337,7 @@ model User {
 }
 ```
 
-ビルドインのデコレーターを使うことで、プロパティに対してバリデーションを定義できます。
+ビルトインのデコレーターを使うことで、プロパティに対してバリデーションを定義できます。
 
 ```ts:main.tsp {4-5}
 model User {
