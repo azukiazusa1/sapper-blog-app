@@ -8,7 +8,7 @@
   export let slug: string;
   export let about: string;
   export let thumbnail: Pick<Asset, "title" | "url">;
-  export let createdAt: Scalars["DateTime"];
+  export let createdAt: string;
   export let tags: Array<Pick<TagType, "name" | "slug">>;
   export let small = false;
   export let lazy = true;
