@@ -224,7 +224,7 @@ HTTP API とのバインディングには `@typespec/http` ライブラリを�
 
 https://typespec.io/docs/libraries/http/reference
 
-ライブラリまたは別のファイルをインポートするには `import` キーワードを使います。TypeScript の `import` と同じく、ファイルパスが指定された場合には対応するファイルまたはディレクトリから探索されます。パッケージ名が指定された場合にはまず TypeSpec は `package.json` を探索し、ライブラリのエントリーポイントを探します。
+ライブラリをインポートするには `import` キーワードを使います。TypeScript の `import` と同じく、ファイルパスが指定された場合には対応するファイルまたはディレクトリから探索されます。パッケージ名が指定された場合にはまず TypeSpec は `package.json` を探索し、ライブラリのエントリーポイントを探します。
 
 ```ts:main.tsp
 import "@typespec/http";
