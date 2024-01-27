@@ -1,7 +1,7 @@
 ---
 id: -WGzyQn34XTGgdYaf_LXc
 title: "TypeScript のような構文で OpenAPI のスキーマを定義する TypeSpec"
-slug: typescript-like-syntax-for-openapi-schemas
+slug: "typescript-like-syntax-for-openapi-schemas"
 about: "TypeSepc は TypeScript にインスパイアされた言語で、開発者が親しみやすい構文で OpenAPI のスキーマを定義できます。モデルを使ってデータの構造を定義し、`@route` デコレーターを使って REST API のエンドポイントを定義します。"
 createdAt: "2024-01-27T13:48+09:00"
 updatedAt: "2024-01-27T13:48+09:00"
@@ -11,7 +11,6 @@ thumbnail:
   title: "ダウンジャケットのイラスト"
 published: true
 ---
-
 TypeSpec は TypeScript にインスパイアされた言語で、開発者が親しみやすい構文で [OpenAPI v3.0](https://spec.openapis.org/oas/v3.0.3) のスキーマを定義できます。
 
 https://typespec.io/
