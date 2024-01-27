@@ -1,5 +1,7 @@
 <script lang="ts">
   import { Dialog } from "bits-ui";
+  import { PagefindUI } from "@pagefind/default-ui";
+  import "@pagefind/default-ui/css/ui.css";
 
   let open = false;
 
@@ -42,11 +44,6 @@
     }
   }
 </script>
-
-<svelte:head>
-  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
-  <script src="/pagefind/pagefind-ui.js"></script>
-</svelte:head>
 
 <Dialog.Root onOpenChange={handleOpenChange} bind:open>
   <Dialog.Trigger>

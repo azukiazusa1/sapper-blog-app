@@ -53,7 +53,7 @@ export const Default: Story = {
     title: "title",
     slug: "slug",
     about: "about",
-    createdAt: new Date(),
+    createdAt: new Date().toString(),
 
     tags: [
       {
@@ -77,7 +77,7 @@ export const Small: Story = {
     title: "title",
     slug: "slug",
     about: "about",
-    createdAt: new Date(),
+    createdAt: new Date().toString(),
 
     tags: [
       {

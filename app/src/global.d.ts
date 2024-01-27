@@ -93,4 +93,6 @@ interface PagefindUIInterface {
   });
 }
 
-declare const PagefindUI: PagefindUIInterface;
+declare module "@pagefind/default-ui" {
+  export const PagefindUI: PagefindUIInterface;
+}
