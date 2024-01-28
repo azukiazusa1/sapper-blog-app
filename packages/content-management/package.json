@@ -31,7 +31,7 @@
   "homepage": "https://github.com/azukiazusa1/sapper-blog-app#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@actions/github": "^5.1.1",
+    "@actions/github": "^6.0.0",
     "@google-analytics/data": "^4.3.0",
     "contentful-management": "^10.29.3",
     "nanoid": "^3.3.6",
