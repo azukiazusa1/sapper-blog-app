@@ -209,8 +209,6 @@ paths: {}
 components: {}
 ```
 
-## tsp コマンド
-
 ## REST API のスキーマを定義してみる
 
 それでは TypeSpec で REST API のスキーマを定義していきましょう。`tsp compile . --watch` コマンドを実行すると、ファイルの変更を検知して自動的にコンパイルしてくれます。
