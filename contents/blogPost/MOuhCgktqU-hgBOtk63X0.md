@@ -122,7 +122,7 @@ npx ts-node src/chat.ts "こんにちは、お元気ですか？"
 
 実行した結果は一度に返ってきます。今回は SSE を利用してテキストを徐々に生成して返すようにしたいので、OpenAI の API からのレスポンスをストリーミングして返すようにします。
 
-ストリーミングして返すようにするには `streaming: true` オプションを指定する方法と、`openai.beta.chat.completions.stream()` メソッドを使う方法があります。後者の方法では、Streaming のイベントハンドラや、チャットが完了された時に返される Promise が使えます
+ストリーミングして返すようにするには `streaming: true` オプションを指定する方法と、`openai.beta.chat.completions.stream()` メソッドを使う方法があります。後者の方法では、Streaming のイベントハンドラや、チャットが完了された時に返される Promise が使えます。
 
 https://github.com/openai/openai-node/blob/master/helpers.md#events
 
@@ -159,7 +159,7 @@ const main = async () => {
 main();
 ```
 
-前回のコードとは異なり、レスポンスを [for await...of](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for-await...of) でイテレートしています。OpenAI の API よりレスポンスが返されるたびに `for` ループが回り、生成された文章ががコンソールに出力されます。
+前回のコードとは異なり、レスポンスを [for await...of](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for-await...of) でイテレートしています。OpenAI の API よりレスポンスが返されるたびに `for` ループが回り、生成された文章がコンソールに出力されます。
 
 API からのレスポンスが完了した場合には `chatStream.finalChatCompletion()` が呼ばれます。このメソッド `openai.beta.chat.completions.stream()` を使わなければ使用できないメソッドです。
 
@@ -349,7 +349,7 @@ https://zenn.dev/teramotodaiki/scraps/f016ed832d6f0d
 
 https://github.com/azukiazusa1/ai-chat/blob/main/react-app/src/App.css
 
-Hono のバックエンドのリクエストはクロスオリジンであるため、CORS を許可する必要があります。Hono のコードに以下のコードを追加してください.
+Hono のバックエンドのリクエストはクロスオリジンであるため、CORS を許可する必要があります。Hono のコードに以下のコードを追加してください。
 
 ```ts:src/index.ts {1, 5}
 import { cors } from "hono/cors";
