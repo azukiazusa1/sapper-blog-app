@@ -187,13 +187,9 @@ Instructions:
 └── tsconfig.yaml
 ```
 
-`.tsp` 拡張子は TypeSpec のソースコードを表します。もし VSCode を使っている場合には、以下のコマンドで TypeSpec の拡張機能をインストールすることをおすすめします。
+`.tsp` 拡張子は TypeSpec のソースコードを表します。もし VSCode を使っている場合には、以下の拡張をインストールすることをおすすめします。
 
-```sh
-tsp code install
-```
-
-!> この拡張機能はまだ Market Place では利用できないので、必ずコマンドでインストールする必要があります。
+https://marketplace.visualstudio.com/items?itemName=typespec.typespec-vscode
 
 以下のコマンドでコンパイルします。
 
@@ -212,8 +208,6 @@ tags: []
 paths: {}
 components: {}
 ```
-
-## tsp コマンド
 
 ## REST API のスキーマを定義してみる
 
