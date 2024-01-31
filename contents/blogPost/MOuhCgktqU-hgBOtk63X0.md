@@ -12,23 +12,23 @@ thumbnail:
 published: true
 ---
 
-[Serve Send Event（SSE）](https://developer.mozilla.org/ja/docs/Web/API/Server-sent_events) は、サーバーからクライアントに向けてイベントをストリーミングするための仕組みです。WebSocket と比較すると、クライアントからサーバーへの送信は行わないサーバーからの単方向の通信になるという特徴があります。また HTTP で通信するため、WebSocket のように専用のポートを開ける必要がなく、HTTP で通信できる環境であれば利用できます。
+[Serve Send Event（SSE）](https://developer.mozilla.org/ja/docs/Web/API/Server-sent_events) は、サーバーからクライアントに向けてイベントをストリーミングするための仕組みです。WebSocket と比較すると、サーバーからの単方向の通信になるという特徴があります。また HTTP で通信するため、WebSocket のように専用のポートを開ける必要がなく、運用の負担が少ないというメリットがあります。
 
 SSE が使われる例として、生成 AI によるチャットサービスがあげられます。Chat GPT のようなサービスを利用したことがあるならば、テキストが徐々に表示されていく様子を見たことがあるかもしれません。
 
 AI によるメッセージの生成が最後まで完了するまでに時間がかかります。生成が完了した箇所から順にユーザーに表示することで、ユーザーへのフィードバックが早くなるため、UX の向上につながります。
 
-この記事では [Hono](https://hono.dev/) を使って SSE を実装する方法を紹介します。
+この記事では [Hono](https://hono.dev/) を使って OpenAI API を使ったテキスト生成をストリーミングする方法を紹介します。
 
-## Hono による SSE の実装
+## Hono による HTTP ストリーミングの実装
 
-Hono は v3.7.0 から SSE をサポートしています。まずは以下のコマンドで Hono のプロジェクトを作成します。
+Hono は [v3.7.0](https://github.com/honojs/hono/releases/tag/v3.7.0) から HTTP ストリーミングをサポートしています。まずは以下のコマンドで Hono のプロジェクトを作成します。
 
 ```sh
 npm create hono@latest hono-app
 ```
 
-`src/index.ts` に以下のコードを追加します。`hono/streaming` より import した[steamText()](https://hono.dev/helpers/streaming#streamtext) 関数を使って、テキストをストリーミングができます。
+`src/index.ts` に以下のコードを追加します。`hono/streaming` より import した[steamText()](https://hono.dev/helpers/streaming#streamtext) 関数を使って、テキストをストリーミングして返すエンドポイントを作成しています。
 
 ```ts:src/index.ts
 import { Hono } from "hono";
@@ -48,6 +48,12 @@ app.get("/streamText", (c) => {
 });
 ```
 
+以下のコマンドでサーバーを起動します。
+
+```sh
+npm run dev
+```
+
 `curl` コマンドでリクエストを送ると、以下のようにレスポンスが返ってきます。
 
 ```sh
@@ -56,7 +62,7 @@ Hello
 Hono!
 ```
 
-最初に `Hello` というテキストが返ってきた後、1 秒待ってから `Hono!` というテキストが返ってくることがわかります。
+最初に `Hello` というテキストが返ってきた後、1 秒待ってから `Hono!` というテキストが返ってきました。このように `streamText()` 関数を使うことで、完全にレスポンスが返ってくるを待つことなく、完了した部分から順にレスポンスを返すことができます。
 
 ## OpenAI のレスポンスをストリーミングする
 
@@ -76,10 +82,10 @@ export OPENAI_API_KEY=sk-...
 
 ### OpenAI API を使ったテキスト生成
 
-OpenAI API を使ってテキストを生成するには、Node.js 用の [openai](https://github.com/openai/openai-node) ライブラリを使うのが便利です。
+OpenAI API 利用する場合には Node.js 用の [openai](https://github.com/openai/openai-node) ライブラリを使うのが便利です。
 
 ```sh
-$ npm install openai
+npm install openai
 ```
 
 `src/chat.ts` というファイルを作成して以下のコードを書いてみましょう。
@@ -96,7 +102,7 @@ const message = process.argv[2];
 
 const main = async () => {
   const chatCompletion = await openai.chat.completions.create({
-    messages: [{ role: "user", content: "Say this is a test" }],
+    messages: [{ role: "user", content: message }],
     model: "gpt-3.5-turbo",
   });
 
@@ -106,9 +112,11 @@ const main = async () => {
 main();
 ```
 
-まずは `new OpenAI()` で OpenAI クライアントを作成します。`apiKey` には環境変数から取得した API キーを渡します。AI によるテキスト生成は `openai.chat.completions.create()` で行います。`messages` にはプロンプトを配列で渡します。
+まずは `new OpenAI()` で OpenAI クライアントを作成します。`apiKey` には環境変数から取得した API キーを渡します。
 
-`role` とは誰が発言したかを表すもので、`user` はユーザーからの発言です。`user` の他にも `role` には `system` や `assistant` などを指定できます。
+`openai.chat.completions.create()` メソッドを呼び出すことで、OpenAI API にリクエストを送り AI による文章の生成を行うことができます。引数のプロパティの `messages` にはプロンプトを配列で渡します。
+
+`role` とは誰が発言したかを表すもので、`user` は AI アシスタンを利用するユーザーからの発言です。`user` の他にも `role` には `system` や `assistant` などを指定できます。
 
 `role` に `system` を渡すと AI アシスタントの人格を指定できます。例えば文章の添削を依頼したい場合にはプロの編集者としての人格を指定することで、より適切な文章を生成してくれる可能性があります。
 
@@ -120,15 +128,15 @@ npx ts-node src/chat.ts "こんにちは、お元気ですか？"
 { role: 'assistant', content: 'はい、元気です。お返事ありがとうございます。お元気ですか？' }
 ```
 
-実行した結果は一度に返ってきます。今回は SSE を利用してテキストを徐々に生成して返すようにしたいので、OpenAI の API からのレスポンスをストリーミングして返すようにします。
+実行した結果は一度に返ってきます。今回は HTTP ストリーミングを利用してテキストを徐々に生成して返すようにしたいので、OpenAI の API からのレスポンスをストリーミングして返すようにします。
 
-ストリーミングして返すようにするには `streaming: true` オプションを指定する方法と、`openai.beta.chat.completions.stream()` メソッドを使う方法があります。後者の方法では、Streaming のイベントハンドラや、チャットが完了された時に返される Promise が使えます。
+ストリーミングして返すようにするには `streaming: true` オプションを指定する方法と、`openai.beta.chat.completions.stream()` メソッドを使う方法があります。後者の方法では、Streaming のイベントハンドラ（`stream.on("message", () => {})` など）や、チャットが完了された時に Promise を返すメソッドなどを使うことができます。
 
 https://github.com/openai/openai-node/blob/master/helpers.md#events
 
 前者の方法ではストリーム内のチャンクの非同期イテラブルのみを返すので、使用するメモリが少なくなるという利点があります。
 
-今回は `openai.beta.chat.completions.stream()` メソッドを使って実装してみます。
+今回は `openai.beta.chat.completions.stream()` メソッドを使って実装してみましょう。
 
 ```ts:src/chat.ts
 import OpenAI from "openai";
@@ -147,6 +155,7 @@ const main = async () => {
     stream: true,
   });
 
+  // 非同期イテレータが返されるので for await...of でイテレートする
   for await (const message of chatStream) {
     console.log(message.choices[0].delta.content);
   }
@@ -159,11 +168,11 @@ const main = async () => {
 main();
 ```
 
-前回のコードとは異なり、レスポンスを [for await...of](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for-await...of) でイテレートしています。OpenAI の API よりレスポンスが返されるたびに `for` ループが回り、生成された文章がコンソールに出力されます。
+前回のコードとは異なり、レスポンスを [for await...of](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for-await...of) でイテレートしています。OpenAI の API よりレスポンスが返されるたびに `for` ループが回り、生成された文章がコンソールに出力されるのです。
 
-API からのレスポンスが完了した場合には `chatStream.finalChatCompletion()` が呼ばれます。このメソッド `openai.beta.chat.completions.stream()` を使わなければ使用できないメソッドです。
+API からのレスポンスが完了した場合には `chatStream.finalChatCompletion()` が呼ばれます。
 
-それでは実行してみましょう。文章が徐々に生成されていく様子がわかります。
+それでは実行してみましょう。レスポンスがチャンクに分かれて返ってきて、文章が徐々に生成されていく様子がわかります。
 
 ```sh
 $ npx ts-node src/chat.ts "鎌倉幕府はなぜ滅びたのか？"
@@ -195,6 +204,7 @@ const openai = new OpenAI({
 });
 
 app.post("/chat", async (c) => {
+  // ボディリクエストからメッセージを取得
   const body = await c.req.json<{ message: string }>();
   return streamText(c, async (stream) => {
     const chatStream = openai.beta.chat.completions.stream({
@@ -204,17 +214,17 @@ app.post("/chat", async (c) => {
     });
 
     for await (const message of chatStream) {
+      // OpenAI API からのレスポンスが返ってくるたびにレスポンスを返す
       await stream.write(message.choices[0].delta.content || "");
     }
 
-    await chatStream.finalChatCompletion();
-
+    // ストリームを終了
     stream.close();
   });
 });
 ```
 
-ユーザーの入力はボディリクエストとして `c.req.json<{ message: string }>()` で取得できます。`streamText()` 関数内で OpenAI API からのストリーミングレスポンスを受け取り、`stream.write()` でそのままレスポンスをストリーミングして返却しています。
+ユーザーの入力はボディリクエストとして `c.req.json<{ message: string }>()` で取得します。`streamText()` 関数内で OpenAI API からのストリーミングレスポンスを受け取り、`stream.write()` でそのままレスポンスをストリーミングして返却しています。
 
 `for await...of` 文を抜けてチャットが完了したことが確認できたら、`stream.end()` でストリーミングを終了します。
 
@@ -246,14 +256,18 @@ type Message = {
 };
 
 function App() {
+  // チャットの履歴
   const [messages, setMessages] = useState<Message[]>([]);
+  // ユーザーが入力したメッセージ
   const [message, setMessage] = useState("");
+  // メッセージを生成中かどうか（ストリーミング中かどうか）
   const [isGenerating, setIsGenerating] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (message === "") return;
     setIsGenerating(true);
+    // ユーザーのメッセージをチャットの履歴に追加
     setMessages((messages) => [
       ...messages,
       { role: "user", content: message },
@@ -269,12 +283,15 @@ function App() {
       body: JSON.stringify({ message }),
     });
 
+    // レスポンスのストリーミングを受け取る
     const reader = response.body?.getReader();
     if (!reader) return;
 
     const decoder = new TextDecoder();
     while (true) {
+      // レスポンスのストリーミングを読み込む
       const { done, value } = await reader.read();
+      // done が true になったらストリーミングが完了したことを意味する
       if (done) {
         setIsGenerating(false);
         return;
@@ -286,6 +303,7 @@ function App() {
         .map((line) => line.trim())
         .filter((s) => s); // 余計な空行を取り除く
       for (const chunk of chunks) {
+        // 文章のチャンクが到着するたびにチャットの履歴の最後の要素（AI アシスタントのメッセージ）に追加する
         setMessages((messages) => {
           const content = messages[messages.length - 1].content;
           return [
@@ -333,11 +351,13 @@ function App() {
 export default App;
 ```
 
-`messages` はチャットの履歴を表す配列です。ユーザーがメッセージを送信したり、API からのレスポンスを受け取ったりするたびに、`messages` に新しいメッセージが追加し画面上に表示されます。
+`messages` はチャットの履歴を表す配列です。ユーザーがメッセージを送信したり、API からのレスポンスを受け取ったりするたびに、`messages` に新しいメッセージを追加し画面上に表示されるようにしています。
 
-`handleSubmit` 関数内ではユーザーがメッセージを送信した時の処理を行っています。まずは `messages` にユーザーのメッセージを追加します。次に Fetch API を使って先ほど作成した Hono の `/chat` エンドポイントにリクエストを送ります。
+`handleSubmit` 関数内ではユーザーがメッセージを送信した時の処理を行っています。まずは `messages` にユーザーのメッセージを追加し、チャットの履歴として表示されるようにします。
 
-レスポンスはストリーミングで返却されるので、`response.body?.getReader()` でレスポンスのストリームを取得します。そして無限ループ内で `{ done, value } = await reader.read()` でストリームからデータを読み込みます。`done` が `true` になったらストリーミングが完了したことを意味するので、ループを抜けます。
+続いて Fetch API を使って先ほど作成した Hono の `/chat` エンドポイントにリクエストを送ります。
+
+レスポンスはストリーミングで返却されるので、`response.body?.getReader()` でレスポンスのストリームを取得します。そして無限ループ内で `{ done, value } = await reader.read()` によりストリームからデータを読み込みます。`done` が `true` になったらストリーミングが完了したことを意味するので、ループを抜けます。
 
 メッセージがレスポンスから返ってくるたびに `messages` の最後の要素（`role` が `assistant` のメッセージ）の `content` に追加していきます。これにより、画面上にメッセージが徐々に表示されていく様子を見ることができます。
 
@@ -349,7 +369,7 @@ https://zenn.dev/teramotodaiki/scraps/f016ed832d6f0d
 
 https://github.com/azukiazusa1/ai-chat/blob/main/react-app/src/App.css
 
-Hono のバックエンドのリクエストはクロスオリジンであるため、CORS を許可する必要があります。Hono のコードに以下のコードを追加してください。
+バックエンドへのリクエストはクロスオリジンであるため、CORS を許可する必要があります。Hono のコードに以下のコードを追加してください。
 
 ```ts:src/index.ts {1, 5}
 import { cors } from "hono/cors";
@@ -371,11 +391,11 @@ http://localhost:5173 にアクセスすると、チャットサービスの UI 
 
 ### リクエストをキャンセルできるようにする
 
-チャットサービスの UX のため、ユーザーが期待に沿わないテキストが生成された時点でレスポンスのストリーミングをキャンセルできることは重要です。さもなければ、長い時間ユーザーは待機しなければいけません。
+チャットサービスの UX を向上させるため、ユーザーが期待に沿わないテキストが生成された時点でレスポンスのストリーミングをキャンセルできることは重要です。さもなければ、長い時間ユーザーは待機しなければいけません。
 
 まずはフロントエンド側からリクエストをキャンセルできるようにします。AI が文章を生成している時（`isGenerating` が `true` の時）にリクエストをキャンセルするボタンを追加します。
 
-```tsx:src/App.tsx {23-30}
+```tsx:src/App.tsx {23-27}
 import { useState, useRef } from "react";
 
 function App() {
@@ -492,7 +512,7 @@ app.post("/chat", async (c) => {
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/2Uv7eCOA7yKaDdQi8ocIyl/c4124b6f46bcc6753ee390d247c02f84/__________2024-01-29_21.52.19.png)
 
-`openai` クライアントの `messages` の配列には、プロンプトとして渡したメッセージの他にも、過去の会話の内容を含めることができます。一般的に生成 AI は過去の会話の内容もプロンプトに含めることで、まるで前後の文脈を理解しているかのように振る舞うのです。
+`openai` クライアントの `messages` の配列には、プロンプトとして渡すメッセージの他にも、過去の会話の内容を含めることができます。一般的に生成 AI は過去の会話の内容もプロンプトに含めることで、まるで前後の文脈を理解しているかのように振る舞うのです。
 
 !> すべての会話の内容をプロンプトに含めると、いずれトークンの制限に引っかかってしまう可能性があります。この問題を解決するために、以前までの会話の内容を切り捨てたり、会話の内容を要約する方法があります。ChatGPT で長い会話をしている時に突然 AI アシスタントが会話の内容を忘れてしまうことがあるのはこのためです。
 
