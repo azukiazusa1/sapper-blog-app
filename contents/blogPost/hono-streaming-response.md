@@ -11,7 +11,6 @@ thumbnail:
   title: "ストーブのイラスト"
 published: true
 ---
-
 [Serve Send Event（SSE）](https://developer.mozilla.org/ja/docs/Web/API/Server-sent_events) は、サーバーからクライアントに向けてイベントをストリーミングするための仕組みです。WebSocket と比較すると、サーバーからの単方向の通信になるという特徴があります。また HTTP で通信するため、WebSocket のように専用のポートを開ける必要がなく、運用の負担が少ないというメリットがあります。
 
 SSE が使われる例として、生成 AI によるチャットサービスがあげられます。Chat GPT のようなサービスを利用したことがあるならば、テキストが徐々に表示されていく様子を見たことがあるかもしれません。
