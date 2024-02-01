@@ -1,8 +1,8 @@
 ---
 id: MOuhCgktqU-hgBOtk63X0
-title: "Hono で Server Send Event によるストリーミングを実装する"
+title: "Hono で Server-Sent Events によるストリーミングを実装する"
 slug: "hono-streaming-response"
-about: "Serve Send Event（SSE）は、サーバーからクライアントに向けてイベントをストリーミングするための仕組みです。WebSocket と比較すると、サーバーからの単方向の通信、HTTP で通信するという特徴があります。この記事では Hono を使って OpenAI API を使ったテキスト生成をストリーミングする方法を紹介します。"
+about: "Server-Sent events（SSE）は、サーバーからクライアントに向けてイベントをストリーミングするための仕組みです。WebSocket と比較すると、サーバーからの単方向の通信、HTTP で通信するという特徴があります。この記事では Hono を使って OpenAI API を使ったテキスト生成をストリーミングする方法を紹介します。"
 createdAt: "2024-02-01T20:43+09:00"
 updatedAt: "2024-02-01T20:43+09:00"
 tags: ["Hono", "OpenAI", "JavaScript"]
@@ -11,7 +11,7 @@ thumbnail:
   title: "ストーブのイラスト"
 published: true
 ---
-[Serve Send Event（SSE）](https://developer.mozilla.org/ja/docs/Web/API/Server-sent_events) は、サーバーからクライアントに向けてイベントをストリーミングするための仕組みです。WebSocket と比較すると、サーバーからの単方向の通信になるという特徴があります。また HTTP で通信するため、WebSocket のように専用のポートを開ける必要がなく、運用の負担が少ないというメリットがあります。
+[Server-Sent Events（SSE）](https://developer.mozilla.org/ja/docs/Web/API/Server-sent_events) は、サーバーからクライアントに向けてイベントをストリーミングするための仕組みです。WebSocket と比較すると、サーバーからの単方向の通信になるという特徴があります。また HTTP で通信するため、WebSocket のように独自のプロトコルではないため、運用の負担が少ないというメリットがあります。
 
 SSE が使われる例として、生成 AI によるチャットサービスがあげられます。Chat GPT のようなサービスを利用したことがあるならば、テキストが徐々に表示されていく様子を見たことがあるかもしれません。
 
