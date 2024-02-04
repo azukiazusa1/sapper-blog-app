@@ -302,14 +302,14 @@ html.dark #contents code:not(pre > *) {
   @apply bg-zinc-600 text-gray-50;
 }
 /* コードブロックのコンテナ */
-div[data-rehype-pretty-code-fragment] {
+figure[data-rehype-pretty-code-figure] {
   position: relative;
 }
 
 #contents pre {
   overflow: auto;
   border-radius: 6px;
-  background: #263238;
+  background: #212121;
   color: #ccc;
   margin: 1.5em 0;
   padding: 1em 1em 1em 0;

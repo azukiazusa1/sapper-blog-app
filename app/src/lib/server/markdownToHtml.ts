@@ -29,7 +29,10 @@ export const markdownToHtml = async (
     .use(remark2rehype, { allowDangerousHtml: true })
     .use(rehypeCodeTitles)
     .use(rehypePrettyCode, {
-      theme: "material-darker",
+      theme: "material-theme-darker",
+      defaultLang: {
+        block: "text",
+      },
     });
 
   if (toc) {
