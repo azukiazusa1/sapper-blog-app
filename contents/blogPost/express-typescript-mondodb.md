@@ -1,7 +1,7 @@
 ---
 id: 5lDbMBhlp4oIfDrWQ77eAm
 title: "Express + TypeScript + MongoDBでやる"
-slug: "express-typescript-mongodb"
+slug: "express-typescript-mondodb"
 about: " Expressは、Node.jsのWebアプリケーションでもっとも利用されているフレームワークです。Expressは、HTTPによるWeb上の相互作用とNOde.jsプラットフォームの中間に位置するので、ある種のミドルウェアと言えます。 Expressを利用して、MVCモデルのアプリケーションを開発してみます。 データベースにはMongoDBを利用し、さらにTypeScriptで書いてみます。"
 createdAt: "2020-06-14T00:00+09:00"
 updatedAt: "2020-06-14T00:00+09:00"
