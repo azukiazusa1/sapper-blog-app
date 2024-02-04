@@ -1,6 +1,6 @@
 ---
 id: 5lDbMBhlp4oIfDrWQ77eAm
-title: "Express + TypeScript + MongoDBでやる"
+title: "Express + TypeScript + MondoDBでやる"
 slug: "express-typescript-mondodb"
 about: " Expressは、Node.jsのWebアプリケーションでもっとも利用されているフレームワークです。Expressは、HTTPによるWeb上の相互作用とNOde.jsプラットフォームの中間に位置するので、ある種のミドルウェアと言えます。 Expressを利用して、MVCモデルのアプリケーションを開発してみます。 データベースにはMongoDBを利用し、さらにTypeScriptで書いてみます。"
 createdAt: "2020-06-14T00:00+09:00"
@@ -1043,3 +1043,4 @@ router.delete('/:id/delete', usersController.delete, usersController.redirectVie
 ```
 
 これで、基本的な CRUD 操作は完了です。
+

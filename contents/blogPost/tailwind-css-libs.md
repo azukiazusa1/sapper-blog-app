@@ -5,13 +5,12 @@ slug: "tailwind-css-libs"
 about: "Tailwind CSS を使う上でクラス名をスッキリと書くために一緒に入れたいライブラリを紹介します"
 createdAt: "2024-02-03T19:26+09:00"
 updatedAt: "2024-02-03T19:26+09:00"
-tags: ["Tailwind CSS", "css"]
+tags: ["Tailwind CSS", "CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/gh9XgOuZkUdQY8ebsYHZi/b26c4bd4704ab402ac37f212bf95286c/handy-fan_15841.png"
   title: "ハンディファンのイラスト"
 published: true
 ---
-
 Tailwind CSS はすべてをユティリティクラスで書くという特性上、HTML にはクラスがたくさん書かれることになります。1 つの要素に対してクラスがたくさん並んでいると、視覚的にどのようなスタイルが適用されているのかを把握するのが難しくなります。条件によってクラス名を付け替える処理を行っていると更に複雑になります。
 
 ```tsx
