@@ -1,7 +1,7 @@
 ---
 id: 5lDbMBhlp4oIfDrWQ77eAm
-title: "Express + TypeScript + MondoDBでやる"
-slug: "express-typescript-mondodb"
+title: "Express + TypeScript + MongoDBでやる"
+slug: "express-typescript-mongodb"
 about: " Expressは、Node.jsのWebアプリケーションでもっとも利用されているフレームワークです。Expressは、HTTPによるWeb上の相互作用とNOde.jsプラットフォームの中間に位置するので、ある種のミドルウェアと言えます。 Expressを利用して、MVCモデルのアプリケーションを開発してみます。 データベースにはMongoDBを利用し、さらにTypeScriptで書いてみます。"
 createdAt: "2020-06-14T00:00+09:00"
 updatedAt: "2020-06-14T00:00+09:00"
@@ -16,7 +16,7 @@ published: true
 Express は、Node.js の Web アプリケーションでもっとも利用されているフレームワークです。Express は、HTTP による Web 上の相互作用と NOde.js プラットフォームの中間に位置するので、ある種のミドルウェアと言えます。
 Express を利用して、MVC モデルのアプリケーションを開発してみます。
 
-データベースには MongoDB を利用します。MondoDB は**ドキュメント型**の NoSQL であり、JSON の構造をそのままデータとして保存できます。
+データベースには MongoDB を利用します。MongoDB は**ドキュメント型**の NoSQL であり、JSON の構造をそのままデータとして保存できます。
 MongoDB は以下のような特徴を持ちます。
 
 - トランザクションを持っていないが、データの読み書きは RDB よりも早い
@@ -506,7 +506,7 @@ User モデルの `find()` 関数を実行すると、ユーザーデータを�
 
 最終的には、CRUD 操作ができるようにルートを作成します。
 
-## MondoDBのインストール
+## MongoDBのインストール
 
 次のコマンドを実行して、MongoDB をインストールします。
 ここでは Homebrew を使用してインストールしています。
