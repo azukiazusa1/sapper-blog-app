@@ -19,7 +19,7 @@ jobs:
         with:
           node-version-file: package.json
           cache: npm
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         id: node_modules_cache_id
         env:
           cache-name: cache-node-modules
