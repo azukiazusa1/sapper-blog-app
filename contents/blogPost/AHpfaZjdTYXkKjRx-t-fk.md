@@ -63,9 +63,9 @@ const className = clsx(
 
 ```tsx
 const className = clsx({
-  "border border-blue-500 bg-blue-500 text-white": type === "primary",
-  "border border-gray-500 bg-gray-500 text-white": type === "secondary",
-  "border border-gray-500 bg-white text-gray-500": type === "default",
+  "border border-blue-500 bg-blue-500 text-white": variant === "primary",
+  "border border-gray-500 bg-gray-500 text-white": variant === "secondary",
+  "border border-gray-500 bg-white text-gray-500": variant === "default",
 });
 ```
 
