@@ -25,7 +25,7 @@ export default defineConfig({
       [
         "rehype-pretty-code",
         {
-          theme: "material-theme-darker",
+          theme: "material-darker",
         },
       ],
       "rehype-slug",
