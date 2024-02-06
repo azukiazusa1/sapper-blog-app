@@ -11,9 +11,6 @@ thumbnail:
   title: "rock"
 published: true
 ---
-## test
-
-test test
 
 [:focus-visible](https://developer.mozilla.org/ja/docs/Web/CSS/:focus-visible) 擬似クラスはユーザーの入力方法によって異なるフォーカス表示をしたいときに便利です。この擬似クラスはキーボード操作によりフォーカスされた場合に適用されますが、マウス操作によりフォーカスした場合には適用されません。
 
@@ -42,8 +39,9 @@ A のボタンはマウスによる操作とキーボードによる操作どち
 どうしてこのような挙動となるのか、`:focus-visible` の仕様書を確認してみましょう。以下のように記述されています。
 
 > - If the previously-focused element indicated focus, and a script causes focus to move elsewhere, indicate focus on the newly focused element.
-> 
+>
 > Conversely, if the previously-focused element did not indicate focus, and a script causes focus to move elsewhere, don’t indicate focus on the newly focused element.
+>
 > - If a newly-displayed element automatically gains focus (such as an action button in a freshly opened dialog), that element should indicate focus.
 
 [Selectors Level 4](https://w3c.github.io/csswg-drafts/selectors/#the-focus-visible-pseudo)
