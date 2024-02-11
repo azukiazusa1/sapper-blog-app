@@ -11,7 +11,6 @@ thumbnail:
   title: "rock"
 published: true
 ---
-
 [:focus-visible](https://developer.mozilla.org/ja/docs/Web/CSS/:focus-visible) 擬似クラスはユーザーの入力方法によって異なるフォーカス表示をしたいときに便利です。この擬似クラスはキーボード操作によりフォーカスされた場合に適用されますが、マウス操作によりフォーカスした場合には適用されません。
 
 それでは、JavaScript の [focus()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) メソッドによりフォーカスされた場合には、`:focus-visible` 擬似クラスは適用されるのでしょうか？実はこれは最後 `focus()` メソッドが呼ばれる前に要素にフォーカスがあったかどうかにより異なります。

@@ -11,7 +11,6 @@ thumbnail:
   title: "チョコレートパフェのイラスト"
 published: true
 ---
-
 ?> HonoX は 2024 年 2 月現在アルファステージとなっています。セマンティックバージョンに従わずに破壊的な変更が行われる可能性があります。
 
 HonoX は [Hono](https://hono.dev/) と [Vite](https://vitejs.dev/) をベースにしたフルスタック Web フレームワークです。以下のような特徴があります。
