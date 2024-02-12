@@ -551,7 +551,7 @@ export default createRoute((c) => {
 
 タイトルとコンテンツを入力するための簡単なフォームです。http://localhost:5173/articles/create にアクセスして、フォームが表示されることを確認しましょう。
 
-![https://images.ctfassets.net/in6v9lxmm5c8/4J2aUhBr6BPy7KDUpoy8Q/df8be278365044595559f4092f85e9b7/__________2024-02-11_10.36.53.png](https://images.ctfassets.net/in6v9lxmm5c8/3Z3z3Z3z3Z3z3Z3z3Z3z3Z/)
+![](https://images.ctfassets.net/in6v9lxmm5c8/4J2aUhBr6BPy7KDUpoy8Q/df8be278365044595559f4092f85e9b7/__________2024-02-11_10.36.53.png)
 
 #### POST リクエストの処理
 
@@ -652,7 +652,7 @@ const Page: FC<Props> = ({ data }) => {
 
 この `data` Props が存在する場合には、フォームにエラーメッセージと前回入力した値を表示するように変更します。
 
-```tsx:app/routes/articles/create.tsx {18, 21-22, 28, 30-31}
+```tsx:app/routes/articles/create.tsx {17, 20-21, 27, 30-31}
 const errorClass = css`
   color: red;
   font-size: 0.75rem;
@@ -695,7 +695,7 @@ const Page: FC<Props> = ({ data }) => {
 
 そして、POST リクエストのハンドラでバリデーションに失敗した場合には、`c.render()` で `<Page>` コンポーネントをレンダリングする際に Props としてバリデーション結果を渡すように変更します。
 
-```tsx:app/routes/articles/create.tsx {14-20}
+```tsx:app/routes/articles/create.tsx {9-19}
 export const POST = createRoute(
   zValidator("form", Article, (result, c) => {
     if (result.success) {
