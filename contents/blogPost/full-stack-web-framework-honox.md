@@ -115,7 +115,7 @@ export default createRoute((c) => {
 })
 ```
 
-HonoX ではそれぞれのルートで `Handler | MiddlewareHandler` の配列を `default export` する必要があります。`createRoute` はそのためのヘルパー関数です。`createRoute` に渡すコール場アク関数では引数として `Context` を受け取ります。これは [Hono の Context](https://hono.dev/api/context) と同じです。ここでは `c.req.query('name')` でクエリパラメータを取得しています。
+HonoX ではそれぞれのルートで `Handler | MiddlewareHandler` の配列を `default export` する必要があります。`createRoute` はそのためのヘルパー関数です。`createRoute` に渡すコールバック関数では引数として `Context` を受け取ります。これは [Hono の Context](https://hono.dev/api/context) と同じです。ここでは `c.req.query('name')` でクエリパラメータを取得しています。
 
 `c.render` 関数を使ってコンポーネントをレンダリングしています。ここで使われているのは HonoX のデフォルトのレンダリングエンジンである [hono/jsx](https://hono.dev/guides/jsx) です。基本的には React と同じように使えます。
 
