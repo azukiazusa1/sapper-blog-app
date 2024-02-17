@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Asset, Scalars, Tag as TagType } from "../../generated/graphql";
+  import type { Asset, Tag as TagType } from "../../generated/graphql";
   import Image from "../Image/Image.svelte";
   import Tag from "../Tag/Tag.svelte";
   import Time from "../Time/Time.svelte";
@@ -14,7 +14,9 @@
   export let lazy = true;
 </script>
 
-<article class="m-auto w-full rounded-lg border dark:border-zinc-700">
+<article
+  class="row-span-3 m-auto grid w-full grid-rows-subgrid gap-4 rounded-lg border dark:border-zinc-700"
+>
   <a href={`/blog/${slug}`} aria-hidden="true">
     <Image
       {slug}
@@ -59,12 +61,3 @@
     {/each}
   </footer>
 </article>
-
-<style>
-  article {
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: span 3;
-    gap: 1rem;
-  }
-</style>
