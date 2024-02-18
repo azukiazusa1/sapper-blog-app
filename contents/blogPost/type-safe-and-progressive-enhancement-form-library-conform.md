@@ -1,17 +1,16 @@
 ---
 id: 0vUb1c0YrW1KLuxr_Vgdd
 title: "type-safe とプログレッシブエンハンスメント、アクセシビリティヘルパーを備えたフォームライブラリ Conform"
-slug: type-safe-and-progressive-enhancement-form-library-conform
+slug: "type-safe-and-progressive-enhancement-form-library-conform"
 about: "Conform は React 向けのフォームライブラリです。type-safe であること、Web 標準を利用したプログレッシブエンハンスメントや、アクセシビリティヘルパーを特徴としており、Next.js の Server Actions や Remix に対応しています。"
 createdAt: "2024-02-18T13:30+09:00"
 updatedAt: "2024-02-18T13:30+09:00"
 tags: ["Conform", "React", "Next.js", "Zod"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7fEodIOXoEJ3Ti2UiSY6ap/97dcd5566c9305ba07ef17ca47b89a19/convenience-store_oden_illust_1756.png"
-  title: "コンビニおでんのイラスト"
+  title: "convenience-store oden illust 1756"
 published: true
 ---
-
 Conform は React 向けのフォームライブラリです。type-safe であること、Web 標準を利用したプログレッシブエンハンスメントや、アクセシビリティヘルパーを特徴としており、Next.js の Server Actions や Remix に対応しています。
 
 https://conform.guide/
