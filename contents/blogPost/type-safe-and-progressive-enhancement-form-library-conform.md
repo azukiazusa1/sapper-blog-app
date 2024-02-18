@@ -70,15 +70,22 @@ import { redirect } from "next/navigation";
 export const contact = async (prevState: unknown, formData: FormData) => {
   const submission = parseWithZod(formData, { schema: schema });
 
+  // フォームのバリデーションに失敗した場合
   if (submission.status !== "success") {
     return submission.reply();
   }
+
+  // フォームの値を取り出す
+  console.log("email:", submission.value.email);
+  console.log("content:", submission.value.content);
 
   return redirect("/contact/success");
 };
 ```
 
 Zod によるバリデーションの結果は `parseWithZod` 関数によって返されるオブジェクトに含まれています。`submission.status` が `"success"` であればバリデーションに成功したことを意味します。バリデーションに失敗した場合は `submission.reply()` メソッドを使ってエラーの情報とフォームに入力された値を返します。
+
+フォームのフィールドの値は `submittion.value` から取り出せます。この値は Zod のスキーマに従って型が変換されています。
 
 ### フォームの作成
 
