@@ -113,10 +113,8 @@
   @apply mb-6 cursor-pointer rounded-t-lg bg-gray-200 dark:bg-zinc-600;
 }
 
-#contents img {
-  margin: 1.5rem auto;
-}
-
+#contents img,
+#contents video,
 #contents iframe {
   margin: 1.5rem auto;
 }
