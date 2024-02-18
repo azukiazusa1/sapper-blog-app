@@ -147,7 +147,7 @@ export function Form() {
 
 これで Conform を使ったフォームの作成が完了しました。フォームをサブミットした後にエラーメッセージが表示されることを確認してみましょう。また、プログレッシブエンハンスメントにより JavaScript が無効な環境においてもフォームが機能することを確認できます。
 
-<video src="https://videos.ctfassets.net/in6v9lxmm5c8/75wUOJf3kCQSmZD1jQBQ2u/4a21068df8c8eaef7fa8de938790113e/_____2024-02-18_15.31.17.mov" controls>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/75wUOJf3kCQSmZD1jQBQ2u/4a21068df8c8eaef7fa8de938790113e/_____2024-02-18_15.31.17.mov" controls></video>
 
 ### バリデーションのタイミングをコントロールする
 
