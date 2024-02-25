@@ -5,13 +5,12 @@ slug: "safetest-a-test-library-offering-a-new-ui-testing-approach"
 about: "SafeTest は Playwright と Jest/Vitest を組み合わせた UI テストライブラリです。特定のライブラリに依存せず、React, Vue, Angular, Svelte などのフレームワークに対応しています。SafeTest は単体テストと Playwright を使った E2E テストの手法を組み合わせることで、それぞれの手法が抱える欠点を補うことを目指しています。"
 createdAt: "2024-02-25T13:14+09:00"
 updatedAt: "2024-02-25T13:14+09:00"
-tags: ["テスト", "Playwright", "Jest", "Vitest", "SafeTest"]
+tags: ["テスト", "playwright", "Jest", "Vitest", "SafeTest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5WK06VVQT5RTHDCT00Savz/061569f5f920b0bb314547c03ca3b25e/movie-theater_9205.png"
   title: "映画館のイラスト"
 published: true
 ---
-
 [SafeTest](https://github.com/kolodny/safetest) は Playwright と Jest/Vitest を組み合わせた UI テストライブラリです。特定のライブラリに依存せず、React, Vue, Angular, Svelte などのフレームワークに対応しています。
 
 従来のフロントエンドのテストの手法は [Testing Library](https://testing-library.com/) を使った単体テストと [Cypress](https://www.cypress.io/) や [Playwright](https://playwright.dev/) を使った E2E テストの 2 つの手法が主に用いられていました。それぞれの手法にはそれぞれの長所と短所があります。
