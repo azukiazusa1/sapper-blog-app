@@ -1,7 +1,7 @@
 ---
 id: ctl4wS8gUgNzk-WS5MqpQ
 title: "React Server Components を使うためのミニマムなフレームワーク Waku"
-slug: react-server-components-minimal-framework-waku
+slug: "react-server-components-minimal-framework-waku"
 about: "Waku は小規模から中規模の React プロジェクトを構築するためのミニマムなフレームワークです。従来は React Server Components を使うためには Next.js のような比較的大規模なフレームワークが必要でした。Waku もまた React Server Components に対応しているため、最小限の構成で React Server Components を使いたい場合に適しています。"
 createdAt: "2024-03-02T16:13+09:00"
 updatedAt: "2024-03-02T16:13+09:00"
@@ -11,7 +11,6 @@ thumbnail:
   title: "桜と三色だんごのイラスト"
 published: true
 ---
-
 !> Waku は 2024 年 3 月現在、開発中のフレームワークです。将来 API が変更される可能性があります。また、今後追加予定の機能については [Roadmap](https://github.com/dai-shi/waku/issues/24) を参照してください。
 
 Waku は小規模から中規模の React プロジェクトを構築するためのミニマムなフレームワークです。従来は [React Server Components](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md#sharing-code-between-server-and-client) を使うためには Next.js のような比較的大規模なフレームワークが必要でした。Waku もまた React Server Components に対応しているため、最小限の構成で React Server Components を使いたい場合に適しています。
