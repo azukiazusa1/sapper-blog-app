@@ -307,21 +307,34 @@ export const createPostPage = () => {
 !> 現在はクライアントコンポーネントから直接 Server Actions を import できないようです。[Roadmap](https://github.com/dai-shi/waku/issues/24) によると、今後のアップデートで対応される予定です。
 
 ```tsx:src/components/form.tsx
-"use client";
-
 /// <reference types="react/canary" />
 /// <reference types="react-dom/canary" />
 
+"use client";
+
 import { useFormStatus } from "react-dom";
+
+const Button = () => {
+  // フォームの状態を取得するフック
+  // useFormStatus は <form> の中でしか使えないのでコンポーネントを分ける
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type="submit"
+      className="mt-4 bg-blue-500 text-white rounded-md p-2 disabled:opacity-50"
+      disabled={pending}
+    >
+      {pending ? "Creating..." : "Create"}
+    </button>
+  );
+};
 
 export const Form = ({
   createPost,
 }: {
   createPost: (formData: FormData) => Promise<void>;
 }) => {
-  // 直近のフォームのサブミット状態を取得するフック
-  const { pending } = useFormStatus();
-
   return (
     <form action={createPost}>
       <div className="mt-4">
@@ -345,13 +358,7 @@ export const Form = ({
           className="w-full border border-gray-300 rounded-md p-2"
         />
       </div>
-      <button
-        type="submit"
-        className="mt-4 bg-blue-500 text-white rounded-md p-2"
-        disabled={pending}
-      >
-        {pending ? "Creating..." : "Create"}
-      </button>
+      <Button></Button>
     </form>
   );
 };
