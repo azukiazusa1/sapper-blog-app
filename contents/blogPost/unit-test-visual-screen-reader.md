@@ -1,8 +1,8 @@
 ---
 id: afaeQaUqVI8SPvYQW-SMq
-title: "単体テストでスクリーンリーダーをシミュレートする Visual Screen Reader"
+title: "単体テストでスクリーンリーダーをシミュレートする Virtual Screen Reader"
 slug: "unit-test-visual-screen-reader"
-about: "Visual Screen Reader は単体テストのためにスクリーンリーダをシミュレートするライブラリです。このライブラリを使うことでマウスやキボードの操作をテストするように、スクリーンリーダーにより期待する読み上げが行われるかどうかをテストできます。なお、Visual Screen Reader はあくまでスクリーンリーダーの挙動を模倣したものであり、現実で使われているスクリーンリーダーによるテストを代替するものではないことに注意してください。"
+about: "Virtual Screen Reader は単体テストのためにスクリーンリーダをシミュレートするライブラリです。このライブラリを使うことでマウスやキボードの操作をテストするように、スクリーンリーダーにより期待する読み上げが行われるかどうかをテストできます。なお、Virtual Screen Reader はあくまでスクリーンリーダーの挙動を模倣したものであり、現実で使われているスクリーンリーダーによるテストを代替するものではないことに注意してください。"
 createdAt: "2024-03-16T13:20+09:00"
 updatedAt: "2024-03-16T13:20+09:00"
 tags: ["テスト", "アクセシビリティ", "Jest"]
@@ -11,15 +11,16 @@ thumbnail:
   title: "ラムチョップのイラスト"
 published: true
 ---
-Visual Screen Reader は単体テストのためにスクリーンリーダをシミュレートするライブラリです。このライブラリを使うことでマウスやキーボードの操作をテストするように、スクリーンリーダーにより期待する読み上げが行われるかどうかをテストできます。
+
+Virtual Screen Reader は単体テストのためにスクリーンリーダをシミュレートするライブラリです。このライブラリを使うことでマウスやキーボードの操作をテストするように、スクリーンリーダーにより期待する読み上げが行われるかどうかをテストできます。
 
 https://github.com/guidepup/virtual-screen-reader
 
-Visual Screen Reader は React, Vue.js, Angular などの UI フレームワークを問わず動作するように設計されています。同様に、Jest, Vitest, Storybook などテストフレームワークを問わず利用できます。
+Virtual Screen Reader は React, Vue.js, Angular などの UI フレームワークを問わず動作するように設計されています。同様に、Jest, Vitest, Storybook などテストフレームワークを問わず利用できます。
 
-## Visual Screen Reader の仕様
+## Virtual Screen Reader の仕様
 
-現在、スクリーンリーダーが従うべき明確な使用は存在しません。ですが、スクリーンリーダーに期待する振る舞いを定めた要件がいくつかの仕様によって定義されています。Visual Screen Reader はできる限りこれらの仕様に従うように設計されています。
+現在、スクリーンリーダーが従うべき明確な使用は存在しません。ですが、スクリーンリーダーに期待する振る舞いを定めた要件がいくつかの仕様によって定義されています。Virtual Screen Reader はできる限りこれらの仕様に従うように設計されています。
 
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [Accessible Name and Description Computation (ACCNAME) 1.2](https://www.w3.org/TR/accname-1.2/)
@@ -36,15 +37,15 @@ W3C の仕様の他に、以下のガイドが正式なテストケースが存�
 
 将来には [ARIA and Assistive Technologies (ARIA-AT) community group](https://github.com/w3c/aria-at) によって作成されたテストケースに準拠することが予定されています。
 
-なお、Visual Screen Reader はあくまでスクリーンリーダーの挙動を模倣したものであり、現実で使われているスクリーンリーダーによるテストを代替するものではないことに注意してください。Visual Screen Reader で読み上げられる内容は、実際に国内でよく使われている [PC-Talker](https://www.aok-net.com/screenreader/)、[NVDA](https://www.nvaccess.org/) や [VoiceOver](https://support.apple.com/ja-jp/guide/iphone/iph3e2e415f/ios) などのスクリーンリーダーとは異なることがあります。
+なお、Virtual Screen Reader はあくまでスクリーンリーダーの挙動を模倣したものであり、現実で使われているスクリーンリーダーによるテストを代替するものではないことに注意してください。Virtual Screen Reader で読み上げられる内容は、実際に国内でよく使われている [PC-Talker](https://www.aok-net.com/screenreader/)、[NVDA](https://www.nvaccess.org/) や [VoiceOver](https://support.apple.com/ja-jp/guide/iphone/iph3e2e415f/ios) などのスクリーンリーダーとは異なることがあります。
 
-Visual Screen Reader の目的はあくまで単体テストで素早いフィードバックを得ることにあります。現実のスクリーンリーダーを用いたアクセシビリティテストは引き続き必要です。
+Virtual Screen Reader の目的はあくまで単体テストで素早いフィードバックを得ることにあります。現実のスクリーンリーダーを用いたアクセシビリティテストは引き続き必要です。
 
 現実のスクリーンリーダーを用いて自動化されたテストを実行したい場合には、[guidepup/playwright](https://www.npmjs.com/package/@guidepup/playwright) のようなライブラリを利用できます。E2E テストフレームワークである [Playwright](https://playwright.dev/) と統合し、実際のブラウザ上で NVDA または VoiceOver を用いて操作できます。
 
 ## インストール
 
-それでは実際に Visual Screen Reader を使ってみましょう。この記事では React + Jest を使った例を紹介します。
+それでは実際に Virtual Screen Reader を使ってみましょう。この記事では React + Jest を使った例を紹介します。
 
 まずは関連するライブラリをインストールします。
 
@@ -52,7 +53,7 @@ Visual Screen Reader の目的はあくまで単体テストで素早いフィ�
 npm install -D @guidepup/jest @guidepup/virtual-screen-reader
 ```
 
-`@guidepup/jest` は Jest のテストのワークフローと統合して、 Visual Screen Reader の結果をスナップショットとして保存するためのライブラリです。Jest のセットアップファイル（`setupFilesAfterEnv` で指定したファイル）に以下のように設定を追加します。
+`@guidepup/jest` は Jest のテストのワークフローと統合して、 Virtual Screen Reader の結果をスナップショットとして保存するためのライブラリです。Jest のセットアップファイル（`setupFilesAfterEnv` で指定したファイル）に以下のように設定を追加します。
 
 ```js:jest.setup.js
 import "@guidepup/jest";
@@ -60,7 +61,7 @@ import "@guidepup/jest";
 
 ## テストの書き方
 
-次に Visual Screen Reader を使ったテストを書いてみましょう。以下のようなフォームコンポーネントがあるとします。
+次に Virtual Screen Reader を使ったテストを書いてみましょう。以下のようなフォームコンポーネントがあるとします。
 
 ```tsx:src/Form.tsx
 import React, { useId } from "react";
@@ -301,7 +302,7 @@ test("本文にジャンプする", async () => {
 
 ## まとめ
 
-- Visual Screen Reader はテストのためにスクリーンリーダをシミュレートするライブラリで
+- Virtual Screen Reader はテストのためにスクリーンリーダをシミュレートするライブラリで
 - UI フレームワーク、テストフレームワークを問わず利用できる
 - W3C の仕様に従い、スクリーンリーダーの挙動を模倣している
   - 本物のスクリーンリーダーを再現しているわけではないことに注意。あくまで単体テストで素早いフィードバックを得ることが目的であり、実際のスクリーンリーダーを用いたアクセシビリティテストは引き続き必要
