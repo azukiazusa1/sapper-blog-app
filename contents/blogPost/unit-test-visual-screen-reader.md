@@ -5,13 +5,12 @@ slug: "unit-test-visual-screen-reader"
 about: "Visual Screen Reader は単体テストのためにスクリーンリーダをシミュレートするライブラリです。このライブラリを使うことでマウスやキボードの操作をテストするように、スクリーンリーダーにより期待する読み上げが行われるかどうかをテストできます。なお、Visual Screen Reader はあくまでスクリーンリーダーの挙動を模倣したものであり、現実で使われているスクリーンリーダーによるテストを代替するものではないことに注意してください。"
 createdAt: "2024-03-16T13:20+09:00"
 updatedAt: "2024-03-16T13:20+09:00"
-tags: ["テスト", "アクセシビリティ", "jest"]
+tags: ["テスト", "アクセシビリティ", "Jest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/dHFPUP6FQS45HG2BkEWxP/5642c156a87dcc33bc94772896483c57/lamb-chops_9767-768x591.png"
   title: "ラムチョップのイラスト"
 published: true
 ---
-
 Visual Screen Reader は単体テストのためにスクリーンリーダをシミュレートするライブラリです。このライブラリを使うことでマウスやキーボードの操作をテストするように、スクリーンリーダーにより期待する読み上げが行われるかどうかをテストできます。
 
 https://github.com/guidepup/virtual-screen-reader
