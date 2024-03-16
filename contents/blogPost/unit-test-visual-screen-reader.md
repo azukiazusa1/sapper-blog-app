@@ -11,7 +11,6 @@ thumbnail:
   title: "ラムチョップのイラスト"
 published: true
 ---
-
 Virtual Screen Reader は単体テストのためにスクリーンリーダをシミュレートするライブラリです。このライブラリを使うことでマウスやキーボードの操作をテストするように、スクリーンリーダーにより期待する読み上げが行われるかどうかをテストできます。
 
 https://github.com/guidepup/virtual-screen-reader
