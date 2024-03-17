@@ -7,9 +7,14 @@ export const thumbnailSchema = z.object({
 });
 
 const quizSchema = z.object({
-  text: z.string(),
-  correct: z.boolean(),
-  explanation: z.string().optional(),
+  question: z.string(),
+  answers: z.array(
+    z.object({
+      text: z.string(),
+      correct: z.boolean(),
+      explanation: z.string().optional(),
+    }),
+  ),
 });
 
 export type Quiz = z.infer<typeof quizSchema>;
