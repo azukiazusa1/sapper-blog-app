@@ -52,8 +52,9 @@ thumbnail:${
 selfAssessment:${
     blog.selfAssessment
       ? "\n  quizzes:\n" +
-        blog.selfAssessment.quizzes.map((q) => {
-          return `    - question: "${escape(q.question)}"
+        blog.selfAssessment.quizzes
+          .map((q) => {
+            return `    - question: "${escape(q.question)}"
       answers:\n${q.answers
         .map((a) => {
           return `        - text: "${escape(a.text)}"
@@ -61,7 +62,8 @@ selfAssessment:${
           explanation: ${a.explanation ? `"${escape(a.explanation)}"` : "null"}`;
         })
         .join("\n")}`;
-        })
+          })
+          .join("\n")
       : " null"
   }
 published: ${published}

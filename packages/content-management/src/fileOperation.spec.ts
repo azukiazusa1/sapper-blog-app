@@ -129,6 +129,21 @@ published: false
               },
             ],
           },
+          {
+            question: "question2",
+            answers: [
+              {
+                text: "answer3",
+                correct: true,
+                explanation: "explanation3",
+              },
+              {
+                text: "answer4",
+                correct: false,
+                explanation: "explanation4",
+              },
+            ],
+          },
         ],
       },
       published: true,
@@ -159,6 +174,14 @@ selfAssessment:
         - text: "answer2"
           correct: false
           explanation: "explanation2"
+    - question: "question2"
+      answers:
+        - text: "answer3"
+          correct: true
+          explanation: "explanation3"
+        - text: "answer4"
+          correct: false
+          explanation: "explanation4"
 published: true
 ---
 article "article"\n`,

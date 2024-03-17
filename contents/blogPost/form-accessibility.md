@@ -24,7 +24,8 @@ selfAssessment:
           explanation: "aria-labelledby 属性は、他の要素を参照するために使用されます。しかし、視覚的に表示されるラベルと紐づけるのであれば、label 要素を使用するべきです。"
         - text: "aria-describedby 属性を使用する"
           correct: false
-          explanation: "aria-describedby 属性は、フォーム部品に関連する補足情報を提供するために使用されます。".,    - question: "スクリーンリーダーにフォームの検証に失敗していることを伝えるために使われる属性はどれですか？"
+          explanation: "aria-describedby 属性は、フォーム部品に関連する補足情報を提供するために使用されます。"
+    - question: "スクリーンリーダーにフォームの検証に失敗していることを伝えるために使われる属性はどれですか？"
       answers:
         - text: "aria-invalid 属性"
           correct: true
