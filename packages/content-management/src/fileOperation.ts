@@ -63,10 +63,15 @@ thumbnail:${
   title: "${escape(blog.thumbnail.title)}"`
       : " null"
   }
-selfAssessment: ${
+selfAssessment:${
     blog.selfAssessment
-      ? `"${escapeSelfAssessment(blog.selfAssessment)}"`
-      : "null"
+      ? "\n  quizzes:\n" +
+        blog.selfAssessment.quizzes.map((q) => {
+          return `    - text: "${escape(q.text)}"
+      correct: ${q.correct}
+      explanation: ${q.explanation ? `"${escape(q.explanation)}"` : "null"}`;
+        })
+      : " null"
   }
 published: ${published}
 ---

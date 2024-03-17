@@ -315,7 +315,9 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
             },
           }
         : undefined,
-      selfAssessment: blog.selfAssessment,
+      selfAssessment: blog.selfAssessment
+        ? { "en-US": blog.selfAssessment }
+        : undefined,
       ["relatedArticle"]: {
         "en-US": await searchRelatedArticles(blog),
       },
@@ -385,7 +387,9 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
   }
 
   if (blog.selfAssessment) {
-    fields["selfAssessment"] = blog.selfAssessment;
+    fields["selfAssessment"] = {
+      "en-US": blog.selfAssessment,
+    };
   }
 
   const updateEntry = await entry.update();
