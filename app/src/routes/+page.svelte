@@ -23,7 +23,7 @@
 <HeroSection />
 
 <h2
-  class="mt-10 max-w-2xl text-2xl font-extrabold leading-none dark:text-white"
+  class="mt-10 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
 >
   最新記事
 </h2>
@@ -52,7 +52,7 @@
 </div>
 
 <h2
-  class="mt-10 max-w-2xl text-2xl font-extrabold leading-none dark:text-white"
+  class="mt-10 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
 >
   人気記事
 </h2>
@@ -69,7 +69,7 @@
 </div>
 
 <h2
-  class="my-10 max-w-2xl text-2xl font-extrabold leading-none dark:text-white"
+  class="my-10 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
 >
   登壇資料
 </h2>

@@ -13,7 +13,7 @@
   <link rel="canonical" href={`${variables.baseURL}/tags`} />
 </svelte:head>
 
-<h1 class="text-2xl">タグ一覧</h1>
+<h1 class="px-4 text-2xl">タグ一覧</h1>
 
 <div class="container my-8 md:mx-auto md:px-12">
   {#each data.tagCollection.items as tag (tag.slug)}

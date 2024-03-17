@@ -64,7 +64,7 @@
     {contents}
   />
 
-  <div class="mx-auto max-w-5xl">
+  <div class="mx-auto max-w-5xl p-4">
     {#if post.selfAssessment?.quizzes.length > 0}
       <SelfAssessment quizzes={post.selfAssessment.quizzes} />
     {/if}
@@ -94,6 +94,6 @@
   </div>
 </div>
 
-<h2 class="mb-4 text-2xl font-extrabold leading-none">関連記事</h2>
+<h2 class="mb-4 p-4 text-2xl font-extrabold leading-none">関連記事</h2>
 
 <PostList posts={post.relatedArticleCollection?.items} small />
