@@ -115,9 +115,19 @@ published: false
       selfAssessment: {
         quizzes: [
           {
-            text: `question "question"`,
-            correct: true,
-            explanation: `explanation "explanation"`,
+            question: `question "question"`,
+            answers: [
+              {
+                text: `answer "answer"`,
+                correct: true,
+                explanation: `explanation "explanation"`,
+              },
+              {
+                text: "answer2",
+                correct: false,
+                explanation: "explanation2",
+              },
+            ],
           },
         ],
       },
@@ -141,9 +151,14 @@ thumbnail:
   title: "ti\\"tle"
 selfAssessment:
   quizzes:
-    - text: "question \\"question\\""
-      correct: true
-      explanation: "explanation \\"explanation\\""
+    - question: "question \\"question\\""
+      answers:
+        - text: "answer \\"answer\\""
+          correct: true
+          explanation: "explanation \\"explanation\\""
+        - text: "answer2"
+          correct: false
+          explanation: "explanation2"
 published: true
 ---
 article "article"\n`,
@@ -1158,9 +1173,14 @@ thumbnail:
 published: true
 selfAssessment:
   quizzes:
-    - text: "question"
-      correct: true
-      explanation: "explanation"
+    - question: "question"
+      answers:
+        - text: "answer1"
+          correct: true
+          explanation: "explanation"
+        - text: "answer2"
+          correct: false
+          explanation: "explanation"
 ---
 `,
     );
@@ -1186,9 +1206,19 @@ selfAssessment:
         selfAssessment: {
           quizzes: [
             {
-              text: "question",
-              correct: true,
-              explanation: "explanation",
+              question: "question",
+              answers: [
+                {
+                  text: "answer1",
+                  correct: true,
+                  explanation: "explanation",
+                },
+                {
+                  text: "answer2",
+                  correct: false,
+                  explanation: "explanation",
+                },
+              ],
             },
           ],
         },
@@ -1229,7 +1259,7 @@ selfAssessment:
     });
   });
 
-  test("Answer に text がない", async () => {
+  test("Answer に question がない", async () => {
     mockedReadFile.mockResolvedValueOnce(
       `---
 id: id
@@ -1245,8 +1275,13 @@ thumbnail:
 published: true
 selfAssessment:
   quizzes:
-    - correct: true
-      explanation: "explanation"
+    - answers:
+        - text: "answer1"
+          correct: true
+          explanation: "explanation"
+        - text: "answer2"
+          correct: false
+          explanation: "explanation"
 ---
 `,
     );
@@ -1257,7 +1292,7 @@ selfAssessment:
       success: false,
       error: [
         expect.objectContaining({
-          path: ["selfAssessment", "quizzes", 0, "text"],
+          path: ["selfAssessment", "quizzes", 0, "question"],
           message: "Required",
         }),
       ],
@@ -1280,8 +1315,13 @@ thumbnail:
 published: true
 selfAssessment:
   quizzes:
-    - text: "question"
-      explanation: "explanation"
+    - question: "question"
+      answers:
+        - text: "answer1"
+          explanation: "explanation"
+        - text: "answer2"
+          correct: false
+          explanation: "explanation"
 ---
 `,
     );
@@ -1292,7 +1332,7 @@ selfAssessment:
       success: false,
       error: [
         expect.objectContaining({
-          path: ["selfAssessment", "quizzes", 0, "correct"],
+          path: ["selfAssessment", "quizzes", 0, "answers", 0, "correct"],
           message: "Required",
         }),
       ],
@@ -1315,8 +1355,13 @@ thumbnail:
 published: true
 selfAssessment:
   quizzes:
-    - text: "question"
-      correct: true
+    - question: "question"
+      answers:
+        - text: "answer1"
+          correct: true
+        - text: "answer2"
+          correct: false
+          explanation: "explanation"
 ---
 `,
     );
@@ -1342,8 +1387,18 @@ selfAssessment:
         selfAssessment: {
           quizzes: [
             {
-              text: "question",
-              correct: true,
+              question: "question",
+              answers: [
+                {
+                  text: "answer1",
+                  correct: true,
+                },
+                {
+                  text: "answer2",
+                  correct: false,
+                  explanation: "explanation",
+                },
+              ],
             },
           ],
         },

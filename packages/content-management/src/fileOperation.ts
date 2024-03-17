@@ -53,9 +53,14 @@ selfAssessment:${
     blog.selfAssessment
       ? "\n  quizzes:\n" +
         blog.selfAssessment.quizzes.map((q) => {
-          return `    - text: "${escape(q.text)}"
-      correct: ${q.correct}
-      explanation: ${q.explanation ? `"${escape(q.explanation)}"` : "null"}`;
+          return `    - question: "${escape(q.question)}"
+      answers:\n${q.answers
+        .map((a) => {
+          return `        - text: "${escape(a.text)}"
+          correct: ${a.correct}
+          explanation: ${a.explanation ? `"${escape(a.explanation)}"` : "null"}`;
+        })
+        .join("\n")}`;
         })
       : " null"
   }

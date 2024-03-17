@@ -372,9 +372,14 @@ describe("getBlogPosts", () => {
                   "en-US": {
                     quizzes: [
                       {
-                        correct: true,
-                        text: "text",
-                        explanation: "explanation",
+                        question: "question",
+                        answers: [
+                          {
+                            correct: true,
+                            text: "text",
+                            explanation: "explanation",
+                          },
+                        ],
                       },
                     ],
                   },
@@ -406,9 +411,14 @@ describe("getBlogPosts", () => {
         selfAssessment: {
           quizzes: [
             {
-              correct: true,
-              text: "text",
-              explanation: "explanation",
+              question: "question",
+              answers: [
+                {
+                  correct: true,
+                  text: "text",
+                  explanation: "explanation",
+                },
+              ],
             },
           ],
         },
@@ -762,9 +772,14 @@ describe("createBlogPost", () => {
       selfAssessment: {
         quizzes: [
           {
-            correct: true,
-            text: "text",
-            explanation: "explanation",
+            question: "question",
+            answers: [
+              {
+                correct: true,
+                text: "text",
+                explanation: "explanation",
+              },
+            ],
           },
         ],
       },
@@ -821,9 +836,14 @@ describe("createBlogPost", () => {
           "en-US": {
             quizzes: [
               {
-                correct: true,
-                text: "text",
-                explanation: "explanation",
+                question: "question",
+                answers: [
+                  {
+                    correct: true,
+                    text: "text",
+                    explanation: "explanation",
+                  },
+                ],
               },
             ],
           },
@@ -1001,9 +1021,14 @@ describe("updateBlogPost", () => {
       selfAssessment: {
         quizzes: [
           {
-            correct: true,
-            text: "text",
-            explanation: "explanation",
+            question: "question",
+            answers: [
+              {
+                correct: true,
+                text: "text",
+                explanation: "explanation",
+              },
+            ],
           },
         ],
       },
@@ -1071,9 +1096,14 @@ describe("updateBlogPost", () => {
           "en-US": {
             quizzes: [
               {
-                correct: true,
-                text: "text",
-                explanation: "explanation",
+                question: "question",
+                answers: [
+                  {
+                    correct: true,
+                    text: "text",
+                    explanation: "explanation",
+                  },
+                ],
               },
             ],
           },
