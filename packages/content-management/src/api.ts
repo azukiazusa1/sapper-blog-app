@@ -3,15 +3,16 @@ import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import slugify from "slugify";
 import { Env } from "./env.ts";
 import { searchRelatedArticles } from "./searchRelatedArticles.ts";
-import type {
-  BlogPost,
-  ContentfulBlogPost,
-  ContentfulTag,
-  DraftBlogPost,
-  FieldValue,
-  PopularPost,
-  PublishedBlogPost,
-  Thumbnail,
+import {
+  isSelfAssessment,
+  type BlogPost,
+  type ContentfulBlogPost,
+  type ContentfulTag,
+  type DraftBlogPost,
+  type FieldValue,
+  type PopularPost,
+  type PublishedBlogPost,
+  type Thumbnail,
 } from "./types";
 
 type Cache = {
@@ -174,6 +175,10 @@ export const getBlogPosts = async ({
           return foundTag ? flattenField(foundTag.fields.name) : "";
         }) ?? [];
 
+      const maybeSelfAssessment = flattenOptionalField(
+        blog.fields.selfAssessment,
+      );
+
       if (contentful.isPublished(blog)) {
         if (thumbnail === undefined)
           throw new Error(
@@ -191,6 +196,9 @@ export const getBlogPosts = async ({
           published: true,
           tags: blogTags,
           thumbnail,
+          selfAssessment: isSelfAssessment(maybeSelfAssessment)
+            ? maybeSelfAssessment
+            : undefined,
         } satisfies PublishedBlogPost;
       } else {
         return {
@@ -204,6 +212,9 @@ export const getBlogPosts = async ({
           published: false,
           tags: blogTags,
           thumbnail,
+          selfAssessment: isSelfAssessment(maybeSelfAssessment)
+            ? maybeSelfAssessment
+            : undefined,
         } satisfies DraftBlogPost;
       }
     }),
@@ -304,6 +315,9 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
             },
           }
         : undefined,
+      selfAssessment: blog.selfAssessment
+        ? { "en-US": blog.selfAssessment }
+        : undefined,
       ["relatedArticle"]: {
         "en-US": await searchRelatedArticles(blog),
       },
@@ -369,6 +383,12 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
           id: getAssetIdFromUrl(blog.thumbnail.url),
         },
       },
+    };
+  }
+
+  if (blog.selfAssessment) {
+    fields["selfAssessment"] = {
+      "en-US": blog.selfAssessment,
     };
   }
 

@@ -49,6 +49,16 @@ thumbnail:${
   title: "${escape(blog.thumbnail.title)}"`
       : " null"
   }
+selfAssessment:${
+    blog.selfAssessment
+      ? "\n  quizzes:\n" +
+        blog.selfAssessment.quizzes.map((q) => {
+          return `    - text: "${escape(q.text)}"
+      correct: ${q.correct}
+      explanation: ${q.explanation ? `"${escape(q.explanation)}"` : "null"}`;
+        })
+      : " null"
+  }
 published: ${published}
 ---
 ${article ? addNewLine(article) : ""}`;
@@ -116,6 +126,7 @@ export const loadBlogPost = async (filename: string): Promise<Result> => {
       slug: markdown["slug"] ?? undefined,
       tags: markdown["tags"],
       thumbnail: markdown["thumbnail"] ?? undefined,
+      selfAssessment: markdown["selfAssessment"] ?? undefined,
       published: markdown["published"],
     };
 

@@ -244,6 +244,9 @@ describe("getBlogPosts", () => {
                       },
                     ],
                   },
+                  selfAssessment: {
+                    "en-US": {},
+                  },
                 },
               },
               {
@@ -280,6 +283,9 @@ describe("getBlogPosts", () => {
                   tags: {
                     "en-US": [],
                   },
+                  selfAssessment: {
+                    "en-US": {},
+                  },
                 },
               },
             ],
@@ -306,6 +312,108 @@ describe("getBlogPosts", () => {
       },
       tags: ["tag1-name", "tag2-name"],
     });
+  });
+
+  test("selfAssessment がスキーマに一致している場合取得する", async () => {
+    server.use(
+      http.get(contentful("/entries"), () => {
+        return HttpResponse.json({
+          items: [
+            {
+              metadata: { tags: [] },
+              sys: createDummyMetaSysProps({ id: "blog1" }),
+              fields: {
+                title: {
+                  "en-US": "title",
+                },
+                about: {
+                  "en-US": "about",
+                },
+                createdAt: {
+                  "en-US": "2021-01-01",
+                },
+                updatedAt: {
+                  "en-US": "2021-01-02",
+                },
+                slug: {
+                  "en-US": "slug",
+                },
+                article: {
+                  "en-US": "article",
+                },
+                thumbnail: {
+                  "en-US": {
+                    sys: {
+                      id: "asset1",
+                      type: "Link",
+                      linkType: "Asset",
+                    },
+                  },
+                },
+                tags: {
+                  "en-US": [
+                    {
+                      sys: {
+                        id: "tag1",
+                        type: "Link",
+                        linkType: "Entry",
+                      },
+                    },
+                    {
+                      sys: {
+                        id: "tag2",
+                        type: "Link",
+                        linkType: "Entry",
+                      },
+                    },
+                  ],
+                },
+                selfAssessment: {
+                  "en-US": {
+                    quizzes: [
+                      {
+                        correct: true,
+                        text: "text",
+                        explanation: "explanation",
+                      },
+                    ],
+                  },
+                },
+              },
+            },
+          ],
+        });
+      }),
+    );
+
+    const result = await getBlogPosts();
+
+    return expect(result).toEqual<BlogPost[]>([
+      {
+        id: "blog1",
+        title: "title",
+        about: "about",
+        createdAt: "2021-01-01",
+        updatedAt: "2021-01-02",
+        slug: "slug",
+        article: "article",
+        published: true,
+        thumbnail: {
+          title: "title",
+          url: "https://images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
+        },
+        tags: ["tag1-name", "tag2-name"],
+        selfAssessment: {
+          quizzes: [
+            {
+              correct: true,
+              text: "text",
+              explanation: "explanation",
+            },
+          ],
+        },
+      },
+    ]);
   });
 
   test("published が false の場合 optional なフィールドがある", async () => {
@@ -389,6 +497,9 @@ describe("createBlogPost", () => {
             },
             tags: {
               "en-US": [],
+            },
+            selfAssessment: {
+              "en-US": {},
             },
           },
         });
@@ -616,6 +727,121 @@ describe("createBlogPost", () => {
       }),
     });
   });
+
+  test("selfAssessment がスキーマに一致している場合作成する", async () => {
+    const body = vi.fn();
+    server.use(
+      http.put(contentful("/entries/:entryId"), async ({ request }) => {
+        const _body = await request.json();
+        body(_body);
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({ id: "blog2" }),
+          fields: _body,
+        });
+      }),
+      http.put(contentful("/entries/:entryId/published"), async () => {
+        return new Response(undefined, { status: 200 });
+      }),
+    );
+
+    await createBlogPost({
+      id: "id",
+      title: "title",
+      about: "about",
+      createdAt: "2021-01-01",
+      updatedAt: "2021-01-02",
+      slug: "slug",
+      article: "article",
+      published: false,
+      thumbnail: {
+        title: "title",
+        url: "https://images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
+      },
+      tags: ["tag1-name", "tag2-name"],
+      selfAssessment: {
+        quizzes: [
+          {
+            correct: true,
+            text: "text",
+            explanation: "explanation",
+          },
+        ],
+      },
+    });
+
+    expect(body).toHaveBeenCalledWith({
+      fields: {
+        title: {
+          "en-US": "title",
+        },
+        about: {
+          "en-US": "about",
+        },
+        createdAt: {
+          "en-US": "2021-01-01",
+        },
+        updatedAt: {
+          "en-US": "2021-01-02",
+        },
+        slug: {
+          "en-US": "slug",
+        },
+        article: {
+          "en-US": "article",
+        },
+        thumbnail: {
+          "en-US": {
+            sys: {
+              id: "{assetId}",
+              type: "Link",
+              linkType: "Asset",
+            },
+          },
+        },
+        tags: {
+          "en-US": [
+            {
+              sys: {
+                id: "tag1",
+                type: "Link",
+                linkType: "Entry",
+              },
+            },
+            {
+              sys: {
+                id: "tag2",
+                type: "Link",
+                linkType: "Entry",
+              },
+            },
+          ],
+        },
+        selfAssessment: {
+          "en-US": {
+            quizzes: [
+              {
+                correct: true,
+                text: "text",
+                explanation: "explanation",
+              },
+            ],
+          },
+        },
+        relatedArticle: {
+          "en-US": [
+            {
+              sys: {
+                type: "Link",
+                linkType: "Entry",
+                id: "entry-id",
+              },
+            },
+          ],
+        },
+      },
+    });
+  });
 });
 
 describe("updateBlogPost", () => {
@@ -723,6 +949,134 @@ describe("updateBlogPost", () => {
               },
             },
           ],
+        },
+      },
+      metadata: {
+        tags: [],
+      },
+    });
+  });
+
+  test("selfAssessment がスキーマに一致している場合更新する", async () => {
+    const body = vi.fn();
+    server.use(
+      http.get(contentful("/entries/:entryId"), ({ params }) => {
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({
+            id: params["entryId"] as string,
+            published: false,
+          }),
+          fields: {},
+        });
+      }),
+      http.put(contentful("/entries/:entryId"), async ({ request, params }) => {
+        const _body = await request.json();
+        body(_body);
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({
+            id: params["entryId"] as string,
+            published: false,
+          }),
+          fields: _body,
+        });
+      }),
+    );
+
+    await updateBlogPost({
+      id: "blog1",
+      title: "title",
+      about: "about",
+      createdAt: "2021-01-01",
+      updatedAt: "2021-01-02",
+      slug: "slug",
+      article: "article",
+      published: false,
+      thumbnail: {
+        title: "title",
+        url: "https://images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
+      },
+      tags: ["tag1-name", "tag2-name"],
+      selfAssessment: {
+        quizzes: [
+          {
+            correct: true,
+            text: "text",
+            explanation: "explanation",
+          },
+        ],
+      },
+    });
+
+    expect(body).toHaveBeenCalledWith({
+      fields: {
+        title: {
+          "en-US": "title",
+        },
+        about: {
+          "en-US": "about",
+        },
+        createdAt: {
+          "en-US": "2021-01-01",
+        },
+        updatedAt: {
+          "en-US": "2021-01-02",
+        },
+        slug: {
+          "en-US": "slug",
+        },
+        article: {
+          "en-US": "article",
+        },
+        thumbnail: {
+          "en-US": {
+            sys: {
+              id: "{assetId}",
+              type: "Link",
+              linkType: "Asset",
+            },
+          },
+        },
+        tags: {
+          "en-US": [
+            {
+              sys: {
+                id: "tag1",
+                type: "Link",
+                linkType: "Entry",
+              },
+            },
+            {
+              sys: {
+                id: "tag2",
+                type: "Link",
+                linkType: "Entry",
+              },
+            },
+          ],
+        },
+        relatedArticle: {
+          "en-US": [
+            {
+              sys: {
+                type: "Link",
+                linkType: "Entry",
+                id: "entry-id",
+              },
+            },
+          ],
+        },
+        selfAssessment: {
+          "en-US": {
+            quizzes: [
+              {
+                correct: true,
+                text: "text",
+                explanation: "explanation",
+              },
+            ],
+          },
         },
       },
       metadata: {

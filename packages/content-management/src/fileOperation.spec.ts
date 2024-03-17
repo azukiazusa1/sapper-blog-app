@@ -57,6 +57,7 @@ tags: ["tag1", "tag2"]
 thumbnail:
   url: "https://images.ctfassets.net/3"
   title: "title"
+selfAssessment: null
 published: true
 ---
 article\n`,
@@ -90,6 +91,7 @@ createdAt: null
 updatedAt: null
 tags: []
 thumbnail: null
+selfAssessment: null
 published: false
 ---
 `,
@@ -110,6 +112,15 @@ published: false
         url: `https://images.ctfassets.net/"3"`,
         title: `ti"tle`,
       },
+      selfAssessment: {
+        quizzes: [
+          {
+            text: `question "question"`,
+            correct: true,
+            explanation: `explanation "explanation"`,
+          },
+        ],
+      },
       published: true,
     } satisfies PublishedBlogPost;
 
@@ -128,6 +139,11 @@ tags: ["tag1 \\"tag1\\"", "tag2 \\"tag2\\""]
 thumbnail:
   url: "https://images.ctfassets.net/\\"3\\""
   title: "ti\\"tle"
+selfAssessment:
+  quizzes:
+    - text: "question \\"question\\""
+      correct: true
+      explanation: "explanation \\"explanation\\""
 published: true
 ---
 article "article"\n`,
@@ -1121,6 +1137,217 @@ article
           message: "Required",
         }),
       ],
+    });
+  });
+});
+
+describe("selfAssessment", () => {
+  test("quizzes の配列に Answer があるなら取得する", async () => {
+    mockedReadFile.mockResolvedValueOnce(
+      `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
+published: true
+selfAssessment:
+  quizzes:
+    - text: "question"
+      correct: true
+      explanation: "explanation"
+---
+`,
+    );
+
+    const result = await loadBlogPost("id");
+
+    expect(result).toEqual({
+      success: true,
+      data: {
+        id: "id",
+        title: "title",
+        about: "about",
+        article: "",
+        createdAt: "2023-02-05T00:00+09:00",
+        updatedAt: "2023-02-05T00:00+09:00",
+        slug: "slug",
+        tags: ["tag1", "tag2"],
+        thumbnail: {
+          url: "https://images.ctfassets.net/3",
+          title: "title",
+        },
+        published: true,
+        selfAssessment: {
+          quizzes: [
+            {
+              text: "question",
+              correct: true,
+              explanation: "explanation",
+            },
+          ],
+        },
+      },
+    });
+  });
+
+  test("quizzes が配列ではない", async () => {
+    mockedReadFile.mockResolvedValueOnce(
+      `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
+published: true
+selfAssessment:
+  quizzes: "foo"
+---
+`,
+    );
+
+    const result = await loadBlogPost("id");
+
+    expect(result).toEqual({
+      success: false,
+      error: [
+        expect.objectContaining({
+          path: ["selfAssessment", "quizzes"],
+          message: "Expected array, received string",
+        }),
+      ],
+    });
+  });
+
+  test("Answer に text がない", async () => {
+    mockedReadFile.mockResolvedValueOnce(
+      `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
+published: true
+selfAssessment:
+  quizzes:
+    - correct: true
+      explanation: "explanation"
+---
+`,
+    );
+
+    const result = await loadBlogPost("id");
+
+    expect(result).toEqual({
+      success: false,
+      error: [
+        expect.objectContaining({
+          path: ["selfAssessment", "quizzes", 0, "text"],
+          message: "Required",
+        }),
+      ],
+    });
+  });
+
+  test("Answer に correct がない", async () => {
+    mockedReadFile.mockResolvedValueOnce(
+      `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00"
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
+published: true
+selfAssessment:
+  quizzes:
+    - text: "question"
+      explanation: "explanation"
+---
+`,
+    );
+
+    const result = await loadBlogPost("id");
+
+    expect(result).toEqual({
+      success: false,
+      error: [
+        expect.objectContaining({
+          path: ["selfAssessment", "quizzes", 0, "correct"],
+          message: "Required",
+        }),
+      ],
+    });
+  });
+
+  test("Answer に explanation がなくても良い", async () => {
+    mockedReadFile.mockResolvedValueOnce(
+      `---
+id: id
+title: "title"
+slug: "slug"
+about: "about"
+createdAt: "2023-02-05T00:00+09:00"
+updatedAt: "2023-02-05T00:00+09:00" 
+tags: ["tag1", "tag2"]
+thumbnail:
+  url: "https://images.ctfassets.net/3"
+  title: "title"
+published: true
+selfAssessment:
+  quizzes:
+    - text: "question"
+      correct: true
+---
+`,
+    );
+
+    const result = await loadBlogPost("id");
+
+    expect(result).toEqual({
+      success: true,
+      data: {
+        id: "id",
+        title: "title",
+        about: "about",
+        article: "",
+        createdAt: "2023-02-05T00:00+09:00",
+        updatedAt: "2023-02-05T00:00+09:00",
+        slug: "slug",
+        tags: ["tag1", "tag2"],
+        thumbnail: {
+          url: "https://images.ctfassets.net/3",
+          title: "title",
+        },
+        published: true,
+        selfAssessment: {
+          quizzes: [
+            {
+              text: "question",
+              correct: true,
+            },
+          ],
+        },
+      },
     });
   });
 });
