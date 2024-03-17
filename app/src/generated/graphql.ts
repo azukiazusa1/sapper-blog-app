@@ -15,6 +15,7 @@ export type Scalars = {
   DateTime: { input: any; output: any; }
   Dimension: { input: any; output: any; }
   HexColor: { input: any; output: any; }
+  JSON: { input: any; output: any; }
   Quality: { input: any; output: any; }
 };
 
@@ -220,6 +221,7 @@ export type BlogPost = Entry & {
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   linkedFrom?: Maybe<BlogPostLinkingCollections>;
   relatedArticleCollection?: Maybe<BlogPostRelatedArticleCollection>;
+  selfAssessment?: Maybe<Scalars['JSON']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
   sys: Sys;
   tagsCollection?: Maybe<BlogPostTagsCollection>;
@@ -261,6 +263,12 @@ export type BlogPostRelatedArticleCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<BlogPostFilter>;
+};
+
+
+/** blog post [See type definition](https://app.contentful.com/spaces/in6v9lxmm5c8/content_types/blogPost) */
+export type BlogPostSelfAssessmentArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -336,6 +344,7 @@ export type BlogPostFilter = {
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   relatedArticle?: InputMaybe<CfBlogPostNestedFilter>;
   relatedArticleCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  selfAssessment_exists?: InputMaybe<Scalars['Boolean']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   slug_contains?: InputMaybe<Scalars['String']['input']>;
   slug_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -636,6 +645,7 @@ export type ImageTransformOptions = {
 
 export type Query = {
   __typename?: 'Query';
+  _node?: Maybe<_Node>;
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
   blogPost?: Maybe<BlogPost>;
@@ -645,6 +655,13 @@ export type Query = {
   shortCollection?: Maybe<ShortCollection>;
   tag?: Maybe<Tag>;
   tagCollection?: Maybe<TagCollection>;
+};
+
+
+export type Query_NodeArgs = {
+  id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1031,6 +1048,10 @@ export enum TagOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+export type _Node = {
+  _id: Scalars['ID']['output'];
+};
+
 export type CfBlogPostNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfBlogPostNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfBlogPostNestedFilter>>>;
@@ -1059,6 +1080,7 @@ export type CfBlogPostNestedFilter = {
   createdAt_not?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   relatedArticleCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  selfAssessment_exists?: InputMaybe<Scalars['Boolean']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   slug_contains?: InputMaybe<Scalars['String']['input']>;
   slug_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1129,7 +1151,7 @@ export type PostBySlugQueryVariables = Exact<{
 }>;
 
 
-export type PostBySlugQuery = { __typename?: 'Query', blogPostCollection?: { __typename?: 'BlogPostCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, about?: string | null, article?: string | null, createdAt?: any | null, relatedArticleCollection?: { __typename?: 'BlogPostRelatedArticleCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, createdAt?: any | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null } | null> } | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null, tagsCollection?: { __typename?: 'BlogPostTagsCollection', items: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null } | null> } | null } | null> } | null };
+export type PostBySlugQuery = { __typename?: 'Query', blogPostCollection?: { __typename?: 'BlogPostCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, about?: string | null, article?: string | null, createdAt?: any | null, selfAssessment?: any | null, relatedArticleCollection?: { __typename?: 'BlogPostRelatedArticleCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, createdAt?: any | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null } | null> } | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null, tagsCollection?: { __typename?: 'BlogPostTagsCollection', items: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null } | null> } | null } | null> } | null };
 
 export type PostsQueryVariables = Exact<{
   order?: InputMaybe<BlogPostOrder>;

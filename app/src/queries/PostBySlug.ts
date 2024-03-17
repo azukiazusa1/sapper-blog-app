@@ -30,6 +30,7 @@ export const postBySlugQuery = gql`
             slug
           }
         }
+        selfAssessment
       }
     }
   }

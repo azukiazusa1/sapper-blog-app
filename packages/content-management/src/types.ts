@@ -6,7 +6,25 @@ export const thumbnailSchema = z.object({
   title: z.string().max(255),
 });
 
+const quizSchema = z.object({
+  text: z.string(),
+  correct: z.boolean(),
+  explanation: z.string().optional(),
+});
+
+type Quiz = z.infer<typeof quizSchema>;
+
 export type Thumbnail = z.infer<typeof thumbnailSchema>;
+
+export const selfAssessmentSchema = z.object({
+  quizzes: z.array(quizSchema),
+});
+
+export type SelfAssessment = z.infer<typeof selfAssessmentSchema>;
+
+export const isSelfAssessment = (value: unknown): value is SelfAssessment => {
+  return selfAssessmentSchema.safeParse(value).success;
+};
 
 export const BlogPostSchema = z.discriminatedUnion("published", [
   z.object({
@@ -26,6 +44,7 @@ export const BlogPostSchema = z.discriminatedUnion("published", [
       .regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/),
     tags: z.array(z.string().max(50)),
     thumbnail: thumbnailSchema,
+    selfAssessment: selfAssessmentSchema.optional(),
     published: z.literal(true),
   }),
   z.object({
@@ -48,6 +67,7 @@ export const BlogPostSchema = z.discriminatedUnion("published", [
       .optional(),
     tags: z.array(z.string().max(50)),
     thumbnail: thumbnailSchema.optional(),
+    selfAssessment: selfAssessmentSchema.optional(),
     published: z.literal(false),
   }),
 ]);
@@ -69,6 +89,7 @@ export type ContentfulBlogPost = {
     createdAt: FieldValue<string>;
     updatedAt: FieldValue<string>;
     thumbnail: FieldValue<{ sys: MetaLinkProps }>;
+    selfAssessment: FieldValue<unknown>;
     title: FieldValue<string>;
     slug: FieldValue<string>;
     tags: FieldValue<{ sys: MetaLinkProps }[]>;

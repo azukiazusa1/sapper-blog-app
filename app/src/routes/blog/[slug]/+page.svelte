@@ -11,6 +11,7 @@
   import Box from "../../../components/Box/Box.svelte";
   import Contributors from "../../../components/Contributors/Contributors.svelte";
   import Prev from "../../../components/Icons/Prev.svelte";
+  import SelfAssessment from "../../../components/SelfAssessment/SelfAssessment.svelte";
 
   export let data: PageData;
 
@@ -62,6 +63,13 @@
     }}
     {contents}
   />
+
+  <div class="mx-auto max-w-5xl">
+    {#if post.selfAssessment?.quizzes.length > 0}
+      <SelfAssessment quizzes={post.selfAssessment.quizzes} />
+    {/if}
+  </div>
+
   <div class="mx-auto max-w-5xl">
     <hr class="my-4 border-gray-300 dark:border-zinc-700" />
     <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">

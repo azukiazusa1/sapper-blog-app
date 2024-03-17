@@ -17,6 +17,9 @@ await createBlogFile({
     url: "",
     title: "",
   },
+  selfAssessment: {
+    quizzes: [],
+  },
   published: false,
 });
 
