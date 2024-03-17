@@ -9,6 +9,7 @@ tags: ["TypeScript", "msw"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/KtXARcFuPKOL6yOQYO21K/f34d366a5d51109a298e37ce305408be/wood_maki_illust_4174.png"
   title: "薪のイラスト"
+selfAssessment: null
 published: true
 ---
 ## TL;DR

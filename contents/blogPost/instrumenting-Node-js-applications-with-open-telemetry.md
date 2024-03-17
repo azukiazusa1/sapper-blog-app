@@ -9,6 +9,7 @@ tags: ["Node.js", "Express", "OpenTelemetry", "Prometheus"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1qlV5YaQMXGezxdLlDOL2A/de11f74cbe267a54645fae315f27eae2/taue_18898-768x768.png"
   title: "田植えのイラスト"
+selfAssessment: null
 published: true
 ---
 OpenTelemetry は Observability のフレームワークであり、トレース・メトリクス・ログなどのテレメトリーデータを作成、管理するためのツールキットです。OpenTelemetry はベンダーに依存しない形で標準化されたプロトコルとツールを提供していることが特徴です。

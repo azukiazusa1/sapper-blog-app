@@ -9,6 +9,7 @@ tags: ["OpenTelemetry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4fVPrLbevOOFy41rHsdfvP/d568759fa60dd7713c9eef2327705b34/daruma-otoshi_12261.png"
   title: "だるま落としのイラスト"
+selfAssessment: null
 published: true
 ---
 OpenTelemetry Collector は、アプリケーションから収集したトレースやメトリクスを、複数のバックエンドに送信するためのミドルウェアです。アプリケーションから直接バックエンドに送信するのではなく、OpenTelemetry Collector を経由して送信することで、アプリケーションはバックエンドのことを意識する必要がなくなります。また、バッチ処理や機密データのフィルタリングなどデータを処理するコンポーネントを提供しているため、より拡張性の高いデータ収集基盤を構築できます。

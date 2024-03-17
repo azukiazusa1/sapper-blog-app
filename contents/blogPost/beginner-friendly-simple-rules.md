@@ -9,6 +9,7 @@ tags: ["開発", "設計"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/sICKxR0RcZi9MYSne4PgX/27896624906f97cd645cb0138b810fa1/card-games_spade_illust_1315.png"
   title: "スペードのエースのイラスト"
+selfAssessment: null
 published: true
 ---
 最近趣味でポーカーを始めました。その中で感じたのは、なにか新しい物事を始めるときは複雑な理屈は抜きにして、単純なルールが規定されていることが初心者にとって大切だということです。多くの初心者向けのルールは「やってはいけないこと」であったり、「複数の選択肢を単純化する」ということに主眼が置かれています。

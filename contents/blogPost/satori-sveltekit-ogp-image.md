@@ -9,6 +9,7 @@ tags: ["Svelte", "SvelteKit", "OGP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1EU8H77Fm4VPXNwhQoNV8M/ca8c727bc40d8203c2736dd36d85b615/card.png"
   title: "satori"
+selfAssessment: null
 published: true
 ---
 Satori とは Vercel が公開している OGP 画像生成ライブラリです。

@@ -9,6 +9,7 @@ tags: ["storybook", "Jest", "Vue.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6227wXx8L1Wfr9qr1jtXjk/24c91422719e5745e8df997d14995b90/sOct-Txm_400x400.png"
   title: "storybook"
+selfAssessment: null
 published: true
 ---
 Storybook の [Component Story Format 3.0](https://storybook.js.org/blog/component-story-format-3-0/) では新機能として `play()` 関数が追加されました。

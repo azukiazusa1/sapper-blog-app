@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2TfY5fo7F8nvBZlAVkYrFJ/a287483f133a6385f6267f0fd28421a5/_Pngtree_small_fresh_blue_splash_3447297.png"
   title: "small fresh blue splash"
+selfAssessment: null
 published: true
 ---
 この記事は、ウェブアプリケーションエンジニアとして仕事をされているほうを対象に書かれています。日々のウェブフロントエンドの開発の中で意識しておきたい基礎的な内容をメインに記載しています。

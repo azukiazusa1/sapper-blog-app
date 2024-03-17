@@ -9,6 +9,7 @@ tags: ["Hono", "OpenAI", "JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3KIAnqvoojslYIa5b1babv/2a1a5729b81bde5fb21422c1f7a00be7/pellet-stove_illust_1774.png"
   title: "ストーブのイラスト"
+selfAssessment: null
 published: true
 ---
 [Server-Sent Events（SSE）](https://developer.mozilla.org/ja/docs/Web/API/Server-sent_events) は、サーバーからクライアントに向けてイベントをストリーミングするための仕組みです。WebSocket と比較すると、サーバーからの単方向の通信になるという特徴があります。また HTTP で通信するため、WebSocket のように独自のプロトコルではないため、運用の負担が少ないというメリットがあります。

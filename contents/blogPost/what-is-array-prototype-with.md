@@ -9,6 +9,7 @@ tags: ["JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6TG3Mp9lUott5GTkVLpVdH/15d41aaca34fe13d1696774a4532d2ab/___Pngtree___vector_fox_585540.png"
   title: "fox"
+selfAssessment: null
 published: true
 ---
 `Array.prototype.with()` は、非破壊的に配列の要素を置き換えるためのメソッドです。非破壊的とは、元の配列を変更せずに新しい配列を返すということです。下記の例のように、`arr` に対して `with()` を実行しても、`arr` は変更されず、新しい配列のコピーが返されます。

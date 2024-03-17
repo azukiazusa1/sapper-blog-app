@@ -9,6 +9,7 @@ tags: ["JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1Zh64r38ManhvKedHbQ2Kc/787597ddad6cc18640cd8c3fd5b0477f/wakame-soup_19332.png"
   title: "wakame-soup 19332"
+selfAssessment: null
 published: true
 ---
 !> `URL.canParse()` メソッドは 2023 年 10 月 15 日現在 Firefox 115、Safari 17 以降でのみ利用可能です。

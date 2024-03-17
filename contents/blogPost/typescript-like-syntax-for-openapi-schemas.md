@@ -9,6 +9,7 @@ tags: ["TypeScript", "OpenAPI", "TypeSpec"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4efwBKKVHcvQTjB8X6RLXA/947fcf1f6d7186446795e94c7f48f2cd/down-jacket_14978.png"
   title: "ダウンジャケットのイラスト"
+selfAssessment: null
 published: true
 ---
 TypeSpec は TypeScript にインスパイアされた言語で、開発者が親しみやすい構文で [OpenAPI v3.0](https://spec.openapis.org/oas/v3.0.3) のスキーマを定義できます。

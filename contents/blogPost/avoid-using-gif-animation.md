@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3A2zM9GF85BLVk3J3xTzNl/824927968b2063d4f7178ff0967ea6c7/___Pngtree___international_day_of_yoga_with_5387176.png"
   title: "international day of yog"
+selfAssessment: null
 published: true
 ---
 技術記事を書く際に、GIF アニメーションを使用することがあるかと思います。例えばフロントエンドのコードが実際にどのように動作するか説明する際には静止画では伝わりにくので、一連の動作を GIF アニメーションで説明することがあります。私自身も、このブログではよく GIF アニメーションを使用しています。

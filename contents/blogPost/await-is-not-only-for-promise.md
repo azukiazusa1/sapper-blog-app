@@ -9,6 +9,7 @@ tags: ["JavaScript", "Promise"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2okG3Yt0KXmAOz1xECemkd/4705c28d4b1a453ad56a5fe628f371c0/kingyo-sukui_18384.png"
   title: "金魚すくいのイラスト"
+selfAssessment: null
 published: true
 ---
 `await` キーワードを使用することで、Promise が fulfilled または rejected 状態になるまで実行を中断できます。これにより、Promise を用いた非同期処理をあたかも同期処理のように記述できます。

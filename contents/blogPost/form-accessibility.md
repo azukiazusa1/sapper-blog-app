@@ -9,6 +9,7 @@ tags: ["アクセシビリティ", "HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1gzQpdC9qiNXwyJeE7HaNr/36f59aef5a33e66fb7e197f92b2fabbc/school-sotsuygyou-shousho_illust_3123.png"
   title: "卒業証書のイラスト"
+selfAssessment: null
 published: true
 ---
 今日の Web におけるフォームはユーザーが情報を入力して対話するための重要な要素です。スクリーンリーダーといった支援技術を利用しているユーザーがフォームの入力を妨げられることは当然避けるべきでしょう。また障害の有無に関わらず、ユーザーに迷いを与えたり、入力ミスを誘発するようなフォームはユーザーがタスクを完了せずに途中で離脱してしまう可能性が高まり、ビジネスの観点からも望ましくありません。

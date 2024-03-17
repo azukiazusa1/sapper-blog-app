@@ -9,6 +9,7 @@ tags: ["Vue.js", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
   title: "Vue.js"
+selfAssessment: null
 published: true
 ---
 Vue.js の Composition API が登場してから 1 年とちょっとが経過しており、すでに使いこなしているほうもいらっしゃるのではないでしょう？

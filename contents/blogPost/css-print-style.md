@@ -9,6 +9,7 @@ tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2JzEE4h7Xe5SHRr9iCPv4s/ac8cdc859f3af3a4c53cb7e5ba7af455/chounouryoku_woman.png"
   title: "pointer"
+selfAssessment: null
 published: true
 ---
 大抵のブラウザでは Web ページを印刷できます。

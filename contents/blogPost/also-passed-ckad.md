@@ -9,6 +9,7 @@ tags: ["Kubernetes"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4NwI8gjd802es2aMCmWay7/5b1d1468d43c4ffc3623b33decec3eea/k8s.png"
   title: "kubernets"
+selfAssessment: null
 published: true
 ---
 [前回CKAを受験して合格した記事](https://zenn.dev/azukiazusa/articles/30e5a2988c2dd9)を Zenn に書きました。

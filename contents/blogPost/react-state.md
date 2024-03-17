@@ -9,6 +9,7 @@ tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2c9EyCXfherkq4ICwfDHaM/13bcad3dd62573b050eb8ad25dce4275/1200px-React-icon.svg.png"
   title: "React"
+selfAssessment: null
 published: true
 ---
 React のパフォーマンスについて語るとき、コンポーネントの再レンダリングは外せない話題となるでしょう。React は以下の条件のときに再レンダリングが発生します。

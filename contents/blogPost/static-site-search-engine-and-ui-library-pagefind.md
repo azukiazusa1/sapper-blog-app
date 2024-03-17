@@ -9,6 +9,7 @@ tags: ["pagefind"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3jSAV3r6jEDp1IvVRFkKIA/99534568163376f6f7e1d27f60173fa8/wine-sommelier_man_18186.png"
   title: "ワインソムリエのイラスト"
+selfAssessment: null
 published: true
 ---
 Pagefind は、静的サイト向けの全文検索エンジンと UI ライブラリです。Cloud CMS を提供している [CloudCannon](https://cloudcannon.com/) 社により開発されています。

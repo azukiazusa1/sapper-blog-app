@@ -9,6 +9,7 @@ tags: ["JavaScript", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
   title: "typescript"
+selfAssessment: null
 published: true
 ---
 普段から TypeScript で開発されているほうならば、TypeScript の恩恵を十分に堪能されていることと思います。

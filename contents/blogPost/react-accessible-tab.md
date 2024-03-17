@@ -9,6 +9,7 @@ tags: ["React", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5Hsgor2TDfU85R6hP9dVgb/ff43360e1824c5c717d858c9e4e06abb/surface-h108eyMxbxw-unsplash.jpg"
   title: "surface-h108eyMxbxw-unsplash"
+selfAssessment: null
 published: true
 ---
 タブとは、ページ内でコンテンツを切り替えるために使用する UI です。タブ初期表示ではいずれか 1 つのタブパネルが表示されており、関連するタブがアクティブなスタイルで表示されます。それぞれのタブには関連するタブパネルがあり、タブを選択することで表示されるタブパネルがタブに関連するものに切り替わります。

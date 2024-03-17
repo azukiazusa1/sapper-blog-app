@@ -9,6 +9,7 @@ tags: ["Bun"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7nGrrwXuzklaglfdnuIFL0/fdc6513019150e05ddd8a9ff2a20f708/ozouni_shouyu_15837.png"
   title: "お雑煮のイラスト"
+selfAssessment: null
 published: true
 ---
 [Bun v1.0.24](https://bun.sh/blog/bun-v1.0.24) で、クロスプラットフォームなシェルスクリプトを書くための機能（Bun Shell）が追加されました。

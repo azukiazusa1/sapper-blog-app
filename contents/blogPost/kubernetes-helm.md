@@ -9,6 +9,7 @@ tags: ["Kubernetes"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5SVnaTCg0x9gXHebUIB3AU/1367f3bbb858326bb26c704c97f0a095/helm.svg"
   title: "helm"
+selfAssessment: null
 published: true
 ---
 Helm は、Kubernets のパッケージマネージャーです。

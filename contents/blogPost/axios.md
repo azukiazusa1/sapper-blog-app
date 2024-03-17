@@ -9,6 +9,7 @@ tags: ["JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
   title: "JavaScript"
+selfAssessment: null
 published: true
 ---
 [axios](https://github.com/axios/axios)は、JavaScript における HTTP クライアントのデファクトスタンダードといえるでしょう。

@@ -9,6 +9,7 @@ tags: ["TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3qAVi9TcPTIHc7YH7APBaP/f504dfb93add3ac6e0490ed4aee26fd9/____________________________2021-10-17_21.54.19.png"
   title: "スクリーンショット 2021-10-17 21.54.19"
+selfAssessment: null
 published: true
 ---
 [type-challenges](https://github.com/type-challenges/type-challenges) を知っていますか？

@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3QFLH315wDCOBd0pQ43yDr/ef51686c64b5f807b2c854b8d932b578/accordion_11614.png"
   title: "アコーディオンのイラスト"
+selfAssessment: null
 published: true
 ---
 !> `<details>` 要素の `name` 属性は 2023 年 10 月 8 日現在 Chrome Canary のみ実装されています。

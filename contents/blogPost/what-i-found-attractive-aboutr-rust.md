@@ -9,6 +9,7 @@ tags: ["Rust"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4F5i0hDzQGUebgQJyMLvRt/12f1c0e03fd5f3aec0a7720f02e59f35/Rust_programming_language_black_logo.svg.png"
   title: "rust"
+selfAssessment: null
 published: true
 ---
 最近は [Rust](https://www.rust-lang.org/) と呼ばれるプログラミング言語を趣味として触っています。[SWC](https://swc.rs/) や [Rome](https://rome.tools/) のように Rust で作成されたフロントエンドツールが増えていることから興味を持ったのですが、実際に触ってみて Rust が高い人気を誇る理由がよく分かるようになりました。

@@ -9,6 +9,7 @@ tags: ["JavaScript", "MongoDB"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3i47kGqS3gax6sXpJ2AXAF/ccaba154f07ca03a5345cdfcfbb3a8bb/MongoDB-logo.png"
   title: "MongoDB"
+selfAssessment: null
 published: true
 ---
 ```js

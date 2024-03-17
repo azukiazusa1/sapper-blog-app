@@ -9,6 +9,7 @@ tags: ["テスト", "Jest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5mxtkQ54D8YRqLc8id5ffZ/539aca91ff16e704f4f45485b5fcec10/_Pngtree_double_burger_2575943.png"
   title: "double burger"
+selfAssessment: null
 published: true
 ---
 テストコードは誰でも読める愚直なコードであることが求められます。テストコードにはある種のドキュメントのような、コードの仕様を説明する役割が求められているためです。テストの期待結果が変数になっていて、定義元までジャンプしないと値を確認できないだとか、条件分岐やループが入り込んでいて複雑性が上がっている状態ですと、素直に読みやすいとは言えません。

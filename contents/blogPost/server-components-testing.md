@@ -9,6 +9,7 @@ tags: ["Next.js", "React", "playwright", "テスト"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7tWQTtv8kLxXKOQz2ZW3uH/7ee0bb4945c1c5efb95a314685cf5552/kinoko_autumn_onpu_8930.png"
   title: "キノコと音楽のイラスト"
+selfAssessment: null
 published: true
 ---
 現代では React におけるコンポーネントのテストは [Testing Library](https://testing-library.com/) を用いて、ユーザーの視点からテストを行うことが一般的です。`getByRole` のようなユーザーの視点のセレクタなどを提供しているため、実装の詳細に立ち入らずにテストを書けることが特徴です。

@@ -9,6 +9,7 @@ tags: ["Deno", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6fPJ5Ah5oHsWbvScuggrCh/899629af347facfc74e95006dae6b617/deno.png"
   title: "Deno"
+selfAssessment: null
 published: true
 ---
 >! Fresh は現在（2022/06/19）プロダクション環境で使用することは推奨されません

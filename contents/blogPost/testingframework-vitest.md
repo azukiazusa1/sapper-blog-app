@@ -9,6 +9,7 @@ tags: ["JavaScript", "Vite", "Vitest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3QOBjWm7zktdAtik7H1O3d/b2b88eab54f5c20dca1000c0351ee090/logo.svg"
   title: "vitest"
+selfAssessment: null
 published: true
 ---
 ?> Vitest は現在（2021/12/27 時点）開発中であり stable ではあり、本番環境での使用は推奨されません。

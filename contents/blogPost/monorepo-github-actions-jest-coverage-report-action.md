@@ -9,6 +9,7 @@ tags: ["GitHub Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/56MNfpVr3IVjfC5j2vdoMJ/1df017aa704c67b06b1742f3595abbcc/hb-sun-3q5qSKpyXGQ-unsplash.jpg"
   title: "hb-sun-3q5qSKpyXGQ-unsplash"
+selfAssessment: null
 published: true
 ---
 [jest coverage report](https://github.com/ArtiomTr/jest-coverage-report-action) は GitHuba Actions のワークフローの 1 つで Jest で実行したテストのコードカバレッジをプルリクエスト上にコメントしてくれます。

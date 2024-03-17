@@ -9,6 +9,7 @@ tags: ["開発"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/463myWORybDgtY7TwI9Kpo/3faf8b9c367bedc799adbe00de227dac/baseball_batter_boy_14672.png"
   title: "少年野球のバッターのイラスト"
+selfAssessment: null
 published: true
 ---
 技術の素振りを、ここではある特定の言語やフレームワークに対する理解を深めるために、その技術を使って何かしらの成果物を作成することと定義します。素振りの目的としては、ドキュメントからは読み取れない Pro/Con を得ること、その技術が実際のプロジェクトで使えるかどうか調査するといった事項があげられるでしょう。

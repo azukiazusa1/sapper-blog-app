@@ -9,6 +9,7 @@ tags: ["Express", "MongoDB", "Node.js", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2Lpar83pMJR1yGyxUUiDQP/dbf365e89432b966f827cacfc4d5891e/articles_2FRshdHD6LGzEVXnbjoL6p_2Fthumbnail_7D.png"
   title: "express"
+selfAssessment: null
 published: true
 ---
 # はじめに

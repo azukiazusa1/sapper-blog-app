@@ -9,6 +9,7 @@ tags: ["React", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6UKhA7p9mC4BGDDc6bgNFp/8161de3f28245b8ab40795184e0f6e62/momiji_kouyou_11157.png"
   title: "イチョウのイラスト"
+selfAssessment: null
 published: true
 ---
 コードを書くときに最も大切なことってなんだろう？聡明な読者諸君ならご存知だろうが、コードは書く時間よりも読む時間のほうが長い。だから他人に読まれることを意識して、読みやすい「良いコード」を書かなくっちゃならない。コンポーネントは適切な粒度で分割されていて、適切な名前がつけられている。型システムに安全性だって守られてるし、最新のなんとかアーキテクチャにも準拠している。素晴らしいコードだ。

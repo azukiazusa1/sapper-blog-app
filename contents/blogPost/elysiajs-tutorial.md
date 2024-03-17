@@ -9,6 +9,7 @@ tags: ["Bun", "ElysiaJS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2LyfyConbfbykrRZF8W8al/8a8abc4ea16753244a684f931745b015/white_pink_sakura_6763.png"
   title: "白と薄いピンク色の桜のイラスト"
+selfAssessment: null
 published: true
 ---
 ElysiaJS は Bun の Web フレームワークです。高いパフォーマンスと、シンプルな API や厳格な型チェックにより生産性に優れているという特徴があります。また柔軟性が高く、多くのプラグインを組み合わせて利用できます。

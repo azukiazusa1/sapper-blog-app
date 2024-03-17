@@ -9,6 +9,7 @@ tags: ["Svelte", "SvelteKit"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/10yOrB3tXKM12ZJbJdJlw5/e7d9e7de67e916bb0a59695d9882f061/1200px-Svelte_Logo.svg.png"
   title: "Svelte"
+selfAssessment: null
 published: true
 ---
 SvelteKit のフォームは Web 標準の機能のみで完結しています。つまり、クライアントサイドでは JavaScript を一切使用せずにサーバーにデータを送信できるのです。

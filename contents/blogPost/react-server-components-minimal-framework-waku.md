@@ -9,6 +9,7 @@ tags: ["React", "Waku", "React Server Components", "Server Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4CZrXiDdjmGeZjNFo8C5By/6290bfa40d2e48694226a037a6af6b23/spring_sanshoku_dango_6767.png"
   title: "桜と三色だんごのイラスト"
+selfAssessment: null
 published: true
 ---
 !> Waku は 2024 年 3 月現在、開発中のフレームワークです。将来 API が変更される可能性があります。また、今後追加予定の機能については [Roadmap](https://github.com/dai-shi/waku/issues/24) を参照してください。

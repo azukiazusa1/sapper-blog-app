@@ -9,6 +9,7 @@ tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6RAzMcZhOs2gvsbreObAWW/1f602565d9de76c6ab9eca4941206123/mike-lewis-headsmart-media-waAAaeC9hns-unsplash.jpg"
   title: "waterfall"
+selfAssessment: null
 published: true
 ---
 あるページの中で重要ではない付随的なデータの取得を待たずに、重要なデータの取得が完了したタイミングでページを表示させたい場合があります。例えば、ブログの記事のページを遷移する場合、ユーザーにとって記事のコンテンツは重要なデータですが、それに付随するコメントやいいねの数はそれほど重要ではないので、それらのデータの取得を待つ必要がありません。

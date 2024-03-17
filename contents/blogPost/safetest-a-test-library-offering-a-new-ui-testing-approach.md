@@ -9,6 +9,7 @@ tags: ["テスト", "playwright", "Jest", "Vitest", "SafeTest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5WK06VVQT5RTHDCT00Savz/061569f5f920b0bb314547c03ca3b25e/movie-theater_9205.png"
   title: "映画館のイラスト"
+selfAssessment: null
 published: true
 ---
 [SafeTest](https://github.com/kolodny/safetest) は Playwright と Jest/Vitest を組み合わせた UI テストライブラリです。特定のライブラリに依存せず、React, Vue, Angular, Svelte などのフレームワークに対応しています。

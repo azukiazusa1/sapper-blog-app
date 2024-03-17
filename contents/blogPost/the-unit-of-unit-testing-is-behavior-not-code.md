@@ -9,6 +9,7 @@ tags: ["テスト", "React", "Vitest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7vr2dhVbVTOGBUFDt0UWaI/f443311d83eb861b3e5b35552040d55f/_Pngtree_books_3703567.png"
   title: "books"
+selfAssessment: null
 published: true
 ---
 単体テストの目的は、ソフトウェア開発プロジェクトを持続可能なものにすることです。この目的を達成するための単体テストの機能の 1 つにリファクタリングに対する耐性が上げられます。これは内部のコードを変更した前後でも、外部の振る舞いから見た振る舞いが壊れていないことを保証してくれる度合いです。この耐性が高ければ、開発者は安全にコードを変更できます。

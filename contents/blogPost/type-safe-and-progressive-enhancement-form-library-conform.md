@@ -9,6 +9,7 @@ tags: ["Conform", "React", "Next.js", "Zod"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7fEodIOXoEJ3Ti2UiSY6ap/97dcd5566c9305ba07ef17ca47b89a19/convenience-store_oden_illust_1756.png"
   title: "convenience-store oden illust 1756"
+selfAssessment: null
 published: true
 ---
 Conform は React 向けのフォームライブラリです。type-safe であること、Web 標準を利用したプログレッシブエンハンスメントや、アクセシビリティヘルパーを特徴としており、Next.js の Server Actions や Remix に対応しています。

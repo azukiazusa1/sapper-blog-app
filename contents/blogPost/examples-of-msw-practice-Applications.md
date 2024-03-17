@@ -9,6 +9,7 @@ tags: ["msw"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2ie3bCh5ilbItvjAFAjObY/f38d0128a76903dcb8ceb9d068652de4/64637271.jpeg"
   title: "msw2"
+selfAssessment: null
 published: true
 ---
 ## `handlers.ts` にモックの実装を書かない

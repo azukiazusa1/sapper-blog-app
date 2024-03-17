@@ -9,6 +9,7 @@ tags: ["Bun"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/GZtUH0YNwJDZcr4s3abGT/a1998e60dbb178a36306821891c4db04/seiro_meat-bun_15091.png"
   title: "蒸したてホクホクの肉まんのイラスト"
+selfAssessment: null
 published: true
 ---
 Bun のランタイムとバンドラの両方を拡張できる [Plugins API](https://bun.sh/docs/runtime/plugins) を提供しています。この Plugin を使用することで、任意の拡張子のファイルのサポートを追加できます。例えば Bun の公式の動画では、Plugins API を使用して Rust ファイル（`.rs`）を直接 import できる仕組みも作れることが紹介されています。

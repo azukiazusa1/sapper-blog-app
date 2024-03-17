@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2dIAKpm7Y9ogvW4OkIYzZ6/1ca0942de03dde369d3c7d5647ef9146/hakubishin_masked-musang_18420.png"
   title: "ハクビシン"
+selfAssessment: null
 published: true
 ---
 `aria-label` 属性はコンテンツに対してアクセシブルな名前を与えるために使用します。`aria-label` 属性を使用する代表例として、中身がアイコンのボタンがあげられます。`<button>` 要素はデフォルトではコンテンツの中身がアクセシブルな名前として使われます。しかし、アイコン要素は通常テキストを持たないため、アクセシブルな名前を持たないことになります。アクセシブルな名前を持たない要素は、単にボタンであることしかスクリーンリーダーを利用するユーザに伝わらないので、クリックしたときに何が起こるのが予測できません。

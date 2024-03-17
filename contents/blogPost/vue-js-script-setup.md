@@ -9,6 +9,7 @@ tags: ["Vue.js", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4LlOrDdEXyxqi7wjIKAhgp/7bc2ba8009965c9fa02bf49493a13226/vite.svg"
   title: "vite"
+selfAssessment: null
 published: true
 ---
 # `<script setup`> 構文とは

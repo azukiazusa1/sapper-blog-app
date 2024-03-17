@@ -9,6 +9,7 @@ tags: ["pnpm"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4W0CyRHD4pEMDDGjyFl3iz/5f4531162591220d474df7a97f15d8af/flower_mizubashou_16637.png"
   title: "水芭蕉"
+selfAssessment: null
 published: true
 ---
 [pnpm patch](https://pnpm.io/ja/cli/patch) コマンドを使うと、依存パッケージのコードを直接書き換えることができます。例えば依存パッケージにバグがあった場合、プルリクエストを送って修正を提案する方法が最適ですが、提案した修正がマージされるまでタイムラグがあるでしょう。今すぐにバグを回避したい場合には、一時的に依存パッケージを直接修正する方法を取ることになるでしょう。

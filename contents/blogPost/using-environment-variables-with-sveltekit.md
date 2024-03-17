@@ -9,6 +9,7 @@ tags: ["SvelteKit", "Svelte", "Vite"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7hhDeizKRjjvdi0FvzzElM/ecedf5a058ccfa563f17fbce948985f3/_Pngtree_vector_mountains_841767.png"
   title: "mountains"
+selfAssessment: null
 published: true
 ---
 SvelteKit プロジェクトは Vite を使用しているので、`import.meta.env` から環境変数を参照できます。単に環境変数を参照するだけならば十分です。ですが SvelteKit により提供されている環境変数の仕組みを使用すると、型安全に環境変数を参照できる、公開してはいけない値をクライアントから参照できなくなるなどのメリットを得られます。

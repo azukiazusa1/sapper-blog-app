@@ -9,6 +9,7 @@ tags: ["Hono", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5SRI4GJP8Vkwr1TlHaABJ7/5e4b7392342605af70473abdc1493731/chocolate_parfait_16886.png"
   title: "チョコレートパフェのイラスト"
+selfAssessment: null
 published: true
 ---
 ?> HonoX は 2024 年 2 月現在アルファステージとなっています。セマンティックバージョンに従わずに破壊的な変更が行われる可能性があります。

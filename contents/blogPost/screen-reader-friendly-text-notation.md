@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1QnesRLUoMFlKtmKDg3TR4/c2ca3a4894497470ba5c308e2f1571b5/atlantic-footballfish_17516.png"
   title: "チョウチンアンコウ"
+selfAssessment: null
 published: true
 ---
 !> この記事の内容は VoiceOver で確認しています。他のスクリーンリーダーでは異なる場合があります。

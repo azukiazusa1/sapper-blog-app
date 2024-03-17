@@ -9,6 +9,7 @@ tags: ["アクセシビリティ", "WAI-ARIA", "HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7unyOllrNTdGl3x37kAQBc/b6e01150e83eb40a69eae4a1604249cd/nekocatPAR584702405_TP_V4.jpg"
   title: "パソコンの前で寝てる猫"
+selfAssessment: null
 published: true
 ---
 WAI-ARIA における role 属性を使用する際のプラクティスとして、**暗黙のロールを明示しない**というものがあります。暗黙のロールとは、HTML の各要素に暗黙的に（明示せずとも）規定されているロールのことです。HTML の各要素には何かしらの WAI-ARIA で規定されたロールが対応しています。例えば、`<button>` 要素なら `button` ロール、`<nav>` 要素なら `navigation` ロールといった感じです。

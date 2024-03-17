@@ -9,6 +9,7 @@ tags: ["Next.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4Sxp9WBwpkArsZj3vTXnE1/0fc392ade0505df2688b32ca95db303e/___Pngtree___samurai_japan_warrior_8177656.png"
   title: "samurai japan warrior"
+selfAssessment: null
 published: true
 ---
 Intercepting routes は Next.js 13.3 から追加された機能で、App Router（app ディレクトリ）において使用できます。

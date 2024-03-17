@@ -9,6 +9,7 @@ tags: ["React", "AngularJS", "TypeScript", "Webpack"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2c9EyCXfherkq4ICwfDHaM/13bcad3dd62573b050eb8ad25dce4275/1200px-React-icon.svg.png"
   title: "React"
+selfAssessment: null
 published: true
 ---
 この記事は、AngularJS の公式が提供している[チュートリアル](https://docs.angularjs.org/tutorial) を React にリプレイスすることで、フロントエンドのフレームワークの移行作業を体験することを目的としています。この記事内には以下の要素が存在します。

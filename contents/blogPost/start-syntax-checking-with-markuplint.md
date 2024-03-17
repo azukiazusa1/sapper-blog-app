@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2jTJ8590TS2jyEx1nIU3OH/72bb06379c1a8a02fcd4d95dab5bf238/36771858.png"
   title: "markuplint"
+selfAssessment: null
 published: true
 ---
 ブラウザが HTML を解釈する方法はその他のプログラミング言語と比べてはるかに寛容です。つまりはブラウザは HTML 内に構文エラーを発見しても大抵の場合は問題なくページに表示されます。ブラウザには、誤って書かれたマークアップを解釈する方法を決定するための組み込みのルールがあるためです。

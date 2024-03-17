@@ -9,6 +9,7 @@ tags: ["playwright"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/77dSVJERqRGtCCXn0Klcqi/3ce881e4a096b847fcf05aad50ada52c/6ph50kzxkz28u8jw482l.webp"
   title: "playwright"
+selfAssessment: null
 published: true
 ---
 [Playwright](https://playwright.dev/) は [Cypress](https://www.cypress.io/) [Puppeteer](https://pptr.dev/) と並ぶ E2E テストのための Node.js フレームワークです。Chromium・Chrome・Edge・Firefox・Webkit (Safari)と多くのブラウザに対応しているという特徴があります。

@@ -9,6 +9,7 @@ tags: ["Jest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6XGdxMPQ12Pu17IomOIN2p/36659845da975d239492a5a08210d8e9/0b854a8294c3f93903ceb507a26ac214.webp"
   title: "jest-preview"
+selfAssessment: null
 published: true
 ---
 テスト駆動開発（TDD）と呼ばれる開発手法は、開発者が仕様を理解できる、安全にリファクタリングのサイクルを回すことが得られるといったメリットを享受できます。

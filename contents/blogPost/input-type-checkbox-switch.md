@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7JMBg7AGfyKjOq5A9IKtCB/6b734f49345ec2e4d71a1f3136154b30/christmas_tonakai_5266.png"
   title: "赤い鼻のトナカイのイラスト"
+selfAssessment: null
 published: true
 ---
 !> input 要素の switch 属性は 2023 年 12 月現在実験的に実装されている機能です。将来的に仕様が変更される可能性があります。

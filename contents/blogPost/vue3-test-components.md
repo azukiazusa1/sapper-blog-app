@@ -9,6 +9,7 @@ tags: ["Jest", "Vue.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
   title: "Vue.js"
+selfAssessment: null
 published: true
 ---
 Component の単体テストは書くべきでしょうか？UI のテストは割りに合わない、ロジックはコンポーネントの外のモジュールに記述している（特に composition API では）などの理由から、コンポーネントに対するテストは書かない選択肢もあるでしょう。

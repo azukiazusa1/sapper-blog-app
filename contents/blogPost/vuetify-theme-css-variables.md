@@ -9,6 +9,7 @@ tags: ["Vue.js", "Vuetify"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2syUTBqt1yNSCib7itM2j3/ae8f0d236741f62a03f953532436f0e3/22138497.png"
   title: "vuetify"
+selfAssessment: null
 published: true
 ---
 # 結論

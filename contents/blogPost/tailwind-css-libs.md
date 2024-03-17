@@ -9,6 +9,7 @@ tags: ["Tailwind CSS", "CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/gh9XgOuZkUdQY8ebsYHZi/b26c4bd4704ab402ac37f212bf95286c/handy-fan_15841.png"
   title: "ハンディファンのイラスト"
+selfAssessment: null
 published: true
 ---
 Tailwind CSS はすべてをユティリティクラスで書くという特性上、HTML にはクラスがたくさん書かれることになります。1 つの要素に対してクラスがたくさん並んでいると、視覚的にどのようなスタイルが適用されているのかを把握するのが難しくなります。条件によってクラス名を付け替える処理を行っていると更に複雑になります。

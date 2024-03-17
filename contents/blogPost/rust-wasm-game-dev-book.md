@@ -9,6 +9,7 @@ tags: ["Rust", "WebAssembly", "書評"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/iKyk7yx16RAbEZ7t26n8y/90db505fc06729d9f9ca6922ce894739/matsubagani_10878.png"
   title: "松葉ガニ"
+selfAssessment: null
 published: true
 ---
 本のタイトルは「Rust と WebAssembly によるゲーム開発」となっていますが、反して WebAssembly についての話題はほとんど出てきません。主に Rust における開発の設計についての話題が中心となっています。

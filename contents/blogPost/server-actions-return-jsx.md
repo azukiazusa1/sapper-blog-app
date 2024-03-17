@@ -9,6 +9,7 @@ tags: ["Next.js", "React", "Server Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1vnOta8eY4gfwZyzBUZ5SW/98f05649778e17085b4727413f2dcb1c/flower_cosmos_illust_1012.png"
   title: "コスモスのイラスト"
+selfAssessment: null
 published: true
 ---
 Server Actions の戻り値には、サーバーからクライアントにデータを渡せるように、シリアライズ可能な形式である必要があります。具体的には、以下の型をサポートしています。

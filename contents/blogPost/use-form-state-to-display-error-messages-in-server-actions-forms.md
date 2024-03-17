@@ -9,6 +9,7 @@ tags: ["Next.js", "React", "Server Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/YErqIySvXsd4mGGI3aFbR/90972f0bba3c38b98865035cf614bb06/halloween_ghost_illust_1172.png"
   title: "ハロウィンのおばけのイラスト"
+selfAssessment: null
 published: true
 ---
 Next.js の [Server Actions](https://nextjs.org/docs/app/api-reference/functions/server-actions) でフォームを作成する際に、どのような方法でバリデーションを行い、エラーメッセージを表示する際にどのような手段が考えられるでしょうか。

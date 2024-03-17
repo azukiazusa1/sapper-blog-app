@@ -9,6 +9,7 @@ tags: ["Next.js", "React", "Server Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5V2x2ggL5WcHuQ0q6BciJk/65a66ea2f5b02c508c07e1feb4965e5f/___Pngtree___blue_bird_flying_bird_cartoon_3926050.png"
   title: "blue-bird"
+selfAssessment: null
 published: true
 ---
 x> Server Actions は 2023/05/06 現在 Alpha 版の機能です。この記事で紹介している内容は今後変更される可能性があります。

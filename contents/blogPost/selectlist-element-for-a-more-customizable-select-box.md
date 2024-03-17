@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/gY5tjBwUAnQVOYk51hh8Q/e169b20088791c364a1e3221400318a1/matsutake_kinoko_illust_1042.png"
   title: "松茸のイラスト"
+selfAssessment: null
 published: true
 ---
 !> `<selectlist>` 要素は 2023 年 10 月 7 日現在 Chrome Canary の Experimental Web Platform features flag を有効にした場合のみ使用できる実験的な機能です。この記事の内容は将来変更されるおそれがあります。

@@ -9,6 +9,7 @@ tags: ["Vue.js", "Nuxt.js", "Sentry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2ZX9dm3CTG5TopZ3a6ueL6/835658999c0b4b2ed24ccc2adc5906a5/Sentry.png"
   title: "Sentry"
+selfAssessment: null
 published: true
 ---
 Sentry では、エラーが発生した際に簡単にユーザーフォードバックを求めるダイアログを表示できます。

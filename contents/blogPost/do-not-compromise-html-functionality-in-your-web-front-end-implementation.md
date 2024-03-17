@@ -9,6 +9,7 @@ tags: ["HTML", "アクセシビリティ", "React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/twgcVOWA9HjJC68kQLWeM/76bbd55bc8d4f55e1d7963bc19954fe9/_Pngtree_creative_christmas_snowman_8618319.png"
   title: "雪だるま"
+selfAssessment: null
 published: true
 ---
 昨今の Web フロントエンドの開発においては、React や Vue.js などを利用した SPA を採用することが多くなりました。従来の MPA と比較して、リンククリック時やフォーム送信時にページリロードを挟まないので、高速な画面遷移を実現できるため、快適な操作を実現できます。

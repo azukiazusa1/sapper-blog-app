@@ -9,6 +9,7 @@ tags: ["pnpm"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3SMzFbXXLHrhxkFBSv9fQf/1aed4069c1a0706129bf5d64d9a57163/pnpm-standard-79c9dbb2e99b8525ae55174580061e1b.svg"
   title: "pnpm"
+selfAssessment: null
 published: true
 ---
 pnpm は [npm](https://www.npmjs.com/)、[yarn](https://yarnpkg.com/) と並ぶ JavaScript のパッケージマネージャーです。pnpm と言う名前は「performant npm」に由来します。

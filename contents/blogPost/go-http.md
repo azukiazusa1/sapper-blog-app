@@ -9,6 +9,7 @@ tags: ["Go"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1D7xedE6EH0DDEbsL2eWlM/52e352d672de9f157c0e2b260e201db2/go-language-icon.png"
   title: "go-http"
+selfAssessment: null
 published: true
 ---
 # はじめに

@@ -9,6 +9,7 @@ tags: ["TypeScript", "Deno", "MongoDB"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6fPJ5Ah5oHsWbvScuggrCh/899629af347facfc74e95006dae6b617/deno.png"
   title: "Deno"
+selfAssessment: null
 published: true
 ---
 この記事では、Deno を使い簡単な CRUD 操作を行う REST API を構築します。

@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/r6513NBn4sCbGq4sYPhA0/02c228b5c22ce862bbf3c24a62ff86c8/wheelchair-symbol_267f.png"
   title: "accesibility"
+selfAssessment: null
 published: true
 ---
 アクセシビリティの対応は、要件定義段階から設計したりなど大変そうなイメージはあります。実際に本格的に対応するにはどの達成基準を目標にするか決めたり、入念なテストが必要になるなど確かに一朝一夕で対応できるわけではないでしょう。

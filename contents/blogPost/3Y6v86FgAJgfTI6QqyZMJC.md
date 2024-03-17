@@ -7,5 +7,6 @@ createdAt: null
 updatedAt: null
 tags: []
 thumbnail: null
+selfAssessment: null
 published: false
 ---

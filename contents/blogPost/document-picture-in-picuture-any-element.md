@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/516xpMCy886VKyeH8rqNNS/801ec7599d233d7f6e0aeb32442c7c3b/cute_frog_melody_11441.png"
   title: "雨の中歌っているかわいいカエルのイラスト"
+selfAssessment: null
 published: true
 ---
 Picture-in-Picture（PiP）とは、動画を別ウィンドウで表示する機能です。PiP により別ウィンドウに表示される動画は常に最前面に表示されるため、例えば動画を見ながら他の作業をするのに便利です。PiP は現在 `<video>` 要素のみに有効です。そのためメディア・コントロール（再生・停止）や字幕を使用する場合には `<video>` 要素により提供されているものを使用しなければいけないという制約があります。

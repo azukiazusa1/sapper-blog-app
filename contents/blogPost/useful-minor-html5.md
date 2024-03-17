@@ -9,6 +9,7 @@ tags: ["html5"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/ti40guO0PbS4j9ylbZzyd/7b200f6489fbb2d58009476df22f53be/hair_innercolor.png"
   title: "hair innercolor"
+selfAssessment: null
 published: true
 ---
 # はじめに

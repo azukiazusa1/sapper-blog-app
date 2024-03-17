@@ -9,6 +9,7 @@ tags: ["React", "テスト", "Jest", "Vitest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4QSQ886rsBxSfIkfa3thMB/3931e28a9a48a5a7080fc9e59a16185b/halloween_ghost_illust_1171.png"
   title: "おばけ"
+selfAssessment: null
 published: true
 ---
 フロントエンドのテストの種類には、スナップショットテストとアサーションテストの 2 種類があります。スナップショットテストは、テスト対象のコンポーネントのレンダリング結果をスナップショットとして保存しておき、テストの実行時にスナップショットとレンダリング結果を比較することでテストを行います。アサーションテストは、テスト対象の要素を取得して状態をアサーションすることでテストを行います。

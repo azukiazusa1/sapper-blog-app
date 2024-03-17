@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2wU8OGC4USfW6p0wP3Nafz/a9c2a6b42034cebaa570cfe963988943/graph_fukugou_illust_3678.png"
   title: "折れ線の複合グラフのイラスト"
+selfAssessment: null
 published: true
 ---
 [Chart.js](https://github.com/chartjs/Chart.js) や [d3.js](https://github.com/d3/d3) などのライブラリを使用することで、手軽にグラフを作成できます。しかし、これらのライブラリはデフォルトではアクセシビリティに対応する機能を提供していないので、実装者が意識して対応する必要があります。

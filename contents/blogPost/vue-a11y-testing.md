@@ -9,6 +9,7 @@ tags: ["アクセシビリティ", "Vue.js", "storybook", "Jest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/r6513NBn4sCbGq4sYPhA0/02c228b5c22ce862bbf3c24a62ff86c8/wheelchair-symbol_267f.png"
   title: "accesibility"
+selfAssessment: null
 published: true
 ---
 近年の Web アクセシビリティはますます重要な要素となっています。フロントエンドの開発を行う中でアクセシビリティに興味を持った人も多いことでしょう。

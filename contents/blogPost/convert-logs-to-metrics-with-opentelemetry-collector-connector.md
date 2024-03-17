@@ -9,6 +9,7 @@ tags: ["OpenTelemetry", "Prometheus"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2w4IUrjLnMKo5ZhYvDhhM1/00fe23cbc66ad28e3e47a37ab41b06e7/jyuugoya_tsukimi_11155.png"
   title: "お月見のイラスト"
+selfAssessment: null
 published: true
 ---
 OpenTelemetry Collector における Connector は異なるパイプラインを接続する役割を担います。Connector はパイプラインのレシーバーとエクスポーターとして動作します。

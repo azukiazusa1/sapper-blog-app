@@ -9,6 +9,7 @@ tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/62Rm9VoIOW7mjUVoyY7bxg/d0e5bfc94f47dd45cbabad251c705b08/icon-gray.svg"
   title: "uno-css"
+selfAssessment: null
 published: true
 ---
 [UnoCSS](https://github.com/unocss/unocss) は [Windi CSS](https://windicss.org/)、[Tailwind CSS](https://tailwindcss.com/) それと [Twind](https://github.com/tw-in-js/twind) に影響を受けた機能を持っています。

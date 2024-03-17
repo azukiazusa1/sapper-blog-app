@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4VeGrXphU0UryaCoxD3TOe/e9553a26d4eaee8ecd27cf13c9b6cd4c/andrijana-bozic-pvNwuzyV_CI-unsplash.jpg"
   title: "andrijana-bozic-pvNwuzyV CI-unsplash"
+selfAssessment: null
 published: true
 ---
 - モーダル要素に `role="dialog"` と `aria-modal="true"` 属性を付与する

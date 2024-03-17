@@ -9,6 +9,7 @@ tags: ["npm"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7LZpgl7jmdtB93nBs7HB98/49ead821e5e3b8c7468e4d6b05b28631/myouga_17117.png"
   title: "みょうがのイラスト"
+selfAssessment: null
 published: true
 ---
 既存のプロジェクトでパッケージマネージャーを移行する時に問題になるのが lock ファイルの互換性です。現在 JavaScript の主要なパッケージマネージャーには npm, yarn, pnpm がありますが、それぞれが独自の lock ファイルを持っています。

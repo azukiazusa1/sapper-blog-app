@@ -9,6 +9,7 @@ tags: ["GitHub Actions", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/r6513NBn4sCbGq4sYPhA0/02c228b5c22ce862bbf3c24a62ff86c8/wheelchair-symbol_267f.png"
   title: "accesibility"
+selfAssessment: null
 published: true
 ---
 [Pa11y](https://pa11y.org/) とは [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG2AA-Conformance) をベースに HTML のアクセシビリティを検査するツールです。適合レベル AA を対象にテストします。Pa11y にはいくつかの種類がありますが、その中でも [Pa11y CI](https://github.com/pa11y/pa11y-ci) は CI 上で実行することにフォーカスしています。

@@ -9,6 +9,7 @@ tags: ["React", "セキュリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/V1Wa9bnlkJkT75cLRfHQi/76185f586e7d3f250ef8d13c5028f9f5/_Pngtree_paper-cut_style_of_tokyo_tower_4170843.png"
   title: "paper-cut style of tokyo tower"
+selfAssessment: null
 published: true
 ---
 多くのフロントエンドのフレームワークはデフォルトで XSS 対策をしてくれます。例えば、React,Vue.js,Angular といったフレームワークは自動的にエスケープ処理を行ってくれます。

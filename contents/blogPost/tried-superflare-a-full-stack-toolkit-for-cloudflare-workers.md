@@ -9,6 +9,7 @@ tags: ["Cloudflare Workers", "superflare"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2MPSlG6x2kH4O0jxQ7TON8/306b1b56a9cb14a32b3a7e41071edb2e/shikun20220402_114719-2_TP_V4.jpg"
   title: "shikun20220402_114719-2_TP_V4.jpg"
+selfAssessment: null
 published: true
 ---
 Superflare は Cloudflare Workers 用のフルスタックツールキットです。[D1 Database](https://developers.cloudflare.com/d1/) 向けの ORM や [R2 Storage](https://developers.cloudflare.com/r2/) 向けのユーティリティなどの機能を提供しています。

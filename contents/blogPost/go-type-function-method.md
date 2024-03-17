@@ -9,6 +9,7 @@ tags: ["Go"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7J6X29QCpCjoReVMQFOC1D/f091383d411092eaa4487bad33560ca6/golang.png"
   title: "go"
+selfAssessment: null
 published: true
 ---
 # 型

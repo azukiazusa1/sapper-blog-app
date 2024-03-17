@@ -9,6 +9,7 @@ tags: ["qwik", "qwik-city"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2fsleaKJlBIpyN2TiFGRZY/a357ef5bf101a7bf4062a6e55bd691d1/android-chrome-192x192.png"
   title: "Qwik"
+selfAssessment: null
 published: true
 ---
 [Qwik City](https://qwik.builder.io/qwikcity/overview/)（またの名を Qwik Router）は [Qwik](https://qwik.builder.io/docs/overview/) のメタフレームワークです。React における Next.js、Vue.js における Nuxt.js のような関係と同等です。Qwik は長期的で安定したプリミティブに焦点を当てており、breaking changes なしで安定した状態を保つことができます。一方 Qwik City は大規模なサイトを構築するための意見とパフォーマンスの高い方法をもたらします。

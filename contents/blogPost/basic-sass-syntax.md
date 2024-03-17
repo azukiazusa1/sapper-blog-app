@@ -9,6 +9,7 @@ tags: ["CSS", "Sass"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6ADze8mrjH8iV9pCLekDeQ/27220daee3fa492a828aeae3a3cdb5d3/1200px-Sass_Logo_Color.svg.png"
   title: "sass"
+selfAssessment: null
 published: true
 ---
 # SASS記法とSCSS記法

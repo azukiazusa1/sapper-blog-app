@@ -9,6 +9,7 @@ tags: ["HTML", "JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/pvlbjQtVe4nU6bC0ldMTM/0d9b1a018fd5d7a2bcc196f5cc7f1688/bread-g41ce9fcdd_640.jpg"
   title: "toast"
+selfAssessment: null
 published: true
 ---
 [Chrome 114](https://developer.chrome.com/blog/new-in-chrome-114/) から追加された [ポップオーバー API](https://developer.mozilla.org/ja/docs/Web/API/Popover_API) を使うと、JavaScript を使わずに簡単にポップアップを表示できます。ただポップアップとして表示・非表示を切り替えられるだけでなく、以下のような複雑な要素もデフォルトでサポートしています。

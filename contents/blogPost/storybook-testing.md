@@ -9,6 +9,7 @@ tags: ["storybook", "Jest", "Vue.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6227wXx8L1Wfr9qr1jtXjk/24c91422719e5745e8df997d14995b90/sOct-Txm_400x400.png"
   title: "storybook"
+selfAssessment: null
 published: true
 ---
 !> Storybook のインタラクションテストは現在（2022/03/06）beta 機能です。

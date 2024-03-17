@@ -9,6 +9,7 @@ tags: ["React", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2c9EyCXfherkq4ICwfDHaM/13bcad3dd62573b050eb8ad25dce4275/1200px-React-icon.svg.png"
   title: "React"
+selfAssessment: null
 published: true
 ---
 [リストボックス](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/listbox_role) は 1 つまたは複数の静的な項目をユーザーが選択できるリストです。役割は `<select>` 要素と同等ですが、`<select>` は CSS による装飾が困難であるため、独自にリストボックスを作成することが多いでしょう。

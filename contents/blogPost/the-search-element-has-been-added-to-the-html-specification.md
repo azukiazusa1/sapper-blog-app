@@ -9,6 +9,7 @@ tags: ["HTML", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3H5gmDVlhQ8VEceFMR6yWo/d016979782ffed746f6b831e00c7d92a/_Pngtree_find_vector_icon_3725277.png"
   title: "—Pngtree—find vector icon_3725277.png"
+selfAssessment: null
 published: true
 ---
 2023 年 3 月 24 日に [HTML Standard](https://html.spec.whatwg.org/multipage/) に `<search>` 要素が追加されました。

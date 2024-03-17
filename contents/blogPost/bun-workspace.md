@@ -9,6 +9,7 @@ tags: ["Bun", "モノレポ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6vupdPg1DUC2o3Be9Agbif/cd7129fe3ea1b6c359cf6227f160db5f/food_chuuka-man_9600-768x630.png"
   title: "中華まんのイラスト"
+selfAssessment: null
 published: true
 ---
 Bun はパッケージマネージャーとしても利用できるので、npm の `workspaces` によるモノレポ管理も可能です。モノレポとは、複数のパッケージを 1 つのリポジトリで管理することです。モノレポを利用することで、同レポジトリ内のパッケージを互いに参照したり、`node_modules` をシェアしてディスク容量を節約するといったメリットがあります。

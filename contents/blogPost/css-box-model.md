@@ -9,6 +9,7 @@ tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2lwyC5xUSMgwbu56Pnt7tW/f64addf2d52d9adfebaa7e57ca9f6f18/____________________________2021-10-31_20.31.05.png"
   title: "スクリーンショット 2021-10-31 20.31.05"
+selfAssessment: null
 published: true
 ---
 CSS にはボックスという概念があります。ブラウザは文書をレイアウトする際に、それぞれの要素を

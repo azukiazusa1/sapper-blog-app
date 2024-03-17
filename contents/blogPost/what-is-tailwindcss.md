@@ -9,6 +9,7 @@ tags: ["tailwindcss", "CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2GQfDJKqG7T0kWVwn1DZeJ/679ebd658ac716ded2dd61bb200e4780/tailwindcss.png"
   title: "tailwindcss"
+selfAssessment: null
 published: true
 ---
 TailWindCSS は BootStrap・Materialize CSS などに代表する CSS フレームワークの 1 つです。
