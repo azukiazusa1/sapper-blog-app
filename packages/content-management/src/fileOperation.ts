@@ -3,7 +3,7 @@ import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import yamlFront from "yaml-front-matter";
-import { BlogPost, BlogPostSchema, SelfAssessment } from "./types.ts";
+import { BlogPost, BlogPostSchema } from "./types.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -12,20 +12,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  */
 const escape = (str: string) => {
   return str.replace(/"/g, '\\"');
-};
-
-const escapeSelfAssessment = (
-  selfAssessment: SelfAssessment,
-): SelfAssessment => {
-  return {
-    quizzes: selfAssessment.quizzes.map((quiz) => {
-      return {
-        correct: quiz.correct,
-        text: escape(quiz.text),
-        explanation: quiz.explanation ? escape(quiz.explanation) : undefined,
-      };
-    }),
-  };
 };
 
 /**

@@ -12,7 +12,7 @@ const quizSchema = z.object({
   explanation: z.string().optional(),
 });
 
-type Quiz = z.infer<typeof quizSchema>;
+export type Quiz = z.infer<typeof quizSchema>;
 
 export type Thumbnail = z.infer<typeof thumbnailSchema>;
 
