@@ -77,7 +77,7 @@
     "@storybook/preview-web": "^7.0.0-beta.50",
     "@storybook/svelte": "^7.0.0-beta.50",
     "@storybook/sveltekit": "^7.0.0-beta.50",
-    "@storybook/test-runner": "^0.16.0",
+    "@storybook/test-runner": "^0.17.0",
     "@storybook/testing-library": "^0.2.0",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
