@@ -1,0 +1,49 @@
+import"./index-Qsbhl2Kk.js";import{s as J,e as h,t as L,o as g,c as E,g as x,p as H,d as f,q as y,a as m,i as D,m as p,v as S,n as P,G as K,z as M}from"./lifecycle-D2dAEIN_.js";import{S as N,i as W,t as q,e as eu,a as I,c as tu,b as au,m as lu,d as nu,g as ru}from"./index-CNIsqJ_B.js";import{e as $}from"./each-BWKBrYVq.js";import"./_commonjsHelpers-BosuxZz1.js";import"./index-DrFu-skq.js";function Q(d,u,l){const e=d.slice();return e[1]=u[l],e}function su(d){let u,l=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+
+                  もう一度考えてみましょう`;return{c(){u=h("div"),u.innerHTML=l,this.h()},l(e){u=E(e,"DIV",{class:!0,"data-svelte-h":!0}),M(u)!=="svelte-7kccq8"&&(u.innerHTML=l),this.h()},h(){m(u,"class","flex items-center gap-2 text-red-500")},m(e,n){D(e,u,n)},d(e){e&&f(u)}}}function iu(d){let u,l=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
+
+                  正解！`;return{c(){u=h("div"),u.innerHTML=l,this.h()},l(e){u=E(e,"DIV",{class:!0,"data-svelte-h":!0}),M(u)!=="svelte-1c2bwwx"&&(u.innerHTML=l),this.h()},h(){m(u,"class","flex items-center gap-1 text-green-500")},m(e,n){D(e,u,n)},d(e){e&&f(u)}}}function U(d){let u,l,e,n=d[1].text+"",C,F,B,s,r,t,i=d[1].explanation+"",a,o;function c(v,_){return v[1].correct?iu:su}let b=c(d),A=b(d);return{c(){u=h("li"),l=h("details"),e=h("summary"),C=L(n),F=g(),B=h("div"),s=h("p"),A.c(),r=g(),t=h("p"),a=L(i),o=g(),this.h()},l(v){u=E(v,"LI",{role:!0});var _=x(u);l=E(_,"DETAILS",{class:!0});var k=x(l);e=E(k,"SUMMARY",{class:!0});var T=x(e);C=H(T,n),T.forEach(f),F=y(k),B=E(k,"DIV",{class:!0});var w=x(B);s=E(w,"P",{});var j=x(s);A.l(j),j.forEach(f),r=y(w),t=E(w,"P",{class:!0});var V=x(t);a=H(V,i),V.forEach(f),w.forEach(f),k.forEach(f),o=y(_),_.forEach(f),this.h()},h(){m(e,"class","cursor-pointer p-4 text-lg hover:bg-gray-100 dark:hover:bg-zinc-700"),m(t,"class","mt-4"),m(B,"class","p-4"),m(l,"class","border border-t-0 border-gray-300 font-medium text-gray-900 dark:border-zinc-600 dark:text-gray-50"),m(u,"role","listitem")},m(v,_){D(v,u,_),p(u,l),p(l,e),p(e,C),p(l,F),p(l,B),p(B,s),A.m(s,null),p(B,r),p(B,t),p(t,a),p(u,o)},p(v,_){_&1&&n!==(n=v[1].text+"")&&S(C,n),b!==(b=c(v))&&(A.d(1),A=b(v),A&&(A.c(),A.m(s,null))),_&1&&i!==(i=v[1].explanation+"")&&S(a,i)},d(v){v&&f(u),A.d()}}}function ou(d){let u,l,e=d[0].question+"",n,C,F,B=$(d[0].answers),s=[];for(let r=0;r<B.length;r+=1)s[r]=U(Q(d,B,r));return{c(){u=h("div"),l=h("h3"),n=L(e),C=g(),F=h("ul");for(let r=0;r<s.length;r+=1)s[r].c();this.h()},l(r){u=E(r,"DIV",{class:!0});var t=x(u);l=E(t,"H3",{class:!0});var i=x(l);n=H(i,e),i.forEach(f),C=y(t),F=E(t,"UL",{class:!0});var a=x(F);for(let o=0;o<s.length;o+=1)s[o].l(a);a.forEach(f),t.forEach(f),this.h()},h(){m(l,"class","rounded-ss-md bg-gray-200 px-4 py-8 text-lg font-medium dark:bg-zinc-600"),m(F,"class","flex flex-col justify-center"),m(u,"class","flex flex-col justify-center")},m(r,t){D(r,u,t),p(u,l),p(l,n),p(u,C),p(u,F);for(let i=0;i<s.length;i+=1)s[i]&&s[i].m(F,null)},p(r,[t]){if(t&1&&e!==(e=r[0].question+"")&&S(n,e),t&1){B=$(r[0].answers);let i;for(i=0;i<B.length;i+=1){const a=Q(r,B,i);s[i]?s[i].p(a,t):(s[i]=U(a),s[i].c(),s[i].m(F,null))}for(;i<s.length;i+=1)s[i].d(1);s.length=B.length}},i:P,o:P,d(r){r&&f(u),K(s,r)}}}function cu(d,u,l){let{quiz:e}=u;return d.$$set=n=>{"quiz"in n&&l(0,e=n.quiz)},[e]}class X extends N{constructor(u){super(),W(this,u,cu,ou,J,{quiz:0})}}X.__docgen={version:3,name:"Question.svelte",data:[{visibility:"public",description:null,keywords:[],name:"quiz",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"any",type:"any"}}],computed:[],methods:[],components:[],description:null,keywords:[],events:[],slots:[],refs:[]};function Z(d,u,l){const e=d.slice();return e[1]=u[l],e}function G(d){let u,l;return u=new X({props:{quiz:d[1]}}),{c(){tu(u.$$.fragment)},l(e){au(u.$$.fragment,e)},m(e,n){lu(u,e,n),l=!0},p(e,n){const C={};n&1&&(C.quiz=e[1]),u.$set(C)},i(e){l||(q(u.$$.fragment,e),l=!0)},o(e){I(u.$$.fragment,e),l=!1},d(e){nu(u,e)}}}function du(d){let u,l=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"></path></svg>
+
+  記事の理解度チェック`,e,n,C="以下の問題に答えて、記事の理解を深めましょう。",F,B,s,r=$(d[0]),t=[];for(let a=0;a<r.length;a+=1)t[a]=G(Z(d,r,a));const i=a=>I(t[a],1,1,()=>{t[a]=null});return{c(){u=h("h2"),u.innerHTML=l,e=g(),n=h("p"),n.textContent=C,F=g(),B=h("div");for(let a=0;a<t.length;a+=1)t[a].c();this.h()},l(a){u=E(a,"H2",{class:!0,"data-svelte-h":!0}),M(u)!=="svelte-1pwxvxa"&&(u.innerHTML=l),e=y(a),n=E(a,"P",{class:!0,"data-svelte-h":!0}),M(n)!=="svelte-ir3uga"&&(n.textContent=C),F=y(a),B=E(a,"DIV",{class:!0});var o=x(B);for(let c=0;c<t.length;c+=1)t[c].l(o);o.forEach(f),this.h()},h(){m(u,"class","flex items-center gap-2 border-b border-gray-300 dark:border-zinc-700 svelte-12jxbwd"),m(n,"class","mb-8"),m(B,"class","flex flex-col gap-8")},m(a,o){D(a,u,o),D(a,e,o),D(a,n,o),D(a,F,o),D(a,B,o);for(let c=0;c<t.length;c+=1)t[c]&&t[c].m(B,null);s=!0},p(a,[o]){if(o&1){r=$(a[0]);let c;for(c=0;c<r.length;c+=1){const b=Z(a,r,c);t[c]?(t[c].p(b,o),q(t[c],1)):(t[c]=G(b),t[c].c(),q(t[c],1),t[c].m(B,null))}for(ru(),c=r.length;c<t.length;c+=1)i(c);eu()}},i(a){if(!s){for(let o=0;o<r.length;o+=1)q(t[o]);s=!0}},o(a){t=t.filter(Boolean);for(let o=0;o<t.length;o+=1)I(t[o]);s=!1},d(a){a&&(f(u),f(e),f(n),f(F),f(B)),K(t,a)}}}function Bu(d,u,l){let{quizzes:e}=u;return d.$$set=n=>{"quizzes"in n&&l(0,e=n.quizzes)},[e]}class uu extends N{constructor(u){super(),W(this,u,Bu,du,J,{quizzes:0})}}uu.__docgen={version:3,name:"SelfAssessment.svelte",data:[{visibility:"public",description:null,keywords:[],name:"quizzes",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"any",type:"any"}}],computed:[],methods:[],components:[],description:null,keywords:[],events:[],slots:[],refs:[]};const mu={title:"SelfAssessment",component:uu,tags:["autodocs"]},z={args:{quizzes:[{question:"フォームにアクセシブルな名前つける際に、最も適した方法はどれですか？",answers:[{text:"label 要素を使用する",correct:!0,explanation:"label 要素は、視覚的に表示されるテキストとフォーム部品を関連付けるために使用されます。また、ラベルをクリックした場合にもフォームにフォーカスが移動するため、クリック領域が広がり、運動障害のあるユーザーにも優しいです。"},{text:"aria-label 属性を使用する",correct:!1,explanation:"aria-label 属性は、視覚的に表示されるラベルがない場合に使用します。そのような場合にアクセシブルな名前を提供する有効な手段ですが、視覚的に表示されるテキストに基づいてアクセシブルな名前を提供するのがよりよい方法です。"},{text:"aria-labelledby 属性を使用する",correct:!1,explanation:"aria-labelledby 属性は、他の要素を参照するために使用されます。しかし、視覚的に表示されるラベルと紐づけるのであれば、label 要素を使用するべきです。"},{text:"aria-describedby 属性を使用する",correct:!1,explanation:"aria-describedby 属性は、フォーム部品に関連する補足情報を提供するために使用されます。"}]},{question:"スクリーンリーダーにフォームの検証に失敗していることを伝えるために使われる属性はどれですか？",answers:[{text:"aria-invalid 属性",correct:!0,explanation:"aria-invalid 属性はフォームの検証に失敗していることを伝えるために使用されます。この属性を使用してユーザーにエラーを伝える場合には、適切なエラーメッセージの内容を aria-describedby 属性で提供し、ユーザーがエラーを修正するための手順を提供することが重要です。"},{text:"aria-disabled 属性",correct:!1,explanation:"aria-disabled 属性はフォームが無効であり、編集やその他の操作ができないことを伝えるために使用されます。"},{text:"aria-live 属性",correct:!1,explanation:"aria-live 属性は要素が動的に更新されることをスクリーンリーダーに伝えるために使用されます。"},{text:"aria-readonly 属性",correct:!1,explanation:"aria-readonly 属性は、フォームが読み取り専用であることを伝えるために使用されます。"}]}]}};var O,R,Y;z.parameters={...z.parameters,docs:{...(O=z.parameters)==null?void 0:O.docs,source:{originalSource:`{
+  args: {
+    quizzes: [{
+      question: "フォームにアクセシブルな名前つける際に、最も適した方法はどれですか？",
+      answers: [{
+        text: "label 要素を使用する",
+        correct: true,
+        explanation: "label 要素は、視覚的に表示されるテキストとフォーム部品を関連付けるために使用されます。また、ラベルをクリックした場合にもフォームにフォーカスが移動するため、クリック領域が広がり、運動障害のあるユーザーにも優しいです。"
+      }, {
+        text: "aria-label 属性を使用する",
+        correct: false,
+        explanation: "aria-label 属性は、視覚的に表示されるラベルがない場合に使用します。そのような場合にアクセシブルな名前を提供する有効な手段ですが、視覚的に表示されるテキストに基づいてアクセシブルな名前を提供するのがよりよい方法です。"
+      }, {
+        text: "aria-labelledby 属性を使用する",
+        correct: false,
+        explanation: "aria-labelledby 属性は、他の要素を参照するために使用されます。しかし、視覚的に表示されるラベルと紐づけるのであれば、label 要素を使用するべきです。"
+      }, {
+        text: "aria-describedby 属性を使用する",
+        correct: false,
+        explanation: "aria-describedby 属性は、フォーム部品に関連する補足情報を提供するために使用されます。"
+      }]
+    }, {
+      question: "スクリーンリーダーにフォームの検証に失敗していることを伝えるために使われる属性はどれですか？",
+      answers: [{
+        text: "aria-invalid 属性",
+        correct: true,
+        explanation: "aria-invalid 属性はフォームの検証に失敗していることを伝えるために使用されます。この属性を使用してユーザーにエラーを伝える場合には、適切なエラーメッセージの内容を aria-describedby 属性で提供し、ユーザーがエラーを修正するための手順を提供することが重要です。"
+      }, {
+        text: "aria-disabled 属性",
+        correct: false,
+        explanation: "aria-disabled 属性はフォームが無効であり、編集やその他の操作ができないことを伝えるために使用されます。"
+      }, {
+        text: "aria-live 属性",
+        correct: false,
+        explanation: "aria-live 属性は要素が動的に更新されることをスクリーンリーダーに伝えるために使用されます。"
+      }, {
+        text: "aria-readonly 属性",
+        correct: false,
+        explanation: "aria-readonly 属性は、フォームが読み取り専用であることを伝えるために使用されます。"
+      }]
+    }]
+  }
+}`,...(Y=(R=z.parameters)==null?void 0:R.docs)==null?void 0:Y.source}}};const vu=["Default"];export{z as Default,vu as __namedExportsOrder,mu as default};
