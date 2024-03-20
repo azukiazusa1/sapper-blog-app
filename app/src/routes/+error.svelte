@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import LinkButton from "../components/LinkButton/LinkButton.svelte";
 
   $: title =
     $page.error.message === "Not Found" ? "404" : "500 Internal Server Error";
@@ -28,12 +29,7 @@
       </p>
     </div>
     <div>
-      <a
-        href="/"
-        class="inline-flex items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-700"
-      >
-        トップに戻る
-      </a>
+      <LinkButton href="/">トップに戻る</LinkButton>
     </div>
   </div>
 </div>

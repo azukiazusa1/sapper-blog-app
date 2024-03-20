@@ -5,6 +5,7 @@
   import variables from "$lib/variables";
   import Tabs from "./Tabs.svelte";
   import ShortList from "../../components/ShortList.svelte";
+  import LinkButton from "../../components/LinkButton/LinkButton.svelte";
 
   export let data: PageData;
   $: ({ posts, shorts } = data);
@@ -29,5 +30,9 @@
   </svelte:fragment>
   <svelte:fragment slot="shorts">
     <ShortList shorts={shorts.shortCollection.items} />
+
+    <div class="my-16 flex justify-center">
+      <LinkButton href="/blog/shorts/page/1">もっと見る</LinkButton>
+    </div>
   </svelte:fragment>
 </Tabs>
