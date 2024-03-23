@@ -39,7 +39,7 @@ selfAssessment:
         - text: "コンポーネントに Props を渡すことはできない"
           correct: false
           explanation: null
-published: false
+published: true
 ---
 昨今のフロントエンド開発では、CSS の手法が多様化しています。特に React での開発では以下のような手法があげられます。
 
