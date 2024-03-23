@@ -27,19 +27,20 @@ selfAssessment:
           explanation: "コンポーネント名は @scope ルールの値に指定した名前になります。"
     - question: "スタイルを変更するためのコンポーネントの Props を受け取るためのルールはどれか？"
       answers:
-        - text: CSS 変数で指定した名前が Props になる
+        - text: "CSS 変数で指定した名前が Props になる"
           correct: false
+          explanation: null
         - text: "data- で始まる属性を Props に指定する"
           correct: true
           explanation: "例として &[data-variant='primary'] と記述すると variant という Props が生成されます。"
-        - text: ネストされたクラス名が Props になる
+        - text: "ネストされたクラス名が Props になる"
           correct: false
-        - text: コンポーネントに Props を渡すことはできない
+          explanation: null
+        - text: "コンポーネントに Props を渡すことはできない"
           correct: false
-
+          explanation: null
 published: false
 ---
-
 昨今のフロントエンド開発では、CSS の手法が多様化しています。特に React での開発では以下のような手法があげられます。
 
 - グローバル CSS（エントリーポイントで 1 つの CSS ファイルを読み込む）
