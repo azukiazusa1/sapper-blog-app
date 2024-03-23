@@ -63,7 +63,9 @@
                 </div>
               {/if}
             </p>
-            <p class="mt-4">{answer.explanation}</p>
+            {#if answer.explanation}
+              <p class="mt-4">{answer.explanation}</p>
+            {/if}
           </div>
         </details>
       </li>
