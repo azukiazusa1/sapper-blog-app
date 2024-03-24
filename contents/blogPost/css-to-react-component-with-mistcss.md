@@ -110,7 +110,7 @@ JS From CSS というコンセプトのとおり、まずは CSS を記述しま
     /**
      * <Button disabled> の場合
      */
-    &[data-disabled='true'] {
+    &[data-disabled] {
       opacity: 0.5;
       cursor: not-allowed;
     }
@@ -135,7 +135,7 @@ import './button.mist.css'
 type ButtonProps = {
   children?: React.ReactNode
   variant?: 'primary' | 'secondary'
-disabled?: 'true'
+  disabled?: boolean
 } & JSX.IntrinsicElements['button']
 
 export function Button({ children, variant, disabled, ...props }: ButtonProps) {
@@ -155,9 +155,9 @@ import { Button } from './components/Button'
 export function App() {
   return (
     <div>
-      <Button data-variant="primary">Primary</Button>
-      <Button data-variant="secondary">Secondary</Button>
-      <Button data-disabled>Disabled</Button>
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button disabled>Disabled</Button>
     </div>
   )
 }
