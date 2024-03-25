@@ -147,7 +147,7 @@ export function Button({ children, variant, disabled, ...props }: ButtonProps) {
 }
 ```
 
-生成されたコンポーネントは以下のように使用できます。
+姿勢されたコンポーネントは以下のように使用できます。
 
 ```tsx:src/App.tsx
 import { Button } from './components/Button'
