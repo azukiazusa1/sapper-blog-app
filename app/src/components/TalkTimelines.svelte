@@ -4,6 +4,13 @@
 
 <ol class="relative border-s border-gray-200 dark:border-gray-700">
   <Timeline
+    eventTitle="OpenTelemetry Casual Talk - コンセプトのおさらいと実践入門！"
+    eventDate="2024-03-25"
+    presentationTitle="OpenTelemetry のサービスという概念について"
+    presentationLink="https://speakerdeck.com/azukiazusa1/opentelemetry-nosabisutoiugai-nian-nituite"
+    description="OpenTelemetry には Semantic Conventions と呼ばれる規約で service という属性が定義されています。service はメトリックが計装されたアプリケーションの名前やバージョンを表します。特に、service.name と呼ばれる属性の重要性について話します。"
+  />
+  <Timeline
     eventTitle="JSConf JP 2023"
     eventDate="2023-11-18"
     presentationTitle="JavaScript なしで動作するモダンなコードの書き方"
