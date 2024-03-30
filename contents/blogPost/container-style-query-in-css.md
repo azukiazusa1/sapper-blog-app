@@ -18,13 +18,15 @@ selfAssessment:
           explanation: "コンテナスタイルクエリーではコンテナサイズクエリと区別するため、style() 関数記法を使用します。"
         - text: "@container style(--color: red) { ... }"
           correct: true
+          explanation: null
         - text: "if (--color: red) { ... } else { ... }"
           correct: false
+          explanation: null
         - text: ".card:container(--color: red) { ... }"
           correct: false
+          explanation: null
 published: true
 ---
-
 CSS の `@container` ルールは、コンテナ（親要素）の特性に基づいてスタイルを適用するためのルールです。コンテナースタイルクエリーは以下の 2 種類に分類されます。
 
 - コンテナサイズクエリー：コンテナ要素の現在のサイズに基づいてスタイルを適用する。e.g. `@container (min-width: 30em) { ... }`
