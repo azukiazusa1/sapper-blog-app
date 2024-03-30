@@ -12,16 +12,16 @@ thumbnail:
 selfAssessment:
   quizzes:
     - question: "コンテナスタイルクエリーでスタイルを適用するためのルールはどれか？"
-    answers:
-      - text: "container(--color: red) { ... }"
-        correct: false
-        explanation: "コンテナスタイルクエリーではコンテナサイズクエリと区別するため、style() 関数記法を使用します。"
-      - text: "@container style(--color: red) { ... }"
-        correct: true
-      - text: "if (--color: red) { ... } else { ... }"
-        correct: false
-      - text: ".card:container(--color: red) { ... }"
-        correct: false
+      answers:
+        - text: "container(--color: red) { ... }"
+          correct: false
+          explanation: "コンテナスタイルクエリーではコンテナサイズクエリと区別するため、style() 関数記法を使用します。"
+        - text: "@container style(--color: red) { ... }"
+          correct: true
+        - text: "if (--color: red) { ... } else { ... }"
+          correct: false
+        - text: ".card:container(--color: red) { ... }"
+          correct: false
 published: true
 ---
 
