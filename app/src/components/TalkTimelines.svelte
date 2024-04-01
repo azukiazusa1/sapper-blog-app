@@ -4,6 +4,13 @@
 
 <ol class="relative border-s border-gray-200 dark:border-gray-700">
   <Timeline
+    eventTitle="アプリケーション開発エンジニア勉強会〜各社の取り組みや課題から学ぶ会〜"
+    eventDate="2024-04-01"
+    presentationTitle="React フレームワークの 動向と選定基準"
+    presentationLink="https://speakerdeck.com/azukiazusa1/react-huremuwakuno-dong-xiang-toxuan-ding-ji-zhun"
+    description="まずはじめ React に焦点を置き、昨今のフロントエンドでどのようなフレームワークが選択肢にあげられるのかについて紹介します。続いて、技術選定を行う際に、どのようなことを考えるべきかについて話します。最後にこれまで話した点を踏まえて、私が実際に技術選定を行った際にどのような選択をしたのか実践的な内容について触れたいと思います。"
+  />
+  <Timeline
     eventTitle="OpenTelemetry Casual Talk - コンセプトのおさらいと実践入門！"
     eventDate="2024-03-25"
     presentationTitle="OpenTelemetry のサービスという概念について"
