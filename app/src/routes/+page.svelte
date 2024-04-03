@@ -27,7 +27,7 @@
 >
   最新記事
 </h2>
-<div class="container mb-4 mt-8 md:mx-auto">
+<div class="container mb-4 mt-10 md:mx-auto">
   <PostList posts={latestPosts.blogPostCollection.items} />
 </div>
 <div class="flex flex-row-reverse">
@@ -52,11 +52,11 @@
 </div>
 
 <h2
-  class="mt-10 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
+  class="mt-24 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
 >
   人気記事
 </h2>
-<div class="container mx-auto my-4 px-4">
+<div class="container mx-auto my-10 px-4">
   <ol class="list-inside list-decimal space-y-2">
     {#each popularPosts as post}
       <li>
@@ -69,7 +69,7 @@
 </div>
 
 <h2
-  class="my-10 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
+  class="mt-14 mb-10 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
 >
   登壇資料
 </h2>
