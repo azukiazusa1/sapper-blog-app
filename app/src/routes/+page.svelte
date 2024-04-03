@@ -69,7 +69,7 @@
 </div>
 
 <h2
-  class="mt-14 mb-10 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
+  class="mb-10 mt-14 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
 >
   登壇資料
 </h2>
