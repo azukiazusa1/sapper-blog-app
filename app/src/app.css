@@ -13,10 +13,19 @@
 
 #contents {
   line-height: 1.9;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  #contents {
+    line-height: 2.25rem;
+    font-size: 1.125rem;
+  }
 }
 
 #contents h1 {
-  font-size: 1.8rem;
+  font-size: 1.8em;
+  line-height: 1.5;
   font-weight: 700;
   padding-bottom: 0.1rem;
   margin-bottom: 2.1rem;
@@ -26,6 +35,7 @@
 
 #contents h2 {
   font-size: 1.6em;
+  line-height: 1.5;
   font-weight: 700;
   padding-bottom: 0.1rem;
   margin-bottom: 2.1rem;
@@ -35,6 +45,7 @@
 
 #contents h3 {
   font-size: 1.3rem;
+  line-height: 1.5;
   font-weight: 700;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
@@ -43,6 +54,7 @@
 
 #contents h4 {
   font-size: 1.2rem;
+  line-height: 1.5;
   font-weight: 700;
   padding-bottom: 0.1rem;
   margin-bottom: 1.1rem;
@@ -50,7 +62,7 @@
 }
 
 #contents h5 {
-  font-size: 1.1rem;
+  font-size: 1.125rem;
   font-weight: 700;
   padding-bottom: 0.1rem;
   margin-bottom: 1rem;
@@ -58,7 +70,7 @@
 }
 
 #contents h6 {
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 700;
   padding-bottom: 0.1rem;
   margin-bottom: 1rem;
