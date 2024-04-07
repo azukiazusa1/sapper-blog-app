@@ -15,24 +15,29 @@ selfAssessment:
       answers:
         - text: "非同期関数 () => Promise<T>"
           correct: true
+          explanation: null
         - text: "Promise オブジェクト"
           correct: false
+          explanation: null
         - text: "React.Context オブジェクト"
           correct: false
+          explanation: null
     - question: "次のうち、`use` フックの特徴として正しくないものはどれか？"
       answers:
         - text: "`if` 文やループ内で呼び出すことができる"
           correct: false
+          explanation: null
         - text: "コンポーネント内またはフック内に限らず、どこからでも呼び出すことができる"
           correct: true
+          explanation: null
         - text: "Promise が解決するまでレンダリングが中断される"
           correct: false
+          explanation: null
         - text: "Promise が reject された場合、Error Boundary によりエラーがキャッチされる"
           correct: false
-
+          explanation: null
 published: true
 ---
-
 !> `use` フックは 2024 年 4 月現在、React の Canary および experimental チャンネルでのみ利用可能です。
 
 `use` は、Promise や Context から値を読み取るための React フックです。以下のコードのように Promise の値を同期的に読み取ることができます。
