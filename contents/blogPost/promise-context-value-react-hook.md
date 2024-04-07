@@ -204,7 +204,7 @@ export const useData = <T>(fetcher: () => Promise<T>) => {
   if (data === null) {
     throw promise.then((d) => (data = d));
   }
-  return promise;
+  return data;
 };
 ```
 
