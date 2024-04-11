@@ -136,7 +136,7 @@ $ npm install lodash -ws
 └── package.json
 ```
 
-ルートパッケージの `node_moduels` に `lodash` が配置されるので npm のホイスティング（巻き上げ）により、よりそれぞれのワークスペースで `lodash` をインストールせずとも使用できます。
+ルートパッケージの `node_modules` に `lodash` が配置されるので npm のホイスティング（巻き上げ）により、よりそれぞれのワークスペースで `lodash` をインストールせずとも使用できます。
 
 ```js
 // frontend/index.js
