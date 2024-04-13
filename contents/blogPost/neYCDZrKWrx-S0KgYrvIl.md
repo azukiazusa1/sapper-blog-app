@@ -15,30 +15,22 @@ selfAssessment:
       answers:
         - text: "anchor-name"
           correct: true
-          explanation: null
         - text: "anchor"
           correct: false
-          explanation: null
         - text: "anchor-element"
           correct: false
-          explanation: null
         - text: "anchor-id"
           correct: false
-          explanation: null
     - question: "ポップアップが画面内に収まらない場合に自動的に表示位置を調整するためのプロパティは何か？"
       answers:
         - text: "position-try-options"
           correct: true
-          explanation: null
         - text: "position-fallback-options"
           correct: false
-          explanation: null
         - text: "position-adjust-options"
           correct: false
-          explanation: null
         - text: "position-retry-options"
           correct: false
-          explanation: null
 published: true
 ---
 
