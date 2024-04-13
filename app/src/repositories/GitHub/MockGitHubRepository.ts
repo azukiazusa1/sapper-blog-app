@@ -1,7 +1,7 @@
 import type { Contributor, GitHubRepositoryInterface } from "./types";
 
 export class MockGitHubRepository implements GitHubRepositoryInterface {
-  getContributorsByFile(_: string): Promise<Contributor[]> {
+  getContributorsByFile(): Promise<Contributor[]> {
     return Promise.resolve([
       {
         username: "azukiazusa1",

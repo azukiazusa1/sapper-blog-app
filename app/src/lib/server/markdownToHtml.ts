@@ -48,6 +48,7 @@ export const markdownToHtml = async (
               value: "[toc]",
             },
           ],
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any;
         const body = {
           type: "element",
@@ -56,6 +57,7 @@ export const markdownToHtml = async (
             className: "markdown-body",
           },
           children: [...tree.children],
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any;
         tree.children = [toc, body];
       })
@@ -78,6 +80,7 @@ export const markdownToHtml = async (
           toc.properties["aria-labelledby"] = "toc-title";
           return toc;
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }) as any;
   }
 

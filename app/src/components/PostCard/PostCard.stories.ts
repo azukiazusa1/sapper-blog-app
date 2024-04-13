@@ -42,6 +42,7 @@ const meta: Meta<PostCard> = {
       default: true,
     },
   },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   decorators: [() => Decorator as any],
 };
 

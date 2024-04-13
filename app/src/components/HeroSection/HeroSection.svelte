@@ -1,6 +1,5 @@
 <script lang="ts">
   import Heroimage from "../../assets/images/heroImage.png";
-  import Link from "../Link/Link.svelte";
   import LinkButton from "../LinkButton/LinkButton.svelte";
 </script>
 
