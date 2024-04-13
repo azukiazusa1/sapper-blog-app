@@ -101,7 +101,7 @@ HTML 属性 `anchor` を使用する場合、アンカー要素とする要素�
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
-さらに CSS の `anchor()` 関数を使用することで、アンカー要素の位置を指定することができます。`anchor()` 関数は以下の 3 つの引数を受け付けます。
+さらに CSS の `anchor()` 関数を使用することで、アンカー要素の位置を指定できます。`anchor()` 関数は以下の 3 つの引数を受け付けます。
 
 - アンカー要素：CSS プロパティ `anchor-name` で定義したアンカー要素の名前。HTML 属性による暗黙的なアンカーを使用している場合には、この値を省略する
 - アンカーの位置：アンカー要素の位置を指定するキーワード。以下の値を受け取る
@@ -132,15 +132,15 @@ HTML 属性 `anchor` を使用する場合、アンカー要素とする要素�
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/5kOyVDGJhmLIr5jCVEB919/f86c697ec1487d8e6bf5815ae373f4ba/__________2024-04-13_16.55.38.png)
 
-従来まではこの問題は JavaScript を使用して解決する必要がありました。CSS Anchor Positioning では `position-try-options` というプロパティを使用することで、ポップオーバーの表示位置を調整することができます。`position-try-options` プロパティは絶対位置に配置された要素が包含ブロックを超える場合に、代替の位置を指定するためのプロパティです。
+従来まではこの問題は JavaScript を使用して解決する必要がありました。CSS Anchor Positioning では `position-try-options` というプロパティを使用することで、ポップオーバーの表示位置を調整できます。`position-try-options` プロパティは絶対位置に配置された要素が包含ブロックを超える場合に、代替の位置を指定するためのプロパティです。
 
-この要素は `@position-try` で定義されたルールを使用するあるいは、あらかじめ定義された以下のキーワードのいずれかを使用することができます。
+この要素は `@position-try` で定義されたルールを使用するあるいは、あらかじめ定義された以下のキーワードのいずれかを使用できます。
 
 - `flip-block`：ブロック軸に関するプロパティ（例：`margin-block-start`, `margin-block-end`）を反転させる
 - `flip-inline`：インライン軸に関するプロパティ（例：`margin-inline-start`, `margin-inline-end`）を反転させる
 - `flip-start`：`start` と `end` の値を反転させる（例：`margin-block-start`, `margin-inline-start`）
 
-これらの値は複数指定することができます。以下のように `position-try-options` プロパティを使用すると、ポップオーバーが画面内に収まらない場合に自動的に表示位置が反転されるようになります。
+これらの値は複数指定できます。以下のように `position-try-options` プロパティを使用すると、ポップオーバーが画面内に収まらない場合に自動的に表示位置が反転されるようになります。
 
 ```css
 [popover] {
