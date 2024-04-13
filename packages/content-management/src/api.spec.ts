@@ -608,6 +608,7 @@ describe("createBlogPost", () => {
     const body = vi.fn();
     server.use(
       http.put(contentful("/entries/:entryId"), async ({ request }) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const _body = (await request.json()) as any;
         body(_body);
         return HttpResponse.json({
@@ -666,6 +667,7 @@ describe("createBlogPost", () => {
     const tagBody = vi.fn();
     server.use(
       http.post(contentful("/entries"), async ({ request }) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const body = (await request.json()) as any;
         tagBody(body);
         return HttpResponse.json({
@@ -675,6 +677,7 @@ describe("createBlogPost", () => {
         });
       }),
       http.put(contentful("/entries/:entryId"), async ({ request }) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const _body = (await request.json()) as any;
         blogPostBody(_body);
         return HttpResponse.json({

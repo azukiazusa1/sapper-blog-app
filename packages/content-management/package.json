@@ -50,7 +50,7 @@
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "dotenv": "^16.0.3",
-    "eslint": "^8.34.0",
+    "eslint": "^8.56.0",
     "eslint-config-custom": "^0.0.0",
     "find-config": "^1.0.0",
     "msw": "^2.0.9",

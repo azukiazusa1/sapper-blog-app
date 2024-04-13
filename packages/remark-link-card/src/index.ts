@@ -34,6 +34,7 @@ const faviconImageSrc = async (url: URL) => {
   return faviconUrl;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const h = (type: string, attrs = {}, children: any[] = []) => {
   return {
     type: "element",
@@ -59,7 +60,8 @@ const text = (value = "") => {
 
 const remarkLinkCard: Plugin = () => async (tree) => {
   const transformers: Promise<void>[] = [];
-  visit(tree, "paragraph", (paragraphNode: any, index, _) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  visit(tree, "paragraph", (paragraphNode: any, index) => {
     if (paragraphNode.children.length !== 1) {
       return;
     }
@@ -68,6 +70,7 @@ const remarkLinkCard: Plugin = () => async (tree) => {
       return;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     visit(paragraphNode, "link", (node: any, _, parent) => {
       // リンクだけの行の場合はリンクカードを表示する
       if (parent.children.length > 1 || node.url !== node.children[0].value) {
@@ -140,7 +143,6 @@ const remarkLinkCard: Plugin = () => async (tree) => {
                 ),
               ]),
             ];
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error tree に children は存在するはず
             tree.children.splice(index, 1, ...node.children);
           })

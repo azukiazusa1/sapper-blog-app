@@ -1,14 +1,22 @@
-module.exports = {
-  env: {
-    es2021: true,
-    node: true,
+// @ts-check
+
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
+import globals from "globals";
+
+export default tseslint.config(
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    extends: [
+      {
+        languageOptions: {
+          globals: {
+            ...globals.browser,
+            ...globals.node,
+          },
+        },
+      },
+    ],
   },
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
-  plugins: ['@typescript-eslint'],
-  rules: {},
-}
+);
