@@ -15,25 +15,32 @@ selfAssessment:
       answers:
         - text: "anchor-name"
           correct: true
+          explanation: null
         - text: "anchor"
           correct: false
+          explanation: null
         - text: "anchor-element"
           correct: false
+          explanation: null
         - text: "anchor-id"
           correct: false
+          explanation: null
     - question: "ポップアップが画面内に収まらない場合に自動的に表示位置を調整するためのプロパティは何か？"
       answers:
         - text: "position-try-options"
           correct: true
+          explanation: null
         - text: "position-fallback-options"
           correct: false
+          explanation: null
         - text: "position-adjust-options"
           correct: false
+          explanation: null
         - text: "position-retry-options"
           correct: false
+          explanation: null
 published: true
 ---
-
 !> CSS Anchor Positioning は 2024 年 4 月現在 Chrome Canary でのみ利用可能です。
 
 CSS Anchor Positioning とは、特定の要素を Anchor（基準）としてツールチップなどの要素の位置を決定する機能の総称です。CSS Anchor Positioning を使用することで、[Floating UI](https://floating-ui.com/) のように自動で画面内に表示されるツールチップやコンテキストメニューを実装できます。
