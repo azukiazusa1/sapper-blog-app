@@ -16,6 +16,7 @@
   export let right = false;
 
   // bits-ui の side の型定義がおかしいので、any で回避
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const side: any = right ? "bottom-end" : "bottom-start";
 
   onMount(() => {

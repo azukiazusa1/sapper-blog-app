@@ -1,6 +1,4 @@
-import { expect } from "@storybook/jest";
 import type { Meta, StoryObj } from "@storybook/svelte";
-import { within } from "@storybook/testing-library";
 import SelfAssessment from "./SelfAssessment.svelte";
 
 const meta: Meta<SelfAssessment> = {

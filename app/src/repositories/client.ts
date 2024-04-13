@@ -14,6 +14,7 @@ const isServerSide = typeof window === "undefined";
 
 const ssr = ssrExchange({
   isClient: !isServerSide,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialState: !isServerSide ? (window as any).__URQL_DATA__ : undefined,
 });
 
@@ -35,6 +36,7 @@ export const client = (preview: boolean) =>
   });
 
 export const request = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   query: DocumentNode | TypedDocumentNode<any, object> | string,
   variables = {},
   { preview = false } = {},

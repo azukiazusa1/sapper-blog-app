@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Link from "../Link/Link.svelte";
   import LinkButton from "./LinkButton.svelte";
 
   export let slot: string;

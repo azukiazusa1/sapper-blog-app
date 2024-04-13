@@ -3,6 +3,7 @@ import type { Plugin } from "unified";
 
 const remarkContentfulImage: Plugin = () => {
   return (tree) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     visit(tree, "image", (node: any) => {
       let srcset = "";
       if (node.url && node.url.includes("images.ctfassets.net")) {

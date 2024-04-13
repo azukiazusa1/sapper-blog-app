@@ -28,7 +28,9 @@ interface Tree {
 interface Verification {
   verified: boolean;
   reason: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   signature?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   payload?: any;
 }
 

@@ -22,6 +22,7 @@
       "changeProcessCWD": true
     },
   ],
+  "eslint.experimental.useFlatConfig": true,
   "vitest.enable": true,
   "textlint.configPath": "./contents/.textlintrc",
 }
