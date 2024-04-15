@@ -51,18 +51,20 @@
 </div>
 
 <div class="mb-12">
-  <Card
-    slug={post.slug}
-    title={post.title}
-    about={post.about}
-    tags={post.tagsCollection.items}
-    createdAt={post.createdAt}
-    thumbnail={{
-      title: post.thumbnail?.title ?? "",
-      url: post.thumbnail?.url ?? "",
-    }}
-    {contents}
-  />
+  {#key post.slug}
+    <Card
+      slug={post.slug}
+      title={post.title}
+      about={post.about}
+      tags={post.tagsCollection.items}
+      createdAt={post.createdAt}
+      thumbnail={{
+        title: post.thumbnail?.title ?? "",
+        url: post.thumbnail?.url ?? "",
+      }}
+      {contents}
+    />
+  {/key}
 
   <div class="mx-auto max-w-5xl p-4">
     {#if post.selfAssessment?.quizzes.length > 0}
