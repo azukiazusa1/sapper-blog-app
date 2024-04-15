@@ -109,9 +109,11 @@
               if (link.getAttribute("href") === `#${id}`) {
                 link.classList.add("text-indigo-600");
                 link.classList.add("dark:text-indigo-400");
+                link.classList.add("font-bold");
               } else {
                 link.classList.remove("text-indigo-600");
                 link.classList.remove("dark:text-indigo-400");
+                link.classList.remove("font-bold");
               }
             });
           }
