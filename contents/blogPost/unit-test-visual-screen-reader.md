@@ -20,7 +20,7 @@ Virtual Screen Reader は React, Vue.js, Angular などの UI フレームワー
 
 ## Virtual Screen Reader の仕様
 
-現在、スクリーンリーダーが従うべき明確な使用は存在しません。ですが、スクリーンリーダーに期待する振る舞いを定めた要件がいくつかの仕様によって定義されています。Virtual Screen Reader はできる限りこれらの仕様に従うように設計されています。
+現在、スクリーンリーダーが従うべき明確な仕様は存在しません。ですが、スクリーンリーダーに期待する振る舞いを定めた要件がいくつかの仕様によって定義されています。Virtual Screen Reader はできる限りこれらの仕様に従うように設計されています。
 
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [Accessible Name and Description Computation (ACCNAME) 1.2](https://www.w3.org/TR/accname-1.2/)
