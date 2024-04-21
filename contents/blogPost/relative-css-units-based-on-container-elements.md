@@ -14,7 +14,7 @@ selfAssessment:
     - question: "コンテナクエリ単位の説明として誤っているものはどれか？"
       answers:
         - text: "cqw はコンテナ要素の幅（`width`）のパーセンテージを表す"
-          correct: true
+          correct: false
           explanation: null
         - text: "cqh はコンテナ要素の高さ（`height`）のパーセンテージを表す"
           correct: false
@@ -23,7 +23,7 @@ selfAssessment:
           correct: false
           explanation: null
         - text: "cqb はコンテナ要素のボーダーボックスのパーセンテージを表す"
-          correct: false
+          correct: true
           explanation: "cqb はコンテナ要素のブロックサイズのパーセンテージを表します。"
     - question: "コンテナ要素を定義するために使用する CSS プロパティはどれか？"
       answers:
