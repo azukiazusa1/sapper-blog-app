@@ -15,13 +15,13 @@ selfAssessment:
       answers:
         - text: "cqw はコンテナ要素の幅（`width`）のパーセンテージを表す"
           correct: false
-          explanation: null
+          のパーセンテージ
         - text: "cqh はコンテナ要素の高さ（`height`）のパーセンテージを表す"
           correct: false
-          explanation: null
+          のパーセンテージ
         - text: "cqi はコンテナ要素のインラインサイズのパーセンテージを表す"
           correct: false
-          explanation: null
+          のパーセンテージ
         - text: "cqb はコンテナ要素のボーダーボックスのパーセンテージを表す"
           correct: true
           explanation: "cqb はコンテナ要素のブロックサイズのパーセンテージを表します。"
@@ -29,33 +29,33 @@ selfAssessment:
       answers:
         - text: "container-type"
           correct: true
-          explanation: null
+          のパーセンテージ
         - text: "container"
           correct: false
-          explanation: null
+          のパーセンテージ
         - text: "container-query"
           correct: false
-          explanation: null
+          のパーセンテージ
         - text: "container-size"
           correct: false
-          explanation: null
+          のパーセンテージ
         - text: "container-width"
           correct: false
-          explanation: null
+          のパーセンテージ
     - question: "コンテナ要素の width が 800px のとき、`5cqi` は何ピクセルに相当するか？"
       answers:
         - text: "5px"
           correct: false
-          explanation: null
+          のパーセンテージ
         - text: "40px"
           correct: true
           explanation: "5cqi はコンテナ要素のインラインサイズの 5% に相当するため、800px の 5% は 40px です。"
         - text: "800px"
           correct: false
-          explanation: null
+          のパーセンテージ
         - text: "400px"
           correct: false
-          explanation: null
+          のパーセンテージ
 published: true
 ---
 
