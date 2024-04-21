@@ -15,13 +15,13 @@ selfAssessment:
       answers:
         - text: "cqw はコンテナ要素の幅（`width`）のパーセンテージを表す"
           correct: false
-          explanation: null
+
         - text: "cqh はコンテナ要素の高さ（`height`）のパーセンテージを表す"
           correct: false
-          explanation: null
+
         - text: "cqi はコンテナ要素のインラインサイズのパーセンテージを表す"
           correct: false
-          explanation: null
+
         - text: "cqb はコンテナ要素のボーダーボックスのパーセンテージを表す"
           correct: true
           explanation: "cqb はコンテナ要素のブロックサイズのパーセンテージを表します。"
@@ -29,35 +29,36 @@ selfAssessment:
       answers:
         - text: "container-type"
           correct: true
-          explanation: null
+
         - text: "container"
           correct: false
-          explanation: null
+
         - text: "container-query"
           correct: false
-          explanation: null
+
         - text: "container-size"
           correct: false
-          explanation: null
+
         - text: "container-width"
           correct: false
-          explanation: null
+
     - question: "コンテナ要素の width が 800px のとき、`5cqi` は何ピクセルに相当するか？"
       answers:
         - text: "5px"
           correct: false
-          explanation: null
+
         - text: "40px"
           correct: true
           explanation: "5cqi はコンテナ要素のインラインサイズの 5% に相当するため、800px の 5% は 40px です。"
         - text: "800px"
           correct: false
-          explanation: null
+
         - text: "400px"
           correct: false
-          explanation: null
+
 published: true
 ---
+
 コンテナクエリ（`@container`）とは、親コンテナ要素に基づいてスタイルを定義できる CSS の機能です。メディアクエリ（`@media`）では画面全体の幅に応じてスタイルを変更する必要がありましたが、コンテナクエリでは任意の要素に基づいたスタイルを適用できるため、より柔軟なレイアウトの実現が可能です。
 
 ```css
@@ -91,7 +92,11 @@ published: true
 
 論理プロパティは言語表記方向（LTR または RTL）に依存してレイアウトを制御するという目的で導入されました。例えば、英語のような左から右に書かれる言語では、`left` が `start` に、`right` が `end` に対応しています。反対にアラビア語のような右から左に書かれる言語では、`left` が `end` に、`right` が `start` に対応しています。
 
-将来の多言語対応に備えて、普段から論理プロパティを使用することが好ましいでしょう。
+論理プロパティは言語表記方向（LTR または RTL）に依存してレイアウトを制御するという目的で導入されました。例えば、英語のような左から右に書かれる言語では、`left` が `inline-start` に、`right` が `inline-end` に対応しています。反対にアラビア語のような右から左に書かれる言語では、`left` が `inline-end` に、`right` が `inline-start` に対応しています。
+
+縦書きの文章においては `inline` と `block` の意味が入れ替わることには注意が必要です。縦書きの場合、`inline` は垂直方向を指し、`block` は水平方向を指します。つまり、縦書きの場合、`inline-size` は高さ（`height`）を、`block-size` は幅（`width`）を指すことになります。
+
+横書きの文章の場合には、将来の多言語対応に備えて、普段から論理プロパティを使用することが好ましいでしょう。
 
 </details>
 
