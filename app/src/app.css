@@ -181,11 +181,11 @@ html.dark #contents .markdown-body a {
   }
 
   #contents .markdown-body {
-    width: calc(100% - 300px);
+    width: calc(100% - 270px);
   }
 
   .toc {
-    width: 300px;
+    width: 270px;
     padding: 1rem;
     padding-right: 0;
     max-height: calc(100vh - 4rem);
@@ -300,6 +300,10 @@ h6 .icon-link::before {
 
 .error::before {
   @apply bg-red-500 dark:bg-red-600;
+}
+
+#contents code {
+  font-size: 1rem;
 }
 
 #contents code:not(pre > *) {
