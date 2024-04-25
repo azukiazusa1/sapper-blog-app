@@ -304,7 +304,7 @@ h6 .icon-link::before {
 
 #contents code {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.9;
 }
 
 #contents code:not(pre > *) {
