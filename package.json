@@ -21,7 +21,7 @@
     "npm": "9.9.3"
   },
   "devDependencies": {
-    "@eslint/js": "^8.57.0",
+    "@eslint/js": "^9.0.0",
     "prettier": "^3.0.0",
     "prettier-plugin-svelte": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.0",
