@@ -1,6 +1,5 @@
 <script lang="ts">
   import { isMatchPath } from "$lib/utils";
-  import clsx from "clsx";
 
   export let segment: string;
   export let routes: string[];
