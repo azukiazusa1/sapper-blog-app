@@ -6,13 +6,13 @@
 </script>
 
 <nav>
-  <ul class="flex space-x-4">
+  <ul class="flex items-center space-x-4">
     {#each routes as route}
       <li>
         <a
           aria-current={isMatchPath(route, segment) ? "page" : undefined}
           href={route}
-          class="px-3 capitalize hover:opacity-75"
+          class="px-4 py-2 capitalize transition-colors duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-zinc-700"
         >
           {route.slice(1)}
         </a>
@@ -30,10 +30,10 @@
   [aria-current]::after {
     position: absolute;
     content: "";
-    width: calc(100% - 1.5rem);
+    width: calc(100% - 2rem);
     height: 2px;
     background-color: #df3600;
     display: block;
-    bottom: -8px;
+    bottom: -4px;
   }
 </style>
