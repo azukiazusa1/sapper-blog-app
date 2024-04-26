@@ -286,7 +286,7 @@ h6 .icon-link::before {
 }
 
 .hint {
-  @apply relative rounded-lg rounded-l-none border-l-4 border-l-gray-300 bg-gray-100 px-4 py-6 pl-12 dark:border-l-zinc-500 dark:bg-zinc-700;
+  @apply relative rounded-lg rounded-l-none border-l-4 border-l-gray-300 bg-gray-100 px-4 py-5 pl-12 dark:border-l-zinc-500 dark:bg-zinc-700;
 }
 
 .tip::before {
@@ -303,8 +303,15 @@ h6 .icon-link::before {
 }
 
 #contents code {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.9;
+}
+
+@media (min-width: 768px) {
+  #contents code {
+    font-size: 1rem;
+    line-height: 1.9;
+  }
 }
 
 #contents code:not(pre > *) {
