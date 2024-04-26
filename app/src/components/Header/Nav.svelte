@@ -12,7 +12,7 @@
         <a
           aria-current={isMatchPath(route, segment) ? "page" : undefined}
           href={route}
-          class="px-4 py-2 capitalize transition-colors duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-zinc-700"
+          class="rounded-md px-4 py-2 capitalize transition-colors duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-zinc-700"
         >
           {route.slice(1)}
         </a>
