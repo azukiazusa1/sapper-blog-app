@@ -2,7 +2,7 @@
 id: ycgBY7jU3tV6WRBA3Lm0p
 title: "Remix v2.9 で導入された Single Fetch"
 slug: "single-fetch-in-remix"
-about: "Remix v2.9 で導入された Single Fetch は、クライアントサイドでのページ遷移が行われた際に、サーバーへの複数のデータ取得を行う代わりに、1 つのデータ取得を行う機能です。現在はフィーチャーフラグとして提供されていますが、v3 以降ではデフォルトの挙動となります。Single Fetch にはいくつかの破壊的変更も含まれていますが、アプリケーションのコードに大きな変更を加えることなく導入できます。"
+about: "Remix v2.9 で導入された Single Fetch はクライアントサイドでのページ遷移が行われた際に、サーバーへの複数の HTTP リクエストを並行して行う代わりに、1 つの HTTP リクエストを実行しまとめてレスポンスを返す機能です。いくつかの API の破壊的変更はありますが、アプリケーションのコードに大きな変更を加えることなく、Single Fetch を導入するできます。Single Fetch は v2.9 ではフィーチャーフラグとして提供されており、v3 以降ではデフォルトの挙動となります。"
 createdAt: "2024-04-27T14:08+09:00"
 updatedAt: "2024-04-27T14:08+09:00"
 tags: ["Remix"]
@@ -45,19 +45,19 @@ quizzes:
 published: true
 ---
 
-現在、Remix に対してドキュメントリクエストが行われると、Remix は同じリクエストのすべての [loader](https://remix.run/docs/en/main/route/loader) 関数を呼び出し、それらの結果を組み合わせてページを構築します。対して、ユーザーがクライアントサイドでのページ遷移を行った場合、Remix はどのルートの `loader` 関数を呼び出すか決定し、それぞれの `loader` 関数ごとに個別のリクエストをサーバーに対して行います。
+Remix に対してドキュメントリクエストが行われると、Remix はリクエストパスにマッチしたすべての [loader](https://remix.run/docs/en/main/route/loader) 関数を呼び出し、それらの結果を組み合わせてページを構築します。対して、ユーザーがクライアントサイドでのページ遷移を行った場合、Remix はそれぞれの `loader` 関数ごとに個別のリクエストをサーバーに対して行います。
 
-このように、ドキュメントリクエストを行う場合とクライアントサイドでのページ遷移を行う場合で、Remix は一貫性のない方法でデータを取得したという問題点がありました。
+このように、ドキュメントリクエストを行う場合とクライアントサイドでのページ遷移する場合で、Remix は一貫性のない方法でデータ取得を行っているという問題点がありました。
 
-Remix v2.9 で導入された Single Fetch は、クライアントサイドでのページ遷移が行われた際に、サーバーへの複数のデータ取得を行う代わりに、1 つのデータ取得を行う機能です。いくつかの API の破壊的変更はありますが、アプリケーションのコードに大きな変更を加えることなく、Single Fetch を導入するできます。Single Fetch は v2.9 ではフィーチャーフラグとして提供されており、v3 以降ではデフォルトの挙動となります。
+Remix v2.9 で導入された Single Fetch はクライアントサイドでのページ遷移が行われた際に、サーバーへの複数の HTTP リクエストを並行して行う代わりに、1 つの HTTP リクエストを実行しまとめてレスポンスを返す機能です。いくつかの API の破壊的変更はありますが、アプリケーションのコードに大きな変更を加えることなく、Single Fetch を導入するできます。Single Fetch は v2.9 ではフィーチャーフラグとして提供されており、v3 以降ではデフォルトの挙動となります。
 
 Single Fetch には以下のような利点があげられています。
 
 - CDN キャッシュカバレッジの向上
-- よりシンプルなヘッダー（Cookie, セッション）
+- よりシンプルなヘッダーの操作
 - Remix 自体のコードの簡素化
 
-また将来の以下の機能を実装するための準備としての役割も担っています。
+また将来以下の機能を実装するための準備としての役割も担っています。
 
 - [Middleware](https://github.com/remix-run/remix/discussions/7642)
 - [Server Context](https://github.com/remix-run/remix/discussions/7644)
@@ -71,6 +71,7 @@ Single Fetch には以下のような利点があげられています。
 それでは実際に Single Fetch の挙動を試してみましょう。サンプルコードとして、記事の一覧を取得する画面を考えます。この画面はネストされたルートで構成されており、`/blog/1` に遷移すると、`/blog` と `/blog/1` の両方のパスにマッチします。
 
 ```tsx:app/routes/blog.tsx
+// /blog
 import { Link, Outlet, json, useLoaderData } from "@remix-run/react";
 import { getPosts } from "~/data";
 export async function loader() {
@@ -169,7 +170,7 @@ export default defineConfig({
 });
 ```
 
-再度、トップページから `/blog/1` への遷移を行い、Devtools のネットワークタブを確認すると、1 つのリクエストのみが行われていることが確認できます。
+再度トップページから `/blog/1` への遷移を行い、Devtools のネットワークタブを確認すると、1 つのリクエストのみが行われていることが確認できます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/7J2TzKl8gyc8qbYCPQp2qR/8cf7b7c32b7ab5dda54598d5574b92d6/__________2024-04-27_15.54.56.png)
 
@@ -183,7 +184,7 @@ Single Fetch にはいくつかの破壊的な変更があります。
 
 ### 新しいストリーミング形式
 
-Remix では `loader`/`action` 関数でデータをクライアントと受け渡しする際に、`JSON.stringify` によりシリアライズしており、[defer](https://remix.run/docs/en/main/guides/streaming#3-deferring-data-in-loaders) 関数により Promise を返す際にはカスタムのストリーミング形式を使用していました。Single Fetch では [turbo-stream](https://github.com/jacob-ebey/turbo-stream) を内部で使用するようになり、JSON よりも複雑なデータ構造をシリアライズ、デシリアライズすることが可能になります。
+Remix では `loader`/`action` 関数でデータをクライアントと受け渡しする際に、`JSON.stringify` によりシリアライズを、[defer](https://remix.run/docs/en/main/guides/streaming#3-deferring-data-in-loaders) 関数で Promise を返す際にはカスタムのストリーミング形式を使用していました。Single Fetch では [turbo-stream](https://github.com/jacob-ebey/turbo-stream) を内部で使用するようになり、JSON よりも複雑なデータ構造をシリアライズ、デシリアライズが可能になります。
 
 `turbo-stream` は以下のデータ型を新たにサポートします。
 
@@ -197,7 +198,7 @@ Remix では `loader`/`action` 関数でデータをクライアントと受け�
 - `RegExp`
 - `Symbol`
 
-`loader`/`action` 関数において上記のデータ型を使用していた場合にコードの変更が必要となるかどうかは、どの関数を使用して値を返しているかにより変わります。`json` 関数を使用している場合には、引き続き `JSON.stringify` によるシリアライズが行われます。そのため、コードを変更する必要はありません。
+`loader`/`action` 関数において上記のデータ型を使用していた場合にコードの変更が必要となるかどうかは、どのような方法で値を返しているかにより変わります。`json` 関数を使用している場合には、引き続き `JSON.stringify` によるシリアライズが行われます。そのため、コードを変更する必要はありません。
 
 下記の例では `Date` 型が自動で `string` 型に変換されています。
 
@@ -209,7 +210,6 @@ type Post = {
   createdAt: Date;
 };
 
-
 export async function loader() {
   const posts = await getPosts();
   return json({
@@ -219,7 +219,7 @@ export async function loader() {
 
 export default function Blog() {
   const { posts } = useLoaderData<typeof loader>();
-  console.log(typeof possts[0].createdAt); // string
+  console.log(typeof posts[0].createdAt); // string
   // ...
 }
 ```
@@ -247,7 +247,7 @@ export default function Blog() {
 }
 ```
 
-このことは `loader` 関数から Promise を返すためにもはや `defer` 関数を使用する必要がないことを意味します。`defer` 関数を使用している箇所は単純なオブジェクトを返すように変更できます。
+このことは `loader` 関数から Promise を返すために、もはや `defer` 関数を使用する必要がないことを意味します。`defer` 関数を使用している箇所は単純なオブジェクトを返すように変更できます。
 
 ```ts:app/routes/blog.$id/routes.tsx {7}
 export async function loader(params) {
@@ -275,11 +275,11 @@ export async function loader(params) {
 }
 ```
 
-`useLoaderData`, `useActionData`, `useRouteLoaderData`, `useFetcher` 関数を使用している場合には変更は不要です。
+`useLoaderData`, `useActionData`, `useRouteLoaderData`, `useFetcher` 関数を使用している場合にはコードの変更は不要です。
 
 ```tsx
 export default function Blog() {
-  const data = useLoaderData();
+  const data = useLoaderData<typeof loader>();
   data.createdAt; // Date
 
   // ...
@@ -318,6 +318,7 @@ export const loader = () => {
   });
 };
 
+// このルートは常に再検証を行わない
 export const shouldRevalidate = () => false;
 ```
 
@@ -358,9 +359,10 @@ export default function New() {
 
 <video src="https://videos.ctfassets.net/in6v9lxmm5c8/2IIQwH3oKzllLfxAqOgp1o/c4145cd3699e29d3216aec3f0124cc3d/_____2024-04-27_16.48.26.mov" controls></video>
 
-Single Fetch では `action` 関数が `Response` オブジェクトを `{ status: 4xx/5xx }` で返すまたは `throw` した場合にデフォルトで再検証が行われなくなります。`4xx/5xx` エラーを返した多くの場合ではデータのミューテーションを行っていないので、データを再読込する必要がないためです。
+Single Fetch では `action` 関数がステータスコード `4xx/5xx` を設定して返した場合にデフォルトで再検証が行われなくなります。`action` 関数が `4xx/5xx` エラーを返す多くの場合では、データのミューテーションを行っていないので、データを再読込する必要がないと考えられるためこのような変更が行われました。
 
-引き続き `4xx/5xx` エラーの際に再検証を行いたい場合には、`loader` 関数を呼び出しているルートで `shouldRevalidate` 関数から `true` を返すことで常に再検証が行われるようになります。
+引き続き `4xx/5xx` を返す際に再検証を行いたい場合には、`loader` 関数を呼び出しているルートごとに `shouldRevalidate` 関数を export し、
+返り値として `true` を返すことで常に再検証が行われるようになります。
 
 ```tsx:app/routes/blog.tsx
 export const loader = () => {
@@ -368,10 +370,11 @@ export const loader = () => {
   return json(posts);
 };
 
+// action 関数が実行されると常に loader 関数を再検証する
 export const shouldRevalidate = () => true;
 ```
 
-`shouldRevalidate` 関数の引数の `unstable_actionStatus` には直前の `action` 関数で返されたのステータスコードが渡されます。このプロパティを使用して、特定のステータスコードの場合に再検証を行うかどうかを判断できます。
+`shouldRevalidate` 関数の引数の `unstable_actionStatus` には直前の `action` 関数で返されたのステータスコードが渡されます。このプロパティを使用することで、特定のステータスコードの場合に再検証するかどうかを判断できます。
 
 ```tsx:app/routes/blog.tsx
 import type { ShouldRevalidateFunction } from "@remix-run/node";
@@ -391,14 +394,14 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
 [headers](https://remix.run/docs/en/main/route/headers) 関数は、ルートごとに独自のレスポンスヘッダーを設定するために使用されていました。
 
 ```tsx:app/routes/blog.tsx
-import type { HeadersFunction } from "@remix-run/node"; // or cloudflare/deno
+import type { HeadersFunction } from "@remix-run/node";
 
 export const headers: HeadersFunction = () => ({
   "x-my-custom-header": "my-custom-value",
 });
 ```
 
-Single Fetch では `headers` 関数を export していてもその値はもはや使用されません。代わりに `loader/action` 関数の引数で受けとる `response` オブジェクトを直接変更することでレスポンスヘッダーを設定することができます。
+Single Fetch では `headers` 関数を export していても、その値はもはや使用されません。代わりに `loader/action` 関数の引数で受けとる `response` オブジェクトを直接変更することでレスポンスヘッダーやステータスコードを設定できます。
 
 ```tsx:app/routes/blog.tsx
 export async function loader({ response }: LoaderFunctionArgs) {
@@ -422,7 +425,7 @@ export async function loader({ response }: LoaderFunctionArgs) {
   - `header.append` では親ハンドラと子ハンドラの両方から同じ値を設定するために使われる
   - `header.delete` では親ハンドラの値を子ハンドラから削除するために使用される。子ハンドラが親ハンドラの値を削除することはできない
 
-Single Fetch ではステータスコードを設定するために `Response` オブジェクトを返す必要がなくなりました。例えば 404 ステータスコードを帰す場合ンは以下のように `Response` オブジェクトを生成して `throw` していました。
+Single Fetch ではステータスコードを設定するために、新たに `Response` オブジェクトを生成して返す必要がなくなりました。例えば 404 ステータスコードを返す場合は以下のように `Response` オブジェクトを生成して `throw` していました。
 
 ```tsx:app/routes/blog.$id/routes.tsx
 export async function loader({ params }: LoaderFunctionArgs) {
