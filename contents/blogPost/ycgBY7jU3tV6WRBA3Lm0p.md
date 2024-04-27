@@ -2,7 +2,7 @@
 id: ycgBY7jU3tV6WRBA3Lm0p
 title: "Remix v2.9 で導入された Single Fetch"
 slug: "single-fetch-in-remix"
-about: "Remix v2.9 で導入された Single Fetch はクライアントサイドでのページ遷移が行われた際に、サーバーへの複数の HTTP リクエストを並行して行う代わりに、1 つの HTTP リクエストを実行しまとめてレスポンスを返す機能です。いくつかの API の破壊的変更はありますが、アプリケーションのコードに大きな変更を加えることなく、Single Fetch を導入するできます。Single Fetch は v2.9 ではフィーチャーフラグとして提供されており、v3 以降ではデフォルトの挙動となります。"
+about: "Remix v2.9 で導入された Single Fetch はクライアントサイドでのページ遷移が行われた際に、サーバーへの複数の HTTP リクエストを並行して行う代わりに、1 つの HTTP リクエストを実行しまとめてレスポンスを返す機能です。Single Fetch は v2.9 ではフィーチャーフラグとして提供されており、v3 以降ではデフォルトの挙動となります。"
 createdAt: "2024-04-27T14:08+09:00"
 updatedAt: "2024-04-27T14:08+09:00"
 tags: ["Remix"]
