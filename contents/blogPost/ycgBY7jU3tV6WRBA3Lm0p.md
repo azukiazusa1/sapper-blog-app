@@ -12,21 +12,21 @@ thumbnail:
 quizzes:
   - question: "シリアライズ形式の変更による修正が必要ないのはどれか？"
     answers:
-      - text: `loader`/`action` 関数でオブジェクト返している場合
+      - text: "`loader`/`action` 関数でオブジェクト返している場合"
         correct: false
-        explanation: オブジェクトをそのまま返している場合は、`turbo-stream` によるストリーミング形式が使用されるため、修正が必要です。
-      - text: `loader`/`action` 関数で `json` 関数の結果を返している場合
+        explanation: "オブジェクトをそのまま返している場合は、`turbo-stream` によるストリーミング形式が使用されるため、修正が必要です。"
+      - text: "`loader`/`action` 関数で `json` 関数の結果を返している場合"
         correct: true
-        explanation: `json` 関数を使用している場合は引き続き `JSON.stringify` によるシリアライズが行われるため、修正が必要ありません。
-      - text: `loader`/`action` 関数で `defer` 関数の結果を返している場合
+        explanation: "`json` 関数を使用している場合は引き続き `JSON.stringify` によるシリアライズが行われるため、修正が必要ありません。"
+      - text: "`loader`/`action` 関数で `defer` 関数の結果を返している場合"
         correct: false
-        explanation: `defer` 関数を使用している場合は、`turbo-stream` によるストリーミング形式が使用されるため、修正が必要です。
+        explanation: "`defer` 関数を使用している場合は、`turbo-stream` によるストリーミング形式が使用されるため、修正が必要です。"
   - question: "Single Fetch において正しく型推論が行われるための修正とし正しいものはどれか？"
     answers:
       - text: "`useLoaderData` の型引数の `typeof loader` を `SingleFetchLoader<typeof loader>` に変更する"
         correct: false
-        explanation: `SingleFetchLoader` という型は存在しません。`useLoaderData` を使用している場合は変更は不要です。
-      - text: `tsconfig.json` の `includes` に `"node_modules/@remix-run/react/future/single-fetch.d.ts"` を追加する
+        explanation: "`SingleFetchLoader` という型は存在しません。`useLoaderData` を使用している場合は変更は不要です。"
+      - text: "`tsconfig.json` の `includes` に `"node_modules/@remix-run/react/future/single-fetch.d.ts"` を追加する"
         correct: true
       - text: "`loader` 関数で値を返す際に常にオブジェクトを返すように変更する"
         correct: false
