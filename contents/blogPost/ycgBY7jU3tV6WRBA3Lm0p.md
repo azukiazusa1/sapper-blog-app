@@ -26,7 +26,7 @@ quizzes:
       - text: "`useLoaderData` の型引数の `typeof loader` を `SingleFetchLoader<typeof loader>` に変更する"
         correct: false
         explanation: "`SingleFetchLoader` という型は存在しません。`useLoaderData` を使用している場合は変更は不要です。"
-      - text: "`tsconfig.json` の `includes` に `"node_modules/@remix-run/react/future/single-fetch.d.ts"` を追加する"
+      - text: "`tsconfig.json` の `includes` に `node_modules/@remix-run/react/future/single-fetch.d.ts` を追加する"
         correct: true
       - text: "`loader` 関数で値を返す際に常にオブジェクトを返すように変更する"
         correct: false
@@ -39,7 +39,7 @@ quizzes:
       - text: "設定ファイル `remix.config.js` でヘッダーを設定する"
         correct: false
       - text: "`loader`/`action` 関数の引数として受け取る `response` オブジェクトを直接操作する"
-        correct: true 
+        correct: true
       - text: "`loader`/`action` 関数の引数として受け取る `headers` オブジェクトを直接操作する"
         correct: false
 published: true
