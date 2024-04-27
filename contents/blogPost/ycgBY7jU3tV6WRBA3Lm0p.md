@@ -9,39 +9,39 @@ tags: ["Remix"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4DVzjypAQSqn27JG6jP3tf/b202d3977496f29ced7c06adcb655e8e/wagashi_kashiwamochi_illust_3195-768x672.png"
   title: "柏餅のイラスト"
-  quizzes:
-    - question: "シリアライズ形式の変更による修正が必要ないのはどれか？"
-      answers:
-        - text: `loader`/`action` 関数でオブジェクト返している場合
-          correct: false
-          explanation: オブジェクトをそのまま返している場合は、`turbo-stream` によるストリーミング形式が使用されるため、修正が必要です。
-        - text: `loader`/`action` 関数で `json` 関数の結果を返している場合
-          correct: true
-          explanation: `json` 関数を使用している場合は引き続き `JSON.stringify` によるシリアライズが行われるため、修正が必要ありません。
-        - text: `loader`/`action` 関数で `defer` 関数の結果を返している場合
-          correct: false
-          explanation: `defer` 関数を使用している場合は、`turbo-stream` によるストリーミング形式が使用されるため、修正が必要です。
-    - question: "Single Fetch において正しく型推論が行われるための修正とし正しいものはどれか？"
-      answers:
-        - text: "`useLoaderData` の型引数の `typeof loader` を `SingleFetchLoader<typeof loader>` に変更する"
-          correct: false
-          explanation: `SingleFetchLoader` という型は存在しません。`useLoaderData` を使用している場合は変更は不要です。
-        - text: `tsconfig.json` の `includes` に `"node_modules/@remix-run/react/future/single-fetch.d.ts"` を追加する
-          correct: true
-        - text: "`loader` 関数で値を返す際に常にオブジェクトを返すように変更する"
-          correct: false
-        - text: "正しい型推論は行われなくなるため、`as` を使って型をキャストする"
-          correct: false
-    - question: "`headers` 関数の代わりに用いられる適切な手段はなにか"
-      answers:
-        - text: "代替手段はないため、レスポンスヘッダーは設定できなくなる"
-          correct: false
-        - text: "設定ファイル `remix.config.js` でヘッダーを設定する"
-          correct: false
-        - text: "`loader`/`action` 関数の引数として受け取る `response` オブジェクトを直接操作する"
-          correct: true 
-        - text: "`loader`/`action` 関数の引数として受け取る `headers` オブジェクトを直接操作する"
-          correct: false
+quizzes:
+  - question: "シリアライズ形式の変更による修正が必要ないのはどれか？"
+    answers:
+      - text: `loader`/`action` 関数でオブジェクト返している場合
+        correct: false
+        explanation: オブジェクトをそのまま返している場合は、`turbo-stream` によるストリーミング形式が使用されるため、修正が必要です。
+      - text: `loader`/`action` 関数で `json` 関数の結果を返している場合
+        correct: true
+        explanation: `json` 関数を使用している場合は引き続き `JSON.stringify` によるシリアライズが行われるため、修正が必要ありません。
+      - text: `loader`/`action` 関数で `defer` 関数の結果を返している場合
+        correct: false
+        explanation: `defer` 関数を使用している場合は、`turbo-stream` によるストリーミング形式が使用されるため、修正が必要です。
+  - question: "Single Fetch において正しく型推論が行われるための修正とし正しいものはどれか？"
+    answers:
+      - text: "`useLoaderData` の型引数の `typeof loader` を `SingleFetchLoader<typeof loader>` に変更する"
+        correct: false
+        explanation: `SingleFetchLoader` という型は存在しません。`useLoaderData` を使用している場合は変更は不要です。
+      - text: `tsconfig.json` の `includes` に `"node_modules/@remix-run/react/future/single-fetch.d.ts"` を追加する
+        correct: true
+      - text: "`loader` 関数で値を返す際に常にオブジェクトを返すように変更する"
+        correct: false
+      - text: "正しい型推論は行われなくなるため、`as` を使って型をキャストする"
+        correct: false
+  - question: "`headers` 関数の代わりに用いられる適切な手段はなにか"
+    answers:
+      - text: "代替手段はないため、レスポンスヘッダーは設定できなくなる"
+        correct: false
+      - text: "設定ファイル `remix.config.js` でヘッダーを設定する"
+        correct: false
+      - text: "`loader`/`action` 関数の引数として受け取る `response` オブジェクトを直接操作する"
+        correct: true 
+      - text: "`loader`/`action` 関数の引数として受け取る `headers` オブジェクトを直接操作する"
+        correct: false
 published: true
 ---
 
@@ -451,6 +451,54 @@ export async function action({ request, response }: ActionFunctionArgs) {
   response.headers.set("Location", "/blog");
   throw response;
 }
+```
+
+## `clientLoader` 使用時の挙動の違い
+
+[clientLoader](https://remix.run/docs/en/main/route/client-loader) を使用している場合には Single Fetch の挙動が少々変わります。ルートファイルで `clientLoader` を export している場合、Single Fetch がオプトアウトされそのルートのみ単独でデータ取得が実行され、その他の `clientLoader` を export していないルートのみでリクエストがまとめられます。
+
+例として `/dashboards` と `/dashboards/invoice` ではそれぞれ `loader` のみが `export` され、`/dashboards/invoice/1` では `clientLoader` が `export` されている場合を考えます。
+
+```tsx:app/routes/dashboards.tsx
+export async function loader() {
+  const dashboards = await getDashboards();
+  return { dashboards };
+}
+```
+
+```tsx:app/routes/dashboards.invoice.tsx
+export async function loader() {
+  const invoices = await getInvoices();
+  return { invoices };
+}
+```
+
+```tsx:app/routes/dashboards.invoice.$id/routes.tsx
+export async function loader({ params }: LoaderFunctionArgs) {
+  const invoice = await getInvoice(params.id);
+  return { invoice };
+}
+
+export async function clientLoader({ params, serverLoader }: ClientLoaderFunctionArgs) {
+  const serverData = await serverLoader();
+  const details = await getInvoiceDetails(params.id);
+  return {
+    ...serverData,
+    ...details,
+   };
+}
+```
+
+ユーザーが `/` から `/dashboards/invoice/1` に遷移した場合、`/dashboards` と `/dashboards/invoice` の `loader` 関数が実行され、これらのリクエストはまとめられます。
+
+```sh
+GET /dashboards/invoice/1.data?_routes=routes/dashboards,routes/invoice
+```
+
+そして `/dashboards/invoice/1` が呼び出されると、`serverLoader` が実行され、独立したリクエストとしてデータ取得が行われます。
+
+```sh
+GET /dashboards/invoice/1.data?_routes=routes/dashboards/invoice/1
 ```
 
 ## まとめ
