@@ -15,16 +15,18 @@ selfAssessment:
       answers:
         - text: "App Router と TypeScript を使用している"
           correct: false
+          explanation: null
         - text: "`experimental.typedRoutes` フラグを有効にする"
           correct: false
+          explanation: null
         - text: "Next.js のバージョンが 13.2 以上である"
           correct: false
+          explanation: null
         - text: "npm run generate-types コマンドを実行して、型定義ファイルを生成する"
           correct: true
           explanation: "型定義ファイルは `npm run dev` や `npm run build` を実行することで自動生成されます。"
 published: true
 ---
-
 !> この記事における「型安全」とは、静的な型検査によりランタイムで起こり得るエラーを事前に検知することを指します。
 
 Next.js では Next.js 13.2　より実験的な機能として、型安全なルーティングを利用できます。この機能を使うことでリンク先のパス名を静的に検査できるため、typo などのエラーを事前に防ぐことができます。
