@@ -185,7 +185,7 @@ import Link from "next/link";
 <Link href="/about"></Link>; // OK
 <Link href="/something"></Link>; // Type '"/something"' is not assignable to type 'UrlObject | RouteImpl<"/something">'.
 
-// クエリパラメータやハッシュパラメテーターを渡せる
+// クエリパラメータやハッシュパラメーターを渡せる
 <Link href="/about?foo=bar"></Link>;
 <Link href="/about#baz"></Link>;
 <Link href="/something#?foo=bar"></Link>; // Type '"/something#?foo=bar"' is not assignable to type 'UrlObject | RouteImpl<"/something#?foo=bar">'.
@@ -234,7 +234,7 @@ const slug = "hello";
 
 <Link href={`/blog/${slug}`}></Link>; // OK`
 <Link href={"/blog/" + slug}></Link>; // Type 'string' is not assignable to type 'UrlObject | RouteImpl<string>'.
-<Link href={`/blog/${slug}` as Route}></Link>; // OK
+<Link href={("/blog/" + slug) as Route}></Link>; // OK
 ```
 
 `<Link>` をラップしたコンポーネントを作成し、`href` Props を渡す場合にはジェネリックを使用します。ルーティングの型は `"next"` モジュールからインポートした `Route` を使用します。
