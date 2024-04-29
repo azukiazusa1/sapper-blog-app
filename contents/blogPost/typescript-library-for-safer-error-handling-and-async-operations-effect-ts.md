@@ -15,13 +15,12 @@ selfAssessment:
       answers:
         - text: "Left"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "Right"
           correct: true
           explanation: "英語では「正しい」と「右」が同じ意味であるため、成功を表す型は Right と覚えましょう。"
 published: true
 ---
-
 Effect-TS（正式名称は Effect）は、開発者が複雑なエラーや非同期処理をより安全に開発できるようにすることを目的とした TypeScript ライブラリです。[Effect System](https://en.wikipedia.org/wiki/Effect_system) という概念を取り入れており、Scala や Haskell といった関数型プログラミング言語に影響を受けています。
 
 https://effect.website/
