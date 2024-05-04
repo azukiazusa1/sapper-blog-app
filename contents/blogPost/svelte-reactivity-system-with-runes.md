@@ -15,6 +15,7 @@ selfAssessment:
       answers:
         - text: "$state"
           correct: true
+          explanation: null
         - text: "$derived"
           correct: false
           explanation: "$derived はある状態から派生した値を計算するために使用されます。"
@@ -26,7 +27,6 @@ selfAssessment:
           explanation: "$reactive という関数は 存在しません。"
 published: true
 ---
-
 従来の Svelte は純粋な JavaScript のコードのみを使用してリアクティビティを実現したのが特徴でした。
 
 ```svelte
