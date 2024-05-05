@@ -8,14 +8,14 @@ updatedAt: "2024-05-05T15:15+09:00"
 tags: ["Svelte"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/xBERA0jHZ420rvwgG6hQK/27f792a616ddcdbae832e2ab85c88b57/ball-juggling_male_20221.png"
-  title: "ボールをジャグリングする男性のイラスト"
+  title: "ボールジャグリングをする男性のイラスト"
 selfAssessment:
   quizzes:
     - question: "Svelte v5 において、`on:click` の代わりとなるイベントハンドラの書き方はどれか？"
       answers:
         - text: "onclick={handler}"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "v-on:click={handler}"
           correct: false
           explanation: "Vue.js のイベントハンドラの書き方です。"
@@ -32,16 +32,15 @@ selfAssessment:
           explanation: "Vue.js のイベント発火の方法です。"
         - text: "Props としてコールバック関数を渡す"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "`EventEmitter` クラスを使用する"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`CustomEvent` クラスを使用する"
           correct: false
-          explanation: ""
+          explanation: null
 published: true
 ---
-
 Svelte v5 では、イベントハンドラの書き方が一新され、いくつか非推奨となった書き方があります。この記事では、Svelte v4 と Svelte v5 のイベントハンドラの書き方の違いについて見ていきます。
 
 ## `on:` ディレクティブが非推奨に
