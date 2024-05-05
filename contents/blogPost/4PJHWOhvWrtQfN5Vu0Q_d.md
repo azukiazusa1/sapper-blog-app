@@ -27,6 +27,7 @@ selfAssessment:
           correct: false
           explanation: "イベントハンドラは小文字で記述します。"
     - question: "Svelte v5 において、`createEventDispatcher` の代わりにコンポーネントからイベントを発火する方法はどれか"
+      answers:
         - text: "`$emit` メソッドを使用する"
           correct: false
           explanation: "Vue.js のイベント発火の方法です。"
