@@ -217,7 +217,7 @@ Svelte v5 では、単にイベントを Props として渡します。
 <Parent onclick={handleClick} />
 ```
 
-##　イベントの修飾子
+## イベントの修飾子
 
 Svelte v4 までは以下のようにイベントの修飾子を使用できました。
 
