@@ -83,7 +83,7 @@ Svelte v5 では、`on:` ディレクティブが非推奨となり、単なる�
 
 ## コンポーネントのイベント
 
-Svelte v4 までは Svelte コンポーネントからイベントを発火するために [createEventDispatcher](https://svelte.jp/docs/`svelte#createeventdispatcher) 関数を使用していました。`createEventDispatcher` 関数は [CustomEvent](https://developer.mozilla.org/ja/docs/Web/API/CustomEvent) を作成します。CustomEvent に第 1 引数にイベント名、第 2 引数にイベントデータを渡すことで、コンポーネントからイベントが発火されます。
+Svelte v4 までは Svelte コンポーネントからイベントを発火するために [createEventDispatcher](https://svelte.jp/docs/svelte#createeventdispatcher) 関数を使用していました。`createEventDispatcher` 関数は [CustomEvent](https://developer.mozilla.org/ja/docs/Web/API/CustomEvent) を作成します。CustomEvent に第 1 引数にイベント名、第 2 引数にイベントデータを渡すことで、コンポーネントからイベントが発火されます。
 
 ```svelte:TodoForm.svelte
 <script>
