@@ -109,7 +109,7 @@ export const generateBlogOgpImage = async (title: string, tags: string[]) => {
                 style={{
                   fontSize: 24,
                   fontWeight: 400,
-                  border: "1px solid #e5e7eb",
+                  border: "1px solid #d1d5db",
                   padding: "4px 24px",
                   borderRadius: 9999,
                   marginRight: 12,
