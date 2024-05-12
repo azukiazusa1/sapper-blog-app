@@ -104,7 +104,7 @@ export function LikeButton() {
 
 `useState()` で `likes` と `isLiked` の state を管理し、`useOptimistic()` フックの引数として渡しています。いいねボタンがクリックされた場合には、最初に `addOptimistic()` 関数を呼び出して楽観的な更新を行います。ここから `likePost()` 関数の処理が完了するまでの間は `useState()` で定義した状態の代わりに、`addOptimistic()`　に渡した値が表示されます。そして、`likePost()` 関数が完了した後は `useState()` で定義した状態再びが表示されます。
 
-`likePost()` の処理が完了した後も更新された状態を表示するために、`likePost()` の結果が成功した場合には `useState()` で定義した状態を更新します。もし `likePost()` 関数が失敗した場合には状態の更新を行わないので、UI上は元の状態にフォールバックされたように見えます。
+`likePost()` の処理が完了した後も更新された状態を表示するために、`likePost()` の結果が成功した場合には `useState()` で定義した状態を更新します。もし `likePost()` 関数が失敗した場合には状態の更新を行わないので、UI 上は元の状態にフォールバックされたように見えます。
 
 `useOptimistic` フックを使用する場合には [startTransition](https://ja.react.dev/reference/react/startTransition) でラップする、もしくは [Form Action](https://ja.react.dev/reference/react-dom/components/form#usage) の関数内で状態を更新する必要があります。
 
