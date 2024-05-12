@@ -108,7 +108,7 @@ export function LikeButton() {
 
 `startTransition` は UI をブロックせずに状態を更新するための関数です。`startTransition` はコールバック関数を受け取り、その関数内で状態の更新を行います。このコールバック関数内で行われた状態の更新は優先度の低い状態の更新とみなされます。優先度の低い状態の更新は一旦中止されて、後回しにされる可能性があります。
 
-x> このコード例では `startTransition` にわたすコールバック関数は `async` 関数となっていますが、`startTransition` の型定義上では `Promise` を返す関数は許可されていません。このコードは将来動作しなくなる可能性があるため、注意が必要です。
+x> このコード例では `startTransition` にわたすコールバック関数は `async` 関数となっていますが、 React v18 までの `startTransition` の型定義上では `Promise` を返す関数は許可されていません。Canary リリース版の型定義では `Promise` を返す関数を渡せるようになります　https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/canary.d.ts#L87 。
 
 実際にコードを実行してみると、いいねボタンをクリックした際に即座にいいねの数が +1 され、ボタンの色が変わることが確認できます。また、リクエストに失敗した際にはボタンの色が元に戻ることも確認できます。
 
