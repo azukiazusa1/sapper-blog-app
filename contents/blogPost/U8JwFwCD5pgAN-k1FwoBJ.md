@@ -26,7 +26,7 @@ selfAssessment:
           correct: false
           explanation: "useOptimistic フックの返り値のタプルは 2 つの要素からなり、現在の state と楽観的な state を返します"
 
-published: false
+published: true
 ---
 
 React v19 では楽観的更新を行うための `useOptimistic` フックが導入される予定です。楽観的更新とは、ユーザーの操作に対して非同期処理の完了を待たずに UI を更新する手法のことです。楽観的更新によりユーザーの操作に対して即座にフィードバックを提供できるため、UX の向上につながります。
