@@ -270,9 +270,7 @@ h6 .icon-link::before {
 
 .hint::before {
   position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-52%);
+  top: 8px;
   content: "!";
   display: block;
   width: 20px;
@@ -286,7 +284,12 @@ h6 .icon-link::before {
 }
 
 .hint {
-  @apply relative rounded-lg rounded-l-none border-l-4 border-l-gray-300 bg-gray-100 px-4 py-5 pl-12 dark:border-l-zinc-500 dark:bg-zinc-700;
+  font-size: 1rem;
+  @apply relative rounded-lg rounded-l-none border-l-4 border-l-gray-300 py-5 pl-4 pt-10;
+}
+
+.tip {
+  @apply border-l-blue-400  dark:border-l-blue-600;
 }
 
 .tip::before {
@@ -294,8 +297,16 @@ h6 .icon-link::before {
   @apply bg-blue-400 dark:bg-blue-600;
 }
 
+.warn {
+  @apply border-l-yellow-400 dark:border-l-yellow-800;
+}
+
 .warn::before {
-  @apply bg-yellow-400 dark:bg-yellow-600;
+  @apply bg-yellow-400 dark:border-l-yellow-600;
+}
+
+.error {
+  @apply border-l-red-500  dark:border-l-red-600;
 }
 
 .error::before {
