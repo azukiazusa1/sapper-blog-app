@@ -182,11 +182,12 @@ html.dark #contents .markdown-body a {
   }
 
   html:not(.open-toc) #contents .markdown-body {
+    margin: 0 auto;
     grid-column: 1 / 1;
   }
 
   #contents .markdown-body {
-    max-width: 80ch;
+    max-width: 814px;
     grid-column: 1 / 2;
     grid-row-start: 1;
   }
