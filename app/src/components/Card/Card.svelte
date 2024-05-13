@@ -199,8 +199,8 @@
       </div>
     </div>
 
-    <div class="relative mx-auto max-w-5xl">
-      <div id="contents" class="show-line-number mx-auto mt-20 max-w-5xl">
+    <div class="relative mx-auto max-w-6xl">
+      <div id="contents" class="show-line-number mx-auto mt-20 max-w-6xl">
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html contents}
       </div>
