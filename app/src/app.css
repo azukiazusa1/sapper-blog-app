@@ -88,7 +88,7 @@
 #contents ul,
 #contents ol {
   padding-left: 1.5em;
-  margin: 1.5em 0;
+  @apply my-6 md:my-8;
 }
 
 #contents ul ul,
@@ -101,15 +101,15 @@
 }
 
 #contents blockquote {
-  @apply my-6 border-l-4 border-l-gray-200 py-1 pl-4 text-gray-600 dark:border-l-gray-400 dark:text-gray-300;
+  @apply my-6 border-l-4 border-l-gray-200 py-1 pl-4 text-gray-600 md:my-8 dark:border-l-gray-400 dark:text-gray-300;
 }
 
 #contents p + p {
-  @apply mt-6;
+  @apply mt-6 md:mt-8;
 }
 
 #contents details {
-  @apply my-6;
+  @apply my-6 md:my-8;
 }
 
 #contents details[open] {
@@ -122,13 +122,13 @@
 
 #contents summary {
   padding: 0.5rem 1rem;
-  @apply mb-6 cursor-pointer rounded-t-lg bg-gray-200 dark:bg-zinc-600;
+  @apply mb-6 cursor-pointer rounded-t-lg bg-gray-200 md:mb-8 dark:bg-zinc-600;
 }
 
 #contents img,
 #contents video,
 #contents iframe {
-  margin: 1.5rem auto;
+  @apply mx-auto my-6 md:my-8;
 }
 
 #contents .markdown-body a {
@@ -145,7 +145,6 @@ html.dark #contents .markdown-body a {
 }
 
 #contents table {
-  margin: 1.2rem auto;
   width: auto;
   border-collapse: collapse;
   font-size: 0.95em;
@@ -154,6 +153,7 @@ html.dark #contents .markdown-body a {
   display: block;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  @apply mx-auto my-6 md:my-8;
 }
 
 #contents th {
@@ -173,19 +173,26 @@ html.dark #contents .markdown-body a {
 
 @media (min-width: 1024px) {
   #contents {
-    @apply flex flex-row-reverse items-start gap-8;
+    @apply grid items-start gap-10;
+    grid-template-columns: minmax(0, 1fr) 280px;
   }
 
   html:not(.open-toc) #contents {
-    @apply flex flex-row-reverse justify-center;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  html:not(.open-toc) #contents .markdown-body {
+    grid-column: 1 / 1;
   }
 
   #contents .markdown-body {
-    width: calc(100% - 300px);
+    max-width: 80ch;
+    grid-column: 1 / 2;
+    grid-row-start: 1;
   }
 
   .toc {
-    width: 270px;
+    grid-column: 2 / 2;
     padding: 1rem;
     padding-right: 0;
     max-height: calc(100vh - 4rem);
@@ -350,7 +357,7 @@ div[data-rehype-pretty-code-fragment] {
 }
 
 .link-card__wrapper {
-  @apply my-6;
+  @apply my-6 md:my-8;
 }
 
 .link-card {
