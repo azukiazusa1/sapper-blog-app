@@ -175,6 +175,7 @@ html.dark #contents .markdown-body a {
   #contents {
     @apply grid items-start gap-10;
     grid-template-columns: minmax(0, 1fr) 280px;
+    max-inline-size: 1100px;
   }
 
   html:not(.open-toc) #contents {
@@ -187,7 +188,7 @@ html.dark #contents .markdown-body a {
   }
 
   #contents .markdown-body {
-    max-width: 814px;
+    max-width: 756px;
     grid-column: 1 / 2;
     grid-row-start: 1;
   }
