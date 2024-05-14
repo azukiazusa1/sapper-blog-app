@@ -277,49 +277,57 @@ h6 .icon-link::before {
   @apply mr-2 text-gray-400 no-underline;
 }
 
-.hint::before {
-  position: absolute;
-  top: 8px;
-  content: "!";
-  display: block;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  font-size: 13px;
-  text-align: center;
-  color: #fff;
-  font-weight: 700;
-  border-radius: 50%;
-}
-
-.hint {
+.alert {
   font-size: 1rem;
-  @apply relative rounded-lg rounded-l-none border-l-4 border-l-gray-300 py-5 pl-4 pt-10;
+  @apply relative rounded-lg rounded-l-none border-l-4 border-l-gray-300 py-2 pl-4;
 }
 
-.tip {
+.alert p {
+  margin-top: 0 !important;
+}
+
+.alert-icon {
+  @apply h-6 w-6;
+}
+
+.alert-title {
+  @apply mb-2 flex items-center gap-2 text-lg font-bold;
+}
+
+.alert-content {
+  @apply pl-2;
+}
+
+.alert-note {
   @apply border-l-blue-400  dark:border-l-blue-600;
 }
 
-.tip::before {
-  content: "i";
-  @apply bg-blue-400 dark:bg-blue-600;
+.alert-note .alert-title {
+  @apply text-blue-400 dark:text-blue-600;
 }
 
-.warn {
-  @apply border-l-yellow-400 dark:border-l-yellow-800;
+.alert-warning {
+  @apply border-l-yellow-700 dark:border-l-yellow-400;
 }
 
-.warn::before {
-  @apply bg-yellow-400 dark:border-l-yellow-600;
+.alert-warning .alert-title {
+  @apply text-yellow-700 dark:text-yellow-400;
 }
 
-.error {
+.alert-error {
   @apply border-l-red-500  dark:border-l-red-600;
 }
 
-.error::before {
-  @apply bg-red-500 dark:bg-red-600;
+.alert-error .alert-title {
+  @apply text-red-500 dark:text-red-600;
+}
+
+.alert-tip {
+  @apply border-l-green-400 dark:border-l-green-600;
+}
+
+.alert-tip .alert-title {
+  @apply text-green-400 dark:text-green-600;
 }
 
 #contents code {
