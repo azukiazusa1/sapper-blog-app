@@ -204,7 +204,7 @@
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html contents}
       </div>
-      <div id="nav-button" class="absolute right-0 top-0">
+      <div id="nav-button" class="absolute right-6 top-0">
         <NavButton
           on:click={closeToc}
           label="目次を閉じる"
