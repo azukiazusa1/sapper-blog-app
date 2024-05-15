@@ -279,7 +279,7 @@ h6 .icon-link::before {
 
 .alert {
   font-size: 1rem;
-  @apply relative my-6 rounded-lg rounded-l-none border-l-4 border-l-gray-300 py-4 pl-4 md:my-8;
+  @apply relative my-6 rounded-lg rounded-l-none border-l-4 border-l-gray-300 px-4 py-6 md:my-8;
 }
 
 .alert p {
