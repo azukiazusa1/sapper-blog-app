@@ -25,7 +25,8 @@ const text = (value = "") => {
 const rehypeAlert: Plugin = () => {
   return (tree) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    visit(tree, "element", (node: any) => {
+    visit(tree, "element", (node: any, index) => {
+      if (node.tagName !== "p") return;
       if (node.children === undefined || node.children.length === 0) return;
       const [{ type, value }, ...siblings] = node.children;
       if (type !== "text") return;
@@ -60,6 +61,9 @@ const rehypeAlert: Plugin = () => {
             ]),
           ]),
         ];
+
+        // @ts-expect-error tree に children はある
+        tree.children.splice(index, 1, ...node.children);
       }
 
       if (value.startsWith("!>")) {
@@ -92,6 +96,9 @@ const rehypeAlert: Plugin = () => {
             ]),
           ]),
         ];
+
+        // @ts-expect-error tree に children はある
+        tree.children.splice(index, 1, ...node.children);
       }
 
       if (value.startsWith("->")) {
@@ -124,6 +131,9 @@ const rehypeAlert: Plugin = () => {
             ]),
           ]),
         ];
+
+        // @ts-expect-error tree に children はある
+        tree.children.splice(index, 1, ...node.children);
       }
 
       if (value.startsWith("?>")) {
@@ -156,6 +166,8 @@ const rehypeAlert: Plugin = () => {
             ]),
           ]),
         ];
+        // @ts-expect-error tree に children はある
+        tree.children.splice(index, 1, ...node.children);
       }
     });
   };
