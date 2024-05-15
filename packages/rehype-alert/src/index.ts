@@ -1,6 +1,7 @@
 import { visit } from "unist-util-visit";
 import type { Plugin } from "unified";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const h = (type: string, attrs = {}, children: any[] = []) => {
   return {
     type: "element",
