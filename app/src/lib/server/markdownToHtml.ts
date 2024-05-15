@@ -3,7 +3,7 @@ import remarkLinkCard from "remark-link-card";
 import markdown from "remark-parse";
 import remark2rehype from "remark-rehype";
 import remarkGfm from "remark-gfm";
-import remarkHint from "remark-hint";
+import remarkAlert from "remark-alert";
 import remarkContentFulImage from "remark-contentful-image";
 import html from "rehype-stringify";
 import rehypeCodeTitles from "rehype-code-titles";
@@ -24,7 +24,7 @@ export const markdownToHtml = async (
     .use(markdown)
     .use(remarkLinkCard)
     .use(remarkGfm)
-    .use(remarkHint)
+    .use(remarkAlert)
     .use(remarkContentFulImage)
     .use(remark2rehype, { allowDangerousHtml: true })
     .use(rehypeCodeTitles)

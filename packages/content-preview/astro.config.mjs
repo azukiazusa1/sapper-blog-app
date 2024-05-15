@@ -15,7 +15,7 @@ export default defineConfig({
       "remark-parse",
       "remark-link-card",
       "remark-gfm",
-      "remark-hint",
+      "remark-alert",
       "remark-contentful-image",
       "remark-rehype",
     ],
