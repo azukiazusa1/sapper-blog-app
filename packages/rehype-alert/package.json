@@ -1,5 +1,5 @@
 {
-  "name": "remark-alert",
+  "name": "rehype-alert",
   "version": "0.0.0",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "unified": "^10.1.2",
+    "unist-builder": "^4.0.0",
     "unist-util-visit": "^4.1.2"
   }
 }
