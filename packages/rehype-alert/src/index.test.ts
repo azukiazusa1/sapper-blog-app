@@ -1,21 +1,20 @@
+import { describe, test, expect } from "vitest";
 import { unified } from "unified";
 import markdown from "remark-parse";
 import remark2rehype from "remark-rehype";
 import html from "rehype-stringify";
 
-import remarkAlert from ".";
+import rehypeAlert from ".";
 
 const processor = unified()
   .use(markdown)
-  .use(remarkAlert)
   .use(remark2rehype, {
     allowDangerousHtml: true,
   })
+  .use(rehypeAlert)
   .use(html, { allowDangerousHtml: true });
 
-import { describe, test, expect } from "vitest";
-
-describe("remark-alert", () => {
+describe("rehype-alert", () => {
   test("x> で始まる行を警告に変換する", async () => {
     const { value } = await processor.process(`x> This is a error`);
     expect(value).toMatchSnapshot();

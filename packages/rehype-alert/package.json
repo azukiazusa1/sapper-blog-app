@@ -12,10 +12,10 @@
     "format:check": "prettier --check --config=../../.prettierrc ./src",
     "format": "prettier --write --config=../../.prettierrc ./src",
     "dev": "tsc -w",
-    "build": "tsc -p tsconfig.build.json",
     "prebuild": "rimraf build",
+    "build": "tsc -p tsconfig.build.json",
     "test": "vitest",
-    "test:update": "vitest -u",
+    "test:update": "vitest --update",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
@@ -23,14 +23,14 @@
     "eslint-config-custom": "^0.0.0",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
+    "remark-parse": "^10.0.1",
     "rimraf": "^5.0.0",
     "tsconfig": "^0.0.0",
     "typescript": "^5.3.3",
+    "unist-util-visit": "^4.1.2",
     "vitest": "^1.0.0"
   },
   "dependencies": {
-    "unified": "^10.1.2",
-    "unist-builder": "^4.0.0",
-    "unist-util-visit": "^4.1.2"
+    "unified": "^10.1.2"
   }
 }

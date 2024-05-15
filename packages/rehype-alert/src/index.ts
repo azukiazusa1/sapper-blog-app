@@ -1,6 +1,5 @@
 import { visit } from "unist-util-visit";
 import type { Plugin } from "unified";
-import { u } from "unist-builder";
 
 const h = (type: string, attrs = {}, children: any[] = []) => {
   return {
