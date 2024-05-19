@@ -119,7 +119,7 @@ Props として渡されたスニペットは、コンポーネント内で `{@r
 
 さらにコンポーネントの子要素としてスニペットではない要素を定義した場合には、特別な `children` スニペットが暗黙的に定義されます。
 
-```svelte:App.svelte {12-14}
+```svelte:App.svelte {10-12}
 <script>
   import Layout from "./Layout.svelte";
 </script>
@@ -139,7 +139,7 @@ Props として渡されたスニペットは、コンポーネント内で `{@r
 </Layout>
 ```
 
-```svelte:Layout.svelte {6, 8, 16}
+```svelte:Layout.svelte {6, 8, 15}
 <script lang="ts">
   import type { Snippet } from 'svelte';
   type Props = {
