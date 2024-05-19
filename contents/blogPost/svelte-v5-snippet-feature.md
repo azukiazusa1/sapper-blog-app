@@ -15,19 +15,18 @@ selfAssessment:
       answers:
         - text: "{#snippet}"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "{#section}"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "{#component}"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "{#template}"
           correct: false
-          explanation: ""
+          explanation: null
 published: true
 ---
-
 Svelte v5 ではスニペットと呼ばれる新しい機能が導入されます。スニペットとは、コンポーネント内で使用できる再利用可能なマークアップのことです。`#snippet` ディレクティブを使用してスニペットを定義し、引数を受け取ることができます。スニペットを呼び出す際には `@render` ディレクティブを使用します。
 
 ```svelte
