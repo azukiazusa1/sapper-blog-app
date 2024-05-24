@@ -4,6 +4,13 @@
 
 <ol class="relative border-s border-gray-200 dark:border-gray-700">
   <Timeline
+    eventTitle="Svelte Japan Online Meetup #3"
+    eventDate="2024-05-24"
+    presentationTitle="よりシンプルになる Svelte の世界"
+    presentationLink="https://speakerdeck.com/azukiazusa1/yorisinpuruninaru-svelte-noshi-jie"
+    description="Svelte は記述量が少なくシンプルなコードで書けることが特徴の 1 つでした。しかし、アプリケーションの規模が大きくなるにつれて学習コストや認知負荷が増加していくという課題が浮上してきました。Svelte v5 で導入される Rune は今までの Svelte のコンセプトを覆し、よりシンプルになることを目指しています。このトークでは Svelte v5 の新機能を通じて Svelte の書き方がどのように変わるのかについて話します。"
+  />
+  <Timeline
     eventTitle="アプリケーション開発エンジニア勉強会〜各社の取り組みや課題から学ぶ会〜"
     eventDate="2024-04-01"
     presentationTitle="React フレームワークの 動向と選定基準"
