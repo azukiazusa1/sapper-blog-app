@@ -60,13 +60,13 @@ https://github.com/azukiazusa1/sveltekit-tutorial
 
 ## プロジェクトを作成する
 
-まずは、SvelteKit のプロジェクトを作成します。以下のコマンドを実行して、プロジェクトを作成します。
+まずは SvelteKit のプロジェクトを作成します。以下のコマンドを実行しましょう。
 
 ```bash
 npm create svelte@latest
 ```
 
-対話形式でプロジェクトの設定を行い、プロジェクトを作成します。ここでは以下の設定を選択します。
+対話形式でプロジェクトの設定を行います。ここでは以下の設定を選択します。
 
 ```bash
   Welcome to SvelteKit!
@@ -139,7 +139,7 @@ export default {
 };
 ```
 
-`src/app.css` ファイルを作成し、以下のように Tailwind CSS を読み込みます。
+`src/app.css` ファイルを作成し、Tailwind CSS を読み込みます。
 
 ```css:src/app.css
 @tailwind base;
@@ -248,7 +248,10 @@ export default {
 </div>
 ```
 
-SvelteKit はデフォルトではサーバーサイドレンダリングを行い、クライアントに HTML を返します。その後クライアント側で再レンダリングを行いハイドレーションを実行することで、インタラクティブを有効にしています。ですが、一般的なアプリケーションではすべてのページでサーバーサイドレンダリングを行うことが望ましいとは限りません。例えば、記事の一覧画面では毎回データベースから記事を取得して表示する必要があるため、サーバーサイドでレンダリングを行う必要があるでしょう。一方で、トップページのような静的なコンテンツは事前レンダリングを行うことでパフォーマンスを向上させることができます。
+SvelteKit はデフォルトではサーバーサイドレンダリングを行い、クライアントに HTML を返します。その後クライアント側で再レンダリングを行いハイドレーションを実行することで、インタラクティブを有効にしています。ですが、一般的なアプリケーションではすべてのページでサーバーサイドレンダリングを行うことが望ましいとは限りません。
+
+例えば、記事の一覧画面では毎回データベースから記事を取得して表示する必要があるため、サーバーサイドでレンダリングを行う必要があるでしょう。一方で、トップページのような静的なコンテンツは事前レンダリングを行い、静的な HTML ファイルとして配信することで
+パフォーマンスを向上させることができます。
 
 SvelteKit ではページごとにレンダリング方式を指定できます。ここでは `export const prerender = true;` とすることで、トップページの事前レンダリングを有効にしています。
 
@@ -275,7 +278,7 @@ SvelteKit ではページごとにレンダリング方式を指定できます�
 次の画面を作成する前に、ユーザーが投稿した記事を保存できるようにするためにデータベースをセットアップします。ここでは PostgreSQL を使用します。Docker を使用して PostgreSQL を起動するので、Docker がインストールされていることを確認してください。
 
 ```bash
-ocker --version
+docker --version
 Docker version 24.0.5
 ```
 
@@ -408,7 +411,7 @@ main()
 
 `prisma.article.create` メソッドを使用して記事を追加しています。`finally` ブロックで `prisma.$disconnect()` メソッドを使用して確実にデータベースとの接続が切断されるようにしています。
 
-`package.json` ファイルに以下のスクリプトを追加します。
+`package.json` ファイルにテストデータを追加するスクリプトを実行する `seed` コマンドを追加します。
 
 ```json:package.json
 {
@@ -418,7 +421,7 @@ main()
 }
 ```
 
-以下のコマンドでテスト用のデータを追加します。
+`seed` コマンドを実行してテストデータを追加しましょう。
 
 ```bash
 npm run seed
@@ -460,7 +463,7 @@ declare const global: {
 
 let prisma: PrismaClient;
 
-if (!dev) {
+if (dev) {
   if (!global.prisma) {
     global.prisma = new PrismaClient();
   }
@@ -472,7 +475,7 @@ if (!dev) {
 export default prisma;
 ```
 
-SvelteKit により提供されている `$app/environment` モジュールを使用して、開発環境かどうかを判定しています。開発サーバーとして実行されている場合には、HMR によりモジュールが再読み込みされるため、複数回クライアントがデータベースに接続されることを防ぐために、`global` オブジェクトを使用して PrismaClient のインスタンスを共有しています。
+SvelteKit により提供されている `$app/environment` モジュールを使用して、開発環境かどうかを判定しています。開発サーバーとして実行されている場合には、HMR によりモジュールが再読み込みされ複数回クライアントがデータベースに接続されることを防ぐために、`global` オブジェクトを使用して PrismaClient のインスタンスを共有しています。
 
 なお `src/lib/server` ディレクトリ配下に配置されたファイルは [Server-only Modules](https://kit.svelte.jp/docs/server-only-modules) として扱われます。Server-only Modules としてマークされたファイルは、クライアント側で import しようとした場合エラーが発生します。
 
@@ -507,7 +510,9 @@ export async function getArticles(): Promise<{ articles: readonly Article[] }> {
 
 `/articles` にアクセスしたときに記事一覧をデータベースから取得して表示するようにしましょう。データベースにアクセスする処理は必ずサーバーサイドで実行する必要があります。`+page.svelte` ファイルはクライアント側で実行されるため、ここでは `getArticles` 関数を呼び出すことができません。
 
-SvelteKit においてサーバー側でデータを取得するために、対応するページコンポーネントの隣に `page.server.ts` ファイルを作成します。`page.server.ts` ファイルにおいて `load` 関数をエクスポートすることで、サーバーサイドでデータを取得し、クライアントに渡すことができます。`src/routes/articles/+page.server.ts` ファイルを作成し、以下の内容を記述します。
+SvelteKit においてサーバー側でコンポーネントが描画される前にデータを取得するために、対応するページコンポーネントの隣に `page.server.ts` ファイルを作成します。`page.server.ts` ファイルにおいて `load` 関数をエクスポートすることで、サーバーサイドでデータを取得し、クライアントに渡すことができます。
+
+`src/routes/articles/+page.server.ts` ファイルを作成し、以下の内容を記述します。
 
 ```ts:src/routes/articles/+page.server.ts
 import { getArticles } from '$lib/server/articles';
@@ -519,9 +524,9 @@ export const load: PageServerLoad = async () => {
 };
 ```
 
-`load()` 関数には `PageServerLoad` 型を指定しています。この `PageServerLoad` 型は SvelteKit により自動で生成される型であり、`load()` 関数を実装を変更するたびに、適した型が生成されます。SvelteKit はこの自動的な型生成により、サーバーとクライアント間のデータの受け渡しの型安全性を保証します。
+`load()` 関数には `PageServerLoad` 型を指定しています。この `PageServerLoad` 型は SvelteKit により自動で生成される型であり、`load()` 関数を実装を変更するたびに、返却したオブジェクトに適した型が生成されます。SvelteKit はこの自動的な型生成により、サーバーとクライアント間のデータの受け渡しの型安全性を保証します。
 
-次に、`+page.svelte` ファイルを編集して、`load()` 関数から返されるデータを受け取るようにしましょう。
+次に `+page.svelte` ファイルを編集して、`load()` 関数から返されるデータを受け取るようにしましょう。
 
 ```svelte:src/routes/articles/+page.svelte
 <script lang="ts">
@@ -547,7 +552,9 @@ http://localhost:5173/articles にアクセスし、データベースから取�
 
 ### カードコンポーネントを作成する
 
-記事のタイトルをただ表示するだけでは殺風景ですので、カードコンポーネントを作成してスタイリングを行いましょう。`src/routes/articles/Card.svelte` ファイルを作成しましょう。SvelteKit では `routes/` ディレクトリ配下にあるファイルは `+page.svelte` のみがページコンポーネントとして扱われルーティングの対象となります。そのため、`Card.svelte` のようなファイルを自由に配置できます。このように、ある特定の場所でのみで使用するコンポーネントをまとめた場所に配置することは「コロケーション」と呼ばれ、コードのメンテナンス性を向上させるための手法の 1 つです。
+記事のタイトルをただ表示するだけでは殺風景ですので、カードコンポーネントを作成してスタイリングを行いましょう。`src/routes/articles/Card.svelte` ファイルを作成します。
+
+SvelteKit では `routes/` ディレクトリ配下にあるファイルは `+page.svelte` のみがページコンポーネントとして扱われルーティングの対象となります。そのため、`Card.svelte` のようなファイルを `routes/` ディレクトリ配下に自由に配置できます。このように、ある特定の場所でのみで使用するコンポーネントをまとめた場所に配置することは「コロケーション」と呼ばれ、コードのメンテナンス性を向上させるための手法の 1 つです。
 
 ```svelte:src/routes/articles/Card.svelte
 <script lang="ts">
@@ -573,11 +580,11 @@ http://localhost:5173/articles にアクセスし、データベースから取�
 </div>
 ```
 
-`$props()` 関数を使用して記事のデータを受け取ります。オブジェクトに対して型注釈を付けることで、Props の型を明示的に指定できます。
+`$props()` 関数を使用して記事のデータを受け取ります。オブジェクトに対して型注釈を付けることで、Props の型を明示的に指定できます。記事のタイトルにはリンクを設定して記事の詳細画面へ遷移できるようにしています。
 
-次に、`+page.svelte` ファイルを編集して、カードコンポーネントを使用して記事の一覧を表示するようにしましょう。
+`+page.svelte` ファイルを編集して、カードコンポーネントを使用して記事の一覧を表示するようにしましょう。
 
-```svelte:src/routes/articles/+page.svelte
+```svelte:src/routes/articles/+page.svelte {2, 11}
 <script lang="ts">
 	import Card from './Card.svelte';
 
@@ -599,7 +606,7 @@ http://localhost:5173/articles にアクセスし、データベースから取�
 
 ## 記事の詳細画面
 
-次に記事の詳細表示画面を作成します。`/articles/:id` にアクセスしたときに、指定された ID の記事をデータベースから取得して表示します。
+次に記事の詳細表示画面を作成します。`/articles/:id` にアクセスしたときに、指定された ID の記事をデータベースから取得して表示します。例として `/articles/1` にアクセスしたときには、ID が 1 の記事の詳細が表示されます。
 
 SvelteKit でダイナミックなルートを扱うためには、`src/routes/articles/[id]/+page.svelte` のようにディレクトリ名を `[]` で囲みます。`[]` で囲った部分は動的なルートパラメータであることを示します。
 
@@ -628,6 +635,8 @@ export async function getArticleById(id: number): Promise<Article | null> {
 }
 ```
 
+`where` 句の条件に `id` を指定して、指定された ID の記事が取得できるようにしています。記事が見つからない場合には `null` を返すようにしています。
+
 `src/routes/articles/[id]/+page.server.ts` ファイルを作成し、サーバーサイドでデータを取得するための `load` 関数を追加します。
 
 ```ts:src/routes/articles/[id]/+page.server.ts
@@ -648,7 +657,7 @@ export const load: PageServerLoad = async ({ params }) => {
 };
 ```
 
-パスパラメータは `load` 関数の引数の `params` から取得できます。これにより、パスパラメータの ID を使用して `getArticleById` 関数を呼び出し、指定された ID の記事を取得しています。記事が見つからない場合には、`error` 関数を使用して 404 エラーを返します。`error` は `never` 型を返す関数であるため、`if` の後のブロックでは `article` 変数の型が `Article` であることが保証されています。
+パスパラメータは `load` 関数の引数の `params` から取得できます。これによりパスパラメータの ID を使用して `getArticleById` 関数を呼び出し、指定された ID の記事を取得しています。記事が見つからない場合には、`error` 関数を使用して 404 エラーを返します。`error` は `never` 型を返す関数であるため、`if` の後のブロックでは `article` 変数の型が `Article` であることが保証されています。
 
 それでは、`+page.svelte` ファイルを編集して、取得した記事のデータを表示するようにしましょう。`load()` 関数で返した値は `$props()` で受け取るのでした。
 
@@ -806,7 +815,7 @@ http://localhost:5173/articles/new にアクセスし、フォームが表示さ
 
 ### フォームの送信処理
 
-フォームからポストされたデータを処理するサーバーサイドの処理を実装します。今回のようなシンプルなフォームの場合、`+page.server.ts` ファイルで `default` のアクションを宣言することで POST リクエストを処理できます。
+フォームからポストされたデータを処理するサーバーサイドの処理を実装します。`+page.server.ts` ファイルで `actions` オブジェクトをエクスポートし、`default` プロパティにフォームの送信処理を記述します。
 
 ```ts:+page.server.ts
 import type { Actions } from './$types';
@@ -829,7 +838,7 @@ export async function createArticle(data: Pick<Article, 'title' | 'content'>): P
 }
 ```
 
-次に、`src/routes/articles/new/+page.server.ts` ファイルにフォームデータを受け取り、`createArticle` 関数を呼び出して記事を作成する処理を追加します。action は引数として [RequestEvent](https://kit.svelte.jp/docs/types#public-types-requestevent) 型のオブジェクトを受け取ります。`request.formData()` を呼び出すことで、[formData](https://developer.mozilla.org/ja/docs/Web/API/FormData) オブジェクトとしてポストされたデータを取得できます。
+次に `src/routes/articles/new/+page.server.ts` ファイルにフォームデータを受け取り、`createArticle` 関数を呼び出して記事を作成する処理を追加します。action は引数として [RequestEvent](https://kit.svelte.jp/docs/types#public-types-requestevent) 型のオブジェクトを受け取ります。`request.formData()` を呼び出すことで、[formData](https://developer.mozilla.org/ja/docs/Web/API/FormData) オブジェクトとしてポストされたデータを取得できます。
 
 DB へのデータの保存に成功した場合には `redirect()` 関数を呼び出して記事の一覧ページへリダイレクトします。
 
@@ -841,6 +850,7 @@ import { createArticle } from '$lib/server/articles';
 export const actions: Actions = {
 	default: async ({ request }) => {
 		const formData = await request.formData();
+    // .get() の値は <input> の name 属性の値に対応している
 		const title = formData.get('title') as string;
 		const content = formData.get('content') as string;
 
@@ -851,13 +861,13 @@ export const actions: Actions = {
 };
 ```
 
-これでフォームからデータを送信する処理が実装できました。フォームに適当なタイトルと本文を入力して投稿してみましょう。投稿が成功すると記事一覧ページにリダイレクトされます。
+これでフォームからデータを送信する処理が実装できました。フォームに適当なタイトルと本文を入力して投稿してみましょう。投稿が成功すると記事一覧ページにリダイレクトされ、投稿した記事が一覧に表示されます。
 
 ### フォームデータのバリデーション
 
-フォームデータを受け取る際に `as string` で型アサーションを行っていますが、`formData.get()` は `null` を返す可能性があるため良い実装ではありません。必須の項目が入力されていなかったり、不正なデータが送信された場合にはエラーメッセージを表示するように修正しましょう。
+フォームデータを受け取る際に `as string` で型アサーションを行っています。しかし、`formData.get()` は `null` を返す可能性があるため良い実装ではありません。必須の項目が入力されていなかったり、不正なデータが送信された場合にはエラーメッセージを表示するように修正しましょう。
 
-バリデーションを行うライブラリとして　[Zod](https://zod.dev/) を導入します。Zod は TypeScript で書かれたスキーマ定義を使用して、データのバリデーションを行うことができるライブラリです。
+バリデーションを行うライブラリとして　[Zod](https://zod.dev/) を導入します。Zod は TypeScript で書かれたスキーマ定義を使用して、データのバリデーションを行うライブラリです。
 
 ```bash
 npm install zod
@@ -876,7 +886,7 @@ export const articleSchema = z.object({
 
 このスキーマでは、`title` プロパティは 1 文字以上 20 文字以下、`content` プロパティは 1 文字以上 1000 文字以下であることを定義しています。
 
-続いて `src/routes/articles/new/+page.server.ts` ファイルの action 関数内でバリデーション処理を行うように修正します。
+続いて `src/routes/articles/new/+page.server.ts` ファイルの action 関数内で `articleSchema` を利用してバリデーション処理を行うように修正します。
 
 ```ts:src/routes/articles/new/+page.server.ts {8-22}
 import { fail, redirect } from '@sveltejs/kit';
@@ -912,11 +922,17 @@ export const actions: Actions = {
 };
 ```
 
-`articleSchema.safeParse()` メソッドを使用してフォームデータがスキーマに適合しているかを検証します。バリデーションに失敗した場合には `.safeParse()` の戻り値の `success` プロパティが `false` となり、`error.formErrors` プロパティにエラーメッセージが格納されます。その場合には SvelteKit の `fail()` 関数を使用して 400 エラーを返します。`fail()` 関数の第 2 引数にはエラーメッセージと前回のフォームの値を返します。エラーメッセージはクライアント側で表示するために使用されます。
+`articleSchema.safeParse()` メソッドを使用してフォームデータがスキーマに適合しているかを検証します。バリデーションに失敗した場合には `.safeParse()` の戻り値の `success` プロパティが `false` となり、`error.formErrors` プロパティにエラーメッセージが格納されます。その場合には SvelteKit の `fail()` 関数を使用して 400 エラーを返します。`fail()` 関数の第 2 引数にはエラーメッセージと前回のフォームの値を渡します。エラーメッセージはクライアント側で表示するために使用されます。
 
-バリデーションに成功した場合には、`validatedFields.data` からデータを取り出して記事を作成します。型アサーションを使用するよりも安全にデータを取り出すことができました。
+バリデーションに成功した場合には、`validatedFields.data` からデータを取り出して記事を作成します。型アサーションを使用するよりも安全にデータを取り出すことができるようになりました。
 
 続いてバリデーションエラーが発生した場合に、クライアント側でエラーメッセージを表示するように修正します。action から返された値は `form` Props としてコンポーネントに渡されます。`form` Props は SvelteKit により自動で型が生成されており、`fail()` 関数に渡したオブジェクトの型に合わせて推論されます。
+
+```svelte:src/routes/articles/new/+page.svelte
+<script lang="ts">
+	const { form } = $props();
+</script>
+```
 
 `form` の `fieldErrors` プロパティには各フィールドのエラーメッセージが格納されています。フォームの各フィールドの下にエラーメッセージを表示するようにしましょう。また、前回入力したフォームの値を保持するために、`fields` プロパティを使用してフォームの初期値を設定します。
 
@@ -980,7 +996,7 @@ export const actions: Actions = {
 
 現在のフォームは HTML の標準機能のみを利用して作成されています。このことは、JavaScript が無効になっている環境でもフォームが正常に動作することを意味し、良い習慣と言えるでしょう。
 
-ただし JavaScript の `fetch` API を使用して送信するフォームと比較すると、1 度ポストリクエストを送信してページがリロードされる都合上、ユーザーにとっては使い勝手が悪いと感じるかもしれません。SvelteKit はこのような問題を解決するために、JavaScript が有効な環境な場合のみによりよりユーザー体験を提供する `use:enhance` アクションを提供しています。
+ただし JavaScript の `fetch` API を使用して送信するフォームと比較すると、1 度ポストリクエストを送信してページがフルリロードされる都合上、ユーザーにとっては使い勝手が悪いと感じるかもしれません。SvelteKit はこのような問題を解決するために、JavaScript が有効な環境な場合のみ、よりよいユーザー体験を提供する `use:enhance` アクションを提供しています。
 
 使い方は簡単で、`<form>` 属性に `use:enhance` を追加するだけです。
 
@@ -995,20 +1011,29 @@ export const actions: Actions = {
 </form>
 ```
 
-`enhance` を引数無しで呼び出すと、ブラウザネイティブの動作をページのフルリロードを除きエミュレートします。引数にはコールバック関数を受け取り、フォームがサブミットされる直前の動作をカスタマイズすることが可能です。
+`enhance` を引数無しで呼び出すと、ブラウザネイティブの動作をページのフルリロードを除きエミュレートします。引数にコールバック関数を受け取り、フォームがサブミットされる直前の動作をカスタマイズすることが可能です。
 
 ### フォームの文字列をカウントする
 
-ユーザーの利便性を向上させるために、本文の文字数をカウントする機能を追加しましょう。`content` という状態を新たに定義し、`textarea` になにか入力するたびに `content` を更新します。
+ユーザーの利便性を向上させるために、本文の文字数をカウントする機能を追加しましょう。本文のフォームに入力された値を表す `content` という状態を新たに定義し、`textarea` になにか入力するたびに `content` を更新します。
 
-Svelte v5 以降ではリアクティブな状態を定義するために `$state()` 関数を使うことが推奨されます。`$state()` の引数には初期値を渡せるので、`content` の初期値は `form?.fields.content` としておきます。さらに、ある状態から派生した状態は `$derived()` 関数を使って定義できます。`$derived()` 関数を使って現在入力されている文字数を定義します。
+Svelte v5 以降ではリアクティブな状態を定義するために `$state()` 関数を使うことが推奨されます。`$state()` の引数には初期値を渡せるので、`content` の初期値は `form?.fields.content` としておきます
 
-```svelte:src/routes/articles/new/+page.svelte {5}
+```svelte:src/routes/articles/new/+page.svelte
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	const { form } = $props();
 
 	let content = $state(form?.fields.content ?? '');
+  const maxCount = 1000;
+```
+
+さらに、ある状態から派生した状態は `$derived()` 関数を使って定義できます。`$derived()` 関数を使って本文のフォームに入力された値から、文字数をカウントする `count` という状態を定義します。
+
+```svelte:src/routes/articles/new/+page.svelte {6-8}
+<script lang="ts">
+  let content = $state(form?.fields.content ?? '');
+
   const count = $derived(content.length);
   const maxCount = 1000;
 </script>
@@ -1037,7 +1062,7 @@ const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
   const { form } = $props();
 
   let content = $state(form?.fields.content ?? '');
-  const count = $derived.by(content, () => {
+  const count = $derived.by(() => {
     const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
     return [...segmenter.segment(content)].length;
   });
@@ -1096,7 +1121,7 @@ const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
 
 ## 記事の削除
 
-記事の一覧画面で削除ボタンをクリックしたときに、モーダルで確認メッセージを表示し、OK ボタンをクリックすると記事を削除する機能を実装します。まずは削除ボタンとモーダルを追加しましょう。`src/routes/articles/deleteModal.svelte` ファイルを作成し、モーダルのコンポーネントを作成します。
+記事の一覧画面で削除ボタンをクリックしたときに、モーダルで確認メッセージを表示し、OK ボタンをクリックすると記事を削除する機能を実装します。まずは `src/routes/articles/deleteModal.svelte` ファイルを作成し、モーダルのコンポーネントを作成します。
 
 ```svelte:src/routes/articles/deleteModal.svelte
 <script lang="ts">
@@ -1105,7 +1130,7 @@ const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
     id: number;
   };
 	const { id }: Props = $props();
-  // モーダル要素の ref を取得する
+  // <dialog> 要素の ref を取得する
 	let modalRef = $state<HTMLDialogElement | null>(null);
 
 	const openModal = () => {
@@ -1141,11 +1166,11 @@ const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
 </dialog>
 ```
 
-モーダルは HTML 標準の [dialog](https://developer.mozilla.org/ja/docs/Web/HTML/Element/dialog) 要素を使用して作成しています。`<dialog>` 要素は `showModal()` メソッドを呼び出すことで表示されます。`bind:this` で `<dialog>` 要素の参照をあらかじめ取得しておき、削除ボタンがクリックされたときに `showModal()` メソッドを呼び出すようにしています。
+モーダルは HTML 標準の [dialog](https://developer.mozilla.org/ja/docs/Web/HTML/Element/dialog) 要素を使用して作成しています。`<dialog>` 要素は `HTMLDialogElement` インターフェイスの `showModal()` メソッドを呼び出すことで表示されます。`bind:this` で `<dialog>` 要素の参照をあらかじめ取得しておき、削除ボタンがクリックされたときに `showModal()` メソッドを呼び出すようにしています。
 
-CSS の `::backdrop` 擬似クラスを使うことでモーダルが表示されたときの背景のスタイルを変更しています。TailwindCSS において擬似クラスを適用する場合には `backdrop:bg-black/40` のように `backdrop:` をプレフィックスとして指定します。
+CSS の `::backdrop` 擬似クラスを使うことでモーダルが表示されたときの背景のスタイルを変更できます。TailwindCSS において擬似クラスを適用する場合には `backdrop:bg-black/40` のように `backdrop:` をプレフィックスとして指定します。
 
-ダイアログの中身はフォームとなっており、キャンセルボタンの `formaction` には `formmethod="dialog"` を指定しています。これにより、キャンセルボタンをクリックするとダイアログが閉じるようになります。OK ボタンをクリックすると、`formaction` に指定した URL に POST リクエストが送信されるようになっています。記事の作成画面のように、後ほど `+page.server.ts` ファイルでリクエストを処理するようにします。
+ダイアログの中身はフォームとなっており、キャンセルボタンの `formmethod` には `formmethod="dialog"` を指定しています。これにより、キャンセルボタンをクリックするとダイアログが閉じるようになります。OK ボタンをクリックすると、`formaction` に指定した URL に POST リクエストが送信されるようになっています。記事の作成画面のように、後ほど `+page.server.ts` ファイルでリクエストを処理するようにします。
 
 記事一覧画面に削除ボタンを追加し、モーダルを表示するようにします。カードコンポーネントを修正しましょう。
 
