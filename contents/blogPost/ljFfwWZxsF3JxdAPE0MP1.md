@@ -158,7 +158,7 @@ export default {
 {@render children()}
 ```
 
-`$props()` はコンポーネントの Props を取得する関数です。`children` は予約された Props で、子コンポーネントを描画するために使用します。この `children` Props には各ページのコンポーネントが渡されます。`children` は `Snippet` という型であり、これは `{@render}` を使って描画することができます。
+`$props()` はコンポーネントの Props を取得する関数です。`children` は予約された Props で、子コンポーネントを描画するために使用します。この `children` Props には各ページのコンポーネントが渡されます。`children` は `Snippet` という型であり、これは `{@render}` を使って描画できます。
 
 ともあれ `app.css` を読み込んだことで、すべてのページで Tailwind CSS が適用されるようになりました。試しに `src/routes/+page.svelte` を以下のように編集してみましょう。
 
@@ -203,7 +203,7 @@ export default {
 </div>
 ```
 
-ナビゲーションバーでは記事の一覧画面と記事の投稿画面へのリンクを表示しています。なお SvelteKit では SPA 遷移を行うために特別なコンポーネントは使用せずに、単に `a` タグを使用することができます。
+ナビゲーションバーでは記事の一覧画面と記事の投稿画面へのリンクを表示しています。なお SvelteKit では SPA 遷移を行うために特別なコンポーネントは使用せずに、単に `a` タグを使用できます。
 
 続いてトップページを作成しましょう。`src/routes/+page.svelte` を編集します。
 
@@ -250,11 +250,11 @@ export default {
 
 SvelteKit はデフォルトではサーバーサイドレンダリングを行い、クライアントに HTML を返します。その後クライアント側で再レンダリングを行いハイドレーションを実行することで、インタラクティブを有効にしています。ですが、一般的なアプリケーションではすべてのページでサーバーサイドレンダリングを行うことが望ましいとは限りません。例えば、記事の一覧画面では毎回データベースから記事を取得して表示する必要があるため、サーバーサイドでレンダリングを行う必要があるでしょう。一方で、トップページのような静的なコンテンツは事前レンダリングを行うことでパフォーマンスを向上させることができます。
 
-SvelteKit ではページごとにレンダリング方式を指定することができます。ここでは`export const prerender = true;` とすることで、トップページの事前レンダリングを有効にしています。
+SvelteKit ではページごとにレンダリング方式を指定できます。ここでは `export const prerender = true;` とすることで、トップページの事前レンダリングを有効にしています。
 
-このアプリケーションではトップページのみを事前レンダリングとして指定していますが、大半のページで事前レンダリングを行う場合には、`+layout.svelte` に `export const prerender = true;` を指定することで、すべてのページで事前レンダリングを有効にすることができます。その場合、サーバーサイドレンダリングを行いたいページでは `export const prerender = false;` で事前レンダリングを無効にすることになります。
+このアプリケーションではトップページのみを事前レンダリングとして指定していますが、大半のページで事前レンダリングを行う場合には、`+layout.svelte` に `export const prerender = true;` を指定することで、すべてのページで事前レンダリングを有効にできます。その場合、サーバーサイドレンダリングを行いたいページでは `export const prerender = false;` で事前レンダリングを無効にすることになります。
 
-ページのメタタグは `<svelte:head>` タグ内に記述します。`<svelte:head>` 要素を使うと `document.head` 内に要素を挿入することができます。
+ページのメタタグは `<svelte:head>` タグ内に記述します。`<svelte:head>` 要素を使うと `document.head` 内に要素を挿入できます。
 
 ```svelte:src/routes/+page.svelte
 <svelte:head>
@@ -318,7 +318,7 @@ docker compose up -d
 
 ### Prisma のセットアップ
 
-続いてアプリケーションから PostgreSQL に接続するためのライブラリである [Prisma](https://www.prisma.io/) をインストールします。Prisma は TypeScript で型安全なクエリを記述することができる ORM ライブラリです。以下のコマンドで Prisma をインストールします。
+続いてアプリケーションから PostgreSQL に接続するためのライブラリである [Prisma](https://www.prisma.io/) をインストールします。Prisma は TypeScript で型安全なクエリを記述できる ORM ライブラリです。以下のコマンドで Prisma をインストールします。
 
 ```bash
 npm install @prisma/client
@@ -547,7 +547,7 @@ http://localhost:5173/articles にアクセスし、データベースから取�
 
 ### カードコンポーネントを作成する
 
-記事のタイトルをただ表示するだけでは殺風景ですので、カードコンポーネントを作成してスタイリングを行いましょう。`src/routes/articles/Card.svelte` ファイルを作成しましょう。SvelteKit では `routes/` ディレクトリ配下にあるファイルは `+page.svelte` のみがページコンポーネントとして扱われルーティングの対象となります。そのため、`Card.svelte` のようなファイルを自由に配置することができます。このように、ある特定の場所でのみで使用するコンポーネントをまとめた場所に配置することは「コロケーション」と呼ばれ、コードのメンテナンス性を向上させるための手法の一つです。
+記事のタイトルをただ表示するだけでは殺風景ですので、カードコンポーネントを作成してスタイリングを行いましょう。`src/routes/articles/Card.svelte` ファイルを作成しましょう。SvelteKit では `routes/` ディレクトリ配下にあるファイルは `+page.svelte` のみがページコンポーネントとして扱われルーティングの対象となります。そのため、`Card.svelte` のようなファイルを自由に配置できます。このように、ある特定の場所でのみで使用するコンポーネントをまとめた場所に配置することは「コロケーション」と呼ばれ、コードのメンテナンス性を向上させるための手法の 1 つです。
 
 ```svelte:src/routes/articles/Card.svelte
 <script lang="ts">
@@ -573,7 +573,7 @@ http://localhost:5173/articles にアクセスし、データベースから取�
 </div>
 ```
 
-`$props()` 関数を使用して記事のデータを受け取ります。オブジェクトに対して型注釈を付けることで、Props の型を明示的に指定することができます。
+`$props()` 関数を使用して記事のデータを受け取ります。オブジェクトに対して型注釈を付けることで、Props の型を明示的に指定できます。
 
 次に、`+page.svelte` ファイルを編集して、カードコンポーネントを使用して記事の一覧を表示するようにしましょう。
 
@@ -1029,7 +1029,7 @@ const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
 [...segmenter.segment("𩸽")].length; // 1
 ```
 
-`$derived()` 関数内の実装を Intl.Segmenter を使って書き換えてみたいところですが、`$derived()` は単純な式のみを引数に取るため、複数行にまたがるような処理を書くことができません。このような場合には、`$derived.by()` 関数を使って派生状態を定義することができます。
+`$derived()` 関数内の実装を Intl.Segmenter を使って書き換えてみたいところですが、`$derived()` は単純な式のみを引数に取るため、複数行にまたがるような処理を書くことができません。このような場合には、`$derived.by()` 関数を使って派生状態を定義できます。
 
 ```svelte:src/routes/articles/new/+page.svelte {6-0}
 <script lang="ts">
@@ -1045,7 +1045,7 @@ const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
 </script>
 ```
 
-状態の定義が完了したら、`textarea` に入力されるたびに `content` が更新されるようにしましょう。Svelte では `bind:value` ディレクティブを使って、`textarea` の値を双方向バインディングすることができます。
+状態の定義が完了したら、`textarea` に入力されるたびに `content` が更新されるようにしましょう。Svelte では `bind:value` ディレクティブを使って、`textarea` の値を双方向バインディングできます。
 
 ```svelte:src/routes/articles/new/+page.svelte {7}
 <textarea
