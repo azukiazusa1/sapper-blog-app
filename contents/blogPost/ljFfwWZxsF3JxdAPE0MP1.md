@@ -1017,7 +1017,7 @@ export const actions: Actions = {
 
 ユーザーの利便性を向上させるために、本文の文字数をカウントする機能を追加しましょう。本文のフォームに入力された値を表す `content` という状態を新たに定義し、`textarea` になにか入力するたびに `content` を更新します。
 
-Svelte v5 以降ではリアクティブな状態を定義するために `$state()` 関数を使うことが推奨されます。`$state()` の引数には初期値を渡せるので、`content` の初期値は `form?.fields.content` としておきます
+Svelte v5 以降ではリアクティブな状態を定義するために `$state()` 関数を使うことが推奨されます。`$state()` の引数には初期値を渡せるので、`content` の初期値は `form?.fields.content` としておきます。
 
 ```svelte:src/routes/articles/new/+page.svelte
 <script lang="ts">
