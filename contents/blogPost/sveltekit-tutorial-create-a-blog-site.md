@@ -15,34 +15,32 @@ selfAssessment:
       answers:
         - text: "index.svelte"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "+page.svelte"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "+layout.svelte"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "page.ts"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "+layout.svelte ファイルで子要素を表す children を受け取る方法はどれか？"
       answers:
         - text: "const { children } = $props();"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "const { children } = $slots();"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "import { children } from '$app/layout';"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "const { children } = $layout();"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [SvelteKit](https://kit.svelte.jp/) は、Svelte と Vite で構築されたフレームワークです。SvelteKit と Svelte の関係は、Next.js と React、Nuxt.js と Vue.js の関係に似ています。SvelteKit は Web アプリケーションを開発するために必要な以下の機能を提供します。
 
 - ルーティング
