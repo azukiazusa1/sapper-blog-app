@@ -18,13 +18,13 @@ selfAssessment:
           explanation: "オーバーレイスクロールバーはスクロールバー自体が幅を持たず、スクロール領域に重なって表示されます。"
         - text: "クラシックスクロールバー"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "トラディショナルスクロールバー"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "モダンスクロールバー"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "scrollbar-gutter プロパティにおいて、ボックスの両側に対称的なスペースを確保する方法はどれか？"
       answers:
         - text: "scrollbar-gutter: both-edges"
@@ -32,17 +32,15 @@ selfAssessment:
           explanation: "ボックスの右側にのみスクロールバー用のスペースが確保されます。"
         - text: "scrollbar-gutter: stable both-edges"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "scrollbar-gutter: both"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "scrollbar-gutter: stable both"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 子要素が親要素のボックスからはみ出した時、`overflow` プロパティの値が `auto` または `scroll` の場合にスクロールバーが表示されます。スクロールバーがどのように表示されるかは OS やブラウザの設定により異なりますが、大きく分けて以下のような挙動があります。
 
 - オーバーレイスクロールバー：スクロールバー自体が幅を持たず、スクロール領域に重なって表示される
