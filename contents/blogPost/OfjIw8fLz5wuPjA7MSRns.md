@@ -40,7 +40,7 @@ selfAssessment:
           correct: false
           explanation: ""
 
-published: false
+published: true
 ---
 
 子要素が親要素のボックスからはみ出した時、`overflow` プロパティの値が `auto` または `scroll` の場合にスクロールバーが表示されます。スクロールバーがどのように表示されるかは OS やブラウザの設定により異なりますが、大きく分けて以下のような挙動があります。
