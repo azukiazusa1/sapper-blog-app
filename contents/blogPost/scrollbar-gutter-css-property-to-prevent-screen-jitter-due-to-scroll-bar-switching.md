@@ -94,7 +94,7 @@ published: true
 }
 ```
 
-<video src="https://images.ctfassets.net/in6v9lxmm5c8/4i0TYF7GxfBPlPzg0MFJd4/958bd8cb45eb96dc8a7b32cc316cfcc8/__________2024-06-01_17.07.22.png" controls></video>
+![](https://images.ctfassets.net/in6v9lxmm5c8/4i0TYF7GxfBPlPzg0MFJd4/958bd8cb45eb96dc8a7b32cc316cfcc8/__________2024-06-01_17.07.22.png)
 
 ### オーバーレイスクロールバーの場合
 
