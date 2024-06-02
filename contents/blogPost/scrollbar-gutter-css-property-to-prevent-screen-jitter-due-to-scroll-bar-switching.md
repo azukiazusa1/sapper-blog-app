@@ -27,7 +27,7 @@ selfAssessment:
           explanation: null
     - question: "scrollbar-gutter プロパティにおいて、ボックスの両側に対称的なスペースを確保する方法はどれか？"
       answers:
-        - text: "scrollbar-gutter: both-edges"
+        - text: "scrollbar-gutter: stable"
           correct: false
           explanation: "ボックスの右側にのみスクロールバー用のスペースが確保されます。"
         - text: "scrollbar-gutter: stable both-edges"
@@ -36,7 +36,7 @@ selfAssessment:
         - text: "scrollbar-gutter: both"
           correct: false
           explanation: null
-        - text: "scrollbar-gutter: stable both"
+        - text: "scrollbar-gutter: stable left-right"
           correct: false
           explanation: null
 published: true
