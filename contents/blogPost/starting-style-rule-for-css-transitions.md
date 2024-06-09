@@ -146,8 +146,6 @@ button.addEventListener("click", () => {
 }
 ```
 
-!> `@starting-style` アットルールのブロック内でも外のスコープと同じ [詳細度](https://developer.mozilla.org/ja/docs/Web/CSS/Specificity) が適用されます。そのため `@starting-style` ルール内の記述が確実に適用されるようするために、元のルールより後に記述する必要があります。元のルールが後に定義されている場合上書きされるため、`@starting-style` ルールが適用されません。`@starting-style` を入れ子にしている場合にはこのような問題は発生しません。
-
 <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/azukiazusa1/embed/PovKROV?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/azukiazusa1/pen/PovKROV">
   Untitled</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
@@ -168,6 +166,8 @@ button.addEventListener("click", () => {
   }
 }
 ```
+
+!> `@starting-style` アットルールのブロック内でも外のスコープと同じ [詳細度](https://developer.mozilla.org/ja/docs/Web/CSS/Specificity) が適用されます。そのため `@starting-style` ルール内の記述が確実に適用されるようするために、元のルールより後に記述する必要があります。元のルールが後に定義されている場合上書きされるため、`@starting-style` ルールが適用されません。`@starting-style` を入れ子にしている場合にはこのような問題は発生しません。
 
 ## ポップオーバーの開閉時にアニメーションを適用する
 
