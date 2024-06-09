@@ -15,16 +15,16 @@ selfAssessment:
       answers:
         - text: "opacity: 0 → opacity: 1"
           correct: true
-          explanation: null
+          explanation: ""
         - text: "display: none → display: block"
           correct: false
-          explanation: null
+          explanation: ""
         - text: "box-shadow: none → box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)"
           correct: false
-          explanation: null
+          explanation: ""
         - text: "visibility: hidden → visibility: visible"
           correct: false
-          explanation: null
+          explanation: ""
 
 published: true
 ---
@@ -135,7 +135,7 @@ button.addEventListener("click", () => {
 
 ## DOM に要素を追加する際のアニメーションに `@starting-style` ルールを使用する
 
-`@starting-style` ルールを使用することで 要素が動的に DOM に追加される際のアニメーションの問題を解決できます。JavaScript 上で `opacity` プロパティを変更する代わりに、`@starting-style` ルールを使用して初期スタイルを定義します。
+`@starting-style` ルールを使用することで要素が動的に DOM に追加される際のアニメーションの問題を解決できます。JavaScript 上で `opacity` プロパティを変更する代わりに、`@starting-style` ルールを使用して初期スタイルを定義します。
 
 ```css
 .box {
@@ -173,7 +173,7 @@ button.addEventListener("click", () => {
 
 ## ポップオーバーの開閉時にアニメーションを適用する
 
-[ポップオーバー](https://developer.mozilla.org/ja/docs/Web/API/Popover_API) のように [最上位レイヤー](https://developer.mozilla.org/ja/docs/Glossary/Top_layer) に表示される要素の開閉時にアニメーションを適用したい場合には、`@starting-style` ルールが有効な手段となります。ポップオーバーは開いている状態と閉じている状態を `display: none` により切り替えるため、CSS トランジションではアニメーションを適用することができません。
+[ポップオーバー](https://developer.mozilla.org/ja/docs/Web/API/Popover_API) のように [最上位レイヤー](https://developer.mozilla.org/ja/docs/Glossary/Top_layer) に表示される要素の開閉時にアニメーションを適用したい場合には、`@starting-style` ルールが有効な手段となります。ポップオーバーは開いている状態と閉じている状態を `display: none` により切り替えるため、CSS トランジションではアニメーションを適用できません。
 
 ```css
 [popover] {
