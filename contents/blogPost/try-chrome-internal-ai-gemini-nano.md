@@ -25,7 +25,7 @@ selfAssessment:
         - text: "window.ai.createTextSession() が例外をスローするか確認する"
           correct: false
           explanation: null
-published: false
+published: true
 ---
 Chrome 126 から Gemini Nano という AI がデスクトップクライアントに組み込まれる予定です。Gemini Nano は Google の AI モデルの中で最も小さいモデルです。デスクトップクライアントに直接組み込まれることで、ユーザーの手元の環境で AI を利用できることが特徴です。
 
