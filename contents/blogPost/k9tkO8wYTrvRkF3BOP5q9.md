@@ -5,7 +5,7 @@ slug: "try-chrome-internal-ai-gemini-nano"
 about: "Chrome 126 から Gemini Nano という AI がデスクトップクライアントに組み込まれる予定です。Gemini Nano は Google の AI モデルの中で最も小さいモデルです。デスクトップクライアントに直接組み込まれることで、ユーザーの手元の環境で AI を利用できることが特徴です。開発者は JavaScript から Chrome に組み込まれた Gemini Nano にアクセスして生成 AI の機能を実装することができます。"
 createdAt: "2024-06-11T19:19+09:00"
 updatedAt: "2024-06-11T19:19+09:00"
-tags: [JavaScript, Chrome, AI]
+tags: ["JavaScript", "Chrome", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1l2sqXdm4Hrfmzo7c57px2/1f3ea88590d92e50838343c17fe50545/electric-guitar_monochrome_8878.png"
   title: "白黒のエレキギターのイラスト"
@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "window.gemini.canCreateTextSession() の戻り値を確認する"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "window.ai.canCreateTextSession() の戻り値を確認する"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "window.gemini.createTextSession() が例外をスローするか確認する"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "window.ai.createTextSession() が例外をスローするか確認する"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: false
 ---
-
 Chrome 126 から Gemini Nano という AI がデスクトップクライアントに組み込まれる予定です。Gemini Nano は Google の AI モデルの中で最も小さいモデルです。デスクトップクライアントに直接組み込まれることで、ユーザーの手元の環境で AI を利用できることが特徴です。
 
 開発者は JavaScript から Chrome に組み込まれた Gemini Nano にアクセスして生成 AI の機能を実装することができます。
