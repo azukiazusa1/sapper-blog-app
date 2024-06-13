@@ -1,6 +1,6 @@
 import { generateBlogOgpImage } from "$lib/server/generateOgpImage";
 import type { RequestHandler } from "@sveltejs/kit";
-export const prerender = false;
+export const prerender = true;
 
 export const GET: RequestHandler = async ({ params }) => {
   const { title, tag = "" } = params;

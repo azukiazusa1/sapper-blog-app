@@ -10,6 +10,7 @@
   $: url = `${variables.baseURL}/blog/shorts/${short.sys.id}`;
 </script>
 
+<!-- svelte-ignore a11y-missing-content -->
 <svelte:head>
   <title>{short.title}</title>
   <meta name="description" content={short.content1} />
@@ -31,3 +32,7 @@
   ids={allShortsIds}
   {contents}
 />
+
+<!-- ogp を静的に生成するために空のリンクを設置している -->
+<!-- svelte-ignore a11y-missing-content -->
+<a href={`/blog/shorts/ogp/${encodeURIComponent(short.content1)}.png`}></a>

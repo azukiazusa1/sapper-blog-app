@@ -99,3 +99,9 @@
 <h2 class="mb-4 p-4 text-2xl font-extrabold leading-none">関連記事</h2>
 
 <PostList posts={post.relatedArticleCollection?.items} small />
+
+<!-- ogp を静的に生成するために空のリンクを設置している -->
+<!-- svelte-ignore a11y-missing-content -->
+<a
+  href={`/blog/ogp/${encodeURIComponent(post.title)}/${tagNames.join("/")}.png`}
+></a>
