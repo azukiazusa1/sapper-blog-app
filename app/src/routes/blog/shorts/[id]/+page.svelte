@@ -20,9 +20,7 @@
   title={short.title}
   description={short.content1}
   {url}
-  image={`${variables.baseURL}/blog/shorts/ogp/${encodeURIComponent(
-    short.content1,
-  )}.png`}
+  image={`${variables.baseURL}/blog/shorts/ogp/${short.sys.id}}.png`}
 />
 
 <ShortBlog
@@ -31,3 +29,7 @@
   ids={allShortsIds}
   {contents}
 />
+
+<!-- ogp を静的に生成するために空のリンクを設置している -->
+<!-- svelte-ignore a11y-missing-content -->
+<a href={`/blog/shorts/ogp/${encodeURIComponent(short.sys.id)}.png`}></a>
