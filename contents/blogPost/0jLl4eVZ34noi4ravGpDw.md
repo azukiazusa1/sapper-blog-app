@@ -53,7 +53,7 @@ svg スプライトは 1 つの SVG ファイルに複数のアイコンを記�
 
 ## mask-image プロパティを使って SVG アイコンを表示する
 
-2023 年にすべてのモダンブラウザでサポートされるようになった[^1] `mask-image` プロパティは新しく　SVG アイコンを表示するための方法として注目されています。`mask-image` プロパティ CSS でマスキング（マスキングは要素の一部を消去せずに非表示にする仕組み）を行うためのプロパティの 1 つです。`mask-image` プロパティはマスクレイヤーとして使用される画像を指定します。
+2023 年にすべてのモダンブラウザでサポートされるようになった[^1]`mask-image` プロパティは新しく　SVG アイコンを表示するための方法として注目されています。`mask-image` プロパティ CSS でマスキング（マスキングは要素の一部を消去せずに非表示にする仕組み）を行うためのプロパティの 1 つです。`mask-image` プロパティはマスクレイヤーとして使用される画像を指定します。
 
 ```html
 <button aria-label="star">
@@ -144,6 +144,6 @@ CSS マスキングに関するプロパティは他にも以下のようなも�
 ## 参考
 
 - [mask-image - CSS: カスケーディングスタイルシート | MDN](https://developer.mozilla.org/ja/docs/Web/CSS/mask-image#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%83%BC%E3%81%AE%E4%BA%92%E6%8F%9B%E6%80%A7)
-- [CSS Masking](https://ishadeed.com/article/css-masking/) [^1]: [ベースライン
+- [CSS Masking](https://ishadeed.com/article/css-masking/)[^1]: [ベースライン
   2023 年  |  Blog  |  web.dev](https://web.dev/blog/baseline2023?hl=ja)
 - [「mask-image」でSVGアイコンの色をCSSで変えよう！　～mask-imageの便利な使い方紹介を添えて～](https://zenn.dev/kagan/articles/cf3332462262f1)
