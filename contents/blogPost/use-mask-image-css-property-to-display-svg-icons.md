@@ -142,7 +142,10 @@ CSS マスキングに関するプロパティは他にも以下のようなも�
 
 ## 参考
 
+## 参考
+
 - [mask-image - CSS: カスケーディングスタイルシート | MDN](https://developer.mozilla.org/ja/docs/Web/CSS/mask-image#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%83%BC%E3%81%AE%E4%BA%92%E6%8F%9B%E6%80%A7)
-- [CSS Masking](https://ishadeed.com/article/css-masking/)[^1]: [ベースライン
-  2023 年  |  Blog  |  web.dev](https://web.dev/blog/baseline2023?hl=ja)
+- [CSS Masking](https://ishadeed.com/article/css-masking/)
 - [「mask-image」でSVGアイコンの色をCSSで変えよう！　～mask-imageの便利な使い方紹介を添えて～](https://zenn.dev/kagan/articles/cf3332462262f1)
+
+[^1]: [ベースライン2023 年  |  Blog  |  web.dev](https://web.dev/blog/baseline2023?hl=ja)
