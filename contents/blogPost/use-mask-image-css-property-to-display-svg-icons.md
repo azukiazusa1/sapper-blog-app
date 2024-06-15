@@ -5,7 +5,7 @@ slug: "use-mask-image-css-property-to-display-svg-icons"
 about: "mask-image プロパティは CSS でマスキングを行うためのプロパティであり、SVG アイコンを表示する際に有用です。mask-image プロパティを使用することで、外部の SVG ファイルを読み込みつつ、アイコンの色を CSS で指定することが可能になります。"
 createdAt: "2024-06-15T15:35+09:00"
 updatedAt: "2024-06-15T15:35+09:00"
-tags: [CSS]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6NdEsvayuQPax4e0d0BZmX/8774448df77f80818d57427f517f7a47/fruit_cat-melon_illust_4532-768x603.png"
   title: "マスクメロンのイラスト"
@@ -26,19 +26,18 @@ selfAssessment:
       answers:
         - text: "no-repeat"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "repeat"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "repeat-x"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "repeat-y"
           correct: false
-          explanation: ""
+          explanation: null
 published: true
 ---
-
 HTML でロゴやアイコンを表示する時、SVG はよく使われるフォーマットです。SVG はベクター形式で記述されるため、拡大・縮小しても画質が劣化しないという特徴があります。SVG を HTML で表示する場合、以下のような方法が使われていました。
 
 - `<img>` 要素の `src` 属性に SVG ファイルのパスを指定する
