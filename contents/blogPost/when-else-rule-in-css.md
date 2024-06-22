@@ -135,7 +135,7 @@ CSS `@when/@else` アットルールは `@media` や `@support` のような[条
 上記のように複数の条件を同時に満たす場合のスタイルを書きたい場合には、ブロックをネストする必要がありました。さらに条件が増えるとネストがどんどん深くなり、コードが複雑になる恐れがあります。`@when/@else` ルールを使うと以下のよう `and` で条件を結合して記述できます。
 
 ```css
-@when media (min-width: 1024px) and (display: grid) {
+@when media (min-width: 1024px) and supports(display: grid) {
   .container {
     display: grid;
   }
