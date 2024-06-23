@@ -9,7 +9,7 @@
     "postbuild": "pagefind --site .vercel/output/static && npx svelte-sitemap --domain $PUBLIC_BASE_URL --out-dir ./.vercel/output/static",
     "build": "vite build",
     "preview": "vite preview --port 3000",
-    "serve": "npx serve ./build",
+    "serve": "npx serve ./.vercel/output/static",
     "lint": "npm run format:check && npm run lint:eslint",
     "lint:eslint": "eslint src/**/*.{ts,svelte}",
     "lint:eslint:fix": "eslint --fix src/**/*.{ts,svelte}",
