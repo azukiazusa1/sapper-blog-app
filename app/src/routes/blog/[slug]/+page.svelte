@@ -18,9 +18,6 @@
   $: post = data.post;
   $: contents = data.contents;
   $: contributors = data.contributors;
-  $: tagNames = post.tagsCollection.items.map((t) =>
-    encodeURIComponent(t.name),
-  );
 
   $: url = `${variables.baseURL}/blog/${post.slug}`;
 </script>
