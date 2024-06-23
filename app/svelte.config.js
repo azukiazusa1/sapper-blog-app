@@ -11,7 +11,7 @@ const config = {
     adapter: process.env.VERCEL
       ? adapter()
       : adapter({
-          pages: "./vercel/output/static",
+          pages: "./.vercel/output/static",
         }),
     env: {
       dir: "../",
