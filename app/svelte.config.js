@@ -8,9 +8,11 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
-    adapter: adapter({
-      pages: ".vercel/output/static",
-    }),
+    adapter: process.env.VERCEL
+      ? adapter()
+      : adapter({
+          pages: "./vercel/output/static",
+        }),
     env: {
       dir: "../",
     },
