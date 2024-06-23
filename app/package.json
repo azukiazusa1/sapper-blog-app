@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "mock": "NODE_MOCK=true vite dev",
-    "postbuild": "pagefind --site build && npx svelte-sitemap --domain $PUBLIC_BASE_URL --out-dir ./build",
+    "postbuild": "pagefind --site .vercel/output/static && npx svelte-sitemap --domain $PUBLIC_BASE_URL --out-dir ./.vercel/output/static",
     "build": "vite build",
     "preview": "vite preview --port 3000",
     "serve": "npx serve ./build",
