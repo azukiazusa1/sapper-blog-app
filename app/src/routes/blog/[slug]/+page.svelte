@@ -18,9 +18,6 @@
   $: post = data.post;
   $: contents = data.contents;
   $: contributors = data.contributors;
-  $: tagNames = post.tagsCollection.items.map((t) =>
-    encodeURIComponent(t.name),
-  );
 
   $: url = `${variables.baseURL}/blog/${post.slug}`;
 </script>
@@ -35,9 +32,7 @@
   title={post.title}
   description={post.about}
   {url}
-  image={`${variables.baseURL}/blog/ogp/${encodeURIComponent(
-    post.title,
-  )}/${tagNames.join("/")}.png`}
+  image={`${variables.baseURL}/blog/ogp/${post.slug}.png`}
 />
 
 <div class="mx-auto my-5 max-w-5xl">
@@ -102,6 +97,4 @@
 
 <!-- ogp を静的に生成するために空のリンクを設置している -->
 <!-- svelte-ignore a11y-missing-content -->
-<a
-  href={`/blog/ogp/${encodeURIComponent(post.title)}/${tagNames.join("/")}.png`}
-></a>
+<a href={`/blog/ogp/${post.slug}.png`}></a>
