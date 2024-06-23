@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite dev",
     "mock": "NODE_MOCK=true vite dev",
-    "postbuild": "pagefind --site .vercel/output/static && npx svelte-sitemap --domain $PUBLIC_BASE_URL --out-dir ./.vercel/output/static",
+    "postbuild": "pagefind --site build && npx svelte-sitemap --domain $PUBLIC_BASE_URL --out-dir ./build",
     "build": "vite build",
     "preview": "vite preview --port 3000",
-    "serve": "npx serve ./.vercel/output/static",
+    "serve": "npx serve ./build",
     "lint": "npm run format:check && npm run lint:eslint",
     "lint:eslint": "eslint src/**/*.{ts,svelte}",
     "lint:eslint:fix": "eslint --fix src/**/*.{ts,svelte}",
