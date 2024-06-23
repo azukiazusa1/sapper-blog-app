@@ -100,4 +100,4 @@
 
 <!-- ogp を静的に生成するために空のリンクを設置している -->
 <!-- svelte-ignore a11y-missing-content -->
-<a href={`/blog/ogp${post.slug}.png`}></a>
+<a href={`/blog/ogp/${post.slug}.png`}></a>
