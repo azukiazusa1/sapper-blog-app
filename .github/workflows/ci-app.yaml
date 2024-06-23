@@ -34,7 +34,7 @@ jobs:
       - name: Build
         uses: preactjs/compressed-size-action@v2
         with:
-          pattern: "app/build/**/*.{js,css,html.json}"
+          pattern: "app/.vercel/output/static/**/*.{js,css,html.json}"
 
   lighthouse:
     name: Lighthouse
