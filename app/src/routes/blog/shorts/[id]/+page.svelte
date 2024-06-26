@@ -20,7 +20,7 @@
   title={short.title}
   description={short.content1}
   {url}
-  image={`${variables.baseURL}/blog/shorts/ogp/${short.sys.id}}.png`}
+  image={`${variables.baseURL}/blog/shorts/ogp/${short.sys.id}.png`}
 />
 
 <ShortBlog
