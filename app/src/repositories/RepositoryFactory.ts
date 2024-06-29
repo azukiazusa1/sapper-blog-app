@@ -32,11 +32,11 @@ export default {
   [SHORT]: new ShortRepository(),
   [TAG]: new TagRepository(),
   [GITHUB]:
-    process.env.NODE_ENV === "production"
+    process.env.CF_ENV === "production"
       ? new GitHubRepository()
       : new MockGitHubRepository(),
   [ANALYTICS_DATA]:
-    process.env.NODE_ENV === "production"
+    process.env.CF_ENV === "production"
       ? new AnalyticsDataRepository()
       : new MockAnalyticsDataRepository(),
 } satisfies Repositories;
