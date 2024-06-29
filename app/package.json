@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite dev",
     "mock": "NODE_MOCK=true vite dev",
-    "postbuild": "pagefind --site .sveltekit/cloudflare && npx svelte-sitemap --domain $PUBLIC_BASE_URL --out-dir ./.sveltekit/cloudflare",
+    "postbuild": "pagefind --site .svelte-kit/cloudflare && npx svelte-sitemap --domain $PUBLIC_BASE_URL --out-dir ./.svelte-kit/cloudflare",
     "build": "vite build",
     "preview": "vite preview --port 3000",
-    "serve": "npx serve ./.sveltekit/cloudflare",
+    "serve": "npx serve ./.svelte-kit/cloudflare",
     "lint": "npm run format:check && npm run lint:eslint",
     "lint:eslint": "eslint src/**/*.{ts,svelte}",
     "lint:eslint:fix": "eslint --fix src/**/*.{ts,svelte}",
