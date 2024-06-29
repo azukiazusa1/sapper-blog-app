@@ -32,11 +32,11 @@ export default {
   [SHORT]: new ShortRepository(),
   [TAG]: new TagRepository(),
   [GITHUB]:
-    process.env.VERCEL_ENV === "production"
+    process.env.NODE_ENV === "production"
       ? new GitHubRepository()
       : new MockGitHubRepository(),
   [ANALYTICS_DATA]:
-    process.env.VERCEL_ENV === "production"
+    process.env.NODE_ENV === "production"
       ? new AnalyticsDataRepository()
       : new MockAnalyticsDataRepository(),
 } satisfies Repositories;
