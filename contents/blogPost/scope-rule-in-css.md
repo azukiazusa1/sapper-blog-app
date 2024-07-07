@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: ":root"
           correct: false
-          explanation: ""
+          explanation: null
         - text: ":scope"
           correct: true
-          explanation: ""
+          explanation: null
         - text: ":host"
           correct: false
-          explanation: ""
+          explanation: null
         - text: ":current"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 CSS の `@scope` アットルールは特定のセレクタの範囲に限定したスタイルを適用するためのルールです。`@scope` ルールは以下のように記述します。
 
 ```css
