@@ -5,7 +5,7 @@
 </script>
 
 <a
-  href={`https://twitter.com/share?url=${url}&text=${text}`}
+  href={`https://x.com/share?url=${url}&text=${text}`}
   target="_blank"
   rel="noopener noreferrer"
 >
