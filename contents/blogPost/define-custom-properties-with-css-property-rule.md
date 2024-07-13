@@ -15,16 +15,16 @@ selfAssessment:
       answers:
         - text: "initial"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "initial-value"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "default"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "default-value"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "`@property` ルールの `syntax` フィールドにおいて `<number>+` と指定されている場合、次のうち代入可能な値はどれか？"
       answers:
         - text: "10 20 30 40"
@@ -39,10 +39,8 @@ selfAssessment:
         - text: "10px 10px 10px #fff"
           correct: false
           explanation: "`<number>` がデータ型に指定されているため、カラーコードなどの他のデータ型の値は代入できません。"
-
 published: true
 ---
-
 CSS の `@property` ルールを使うことで、[CSS のカスタムプロパティ](https://developer.mozilla.org/ja/docs/Web/CSS/--*) を定義できます。カスタムプロパティを定義することでプロパティの構文チェック、初期値の設定、プロパティが値を継承するかどうかの設定が可能になります。
 
 ```css
