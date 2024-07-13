@@ -29,16 +29,16 @@ selfAssessment:
       answers:
         - text: "10 20 30 40"
           correct: true
-          explanation: `<number>` は整数または小数部分のある数値、`+` はスペース区切りのリストを表すため、`0 0 0 0` は代入可能な値となります。
+          explanation: "`<number>` は整数または小数部分のある数値、`+` はスペース区切りのリストを表すため、`0 0 0 0` は代入可能な値となります。"
         - text: "1px"
           correct: false
-          explanation: `<number>` には単位を含む数値を代入することはできません。
+          explanation: "`<number>` には単位を含む数値を代入することはできません。"
         - text: "10, 20, 30, 40"
           correct: false
-          explanation: `+` はスペース区切りのリストを表すため、`,` 区切りのリストは代入可能な値となりません。
+          explanation: "`+` はスペース区切りのリストを表すため、`,` 区切りのリストは代入可能な値となりません。"
         - text: "10px 10px 10px #fff"
           correct: false
-          explanation: `<number>` がデータ型に指定されているため、カラーコードなどの他のデータ型の値は代入できません。
+          explanation: "`<number>` がデータ型に指定されているため、カラーコードなどの他のデータ型の値は代入できません。"
 
 published: true
 ---
