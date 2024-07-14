@@ -2,10 +2,12 @@
   import TwitterIcon from "./Icons/Twitter.svelte";
   export let url: string;
   export let text: string;
+
+  $: escapedText = encodeURIComponent(text);
 </script>
 
 <a
-  href={`https://x.com/share?url=${url}&text=${text}`}
+  href={`https://x.com/share?url=${url}&text=${escapedText}}`}
   target="_blank"
   rel="noopener noreferrer"
 >
