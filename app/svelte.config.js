@@ -11,7 +11,7 @@ const config = {
     adapter: adapter({
       fallback: "spa",
       routes: {
-        exclude: ["/pagefind/*", "/sitemap.xml"],
+        exclude: ["*"],
       },
     }),
     env: {
