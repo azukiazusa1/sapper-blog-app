@@ -21,10 +21,9 @@ selfAssessment:
           explanation: "Farm 互換性のために JavaScript プラグインをサポートしています。"
         - text: "Go"
           correct: true
-          explanation: ""
+          explanation: null
 published: true
 ---
-
 Farm は Rust 製の新しいビルドツールです。パフォーマンスを重視して設計されており、Vite と互換性のある JavaScript プラグインをサポートしているという特徴があります。
 
 https://www.farmfe.org/
