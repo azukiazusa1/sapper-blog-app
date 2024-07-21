@@ -10,6 +10,9 @@ const config = {
   kit: {
     adapter: adapter({
       fallback: "spa",
+      routes: {
+        exclude: ["/pagefind/*", "/sitemap.xml"],
+      },
     }),
     env: {
       dir: "../",
