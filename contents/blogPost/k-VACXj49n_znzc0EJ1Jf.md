@@ -31,7 +31,7 @@ https://www.farmfe.org/
 
 ## Farm の特徴
 
-ビルドのパフォーマンスはアプリケーションの開発体験に大きな影響を与えます。従来は Webpack がビルドツールとしてデファクトスタンダードでしたが、アプリケーションの規模が大きくなりモジュールの数が増えるにつれ、ビルド時間が長くなるという問題がありました。ときには Hot Module Replacement（HMR） が反映されるまで数秒かかることもありました。
+ビルドのパフォーマンスはアプリケーションの開発体験に大きな影響を与えます。従来は Webpack がビルドツールとしてデファクトスタンダードでしたが、アプリケーションの規模が大きくなりモジュールの数が増えるにつれ、ビルド時間が長くなるという問題がありました。ときには Hot Module Replacement（HMR）が反映されるまで数秒かかることもありました。
 
 このようなビルドのパフォーマンス問題を解決するために、Vite のような新しいビルドツールが登場しました。Vite は開発モードの場合 esbuild でビルドを行い、ブラウザの Native ES Modules を使用していることが特徴です。ファイルが変更された場合にすべてのモジュールを再ビルドするのではなく、変更されたモジュールだけを再ビルドすることで高速な HMR を実現しています。
 
@@ -114,7 +114,7 @@ Farm は以下の 4 種類のプラグインをサポートしています。
 - Farm Runtime Plugin：Farm のランタイムに影響を与えるプラグイン
 - Swc Plugins：Swc で使用できるプラグイン
 
-Farm Compilation Plugins は Rust または JavaScript で書かれたプラグインを使用することができます。Rust のプラグインはより高速に動作するため推奨されています。JavaScript のプラグインは従来のエコシステムと互換性を持たせたい場合に使用します。
+Farm Compilation Plugins は Rust または JavaScript で書かれたプラグインを使用できます。Rust のプラグインはより高速に動作するため推奨されています。JavaScript のプラグインは従来のエコシステムと互換性を持たせたい場合に使用します。
 
 プラグインを使用するに、必要なパッケージをインストールします。Farm の公式で提供されているプラグインの一覧は [Using Plugins | Farm](https://www.farmfe.org/docs/using-plugins) から確認できます。
 
@@ -138,7 +138,7 @@ export default defineConfig({
 });
 ```
 
-Vite や Rollup 形式のプラグインもそのまま Farm で使用することができます。これらのプラグインは `farm.config.ts` の `vitPlugins` プロパティに追加します。
+Vite や Rollup 形式のプラグインもそのまま Farm で使用できます。これらのプラグインは `farm.config.ts` の `vitPlugins` プロパティに追加します。
 
 ```js:farm.config.ts
 import vue from '@vitejs/plugin-vue',
