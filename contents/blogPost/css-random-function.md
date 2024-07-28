@@ -5,10 +5,10 @@ slug: "css-random-function"
 about: "`random()` と `random-item()` 関数は CSS でランダムな値を扱うための関数です。`random()` 関数は最小値と最大値を引数に取り、その範囲内のランダムな数値を返します。`random-item()` 関数は引数に渡したリストの中からランダムに 1 つの値を返します。"
 createdAt: "2024-07-28T17:06+09:00"
 updatedAt: "2024-07-28T17:06+09:00"
-tags: [CSS]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1bqQw9rxgBjXq2OvYb7nxZ/d9ba71d9cc533138ddff7430f3d8acfb/omikuji_6573.png"
-  title: "おみくじのイラスト"
+  title: "omikuji 6573"
 selfAssessment:
   quizzes:
     - question: "以下の `random()` 関数の引数に渡す値のうち、無効なものはどれか？"
@@ -25,10 +25,8 @@ selfAssessment:
         - text: "random(100px, 200px, by 50px)"
           correct: false
           explanation: "任意の引数としてステップ数を指定することができます。"
-
 published: true
 ---
-
 !> `ramdom()`、`random-item()` 関数は 2024 年 7 月現在 [Editor Draft](https://www.w3.org/standards/types/#ED) として提案されている機能です。W3C によって標準化されておらず、将来仕様が変更される可能性があります。
 
 [CSS Values and Units Module Level 5](https://drafts.csswg.org/css-values-5/) では、CSS でランダムな値を扱うための `random()` と `random-item()` 関数が提案されています。例えば毎回ランダムな色の組み合わせを表示したり、ランダムな回転をするアニメーションを表示するなどに使われるかもしれません。
