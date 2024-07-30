@@ -12,6 +12,7 @@ thumbnail:
 selfAssessment: null
 published: true
 ---
+
 [Bun v1.0.24](https://bun.sh/blog/bun-v1.0.24) で、クロスプラットフォームなシェルスクリプトを書くための機能（Bun Shell）が追加されました。
 
 !> Bun Shell は現在開発中の機能です。
@@ -187,14 +188,24 @@ const name = `'; rm -rf /; echo '`;
 await $`echo ${name}`; // => ; rm -rf /; echo
 ```
 
-エスケープを無効にしたい場合には、`$.escape()` を使います。
+エスケープを無効にしたい場合には、`{ raw: 'str' }` オブジェクトでラップします。
 
 ```ts
 import { $ } from "bun";
 
-const name = "bun";
+const name = `$(foo) "bar"`;
 
-await $`echo ${$.escape(name)}`; // => bun
+await $`echo ${{ raw: name }}`;
+// bun: command not found: foo
+// bar
+```
+
+`$.escape()` メソッドは Bun 内部で使われているエスケープ関数です。
+
+```ts
+import { $ } from "bun";
+
+console.log($.escape(`$(foo) "bar"`)); // => "\$(foo) \"bar\""
 ```
 
 ## 単純なシェルスクリプト
