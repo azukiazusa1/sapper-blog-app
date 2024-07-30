@@ -12,7 +12,6 @@ thumbnail:
 selfAssessment: null
 published: true
 ---
-
 [Bun v1.0.24](https://bun.sh/blog/bun-v1.0.24) で、クロスプラットフォームなシェルスクリプトを書くための機能（Bun Shell）が追加されました。
 
 !> Bun Shell は現在開発中の機能です。
