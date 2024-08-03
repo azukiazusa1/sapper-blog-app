@@ -14,7 +14,7 @@ selfAssessment:
     - question: "Flex コンテナ内の要素の読み上げ順を制御するためのプロパティはどれか？"
       answers:
         - text: "reading-flow: auto;"
-          correct: "false"
+          correct: false
           explanation: "auto は DOM の順序に従うプロパティで、デフォルトの値です。"
         - text: "reading-flow: flex-visual;"
           correct: true
