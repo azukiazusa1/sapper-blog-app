@@ -8,7 +8,7 @@ updatedAt: "2024-08-03T15:33+09:00"
 tags: ["CSS", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/BIHrVgoOfq5nkcwL38xXF/229f6f8c22993fa4afb3f1b18a3a671e/river-fishing_13259.png"
-  title: "川で釣りをするイラスト"
+  title: "川釣りのイラスト"
 selfAssessment:
   quizzes:
     - question: "Flex コンテナ内の要素の読み上げ順を制御するためのプロパティはどれか？"
@@ -18,17 +18,15 @@ selfAssessment:
           explanation: "auto は DOM の順序に従うプロパティで、デフォルトの値です。"
         - text: "reading-flow: flex-visual;"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "reading-flow: grid-order;"
           correct: false
           explanation: "grid-order は Grid コンテナ内の要素の読み上げ順を制御するプロパティです。"
         - text: "reading-flow: visual;"
           correct: false
           explanation: "visual という値は存在しません。"
-
 published: true
 ---
-
 !> `reading-flow` プロパティは 2024 年 8 月現在 [Editor Draft](https://www.w3.org/standards/types/#ED) として提案されている機能です。W3C によって標準化されておらず、将来仕様が変更される可能性があります。Chrome Dev または Canary バージョン 128 以降で試すことができます。
 
 Flex や Grid などの CSS レイアウトを使っている場合や、ドラッグアンドドロップで自由に要素を配置できる UI を実装している場合、要素の見た目上の並び順と、DOM 上の並び順が異なることがあります。このような状態はキーボード操作やスクリーンリーダーなどの支援技術を使うユーザーにとって混乱を招く可能性があります。見た目とは異なる順番で要素にフォーカスがされるためです。
