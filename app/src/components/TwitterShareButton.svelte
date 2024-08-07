@@ -7,7 +7,7 @@
 </script>
 
 <a
-  href={`https://x.com/share?url=${url}&text=${escapedText}}`}
+  href={`https://x.com/share?url=${url}&text=${escapedText}`}
   target="_blank"
   rel="noopener noreferrer"
 >
