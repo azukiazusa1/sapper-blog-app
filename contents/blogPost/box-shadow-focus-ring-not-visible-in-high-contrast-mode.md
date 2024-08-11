@@ -15,19 +15,18 @@ selfAssessment:
       answers:
         - text: "outline: 0;"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "outline: 2px solid transparent;"
           correct: true
           explanation: "outline の色を透明にすることで、フォーカスリングを非表示にしつつ、ハイコントラストモードでは表示することができます。"
         - text: "outline: 2px solid red;"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "outline: none;"
           correct: false
-          explanation: ""
+          explanation: null
 published: true
 ---
-
 フォーカスリングとは、キーボード操作でフォーカスが当たった要素を視覚的に示すための UI デザインのことです。フォーカスリングはキーボード操作をしているユーザーにとって現在のフォーカス位置を把握するための重要な要素です。このことは WCAG 2.2 の 2.4.7 項目で要求されています。
 
 > (レベル AA)
