@@ -298,7 +298,7 @@ export async function clientLoader() {
 // loader と clientLoader を併用する場合、
 // hydrate プロパティを true に設定してハイドレーションの実行が必要なことを Remix に伝える
 // ハイドレーションが必要な場合に HydrateFallback が表示される
-// clientLoader のみを使い場合には、自動的に true に設定される
+// clientLoader のみを利用している場合には、自動的に true に設定される
 // https://remix.run/docs/en/main/route/client-loader#clientloaderhydrate
 clientLoader.hydrate = true;
 
