@@ -78,7 +78,7 @@
             <svelte:fragment slot="fallback">
               <div>この記事をシェアする</div>
               <div class="ml-4">
-                <TwitterShareButton {url} text={post.title} />
+                <TwitterShareB utton {url} text={post.title} />
               </div>
               <div class="ml-4">
                 <HatenaShareButton {url} text={post.title} />
@@ -97,4 +97,4 @@
 
 <!-- ogp を静的に生成するために空のリンクを設置している -->
 <!-- svelte-ignore a11y-missing-content -->
-<a href={`/blog/ogp/${post.slug}.png`}></a>
+<a href={`/blog/ogp/${post.slug}.png`} aria-hidden="true" tabindex="-1"></a>
