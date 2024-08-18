@@ -70,7 +70,7 @@ jobs:
   a11y:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.31.1-focal
+      image: mcr.microsoft.com/playwright:v1.44.1-focal
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node.js
