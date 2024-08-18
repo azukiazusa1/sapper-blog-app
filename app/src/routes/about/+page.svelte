@@ -2,9 +2,9 @@
   import variables from "$lib/variables";
   import Avatar from "../../components/Avatar/Avatar.svelte";
   import author from "../../assets/images/azukiazusa.jpeg";
-  import Link from "../../components/Link/Link.svelte";
+  import LinkButton from "../../components/LinkButton/LinkButton.svelte";
   const content =
-    "このブログはSvelteKit + Contentful + Cloudflare Pages によって作成されています。学んだ技術についてつらつらと書いてきます。毎週日曜日夜くらいに更新されます。JavaScript/TypeScript/Vue.js/React/Svelte/PHP/Laravel/CakePHPあたり。趣味は読書と麻雀。";
+    "このブログはSvelteKit + Contentful + Cloudflare Pages によって作成されています。学んだ技術についてつらつらと書いてきます。毎週日曜日夜くらいに更新されます。フロントエンドの技術が好き。趣味は読書と麻雀とポーカー。";
 </script>
 
 <svelte:head>
@@ -59,20 +59,20 @@
           <p class="mb-4 break-words text-lg leading-relaxed">
             {content}
           </p>
-          <Link href="/blog">
-            記事を読む
+          <LinkButton variant="primary" href="/blog">
+            ブログを読む
             <svg
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="ml-2 h-4 w-4"
-              viewBox="0 0 24 24"
+              class="-mr-1 ml-2 h-5 w-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              /></svg
             >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </Link>
+          </LinkButton>
         </div>
       </div>
     </div>
