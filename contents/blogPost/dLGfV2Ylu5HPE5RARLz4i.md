@@ -29,13 +29,13 @@ selfAssessment:
 published: true
 ---
 
-今書いているコードがアクセシビリティ上の問題を持っていないかどうかを確認するために、Lint ツールによる機械チェックが有効です。[eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y) や [Markuplint](https://markuplint.dev/ja/) といったツールを導入することで、コンポーネント単位で静的にコードを解析してアクセシビリティの問題を検出できます。このような Lint ツールは、codeを書いている最中に即座にフィードバックを受けることができる点が大きなメリットです。
+今書いているコードがアクセシビリティ上の問題を持っていないかどうかを確認するために、Lint ツールによる機械チェックが有効です。[eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y) や [Markuplint](https://markuplint.dev/ja/) といったツールを導入することで、コンポーネント単位で静的にコードを解析してアクセシビリティの問題を検出できます。このような Lint ツールは、code を書いている最中に即座にフィードバックを受けることができる点が大きなメリットです。
 
 しかし、静的なコードの解析では検出できない問題もいくつか存在します。例えば、コントラスト比の低い色の組み合わせはコード上からは検出できず、実際にブラウザで表示してみないと気づくことができません。また、コンポーネント単位では問題はないものの、複数のコンポーネントを組み合わせて画面全体を見たときに問題が発生することもあります。コンポーネント内では一意であった id が、画面全体を見たときに重複していたり、見出しのレベルがスキップされていたりする場合などです。
 
 このように、コードの静的な解析だけでは検出できない問題を発見するためには、実際にブラウザで表示して動作を確認することが必要です。個の記事では [@axe-core/playwright](https://www.npmjs.com/package/@axe-core/playwright) を使ってブラウザでのテストを自動化する方法について紹介します。
 
-[axe-core](https://github.com/dequelabs/axe-core) は [axe](https://www.deque.com/axe/) というアクセシビリティテストツールのコアエンジンで、オープンソースとして提供されています。axe-core は様々なテストツールと連携することにより、ウェブサイトのアクセシビリティを自動的にテストすることができます。この記事では、E2E テストフレームワークの [Playwright](https://playwright.dev/) と axe-core を組み合わせて使用します。
+[axe-core](https://github.com/dequelabs/axe-core) は [axe](https://www.deque.com/axe/) というアクセシビリティテストツールのコアエンジンで、オープンソースとして提供されています。axe-core は様々なテストツールと連携することにより、ウェブサイトのアクセシビリティを自動的にテストできます。この記事では、E2E テストフレームワークの [Playwright](https://playwright.dev/) と axe-core を組み合わせて使用します。
 
 ## Playwright のセットアップ
 
@@ -280,7 +280,7 @@ test("accessibility test", async ({ page }) => {
 - 指定した要素の子孫要素も除外されてしまう
 - 既知の問題に対応するルールだけではなく、すべてのルールによる問題も検出されなくなってしまう
 
-2 つ目の方法である特定のルールを無視する方法を試してみましょう。`disableRules` メソッドに無視したいルールの ID を渡すことで、特定のルールによる違反を無視することができます。
+2 つ目の方法である特定のルールを無視する方法を試してみましょう。`disableRules` メソッドに無視したいルールの ID を渡すことで、特定のルールによる違反を無視できます。
 
 ```ts {9}
 import { test, expect } from "@playwright/test";
