@@ -37,6 +37,8 @@ published: true
 
 [axe-core](https://github.com/dequelabs/axe-core) は [axe](https://www.deque.com/axe/) というアクセシビリティテストツールのコアエンジンで、オープンソースとして提供されています。axe-core は様々なテストツールと連携することにより、ウェブサイトのアクセシビリティを自動的にテストできます。この記事では、E2E テストフレームワークの [Playwright](https://playwright.dev/) と axe-core を組み合わせて使用します。
 
+!> 自動化されたアクセシビリティテストでは、アクセシビリティの問題を 100% 検出できるわけではありません。自動化されたテストは、手動で行うテストを補完するものとして考えるべきです。アクセシビリティの問題を検出するためには、自動化されたテストと手動でのテストを組み合わせて行うことが重要です。
+
 ## Playwright のセットアップ
 
 始めに Playwright をインストールしてテストを実行するための環境をセットアップします。以下のコマンドを実行します。
@@ -177,28 +179,29 @@ test("accessibility test", async ({ page }) => {
 }
 ```
 
-`id: 'color-contrast'` から、コンストラクト比の問題が検出されたことがわかります。
+`id: 'color-contrast'` から、コンストラクト比の問題が検出されたことがわかります。さらに詳細な情報を確認するためには、`helpUrl` にアクセスします。
+
+![](https://images.ctfassets.net/in6v9lxmm5c8/4KhpIGjAZud3eiGRyfvoHw/467280c969373a6ee9b373b78adcea1e/__________2024-08-18_18.25.19.png)
 
 `tags` はどのルールに基づいて問題が検出されたかを示しています。タグがどのルールに対応しているかは [Axe API Documentation | Deque Systems](https://www.deque.com/axe/core-documentation/api-documentation/) を参照してください。例えば `wcag2aa` は WCAG 2.0 AA に準拠しているかどうかを示しています。
 
-さらに詳細な情報を確認するためには、`helpUrl` にアクセスしてください。`nodes` プロパティを見ると、問題が発生している要素の情報が表示されています。この情報を元に問題を修正していきます。
+`nodes` プロパティを見ると、問題が発生している要素の情報が表示されています。この情報を元に問題を修正していきます。
 
 ## 特定のルールタグ付けされたルールのみを実行する
 
-axe はデフォルトでは非常に多くのルールに基づいてアクセシビリティテストを実行します。多くのルールで問題を検出できればより堅牢なアプリケーションを作ることはできるものの、その対応に多くの労力が必要になります。
+axe はデフォルトでは多くのルールに基づいてアクセシビリティテストを実行します。多くのルールで問題を検出できればより堅牢なアプリケーションを作ることはできるものの、その対応に多くの労力が必要になります。
 
-デフォルトで用意されているルールにの中には WCAG で要求されていないいわゆる「ベストプラクティス」なルールも含まれています。特定の WCAG レベルに対応するルールのみを実行するためには、`AxeBuilder.withTags()` メソッドを使って特定のタグを持つルールのみを実行するように設定します。
+デフォルトで用意されているルールにの中には WCAG で要求されていない、いわゆる「ベストプラクティス」なルールも含まれています。特定の WCAG レベルに対応するルールのみを実行するためには、`AxeBuilder.withTags()` メソッドを使って特定のタグを持つルールのみを実行するように設定します。
 
 以下の例では、WCAG A および AA 成功基準の違反をテストする axe ルールのみが含まれます。サポートされるすべてのタグの一覧は [Axe API Documentation | Deque Systems](https://www.deque.com/axe/core-documentation/api-documentation/#axe-core-tags) を参照してください。
 
-```ts
+```ts {8}
 import { test, expect } from "@playwright/test";
 import { AxeBuilder } from "@axe-core/playwright";
 
 test("accessibility test", async ({ page }) => {
   await page.goto("http://localhost:3000");
 
-  // WCAG 2.1 AA に対応するルールのみを実行
   const results = await AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
     .analyze();
@@ -209,10 +212,11 @@ test("accessibility test", async ({ page }) => {
 
 ## 特定のルールによる違反を無視する
 
-すでに既知の問題がある場合には、テストを実行する際に抑制したい場合があります。ルールの違反を無視する場合には、以下の 2 つの方法があります。
+すでに既知の問題がある場合には、テストを実行する際に抑制したい場合があります。ルールの違反を無視する場合には、以下の 3 つの方法があります。
 
 - 特定の要素を除外する
 - 特定のルールを無視する
+- スナップショットテストを使って違反を検証する
 
 例として、フォーム要素には必ず label を指定するという「Form elements must have labels」ルールに違反している場合を考えます。
 
@@ -275,10 +279,12 @@ test("accessibility test", async ({ page }) => {
 });
 ```
 
-`AxeBuilder` の `exclude` メソッドに CSS セレクタを渡すことで、特定の要素をテスト対象から除外しています。この方法は確かにうまくいきますが、いくつかの欠点が存在します。
+`AxeBuilder` の `exclude` メソッドに CSS セレクタを渡すことで、特定の要素をテスト対象から除外しています。ここではすべてのチェックボックス要素を除外していますが、実際には id を用いて限られた要素のみを除外するのが望ましいでしょう。
+
+この方法は確かにうまくいきますが、いくつかの欠点が存在します。
 
 - 指定した要素の子孫要素も除外されてしまう
-- 既知の問題に対応するルールだけではなく、すべてのルールによる問題も検出されなくなってしまう
+- 既知の問題に対応するルールだけではなく、その他の問題も検出されなくなってしまう
 
 2 つ目の方法である特定のルールを無視する方法を試してみましょう。`disableRules` メソッドに無視したいルールの ID を渡すことで、特定のルールによる違反を無視できます。
 
@@ -295,6 +301,41 @@ test("accessibility test", async ({ page }) => {
     .analyze();
 
   expect(filteredResults.length).toBe(0);
+});
+```
+
+ルールの無視はページ全体に適用されることに注意が必要です。新たに追加された要素が気づかぬうちにルールに違反してしまう恐れがあります。
+
+3 つ目の方法はスナップショットテストを使って違反を検証する方法です。スナップショットテストは、テストの結果をスナップショットとして保存し、テスト実行時にスナップショットと比較することで、変更があるかどうかを検出する方法です。この方法であれば、発見された違反が意図的なものかどうかを確認できます。
+
+スナップショットテストを実行する際に、配列全体を比較すると実装の詳細が含まれるため壊れやすいテストになってしまいます。そのため、問題を一意に識別するのに十分な情報のみをスナップショットに含めるようにすることが推奨されています。
+
+```ts
+import { test, expect } from "@playwright/test";
+import { AxeBuilder } from "@axe-core/playwright";
+
+// https://playwright.dev/docs/accessibility-testing#using-snapshots-to-allow-specific-known-issues
+function violationFingerprints(accessibilityScanResults) {
+  const violationFingerprints = accessibilityScanResults.violations.map(
+    (violation) => ({
+      rule: violation.id,
+      // These are CSS selectors which uniquely identify each element with
+      // a violation of the rule in question.
+      targets: violation.nodes.map((node) => node.target),
+    }),
+  );
+
+  return JSON.stringify(violationFingerprints, null, 2);
+}
+
+test("accessibility test", async ({ page }) => {
+  await page.goto("http://localhost:3000");
+
+  const results = await AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .analyze();
+
+  expect(violationFingerprints(results)).toMatchSnapshot();
 });
 ```
 
@@ -336,12 +377,14 @@ test("accessibility test", async ({ page }) => {
 - `@axe-core/playwright` は Playwright と axe-core を組み合わせてアクセシビリティテストを自動化するためのパッケージ
 - `AxeBuilder.analyze()` メソッドを使ってアクセシビリティテストを実行する
 - 問題が検出された場合には `results.violations` にエラーの詳細が格納される
-- `AxeBuilder.withTags()` メソッドを使って特定のルールのみを実行する
-- `AxeBuilder.exclude()` メソッドを使って特定の要素を除外する
-- `AxeBuilder.disableRules()` メソッドを使って特定のルールによる違反を無視する
-- `axe-html-reporter` パッケージを使って HTML レポートを出力する
+- 既知の問題をテストで無視するためには、以下の 3 つの方法がある
+  - 特定の要素を除外する
+  - 特定のルールを無視する
+  - スナップショットテストを使って違反を検証する
+- `axe-html-reporter` パッケージを使うことで、HTML 形式で見やすいレポートを出力できる
 
 ## 参考
 
 - [Accessibility testing | Playwright](https://playwright.dev/docs/accessibility-testing)
 - [axe-core/playwrightとmarkuplintを導入しアクセシビリティの自動テストをできるようにした | Hirotaka Miyagi](https://mh4gf.dev/articles/axe-core-playwright-and-markuplint)
+- [ウェブアクセシビリティ検証ツール「axe」を用いた自動テスト実行スクリプト | Accessible & Usable](https://accessible-usable.net/2021/02/entry_210223.html)
