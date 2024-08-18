@@ -78,7 +78,7 @@
             <svelte:fragment slot="fallback">
               <div>この記事をシェアする</div>
               <div class="ml-4">
-                <TwitterShareB utton {url} text={post.title} />
+                <TwitterShareButton {url} text={post.title} />
               </div>
               <div class="ml-4">
                 <HatenaShareButton {url} text={post.title} />
