@@ -5,30 +5,28 @@ slug: "axe-core-playwright"
 about: "axe-core は axe というアクセシビリティテストツールのコアエンジンで、オープンソースとして提供されています。この記事では、E2E テストフレームワークの Playwright と axe-core を組み合わせて使用して、アクセシビリティテストを自動化する方法について紹介します。"
 createdAt: "2024-08-18T12:53+09:00"
 updatedAt: "2024-08-18T12:53+09:00"
-tags: ["アクセシビリティ", "Playwright", "axe-core"]
+tags: ["アクセシビリティ", "playwright", "axe-core"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3pfSP2fqMVe8dBFrSr6nb3/61460327030e9f0431049f4794cfa43c/pudding_illust_3656.png"
-  title: "プリンのイラスト"
+  title: "pudding illust 3656"
 selfAssessment:
   quizzes:
     - question: "特定のルールにおる違反を無視してアクセシビリティテストを実行するためのメソッドはどれか？"
       answers:
         - text: "AxeBuilder.ignore()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "AxeBuilder.exclude()"
           correct: false
           explanation: "exclude() メソッドは特定の要素を除外するためのメソッドです。"
         - text: "AxeBuilder.disableRules()"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "AxeBuilder.ignoreRules()"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 今書いているコードがアクセシビリティ上の問題を持っていないかどうかを確認するために、Lint ツールによる機械チェックが有効です。[eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y) や [Markuplint](https://markuplint.dev/ja/) といったツールを導入することで、コンポーネント単位で静的にコードを解析してアクセシビリティの問題を検出できます。このような Lint ツールは、code を書いている最中に即座にフィードバックを受けることができる点が大きなメリットです。
 
 しかし、静的なコードの解析では検出できない問題もいくつか存在します。例えば、コントラスト比の低い色の組み合わせはコード上からは検出できず、実際にブラウザで表示してみないと気づくことができません。また、コンポーネント単位では問題はないものの、複数のコンポーネントを組み合わせて画面全体を見たときに問題が発生することもあります。コンポーネント内では一意であった id が、画面全体を見たときに重複していたり、見出しのレベルがスキップされていたりする場合などです。
