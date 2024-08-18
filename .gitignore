@@ -5,6 +5,7 @@ app/.svelte-kit
 /static/index.css
 app/build/
 app/test-results/
+app/artifacts/
 app/node_modules
 .env
 .vercel

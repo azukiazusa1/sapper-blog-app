@@ -300,35 +300,35 @@ h6 .icon-link::before {
 }
 
 .alert-note {
-  @apply border-l-blue-400  bg-blue-50 dark:border-l-blue-400 dark:bg-blue-950;
+  @apply border-l-blue-600  bg-blue-50 dark:border-l-blue-400 dark:bg-blue-950;
 }
 
 .alert-note .alert-title {
-  @apply text-blue-400 dark:text-blue-400;
+  @apply text-blue-600 dark:text-blue-400;
 }
 
 .alert-warning {
-  @apply border-l-yellow-600 bg-yellow-50 dark:border-l-yellow-500 dark:bg-yellow-900;
+  @apply border-l-yellow-700 bg-yellow-50 dark:border-l-yellow-500 dark:bg-yellow-900;
 }
 
 .alert-warning .alert-title {
-  @apply text-yellow-600 dark:text-yellow-500;
+  @apply text-yellow-700 dark:text-yellow-500;
 }
 
 .alert-error {
-  @apply border-l-red-500 bg-red-50 dark:border-l-red-400 dark:bg-red-950;
+  @apply border-l-red-700 bg-red-50 dark:border-l-red-400 dark:bg-red-950;
 }
 
 .alert-error .alert-title {
-  @apply text-red-500 dark:text-red-400;
+  @apply text-red-700 dark:text-red-400;
 }
 
 .alert-tip {
-  @apply border-l-green-500 bg-green-50 dark:border-l-green-400 dark:bg-green-900;
+  @apply border-l-green-700 bg-green-50 dark:border-l-green-400 dark:bg-green-900;
 }
 
 .alert-tip .alert-title {
-  @apply text-green-500 dark:text-green-400;
+  @apply text-green-700 dark:text-green-400;
 }
 
 #contents code {

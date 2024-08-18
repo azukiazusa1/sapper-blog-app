@@ -67,34 +67,10 @@ jobs:
         run: lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-  # vrt:
-  #   name: Visual Regression Testing
-  #   runs-on: ubuntu-latest
-  #   container:
-  #     image: mcr.microsoft.com/playwright:v1.31.1-focal
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version-file: package.json
-  #         cache: npm
-  #     - name: Install dependencies
-  #       run: npm ci
-  #     - name: Build
-  #       run: npm run build
-  #     - name: Add permissions
-  #       run: chmod 777 -R .
-  #     - name: Run Tests
-  #       run: npx playwright test
-  #       working-directory: app
-  #     - uses: actions/upload-artifact@v3
-  #       if: failure()
-  #       with:
-  #         name: test-results
-  #         path: app/test-results/
   a11y:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.44.1-focal
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node.js
@@ -112,12 +88,19 @@ jobs:
       - name: Install dependencies
         if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
         run: npm ci
-      - name: Install pa11y-ci
-        run: npm install -g pa11y-ci
       - name: Build
         run: npm run build
-      - name: pa11y-ci
-        run: npm run serve -w=app & sleep 3; pa11y-ci
+      - name: Add permissions
+        run: chmod 777 -R .
+      - name: Run a11y test
+        run: npx playwright test
+        working-directory: app
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: test-results
+          path: app/artifacts/
+
   # test:
   #   timeout-minutes: 60
   #   runs-on: ubuntu-latest

@@ -61,6 +61,7 @@
     "unified": "^10.1.2"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.9.1",
     "@faker-js/faker": "^8.0.0",
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/introspection": "4.0.3",
@@ -86,6 +87,7 @@
     "@types/node": "^20.0.0",
     "@types/sanitize-html": "^2.6.2",
     "autoprefixer": "^10.4.2",
+    "axe-html-reporter": "^2.2.5",
     "axe-playwright": "^1.1.12",
     "concurrently": "^8.0.0",
     "cssnano": "^6.0.0",

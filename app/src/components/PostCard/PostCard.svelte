@@ -17,7 +17,7 @@
 <article
   class="row-span-3 m-auto grid w-full grid-rows-subgrid gap-4 rounded-lg border dark:border-zinc-700"
 >
-  <a href={`/blog/${slug}`} aria-hidden="true">
+  <a href={`/blog/${slug}`} aria-hidden="true" tabindex="-1">
     <Image
       {slug}
       alt={thumbnail.title}
