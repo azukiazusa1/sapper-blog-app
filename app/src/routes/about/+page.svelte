@@ -29,7 +29,7 @@
                 class="underline hover:opacity-75"
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://twitter.com/azukiazusa9">Twitter</a
+                href="https://x.com/azukiazusa9">X</a
               >&nbsp;/
               <a
                 class="underline hover:opacity-75"
