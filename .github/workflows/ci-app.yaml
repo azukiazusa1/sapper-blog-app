@@ -69,6 +69,8 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
   a11y:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.31.1-focal
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node.js
@@ -88,8 +90,17 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Add permissions
+        run: chmod 777 -R .
       - name: Run a11y test
-        run: "npm run test:e2e -w=app"
+        run: npx playwright test
+        working-directory: app
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: test-results
+          path: app/artifacts/
+
   # test:
   #   timeout-minutes: 60
   #   runs-on: ubuntu-latest
