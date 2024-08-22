@@ -129,7 +129,7 @@ test("accessibility test", async ({ page }) => {
   await page.goto("http://localhost:3000");
 
   // axe-core を使ってアクセシビリティテストを実行
-  const results = await AxeBuilder({ page }).analyze();
+  const results = await new AxeBuilder({ page }).analyze();
 
   // アクセシビリティテストの結果を出力
   results.violations.forEach((violation) => {
@@ -200,7 +200,7 @@ import { AxeBuilder } from "@axe-core/playwright";
 test("accessibility test", async ({ page }) => {
   await page.goto("http://localhost:3000");
 
-  const results = await AxeBuilder({ page })
+  const results = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
     .analyze();
 
@@ -268,7 +268,7 @@ import { AxeBuilder } from "@axe-core/playwright";
 test("accessibility test", async ({ page }) => {
   await page.goto("http://localhost:3000");
 
-  const results = await AxeBuilder({ page })
+  const results = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
     .exclude("input[type='checkbox']")
     .analyze();
@@ -293,7 +293,7 @@ import { AxeBuilder } from "@axe-core/playwright";
 test("accessibility test", async ({ page }) => {
   await page.goto("http://localhost:3000");
 
-  const results = await AxeBuilder({ page })
+  const results = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
     .disableRules(["label"])
     .analyze();
@@ -329,7 +329,7 @@ function violationFingerprints(accessibilityScanResults) {
 test("accessibility test", async ({ page }) => {
   await page.goto("http://localhost:3000");
 
-  const results = await AxeBuilder({ page })
+  const results = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
     .analyze();
 
@@ -356,7 +356,7 @@ import fs from "fs";
 test("accessibility test", async ({ page }) => {
   await page.goto("http://localhost:3000");
 
-  const results = await AxeBuilder({ page }).analyze();
+  const results = await new AxeBuilder({ page }).analyze();
 
   if (results.violations.length > 0) {
     createHtmlReport({ results });
