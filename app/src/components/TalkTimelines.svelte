@@ -4,6 +4,13 @@
 
 <ol class="relative border-s border-gray-200 dark:border-gray-700">
   <Timeline
+    eventTitle="各社の事例から学ぶウェブアクセシビリティ 〜フロントエンドの最前線〜"
+    eventDate="2024-08-23"
+    presentationTitle="チームで開発する際にアクセシビリティを保つ施策"
+    presentationLink="https://speakerdeck.com/azukiazusa1/timudekai-fa-suruji-niakusesibiriteiwobao-tushi-ce"
+    description="この発表はすでにアクセシビリティに興味を持っていて、ソフトウェア開発の現場にアクセシビリティを取り入れたい人を対象としています。開発チーム全体でアクセシビリティに意識を持つ状態が理想ですが、全員が詳細な実装を行うのは実際には難しいでしょう。そこで、特に意識をせずともある程度のアクセシビリティを保つ状態にするための施策について紹介いたします。"
+  />
+  <Timeline
     eventTitle="Svelte Japan Online Meetup #3"
     eventDate="2024-05-24"
     presentationTitle="よりシンプルになる Svelte の世界"
