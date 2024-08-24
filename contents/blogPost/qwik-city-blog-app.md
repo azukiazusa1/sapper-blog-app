@@ -504,7 +504,7 @@ export default component$(() => {
 });
 ```
 
-一覧ペ 0 時の全体像は以下のとおりです。
+一覧ページの全体像は以下のとおりです。
 
 ```tsx
 import { component$, Resource } from "@builder.io/qwik";
