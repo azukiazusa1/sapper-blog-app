@@ -3,8 +3,8 @@ id: e7ZWfFoSm1di7UIDUya1e
 title: "React Aria でアクセシブルなコンポーネントを作成する"
 slug: "react-aria-accessible-component"
 about: "React Aria は Adobe が提供する React 用のコンポーネントライブラリです。スタイルを持たずに UI の機能やロジックのみを提供するいわゆるヘッドレス UI ライブラリであり、特に React Aria はアクセシビリティを最優先した設計となっているのが特徴です。ヘッドレス UI ライブラリを用いて UI コンポーネントを実装することで、開発者はビジネスロジックやデザインに集中することができます。"
-createdAt: "2024-08-5T15:34+09:00"
-updatedAt: "2024-08-5T15:34+09:00"
+createdAt: "2024-08-05T15:34+09:00"
+updatedAt: "2024-08-05T15:34+09:00"
 tags: ["React", "React Aria", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5z1eT7C07mG8RBqG4W9fz5/0eac5c590cdb31a4395101081a526cb0/softcream_maccha_illust_3682.png"
