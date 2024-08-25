@@ -3,16 +3,30 @@ id: e7ZWfFoSm1di7UIDUya1e
 title: "React Aria でアクセシブルなコンポーネントを作成する"
 slug: "react-aria-accessible-component"
 about: "React Aria は Adobe が提供する React 用のコンポーネントライブラリです。スタイルを持たずに UI の機能やロジックのみを提供するいわゆるヘッドレス UI ライブラリであり、特に React Aria はアクセシビリティを最優先した設計となっているのが特徴です。ヘッドレス UI ライブラリを用いて UI コンポーネントを実装することで、開発者はビジネスロジックやデザインに集中することができます。"
-createdAt: "2024-08-24T15:34+09:00"
-updatedAt: "2024-08-24T15:34+09:00"
+createdAt: "2024-08-5T15:34+09:00"
+updatedAt: "2024-08-5T15:34+09:00"
 tags: ["React", "React Aria", "アクセシビリティ"]
 thumbnail:
-  url: ""
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/5z1eT7C07mG8RBqG4W9fz5/0eac5c590cdb31a4395101081a526cb0/softcream_maccha_illust_3682.png"
+  title: "抹茶のソフトクリームのイラスト"
 selfAssessment:
   quizzes:
+    - question: "<Menu> コンポーネントにデフォルトで付与されるクラス名は何ですか？"
+      answers:
+        - text: ".react-aria-Menu"
+          correct: true
+          explanation: "クラス名は `react-aria-ComponentName` という命名規則に従って付与されます。"
+        - text: ".ra-Menu"
+          correct: false
+          explanation: ""
+        - text: ".Menu"
+          correct: false
+          explanation: ""
+        - text: ".aria-Menu"
+          correct: false
+          explanation: ""
 
-published: false
+published: true
 ---
 
 [React Aria](https://react-spectrum.adobe.com/react-aria/) は Adobe が提供する React 用のコンポーネントライブラリです。スタイルを持たずに UI の機能やロジックのみを提供するいわゆるヘッドレス UI ライブラリであり、特に React Aria はアクセシビリティを最優先した設計となっているのが特徴です。ブログの連載記事で、アクセシブルなボタンコンポーネントの作成方法について深く掘り下げられていることから、その力の入れようが伺えます。
@@ -21,7 +35,7 @@ https://react-spectrum.adobe.com/blog/building-a-button-part-1.html
 
 React Aria のようなヘッドレス UI ライブラリは従来の UI ライブラリとは異なり、スタイルを持たないためプロダクトのデザインに合わせたカスタマイズがしやすいといったメリットがあります。読者の中には UI ライブラリを使用していつの間にかスタイルを上書きする `!important` だらけになってしまったという経験がある方もいるかもしれません。
 
-ヘッドレス UI ライブラリを用いて UI コンポーネントを実装することで、アクセシビリティサポートのための複雑な実装の詳細や、細かな UI の挙動の実装をライブラリに任せて、開発者はビジネスロジックやデザインに集中することができます。
+ヘッドレス UI ライブラリを用いて UI コンポーネントを実装することで、アクセシビリティサポートのための複雑な実装の詳細や、細かな UI の挙動の実装をライブラリに任せて、開発者はビジネスロジックやデザインに集中できます。タブやスイッチコントロールのような UI は今日の Web アプリケーションでは当たり前に見かけるものですが、このような UI は HTML のネイティブな要素として提供されていません。アクセシビリティに考慮してこのような UI を実装するために開発者に多くの要求がされています。適切な実装を行うために必要な機能は [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/patterns/) にまとめられています。このような UI の再実装は多くの企業で行われていて、共通の課題となっています。
 
 React Aria のコンポーネントは[コンポジションを中心に設計](https://react-spectrum.adobe.com/react-aria/advanced.html#contexts)されており、小さなコンポーネントを組み合わせて再利用可能なコンポーネントとして利用できるため柔軟なカスタマイズが可能です。また、React Aria は再利用可能なコンポーネントとしてラップして使用されることが想定されていて、ドキュメントではどのようにコンポーネントをラップするかについても詳細に解説されています。
 
@@ -110,7 +124,7 @@ React Aria ではバニラ CSS・Tailwind CSS・CSS in JS など特定のスタ�
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/3ABFguSi67SLDSnTtcoGlH/82ef7ac065079375736dded352385dc7/__________2024-08-24_18.07.46.png)
 
-コンポーネントに `className` Props を渡すことで、クラス名を上書きすることも可能です。例えば CSS Modules を使用している場合は以下のように独自のクラス名を指定することができます。
+コンポーネントに `className` Props を渡すことで、クラス名を上書きすることも可能です。例えば CSS Modules を使用している場合は以下のように独自のクラス名を指定できます。
 
 ```tsx
 import styles from "./Menu.module.css";
@@ -158,9 +172,9 @@ export const MyMenu = () => {
 
 UI コンポーネントを様々な状態を持つことがあります。例えばボタンコンポーネントはホバー・アクティブ・フォーカス状態を取りうり、ユーザーがそれぞれの状態を識別しやすいように、状態ごとにスタイルを変更する必要があるでしょう。
 
-React Aria では `data-` 属性を用いるか、レンダープロップパターンを用いて状態に応じたスタイルを適用することができます。メニューコンポーネントにおいて、フォーカスされている項目に対してスタイルを適用する例を見ていきましょう。
+React Aria では `data-` 属性を用いるか、レンダープロップパターンを用いて状態に応じたスタイルを適用できます。メニューコンポーネントにおいて、フォーカスされている項目に対してスタイルを適用する例を見ていきましょう。
 
-`<MenuItem>` コンポーネントは現在フォーカスされている状態の場合、`data-focused` 属性が付与されます。これを元にスタイルを指定することができます。
+`<MenuItem>` コンポーネントは現在フォーカスされている状態の場合、`data-focused` 属性が付与されます。これを元にスタイルを指定できます。
 
 ```css
 .react-aria-MenuItem {
@@ -177,7 +191,7 @@ React Aria では `data-` 属性を用いるか、レンダープロップパタ
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/69PNXpYNuD1kxxCMc9E89t/cae38924844611d0e366e333e4c56b1f/__________2024-08-24_18.41.09.png)
 
-Tailwind CSS を使用している場合は `data-[state]:className` の形式でスタイルを指定することができます。
+Tailwind CSS を使用している場合は `data-[state]:className` の形式でスタイルを指定できます。
 
 ```tsx
 <MenuItem
@@ -199,7 +213,7 @@ Tailwind CSS を使用している場合は `data-[state]:className` の形式�
 </MenuItem>
 ```
 
-`data` 属性の代わりにレンダープロップパターンを使用することもできます。このパターンでは `children` が React コンポーネントを返す関数となっており、関数の引数に状態が渡されるため、状態に応じた上限分岐でスタイルを適用することができます。
+`data` 属性の代わりにレンダープロップパターンを使用することもできます。このパターンでは `children` が React コンポーネントを返す関数となっており、関数の引数に状態が渡されるため、状態に応じた上限分岐でスタイルを適用できます。
 
 ```tsx
 <MenuItem onAction={() => alert("open")}>
@@ -229,7 +243,7 @@ Tailwind CSS を使用している場合は `data-[state]:className` の形式�
 
 React Aria のコンポーネントは [@keyframe](https://developer.mozilla.org/ja/docs/Web/CSS/@keyframes) によるアニメーションをサポートしているほか、[Framer Motion](https://www.framer.com/motion/) などの JavaScript ベースのアニメーションライブラリと組み合わせて使用することもできます。
 
-`<Popover>` や `<Modal>` のようなコンポーネントは、`data-entering`、`data-exiting` 状態で開始・終了時のアニメーションを適用することができます。
+`<Popover>` や `<Modal>` のようなコンポーネントは、`data-entering`、`data-exiting` 状態で開始・終了時のアニメーションを適用できます。
 
 ```css
 .react-aria-Popover[data-entering] {
@@ -258,7 +272,7 @@ React Aria のコンポーネントは [@keyframe](https://developer.mozilla.org
 
 - React Aria はアクセシビリティを最優先した設計となっているヘッドレス UI ライブラリ
 - コンポーネントはコンポジションを中心に設計されており、小さなコンポーネントを組み合わせて再利用可能なコンポーネントとして利用できる
-- コンポーネントに対応するクラス名が提供されているため、スタイルを指定することができる。また、`className` Props を渡すことでクラス名を上書きすることも可能
+- コンポーネントに対応するクラス名が提供されているため、スタイルを指定できる。また、`className` Props を渡すことでクラス名を上書きすることも可能
 - `data-` 属性やレンダープロップパターンを用いて状態に応じたスタイルを適用することができる
 
 ## 参考
