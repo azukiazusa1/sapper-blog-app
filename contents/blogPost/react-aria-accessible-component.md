@@ -18,17 +18,15 @@ selfAssessment:
           explanation: "クラス名は `react-aria-ComponentName` という命名規則に従って付与されます。"
         - text: ".ra-Menu"
           correct: false
-          explanation: ""
+          explanation: null
         - text: ".Menu"
           correct: false
-          explanation: ""
+          explanation: null
         - text: ".aria-Menu"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [React Aria](https://react-spectrum.adobe.com/react-aria/) は Adobe が提供する React 用のコンポーネントライブラリです。スタイルを持たずに UI の機能やロジックのみを提供するいわゆるヘッドレス UI ライブラリであり、特に React Aria はアクセシビリティを最優先した設計となっているのが特徴です。ブログの連載記事で、アクセシブルなボタンコンポーネントの作成方法について深く掘り下げられていることから、その力の入れようが伺えます。
 
 https://react-spectrum.adobe.com/blog/building-a-button-part-1.html
