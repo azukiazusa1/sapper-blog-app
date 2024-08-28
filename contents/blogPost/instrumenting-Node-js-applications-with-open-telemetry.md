@@ -529,5 +529,5 @@ https://github.com/open-telemetry/opentelemetry-js/tree/main/examples
 ## 参考
 
 - [Node.js | OpenTelemetry](https://opentelemetry.io/docs/instrumentation/js/getting-started/nodejs/)
-- [Node.js と OpenTelemetry  |  Cloud Trace  |  Google Cloud](https://cloud.google.com/trace/docs/setup/nodejs-ot?hl=ja)
+- [Node.js と OpenTelemetry  |  Cloud Trace  |  Google Cloud](https://cloud.google.com/trace/docs/setup/nodejs-ot?hl=ja)
 - [Node.jsをOpenTelemetryでメトリック収集してみる - Qiita](https://qiita.com/raichi/items/d371bf3fe6ddec168725)
