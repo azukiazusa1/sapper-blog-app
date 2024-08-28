@@ -3,7 +3,6 @@
   import Pagination from "../../../components/Pagination/Pagination.svelte";
   import variables from "$lib/variables";
   import type { PageData } from "./$types";
-  import Next from "../../../components/Icons/Next.svelte";
   export let data: PageData;
 
   $: tagName = data.tagCollection.items[0].name;
