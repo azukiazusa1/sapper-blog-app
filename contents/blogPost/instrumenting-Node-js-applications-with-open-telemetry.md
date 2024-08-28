@@ -78,7 +78,7 @@ curl localhost:3000
 
 OpenTelemetry の Node.js 向けのライブラリをインストールします。OpenTelemetry ではアプリケーションの計装を行う方法として次の 2 つの方法が提供されています。
 
-- 自動計測：[@opentelemetry/sdk-trace-node](https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-node) SDK を使用して、アプリケーションの計装を自動的に行う方法
+- 自動計測：[@opentelemetry/sdk-trace-base](https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-base) SDK を使用して、アプリケーションの計装を自動的に行う方法
 - 手動トレース：必要なトレース情報を開発者が明示的に記述する方法
 
 まずは自動計測の方法を使用してアプリケーションの計装を行います。以下のライブラリをインストールします。
@@ -91,7 +91,7 @@ npm install @opentelemetry/sdk-node @opentelemetry/api @opentelemetry/auto-instr
 
 ```js:instrumentation.js
 import { NodeSDK } from "@opentelemetry/sdk-node";
-import { ConsoleSpanExporter } from "@opentelemetry/sdk-trace-node";
+import { ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
 import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
 import {
   PeriodicExportingMetricReader,
@@ -193,7 +193,7 @@ npm install --save @opentelemetry/exporter-metrics-otlp-grpc @opentelemetry/expo
 
 ```diff:instrumentation.js
   import { NodeSDK } from "@opentelemetry/sdk-node";
-- import { ConsoleSpanExporter } from "@opentelemetry/sdk-trace-node";
+- import { ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
   import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
   import {
     PeriodicExportingMetricReader,
