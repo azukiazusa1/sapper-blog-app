@@ -3,6 +3,7 @@
   import Pagination from "../../../components/Pagination/Pagination.svelte";
   import variables from "$lib/variables";
   import type { PageData } from "./$types";
+  import Next from "../../../components/Icons/Next.svelte";
   export let data: PageData;
 
   $: tagName = data.tagCollection.items[0].name;
@@ -16,8 +17,8 @@
   <link rel="canonical" href={`${variables.baseURL}/tags/${tagSlug}`} />
 </svelte:head>
 
-<h1 class="text-2xl">
-  <span class="font-bold">{tagName}</span>の記事一覧
+<h1 class="text-2xl font-bold">
+  {tagName}
 </h1>
 
 <div class="mt-6">
