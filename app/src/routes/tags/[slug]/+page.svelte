@@ -16,13 +16,13 @@
   <link rel="canonical" href={`${variables.baseURL}/tags/${tagSlug}`} />
 </svelte:head>
 
-<h1 class="text-2xl">
-  <span class="font-bold">{tagName}</span>の記事一覧
-</h1>
-
-<div class="mt-6">
-  <PostList posts={posts.blogPostCollection.items} />
+<div class="lounded-lg mb-12 flex items-center justify-center">
+  <h1 class="text-2xl font-bold">
+    #{tagName}
+  </h1>
 </div>
+
+<PostList posts={posts.blogPostCollection.items} />
 
 <Pagination
   total={posts.blogPostCollection.total}

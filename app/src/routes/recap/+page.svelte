@@ -4,16 +4,12 @@
   <meta name="description" content="azukiazusa.dev の Recap の一覧。" />
 </svelte:head>
 
-<div class="section flex items-center justify-center">
+<div
+  class="flex min-h-[calc(100vh-3.5rem-6rem-2rem)] items-center justify-center"
+>
   <ul>
     <li>
       <a class="text-xl hover:underline" href="/recap/2023">2023</a>
     </li>
   </ul>
 </div>
-
-<style>
-  .section {
-    min-height: calc(100vh - 3.5rem - 4rem);
-  }
-</style>
