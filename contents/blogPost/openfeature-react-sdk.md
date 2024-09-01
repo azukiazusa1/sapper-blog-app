@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "useFeatureFlag"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "useFlag"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "useFeature"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "useOpenFeature"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 OpenFeature はフィーチャーフラグのオープンな規格です。特定のベンダーに依存しない API や SDK が提供されています。
 
 https://openfeature.dev/
