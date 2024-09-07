@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "useDrag"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "useDrop"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "useDragAndDrop"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "useDroppable"
           correct: true
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 ドラッグアンドドロップは、ユーザーが UI の要素をドラッグして別の場所に移動する操作です。Web アプリケーションにおいて、ドラッグアンドドロップはユーザーが直感的に操作できるため、多くの場面で利用されています。例えばタスク管理アプリケーションにおいて、タスクをドラッグして進行状況を変更したり、ファイル管理アプリケーションにおいてファイルをドラッグしてフォルダを移動する機能などがあります。
 
 従来のドラッグアンドドロップ機能はマウス以外での操作が考慮されていない実装が多く、キーボードやスクリーンリーダーを利用するユーザーにとっては機能を利用することが難しくなっていました。また、[ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) にもドラッグアンドドロップに関するガイドラインの記述が存在しないため、キーボードやスクリーンリーダーを利用するユーザーに対して代替手段を提供したとしても、その実装方法については開発者の裁量に委ねられ Web アプリケーション間での実装の差異が生じてしまいまうという課題も存在します。
