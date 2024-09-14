@@ -153,6 +153,37 @@
 
     localStorage.setItem("toc-state", "open");
   }
+
+  onMount(() => {
+    // 画像をクリックした時、拡大表示する
+    const images = document.querySelectorAll("img");
+    images.forEach((image) => {
+      image.addEventListener("click", () => {
+        const modal = document.createElement("dialog");
+        modal.open = true;
+        modal.classList.add(
+          "fixed",
+          "inset-0",
+          "w-screen",
+          "h-screen",
+          "bg-black/80",
+          "backdrop-blur-sm",
+          "flex",
+          "items-center",
+          "justify-center",
+          "z-50",
+          "cursor-zoom-out",
+        );
+        modal.addEventListener("click", () => {
+          modal.remove();
+        });
+        const copy = image.cloneNode() as HTMLImageElement;
+        copy.classList.add("animate-fade-in");
+        modal.appendChild(copy);
+        document.body.appendChild(modal);
+      });
+    });
+  });
 </script>
 
 <svelte:head>
