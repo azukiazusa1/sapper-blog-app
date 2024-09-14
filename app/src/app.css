@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   [style*="--tag"] {
     view-transition-name: var(--tag);
@@ -129,6 +133,10 @@
 #contents video,
 #contents iframe {
   @apply mx-auto my-6 md:my-8;
+}
+
+#contents img {
+  cursor: zoom-in;
 }
 
 #contents .markdown-body a {
