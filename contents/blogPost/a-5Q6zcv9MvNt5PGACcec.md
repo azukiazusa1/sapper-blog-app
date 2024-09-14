@@ -1,6 +1,6 @@
 ---
 id: a-5Q6zcv9MvNt5PGACcec
-title: "calc-size() で height: auto; な要素のアニメーションをサポートする"
+title: "`calc-size()` や `interpolate-size: allow-keywords;` で `height: auto;` な要素のアニメーションをサポートする"
 slug: "calc-size-animation"
 about: "CSS において height プロパティを 0 から auto に変化させた場合に、アニメーションが適用されないのはよく知られた問題です。この記事では calc-size() 関数を使って height: auto; な要素のアニメーションを実装する方法を紹介します。"
 createdAt: "2024-09-14T15:06+09:00"
@@ -23,6 +23,20 @@ selfAssessment:
           correct: false
           explanation: ""
         - text: "::summary"
+          correct: false
+          explanation: ""
+    - question: "interpolate-size プロパティでキーワード値によるアニメーションを許可するためにはどのような値を指定するか？"
+      answers:
+        - text: "numeric-only"
+          correct: false
+          explanation: ""
+        - text: "allow-keywords"
+          correct: true
+          explanation: ""
+        - text: "allow-all"
+          correct: false
+          explanation: ""
+        - text: "allow-interpolation"
           correct: false
           explanation: ""
 
@@ -82,13 +96,49 @@ details[open]::details-content {
 
 <video src="https://videos.ctfassets.net/in6v9lxmm5c8/6AyHA3WOuyFESDZAEfIhr1/0da32bc379d0694a97443171ed9ab55b/_____2024-09-14_17.26.05.mov" controls></video>
 
+## `interpolate-size: allow-keywords;`
+
+`interpolate-size` プロパティは `auto`, `min-content`, `max-content` といったキーワード値によるアニメーションを許可させるかどうかを指定するプロパティです。`root` 要素において `interpolate-size: allow-keywords;` を指定することでキーワード値によるアニメーションを許可します。
+
+```css
+:root {
+  interpolate-size: allow-keywords;
+}
+
+details::details-content {
+  display: block;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+details[open]::details-content {
+  /* interpolate-size: allow-keywords; により calc-size が不要 */
+  height: auto;
+  opacity: 1;
+  overflow: auto;
+}
+```
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/azukiazusa1/embed/PorvwmX?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/azukiazusa1/pen/PorvwmX">
+  Untitled</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+このプロパティは Web の互換性を保つ目的で導入されました。デフォルトの値は `numeric-only` であり、キーワード値によるアニメーションは許可されていません。そのため互換性が問題にならない場合には、`:root` 要素でページ全体にオプトインする使用方法が推奨されています。
+
 ## まとめ
 
 - `height: auto;` な要素のアニメーションを実装するためには、`calc-size()` 関数を使うことができる
 - `calc-size()` 関数を使うことで、`auto`, `min-content`, `max-content`, `fit-content`, `stretch`, `contain` などの値を具体的な値に変換して返すことができる
 - `calc-size(auto, size)` は `auto` と同じ値を返す
 - `calc-size(auto, size + 10px)` のように指定することで、`auto` から `10px` 大きくなる値を指定することもできる
+- `interpolate-size: allow-keywords;` はキーワード値によるアニメーションを許可するプロパティである
 
 ## 参考
 
+- [9.3. Interpolating calc-size()](https://www.w3.org/TR/2024/WD-css-values-5-20240913/#calc-size)
+- [9.4. Interpolating sizing keywords: the interpolate-size property](https://www.w3.org/TR/2024/WD-css-values-5-20240913/#interpolate-size)
 - [csswg-drafts/css-values-5/calc-size-explainer.md at main · w3c/csswg-drafts](https://github.com/w3c/csswg-drafts/blob/main/css-values-5/calc-size-explainer.md)
