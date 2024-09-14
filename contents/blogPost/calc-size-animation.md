@@ -5,44 +5,42 @@ slug: "calc-size-animation"
 about: "CSS において height プロパティを 0 から auto に変化させた場合に、アニメーションが適用されないのはよく知られた問題です。この記事では calc-size() 関数を使って height: auto; な要素のアニメーションを実装する方法を紹介します。"
 createdAt: "2024-09-14T15:06+09:00"
 updatedAt: "2024-09-14T15:06+09:00"
-tags: ["css"]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5KmmkJ9bsVEjBZtfVTuf4q/164b74d0014bc1177449cdd146d5a2f9/shiromi_osashimi_7881-768x591.png"
-  title: "白身のお刺身のイラスト"
+  title: "shiromi osashimi 7881-768x591"
 selfAssessment:
   quizzes:
     - question: "details 要素の中身を対象とする疑似要素はどれか？"
       answers:
         - text: "::details-content"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "::content"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "::details"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "::summary"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "interpolate-size プロパティでキーワード値によるアニメーションを許可するためにはどのような値を指定するか？"
       answers:
         - text: "numeric-only"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "allow-keywords"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "allow-all"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "allow-interpolation"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 !> `calc-size()` は 2024 年 9 月 14 日時点で Chrome v129 で #enable-experimental-web-platform-features フラグを有効にすることで利用可能です。
 
 CSS において `height` プロパティを `0` から `auto` に変化させた場合に、アニメーションが適用されないのはよく知られた問題です。アニメーションを適用するためには、具体的な値を指定する必要があるためです。そのため、JavaScript を使って要素の高さを計算してアニメーションを実装することが一般的でした。
