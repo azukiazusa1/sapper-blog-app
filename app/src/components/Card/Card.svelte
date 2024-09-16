@@ -156,7 +156,7 @@
 
   onMount(() => {
     // 画像をクリックした時、拡大表示する
-    const images = document.querySelectorAll("img");
+    const images = document.querySelectorAll("#contents img");
     images.forEach((image) => {
       image.addEventListener("click", () => {
         const modal = document.createElement("dialog");
