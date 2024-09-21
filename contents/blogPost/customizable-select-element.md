@@ -8,27 +8,25 @@ updatedAt: "2024-09-21T11:59+09:00"
 tags: ["HTML", "CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1gSl8JnUUlLEqKFeUBFgVP/9d02b79e906461a34bab8ce1cc5f4102/sanma-shichirin_20705-768x729.png"
-  title: "秋刀魚と七輪のイラスト"
+  title: "サンマと七輪のイラスト"
 selfAssessment:
   quizzes:
     - question: "カスタマイズ可能な `<select>` 要素を利用するためにはどのような CSS を指定する必要があるか？"
       answers:
         - text: "appearance: base-select;"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "appearance: custom-select;"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "display: select;"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "display: custom;"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 !> 2024/09/21 現在、カスタマイズ可能な `<select>` 要素は Chrome Canary の v130 以降で Experimental Web Platform Features フラグを有効にすることで利用可能です。
 
 従来の `<select>` 要素は CSS を利用したスタイルを適用できないため、多くの開発者にとって課題となっていました。この課題を解決するために JavaScript を用いて独自のセレクトボックスを実装することが一般的ですが、この方法はアクセシビリティやパフォーマンスの問題を引き起こすことがありました。
