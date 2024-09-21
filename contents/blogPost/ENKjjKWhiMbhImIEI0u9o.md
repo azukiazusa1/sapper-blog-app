@@ -35,7 +35,7 @@ published: true
 
 この問題を解決するために新しい既存の `<select>` 要素をカスタマイズする手段が提案されました。`<select>` 要素と `::picker(select)` 疑似要素に対して `appearance:base-select` を指定することで、開発者は `<select>` 要素のスタイルをカスタマイズをオプトインできるようになります。
 
--> カスタマイズ可能な `<select>` 要素は以前は `<selectlist>` 要素として提案されていました（https://azukiazusa.dev/blog/selectlist-element-for-a-more-customizable-select-box/）。新しい要素を作成せずに既存の `<select>` 要素を拡張する理由は次のコメントで述べられています。https://github.com/whatwg/html/issues/9799#issuecomment-1789202391 https://github.com/whatwg/html/issues/9799#issuecomment-1926411811
+-> カスタマイズ可能な `<select>` 要素は以前は `<selectlist>` 要素として提案されていました https://azukiazusa.dev/blog/selectlist-element-for-a-more-customizable-select-box/ 。新しい要素を作成せずに既存の `<select>` 要素を拡張する理由は次のコメントで述べられています。https://github.com/whatwg/html/issues/9799#issuecomment-1789202391 https://github.com/whatwg/html/issues/9799#issuecomment-1926411811
 
 ## `<select>` 要素のカスタマイズを有効にする
 
