@@ -68,7 +68,7 @@ closeButton.addEventListener("click", () => {
 
 ## close request をキャンセルする
 
-`oncancel` プロパティを使用することで close request を要求された場合にキャンセルすることができます。例えば、ダイアログのフォームに入力された内容が保存されていない場合、ユーザーがダイアログを閉じる際に本当に閉じるか確認するようなケースで使用できます。
+`oncancel` プロパティを使用することで close request を要求された場合にキャンセルできます。例えば、ダイアログのフォームに入力された内容が保存されていない場合、ユーザーがダイアログを閉じる際に本当に閉じるか確認するようなケースで使用できます。
 
 ```js
 const dialog = document.getElementById("my-dialog");
@@ -95,7 +95,7 @@ watcher.oncancel = (e) => {
 };
 ```
 
-`watcher.oncancel` プロパティは close request が要求された場合に呼び出されるコールバック関数を定義します。`e.cancelable` が `true` の場合、`e.preventDefault()` を呼び出すことで 閉じる動作を無効にします。その後、`confirm()` を使用してユーザーに確認を求め、ユーザーが OK をクリックした場合に `watcher.close()` を呼び出すことでダイアログを閉じます。`watcher.close()` は `watcher.closeRequest()` と異なり、直ちに `onclose` プロパティで定義された処理を実行します。
+`watcher.oncancel` プロパティは close request が要求された場合に呼び出されるコールバック関数を定義します。`e.cancelable` が `true` の場合、`e.preventDefault()` を呼び出すことで閉じる動作を無効にします。その後、`confirm()` を使用してユーザーに確認を求め、ユーザーが OK をクリックした場合に `watcher.close()` を呼び出すことでダイアログを閉じます。`watcher.close()` は `watcher.closeRequest()` と異なり、直ちに `onclose` プロパティで定義された処理を実行します。
 
 ~> 不正利用を防止するために、`oncancel` イベントはページが `history-action activation` を有している場合のみ有効になります。`history-action activation` は close request があった際に失われます。つまり、1 度 `oncancel` イベントで close request をキャンセルした場合、次回の close request では `oncancel` イベントは発生せず必ず `onclose` イベントが発生します。
 
