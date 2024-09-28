@@ -95,13 +95,13 @@ watcher.oncancel = (e) => {
 
 `watcher.oncancel` プロパティは close request が要求された場合に呼び出されるコールバック関数を定義します。`e.cancelable` が `true` の場合、`e.preventDefault()` を呼び出すことで閉じる動作を無効にします。その後、`confirm()` を使用してユーザーに確認を求め、ユーザーが OK をクリックした場合に `watcher.close()` を呼び出すことでダイアログを閉じます。`watcher.close()` は `watcher.closeRequest()` と異なり、直ちに `onclose` プロパティで定義された処理を実行します。
 
-~> 不正利用を防止するために、`oncancel` イベントはページが `history-action activation` を有している場合のみ有効になります。`history-action activation` は close request があった際に失われます。つまり、1 度 `oncancel` イベントで close request をキャンセルした場合、次回の close request では `oncancel` イベントは発生せず必ず `onclose` イベントが発生します。
-
 <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/azukiazusa1/embed/eYqNXgp?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/azukiazusa1/pen/eYqNXgp">
   Untitled</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
+
+-> 不正利用を防止するために、`oncancel` イベントはページが `history-action activation` を有している場合のみ有効になります。`history-action activation` は close request があった際に失われます。つまり、1 度 `oncancel` イベントで close request をキャンセルした場合、次回の close request では `oncancel` イベントは発生せず必ず `onclose` イベントが発生します。
 
 ## まとめ
 
