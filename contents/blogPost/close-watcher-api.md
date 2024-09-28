@@ -8,27 +8,25 @@ updatedAt: "2024-09-28T15:08+09:00"
 tags: ["JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3zdNYy46zgKqtSKzqQj5wW/9655002afba9045d3d2331f235084da3/wagashi_yatsuhashi_11036-768x542.png"
-  title: "八ツ橋のイラスト"
+  title: "wagashi yatsuhashi 11036-768x542"
 selfAssessment:
   quizzes:
     - question: "CloseWatcher のインスタンスで close request を購読するためのプロパティはどれか？"
       answers:
         - text: "onclose"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "onrequestclose"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "oncancel"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ondestroy"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 !> `CloseWatcher` API は 2024 年 9 月 28 日現在 Chrome, Edge v126 以降でのみ利用可能です。
 
 ダイアログやポップアップ、ピッカー、通知などの UI はユーザーによって閉じられることが想定されています。このような UI は閉じるボタンによって閉じられる他に、デバイス固有のメカニズムによっても閉じられることが期待されています。例えば、キーボードでは `Esc` キーを押すことで、Android では戻るボタンを押すことで UI を閉じることができます。
