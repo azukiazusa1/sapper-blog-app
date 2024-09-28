@@ -12,18 +12,19 @@ thumbnail:
 selfAssessment:
   quizzes:
     - question: "CloseWatcher のインスタンスで close request を購読するためのプロパティはどれか？"
-      - text: "onclose"
-        correct: true
-        explanation: ""
-      - text: "onrequestclose"
-        correct: false
-        explanation: ""
-      - text: "oncancel"
-        correct: false
-        explanation: ""
-      - text: "ondestroy"
-        correct: false
-        explanation: ""
+      answers:
+        - text: "onclose"
+          correct: true
+          explanation: ""
+        - text: "onrequestclose"
+          correct: false
+          explanation: ""
+        - text: "oncancel"
+          correct: false
+          explanation: ""
+        - text: "ondestroy"
+          correct: false
+          explanation: ""
 
 published: true
 ---
