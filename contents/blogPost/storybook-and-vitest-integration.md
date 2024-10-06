@@ -5,7 +5,7 @@ slug: "storybook-and-vitest-integration"
 about: "Storybook v8.3 以降、ストーリーをテストするためのテストランナーとして Vitest を使用できるようになりました。Vitest を使用することで複雑なセットアップが不要になります。また、推奨されているブラウザモードを使用することで、実際のブラウザでの挙動をより正確に再現できます。"
 createdAt: "2024-10-06T15:39+09:00"
 updatedAt: "2024-10-06T15:39+09:00"
-tags: ["Storybook", "Vitest"]
+tags: ["storybook", "Vitest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1H045Ib8GgFJzLFn2eqfJ6/3d6e6093d220e641143e50b5488a9d3d/sweets_mont-blanc_cake_illust_3604-768x620.png"
   title: "モンブランケーキのイラスト"
@@ -18,17 +18,15 @@ selfAssessment:
           explanation: "必要なパッケージをインストールし、設定も自動で行うことができます。"
         - text: "npm install @storybook/experimental-addon-test"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "npx storybook add @storybook/vitest"
           correct: false
           explanation: "@storybook/vitest というパッケージは存在しません。"
         - text: "npm install @storybook/vitest"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 !> Storybook Vitest Plugin は 2024 年 10 月 5 日現在実験的な機能として提供されており、API が将来にわたって変更される可能性があります。
 
 Storybook v8.3 より、ストーリーをテストするためのテストランナーとして Vitest を使用できるようになりました。今までも `composeStories` 関数で作成済みのストーリーを使いまわし、Jest などのテストランナーを用いてたテストを行うことができましたが、複雑なセットアップが必要でした。
