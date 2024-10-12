@@ -50,7 +50,6 @@
                 href="https://qiita.com/azukiazusa">Qiita</a
               >
             </p>
-            <p class="mt-2">3年目のエンジニアです。</p>
           </div>
         </div>
         <div
