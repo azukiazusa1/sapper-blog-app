@@ -56,7 +56,7 @@ Chrome のビルドイン AI は現在デスクトップパソコンにフォー
 
 1. Google の [生成 AI の使用禁止に関するポリシー](https://policies.google.com/terms/generative-ai/use-policy) を確認
 2. [Chrome Canary](https://www.google.com/chrome/canary/) をインストール。バージョンが v129.0.6639.0 以上であることを確認
-3. インストールが完了したらアドレスバーに `chrome://flags` と入力して設定画面を開きます。以下の 2 つのフラグを設定して再起動する
+3. インストールが完了したらアドレスバーに `chrome://flags` と入力して設定画面を開く。以下の 2 つのフラグを設定して再起動する
 
 - Enables optimization guide on device: Enabled BypassPerfRequirement
 - Prompt API for Gemini Nano: Enabled
@@ -71,16 +71,15 @@ Chrome のビルドイン AI は現在デスクトップパソコンにフォー
 
 `"readily"` と表示されれば、AI モデルが利用可能です。それ以外の場合は、以下の手順を実行してください。
 
-1. `await ai.assistant.create();` を実行する。この時点では必ず失敗する
+1. `await ai.assistant.create();` を実行する。この時点では失敗するが、AI モデルのダウンロードが開始される
 2. Chrome を再起動する
 3. `chrome://components` にアクセスして、`Optimization Guide On Device Model` のステータスを確認する。「ステータス - ダウンロードしています」が表示されていれば正常に AI モデルのダウンロードが行われているので、ダウンロードが完了するまで待機する「ステータス　- 更新完了」が表示されたら、AI モデルが利用可能
 
 ### Summarization API を有効にする
 
-Summarization API を有効にするには、以下の手順を実行します。
+各 API は個別にフラグを有効にする必要があります。Summarization API を有効にするには、以下の手順を実行します。
 
-1. Chrome のアドレスバーに `chrome://flags/#summarization-api-for-gemini-nano` と入力して、`Summarization API for Gemini Nano
-` を `Enabled` に設定し、Chrome を再起動する
+1. Chrome のアドレスバーに `chrome://flags/#summarization-api-for-gemini-nano` と入力して、`Summarization API for Gemini Nano` を `Enabled` に設定し、Chrome を再起動する
 2. Developer Tools を開き、Console タブで以下のコードを実行して、API が利用可能か確認する
 
 ```js
@@ -145,9 +144,15 @@ console.log(result);
 // JavaScript is a versatile programming language used for web development and beyond.
 ```
 
-もしくは、`summarizer.summarize()` を呼び出す際にオプションを渡すこともできます。
+`summarizer.summarize()` を呼び出す際に個別のコンテキストを指定することもできます。
 
 ```js
+const summarizer = await ai.summarizer.create({
+  sharedContext: "An article from Web front-end development blog",
+  type: "headline",
+  length: "short",
+});
+
 const result = await summarizer.summarize(text, {
   context: "This article was written by a web developer.",
 });
@@ -155,7 +160,7 @@ const result = await summarizer.summarize(text, {
 
 ### ダウンロードの進行状況を表示する
 
-`ai.summarizer.create()` を実行したとき、AI モデルがダウンロードされていない場合には `ai.summarizer.capabilities()` の `available` プロパティが `"after-download"` となります。この場合には、ダウンロードが完了するまで AI の機能を利用できません。
+`ai.summarizer.create()` を実行したとき、AI モデルがダウンロードされていない場合には `ai.summarizer.capabilities()` の `available` プロパティが `"after-download"` となります。この場合には、AI モデルのダウンロードが開始され、完了するまで AI の機能を利用できません。
 
 AI モデルのダウンロードの進行状況は `downloadprogress` イベントを使用して監視できます。以下のコードでは `available` プロパティが `"readily"` の場合は即座に実行し、それ以外の場合はダウンロードの進行状況を表示します。`summarizer.ready` プロパティを使用することで、ダウンロードが完了したかどうかを確認できます。
 
@@ -224,6 +229,15 @@ for await (const chunk of stream) {
 ```
 
 <video src="https://videos.ctfassets.net/in6v9lxmm5c8/2lWPh0Q24hctRnPQkW81ny/e8ac920cb615d48d6a50b066f8432f2c/_____2024-10-13_17.25.39.mov" controls></video>
+
+## まとめ
+
+- Chrome Canary には AI モデルを使用するための Web プラットフォーム API が提供されている
+- Summarization API を使用して、文章の要約を生成できる
+- 要約を生成する際には、コンテキストや要約の長さを指定できる
+- AI モデルがダウンロードされていない場合は、AI モデルのダウンロードが開始され、完了するまで AI の機能を利用できない。`downloadprogress` イベントを使用してダウンロードの進行状況を表示できる
+- `AbortController` を使用することで、要約を中断できる
+- `summarizer.summarizeStreaming()` を使用することで、ストリーミングで要約を取得できる
 
 ## 参考
 
