@@ -8,27 +8,25 @@ updatedAt: "2024-10-13T13:27+09:00"
 tags: ["AI", "JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/8jYj0zIygRVhqc8IhKuHD/489b061cfdd9715b05d079057e65c301/desert_sundae_16897.png"
-  title: "デザートのサンデーのイラスト"
+  title: "サンデーのイラスト"
 selfAssessment:
   quizzes:
     - question: "Summarization API を使用してストリーミングで要約を取得するためにはどのメソッドを使用するか？"
       answers:
         - text: "summarizer.summarize()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "summarizer.summarize({ streaming: true })"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "summarizer.summarizeStreaming()"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "summarizer.summarizeStream()"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 Google では大規模言語モデル（LLM）などの AI モデルをブラウザに直接統合するように設計された、Web プラットフォーム API とブラウザ機能を開発しています。これには Gimini Nano という AI モデルが含まれており、デスクトップパソコンにおいてローカルで実行されるように設計されています。
 
 ブラウザに直接 AI が組み込まることにより、開発者は独自の AI モデルをサーバーにデプロイすることなく、AI を活用した機能を提供できます。ユーザーにとっても、サーバーへのリクエストが不要なため、AI を利用した機能が高速に動作することが期待できますし、オフラインでも AI 機能を利用できるといった利点があります。
