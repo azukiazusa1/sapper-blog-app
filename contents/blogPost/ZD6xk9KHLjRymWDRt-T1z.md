@@ -231,3 +231,4 @@ for await (const chunk of stream) {
 - [web-ai-demos/summarization-api-playground/src/main.ts at main · GoogleChromeLabs/web-ai-demos](https://github.com/GoogleChromeLabs/web-ai-demos/blob/main/summarization-api-playground/src/main.ts)
 - [Summarization API の早期プレビュー版が利用可能に  |  Blog  |  Chrome for Developers](https://developer.chrome.com/blog/august2024-summarization-ai?hl=ja)
 - [Summarizer API - Chrome Platform Status](https://chromestatus.com/feature/5193953788559360)
+- [組み込みの AI  |  AI on Chrome  |  Chrome for Developers](https://developer.chrome.com/docs/ai/built-in?hl=ja)
