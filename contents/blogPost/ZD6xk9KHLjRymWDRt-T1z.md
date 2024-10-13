@@ -15,16 +15,16 @@ selfAssessment:
       answers:
         - text: "summarizer.summarize()"
           correct: false
-          explanation: null
+          explanation: ""
         - text: "summarizer.summarize({ streaming: true })"
           correct: false
-          explanation: null
+          explanation: ""
         - text: "summarizer.summarizeStreaming()"
           correct: true
-          explanation: null
+          explanation: ""
         - text: "summarizer.summarizeStream()"
           correct: false
-          explanation: null
+          explanation: ""
 
 published: true
 ---
