@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "translation.canDetect()"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "translation.isAvailable()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ai.canDetect()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ai.isAvailable()"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 !>　Language Detection API は標準化されていない提案です。2024 年 10 月 14 現在、Chrome Canary v129 以降で利用可能です。
 
 ある言語を別の言語に翻訳する際には、まず元の言語を特定する必要があります。言語を特定するためにサーバーサイドに問い合わせる必要がありましたが、Language Detection API を利用することで Chrome に組み込まれた AI により、クライアントサイドで言語を判定することが可能になります。
