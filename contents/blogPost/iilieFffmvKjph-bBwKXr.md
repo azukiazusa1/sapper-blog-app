@@ -2,7 +2,7 @@
 id: iilieFffmvKjph-bBwKXr
 title: "Chrome の組み込み AI の Language Detection API で言語を判定する"
 slug: "chrome-internal-ai-language-detection-api"
-about: "Language Detection API は Chrome に組み込まれた AI により、クライアントサイドで言語を判定するための提案です。この API を利用することで、テキストの言語を判定することが可能になります。2
+about: "Language Detection API は Chrome に組み込まれた AI により、クライアントサイドで言語を判定するための提案です。この API を利用することで、テキストの言語を判定することが可能になります。"
 createdAt: "2024-10-14T16:58+09:00"
 updatedAt: "2024-10-14T16:58+09:00"
 tags: ["JavaScript", "Chrome", "AI"]
