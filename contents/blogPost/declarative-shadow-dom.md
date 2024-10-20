@@ -13,22 +13,20 @@ selfAssessment:
   quizzes:
     - question: "宣言型 Shadow DOM はどの要素を使用して Shadow DOM を構築するか？"
       answers:
-        - text: '<shadow-dom mode="open">'
+        - text: "<shadow-dom mode=\"open\">"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "<shadow-root mode='open'>"
           correct: false
-          explanation: ""
-        - text: '<template shadowrootmode="open">'
+          explanation: null
+        - text: "<template shadowrootmode=\"open\">"
           correct: true
-          explanation: ""
-        - text: '<shadow-dom shadowrootmode="open">'
+          explanation: null
+        - text: "<shadow-dom shadowrootmode=\"open\">"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [Shadow DOM](https://developer.mozilla.org/ja/docs/Web/API/Web_components/Using_shadow_DOM) は Web Components を構成する 3 つの技術の 1 つです。Shadow DOM はコンポーネントのカプセル化を実現します。Shadow DOM で定義されたスタイルは Shadow DOM の外部に影響を与えず、また外部のスタイルの影響を受けません。
 
 Shadow DOM は再利用可能なコンポーネントを構築するために重要な技術ですが、従来は JavaScript を使用しなければ Shadow DOM を構築できないという問題がありました。Shadow DOM を構築するためには、ホストとなる DOM 要素で `attachShadow` メソッドを使用して Shadow DOM を構築し、`innerHTML` プロパティもしくは `appendChild` メソッドを使用して Shadow DOM に HTML を追加する必要があります。
