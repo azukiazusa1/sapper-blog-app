@@ -8,12 +8,10 @@ updatedAt: "2024-10-20T21:06+09:00"
 tags: ["React", "Web Components"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4nzzaC4dV8JumS0sEBj8cF/fc329a4105bec123124bf31a6effaef6/log-house19113-768x670.png"
-  title: "ログハウスのイラスト"
+  title: "log-house19113-768x670"
 selfAssessment: null
-
 published: true
 ---
-
 [@r2wc/react-to-web-component](https://) は React コンポーネントを [カスタム要素](https://developer.mozilla.org/ja/docs/Web/API/Web_components/Using_custom_elements) に変換するためのライブラリです。このライブラリを使用することで、React コンポーネントを任意の HTML 要素として使用することが可能になります。
 
 ## 使い方
