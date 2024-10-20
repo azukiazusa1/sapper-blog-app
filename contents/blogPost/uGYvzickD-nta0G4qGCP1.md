@@ -87,7 +87,6 @@ customElements.define("hello-name", HelloNameComponent);
 
 ### 関数型 Props の受け取り
 
-"
 Props の型として `"function"` を指定する場合には、`window` オブジェクト（つまりグローバルスコープ）に関数を登録する必要があります。以下の例では、`onClick` という関数型 Props を受け取る React コンポーネントを Web Components に変換しています。
 
 ```jsx
