@@ -12,7 +12,7 @@ thumbnail:
 selfAssessment: null
 published: true
 ---
-[@r2wc/react-to-web-component](https://) は React コンポーネントを [カスタム要素](https://developer.mozilla.org/ja/docs/Web/API/Web_components/Using_custom_elements) に変換するためのライブラリです。このライブラリを使用することで、React コンポーネントを任意の HTML 要素として使用することが可能になります。
+[@r2wc/react-to-web-component](https://www.npmjs.com/package/@r2wc/react-to-web-component) は React コンポーネントを [カスタム要素](https://developer.mozilla.org/ja/docs/Web/API/Web_components/Using_custom_elements) に変換するためのライブラリです。このライブラリを使用することで、React コンポーネントを任意の HTML 要素として使用することが可能になります。
 
 ## 使い方
 
