@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: ".insertRule()"
           correct: true
-          explanation: ""
+          explanation: null
         - text: ".unshiftRule()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: ".replaceSync()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: ".pushRule()"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 `CSSStyleSheet` インターフェースは、JavaScript でスタイルシートを構築し、操作するための API です。`CSSStyleSheet()` コンストラクターで新しいスタイルシートを作成し、`.replaceSync()` メソッドでスタイルを適用できます。
 
 スタイルが適用された `CSSStyleSheet` オブジェクトは、`document.adoptedStyleSheets` プロパティに代入することで、ページ全体に適用されます。
