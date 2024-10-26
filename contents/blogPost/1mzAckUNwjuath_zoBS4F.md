@@ -18,7 +18,7 @@ selfAssessment:
           explanation: ""
         - text: ".unshiftRule()"
           correct: false
-          explanation: null
+          explanation: ""
         - text: ".replaceSync()"
           correct: false
           explanation: ""
