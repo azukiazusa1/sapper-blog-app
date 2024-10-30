@@ -14,6 +14,11 @@
   export let thumbnail: { title: string; url: string };
   export let slug: string;
 
+  // <baseline-status> を読み込む
+  onMount(() => {
+    import("baseline-status");
+  });
+
   onMount(() => {
     // コードブロックに、コピー用のボタンを追加
     const codeBlocks = document.querySelectorAll("pre");

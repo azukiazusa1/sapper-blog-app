@@ -34,4 +34,9 @@ describe("rehype-alert", () => {
     const { value } = await processor.process(`?> This is a warning`);
     expect(value).toMatchSnapshot();
   });
+
+  test("b> で始まる行を baseline-status に変換する", async () => {
+    const { value } = await processor.process(`b> 12345`);
+    expect(value).toMatchSnapshot();
+  });
 });
