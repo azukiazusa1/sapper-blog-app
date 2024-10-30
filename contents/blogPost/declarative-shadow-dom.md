@@ -55,6 +55,8 @@ JavaScript を用いたアプローチの欠点は、サーバー側でレンダ
 
 宣言型 Shadow DOM（Declarative Shadow DOM）は、上記の問題を解決するために提案され、現在では [Baseline 2024](https://web.dev/baseline/2024?hl=ja) に組み込まれているため、すべてのモダンブラウザで利用可能です。
 
+b> declarative-shadow-dom
+
 ## 宣言型 Shadow DOM を作成する
 
 宣言型 Shadow DOM は、`<template>` 要素を使用して Shadow DOM を構築します。`<template>` 要素に `shadowrootmode` 属性の値に `open` または `closed` を指定することで HTML パーサーにより Shadow DOM が構築されます。`shadowrootmode` 属性に渡す値は `attachShadow` メソッドの `mode` パラメータと同じです。`open` の場合、外部の JavaScript から Shadow DOM にアクセス可能になります。

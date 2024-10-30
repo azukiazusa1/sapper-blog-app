@@ -29,6 +29,8 @@ published: true
 ---
 `CSSStyleSheet` インターフェースは、JavaScript でスタイルシートを構築し、操作するための API です。`CSSStyleSheet()` コンストラクターで新しいスタイルシートを作成し、`.replaceSync()` メソッドでスタイルを適用できます。
 
+b> constructed-stylesheets
+
 スタイルが適用された `CSSStyleSheet` オブジェクトは、`document.adoptedStyleSheets` プロパティに代入することで、ページ全体に適用されます。
 
 ```js
