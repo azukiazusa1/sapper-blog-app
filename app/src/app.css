@@ -492,5 +492,5 @@ section[data-footnotes] {
 
 baseline-status {
   color: inherit;
-  @apply border border-gray-300 dark:border-zinc-700;
+  @apply my-6 border border-gray-300 md:my-8 dark:border-zinc-700;
 }
