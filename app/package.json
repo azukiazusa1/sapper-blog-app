@@ -36,6 +36,7 @@
     "@types/react": "^18.0.26",
     "@urql/core": "^4.0.0",
     "autoprefixer": "^10.2.4",
+    "baseline-status": "^1.0.7",
     "bits-ui": "^0.21.0",
     "clsx": "^2.1.0",
     "graphql": "^16.0.0",

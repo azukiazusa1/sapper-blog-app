@@ -170,6 +170,21 @@ const rehypeAlert: Plugin = () => {
         // @ts-expect-error tree に children はある
         tree.children.splice(index, 1, ...node.children);
       }
+
+      if (value.startsWith("b>")) {
+        node.children = [
+          h(
+            "baseline-status",
+            {
+              featureId: value.slice(2).trimStart(),
+            },
+            [],
+          ),
+        ];
+
+        // @ts-expect-error tree に children はある
+        tree.children.splice(index, 1, ...node.children);
+      }
     });
   };
 };

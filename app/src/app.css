@@ -489,3 +489,8 @@ section[data-footnotes] {
   font-size: 0.9em;
   @apply mt-8 border-t border-gray-300 dark:border-zinc-700;
 }
+
+baseline-status {
+  color: inherit;
+  @apply border border-gray-300 dark:border-zinc-700;
+}
