@@ -1,8 +1,8 @@
 ---
 id: FYbTNdYRpcMFBLw9pP1vn
-title: 'Next.js の "use cache" ディレクティブによるキャッシュ制御'
+title: "Next.js の \"use cache\" ディレクティブによるキャッシュ制御"
 slug: "cache-control-with-use-cache-directive-in-nextjs"
-about: 'Next.js の App Router はデフォルトでキャッシュされる設計でリリースされました。一方でデフォルトでキャッシュされることに対して不満を持つ開発者も多かったように思います。このようなフィードバックを受けて、Next.js 15 ではいくつかのキャッシュ戦略が変更されました。さらに現在 canary チャンネルで提供されている dynamicIO フラグを有効にすることで、"use cache" ディレクティブを用いてキャッシュを制御できるようになります。'
+about: "Next.js の App Router はデフォルトでキャッシュされる設計でリリースされました。一方でデフォルトでキャッシュされることに対して不満を持つ開発者も多かったように思います。このようなフィードバックを受けて、Next.js 15 ではいくつかのキャッシュ戦略が変更されました。さらに現在 canary チャンネルで提供されている dynamicIO フラグを有効にすることで、\"use cache\" ディレクティブを用いてキャッシュを制御できるようになります。"
 createdAt: "2024-11-02T14:07+09:00"
 updatedAt: "2024-11-02T14:07+09:00"
 tags: ["Next.js"]
@@ -15,19 +15,18 @@ selfAssessment:
       answers:
         - text: "cacheExpire()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "cacheLife()"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "cacheTag()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "cacheControl()"
           correct: false
-          explanation: ""
+          explanation: null
 published: true
 ---
-
 Next.js の App Router では最もパフォーマンスの高いオプションで提供されるために、デフォルトでキャッシュが有効になっており、必要に応じてオプトアウトする設計でリリースされました。例えば global `fetch` 関数に patch が当てられており、ネットワークリクエストで取得されたデータは何もオプションを設定せずともキャッシュされ再利用されます。キャッシュを更新するためには開発者が明示的に revalidate する必要がありました。
 
 Next.js のキャッシュ戦略は確かにパフォーマンスを向上させるうえで有効なものとなっていました。一方で[複雑なキャッシュの構造](https://nextjs.org/docs/app/building-your-application/caching) を理解することが難しいため学習コストが高く、またキャッシュの事故は重大なインシデントに繋がりかねないこともあるため、デフォルトでキャッシュされることに対して不満を持つ開発者も多かったように思います。
