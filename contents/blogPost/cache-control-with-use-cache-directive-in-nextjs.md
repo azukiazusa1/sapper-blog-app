@@ -260,7 +260,7 @@ export default function Page() {
 
 `/a` と `/b` にアクセスすると、ページをまたいで同じ ID に対しては同じ数値が表示されることが確認できます。この結果はキャッシュの有効期限が切れるまで、ページをリロードしても変わりません。
 
-<video src="https://videos.ctfassets.net/in6v9lxmm5c8/2k5Vn4Ld5tyA6rySp4PPIc/7f2aab0d030b5349f6b5df7aeb54987f/_____2024-11-02_16.22.54.mov"></video>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/2k5Vn4Ld5tyA6rySp4PPIc/7f2aab0d030b5349f6b5df7aeb54987f/_____2024-11-02_16.22.54.mov" controls></video>
 
 ### 関数単位でのキャッシュ
 
