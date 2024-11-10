@@ -26,7 +26,7 @@ selfAssessment:
           correct: false
           explanation: ""
 
-published: false
+published: true
 ---
 
 OpenTelemetry は Observability のフレームワークであり、トレース・メトリクス・ログなどのテレメトリーデータを作成、管理するためのツールキットです。OpenTelemetry はベンダーに依存しない形で標準化されたプロトコルとツールを提供していることが特徴です。
