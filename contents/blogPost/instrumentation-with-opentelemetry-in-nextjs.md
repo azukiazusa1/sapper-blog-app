@@ -73,7 +73,7 @@ https://opentelemetry.io/docs/collector/
 
 https://github.com/vercel/opentelemetry-collector-dev-setup/tree/main
 
-```yml:docker-compose.yml
+```yaml:docker-compose.yml
 version: "2"
 services:
   # Jaeger
@@ -174,7 +174,7 @@ service:
 
 最後に Prometheus の設定ファイル `prometheus.yml` を作成します。
 
-```yml:prometheus.yml
+```yaml:prometheus.yml
 scrape_configs:
   - job_name: 'otel-collector'
     scrape_interval: 10s
