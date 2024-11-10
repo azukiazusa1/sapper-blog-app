@@ -8,27 +8,25 @@ updatedAt: "2024-11-10T17:53+09:00"
 tags: ["Next.js", "OpenTelemetry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5ToSDYLHmQXAx4yXgzqhzd/6ce67aa462ff0f282bc3babb59f69e8d/marron_igaguri_illust_4409-768x632.png"
-  title: "いがぐりのイラスト"
+  title: "marron igaguri illust 4409-768x632"
 selfAssessment:
   quizzes:
     - question: "instrumentation.ts ファイルで export する関数は次のうちどれか？"
       answers:
         - text: "register()"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "initialize()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "setup()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "configure()"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 OpenTelemetry は Observability のフレームワークであり、トレース・メトリクス・ログなどのテレメトリーデータを作成、管理するためのツールキットです。OpenTelemetry はベンダーに依存しない形で標準化されたプロトコルとツールを提供していることが特徴です。
 
 https://opentelemetry.io/
