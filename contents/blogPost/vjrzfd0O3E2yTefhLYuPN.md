@@ -11,20 +11,20 @@ thumbnail:
   title: "いがぐりのイラスト"
 selfAssessment:
   quizzes:
-    question: "instrumentation.ts ファイルで export する関数は次のうちどれか？"
-    answers:
-      - text: "register()"
-        correct: true
-        explanation: ""
-      - text: "initialize()"
-        correct: false
-        explanation: ""
-      - text: "setup()"
-        correct: false
-        explanation: ""
-      - text: "configure()"
-        correct: false
-        explanation: ""
+    - question: "instrumentation.ts ファイルで export する関数は次のうちどれか？"
+      answers:
+        - text: "register()"
+          correct: true
+          explanation: ""
+        - text: "initialize()"
+          correct: false
+          explanation: ""
+        - text: "setup()"
+          correct: false
+          explanation: ""
+        - text: "configure()"
+          correct: false
+          explanation: ""
 
 published: false
 ---
