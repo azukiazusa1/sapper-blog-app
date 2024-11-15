@@ -11,6 +11,6 @@
   <div
     class="flex h-10 w-60 items-center rounded-l-lg pr-5 opacity-80 focus:outline-none"
   >
-    検索
+    けんさく
   </div>
 </div>
