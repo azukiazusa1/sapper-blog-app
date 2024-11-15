@@ -12,7 +12,7 @@ thumbnail:
 selfAssessment: null
 published: true
 ---
-!> `URL.canParse()` メソッドは 2023 年 10 月 15 日現在 Firefox 115、Safari 17 以降でのみ利用可能です。
+b> url-canparse
 
 JavaScript において URL が有効かどうか判定するために、[URL コンストラクター](https://developer.mozilla.org/ja/docs/Web/API/URL/URL) を使用する方法がよく知られています。
 
