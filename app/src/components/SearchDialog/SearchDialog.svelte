@@ -32,6 +32,12 @@
             many_results: "[SEARCH_TERM] の検索結果（[COUNT] 件）",
             one_result: "[SEARCH_TERM] の検索結果（[COUNT] 件）",
           },
+          processResult: (result) => {
+            // 何故か &amp; が含まれているので置換する
+            // https://github.com/CloudCannon/pagefind/issues/459
+            result.meta.image = result.meta.image.replaceAll("&amp;", "&");
+            return result;
+          },
         });
         document
           .querySelector<HTMLElement>(".pagefind-ui__search-input")
