@@ -15,33 +15,32 @@ selfAssessment:
       answers:
         - text: "package-lock.json"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "vlk-lock.json"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "vlt.json"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "vlt.lock"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "vlt でパッケージをローカルにインストールせずに実行するためのコマンドは次のうちどれか？"
       answers:
         - text: "vlt exec <pkg>"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "vlt run <pkg>"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "vlx <pkg>"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "vlt <pkg>"
           correct: false
-          explanation: ""
+          explanation: null
 published: true
 ---
-
 vlt は npm と互換性のあるパッケージマネージャーです。`npm` と同じように、パッケージのインストールや script の実行ができます。また、npm registry 互換のサーバーレジストリである vsr も同時に提供されています。
 
 https://www.vlt.sh/
