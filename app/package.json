@@ -91,7 +91,7 @@
     "axe-html-reporter": "^2.2.5",
     "axe-playwright": "^1.1.12",
     "concurrently": "^8.0.0",
-    "cssnano": "^6.0.0",
+    "cssnano": "^7.0.0",
     "dotenv": "^16.0.0",
     "esbuild": "^0.21.0",
     "eslint": "^8.56.0",
