@@ -4,6 +4,13 @@
 
 <ol class="relative border-s border-gray-200 dark:border-gray-700">
   <Timeline
+    eventTitle="JSConf JP 2024"
+    eventDate="2024-11-23"
+    presentationTitle="UI 開発におけるヘッドレス UI ライブラリの重要性とデザインシステムへの取り入れ方"
+    presentationLink="https://speakerdeck.com/azukiazusa1/ui-kai-fa-niokeru-hetudoresu-ui-raiburarinozhong-yao-xing-todezainsisutemuhenoqu-riru-refang"
+    description="昨今の Web 開発における UI はますます複雑化し、アクセシビリティの重要性が高まっています。ブラウザの標準機能だけでは実現できない複雑な UI を実装する際、アクセシビリティに関する誤った実装が原因で、ユーザー体験を損なう可能性があります。ヘッドレス UI ライブラリは、あらかじめアクセシビリティに配慮されたコンポーネントを提供することで、開発者がこれらの問題に悩まされることなく、高品質な UI を構築できるようになります。本セッションでは、ヘッドレス UI ライブラリを活用し、デザインシステムの一部として、アクセシブルでカスタマイズ可能な UI を構築する方法を紹介します。"
+  />
+  <Timeline
     eventTitle="各社の事例から学ぶウェブアクセシビリティ 〜フロントエンドの最前線〜"
     eventDate="2024-08-23"
     presentationTitle="チームで開発する際にアクセシビリティを保つ施策"
