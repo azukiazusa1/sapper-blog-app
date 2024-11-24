@@ -5,7 +5,7 @@ slug: "playwright-aria-snapshot"
 about: "Playwright の Aria snapshots はアクセシビリティツリーを比較することでテストする手法です。アクセシビリティツリーは DOM のスナップショットテストと比較して、外部から見た振る舞いが変わりづらいという利点があります。`.toMatchAriaSnapshot()` メソッドを使ってアクセシビリティツリーのスナップショットテストを行うことができます。"
 createdAt: "2024-11-24T09:23+09:00"
 updatedAt: "2024-11-24T09:23+09:00"
-tags: ["Playwright"]
+tags: ["playwright"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/tiNLsC5W4FyTSVop1ipSt/d952f01bf57e9d08592540dd08aa4049/toudai_sea_9886-768x630.png"
   title: "灯台と海の風景のイラスト"
@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "toMatchAriaSnapshot"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "toMatchSnapshot"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "toMatchAccessibilitySnapshot"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "toMatchA11ySnapshot"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 ソフトウェアテストの手法の 1 つに、スナップショットテストがあります。スナップショットテストは、テスト対象の出力を保存しておき、次回のテスト時に保存した出力と比較することで、テストが通ったかどうかを判断する手法です。フロントエンドのテストでは、特に UI のテストにおいてスナップショットテストがよく使われます。
 
 コンポーネントのレンダリング結果の DOM 構造を保存しておき、次回のテスト時に保存した DOM 構造と比較することで、コンポーネントのレンダリング結果が変わっていないかを確認できます。このように、スナップショットテストは予期せぬ変更を検知するのに役立ちます。
