@@ -23,7 +23,6 @@ html:has(dialog[open]) {
 @media (min-width: 768px) {
   #contents {
     line-height: 2.25rem;
-    font-size: 17px;
   }
 }
 
@@ -147,6 +146,11 @@ html:has(dialog[open]) {
 
 html.dark #contents .markdown-body a {
   color: #67b2ff;
+}
+
+/* 見出しの # */
+#contents a[aria-hidden="true"] {
+  text-decoration: none !important;
 }
 
 #contents table {
@@ -389,9 +393,6 @@ div[data-rehype-pretty-code-fragment] {
 
 .link-card {
   @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-gray-100 md:flex-row dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700;
-}
-
-.link-card:hover {
   text-decoration: none !important;
 }
 
