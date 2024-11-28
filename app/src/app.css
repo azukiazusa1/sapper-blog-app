@@ -23,6 +23,7 @@ html:has(dialog[open]) {
 @media (min-width: 768px) {
   #contents {
     font-size: 17px;
+    line-height: 2;
   }
 }
 
