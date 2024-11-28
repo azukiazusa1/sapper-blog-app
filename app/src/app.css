@@ -23,7 +23,7 @@ html:has(dialog[open]) {
 @media (min-width: 768px) {
   #contents {
     line-height: 2.25rem;
-    font-size: 1.125rem;
+    font-size: 17px;
   }
 }
 
@@ -142,14 +142,11 @@ html:has(dialog[open]) {
 #contents .markdown-body a {
   color: #0d74df;
   word-break: break-all;
+  text-decoration: underline;
 }
 
 html.dark #contents .markdown-body a {
   color: #67b2ff;
-}
-
-#contents a:hover {
-  text-decoration: underline;
 }
 
 #contents table {
