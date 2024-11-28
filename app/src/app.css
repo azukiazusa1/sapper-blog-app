@@ -283,7 +283,7 @@ h6 .icon-link::before {
 }
 
 .icon-link {
-  @apply mr-2 text-gray-400 no-underline;
+  @apply mr-2 text-gray-400 no-underline hover:text-gray-600;
 }
 
 .alert {
