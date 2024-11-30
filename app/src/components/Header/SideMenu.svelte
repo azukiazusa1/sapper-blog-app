@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { self } from 'svelte/legacy';
+  import { self } from "svelte/legacy";
 
   import { isMatchPath } from "$lib/utils";
   import { createEventDispatcher } from "svelte";
@@ -34,11 +34,10 @@
 
 <svelte:window onkeydown={handleWindowKeyDown} />
 {#if isOpen}
-  <!-- eslint-disable-next-line svelte/valid-compile -->
   <div
     onclick={self(close)}
     class="fixed inset-0 z-10 overflow-y-auto bg-zinc-900 opacity-50"
-></div>
+  ></div>
 {/if}
 <aside
   class={`fixed left-0 top-0 z-30 flex h-full w-64 transform flex-col justify-between overflow-auto border-r border-gray-200 bg-white transition-all duration-300 ease-in-out dark:border-zinc-700 dark:bg-zinc-800 ${

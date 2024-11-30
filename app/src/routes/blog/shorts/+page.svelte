@@ -12,7 +12,7 @@
   }
 
   let { data }: Props = $props();
-  let { shorts, posts } = $derived(data);
+  let { posts } = $derived(data);
 </script>
 
 <svelte:head>
@@ -36,7 +36,7 @@
   {/snippet}
   {#snippet shorts()}
   
-      <ShortList shorts={shorts.shortCollection.items} />
+      <ShortList shorts={data.shorts.shortCollection.items} />
 
       <div class="my-16 flex justify-center">
         <LinkButton href="/blog/shorts/page/1">もっと見る</LinkButton>
