@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "@theme.color: { primary: '#2979ff' }"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "@theme { @color { primary: '#2979ff' } }"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "@color { primary: '#2979ff' }"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "@theme { --color-primary: '#2979ff' }"
           correct: true
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 Tailwind CSS v4 における最も大きな変更点の 1 つは、CSS First Configurations です。今まで `tailwind.config.js` で設定していたテーマなどの設定を CSS ファイル内で行うことができるようになります。
 
 例えば以下のような `tailwind.config.js` があるとします。
