@@ -1,10 +1,15 @@
 <script lang="ts">
-  export let active: boolean;
+  interface Props {
+    active: boolean;
+    children?: import('svelte').Snippet;
+  }
+
+  let { active, children }: Props = $props();
 </script>
 
 <div
   class=" hidden h-full w-full data-[active]:block"
   data-active={active ? true : undefined}
 >
-  <slot />
+  {@render children?.()}
 </div>

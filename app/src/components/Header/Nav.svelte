@@ -1,8 +1,12 @@
 <script lang="ts">
   import { isMatchPath } from "$lib/utils";
 
-  export let segment: string;
-  export let routes: string[];
+  interface Props {
+    segment: string;
+    routes: string[];
+  }
+
+  let { segment, routes }: Props = $props();
 </script>
 
 <nav>

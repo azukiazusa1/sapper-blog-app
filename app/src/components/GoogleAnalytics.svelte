@@ -1,4 +1,6 @@
 <script>
+  import { run } from 'svelte/legacy';
+
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-nocheck
 
@@ -15,13 +17,13 @@
     window.gtag("config", id, { send_page_view: false });
   }
 
-  $: {
+  run(() => {
     if (typeof gtag !== "undefined") {
       window.gtag("config", id, {
         page_path: $page.url.pathname,
       });
     }
-  }
+  });
 </script>
 
 <svelte:head>

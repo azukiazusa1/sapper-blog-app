@@ -13,13 +13,17 @@
   import Prev from "../../../components/Icons/Prev.svelte";
   import SelfAssessment from "../../../components/SelfAssessment/SelfAssessment.svelte";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
 
-  $: post = data.post;
-  $: contents = data.contents;
-  $: contributors = data.contributors;
+  let { data }: Props = $props();
 
-  $: url = `${variables.baseURL}/blog/${post.slug}`;
+  let post = $derived(data.post);
+  let contents = $derived(data.contents);
+  let contributors = $derived(data.contributors);
+
+  let url = $derived(`${variables.baseURL}/blog/${post.slug}`);
 </script>
 
 <svelte:head>
@@ -75,15 +79,17 @@
         <GitHubEditButton slug={post.slug} />
         <div class="mt-4 flex">
           <ShareButton {url} text={post.title}>
-            <svelte:fragment slot="fallback">
-              <div>この記事をシェアする</div>
-              <div class="ml-4">
-                <TwitterShareButton {url} text={post.title} />
-              </div>
-              <div class="ml-4">
-                <HatenaShareButton {url} text={post.title} />
-              </div>
-            </svelte:fragment>
+            {#snippet fallback()}
+                      
+                <div>この記事をシェアする</div>
+                <div class="ml-4">
+                  <TwitterShareButton {url} text={post.title} />
+                </div>
+                <div class="ml-4">
+                  <HatenaShareButton {url} text={post.title} />
+                </div>
+              
+                      {/snippet}
           </ShareButton>
         </div>
       </Box>
@@ -96,5 +102,5 @@
 <PostList posts={post.relatedArticleCollection?.items} small />
 
 <!-- ogp を静的に生成するために空のリンクを設置している -->
-<!-- svelte-ignore a11y-missing-content -->
+<!-- svelte-ignore a11y_missing_content -->
 <a href={`/blog/ogp/${post.slug}.png`} aria-hidden="true" tabindex="-1"></a>

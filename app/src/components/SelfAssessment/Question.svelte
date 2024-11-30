@@ -1,7 +1,11 @@
 <script lang="ts">
   import type { Quiz } from "./types";
 
-  export let quiz: Quiz;
+  interface Props {
+    quiz: Quiz;
+  }
+
+  let { quiz }: Props = $props();
 </script>
 
 <div class="flex flex-col justify-center">

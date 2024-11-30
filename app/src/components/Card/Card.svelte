@@ -6,13 +6,25 @@
   import NavButton from "./NavButton.svelte";
   import { onMount } from "svelte";
 
-  export let title: string;
-  export let about: string;
-  export let contents: string;
-  export let tags: Pick<Tag, "name" | "slug">[];
-  export let createdAt: string;
-  export let thumbnail: { title: string; url: string };
-  export let slug: string;
+  interface Props {
+    title: string;
+    about: string;
+    contents: string;
+    tags: Pick<Tag, "name" | "slug">[];
+    createdAt: string;
+    thumbnail: { title: string; url: string };
+    slug: string;
+  }
+
+  let {
+    title,
+    about,
+    contents,
+    tags,
+    createdAt,
+    thumbnail,
+    slug
+  }: Props = $props();
 
   // <baseline-status> を読み込む
   onMount(() => {

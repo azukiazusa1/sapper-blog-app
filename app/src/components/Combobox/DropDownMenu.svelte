@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { createBubbler } from 'svelte/legacy';
+
+  const bubble = createBubbler();
   import DropDownItem from "./DropDownItem.svelte";
   import Loading from "../Icons/Loading.svelte";
   import type { Item } from "./types";
@@ -7,16 +10,26 @@
     select: Item;
   }>();
 
-  export let items: Item[];
-  export let loading = false;
-  export let listboxId: string;
-  export let optionId: string;
-  export let activeIndex: number | null = null;
+  interface Props {
+    items: Item[];
+    loading?: boolean;
+    listboxId: string;
+    optionId: string;
+    activeIndex?: number | null;
+  }
+
+  let {
+    items,
+    loading = false,
+    listboxId,
+    optionId,
+    activeIndex = null
+  }: Props = $props();
 </script>
 
 <!-- eslint-disable-next-line svelte/valid-compile -->
 <div
-  on:keydown
+  onkeydown={bubble('keydown')}
   class="absolute z-20 max-h-96 w-72 overflow-hidden overflow-y-scroll rounded-bl-md rounded-br-md border-2 border-t-0 border-gray-200 bg-white shadow-lg dark:border-zinc-700 dark:bg-zinc-700"
 >
   {#if loading}

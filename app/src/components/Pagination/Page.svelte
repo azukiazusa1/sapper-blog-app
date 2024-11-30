@@ -1,23 +1,33 @@
 <script lang="ts">
-  export let href = "";
-  export let current: boolean;
-  export let sm = false;
+  interface Props {
+    href?: string;
+    current: boolean;
+    sm?: boolean;
+    children?: import('svelte').Snippet;
+  }
 
-  $: className = `h-12 flex ${sm ? "px-4" : "w-12"} 
+  let {
+    href = "",
+    current,
+    sm = false,
+    children
+  }: Props = $props();
+
+  let className = $derived(`h-12 flex ${sm ? "px-4" : "w-12"} 
   ${
     current && !sm
       ? "bg-gray-200 dark:bg-zinc-600"
       : "hover:bg-gray-100 dark:hover:bg-zinc-700"
   }
-  border border-gray-200 dark:border-zinc-600 justify-center items-center cursor-pointer leading-5`;
+  border border-gray-200 dark:border-zinc-600 justify-center items-center cursor-pointer leading-5`);
 </script>
 
 {#if href}
   <a {href} class={className} aria-current={current ? "page" : undefined}>
-    <slot />
+    {@render children?.()}
   </a>
 {:else}
   <div class={className} aria-current={current ? "page" : undefined}>
-    <slot />
+    {@render children?.()}
   </div>
 {/if}

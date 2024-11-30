@@ -2,7 +2,11 @@
   import type { Quiz } from "./types";
   import Question from "./Question.svelte";
 
-  export let quizzes: Quiz[];
+  interface Props {
+    quizzes: Quiz[];
+  }
+
+  let { quizzes }: Props = $props();
 </script>
 
 <h2

@@ -30,7 +30,7 @@
     <div class="mt-16 text-center">
       <button
         type="button"
-        on:click={handleClick}
+        onclick={handleClick}
         class="mr-3 inline-flex items-center justify-center rounded-lg bg-indigo-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900"
       >
         はじめる <AllowDown className="h-4 w-4" />

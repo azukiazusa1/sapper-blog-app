@@ -2,12 +2,12 @@
   import { page } from "$app/stores";
   import LinkButton from "../components/LinkButton/LinkButton.svelte";
 
-  $: title =
-    $page.error.message === "Not Found" ? "404" : "500 Internal Server Error";
-  $: message =
-    $page.error.message === "Not Found"
+  let title =
+    $derived($page.error.message === "Not Found" ? "404" : "500 Internal Server Error");
+  let message =
+    $derived($page.error.message === "Not Found"
       ? "お探しのページは見つかりませんでした。削除、変更されたか URL が間違っている可能性がございます。"
-      : "予期せぬエラーが発生しました。";
+      : "予期せぬエラーが発生しました。");
 </script>
 
 <svelte:head>

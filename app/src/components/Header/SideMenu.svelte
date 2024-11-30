@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { self } from 'svelte/legacy';
+
   import { isMatchPath } from "$lib/utils";
   import { createEventDispatcher } from "svelte";
   import Title from "./Title.svelte";
@@ -21,18 +23,22 @@
     }
   }
 
-  export let isOpen = false;
-  export let segment: string;
-  export let routes: string[];
+  interface Props {
+    isOpen?: boolean;
+    segment: string;
+    routes: string[];
+  }
+
+  let { isOpen = false, segment, routes }: Props = $props();
 </script>
 
-<svelte:window on:keydown={handleWindowKeyDown} />
+<svelte:window onkeydown={handleWindowKeyDown} />
 {#if isOpen}
   <!-- eslint-disable-next-line svelte/valid-compile -->
   <div
-    on:click|self={close}
+    onclick={self(close)}
     class="fixed inset-0 z-10 overflow-y-auto bg-zinc-900 opacity-50"
-  />
+></div>
 {/if}
 <aside
   class={`fixed left-0 top-0 z-30 flex h-full w-64 transform flex-col justify-between overflow-auto border-r border-gray-200 bg-white transition-all duration-300 ease-in-out dark:border-zinc-700 dark:bg-zinc-800 ${
@@ -50,7 +56,7 @@
       {#each routes as route}
         <li class="py-4">
           <a
-            on:click={close}
+            onclick={close}
             aria-current={isMatchPath(route, segment) ? "page" : undefined}
             href={route}
             class="block px-7 capitalize hover:opacity-75"

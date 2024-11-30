@@ -4,14 +4,27 @@
   import Tag from "../Tag/Tag.svelte";
   import Time from "../Time/Time.svelte";
 
-  export let title: string;
-  export let slug: string;
-  export let about: string;
-  export let thumbnail: Pick<Asset, "title" | "url">;
-  export let createdAt: string;
-  export let tags: Array<Pick<TagType, "name" | "slug">>;
-  export let small = false;
-  export let lazy = true;
+  interface Props {
+    title: string;
+    slug: string;
+    about: string;
+    thumbnail: Pick<Asset, "title" | "url">;
+    createdAt: string;
+    tags: Array<Pick<TagType, "name" | "slug">>;
+    small?: boolean;
+    lazy?: boolean;
+  }
+
+  let {
+    title,
+    slug,
+    about,
+    thumbnail,
+    createdAt,
+    tags,
+    small = false,
+    lazy = true
+  }: Props = $props();
 </script>
 
 <article

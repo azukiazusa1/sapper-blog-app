@@ -1,20 +1,37 @@
 <script lang="ts">
+  import { createBubbler } from 'svelte/legacy';
+
+  const bubble = createBubbler();
   import SearchIcon from "../Icons/Search.svelte";
-  export let value = "";
-  export let placeholder = "";
-  export let name = "";
-  export let required = false;
-  export let isOpen = false;
-  export let inputId = "";
-  export let listboxId = "";
-  export let optionId = "";
-  export let activeIndex: number | null;
+  interface Props {
+    value?: string;
+    placeholder?: string;
+    name?: string;
+    required?: boolean;
+    isOpen?: boolean;
+    inputId?: string;
+    listboxId?: string;
+    optionId?: string;
+    activeIndex: number | null;
+  }
+
+  let {
+    value = $bindable(""),
+    placeholder = "",
+    name = "",
+    required = false,
+    isOpen = false,
+    inputId = "",
+    listboxId = "",
+    optionId = "",
+    activeIndex
+  }: Props = $props();
 
   export const focus = () => {
     input.focus();
   };
 
-  let input: HTMLInputElement;
+  let input: HTMLInputElement = $state();
 </script>
 
 <div
@@ -23,10 +40,10 @@
   <input
     bind:value
     bind:this={input}
-    on:focus
-    on:blur
-    on:keydown
-    on:input
+    onfocus={bubble('focus')}
+    onblur={bubble('blur')}
+    onkeydown={bubble('keydown')}
+    oninput={bubble('input')}
     class="h-10 w-60 rounded-l-lg px-5 focus:outline-none dark:bg-zinc-900"
     type="text"
     id={inputId}

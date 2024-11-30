@@ -1,7 +1,11 @@
 <script lang="ts">
-  export let href: string | undefined = undefined;
-  export let target: "_blank" | "_self" | "_parent" | "_top" | undefined =
-    undefined;
+  interface Props {
+    href?: string | undefined;
+    target?: "_blank" | "_self" | "_parent" | "_top" | undefined;
+    children?: import('svelte').Snippet;
+  }
+
+  let { href = undefined, target = undefined, children }: Props = $props();
 </script>
 
 <a
@@ -10,5 +14,5 @@
   {target}
   rel={target === "_blank" ? "noopener noreferrer" : undefined}
 >
-  <slot />
+  {@render children?.()}
 </a>

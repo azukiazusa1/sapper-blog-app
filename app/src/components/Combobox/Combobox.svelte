@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import DropDownMenu from "./DropDownMenu.svelte";
   import Input from "./Input.svelte";
   import type { Item } from "./types";
@@ -7,25 +9,34 @@
     select: Item;
   }>();
 
-  export let value = "";
-  export let required = false;
-  export let loading = false;
-  export let items: Item[] = [];
+  interface Props {
+    value?: string;
+    required?: boolean;
+    loading?: boolean;
+    items?: Item[];
+  }
 
-  let inputElement: { focus: () => void };
-  let activeIndex: number | null = null;
-  let isOpen = false;
+  let {
+    value = $bindable(""),
+    required = false,
+    loading = false,
+    items = []
+  }: Props = $props();
+
+  let inputElement: { focus: () => void } = $state();
+  let activeIndex: number | null = $state(null);
+  let isOpen = $state(false);
 
   const inputId = "combobox";
   const listboxId = "listbox";
   const optionId = "option";
 
-  $: itemCount = items.length;
-  $: {
+  let itemCount = $derived(items.length);
+  run(() => {
     if (!isOpen) {
       activeIndex = null;
     }
-  }
+  });
 
   const handleInput = () => {
     if (!value.trim()) {
