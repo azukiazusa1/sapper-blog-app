@@ -129,3 +129,4 @@ $ ls -a .claude/worktrees/bar
 ## 参考
 
 - [デスクトップ上の Claude Code - Claude Code Docs](https://code.claude.com/docs/ja/desktop)
+- [Hooks reference - Claude Code Docs](https://code.claude.com/docs/en/hooks#worktreecreate)
