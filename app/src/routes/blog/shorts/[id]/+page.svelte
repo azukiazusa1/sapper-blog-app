@@ -4,10 +4,14 @@
   import ShortBlog from "../../../../components/ShortBlog/ShortBlog.svelte";
   import type { PageData } from "./$types";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
 
-  $: ({ short, contents, allShortsIds } = data);
-  $: url = `${variables.baseURL}/blog/shorts/${short.sys.id}`;
+  let { data }: Props = $props();
+
+  let { short, contents, allShortsIds } = $derived(data);
+  let url = $derived(`${variables.baseURL}/blog/shorts/${short.sys.id}`);
 </script>
 
 <svelte:head>
@@ -31,5 +35,5 @@
 />
 
 <!-- ogp を静的に生成するために空のリンクを設置している -->
-<!-- svelte-ignore a11y-missing-content -->
+<!-- svelte-ignore a11y_consider_explicit_label -->
 <a href={`/blog/shorts/ogp/${encodeURIComponent(short.sys.id)}.png`}></a>

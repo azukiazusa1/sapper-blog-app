@@ -1,11 +1,23 @@
 <script lang="ts">
-  export let locale = "ja_JP";
-  export let type = "article";
-  export let title = "";
-  export let url = "";
-  export let image = "";
-  export let description = "";
-  export let card = "summary_large_image";
+  interface Props {
+    locale?: string;
+    type?: string;
+    title?: string;
+    url?: string;
+    image?: string;
+    description?: string;
+    card?: string;
+  }
+
+  let {
+    locale = "ja_JP",
+    type = "article",
+    title = "",
+    url = "",
+    image = "",
+    description = "",
+    card = "summary_large_image"
+  }: Props = $props();
 </script>
 
 <svelte:head>

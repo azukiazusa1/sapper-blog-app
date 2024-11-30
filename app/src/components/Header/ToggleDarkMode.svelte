@@ -7,13 +7,18 @@
   import System from "../Icons/system.svelte";
   import { fly } from "svelte/transition";
   import Check from "../Icons/Check.svelte";
-  let theme: Theme | undefined = undefined;
+  let theme: Theme | undefined = $state(undefined);
 
-  /**
+  
+  interface Props {
+    /**
    * ポップアップを右側に表示するかどうか
    * @default false
    */
-  export let right = false;
+    right?: boolean;
+  }
+
+  let { right = false }: Props = $props();
 
   // bits-ui の side の型定義がおかしいので、any で回避
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

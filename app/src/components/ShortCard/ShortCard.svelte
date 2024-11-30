@@ -1,6 +1,11 @@
 <script lang="ts">
-  export let title: string;
-  export let id: string;
+  interface Props {
+    title: string;
+    id: string;
+    children?: import('svelte').Snippet;
+  }
+
+  let { title, id, children }: Props = $props();
 </script>
 
 <div class="mx-auto h-[470px] w-60">
@@ -13,7 +18,7 @@
     href={`/blog/shorts/${id}`}
     style:--tag="card-{id}"
   >
-    <slot />
+    {@render children?.()}
   </a>
   <div class="mt-2">
     <h2 class="line-clamp-2 font-bold">

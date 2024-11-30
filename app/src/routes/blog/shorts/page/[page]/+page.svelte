@@ -4,7 +4,11 @@
   import variables from "$lib/variables";
   import ShortCard from "../../../../../components/ShortCard/ShortCard.svelte";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 </script>
 
 <svelte:head>

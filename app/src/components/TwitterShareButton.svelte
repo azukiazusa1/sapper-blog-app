@@ -1,9 +1,13 @@
 <script lang="ts">
   import TwitterIcon from "./Icons/Twitter.svelte";
-  export let url: string;
-  export let text: string;
+  interface Props {
+    url: string;
+    text: string;
+  }
 
-  $: escapedText = encodeURIComponent(text);
+  let { url, text }: Props = $props();
+
+  let escapedText = $derived(encodeURIComponent(text));
 </script>
 
 <a

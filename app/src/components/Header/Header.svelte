@@ -14,7 +14,7 @@
   let routes = ["/blog", "/about", "/tags", "/recap"];
   let html: HTMLElement;
   let lastScrollY = 0;
-  let hideHeader = false;
+  let hideHeader = $state(false);
 
   onMount(() => {
     html = document.documentElement;
@@ -23,8 +23,12 @@
     }
   });
 
-  export let segment: string;
-  let isOpen = false;
+  interface Props {
+    segment: string;
+  }
+
+  let { segment }: Props = $props();
+  let isOpen = $state(false);
 
   const handleScroll = () => {
     // 上にスクロールしたらヘッダーを表示する
@@ -47,7 +51,7 @@
   };
 </script>
 
-<svelte:window on:scroll={handleScroll} />
+<svelte:window onscroll={handleScroll} />
 
 <SideMenu {isOpen} {segment} {routes} on:close={closeSideMenu} />
 <header
@@ -58,7 +62,7 @@
   <div class="flex h-12 items-center justify-between px-6 md:h-14">
     <button
       class="lg:invisible lg:hidden"
-      on:click={openSideMenu}
+      onclick={openSideMenu}
       aria-label="サイドメニューを開く"
     >
       <MenuIcon className="h-6 w-6" />

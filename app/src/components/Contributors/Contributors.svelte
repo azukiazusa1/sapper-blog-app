@@ -3,7 +3,11 @@
   import Avatar from "../Avatar/Avatar.svelte";
   import type { Contributor } from "../../repositories/GitHub";
 
-  export let contributors: Contributor[];
+  interface Props {
+    contributors: Contributor[];
+  }
+
+  let { contributors }: Props = $props();
 </script>
 
 <Box>

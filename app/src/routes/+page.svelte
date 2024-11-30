@@ -7,8 +7,12 @@
   import TalkTimelines from "../components/TalkTimelines.svelte";
   import ShortList from "../components/ShortList.svelte";
 
-  export let data: PageData;
-  $: ({ latestPosts, shorts, popularPosts } = data);
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
+  let { latestPosts, shorts, popularPosts } = $derived(data);
 </script>
 
 <svelte:head>

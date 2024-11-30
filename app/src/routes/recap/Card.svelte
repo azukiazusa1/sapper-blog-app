@@ -1,8 +1,17 @@
 <script lang="ts">
-  export let title: string;
-  export let slug: string;
-  export let views: string;
-  export let isTestBuild: boolean;
+  interface Props {
+    title: string;
+    slug: string;
+    views: string;
+    isTestBuild: boolean;
+  }
+
+  let {
+    title,
+    slug,
+    views,
+    isTestBuild
+  }: Props = $props();
 
   const href = isTestBuild ? `/blog` : `/blog/${slug}`;
 </script>

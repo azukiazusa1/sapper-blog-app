@@ -1,7 +1,11 @@
 <script lang="ts">
   import GitHubIcon from "./Icons/GitHub.svelte";
   import LinkButton from "./LinkButton/LinkButton.svelte";
-  export let slug: string;
+  interface Props {
+    slug: string;
+  }
+
+  let { slug }: Props = $props();
 </script>
 
 <LinkButton

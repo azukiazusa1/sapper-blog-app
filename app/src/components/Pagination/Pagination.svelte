@@ -5,16 +5,25 @@
   import Ellipsis from "./Ellipsis.svelte";
   import { getPages } from "./getPages";
 
-  export let page = 1;
-  export let total: number;
-  export let limit: number;
-  export let href = "/blog/page/";
+  interface Props {
+    page?: number;
+    total: number;
+    limit: number;
+    href?: string;
+  }
 
-  $: totalPage = Math.ceil(total / limit);
-  $: hasPrev = page !== 1;
-  $: hasNext = page !== totalPage && totalPage !== 0;
-  $: prevPage = page - 1;
-  $: nextPage = page + 1;
+  let {
+    page = 1,
+    total,
+    limit,
+    href = "/blog/page/"
+  }: Props = $props();
+
+  let totalPage = $derived(Math.ceil(total / limit));
+  let hasPrev = $derived(page !== 1);
+  let hasNext = $derived(page !== totalPage && totalPage !== 0);
+  let prevPage = $derived(page - 1);
+  let nextPage = $derived(page + 1);
 </script>
 
 <nav class="my-12 flex flex-col items-center" aria-label="ページネーション">

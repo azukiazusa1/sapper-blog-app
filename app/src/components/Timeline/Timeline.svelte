@@ -1,10 +1,20 @@
 <script lang="ts">
   import Time from "../Time/Time.svelte";
-  export let eventTitle: string;
-  export let eventDate: string;
-  export let description: string;
-  export let presentationTitle: string;
-  export let presentationLink: string;
+  interface Props {
+    eventTitle: string;
+    eventDate: string;
+    description: string;
+    presentationTitle: string;
+    presentationLink: string;
+  }
+
+  let {
+    eventTitle,
+    eventDate,
+    description,
+    presentationTitle,
+    presentationLink
+  }: Props = $props();
 </script>
 
 <li class="mb-10 ms-6">
