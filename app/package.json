@@ -30,6 +30,7 @@
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@pagefind/default-ui": "^1.2.0",
     "@playwright/test": "^1.31.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@sveltejs/adapter-cloudflare": "^0.0.1",
     "@types/react": "^18.0.26",
     "@urql/core": "^4.0.0",
