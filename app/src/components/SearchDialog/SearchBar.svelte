@@ -9,8 +9,13 @@
     <SearchIcon className="text-gray-600 dark:text-gray-50 h-4 w-4" />
   </span>
   <div
-    class="flex h-10 w-60 items-center rounded-l-lg pr-5 opacity-80 focus:outline-none"
+    class="flex h-10 w-60 items-center justify-between rounded-l-lg pr-4 opacity-80 focus:outline-none"
   >
     検索
+
+    <div>
+      <kbd class="font-sans">⌘</kbd>
+      <kbd class="font-sans">K</kbd>
+    </div>
   </div>
 </div>
