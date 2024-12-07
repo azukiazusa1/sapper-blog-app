@@ -15,33 +15,32 @@ selfAssessment:
       answers:
         - text: "formatResponse"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "responseFormat"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "format_response"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "response_format"
           correct: true
-          explanation: ""
+          explanation: null
     - question: "リクエストが拒否された場合にはどのフィールドを確認することで判定できるか?"
       answers:
         - text: "refusal"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "rejection"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "denial"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "decline"
           correct: false
-
+          explanation: null
 published: true
 ---
-
 OpenAI といった生成 AI モデルをアプリケーションに組み込む際、出力の構造を明確にすることが重要です。AI の出力を構造化することにより、次のステップの処理をデータを信頼できる形で受け渡すことができます。
 
 例として、AI に今日の夕飯を提案してもらうとしましょう。プロンプトを工夫せずに AI に問い合わせると、以下のような回答を返す可能性があります。
