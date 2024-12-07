@@ -28,21 +28,19 @@
 <div class="space-y-4">
   {#each articles as post, index}
     {#if mounted}
-      <div
+      <a
+        href={post.url}
         in:fly={{
           x: 100,
-          delay: index * 200,
+          delay: index * 300,
         }}
-        class="rounded-lg bg-gray-200 p-4"
+        class="block rounded-lg bg-gray-200 p-4 hover:bg-gray-300"
       >
         <h3 class="font-bold">{post.title}</h3>
-        <p class="text-sm text-gray-700">
+        <p class="mt-2 text-sm text-gray-700">
           {post.views.toLocaleString()} views
         </p>
-        <a href={post.url} class="text-primary text-sm hover:underline"
-          >Read post</a
-        >
-      </div>
+      </a>
     {/if}
   {/each}
 </div>

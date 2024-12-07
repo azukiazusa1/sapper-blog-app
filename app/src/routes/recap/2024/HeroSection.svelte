@@ -9,9 +9,7 @@
   };
 </script>
 
-<div
-  class="relative flex min-h-screen snap-start snap-always items-center justify-center overflow-hidden"
->
+<div class="relative flex h-screen items-center justify-center overflow-hidden">
   <div class="absolute left-0 top-0 z-10 p-4">
     <a href="/recap">
       <div class="sr-only">戻る</div>
@@ -24,7 +22,7 @@
   ></div>
   <div class="animate-rotate absolute inset-0">
     <div
-      class="animate-blob fiter absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-purple-300 opacity-50 mix-blend-multiply blur-xl"
+      class="animate-blob fiter absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-violet-300 opacity-50 mix-blend-multiply blur-xl"
     ></div>
     <div
       class="animate-blob animation-delay-2000 absolute right-1/4 top-1/3 h-64 w-64 rounded-full bg-yellow-300 opacity-50 mix-blend-multiply blur-xl filter"
@@ -50,7 +48,7 @@
     <button
       type="button"
       on:click={handleClick}
-      class="mr-3 inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-3 text-center text-base font-medium text-purple-700 transition-colors hover:bg-purple-100 focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-900"
+      class="focus:ring-purple-30 mr-3 inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-3 text-center text-base font-medium text-purple-700 transition-transform duration-200 hover:scale-110 hover:bg-purple-100 focus:scale-110 focus:ring-4"
     >
       Getting Started
       <AllowDown className="h-4 w-4" />
@@ -59,6 +57,29 @@
 </div>
 
 <style>
+  /* 斜めに直線を描くアニメーション */
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px);
+    }
+    25% {
+      transform: translate(180px, 180px);
+    }
+    50% {
+      transform: translate(360px, 360px);
+    }
+    75% {
+      transform: translate(180px, 180px);
+    }
+    100% {
+      transform: translate(0px, 0px);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 20s linear infinite;
+  }
+
   @keyframes blob {
     0% {
       transform: translate(0px, 0px) scale(1);

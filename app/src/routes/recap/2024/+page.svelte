@@ -9,6 +9,8 @@
   import PopularArticle from "./PopularArticle.svelte";
   import AvatarComment from "./AvatarComment.svelte";
   import Ogp from "../../../components/Ogp.svelte";
+  import ThankYou from "./ThankYou.svelte";
+  import Slides from "./slides.svelte";
 
   let currentSlide = 0;
   let direction: "forward" | "backward" = "forward";
@@ -51,60 +53,10 @@
   image="https://azukiazusa.dev/recap/2024/ogp.png"
 />
 
-<div
-  class="h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth"
->
+<div>
   <HeroSection />
 
-  <div
-    id="article-info"
-    class="flex min-h-screen snap-start snap-always items-center justify-center scroll-smooth bg-gradient-to-b from-purple-900 to-indigo-900 text-white"
-  >
-    <div class="mx-auto w-full max-w-2xl p-8">
-      {#key currentSlide}
-        <div
-          in:fly={{
-            y: direction === "forward" ? 50 : -50,
-            duration: 700,
-          }}
-          class={`w-full max-w-2xl rounded-lg bg-white p-8 text-black shadow-lg`}
-        >
-          <h2 class="mb-6 text-center text-3xl font-bold">
-            {slides[currentSlide].title}
-          </h2>
-          <div class="flex min-h-80 flex-col content-center justify-between">
-            <svelte:component this={slides[currentSlide].content} />
-            <AvatarComment />
-          </div>
-        </div>
-      {/key}
+  <Slides />
 
-      <div class="mt-8 flex max-w-2xl justify-between">
-        <button
-          on:click={() => setPreviousSlide()}
-          disabled={currentSlide === 0}
-        >
-          Previous
-        </button>
-        <div class="flex justify-center">
-          {#each slides as slide, i}
-            <button
-              class={`mx-1 h-4 w-4 rounded-full bg-white ${
-                i === currentSlide ? "opacity-100" : "opacity-50"
-              }`}
-              on:click={() => (currentSlide = i)}
-            ></button>
-          {/each}
-        </div>
-        <button
-          on:click={() => setNextSlide()}
-          disabled={currentSlide === slides.length - 1}
-        >
-          Next
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="bg-gradient h-screen w-screen snap-start snap-always"></div>
+  <ThankYou />
 </div>

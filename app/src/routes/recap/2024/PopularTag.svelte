@@ -15,11 +15,11 @@
   });
 </script>
 
-<div class="flex flex-wrap justify-center gap-4">
+<div class="mt-20 flex flex-wrap justify-center gap-4">
   {#each tags as tag, index}
     {#if mounted}
       <div
-        in:scale={{ delay: index * 100 }}
+        in:scale={{ delay: index * 200 }}
         class="flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-white"
       >
         <span>{tag.name}</span>
