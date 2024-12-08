@@ -4,18 +4,18 @@
   const articles = [
     {
       title: "Remix の SPA モード",
-      views: 15544,
+      views: 15933,
       url: "/blog/remix-spa-mode/",
     },
     {
-      title: "2023 年に読んでよかった本",
-      views: 14698,
-      url: "/blog/books-i-read-in-2023/",
+      title: "フルスタック Web フレームワーク HonoX を使ってみる",
+      views: 13607,
+      url: "/blog/full-stack-web-framework-honox/",
     },
     {
-      title: "フルスタック Web フレームワーク HonoX を使ってみる",
-      views: 13368,
-      url: "/blog/full-stack-web-framework-honox/",
+      title: "Tailwind CSS を使う時に一緒に入れたいライブラリ",
+      views: 12667,
+      url: "/blog/tailwind-css-libs/",
     },
   ];
 
@@ -32,7 +32,7 @@
         href={post.url}
         in:fly={{
           x: 100,
-          delay: index * 300,
+          delay: index * 400,
         }}
         class="block rounded-lg bg-gray-200 p-4 hover:bg-gray-300"
       >

@@ -27,7 +27,7 @@
       date: "2024.04.01",
       title:
         "アプリケーション開発エンジニア勉強会〜各社の取り組みや課題から学ぶ会〜",
-      description: "React フレームワークの 動向と選定基準",
+      description: "React フレームワークの動向と選定基準",
     },
     {
       date: "2024.03.25",
@@ -38,7 +38,7 @@
 </script>
 
 <div class="relative h-80 overflow-y-hidden px-2">
-  <ol class="animate-scroll mt-32 border-l border-gray-200">
+  <ol class="animate-scroll mt-28 border-l border-gray-200">
     {#each timelineData as item}
       <li class="ml-4">
         <div

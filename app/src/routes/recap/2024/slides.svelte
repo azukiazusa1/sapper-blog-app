@@ -82,16 +82,16 @@
   id="article-info"
   class="flex h-screen items-center justify-center bg-gradient-to-b from-purple-900 to-indigo-900 text-white"
 >
-  <div class="mx-auto w-full max-w-2xl p-8">
+  <div class="mx-auto w-full max-w-2xl p-4 md:p-8">
     {#key currentSlide}
       <div
         in:fly={{
           y: direction === "forward" ? -50 : 50,
           duration: 700,
         }}
-        class={`w-full max-w-2xl rounded-lg bg-white p-8 text-black shadow-lg`}
+        class={`max-h-[520px] w-full max-w-2xl rounded-lg bg-white p-4 text-black shadow-lg md:p-8`}
       >
-        <h2 class="mb-6 text-center text-3xl font-bold">
+        <h2 class="mb-6 text-center text-2xl font-bold md:text-3xl">
           {slides[currentSlide].title}
         </h2>
         <div class="flex min-h-96 flex-col content-center justify-between">
@@ -117,12 +117,12 @@
         Previous
       </button>
       <div class="flex items-center justify-center">
-        {#each slides as _, i}
+        {#each slides as slide, i}
           <button
             class={`mx-1 h-4 w-4 rounded-full bg-white ${
               i === currentSlide ? "opacity-100" : "opacity-50"
             }`}
-            aria-label={`Slide ${i + 1}`}
+            aria-label={slide.title}
             on:click={() => (currentSlide = i)}
           ></button>
         {/each}

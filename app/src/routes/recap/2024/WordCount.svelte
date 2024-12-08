@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { fade } from "svelte/transition";
   import CountUp from "../CountUp.svelte";
 </script>
 
