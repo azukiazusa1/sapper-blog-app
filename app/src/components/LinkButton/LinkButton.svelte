@@ -19,6 +19,6 @@
         variant === "primary",
     },
   )}
->
+  >a
   <slot />
 </a>
