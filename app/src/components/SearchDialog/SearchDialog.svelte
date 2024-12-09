@@ -3,6 +3,13 @@
   import { PagefindUI } from "@pagefind/default-ui";
   import "@pagefind/default-ui/css/ui.css";
 
+  function handleKeyDown(e: KeyboardEvent) {
+    // command + k でダイアログを開く
+    if (e.metaKey && e.key === "k") {
+      handleOpenChange(true);
+    }
+  }
+
   let open = false;
 
   /**
@@ -50,6 +57,8 @@
     }
   }
 </script>
+
+<svelte:document on:keydown={handleKeyDown} />
 
 <Dialog.Root onOpenChange={handleOpenChange} bind:open>
   <Dialog.Trigger>
