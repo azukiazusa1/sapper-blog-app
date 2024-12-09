@@ -39,10 +39,11 @@
       title: "よく使われたタグは...？",
       content: PopularTag,
       comment: {
-        avatarUrl: "https://avatars.githubusercontent.com/u/1396951",
-        name: "azukiazusa",
-        comment: "こんにちは、かわいい犬ですね！",
-        snsLink: "https://twitter.com/azukiazusa",
+        avatarUrl: "https://avatars.githubusercontent.com/u/76464810?v=4",
+        name: "rmatsuoka",
+        comment:
+          "CSSやアクセシビリティの記事はよく参考にしています。CSSやHTMLはいいかげんに書いてもそれっぽい見た目のページは作れますが、それでは使いづらいユーザーがいることがわかりました。azukiazusa.dev を参考に幅広いユーザーが利用しやすいページを作っていきたいですね。",
+        snsLink: "https://rmatsuoka.org/",
       },
     },
     {
