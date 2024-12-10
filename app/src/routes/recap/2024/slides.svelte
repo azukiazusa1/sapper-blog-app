@@ -71,6 +71,13 @@
     {
       title: "今年は5つのイベントで登壇しました🎤",
       content: Speak,
+      comment: {
+        avatarUrl: "https://avatars.githubusercontent.com/u/1784379?v=4",
+        name: ":usagi:",
+        comment:
+          "2024年の登壇は前年比約2.5倍だそうです。過去の発表をみた人から別の登壇を依頼されるなど、2024年は好循環に乗れているように思いました。どれも面白いけれど、個人的な推しはJSConf JP 2024のLTです。",
+        snsLink: "https://x.com/plan9user",
+      },
     },
     {
       title: "2024年の振り返りは以上です✍️",
