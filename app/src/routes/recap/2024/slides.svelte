@@ -29,7 +29,8 @@
       title: "2024年に書いた記事の数は...？",
       content: BlogCount,
       comment: {
-        avatarUrl: "https://x.com/Arthur1__/photo",
+        avatarUrl:
+          "https://pbs.twimg.com/profile_images/1653306676274143232/8mWzPPco_400x400.jpg",
         name: "Arthur",
         comment:
           "今年1年間の記事の合計文字数である420686文字を素因数分解すると2*7*151*199になります。RSAチャレンジ失敗ですね。来年は頑張ってください。というのはさておき、この文字数は文庫本4冊分に相当するようですよ。",
@@ -51,10 +52,11 @@
       title: "人気があった記事は...？",
       content: PopularArticle,
       comment: {
-        avatarUrl: "https://avatars.githubusercontent.com/u/1396951",
-        name: "azukiazusa",
-        comment: "こんにちは、かわいい犬ですね！",
-        snsLink: "https://twitter.com/azukiazusa",
+        avatarUrl: "https://i.gyazo.com/1257e2d39295306a5f0c5e6c85e7dc2f.png",
+        name: "mizdra",
+        comment:
+          "Remix の SPA モードは create-react-app の代わりとして注目を浴びましたね。HonoX はミニマムな Web アプリケーションサーバーを作りたい時に重宝しそうですね。",
+        snsLink: "https://x.com/mizdra",
       },
     },
     {

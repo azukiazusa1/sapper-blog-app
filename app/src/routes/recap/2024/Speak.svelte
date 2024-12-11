@@ -37,7 +37,7 @@
   ];
 </script>
 
-<div class="relative h-80 overflow-y-hidden px-2">
+<div class="relative h-72 overflow-y-hidden px-2">
   <ol class="animate-scroll mt-28 border-l border-gray-200">
     {#each timelineData as item}
       <li class="ml-4">

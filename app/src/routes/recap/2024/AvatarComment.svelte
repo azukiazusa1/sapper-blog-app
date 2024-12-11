@@ -16,7 +16,7 @@
 
 {#if isMounted}
   <div
-    class="z-10 flex items-start space-x-4 rounded-lg bg-white p-4"
+    class="z-10 flex items-start space-x-4 rounded-lg bg-white p-2 md:p-4"
     in:fly={{ y: 50, duration: 700, delay: 1700 }}
   >
     <a href={snsLink} target="_blank" rel="noopener noreferrer" class="block">

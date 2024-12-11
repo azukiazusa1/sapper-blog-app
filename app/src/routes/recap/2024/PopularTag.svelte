@@ -15,7 +15,7 @@
   });
 </script>
 
-<div class="mt-12 flex flex-wrap justify-center gap-4 md:mt-20">
+<div class="mt-8 flex flex-wrap justify-center gap-4 md:mt-20">
   {#each tags as tag, index}
     {#if mounted}
       <div

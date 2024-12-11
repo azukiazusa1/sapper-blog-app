@@ -34,7 +34,7 @@
           x: 100,
           delay: index * 400,
         }}
-        class="block rounded-lg bg-gray-200 p-4 hover:bg-gray-300"
+        class="block rounded-lg bg-gray-200 p-2 hover:bg-gray-300 md:p-4"
       >
         <h3 class="font-bold">{post.title}</h3>
         <p class="mt-2 text-sm text-gray-700">
