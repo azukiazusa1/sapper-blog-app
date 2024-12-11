@@ -28,11 +28,16 @@ const config = {
     extend: {
       animation: {
         "fade-in": "fade-in 0.2s ease-in-out",
+        rotate: "rotate 30s ease-in-out infinite",
       },
       keyframes: {
         "fade-in": {
           "0%": { opacity: "0", transform: "scale(0.6)" },
           "100%": { opacity: "1" },
+        },
+        rotate: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
         },
       },
     },

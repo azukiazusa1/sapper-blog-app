@@ -62,15 +62,25 @@
       .addEventListener("change", mediaQueryLlistener);
   </script>
 </svelte:head>
-<Header segment={$page.url.pathname} />
+
 <GoogleAnalytics />
+{#if removeTrailingSlash($page.url.pathname) !== "/recap/2024"}
+  <Header segment={$page.url.pathname} />
+{/if}
 
 <main>
-  {#if removeTrailingSlash($page.url.pathname) === "/about"}
-    <Visual title="about" {image} />
-  {/if}
-  <div class="container mx-auto my-4 max-w-7xl px-1 md:px-6 lg:px-0">
+  {#if removeTrailingSlash($page.url.pathname) === "/recap/2024"}
     <slot />
-  </div>
+  {:else}
+    {#if removeTrailingSlash($page.url.pathname) === "/about"}
+      <Visual title="about" {image} />
+    {/if}
+    <div class="container mx-auto my-4 max-w-7xl px-1 md:px-6 lg:px-0">
+      <slot />
+    </div>
+  {/if}
 </main>
-<Footer />
+
+{#if removeTrailingSlash($page.url.pathname) !== "/recap/2024"}
+  <Footer />
+{/if}

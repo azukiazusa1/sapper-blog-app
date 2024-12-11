@@ -7,7 +7,10 @@
 <div
   class="flex min-h-[calc(100vh-3.5rem-6rem-2rem)] items-center justify-center"
 >
-  <ul>
+  <ul class="space-y-4">
+    <li>
+      <a class="text-xl hover:underline" href="/recap/2024">2024</a>
+    </li>
     <li>
       <a class="text-xl hover:underline" href="/recap/2023">2023</a>
     </li>
