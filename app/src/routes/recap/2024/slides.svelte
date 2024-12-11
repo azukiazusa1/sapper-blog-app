@@ -29,10 +29,11 @@
       title: "2024年に書いた記事の数は...？",
       content: BlogCount,
       comment: {
-        avatarUrl: "https://avatars.githubusercontent.com/u/1396951",
-        name: "azukiazusa",
-        comment: "こんにちは、かわいい犬ですね！",
-        snsLink: "https://twitter.com/azukiazusa",
+        avatarUrl: "https://x.com/Arthur1__/photo",
+        name: "Arthur",
+        comment:
+          "今年1年間の記事の合計文字数である420686文字を素因数分解すると2*7*151*199になります。RSAチャレンジ失敗ですね。来年は頑張ってください。というのはさておき、この文字数は文庫本4冊分に相当するようですよ。",
+        snsLink: "https://x.com/Arthur1__",
       },
     },
     {
@@ -73,9 +74,9 @@
       content: Speak,
       comment: {
         avatarUrl: "https://avatars.githubusercontent.com/u/1784379?v=4",
-        name: ":usagi:",
+        name: "lufia",
         comment:
-          "2024年の登壇は前年比約2.5倍だそうです。過去の発表をみた人から別の登壇を依頼されるなど、2024年は好循環に乗れているように思いました。どれも面白いけれど、個人的な推しはJSConf JP 2024のLTです。",
+          "過去の発表をみた人から登壇依頼されるなど、2024年は好循環しているように思いました。どれも面白いけれど推しはJSConf JP 2024のLTです。",
         snsLink: "https://x.com/plan9user",
       },
     },
