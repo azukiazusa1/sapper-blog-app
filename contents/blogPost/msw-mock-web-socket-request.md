@@ -5,7 +5,7 @@ slug: "msw-mock-web-socket-request"
 about: "Mock Service Worker (MSW) の v2.6.0 から Web Socket のリクエストをモックすることができるようになりました。Web Socket のサポートのリクエストは 2020 年から存在しており、多くの議論の末 4 年の歳月を経てリリースされた機能となります。この記事では、MSW で Web Socket のリクエストをモックする方法を紹介します。"
 createdAt: "2024-12-14T10:52+09:00"
 updatedAt: "2024-12-14T10:52+09:00"
-tags: ["MSW", "Web Socket"]
+tags: ["msw", "Web Socket"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/Qyc4NqFS6F7FnfaiHhdOE/876e96176aa4d9de5304f283ea5fd4d3/sweet_anmitsu_9823-768x640.png"
   title: "あんみつのイラスト"
@@ -15,34 +15,32 @@ selfAssessment:
       answers:
         - text: "ws.connect()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ws.link()"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "ws.on()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ws.url()"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "Web Socket のクローズコード、クローズ理由を指定して接続を閉じる方法として正しいものはどれか？"
       answers:
         - text: "client.close(1000, 'client request')"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "client.close({ code: 1000, reason: 'client request' })"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "client.close('client request', 1000)"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "client.close(1000, { reason: 'client request' })"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 Mock Service Worker (MSW) の v2.6.0 から Web Socket のリクエストをモックできるようになりました。Web Socket のサポートのリクエストは 2020 年から存在しており、多くの議論の末 4 年の歳月を経てリリースされた機能となります。
 
 この記事では、MSW で Web Socket のリクエストをモックする方法を紹介します。
