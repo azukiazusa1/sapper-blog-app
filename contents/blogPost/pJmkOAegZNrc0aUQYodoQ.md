@@ -14,30 +14,30 @@ selfAssessment:
     - question: "Web Socket のモックを行うために、クライアントが接続するエンドポイントを指定する関数は何か？"
       answers:
         - text: "ws.connect()"
-          isCorrect: false
+          correct: false
           explanation: ""
         - text: "ws.link()"
-          isCorrect: true
+          correct: true
           explanation: ""
         - text: "ws.on()"
-          isCorrect: false
+          correct: false
           explanation: ""
         - text: "ws.url()"
-          isCorrect: false
+          correct: false
           explanation: ""
     - question: "Web Socket のクローズコード、クローズ理由を指定して接続を閉じる方法として正しいものはどれか？"
       answers:
         - text: "client.close(1000, 'client request')"
-          isCorrect: true
+          correct: true
           explanation: ""
         - text: "client.close({ code: 1000, reason: 'client request' })"
-          isCorrect: false
+          correct: false
           explanation: ""
         - text: "client.close('client request', 1000)"
-          isCorrect: false
+          correct: false
           explanation: ""
         - text: "client.close(1000, { reason: 'client request' })"
-          isCorrect: false
+          correct: false
           explanation: ""
 
 published: true
