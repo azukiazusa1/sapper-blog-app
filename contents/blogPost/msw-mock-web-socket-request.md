@@ -232,7 +232,7 @@ export const handlers = [
 
 `.broadcastExcept` メソッドを使って、特定のクライアントにメッセージを送信しないようにすることも可能です。
 
-```ts:handlers.ts {6-10}
+```ts:handlers.ts {5}
 export const handlers = [
   chat.addEventListener("connection", ({ client }) => {
     client.addEventListener("message", (event) => {
