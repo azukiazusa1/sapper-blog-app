@@ -12,7 +12,7 @@ const quizSchema = z.object({
     z.object({
       text: z.string(),
       correct: z.boolean(),
-      explanation: z.string().optional(),
+      explanation: z.string().nullish(),
     }),
   ),
 });
