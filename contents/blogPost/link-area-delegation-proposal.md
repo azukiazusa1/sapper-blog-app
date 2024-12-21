@@ -15,34 +15,32 @@ selfAssessment:
       answers:
         - text: "linkarea, defaultlink"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "contain, expand"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "container, delegate"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "linkcontainer, delegatedlink"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "CSS を使用したアプローチで使われるプロパティは何か？"
       answers:
         - text: "pointer-area"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "pointer-events"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "link-area"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "clickable-area"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 多くのウェブサイトではリンクを入れ子にしたカード UI が利用されています。入れ子されたリンクとは以下のようなものです。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/37LDyA9SoRRRXUG6UE7vo7/1b708244392e67d40cf04bd86e4c280d/__________2024-12-21_10.39.02.png)
