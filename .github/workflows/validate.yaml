@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
       - name: Get changed files in the contents folder
         id: changed-files-specific
-        uses: tj-actions/changed-files@v36
+        uses: tj-actions/changed-files@v45
         with:
           files: |
             contents/**
@@ -29,7 +29,7 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: '**/node_modules'
+          path: "**/node_modules"
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
