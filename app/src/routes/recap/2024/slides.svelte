@@ -30,7 +30,7 @@
       content: BlogCount,
       comment: {
         avatarUrl:
-          "https://pbs.twimg.com/profile_images/1653306676274143232/8mWzPPco_400x400.jpg",
+          "https://images.ctfassets.net/in6v9lxmm5c8/3MKUQDtbluLrDFJ8klu6nw/565e903103f679538f34b2de2e8c91ac/AsrXPzSl_400x400.jpg?fm=webp",
         name: "Arthur",
         comment:
           "今年1年間の記事の合計文字数である420686文字を素因数分解すると2*7*151*199になります。RSAチャレンジ失敗ですね。来年は頑張ってください。というのはさておき、この文字数は文庫本4冊分に相当するようですよ。",
