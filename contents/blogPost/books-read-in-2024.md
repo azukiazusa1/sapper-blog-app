@@ -27,6 +27,7 @@ selfAssessment:
           explanation: null
 published: true
 ---
+
 私は今年 1 年間でおおよそ 300 冊の本を読んだようです。その中から、特に印象に残った本をいくつか紹介します。
 
 ## 響け！ユーフォニアムシリーズ
@@ -45,7 +46,7 @@ published: true
 
 ## 「働かないおじさん問題」のトリセツ
 
-[![「働かないおじさん問題」のトリセツ](https://m.media-amazon.com/images/I/51J9Q6Z6JZL._SY346_.jpg)](https://www.amazon.co.jp/dp/B09Q4ZQZ3Z)
+[![「働かないおじさん問題」のトリセツ](https://m.media-amazon.com/images/I/51cpP+2sr5L._SY445_SX342_PQ37_.jpg)](https://www.amazon.co.jp/dp/4776211483)
 
 周囲の期待する役割に対して、成果や行動が伴っていない中高年の男性社員を指す[働かないおじさん](https://ja.wikipedia.org/wiki/%E5%83%8D%E3%81%8B%E3%81%AA%E3%81%84%E3%81%8A%E3%81%98%E3%81%95%E3%82%93) がなぜ組織内で生まれるのか、どのようにしてその問題を解決するかを解説した本です。「働かないおじさん」が発生する原因を外的要因と内的要因から分析されており、「働かないおじさん」について 6 つのタイプに類型化されています。
 
@@ -55,7 +56,7 @@ published: true
 
 ## Tailwind CSS 実践入門
 
-[![Tailwind CSS 実践入門](https://m.media-amazon.com/images/I/71FCeCVWsnL._SY385_.jpg](https://www.amazon.co.jp/dp/B0CQWSQZHG)
+[![Tailwind CSS 実践入門](https://m.media-amazon.com/images/I/71FCeCVWsnL._SY385_.jpg)](https://www.amazon.co.jp/dp/B0CQWSQZHG)
 
 本書は CSS のフレームワークである [Tailwind CSS](https://tailwindcss.com/) の実践的な入門書です。Tailwind CSS が採用している「ユティリティファースト」という設計思想について解説から始まり、CSS の設計の歴史とそれを踏まえてなぜ今ユティリティファーストが求められているのかを説明しています。
 

@@ -139,6 +139,10 @@ html:has(dialog[open]) {
   cursor: zoom-in;
 }
 
+#contents a img {
+  cursor: pointer;
+}
+
 #contents .markdown-body a {
   color: #0d74df;
   word-break: break-all;
