@@ -27,7 +27,6 @@ selfAssessment:
           explanation: null
 published: true
 ---
-
 私は今年 1 年間でおおよそ 300 冊の本を読んだようです。その中から、特に印象に残った本をいくつか紹介します。
 
 ## 響け！ユーフォニアムシリーズ
