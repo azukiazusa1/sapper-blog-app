@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "50"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "100"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "200"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "300"
           correct: true
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 私は今年 1 年間でおおよそ 300 冊の本を読んだようです。その中から、特に印象に残った本をいくつか紹介します。
 
 ## 響け！ユーフォニアムシリーズ
