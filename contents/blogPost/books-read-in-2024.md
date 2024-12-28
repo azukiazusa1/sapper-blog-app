@@ -55,7 +55,7 @@ published: true
 
 ## Tailwind CSS 実践入門
 
-[![Tailwind CSS 実践入門](https://m.media-amazon.com/images/I/71FCeCVWsnL._SY385_.jpg](www.amazon.co.jp/dp/B0CQWSQZHG)
+[![Tailwind CSS 実践入門](https://m.media-amazon.com/images/I/71FCeCVWsnL._SY385_.jpg](https://www.amazon.co.jp/dp/B0CQWSQZHG)
 
 本書は CSS のフレームワークである [Tailwind CSS](https://tailwindcss.com/) の実践的な入門書です。Tailwind CSS が採用している「ユティリティファースト」という設計思想について解説から始まり、CSS の設計の歴史とそれを踏まえてなぜ今ユティリティファーストが求められているのかを説明しています。
 
