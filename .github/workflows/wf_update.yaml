@@ -1,29 +1,28 @@
 name: Update Blog Post
 
 on:
-  pull_request:
-    branches:
-      - main
-    types: [closed]
-    paths:
-      - contents/**.md
+  workflow_call:
+    inputs:
+      added_files:
+        description: "新しく作成されたファイルパス"
+        required: false
+        type: string
+        default: ""
+      modified_files:
+        description: "変更されたファイルパス"
+        required: false
+        type: string
+        default: ""
+      deleted_files:
+        description: "削除されたファイルパス"
+        required: false
+        type: string
+        default: ""
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
-    name: Update changed-files
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Get changed files in the contents folder
-        id: changed-files-specific
-        uses: tj-actions/changed-files@v45
-        with:
-          files: |
-            contents/**
-          since_last_remote_commit: true
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -43,9 +42,9 @@ jobs:
         run: npm run update -w=packages/content-management
         id: update
         env:
-          ADDED_FILES: ${{ steps.changed-files-specific.outputs.added_files }}
-          MODIFIED_FILES: ${{ steps.changed-files-specific.outputs.modified_files }}
-          DELETED_FILES: ${{ steps.changed-files-specific.outputs.deleted_files }}
+          ADDED_FILES: ${{ github.event.inputs.added_files }}
+          MODIFIED_FILES: ${{ github.event.inputs.modified_files }}
+          DELETED_FILES: ${{ github.event.inputs.deleted_files }}
           MANAGEMENT_TOKEN: ${{ secrets.MANAGEMENT_TOKEN }}
           SPACE: ${{ secrets.PREVIEW_SPACE }}
           ENVIRONMENTS: master
