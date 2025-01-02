@@ -22,7 +22,7 @@ on:
       - MANAGEMENT_TOKEN:
         description: "Contentful Management Token"
         required: true
-      - PREVIEW_SPACE
+      - PREVIEW_SPACE:
         description: "Preview Space ID"
         required: true
 
