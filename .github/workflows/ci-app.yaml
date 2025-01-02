@@ -95,7 +95,7 @@ jobs:
       - name: Run a11y test
         run: npx playwright test
         working-directory: app
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: test-results
