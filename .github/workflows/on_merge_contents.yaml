@@ -11,21 +11,21 @@ on:
 jobs:
   on_merge_contents:
     runs-on: ubuntu-latest
-      if: github.event.pull_request.merged == true
-      name: Update changed-files
-      steps:
-        - uses: actions/checkout@v4
-          with:
-            fetch-depth: 0
-        - name: Get changed files in the contents folder
-          id: changed-files-specific
-          uses: tj-actions/changed-files@v45
-          with:
-            files: |
-              contents/**
-            since_last_remote_commit: true
-    use: ./wf_update.yaml
-      with:
-        added_files: ${{ steps.changed-files-specific.outputs.added_files }}
-        modified_files: ${{ steps.changed-files-specific.outputs.modified_files }}
-        deleted_files: ${{ steps.changed-files-specific.outputs.deleted_files }}
+    if: github.event.pull_request.merged == true
+    name: Update changed-files
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get changed files in the contents folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            contents/**
+          since_last_remote_commit: true
+      - uses: ./wf_update.yaml
+        with:
+          added_files: ${{ steps.changed-files-specific.outputs.added_files }}
+          modified_files: ${{ steps.changed-files-specific.outputs.modified_files }}
+          deleted_files: ${{ steps.changed-files-specific.outputs.deleted_files }}
