@@ -1,0 +1,45 @@
+name: Update Blog Post
+
+on:
+  workflow_call:
+    inputs:
+      added_files:
+        description: "新しく作成されたファイルパス"
+        required: false
+        default: ""
+      modified_files:
+        description: "変更されたファイルパス"
+        required: false
+        default: ""
+      deleted_files:
+        description: "削除されたファイルパス"
+        required: false
+        default: ""
+
+jobs:
+  update:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: package.json
+        cache: npm
+    - uses: actions/cache@v4
+      id: node_modules_cache_id
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: "**/node_modules"
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies
+      if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
+      run: npm ci
+    - name: Update changed files
+      run: npm run update -w=packages/content-management
+      id: update
+      env:
+        ADDED_FILES: ${{ github.event.inputs.added_files }}
+        MODIFIED_FILES: ${{ github.event.inputs.modified_files }}
+        DELETED_FILES: ${{ github.event.inputs.deleted_files }}
+        MANAGEMENT_TOKEN: ${{ secrets.MANAGEMENT_TOKEN }}
+        SPACE: ${{ secrets.PREVIEW_SPACE }}
+        ENVIRONMENTS: master
