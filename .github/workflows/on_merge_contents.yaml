@@ -1,4 +1,4 @@
-name: Update Blog Post
+name: on_merge_contents
 
 on:
   pull_request:
@@ -24,7 +24,7 @@ jobs:
           files: |
             contents/**
           since_last_remote_commit: true
-      - uses: ./wf_update.yaml
+      - uses: ./.github/workflows/wf_update.yaml
         with:
           added_files: ${{ steps.changed-files-specific.outputs.added_files }}
           modified_files: ${{ steps.changed-files-specific.outputs.modified_files }}

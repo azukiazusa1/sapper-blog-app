@@ -18,6 +18,31 @@ on:
         required: false
         type: string
         default: ""
+    secrets:
+      MANAGEMENT_TOKEN:
+        description: "Contentful Management Token"
+        required: true
+      PREVIEW_SPACE:
+        description: "Preview Space ID"
+        required: true
+
+  workflow_dispatch:
+    inputs:
+      added_files:
+        description: "新しく作成されたファイルパス"
+        required: false
+        type: string
+        default: ""
+      modified_files:
+        description: "変更されたファイルパス"
+        required: false
+        type: string
+        default: ""
+      deleted_files:
+        description: "削除されたファイルパス"
+        required: false
+        type: string
+        default: ""
 
 jobs:
   update:
