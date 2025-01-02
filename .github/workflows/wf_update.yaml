@@ -19,10 +19,10 @@ on:
         type: string
         default: ""
     secrets:
-      - MANAGEMENT_TOKEN:
+      MANAGEMENT_TOKEN:
         description: "Contentful Management Token"
         required: true
-      - PREVIEW_SPACE:
+      PREVIEW_SPACE:
         description: "Preview Space ID"
         required: true
 
