@@ -1,4 +1,4 @@
-name: Update Blog Post
+name: on_merge_contents
 
 on:
   pull_request:
