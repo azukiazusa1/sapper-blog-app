@@ -64,21 +64,21 @@
       <MenuIcon className="h-6 w-6" />
     </button>
     <Title />
-    <div class="invisible hidden md:visible md:block">
+    <div>
       <SearchDialog>
-        <SearchBar />
+        <div class="invisible hidden md:visible md:block">
+          <SearchBar />
+        </div>
+        <div class="md:invisible md:hidden">
+          <SearchIcon className="h-6 w-6" />
+        </div>
       </SearchDialog>
     </div>
     <div class="invisible hidden lg:visible lg:block">
       <Nav {segment} {routes} />
     </div>
-    <div class="flex items-center">
-      <div class="mx-2 flex items-center md:invisible md:hidden">
-        <SearchDialog>
-          <SearchIcon className="h-6 w-6" />
-        </SearchDialog>
-      </div>
-      <div class="invisible mx-2 hidden md:visible md:block">
+    <div class="invisible hidden items-center md:visible md:flex">
+      <div class="mx-2">
         <ToggleDarkMode />
       </div>
       <a
