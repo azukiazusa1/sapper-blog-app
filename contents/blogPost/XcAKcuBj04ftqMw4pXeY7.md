@@ -2,7 +2,7 @@
 id: XcAKcuBj04ftqMw4pXeY7
 title: "GitHub Actions で再利用可能なワークフローを作成する"
 slug: "github-actions-reusable-workflow"
-about: null
+about: "GitHub Actions で CI/CD 環境を構築する際に、同じような処理を複数のファイルで記述するようなことがよくあります。この記事では、GitHub Actions で再利用可能なワークフローを作成する方法と、実際に再利用可能なワークフローを作成する手順を紹介します。"
 createdAt: "2025-01-04T11:30+09:00"
 updatedAt: "2025-01-04T11:30+09:00"
 tags: ["GitHub Actions"]
