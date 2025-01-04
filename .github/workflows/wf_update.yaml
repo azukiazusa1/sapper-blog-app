@@ -68,9 +68,9 @@ jobs:
         run: npm run update -w=packages/content-management
         id: update
         env:
-          ADDED_FILES: ${{ github.event.inputs.added_files }}
-          MODIFIED_FILES: ${{ github.event.inputs.modified_files }}
-          DELETED_FILES: ${{ github.event.inputs.deleted_files }}
+          ADDED_FILES: ${{ inputs.added_files }}
+          MODIFIED_FILES: ${{ inputs.modified_files }}
+          DELETED_FILES: ${{ inputs.deleted_files }}
           MANAGEMENT_TOKEN: ${{ secrets.MANAGEMENT_TOKEN }}
           SPACE: ${{ secrets.PREVIEW_SPACE }}
           ENVIRONMENTS: master
