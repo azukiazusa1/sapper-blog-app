@@ -44,21 +44,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: package.json
-          cache: npm
-      - uses: actions/cache@v4
-        id: node_modules_cache_id
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
-        run: npm ci
+      - name: Set up
+        uses: ./.github/workflows/wf-setup.yaml
       - name: Install Lighthouse CI
         run: npm install -g @lhci/cli@0.10.x
       - name: Build
@@ -73,21 +60,8 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.44.1-focal
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: package.json
-          cache: npm
-      - uses: actions/cache@v4
-        id: node_modules_cache_id
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
-        run: npm ci
+      - name: Set up
+        uses: ./.github/workflows/wf-setup.yaml
       - name: Build
         run: npm run build
       - name: Add permissions
@@ -100,20 +74,3 @@ jobs:
         with:
           name: test-results
           path: app/artifacts/
-
-  # test:
-  #   timeout-minutes: 60
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version-file: package.json
-  #         cache: npm
-  #     - name: Install dependencies
-  #       run: npm ci
-  #     - name: Install Playwright
-  #       run: npx playwright install --with-deps
-  #     - name: Serve Storybook and run tests
-  #       run: npm run test-storybook:ci
