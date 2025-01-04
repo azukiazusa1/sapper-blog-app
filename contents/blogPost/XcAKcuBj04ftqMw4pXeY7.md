@@ -22,7 +22,7 @@ selfAssessment:
         - text: "`reusable-workflow`"
           correct: false
           explanation: ""
-        - text: "`module"workflow_call`"
+        - text: "`module`"
           correct: false
           explanation: ""
 
