@@ -101,7 +101,7 @@ Issue を作成した後に Actions タブを開くと、`On Issue Created` ワ�
 
 ## 再利用可能なワークフローにパラメータを渡す
 
-例えばデプロイ環境ごとに異なる設定を渡すような場合、再利用可能なワークフローを呼び出す際にパラメータを渡すことでワークフローを柔軟に使い回すことがｄけいます。再利用可能なワークフローにわたすパラメータは `on.workflow_call.inputs` キーに定義します。
+例えばデプロイ環境ごとに異なる設定を渡すような場合、再利用可能なワークフローを呼び出す際にパラメータを渡すことでワークフローを柔軟に使い回すことができます。再利用可能なワークフローにわたすパラメータは `on.workflow_call.inputs` キーに定義します。
 
 ```yaml:.github/workflows/wf-reusable-example.yaml
 name: Reusable Workflow Example
