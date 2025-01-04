@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "`on.workflow_call`"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "`on.workflow_dispatch`"
           correct: false
           explanation: "workflow_dispatch イベントは手動でワークフローをトリガーするためのイベントです。"
         - text: "`reusable-workflow`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`module`"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 GitHub Actions を使って CI/CD 環境を構築する際に、同じような処理を複数のファイルで記述するようなことがよくあります。例えばデプロイを行うワークフローでは、staging 環境と production 環境とで異なるタイミングでデプロイを行う必要があるため、それぞれのワークフローを別々のファイルに記述することでしょう。このような場合記述される処理は環境に依存する部分以外の多くの部分は共通していることが多いです。
 
 ワークフローの再利用を使用することで、処理の共通を回避し容易なワークフローの管理が可能になります。また適切な設計がされたワークフローを使い回すことでベストプラクティスに従ったワークフローを簡単に導入できます。Organizations で共通のワークフローを使い回すことで、組織全体でベストプラクティスを共有できるでしょう。
