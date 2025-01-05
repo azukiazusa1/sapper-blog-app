@@ -179,7 +179,7 @@ jobs:
 
 ファイルを変更してコミットしたら、もう一度 Issue を作成してワークフローが実行されることを確認しましょう。
 
-![](https)
+![](https://images.ctfassets.net/in6v9lxmm5c8/4KbOzR9TGdAWsQMiaEq73O/0fc9959e4a392adc6170d87a9a95eaac/__________2025-01-04_13.15.44.png)
 
 `$ENVIRONMENT` には `with` で指定した値が、`$TIMEOUT` にはデフォルト値が設定されていることが確認できます。
 
