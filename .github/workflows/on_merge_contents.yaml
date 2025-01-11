@@ -24,8 +24,18 @@ jobs:
           files: |
             contents/**
           since_last_remote_commit: true
-      - uses: ./.github/workflows/wf_update.yaml
-        with:
-          added_files: ${{ steps.changed-files-specific.outputs.added_files }}
-          modified_files: ${{ steps.changed-files-specific.outputs.modified_files }}
-          deleted_files: ${{ steps.changed-files-specific.outputs.deleted_files }}
+    outputs:
+      added_files: ${{ steps.changed-files-specific.outputs.added_files }}
+      modified_files: ${{ steps.changed-files-specific.outputs.modified_files }}
+      deleted_files: ${{ steps.changed-files-specific.outputs.deleted_files }}
+
+  update-contents:
+    needs: on_merge_contents
+    uses: ./.github/workflows/wf_update.yaml
+    with:
+      added_files: ${{ needs.on_merge_contents.outputs.added_files }}
+      modified_files: ${{ needs.on_merge_contents.outputs.modified_files }}
+      deleted_files: ${{ needs.on_merge_contents.outputs.deleted_files }}
+    secrets:
+      MANAGEMENT_TOKEN: ${{ secrets.MANAGEMENT_TOKEN }}
+      PREVIEW_SPACE: ${{ secrets.PREVIEW_SPACE }}
