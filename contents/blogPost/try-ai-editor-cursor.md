@@ -222,16 +222,17 @@ npm run dev
 ```
 
 プロジェクトのセットアップが完了しました！以下の機能が利用可能です：
-npm run dev - 開発サーバーの起動
-npm run build - プロダクションビルドの作成
-npm run lint - ESLint によるコード検証
-npm run format - Prettier によるコードフォーマット
+- npm run dev - 開発サーバーの起動
+- npm run build - プロダクションビルドの作成
+- npm run lint - ESLint によるコード検証
+- npm run format - Prettier によるコードフォーマット
 プロジェクトには以下の設定が含まれています：
-TypeScript
-React
-Tailwind CSS
-ESLint（TypeScript、React 対応）
-Prettier
+- TypeScript
+- React
+- Tailwind CSS
+- ESLint（TypeScript、React 対応）
+- Prettier
+
 これでカレンダーアプリの開発を始めることができます。何か質問がありましたら、お気軽にお申し付けください！
 
 </details>
@@ -278,7 +279,7 @@ Prettier
 生成されたコードにいくつか気に入らない点があったので、リファクタリングをお願いしたいと思います。生成されたコードは `components/`/・`/hooks`・`/types` のように技術ごとにディレクトリが別れた構造になっていました。これを機能ごとにディレクトリを分けるようにリファクタリングをお願いしました。
 
 ```txt
-ディレクトリ構造は `components/`/・`/hooks`・`/types` のように技術ごと分けられているいますが、機能ごとにディレクトリを分けるようにリファクタリングをお願いします。
+ディレクトリ構造は `components/`/・`/hooks`・`/types` のように技術ごと分けられていますが、機能ごとにディレクトリを分けるようにリファクタリングをお願いします。
 ```
 
 プロンプトをサブミットすると、期待通りにディレクトリを作成するコマンドが生成されました。
@@ -553,6 +554,7 @@ npm test
 5. モーダルの表示制御
 
 - isOpen が false の時に何も表示されないこと
+
 これらのテストにより、EventModal コンポーネントの主要な機能が正しく動作することを確認できます。
 次に、Calendar コンポーネントのテストを実装しますか？
 </details>
