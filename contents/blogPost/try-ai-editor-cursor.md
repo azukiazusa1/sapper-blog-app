@@ -8,7 +8,7 @@ updatedAt: "2025-01-11T12:04+09:00"
 tags: ["AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4fVhQUkjvXOQPwwVPBOYAq/58dec4a6e58deb5dbf4e62d07e5bdc24/yatai_oden_11993-768x591.png"
-  title: "おでんの屋台のイラスト"
+  title: "yatai oden 11993-768x591"
 selfAssessment:
   quizzes:
     - question: "AI エディター Cursor はどのエディタをフォークして作られているますか？"
@@ -25,10 +25,8 @@ selfAssessment:
         - text: "Vim"
           correct: false
           explanation: null
-
 published: true
 ---
-
 生成 AI の台頭はプログラミングの世界に大きな変革をもたらしました。我々開発者は AI の助けを借りながらまるでペアプログラミングをしているかのようにコードを書くことができます。私自身も普段から GitHub Copilot を使ってコードを書いています。コードを書いている最中に AI がコードを補完してくれる体験は、素早いフィードバックを得られるため非常に効率的です。
 
 コードを選択してテストコードやドキュメントを生成したり、コードのリファクタリングを行うような対話的なやり取りも AI がサポートしてくれます。このような対話的なやり取りでは AI が生成したコードを元に人間がコードを修正する、というように今までのプログラミングの作業では求められなかった全く新しいスキルが必要です。
