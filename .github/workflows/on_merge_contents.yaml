@@ -34,11 +34,10 @@ jobs:
       modified_files: ${{ steps.changed-files-specific.outputs.modified_files }}
       deleted_files: ${{ steps.changed-files-specific.outputs.deleted_files }}
 
-
-  update:
+  update-contents:
     needs: on_merge_contents
-    - uses: ./.github/workflows/wf_update.yaml
-      with:
-        added_files: ${{ needs.on_merge_contents.outputs.added_files }}
-        modified_files: ${{ needs.on_merge_contents.outputs.modified_files }}
-        deleted_files: ${{ needs.on_merge_contents.outputs.deleted_files }}
+    uses: ./.github/workflows/wf_update.yaml
+    with:
+      added_files: ${{ needs.on_merge_contents.outputs.added_files }}
+      modified_files: ${{ needs.on_merge_contents.outputs.modified_files }}
+      deleted_files: ${{ needs.on_merge_contents.outputs.deleted_files }}
