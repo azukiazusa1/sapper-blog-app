@@ -1,0 +1,35 @@
+name: "Setup Node.js and Install Dependencies"
+description: "Setup Node.js environment and install npm dependencies with caching"
+
+inputs:
+  node-version-file:
+    description: "Path to the .node-version or .nvmrc file"
+    required: false
+    default: "package.json"
+  cache-dependency-path:
+    description: "Path to package-lock.json file"
+    required: false
+    default: "**/package-lock.json"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: ${{ inputs.node-version-file }}
+        cache: npm
+
+    - uses: actions/cache@v4
+      id: node_modules_cache_id
+      shell: bash
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: "**/node_modules"
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(inputs.cache-dependency-path) }}
+
+    - name: Install dependencies
+      if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
+      shell: bash
+      run: npm ci
