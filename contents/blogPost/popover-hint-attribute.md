@@ -8,7 +8,7 @@ updatedAt: "2025-01-18T12:25+09:00"
 tags: ["HTML", "JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/A8RqJOVzwDWoeB5TdGtJC/27dfae6d55b286533a39a15774ed896d/kotatsu_mikan_illust_1797-768x603.png"
-  title: "こたつとみかんのイラスト"
+  title: "kotatsu mikan illust 1797-768x603"
 selfAssessment:
   quizzes:
     - question: "`popover=hint` 属性の特徴として正しいものはどれか？"
@@ -25,10 +25,8 @@ selfAssessment:
         - text: "トリガー要素にホバーもしくはフォーカスした場合にポップオーバーが表示される"
           correct: false
           explanation: null
-
 published: true
 ---
-
 !> `popover=hint` 属性は 2024 年 1 月現在 Chrome Beta 133 でのみサポートされています。
 
 [ポップオーバー API](https://developer.mozilla.org/ja/docs/Web/API/Popover_API) は 2024 年の Baseline に組み込まれており、主要なブラウザでサポートされています。
