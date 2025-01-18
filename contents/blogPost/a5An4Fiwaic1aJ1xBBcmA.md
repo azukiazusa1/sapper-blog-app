@@ -1,6 +1,6 @@
 ---
 id: a5An4Fiwaic1aJ1xBBcmA
-title: "ヒントを表示するための `popover=hint` 属性"
+title: "ユーザーにヒントを表示するための `popover=hint` 属性"
 slug: "popover-hint-attribute"
 about: "ポップオーバー API は 2024 年の Baseline に組み込まれており、主要なブラウザでサポートされています。Chrome Beta 133 では 3 番目の値として `hint` が追加されました。`popover=hint` はユーザーに対してヒントを表示する「ツールチップ」として動作します。この記事では `popover=hint` 属性について詳しく見ていきます。"
 createdAt: "2025-01-18T12:25+09:00"
