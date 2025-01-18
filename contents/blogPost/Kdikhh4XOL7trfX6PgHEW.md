@@ -1,6 +1,6 @@
 ---
 id: Kdikhh4XOL7trfX6PgHEW
-title: "scroll-state() コンテナクエリで sticky で張り付いたときに境界線を出す"
+title: "scroll-state() CSS コンテナクエリを使用して sticky で張り付いたときに境界線を出す"
 slug: "scroll-state-function-to-show-border-when-sticky"
 about: "scroll-state() はコンテナ要素のスクロール状態に応じてスタイルを変更することができるコンテナクエリです。例えば、スクロール中にヘッダーを sticky な場合の境界線を表示することが挙げられます。"
 createdAt: "2025-01-18T19:59+09:00"
