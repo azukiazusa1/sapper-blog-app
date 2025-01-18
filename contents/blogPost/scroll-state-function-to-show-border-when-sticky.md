@@ -8,7 +8,7 @@ updatedAt: "2025-01-18T19:59+09:00"
 tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/csohw4ouPaQG4zqoEiYMa/f537169c1916a02da33973932a6eea56/banrinochoujou_6743-768x605.png"
-  title: "万里の長城のイラスト"
+  title: "banrinochoujou 6743-768x605"
 selfAssessment:
   quizzes:
     - question: "scroll-state() が受け入れる名前として存在しないものはどれか？"
@@ -25,10 +25,8 @@ selfAssessment:
         - text: "scrolling"
           correct: true
           explanation: null
-
 published: true
 ---
-
 !> `scroll-state()` は 2025 年 1 月現在 Chrome v133 以降のみでサポートされています。
 
 `scroll-state()` は[コンテナクエリ](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_containment/Container_queries)の一種であり、コンテナ要素のスクロール状態に応じてスタイルを変更できます。
