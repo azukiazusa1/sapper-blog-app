@@ -77,7 +77,7 @@ import { unstable_ViewTransition as ViewTransition } from "react";
 View Transition API によるアニメーションを適用する場合には `condition` の変更を `startTransition` 関数でラップする必要があります。
 
 ```jsx
-import { useState, unstable_startTransition as startTransition } from "react";
+import { useState, startTransition, unstable_ViewTransition as ViewTransition } from "react";
 
 export function App() {
   const [page, setPage] = useState("A");
