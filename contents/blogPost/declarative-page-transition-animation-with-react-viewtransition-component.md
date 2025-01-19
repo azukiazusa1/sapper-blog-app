@@ -8,7 +8,7 @@ updatedAt: "2025-01-19T12:50+09:00"
 tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4LXuBOcOcy8qk7llZURFa3/f31fcdaa3a5f0ea1bb84c9267e2e5eaa/sobauchi_illust_3930-768x768.png"
-  title: "そば打ちのイラスト"
+  title: "sobauchi illust 3930-768x768"
 selfAssessment:
   quizzes:
     - question: "`<ViewTransition>` コンポーネントを使用した場合、直近の子コンポーネントに対して何が追加されるか？"
@@ -25,10 +25,8 @@ selfAssessment:
         - text: "`.view-transition` CSS クラス"
           correct: false
           explanation: null
-
 published: true
 ---
-
 !> `<ViewTransition>` コンポーネントは 2025 年 1 月現在実験的な機能です。将来にわたって API が変更される可能性があります。
 
 React の実験的なバージョンとして `<ViewTransition>` コンポーネントが導入されました。これは [View Transition API](https://developer.mozilla.org/ja/docs/Web/API/View_Transition_API) を宣言的な方法で使用できるようにするものです。
