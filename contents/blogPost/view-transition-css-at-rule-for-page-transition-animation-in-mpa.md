@@ -8,7 +8,7 @@ updatedAt: "2025-01-18T22:47+09:00"
 tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/lBFeoAMNCnBp1tX8St3D4/37a2bb61b643bdc7a827a1a561074262/sphinx_6644-768x585.png"
-  title: "スフィンクスのイラスト"
+  title: "sphinx 6644-768x585"
 selfAssessment:
   quizzes:
     - question: "MPA でページ遷移アニメーションを行うために必要な CSS はどれか？"
@@ -25,10 +25,8 @@ selfAssessment:
         - text: "html { navigation: auto; }"
           correct: false
           explanation: null
-
 published: true
 ---
-
 [View Transition API](https://developer.mozilla.org/ja/docs/Web/API/View_Transition_API) はページを遷移する際に簡単にアニメーションを追加できる API です。単一ページアプリケーション（SPA）においては `document.startViewTransition()` メソッドを DOM が変更される前に呼び出すことでページ遷移アニメーションを追加できます。
 
 複数ページアプリケーション（MPA）においても同様のアニメーションを追加できるようにするために、CSS アットルール `@view-transition` を使用できます。SPA の場合と異なり、JavaScript を使用せずに CSS だけでアニメーションを追加できる点が特徴です。
