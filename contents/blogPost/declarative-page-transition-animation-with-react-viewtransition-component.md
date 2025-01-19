@@ -33,7 +33,7 @@ React の実験的なバージョンとして `<ViewTransition>` コンポーネ
 
 View Transition API はページを遷移する際に簡単にアニメーションを追加できる API です。単一ページアプリケーション（SPA）においては `document.startViewTransition()` メソッドを DOM が変更される前に呼び出すことでページ遷移アニメーションを追加できます。`<ViewTransition>` コンポーネントを使用はこの API を React で使用するための方法です。
 
-b> view-transition
+b> view-transitions
 
 `<ViewTransition>` コンポーネントを使用することでブラウザの標準的な機能を使用してページ遷移アニメーションを追加できるという利点があります。
 
