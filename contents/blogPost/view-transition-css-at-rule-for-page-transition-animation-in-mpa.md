@@ -51,7 +51,7 @@ b> cross-document-view-transitions
 
 実際に動作している動作を確認してみましょう。デフォルトではすべての要素に対してフェードイン/フェードアウトのアニメーションが適用されていることがわかります。
 
-<video src="vhttps://videos.ctfassets.net/in6v9lxmm5c8/3OL7cGr2hmPR2IOrCPT7fc/02c596ecbc7dd98cba879b217a6a5786/_____2025-01-19_9.53.20.mov" controls></video>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/3OL7cGr2hmPR2IOrCPT7fc/02c596ecbc7dd98cba879b217a6a5786/_____2025-01-19_9.53.20.mov" controls></video>
 
 ## keyframes アニメーションの適用
 
