@@ -175,7 +175,9 @@ document.addEventListener("pagereveal", (e) => {
 }
 ```
 
-この例では画像のがスケールしながらページ遷移が行われることがわかります。
+この例では画像がスケールしながらページ遷移が行われることがわかります。
+
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/5OhMdr7cpKmvhvSigfyy9X/bd6f5cb80e175accd548a0899ea847da/_____2025-01-19_11.44.07.mov" controls></video>
 
 ## 特定の要素が出現するまで遷移アニメーションの開始を遅らせる
 
