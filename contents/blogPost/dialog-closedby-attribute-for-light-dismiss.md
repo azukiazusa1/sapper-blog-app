@@ -8,7 +8,7 @@ updatedAt: "2025-01-21T18:04+09:00"
 tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/z41m0XjV0V1eJDTKKEbsd/9f215d6470af68a95abbbd417594d834/yakiimo_16655-768x729.png"
-  title: "焼き芋のイラスト"
+  title: "yakiimo 16655-768x729"
 selfAssessment:
   quizzes:
     - question: "`<dialog>` 要素の Light dismiss 機能を実現するための属性はどれか？"
@@ -25,10 +25,8 @@ selfAssessment:
         - text: "autoclose"
           correct: false
           explanation: null
-
 published: true
 ---
-
 !> `<dialog>` の `closedby` 属性は 2024 年 1 月現在 Chrome Beta v133 でのみサポートされています。
 
 [Light dismiss](https://html.spec.whatwg.org/multipage/popover.html#popover-light-dismiss) とは開いているポップオーバーを簡単に解除できることを指します。具体的にはポップオーバーの外側をクリックするとポップオーバーが閉じるといった挙動です。このような挙動は HTML に仕様に概念として登場する以前にも一般的に採用されていたパターンでした。
