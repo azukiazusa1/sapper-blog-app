@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class=" hidden h-full w-full data-active:block"
+  class=" data-active:block hidden h-full w-full"
   data-active={active ? true : undefined}
 >
   <slot />

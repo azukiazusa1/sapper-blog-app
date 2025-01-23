@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @config '../tailwind.config.cjs';
 
@@ -332,7 +332,7 @@ h6 .icon-link::before {
 }
 
 .alert-note {
-  @apply border-l-blue-600  bg-blue-50 dark:border-l-blue-400 dark:bg-blue-950;
+  @apply border-l-blue-600 bg-blue-50 dark:border-l-blue-400 dark:bg-blue-950;
 }
 
 .alert-note .alert-title {
@@ -495,15 +495,15 @@ span[style="color: #545454"] {
 }
 
 [data-chars-id="v"] {
-  @apply border-b-pink-600 bg-rose-800/50 font-bold text-pink-300!;
+  @apply text-pink-300! border-b-pink-600 bg-rose-800/50 font-bold;
 }
 
 [data-chars-id="s"] {
-  @apply border-b-yellow-600 bg-yellow-800/50 font-bold text-yellow-300!;
+  @apply text-yellow-300! border-b-yellow-600 bg-yellow-800/50 font-bold;
 }
 
 [data-chars-id="i"] {
-  @apply border-b-purple-600 bg-purple-800/50 font-bold text-purple-200!;
+  @apply text-purple-200! border-b-purple-600 bg-purple-800/50 font-bold;
 }
 
 section[data-footnotes] {
