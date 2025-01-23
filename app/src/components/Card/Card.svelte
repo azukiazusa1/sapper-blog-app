@@ -231,7 +231,7 @@
         <Time date={createdAt} />
       </p>
       <p
-        class="break-words text-sm text-black text-opacity-80 dark:text-gray-50 dark:text-opacity-80"
+        class="break-words text-sm text-black/80 dark:text-gray-50/80"
         style:--tag="about-{slug}"
       >
         {about}
