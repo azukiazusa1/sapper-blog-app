@@ -91,7 +91,7 @@
 
 <div
   id="article-info"
-  class="flex h-screen items-center justify-center bg-gradient-to-b from-purple-900 to-indigo-900 text-white"
+  class="bg-linear-to-b flex h-screen items-center justify-center from-purple-900 to-indigo-900 text-white"
 >
   <div class="mx-auto w-full max-w-2xl p-4 md:p-8">
     {#key currentSlide}
@@ -123,7 +123,7 @@
       <button
         on:click={() => setPreviousSlide()}
         disabled={currentSlide === 0}
-        class="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-black px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+        class="focus-visible:outline-hidden inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-black px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
       >
         Previous
       </button>
@@ -141,7 +141,7 @@
       <button
         on:click={() => setNextSlide()}
         disabled={currentSlide === slides.length - 1}
-        class="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-black px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+        class="focus-visible:outline-hidden inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-black px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
       >
         Next
       </button>

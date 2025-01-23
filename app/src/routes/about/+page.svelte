@@ -23,7 +23,7 @@
           </div>
           <div class="flex flex-col items-center justify-center text-center">
             <h2 class="mt-4 text-lg font-medium">azukiazusa1</h2>
-            <div class="bg-theme mb-4 mt-2 h-1 w-12 rounded" />
+            <div class="bg-theme mb-4 mt-2 h-1 w-12 rounded-sm" />
             <p class="text-base">
               <a
                 class="underline hover:opacity-75"

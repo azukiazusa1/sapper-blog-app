@@ -18,7 +18,7 @@
   </div>
 
   <div
-    class="absolute inset-0 bg-gradient-to-br from-purple-700 via-pink-500 to-orange-500 opacity-90"
+    class="bg-linear-to-br absolute inset-0 from-purple-700 via-pink-500 to-orange-500 opacity-90"
   ></div>
   <div class="animate-rotate absolute inset-0">
     <div

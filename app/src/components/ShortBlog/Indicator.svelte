@@ -3,6 +3,6 @@
 </script>
 
 <div
-  class="w-4 flex-1 rounded-md bg-slate-700 duration-150 ease-linear data-[active]:bg-white"
+  class="data-active:bg-white w-4 flex-1 rounded-md bg-slate-700 duration-150 ease-linear"
   data-active={active ? true : undefined}
 />

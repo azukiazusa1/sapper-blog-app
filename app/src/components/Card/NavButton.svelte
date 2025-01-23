@@ -29,7 +29,7 @@
       />
     </div>
     <div
-      class="flex items-center justify-center rounded-lg border bg-black p-3 text-sm text-gray-50 outline-none dark:border-zinc-700"
+      class="outline-hidden flex items-center justify-center rounded-lg border bg-black p-3 text-sm text-gray-50 dark:border-zinc-700"
     >
       {label}
     </div>
