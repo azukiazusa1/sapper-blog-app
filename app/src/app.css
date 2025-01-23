@@ -1,6 +1,31 @@
 @import "tailwindcss";
 
-@config '../tailwind.config.cjs';
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --animate-fade-in: fadeIn 0.2s ease-out;
+  --animate-rotate: rotate 30s ease-in-out infinite;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
