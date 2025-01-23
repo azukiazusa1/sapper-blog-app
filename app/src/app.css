@@ -1,6 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../tailwind.config.cjs';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 html:has(dialog[open]) {
   overflow: hidden;
@@ -464,7 +482,7 @@ span[style="color: #545454"] {
 }
 
 [data-highlighted-chars] {
-  @apply rounded bg-zinc-600/50;
+  @apply rounded-sm bg-zinc-600/50;
   box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
 }
 
@@ -473,19 +491,19 @@ span[style="color: #545454"] {
 }
 
 [data-chars-id] span {
-  @apply !text-inherit;
+  @apply text-inherit!;
 }
 
 [data-chars-id="v"] {
-  @apply border-b-pink-600 bg-rose-800/50 font-bold !text-pink-300;
+  @apply border-b-pink-600 bg-rose-800/50 font-bold text-pink-300!;
 }
 
 [data-chars-id="s"] {
-  @apply border-b-yellow-600 bg-yellow-800/50 font-bold !text-yellow-300;
+  @apply border-b-yellow-600 bg-yellow-800/50 font-bold text-yellow-300!;
 }
 
 [data-chars-id="i"] {
-  @apply border-b-purple-600 bg-purple-800/50 font-bold !text-purple-200;
+  @apply border-b-purple-600 bg-purple-800/50 font-bold text-purple-200!;
 }
 
 section[data-footnotes] {

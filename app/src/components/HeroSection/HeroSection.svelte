@@ -5,7 +5,7 @@
 
 <section>
   <div
-    class="mx-auto grid max-w-screen-xl px-4 py-6 lg:grid-cols-12 lg:gap-8 xl:gap-0"
+    class="mx-auto grid max-w-(--breakpoint-xl) px-4 py-6 lg:grid-cols-12 lg:gap-8 xl:gap-0"
   >
     <div class="mr-auto place-self-center lg:col-span-7">
       <h1

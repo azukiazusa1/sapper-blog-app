@@ -55,7 +55,7 @@
       {#each items as item}
         <DropdownMenu.RadioItem
           value={item.value}
-          class={`z-50 flex w-32 transform cursor-pointer items-center px-2 py-3 transition-colors duration-200 hover:bg-gray-100 data-[highlighted]:bg-gray-100  dark:border-zinc-600 dark:hover:bg-zinc-500 dark:data-[highlighted]:bg-zinc-500`}
+          class={`z-50 flex w-32 transform cursor-pointer items-center px-2 py-3 transition-colors duration-200 hover:bg-gray-100 data-highlighted:bg-gray-100  dark:border-zinc-600 dark:hover:bg-zinc-500 dark:data-highlighted:bg-zinc-500`}
         >
           {#if item.value === "system"}
             <System className="h-5 w-5" />

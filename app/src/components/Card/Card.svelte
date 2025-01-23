@@ -174,7 +174,7 @@
         "w-screen",
         "h-screen",
         "bg-black/80",
-        "backdrop-blur-sm",
+        "backdrop-blur-xs",
         "flex",
         "items-center",
         "justify-center",

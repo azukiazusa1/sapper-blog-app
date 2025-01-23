@@ -65,9 +65,9 @@
     <slot />
   </Dialog.Trigger>
   <Dialog.Portal>
-    <Dialog.Overlay class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" />
+    <Dialog.Overlay class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs" />
     <Dialog.Content
-      class="fixed left-0 right-0 top-0 z-50 mx-auto mt-8 flex max-h-[90%] min-h-[15rem] max-w-2xl overflow-y-scroll rounded-lg border bg-white p-5 text-neutral-800 outline-none md:mt-16 md:max-h-[80%] dark:border-zinc-700 dark:bg-zinc-800 dark:text-gray-50"
+      class="fixed left-0 right-0 top-0 z-50 mx-auto mt-8 flex max-h-[90%] min-h-[15rem] max-w-2xl overflow-y-scroll rounded-lg border bg-white p-5 text-neutral-800 outline-hidden md:mt-16 md:max-h-[80%] dark:border-zinc-700 dark:bg-zinc-800 dark:text-gray-50"
     >
       <div id="search" class="w-full" />
     </Dialog.Content>
