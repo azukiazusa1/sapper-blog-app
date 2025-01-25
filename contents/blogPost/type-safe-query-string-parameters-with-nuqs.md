@@ -39,10 +39,8 @@ selfAssessment:
         - text: "const [count, setCount] = useQueryState<number>('count');"
           correct: false
           explanation: null
-
 published: true
 ---
-
 フロントエンドの状態管理のパターンとしてクエリパラメータを信頼できる唯一の情報源(single source of truth)として扱うことがあります。つまり、`useState` などの React の状態管理フックを使用してメモリ上に保持した状態を使用するのではなく、`location.search` などでクエリパラメーターを取得し、それの情報を元に画面を描画するということです。ユーザーの操作により状態が更新される場合には必ずクエリパラメータも更新することで、状態とクエリパラメータが常に一致することが保証します。
 
 クエリパラメータを状態の情報源として使用するメリットとして以下のようなものがあります。
