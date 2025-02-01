@@ -8,7 +8,7 @@ updatedAt: "2025-02-01T10:57+09:00"
 tags: ["React", "React Server Components"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3J3O1Nlkl7ZpyX0foboIUd/97f5be4422aeb574a13d9074386a1993/shark-fin_21263-768x591.png"
-  title: "フカヒレのイラスト"
+  title: "shark-fin 21263-768x591"
 selfAssessment:
   quizzes:
     - question: "アプリケーションをビルドする際に使用するコマンドはどれか？"
@@ -39,10 +39,8 @@ selfAssessment:
         - text: "useCacheContext()"
           correct: false
           explanation: null
-
 published: true
 ---
-
 2025 年 2 月現在 React Server Components を扱う方法として最も知られているのは Next.js を利用する方法でしょう。実際に Next.js は React Server Components が React の Canary の機能である段階で、すでに安定した機能として提供されていました。このため React Server Components が Next.js 固有の機能だと思われていたこともあったかもしれません。
 
 -> React Canary とは安定版のバージョンがリリースされる前に React コミュニティに提供するリリースチャンネルです。Canary リリースでリリースされた機能には破壊的な変更が含まれるため、開発者が直接本番環境で使用することは想定されていません。Canary リリースの機能はフレームワークを介して使用して、フレームワークのレイヤーで破壊的変更を吸収して提供することが想定されています。Next.js は React Server Components に限らず Canary リリースの機能を積極的に取り入れているため、今後も React の新しい機能をいち早く利用できるフレームワークとして利点があります。
