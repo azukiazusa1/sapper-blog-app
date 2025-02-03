@@ -3,7 +3,7 @@ name: Validate Blog Post
 on:
   pull_request:
     paths:
-      - contents/**.md
+      - contents/blogPosts/**/*.md
 
 jobs:
   validate:

@@ -4,10 +4,15 @@
     "lint": "npm run lint:textlint",
     "lint:fix": "npm run lint:textlint:fix",
     "lint:textlint": "textlint blogPost/ --quiet",
-    "lint:textlint:fix": "textlint --fix blogPost/"
+    "lint:textlint:fix": "textlint --fix blogPost/",
+    "dev": "marp --engine ./slides/engine.mjs -s ./slides --html",
+    "build:html": "marp --engine ./slides/engine.mjs --html",
+    "build:pdf": "marp --engine ./slides/engine.mjs --pdf"
   },
   "dependencies": {
+    "@marp-team/marp-cli": "^4.1.1",
     "@proofdict/textlint-rule-proofdict": "^3.1.2",
+    "@shikijs/markdown-it": "^2.2.0",
     "textlint": "^13.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-preset-bengo4": "^2.2.1",
