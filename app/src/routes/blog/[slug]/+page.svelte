@@ -26,6 +26,7 @@
   <title>{post.title}</title>
   <meta name="description" content={post.about} />
   <link rel="canonical" href={url} />
+  <meta name="robots" content="max-image-preview:large" />
 </svelte:head>
 
 <Ogp
