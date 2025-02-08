@@ -15,34 +15,32 @@ selfAssessment:
       answers:
         - text: "navigator.credentials.get()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "navigator.credentials.create()"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "navigator.credentials.register()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "navigator.credentials.authenticate()"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "パスキーによる自動入力を有効にするために input 要素に指定する属性はどれか？"
       answers:
         - text: "autocomplete='password'"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "autocomplete='webauthn'"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "autocomplete='username'"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "autocomplete='one-time-code'"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 パスキーとはパスワードに代わる認証方法で、生体認証やデバイス PIN を使ってログインができる仕組みです。ユーザーはパスワードを覚える必要がなく、フィッシング攻撃にも強いという点からよりセキュア認証方法として注目を集めています。また指紋認証や顔認証のように簡単な操作で Web サービスにアクセスできるようになるため、ユーザビリティの向上にもつながります。
 
 パスキーは 2022 年頃から企業や団体により対応が表明されており、2025 年現在では Amazon, Google, Microsoft, 任天堂, NTT ドコモといった企業で採用されています。今後もパスキーを採用する企業は増えていくと予想されており、さまざまな Web サービスでパスキーが使われていくことかと思います。
