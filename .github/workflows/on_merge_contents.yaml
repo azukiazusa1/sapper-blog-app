@@ -6,7 +6,7 @@ on:
       - main
     types: [closed]
     paths:
-      - contents/blogPosts/**/*.md
+      - contents/blogPost/**/*.md
 
 jobs:
   on_merge_contents:
