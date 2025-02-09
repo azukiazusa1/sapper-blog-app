@@ -4,6 +4,13 @@
 
 <ol class="relative border-s border-gray-200 dark:border-gray-700">
   <Timeline
+    eventTitle="Svelte Japan Online Meetup #6"
+    eventDate="2025-02-07"
+    presentationTitle="依存関係があるコンポーネントは Barrel ファイルでまとめよう"
+    presentationLink="https://speakerdeck.com/azukiazusa1/yi-cun-guan-xi-gaarukonponentoha-barrel-huairudematomeyou"
+    description="依存関係があるコンポーネントとは、`<select>` と `<option>` のような関係性を指します。このようなコンポーネントは同時に使われることが前提であるため、利用者にそのことが伝わるようにする必要があります。この発表では Barrel ファイルを使って依存関係があるコンポーネントをまとめる方法について話します。"
+  />
+  <Timeline
     eventTitle="JSConf JP 2024"
     eventDate="2024-11-23"
     presentationTitle="UI 開発におけるヘッドレス UI ライブラリの重要性とデザインシステムへの取り入れ方"
