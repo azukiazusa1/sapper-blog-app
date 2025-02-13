@@ -2,7 +2,7 @@
 id: OWbgQlZgLFyRPhUOn-pal
 title: "ダイアログの Light dismiss を有効にする `<dialog closedby>` 属性"
 slug: "dialog-closedby-attribute-for-light-dismiss"
-about: "`<dialog closedby>` 属性はダイアログの外側をクリックした際にダイアログを閉じる Light dismiss 機能を実現するための属性です。closeby 属性は `any`, `closerequest`, `none` の 3 つの値を受け付けます。"
+about: "`<dialog closedby>` 属性はダイアログの外側をクリックした際にダイアログを閉じる Light dismiss 機能を実現するための属性です。closedby 属性は `any`, `closerequest`, `none` の 3 つの値を受け付けます。"
 createdAt: "2025-01-21T18:04+09:00"
 updatedAt: "2025-01-21T18:04+09:00"
 tags: ["HTML"]
