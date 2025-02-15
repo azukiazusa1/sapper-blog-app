@@ -14,16 +14,16 @@ selfAssessment:
     - question: "`StandardSchemaV1` インターフェイスの [~standard].validate() メソッドの結果の成否はどのように判定されるか？"
       answers:
         - text: ".result プロパティが `true` であればバリデーション成功、`false` であればバリデーション失敗"
-          isCorrect: false
+          collect: false
           explanation: ""
         - text: ".issues プロパティが存在しない場合はバリデーション成功、存在する場合はバリデーション失敗"
-          isCorrect: true
+          collect: true
           explanation: ""
         - text: ".error プロパティが存在しない場合はバリデーション成功、存在する場合はバリデーション失敗"
-          isCorrect: false
+          collect: false
           explanation: ""
         - text: "Error オブジェクトがスローされない場合はバリデーション成功、スローされる場合はバリデーション失敗"
-          isCorrect: false
+          collect: false
           explanation: ""
 
 published: true
