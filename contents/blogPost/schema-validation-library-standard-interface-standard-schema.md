@@ -188,7 +188,7 @@ export async function standardValidate<T extends StandardSchemaV1>(
   schema: T,
   input: unknown,
 ): Promise<StandardSchemaV1.InferOutput<T>> {
-  const result = schema["~standard"].validate(input);
+  let result = schema["~standard"].validate(input);
   if (result instanceof Promise) result = await result;
 
   // `issues` フィールドが存在する場合はエラーとして扱う
