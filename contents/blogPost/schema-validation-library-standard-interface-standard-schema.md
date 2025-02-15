@@ -5,7 +5,7 @@ slug: "schema-validation-library-standard-interface-standard-schema"
 about: "スキーマバリデーションライブラリはここ数年で人気を集めています。多くのライブラリが登場する中で、standard-schema はスキーマバリデーションライブラリの標準インターフェースを提供します。これにより、エコシステムツールがユーザー定義の型検証ツールをより簡単に受け入れられるようにすることを目指しています。"
 createdAt: "2025-02-15T10:03+09:00"
 updatedAt: "2025-02-15T10:03+09:00"
-tags: ["TypeScript", "standard-schema", "zod"]
+tags: ["TypeScript", "standard-schema", "Zod"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5yEMyHee08BxW88Gl44V3b/08e17d7594b2f7ffb74d20f9a70979a3/Japanese-castle_6153-768x728.png"
   title: "日本のお城のイラスト"
@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: ".result プロパティが `true` であればバリデーション成功、`false` であればバリデーション失敗"
           correct: false
-          explanation: ""
+          explanation: null
         - text: ".issues プロパティが存在しない場合はバリデーション成功、存在する場合はバリデーション失敗"
           correct: true
-          explanation: ""
+          explanation: null
         - text: ".error プロパティが存在しない場合はバリデーション成功、存在する場合はバリデーション失敗"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "Error オブジェクトがスローされない場合はバリデーション成功、スローされる場合はバリデーション失敗"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [Zod](https://zod.dev/) や [valibot](https://valibot.dev/), [ArkType](https://arktype.io/) などを代表とするスキーマバリデーションライブラリはここ数年で人気を集めています。これらのライブラリは TypeScript の型システムを活用してスキーマを定義し、それに基づいてバリデーションを行います。バリデーションを行った結果は型安全に扱うことができるのが特徴です。
 
 ユーザー入力のように外部からのデータを安全に扱いたいような場面では、スキーマバリデーションライブラリは非常に有用です。Next.js の Server Actions ではクライアントから直接関数を呼び出せるような API となっています。しかし、実際にはクライアントからは任意のデータをサーバーに送信できるようになっており、引数の型どおりのデータが送信されるとは限りません。そのため Server Actions の関数内ではスキーマバリデーションライブラリを用いてバリデーションを行うプラクティスが推奨されています。
