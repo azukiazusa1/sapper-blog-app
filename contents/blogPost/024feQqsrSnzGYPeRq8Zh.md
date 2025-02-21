@@ -58,7 +58,7 @@ UI デザインにおいてボタンが「押し込まれた」状態を表現�
 
 https://www.w3.org/TR/using-aria/#rule1
 
-このようにネイティブなものが存在しないため `aria-*` や `role` 属性を使わざるをえない例として `role="search"` がありました。この問題は ネイティブの `<search>` 要素が登場したことにより解決されました。
+このようにネイティブなものが存在しないため `aria-*` や `role` 属性を使わざるをえない例として `role="search"` がありました。この問題はネイティブの `<search>` 要素が登場したことにより解決されました。
 
 `<search>` 要素と同じ役割が期待されているのが Press Button の提案です。これは Open UI Community によって提案されており、`aria-*` 属性や JavaScript を使用せずにボタンが押し込まれた状態を表現することが目的です。
 
@@ -74,7 +74,7 @@ Press Button Proposal では以下の事項が提案されています。
 - [IDL](https://developer.mozilla.org/ja/docs/Glossary/IDL) プロパティに `pressed` を追加する。このプロパティは `true`, `false`, `mixed` のいずれかの値を持つ
 - UA スタイルシートに `button:pressed` のスタイルルールを追加する
 
-`type="press"` 属性を追加した場合、暗黙的に `pressed` 状態を持つことになります。初期状態は `false` です。`defaultpressed` 属性を使用することで初期状態を `true` もしくは `mixed` に設定することができます。
+`type="press"` 属性を追加した場合、暗黙的に `pressed` 状態を持つことになります。初期状態は `false` です。`defaultpressed` 属性を使用することで初期状態を `true` もしくは `mixed` に設定できます。
 
 `type="press"` 属性を持つボタンはクリックされるたびに `pressed` 状態がトグルされます。`pressed` 状態 `true` の場合は `:pressed` 擬似クラスが適用されます。開発者は `:pressed` 擬似クラスを使用して視覚的にボタンが押し込まれた状態を表現できます。`pressed` 状態が `mixed` の場合には `:indeterminate` 擬似クラスが適用されます。
 
