@@ -3,8 +3,8 @@ id: pi4tx-CrtBY2Xq-s0Fz9V
 title: "Deno v2.2 で追加されたビルドイン OpenTelemetry サポートを試してみる"
 slug: "deno-v2-2-opentelemetry"
 about: "Deno v2.2 でビルドインの OpenTelemetry サポートが追加されました。アプリケーションのコードに変更を加えることなく、Deno のビルトイン API から自動的にテレメトリーデータを計装できるようになります。"
-createdAt: "2025-02-21T18:50+09:00"
-updatedAt: "2025-02-21T18:50+09:00"
+createdAt: "2025-02-22T15:42+09:00"
+updatedAt: "2025-02-22T15:42+09:00"
 tags: ["Deno", "OpenTelemetry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/hmAh1y5HuIL0a3m4C7Kdz/dbc016aeb3125aa3c81c5994bc92d7a8/cute_brachiosaurus_8065.png"
