@@ -5,7 +5,7 @@ slug: "q-typescript-readonly-shorts"
 about: "質問来てた👉  Q: TypeScript を使っているのに関数の引数のオブジェクトや配列に `readonly` を付与しないのは犯罪ですか？  結論：犯罪になる場合がある。 まず、配列の引数に `readonly` を付与しておけば以下の利点を得られます。  - うっかり関数の内部で引数の値を変更してしまうコードを書いてしまったときにコンパイルエラーが得られる - 関数の利用者が安心して関数を呼び出せる"
 createdAt: "2021-10-03T00:00+09:00"
 updatedAt: "2021-10-03T00:00+09:00"
-tags: ["TypeScript"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
   title: "typescript"

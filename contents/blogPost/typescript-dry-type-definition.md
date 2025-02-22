@@ -5,7 +5,7 @@ slug: "typescript-dry-type-definition"
 about: "DRY原則は非常に有名な原則ですし、普段から特に考えずとも自然と重複をさけるようなコードを書いている方も多いことでしょう。  とはいえ、TypeScriptにおいて`interface`や`type`などを用いて型定義を行う際に重複した型定義を行ってしまうことはないでしょうか？ TypeScriptには型定義をする際に重複を抑える手段は確かに存在します。そのようないくつかの方法を紹介します。"
 createdAt: "2021-08-08T00:00+09:00"
 updatedAt: "2021-08-08T00:00+09:00"
-tags: ["TypeScript"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
   title: "typescript"

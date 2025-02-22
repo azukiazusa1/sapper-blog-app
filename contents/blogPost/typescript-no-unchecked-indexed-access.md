@@ -5,7 +5,7 @@ slug: "typescript-no-unchecked-indexed-access"
 about: "TypeScript 4.1 から noUncheckedIndexedAccess オプションが追加されました。このオプションは上記のような配列のアクセスやオブジェクトのプロパティのアクセスをより厳密にします。  具体的には、配列に対するインデックスアクセスやインデックスシグネチャを通じたプロパティのアクセスは常に `undefined` とのユニオン型となります。"
 createdAt: "2022-06-26T00:00+09:00"
 updatedAt: "2022-06-26T00:00+09:00"
-tags: ["TypeScript"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
   title: "typescript"

@@ -5,7 +5,7 @@ slug: "full-stack-web-framework-honox"
 about: "HonoX は Hono と Vite をベースにしたフルスタック Web フレームワークです。Hono が提供するサーバーサイドやクライアントサイドの機能を使いつつ、ファイルベースルーティングや Islands Architecture などの新しい機能を使うことができます。"
 createdAt: "2024-02-10T16:55+09:00"
 updatedAt: "2024-02-10T16:55+09:00"
-tags: ["Hono", "TypeScript"]
+tags: ["Hono", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5SRI4GJP8Vkwr1TlHaABJ7/5e4b7392342605af70473abdc1493731/chocolate_parfait_16886.png"
   title: "チョコレートパフェのイラスト"

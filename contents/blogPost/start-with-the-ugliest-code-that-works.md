@@ -5,7 +5,7 @@ slug: "start-with-the-ugliest-code-that-works"
 about: "コードを書く際の重要な要点は、読みやすく他人に理解される「良いコード」を書くことです。しかし、完璧を目指して最初から書こうとすると行き詰まります。代わりに、荒削りながらも動くコードを作成し、徐々にリファクタリングして完成度を高めます。型エラーやリントエラーを無視しても構わないので、まずは動くものを作成しましょう。それからリファクタリングして「良いコード」を作成できます。"
 createdAt: "2023-09-03T08:57+09:00"
 updatedAt: "2023-09-03T08:57+09:00"
-tags: ["React", "TypeScript"]
+tags: ["React", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6UKhA7p9mC4BGDDc6bgNFp/8161de3f28245b8ab40795184e0f6e62/momiji_kouyou_11157.png"
   title: "イチョウのイラスト"

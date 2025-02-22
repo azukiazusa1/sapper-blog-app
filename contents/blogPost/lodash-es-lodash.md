@@ -5,7 +5,7 @@ slug: "lodash-es-lodash"
 about: "[lodash-es](https://www.npmjs.com/package/lodash-es) とは [lodash](https://lodash.com/) を `ES module` 形式で提供しているライブラリです。"
 createdAt: "2021-10-10T00:00+09:00"
 updatedAt: "2021-10-10T00:00+09:00"
-tags: ["JavaScript"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
   title: "JavaScript"

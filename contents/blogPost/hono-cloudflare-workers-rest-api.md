@@ -5,7 +5,7 @@ slug: "hono-cloudflare-workers-rest-api"
 about: "Hono は TypeScript/JavaScript のシンプルな Web フレームワークです。Hono という名前は日本語の「炎」に由来します。  Hono の特徴としては以下の点が挙げられています。  - ウルトラファスト - 依存関係なし - ミドルウェア - TypeScript - マルチプラットフォーム"
 createdAt: "2022-08-28T00:00+09:00"
 updatedAt: "2022-08-28T00:00+09:00"
-tags: ["TypeScript", "Cloudflare Workers", "Hono"]
+tags: ["", "Cloudflare Workers", "Hono"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2IiZnVjRizCrlOWaHw4ChQ/c514cfbbd9b013aae9c086e7264fb0f2/hono-title.png"
   title: "hono-title"

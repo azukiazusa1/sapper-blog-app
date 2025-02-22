@@ -5,7 +5,7 @@ slug: "typescript-like-syntax-for-openapi-schemas"
 about: "TypeSepc は TypeScript にインスパイアされた言語で、開発者が親しみやすい構文で OpenAPI のスキーマを定義できます。モデルを使ってデータの構造を定義し、`@route` デコレーターを使って REST API のエンドポイントを定義します。"
 createdAt: "2024-01-27T13:48+09:00"
 updatedAt: "2024-01-27T13:48+09:00"
-tags: ["TypeScript", "OpenAPI", "TypeSpec"]
+tags: ["", "OpenAPI", "TypeSpec"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4efwBKKVHcvQTjB8X6RLXA/947fcf1f6d7186446795e94c7f48f2cd/down-jacket_14978.png"
   title: "ダウンジャケットのイラスト"

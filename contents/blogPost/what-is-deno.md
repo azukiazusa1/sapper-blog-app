@@ -5,7 +5,7 @@ slug: "what-is-deno"
 about: "Denoは、Node.jsの製作者であるRyan Dahlによって作られた、新しいJS/TSランタイムです。簡単に説明すると、Node.jsのイケてなかったところを改良したものがDenoになります。"
 createdAt: "2020-05-17T00:00+09:00"
 updatedAt: "2020-05-17T00:00+09:00"
-tags: ["JavaScript", "Deno", "Node.js"]
+tags: ["", "Deno", "Node.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6fPJ5Ah5oHsWbvScuggrCh/899629af347facfc74e95006dae6b617/deno.png"
   title: "Deno"

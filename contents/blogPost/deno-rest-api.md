@@ -5,7 +5,7 @@ slug: "deno-rest-api"
 about: "この記事では、Denoを使い簡単なCRUD操作を行うREST APIを構築します。"
 createdAt: "2021-02-28T00:00+09:00"
 updatedAt: "2021-02-28T00:00+09:00"
-tags: ["TypeScript", "Deno", "MongoDB"]
+tags: ["", "Deno", "MongoDB"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6fPJ5Ah5oHsWbvScuggrCh/899629af347facfc74e95006dae6b617/deno.png"
   title: "Deno"

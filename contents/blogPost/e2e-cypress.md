@@ -5,7 +5,7 @@ slug: "e2e-cypress"
 about: "Cypressは、JavaScript製のE2Eテスティングフレームワークです。 実行速度が早い、HTTPリクエストの実行を待つなどテストが壊れにくい仕組みが整っています"
 createdAt: "2021-04-11T00:00+09:00"
 updatedAt: "2021-04-11T00:00+09:00"
-tags: ["cypress", "TypeScript"]
+tags: ["cypress", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4uRtBocKePGUE7UUwBtaVa/c6499be195b0dc6f56b827c21f9a4b30/cypress-1324440144114984250.png"
   title: "cypress"

@@ -5,7 +5,7 @@ slug: "jest-mock"
 about: "Jestは、JavaScriptのシンプルなテスティングフレームワークです。ゼロコンフィグを謳っており、細かい設定なしに動作させることが可能です。  Jestの中でも特に強力な機能がモッキングです。Jestのモックを利用すれば、外部ライブラリであろうとモジュール外のオブジェクトを簡単にモック化することができます。  実際に、テストコードの例を見ていきましょう。"
 createdAt: "2020-12-16T00:00+09:00"
 updatedAt: "2020-12-16T00:00+09:00"
-tags: ["JavaScript", "Jest"]
+tags: ["", "Jest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5mjRp0X25FDsK1P9n4okz2/59e4bdf8f9773263fc5ab0c75ff5b443/jest.png"
   title: "jest"

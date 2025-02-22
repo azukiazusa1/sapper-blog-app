@@ -5,7 +5,7 @@ slug: "url-canparse-method"
 about: "`URL.canParse()` メソッドは与えられた URL 文字列が有効であるかどうかを判定します。URL 文字列が有効であれば `true` を、無効であれば `false` を返します。これは URL コンストラクターを用いた `try...catch` 文による判定よりも簡潔に記述できます。"
 createdAt: "2023-10-15T14:28+09:00"
 updatedAt: "2023-10-15T14:28+09:00"
-tags: ["JavaScript"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1Zh64r38ManhvKedHbQ2Kc/787597ddad6cc18640cd8c3fd5b0477f/wakame-soup_19332.png"
   title: "wakame-soup 19332"

@@ -5,7 +5,7 @@ slug: "fetch-upload-streaming"
 about: "Fetch Upload Streaming とは、ブラウザの JavaScript の POST リクエストで HTTP のストリーミングを行える機能です。より具体的には、Fetch API の `body` に ReadableStream を渡せるようになります。"
 createdAt: "2022-08-21T00:00+09:00"
 updatedAt: "2022-08-21T00:00+09:00"
-tags: ["JavaScript", "Fetch"]
+tags: ["", "Fetch"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
   title: "JavaScript"

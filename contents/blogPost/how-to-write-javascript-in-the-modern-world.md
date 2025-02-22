@@ -5,7 +5,7 @@ slug: "how-to-write-javascript-in-the-modern-world"
 about: "JavaScriptはES2015以降から言語自体が大きく変化しました。 ES2015以降も、毎年JavaScriptはアップデートが行われており、最新の使用はES2020となっています。  このように、JavaScriptという言語は日々進化を遂げています。ES2015より前の書き方の多くが非推奨となっており、過去のWebや本の情報は現在ではあまり役に立たなくなっています。 そんなJavaScriptのイマドキの書き方を見ていきましょう。"
 createdAt: "2020-12-05T00:00+09:00"
 updatedAt: "2021-02-05T00:00+09:00"
-tags: ["JavaScript"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1oOuwue6Ki0IRZkFa6y6Qi/5359bf10fca29a24eaf9260cc78240bc/es2015-001.jpg"
   title: "JavaScript"

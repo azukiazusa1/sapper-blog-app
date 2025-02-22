@@ -8,40 +8,39 @@ updatedAt: "2025-02-22T17:27+09:00"
 tags: ["CSS", "ESLint", "Baseline"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7d5QDjhTKC9bvIJVOqNWwY/16958dae8788f839969904dd9000d208/various-chocolates_12311.png"
-  title: "バレタインチョコレートのイラスト"
+  title: "バレンタインチョコレートのイラスト"
 selfAssessment:
   quizzes:
     - question: "Baseline でサポートされていない CSS プロパティや値を検出するための ESLint/CSS ルールは何か？"
       answers:
         - text: "require-baseline"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "require-css"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "require-support"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "require-feature"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "Baseline において「Widely Available」に分類されていない CSS プロパティや値を使用する場合に ESLint のエラーを回避する方法として正しいものはどれか？"
       answers:
         - text: "`@supports(...)` ルールのブロック内で使用する"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "`@if(...)` ルールのブロック内で使用する"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`<!-- [if !IE]> -->` コメント内で使用する"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "-webkit- プレフィックスを付与する"
           correct: false
-          explanation: ""
+          explanation: null
 published: true
 ---
-
 ブラウザによる CSS のサポート状況の差異は、Web 開発者にとって頭痛の種です。新しい CSS プロパティや値を使用する際には、それがどのブラウザでサポートされているかを確認する必要があります。[Baseline](https://web.dev/baseline?hl=ja) はそのような問題を解決するためのプロジェクトです。ブラウザで利用可能な JavaScript や CSS のブラウザのサポート状況を明確化することで、Web 開発者が安心して新しい機能を使用できるようになります。
 
 Baseline で「Newly Available」とされている機能は Chrome、Edge、Firefox、Safari などの主要ブラウザでサポートされていることが保証されています。「Widely Available」は、Newly Available になってから 30 ヶ月が経過したものであり、何年も前からブラウザで使われている機能です。「Limited availability」の場合にはいくつかのブラウザでのみサポートされており、Baseline とは言えません。

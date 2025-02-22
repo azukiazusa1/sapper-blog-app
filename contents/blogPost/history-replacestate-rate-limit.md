@@ -5,7 +5,7 @@ slug: "history-replacestate-rate-limit"
 about: "`history.replaceState()` は、ブラウザの履歴を変更するための API です。使用例としてユーザーのアクションによる UI の状態の変更に合わせて、URL のクエリパラメータを変更することが挙げられます。この API はブラウザにより呼び出し回数に制限が設けられており、使い方を誤ると予期せぬ挙動が発生するおそれがあります。"
 createdAt: "2023-10-01T13:11+09:00"
 updatedAt: "2023-10-01T13:11+09:00"
-tags: ["JavaScript"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1qt8GP6Vy9x7afq87NiRsp/52b7c3a7ac5976e5b3bf66368db39957/sukiyaki_16090.png"
   title: "すき焼き鍋のイラスト"

@@ -5,7 +5,7 @@ slug: "vue-js-for-ie11"
 about: "人生でときにはIE11に対応させなければいけない時があるでしょう。Vue.jsでIE11に対応しなけらばいけなくなったときに読むものを記載しておきます。"
 createdAt: "2021-04-18T00:00+09:00"
 updatedAt: "2021-04-18T00:00+09:00"
-tags: ["Babel", "JavaScript", "Vue.js", "IE11"]
+tags: ["Babel", "", "Vue.js", "IE11"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7dTaK0hk8bKcWr83rNUSEl/5d70107c16241398b941a7c05e035d9f/IE_symbol_Cyan_rgb.png"
   title: "ie11"

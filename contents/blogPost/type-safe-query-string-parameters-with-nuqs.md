@@ -5,7 +5,7 @@ slug: "type-safe-query-string-parameters-with-nuqs"
 about: "フロントエンドの状態管理のパターンとしてクエリパラメータを信頼できる唯一の情報源(single source of truth)として扱うことがあります。ですが、クエリパラメーターの型が文字列であるため、型安全性が保証されないという課題があります。この記事では `nuqs` というライブラリを使用してクエリパラメーターを型安全に扱う方法について解説します。"
 createdAt: "2025-01-25T10:33+09:00"
 updatedAt: "2025-01-25T10:33+09:00"
-tags: ["Next.js", "React", "TypeScript"]
+tags: ["Next.js", "React", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3UybJ6ZWSiiy4t2YQtrbUN/13eb7f0a4f5e33358768121d728d1982/squid_octopus_illust_1680-768x750.png"
   title: "イカとタコのイラスト"

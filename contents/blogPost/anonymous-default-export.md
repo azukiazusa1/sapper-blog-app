@@ -5,7 +5,7 @@ slug: "anonymous-default-export"
 about: "`anonymous default export` とは名前の通り匿名でデフォルトエクスポートを宣言することです。必ず名前を付与しなければいけない名前付きエクスポートと異なり、以下はすべて有効な構文です。"
 createdAt: "2022-03-20T00:00+09:00"
 updatedAt: "2022-03-20T00:00+09:00"
-tags: ["JavaScript"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
   title: "JavaScript"

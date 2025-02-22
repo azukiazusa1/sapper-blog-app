@@ -5,7 +5,7 @@ slug: "try-chrome-internal-ai-summarization-api"
 about: "Google では大規模言語モデル（LLM）などの AI モデルをブラウザに直接統合するように設計された、Web プラットフォーム API とブラウザ機能を開発しています。これには Gimini Nano という AI モデルが含まれており、デスクトップパソコンにおいてローカルで実行されるように設計されています。この記事では Summarization API を使用して、文章を要約してみます。"
 createdAt: "2024-10-13T13:27+09:00"
 updatedAt: "2024-10-13T13:27+09:00"
-tags: ["AI", "JavaScript"]
+tags: ["AI", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/8jYj0zIygRVhqc8IhKuHD/489b061cfdd9715b05d079057e65c301/desert_sundae_16897.png"
   title: "サンデーのイラスト"

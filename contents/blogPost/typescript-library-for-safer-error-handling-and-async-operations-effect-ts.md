@@ -5,7 +5,7 @@ slug: "typescript-library-for-safer-error-handling-and-async-operations-effect-t
 about: "Effect-TS は、開発者が複雑なエラーや非同期処理をより安全に開発できるようにすることを目的とした TypeScript ライブラリです。Effect-TS は、TypeScript の型システムを活用して、本番のアプリケーションにおける実用的な問題を解決することを目指しています。"
 createdAt: "2024-04-29T14:54+09:00"
 updatedAt: "2024-04-29T14:54+09:00"
-tags: ["TypeScript", "Effect-TS"]
+tags: ["", "Effect-TS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1m40UxozfoX4jJuCrUS16D/653a29fdce918b0a3ceaa0a6438a4d4b/may_koinobori_6826-768x753.png"
   title: "鯉のぼりのイラスト"

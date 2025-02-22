@@ -5,7 +5,7 @@ slug: "schema-validation-library-standard-interface-standard-schema"
 about: "スキーマバリデーションライブラリはここ数年で人気を集めています。多くのライブラリが登場する中で、standard-schema はスキーマバリデーションライブラリの標準インターフェースを提供します。これにより、エコシステムツールがユーザー定義の型検証ツールをより簡単に受け入れられるようにすることを目指しています。"
 createdAt: "2025-02-15T10:03+09:00"
 updatedAt: "2025-02-15T10:03+09:00"
-tags: ["TypeScript", "standard-schema", "Zod"]
+tags: ["", "standard-schema", "Zod"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5yEMyHee08BxW88Gl44V3b/08e17d7594b2f7ffb74d20f9a70979a3/Japanese-castle_6153-768x728.png"
   title: "日本のお城のイラスト"

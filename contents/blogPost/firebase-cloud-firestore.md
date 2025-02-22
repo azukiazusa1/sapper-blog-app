@@ -5,7 +5,7 @@ slug: "firebase-cloud-firestore"
 about: "Cloud FireStore(以下FireStore)とは、FireBaseの提供するドキュメント指向型 のNoSQLデータベースです。 NoSQLとしての特徴としてのスキーマレス、スケーラブルといった特徴のほかにリアルタイムアップデート、セキュリティルール、オフラインサポートといった独自の特徴を備えており、特にバックエンドを介さずにクライントサイドから直接操作できるという点が大きなポイントです。 また、β版から正式リリースされたのが2019年2月ということもあり、比較的新しい技術です。"
 createdAt: "2020-04-26T00:00+09:00"
 updatedAt: "2020-04-26T00:00+09:00"
-tags: ["firebase", "JavaScript"]
+tags: ["firebase", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2kQrXA9Amina8TOc9oC4PF/9033b78047d09b10c90b126439e33287/firestore.png"
   title: "firestore"

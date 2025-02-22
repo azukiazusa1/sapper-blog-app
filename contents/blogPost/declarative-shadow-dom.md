@@ -5,7 +5,7 @@ slug: "declarative-shadow-dom"
 about: "宣言型 Shadow DOM は `<template>` 要素を使用して Shadow DOM を構築する方法です。宣言型 Shadow DOM を使用することで、従来の JavaScript を使用した Shadow DOM の構築方法と比較して、サーバーサイドレンダリング（SSR）に対応しているため、パフォーマンスの向上や SEO 対策に期待されます。"
 createdAt: "2024-10-19T15:45+09:00"
 updatedAt: "2024-10-19T15:45+09:00"
-tags: ["JavaScript", "Web Components"]
+tags: ["", "Web Components"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6WxinEzAH94ePMLyqRlYRM/3653adc2ffb0f76dde660d87c538e298/bats-halloween_20798-768x591.png"
   title: "ハロウィンのコウモリのイラスト"
