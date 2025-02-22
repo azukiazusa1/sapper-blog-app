@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "OTEL_AUTO_INSTRUMENT=true"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "OTEL_DENO=true"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "OTEL_DENO_AUTO_INSTRUMENT=true"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "OTEL_ENABLE=true"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 Deno v2.2 でビルドインの [OpenTelemetry](https://opentelemetry.io/) サポートが追加されました。OpenTelemetry は分散トレーシングのためのオープンソースの規格です。OpenTelemetry の規格に従うことで、トレース・メトリクス・ログなどのテレメトリーデータをベンダーやツールにとらわれずに収集・エクスポートできるようになります。
 
 一般的に OpenTelemetry を使用してテレメトリーデータを計装するにはプログラミング言語ごとに用意されている SDK を使用します。Deno のビルドイン OpenTelemetry サポートは、追加の SDK のインストールや設定を行わずに Deno アプリケーションから OpenTelemetry を利用できるようにするものです。`console.log`, `Deno.serve`, `fetch` などの Deno のビルトイン API から自動的にテレメトリーデータを計装します。
