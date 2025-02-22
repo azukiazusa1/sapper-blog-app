@@ -3,8 +3,8 @@ id: nJqTNXDWkefPe44IwKVEF
 title: "ブラウザに広くサポートされていない CSS を検証する require-baseline ESLint ルール"
 slug: "require-baseline-eslint-rule-to-validate-css-not-widely-supported-in-browsers"
 about: "Baseline はブラウザで利用可能な JavaScript や CSS のサポート状況を明確化するプロジェクトです。ESLint/CSS の require-baseline ルールを使用することで、Baseline でサポートされていない CSS プロパティや値を検出することができます。"
-createdAt: "2025-02-20T15:27+09:00"
-updatedAt: "2025-02-20T15:27+09:00"
+createdAt: "2025-02-22T17:27+09:00"
+updatedAt: "2025-02-22T17:27+09:00"
 tags: ["CSS", "ESLint", "Baseline"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7d5QDjhTKC9bvIJVOqNWwY/16958dae8788f839969904dd9000d208/various-chocolates_12311.png"
