@@ -94,7 +94,7 @@ services:
 
   # Collector
   otel-collector:
-    image: otel-collector-config.yaml
+    image: otel/opentelemetry-collector-contrib
     restart: always
     command: ["--config=/etc/otel-collector-config.yaml"]
     volumes:
