@@ -3,8 +3,8 @@ id: 024feQqsrSnzGYPeRq8Zh
 title: "ボタンが押し込まれた状態を表す Press Button の提案"
 slug: "proposal-press-button"
 about: 'UI デザインにおいてボタンが「押し込まれた」状態を表現することはしばしばあります。しかし、ネイティブの HTML 要素では表現できず `aria-pressed` 属性を使用する必要がありました。Press Button Proposal では `type="press"` 属性を追加することでボタンが押し込まれた状態を表現することが提案されています。'
-createdAt: "2025-02-20T19:47+09:00"
-updatedAt: "2025-02-20T19:47+09:00"
+createdAt: "2025-02-22T16:47+09:00"
+updatedAt: "2025-02-22T16:47+09:00"
 tags: [HTML, Open UI, アクセシビリティ]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/10SqxdMAu3IfqTRI3fWHyO/21cd23fd87afa920c8ceb5587ba2a15e/takowasabi_15883-768x630.png"
