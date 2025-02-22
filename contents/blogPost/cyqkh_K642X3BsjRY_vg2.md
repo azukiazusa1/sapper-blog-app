@@ -45,7 +45,7 @@ Prisma は [OpenTelemetry](https://opentelemetry.io/) の仕様に準拠した�
 
 ## Prisma を使用したプロジェクトを作成する
 
-ここからは実際に Prisma で OpenTelemetry のトレースデータを計装する手順を紹介します。まずは Prisma と Hono を使用した簡単な HTTP API を作成します。以下のコマンドで Hono のプロジェクトを作成します。
+ここからは実際に Prisma で OpenTelemetry のトレースデータを計装する手順を紹介します。まずは Prisma と Hono を使用した簡単な HTTP API サーバーを作成します。以下のコマンドで Hono のプロジェクトを作成します。
 
 ```sh
 npm create hono@latest trace-example
@@ -134,6 +134,8 @@ npx tsx prisma/seed.ts
 npx prisma studio
 ```
 
+http://localhost:5555 にアクセスしてデータベースの内容を確認します。
+
 ![](https://images.ctfassets.net/in6v9lxmm5c8/ux0lc0GfxnmdsdJkh4Vqs/fdd5cf0baa21834397170c81847bc588/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2025-02-22_11.29.09.png)
 
 続いて Hono を使用して記事の一覧を取得するエンドポイントと、記事を作成するエンドポイントを作成します。`src/index.ts` ファイルを以下のように編集します。
@@ -193,9 +195,9 @@ curl http://localhost:3001/posts
 
 プロジェクトのセットアップが完了したので、ここからは OpenTelemetry の計装を行う設定を実装していきます。まずは [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) を使用してトレースデータを収集するための設定を行います。
 
-OpenTelemetry のテレメトリーデータを Jaeger や Prometheus などの監視バックエンドに送信する際にアプリケーションのコードから直接送信することはできますが、この方法は柔軟性に欠けるため OpenTelemetry Collector を仲介して送信することが一般的です。
+OpenTelemetry のテレメトリーデータは Jaeger や Prometheus などの監視バックエンドにアプリケーションのコードから直接送信することはできますが、この方法は柔軟性に欠けるため OpenTelemetry Collector を仲介して送信することが一般的です。
 
-OpenTelemetry Collector は複数のアプリケーションからのテレメトリーデータを収集し、処理して、監視バックエンドに送信します。OpenTelemetry Collector を使用するとアプリケーションのコードを直接変更することなく、テレメトリーデータの送信先や処理方法を柔軟に変更することができます。
+OpenTelemetry Collector は複数のアプリケーションからのテレメトリーデータを収集・処理して、監視バックエンドに送信します。OpenTelemetry Collector を使用するとアプリケーションのコードを直接変更することなく、テレメトリーデータの送信先や処理方法を柔軟に変更することができます。
 
 ここでは Docker で [local LGTM スタック](https://github.com/grafana/docker-otel-lgtm/tree/main?tab=readme-ov-file)（Prometheus, Grafana, Loki, Tempo）を使用して OpenTelemetry Collector と監視バックエンドサービスを立ち上げます。
 
@@ -234,6 +236,7 @@ import { OTLPTraceExporter as GrpcTraceExporter } from "@opentelemetry/exporter-
 import prisma from "@prisma/instrumentation";
 import { Resource } from "@opentelemetry/resources";
 import { ATTR_SERVICE_NAME } from "@opentelemetry/semantic-conventions";
+import { HttpInstrumentation } from "@opentelemetry/instrumentation-http";
 
 const sdk = new NodeSDK({
   // resource はアプリケーションが実行されている環境に関する情報を提供する
@@ -243,12 +246,17 @@ const sdk = new NodeSDK({
   resource: new Resource({
     [ATTR_SERVICE_NAME]: "hono-app",
   }),
+  // `service.name` を指定するだけであるならば、以下のようにも書ける
+  // serviceName: "hono-app",
+
   // トレースデータをエクスポートする宛先を指定する
   // 先ほど設定して OpenTelemetry Collector のエンドポイントを指定している
   traceExporter: new GrpcTraceExporter(),
   instrumentations: [
     // Node.js に関するテレメトリーデータを自動計装する
     getNodeAutoInstrumentations(),
+    // HTTP に関するテレメトリーデータを計装する
+    new HttpInstrumentation(),
     // Prisma に関するテレメトリーデータを計装する
     new prisma.PrismaInstrumentation(),
   ],
@@ -257,9 +265,9 @@ const sdk = new NodeSDK({
 sdk.start();
 ```
 
-`@prisma/instrumentation` パッケージは Prisma のクエリに関するテレメトリーデータを計装するためのパッケージです。Prisma のクエリに関するテレメトリーデータを計装するためには、Prisma クライアントの初期化時に Prisma の計装パッケージを使用する必要があります。`@prisma/instrumentation` パッケージを使用することで Prisma クライアントがデータベースに接続する時間やクエリの実行時間などのテレメトリーデータを計装することができます。
+`@prisma/instrumentation` パッケージを使用することで Prisma クライアントがデータベースに接続する時間やクエリの実行時間などのテレメトリーデータを計装することができます。
 
-`@prisma/instrumentation` パッケージの `PrismaInstrumentation` を `instrumentations` に追加することで Prisma のクエリも計装されます。例として以下のような一連のスパンが軽装されます。
+`@prisma/instrumentation` パッケージの `PrismaInstrumentation` を `instrumentations` に追加することで Prisma のクエリも計装が有効になります。例として以下のような一連のスパンが計装されます。
 
 - `prisma:client:operation`：Prisma クライアントからデータベースへの操作全体を表す。以下の span がこのスパンの子スパンとして生成される。
   - `prisma:client:connect`：Prisma クライアントがデータベースに接続する時間
@@ -273,7 +281,7 @@ sdk.start();
 `instrumentation.ts` ファイルを `src/index.ts` ファイルでインポートして初期化します。計装の設定を初期化するコードはアプリケーションコードが実行される前に呼び出される必要があります。そのため、`instrumentation.ts` ファイルを `src/index.ts` ファイルの先頭でインポートします。
 
 ```ts:src/index.ts
-import "./instrumentation";
+await import("./instrumentation.js");
 
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
@@ -311,6 +319,11 @@ Grafana の [Explore](http://localhost:3000/explore) 画面でトレースデー
 親スパン名や属性の情報から `/posts` エンドポイントに `GET` リクエストが送信され、`200` ステータスコードでレスポンスが返されたことがわかります。また Prisma のそれぞれのスパンでどれくらいの時間がかかったかも確認できます。このようなトレースデータを活用すれば、アプリケーションのパフォーマンスを可視化し、ボトルネックを特定することができます。
 
 ## まとめ
+
+- Prisma は OpenTelemetry の仕様に準拠したトレースデータを計装するためのパッケージを提供している
+- トレースを計装することでリクエストの全体の流れを可視化し、ボトルネックを特定することができる
+- `@openetelemetry/sdk-node` パッケージを使用して Node.js アプリケーションに OpenTelemetry の自動計装を導入することができる
+- `@prisma/instrumentation` パッケージを使用することで Prisma クライアントのテレメトリーデータを計装することができる
 
 ## 参考
 
