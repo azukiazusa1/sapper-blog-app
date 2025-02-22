@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "`prisma:client:operation`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`prisma:engine:db_query`"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "`prisma:engine:query`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`prisma:engine:serialize`"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 Prisma は [OpenTelemetry](https://opentelemetry.io/) の仕様に準拠したトレースデータを計装するためのパッケージを提供しています。OpenTelemetry は分散トレーシングのためのオープンソースの規格です。OpenTelemetry の規格に従うことで、トレース・メトリクス・ログなどのテレメトリーデータをベンダーやツールにとらわれずに収集・エクスポートできるようになります。
 
 この記事では、Prisma で OpenTelemetry のトレースデータを計装する方法について紹介します。
