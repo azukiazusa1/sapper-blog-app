@@ -254,6 +254,33 @@ input
 
 ![](https://videos.ctfassets.net/in6v9lxmm5c8/1uAiLmvBhP8AWF1r5amKin/9dd0744317eb84ef40d9db6efa503ea1/%E7%94%BB%E9%9D%A2%E5%8F%8E%E9%8C%B2_2025-02-23_14.36.30.mov)
 
+## Observable インスタンスのメソッド
+
+Observable インターフェイスには以下のメソッドが用意されています。
+
+| メソッド | インターフェイス | 説明 |
+| --- | --- | --- |
+| `subscribe()` | `((v: any) => undefined \| { next?: (v: any) => undefined, error?: (e: any) => undefined, complete?: () => undefined, addTeardown?: (teardown: () => void) => void }, { signal?: AbortSignal }) => void` | イベントを購読し通知を受け取る |
+| `takeUntil()` | `(v: Observable) => Observable` | 指定したイベントが発生するまでイベントを監視する |
+| `map()` | `(f: (v: any, index: number) => any) => Observable` | イベントを変換する |
+| `filter()` | `(f: (v: any, index: number) => boolean) => Observable` | コールバック関数が `true` を返すイベントのみにフィルタリングする |
+| `take()` | `(n: number) => Observable` | 最初の `n` 個のイベントのみを取得する |
+| `drop()` | `(n: number) => Observable` | 最初の `n` 個のイベントをスキップする |
+| `flatMap()` | `(f: (v: any) => Observable) => Observable` | 各イベントを新しいストリームにマップする |
+| `switchMap()` | `(f: (v: any) => Observable) => Observable` | 新しいストリームにマップして切り返す際に、暗黙的にサブスクリプションを解除する |
+| `inspect()` | `((v: any) => undefined \| { next?: (v: any) => undefined, error?: (e: any) => undefined, complete?: () => undefined, addTeardown?: (teardown: () => void) => void }) => void` | 現在のイベントの値を取得する。デバッグ目的で使用する |
+| `catch()` | `(f: (e: any) => void) => Observable` | ストリームで発生したエラーをキャッチする |
+| `finally()` | `(f: () => void) => Observable` | ストリームが終了した際に呼び出されるコールバック関数を指定する |
+| `toArray()` | `({ signal?: AbortSignal }) => Promise<any[]>` | ストリームのイベントを配列に変換する |
+| `forEach()` | `(f: (v: any, index: number) => void, { signal?: AbortSignal }) => Promise<void>` | 各イベントに対してコールバック関数を実行し値を取得する |
+| `every()` | `(f: (v: any, index: number) => boolean, { signal: AbortSignal }) => Promise<boolean>` | すべてのイベントがコールバック関数の条件を満たすかどうかを確認する |
+| `some()` | `(f: (v: any, index: number) => boolean, { signal: AbortSignal }) => Promise<boolean>` | いずれかのイベントがコールバック関数の条件を満たすかどうかを確認する |
+| `reduce()` | `(f: (acc: any, v: any, index: number) => any, initialValue: any, { signal: AbortSignal }) => Promise<any>` | イベントを累積して単一の値に変換する |
+| `first()` | `({ signal: AbortSignal }) => Promise<any>` | 最初のイベントを取得する |
+| `last()` | `({ signal: AbortSignal }) => Promise<any>` | 最後のイベントを取得する |
+| `find()` | `(f: (v: any, index: number) => boolean, { signal: AbortSignal }) => Promise<any>` | コールバック関数の条件を満たす最初のイベントを取得する |
+| `from()`（静的メソッド） | `(iterable: Iterable<any>) => Observable` | イテラブルオブジェクトから Observable インスタンスを作成する |
+
 ## 懸念事項
 
 `.first()` や `.last()` などの Promise を返すメソッドを使用する際の懸念事項が指摘されています。それはマイクロタスクのスケジューリングとイベントループの統合に関するものです。以下のコードでは `.first()` メソッドの後に `e.preventDefault()` が呼び出されていますが、Promise が解決された後（マイクロタスクキューが取り出された後）に呼び出されるためもはやイベントをキャンセルすることができません。
