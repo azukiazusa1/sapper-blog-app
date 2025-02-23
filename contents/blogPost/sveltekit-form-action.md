@@ -5,7 +5,7 @@ slug: "sveltekit-form-action"
 about: "SvelteKit のフォームは Web 標準の機能のみで完結しています。つまり、クライアントサイドでは JavaScript を一切使用せずにサーバーにデータを送信できるのです。さらに、JavaScript を利用できる環境であるならばリッチなユーザー体験を追加できます。例えば、フォームを送信した後ページ全体の再読み込みを行わずに、フォームの送信結果を表示することができたり、バリデーションメッセージを即座に表示できたりします。"
 createdAt: "2023-04-30T13:59+09:00"
 updatedAt: "2023-04-30T13:59+09:00"
-tags: ["Svelte", "SvelteKit"]
+tags: ["", "SvelteKit"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/10yOrB3tXKM12ZJbJdJlw5/e7d9e7de67e916bb0a59695d9882f061/1200px-Svelte_Logo.svg.png"
   title: "Svelte"

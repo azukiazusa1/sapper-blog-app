@@ -5,7 +5,7 @@ slug: "svelte-reactivity-system-with-runes"
 about: "Svelte v5 で導入された Runes によるリアクティビティシステムについて解説します。従来の Svelte は純粋な JavaScript のコードのみを使用してリアクティビティを実現していましたが、アプリケーションが大規模になると複雑性が増すという問題がありました。Runes は Svelte のリアクティビティシステムをより柔軟にし、アプリケーションの規模が大きくなってもシンプルさを保つことを目指しています。"
 createdAt: "2024-05-04T14:54+09:00"
 updatedAt: "2024-05-04T14:54+09:00"
-tags: ["Svelte", ""]
+tags: ["", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3DiWpMzhc1IffEvBT6dLbT/04824286f622909e107d811312400178/magic-circle_5540-768x768.png"
   title: "魔法陣のイラスト"
