@@ -25,11 +25,10 @@ selfAssessment:
         - text: "element.when('click')"
           correct: true
           explanation: null
-
 published: true
 ---
 
-!> Observable API は 2025 年 2 月現在 Chrome v135 以降でのみ利用可能です。
+!> Observable API は 2025 年 2 月現在 Chrome v135 以降で  Experimental Web Platform features フラグを有効にしている場合のみ利用可能です。
 
 Observable API は非同期イベントストリームを処理するための API です。[EventTarget](https://developer.mozilla.org/ja/docs/Web/API/EventTarget) に `.when()` メソッドを追加し `addEventListener()` よりも宣言的で優れたイベントハンドリングを提供します。
 
