@@ -32,7 +32,7 @@ published: true
 
 Observable API は非同期イベントストリームを処理するための API です。[EventTarget](https://developer.mozilla.org/ja/docs/Web/API/EventTarget) に `.when()` メソッドを追加し `addEventListener()` よりも宣言的で優れたイベントハンドリングを提供します。
 
-`.when()` メソッドが呼び出された際に [Observable](https://github.com/WICG/observable?tab=readme-ov-file#the-observable-api) インスタンスを返します。Observable インスタンスは [rxjs の observable](https://rxjs.dev/guide/observable) とよく似ています。`.subscribe()` メソッドが呼び出されると、Observable はイベントストリームを開始し、`next` ハンドラにイベントが通知されるたびににコールバック関数が呼び出されます。
+`.when()` メソッドが呼び出された際に [Observable](https://github.com/WICG/observable?tab=readme-ov-file#the-observable-api) インスタンスを返します。Observable インスタンスは [rxjs の observable](https://rxjs.dev/guide/observable) とよく似ています。`.subscribe()` メソッドが呼び出されると、Observable はイベントストリームを開始し、`next` ハンドラにイベントが通知されるたびにコールバック関数が呼び出されます。
 
 Observable API を使用することにより、宣言的な方法でイベントのフィルタリング・結合・変換を行うことができ、従来の `addEventListener()` で行うようなコールバック地獄を回避できるという利点があります。また、Observable API は非同期処理を扱う際にも適しており、非同期イベントストリームを処理する際にも有効です。
 
@@ -191,7 +191,7 @@ observable.map(value => value * 2)
 
 ## signal を使用してイベントをキャンセルする
 
-`.subscribe()` や `.forEach()`, `first()` などのメソッドには `signal` オブジェクトを渡すことができます。`signal` オブジェクトを使用することで、イベントストリームをキャンセルすることができます。以下の例では `AbortController` によりイベントストリームがキャンセルされるまでタイマーを実行します。
+`.subscribe()` や `.forEach()`, `first()` などのメソッドには `signal` オブジェクトを渡すことができます。`signal` オブジェクトを使用することで、イベントストリームをキャンセルできます。以下の例では `AbortController` によりイベントストリームがキャンセルされるまでタイマーを実行します。
 
 ```js
 const abortController = new AbortController();
@@ -302,7 +302,7 @@ Observable インターフェイスには以下のメソッドが用意されて
 
 ## 懸念事項
 
-`.first()` や `.last()` などの Promise を返すメソッドを使用する際の懸念事項が指摘されています。それはマイクロタスクのスケジューリングとイベントループの統合に関するものです。以下のコードでは `.first()` メソッドの後に `e.preventDefault()` が呼び出されていますが、Promise が解決された後（マイクロタスクキューが取り出された後）に呼び出されるためもはやイベントをキャンセルすることができません。
+`.first()` や `.last()` などの Promise を返すメソッドを使用する際の懸念事項が指摘されています。それはマイクロタスクのスケジューリングとイベントループの統合に関するものです。以下のコードでは `.first()` メソッドの後に `e.preventDefault()` が呼び出されていますが、Promise が解決された後（マイクロタスクキューが取り出された後）に呼び出されるためもはやイベントをキャンセルできません。
 
 ```js
 button.when("click")
