@@ -2,7 +2,7 @@
 id: dnnvByyHTkDPdWU2qR7Hz
 title: "ブラウザで非同期イベントストリームを処理する Observable API"
 slug: "observable-api-for-handling-asynchronous-event-streams-in-the-browser"
-about: "Observable API は非同期イベントストリームを処理するための API です。 EventTarget に .when() メソッドを追加し addEventListener() よりも宣言敵で優れたイベントハンドリングを提供します。"
+about: "Observable API は非同期イベントストリームを処理するための API です。 EventTarget に .when() メソッドを追加し addEventListener() よりも宣言的で優れたイベントハンドリングを提供します。"
 createdAt: "2025-02-22T18:39+09:00"
 updatedAt: "2025-02-22T18:39+09:00"
 tags: ["JavaScript"]
@@ -32,13 +32,15 @@ published: true
 
 Observable API は非同期イベントストリームを処理するための API です。[EventTarget](https://developer.mozilla.org/ja/docs/Web/API/EventTarget) に `.when()` メソッドを追加し `addEventListener()` よりも宣言的で優れたイベントハンドリングを提供します。
 
-`.when()` メソッドが呼び出された際に [Observable](https://github.com/WICG/observable?tab=readme-ov-file#the-observable-api) インスタンスを返します。Observable インスタンスは [rxjs の observable](https://rxjs.dev/guide/observable) とよく似ています。`.subscribe()` メソッドが呼び出されると、Observable はイベントストリームを開始し、`next` ハンドラが呼び出されるたびにコールバック関数が呼び出されます。
+`.when()` メソッドが呼び出された際に [Observable](https://github.com/WICG/observable?tab=readme-ov-file#the-observable-api) インスタンスを返します。Observable インスタンスは [rxjs の observable](https://rxjs.dev/guide/observable) とよく似ています。`.subscribe()` メソッドが呼び出されると、Observable はイベントストリームを開始し、`next` ハンドラにイベントが通知されるたびににコールバック関数が呼び出されます。
 
-Observable API を使用することにより、宣言的な方法でイベントのフィルタリング・結合・変換を行うことができ、従来の `addEventListener()` で行うようなコールバック地獄を回避することが期待されています。この記事では Observable API を使った例をいくつか見ていきます。
+Observable API を使用することにより、宣言的な方法でイベントのフィルタリング・結合・変換を行うことができ、従来の `addEventListener()` で行うようなコールバック地獄を回避できるという利点があります。また、Observable API は非同期処理を扱う際にも適しており、非同期イベントストリームを処理する際にも有効です。
+
+この記事では Observable API を使った例をいくつか見ていきます。
 
 ## DOM イベントの処理
 
-ボタンがクリックされた際のイベント処理を Observable API で行う例を見ていきしょう。`.when()` メソッドの引数にはイベント名を指定します。
+ボタンがクリックされた際のイベント処理を Observable API で行う例を見ていきしょう。`.when()` メソッドの引数にはイベント名を指定します。`when()` メソッドは `Observable` インスタンスを返すため、`.subscribe()` メソッドを使用してイベントを購読します。`click` イベントが発生したら `next` ハンドラに指定したコールバック関数が呼び出されます。
 
 ```js
 const button = document.getElementById("button");
@@ -58,19 +60,20 @@ button.when("click").subscribe({
 
 ## `.takeUntil()` メソッドを使用してイベントストリームを終了する
 
-以下の例は終了ボタンがクリックされるまで、ボタンがクリックされた回数をカウントする例です。`.takeUntil()` メソッドを使用して特定のイベントが発生した際にイベントの監視を終了するために `.takeUntil()` メソッドを使用しています。終了ボタンがクリックされるまでは `reduce()` メソッドが呼び出され、ボタンがクリックされるたびにカウントが増えていきます。
+以下の例は終了ボタンがクリックされるまで、ボタンがクリックされた回数をカウントする例です。特定のイベントが発生した際にイベントの監視を終了するために `.takeUntil()` メソッドを使用しています。終了ボタンがクリックされるまでは `reduce()` メソッドが呼び出され、ボタンがクリックされるたびにカウントが増えていきます。
 
 ```js
 const countButton = document.getElementById("count-button");
 const endButton = document.getElementById("end-button");
 
-// reduce() が終了した場合 Promise が返される
+// reduce() は Promise を返す
 const endCount = await countButton.when("click")
+  // endButton がクリックされるまでイベントを監視
   .takeUntil(endButton.when("click"))
   .reduce((count, e) => {
     e.target.textContent = count;
     return count + 1;
-}, 0)
+}, 0);
 
 console.log(endCount);
 ```
@@ -121,9 +124,14 @@ ws.when("message")
 
 ## Observable コンストラクタを使用して任意のイベントストリームを作成する
 
-`new Observable()` コンストラクタを使用して Observable インスタンスを作成すれば、任意のイベントストリームを処理できます。`Observable` コンストラクタの引数は `subscriber` オブジェクトを受け取るコールバック関数を指定します。コールバック関数は `subscribe()` メソッドが呼び出されるたびに呼び出されます。
+`new Observable()` コンストラクタを使用して Observable インスタンスを作成すれば、任意のイベントストリームを処理できます。`Observable` コンストラクタの引数は `subscriber` オブジェクトを受け取るコールバック関数を指定します。コールバック関数は `subscribe()` メソッドが呼び出さたタイミングで実行されます。
 
-`subscriber.next()` メソッドを使用することで任意の数のイベントを通知することができます。`subscriber.complete()` メソッドを呼び出すことでイベントストリームを終了します。`subscriber.error()` メソッドを呼び出すことでエラーを通知することができます。
+`subscriber` オブジェクトには以下のメソッドが用意されています。
+
+- `subscriber.next(value: any)`: 次のイベントを通知
+- `subscriber.error(error: any)`: エラーを通知
+- `subscriber.complete()`: イベントストリームを終了
+- `subscriber.addTeardown(teardown: () => void)`: イベントストリームが終了した際に実行するコールバック関数を登録
 
 以下の例では 1 秒ごとにカウントアップするイベントストリームを作成しています。
 
@@ -144,6 +152,11 @@ const observable = new Observable((subscriber) => {
     }
     // 1 秒ごとに count を通知
     subscriber.next(count++);
+
+    subscriber.addTeardown(() => {
+      console.log("Teardown!");
+      clearInterval(id);
+    });
   }, 1000);
 });
 
@@ -156,7 +169,7 @@ observable.subscribe({
 
 ## イテレーターを Observable に変換する
 
-`Observable.from()` メソッドを使用してイテラブルオブジェクトから Observable インスタンスを作成することもできます。
+静的メソッド　`Observable.from()` を使用してイテラブルオブジェクトから Observable インスタンスを作成することもできます。
 
 ```js
 const observable = Observable.from([1, 2, 3, 4, 5])
@@ -176,7 +189,7 @@ observable.map(value => value * 2)
 // Complete!
 ```
 
-## AbortController と signal を使用してイベントをキャンセルする
+## signal を使用してイベントをキャンセルする
 
 `.subscribe()` や `.forEach()`, `first()` などのメソッドには `signal` オブジェクトを渡すことができます。`signal` オブジェクトを使用することで、イベントストリームをキャンセルすることができます。以下の例では `AbortController` によりイベントストリームがキャンセルされるまでタイマーを実行します。
 
@@ -191,12 +204,16 @@ const timer = document.getElementById("timer");
 
 start
   .when("click")
+  // flatMap() は新しい Observable インスタンスを平坦化して返す
   .flatMap(
     () =>
       new Observable((subscriber) => {
         setInterval(() => {
           subscriber.next(new Date());
         }, 1000);
+
+        // `.subscribe()` に渡した `signal` にアクセスできる
+        console.log(subscriber.signal)
       }),
   )
   .map((date) => date.toLocaleTimeString())
@@ -207,6 +224,7 @@ start
     { signal },
   );
 
+// stop ボタンがクリックされたらイベントストリームをキャンセル
 stop.when("click").subscribe({
   next: () => abortController.abort(),
 });
@@ -216,7 +234,9 @@ stop.when("click").subscribe({
 
 ## 入力したテキストの値を元に API にリクエストを送信する
 
-入力したテキストの値を元に API にリクエストを送信し検索結果を表示する例です。`.switchMap()` メソッドは新しいストリームにマップして切り返す際に、暗黙的にサブスクリプションを解除します。`.forEach()` に渡した `signal` オブジェクトにアクセスできるように `.switchMap()` のコールバック関数は `Observable` コンストラクタを使用しています。
+入力したテキストの値を元に API にリクエストを送信し検索結果を表示する例です。`.switchMap()` メソッドは新しいストリームにマップして切り返す際に、暗黙的にサブスクリプションを解除します。これにより複数回の API リクエストが発生したとしても、最終的に 1 つのリクエストのみが処理されます。
+
+`.forEach()` に渡した `signal` オブジェクトにアクセスできるように `.switchMap()` のコールバック関数は `Observable` コンストラクタを使用しています。
 
 ```js
 const input = document.querySelector("input");
@@ -321,6 +341,18 @@ button.when("click")
 ```
 
 この懸念事項についてはすでに Observable エコシステムで存在しているというものであるという意見もあります。そして開発者がこのような問題に遭遇することは少ないと考えられており、この動作を Web プラットフォームにこのまま組み込んだとしても危険ではないという主張です。
+
+## まとめ
+
+- Observable API は非同期イベントストリームを処理するための API
+- EventTarget の `.when()` メソッドを使用して Observable インスタンスを取得し、`.subscribe()` メソッドでイベントを購読する
+- `.takeUntil()` メソッドを使用すると引数で渡したイベントが発生するまでイベントを監視す
+- `.filter()` メソッドを使用してイベントをフィルタリングできる
+- `new Observable()` コンストラクタを使用して任意のイベントストリームを作成できる
+- `.from()` 静的メソッドを使用してイテラブルオブジェクトから Observable インスタンスを作成できる
+- `.subscribe()`, `forEach()` などのメソッドには `signal` オブジェクトを渡し、`.abort()` することでイベントストリームをキャンセルできる
+- `.first()`, `.last()` などの Promise を返すメソッドを使用する際にはマイクロタスクのスケジューリングとイベントループの統合に注意が必要。Promise が解決された後にイベントを `e.preventDefault()` を呼び出してもイベントをキャンセルできない
+
 ## 参考
 
 - [WICG/observable: Observable API proposal](https://github.com/WICG/observable?tab=readme-ov-file#the-observable-api)
