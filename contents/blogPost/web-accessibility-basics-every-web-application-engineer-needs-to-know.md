@@ -430,7 +430,7 @@ https://www.w3.org/WAI/ARIA/apg/patterns/
 UI ライブラリを選定する際には、WAI-ARIA の仕様に従った実装をしているかどうかを基準の 1 つとすると良いでしょう。以下に上げる UI ライブラリはスタイルを除いてアクセシビリティの機能のみを提供しているのでおすすめです。見た目のカスタマイズを容易に行えるので、デザインシステムとして組み込みやすいです。
 
 - [Primitives – Radix UI](https://www.radix-ui.com/)
--[Headless UI - Unstyled, fully accessible UI components](https://headlessui.com/)
+- [Headless UI - Unstyled, fully accessible UI components](https://headlessui.com/)
 - [Reach UI](https://reach.tech/)
 - [Vuetensils](https://vuetensils.com/)
 - [Angular Material](https://material.angular.io/cdk/a11y/overview)
