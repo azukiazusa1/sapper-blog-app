@@ -2,7 +2,11 @@
   import Card from "../Card.svelte";
   import Section from "../Section.svelte";
 
-  export let isTestBuild: boolean;
+  interface Props {
+    isTestBuild: boolean;
+  }
+
+  let { isTestBuild }: Props = $props();
 </script>
 
 <Section>

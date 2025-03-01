@@ -1,17 +1,28 @@
-<script>
+<script lang="ts">
   import { nanoid } from "nanoid";
   import { inview } from "svelte-inview";
 
   const id = nanoid();
 
-  let isInView;
+  let isInView = $state();
 
-  export let value;
-  export let initial = 0;
-  export let duration = 3000;
-  export let step = 1;
-  export let roundto = 1;
-  export let format = true;
+  interface Props {
+    value: number;
+    initial?: number;
+    duration?: number;
+    step?: number;
+    roundto?: number;
+    format?: boolean;
+  }
+
+  let {
+    value,
+    initial = 0,
+    duration = 3000,
+    step = $bindable(1),
+    roundto = 1,
+    format = true,
+  }: Props = $props();
 
   function formatNumber(input) {
     if (format) {
@@ -20,10 +31,10 @@
     return input;
   }
 
-  const counterResult = [];
+  const counterResult = $state([]);
   const timers = [];
 
-  const max = parseInt(value);
+  const max = value;
   while (duration / ((max - initial) / step) < 2) {
     step++;
   }
@@ -44,9 +55,10 @@
   );
 </script>
 
+<!-- svelte-ignore event_directive_deprecated -->
 <span
   use:inview
-  on:change={(event) => {
+  on:inview_change={(event) => {
     const { inView } = event.detail;
     isInView = inView;
   }}>{formatNumber(counterResult[id])}</span

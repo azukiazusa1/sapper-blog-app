@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from "svelte/legacy";
+
   import "../app.css";
   import "nprogress/nprogress.css";
   import NProgress from "nprogress";
@@ -11,6 +13,11 @@
   import image from "../assets/images/road-984251_1280.jpg";
   import { removeTrailingSlash } from "$lib/utils";
   import { onNavigate } from "$app/navigation";
+  interface Props {
+    children?: import("svelte").Snippet;
+  }
+
+  let { children }: Props = $props();
 
   onNavigate(() => {
     if (!document.startViewTransition) return;
@@ -24,14 +31,14 @@
     showSpinner: false,
   });
 
-  $: {
+  run(() => {
     if ($navigating) {
       NProgress.start();
     }
     if (!$navigating) {
       NProgress.done();
     }
-  }
+  });
 </script>
 
 <svelte:head>
@@ -70,13 +77,13 @@
 
 <main>
   {#if removeTrailingSlash($page.url.pathname) === "/recap/2024"}
-    <slot />
+    {@render children?.()}
   {:else}
     {#if removeTrailingSlash($page.url.pathname) === "/about"}
       <Visual title="about" {image} />
     {/if}
     <div class="container mx-auto my-4 max-w-7xl px-1 md:px-6 lg:px-0">
-      <slot />
+      {@render children?.()}
     </div>
   {/if}
 </main>

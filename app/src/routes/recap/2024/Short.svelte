@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { cubicOut } from "svelte/easing";
-  let isVisible = false;
+  let isVisible = $state(false);
   const shorts = [
     "人為的な遅延を発生させるために、setTimeout を Promise をラップする方法がよく使われています。これにより、await を使って任意の秒数処理を遅らせることができます。",
     "z-index の値に calc(infinity) を指定すると、絶対に最前面に表示させることができます。",

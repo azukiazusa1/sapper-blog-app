@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { createBubbler, stopPropagation } from "svelte/legacy";
+
+  const bubble = createBubbler();
   import PrevIcon from "../Icons/Prev.svelte";
   import ForwardIcon from "../Icons/Forward.svelte";
   import FloatingActionButton from "../FloatingActionButton/FloatingActionButton.svelte";
@@ -8,13 +11,17 @@
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
 
-  export let id: string;
-  export let title: string;
-  export let contents: string[];
-  export let ids: string[];
+  interface Props {
+    id: string;
+    title: string;
+    contents: string[];
+    ids: string[];
+  }
 
-  let active = 0;
-  $: slidesCount = contents.length;
+  let { id, title, contents, ids }: Props = $props();
+
+  let active = $state(0);
+  let slidesCount = $derived(contents.length);
 
   function nextSlide() {
     if (active === slidesCount - 1) {
@@ -76,17 +83,17 @@
 
 <!-- eslint-disable svelte/no-at-html-tags -->
 <!-- eslint-disable-next-line svelte/valid-compile -->
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-  class="momo absolute left-0 top-0 z-20 mx-auto w-screen sm:static sm:z-0 sm:h-[764px] sm:w-[430px]"
-  on:click={handleClick}
+  class="momo absolute top-0 left-0 z-20 mx-auto w-screen sm:static sm:z-0 sm:h-[764px] sm:w-[430px]"
+  onclick={handleClick}
 >
   <article
     class="relative flex h-full w-full flex-col items-center justify-center rounded-xl bg-black text-lg text-white"
   >
-    <div class="absolute left-0 top-0 z-10 px-4 py-6">
-      <a href="/blog/shorts" on:click|stopPropagation>
+    <div class="absolute top-0 left-0 z-10 px-4 py-6">
+      <a href="/blog/shorts" onclick={stopPropagation(bubble("click"))}>
         <div class="sr-only">戻る</div>
         <PrevIcon className="h-8 w-8" />
       </a>
@@ -98,7 +105,7 @@
         </Slide>
       {/each}
     </div>
-    <div class="absolute bottom-24 left-0 right-0 mx-auto flex justify-center">
+    <div class="absolute right-0 bottom-24 left-0 mx-auto flex justify-center">
       <Progress.Root
         class="relative flex h-4 w-48 gap-4 overflow-hidden"
         value={active + 1}
@@ -114,7 +121,7 @@
         {title}
       </h2>
     </div>
-    <FloatingActionButton on:click={handleClickNextButton}>
+    <FloatingActionButton click={handleClickNextButton}>
       <div class="sr-only">次へ</div>
       <ForwardIcon className="h-8 w-8" />
     </FloatingActionButton>

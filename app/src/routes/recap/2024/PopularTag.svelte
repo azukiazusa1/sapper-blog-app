@@ -9,7 +9,7 @@
     { name: "Next.js", count: 4 },
   ];
 
-  let mounted = false;
+  let mounted = $state(false);
   onMount(() => {
     mounted = true;
   });

@@ -23,7 +23,7 @@
           </div>
           <div class="flex flex-col items-center justify-center text-center">
             <h2 class="mt-4 text-lg font-medium">azukiazusa1</h2>
-            <div class="bg-theme mb-4 mt-2 h-1 w-12 rounded-sm" />
+            <div class="bg-theme mt-2 mb-4 h-1 w-12 rounded-sm"></div>
             <p class="text-base">
               <a
                 class="underline hover:opacity-75"
@@ -53,9 +53,9 @@
           </div>
         </div>
         <div
-          class="mt-4 border-t border-gray-300 pt-4 sm:mt-0 sm:w-2/3 sm:border-l sm:border-t-0 sm:py-8 sm:pl-8 sm:text-left dark:border-zinc-700"
+          class="mt-4 border-t border-gray-300 pt-4 sm:mt-0 sm:w-2/3 sm:border-t-0 sm:border-l sm:py-8 sm:pl-8 sm:text-left dark:border-zinc-700"
         >
-          <p class="mb-4 break-words text-lg leading-relaxed">
+          <p class="mb-4 text-lg leading-relaxed break-words">
             {content}
           </p>
           <LinkButton variant="primary" href="/blog">

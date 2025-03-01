@@ -9,7 +9,7 @@ const meta: Meta<Card> = {
     title: { control: { type: "text" } },
     contents: { control: { type: "text" } },
     tags: {
-      control: { type: "array" },
+      control: { type: "object" },
     },
     createdAt: { control: { type: "date" } },
   },

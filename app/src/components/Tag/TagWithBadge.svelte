@@ -2,8 +2,12 @@
   import Tag from "./Tag.svelte";
   import Badge from "../Badge/Badge.svelte";
 
-  export let name = "";
-  export let slug = "";
+  interface Props {
+    name?: string;
+    slug?: string;
+  }
+
+  let { name = "", slug = "" }: Props = $props();
 </script>
 
 <Tag {name} {slug}>

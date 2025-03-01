@@ -1,15 +1,25 @@
 <script lang="ts">
   import Time from "../Time/Time.svelte";
-  export let eventTitle: string;
-  export let eventDate: string;
-  export let description: string;
-  export let presentationTitle: string;
-  export let presentationLink: string;
+  interface Props {
+    eventTitle: string;
+    eventDate: string;
+    description: string;
+    presentationTitle: string;
+    presentationLink: string;
+  }
+
+  let {
+    eventTitle,
+    eventDate,
+    description,
+    presentationTitle,
+    presentationLink,
+  }: Props = $props();
 </script>
 
-<li class="mb-10 ms-6">
+<li class="ms-6 mb-10">
   <span
-    class="ring-3 absolute -start-1.5 mt-2 flex h-3 w-3 items-center justify-center rounded-full bg-indigo-700 ring-white dark:ring-gray-900"
+    class="absolute -start-1.5 mt-2 flex h-3 w-3 items-center justify-center rounded-full bg-indigo-700 ring-3 ring-white dark:ring-gray-900"
   >
   </span>
   <h3

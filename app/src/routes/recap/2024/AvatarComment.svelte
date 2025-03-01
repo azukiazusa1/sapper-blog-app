@@ -3,12 +3,16 @@
   import { fly } from "svelte/transition";
   import { onMount } from "svelte";
 
-  export let name: string;
-  export let snsLink: string | undefined;
-  export let avatarUrl: string;
-  export let comment: string;
+  interface Props {
+    name: string;
+    snsLink: string | undefined;
+    avatarUrl: string;
+    comment: string;
+  }
 
-  let isMounted = false;
+  let { name, snsLink, avatarUrl, comment }: Props = $props();
+
+  let isMounted = $state(false);
   onMount(() => {
     isMounted = true;
   });

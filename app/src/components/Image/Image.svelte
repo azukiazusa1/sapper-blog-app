@@ -1,12 +1,25 @@
 <script lang="ts">
-  export let src: string;
-  export let alt: string;
-  export let width: number;
-  export let height: number;
-  export let lazy = true;
-  export let slug: string;
-  export let small = false;
-  export let main = false;
+  interface Props {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    lazy?: boolean;
+    slug: string;
+    small?: boolean;
+    main?: boolean;
+  }
+
+  let {
+    src,
+    alt,
+    width,
+    height,
+    lazy = true,
+    slug,
+    small = false,
+    main = false,
+  }: Props = $props();
 </script>
 
 <img

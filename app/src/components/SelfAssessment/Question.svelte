@@ -1,7 +1,11 @@
 <script lang="ts">
   import type { Quiz } from "./types";
 
-  export let quiz: Quiz;
+  interface Props {
+    quiz: Quiz;
+  }
+
+  let { quiz }: Props = $props();
 </script>
 
 <div class="flex flex-col justify-center">
@@ -24,7 +28,7 @@
           <div class="p-4">
             <p>
               {#if answer.correct}
-                <div class="flex items-center gap-1 text-green-500">
+                <span class="flex items-center gap-1 text-green-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -41,9 +45,9 @@
                   </svg>
 
                   正解！
-                </div>
+                </span>
               {:else}
-                <div class="flex items-center gap-2 text-red-500">
+                <span class="flex items-center gap-2 text-red-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -60,7 +64,7 @@
                   </svg>
 
                   もう一度考えてみましょう
-                </div>
+                </span>
               {/if}
             </p>
             {#if answer.explanation}

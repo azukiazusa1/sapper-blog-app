@@ -7,8 +7,12 @@
   import TalkTimelines from "../components/TalkTimelines.svelte";
   import ShortList from "../components/ShortList.svelte";
 
-  export let data: PageData;
-  $: ({ latestPosts, shorts, popularPosts } = data);
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
+  let { latestPosts, shorts, popularPosts } = $derived(data);
 </script>
 
 <svelte:head>
@@ -23,11 +27,11 @@
 <HeroSection />
 
 <h2
-  class="mt-10 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
+  class="mt-10 max-w-2xl px-4 text-2xl leading-none font-extrabold dark:text-white"
 >
   最新記事
 </h2>
-<div class="container mb-4 mt-10 md:mx-auto">
+<div class="container mt-10 mb-4 md:mx-auto">
   <PostList posts={latestPosts.blogPostCollection.items} />
 </div>
 <div class="flex flex-row-reverse">
@@ -52,7 +56,7 @@
 </div>
 
 <h2
-  class="mt-24 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
+  class="mt-24 max-w-2xl px-4 text-2xl leading-none font-extrabold dark:text-white"
 >
   人気記事
 </h2>
@@ -69,7 +73,7 @@
 </div>
 
 <h2
-  class="mb-10 mt-14 max-w-2xl px-4 text-2xl font-extrabold leading-none dark:text-white"
+  class="mt-14 mb-10 max-w-2xl px-4 text-2xl leading-none font-extrabold dark:text-white"
 >
   登壇資料
 </h2>

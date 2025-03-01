@@ -6,7 +6,7 @@
     thankYou?.scrollIntoView({ behavior: "smooth" });
   };
 
-  let isMounted = false;
+  let isMounted = $state(false);
   onMount(() => {
     isMounted = true;
   });
@@ -20,8 +20,8 @@
 
     <button
       in:fly={{ delay: 1200, y: 50, duration: 500 }}
-      class="animate-gradient bg-linear-to-r focus:outline-hidden mt-4 transform rounded-md from-blue-500 to-purple-600 px-6 py-2 font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:from-blue-600 hover:to-purple-700 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-      on:click={() => scrollToThankYou()}
+      class="animate-gradient focus:ring-opacity-75 mt-4 transform rounded-md bg-linear-to-r from-blue-500 to-purple-600 px-6 py-2 font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:from-blue-600 hover:to-purple-700 focus:ring-2 focus:ring-blue-400 focus:outline-hidden"
+      onclick={() => scrollToThankYou()}
     >
       ここをクリック！
     </button>

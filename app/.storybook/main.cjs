@@ -3,10 +3,10 @@ const { mergeConfig } = require('vite')
 module.exports = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-a11y',
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-interactions"),
+    getAbsolutePath("@storybook/addon-a11y"),
     {
       name: '@storybook/addon-postcss',
       options: {
@@ -15,16 +15,15 @@ module.exports = {
         },
       },
     },
-    'storybook-addon-themes',
+    getAbsolutePath("storybook-addon-themes"),
+    '@chromatic-com/storybook'
   ],
   framework: {
-    name: '@storybook/sveltekit',
+    name: getAbsolutePath("@storybook/sveltekit"),
     options: {},
   },
 
-  docs: {
-    autodocs: 'tag',
-  },
+  docs: {},
   async viteFinal(config, { configType }) {
     console.log(process.env.GH_PAGE, 'NODE_ENV')
     return mergeConfig(config, {
