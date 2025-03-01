@@ -407,15 +407,15 @@ html.dark #contents code:not(pre > *) {
   @apply bg-zinc-600 text-gray-50;
 }
 /* コードブロックのコンテナ */
-div[data-rehype-pretty-code-fragment] {
+figure[data-rehype-pretty-code-figure] {
   position: relative;
 }
 
 #contents pre {
   overflow: auto;
   border-radius: 6px;
-  background: #263238;
-  color: #ccc;
+  background: #212121;
+  color: #fff;
   margin: 1.5em 0;
   padding: 1em 1em 1em 0;
 }
@@ -493,7 +493,7 @@ div[data-rehype-pretty-code-fragment] {
 }
 
 /* コードのコメントのコンストラクト比のために無理やり上書き */
-span[style="color: #545454"] {
+span[style*="color:#545454"] {
   color: #898989 !important;
 }
 

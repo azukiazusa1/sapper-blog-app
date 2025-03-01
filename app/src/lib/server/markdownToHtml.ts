@@ -29,7 +29,9 @@ export const markdownToHtml = async (
     .use(rehypeAlert)
     .use(rehypeCodeTitles)
     .use(rehypePrettyCode, {
-      theme: "material-darker",
+      theme: "material-theme-darker",
+      bypassInlineCode: true,
+      defaultLang: "plaintext",
     });
 
   if (toc) {
