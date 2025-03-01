@@ -414,8 +414,8 @@ figure[data-rehype-pretty-code-figure] {
 #contents pre {
   overflow: auto;
   border-radius: 6px;
-  background: #263238;
-  color: #ccc;
+  background: #212121;
+  color: #fff;
   margin: 1.5em 0;
   padding: 1em 1em 1em 0;
 }
