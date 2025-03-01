@@ -33,11 +33,7 @@
         {#if open}
           <div {...wrapperProps}>
             <div {...props} transition:fly={{ y: 8, duration: 150 }}>
-              <div class="bg-black">
-                <Tooltip.Arrow
-                  class="rounded-[2px] border-l border-t dark:border-zinc-700"
-                />
-              </div>
+              <Tooltip.Arrow class="text-black" />
               <div
                 class="outline-hidden flex items-center justify-center rounded-lg border bg-black p-3 text-sm text-gray-50 dark:border-zinc-700"
               >

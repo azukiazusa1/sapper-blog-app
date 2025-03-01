@@ -27,7 +27,7 @@
 
 <Tabs.Root
   onValueChange={handleTabChange}
-  {value}
+  bind:value
   class="container my-12 md:mx-auto"
 >
   {#snippet children()}
