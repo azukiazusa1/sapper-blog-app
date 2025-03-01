@@ -101,5 +101,4 @@
 <PostList posts={post.relatedArticleCollection?.items} small />
 
 <!-- ogp を静的に生成するために空のリンクを設置している -->
-<!-- svelte-ignore a11y_missing_content -->
 <a href={`/blog/ogp/${post.slug}.png`} aria-hidden="true" tabindex="-1"></a>
