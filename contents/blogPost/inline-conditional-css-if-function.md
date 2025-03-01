@@ -24,10 +24,9 @@ selfAssessment:
           explanation: null
         - text: "<ホワイトスペース>"
           correct: false
-
+          explanation: null
 published: true
 ---
-
 !> 2025 年 3 月現在 `if()` 関数は Chrome Canary で Experimental Web Platform Features フラグを有効にすることで利用可能です。
 
 `if()` 関数は [CSS Values and Units Module Level 5](https://drafts.csswg.org/css-values-5) という仕様で提案されている関数です。`if()` 関数は CSS でインラインの条件分岐を可能にします。
