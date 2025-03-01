@@ -9,8 +9,8 @@
   import Short from "./Short.svelte";
   import End from "./End.svelte";
 
-  let currentSlide = 0;
-  let direction: "forward" | "backward" = "forward";
+  let currentSlide = $state(0);
+  let direction: "forward" | "backward" = $state("forward");
   const setNextSlide = () => {
     direction = "forward";
     currentSlide += 1;
@@ -87,11 +87,13 @@
       content: End,
     },
   ];
+
+  const SvelteComponent = $derived(slides[currentSlide].content);
 </script>
 
 <div
   id="article-info"
-  class="bg-linear-to-b flex h-screen items-center justify-center from-purple-900 to-indigo-900 text-white"
+  class="flex h-screen items-center justify-center bg-linear-to-b from-purple-900 to-indigo-900 text-white"
 >
   <div class="mx-auto w-full max-w-2xl p-4 md:p-8">
     {#key currentSlide}
@@ -106,7 +108,7 @@
           {slides[currentSlide].title}
         </h2>
         <div class="flex min-h-96 flex-col content-center justify-between">
-          <svelte:component this={slides[currentSlide].content} />
+          <SvelteComponent />
           {#if slides[currentSlide].comment}
             <AvatarComment
               avatarUrl={slides[currentSlide].comment.avatarUrl}
@@ -121,9 +123,9 @@
 
     <div class="mt-8 flex max-w-2xl justify-between">
       <button
-        on:click={() => setPreviousSlide()}
+        onclick={() => setPreviousSlide()}
         disabled={currentSlide === 0}
-        class="focus-visible:outline-hidden inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-black px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+        class="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
       >
         Previous
       </button>
@@ -134,14 +136,14 @@
               i === currentSlide ? "opacity-100" : "opacity-50"
             }`}
             aria-label={slide.title}
-            on:click={() => (currentSlide = i)}
+            onclick={() => (currentSlide = i)}
           ></button>
         {/each}
       </div>
       <button
-        on:click={() => setNextSlide()}
+        onclick={() => setNextSlide()}
         disabled={currentSlide === slides.length - 1}
-        class="focus-visible:outline-hidden inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-black px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+        class="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
       >
         Next
       </button>

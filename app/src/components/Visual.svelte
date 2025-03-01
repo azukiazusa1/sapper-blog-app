@@ -1,6 +1,10 @@
 <script lang="ts">
-  export let image: string;
-  export let title: string;
+  interface Props {
+    image: string;
+    title: string;
+  }
+
+  let { image, title }: Props = $props();
 </script>
 
 <div
@@ -10,7 +14,7 @@
   <div class="flex h-full w-full items-center justify-center">
     <div class="text-center">
       <h1
-        class="text-2xl font-semibold uppercase italic tracking-wider text-white md:text-3xl"
+        class="text-2xl font-semibold tracking-wider text-white uppercase italic md:text-3xl"
       >
         {title}
       </h1>

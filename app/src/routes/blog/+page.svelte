@@ -7,8 +7,12 @@
   import ShortList from "../../components/ShortList.svelte";
   import LinkButton from "../../components/LinkButton/LinkButton.svelte";
 
-  export let data: PageData;
-  $: ({ posts, shorts } = data);
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
+  let { posts, shorts: shortBlogs } = $derived(data);
 </script>
 
 <svelte:head>
@@ -21,18 +25,18 @@
 </svelte:head>
 
 <Tabs value="blog">
-  <svelte:fragment slot="blog">
+  {#snippet blog()}
     <PostList posts={posts.blogPostCollection.items} />
     <Pagination
       total={posts.blogPostCollection.total}
       limit={posts.blogPostCollection.limit}
     />
-  </svelte:fragment>
-  <svelte:fragment slot="shorts">
-    <ShortList shorts={shorts.shortCollection.items} />
+  {/snippet}
+  {#snippet shorts()}
+    <ShortList shorts={shortBlogs.shortCollection.items} />
 
     <div class="my-16 flex justify-center">
       <LinkButton href="/blog/shorts/page/1">もっと見る</LinkButton>
     </div>
-  </svelte:fragment>
+  {/snippet}
 </Tabs>

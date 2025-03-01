@@ -1,15 +1,17 @@
 <script lang="ts">
+  import { run } from "svelte/legacy";
+
   import { blur, scale } from "svelte/transition";
   import TwitterShareButton from "../../../components/TwitterShareButton.svelte";
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
   import avatarImage from "../../../assets/images/azukiazusa.jpeg";
-  let inView = false;
-  let el = null;
-  let dance = false;
-  let timerId = null;
+  let inView = $state(false);
+  let el = $state(null);
+  let dance = $state(false);
+  let timerId = $state(null);
 
-  $: {
+  run(() => {
     // この画面で 10 秒待ったらアバターが踊りだす
     if (inView) {
       timerId = setTimeout(() => {
@@ -19,7 +21,7 @@
       clearTimeout(timerId);
       dance = false;
     }
-  }
+  });
 
   onMount(() => {
     const observer = new IntersectionObserver(

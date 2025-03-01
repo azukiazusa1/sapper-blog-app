@@ -44,7 +44,7 @@
         <div
           class="border-gray absolute -left-1.5 z-10 mt-1.5 h-3 w-3 rounded-full border bg-gray-200"
         ></div>
-        <time class="mb-1 text-sm font-normal leading-none text-gray-400"
+        <time class="mb-1 text-sm leading-none font-normal text-gray-400"
           >{item.date}</time
         >
         <h3 class="text-lg font-semibold text-gray-900">

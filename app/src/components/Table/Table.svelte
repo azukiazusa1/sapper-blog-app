@@ -3,7 +3,11 @@
   import Tag from "../Tag/Tag.svelte";
   import type { PreviewPostsQuery } from "../../generated/graphql";
 
-  export let data: PreviewPostsQuery;
+  interface Props {
+    data: PreviewPostsQuery;
+  }
+
+  let { data }: Props = $props();
 </script>
 
 <div class="relative overflow-x-auto rounded-lg">
@@ -20,9 +24,9 @@
       {#each data.blogPostCollection?.items ?? [] as draft (draft.sys.id)}
         <tr
           class="cursor-pointer border-b hover:bg-gray-50 dark:border-zinc-700 dark:hover:bg-zinc-700"
-          on:click={() => goto(`/drafts/${draft.sys.id}`)}
+          onclick={() => goto(`/drafts/${draft.sys.id}`)}
         >
-          <th scope="row" class="whitespace-nowrap px-6 py-4">
+          <th scope="row" class="px-6 py-4 whitespace-nowrap">
             <a href={`/drafts/${draft.sys.id}`}>
               {draft.title || "No title"}
             </a>

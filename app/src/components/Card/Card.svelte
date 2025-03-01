@@ -6,13 +6,18 @@
   import NavButton from "./NavButton.svelte";
   import { onMount } from "svelte";
 
-  export let title: string;
-  export let about: string;
-  export let contents: string;
-  export let tags: Pick<Tag, "name" | "slug">[];
-  export let createdAt: string;
-  export let thumbnail: { title: string; url: string };
-  export let slug: string;
+  interface Props {
+    title: string;
+    about: string;
+    contents: string;
+    tags: Pick<Tag, "name" | "slug">[];
+    createdAt: string;
+    thumbnail: { title: string; url: string };
+    slug: string;
+  }
+
+  let { title, about, contents, tags, createdAt, thumbnail, slug }: Props =
+    $props();
 
   // <baseline-status> を読み込む
   onMount(() => {
@@ -231,7 +236,7 @@
         <Time date={createdAt} />
       </p>
       <p
-        class="break-words text-sm text-black/80 dark:text-gray-50/80"
+        class="text-sm break-words text-black/80 dark:text-gray-50/80"
         style:--tag="about-{slug}"
       >
         {about}
@@ -251,9 +256,9 @@
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html contents}
       </div>
-      <div id="nav-button" class="absolute right-6 top-0">
+      <div id="nav-button" class="absolute top-0 right-6">
         <NavButton
-          on:click={closeToc}
+          click={closeToc}
           label="目次を閉じる"
           className="close-toc-button"
         >
@@ -273,7 +278,7 @@
           </svg>
         </NavButton>
         <NavButton
-          on:click={openToc}
+          click={openToc}
           label="目次を表示"
           className="open-toc-button"
         >

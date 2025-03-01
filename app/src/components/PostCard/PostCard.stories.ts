@@ -24,7 +24,7 @@ const meta: Meta<PostCard> = {
       description: "作成日",
     },
     tags: {
-      control: { type: "array" },
+      control: { type: "object" },
       description: "タグ",
     },
     thumbnail: {

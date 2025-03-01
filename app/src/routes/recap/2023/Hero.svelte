@@ -12,7 +12,7 @@
 </script>
 
 <HeroSection>
-  <div class="absolute left-0 top-0 p-4">
+  <div class="absolute top-0 left-0 p-4">
     <a href="/recap">
       <div class="sr-only">戻る</div>
       <PrevIcon className="h-6 w-6" />
@@ -30,7 +30,7 @@
     <div class="mt-16 text-center">
       <button
         type="button"
-        on:click={handleClick}
+        onclick={handleClick}
         class="mr-3 inline-flex items-center justify-center rounded-lg bg-indigo-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900"
       >
         はじめる <AllowDown className="h-4 w-4" />

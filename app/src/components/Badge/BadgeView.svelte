@@ -1,7 +1,11 @@
 <script lang="ts">
   import Badge from "./Badge.svelte";
 
-  export let slot: string;
+  interface Props {
+    slot: string;
+  }
+
+  let { slot }: Props = $props();
 </script>
 
 <Badge>

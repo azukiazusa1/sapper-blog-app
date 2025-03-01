@@ -1,6 +1,6 @@
-import { expect } from "@storybook/jest";
+import { expect } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/svelte";
-import { within } from "@storybook/testing-library";
+import { within } from "@storybook/test";
 import Pagination from "./Pagination.svelte";
 
 const meta: Meta<Pagination> = {

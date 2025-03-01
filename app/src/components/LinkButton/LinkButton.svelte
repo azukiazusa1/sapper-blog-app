@@ -1,9 +1,20 @@
 <script lang="ts">
   import clsx from "clsx";
-  export let variant: "primary" | "secondary" = "secondary";
-  export let href: string;
-  export let target: string | undefined = undefined;
-  export let rel: string | undefined = undefined;
+  interface Props {
+    variant?: "primary" | "secondary";
+    href: string;
+    target?: string | undefined;
+    rel?: string | undefined;
+    children?: import("svelte").Snippet;
+  }
+
+  let {
+    variant = "secondary",
+    href,
+    target = undefined,
+    rel = undefined,
+    children,
+  }: Props = $props();
 </script>
 
 <a
@@ -20,5 +31,5 @@
     },
   )}
 >
-  <slot />
+  {@render children?.()}
 </a>

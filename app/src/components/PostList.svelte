@@ -2,17 +2,17 @@
   import type { Asset, BlogPost, Tag } from "../generated/graphql";
   import PostCard from "./PostCard/PostCard.svelte";
 
-  export let posts: (Pick<
-    BlogPost,
-    "title" | "slug" | "about" | "createdAt"
-  > & {
-    thumbnail?: Pick<Asset, "title" | "url">;
-    tagsCollection?: {
-      items: Array<Pick<Tag, "name" | "slug">>;
-    };
-  })[];
+  interface Props {
+    posts: (Pick<BlogPost, "title" | "slug" | "about" | "createdAt"> & {
+      thumbnail?: Pick<Asset, "title" | "url">;
+      tagsCollection?: {
+        items: Array<Pick<Tag, "name" | "slug">>;
+      };
+    })[];
+    small?: boolean;
+  }
 
-  export let small = false;
+  let { posts, small = false }: Props = $props();
 </script>
 
 <div class="grid gap-6 px-6">

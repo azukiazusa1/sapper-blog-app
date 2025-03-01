@@ -1,10 +1,16 @@
 <script lang="ts">
   import HatenaBookmarkIcon from "../assets/images/hatenabookmark_symbolmark.png";
 
-  export let url: string;
-  export let text: string;
+  interface Props {
+    url: string;
+    text: string;
+  }
 
-  $: href = `https://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${text}`;
+  let { url, text }: Props = $props();
+
+  let href = $derived(
+    `https://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${text}`,
+  );
 </script>
 
 <a {href} target="_blank" rel="noopener noreferrer">
