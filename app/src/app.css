@@ -493,7 +493,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 /* コードのコメントのコンストラクト比のために無理やり上書き */
-span[style="color: #545454"] {
+span[style*="color:#545454"] {
   color: #898989 !important;
 }
 

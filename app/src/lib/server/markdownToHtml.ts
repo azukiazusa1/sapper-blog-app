@@ -30,6 +30,7 @@ export const markdownToHtml = async (
     .use(rehypeCodeTitles)
     .use(rehypePrettyCode, {
       theme: "material-theme-darker",
+      defaultLang: "shell",
     });
 
   if (toc) {
