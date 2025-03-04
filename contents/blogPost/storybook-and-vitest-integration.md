@@ -253,7 +253,7 @@ export const SubmitForm: Story = {
     // フォームが送信された後、入力された名前が表示されることを確認
     // findByXxx は要素が見つからない場合エラーをスローするため、
     // 期待した結果が見つからない場合にはテストが失敗する
-    await canvas.findByText("Hello, Joh!");
+    await canvas.findByText("Hello, John!");
   },
 };
 ```
