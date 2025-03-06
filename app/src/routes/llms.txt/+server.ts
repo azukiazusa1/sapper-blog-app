@@ -23,7 +23,7 @@ ${items
     (item) =>
       `- [${item.title}](${siteUrl}/blog/${item.slug}.md) - ${item.about}`,
   )
-  .join("")}
+  .join("\n")}
   `;
 export const GET: RequestHandler = async () => {
   const posts = await PostRepository.findAll();

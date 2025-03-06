@@ -8,6 +8,7 @@
   import { onMount } from "svelte";
   import SideMenu from "./SideMenu.svelte";
   import GitHub from "../Icons/GitHub.svelte";
+  import Robot from "../Icons/Robot.svelte";
   import SearchDialog from "../SearchDialog/SearchDialog.svelte";
   import SearchBar from "../SearchDialog/SearchBar.svelte";
 
@@ -93,6 +94,15 @@
         aria-label="RSS"
       >
         <RssIcon className="h-6 w-6" />
+      </a>
+      <a
+        href="/llms.txt"
+        target="_blank"
+        class="invisible mx-2 hidden lg:visible lg:block"
+        rel="noopener noreferrer"
+        aria-label="LLMS"
+      >
+        <Robot className="h-6 w-6" />
       </a>
       <a
         href="https://github.com/azukiazusa1/sapper-blog-app"

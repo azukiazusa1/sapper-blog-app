@@ -7,6 +7,7 @@
   import ToggleDarkMode from "./ToggleDarkMode.svelte";
   import GitHub from "../Icons/GitHub.svelte";
   import RssIcon from "../Icons/Rss.svelte";
+  import Robot from "../Icons/Robot.svelte";
 
   const dispatch = createEventDispatcher<{
     close: void;
@@ -79,6 +80,15 @@
       aria-label="RSS"
     >
       <RssIcon className="h-6 w-6" />
+    </a>
+    <a
+      href="/llms.txt"
+      target="_blank"
+      class="mx-2"
+      rel="noopener noreferrer"
+      aria-label="LLMS"
+    >
+      <Robot className="h-6 w-6" />
     </a>
     <a
       href="https://github.com/azukiazusa1/sapper-blog-app"
