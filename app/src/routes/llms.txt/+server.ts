@@ -21,7 +21,7 @@ const renderLlmsTxt = (items: Item[]) => `# azukiazusa のテックブログ2
 ${items
   .map(
     (item) =>
-      `- [${item.title}](${siteUrl}/blog/${item.slug}.md) - ${item.about}`,
+      `- [${item.title}](${siteUrl}/blog/${item.slug}.md): ${item.about}`,
   )
   .join("\n")}
   `;
