@@ -91,6 +91,11 @@
             {/snippet}
           </ShareButton>
         </div>
+        <div class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+          <a href={`/blog/${post.slug}.md`} class="underline">
+            Markdown バージョン
+          </a>
+        </div>
       </Box>
     </div>
   </div>
