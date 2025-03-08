@@ -8,27 +8,25 @@ updatedAt: "2025-03-08T11:04+09:00"
 tags: ["AI", "llms.txt"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2O9u8W8yypxBiQYobBg5rE/61687a886ae009c774922741ed65b56f/crows-conversation_21330-768x591.png"
-  title: "会話しているカラスのイラスト"
+  title: "会話してるカラスのイラスト"
 selfAssessment:
   quizzes:
     - question: "llms.txt はどの形式で記述されるか？"
-      answers: 
+      answers:
         - text: "JSON"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "XML"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "マークダウン"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "プレーンテキスト"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 !> 2025 年 3 月現在では `llms.txt` は標準化されていない仕様です。この記事に書かれている内容は今後の変更により古くなる可能性があります。
 
 ChatGPT や Grok, Claude, Gimini などの大規模言語モデルはますますウェブサイトの情報に依存してきています。特に最近登場した Deep Research はエージェント型のモデルがウェブサイトを巡回し、多段階のリサーチを自動で実行できるように設計されています。Deep Research が効果的に機能するためには AI エージェントが効率的にウェブサイトの情報を取得できることが重要です。
