@@ -19,21 +19,10 @@ jobs:
         with:
           files: |
             contents/**
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: ./.github/actions/setup-node
         with:
           node-version-file: package.json
-          cache: npm
-      - uses: actions/cache@v4
-        id: node_modules_cache_id
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
-        run: npm ci
+          cache-dependency-path: "**/package-lock.json"
       - name: validate changed files
         run: npm run validate -w=packages/content-management
         id: validate
