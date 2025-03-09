@@ -8,27 +8,25 @@ updatedAt: "2025-03-09T10:16+09:00"
 tags: ["TypeScript", "AI", "Mastra", "OpenTelemetry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5m9GakLihc997ujoamvxZ3/7341ffcb10a2b431fe089f5da95f718e/chocolate-mousse-cake_17001-768x768.png"
-  title: "チョコレートムースケーキのイラスト"
+  title: "チョコレートムースのイラスト"
 selfAssessment:
   quizzes:
     - question: "Mastra でツールを作成する方法として正しいものはどれか？"
       answers:
-      - text: "const weatherTool = new Tool({ ... })"
-        correct: false
-        explanation: null
-      - text: "const weatherTool = createTool({ ... })"
-        correct: true
-        explanation: null
-      - text: "function weatherTool(): Tool { ... }"
-        correct: false
-        explanation: null
-      - text: "const weatherTool = buildTool({ ... })"
-        correct: false
-        explanation: null
-
+        - text: "const weatherTool = new Tool({ ... })"
+          correct: false
+          explanation: null
+        - text: "const weatherTool = createTool({ ... })"
+          correct: true
+          explanation: null
+        - text: "function weatherTool(): Tool { ... }"
+          correct: false
+          explanation: null
+        - text: "const weatherTool = buildTool({ ... })"
+          correct: false
+          explanation: null
 published: true
 ---
-
 Mastra は TypeScript 製の AI エージェントフレームワークであり [Gatsby](https://www.gatsbyjs.com/) の開発チームによって開発されています。Mastra サーバーを実行することで REST API サーバーを介してエージェントとやり取りできます。Mastra は AI エージェントを構築するために必要なプリミティブな機能を提供するために設計されています。
 
 https://mastra.ai/
