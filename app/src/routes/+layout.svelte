@@ -9,8 +9,6 @@
   import Footer from "../components/Footer/Footer.svelte";
   import { page } from "$app/stores";
   import GoogleAnalytics from "../components/GoogleAnalytics.svelte";
-  import Visual from "../components/Visual.svelte";
-  import image from "../assets/images/road-984251_1280.jpg";
   import { removeTrailingSlash } from "$lib/utils";
   import { onNavigate } from "$app/navigation";
   interface Props {
@@ -79,9 +77,6 @@
   {#if removeTrailingSlash($page.url.pathname) === "/recap/2024"}
     {@render children?.()}
   {:else}
-    {#if removeTrailingSlash($page.url.pathname) === "/about"}
-      <Visual title="about" {image} />
-    {/if}
     <div class="container mx-auto my-4 max-w-7xl px-1 md:px-6 lg:px-0">
       {@render children?.()}
     </div>
