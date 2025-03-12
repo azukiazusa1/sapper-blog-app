@@ -290,7 +290,7 @@ export const weatherTool = createTool({
   id: 'get-weather',
   description: 'Get current weather for a location',
   inputSchema: z.object({
-    location: z.string().describe('City name'),
+    location: z.string(),
   }),
   outputSchema: z.object({
     temperature: z.number(),
@@ -322,7 +322,6 @@ const weatherTool = createTool({
 ```
 
 `execute` メソッドに渡している `getWeather` 関数は、外部の API から天気情報を取得するための関数です。`execute` メソッドの引数の `context` には `inputSchema` で指定したパラメータが渡されます。この例では `location` が渡されることが期待されています。構造化された出力により型安全に引数を受け取ることができます。
-
 
 ```ts:src/mastra/tools/index.ts
 export const weatherTool = createTool({
@@ -383,13 +382,13 @@ curl -X POST http://localhost:4111/api/agents/weatherAgent/generate \
 ```json
 {
   "text":"箱根の現在の天気をお知らせします：
-  
+
   - 気温: 6.2°C
   - 体感温度: 3.8°C
   - 湿度: 56%
   - 風速: 5.7m/s（突風: 28.4m/s）
   - 天候: おおむね晴れ
-  
+
   やや肌寒い気温で、風もありますので、外出される際は防寒対策をお勧めします。",
   "reasoningDetails": [],
   "finishReason": "stop",
@@ -453,7 +452,7 @@ export const weatherAgent = new Agent({
 
 ### Vitest を使用してテストを実行する
 
-[Vitest](https://vitest.dev) やなどのテスティングフレームワークを使用して、エージェントのテストを自動化できます。これにより CI/CD パイプラインに組み込むことができ、エージェントの品質を維持できます。
+[Vitest](https://vitest.dev) などのテスティングフレームワークを使用して、エージェントのテストを自動化できます。これにより CI/CD パイプラインに組み込むことができ、エージェントの品質を維持できます。
 
 まず、Vitest をインストールします。
 
@@ -518,7 +517,7 @@ Cancelling test run. Press CTRL+c again to exit forcefully.
 
 ```ts:globalSetup.ts
 import { globalSetup } from '@mastra/evals';
- 
+
 export default function setup() {
   globalSetup()
 }
@@ -527,7 +526,7 @@ export default function setup() {
 ```ts:testSetup.ts
 import { beforeAll } from 'vitest';
 import { attachListeners } from '@mastra/evals';
- 
+
 beforeAll(async () => {
   await attachListeners();
 });
@@ -546,7 +545,6 @@ export default defineConfig({
 ```
 
 設定を追加した後に再度テストを実行してみましょう。
-
 
 ## トレースを OpenTelemetry で収集する
 
