@@ -182,7 +182,7 @@ ${blogPost.article}
 };
 ```
 
-http://azukiazusa.dev/llms.txt にアクセスすると生成されたファイルの内容が確認できます。
+`http://azukiazusa.dev/llms.txt` にアクセスすると生成されたファイルの内容が確認できます。
 
 ## llms.txt の採用例
 
