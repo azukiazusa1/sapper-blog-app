@@ -27,13 +27,14 @@
   image={`${variables.baseURL}/blog/shorts/ogp/${short.sys.id}.png`}
 />
 
-<ShortBlog
-  id={short.sys.id}
-  title={short.title}
-  ids={allShortsIds}
-  {contents}
-/>
-
+<div class="container mx-auto py-4">
+  <ShortBlog
+    id={short.sys.id}
+    title={short.title}
+    ids={allShortsIds}
+    {contents}
+  />
+</div>
 <!-- ogp を静的に生成するために空のリンクを設置している -->
 <!-- svelte-ignore a11y_consider_explicit_label -->
 <a href={`/blog/shorts/ogp/${encodeURIComponent(short.sys.id)}.png`}></a>

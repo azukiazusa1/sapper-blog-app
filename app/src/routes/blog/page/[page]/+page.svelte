@@ -1,6 +1,7 @@
 <script lang="ts">
   import PostList from "../../../../components/PostList.svelte";
   import Pagination from "../../../../components/Pagination/Pagination.svelte";
+  import Breadcrumb from "../../../../components/Breadcrumb/Breadcrumb.svelte";
   import type { PageData } from "./$types";
   import variables from "$lib/variables";
 
@@ -9,6 +10,11 @@
   }
 
   let { data }: Props = $props();
+
+  const breadcrumbItems = $derived([
+    { label: "Blog", url: "/blog" },
+    { label: `${data.page}ページ目` },
+  ]);
 </script>
 
 <svelte:head>
@@ -23,10 +29,13 @@
   {/if}
 </svelte:head>
 
-<PostList posts={data.posts.blogPostCollection.items} />
+<div class="container mx-auto mt-16">
+  <Breadcrumb items={breadcrumbItems} />
+  <PostList posts={data.posts.blogPostCollection.items} />
 
-<Pagination
-  page={data.page}
-  total={data.posts.blogPostCollection.total}
-  limit={data.posts.blogPostCollection.limit}
-/>
+  <Pagination
+    page={data.page}
+    total={data.posts.blogPostCollection.total}
+    limit={data.posts.blogPostCollection.limit}
+  />
+</div>

@@ -87,10 +87,6 @@ html:has(dialog[open]) {
   @apply my-6 border-l-4 border-l-indigo-400 bg-indigo-50/50 py-3 px-5 text-gray-700 rounded-r-lg md:my-8 dark:border-l-indigo-500 dark:bg-indigo-950/30 dark:text-gray-300;
 }
 
-#contents p {
-  @apply text-gray-700 dark:text-gray-300;
-}
-
 #contents details[open] {
   @apply rounded-lg border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800;
 }
@@ -312,17 +308,11 @@ h6 .icon-link::before {
   @apply text-green-700 dark:text-green-400;
 }
 
-#contents code {
-  font-size: 0.9em;
-  line-height: 1.9;
-}
-
 #contents code:not(pre > *) {
   background-color: rgba(0, 0, 0, 0.05);
   padding: 0.2em 0.4em;
   word-break: break-all;
   border-radius: 0.25rem;
-  font-size: 0.875em;
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
@@ -341,6 +331,7 @@ figure[data-rehype-pretty-code-figure] {
   color: #fff;
   padding: 1.25em 1.25em 1.25em 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 17px;
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
