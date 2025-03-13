@@ -43,77 +43,63 @@
   ></div>
 {/if}
 <aside
-  class={`fixed top-0 left-0 z-30 flex h-full w-64 transform flex-col justify-between overflow-auto border-r border-gray-200 bg-white transition-all duration-300 ease-in-out dark:border-zinc-700 dark:bg-zinc-800 ${
+  class={`fixed top-0 left-0 z-50 flex h-full w-72 transform flex-col justify-between overflow-auto bg-white transition-all duration-300 ease-in-out shadow-xl dark:bg-zinc-800 ${
     isOpen ? "visible translate-x-0 " : "invisible -translate-x-full"
   }`}
 >
   <div>
-    <div
-      class="flex h-12 w-full items-center justify-between border-b border-gray-200 p-2 dark:border-zinc-700"
-    >
+    <div class="flex w-full items-center justify-between p-4">
       <Title />
       <ToggleDarkMode right={true} />
     </div>
-    <ul>
-      {#each routes as route}
-        <li class="py-4">
-          <a
-            onclick={close}
-            aria-current={isMatchPath(route, segment) ? "page" : undefined}
-            href={route}
-            class="block px-7 capitalize hover:opacity-75"
-          >
-            {route.slice(1)}
-          </a>
-        </li>
-      {/each}
-    </ul>
+    <div class="mt-6 px-3">
+      <ul class="space-y-2">
+        {#each routes as route}
+          <li>
+            <a
+              onclick={close}
+              aria-current={isMatchPath(route, segment) ? "page" : undefined}
+              href={route}
+              class={`flex items-center rounded-xl px-4 py-3 capitalize font-medium transition-all duration-300 hover:bg-gray-100 dark:hover:bg-zinc-700 ${
+                isMatchPath(route, segment)
+                  ? "text-indigo-600 dark:text-indigo-400 bg-indigo-600/10 dark:bg-indigo-400/10"
+                  : ""
+              }`}
+            >
+              {route.slice(1)}
+            </a>
+          </li>
+        {/each}
+      </ul>
+    </div>
   </div>
-  <div
-    class="flex w-full items-center border-t border-gray-200 p-4 dark:border-zinc-700"
-  >
+  <div class="flex w-full items-center justify-center gap-2 p-6">
     <a
       href="/rss.xml"
       target="_blank"
-      class="mr-2"
+      class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
       rel="noopener noreferrer"
       aria-label="RSS"
     >
-      <RssIcon className="h-6 w-6" />
+      <RssIcon className="h-5 w-5" />
     </a>
     <a
       href="/llms.txt"
       target="_blank"
-      class="mx-2"
+      class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
       rel="noopener noreferrer"
       aria-label="LLMS"
     >
-      <Robot className="h-6 w-6" />
+      <Robot className="h-5 w-5" />
     </a>
     <a
       href="https://github.com/azukiazusa1/sapper-blog-app"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="GitHub"
-      class="mx-2"
+      class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
     >
-      <GitHub className="h-6 w-6" />
+      <GitHub className="h-5 w-5" />
     </a>
   </div>
 </aside>
-
-<style>
-  [aria-current="page"] {
-    position: relative;
-  }
-
-  [aria-current="page"]::after {
-    position: absolute;
-    content: "";
-    width: 2.5rem;
-    height: 2px;
-    background-color: #df3600;
-    display: block;
-    bottom: -8px;
-  }
-</style>

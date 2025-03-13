@@ -8,13 +8,13 @@
 
   let { href = "", current, sm = false, children }: Props = $props();
 
-  let className = $derived(`h-12 flex ${sm ? "px-4" : "w-12"} 
-  ${
+  let className = $derived(`h-12 flex ${
+    sm ? "px-4" : "w-12"
+  } rounded-full justify-center items-center cursor-pointer leading-5 font-medium transition-all duration-200 ${
     current && !sm
-      ? "bg-gray-200 dark:bg-zinc-600"
-      : "hover:bg-gray-100 dark:hover:bg-zinc-700"
-  }
-  border border-gray-200 dark:border-zinc-600 justify-center items-center cursor-pointer leading-5`);
+      ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md dark:from-indigo-500 dark:to-purple-500"
+      : "bg-white hover:bg-indigo-50 hover:text-indigo-600 shadow-md dark:bg-zinc-800 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400"
+  }`);
 </script>
 
 {#if href}

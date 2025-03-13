@@ -19,7 +19,7 @@
       {#snippet child({ props })}
         <button
           type="button"
-          class="{className} sticky right-8 top-8 hidden rounded-full p-5 hover:bg-gray-100 lg:block dark:hover:bg-zinc-700"
+          class="{className} sticky right-0 top-10 hidden rounded-full p-2 hover:bg-gray-100 lg:block dark:hover:bg-zinc-700 z-50"
           {...props}
           onclick={click}
           aria-label={label}

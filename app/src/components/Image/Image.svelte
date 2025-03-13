@@ -8,6 +8,7 @@
     slug: string;
     small?: boolean;
     main?: boolean;
+    class?: string;
   }
 
   let {
@@ -19,13 +20,14 @@
     slug,
     small = false,
     main = false,
+    class: className = "",
   }: Props = $props();
 </script>
 
 <img
   {src}
   {alt}
-  class={main ? "main" : undefined}
+  class={main ? "main" : undefined + " " + className}
   style:--tag={small ? null : `image-${slug}`}
   srcset={`${src}&w=100 100w,
     ${src}&w=200 200w,
