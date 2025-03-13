@@ -319,7 +319,6 @@ h6 .icon-link::before {
 
 #contents code:not(pre > *) {
   background-color: rgba(0, 0, 0, 0.05);
-  color: #d44;
   padding: 0.2em 0.4em;
   word-break: break-all;
   border-radius: 0.25rem;
@@ -327,10 +326,7 @@ h6 .icon-link::before {
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-}
-
-html.dark #contents code:not(pre > *) {
-  @apply bg-zinc-800 text-pink-400;
+  @apply dark:bg-zinc-800 dark:text-pink-400 text-pink-700;
 }
 
 /* コードブロックのコンテナ */
