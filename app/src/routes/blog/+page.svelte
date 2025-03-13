@@ -26,11 +26,13 @@
 
 <Tabs value="blog">
   {#snippet blog()}
-    <PostList posts={posts.blogPostCollection.items} />
-    <Pagination
-      total={posts.blogPostCollection.total}
-      limit={posts.blogPostCollection.limit}
-    />
+    <div class="px-4">
+      <PostList posts={posts.blogPostCollection.items} />
+      <Pagination
+        total={posts.blogPostCollection.total}
+        limit={posts.blogPostCollection.limit}
+      />
+    </div>
   {/snippet}
   {#snippet shorts()}
     <ShortList shorts={shortBlogs.shortCollection.items} />

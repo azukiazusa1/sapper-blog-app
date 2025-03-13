@@ -36,7 +36,7 @@
   </h1>
 </div>
 
-<div class="mt-6">
+<div class="mt-6 px-4">
   <PostList posts={posts.blogPostCollection.items} />
 </div>
 

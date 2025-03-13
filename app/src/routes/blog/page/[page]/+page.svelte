@@ -29,7 +29,7 @@
   {/if}
 </svelte:head>
 
-<div class="container mx-auto mt-16">
+<div class="container mx-auto mt-16 px-4">
   <Breadcrumb items={breadcrumbItems} />
   <PostList posts={data.posts.blogPostCollection.items} />
 
