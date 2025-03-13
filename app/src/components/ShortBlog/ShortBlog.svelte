@@ -86,7 +86,7 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-  class="momo absolute top-0 left-0 z-20 mx-auto w-screen sm:static sm:z-0 sm:h-[764px] sm:w-[430px]"
+  class="h-screen supports-[height:100svh]:h-[100svh] absolute top-0 left-0 z-20 mx-auto w-screen sm:static sm:z-0 sm:h-[700px] sm:w-[430px]"
   onclick={handleClick}
 >
   <article
@@ -98,7 +98,7 @@
         <PrevIcon className="h-8 w-8" />
       </a>
     </div>
-    <div class="flex w-full p-6" id="contents">
+    <div class="flex w-full p-6 prose dark:prose-invert" id="contents">
       {#each contents as content, i}
         <Slide active={active === i}>
           {@html content}
@@ -127,16 +127,3 @@
     </FloatingActionButton>
   </article>
 </div>
-
-<style>
-  .momo {
-    height: 100vh;
-  }
-  /* svh 単位がサポートしてたら、height: 100svh */
-  /* そうでなければ、height: 100vh */
-  @supports (height: 100svh) {
-    .momo {
-      height: 100svh;
-    }
-  }
-</style>
