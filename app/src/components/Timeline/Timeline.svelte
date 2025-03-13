@@ -17,7 +17,9 @@
   }: Props = $props();
 </script>
 
-<li class="ms-6 mb-10">
+<li
+  class="ms-6 mb-10 bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-lg dark:shadow-none"
+>
   <span
     class="absolute -start-1.5 mt-2 flex h-3 w-3 items-center justify-center rounded-full bg-indigo-700 ring-3 ring-white dark:ring-gray-900"
   >
