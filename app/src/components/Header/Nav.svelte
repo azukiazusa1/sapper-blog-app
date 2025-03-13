@@ -18,7 +18,7 @@
           href={route}
           class={`rounded-full capitalize font-medium transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-zinc-700 px-3 py-1.5 ${
             isMatchPath(route, segment)
-              ? "text-indigo-600 dark:text-indigo-400 bg-indigo-600/10 dark:bg-indigo-400/10"
+              ? "text-indigo-600 dark:text-indigo-300 bg-gray-100 dark:bg-zinc-700"
               : ""
           }`}
         >

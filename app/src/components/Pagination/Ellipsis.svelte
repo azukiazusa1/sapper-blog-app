@@ -1,4 +1,6 @@
-<span class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-gray-500 dark:bg-zinc-800 dark:text-gray-400">
+<span
+  class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-gray-500 dark:bg-zinc-800 dark:text-gray-400"
+>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"

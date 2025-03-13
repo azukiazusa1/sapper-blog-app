@@ -25,7 +25,9 @@
   };
 </script>
 
-<div class="w-full bg-gradient-to-r from-indigo-900 to-purple-900 py-16 dark:from-indigo-950 dark:to-purple-950 mb-16">
+<div
+  class="w-full bg-gradient-to-r from-indigo-900 to-purple-900 py-16 dark:from-indigo-950 dark:to-purple-950 mb-16"
+>
   <div class="container mx-auto px-4">
     <h1 class="text-center text-4xl font-extrabold text-white mb-6">Blog</h1>
     <p class="text-center text-lg text-indigo-100 max-w-2xl mx-auto mb-10">
@@ -34,11 +36,7 @@
   </div>
 </div>
 
-<Tabs.Root
-  onValueChange={handleTabChange}
-  bind:value
-  class="container mx-auto"
->
+<Tabs.Root onValueChange={handleTabChange} bind:value class="container mx-auto">
   {#snippet children()}
     <Tabs.List
       class="mx-auto -mt-24 mb-16 flex max-w-xs items-center justify-center rounded-full bg-white p-1.5 shadow-lg dark:bg-zinc-800"
@@ -47,8 +45,13 @@
         value="blog"
         class="relative z-10 w-full rounded-full px-6 py-2.5 text-center text-sm font-medium transition-all"
       >
-        <span class="relative z-20" class:text-white={value === "blog"} class:text-gray-700={value !== "blog"} class:dark:text-gray-300={value !== "blog"}> 
-          ブログ 
+        <span
+          class="relative z-20"
+          class:text-white={value === "blog"}
+          class:text-gray-700={value !== "blog"}
+          class:dark:text-gray-300={value !== "blog"}
+        >
+          ブログ
         </span>
         {#if value === "blog"}
           <div
@@ -62,8 +65,13 @@
         value="shorts"
         class="relative z-10 w-full rounded-full px-6 py-2.5 text-center text-sm font-medium transition-all"
       >
-        <span class="relative z-20" class:text-white={value === "shorts"} class:text-gray-700={value !== "shorts"} class:dark:text-gray-300={value !== "shorts"}> 
-          ショート 
+        <span
+          class="relative z-20"
+          class:text-white={value === "shorts"}
+          class:text-gray-700={value !== "shorts"}
+          class:dark:text-gray-300={value !== "shorts"}
+        >
+          ショート
         </span>
         {#if value === "shorts"}
           <div

@@ -44,7 +44,9 @@
       {/each}
     </div>
     <div class="flex md:hidden">
-      <div class="flex h-12 items-center justify-center rounded-full bg-white px-4 shadow-md dark:bg-zinc-800">
+      <div
+        class="flex h-12 items-center justify-center rounded-full bg-white px-4 shadow-md dark:bg-zinc-800"
+      >
         <span class="font-medium">Page {page} of {totalPage}</span>
       </div>
     </div>

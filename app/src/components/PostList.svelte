@@ -17,7 +17,9 @@
 
 <div class="animate-[fade-in_0.6s_ease-out] grid gap-8 px-4">
   {#each posts as post, i (post.slug)}
-    <div class="transform transition-all duration-300 hover:-translate-y-1 h-full flex">
+    <div
+      class="transform transition-all duration-300 hover:-translate-y-1 h-full flex"
+    >
       <PostCard
         title={post.title}
         slug={post.slug}
