@@ -154,13 +154,11 @@
 
   function closeToc() {
     document.documentElement.classList.remove("open-toc");
-
     localStorage.setItem("toc-state", "close");
   }
 
   function openToc() {
     document.documentElement.classList.add("open-toc");
-
     localStorage.setItem("toc-state", "open");
   }
 
@@ -218,45 +216,73 @@
   </script>
 </svelte:head>
 
-<article data-pagefind-body>
-  <div class="p-4">
-    <div class="mx-auto max-w-3xl">
-      <Image
-        src={thumbnail.url}
-        alt={thumbnail.title}
-        width={480}
-        height={270}
-        {slug}
-        main
-      />
-      <h1 class="mt-4 text-2xl font-bold md:text-4xl" style:--tag="h-{slug}">
-        {title}
-      </h1>
-      <p class="my-2" style:--tag="time-{slug}">
-        <Time date={createdAt} />
-      </p>
-      <p
-        class="text-sm break-words text-black/80 dark:text-gray-50/80"
-        style:--tag="about-{slug}"
-      >
-        {about}
-      </p>
-      <div
-        class="mt-4 flex flex-wrap items-center leading-none"
-        style:--tag="tag-{slug}"
-      >
-        {#each tags as tag (tag.slug)}
-          <AppTag {...tag} />
-        {/each}
+<article data-pagefind-body class="bg-white dark:bg-zinc-900 rounded-2xl">
+  <div class="mx-auto max-w-5xl px-4 py-8 md:py-12">
+    <header class="animate-[fade-in_0.5s_ease-out]">
+      <div class="mx-auto max-w-3xl">
+        <Image
+          src={thumbnail.url}
+          alt={thumbnail.title}
+          width={960}
+          height={540}
+          {slug}
+          main
+        />
+        <div
+          class="mt-6 flex flex-wrap items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+        >
+          <div class="flex items-center pr-4" style:--tag="time-{slug}">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="mr-1 h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+            <Time date={createdAt} />
+          </div>
+          <div
+            class="flex flex-wrap items-center leading-none"
+            style:--tag="tag-{slug}"
+          >
+            {#each tags as tag (tag.slug)}
+              <AppTag {...tag} />
+            {/each}
+          </div>
+        </div>
+
+        <h1
+          class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl"
+          style:--tag="h-{slug}"
+        >
+          {title}
+        </h1>
+
+        <p
+          class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+          style:--tag="about-{slug}"
+        >
+          {about}
+        </p>
       </div>
-    </div>
+    </header>
 
     <div class="relative mx-auto max-w-6xl">
-      <div id="contents" class="show-line-number mx-auto mt-20 max-w-6xl">
+      <div
+        id="contents"
+        class="prose prose-lg dark:prose-invert show-line-number mx-auto mt-12 max-w-6xl"
+      >
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html contents}
       </div>
-      <div id="nav-button" class="absolute top-0 right-6">
+      <div id="nav-button" class="absolute top-10 right-0">
         <NavButton
           click={closeToc}
           label="目次を閉じる"

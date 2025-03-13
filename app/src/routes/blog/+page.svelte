@@ -33,6 +33,8 @@
     />
   {/snippet}
   {#snippet shorts()}
+    <div class="mx-auto max-w-lg mb-16"></div>
+
     <ShortList shorts={shortBlogs.shortCollection.items} />
 
     <div class="my-16 flex justify-center">

@@ -15,23 +15,33 @@
   let { posts, small = false }: Props = $props();
 </script>
 
-<div class="grid gap-6 px-6">
+<div class="animate-[fade-in_0.6s_ease-out] grid gap-8 px-4">
   {#each posts as post, i (post.slug)}
-    <PostCard
-      title={post.title}
-      slug={post.slug}
-      about={post.about}
-      thumbnail={post.thumbnail}
-      createdAt={post.createdAt}
-      tags={post.tagsCollection ? post.tagsCollection.items : []}
-      {small}
-      lazy={i > 2 || small}
-    />
+    <div
+      class="transform transition-all duration-300 hover:-translate-y-1 h-full flex"
+    >
+      <PostCard
+        title={post.title}
+        slug={post.slug}
+        about={post.about}
+        thumbnail={post.thumbnail}
+        createdAt={post.createdAt}
+        tags={post.tagsCollection ? post.tagsCollection.items : []}
+        {small}
+        lazy={i > 2 || small}
+      />
+    </div>
   {/each}
 </div>
 
 <style>
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+
+  @media (min-width: 1280px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 </style>

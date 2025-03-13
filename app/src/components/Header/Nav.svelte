@@ -9,14 +9,18 @@
   let { segment, routes }: Props = $props();
 </script>
 
-<nav>
-  <ul class="flex items-center space-x-4">
+<nav class="px-1">
+  <ul class="flex items-center space-x-1">
     {#each routes as route}
       <li>
         <a
           aria-current={isMatchPath(route, segment) ? "page" : undefined}
           href={route}
-          class="rounded-md px-4 py-2 capitalize transition-colors duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-zinc-700"
+          class={`rounded-full capitalize font-medium transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-zinc-700 px-3 py-1.5 ${
+            isMatchPath(route, segment)
+              ? "text-indigo-600 dark:text-indigo-300 bg-gray-100 dark:bg-zinc-700"
+              : ""
+          }`}
         >
           {route.slice(1)}
         </a>
@@ -24,20 +28,3 @@
     {/each}
   </ul>
 </nav>
-
-<style>
-  [aria-current] {
-    position: relative;
-    display: inline-block;
-  }
-
-  [aria-current]::after {
-    position: absolute;
-    content: "";
-    width: calc(100% - 2rem);
-    height: 2px;
-    background-color: #df3600;
-    display: block;
-    bottom: -4px;
-  }
-</style>

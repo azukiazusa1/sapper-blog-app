@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @variant dark (&:where(.dark, .dark *));
 
@@ -58,124 +59,55 @@ html:has(dialog[open]) {
 
 /* style for Markdown */
 
-#contents {
-  line-height: 1.9;
-  font-size: 1rem;
-}
-
 @media (min-width: 768px) {
   #contents {
     font-size: 17px;
     line-height: 2;
+    letter-spacing: 0.01em;
   }
 }
 
 #contents h1 {
-  font-size: 1.8em;
-  line-height: 1.5;
-  font-weight: 700;
-  padding-bottom: 0.1rem;
-  margin-bottom: 2.1rem;
-  padding-top: 1.5rem;
-  @apply border-b border-gray-300 dark:border-zinc-700;
+  @apply border-b border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-white;
 }
 
 #contents h2 {
-  font-size: 1.6em;
-  line-height: 1.5;
-  font-weight: 700;
-  padding-bottom: 0.1rem;
-  margin-bottom: 2.1rem;
-  padding-top: 1.5rem;
-  @apply border-b border-gray-300 dark:border-zinc-700;
+  @apply border-b border-gray-200 dark:border-zinc-700 text-gray-800 dark:text-gray-100;
 }
 
 #contents h3 {
-  font-size: 1.3rem;
-  line-height: 1.5;
-  font-weight: 700;
-  padding-bottom: 0.1rem;
-  margin-bottom: 1.1rem;
-  padding-top: 1.5rem;
+  @apply text-gray-800 dark:text-gray-100;
 }
 
 #contents h4 {
-  font-size: 1.2rem;
-  line-height: 1.5;
-  font-weight: 700;
-  padding-bottom: 0.1rem;
-  margin-bottom: 1.1rem;
-  padding-top: 1.5rem;
-}
-
-#contents h5 {
-  font-size: 1.125rem;
-  font-weight: 700;
-  padding-bottom: 0.1rem;
-  margin-bottom: 1rem;
-  padding-top: 1rem;
-}
-
-#contents h6 {
-  font-size: 1.125rem;
-  font-weight: 700;
-  padding-bottom: 0.1rem;
-  margin-bottom: 1rem;
-  padding-top: 1rem;
-}
-
-#contents ul {
-  list-style-type: disc;
-}
-
-#contents ol {
-  list-style-type: decimal;
-}
-
-#contents ul,
-#contents ol {
-  padding-left: 1.5em;
-  @apply my-6 md:my-8;
-}
-
-#contents ul ul,
-#contents ol ol {
-  @apply my-2;
-}
-
-#contents li {
-  @apply my-2;
+  @apply text-gray-800 dark:text-gray-100;
 }
 
 #contents blockquote {
-  @apply my-6 border-l-4 border-l-gray-200 py-1 pl-4 text-gray-600 md:my-8 dark:border-l-gray-400 dark:text-gray-300;
+  @apply my-6 border-l-4 border-l-indigo-400 bg-indigo-50/50 py-3 px-5 text-gray-700 rounded-r-lg md:my-8 dark:border-l-indigo-500 dark:bg-indigo-950/30 dark:text-gray-300;
 }
 
-#contents p + p {
-  @apply mt-6 md:mt-8;
-}
-
-#contents details {
-  @apply my-6 md:my-8;
+#contents p {
+  @apply text-gray-700 dark:text-gray-300;
 }
 
 #contents details[open] {
-  @apply rounded-lg border border-gray-300 dark:border-zinc-700;
+  @apply rounded-lg border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800;
 }
 
 #contents details > p {
-  @apply p-4;
+  @apply p-5;
 }
 
 #contents summary {
-  padding: 0.5rem 1rem;
-  @apply mb-6 cursor-pointer rounded-t-lg bg-gray-200 md:mb-8 dark:bg-zinc-600;
+  padding: 0.75rem 1.25rem;
+  @apply mb-6 cursor-pointer rounded-t-lg bg-indigo-50 font-medium text-indigo-800 md:mb-8 dark:bg-indigo-900/30 dark:text-indigo-200;
 }
 
 #contents img,
 #contents video,
 #contents iframe {
-  @apply mx-auto my-6 md:my-8;
+  @apply mx-auto;
 }
 
 #contents img {
@@ -187,41 +119,32 @@ html:has(dialog[open]) {
 }
 
 #contents .markdown-body a {
-  color: #0d74df;
+  color: #4361ee;
   word-break: break-all;
-  text-decoration: underline;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px dotted #4361ee;
+  transition: all 0.2s ease;
+}
+
+#contents .markdown-body a:hover {
+  color: #2f3cc9;
+  border-bottom: 1px solid #2f3cc9;
 }
 
 html.dark #contents .markdown-body a {
-  color: #67b2ff;
+  color: #738aff;
+  border-bottom: 1px dotted #738aff;
+}
+
+html.dark #contents .markdown-body a:hover {
+  color: #96a5ff;
+  border-bottom: 1px solid #96a5ff;
 }
 
 /* 見出しの # */
 #contents a[aria-hidden="true"] {
   text-decoration: none !important;
-}
-
-#contents table {
-  width: auto;
-  border-collapse: collapse;
-  font-size: 0.95em;
-  line-height: 1.5;
-  word-break: normal;
-  display: block;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  @apply mx-auto my-6 md:my-8;
-}
-
-#contents th {
-  font-weight: 700;
-  padding: 0.5rem;
-  @apply border border-gray-300 bg-gray-200 dark:border-zinc-700 dark:bg-zinc-600;
-}
-
-#contents td {
-  padding: 0.5rem;
-  @apply border border-gray-300 dark:border-zinc-700;
 }
 
 .toc {
@@ -258,7 +181,7 @@ html.dark #contents .markdown-body a {
     overflow-y: auto;
     overscroll-behavior: contain;
     font-size: 14px;
-    @apply sticky top-8 left-0 mb-0 rounded-lg bg-gray-100 p-4 dark:bg-zinc-700;
+    @apply sticky top-24 mt-24 left-0 rounded-lg bg-gray-100 p-4 shadow-lg dark:bg-zinc-800 dark:shadow-zinc-900/40;
   }
 
   html:not(.open-toc) .toc {
@@ -276,6 +199,7 @@ html.dark #contents .markdown-body a {
 
 #toc-title {
   padding: 0 !important;
+  margin-top: 0.5rem !important;
   margin-bottom: 1rem !important;
 }
 
@@ -394,19 +318,17 @@ h6 .icon-link::before {
 }
 
 #contents code:not(pre > *) {
-  background-color: #eee;
-  color: #333;
+  background-color: rgba(0, 0, 0, 0.05);
   padding: 0.2em 0.4em;
   word-break: break-all;
-  border-radius: 0.125rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
+  @apply dark:bg-zinc-800 dark:text-pink-400 text-pink-700;
 }
 
-html.dark #contents code:not(pre > *) {
-  @apply bg-zinc-600 text-gray-50;
-}
 /* コードブロックのコンテナ */
 figure[data-rehype-pretty-code-figure] {
   position: relative;
@@ -414,11 +336,14 @@ figure[data-rehype-pretty-code-figure] {
 
 #contents pre {
   overflow: auto;
-  border-radius: 6px;
-  background: #212121;
+  border-radius: 0.5rem;
+  background: #1e1e1e; /* VS Code dark theme color */
   color: #fff;
-  margin: 1.5em 0;
-  padding: 1em 1em 1em 0;
+  padding: 1.25em 1.25em 1.25em 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .show-line-number code {
@@ -442,7 +367,7 @@ figure[data-rehype-pretty-code-figure] {
 
 .link-card {
   @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-gray-100 md:flex-row dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700;
-  text-decoration: none !important;
+  border-bottom: none !important;
 }
 
 .link-card__main {

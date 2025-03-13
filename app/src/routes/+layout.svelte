@@ -74,13 +74,7 @@
 {/if}
 
 <main>
-  {#if removeTrailingSlash($page.url.pathname) === "/recap/2024"}
-    {@render children?.()}
-  {:else}
-    <div class="container mx-auto my-4 max-w-7xl px-1 md:px-6 lg:px-0">
-      {@render children?.()}
-    </div>
-  {/if}
+  {@render children?.()}
 </main>
 
 {#if removeTrailingSlash($page.url.pathname) !== "/recap/2024"}
