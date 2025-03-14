@@ -14,7 +14,6 @@ https://azukiazusa.dev
 | `contents`               | ブログの記事データ |
 | `packages`               |                                              |
 | ├ `content-management`               | Contentful のデータとレポジトリの記事データを同期するスクリプト |
-| ├ `content-preview` | ローカルで編集したマークダウンファイルをプレビューするアプリ |
 | ├ `rehype-alert`| マークダウンのアラート記法を変換する rehype のプラグイン |
 | ├ `remark-link-card`| マークダウンをリンクカードに変換する remark のプラグイン |
 | ├ `remark-contentful-image` | contentful の画像を最適化する remark のプラグイン |
