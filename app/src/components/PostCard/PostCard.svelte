@@ -28,7 +28,7 @@
 </script>
 
 <article
-  class="group relative m-auto flex w-full flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:shadow-xl dark:bg-zinc-900 dark:shadow-zinc-800/20 h-full"
+  class="group relative m-auto flex w-full flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:shadow-xl dark:bg-zinc-900 dark:shadow-zinc-800/20 h-full max-w-[400px]"
 >
   <a
     href={`/blog/${slug}`}
