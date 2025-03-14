@@ -32,6 +32,7 @@
     "@playwright/test": "^1.31.0",
     "@resvg/resvg-js": "^2.6.2",
     "@sveltejs/adapter-cloudflare": "^4.8.0",
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.0.0",
     "@types/react": "^18.0.26",
     "@urql/core": "^4.0.0",
