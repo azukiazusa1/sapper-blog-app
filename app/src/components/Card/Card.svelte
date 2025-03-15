@@ -277,7 +277,7 @@
     <div class="relative mx-auto max-w-6xl">
       <div
         id="contents"
-        class="prose prose-lg dark:prose-invert show-line-number mx-auto mt-12 max-w-6xl"
+        class="prose prose-lg dark:prose-invert prose-zinc show-line-number mx-auto mt-12 max-w-6xl"
       >
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html contents}

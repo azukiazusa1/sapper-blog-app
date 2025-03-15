@@ -42,7 +42,7 @@
 <div class="mx-auto my-6 max-w-5xl px-4">
   <a
     href="/blog"
-    class="inline-flex items-center gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-800 transition-colors hover:bg-indigo-100 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-indigo-900"
+    class="inline-flex items-center gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-800 transition-colors dark:bg-zinc-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-zinc-700"
   >
     <Prev className="h-4 w-4" />
     Back to blog
@@ -68,7 +68,7 @@
   <div class="mx-auto max-w-5xl px-4 py-6">
     {#if post.selfAssessment?.quizzes.length > 0}
       <div
-        class="animate-[fade-in_0.5s_ease-out] rounded-xl bg-gray-50 p-6 shadow-sm dark:bg-zinc-900"
+        class="animate-[fade-in_0.5s_ease-out] rounded-xl bg-gray-50 p-6 shadow-sm dark:bg-zincz-900"
       >
         <SelfAssessment quizzes={post.selfAssessment.quizzes} />
       </div>

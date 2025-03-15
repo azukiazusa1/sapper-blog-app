@@ -69,14 +69,18 @@
 </svelte:head>
 
 <GoogleAnalytics />
-{#if removeTrailingSlash($page.url.pathname) !== "/recap/2024"}
-  <Header segment={$page.url.pathname} />
-{/if}
+<div
+  class="min-h-screen bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-50"
+>
+  {#if removeTrailingSlash($page.url.pathname) !== "/recap/2024"}
+    <Header segment={$page.url.pathname} />
+  {/if}
 
-<main>
-  {@render children?.()}
-</main>
+  <main>
+    {@render children?.()}
+  </main>
 
-{#if removeTrailingSlash($page.url.pathname) !== "/recap/2024"}
-  <Footer />
-{/if}
+  {#if removeTrailingSlash($page.url.pathname) !== "/recap/2024"}
+    <Footer />
+  {/if}
+</div>

@@ -72,10 +72,7 @@ html:has(dialog[open]) {
   }
 }
 
-#contents h1 {
-  @apply border-b border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-white;
-}
-
+#contents h1,
 #contents h2 {
   @apply border-b border-gray-200 dark:border-zinc-700 text-gray-800 dark:text-gray-100;
 }
@@ -250,7 +247,7 @@ h6 .icon-link::before {
   font-size: 14px;
   line-height: 1.3;
   border-radius: 6px 6px 0 0;
-  padding: 6px 12px 20px;
+  padding: 6px 12px 12px;
   margin-bottom: -36px;
   margin-top: 1.5rem;
 }
@@ -278,6 +275,7 @@ h6 .icon-link::before {
 }
 
 .alert-content {
+  margin: 0 !important;
   @apply pl-2;
 }
 
@@ -402,7 +400,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 .link-card__url {
-  @apply ml-2 text-neutral-900 dark:text-white;
+  @apply ml-2 text-zinc-900 dark:text-white;
 }
 
 .link-card__thumbnail {

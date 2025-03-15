@@ -83,7 +83,7 @@
         class="mb-2 text-xl font-bold leading-tight transition-colors group-hover:text-indigo-600 dark:group-hover:text-indigo-400"
         style:--tag={small ? null : `h-${slug}`}
       >
-        <a class="no-underline line-clamp-2" href={`/blog/${slug}`}>{title}</a>
+        <a class="no-underline line-clamp-3" href={`/blog/${slug}`}>{title}</a>
       </h2>
     </header>
 
