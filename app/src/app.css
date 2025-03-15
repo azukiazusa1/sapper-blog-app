@@ -116,6 +116,10 @@ html:has(dialog[open]) {
   cursor: pointer;
 }
 
+#contents iframe {
+  @apply my-6;
+}
+
 #contents .markdown-body a {
   color: #4361ee;
   word-break: break-all;
