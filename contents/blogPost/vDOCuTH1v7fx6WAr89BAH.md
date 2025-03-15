@@ -38,11 +38,9 @@ selfAssessment:
           explanation: null
         - text: "response"
           correct: false
-          explanation: null      
-
+          explanation: null
 published: false
 ---
-
 MCP（Model Context Protocol）とはアプリケーションが LLM にコンテキストを提供する方法を標準化するプロトコルです。多くの LLM ではユーザーに適切な回答を提供するために追加のコンテキスト情報を必要とします。例えば、今日の天気の情報をユーザーから求められたとしても LLM が学習したデータにはその情報は含まれていないため、正確な回答ができません。このような状況では LLM は天気情報を取得する API の呼び出しを要求し、その結果をコンテキストとして提供することで正確な回答を得られるようになります。
 
 外部からコンテキストを渡す手段として [Function Calling](https://platform.openai.com/docs/guides/function-calling?api-mode=chat) を思い出した方も多いかもしれません。Function Calling は天気や株価を取得するだけのような単純な API 呼び出しを行う場合には十分であると言えます。しかし Function Calling の実装は LLM ごとに異なるため、スケーラビリティの制約があります。

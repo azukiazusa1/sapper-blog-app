@@ -5,7 +5,7 @@ slug: "view-transition-css-at-rule-for-page-transition-animation-in-mpa"
 about: "View Transition API はページを遷移する際に簡単にアニメーションを追加できる API です。SPA では `document.startViewTransition()` メソッドを DOM が変更される前に呼び出すことでページ遷移アニメーションを追加できます。MPA の場合 CSS アットルール `@view-transition` を使用できます。SPA の場合と異なり、JavaScript を使用せずに CSS だけでアニメーションを追加できる点が特徴です。"
 createdAt: "2025-01-18T22:47+09:00"
 updatedAt: "2025-01-18T22:47+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/lBFeoAMNCnBp1tX8St3D4/37a2bb61b643bdc7a827a1a561074262/sphinx_6644-768x585.png"
   title: "sphinx 6644-768x585"

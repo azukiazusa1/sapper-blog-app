@@ -5,7 +5,7 @@ slug: "use-mask-image-css-property-to-display-svg-icons"
 about: "mask-image プロパティは CSS でマスキングを行うためのプロパティであり、SVG アイコンを表示する際に有用です。mask-image プロパティを使用することで、外部の SVG ファイルを読み込みつつ、アイコンの色を CSS で指定することが可能になります。"
 createdAt: "2024-06-15T15:35+09:00"
 updatedAt: "2024-06-15T15:35+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6NdEsvayuQPax4e0d0BZmX/8774448df77f80818d57427f517f7a47/fruit_cat-melon_illust_4532-768x603.png"
   title: "マスクメロンのイラスト"

@@ -5,7 +5,7 @@ slug: "container-style-query-in-css"
 about: "CSS の @container ルールは、コンテナ（親要素）の特性に基づいてスタイルを適用するためのルールです。コンテナースタイルクエリーはコンテナサイズクエリーとコンテナスタイルクエリーの 2 種類に分類されます。コンテナスタイルクエリは style() 関数記法で定義されたスタイルを @container ルールで評価し、指定された条件が一致する場合にスタイルが適用されます。"
 createdAt: "2024-03-30T14:12+09:00"
 updatedAt: "2024-03-30T14:12+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7439inVTcQXUvjyo9Fm80E/ecacb8aa7e8d241e6568a1aa5b663daf/takenoko_illust_3126-768x578.png"
   title: "たけのこのイラスト"

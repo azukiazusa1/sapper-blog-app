@@ -5,7 +5,7 @@ slug: "inline-conditional-css-if-function"
 about: "if() 関数は CSS Values and Units Module Level 5 という仕様で提案されている関数です。if() 関数は CSS でインラインの条件分岐を可能にします。"
 createdAt: "2025-03-01T15:41+09:00"
 updatedAt: "2025-03-01T15:41+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2hoMlP7jAUdlsA61AOIPMk/af4d13ee23c92d7e5b4b431e0c67e797/kappamaki_sushi_21468-768x670.png"
   title: "かっぱ巻きのイラスト"

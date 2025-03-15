@@ -5,7 +5,7 @@ slug: "css-random-function"
 about: "`random()` と `random-item()` 関数は CSS でランダムな値を扱うための関数です。`random()` 関数は最小値と最大値を引数に取り、その範囲内のランダムな数値を返します。`random-item()` 関数は引数に渡したリストの中からランダムに 1 つの値を返します。"
 createdAt: "2024-07-28T17:06+09:00"
 updatedAt: "2024-07-28T17:06+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1bqQw9rxgBjXq2OvYb7nxZ/d9ba71d9cc533138ddff7430f3d8acfb/omikuji_6573.png"
   title: "omikuji 6573"

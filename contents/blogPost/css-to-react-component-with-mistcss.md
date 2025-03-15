@@ -5,7 +5,7 @@ slug: "css-to-react-component-with-mistcss"
 about: "MistCSS は CSS in JS になぞらえた JS from CSS というコンセプトで、CSS から React コンポーネントを生成するツールです。ピュアな CSS を記述できるので、学習コストが低い、パフォーマンスに影響がないといったメリットがあります。"
 createdAt: "2024-03-23T14:18+09:00"
 updatedAt: "2024-03-23T14:18+09:00"
-tags: ["React", "CSS", "MistCSS"]
+tags: ["React", "", "MistCSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3wkNGwsygEjopNaPaLQlD3/c7e7c2fff7c8c7f8f1c2c3d1c0a164b0/matsu_bonsai_12169-768x768.png"
   title: "松の盆栽のイラスト"

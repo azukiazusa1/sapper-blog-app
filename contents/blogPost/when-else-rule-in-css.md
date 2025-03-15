@@ -5,7 +5,7 @@ slug: "when-else-rule-in-css"
 about: "`@when/@else` アットルールは条件付きスタイルをまとめて記述するためのルールです。`@media` や `@support` の条件を `@when` にわたすことで、`true` の場合には `@when` ブロック内のスタイルが、`false` の場合には `@else` ブロック内のスタイルが適用されます。このルールを使うことでより簡潔なコードを書くことができます。"
 createdAt: "2024-06-22T15:36+09:00"
 updatedAt: "2024-06-22T15:36+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/rIrCdSMM1pXR4pp61lGTv/c7c6594769f433827d72de586a180f2c/tropical-juice_illust_3389.png"
   title: "tropical-juice illust 3389"

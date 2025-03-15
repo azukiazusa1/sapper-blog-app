@@ -5,7 +5,7 @@ slug: "starting-style-rule-for-css-transitions"
 about: "`@starting-style` ルールは、CSS トランジションの開始時のスタイルを定義するためのアットルールです。CSS トランジションの既定のルールでは前回のスタイル変更イベントでレンダリングされていなかった要素では、アニメーションが適用されない、`display: none` から他の値に変更した場合にアニメーションが適用されないといった問題があります。`@starting-style` ルールを使用することでこれらの問題を解決できます。"
 createdAt: "2024-06-09T15:22+09:00"
 updatedAt: "2024-06-09T15:22+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4218OVTiHNkM4d9CORGRAE/e548eb3c3eef448d0be93c7b74d04f42/cute_katatsumuri_illust_3236-768x580.png"
   title: "cute katatsumuri illust 3236-768x580"
