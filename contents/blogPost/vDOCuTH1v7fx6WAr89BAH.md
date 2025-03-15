@@ -47,15 +47,15 @@ MCP（Model Context Protocol）とはアプリケーションが LLM にコン�
 
 外部からコンテキストを渡す手段として [Function Calling](https://platform.openai.com/docs/guides/function-calling?api-mode=chat) を思い出した方も多いかもしれません。Function Calling は天気や株価を取得するだけのような単純な API 呼び出しを行う場合には十分であると言えます。しかし Function Calling の実装は LLM ごとに異なるため、スケーラビリティの制約があります。
 
-MCP は標準化された方法でツールを呼び出すことができるため、複数のツールを組み合わせて複雑なワークフローを構築することが容易になります。より詳細な MCP と Function Calling の違いについては以下の Reddit スレッドを参照してください：
+MCP は標準化された方法でツールを呼び出すことができるため、複数のツールを組み合わせて複雑なワークフローを構築することが容易になります。より詳細な MCP と Function Calling の違いについては以下の Reddit スレッドを参照してください。
 
 https://www.reddit.com/r/ClaudeAI/comments/1h0w1z6/model_context_protocol_vs_function_calling_whats/
 
-LLM は MCP を通じて以下のことが可能になります：
+LLM は MCP を通じて以下のことが可能になります。
 
 - 外部ツールやサービスからコンテキストを取得する
 - コードを実行する
-- にデータを保存・読み込みする
+- データを保存・読み込みする
 - 外部 API と連携する
 
 これにより、LLM は単なる質問応答システムから、実世界のタスクを実行できるアプリケーションやサービスへと進化します。
@@ -68,7 +68,7 @@ LLM は MCP を通じて以下のことが可能になります：
 
 ## ホストから MCP サーバーを利用する
 
-MCP サーバーを利用する前に、MCP のアーキテクチャについて理解しておきましょう。MCP は次の 3 つの主要コンポーネントで構成されています。ホストは複数のサーバーに接続できるクライアントサーバーアーキテクチャに従います：
+MCP サーバーを利用する前に、MCP のアーキテクチャについて理解しておきましょう。MCP は次の 3 つの主要コンポーネントで構成されています。ホストは複数のサーバーに接続できるクライアントサーバーアーキテクチャに従います。
 
 - ホスト：ユーザーが操作する LLM アプリケーション（Claude Desktop や Cline など）
 - MCP クライアント：ホストアプリケーション内でサーバーとの 1 対 1 の接続を確立するコンポーネント
@@ -76,11 +76,11 @@ MCP サーバーを利用する前に、MCP のアーキテクチャについて
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/4Xlo8FKxcUO4HgKgGKdgft/e0326655d1e4ff3d74b81ac8bcb59850/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2025-03-14_21.06.11.png)
 
-出典: [modelcontextprotocol.io/docs/concepts/architecture](https://modelcontextprotocol.io/docs/concepts/architecture)
+出典: [modelcontextprotocol.io/docs/concepts/architecture](https://modelcontextprotocol.io/docs/concepts/architecture) 。
 
 ### Claude Desktop をインストールする
 
-この記事ではホストとして Claude Desktop を使用します。以下の URL から Claude Desktop をインストールできます：
+この記事ではホストとして Claude Desktop を使用します。以下の URL から Claude Desktop をインストールできます。
 
 [https://claude.ai/download](https://claude.ai/download)
 
@@ -94,7 +94,7 @@ MCP サーバーを利用するためには、Claude Desktop の設定を編集�
 
 !> この記事では macOS の Claude Desktop を使用しています。Windows バージョンでは手順が異なる場合があります。
 
-手順は以下の通りです：
+手順は以下の通りです。
 
 1. Claude Desktop を起動し、メニューバーの「Claude」→「Settings...」を選択
 2. 左側のメニューから「Developer」を選択
@@ -103,9 +103,9 @@ MCP サーバーを利用するためには、Claude Desktop の設定を編集�
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/538zak9IYgXCyEUmg4CXJn/7fb4aa83355ff03110dd32b903ce653a/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2025-03-14_21.26.43.png)
 
-今回は [GitHub の MCP サーバー](https://github.com/modelcontextprotocol/servers/tree/main/src/github) を追加してみましょう。このサーバーを利用すると、Claude が GitHub リポジトリのファイル操作やイシュー作成などを行ったり、コードを検索した結果を元に質問に答えたりすることができます。
+今回は [GitHub の MCP サーバー](https://github.com/modelcontextprotocol/servers/tree/main/src/github) を追加してみましょう。このサーバーを利用すると、Claude が GitHub リポジトリのファイル操作やイシュー作成などを行ったり、コードを検索した結果を元に質問に答えたりできます。
 
-設定ファイルの `mcpServers` キーに GitHub サーバーの設定を追加します：
+設定ファイルの `mcpServers` キーに GitHub サーバーの設定を追加します。
 
 ```json
 {
@@ -144,7 +144,7 @@ MCP サーバーを追加すると、Claude Desktop がそのサーバーが提�
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/2jgJtWVTz0Q7paAEwSAGbi/46fa951f65821a5f9b8d60fd6456afe0/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2025-03-14_22.09.29.png)
 
-実際に Claude に質問をしてみましょう。以下のような指示を与えてみます：
+実際に Claude に質問をしてみましょう。以下のような指示を与えてみます。
 
 「sapper-blog-app（このブログのソースコードが含まれているリポジトリです）に古いライブラリがあるか調べてください。存在する場合には Issue を作成してください」
 
@@ -166,7 +166,7 @@ MCP の仕組みをより深く理解するため、独自の MCP サーバー�
 
 ### MCP サーバーの基本概念
 
-MCP サーバーは主に以下の 3 種類の機能を提供することができます：
+MCP サーバーは主に以下の 3 種類の機能を提供できます。
 
 1. リソース：MCP サーバーがクライアントに提供するデータ（ファイル内容、データベースレコードなど）
    - 各リソースは `file:///path/to/file.txt` や `postgres://database/table` などの URI で識別される
@@ -188,7 +188,7 @@ MCP サーバーは上記の機能を `name`, `description`, `arguments` など�
 }
 ```
 
-今回実装するサイコロツールは、サイド数（面の数）を入力として受け取り、1からその数字までのランダムな整数を返す単純なツールです。完成すれば以下のような機能定義を持つことになります：
+今回実装するサイコロツールは、サイド数（面の数）を入力として受け取り、1 からその数字までのランダムな整数を返す単純なツールです。完成すれば以下のような機能定義を持つことになります。
 
 ```json
 {
@@ -208,7 +208,7 @@ MCP サーバーは上記の機能を `name`, `description`, `arguments` など�
 
 ### プロジェクトのセットアップ
 
-まずは新しいプロジェクトを作成し、必要なパッケージをインストールします：
+まずは新しいプロジェクトを作成し、必要なパッケージをインストールします。
 
 ```bash
 mkdir mcp-dice-roller
@@ -221,7 +221,7 @@ npm install -D @types/node typescript vitest
 
 `@modelcontextprotocol/sdk` は MCP サーバーを TypeScript で実装するための [SDK](https://github.com/modelcontextprotocol/typescript-sdk) です。`zod` はスキーマバリデーションライブラリで、MCP サーバーのスキーマを定義するために使用します。
 
-`package.json` を次のように編集します：
+`package.json` を次のように編集します。
 
 ```json:package.json
 {
@@ -242,7 +242,7 @@ npm install -D @types/node typescript vitest
 }
 ```
 
-最後にプロジェクトのルートに `tsconfig.json` を作成します：
+最後にプロジェクトのルートに `tsconfig.json` を作成します。
 
 ```json:tsconfig.json
 {
