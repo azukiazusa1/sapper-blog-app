@@ -196,7 +196,7 @@ html.dark #contents .markdown-body a:hover {
 
   html.open-toc .open-toc-button {
     @apply hidden;
-  }da
+  }
 }
 
 #toc-title {
