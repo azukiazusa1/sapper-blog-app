@@ -68,7 +68,7 @@
   <div class="mx-auto max-w-5xl px-4 py-6">
     {#if post.selfAssessment?.quizzes.length > 0}
       <div
-        class="animate-[fade-in_0.5s_ease-out] rounded-xl bg-gray-50 p-6 shadow-sm dark:bg-zincz-900"
+        class="animate-[fade-in_0.5s_ease-out] rounded-xl bg-gray-50 p-6 shadow-sm dark:bg-zinc-900"
       >
         <SelfAssessment quizzes={post.selfAssessment.quizzes} />
       </div>
