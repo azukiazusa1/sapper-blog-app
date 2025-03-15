@@ -12,6 +12,7 @@
   let { data }: Props = $props();
 
   const breadcrumbItems = $derived([
+    { label: "Home", url: "/" },
     { label: "Blog", url: "/blog" },
     { label: `${data.page}ページ目` },
   ]);
