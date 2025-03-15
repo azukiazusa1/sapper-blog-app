@@ -5,7 +5,7 @@ slug: "typescript-mcp-server"
 about: "MCP（Model Context Protocol）とはアプリケーションが LLM にコンテキストを提供する方法を標準化するプロトコルです。MCP を使用することで、LLM は外部ツールやサービスからコンテキストを取得するだけでなく、コードの実行やデータの保存など、さまざまなアクションを実行できるようになります。この記事では MCP サーバーを TypeScript で実装する方法を紹介します。"
 createdAt: "2025-03-14T19:59+09:00"
 updatedAt: "2025-03-14T19:59+09:00"
-tags: ["AI", "TypeScript", "MCP"]
+tags: ["AI", "MCP", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/16K7GmPXRkobDJWcBxnSJM/9703dc7f848eb53bdb4a6bf5f1095c41/frozen-food_pizza_21526-768x729.png"
   title: "冷凍食品のピザのイラスト"
@@ -39,7 +39,7 @@ selfAssessment:
         - text: "response"
           correct: false
           explanation: null
-published: false
+published: true
 ---
 MCP（Model Context Protocol）とはアプリケーションが LLM にコンテキストを提供する方法を標準化するプロトコルです。多くの LLM ではユーザーに適切な回答を提供するために追加のコンテキスト情報を必要とします。例えば、今日の天気の情報をユーザーから求められたとしても LLM が学習したデータにはその情報は含まれていないため、正確な回答ができません。このような状況では LLM は天気情報を取得する API の呼び出しを要求し、その結果をコンテキストとして提供することで正確な回答を得られるようになります。
 
