@@ -5,7 +5,7 @@ slug: "scroll-driven-animation"
 about: "Google Chrome 115 で追加されたスクロールドリブンアニメーションを使うことで、今まで JavaScript を使わなれけば実装できなかったようなスクロールと連動するアニメーションを CSS だけで実装できるようになりました。スクロールの進行状況に応じてバーを伸縮させるようなアニメーションや、要素が画面内に入ったタイミングでアニメーションを開始するようなことが実装できます。"
 createdAt: "2023-12-17T13:29+09:00"
 updatedAt: "2023-12-17T13:29+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/NuUlK0j73dc9UzGCLdWR2/c1e4a3d559c7c609ef238d88f83f0b46/winter_image_yuki-usagi_14924.png"
   title: "雪のうさぎ冬の夜のイラスト"

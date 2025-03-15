@@ -5,7 +5,7 @@ slug: "css-reading-flow-property"
 about: "Flex や Grid コンテナ内では要素の見た目上の順序と DOM 上の順序が異なることがあります。このような状態はキーボード操作やスクリーンリーダーなどの支援技術を使うユーザーにとって混乱を招く可能性があります。CSS の `reading-flow` プロパティ個の問題を解決するためのプロパティです。見た目上の順序に従って読み上げ順を制御することができます。"
 createdAt: "2024-08-03T15:33+09:00"
 updatedAt: "2024-08-03T15:33+09:00"
-tags: ["", "アクセシビリティ"]
+tags: ["CSS", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/BIHrVgoOfq5nkcwL38xXF/229f6f8c22993fa4afb3f1b18a3a671e/river-fishing_13259.png"
   title: "川釣りのイラスト"

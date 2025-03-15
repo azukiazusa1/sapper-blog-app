@@ -5,7 +5,7 @@ slug: "box-shadow-focus-ring-not-visible-in-high-contrast-mode"
 about: "フォーカスリングとは、キーボード操作でフォーカスが当たった要素を視覚的に示すための UI デザインのことです。フォーカスリングのカスタマイズに `box-shadow` プロパティを使うことがありますが、ハイコントラストモードではフォーカスリングが表示されない問題があります。この記事では、ハイコントラストモードでフォーカスリングを表示する方法について解説します。"
 createdAt: "2024-08-11T14:42+09:00"
 updatedAt: "2024-08-11T14:42+09:00"
-tags: ["", "アクセシビリティ"]
+tags: ["CSS", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1GY9JhecokyNHOpl057BZR/c17178d7be348824769e0d5374c5e5ad/b-dama_colorful_18382.png"
   title: "カラフルなビー玉のイラスト"

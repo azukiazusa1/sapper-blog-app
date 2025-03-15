@@ -5,7 +5,7 @@ slug: "manage-styles-structurally-with-css-cascade-layer"
 about: "CSS の `@layer` ルールは、カスケードレイヤーを宣言するために使用されます。カスケードレイヤーとは、スタイルの優先度をレイヤー（階層）に分けて管理する仕組みです。`@layer` ルールを使用することでスタイルの記述順や詳細度に関係なくスタイルを宣言できるため、新しい形式の CSS 設計を実現することができます。"
 createdAt: "2024-06-30T16:47+09:00"
 updatedAt: "2024-06-30T16:47+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/60sgROl1HDyfT8JBv1y7vY/cf334b2265f7bd1488cef4acfa8dea39/bird_cute_benimashiko_10921-768x591.png"
   title: "ベニマシコのイラスト"

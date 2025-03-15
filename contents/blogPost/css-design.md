@@ -5,7 +5,7 @@ slug: "css-design"
 about: "今この文章を読んでいる人ならば、少なくともCSSには触れたことがあると思います。CSSはとても簡単に記述できますが、それゆえにCSSは「壊れやすい」のです。なぜCSSは壊れやすくなってしまうのでしょうか。CSSには「すべてがグローバルスコープ」「複雑化するWeb開発」といった問題点があげられます。そのような状態に対する解決策として、CSSの設計が誕生しました。"
 createdAt: "2020-09-13T00:00+09:00"
 updatedAt: "2020-09-13T00:00+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/38bhfWoHjLRISI99Hevjdx/c53728dc664036f5316ec3a80b5a2df1/visual-home.jpg"
   title: "visual-home"

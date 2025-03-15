@@ -5,7 +5,7 @@ slug: "customizable-select-element"
 about: "従来の `<select>` 要素は CSS を利用したスタイルを適用することができないため、多くの開発者にとって課題となっていました。この問題を解決するために新しい既存の `<select>` 要素をカスタマイズする手段が提案されました。この疑似要素を利用することで、開発者は `<select>` 要素のスタイルをカスタマイズをオプトインできるようになります。"
 createdAt: "2024-09-21T11:59+09:00"
 updatedAt: "2024-09-21T11:59+09:00"
-tags: ["HTML", ""]
+tags: ["HTML", "CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1gSl8JnUUlLEqKFeUBFgVP/9d02b79e906461a34bab8ce1cc5f4102/sanma-shichirin_20705-768x729.png"
   title: "サンマと七輪のイラスト"

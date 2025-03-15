@@ -5,7 +5,7 @@ slug: "cssstylesheet-to-build-stylesheets-in-javascript"
 about: "CSSStyleSheet インターフェースは、JavaScript でスタイルシートを構築し、操作するための API です。CSSStyleSheet() コンストラクターで新しいスタイルシートを作成し、.replaceSync() メソッドでスタイルを適用できます。"
 createdAt: "2024-10-26T11:59+09:00"
 updatedAt: "2024-10-26T11:59+09:00"
-tags: ["", ""]
+tags: ["", "CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/31Rh2eKOuOJQhiTAbpiUW4/905cac62d1c7739d6259f018ff4099a4/meteorite_inseki_illust_4635-768x691.png"
   title: "隕石のイラスト"

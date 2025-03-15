@@ -5,7 +5,7 @@ slug: "scope-rule-in-css"
 about: "`@scope` アットルールは特定のセレクタの範囲に限定したスタイルを適用するためのルールです。`@scope` のルールセットに 1 つの CSS セレクタを指定すると、そのセレクタがスコープのルートとなります。`@scope` ルール内のスタイルはそのセレクタの範囲内でのみ適用されます。"
 createdAt: "2024-07-07T16:46+09:00"
 updatedAt: "2024-07-07T16:46+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1hJhnSPBTdd5dOh8MIJ6Yq/daac61a2f43b24424d106287e7fcbd15/kirikabu_kabutomushi_11493-768x709.png"
   title: "カブトムシと切り株のイラスト"
