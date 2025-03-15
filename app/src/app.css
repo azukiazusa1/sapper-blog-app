@@ -179,7 +179,7 @@ html.dark #contents .markdown-body a:hover {
     overflow-y: auto;
     overscroll-behavior: contain;
     font-size: 14px;
-    @apply sticky top-24 mt-24 left-0 rounded-lg bg-gray-100 p-4 shadow-lg dark:bg-zinc-800 dark:shadow-zinc-900/40;
+    @apply sticky top-24 mt-24 left-0 rounded-lg bg-gray-100 p-4 dark:bg-zinc-800;
   }
 
   html:not(.open-toc) .toc {
@@ -192,7 +192,7 @@ html.dark #contents .markdown-body a:hover {
 
   html.open-toc .open-toc-button {
     @apply hidden;
-  }
+  }da
 }
 
 #toc-title {
