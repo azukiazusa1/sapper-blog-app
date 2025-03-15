@@ -26,14 +26,14 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           node-version-file: package.json
           cache: npm
       - name: Build
-        uses: preactjs/compressed-size-action@v2
+        uses: preactjs/compressed-size-action@946a292cd35bd1088e0d7eb92b69d1a8d5b5d76a # 2.8.0
         with:
           pattern: "app/.svelte-kit/cloudflare/**/*.{js,css,html.json}"
 
@@ -41,15 +41,15 @@ jobs:
     name: Lighthouse
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           node-version-file: package.json
           cache: npm
-      - uses: actions/cache@v4
+      - uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4.2.2
         id: node_modules_cache_id
         env:
           cache-name: cache-node-modules
@@ -72,13 +72,13 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.44.1-focal
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           node-version-file: package.json
           cache: npm
-      - uses: actions/cache@v4
+      - uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4.2.2
         id: node_modules_cache_id
         env:
           cache-name: cache-node-modules
@@ -95,25 +95,8 @@ jobs:
       - name: Run a11y test
         run: npx playwright test
         working-directory: app
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
         if: failure()
         with:
           name: test-results
           path: app/artifacts/
-
-  # test:
-  #   timeout-minutes: 60
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version-file: package.json
-  #         cache: npm
-  #     - name: Install dependencies
-  #       run: npm ci
-  #     - name: Install Playwright
-  #       run: npx playwright install --with-deps
-  #     - name: Serve Storybook and run tests
-  #       run: npm run test-storybook:ci
