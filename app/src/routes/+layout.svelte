@@ -17,11 +17,14 @@
 
   let { children }: Props = $props();
 
-  onNavigate(() => {
+  onNavigate((navigation) => {
     if (!document.startViewTransition) return;
 
-    return new Promise((fulfil) => {
-      document.startViewTransition(() => new Promise(fulfil));
+    return new Promise((resolve) => {
+      document.startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      });
     });
   });
 
