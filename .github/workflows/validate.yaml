@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
       - name: Get changed files in the contents folder
         id: changed-files-specific
-        uses: tj-actions/changed-files@0e58ed8671d6b60d0890c21b07f8835ace038e67 # v45.0.7
+        uses: tj-actions/changed-files@4cd184a1dd542b79cca1d4d7938e4154a6520ca7 # v46.0.0
         with:
           files: |
             contents/**
