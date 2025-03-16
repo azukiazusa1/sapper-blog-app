@@ -5,7 +5,7 @@ slug: "what-is-graphql"
 about: "GraphQLとは、Facebookが開発したAPI向けのクエリ言語です。RESTに変わるサーバーとクライアントの通信手段として注目を集めています。 リクエスト・レスポンスの型の定義ができる、フロント側から取得するデータを選択することができるなどの特徴があります。 GraphQL自体はSQLのようなクエリ言語としての位置づけなので、Java、Node.js、Ruby、JavaScript、Pythonなど様々な言語で利用することができます。"
 createdAt: "2021-02-17T00:00+09:00"
 updatedAt: "2021-02-17T00:00+09:00"
-tags: ["graphQL"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/20rVGECVoaOHWGAsGCnTa/94bb349a41d63575a4549fdb6fa18a24/GraphQL_Logo.png"
   title: "graphQL"

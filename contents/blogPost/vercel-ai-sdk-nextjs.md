@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "ai.create()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ai.stream()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ai.streamText()"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "ai.generateText({ stream: true })"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [Vercel SDK](https://sdk.vercel.ai/) は TypeScript 向けの AI 機能を活用するプロダクトを構築するためのツールです。AI SDK は AI モデルのプロバイダー間における API の違いを抽象化することで、開発者はアプリケーションの開発に集中できるようになります。AI モデルのプロバイダーを意識する必要がなくなるため、AI モデルを簡単に切り替えたり、ベンダーロックインを避けることができます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/TzqieB0qL0DCOGHXBM18K/5d81915ab058b5ab2ce282fc74854cdc/ai-sdk-diagram-dark.png)
