@@ -509,7 +509,7 @@ export async function POST(req: Request) {
   const { messages } = await req.json();
 
   const result = streamText({
-    model: anthropic('claude-3'),
+    model: anthropic('claude-3-7-sonnet-20250219'),
     messages,
   });
 
@@ -656,3 +656,5 @@ export async function POST(req: Request) {
 ## 参考
 
 - [AI SDK](https://sdk.vercel.ai/)
+- [Anthropic API リファレンス](https://docs.anthropic.com/claude/reference)
+- [Next.js](https://nextjs.org/docs)
