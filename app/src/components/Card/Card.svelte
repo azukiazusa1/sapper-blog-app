@@ -277,12 +277,12 @@
     <div class="relative mx-auto max-w-6xl">
       <div
         id="contents"
-        class="prose prose-lg dark:prose-invert prose-zinc show-line-number mx-auto mt-12 max-w-6xl"
+        class="prose prose-lg dark:prose-invert prose-zinc show-line-number mx-auto mt-12 max-w-6xl px-4 md:px-8"
       >
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         {@html contents}
       </div>
-      <div id="nav-button" class="absolute top-10 right-0">
+      <div id="nav-button" class="absolute top-10 right-12">
         <NavButton
           click={closeToc}
           label="目次を閉じる"
