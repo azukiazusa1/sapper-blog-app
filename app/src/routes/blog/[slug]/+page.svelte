@@ -39,7 +39,7 @@
   image={`${variables.baseURL}/blog/ogp/${post.slug}.png`}
 />
 
-<div class="mx-auto my-6 max-w-5xl px-4">
+<div class="mx-auto my-6 px-4 max-w-6xl">
   <a
     href="/blog"
     class="inline-flex items-center gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-800 transition-colors dark:bg-zinc-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-zinc-700"
