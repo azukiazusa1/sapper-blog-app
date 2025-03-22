@@ -31,10 +31,9 @@ published: true
 
 このような実装上の問題を解決するため、CSS だけを使用してカルーセルを実装するための新しい仕様が提案されています。この仕様では `::scroll-button` と `::scroll-marker` 擬似要素を使用してカルーセルを実装します。これらの疑似要素は Chrome v136 から利用可能です。
 
-b> ::scroll-button
+b> scroll-buttons
 
-b> ::scroll-marker
-
+b> scroll-markers
 
 この記事では、`::scroll-button` と `::scroll-marker` 擬似要素を使用してカルーセルを実装する方法について説明します。
 
