@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "left"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "inline"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "top"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "before"
           correct: true
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 カルーセルは Web アプリケーションでよく使われる UI コンポーネントの 1 つです。複数の画像をスライド形式で表示する手法であり、ユーザーは左右にスクロールすることで操作できます。カルーセルは一般的な UI パターンであるにも関わらず、標準化された実装方法が存在しないため、各ライブラリやフレームワークで独自の実装が行われています。しかしカルーセルを正しく実装するのは複雑であり、アクセシビリティ上の問題を引き起こすこともありました。
 
 このような実装上の問題を解決するため、CSS だけを使用してカルーセルを実装するための新しい仕様が提案されています。この仕様では `::scroll-button` と `::scroll-marker` 擬似要素を使用してカルーセルを実装します。これらの疑似要素は Chrome v136 から利用可能です。
