@@ -15,34 +15,32 @@ selfAssessment:
       answers:
         - text: "experimental_initializeMCPClient"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "experimental_createMCPClient"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "experimental_setupMCPClient"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "experimental_initMCPClient"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "MCP クライアントを初期化する際に指定するトランスポート方式のうち、指定できないものはどれか"
       answers:
         - text: "sse"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "stdio"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "websocket"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "custom transport"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [MCP（Model Context Protocol）](https://modelcontextprotocol.io/introduction)は、LLM（大規模言語モデル）に追加のコンテキストや機能を提供するための標準化されたプロトコルであり、AI アプリケーション開発において注目を集めています。MCP を利用することで、LLM は外部ツールやデータソースと連携し、より高度なタスクを実行できるようになります。
 
 MCP サーバーの例としては、以下のようなものが提供されています。
