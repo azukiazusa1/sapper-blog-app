@@ -7,8 +7,8 @@ createdAt: "2025-03-30T10:22+09:00"
 updatedAt: "2025-03-30T10:22+09:00"
 tags: ["AI", "MCP"]
 thumbnail:
-  url: ""
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1tQJuTWklgBmxogx9RdjXi/2be6a25c36a87f03835c05c28ce449fa/fish_cute_scribble-angel_10336-768x601.png"
+  title: "かわいいスクリブルドエンゼルのイラスト"
 selfAssessment:
   quizzes:
     - question: "MCP クライアントを初期化するために使用された関数は何か"
@@ -51,7 +51,7 @@ MCP サーバーの例としては、以下のようなものが提供されて�
 - [Slack](https://github.com/modelcontextprotocol/servers/tree/main/src/slack)：Slack のメッセージを取得・送信する
 - [Sentry](https://github.com/modelcontextprotocol/servers/tree/main/src/sentry)： Sentry の Issue を取得する
 
-例えば、GitHub の MCP サーバーを Cline のような AI コーディングエージェントと連携させると、「リポジトリの Issue 一覧を取得し、特定の Issue を選択してコードを修正し、プルリクエストを作成する」といった一連の操作を自然言語で指示できます。LLM は MCP サーバーを通じて GitHub API を呼び出し、実際にプルリクエストを作成します。
+例えば GitHub の MCP サーバーを Cline のような AI コーディングエージェントと連携させると、「リポジトリの Issue 一覧を取得し、特定の Issue を選択してコードを修正し、プルリクエストを作成する」といった一連の操作を自然言語で指示できます。LLM は MCP サーバーを通じて GitHub API を呼び出し、実際にプルリクエストを作成します。
 
 MCP の利点は、LLM のモデル実装の詳細に依存せず、標準化された方法で外部機能（コンテキスト）を提供できる点にあります。これにより、異なる LLM や AI アプリケーション間でのツールの再利用性が高まります。
 
@@ -84,7 +84,7 @@ LLM を利用するには API キーが必要です。今回は Google Gemini �
 
 取得した API キーは、プロジェクトルートに `.env` ファイルを作成し、以下のように環境変数として設定します。
 
-```env
+```txt:.env
 GOOGLE_GENERATIVE_AI_API_KEY=your_api_key
 ```
 
@@ -164,7 +164,7 @@ export default function Chat() {
 }
 ```
 
-`@ai-sdk/react` パッケージが提供する `useChat` フックを利用することで、メッセージ履歴の管理、入力ハンドリング、API リクエストの送信といった、チャット UI に必要な状態管理やロジックを大幅に簡略化できます。`handleSubmit` 関数は、フォーム送信時に自動的に `/api/chat` (デフォルト) エンドポイントへ POST リクエストを送信し、ストリーミング応答を処理します。
+`@ai-sdk/react` パッケージが提供する `useChat` フックを利用することで、メッセージ履歴の管理、入力ハンドリング、API リクエストの送信といった、チャット UI に必要な状態管理やロジックを簡略化できます。`handleSubmit` 関数は、フォーム送信時に自動的に `/api/chat` (デフォルト) エンドポイントへ POST リクエストを送信し、ストリーミング応答を処理します。このエンドポイントは、先ほど作成した API ルートハンドラーに対応しています。
 
 ここまでの実装で、基本的なチャットアプリケーションが完成しました。以下のコマンドで開発サーバーを起動します。
 
@@ -184,9 +184,9 @@ npm run dev
 
 Vercel AI SDK を使って MCP サーバーと通信するには、まず MCP クライアントを初期化する必要があります。クライアント初期化時には、サーバーとの接続方法（トランスポート）を指定します。以下の 3 つの方法が提供されています。
 
-- SSE (Server-Sent Events): HTTP ストリーミングを用いてサーバーと通信します。ネットワーク経由での接続に適しています。
-- stdio (Standard Input/Output): 標準入出力ストリームを用いてサーバーと通信します。ローカルマシン上で CLI ツールとしてサーバーを実行する場合などに適しています。
-- カスタムトランスポート (Custom Transport): 提供されているインターフェースを実装することで、独自の通信方法を定義できます。
+- SSE (Server-Sent Events): HTTP ストリーミングを用いてサーバーと通信する。ネットワーク経由での接続に適している。
+- stdio: 標準入出力ストリームを用いてサーバーと通信する。ローカルマシン上で CLI ツールとしてサーバーを実行する場合などに適している。
+- カスタムトランスポート: 提供されているインターフェースを実装することで、独自の通信方法を定義できる
 
 今回は、ローカルで起動した Playwright MCP サーバーと SSE で通信します。まず、以下のコマンドを実行して Playwright MCP サーバーを起動します。`http://localhost:8931` でリクエストを待ち受けます。
 
@@ -194,13 +194,13 @@ Vercel AI SDK を使って MCP サーバーと通信するには、まず MCP �
 npx @playwright/mcp@latest --port 8931 --headless 
 ```
 
-次に、Vercel AI SDK の `experimental_createMCPClient` 関数を使用して MCP クライアントを初期化します。SSE を利用するため、`transport` オプションに `type: "sse"` とサーバーのエンドポイント URL を指定します。この初期化処理を `app/api/chat/route.ts` の `POST` ハンドラー内に追加します。
+次に、Vercel AI SDK の `experimental_createMCPClient` 関数を使用して MCP クライアントを初期化します。SSE を利用するため、`transport` オプションに `type: "sse"` とサーバーのエンドポイント URL を指定します。
 
 ```ts:app/api/chat/route.ts
+// experimental_ 接頭辞は、この関数がまだ実験的な段階にあり、
+// 将来のバージョンでインターフェースが変更される可能性があることを示している
 import { experimental_createMCPClient as createMCPClient } from "ai";
 
-// experimental_ 接頭辞は、この関数がまだ実験的な段階にあり、
-// 将来のバージョンでインターフェースが変更される可能性があることを示します。
 const mcpClient = await createMCPClient({
   transport: {
     type: "sse",
@@ -217,10 +217,10 @@ MCP クライアント (`mcpClient`) の準備ができたら、次は MCP サ�
 
 Vercel AI SDK で MCP ツールを利用するには、主に 2 つのアプローチがあります。
 
-- Schema Discovery: MCP サーバーが提供するツールのスキーマを自動的に取得してツールを作成する。実装が簡単で、MCP サーバーの変更を自動で同期することができる。一方で TypeScript の型安全性が得られない、使用したいツールを選択できないというデメリットがある
+- Schema Discovery: MCP サーバーが提供するツールのスキーマを自動的に取得してツールを作成する。実装が簡単で、MCP サーバーの変更を自動で同期できる。一方で TypeScript の型安全性が得られない、使用したいツールを選択できないというデメリットがある
 - Schema Definition: Zod を使用してツールのスキーマを手動で定義する。型安全性が得られ、明示的に使用するツールを選択できる。一方で MCP サーバーの変更を手動で同期する必要があり保守すべきコードが増えるというデメリットがある
 
-今回は、実装が簡単な **Schema Discovery** を使用します。`app/api/chat/route.ts` を以下のように修正し、`mcpClient.tools()` の結果を `streamText` に渡します。
+今回は、実装が簡単な Schema Discovery を使用します。`app/api/chat/route.ts` を以下のように修正し、`mcpClient.tools()` の結果を `streamText` に渡します。
 
 ```ts:app/api/chat/route.ts {15-16, 21-25}
 import { google } from "@ai-sdk/google";
