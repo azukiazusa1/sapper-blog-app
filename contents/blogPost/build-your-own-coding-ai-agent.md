@@ -5,7 +5,7 @@ slug: "build-your-own-coding-ai-agent"
 about: "好むと好まずと関わらず、ソフトウェア開発において AI の活用は重要なパラダイムシフトの 1 つです。AI エージェントはユーザーからの指示を元に自律的にタスクを選択し、実行します。この記事では、コーディング AI エージェントを自作する過程を紹介します。"
 createdAt: "2025-04-05T09:31+09:00"
 updatedAt: "2025-04-05T09:31+09:00"
-tags: ["AI", "Node.js"]
+tags: ["AI", "Node.js", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2Dl9yjAHAo2HjqcGvH8nWV/a25221e7b5afca84db5931d475e0e39c/tunnel-entrance_18403-768x591.png"
   title: "トンネルの入口のイラスト"
@@ -262,7 +262,7 @@ Allowed directories: [ '...' ]
 試しに「JavaScript で素数を判定する関数を src/isPrime.ts に書いて」という指示を与えてみると、作成する予定の関数が表示され、`write_file` ツールを使用して実際に　`src/isPrime.ts` にファイルが作成されていることが確認できました。
 
 <!-- textlint-disable -->
-```bash
+
 <details>
 <summary>実行例</summary>
 
@@ -319,7 +319,6 @@ function isPrime(num: number): boolean {
 </details>
 <!--  textlint-enable -->
 
-
 続いて「src/index.ts ファイルの内容を説明して」という指示を与えると、`src/index.ts` の中身を読み取り、要約して何をしているのかを説明してくれました。
 
 <!-- textlint-disable -->
@@ -363,7 +362,7 @@ Assistant: まず、`read_file`ツールを使用して、`src/index.ts`ファ�
    - 無限ループでチャットを継続
 
 このスクリプトは、対話型のAIアシスタントを実装しており、ユーザーとのリアルタイム対話、ストリーミング応答、ファイルシステムツールの統合などの機能を提供しています。
-<details>
+</details>
 <!-- textlint-enable -->
 
 ## シェルコマンドを実行する
@@ -530,7 +529,7 @@ describe('isPrime', () => {
 
 Are you sure you want to run this command? npm install --save-dev jest @types/jest ts-jest (y/n) 
 
-<details>
+</details>
 
 <!-- textlint-enable -->
 
@@ -632,7 +631,7 @@ package.jsonも確認して、使用しているフレームワークやライ�
 
 Are you sure you want to run this command? cd /my-ai-code-agent/src/my-server && npm run dev (y/n) y
 
-<details>
+</details>
 
 <!-- textlint-enable -->
 
@@ -845,7 +844,7 @@ app.get("/hello/:name", (c) => {
   const { name } = c.req.param();
   return c.text(`Hello ${name}!`);
 });
-      
+
 replace_with: import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 
@@ -893,7 +892,7 @@ app.get("/hello/:name", (c) => {
   const { name } = c.req.param();
   return c.text(`Hello ${name}!`);
 });
-      
+
 replace_with: import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 
@@ -918,7 +917,7 @@ app.get("/health", (c) => {
     timestamp: Date.now()
   });
 }); (y/n)
-<details>
+</details>
 
 <!-- textlint-enable -->
 
