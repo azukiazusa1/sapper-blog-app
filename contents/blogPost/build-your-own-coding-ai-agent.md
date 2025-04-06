@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "API"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "SDK"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ツール"
           correct: true
           explanation: "AI モデルにはあらかじめ `description` や `parameters` が定義された「ツール」が与えられ、これを通じて外界とのやり取りを行います。"
         - text: "プロトコル"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 好むと好まずと関わらず、ソフトウェア開発において AI の活用は重要なパラダイムシフトの 1 つです。[The End of Programming as We Know It](https://www.oreilly.com/radar/the-end-of-programming-as-we-know-it/) という記事ではプログラミングが終焉を迎えるのではなく、「今日私達が知っているプログラミングの終わり」であると述べられています。AI に置き換えられるのはジュニアおよび中級レベルのプログラマーではなく、新しいプログラミンツールやパラダイムを受け入れず過去に固執するプログラマーであるとというのです。
 
 > It is not the end of programming. It is the end of programming as we know it today.
