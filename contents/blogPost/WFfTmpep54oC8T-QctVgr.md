@@ -5,16 +5,25 @@ slug: "build-your-own-coding-ai-agent"
 about: "好むと好まずと関わらず、ソフトウェア開発において AI の活用は重要なパラダイムシフトの 1 つです。AI エージェントはユーザーからの指示を元に自律的にタスクを選択し、実行します。この記事では、コーディング AI エージェントを自作する過程を紹介します。"
 createdAt: "2025-04-05T09:31+09:00"
 updatedAt: "2025-04-05T09:31+09:00"
-tags: ["AI", "TypeScript", "Node.js"]
+tags: ["AI", "Node.js"]
 thumbnail:
-  url: ""
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2Dl9yjAHAo2HjqcGvH8nWV/a25221e7b5afca84db5931d475e0e39c/tunnel-entrance_18403-768x591.png"
+  title: "トンネルの入口のイラスト"
 selfAssessment:
   quizzes:
-    - question: ""
+    - question: "AI モデルが外界とやり取りを行うために使用するものは次のうちどれか"
       answers:
-        - text: ""
+        - text: "API"
+          correct: false
+          explanation: ""
+        - text: "SDK"
+          correct: false
+          explanation: ""
+        - text: "ツール"
           correct: true
+          explanation: "AI モデルにはあらかじめ `description` や `parameters` が定義された「ツール」が与えられ、これを通じて外界とのやり取りを行います。"
+        - text: "プロトコル"
+          correct: false
           explanation: ""
 
 published: true
@@ -26,7 +35,7 @@ published: true
 > <中略>
 >  Master programmer and prescient tech observer Steve Yegge observes that it is not junior and mid-level programmers who will be replaced but those who cling to the past rather than embracing the new programming tools and paradigms.
 
-特に Cline, Cursor, Copilot Agent などを代表する「コーディング AI エージェント」は、従来のコード補完型の AI ツールとは一線を画した体験を提供します。コード補完型の GitHub Copilot は「副操縦士」としてペアプログラミングで助言を与えてくれるような消極的な存在でした。一方、コーディング AI エージェントはユーザーからの指示を受けて自律的にフィードバックループを形成し、コードを生成します。
+特に Cline, Cursor, Copilot Agent などを代表する「コーディング AI エージェント」は、従来のコード補完型の AI ツールとは一線を画した体験を提供します。コード補完型の GitHub Copilot は「副操縦士」としてペアプログラミングで助言を与えてくれるような消極的な存在でした。あくまでコードを書くには人間がメインであり、AI はその補助を行うという役割です。これに対してコーディング AI エージェントは「ドライバー」として自律的にコードを書くことができる存在です。
 
 AI エージェントがコードを書くスピードは人間のタイピング速度では到底追いつかないレベルです。我々人間は AI エージェントにドライバー席を譲る、つまりコードを書くタスクは AI エージェントに任せるという判断が迫られています。一方で現状のコーディング AI エージェントのレベルはジュニアレベルのプログラマーと同等であり、全くほったらかしにしておくと技術的負債が急速に蓄積していく結果に繋がりません。人間の開発者は適切なアーキテクチャを設計し、その内容を過不足なく AI エージェントに伝え、AI エージェントが生成したコードをレビューするといった仕事を担当しコードの品質を担保する必要があります。
 
@@ -44,7 +53,9 @@ AI エージェントがコードを書くスピードは人間のタイピン�
 - シェルコマンドを実行する機能：生成したコードが正しく動作するかを確認するためにテストや lint を実行する。コマンドの実行結果を元に AI エージェントは次のタスクを選択する。
 - ブラウザを操作する機能：Web アプリケーションの開発ではブラウザを操作して UI を確認してフィードバックを受けとる
 
-AI モデルが上記のような外界とのやり取りを行うためには「ツール」と呼ばれるインターフェースを介して行います。AI モデルにはあらかじめ `description` や `parameters` が定義されたツールが与えられます。AI モデルツールのスキーマを元に、タスクを完了するためにツールが必要であると判断した場合ツールの呼び出しを要求します。ツールを呼び出した後は実行結果が AI モデルに返されるので、AI モデルはツールの実行結果を元に次のタスクを選択します。この流れを目標が達成されるまで繰り返すことで、AI モデルはユーザーからの追加の指示を待つことなく自律的にタスクを遂行することができます。
+AI モデルが上記のような外界とのやり取りを行うためには「ツール」と呼ばれるインターフェースを介して行います。AI モデルにはあらかじめ `description` や `parameters` が定義されたツールが与えられます。AI モデルはこのスキーマを理解し、タスクを完了するためにどのツールが必要かを判断します。適切なツールが見つかると、AI モデルはツールの呼び出しを要求し、必要なパラメータを提供します。
+
+ツールが実行されると、その結果（成功か失敗か、および出力データ）が AI モデルに返されます。AI モデルはこの結果を分析し、次に何をすべきかを決定します。成功した場合は次のステップに進み、失敗した場合は別のアプローチを試みるか、エラーを修正します。この意思決定と実行のサイクルを目標が達成されるまで繰り返すことで、AI モデルはユーザーからの追加指示を待つことなく自律的にタスクを遂行できるのです。
 
 つまり、コーディング AI エージェントは以下のような流れで動作するのです。
 
@@ -79,7 +90,7 @@ npm install ai @ai-sdk/google zod dotenv
 npm install --save-dev @types/node tsx typescript
 ```
 
-AI モデルを呼び出すための SDK として [Vercel AI SDK](https://sdk.vercel.ai/) を使用します。AI SDK は AI モデルごとの実装の違いを吸収してくれるため、使用する　AI モデルを簡単に切り替えることができます。またマルチステップのツールの呼び出しを `maxSteps` というオプションで簡単に実現できるため、非常に便利です。
+AI モデルを呼び出すための SDK として [Vercel AI SDK](https://sdk.vercel.ai/) を使用します。AI SDK は AI モデルごとの実装の違いを吸収してくれるため、使用する AI モデルを簡単に切り替えることができます。またマルチステップのツールの呼び出しを `maxSteps` というオプションで簡単に実現できるため、非常に便利です。
 
 この記事では Google が提供する Gemini を使用するため、対応するパッケージである `@ai-sdk/google` をインストールします。その他の AI モデルを使用したい場合には [AI SDK Providers](https://sdk.vercel.ai/providers/ai-sdk-providers)  を参考に対応するモデルのパッケージをインストールしてください。
 
@@ -182,9 +193,9 @@ You:
 
 AI コーディングエージェントはユーザーからの指示を元に現状のコードを読み込んでコンテキストを理解し、コードを生成してファイルに書き込むのが主な仕事です。私達が作成する AI エージェントでもファイルの読み書きができるように実装しましょう。
 
-ファイルの読み書きを行うために [MCP（Model Context Protocol）](https://modelcontextprotocol.io/introduction) を使用します。MCP は、LLM（大規模言語モデル）に追加のコンテキストや機能を提供するための標準化されたプロトコルです。MCP を利用することで、LLM は外部ツールやデータソースと連携し、より高度なタスクを実行できるようになります。
+ファイルの読み書きを行うために [MCP（Model Context Protocol）](https://modelcontextprotocol.io/introduction) を使用してみましょう。MCP は、LLM（大規模言語モデル）に追加のコンテキストや機能を提供するための標準化されたプロトコルです。MCP を利用することで、LLM は外部ツールやデータソースと連携し、より高度なタスクを実行できるようになります。
 
-[Filesystem MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) を使用することで、AI モデルがツールとしてファイルシステムにアクセスできるようになります。
+[Filesystem MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) を使用することで、AI モデルがツールを使用してファイルシステムにアクセスできるようになります。
 
 Vercel AI SDK を使って MCP サーバーと通信するには、まず MCP クライアントを初期化する必要があります。クライアント初期化時には、サーバーとの接続方法（トランスポート）を指定します。以下の 3 つの方法が提供されています。
 
@@ -214,7 +225,7 @@ MCP クライアント (`mcpClient`) の準備ができたら、次は MCP サ�
 
 `mcpClient.tools()` メソッドは、接続先の MCP サーバーが公開しているツール情報を取得し、Vercel AI SDK が扱える形式に変換するアダプターとして機能します。このメソッドが返すツール定義を `streamText` 関数の `tools` プロパティに渡すことで、LLM は対話の中でこれらのツールを呼び出すことが可能になります。
 
-AI モデルがツールを呼び出す場合にはマルチステップ呼び出しを有効にする必要があります。デフォルトでは `maxSteps: 1` となっていますが、このままですと AI SDK がツールを単に呼び出しただけで応答が終了してしまうため適切な結果を得ることができません。
+AI モデルがツールを呼び出しを要求した場合、その呼び出しを持って 1 度の応答が終了します。ツールを呼び出した後に続けて応答を生成するためには、`maxSteps` オプションを設定する必要があります。`maxSteps` は AI モデルが施行可能なステップの最大数を指定します。
 
 ここでは `maxSteps` を 5 に設定し、ツールの呼び出し → ツールの結果の取得 → ツールの結果を元にした応答の生成といったマルチステップの流れを行えるようにします。
 
@@ -228,7 +239,7 @@ const result = streamText({
 });
 ```
 
-最後にプロセスが終了した際に MCP サーバーを停止するための処理を追加します。`process.on("exit", ...)` を使用して、プロセスが終了する際に MCP サーバーを停止します。
+最後にプロセスが終了した際に MCP サーバーを停止するための処理を追加します。
 
 ```ts:src/index.ts
 process.on("SIGINT", () => {
@@ -250,8 +261,10 @@ Secure MCP Filesystem Server running on stdio
 Allowed directories: [ '...' ]
 ```
 
-試しに「JavaScript で素数を判定する関数を src/isPrime.ts に書いて」という指示を与えてみると、作成する予定の関数が表示うされ、ユーザーの応答を待機しました。ファイルの書き込みを許可するような返答を与えると、実際にファイルが作成されます。
+試しに「JavaScript で素数を判定する関数を src/isPrime.ts に書いて」という指示を与えてみると、作成する予定の関数が表示され、`write_file` ツールを使用して実際に　`src/isPrime.ts` にファイルが作成されていることが確認できました。
 
+<!-- textlint-disable -->
+```bash
 <details>
 <summary>実行例</summary>
 
@@ -305,15 +318,13 @@ function isPrime(num: number): boolean {
 ```
 
 この内容で `src/isPrime.ts` ファイルを作成します。
-
-
-
-You: お願いします
-
-Assistant: はい、承知いたしました。`src/isPrime.ts` に素数判定関数を書き込みます。
 </details>
+<!--  textlint-enable -->
+
 
 続いて「src/index.ts ファイルの内容を説明して」という指示を与えると、`src/index.ts` の中身を読み取り、要約して何をしているのかを説明してくれました。
+
+<!-- textlint-disable -->
 
 <details>
 <summary>実行例</summary>
@@ -355,10 +366,13 @@ Assistant: まず、`read_file`ツールを使用して、`src/index.ts`ファ�
 
 このスクリプトは、対話型のAIアシスタントを実装しており、ユーザーとのリアルタイム対話、ストリーミング応答、ファイルシステムツールの統合などの機能を提供しています。
 <details>
+<!-- textlint-enable -->
 
 ## シェルコマンドを実行する
 
-コーディング AI エージェントは生成したコードが正しいかどうかを自律的に動いて判断します。例えばテストコマンドを実行し、失敗したテストがあればその結果をもとにコードを修正するといったイメージです。コマンドを実行した結果からフィードバックを受け取るためには、AI エージェント自身がコマンドを実行できる必要があります。
+コーディング AI エージェントは生成したコードが正しいかどうかを、ユーザーからのフィードバックを待たずに自律的に判断します。
+
+例えばテストコマンドを実行し、失敗したテストがあればその結果をもとに該当のコードを修正するといったイメージです。コマンドを実行した結果からフィードバックを受け取るためには、AI エージェント自身がコマンドを実行できる必要があります。
 
 AI モデルがコマンドを実行できるようにするために、ここではツールを作成して追加します。`src/tools/shell.ts` を作成し、以下のように記述します。
 
@@ -366,8 +380,11 @@ AI モデルがコマンドを実行できるようにするために、ここ�
 import { tool } from "ai";
 import z from "zod";
 export const shellTool = tool({
+  // ツールの説明
   description:
     "A shell command executor. You can use it to run shell commands. Returns the output of the command.",
+  // ツールの引数を定義
+  // Zod スキーマを使用して引数の型を定義する
   parameters: z.object({
     command: z.string().min(1, "Command is required"),
     args: z.array(z.string()).optional(),
@@ -407,6 +424,9 @@ export const shellTool = tool({
     if (confirmation.toLowerCase() !== "y") {
       return "Command execution cancelled because of user confirmation.";
     }
+
+    terminal.close();
+
     try {
       const { stdout, stderr } = await execAsync(fullCommand, { cwd });
       return stdout || stderr;
@@ -437,23 +457,24 @@ const result = streamText({
 
 シェルコマンドを実行するためのツールを追加したら、再度 `npm start` を実行して CLI ツールを起動します。「Node.js でテストを実行して」という指示を与えると、現在のディレクトリにある `package.json` を読み取り `npm npm install --save-dev jest @types/jest ts-jest` を実行し、テストを実行するための準備を行いました。
 
+<!-- textlint-disable -->
 <details>
 <summary>実行例</summary>
 You: Node.js でテストを実行して
 
-> Assistant: Node.jsでテストを実行するためには、いくつかの手順があります。まず、プロジェクトのディレクトリ構造とテストの設定を確認する必要があります。一般的なNode.jsプロジェクトでは、以下のようなステップを踏みます：
+Assistant: Node.jsでテストを実行するためには、いくつかの手順があります。まず、プロジェクトのディレクトリ構造とテストの設定を確認する必要があります。一般的なNode.jsプロジェクトでは、以下のようなステップを踏みます：
 
 1. プロジェクトディレクトリの確認
 2. テストフレームワークの確認（Jest, Mochaなど）
 3. テストスクリプトの実行
 
-> まずは、現在のディレクトリ構造を確認しましょう。プロジェクトのディレクトリ構造を確認しました。テストを実行するためには、いくつかの準備が必要です：
+まずは、現在のディレクトリ構造を確認しましょう。プロジェクトのディレクトリ構造を確認しました。テストを実行するためには、いくつかの準備が必要です：
 
 1. テストフレームワークの確認
 2. テストスクリプトの設定
 3. テストの実行
 
-> まず、`package.json`を確認してテストスクリプトとテストフレームワークを確認します。現在、テストスクリプトは設定されていません。一般的なNode.jsプロジェクトでは、以下のテストフレームワークがよく使用されます：
+まず、`package.json`を確認してテストスクリプトとテストフレームワークを確認します。現在、テストスクリプトは設定されていません。一般的なNode.jsプロジェクトでは、以下のテストフレームワークがよく使用されます：
 
 1. Jest
 2. Mocha
@@ -513,11 +534,13 @@ Are you sure you want to run this command? npm install --save-dev jest @types/je
 
 <details>
 
+<!-- textlint-enable -->
+
 ## システムプロンプトを設定する
 
-現状では xxx のファイルに書き込んで、xxx のファイルを読み込んでといったようにファイルの読み書きを行うことを指示に加える必要があります。AI モデルが自発的にコードを読み書きできるようにシステムプロンプトを設定して AI モデルがどのようなタスクを実行するのかを指示します。
+現状では xxx のファイルに書き込んで、xxx のファイルを読み込んでといったようにファイルの読み書きを行うことを指示に加える必要があります。AI モデルが目的を達成するために自発的にコードを読み書きを行うようにシステムプロンプトを設定しましょう
 
-システムプロンプトは `src/prompts/system.ts` に作成しましょう。ここで提示するプロンプトはほんの一例です。実際にはプロンプトエンジニアリングを行い、AI モデルが最も適切な応答を返すように調整する必要があります。
+システムプロンプトは `src/prompts/system.ts` に作成します。ここで提示するプロンプトはほんの一例です。実際にはプロンプトエンジニアリングを行い、AI モデルが最も適切な応答を返すように調整する必要があります。
 
 ```ts:src/prompts/system.ts
 export const systemPrompt = `あなたは多くのプログラミング言語・フレームワーク・デザインパターン・ベストプラクティスに精通した、非常に熟練したソフトウェアエンジニアである azusa です。あなたは実践的で効率的なコードを書き、問題解決に体系的にアプローチします。
@@ -570,7 +593,7 @@ const messages: CoreMessage[] = [
 ];
 ```
 
-また反復したタスクを実行できるようにするために、`maxSteps` の値を大きめに設定しておきましょう。ここでは 20 に設定しています。また出力の読みやすさのために `onStepFinish()` コールバックを使用してステップごとに改行を追加します。
+反復したタスクを実行できるようにするために、`maxSteps` の値を大きめに設定しておきましょう。ここでは 20 に設定しています。また出力の読みやすさのために `onStepFinish()` コールバックを使用してステップごとに改行を追加します。
 
 ```ts:src/index.ts {8-11}
 const result = streamText({
@@ -587,7 +610,11 @@ const result = streamText({
 });
 ```
 
-ここまでの変更を加えたら、再度 `npm start` を実行して CLI ツールを起動します。試しに Hono で作成した API サーバーに対して「クエリパラメータで渡された name を表示する /hello エンドポイントを追加してください」という指示を与えてみました。期待通りにプロジェクトで使われているフレームワークを特定し、`src/my-server` ディレクトリにある `src/my-server/index.ts` ファイルを編集して `hello` エンドポイントを追加してくれました。
+ここまでの変更を加えたら、再度 `npm start` を実行して CLI ツールを起動します。試しに Hono で作成した API サーバーに対して「クエリパラメータで渡された name を表示する /hello エンドポイントを追加してください」という指示を与えてみました。
+
+期待通りにプロジェクトで使われているフレームワークを特定し、`src/my-server` ディレクトリにある `src/my-server/index.ts` ファイルを編集して `hello` エンドポイントを追加してくれました。
+
+<!-- textlint-disable -->
 
 <details>
 <summary>実行例</summary>
@@ -608,6 +635,8 @@ package.jsonも確認して、使用しているフレームワークやライ�
 Are you sure you want to run this command? cd /my-ai-code-agent/src/my-server && npm run dev (y/n) y
 
 <details>
+
+<!-- textlint-enable -->
 
 ## ファイルの読み書きの確認を求める
 
@@ -632,7 +661,8 @@ import fs from "fs/promises";
 import path from "path";
 import * as readline from "node:readline/promises";
 
-const confirm = async (message: string) => {
+// ユーザーに確認を求める関数
+const confirm = async (message: string): Promise<string> => {
   const terminal = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -704,10 +734,9 @@ export const write_file = tool({
       return "File writing cancelled by user.";
     }
     try {
-      // Ensure the directory exists
       const dir = path.dirname(filePath);
       await fs.mkdir(dir, { recursive: true });
-      // Write the file
+
       await fs.writeFile(filePath, content, "utf-8");
       return `File written successfully to ${filePath}`;
     } catch (error: any) {
@@ -731,7 +760,6 @@ export const create_directory = tool({
       await fs.mkdir(dirPath, { recursive: true });
       return `Directory created successfully at ${dirPath}`;
     } catch (error: any) {
-      // Ignore error if directory already exists
       if (error.code === "EEXIST") {
         return `Directory already exists at ${dirPath}`;
       }
@@ -754,6 +782,8 @@ export const edit_file = tool({
       search_text: ${search_text}
       replace_with: ${replace_with}`
     );
+
+    // 「y」以外の入力があった場合は、ユーザーからコードを修正すべきフィードバックがあったという想定
     if (answer.toLowerCase() !== "y") {
       return `File editing cancelled by user.
       feedback: ${answer}
@@ -780,6 +810,8 @@ export const edit_file = tool({
 
 試しに「healthcheck エンドポイントを追加してください」という指示を与えてみます。プロジェクトの概要を把握しようと `package.json` の内容を読み取ろうとしたタイミングで、ユーザーの許可を求めてきました。`n` と答えると代わりの方法でプロジェクトの概要を把握しようとしました。
 
+<!-- textlint-disable -->
+
 <details>
 <summary>実行例</summary>
 You: healthcheckエンドポイントを実装して
@@ -790,9 +822,107 @@ Assistant: まず、現在のプロジェクト構造を確認して、どのよ
 package.jsonの内容を確認して、使用しているフレームワークや依存関係を把握します。
 次のファイルを読み込みますか？ package.json (y/n) n
 
-src ディレクトリの構造を確認します。
+my-serverのソースコードを確認します。
 次のディレクトリのリストを取得しますか？ src (y/n) y
+
+サーバーのメインファイルを確認します。
+次のファイルを読み込みますか？ src/my-server/src/index.ts (y/n) y
+
+Honoフレームワークを使用したサーバーであることが確認できました。次に、healthcheckエンドポイントを実装します。
+次のファイルの編集を許可しますか？ src/my-server/src/index.ts
+search_text: import { serve } from "@hono/node-server";
+import { Hono } from "hono";
+
+const app = new Hono();
+
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.get("/hello", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.get("/hello/:name", (c) => {
+  const { name } = c.req.param();
+  return c.text(`Hello ${name}!`);
+});
+      
+replace_with: import { serve } from "@hono/node-server";
+import { Hono } from "hono";
+
+const app = new Hono();
+
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.get("/hello", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.get("/hello/:name", (c) => {
+  const { name } = c.req.param();
+  return c.text(`Hello ${name}!`);
+});
+
+app.get("/health", (c) => {
+  return c.json({
+    status: "ok",
+    timestamp: new Date().toISOString()
+  });
+}); 
+
+(y/n) timestamp は number で返そう
+
+フィードバックを受けて、timestampをnumber型（Unix時間）で返すように修正します。
+
+次のファイルの編集を許可しますか？ src/my-server/src/index.ts
+search_text: import { serve } from "@hono/node-server";
+import { Hono } from "hono";
+
+const app = new Hono();
+
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.get("/hello", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.get("/hello/:name", (c) => {
+  const { name } = c.req.param();
+  return c.text(`Hello ${name}!`);
+});
+      
+replace_with: import { serve } from "@hono/node-server";
+import { Hono } from "hono";
+
+const app = new Hono();
+
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.get("/hello", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.get("/hello/:name", (c) => {
+  const { name } = c.req.param();
+  return c.text(`Hello ${name}!`);
+});
+
+app.get("/health", (c) => {
+  return c.json({
+    status: "ok",
+    timestamp: Date.now()
+  });
+}); (y/n)
 <details>
+
+<!-- textlint-enable -->
 
 ## まとめ
 
