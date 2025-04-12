@@ -15,34 +15,32 @@ selfAssessment:
       answers:
         - text: "/.well-known/agent.json"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "/agent.json"
           correct: false
-          explanation: ""  
+          explanation: null
         - text: "/.well-known/agentCard.json"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "/api/agent.json"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "クライアントがリモートエージェントに新しいタスクを作成するために使用するメソッドはどれか？"
       answers:
         - text: "tasks/send"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "tasks/create"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "tasks/new"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "tasks/add"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 AI エージェントとはユーザーに代わって目標達成のために自律的に選択してタスクを遂行する AI 技術のことです。従来のチャット型の AI ツールは 1 つのタスクを完了するたびに再度ユーザーの指示を待つ必要がありました。AI エージェントは実行したタスクのフィードバックを元に次のタスクを選択し、ユーザーにの介入を最小限に抑えることができます。
 
 AI エージェントが効果的に目的を達成するためには多様なエージェントがエコシステム内で連携することが必要です。例えば AI エージェントに旅行の計画を立ててもらう場合を考えてみましょう。以下のようなタスクが考えられます。

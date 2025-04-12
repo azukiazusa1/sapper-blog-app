@@ -5,7 +5,7 @@ slug: "sapper-contentful-vercel-jamstack-blog"
 about: "JamstackのJamはJavaScript/APIs/Markupの頭文字です。 従来の手法と比較して、高速化・堅牢なセキュリティ。より簡単なスケーラブル・開発体験の向上という特徴を持っています。実行時にAPIから取得したデータを動的にレンダリングせずに、ビルド時にAPIから取得して静的なHTMLとして出力されます。"
 createdAt: "2021-02-14T00:00+09:00"
 updatedAt: "2021-02-14T00:00+09:00"
-tags: ["Sapper", "", "", ""]
+tags: ["", "", "", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2nVc0113aL8VwYQwWLDPyl/90bc28445ce7ff4ee2c190a858defee5/contentful.jpg"
   title: "contentful"
