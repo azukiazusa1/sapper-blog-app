@@ -5,7 +5,7 @@ slug: "mcp-server-streamable-http-transport"
 about: "MCP では stdio と Streamable HTTP の 2 つの transport が定義されています。TypeScript SDK では v1.10.0 から Streamable HTTP transport がリリースされました。この記事では MCP サーバーを構築し、Streamable HTTP transport を試してみます。"
 createdAt: "2025-04-19T09:29+09:00"
 updatedAt: "2025-04-19T09:29+09:00"
-tags: ["AI", "MCP"]
+tags: ["AI", "MCP", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2CYinTWmO54Yx2PYPWZ3q/7b71d6f8e2a9b26191405f7acc027857/desert_chocolate-sundae_16898.png"
   title: "チョコレートサンデーのイラスト"

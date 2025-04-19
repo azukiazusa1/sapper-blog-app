@@ -5,7 +5,7 @@ slug: "tailwindcss-dark-mode"
 about: "昨今のアプリケーションでは、ダークモードを提供しているのがもはや当たり前になってきました。 OSのレベルでダークモードを設定することができ、ダークモードが提供されていないサイトは眩しく感じしてしまって敬遠してしまうなんて経験はあるのではないでしょうか？  そんな一般化されたダークモードの提供をTailwind CSSで実装します。"
 createdAt: "2021-02-21T00:00+09:00"
 updatedAt: "2021-02-21T00:00+09:00"
-tags: ["CSS", ""]
+tags: ["", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2GQfDJKqG7T0kWVwn1DZeJ/679ebd658ac716ded2dd61bb200e4780/tailwindcss.png"
   title: "tailwindcss"

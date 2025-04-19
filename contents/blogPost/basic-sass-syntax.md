@@ -5,7 +5,7 @@ slug: "basic-sass-syntax"
 about: "SassはCSSのメタ言語です。CSSに比べてコード量が減り、保守性が優れるといった開発体験を向上させてくれる特徴があります。"
 createdAt: "2021-03-28T00:00+09:00"
 updatedAt: "2021-03-28T00:00+09:00"
-tags: ["CSS", "Sass"]
+tags: ["", "Sass"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6ADze8mrjH8iV9pCLekDeQ/27220daee3fa492a828aeae3a3cdb5d3/1200px-Sass_Logo_Color.svg.png"
   title: "sass"

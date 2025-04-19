@@ -5,7 +5,7 @@ slug: "user-valid-and-user-invalid-pseudo-classes"
 about: "ユーザーの操作の後にフォームの検証に基づき有効か無効かを示すために使用できる :user-valid、:user-invalid 擬似クラスを紹介します。従来の :valid、:invalid 擬似クラスと異なり、ユーザーがフォームに入力するまではスタイルを適用されません。"
 createdAt: "2023-10-13T20:16+09:00"
 updatedAt: "2023-10-13T20:16+09:00"
-tags: ["HTML", "CSS"]
+tags: ["HTML", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6clMAwu1vaGtVLH2ouWoTF/90a5607f714e11b6bf114687d6c76111/akatonbo_yuuhi_illust_1074.png"
   title: "真っ赤な夕日と赤とんぼのイラスト"

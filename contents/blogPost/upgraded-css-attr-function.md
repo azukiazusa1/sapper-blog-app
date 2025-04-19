@@ -5,7 +5,7 @@ slug: "upgraded-css-attr-function"
 about: "`attr()` 関数は HTML の属性を読み取り、それを CSS で利用できるようにする関数です。従来までは `content` プロパティのみで使用できましたが、CSS Values and Units Module Level 5 ではこの制限が見直され、`attr()` 関数がカスタムプロパティを含む任意の CSS プロパティで使用できるようになりました。"
 createdAt: "2025-02-22T17:00+09:00"
 updatedAt: "2025-02-22T17:00+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6wzaMJqECxJhZnxu6P09gx/17378b55dd5eb61ff1cd6a294a4d9930/negi_nabe_11559-768x689.png"
   title: "ネギ鍋のイラスト"

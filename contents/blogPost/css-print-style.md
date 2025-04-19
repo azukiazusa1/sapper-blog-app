@@ -5,7 +5,7 @@ slug: "css-print-style"
 about: "大抵のブラウザでは Web ページを印刷することができます。 しかし Web ページをそのまま印刷しようとすると改ページがおかしくなったりレイアウトがおかしくなってしまうことがあるでしょう。そもそも Web ページはディスプレイで表示することを目的としているので印刷には不向きなものです。  とはいえ Web ページを印刷したいというニーズは少なからずあるとは思います、そのようば場合には `@media print` などのような印刷用の CSS を利用することで見た目を整えることができます"
 createdAt: "2021-12-05T00:00+09:00"
 updatedAt: "2021-12-05T00:00+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2JzEE4h7Xe5SHRr9iCPv4s/ac8cdc859f3af3a4c53cb7e5ba7af455/chounouryoku_woman.png"
   title: "pointer"

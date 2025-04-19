@@ -5,7 +5,7 @@ slug: "relative-css-units-based-on-container-elements"
 about: "コンテナクエリ単位とは、コンテナ要素に基づいてスタイルを定義するための相対的な長さを表す単位です。例えば `1cqw` はコンテナ要素の幅の 1% に相当します。"
 createdAt: "2024-04-21T11:22+09:00"
 updatedAt: "2024-04-21T11:22+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/uQLyqz3fxCsDd6MRxmews/8b7cad4f67f60c3629805c51fec95a42/container-ship_13264.png"
   title: "コンテナ船のイラスト"

@@ -5,7 +5,7 @@ slug: "define-custom-properties-with-css-property-rule"
 about: "CSS の @property ルールを使うことで、CSS のカスタムプロパティを定義できます。カスタムプロパティを定義することでプロパティの構文チェック、デフォルト値の設定、プロパティが値を継承するかどうかの設定などが可能になります。カスタムプロパティに誤った値が代入されることを防いだり、グラデーションのアニメーションなど、従来は実装が難しかった機能をサポートすることができます。"
 createdAt: "2024-07-13T16:16+09:00"
 updatedAt: "2024-07-13T16:16+09:00"
-tags: ["CSS"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6XPepRCNVx6UbiH3LhkvCN/c0c1f29eca8869d867f84c68117f69b3/sea_surfing_9367.png"
   title: "海とサーフボードのイラスト"
