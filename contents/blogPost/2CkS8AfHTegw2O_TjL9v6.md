@@ -31,21 +31,23 @@ published: true
 
 MCP（Model Context Protocol）では [JSON-RPC](https://www.jsonrpc.org/specification) を使用してメッセージをエンコードしています。クライアントとサーバー間のトランスポート方式として以下の 2 つが定義されています。
 
-- stdio: 標準入出力を介した通信
-- Streamable HTTP: HTTP ストリーミングを介した通信
+- stdio: 標準入出力を介した通信（主にローカル実行向け）
+- Streamable HTTP: HTTP ストリーミングを介した通信（リモートサーバー向け）
 
-この記事が執筆されている段階では、多くの MCP クライアントサーバー間の通信には stdio が使用されています。2024-11-05 バージョンの仕様では認証仕様が定まっておらず、リモートのサーバーで実行するセキュリティ上の懸念があったためと推測されます。そのため多くの MCP クライアントはローカルで実行されることを前提としていましたが、MCP サーバーを利用するユーザー自身が npm などで配布されたパッケージをインストールして実行するといった煩わしさがありました。
+現在（2025年4月時点）では、多くの MCP クライアントとサーバー間の通信には stdio が使用されています。これは 2024-11-05 バージョンの仕様では認証仕様が十分に定まっておらず、リモートサーバーで実行する際のセキュリティ上の懸念があったためです。そのため、MCP サーバーを利用するユーザーは自身で npm などで配布されたパッケージをインストールして実行する必要があり、非常に煩雑でした。
+
+## Streamable HTTP トランスポートの概要
 
 2025-03-26 バージョンの仕様では OAuth 2.1 に基づく認証仕様の追加や HTTP ストリーミングを介した通信などの仕様が新たに追加されました。MCP における認証の実装は optional となっていますが、HTTP ベースのトランスポートを使用する実装では MCP の仕様に準拠した認証を実装することが推奨（should）されています。
 
-Streamable HTTP トランスポートは  2024-11-05 バージョンの仕様に存在していた HTTP + SSE トランスポートを置き換えるものです。この仕様の置き換えにより、以下のような利点が得られます。
+Streamable HTTP トランスポートは、旧仕様（2024-11-05 バージョン）に存在していた HTTP + SSE トランスポートを置き換える新しい方式です。この新しいトランスポートには、次のような利点があります。
 
 - ステートレスなサーバーを実装できる
 - SSE は必須ではなく、プレーンな HTTP サーバーを実装できる。そのため、既存のインフラストラクチャを利用できる
 - 旧仕様との下位互換性を考慮した実装となっている
 - 旧仕様では SSE エンドポイントと HTTP POST エンドポイントの 2 つを実装する必要があったが、Streamable HTTP トランスポートでは 1 つのエンドポイント（`/mcp`）で済む
 
-MCP サーバーを構築するための TypeScript SDK では v1.10.0 から Streamable HTTP トランスポートがリリースされました。この記事では TypeScript SDK を使用して MCP サーバーを構築し、Streamable HTTP トランスポートを試してみます。
+MCP サーバーを構築するための TypeScript SDK は v1.10.0 から Streamable HTTP トランスポートをサポートしています。この記事では、TypeScript SDK を使用して MCP サーバーを構築し、Streamable HTTP トランスポートを実際に試してみます。
 
 ## MCP サーバーの構築
 
@@ -68,17 +70,18 @@ npm install --save-dev typescript tsx @types/node @types/express
 
 ## ステートレスなサーバーの実装
 
-Streamable HTTP トランスポートを使用する場合に会話の状態を保持したいような場合には [Session Management](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#session-management) を使用してステートフルなサーバーを実装できます。とはいえ状態の保持が必要がなければ、Session Management は必要ありません。まずはステートレスなサーバーを実装してみましょう。
+Streamable HTTP トランスポートでは、会話の状態を保持する必要がない場合はステートレスなサーバーを実装できます。まずはシンプルなステートレスなサーバーから実装してみましょう。
 
-`src/index.ts` を以下のように編集します。
+`src/index.ts` を以下のように作成します。
 
 ```ts:src/index.ts
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
-import { set, z } from "zod";
+import { z } from "zod";
 import express from "express";
 
 const app = express();
+app.use(express.json());
 
 const transport: StreamableHTTPServerTransport =
   new StreamableHTTPServerTransport({
@@ -138,7 +141,7 @@ app.post("/mcp", async (req, res) => {
 });
 
 // GET リクエストは SSE エンドポイントとの互換性のために実装する必要がある
-// SSE エンドポイントをを実装しない場合は、405 Method Not Allowed を返す
+// SSE エンドポイントを実装しない場合は、405 Method Not Allowed を返す
 app.get("/mcp", async (req, res) => {
   console.log("Received GET MCP request");
   res.writeHead(405).end(
@@ -194,10 +197,9 @@ process.on("SIGINT", async () => {
   console.log("Server shutdown complete");
   process.exit(0);
 });
-
 ```
 
-このコードでは、`/mcp` エンドポイントで POST リクエストを受け付けるようにしています。内部の処理は `transport.handleRequest` メソッドに任せています。
+このコードでは、`/mcp` エンドポイントでPOSTリクエストを受け付け、MCP SDKの `transport.handleRequest` メソッドを使用してリクエストを処理しています。サーバーはシンプルなサイコロを振るツールを提供します。
 
 以下のコマンドでサーバーを起動します。
 
@@ -224,14 +226,14 @@ npm install @modelcontextprotocol/sdk
 npm install --save-dev typescript tsx @types/node
 ```
 
-`src/index.ts` に以下のコードを追加します。
+`src/index.ts` ファイルを作成し、基本的なMCPクライアントを実装します。
 
 ```ts:src/index.ts
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import { createInterface } from "readline/promises";
 
-// Streamable HTTP トランスポートを使用して MCP サーバーに接続する
+// Streamable HTTP トランスポートを使用して MCP サーバーに接続
 const transport = new StreamableHTTPClientTransport(
   new URL("http://localhost:3000/mcp"),
   {
@@ -255,34 +257,36 @@ const readline = createInterface({
 });
 
 async function main() {
-  await client.connect(transport);
+  try {
+    // サーバーに接続するリクエストを送信
+    await client.connect(transport);
 
-  while (true) {
-    console.log("available commands:");
-    console.log("1. list-tools");
-    console.log("2. call-tool");
-    console.log("3. exit");
-    console.log("------------------------------");
+    while (true) {
+      console.log("avaible commands:");
+      console.log("1. list-tools");
+      console.log("2. call-tool");
+      console.log("3. exit");
+      console.log("------------------------------");
 
-    const answer = await readline.question("Enter your input: ");
+      const answer = await readline.question("Enter your input: ");
 
-    switch (answer) {
-      case "list-tools":
-        await listTools();
-        break;
-      case "call-tool":
-        await callTool();
-        break;
-      case "exit":
-        await disconnect();
-        console.log("Disconnected from server.");
-        return;
+      switch (answer) {
+        case "list-tools":
+          await listTools();
+          break;
+        case "call-tool":
+          await callTool();
+          break;
+        case "exit":
+          await disconnect();
+          console.log("Disconnected from server.");
+          return;
 
-      default:
-        console.log("You entered:", answer);
-        break;
+        default:
+          console.log("You entered:", answer);
+          break;
+      }
     }
-  }
 }
 
 async function disconnect() {
@@ -309,20 +313,16 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 
 async function listTools() {
-  // スキーマで定義されたリクエストを作成する
   const req: ListToolsRequest = {
     method: "tools/list",
     params: {},
   };
 
-  // MCP サーバーにリクエストを送信する
-  // 第 2 引数には response のスキーマを指定する
   const res = await client.request(req, ListToolsResultSchema);
 
   if (res.tools.length === 0) {
     console.log("No tools available.");
   } else {
-    // ツールの一覧を表示する
     for (const tool of res.tools) {
       console.log(`Tool Name: ${tool.name}`);
       console.log(`Tool Description: ${tool.description}`);
@@ -337,11 +337,6 @@ Streamable HTTP トランスポートを使用する場合、`client.request` �
 次に、サーバーのサイコロを振るツールを実行するための `callTool` メソッドを実装します。
 
 ```ts:src/index.ts
-import {
-  CallToolRequest,
-  CallToolResultSchema,
-} from "@modelcontextprotocol/sdk/types.js";
-
 async function callTool() {
   const sides = await readline.question(
     "Enter the number of sides on the dice: "
@@ -377,9 +372,7 @@ async function callTool() {
 }
 ```
 
-このメソッドでは、`method` に `tools/call` を指定し、`params` にツールの名前と引数を指定します。サーバーからのレスポンスは `res.content` に格納されます。
-
-ここまでのコードを実装したら、以下のコマンドでクライアントを起動します。
+これでクライアントの実装は完了です。以下のコマンドでクライアントを起動します：
 
 ```bash
 npx tsx src/index.ts
@@ -394,7 +387,7 @@ Tool Description: サイコロを振った結果を返します
 ------------------------------
 ```
 
-`call-tool` と入力すると、サーバーのサイコロを振るツールを実行できます。
+また、`call-tool` コマンドでサイコロを振るツールを実行できます：
 
 ```bash
 Enter your input: call-tool
@@ -404,15 +397,17 @@ Tool response:
 ------------------------------
 ```
 
-ここでは単にツールを呼び出しているだけですが、実際のアプリケーションでは LLM モデルがツールを呼び出したり、ツールの結果を LLM モデルに渡すような使い方が想定されるでしょう。
-
 ## ステートフルなサーバーの実装
 
-続いて、ステートフルなサーバーを実装してみます。ステートフルなサーバーを実装するには [Session Management](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#session-management) の仕様に従います。MCP サーバーはクライアントから初期化リクエストが要求された場合、新たにセッション ID を生成します。セッション ID は UUID, JWT, 暗号ハッシュのようにグローバルで位置位である暗号的に安全な ID である必要があります。
+続いて、ステートフルなサーバーを実装してみましょう。ステートフルなサーバーでは、[Session Management](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#session-management) の仕様に従ってセッション状態を管理します。
 
-MCP サーバーから `Mcp-Session-Id` ヘッダーが返された場合は、クライアントは後続のすべてのリクエストヘッダーに `Mcp-Session-Id` ヘッダーを追加する必要があります。初期化処理以外のリクエストで `Mcp-Session-Id` ヘッダーが指定されていない場合は、サーバーは HTTP 400 Bad Request を返す必要があります。
+- クライアントから初期化リクエストを受け取ると、サーバーは新たにセッション ID を生成する
+- セッション ID は UUID や JWT などの暗号的に安全でグローバルに一意な識別子である必要がある
+- サーバーはレスポンスヘッダーに `Mcp-Session-Id` を含めてクライアントに返す
+- クライアントは後続のすべてのリクエストヘッダーに `Mcp-Session-Id` を含める必要がある
+- 初期化以外のリクエストで `Mcp-Session-Id` ヘッダーが欠けている場合、サーバーは 400 Bad Request を返す
 
-まずはサーバーの実装を変更します。
+まずはサーバーの実装を変更して、セッション管理を追加します。
 
 ```ts:src/index.ts
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
@@ -432,7 +427,7 @@ const mcpServer = new McpServer({ name: "my-server", version: "0.0.1" });
 
 app.post("/mcp", async (req, res) => {
   try {
-    // セッション ID がすでに存在するか確認
+    // セッション ID がヘッダーに存在するか確認
     const sessionId = req.headers["mcp-session-id"] as string | undefined;
     let transport: StreamableHTTPServerTransport;
 
@@ -458,7 +453,7 @@ app.post("/mcp", async (req, res) => {
       transport.onclose = () => {
         const sid = transport.sessionId;
         if (sid && transports[sid]) {
-          console.log(`Transport closed for session ID: ${sessionId}`);
+          console.log(`Transport closed for session ID: ${sid}`);
           delete transports[sid];
         }
       };
@@ -486,8 +481,6 @@ app.post("/mcp", async (req, res) => {
       res.status(500).json({
         jsonrpc: "2.0",
         error: {
-          // JSON-RPC 2.0のエラーコードを指定
-          // http://www.jsonrpc.org/specification#error_object
           code: -32603,
           message: "Internal server error",
         },
@@ -495,20 +488,6 @@ app.post("/mcp", async (req, res) => {
       });
     }
   }
-});
-
-app.get("/mcp", async (req, res) => {
-  console.log("Received GET MCP request");
-  res.writeHead(405).end(
-    JSON.stringify({
-      jsonrpc: "2.0",
-      error: {
-        code: -32000,
-        message: "Method not allowed.",
-      },
-      id: null,
-    })
-  );
 });
 
 // DELETE リクエストを受け取った場合、セッションを閉じる
@@ -523,11 +502,11 @@ app.delete("/mcp", async (req, res) => {
     return;
   }
 
-  console.log(`Closing transport for session ID: ${sessionId}`);
+  console.log(`Closing session for ID: ${sessionId}`);
 
   try {
     const transport = transports[sessionId];
-    transport.handleRequest(req, res);
+    await transport.handleRequest(req, res);
   } catch (error) {
     console.error("Error closing transport:", error);
     if (!res.headersSent) {
@@ -537,14 +516,14 @@ app.delete("/mcp", async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000/mcp");
+  console.log("Stateful server is running on http://localhost:3000/mcp");
 });
 
+// graceful shutdown
 process.on("SIGINT", async () => {
   console.log("Shutting down server...");
   try {
-    console.log(`Closing transport`);
-    // サーバーがシャットダウンする際に、すべての transport を閉じる
+    // すべてのトランスポートを閉じる
     for (const sessionId in transports) {
       const transport = transports[sessionId];
       if (transport) {
@@ -577,10 +556,12 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { createInterface } from "readline/promises";
 
+// セッション ID と transport を保持する変数
 let sessionId: string | undefined;
 let transport: StreamableHTTPClientTransport | undefined;
+
 const client = new Client({
-  name: "example-client",
+  name: "example-stateful-client",
   version: "0.0.1",
 });
 
@@ -632,6 +613,7 @@ async function main() {
   }
 }
 
+// セッションを終了するメソッド
 async function terminateSession() {
   if (!transport) {
     console.log("No active transport to terminate.");
@@ -674,5 +656,5 @@ Client error: Error: Error POSTing to endpoint (HTTP 400): {"jsonrpc":"2.0","err
 - [Transports - Model Context Protocol](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http)
 - [modelcontextprotocol/typescript-sdk: The official Typescript SDK for Model Context Protocol servers and clients](https://github.com/modelcontextprotocol/typescript-sdk?tab=readme-ov-file#streamable-http)
 - [MCP TypeScript SDK Examples](https://github.com/modelcontextprotocol/typescript-sdk/tree/main/src/examples)
-- [\[RFC\] Replace HTTP+SSE with new "Streamable HTTP" transport by jspahrsummers · Pull Request #206 · modelcontextprotocol/modelcontextprotocol](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/206?utm_source=times.serizawa.me&utm_medium=referral&utm_campaign=mcp-2025-03-26-sse?utm_campaign=mcp-2025-03-26-sse&utm_medium=referral&utm_source=times.serizawa.me)
+- [\[RFC\] Replace HTTP+SSE with new "Streamable HTTP" transport by jspahrsummers · Pull Request #206 · modelcontextprotocol/modelcontextprotocol](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/206)
 - [新しいMCP仕様(2025-03-26)での変更点:認証・SSEサポート任意化](https://times.serizawa.me/p/mcp-changelog-2025-03-26)
