@@ -13,22 +13,20 @@ selfAssessment:
   quizzes:
     - question: "ステートフルなサーバーを実装する場合に、セッション ID を管理するために使用される HTTP ヘッダーは何ですか？"
       answers:
-      - text: "Session-Id"
-        correct: false
-        explanation: ""
-      - text: "X-Session-Id"
-        correct: false
-        explanation: ""
-      - text: "Mcp-Session-Id"
-        correct: true
-        explanation: ""
-      - text: "Authorization"
-        correct: false
-        explanation: ""
-
+        - text: "Session-Id"
+          correct: false
+          explanation: null
+        - text: "X-Session-Id"
+          correct: false
+          explanation: null
+        - text: "Mcp-Session-Id"
+          correct: true
+          explanation: null
+        - text: "Authorization"
+          correct: false
+          explanation: null
 published: true
 ---
-
 MCP（Model Context Protocol）では [JSON-RPC](https://www.jsonrpc.org/specification) を使用してメッセージをエンコードしています。クライアントとサーバー間のトランスポート方式として以下の 2 つが定義されています。
 
 - stdio: 標準入出力を介した通信（主にローカル実行向け）
