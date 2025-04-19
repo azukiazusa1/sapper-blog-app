@@ -34,7 +34,7 @@ MCP（Model Context Protocol）では [JSON-RPC](https://www.jsonrpc.org/specifi
 - stdio: 標準入出力を介した通信（主にローカル実行向け）
 - Streamable HTTP: HTTP ストリーミングを介した通信（リモートサーバー向け）
 
-現在（2025年4月時点）では、多くの MCP クライアントとサーバー間の通信には stdio が使用されています。これは 2024-11-05 バージョンの仕様では認証仕様が十分に定まっておらず、リモートサーバーで実行する際のセキュリティ上の懸念があったためです。そのため、MCP サーバーを利用するユーザーは自身で npm などで配布されたパッケージをインストールして実行する必要があり、非常に煩雑でした。
+現在（2025 年 4 月時点）では、多くの MCP クライアントとサーバー間の通信には stdio が使用されています。これは 2024-11-05 バージョンの仕様では認証仕様が十分に定まっておらず、リモートサーバーで実行する際のセキュリティ上の懸念があったためです。そのため、MCP サーバーを利用するユーザーは自身で npm などで配布されたパッケージをインストールして実行する必要があり、非常に煩雑でした。
 
 ## Streamable HTTP トランスポートの概要
 
@@ -199,7 +199,7 @@ process.on("SIGINT", async () => {
 });
 ```
 
-このコードでは、`/mcp` エンドポイントでPOSTリクエストを受け付け、MCP SDKの `transport.handleRequest` メソッドを使用してリクエストを処理しています。サーバーはシンプルなサイコロを振るツールを提供します。
+このコードでは、`/mcp` エンドポイントで POST リクエストを受け付け、MCP SDK の `transport.handleRequest` メソッドを使用してリクエストを処理しています。サーバーはシンプルなサイコロを振るツールを提供します。
 
 以下のコマンドでサーバーを起動します。
 
@@ -226,7 +226,7 @@ npm install @modelcontextprotocol/sdk
 npm install --save-dev typescript tsx @types/node
 ```
 
-`src/index.ts` ファイルを作成し、基本的なMCPクライアントを実装します。
+`src/index.ts` ファイルを作成し、基本的な MCP クライアントを実装します。
 
 ```ts:src/index.ts
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
@@ -372,7 +372,7 @@ async function callTool() {
 }
 ```
 
-これでクライアントの実装は完了です。以下のコマンドでクライアントを起動します：
+これでクライアントの実装は完了です。以下のコマンドでクライアントを起動します。
 
 ```bash
 npx tsx src/index.ts
@@ -387,7 +387,7 @@ Tool Description: サイコロを振った結果を返します
 ------------------------------
 ```
 
-また、`call-tool` コマンドでサイコロを振るツールを実行できます：
+また、`call-tool` コマンドでサイコロを振るツールを実行できます。
 
 ```bash
 Enter your input: call-tool
