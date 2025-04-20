@@ -18,18 +18,15 @@ selfAssessment:
           explanation: "ink-text-input はユーザーからの入力を受け取るための Ink コンポーネントライブラリです。ブラウザの input 要素のように onChange イベントを受け取ることができます。"
         - text: "ink-form"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ink-text-input"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ink-user-input"
           correct: false
-          explanation: ""
-      answer: "ink-text-input"
-
+          explanation: null
 published: true
 ---
-
 [Ink](https://github.com/vadimdemedes/ink?tab=readme-ov-file) は CLI アプリを React で書くためのライブラリです。Flexbox レイアウトエンジンである [Yoga](https://arc.net/l/quote/yqignmph) を使用しているため、Web アプリケーションと同じような CSS を使って UI を構築できることが特徴です。[Codex](https://github.com/openai/codex) や [Claude Code](https://github.com/anthropics/claude-code) といったコーディングエージェントの CLI アプリが Ink で書かれています。
 
 ## プロジェクトを作成する
