@@ -27,7 +27,7 @@ selfAssessment:
           explanation: null
 published: true
 ---
-!> `<dialog>` の `closedby` 属性は 202 年 1 月現在 Chrome Beta v133 でのみサポートされています。
+!> `<dialog>` の `closedby` 属性は 2025 年 1 月現在 Chrome Beta v133 でのみサポートされています。
 
 [Light dismiss](https://html.spec.whatwg.org/multipage/popover.html#popover-light-dismiss) とは開いているポップオーバーを簡単に解除できることを指します。具体的にはポップオーバーの外側をクリックするとポップオーバーが閉じるといった挙動です。このような挙動は HTML に仕様に概念として登場する以前にも一般的に採用されていたパターンでした。
 
