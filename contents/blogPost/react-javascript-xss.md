@@ -123,7 +123,7 @@ React 本体でも javascript スキームを使用した XSS 脆弱性が存在
 
 ## javascript スキームを使った XSS の対策
 
-それでは、javascript スキームを使用した XSS 脆弱性をどのように対策するのかを見てみましょう。以下の 3 つの方法があります。
+それでは、javascript スキームを使用した XSS 脆弱性をどのように対策するのかを見てみましょう。以下の 2 つの方法があります。
 
 1. http/https スキームのみを許可する
 2. Content Security Policy (CSP)  を使用する
