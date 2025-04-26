@@ -11,7 +11,21 @@ thumbnail:
   title: "フルーツタルトのイラスト"
 selfAssessment:
   quizzes:
-
+    - question: "AI 時代において、インタビュー対象者が重要度が増すと考えているスキルは何ですか？"
+      answers:
+        - text: "タイピング速度"
+          correct: false
+          explanation: ""
+        - text: "特定のプログラミング言語の知識"
+          correct: false
+          explanation: ""
+        - text: "自分の考えを言語化する能力"
+          correct: true
+          explanation: "「今後重要度がます能力は、自分の頭の中で考えたことをどのように言語化するかと言うことだと思います」と述べられています。"
+        - text: "デバッグスキル"
+          correct: false
+          explanation: ""
+        
 published: true
 ---
 
