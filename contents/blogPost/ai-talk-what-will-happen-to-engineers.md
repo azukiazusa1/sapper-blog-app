@@ -15,20 +15,18 @@ selfAssessment:
       answers:
         - text: "タイピング速度"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "特定のプログラミング言語の知識"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "自分の考えを言語化する能力"
           correct: true
           explanation: "「今後重要度がます能力は、自分の頭の中で考えたことをどのように言語化するかと言うことだと思います」と述べられています。"
         - text: "デバッグスキル"
           correct: false
-          explanation: ""
-        
+          explanation: null
 published: true
 ---
-
 ## AI インタビュアーです:
 
 ポッドキャスト『未来の働き方』へようこそ。
