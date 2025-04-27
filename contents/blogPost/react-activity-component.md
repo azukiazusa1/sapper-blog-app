@@ -1,6 +1,6 @@
 ---
 id: F5thRV-pUFe9pkFKbBvUT
-title:  "UI の一部を非表示にする React の Activity コンポーネント"
+title: "UI の一部を非表示にする React の Activity コンポーネント"
 slug: "react-activity-component"
 about: "React の新しい実験的なコンポーネントとして `<Activity>` が追加されました。これは UI の表示非表示を切り替えるために使用されます。従来の条件付きレンダリングとは異なり、アンマウントされた場合にも状態を保持する点が特徴です。"
 createdAt: "2025-04-27T15:18+09:00"
@@ -13,22 +13,20 @@ selfAssessment:
   quizzes:
     - question: "`<Activity>` コンポーネントが従来の条件付きレンダリングと異なる重要な点は何ですか？"
       answers:
-        - text: 非表示になってもコンポーネントの状態を保持する
+        - text: "非表示になってもコンポーネントの状態を保持する"
           correct: true
           explanation: "従来の条件付きレンダリングではコンポーネントがアンマウントされると状態が失われますが、`<Activity>` コンポーネントは非表示になっても状態を保持します。"
-        - text: パフォーマンスが優れている
+        - text: "パフォーマンスが優れている"
           correct: false
-          explanation: ""
-        - text: コードがシンプルになる
+          explanation: null
+        - text: "コードがシンプルになる"
           correct: false
-          explanation: ""
-        - text: サーバーサイドレンダリングでのみ利用できる
+          explanation: null
+        - text: "サーバーサイドレンダリングでのみ利用できる"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 React の新しい実験的なコンポーネントとして `<Activity>` が追加されました。これは UI の表示非表示を切り替えるために使用されます。
 
 ```tsx
