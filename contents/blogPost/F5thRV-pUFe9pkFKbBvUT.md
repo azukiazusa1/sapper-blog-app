@@ -7,8 +7,8 @@ createdAt: "2025-04-26T15:18+09:00"
 updatedAt: "2025-04-26T15:18+09:00"
 tags: ["React"]
 thumbnail:
-  url: "ハヤブサのイラスト"
-  title: "https://images.ctfassets.net/in6v9lxmm5c8/5eh9OWKiFwfxP12zoL52ma/9403355edfe4f3bfeada2a7aada33690/bird_hayabusa_falcon_13697-768x689.png"
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/5eh9OWKiFwfxP12zoL52ma/9403355edfe4f3bfeada2a7aada33690/bird_hayabusa_falcon_13697-768x689.png"
+  title: "ハヤブサのイラスト"
 selfAssessment:
   quizzes:
     - question: "`<Activity>` コンポーネントが従来の条件付きレンダリングと異なる重要な点は何ですか？"
