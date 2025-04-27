@@ -3,8 +3,8 @@ id: F5thRV-pUFe9pkFKbBvUT
 title:  "UI の一部を非表示にする React の Activity コンポーネント"
 slug: "react-activity-component"
 about: "React の新しい実験的なコンポーネントとして `<Activity>` が追加されました。これは UI の表示非表示を切り替えるために使用されます。従来の条件付きレンダリングとは異なり、アンマウントされた場合にも状態を保持する点が特徴です。"
-createdAt: "2025-04-26T15:18+09:00"
-updatedAt: "2025-04-26T15:18+09:00"
+createdAt: "2025-04-27T15:18+09:00"
+updatedAt: "2025-04-27T15:18+09:00"
 tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5eh9OWKiFwfxP12zoL52ma/9403355edfe4f3bfeada2a7aada33690/bird_hayabusa_falcon_13697-768x689.png"
