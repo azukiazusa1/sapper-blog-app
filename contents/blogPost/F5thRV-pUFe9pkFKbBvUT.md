@@ -12,19 +12,19 @@ thumbnail:
 selfAssessment:
   quizzes:
     - question: "`<Activity>` コンポーネントが従来の条件付きレンダリングと異なる重要な点は何ですか？"
-    answers:
-      - text: 非表示になってもコンポーネントの状態を保持する
-        correct: true
-        explanation: "従来の条件付きレンダリングではコンポーネントがアンマウントされると状態が失われますが、`<Activity>` コンポーネントは非表示になっても状態を保持します。"
-      - text: パフォーマンスが優れている
-        correct: false
-        explanation: ""
-      - text: コードがシンプルになる
-        correct: false
-        explanation: ""
-      - text: サーバーサイドレンダリングでのみ利用できる
-        correct: false
-        explanation: ""
+      answers:
+        - text: 非表示になってもコンポーネントの状態を保持する
+          correct: true
+          explanation: "従来の条件付きレンダリングではコンポーネントがアンマウントされると状態が失われますが、`<Activity>` コンポーネントは非表示になっても状態を保持します。"
+        - text: パフォーマンスが優れている
+          correct: false
+          explanation: ""
+        - text: コードがシンプルになる
+          correct: false
+          explanation: ""
+        - text: サーバーサイドレンダリングでのみ利用できる
+          correct: false
+          explanation: ""
 
 published: true
 ---
