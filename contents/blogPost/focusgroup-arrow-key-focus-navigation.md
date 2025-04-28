@@ -1,6 +1,6 @@
 ---
 id: 7qPfVNwMnYhq8xDwCpVd1
-title: "forcusgroup で矢印キーによるフォーカスナビゲーションを実装する"
+title: "focusgroup で矢印キーによるフォーカスナビゲーションを実装する"
 slug: "focusgroup-arrow-key-focus-navigation"
 about: "カスタム UI ウィジェットを実装する際には、ウィジェットのロールに応じたキーボード操作によるフォーカスナビゲーションを実装することが求められています。従来このようなキーボード操作は JavaScript を用いて実装する必要がありました。`focusgroup` の提案は、このようなキーボード操作を独立して使用できるプリミティブとして提案されています。この機能を利用することで、開発者は JavaScript を用いることなく一貫したフォーカスナビゲーションを実装できます。"
 createdAt: "2023-10-09T14:22+09:00"
@@ -56,7 +56,7 @@ published: true
 
 ## CSS による `focusgroup`
 
-フォーカスグループ定義は HTML の `forcusgroup` 属性だけでなく、CSS の `focus-group` プロパティを用いて宣言できます。
+フォーカスグループ定義は HTML の `focusgroup` 属性だけでなく、CSS の `focus-group` プロパティを用いて宣言できます。
 
 ```css
 #menu1 {
