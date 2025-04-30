@@ -284,7 +284,7 @@
         {#if audio}
           <div class="my-4 rounded-lg bg-gray-100 p-4 dark:bg-zinc-800">
             <h2 class="mb-4 text-lg font-semibold">音声による概要</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
               この音声概要は AI
               によって生成されており、誤りを含む可能性があります。
             </p>
