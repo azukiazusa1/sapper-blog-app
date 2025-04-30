@@ -213,10 +213,12 @@ export enum AssetOrder {
 }
 
 /** blog post [See type definition](https://app.contentful.com/spaces/in6v9lxmm5c8/content_types/blogPost) */
-export type BlogPost = Entry & {
+export type BlogPost = Entry & _Node & {
   __typename?: 'BlogPost';
+  _id: Scalars['ID']['output'];
   about?: Maybe<Scalars['String']['output']>;
   article?: Maybe<Scalars['String']['output']>;
+  audio?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   linkedFrom?: Maybe<BlogPostLinkingCollections>;
@@ -239,6 +241,12 @@ export type BlogPostAboutArgs = {
 
 /** blog post [See type definition](https://app.contentful.com/spaces/in6v9lxmm5c8/content_types/blogPost) */
 export type BlogPostArticleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** blog post [See type definition](https://app.contentful.com/spaces/in6v9lxmm5c8/content_types/blogPost) */
+export type BlogPostAudioArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -332,6 +340,13 @@ export type BlogPostFilter = {
   article_not?: InputMaybe<Scalars['String']['input']>;
   article_not_contains?: InputMaybe<Scalars['String']['input']>;
   article_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  audio?: InputMaybe<Scalars['String']['input']>;
+  audio_contains?: InputMaybe<Scalars['String']['input']>;
+  audio_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  audio_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  audio_not?: InputMaybe<Scalars['String']['input']>;
+  audio_not_contains?: InputMaybe<Scalars['String']['input']>;
+  audio_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -400,6 +415,8 @@ export type BlogPostLinkingCollectionsEntryCollectionArgs = {
 export enum BlogPostLinkingCollectionsBlogPostCollectionOrder {
   AboutAsc = 'about_ASC',
   AboutDesc = 'about_DESC',
+  AudioAsc = 'audio_ASC',
+  AudioDesc = 'audio_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   SlugAsc = 'slug_ASC',
@@ -421,6 +438,8 @@ export enum BlogPostLinkingCollectionsBlogPostCollectionOrder {
 export enum BlogPostOrder {
   AboutAsc = 'about_ASC',
   AboutDesc = 'about_DESC',
+  AudioAsc = 'audio_ASC',
+  AudioDesc = 'audio_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   SlugAsc = 'slug_ASC',
@@ -450,6 +469,8 @@ export type BlogPostRelatedArticleCollection = {
 export enum BlogPostRelatedArticleCollectionOrder {
   AboutAsc = 'about_ASC',
   AboutDesc = 'about_DESC',
+  AudioAsc = 'audio_ASC',
+  AudioDesc = 'audio_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   SlugAsc = 'slug_ASC',
@@ -493,10 +514,26 @@ export enum BlogPostTagsCollectionOrder {
 
 export type ContentfulMetadata = {
   __typename?: 'ContentfulMetadata';
+  concepts: Array<Maybe<TaxonomyConcept>>;
   tags: Array<Maybe<ContentfulTag>>;
 };
 
+export type ContentfulMetadataConceptsDescendantsFilter = {
+  id_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ContentfulMetadataConceptsFilter = {
+  descendants?: InputMaybe<ContentfulMetadataConceptsDescendantsFilter>;
+  id_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type ContentfulMetadataFilter = {
+  concepts?: InputMaybe<ContentfulMetadataConceptsFilter>;
+  concepts_exists?: InputMaybe<Scalars['Boolean']['input']>;
   tags?: InputMaybe<ContentfulMetadataTagsFilter>;
   tags_exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -509,7 +546,7 @@ export type ContentfulMetadataTagsFilter = {
 
 /**
  * Represents a tag entity for finding and organizing content easily.
- *     Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
+ *       Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
  */
 export type ContentfulTag = {
   __typename?: 'ContentfulTag';
@@ -646,6 +683,7 @@ export type ImageTransformOptions = {
 export type Query = {
   __typename?: 'Query';
   _node?: Maybe<_Node>;
+  _nodes: Array<Maybe<_Node>>;
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
   blogPost?: Maybe<BlogPost>;
@@ -660,6 +698,13 @@ export type Query = {
 
 export type Query_NodeArgs = {
   id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Query_NodesArgs = {
+  ids: Array<Scalars['ID']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -743,8 +788,9 @@ export type QueryTagCollectionArgs = {
 };
 
 /** [See type definition](https://app.contentful.com/spaces/in6v9lxmm5c8/content_types/short) */
-export type Short = Entry & {
+export type Short = Entry & _Node & {
   __typename?: 'Short';
+  _id: Scalars['ID']['output'];
   content1?: Maybe<Scalars['String']['output']>;
   content2?: Maybe<Scalars['String']['output']>;
   content3?: Maybe<Scalars['String']['output']>;
@@ -890,6 +936,8 @@ export type Sys = {
   environmentId: Scalars['String']['output'];
   firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['String']['output'];
+  /** The locale that was requested. */
+  locale?: Maybe<Scalars['String']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   publishedVersion?: Maybe<Scalars['Int']['output']>;
   spaceId: Scalars['String']['output'];
@@ -933,8 +981,9 @@ export type SysFilter = {
 };
 
 /** tag [See type definition](https://app.contentful.com/spaces/in6v9lxmm5c8/content_types/tag) */
-export type Tag = Entry & {
+export type Tag = Entry & _Node & {
   __typename?: 'Tag';
+  _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<TagLinkingCollections>;
   name?: Maybe<Scalars['String']['output']>;
@@ -1015,6 +1064,8 @@ export type TagLinkingCollectionsEntryCollectionArgs = {
 export enum TagLinkingCollectionsBlogPostCollectionOrder {
   AboutAsc = 'about_ASC',
   AboutDesc = 'about_DESC',
+  AudioAsc = 'audio_ASC',
+  AudioDesc = 'audio_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   SlugAsc = 'slug_ASC',
@@ -1048,6 +1099,15 @@ export enum TagOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+/**
+ * Represents a taxonomy concept entity for finding and organizing content easily.
+ *         Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-concepts
+ */
+export type TaxonomyConcept = {
+  __typename?: 'TaxonomyConcept';
+  id?: Maybe<Scalars['String']['output']>;
+};
+
 export type _Node = {
   _id: Scalars['ID']['output'];
 };
@@ -1069,6 +1129,13 @@ export type CfBlogPostNestedFilter = {
   article_not?: InputMaybe<Scalars['String']['input']>;
   article_not_contains?: InputMaybe<Scalars['String']['input']>;
   article_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  audio?: InputMaybe<Scalars['String']['input']>;
+  audio_contains?: InputMaybe<Scalars['String']['input']>;
+  audio_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  audio_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  audio_not?: InputMaybe<Scalars['String']['input']>;
+  audio_not_contains?: InputMaybe<Scalars['String']['input']>;
+  audio_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1151,7 +1218,7 @@ export type PostBySlugQueryVariables = Exact<{
 }>;
 
 
-export type PostBySlugQuery = { __typename?: 'Query', blogPostCollection?: { __typename?: 'BlogPostCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, about?: string | null, article?: string | null, createdAt?: any | null, selfAssessment?: any | null, relatedArticleCollection?: { __typename?: 'BlogPostRelatedArticleCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, createdAt?: any | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null } | null> } | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null, tagsCollection?: { __typename?: 'BlogPostTagsCollection', items: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null } | null> } | null } | null> } | null };
+export type PostBySlugQuery = { __typename?: 'Query', blogPostCollection?: { __typename?: 'BlogPostCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, about?: string | null, article?: string | null, audio?: string | null, createdAt?: any | null, selfAssessment?: any | null, relatedArticleCollection?: { __typename?: 'BlogPostRelatedArticleCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, createdAt?: any | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null } | null> } | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null, tagsCollection?: { __typename?: 'BlogPostTagsCollection', items: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null } | null> } | null } | null> } | null };
 
 export type PostsQueryVariables = Exact<{
   order?: InputMaybe<BlogPostOrder>;

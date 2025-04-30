@@ -47,6 +47,7 @@ export const BlogPostSchema = z.discriminatedUnion("published", [
       .string()
       .max(255)
       .regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/),
+    audio: z.string().max(255).url().optional(),
     tags: z.array(z.string().max(50)),
     thumbnail: thumbnailSchema,
     selfAssessment: selfAssessmentSchema.optional(),
@@ -70,6 +71,7 @@ export const BlogPostSchema = z.discriminatedUnion("published", [
       .max(255)
       .regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/)
       .optional(),
+    audio: z.string().max(255).url().optional(),
     tags: z.array(z.string().max(50)),
     thumbnail: thumbnailSchema.optional(),
     selfAssessment: selfAssessmentSchema.optional(),
@@ -98,6 +100,7 @@ export type ContentfulBlogPost = {
     title: FieldValue<string>;
     slug: FieldValue<string>;
     tags: FieldValue<{ sys: MetaLinkProps }[]>;
+    audio: FieldValue<string>;
   };
 };
 

@@ -49,6 +49,7 @@ thumbnail:${
   title: "${escape(blog.thumbnail.title)}"`
       : " null"
   }
+audio: ${blog.audio ? `"${escape(blog.audio)}"` : "null"}
 selfAssessment:${
     blog.selfAssessment
       ? "\n  quizzes:\n" +
@@ -133,6 +134,7 @@ export const loadBlogPost = async (filename: string): Promise<Result> => {
       slug: markdown["slug"] ?? undefined,
       tags: markdown["tags"],
       thumbnail: markdown["thumbnail"] ?? undefined,
+      audio: markdown["audio"] ?? undefined,
       selfAssessment: markdown["selfAssessment"] ?? undefined,
       published: markdown["published"],
     };
