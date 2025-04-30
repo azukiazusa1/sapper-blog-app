@@ -14,10 +14,19 @@
     createdAt: string;
     thumbnail: { title: string; url: string };
     slug: string;
+    audio?: string;
   }
 
-  let { title, about, contents, tags, createdAt, thumbnail, slug }: Props =
-    $props();
+  let {
+    title,
+    about,
+    contents,
+    tags,
+    createdAt,
+    thumbnail,
+    slug,
+    audio,
+  }: Props = $props();
 
   // <baseline-status> を読み込む
   onMount(() => {
@@ -266,11 +275,24 @@
         </h1>
 
         <p
-          class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+          class="my-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
           style:--tag="about-{slug}"
         >
           {about}
         </p>
+
+        {#if audio}
+          <div class="my-4 rounded-lg bg-gray-100 p-4 dark:bg-zinc-800">
+            <h2 class="mb-4 text-lg font-semibold">音声による概要</h2>
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+              この音声概要は AI
+              によって生成されており、誤りを含む可能性があります。
+            </p>
+            <audio controls src={audio} class="w-full">
+              ご利用のブラウザは audio 要素をサポートしていません。
+            </audio>
+          </div>
+        {/if}
       </div>
     </header>
 

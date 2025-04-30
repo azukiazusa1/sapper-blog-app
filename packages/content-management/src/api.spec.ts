@@ -226,6 +226,9 @@ describe("getBlogPosts", () => {
                       },
                     },
                   },
+                  audio: {
+                    "en-US": "audio",
+                  },
                   tags: {
                     "en-US": [
                       {
@@ -280,6 +283,9 @@ describe("getBlogPosts", () => {
                       },
                     },
                   },
+                  audio: {
+                    "en-US": "audio",
+                  },
                   tags: {
                     "en-US": [],
                   },
@@ -310,6 +316,7 @@ describe("getBlogPosts", () => {
         title: "title",
         url: "https://images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
       },
+      audio: "audio",
       tags: ["tag1-name", "tag2-name"],
     });
   });

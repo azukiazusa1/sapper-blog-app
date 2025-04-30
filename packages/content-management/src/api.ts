@@ -196,6 +196,7 @@ export const getBlogPosts = async ({
           published: true,
           tags: blogTags,
           thumbnail,
+          audio: flattenOptionalField(blog.fields.audio),
           selfAssessment: isSelfAssessment(maybeSelfAssessment)
             ? maybeSelfAssessment
             : undefined,
@@ -212,6 +213,7 @@ export const getBlogPosts = async ({
           published: false,
           tags: blogTags,
           thumbnail,
+          audio: flattenOptionalField(blog.fields.audio),
           selfAssessment: isSelfAssessment(maybeSelfAssessment)
             ? maybeSelfAssessment
             : undefined,
@@ -315,6 +317,11 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
             },
           }
         : undefined,
+      audio: blog.audio
+        ? {
+            "en-US": blog.audio,
+          }
+        : undefined,
       selfAssessment: blog.selfAssessment
         ? { "en-US": blog.selfAssessment }
         : undefined,
@@ -383,6 +390,12 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
           id: getAssetIdFromUrl(blog.thumbnail.url),
         },
       },
+    };
+  }
+
+  if (blog.audio) {
+    fields["audio"] = {
+      "en-US": blog.audio,
     };
   }
 

@@ -39,6 +39,7 @@ describe("createBlogFile", () => {
         url: "https://images.ctfassets.net/3",
         title: "title",
       },
+      audio: "https://audio.ctfassets.net/3",
       published: true,
     } satisfies PublishedBlogPost;
 
@@ -57,6 +58,7 @@ tags: ["tag1", "tag2"]
 thumbnail:
   url: "https://images.ctfassets.net/3"
   title: "title"
+audio: "https://audio.ctfassets.net/3"
 selfAssessment: null
 published: true
 ---
@@ -91,6 +93,7 @@ createdAt: null
 updatedAt: null
 tags: []
 thumbnail: null
+audio: null
 selfAssessment: null
 published: false
 ---
@@ -112,6 +115,7 @@ published: false
         url: `https://images.ctfassets.net/"3"`,
         title: `ti"tle`,
       },
+      audio: `https://audio.ctfassets.net/"3"`,
       selfAssessment: {
         quizzes: [
           {
@@ -164,6 +168,7 @@ tags: ["tag1 \\"tag1\\"", "tag2 \\"tag2\\""]
 thumbnail:
   url: "https://images.ctfassets.net/\\"3\\""
   title: "ti\\"tle"
+audio: "https://audio.ctfassets.net/\\"3\\""
 selfAssessment:
   quizzes:
     - question: "question \\"question\\""

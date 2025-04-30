@@ -8,6 +8,7 @@ export const postBySlugQuery = gql`
         slug
         about
         article
+        audio
         relatedArticleCollection(limit: 5) {
           items {
             title
