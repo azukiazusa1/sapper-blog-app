@@ -27,14 +27,14 @@ jobs:
             contents/**
 
       - name: debug
-        run: echo "${{ steps.changed-files-specific.outputs.files }}"
+        run: echo "${{ steps.changed-files-specific.outputs.all_changed_files }}"
 
       - name: Test Local Action
         id: inference
         uses: actions/ai-inference@f8ee4c952b7dca7b8a4529edd04dc5cc3d49c435 # v1.0.0
-        if: steps.changed-files-specific.outputs.files != ''
+        if: steps.changed-files-specific.outputs.all_changed_files != ''
         env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files-specific.outputs.files }}
+          ALL_CHANGED_FILES: ${{ steps.changed-files-specific.outputs.all_changed_files }}
         with:
           system-prompt: |
             あなたはプロフェッショナルなテックブログ・レビューアー AIです。
@@ -44,7 +44,7 @@ jobs:
 
       - name: Comment on PR
         id: comment
-        if: steps.changed-files-specific.outputs.files != ''
+        if: steps.changed-files-specific.outputs.all_changed_files != ''
         env:
           RESPONSE: ${{ steps.inference.outputs.response }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
