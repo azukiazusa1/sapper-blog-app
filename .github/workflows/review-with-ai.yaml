@@ -1,0 +1,58 @@
+name: 'Review with AI'
+on: 
+  pull_request:
+    types: [opened, edited]
+    # プルリクエストが作成または編集されたときにワークフローをトリガーする
+    branches:
+      - main
+    paths:
+      # 記事を保存しているディレクトリが変更されたときのみワークフローを実行する
+      - contents/blogPost/**/*.m
+
+jobs:
+  inference:
+    permissions:
+      models: read
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      # 変更されたファイルを取得する
+      - name: Get changed files in the contents folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@4cd184a1dd542b79cca1d4d7938e4154a6520ca7 # v46.0.0
+        with:
+          files: |
+            contents/**
+
+      - name: debug
+        run: echo "${{ steps.changed-files-specific.outputs.files }}"
+
+      - name: Test Local Action
+        id: inference
+        uses: actions/ai-inference@f8ee4c952b7dca7b8a4529edd04dc5cc3d49c435 # v1.0.0
+        if: steps.changed-files-specific.outputs.files != ''
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files-specific.outputs.files }}
+        with:
+          system-prompt: |
+            あなたはプロフェッショナルなテックブログ・レビューアー AIです。
+            あなたの役割は、開発者や技術者が書いたブログ記事を技術的正確性・表現の明確さ・構成の論理性・読者への価値提供という観点でレビューし、フィードバックを提供することです。
+          # 変更されたファイルの内容をプロンプトとして渡す
+          prompt-file: "${{ ALL_CHANGED_FILES }}"
+
+      - name: Comment on PR
+        id: comment
+        env:
+          RESPONSE: ${{ steps.inference.outputs.response }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # AI モデルの出力をコメントとしてプルリクエストに投稿する
+          echo "${RESPONSE}" > comment.txt
+          gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
+          echo "Commented on PR #${{ github.event.pull_request.number }} with response: ${RESPONSE}"
