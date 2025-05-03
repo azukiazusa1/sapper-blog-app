@@ -14,16 +14,16 @@ selfAssessment:
   quizzes:
     - question: "actions/ai-interface アクションを使用するために必要な権限は何ですか？"
       answers:
-        - text: models: read
+        - text: "models: read"
           correct: true
           explanation: ""
-        - text: contents: read
+        - text: "contents: read"
           correct: false
           explanation: ""
-        - text: ai: read
+        - text: "ai: read"
           correct: false
           explanation: ""
-        - text: pull-requests: write
+        - text: "pull-requests: write"
           correct: false
           explanation: ""
 
