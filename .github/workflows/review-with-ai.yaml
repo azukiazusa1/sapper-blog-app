@@ -44,6 +44,7 @@ jobs:
 
       - name: Comment on PR
         id: comment
+        if: steps.changed-files-specific.outputs.files != ''
         env:
           RESPONSE: ${{ steps.inference.outputs.response }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
