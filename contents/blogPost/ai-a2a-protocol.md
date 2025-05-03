@@ -998,7 +998,7 @@ AI: はい、サイコロを振ります！標準的な6面サイコロを振り
   - `tasks/get`：タスクで生成されたアーティファクトを取得する
   - `tasks/cancel`：タスクをキャンセルする
   - `tasks/sendSubscribe`：タスクの進捗を通知するためのサブスクリプションを送信する
-- 
+
 ## 参考
 
 - [Agent2Agent プロトコル（A2A）を発表：エージェントの相互運用性の新時代 | Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/products/ai-machine-learning/a2a-a-new-era-of-agent-interoperability)
