@@ -105,13 +105,9 @@ jobs:
 name: 'Review with AI'
 on: 
   pull_request:
-    types: [opened, edited]
-    # プルリクエストが作成または編集されたときにワークフローをトリガーする
-    branches:
-      - main
     paths:
       # 記事を保存しているディレクトリが変更されたときのみワークフローを実行する
-      - contents/blogPost/**/*.m
+      - contents/blogPost/**/*.md
 
 jobs:
   inference:
@@ -145,18 +141,20 @@ jobs:
             あなたはプロフェッショナルなテックブログ・レビューアー AIです。
             あなたの役割は、開発者や技術者が書いたブログ記事を技術的正確性・表現の明確さ・構成の論理性・読者への価値提供という観点でレビューし、フィードバックを提供することです。
           # 変更されたファイルの内容をプロンプトとして渡す
-          prompt-file: "${{ ALL_CHANGED_FILES }}"
+          prompt-file: "${{ env.ALL_CHANGED_FILES }}"
 
       - name: Comment on PR
         id: comment
+        if: steps.changed-files-specific.outputs.files != ''
         env:
           RESPONSE: ${{ steps.inference.outputs.response }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # AI モデルの出力をコメントとしてプルリクエストに投稿する
-          echo "${RESPONSE}" > comment.txt
+          echo "${{ env.RESPONSE }}" > comment.txt
           gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
-          echo "Commented on PR #${{ github.event.pull_request.number }} with response: ${RESPONSE}"
+          echo "Commented on PR #${{ github.event.pull_request.number }} with response: ${{ env.RESPONSE }}"
+
 ```
 
 このワークフローは `on: pull_request` によってプルリクエストが作成または編集されたときにトリガーされます。`paths` で指定したパスに変更があった場合のみワークフローが実行されます。ここでは `contents/blogPost/**/*.md` を指定しているため、`contents/blogPost` ディレクトリ以下の `.md` ファイルが変更されたときのみワークフローが実行されます。
