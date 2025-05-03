@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1qt8GP6Vy9x7afq87NiRsp/52b7c3a7ac5976e5b3bf66368db39957/sukiyaki_16090.png"
   title: "すき焼き鍋のイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

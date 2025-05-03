@@ -9,6 +9,7 @@ tags: ["Tailwind CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4zcDwLDoER7WJWPvpUSMuH/cb8db9b06837cd1dc5fa80cbdd429c0e/winter_snow-covered-road_15542-768x630.png"
   title: "雪道のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "CSS First Configurations において、カラーテーマ `primary` を定義するための記述として正しいものはどれか？"

@@ -9,6 +9,7 @@ tags: ["Prisma", "OpenTelemetry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1bhny7mIs4MAIFOEvRy5SY/dee304e4571c088ef2a8872be69aae73/shellfish_hamaguri_20905-768x709.png"
   title: "はまぐりのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "データベースに対して実行された DB クエリの実行時間"

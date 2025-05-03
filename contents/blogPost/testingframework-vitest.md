@@ -9,6 +9,7 @@ tags: ["", "Vite", "Vitest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3QOBjWm7zktdAtik7H1O3d/b2b88eab54f5c20dca1000c0351ee090/logo.svg"
   title: "vitest"
+audio: null
 selfAssessment: null
 published: true
 ---

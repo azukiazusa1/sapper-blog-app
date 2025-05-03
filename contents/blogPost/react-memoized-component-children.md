@@ -9,6 +9,7 @@ tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/26v42ghVMvg6PeRZNiIeyP/03875423c434550a279b50c07f055663/food_takotaki_illust_3428.png"
   title: "たこ焼きのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

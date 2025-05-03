@@ -9,6 +9,7 @@ tags: ["React", "", "MistCSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3wkNGwsygEjopNaPaLQlD3/c7e7c2fff7c8c7f8f1c2c3d1c0a164b0/matsu_bonsai_12169-768x768.png"
   title: "松の盆栽のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "MistCSS において、コンポーネント名を指定するためのルールはどれか？"

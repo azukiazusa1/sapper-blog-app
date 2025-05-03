@@ -9,6 +9,7 @@ tags: ["React", "Jest", "テスト"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5WJgPkui5OJOxaqKgR5PCe/c7a7a415b8a4daf7b318b983f576f05e/food_kebab_18639.png"
   title: "ケパブのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

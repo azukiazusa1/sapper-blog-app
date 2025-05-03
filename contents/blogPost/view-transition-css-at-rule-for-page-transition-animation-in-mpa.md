@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/lBFeoAMNCnBp1tX8St3D4/37a2bb61b643bdc7a827a1a561074262/sphinx_6644-768x585.png"
   title: "sphinx 6644-768x585"
+audio: null
 selfAssessment:
   quizzes:
     - question: "MPA でページ遷移アニメーションを行うために必要な CSS はどれか？"

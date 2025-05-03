@@ -9,6 +9,7 @@ tags: ["OpenTelemetry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4fVPrLbevOOFy41rHsdfvP/d568759fa60dd7713c9eef2327705b34/daruma-otoshi_12261.png"
   title: "だるま落としのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

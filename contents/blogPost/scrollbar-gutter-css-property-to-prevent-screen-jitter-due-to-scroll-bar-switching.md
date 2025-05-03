@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5AsM3B5qBh0qMWxvcDTZHQ/4d03e02e5dc069db16af3cfff092a288/flower_ajisai_8974-768x662.png"
   title: "紫陽花のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "スクロールバー自体が幅を持つ種類はなんと呼ばれるか？"

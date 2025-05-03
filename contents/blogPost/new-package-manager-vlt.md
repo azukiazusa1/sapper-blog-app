@@ -9,6 +9,7 @@ tags: ["vlt", "npm"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1pYX3UnQy0YnkykTD2aZX5/97fffca89b2e1a9532a1e21c2f3f9ae8/kuri-gohan_20701-768x689.png"
   title: "栗ご飯のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "vlt install コマンドを実行した際に生成される lock ファイルの名前は次のうちどれか？"

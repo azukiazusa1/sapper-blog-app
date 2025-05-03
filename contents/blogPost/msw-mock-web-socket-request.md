@@ -9,6 +9,7 @@ tags: ["msw", "Web Socket"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/Qyc4NqFS6F7FnfaiHhdOE/876e96176aa4d9de5304f283ea5fd4d3/sweet_anmitsu_9823-768x640.png"
   title: "あんみつのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Web Socket のモックを行うために、クライアントが接続するエンドポイントを指定する関数は何か？"

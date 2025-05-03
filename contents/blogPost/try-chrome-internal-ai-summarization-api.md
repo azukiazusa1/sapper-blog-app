@@ -9,6 +9,7 @@ tags: ["AI", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/8jYj0zIygRVhqc8IhKuHD/489b061cfdd9715b05d079057e65c301/desert_sundae_16897.png"
   title: "サンデーのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Summarization API を使用してストリーミングで要約を取得するためにはどのメソッドを使用するか？"

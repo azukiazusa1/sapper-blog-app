@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3NIiIv95Y3LE0DFID3IfDr/7506445d554037aff677ce70410828e4/merry-go-round_9366-768x828.png"
   title: "メリーゴランドのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "scroll-marker-group プロパティの値として指定できるものはどれか"

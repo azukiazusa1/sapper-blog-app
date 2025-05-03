@@ -9,6 +9,7 @@ tags: ["React", "テスト", "Jest", "Vitest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4QSQ886rsBxSfIkfa3thMB/3931e28a9a48a5a7080fc9e59a16185b/halloween_ghost_illust_1171.png"
   title: "おばけ"
+audio: null
 selfAssessment: null
 published: true
 ---

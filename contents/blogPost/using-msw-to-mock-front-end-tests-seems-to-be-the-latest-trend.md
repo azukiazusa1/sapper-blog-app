@@ -9,6 +9,7 @@ tags: ["Vue.js", "Jest", "msw"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/30CBESZ69ymPrUEBtoubnw/733e90c8a33905f356ca66ffe2f0fb0d/64637271.png"
   title: "msw"
+audio: null
 selfAssessment: null
 published: true
 ---

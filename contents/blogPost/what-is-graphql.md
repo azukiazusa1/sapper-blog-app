@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/20rVGECVoaOHWGAsGCnTa/94bb349a41d63575a4549fdb6fa18a24/GraphQL_Logo.png"
   title: "graphQL"
+audio: null
 selfAssessment: null
 published: true
 ---

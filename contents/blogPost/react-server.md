@@ -9,6 +9,7 @@ tags: ["React", "React Server Components"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3J3O1Nlkl7ZpyX0foboIUd/97f5be4422aeb574a13d9074386a1993/shark-fin_21263-768x591.png"
   title: "shark-fin 21263-768x591"
+audio: null
 selfAssessment:
   quizzes:
     - question: "アプリケーションをビルドする際に使用するコマンドはどれか？"

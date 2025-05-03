@@ -9,6 +9,7 @@ tags: ["", "ダークモード"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1fU89aRBH4MAakN0HQtUK9/703645f396295d93d07322857ad125ed/_Pngtree_crescent_moon_and_star_8390658.png"
   title: "moon and star"
+audio: null
 selfAssessment: null
 published: true
 ---

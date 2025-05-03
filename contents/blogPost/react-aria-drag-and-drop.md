@@ -9,6 +9,7 @@ tags: ["React", "React Aria", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4WPP9O7GXJbqVpaWtSN4Dd/203b49d4ae179c72abdef5cac0d48ced/tsukimi-udon_16432.png"
   title: "月見うどんのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "React Aria により提供されているドラッグアンドドロップ機能を実装するためのフックではないものはどれですか？"

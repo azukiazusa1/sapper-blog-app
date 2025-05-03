@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4BJ7c0e1SP9gcFruYJCtw9/47d5bb8747dc57d033d6a846ad296140/bird_aobazuku_13858-768x689.png"
   title: "アオバズクのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "EventTarget インターフェイスにおいて、Observable API で非同期イベントストリームを処理するためのメソッドはどれか？"

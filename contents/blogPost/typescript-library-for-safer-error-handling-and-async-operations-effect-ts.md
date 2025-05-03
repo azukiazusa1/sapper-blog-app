@@ -9,6 +9,7 @@ tags: ["", "Effect-TS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1m40UxozfoX4jJuCrUS16D/653a29fdce918b0a3ceaa0a6438a4d4b/may_koinobori_6826-768x753.png"
   title: "鯉のぼりのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Effect.Either において成功を表す型は次のうちどちらか？"

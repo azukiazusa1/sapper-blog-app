@@ -9,6 +9,7 @@ tags: ["ink", "React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/nFYiC8aOUEafnSacY44tf/4dfe30cb65a0aec692a9b618a2cb12b1/maccha-cutcake_21696-768x709.png"
   title: "抹茶ケーキのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "ユーザーからの入力を受け取るための Ink コンポーネントライブラリは何ですか？"

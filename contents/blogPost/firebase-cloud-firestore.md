@@ -9,6 +9,7 @@ tags: ["", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2kQrXA9Amina8TOc9oC4PF/9033b78047d09b10c90b126439e33287/firestore.png"
   title: "firestore"
+audio: null
 selfAssessment: null
 published: true
 ---

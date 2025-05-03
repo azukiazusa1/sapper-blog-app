@@ -9,6 +9,7 @@ tags: ["書評"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2OUIHrULnqJkFL73AYN293/73b2fdc9ea2952b6616fbe5284dcd17c/joyanokane_illust_2204.png"
   title: "除夜の鐘のイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

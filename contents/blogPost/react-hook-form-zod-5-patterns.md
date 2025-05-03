@@ -9,6 +9,7 @@ tags: ["", "Zod"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/HwTFMkoAmZ6qo2gIea9Nw/e9ccce37ebbdfa7cdf560b1ff393305f/___Pngtree___lightning_bolt_yellow_transparent_images_8995404.png"
   title: "lightning bolt"
+audio: null
 selfAssessment: null
 published: true
 ---

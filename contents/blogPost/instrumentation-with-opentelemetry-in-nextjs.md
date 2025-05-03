@@ -9,6 +9,7 @@ tags: ["Next.js", "OpenTelemetry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5ToSDYLHmQXAx4yXgzqhzd/6ce67aa462ff0f282bc3babb59f69e8d/marron_igaguri_illust_4409-768x632.png"
   title: "marron igaguri illust 4409-768x632"
+audio: null
 selfAssessment:
   quizzes:
     - question: "instrumentation.ts ファイルで export する関数は次のうちどれか？"

@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2hoMlP7jAUdlsA61AOIPMk/af4d13ee23c92d7e5b4b431e0c67e797/kappamaki_sushi_21468-768x670.png"
   title: "かっぱ巻きのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "if() 関数の引数のリストの区切りとして使われる文字は何か？"

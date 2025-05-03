@@ -9,6 +9,7 @@ tags: ["playwright"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/77dSVJERqRGtCCXn0Klcqi/3ce881e4a096b847fcf05aad50ada52c/6ph50kzxkz28u8jw482l.webp"
   title: "playwright"
+audio: null
 selfAssessment: null
 published: true
 ---

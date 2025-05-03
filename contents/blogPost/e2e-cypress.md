@@ -9,6 +9,7 @@ tags: ["cypress", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4uRtBocKePGUE7UUwBtaVa/c6499be195b0dc6f56b827c21f9a4b30/cypress-1324440144114984250.png"
   title: "cypress"
+audio: null
 selfAssessment: null
 published: true
 ---

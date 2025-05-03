@@ -7,6 +7,7 @@ createdAt: null
 updatedAt: null
 tags: []
 thumbnail: null
+audio: null
 selfAssessment: null
 published: false
 ---

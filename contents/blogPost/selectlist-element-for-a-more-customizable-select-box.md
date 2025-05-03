@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/gY5tjBwUAnQVOYk51hh8Q/e169b20088791c364a1e3221400318a1/matsutake_kinoko_illust_1042.png"
   title: "松茸のイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

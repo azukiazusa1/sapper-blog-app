@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2TfY5fo7F8nvBZlAVkYrFJ/a287483f133a6385f6267f0fd28421a5/_Pngtree_small_fresh_blue_splash_3447297.png"
   title: "small fresh blue splash"
+audio: null
 selfAssessment: null
 published: true
 ---

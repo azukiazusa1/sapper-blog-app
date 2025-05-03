@@ -9,6 +9,7 @@ tags: ["Vue.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6VNUyPtmK0OyhUZ47iAu2R/e6e54f19bf6f82a50199f8e8434a8c22/___Pngtree___shine_jewelry_white_diamond_5318738.png"
   title: "white diamond"
+audio: null
 selfAssessment: null
 published: true
 ---

@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5J9CZJmXmgGyZGgWhHTRg7/94c94bbfbbfd9a56715a2df5c36a7d62/_Pngtree_japanese_temple_2751470.png"
   title: "—Pngtree—japanese temple_2751470.png"
+audio: null
 selfAssessment: null
 published: true
 ---

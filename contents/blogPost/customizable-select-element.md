@@ -9,6 +9,7 @@ tags: ["HTML", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1gSl8JnUUlLEqKFeUBFgVP/9d02b79e906461a34bab8ce1cc5f4102/sanma-shichirin_20705-768x729.png"
   title: "サンマと七輪のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "カスタマイズ可能な `<select>` 要素を利用するためにはどのような CSS を指定する必要があるか？"

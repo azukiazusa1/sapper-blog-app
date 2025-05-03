@@ -9,6 +9,7 @@ tags: ["", "", "Vue.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
   title: "Vue.js"
+audio: null
 selfAssessment: null
 published: true
 ---

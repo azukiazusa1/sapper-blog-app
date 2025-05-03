@@ -9,6 +9,7 @@ tags: ["Hono", "OpenAI", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3KIAnqvoojslYIa5b1babv/2a1a5729b81bde5fb21422c1f7a00be7/pellet-stove_illust_1774.png"
   title: "ストーブのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

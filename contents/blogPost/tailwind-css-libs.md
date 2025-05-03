@@ -9,6 +9,7 @@ tags: ["Tailwind CSS", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/gh9XgOuZkUdQY8ebsYHZi/b26c4bd4704ab402ac37f212bf95286c/handy-fan_15841.png"
   title: "ハンディファンのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

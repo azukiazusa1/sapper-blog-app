@@ -9,6 +9,7 @@ tags: ["Bun"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/GZtUH0YNwJDZcr4s3abGT/a1998e60dbb178a36306821891c4db04/seiro_meat-bun_15091.png"
   title: "蒸したてホクホクの肉まんのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

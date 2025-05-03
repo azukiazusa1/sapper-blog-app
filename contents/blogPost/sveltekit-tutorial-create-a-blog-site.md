@@ -9,6 +9,7 @@ tags: ["", "SvelteKit"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7mdm4EnhrzOR58aNNAkpJd/d0e06570e684bf7f3337fd8fb323ad1b/fuusha_6155-768x748.png"
   title: "青空と風車のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "SvelteKit のルーティングにおいて、ページを定義するファイル名はどれか？"

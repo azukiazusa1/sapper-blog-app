@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/z41m0XjV0V1eJDTKKEbsd/9f215d6470af68a95abbbd417594d834/yakiimo_16655-768x729.png"
   title: "yakiimo 16655-768x729"
+audio: null
 selfAssessment:
   quizzes:
     - question: "`<dialog>` 要素の Light dismiss 機能を実現するための属性はどれか？"

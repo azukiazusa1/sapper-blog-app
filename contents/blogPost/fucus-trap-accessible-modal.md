@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2fnYK4McTOVwoOcE9bd6fk/134ffadfac1e4fd50ce0e1c58b41d298/modal2.gif"
   title: "modal2"
+audio: null
 selfAssessment: null
 published: true
 ---

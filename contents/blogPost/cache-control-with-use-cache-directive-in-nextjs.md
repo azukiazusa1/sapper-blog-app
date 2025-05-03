@@ -9,6 +9,7 @@ tags: ["Next.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5IHFOKe4B4op2Lswy5oV5L/8492e6c2a69e71e860cfef85adfba655/bird_kamo_susuki_11286.png"
   title: "すすきとカモのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Next.js で `dynamicIO` フラグを有効にしている場合、キャッシュの有効期限を指定するために使用する関数はどれか？"

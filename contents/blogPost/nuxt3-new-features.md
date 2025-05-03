@@ -9,6 +9,7 @@ tags: ["Nuxt.js", "Vue.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1k06xmemaflciysjQUGW5a/93ff22b895d94d261db91155376c7db8/b23f135d4e.png"
   title: "b23f135d4e"
+audio: null
 selfAssessment: null
 published: true
 ---

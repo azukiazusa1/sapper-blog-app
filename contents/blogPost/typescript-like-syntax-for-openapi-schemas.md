@@ -9,6 +9,7 @@ tags: ["", "OpenAPI", "TypeSpec"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4efwBKKVHcvQTjB8X6RLXA/947fcf1f6d7186446795e94c7f48f2cd/down-jacket_14978.png"
   title: "ダウンジャケットのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

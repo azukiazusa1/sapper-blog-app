@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4218OVTiHNkM4d9CORGRAE/e548eb3c3eef448d0be93c7b74d04f42/cute_katatsumuri_illust_3236-768x580.png"
   title: "cute katatsumuri illust 3236-768x580"
+audio: null
 selfAssessment:
   quizzes:
     - question: "既定の CSS トランジションのルールではアニメーションが適用されず、`@starting-style` ルールを使用することで解決できるプロパティはの変化はどれか？"

@@ -9,6 +9,7 @@ tags: ["SvelteKit", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2JoFak2DQvCgUZF7FHWIBD/60bb32f80539f0b04a255b4086ac2b65/_Pngtree_game_gradient_progress_bar_4478927.png"
   title: "progress-bar"
+audio: null
 selfAssessment: null
 published: true
 ---

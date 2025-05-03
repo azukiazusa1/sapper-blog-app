@@ -9,6 +9,7 @@ tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4qmIo0fNFrCSmWKYPGDg2F/437a4accde9eeb74d24a38b4d01b95db/zarigani_11347-768x591.png"
   title: "ザリガニのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "useOptimistic に関する説明として正しいものはどれか？"

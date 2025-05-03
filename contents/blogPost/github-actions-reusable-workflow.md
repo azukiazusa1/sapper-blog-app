@@ -9,6 +9,7 @@ tags: ["GitHub Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1BnO7xzpLIkHQYeR0QssrZ/18db8d8010f0205033a704d5a35af522/canned-snow-crab_14713-768x729.png"
   title: "蟹の缶詰のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "再利用可能なワークフローを作成するためにはどのキーを使用するか？"

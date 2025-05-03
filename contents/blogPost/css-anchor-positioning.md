@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1EPm4o37p3DUb9Cbyd9hfm/caed52576bb54a5e721f1a201db29252/ikari_13001.png"
   title: "錨のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "アンカー要素を定義するために使用する CSS プロパティは何か？"

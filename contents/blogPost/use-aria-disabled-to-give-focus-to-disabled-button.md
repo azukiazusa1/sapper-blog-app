@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5xM7a4bU4UAjoESjJLKnAx/6ca06a421bf61062f54c086118db09d6/_Pngtree_three-dimensional_creative_shiny_hand-painted_champagne_5339039.png"
   title: "シャンパン"
+audio: null
 selfAssessment: null
 published: true
 ---

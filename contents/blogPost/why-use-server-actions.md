@@ -9,6 +9,7 @@ tags: ["Next.js", "Server Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6oHTYTyG6RM7lw4zKnsQE8/c17eb5c6d66837ffa57e49974a675fac/bird_hirenjaku_13695-768x640.png"
   title: "かわいいヒレンジャクのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

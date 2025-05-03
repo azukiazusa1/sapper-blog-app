@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1hJhnSPBTdd5dOh8MIJ6Yq/daac61a2f43b24424d106287e7fcbd15/kirikabu_kabutomushi_11493-768x709.png"
   title: "カブトムシと切り株のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "`@scope` ルール内でスコープのルート要素を指すために使用される擬似クラスはどれか？"

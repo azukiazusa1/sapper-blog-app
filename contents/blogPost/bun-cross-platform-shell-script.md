@@ -9,6 +9,7 @@ tags: ["Bun"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7nGrrwXuzklaglfdnuIFL0/fdc6513019150e05ddd8a9ff2a20f708/ozouni_shouyu_15837.png"
   title: "お雑煮のイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

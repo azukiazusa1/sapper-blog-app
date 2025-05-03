@@ -9,6 +9,7 @@ tags: ["Deno", "OpenTelemetry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/hmAh1y5HuIL0a3m4C7Kdz/dbc016aeb3125aa3c81c5994bc92d7a8/cute_brachiosaurus_8065.png"
   title: "ブラキオサウルスのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "OpenTelemetry の自動計装を有効にするにはどのような環境変数を設定する必要があるか？"

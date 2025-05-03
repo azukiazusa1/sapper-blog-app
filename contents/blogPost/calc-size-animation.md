@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5KmmkJ9bsVEjBZtfVTuf4q/164b74d0014bc1177449cdd146d5a2f9/shiromi_osashimi_7881-768x591.png"
   title: "shiromi osashimi 7881-768x591"
+audio: null
 selfAssessment:
   quizzes:
     - question: "details 要素の中身を対象とする疑似要素はどれか？"

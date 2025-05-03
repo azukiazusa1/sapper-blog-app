@@ -9,6 +9,7 @@ tags: ["React", "Waku", "React Server Components", "Server Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4CZrXiDdjmGeZjNFo8C5By/6290bfa40d2e48694226a037a6af6b23/spring_sanshoku_dango_6767.png"
   title: "桜と三色だんごのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

@@ -9,6 +9,7 @@ tags: ["Bun"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/qiJn07vZLe0gRr3flFimZ/9f5b5256457aba8db75ccbb44348e6b3/food_nikuman_illust_1755.png"
   title: "ほかほかの肉まんのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

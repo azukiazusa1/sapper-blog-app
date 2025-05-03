@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/rIrCdSMM1pXR4pp61lGTv/c7c6594769f433827d72de586a180f2c/tropical-juice_illust_3389.png"
   title: "tropical-juice illust 3389"
+audio: null
 selfAssessment:
   quizzes:
     - question: "画面サイズが 640px 以上の場合にスタイルを適用する CSS として正しいものはどれか？"

@@ -9,6 +9,7 @@ tags: ["Next.js", "React", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3UybJ6ZWSiiy4t2YQtrbUN/13eb7f0a4f5e33358768121d728d1982/squid_octopus_illust_1680-768x750.png"
   title: "イカとタコのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "nuqs においてクエリパラメーターを状態として扱うためのフックはどれか？"

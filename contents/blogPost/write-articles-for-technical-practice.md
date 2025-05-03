@@ -9,6 +9,7 @@ tags: ["開発"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/463myWORybDgtY7TwI9Kpo/3faf8b9c367bedc799adbe00de227dac/baseball_batter_boy_14672.png"
   title: "少年野球のバッターのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

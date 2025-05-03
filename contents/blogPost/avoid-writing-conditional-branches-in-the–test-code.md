@@ -9,6 +9,7 @@ tags: ["テスト", "Jest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5mxtkQ54D8YRqLc8id5ffZ/539aca91ff16e704f4f45485b5fcec10/_Pngtree_double_burger_2575943.png"
   title: "double burger"
+audio: null
 selfAssessment: null
 published: true
 ---

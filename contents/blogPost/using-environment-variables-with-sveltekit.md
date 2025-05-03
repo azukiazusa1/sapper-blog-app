@@ -9,6 +9,7 @@ tags: ["SvelteKit", "", "Vite"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7hhDeizKRjjvdi0FvzzElM/ecedf5a058ccfa563f17fbce948985f3/_Pngtree_vector_mountains_841767.png"
   title: "mountains"
+audio: null
 selfAssessment: null
 published: true
 ---

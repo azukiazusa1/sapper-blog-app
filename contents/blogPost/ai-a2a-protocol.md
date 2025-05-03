@@ -9,6 +9,7 @@ tags: ["AI", "A2A"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5JNMmLs2jO5p8IXs4ZwPuT/d810685bf58e2c6a3a81cdad670ebb65/mixnuts_13370-768x640.png"
   title: "ミックスナッツのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "AgentCard をホストするエンドポイントとして推奨される URL はどれか？"

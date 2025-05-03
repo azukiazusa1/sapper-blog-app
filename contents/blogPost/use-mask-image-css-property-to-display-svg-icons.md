@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6NdEsvayuQPax4e0d0BZmX/8774448df77f80818d57427f517f7a47/fruit_cat-melon_illust_4532-768x603.png"
   title: "マスクメロンのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "SVG 画像を表示する際に img 要素を使う際のデメリットとして正しいものはどれか？"

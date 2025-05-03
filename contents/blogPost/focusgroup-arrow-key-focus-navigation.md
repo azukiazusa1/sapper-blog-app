@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1O7pJ4CancGYPONNS7fexD/8e328193917523d13df3eb65319004a7/kinomi_donguri_illust_1034.png"
   title: "どんぐりのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

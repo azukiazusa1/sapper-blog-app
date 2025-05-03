@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3zdNYy46zgKqtSKzqQj5wW/9655002afba9045d3d2331f235084da3/wagashi_yatsuhashi_11036-768x542.png"
   title: "wagashi yatsuhashi 11036-768x542"
+audio: null
 selfAssessment:
   quizzes:
     - question: "CloseWatcher のインスタンスで close request を購読するためのプロパティはどれか？"

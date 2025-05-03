@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/38bhfWoHjLRISI99Hevjdx/c53728dc664036f5316ec3a80b5a2df1/visual-home.jpg"
   title: "visual-home"
+audio: null
 selfAssessment: null
 published: true
 ---

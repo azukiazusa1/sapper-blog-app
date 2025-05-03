@@ -9,6 +9,7 @@ tags: ["qwik", "qwik-city"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2fsleaKJlBIpyN2TiFGRZY/a357ef5bf101a7bf4062a6e55bd691d1/android-chrome-192x192.png"
   title: "Qwik"
+audio: null
 selfAssessment: null
 published: true
 ---

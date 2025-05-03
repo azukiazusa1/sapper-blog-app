@@ -9,6 +9,7 @@ tags: ["OpenAI", "Zod", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6Fhg3BTuLTTi4MMjH8qMZp/8274b54dc6b8300a4369a1b7e862518b/cute_yukidaruma_kamakura_11517-768x689.png"
   title: "かわいい雪だるまとかまくらのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Node.js 向けの OpenAI SDK で構造化された出力を扱うために使用するパラメータ名として正しいものはどれか?"

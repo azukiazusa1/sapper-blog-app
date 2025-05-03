@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2dIAKpm7Y9ogvW4OkIYzZ6/1ca0942de03dde369d3c7d5647ef9146/hakubishin_masked-musang_18420.png"
   title: "ハクビシン"
+audio: null
 selfAssessment: null
 published: true
 ---

@@ -9,6 +9,7 @@ tags: ["Remix", "React", "Vite"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1iHj52uiyVL7aWghdvgF35/3f40de12f4d9a942af3f0d690a9a04d0/winter_yuki-usagi_illust_1803.png"
   title: "雪うさぎのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

@@ -9,6 +9,7 @@ tags: ["Next.js", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2f5DWYmpUm8NH4pVgXZefW/7503480fd589bfe618383b8020ffdacb/bike_goggles-helmet_15989-768x768.png"
   title: "ゴーグル付きのヘルメットのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Next.js で型安全なルーティングを有効にするため必要な条件として、当てはまらないものはどれか？"

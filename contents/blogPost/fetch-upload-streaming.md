@@ -9,6 +9,7 @@ tags: ["", "Fetch"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
   title: "JavaScript"
+audio: null
 selfAssessment: null
 published: true
 ---

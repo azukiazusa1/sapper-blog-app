@@ -9,6 +9,7 @@ tags: ["React", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5G85deKmS7cjf2IVZGQhX2/e3998cde3c053c249644c25c5909d610/________________________.jpeg"
   title: "アコーディオン"
+audio: null
 selfAssessment: null
 published: true
 ---

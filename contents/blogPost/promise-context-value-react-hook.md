@@ -9,6 +9,7 @@ tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/h9e0lS5nchLizCA53q8VX/eaa63ff30823317a38bd79f85f384d50/sakura_hanabira_illust_2837-768x656.png"
   title: "桜の花びらのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "次のうち、`use` フックの引数として渡せないものはどれか？"

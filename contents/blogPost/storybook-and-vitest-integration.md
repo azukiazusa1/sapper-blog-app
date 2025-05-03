@@ -9,6 +9,7 @@ tags: ["storybook", "Vitest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1H045Ib8GgFJzLFn2eqfJ6/3d6e6093d220e641143e50b5488a9d3d/sweets_mont-blanc_cake_illust_3604-768x620.png"
   title: "モンブランケーキのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Storybook と Vitest を連携するために使われるコマンドとして最適なものはどれか？"

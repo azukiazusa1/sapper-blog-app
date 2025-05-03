@@ -9,6 +9,7 @@ tags: ["Rust"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4F5i0hDzQGUebgQJyMLvRt/12f1c0e03fd5f3aec0a7720f02e59f35/Rust_programming_language_black_logo.svg.png"
   title: "rust"
+audio: null
 selfAssessment: null
 published: true
 ---

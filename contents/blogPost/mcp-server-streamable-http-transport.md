@@ -9,6 +9,7 @@ tags: ["AI", "MCP", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2CYinTWmO54Yx2PYPWZ3q/7b71d6f8e2a9b26191405f7acc027857/desert_chocolate-sundae_16898.png"
   title: "チョコレートサンデーのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "ステートフルなサーバーを実装する場合に、セッション ID を管理するために使用される HTTP ヘッダーは何ですか？"

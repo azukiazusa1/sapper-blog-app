@@ -9,6 +9,7 @@ tags: ["OpenFeature", "React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7gUvQ0TLoUwDnc4MlLHGJj/ed3f4216df5665019a9b6eab54ee7a7f/kakigoori-hata_illust_3368.png"
   title: "かき氷旗のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "OpenFeature の React SDK でフィーチャーフラグが評価された値を取得するためのフックはどれですか？"

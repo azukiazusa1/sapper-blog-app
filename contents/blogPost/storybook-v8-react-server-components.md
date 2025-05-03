@@ -9,6 +9,7 @@ tags: ["storybook", "React", "React Server Components", "Next.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1KsxS6Ik4SjTKxllnuDYes/942fa2154243b3890c8e99e47e927cae/fireplace_renga_danro_illust_4172.png"
   title: "レンガの暖炉のイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

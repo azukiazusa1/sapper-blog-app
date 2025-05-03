@@ -9,6 +9,7 @@ tags: ["アクセシビリティ", "playwright", "axe-core"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3pfSP2fqMVe8dBFrSr6nb3/61460327030e9f0431049f4794cfa43c/pudding_illust_3656.png"
   title: "pudding illust 3656"
+audio: null
 selfAssessment:
   quizzes:
     - question: "特定のルールにおる違反を無視してアクセシビリティテストを実行するためのメソッドはどれか？"

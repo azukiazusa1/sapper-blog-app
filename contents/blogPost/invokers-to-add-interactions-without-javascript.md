@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3zkGp3ZkX4p7ExPUT1ZvhJ/513dd954ebf55d5a8cad38b534bacd39/susuki_suzumushi_11223.png"
   title: "鈴虫とススキのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

@@ -9,6 +9,7 @@ tags: ["", "standard-schema", "Zod"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5yEMyHee08BxW88Gl44V3b/08e17d7594b2f7ffb74d20f9a70979a3/Japanese-castle_6153-768x728.png"
   title: "日本のお城のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "`StandardSchemaV1` インターフェイスの [~standard].validate() メソッドの結果の成否はどのように判定されるか？"

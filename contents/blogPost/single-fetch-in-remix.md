@@ -9,6 +9,7 @@ tags: ["Remix"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4DVzjypAQSqn27JG6jP3tf/b202d3977496f29ced7c06adcb655e8e/wagashi_kashiwamochi_illust_3195-768x672.png"
   title: "柏餅のイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

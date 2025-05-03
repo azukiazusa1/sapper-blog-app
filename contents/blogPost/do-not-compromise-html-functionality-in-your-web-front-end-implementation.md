@@ -9,6 +9,7 @@ tags: ["HTML", "アクセシビリティ", "React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/twgcVOWA9HjJC68kQLWeM/76bbd55bc8d4f55e1d7963bc19954fe9/_Pngtree_creative_christmas_snowman_8618319.png"
   title: "雪だるま"
+audio: null
 selfAssessment: null
 published: true
 ---

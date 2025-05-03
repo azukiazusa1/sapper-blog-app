@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/uQLyqz3fxCsDd6MRxmews/8b7cad4f67f60c3629805c51fec95a42/container-ship_13264.png"
   title: "コンテナ船のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "コンテナクエリ単位の説明として誤っているものはどれか？"

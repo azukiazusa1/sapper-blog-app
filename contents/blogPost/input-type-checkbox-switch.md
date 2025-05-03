@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7JMBg7AGfyKjOq5A9IKtCB/6b734f49345ec2e4d71a1f3136154b30/christmas_tonakai_5266.png"
   title: "赤い鼻のトナカイのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

@@ -9,6 +9,7 @@ tags: ["", "Webpack", "マイクロフロントエンド"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5NT8E7PgZDxasOSSy1i8Ms/8e071586104d34a79016773c1d45e90f/__________________________4_.png"
   title: "webpack"
+audio: null
 selfAssessment: null
 published: true
 ---

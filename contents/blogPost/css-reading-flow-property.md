@@ -9,6 +9,7 @@ tags: ["", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/BIHrVgoOfq5nkcwL38xXF/229f6f8c22993fa4afb3f1b18a3a671e/river-fishing_13259.png"
   title: "川釣りのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Flex コンテナ内の要素の読み上げ順を制御するためのプロパティはどれか？"

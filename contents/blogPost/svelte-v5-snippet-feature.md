@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6lfMvi62wyl8rRoC32uJ1H/1ea1384cdc7bdad3c9b97bb3a8f62681/food_futomaki_cut_4755-768x609.png"
   title: "カットされた太巻きのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "スニペットを宣言する際に使用するディレクティブはどれか？"

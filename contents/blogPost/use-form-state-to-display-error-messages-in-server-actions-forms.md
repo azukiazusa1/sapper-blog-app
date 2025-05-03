@@ -9,6 +9,7 @@ tags: ["Next.js", "React", "Server Actions"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/YErqIySvXsd4mGGI3aFbR/90972f0bba3c38b98865035cf614bb06/halloween_ghost_illust_1172.png"
   title: "ハロウィンのおばけのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

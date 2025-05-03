@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2wU8OGC4USfW6p0wP3Nafz/a9c2a6b42034cebaa570cfe963988943/graph_fukugou_illust_3678.png"
   title: "折れ線の複合グラフのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

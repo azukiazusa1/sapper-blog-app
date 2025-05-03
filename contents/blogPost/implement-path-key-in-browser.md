@@ -9,6 +9,7 @@ tags: ["セキュリティ", "WebAuthn", "パスキー"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5d88yYF5D3BDifuwlZcIKK/b476f43d366a486c026796636fed81c9/key_smart-tag_15599.png"
   title: "キーとスマートタグのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "ブラウザでパスキーを作成するために使われるメソッドはどれか？"

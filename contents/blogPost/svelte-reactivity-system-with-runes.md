@@ -9,6 +9,7 @@ tags: ["", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3DiWpMzhc1IffEvBT6dLbT/04824286f622909e107d811312400178/magic-circle_5540-768x768.png"
   title: "魔法陣のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Runes において、リアクティブな変数を宣言するために使用する関数はどれか？"

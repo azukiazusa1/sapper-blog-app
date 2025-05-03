@@ -9,6 +9,7 @@ tags: ["GitHub Actions", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/r6513NBn4sCbGq4sYPhA0/02c228b5c22ce862bbf3c24a62ff86c8/wheelchair-symbol_267f.png"
   title: "accesibility"
+audio: null
 selfAssessment: null
 published: true
 ---

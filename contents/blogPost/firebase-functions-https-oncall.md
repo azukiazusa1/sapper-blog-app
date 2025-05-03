@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/44W4bTCfa2vT60k8cr4bpy/bbc60b09e00fa77e02cea2012006e896/firebase-cloud-functions.jpeg"
   title: "firebase-cloud-functions"
+audio: null
 selfAssessment: null
 published: true
 ---

@@ -9,6 +9,7 @@ tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4LXuBOcOcy8qk7llZURFa3/f31fcdaa3a5f0ea1bb84c9267e2e5eaa/sobauchi_illust_3930-768x768.png"
   title: "sobauchi illust 3930-768x768"
+audio: null
 selfAssessment:
   quizzes:
     - question: "`<ViewTransition>` コンポーネントを使用した場合、直近の子コンポーネントに対して何が追加されるか？"

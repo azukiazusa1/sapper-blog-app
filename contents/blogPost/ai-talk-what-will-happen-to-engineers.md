@@ -9,6 +9,7 @@ tags: ["AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1ujvqJR5lywvXX7jSjvWqk/daa71d13c679d8b1cfdd11d37e5761c4/fruit-tart_21677-768x630.png"
   title: "フルーツタルトのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "AI 時代において、インタビュー対象者が重要度が増すと考えているスキルは何ですか？"

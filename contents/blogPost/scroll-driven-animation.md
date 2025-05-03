@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/NuUlK0j73dc9UzGCLdWR2/c1e4a3d559c7c609ef238d88f83f0b46/winter_image_yuki-usagi_14924.png"
   title: "雪のうさぎ冬の夜のイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

@@ -9,6 +9,7 @@ tags: ["Vue.js", "Nuxt.js", "Sentry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2ZX9dm3CTG5TopZ3a6ueL6/835658999c0b4b2ed24ccc2adc5906a5/Sentry.png"
   title: "Sentry"
+audio: null
 selfAssessment: null
 published: true
 ---

@@ -9,6 +9,7 @@ tags: ["書評"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5KMA5I5GYSyDH5lx4XL1uK/a94afb10ce498f79dff3b1d592fbaf3b/mori-soba_16471.png"
   title: "もり蕎麦のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "このブログの筆者が 2024 年に読んだ本の数はおおよそ何冊でしょうか？"

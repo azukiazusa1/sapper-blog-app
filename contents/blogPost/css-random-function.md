@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1bqQw9rxgBjXq2OvYb7nxZ/d9ba71d9cc533138ddff7430f3d8acfb/omikuji_6573.png"
   title: "omikuji 6573"
+audio: null
 selfAssessment:
   quizzes:
     - question: "以下の `random()` 関数の引数に渡す値のうち、無効なものはどれか？"

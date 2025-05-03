@@ -9,6 +9,7 @@ tags: ["", "ESLint", "Baseline"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7d5QDjhTKC9bvIJVOqNWwY/16958dae8788f839969904dd9000d208/various-chocolates_12311.png"
   title: "バレンタインチョコレートのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Baseline でサポートされていない CSS プロパティや値を検出するための ESLint/CSS ルールは何か？"

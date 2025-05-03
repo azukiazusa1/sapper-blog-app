@@ -9,6 +9,7 @@ tags: ["", "Chrome", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1l2sqXdm4Hrfmzo7c57px2/1f3ea88590d92e50838343c17fe50545/electric-guitar_monochrome_8878.png"
   title: "白黒のエレキギターのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Gemini Nano が利用可能かどうかを確認する方法はどれか？"

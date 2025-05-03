@@ -9,6 +9,7 @@ tags: ["Jest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1heYpRmzwajvNTwZ04dXNT/696cb14cdc33a40d080857e416adf5c9/____________________________2022-09-25_12.47.28.png"
   title: "スクリーンショット 2022-09-25 12.47.28"
+audio: null
 selfAssessment: null
 published: true
 ---

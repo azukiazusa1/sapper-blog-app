@@ -9,6 +9,7 @@ tags: ["アクセシビリティ", "WAI-ARIA", "HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7unyOllrNTdGl3x37kAQBc/b6e01150e83eb40a69eae4a1604249cd/nekocatPAR584702405_TP_V4.jpg"
   title: "パソコンの前で寝てる猫"
+audio: null
 selfAssessment: null
 published: true
 ---

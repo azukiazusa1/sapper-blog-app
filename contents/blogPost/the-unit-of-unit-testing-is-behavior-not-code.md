@@ -9,6 +9,7 @@ tags: ["テスト", "React", "Vitest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7vr2dhVbVTOGBUFDt0UWaI/f443311d83eb861b3e5b35552040d55f/_Pngtree_books_3703567.png"
   title: "books"
+audio: null
 selfAssessment: null
 published: true
 ---

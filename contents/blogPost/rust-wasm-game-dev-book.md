@@ -9,6 +9,7 @@ tags: ["Rust", "WebAssembly", "書評"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/iKyk7yx16RAbEZ7t26n8y/90db505fc06729d9f9ca6922ce894739/matsubagani_10878.png"
   title: "松葉ガニ"
+audio: null
 selfAssessment: null
 published: true
 ---

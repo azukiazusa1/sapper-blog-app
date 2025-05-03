@@ -9,6 +9,7 @@ tags: ["AI", "Mastra", "OpenTelemetry", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5m9GakLihc997ujoamvxZ3/7341ffcb10a2b431fe089f5da95f718e/chocolate-mousse-cake_17001-768x768.png"
   title: "チョコレートムースのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Mastra でツールを作成する方法として正しいものはどれか？"

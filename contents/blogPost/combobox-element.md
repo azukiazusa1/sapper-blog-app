@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4iPhizXr67YiwF2rEDUN4s/1ebad5ee0a7515b18d4f526db3a756c6/castella_15340.png"
   title: "カステラのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

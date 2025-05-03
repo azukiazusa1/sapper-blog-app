@@ -9,6 +9,7 @@ tags: ["HTML", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6clMAwu1vaGtVLH2ouWoTF/90a5607f714e11b6bf114687d6c76111/akatonbo_yuuhi_illust_1074.png"
   title: "真っ赤な夕日と赤とんぼのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

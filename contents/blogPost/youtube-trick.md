@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1Rrq4dYjjLnClW3LUAFbCE/203a9b8bde93b1b61252b0ed4fb9df99/____________________________2021-11-14_12.49.32.png"
   title: "スクリーンショット 2021-11-14 12.49.32"
+audio: null
 selfAssessment: null
 published: true
 ---

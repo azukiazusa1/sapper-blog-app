@@ -9,6 +9,7 @@ tags: ["Next.js", "AI", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1b8vONvIjaZxs8R2oyGQSe/ece7af15f4324f145ab2ed8e977879aa/fruitsand_strawberry_13168-768x620.png"
   title: "いちごのフルーツサンドのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Vercel AI SDK においてストリームでテキストを生成する関数は次のうちどれか？"

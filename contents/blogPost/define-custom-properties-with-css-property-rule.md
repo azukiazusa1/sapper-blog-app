@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6XPepRCNVx6UbiH3LhkvCN/c0c1f29eca8869d867f84c68117f69b3/sea_surfing_9367.png"
   title: "海とサーフボードのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "`@property` ルールにおいて初期値を設定するために使用するフィールドはどれか？"

@@ -9,6 +9,7 @@ tags: ["", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1GY9JhecokyNHOpl057BZR/c17178d7be348824769e0d5374c5e5ad/b-dama_colorful_18382.png"
   title: "カラフルなビー玉のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "通常時はアウトラインを非表示にして、ハイコントラストモードでフォーカスリングを表示する実装方法はどれか？"

@@ -9,6 +9,7 @@ tags: ["Git", "VSCode"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4HV8SpNNeNwZdXDBcSPbmW/8a66851f3c7748d7bb842ad5f3dad622/halloween_pumpkin_6455.png"
   title: "ハロウィンのかぼちゃのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

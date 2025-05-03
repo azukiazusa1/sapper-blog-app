@@ -9,6 +9,7 @@ tags: ["React", "React Aria", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5z1eT7C07mG8RBqG4W9fz5/0eac5c590cdb31a4395101081a526cb0/softcream_maccha_illust_3682.png"
   title: "抹茶のソフトクリームのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "<Menu> コンポーネントにデフォルトで付与されるクラス名は何ですか？"

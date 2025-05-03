@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3A2zM9GF85BLVk3J3xTzNl/824927968b2063d4f7178ff0967ea6c7/___Pngtree___international_day_of_yoga_with_5387176.png"
   title: "international day of yog"
+audio: null
 selfAssessment: null
 published: true
 ---

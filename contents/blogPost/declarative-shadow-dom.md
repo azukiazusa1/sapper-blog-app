@@ -9,6 +9,7 @@ tags: ["", "Web Components"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6WxinEzAH94ePMLyqRlYRM/3653adc2ffb0f76dde660d87c538e298/bats-halloween_20798-768x591.png"
   title: "ハロウィンのコウモリのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "宣言型 Shadow DOM はどの要素を使用して Shadow DOM を構築するか？"

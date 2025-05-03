@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/60sgROl1HDyfT8JBv1y7vY/cf334b2265f7bd1488cef4acfa8dea39/bird_cute_benimashiko_10921-768x591.png"
   title: "ベニマシコのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "`@layer reset, components, utilities;` で定義されたレイヤーで最も優先されるレイヤーはどれか"

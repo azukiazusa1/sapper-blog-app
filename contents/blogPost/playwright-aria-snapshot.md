@@ -9,6 +9,7 @@ tags: ["playwright"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/tiNLsC5W4FyTSVop1ipSt/d952f01bf57e9d08592540dd08aa4049/toudai_sea_9886-768x630.png"
   title: "灯台と海の風景のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Playwright でアクセシビリティツリーのスナップショットテストを行うメソッドは次のうちどれか？"

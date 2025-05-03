@@ -9,6 +9,7 @@ tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/516xpMCy886VKyeH8rqNNS/801ec7599d233d7f6e0aeb32442c7c3b/cute_frog_melody_11441.png"
   title: "雨の中歌っているかわいいカエルのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

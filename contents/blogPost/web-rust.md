@@ -9,6 +9,7 @@ tags: ["Rust", "Yew"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/79b4Pw5CDux1cMaTBi224f/3e993498c3f4c30a18a2164a4947c9ee/________________________.png"
   title: "rust"
+audio: null
 selfAssessment: null
 published: true
 ---

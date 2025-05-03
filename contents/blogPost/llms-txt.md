@@ -9,6 +9,7 @@ tags: ["AI", "llms.txt"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2O9u8W8yypxBiQYobBg5rE/61687a886ae009c774922741ed65b56f/crows-conversation_21330-768x591.png"
   title: "会話してるカラスのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "llms.txt はどの形式で記述されるか？"

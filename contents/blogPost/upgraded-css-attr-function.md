@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6wzaMJqECxJhZnxu6P09gx/17378b55dd5eb61ff1cd6a294a4d9930/negi_nabe_11559-768x689.png"
   title: "ネギ鍋のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "CSS の `attr()` 関数で `data-color` 属性を `<color>` 型に解析する記述方法として正しいものはどれか"

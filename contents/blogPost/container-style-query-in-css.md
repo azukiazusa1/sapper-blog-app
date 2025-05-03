@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7439inVTcQXUvjyo9Fm80E/ecacb8aa7e8d241e6568a1aa5b663daf/takenoko_illust_3126-768x578.png"
   title: "たけのこのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "コンテナスタイルクエリーでスタイルを適用するためのルールはどれか？"

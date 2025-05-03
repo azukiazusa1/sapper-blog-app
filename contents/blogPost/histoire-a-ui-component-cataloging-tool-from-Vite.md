@@ -9,6 +9,7 @@ tags: ["Vue.js", "Histoire"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/VtA12UmYSnuVCHdFqa96V/390679a1977d3e5f9bc88369fa249eae/histoire.svg"
   title: "histoire"
+audio: null
 selfAssessment: null
 published: true
 ---

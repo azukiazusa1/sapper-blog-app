@@ -9,6 +9,7 @@ tags: ["開発", "設計"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/sICKxR0RcZi9MYSne4PgX/27896624906f97cd645cb0138b810fa1/card-games_spade_illust_1315.png"
   title: "スペードのエースのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

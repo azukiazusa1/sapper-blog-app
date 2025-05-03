@@ -9,6 +9,7 @@ tags: ["HTML", "Open UI", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/10SqxdMAu3IfqTRI3fWHyO/21cd23fd87afa920c8ceb5587ba2a15e/takowasabi_15883-768x630.png"
   title: "たこわさびのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Press Button Proposal でボタンを押し込まれた状態を表現するために追加される属性は何か？"

@@ -9,6 +9,7 @@ tags: ["pnpm"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4W0CyRHD4pEMDDGjyFl3iz/5f4531162591220d474df7a97f15d8af/flower_mizubashou_16637.png"
   title: "水芭蕉"
+audio: null
 selfAssessment: null
 published: true
 ---

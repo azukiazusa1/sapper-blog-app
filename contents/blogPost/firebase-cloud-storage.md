@@ -9,6 +9,7 @@ tags: ["Vue.js", "", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/57MXX73Nx2rUnUI730EykA/8d13236943bb46948155f92f2325369e/firebase.png"
   title: "firebase"
+audio: null
 selfAssessment: null
 published: true
 ---

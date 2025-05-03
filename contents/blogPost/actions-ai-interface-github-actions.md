@@ -16,20 +16,18 @@ selfAssessment:
       answers:
         - text: "models: read"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "contents: read"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ai: read"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "pull-requests: write"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [actions/ai-interface](https://github.com/actions/ai-inference) は GitHub Actions のワークフローから [GitHub Models](https://docs.github.com/ja/github-models) を呼び出すための公式のアクションです。これを使用することで CI/CD のワークフローから AI モデルを簡単に利用できるようになります。
 
 ## 使用例

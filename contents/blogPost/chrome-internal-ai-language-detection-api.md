@@ -9,6 +9,7 @@ tags: ["", "Chrome", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4HU2SvM3QCahNp1DeKtSdG/211aa4dde7f5ca4499f879c6c687d6d8/halloween-lanthanum-ghost_20763-768x729.png"
   title: "ハロウィンのランタンを持ったおばけのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Language Detection API が利用可能かどうかを確認するためにはどの関数を呼び出すか？"

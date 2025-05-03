@@ -9,6 +9,7 @@ tags: ["Open UI", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4B5sL7jJG1YvPKE42Cx2V3/4c628857bcebdd5589a115bde1517c93/cute-tonakai_20958-200x200.png"
   title: "走っているトナカイのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "HTML 属性を使用したアプローチで使われる 2 つの属性は何か？"

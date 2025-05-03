@@ -9,6 +9,7 @@ tags: ["AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4fVhQUkjvXOQPwwVPBOYAq/58dec4a6e58deb5dbf4e62d07e5bdc24/yatai_oden_11993-768x591.png"
   title: "yatai oden 11993-768x591"
+audio: null
 selfAssessment:
   quizzes:
     - question: "AI エディター Cursor はどのエディタをフォークして作られているますか？"

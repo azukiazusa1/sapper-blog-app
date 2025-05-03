@@ -9,6 +9,7 @@ tags: ["Kubernetes"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4NwI8gjd802es2aMCmWay7/5b1d1468d43c4ffc3623b33decec3eea/k8s.png"
   title: "kubernets"
+audio: null
 selfAssessment: null
 published: true
 ---

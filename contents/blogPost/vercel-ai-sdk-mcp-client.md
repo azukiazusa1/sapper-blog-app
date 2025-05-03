@@ -9,6 +9,7 @@ tags: ["AI", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1tQJuTWklgBmxogx9RdjXi/2be6a25c36a87f03835c05c28ce449fa/fish_cute_scribble-angel_10336-768x601.png"
   title: "かわいいスクリブルドエンゼルのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "MCP クライアントを初期化するために使用された関数は何か"

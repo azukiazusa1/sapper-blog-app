@@ -9,6 +9,7 @@ tags: ["npm"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7LZpgl7jmdtB93nBs7HB98/49ead821e5e3b8c7468e4d6b05b28631/myouga_17117.png"
   title: "みょうがのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

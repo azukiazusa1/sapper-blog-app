@@ -9,6 +9,7 @@ tags: ["AI", "MCP", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/16K7GmPXRkobDJWcBxnSJM/9703dc7f848eb53bdb4a6bf5f1095c41/frozen-food_pizza_21526-768x729.png"
   title: "冷凍食品のピザのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "MCP（Model Context Protocol）の主な目的は何ですか？"

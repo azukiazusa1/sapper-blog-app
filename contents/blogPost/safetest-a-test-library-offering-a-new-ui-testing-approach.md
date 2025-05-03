@@ -9,6 +9,7 @@ tags: ["テスト", "playwright", "Jest", "Vitest", "SafeTest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5WK06VVQT5RTHDCT00Savz/061569f5f920b0bb314547c03ca3b25e/movie-theater_9205.png"
   title: "映画館のイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

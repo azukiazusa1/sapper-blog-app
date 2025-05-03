@@ -9,6 +9,7 @@ tags: ["React", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6UKhA7p9mC4BGDDc6bgNFp/8161de3f28245b8ab40795184e0f6e62/momiji_kouyou_11157.png"
   title: "イチョウのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

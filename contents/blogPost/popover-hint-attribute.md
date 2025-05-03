@@ -9,6 +9,7 @@ tags: ["HTML", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/A8RqJOVzwDWoeB5TdGtJC/27dfae6d55b286533a39a15774ed896d/kotatsu_mikan_illust_1797-768x603.png"
   title: "kotatsu mikan illust 1797-768x603"
+audio: null
 selfAssessment:
   quizzes:
     - question: "`popover=hint` 属性の特徴として正しいものはどれか？"

@@ -9,6 +9,7 @@ tags: ["Deno", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6fPJ5Ah5oHsWbvScuggrCh/899629af347facfc74e95006dae6b617/deno.png"
   title: "Deno"
+audio: null
 selfAssessment: null
 published: true
 ---

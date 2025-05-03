@@ -9,6 +9,7 @@ tags: ["アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4JFFKRkk8Ksbur77uGalUb/1f119a80793935e755da0fd408319565/uchiage-hanabi_illust_3306.png"
   title: "打ち上げ花火のイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

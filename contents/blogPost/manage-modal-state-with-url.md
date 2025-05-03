@@ -9,6 +9,7 @@ tags: ["React", "Next.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5Ekkx2HI8CGzI4EO8JJP3J/69d2554e1c746ddf8b07902393521da3/fish_sanma_5367.png"
   title: "fish sanma 5367"
+audio: null
 selfAssessment: null
 published: true
 ---

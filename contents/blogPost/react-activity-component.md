@@ -9,6 +9,7 @@ tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5eh9OWKiFwfxP12zoL52ma/9403355edfe4f3bfeada2a7aada33690/bird_hayabusa_falcon_13697-768x689.png"
   title: "ハヤブサのイラスト"
+audio: "https://videos.ctfassets.net/in6v9lxmm5c8/4CThApH2IGbhaDbu61aqv8/31962db963dc8c6c8e3a7cc7a5e5bb1c/React_Activity_%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E8%A9%B3%E8%A7%A3.wav"
 selfAssessment:
   quizzes:
     - question: "`<Activity>` コンポーネントが従来の条件付きレンダリングと異なる重要な点は何ですか？"

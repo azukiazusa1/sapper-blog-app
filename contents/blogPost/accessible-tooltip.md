@@ -9,6 +9,7 @@ tags: ["アクセシビリティ", "React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6pfSeWoPkJQo9YqAt3jomK/e1c7562eab9d5ab5e3ddcdf8ed773b18/_Pngtree_gold_coin_number_money_dollar_5324212.png"
   title: "gold"
+audio: null
 selfAssessment: null
 published: true
 ---

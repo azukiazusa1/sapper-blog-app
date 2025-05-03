@@ -9,6 +9,7 @@ tags: ["Bun", "モノレポ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6vupdPg1DUC2o3Be9Agbif/cd7129fe3ea1b6c359cf6227f160db5f/food_chuuka-man_9600-768x630.png"
   title: "中華まんのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

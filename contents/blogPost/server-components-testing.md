@@ -9,6 +9,7 @@ tags: ["Next.js", "React", "playwright", "テスト"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7tWQTtv8kLxXKOQz2ZW3uH/7ee0bb4945c1c5efb95a314685cf5552/kinoko_autumn_onpu_8930.png"
   title: "キノコと音楽のイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

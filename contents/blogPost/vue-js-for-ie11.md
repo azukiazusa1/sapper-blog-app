@@ -9,6 +9,7 @@ tags: ["Babel", "", "Vue.js", "IE11"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7dTaK0hk8bKcWr83rNUSEl/5d70107c16241398b941a7c05e035d9f/IE_symbol_Cyan_rgb.png"
   title: "ie11"
+audio: null
 selfAssessment: null
 published: true
 ---

@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/csohw4ouPaQG4zqoEiYMa/f537169c1916a02da33973932a6eea56/banrinochoujou_6743-768x605.png"
   title: "banrinochoujou 6743-768x605"
+audio: null
 selfAssessment:
   quizzes:
     - question: "scroll-state() が受け入れる名前として存在しないものはどれか？"

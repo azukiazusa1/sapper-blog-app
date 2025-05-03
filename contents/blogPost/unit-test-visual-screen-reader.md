@@ -9,6 +9,7 @@ tags: ["テスト", "アクセシビリティ", "Jest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/dHFPUP6FQS45HG2BkEWxP/5642c156a87dcc33bc94772896483c57/lamb-chops_9767-768x591.png"
   title: "ラムチョップのイラスト"
+audio: null
 selfAssessment: null
 published: true
 ---

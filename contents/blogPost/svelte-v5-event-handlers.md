@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/xBERA0jHZ420rvwgG6hQK/27f792a616ddcdbae832e2ab85c88b57/ball-juggling_male_20221.png"
   title: "ボールジャグリングをする男性のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Svelte v5 において、`on:click` の代わりとなるイベントハンドラの書き方はどれか？"

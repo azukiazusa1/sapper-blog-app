@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1oOuwue6Ki0IRZkFa6y6Qi/5359bf10fca29a24eaf9260cc78240bc/es2015-001.jpg"
   title: "JavaScript"
+audio: null
 selfAssessment: null
 published: true
 ---

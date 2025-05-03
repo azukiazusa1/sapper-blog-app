@@ -9,6 +9,7 @@ tags: ["", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/31Rh2eKOuOJQhiTAbpiUW4/905cac62d1c7739d6259f018ff4099a4/meteorite_inseki_illust_4635-768x691.png"
   title: "隕石のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "CSSStyleSheet インターフェースでスタイルシートの指定した位置に新しいルールを追加するメソッドはどれか？"

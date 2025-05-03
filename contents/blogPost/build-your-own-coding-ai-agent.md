@@ -9,6 +9,7 @@ tags: ["AI", "Node.js", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2Dl9yjAHAo2HjqcGvH8nWV/a25221e7b5afca84db5931d475e0e39c/tunnel-entrance_18403-768x591.png"
   title: "トンネルの入口のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "AI モデルが外界とやり取りを行うために使用するものは次のうちどれか"

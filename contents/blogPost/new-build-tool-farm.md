@@ -9,6 +9,7 @@ tags: ["Farm"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4DfgoHVxTQuVVAtFg03zu/004b498010998fb16d10c8ab4c7dff02/anmitsu_illust_3649.png"
   title: "あんみつのイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Farm のプラグインとしてサポートされていない言語はどれか？"

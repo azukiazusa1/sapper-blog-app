@@ -9,6 +9,7 @@ tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4ZtFORIkatlJkfuZwTLWUC/b2f96ca0fb8957f0524edf28983a9391/_Pngtree_rock_489662.png"
   title: "rock"
+audio: null
 selfAssessment: null
 published: true
 ---

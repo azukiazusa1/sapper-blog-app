@@ -9,6 +9,7 @@ tags: ["Vitest", "テスト"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5jIecuXE6KmUTSMGdvPWqz/5e1f1eefd7af16f915054d0aa29be50c/___Pngtree___summer_iced_lemon_tea_9054209.png"
   title: "summer iced lemon tea"
+audio: null
 selfAssessment: null
 published: true
 ---

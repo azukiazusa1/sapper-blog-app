@@ -9,6 +9,7 @@ tags: ["アクセシビリティ", "HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1gzQpdC9qiNXwyJeE7HaNr/36f59aef5a33e66fb7e197f92b2fabbc/school-sotsuygyou-shousho_illust_3123.png"
   title: "卒業証書のイラスト"
+audio: null
 selfAssessment:
   quizzes:
     - question: "フォームにアクセシブルな名前つける際に、最も適した方法はどれですか？"
