@@ -28,7 +28,7 @@ selfAssessment:
           explanation: null
 published: true
 ---
-[actions/ai-interface](https://github.com/actions/ai-inference) は GitHub Actions のワークフローから [GitHub Models](https://docs.github.com/ja/github-models) を呼び出すための公式のアクションです。これを使用することで CI/CD のワークフローから AI モデルを簡単に利用できるようになります。
+[actions/ai-inference](https://github.com/actions/ai-inference) は GitHub Actions のワークフローから [GitHub Models](https://docs.github.com/ja/github-models) を呼び出すための公式のアクションです。これを使用することで CI/CD のワークフローから AI モデルを簡単に利用できるようになります。
 
 ## 使用例
 
