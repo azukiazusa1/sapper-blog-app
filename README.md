@@ -2,6 +2,8 @@
 
 https://azukiazusa.dev
 
+[Deepwiki](https://deepwiki.com/azukiazusa1/sapper-blog-app)
+
 [Storybook](https://azukiazusa1.github.io/sapper-blog-app/)
 
 ## プロジェクトの構成
