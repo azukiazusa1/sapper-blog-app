@@ -72,7 +72,7 @@ jobs:
 
 このワークフローは `on: workflow_dispatch` によって GitHub Actions の UI から手動でトリガーできます。`inputs` を使用することにより手動実行する際にユーザー入力を受け取ることができます。ここで受け取った入力は AI モデルのプロンプトとして使用されます。
 
-`interference` ジョブでは `actions/ai-inference` アクションを使用して AI モデルを呼び出します。このアクションを使用するためには、`permissions` で `models: read` の権限を付与する必要があります。これは GitHub Models を読み取るための権限です。`prompt` には AI モデルに渡すプロンプトを指定します。ここでは `${{ github.event.inputs.prompt }}` を指定することで、手動実行時に入力されたプロンプトを使用しています。`model` には使用する AI モデルを指定します。デフォルトでは `gpt-4o` が指定されていますが、他のモデルも使用可能です。使用可能なモデルの一覧は [GitHub Models - Catalog](https://github.com/marketplace?type=models) を参照してください。
+`inference` ジョブでは `actions/ai-inference` アクションを使用して AI モデルを呼び出します。このアクションを使用するためには、`permissions` で `models: read` の権限を付与する必要があります。これは GitHub Models を読み取るための権限です。`prompt` には AI モデルに渡すプロンプトを指定します。ここでは `${{ github.event.inputs.prompt }}` を指定することで、手動実行時に入力されたプロンプトを使用しています。`model` には使用する AI モデルを指定します。デフォルトでは `gpt-4o` が指定されていますが、他のモデルも使用可能です。使用可能なモデルの一覧は [GitHub Models - Catalog](https://github.com/marketplace?type=models) を参照してください。
 
 `steps.inference.outputs.response` には AI モデルの出力が格納されます。これを `echo` コマンドで表示しています。
 
