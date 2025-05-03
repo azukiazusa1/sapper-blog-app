@@ -9,7 +9,7 @@ tags: ["GitHub Actions", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5aIWIQTvb5SMYQOBPEKY1p/401ad9fd250ea488c81753f8b8ec11f7/onsen_rotenburo_15110-768x689.png"
   title: "露天風呂のイラスト"
-audio: null
+audio: "https://downloads.ctfassets.net/in6v9lxmm5c8/3znZaOwFC7BjOQC9ZCuat6/057eae4899bc9acf8b7bed4d65337a32/GitHub_Actions%E3%81%A7AI%E6%B4%BB%E7%94%A8.wav"
 selfAssessment:
   quizzes:
     - question: "actions/ai-interface アクションを使用するために必要な権限は何ですか？"
@@ -133,9 +133,9 @@ jobs:
       - name: Test Local Action
         id: inference
         uses: actions/ai-inference@f8ee4c952b7dca7b8a4529edd04dc5cc3d49c435 # v1.0.0
-        if: steps.changed-files-specific.outputs.files != ''
+        if: steps.changed-files-specific.outputs.all_changed_files != ''
         env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files-specific.outputs.files }}
+          ALL_CHANGED_FILES: ${{ steps.changed-files-specific.outputs.all_changed_files }}
         with:
           system-prompt: |
             あなたはプロフェッショナルなテックブログ・レビューアー AIです。
@@ -145,7 +145,7 @@ jobs:
 
       - name: Comment on PR
         id: comment
-        if: steps.changed-files-specific.outputs.files != ''
+        if: steps.changed-files-specific.outputs.all_changed_files != ''
         env:
           RESPONSE: ${{ steps.inference.outputs.response }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -154,7 +154,6 @@ jobs:
           echo "${{ env.RESPONSE }}" > comment.txt
           gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
           echo "Commented on PR #${{ github.event.pull_request.number }} with response: ${{ env.RESPONSE }}"
-
 ```
 
 このワークフローは `on: pull_request` によってプルリクエストが作成または編集されたときにトリガーされます。`paths` で指定したパスに変更があった場合のみワークフローが実行されます。ここでは `contents/blogPost/**/*.md` を指定しているため、`contents/blogPost` ディレクトリ以下の `.md` ファイルが変更されたときのみワークフローが実行されます。
