@@ -323,7 +323,7 @@ h6 .icon-link::before {
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-  @apply dark:bg-zinc-800 dark:text-pink-400 text-pink-700;
+  @apply dark:bg-zinc-800 font-normal;
 }
 
 /* コードブロックのコンテナ */
