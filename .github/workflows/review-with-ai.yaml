@@ -26,9 +26,6 @@ jobs:
           files: |
             contents/**
 
-      - name: debug
-        run: echo "${{ steps.changed-files-specific.outputs.all_changed_files }}"
-
       - name: Test Local Action
         id: inference
         uses: actions/ai-inference@f8ee4c952b7dca7b8a4529edd04dc5cc3d49c435 # v1.0.0
@@ -46,10 +43,8 @@ jobs:
         id: comment
         if: steps.changed-files-specific.outputs.all_changed_files != ''
         env:
-          RESPONSE: ${{ steps.inference.outputs.response }}
+          RESPONSE_FILE: ${{ steps.inference.outputs.response-file }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # AI モデルの出力をコメントとしてプルリクエストに投稿する
-          echo "${{ env.RESPONSE }}" > comment.txt
-          gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
-          echo "Commented on PR #${{ github.event.pull_request.number }} with response: ${{ env.RESPONSE }}"
+          gh pr comment ${{ github.event.pull_request.number }} --body-file ${{ env.RESPONSE_FILE }}
+          echo "Commented on PR #${{ github.event.pull_request.number }}"
