@@ -1,8 +1,8 @@
 ---
 id: 0xPiM-ww2MjSWRN61J9_4
-title: "actions/ai-interface を使って GitHub Actions のワークフローから AI モデルを呼び出す"
+title: "actions/ai-inference を使って GitHub Actions のワークフローから AI モデルを呼び出す"
 slug: "actions-ai-interface-github-actions"
-about: "actions/ai-interface は GitHub Actions のワークフローから AI モデルを呼び出すための公式のアクションです。これを使用することで CI/CD のワークフローから AI モデルを簡単に利用できるようになります。この記事ではプルリクエスト上で AI に記事のレビューをしてもらうという実践的な使用例を紹介します。"
+about: "actions/ai-interface あｈ GitHub Actions のワークフローから AI モデルを呼び出すための公式のアクションです。これを使用することで CI/CD のワークフローから AI モデルを簡単に利用できるようになります。この記事ではプルリクエスト上で AI に記事のレビューをしてもらうという実践的な使用例を紹介します。"
 createdAt: "2025-05-03T08:27+09:00"
 updatedAt: "2025-05-03T08:27+09:00"
 tags: ["GitHub Actions", "AI"]
