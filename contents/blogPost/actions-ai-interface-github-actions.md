@@ -2,7 +2,7 @@
 id: 0xPiM-ww2MjSWRN61J9_4
 title: "actions/ai-interface を使って GitHub Actions のワークフローから AI モデルを呼び出す"
 slug: "actions-ai-interface-github-actions"
-about: "actions/ai-interface あｈ GitHub Actions のワークフローから AI モデルを呼び出すための公式のアクションです。これを使用することで CI/CD のワークフローから AI モデルを簡単に利用できるようになります。この記事ではプルリクエスト上で AI に記事のレビューをしてもらうという実践的な使用例を紹介します。"
+about: "actions/ai-interface は GitHub Actions のワークフローから AI モデルを呼び出すための公式のアクションです。これを使用することで CI/CD のワークフローから AI モデルを簡単に利用できるようになります。この記事ではプルリクエスト上で AI に記事のレビューをしてもらうという実践的な使用例を紹介します。"
 createdAt: "2025-05-03T08:27+09:00"
 updatedAt: "2025-05-03T08:27+09:00"
 tags: ["GitHub Actions", "AI"]
@@ -28,7 +28,7 @@ selfAssessment:
           explanation: null
 published: true
 ---
-[actions/ai-interface](https://github.com/actions/ai-inference) は GitHub Actions のワークフローから [GitHub Models](https://docs.github.com/ja/github-models) を呼び出すための公式のアクションです。これを使用することで CI/CD のワークフローから AI モデルを簡単に利用できるようになります。
+[actions/ai-inference](https://github.com/actions/ai-inference) は GitHub Actions のワークフローから [GitHub Models](https://docs.github.com/ja/github-models) を呼び出すための公式のアクションです。これを使用することで CI/CD のワークフローから AI モデルを簡単に利用できるようになります。
 
 ## 使用例
 
@@ -72,7 +72,7 @@ jobs:
 
 このワークフローは `on: workflow_dispatch` によって GitHub Actions の UI から手動でトリガーできます。`inputs` を使用することにより手動実行する際にユーザー入力を受け取ることができます。ここで受け取った入力は AI モデルのプロンプトとして使用されます。
 
-`interference` ジョブでは `actions/ai-inference` アクションを使用して AI モデルを呼び出します。このアクションを使用するためには、`permissions` で `models: read` の権限を付与する必要があります。これは GitHub Models を読み取るための権限です。`prompt` には AI モデルに渡すプロンプトを指定します。ここでは `${{ github.event.inputs.prompt }}` を指定することで、手動実行時に入力されたプロンプトを使用しています。`model` には使用する AI モデルを指定します。デフォルトでは `gpt-4o` が指定されていますが、他のモデルも使用可能です。使用可能なモデルの一覧は [GitHub Models - Catalog](https://github.com/marketplace?type=models) を参照してください。
+`inference` ジョブでは `actions/ai-inference` アクションを使用して AI モデルを呼び出します。このアクションを使用するためには、`permissions` で `models: read` の権限を付与する必要があります。これは GitHub Models を読み取るための権限です。`prompt` には AI モデルに渡すプロンプトを指定します。ここでは `${{ github.event.inputs.prompt }}` を指定することで、手動実行時に入力されたプロンプトを使用しています。`model` には使用する AI モデルを指定します。デフォルトでは `gpt-4o` が指定されていますが、他のモデルも使用可能です。使用可能なモデルの一覧は [GitHub Models - Catalog](https://github.com/marketplace?type=models) を参照してください。
 
 `steps.inference.outputs.response` には AI モデルの出力が格納されます。これを `echo` コマンドで表示しています。
 
