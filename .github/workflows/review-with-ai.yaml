@@ -52,4 +52,4 @@ jobs:
           # AI モデルの出力をコメントとしてプルリクエストに投稿する
           echo "${{ env.RESPONSE }}" > comment.txt
           gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
-          echo "Commented on PR #${{ github.event.pull_request.number }} with response: ${RESPONSE}"
+          echo "Commented on PR #${{ github.event.pull_request.number }} with response: ${{ env.RESPONSE }}"
