@@ -110,9 +110,10 @@ on:
       - contents/blogPost/**/*.md
 
 jobs:
-  inference:
+  review:
     permissions:
       models: read
+      # ファイルをプロンプトとして渡すために必要な権限
       contents: read
       pull-requests: write
     runs-on: ubuntu-latest
@@ -149,8 +150,8 @@ jobs:
         env:
           RESPONSE: ${{ steps.inference.outputs.response }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # gh CLI を使用してプルリクエストにコメントを投稿する
         run: |
-          # AI モデルの出力をコメントとしてプルリクエストに投稿する
           echo "${{ env.RESPONSE }}" > comment.txt
           gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
           echo "Commented on PR #${{ github.event.pull_request.number }} with response: ${{ env.RESPONSE }}"
@@ -158,7 +159,7 @@ jobs:
 
 このワークフローは `on: pull_request` によってプルリクエストが作成または編集されたときにトリガーされます。`paths` で指定したパスに変更があった場合のみワークフローが実行されます。ここでは `contents/blogPost/**/*.md` を指定しているため、`contents/blogPost` ディレクトリ以下の `.md` ファイルが変更されたときのみワークフローが実行されます。
 
-`tj-actions/changed-files` アクションを使用して変更されたファイルを取得します。`steps.changed-files-specific.outputs.files` には変更されたファイルのパスが格納されます。これを `ALL_CHANGED_FILES` 環境変数に渡します。
+`tj-actions/changed-files` アクションを使用して変更されたファイルを取得します。`steps.changed-files-specific.outputs.all_changed_files` には変更されたファイルのパスが格納されます。これを `ALL_CHANGED_FILES` 環境変数に渡します。この値は複数のファイルが変更された場合には空白区切りの文字列になります。ここでは簡単のために 1 つのファイルしか変更されていないことを前提にしています。
 
 `actions/ai-inference` アクションを使用して AI モデルを呼び出します。`prompt-file` を使用するとファイルの内容をプロンプトとして渡すことができます。
 
@@ -166,7 +167,7 @@ jobs:
 
 実際にこのワークフローを実行した結果は以下のようになります。
 
-![]()
+![](https://images.ctfassets.net/in6v9lxmm5c8/7wHMDSUPt5IwHGehhvizWB/3c41ec56764a6f59d4312a0a89b1b05b/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2025-05-03_10.12.18.png)
 
 ## まとめ
 
