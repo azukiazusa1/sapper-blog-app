@@ -1,13 +1,9 @@
 name: 'Review with AI'
 on: 
   pull_request:
-    types: [opened, edited]
-    # プルリクエストが作成または編集されたときにワークフローをトリガーする
-    branches:
-      - main
     paths:
       # 記事を保存しているディレクトリが変更されたときのみワークフローを実行する
-      - contents/blogPost/**/*.m
+      - contents/blogPost/**/*.md
 
 jobs:
   inference:
