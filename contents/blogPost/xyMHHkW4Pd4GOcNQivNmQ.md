@@ -12,20 +12,20 @@ thumbnail:
 audio: "https://downloads.ctfassets.net/in6v9lxmm5c8/6wZK9ZiygLf4vywEhr1Hb6/821ac8742e3e3117329791bdcb09d2a5/ESLint_MCP_%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E6%B4%BB%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89.wav"
 selfAssessment:
   quizzes:
-	  - question: "ESLint の MCP サーバーが提供しているツールとして正しいものはどれですか？"
-			answers:
-				- text: "lint-files"
-					correct: true
-					explanation: "lint-files ツールはファイルのパスを引数に取り、ESLint を実行して結果を返します。"
-				- text: "fix-issues"
-					correct: false
-					explanation: ""
-				- text: "explain-lint-issues"
-					correct: false
-					explanation: ""
-				- text: "lint-and-fix-files"
-					correct: false
-					explanation: ""
+    - question: "ESLint の MCP サーバーが提供しているツールとして正しいものはどれですか？"
+      answers:
+        - text: "lint-files"
+          correct: true
+          explanation: "lint-files ツールはファイルのパスを引数に取り、ESLint を実行して結果を返します。"
+        - text: "fix-issues"
+          correct: false
+          explanation: ""
+        - text: "explain-lint-issues"
+          correct: false
+          explanation: ""
+        - text: "lint-and-fix-files"
+          correct: false
+          explanation: ""
 
 published: true
 ---
