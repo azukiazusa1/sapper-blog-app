@@ -8,7 +8,7 @@ updatedAt: "2025-05-05T10:45+09:00"
 tags: ["ESLint", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/iFj0JvsOfryxagRodV47B/cabc99f44c13d3b87258af2b049caafd/nasu_tempura_14648-768x768.png"
-  title: "ナスの天ぷらのイラスト"
+  title: " ナスの天ぷらのイラスト"
 audio: "https://downloads.ctfassets.net/in6v9lxmm5c8/6wZK9ZiygLf4vywEhr1Hb6/821ac8742e3e3117329791bdcb09d2a5/ESLint_MCP_%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E6%B4%BB%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89.wav"
 selfAssessment:
   quizzes:
@@ -19,17 +19,15 @@ selfAssessment:
           explanation: "lint-files ツールはファイルのパスを引数に取り、ESLint を実行して結果を返します。"
         - text: "fix-issues"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "explain-lint-issues"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "lint-and-fix-files"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 ESLint v9.26.0 から、ESLint を[MCP（Model Context Protocol]([feat: Add MCP server by nzakas · Pull Request #19592 · eslint/eslint](https://github.com/eslint/eslint/pull/19592/files)) サーバーとして実行できるようになりました。この機能により LLM（大規模言語モデル）は ESLint のルールを使用してコードを修正できるようになります。
 
 ## ESLint を MCP サーバーとして実行する
