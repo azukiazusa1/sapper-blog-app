@@ -442,7 +442,7 @@ model Pagination<T> {
 この Pagination モデルは、`T` という型パラメーターを持っています。この型パラメーターは `Pagination` モデルを使う時に実際の型に置き換えられます。
 
 ```ts:main.tsp
-mode UserPagination extends Pagination<User> {}
+model UserPagination extends Pagination<User> {}
 // => {
 //   items: User[];
 //   total: int32;
