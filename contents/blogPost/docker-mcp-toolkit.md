@@ -19,17 +19,15 @@ selfAssessment:
           explanation: "Docker の MCP Toolkit を使用すると、クライアントに MCP_DOCKER という設定が追加されます。"
         - text: "MCP_TOOLKIT"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "PLAYWRIGHT"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "DOCKER"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 Docker の MCP Toolkit はコンテナ化された MCP サーバーを AI エージェントと統合するための Docker Desktop の拡張機能です。従来ローカルで MCP サーバーを実行するためには JavaScript の `npm` や Python の `uv` といったパッケージ管理ツールを使用して直接コマンドを実行する方法が一般的でした。サンドボックス化されていない環境での実行はセキュリティ上のリスクがあり、また配布されている MCP サーバーは信頼できないものも多く存在しています。
 
 Docker の MCP Toolkit を使用することでコンテナ化された環境で MCP サーバーを実行することができ、信頼された [Docker MCP カタログ](https://hub.docker.com/catalogs/mcp) から MCP ツールを簡単にインストールできます。また Claude Desktop や VS Code、Cursor といったクライアントとの統合も簡単に行えます。
