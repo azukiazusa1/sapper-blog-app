@@ -98,11 +98,11 @@ console.log(Error.isError(error)); // true
 console.log(Error.isError(fakeError)); // false
 ```
 
-この挙動は `Array.isArray()` と同じ仕組みによって実現されています。`Array.isArray()` や `Error.isError()` メソッドは偽装不可能な内部スロット（ [`[[Internal Slot]]`](https://262.ecma-international.org/6.0/index.html#sec-object-internal-methods-and-internal-slots) ）を直接チェックして真偽値を返します。このような内部スロットの有無の確認は「ブランドチェック」と呼ばれています。
+この挙動は `Array.isArray()` と同じ仕組みによって実現されています。`Array.isArray()` や `Error.isError()` メソッドは偽装不可能な内部スロット（[`[[Internal Slot]]`](https://262.ecma-international.org/6.0/index.html#sec-object-internal-methods-and-internal-slots)）を直接チェックして真偽値を返します。このような内部スロットの有無の確認は「ブランドチェック」と呼ばれています。
 
 ### cross-realm 環境での使用
 
-`Error.isError()` メソッドは `cross-realm` 環境で偽陽性を防ぐために使用することができます。たとえば、`iframe` や `Web Worker` などの異なる実行環境で `Error` インスタンスを作成した場合、`instanceof` 演算子は常に `false` を返します。
+`Error.isError()` メソッドは `cross-realm` 環境で偽陽性を防ぐために使用できます。たとえば、`iframe` や `Web Worker` などの異なる実行環境で `Error` インスタンスを作成した場合、`instanceof` 演算子は常に `false` を返します。
 
 `Error.isError()` メソッドを使用することで、異なる実行環境で作成された `Error` インスタンスでも正しく判定できます。
 
