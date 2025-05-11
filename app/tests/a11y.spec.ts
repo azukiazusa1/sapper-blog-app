@@ -16,6 +16,10 @@ const testPaths = [
     disableRules: ["label", "link-in-text-block"],
   },
   {
+    path: "/blog/shorts/1UDPiygMqSrFihISpf4Mln/",
+    disableRules: [],
+  },
+  {
     path: "/about",
     disableRules: [],
   },
