@@ -28,7 +28,6 @@ selfAssessment:
           explanation: null
 published: true
 ---
-
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) の 2025-03-26 の仕様では新たに Streamable HTTP が追加され、リモート MCP サーバーへの注目が集まっています。従来の MCP サーバーは stdio を使用してローカルで実行されることが一般的であったため、デスクトップアプリケーションや CLI ツールのみで利用されるなど、利用シーンが限られていました。
 
 Streamable HTTP を使用することで、リモートの MCP サーバーを Web アプリケーションから利用されることが期待されます。Claude の Web 版ではリモート MCP サーバー経由で MCP サーバーにアクセスできるようになったことが発表されています。
