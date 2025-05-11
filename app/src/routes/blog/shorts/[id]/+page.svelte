@@ -36,5 +36,8 @@
   />
 </div>
 <!-- ogp を静的に生成するために空のリンクを設置している -->
-<!-- svelte-ignore a11y_consider_explicit_label -->
-<a href={`/blog/shorts/ogp/${encodeURIComponent(short.sys.id)}.png`}></a>
+<a
+  href={`/blog/shorts/ogp/${encodeURIComponent(short.sys.id)}.png`}
+  aria-hidden="true"
+  tabindex="-1"
+></a>
