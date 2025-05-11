@@ -98,7 +98,7 @@
         <PrevIcon className="h-8 w-8" />
       </a>
     </div>
-    <div class="flex w-full p-6 prose dark:prose-invert" id="contents">
+    <div class="flex w-full p-6 prose-invert prose-zing" id="contents">
       {#each contents as content, i}
         <Slide active={active === i}>
           {@html content}
@@ -110,6 +110,7 @@
         class="relative flex h-4 w-48 gap-4 overflow-hidden"
         value={active + 1}
         max={slidesCount}
+        aria-label="スライドの進捗"
       >
         {#each Array.from({ length: slidesCount }, (_, i) => i) as i}
           <Indicator active={active === i} />
