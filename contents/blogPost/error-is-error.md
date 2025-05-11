@@ -28,7 +28,6 @@ selfAssessment:
           explanation: null
 published: true
 ---
-
 `Error.isError()` メソッドは、オブジェクトが `Error` インスタンスかどうかを判定するためのメソッドです。渡された値が `Error` インスタンスであれば `true` を、そうでなければ `false` を返します。
 
 ```ts

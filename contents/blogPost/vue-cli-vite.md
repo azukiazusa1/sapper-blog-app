@@ -5,7 +5,7 @@ slug: "vue-cli-vite"
 about: "Viteは、一言でいうとフロントエンドのめっちゃ早いビルドツールです。Vue CLIで作成したプロジェクトをViteに置き換えるためにvue-cli-plugin-viteをというプラグインを使います。"
 createdAt: "2021-05-16T00:00+09:00"
 updatedAt: "2021-05-16T00:00+09:00"
-tags: ["Vue.js"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4LlOrDdEXyxqi7wjIKAhgp/7bc2ba8009965c9fa02bf49493a13226/vite.svg"
   title: "vite"

@@ -5,7 +5,7 @@ slug: "vue-js-script-setup"
 about: "Vue.js 3.x から script setup 構文が使えるようになりました。これは単一ファイルコンポーネント(SFC)内で Composition API を使用している際に使える糖衣構文です。下記のようなメリットを得ることができ、公式からも使用が推奨されています。"
 createdAt: "2021-09-26T00:00+09:00"
 updatedAt: "2021-09-26T00:00+09:00"
-tags: ["Vue.js", ""]
+tags: ["", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4LlOrDdEXyxqi7wjIKAhgp/7bc2ba8009965c9fa02bf49493a13226/vite.svg"
   title: "vite"

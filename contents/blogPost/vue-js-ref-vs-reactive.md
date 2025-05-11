@@ -5,7 +5,7 @@ slug: "vue-js-ref-vs-reactive"
 about: "さて、そんな Compositon API ですがリアクティブなデータを定義する際に `reactive` と `ref` の2つの方法が用意されています。 `reactive` と `ref` どちらを使用するのがよいのか公式からも推奨する方法がありませんので、どちらを使用するべきか迷ってしまうところです。  `reactive` と `ref` のそれぞれのメリット・デメリットを確認してみましょう。"
 createdAt: "2022-01-02T00:00+09:00"
 updatedAt: "2022-01-02T00:00+09:00"
-tags: ["Vue.js", ""]
+tags: ["", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
   title: "Vue.js"

@@ -5,7 +5,7 @@ slug: "what-is-firebase"
 about: "Firebaseは、Googleが提供するバックエンドサービスです。 Firebaseは、バックエンドのサービスを担ってくれるので、開発者はアプリケーションの開発に専念することができ、バックエンドで動くサービスを作成、管理する必要はありません。 そのため、素早くアプリケーションをリリースるることができます。 Firebaseは、iOS/AndroidアプリからWebサービスまで幅広く使えます。 認証、データベース、ストレージなどたくさんの機能が使用できます。"
 createdAt: "2020-04-12T00:00+09:00"
 updatedAt: "2020-04-12T00:00+09:00"
-tags: ["", "", "Vue.js"]
+tags: ["", "", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/57MXX73Nx2rUnUI730EykA/8d13236943bb46948155f92f2325369e/firebase.png"
   title: "firebase"
