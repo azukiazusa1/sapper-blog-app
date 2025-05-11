@@ -5,7 +5,7 @@ slug: "javascript-ecmascript-babel"
 about: "JavaScript ECMAScriptとかBabelとか"
 createdAt: "2020-05-01T00:00+09:00"
 updatedAt: "2020-05-01T00:00+09:00"
-tags: ["", "", "ECMAScript"]
+tags: ["", "", ""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5M2RoZuZzlA5Ggjw2MAC7G/f3a589f1ae9233bd33513c543081ffe7/articles_2FExMf3LZ9RYwcpYcPL9Oy_2Fthumbnail_7D.png"
   title: "babel"

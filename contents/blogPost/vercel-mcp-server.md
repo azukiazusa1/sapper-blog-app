@@ -8,7 +8,7 @@ updatedAt: "2025-05-11T17:50+09:00"
 tags: ["Vercel", "MCP", "Next.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1LBdbkHzPPUKbS7oceHuxZ/6eb391e6aa08ce8e1ff7fd40b2630b7b/game_dice_illust_2692-768x550.png"
-  title: "黒いサイコロのイラスト"
+  title: "黒いサイコロの"
 audio: "https://downloads.ctfassets.net/in6v9lxmm5c8/kBtynR6oTVoOinnIqpNzo/345a629058e022f154151105e0c83ccc/Vercel%E4%B8%8A%E3%81%AEMCP%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E6%A7%8B%E7%AF%89.wav"
 selfAssessment:
   quizzes:
@@ -19,18 +19,15 @@ selfAssessment:
           explanation: "HTTP Streamable 形式の MCP サーバーのエンドポイントはデフォルトで /mcp です。これは createMcpHandler() のオプションで変更することもできます。"
         - text: "/streamable"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "/api/mcp"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "/api/streamable"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
-
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) の 2025-03-26 の仕様では新たに Streamable HTTP が追加され、リモート MCP サーバーへの注目が集まっています。従来の MCP サーバーは stdio を使用してローカルで実行されることが一般的であったため、デスクトップアプリケーションや CLI ツールのみで利用されるなど、利用シーンが限られていました。
 
 Streamable HTTP を使用することで、リモートの MCP サーバーを Web アプリケーションから利用されることが期待されます。Claude の Web 版ではリモート MCP サーバー経由で MCP サーバーにアクセスできるようになったことが発表されています。
