@@ -5,7 +5,7 @@ slug: "error-is-error"
 about: "Error.isError() メソッドは、オブジェクトが Error インスタンスかどうかを判定するためのメソッドです。今までも instanceof 演算子を使用して判定することができましたが、偽陽性と偽陰性が発生する可能性があります。Error.isError() メソッドは Array.isArray() と同じく内部スロットを使用して判定するため、より堅牢に判定することができます。"
 createdAt: "2025-05-11T10:37+09:00"
 updatedAt: "2025-05-11T10:37+09:00"
-tags: ["JavaScript"]
+tags: [""]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5pzlja5MDQb7ktby4HjGAX/8fcc2e7705289f3d1f1bb862d6076da9/drink_melon-cream-soda_16900.png"
   title: "クリームメロンソーダのイラスト"
