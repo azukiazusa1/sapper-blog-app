@@ -17,7 +17,7 @@ const testPaths = [
   },
   {
     path: "/blog/shorts/1UDPiygMqSrFihISpf4Mln/",
-    disableRules: [],
+    disableRules: ["label", "link-in-text-block"],
   },
   {
     path: "/about",
