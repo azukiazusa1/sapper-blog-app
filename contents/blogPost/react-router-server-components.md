@@ -16,20 +16,18 @@ selfAssessment:
       answers:
         - text: "コンポーネントをデフォルトエクスポートする"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ファイルの先頭で use server ディレクティブを宣言する"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ServerComponent という名前のコンポーネントをエクスポートする"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "export isServerComponent = true のようなフラグをエクスポートする"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 !> React Router の Server Components 対応はプレビュー版で提供されています。今後変更される可能性がありますので、注意してください。
 
 React Router はプレビュー版として [Server Components](https://react.dev/reference/rsc/server-components) に対応しました。これにより以下のような機能が追加されました。
