@@ -177,6 +177,7 @@ http://localhost:3000/todo にアクセスすると、変わらず TODO リス�
 サーバーコンポーネントの子孫コンポーネントもすべてサーバーコンポーネントとして扱われます。そのためサーバーコンポーネントをルート要素としたルーティングモジュールで `useState` や `useEffect` を使用したい場合には `"use client"` ディレクティブを使用してクライアントコンポーネントとして扱う必要があります。
 
 ```tsx:app/routes/Counter.tsx
+"use client";
 import { useState, useEffect } from "react";
 export function Counter() {
   const [count, setCount] = useState(0);
