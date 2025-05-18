@@ -17,7 +17,7 @@ selfAssessment:
         - text: "コンポーネントをデフォルトエクスポートする"
           correct: false
           explanation: ""
-        - text: 'ファイルの先頭で "use server" ディレクティブを宣言する"
+        - text: "ファイルの先頭で use server ディレクティブを宣言する"
           correct: false
           explanation: ""
         - text: "ServerComponent という名前のコンポーネントをエクスポートする"
