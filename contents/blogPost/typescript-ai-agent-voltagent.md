@@ -3,8 +3,8 @@ id: l62zRIjQ0e5pAiSTkDh9g
 title: "TypeScript で AI エージェントを構築する VoltAgent"
 slug: "typescript-ai-agent-voltagent"
 about: "VoltAgent は TypeScript で AI を活用したアプリケーションを構築するためのツールキットです。VoltAgent Console を使用すると、エージェントの状態をリアルタイムで確認したり、エージェントのワークフローを可視化できる点が特徴です。"
-createdAt: 2025-05-18T18:18+09:00
-updatedAt: 2025-05-18T18:18+09:00
+createdAt: "2025-05-18T18:18+09:00"
+updatedAt: "2025-05-18T18:18+09:00"
 tags: ["VoltAgent", "AI", "typescript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5ZmRG2M1gFydxRXn6EonE/9dd992c3429f9e2f7599e6c11a42ab2e/bird_cute_raichou_10916.png"
@@ -54,10 +54,8 @@ selfAssessment:
         - text: "combineTools"
           correct: false
           explanation: null
-
 published: true
 ---
-
 VoltAgent は TypeScript で AI を活用したアプリケーションを構築するためのツールキットです。構築した AI エージェントの監視やデバッグを行うためのツールとして [VoltAgent Console](https://console.voltagent.dev/) が提供されている点も特徴です。このツールを使用すると、エージェントの状態をリアルタイムで確認したり、エージェントのワークフローを可視化したりできます。
 
 この記事では、VoltAgent の基本的な使い方を紹介します。
