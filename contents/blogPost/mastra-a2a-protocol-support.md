@@ -8,7 +8,7 @@ updatedAt: "2025-05-24T11:39+09:00"
 tags: ["Mastra", "A2A", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4UUJjtRh1vDl7XK9qh6kaW/a8a76c6b7c7f2b34fc8fd77168a6b98e/food_cheese-hamburger_6974.png"
-  title: "チーズバーガーのイラスト"
+  title: "food cheese-hamburger 6974"
 audio: "https://downloads.ctfassets.net/in6v9lxmm5c8/vUmLcHgTeybMu6uE2WsQN/905fd9630bf951dcb4fa032f5262292a/Mastra%C3%A3__%C3%A3__%C3%A3__A2A%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A5__%C3%A8__.wav"
 selfAssessment:
   quizzes:
@@ -25,11 +25,9 @@ selfAssessment:
           explanation: "streamMessage というメソッドは存在しません。正しくは sendAndSubscribe です。"
         - text: "sendMessage({ stream: true })"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [A2A](https://google.github.io/A2A/#/documentation) プロトコルは AI エージェント間の連携を実現するために設計されたオープンな標準です。異なるチームや組織が開発した AI エージェントが相互に通信し、協力してタスクを実行することを可能にします。
 
 [Mastra](https://mastra.ai/) は TypeScript で AI エージェントを構築するためのフレームワークであり、A2A プロトコルをサポートしています。Mastra のサーバーを構築することで自動的に A2A プロトコルに準拠したサーバーが立ち上がります。Mastra のクライアント SDK を使用することで、A2A プロトコルに準拠したサーバーと通信できます。これにより、A2A プロトコルの仕様に準拠したサーバーに対してエージェントの情報やタスクを要求できます。
