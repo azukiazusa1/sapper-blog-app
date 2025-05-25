@@ -129,7 +129,7 @@ describe("remark-video", () => {
       `!v(https://example.com/video.mp4?title="malicious"&description=<script>)`,
     );
     expect(value.toString()).toBe(
-      `<p><video src="https://example.com/video.mp4?title=&quot;malicious&quot;&amp;description=&lt;script&gt;" controls></video></p>`,
+      `<p><video src="https://example.com/video.mp4?title=&quot;malicious&quot;&description=&lt;script&gt;" controls></video></p>`,
     );
   });
 

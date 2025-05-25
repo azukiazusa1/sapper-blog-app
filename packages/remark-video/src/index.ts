@@ -29,11 +29,11 @@ function isValidVideoUrl(url: string): boolean {
 }
 
 /**
- * Escapes HTML characters to prevent injection attacks
+ * Escapes HTML characters that could break the HTML attribute
+ * Note: We don't escape & in URLs as browsers expect literal & in src attributes
  */
-function escapeHtml(unsafe: string): string {
+function escapeHtmlAttribute(unsafe: string): string {
   return unsafe
-    .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
@@ -61,7 +61,7 @@ const remarkVideo: Plugin = () => {
           return; // Skip invalid URLs, leave original text
         }
 
-        const escapedUrl = escapeHtml(url);
+        const escapedUrl = escapeHtmlAttribute(url);
         const html = `<video src="${escapedUrl}" controls></video>`;
 
         node.type = "html";
@@ -80,7 +80,7 @@ const remarkVideo: Plugin = () => {
           continue; // Skip invalid URLs, leave original pattern
         }
 
-        const escapedUrl = escapeHtml(url);
+        const escapedUrl = escapeHtmlAttribute(url);
         const html = `<video src="${escapedUrl}" controls></video>`;
         newValue = newValue.replace(match[0], html);
       }
