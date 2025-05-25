@@ -26,7 +26,6 @@ selfAssessment:
         - text: "/add-github-app"
           correct: false
           explanation: null
-          correct: false
 published: true
 ---
 
@@ -188,7 +187,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-      issues: write
+      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
