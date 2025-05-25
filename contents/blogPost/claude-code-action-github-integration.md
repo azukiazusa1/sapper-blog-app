@@ -28,7 +28,6 @@ selfAssessment:
           explanation: null
 published: true
 ---
-
 [Claude Code Action](https://github.com/anthropics/claude-code-action) は [Claude Code](https://www.anthropic.com/claude-code) を GitHub Actions のワークフローに統合するためのアクションです。これを使用することで、GitHub 上でコードの生成やレビューを AI に依頼できます。
 
 ## Claude Code Action のセットアップ
