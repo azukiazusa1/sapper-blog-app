@@ -26,7 +26,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           # レビューを依頼するプロンプトを指定
-          prompt: |
+          direct_prompt: |
             あなたは優秀な編集者です。PRの内容を確認し、以下の点についてレビューしてください。
             - 誤字脱字や文法の誤り
             - 内容の不明瞭な箇所
