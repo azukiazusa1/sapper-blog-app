@@ -71,7 +71,7 @@ const remarkVideo: Plugin = () => {
       // If the text node contains only the video pattern, replace the entire node
       if (matches.length === 1 && node.value.trim() === matches[0][0]) {
         const rawUrl = matches[0][1];
-        
+
         // Validate URL for security
         if (!isValidVideoUrl(rawUrl)) {
           return; // Skip invalid URLs, leave original text
@@ -92,7 +92,7 @@ const remarkVideo: Plugin = () => {
       let newValue = node.value;
       for (const match of matches) {
         const rawUrl = match[1];
-        
+
         // Validate URL for security
         if (!isValidVideoUrl(rawUrl)) {
           continue; // Skip invalid URLs, leave original pattern
