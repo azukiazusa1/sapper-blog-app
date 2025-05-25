@@ -65,7 +65,7 @@ describe("remark-video", () => {
       `This has !v() empty pattern and !v incomplete pattern.`,
     );
     expect(value.toString()).toBe(
-      `<p>This has <video src="" controls></video> empty pattern and !v incomplete pattern.</p>`,
+      `<p>This has !v() empty pattern and !v incomplete pattern.</p>`,
     );
   });
 });

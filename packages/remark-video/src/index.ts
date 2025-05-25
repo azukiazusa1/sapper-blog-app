@@ -4,7 +4,7 @@ import type { Plugin } from "unified";
 const remarkVideo: Plugin = () => {
   return (tree) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    visit(tree, "text", (node: any, index, parent) => {
+    visit(tree, "text", (node: any) => {
       if (!node.value) return;
 
       // Match the pattern !v(url)
