@@ -2,6 +2,19 @@ import { visit } from "unist-util-visit";
 import type { Plugin } from "unified";
 
 /**
+ * Decodes HTML entities that might have been encoded by the markdown processor
+ */
+function decodeHtmlEntities(text: string): string {
+  return text
+    .replace(/&#x26;/g, "&")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+/**
  * Validates if a URL is safe for use in video elements
  * Only allows http and https protocols to prevent XSS attacks
  */
@@ -17,6 +30,9 @@ function isValidVideoUrl(url: string): boolean {
   if (!url) {
     return false;
   }
+
+  // Decode any HTML entities that might have been encoded by markdown processors
+  url = decodeHtmlEntities(url);
 
   try {
     const parsedUrl = new URL(url);
@@ -54,14 +70,16 @@ const remarkVideo: Plugin = () => {
 
       // If the text node contains only the video pattern, replace the entire node
       if (matches.length === 1 && node.value.trim() === matches[0][0]) {
-        const url = matches[0][1];
+        const rawUrl = matches[0][1];
         
         // Validate URL for security
-        if (!isValidVideoUrl(url)) {
+        if (!isValidVideoUrl(rawUrl)) {
           return; // Skip invalid URLs, leave original text
         }
 
-        const escapedUrl = escapeHtmlAttribute(url);
+        // Decode HTML entities for the final URL and then escape for HTML attributes
+        const decodedUrl = decodeHtmlEntities(rawUrl);
+        const escapedUrl = escapeHtmlAttribute(decodedUrl);
         const html = `<video src="${escapedUrl}" controls></video>`;
 
         node.type = "html";
@@ -73,14 +91,16 @@ const remarkVideo: Plugin = () => {
       // If there are multiple patterns or mixed content, split the text
       let newValue = node.value;
       for (const match of matches) {
-        const url = match[1];
+        const rawUrl = match[1];
         
         // Validate URL for security
-        if (!isValidVideoUrl(url)) {
+        if (!isValidVideoUrl(rawUrl)) {
           continue; // Skip invalid URLs, leave original pattern
         }
 
-        const escapedUrl = escapeHtmlAttribute(url);
+        // Decode HTML entities for the final URL and then escape for HTML attributes
+        const decodedUrl = decodeHtmlEntities(rawUrl);
+        const escapedUrl = escapeHtmlAttribute(decodedUrl);
         const html = `<video src="${escapedUrl}" controls></video>`;
         newValue = newValue.replace(match[0], html);
       }
