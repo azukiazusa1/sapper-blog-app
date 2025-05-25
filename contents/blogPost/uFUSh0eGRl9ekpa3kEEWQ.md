@@ -33,7 +33,7 @@ published: true
 
 ## Claude Code Action のセットアップ
 
-Calude Code Action のセットアップは非常に簡単です。ターミナル上で Claude Code を使用してコマンドを実行するだけです。前提として Claude Code をインストールしておく必要があります。
+Claude Code Action のセットアップは非常に簡単です。ターミナル上で Claude Code を使用してコマンドを実行するだけです。前提として Claude Code をインストールしておく必要があります。
 
 ```bash
 npm install -g @anthropic-ai/claude-code
@@ -68,7 +68,7 @@ GitHub アプリのインストールが完了したらターミナルに戻っ�
 
 GitHub 上の UI で「Settings」→「Secrets and variables」→「Actions」を確認すると `ANTHROPIC_API_KEY` というシークレットが追加されていることが確認できます。
 
-最後に Claude Code Action を導入するブルリクエストが作成され、ブラウザが開きます。
+最後に Claude Code Action を導入するプルリクエストが作成され、ブラウザが開きます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/5O2MnJqD29S6pJPndga4Me/11baa45d8031d6a3ec247acf3fa26bd6/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-05-25_13.16.31.png)
 
@@ -168,7 +168,7 @@ CI が諸々失敗していたので、@claude に CI の修正を依頼する�
 
 ## 特定のタイミングでタスクを依頼する
 
-`.github/workflows/claude.yml` ファイルのでは Issue やプルリクエストのコメントに `@claude` を含む場合にワークフローが実行されるようになっています。通常の GitHub Actions のように Pull Request の作成やワークフローが dispatch されたときのように Claude を呼び出すような設定も可能です。
+`.github/workflows/claude.yml` ファイルでは Issue やプルリクエストのコメントに `@claude` を含む場合にワークフローが実行されるようになっています。通常の GitHub Actions のように Pull Request の作成やワークフローが dispatch されたときのように Claude を呼び出すような設定も可能です。
 
 例としてプルリクエストの作成時に `/contents/blogPost` ディレクトリにある記事のレビューを依頼するワークフローを作成してみましょう。
 
@@ -208,8 +208,6 @@ jobs:
 ```
 
 以下のようにプルリクエストを作成したタイミングでワークフローが実行され、記事をレビューした結果がコメントとして投稿されます。
-
-![]()
 
 ## まとめ
 
