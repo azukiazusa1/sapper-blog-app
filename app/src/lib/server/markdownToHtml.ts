@@ -5,6 +5,7 @@ import remark2rehype from "remark-rehype";
 import remarkGfm from "remark-gfm";
 import rehypeAlert from "rehype-alert";
 import remarkContentFulImage from "remark-contentful-image";
+import remarkVideo from "remark-video";
 import html from "rehype-stringify";
 import rehypeCodeTitles from "rehype-code-titles";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -22,6 +23,7 @@ export const markdownToHtml = async (
 ): Promise<string> => {
   let processor = unified()
     .use(markdown)
+    .use(remarkVideo)
     .use(remarkLinkCard)
     .use(remarkGfm)
     .use(remarkContentFulImage)
