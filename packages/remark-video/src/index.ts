@@ -2,55 +2,42 @@ import { visit } from "unist-util-visit";
 import type { Plugin } from "unified";
 
 /**
- * Sanitizes a URL to prevent XSS attacks
- * @param url The URL to sanitize
- * @returns The sanitized URL or null if invalid/dangerous
+ * Validates if a URL is safe for use in video elements
+ * Only allows http and https protocols to prevent XSS attacks
  */
-function sanitizeUrl(url: string): string | null {
+function isValidVideoUrl(url: string): boolean {
   if (!url || typeof url !== "string") {
-    return null;
+    return false;
   }
 
-  // Remove leading/trailing whitespace
-  const trimmedUrl = url.trim();
+  // Trim whitespace
+  url = url.trim();
 
-  if (!trimmedUrl) {
-    return null;
+  // Reject empty URLs
+  if (!url) {
+    return false;
   }
 
   try {
-    // Parse the URL to validate it
-    const parsedUrl = new URL(trimmedUrl);
-    
+    const parsedUrl = new URL(url);
     // Only allow http and https protocols
-    if (parsedUrl.protocol !== "http:" && parsedUrl.protocol !== "https:") {
-      return null;
-    }
-
-    // Return the cleaned URL
-    return parsedUrl.toString();
+    return parsedUrl.protocol === "http:" || parsedUrl.protocol === "https:";
   } catch {
-    // If URL parsing fails, check if it's a relative URL
-    // For video files, we'll be conservative and only allow absolute URLs
-    return null;
+    // If URL parsing fails, it's not a valid URL
+    return false;
   }
 }
 
 /**
- * Escapes HTML characters in a string
- * @param text The text to escape
- * @returns The escaped text
+ * Escapes HTML characters to prevent injection attacks
  */
-function escapeHtml(text: string): string {
-  const htmlEscapes: Record<string, string> = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#x27;'
-  };
-  
-  return text.replace(/[&<>"']/g, (match) => htmlEscapes[match] || match);
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 const remarkVideo: Plugin = () => {
@@ -68,14 +55,13 @@ const remarkVideo: Plugin = () => {
       // If the text node contains only the video pattern, replace the entire node
       if (matches.length === 1 && node.value.trim() === matches[0][0]) {
         const url = matches[0][1];
-        const sanitizedUrl = sanitizeUrl(url);
         
-        if (!sanitizedUrl) {
-          // If URL is invalid/dangerous, don't convert the pattern
-          return;
+        // Validate URL for security
+        if (!isValidVideoUrl(url)) {
+          return; // Skip invalid URLs, leave original text
         }
-        
-        const escapedUrl = escapeHtml(sanitizedUrl);
+
+        const escapedUrl = escapeHtml(url);
         const html = `<video src="${escapedUrl}" controls></video>`;
 
         node.type = "html";
@@ -88,14 +74,13 @@ const remarkVideo: Plugin = () => {
       let newValue = node.value;
       for (const match of matches) {
         const url = match[1];
-        const sanitizedUrl = sanitizeUrl(url);
         
-        if (!sanitizedUrl) {
-          // If URL is invalid/dangerous, skip this match
-          continue;
+        // Validate URL for security
+        if (!isValidVideoUrl(url)) {
+          continue; // Skip invalid URLs, leave original pattern
         }
-        
-        const escapedUrl = escapeHtml(sanitizedUrl);
+
+        const escapedUrl = escapeHtml(url);
         const html = `<video src="${escapedUrl}" controls></video>`;
         newValue = newValue.replace(match[0], html);
       }
