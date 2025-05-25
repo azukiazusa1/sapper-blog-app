@@ -1,5 +1,6 @@
 import { unified } from "unified";
 import remarkLinkCard from "remark-link-card";
+import remarkVideo from "remark-video";
 import markdown from "remark-parse";
 import remark2rehype from "remark-rehype";
 import remarkGfm from "remark-gfm";
@@ -22,6 +23,7 @@ export const markdownToHtml = async (
 ): Promise<string> => {
   let processor = unified()
     .use(markdown)
+    .use(remarkVideo)
     .use(remarkLinkCard)
     .use(remarkGfm)
     .use(remarkContentFulImage)

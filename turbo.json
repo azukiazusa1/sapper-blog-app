@@ -13,7 +13,12 @@
     "format": {},
     "typecheck": {},
     "app#typecheck": {
-      "dependsOn": ["remark-link-card#build", "remark-contentful-image#build", "rehype-alert#build"]
+      "dependsOn": [
+        "remark-link-card#build",
+        "remark-contentful-image#build",
+        "rehype-alert#build",
+        "remark-video#build"
+      ]
     }
   }
 }
