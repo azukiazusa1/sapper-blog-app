@@ -9,18 +9,23 @@ export const postBySlugQuery = gql`
         about
         article
         audio
+        sys {
+          createdAt
+          updatedAt
+        }
         relatedArticleCollection(limit: 5) {
           items {
             title
             slug
-            createdAt
+            sys {
+              createdAt
+            }
             thumbnail {
               title
               url(transform: { format: WEBP, quality: 50 })
             }
           }
         }
-        createdAt
         thumbnail {
           title
           url(transform: { format: WEBP, quality: 50 })

@@ -11,7 +11,8 @@
     about: string;
     contents: string;
     tags: Pick<Tag, "name" | "slug">[];
-    createdAt: string;
+    publishedDate: string;
+    updatedDate?: string;
     thumbnail: { title: string; url: string };
     slug: string;
     audio?: string;
@@ -22,7 +23,8 @@
     about,
     contents,
     tags,
-    createdAt,
+    publishedDate,
+    updatedDate,
     thumbnail,
     slug,
     audio,
@@ -255,8 +257,27 @@
                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
               />
             </svg>
-            <Time date={createdAt} />
+            <span>公開日: </span><Time date={publishedDate} />
           </div>
+          {#if updatedDate && new Date(updatedDate).getTime() !== new Date(publishedDate).getTime()}
+            <div class="flex items-center pr-4" style:--tag="time-updated-{slug}">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="mr-1 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              <span>更新日: </span><Time date={updatedDate} />
+            </div>
+          {/if}
           <div
             class="flex flex-wrap items-center leading-none"
             style:--tag="tag-{slug}"
