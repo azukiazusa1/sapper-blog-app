@@ -141,7 +141,7 @@ module.exports = {
 
 例えば `theme.colors` で設定した `blue` や `purple` などの色は `backgroundColor`, `borderColor`, `textColor` などの色に関するプロパティに適用され、`bg-blue`, `border-purple`, `text-pink` などのクラス名で使用できます。上記の設定で出てきた基本的なプリミティブな値はコアプラグインとして提供されています。Tailwind CSS はプラグインをカスタマイズすることで、自身のデザインシステムに合わせたテーマを使用できるように設計されています。
 
-CSS First Configurations では、`theme` オブジェクトの各プロパティが [namespace](https://tailwindcss.com/docs/v4-beta#namespace-reference) に対応しています。`namspace` は CSS 変数の先頭に付与される `--font` や `--color` などのプレフィックスです。
+CSS First Configurations では、`theme` オブジェクトの各プロパティが [namespace](https://tailwindcss.com/docs/theme#theme-variable-namespaces) に対応しています。`namspace` は CSS 変数の先頭に付与される `--font` や `--color` などのプレフィックスです。
 
 例として上記の `tailwind.config.js` を CSS First Configurations で書き換えると以下のようになります。`colors` に対して `--color` のプレフィックスといったように `namespace` が付与されています。
 
