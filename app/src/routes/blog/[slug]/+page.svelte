@@ -56,7 +56,8 @@
       title={post.title}
       about={post.about}
       tags={post.tagsCollection.items}
-      createdAt={post.createdAt}
+      publishedDate={post.publishedDate}
+      updatedDate={post.updatedDate}
       audio={post.audio}
       thumbnail={{
         title: post.thumbnail?.title ?? "",
