@@ -389,3 +389,4 @@ CSS First Configurations では以下のように記述します。
 
 - [Tailwind CSS v4.0 Beta - Tailwind CSS](https://tailwindcss.com/docs/v4-beta#css-configuration-in-depth)
 - [Open-sourcing our progress on Tailwind CSS v4.0 - Tailwind CSS](https://tailwindcss.com/blog/tailwindcss-v4-alpha)
+

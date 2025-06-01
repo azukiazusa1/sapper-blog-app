@@ -8,7 +8,7 @@ updatedAt: "2025-06-01T11:36+09:00"
 tags: ["AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3zTYTwURRF5jaAFynNF83o/e39e009fe5e5a003cfa25ed2194cda01/icecream_chocolate-mint_illust_988.png"
-  title: "チョコミントアイスクリームのイラスト"
+  title: "icecream chocolate-mint illust 988"
 audio: "https://downloads.ctfassets.net/in6v9lxmm5c8/2hhMvjVbzfXJxuBCYkl6qG/3e018fa61c33a4037a88e0347b8da2bb/coding-agents-and-developers-work.wav"
 selfAssessment:
   quizzes:
@@ -16,20 +16,18 @@ selfAssessment:
       answers:
         - text: "自律型"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "CLI 型"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "エディタ型"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "チャット型"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 コーディングの仕事における AI 技術の関わりといえば、[GitHub Copilot](https://github.com/features/copilot) を代表するエディタ補完型が主たるものとして認識されてきました。補完型の AI はユーザーが途中まで書いたコードを補完する形で提案を行うことから、ペアプログラムの相方のような存在として捉えられていました。例えば `function add` と書き始めると、AI は `(a: number, b: number): number { return a + b; }` といった形で関数の定義を提案します。ユーザーは Tab キーを押すことで提案を受け入れたり、提案が気に入らなければそのままコードを書き続けたりできます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/2CH1ZpVkddL3NkED0lXP2n/c05c70342d8b9d2e2d2556e62cee70f1/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-06-01_11.49.38.png)
