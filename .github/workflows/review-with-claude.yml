@@ -1,33 +1,33 @@
-name: Review with Claude
-# 新しいプルリクエストが作成されたときと更新された時にワークフローを実行
-on:
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      # 記事を保存しているディレクトリが変更されたときのみワークフローを実行する
-      - contents/blogPost/**/*.md
-jobs: 
-  article-review:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write
-      id-token: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+# name: Review with Claude
+# # 新しいプルリクエストが作成されたときと更新された時にワークフローを実行
+# on:
+#   pull_request:
+#     types: [opened, synchronize]
+#     paths:
+#       # 記事を保存しているディレクトリが変更されたときのみワークフローを実行する
+#       - contents/blogPost/**/*.md
+# jobs: 
+#   article-review:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: read
+#       pull-requests: write
+#       issues: write
+#       id-token: write
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
 
-      - name: Run Claude Code
-        id: claude
-        uses: anthropics/claude-code-action@beta
-        with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # レビューを依頼するプロンプトを指定
-          direct_prompt: |
-            あなたは優秀な編集者です。PRの内容を確認し、以下の点についてレビューしてください。
-            - 誤字脱字や文法の誤り
-            - 内容の不明瞭な箇所
-            - 記事の構成や流れ
+#       - name: Run Claude Code
+#         id: claude
+#         uses: anthropics/claude-code-action@beta
+#         with:
+#           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+#           # レビューを依頼するプロンプトを指定
+#           direct_prompt: |
+#             あなたは優秀な編集者です。PRの内容を確認し、以下の点についてレビューしてください。
+#             - 誤字脱字や文法の誤り
+#             - 内容の不明瞭な箇所
+#             - 記事の構成や流れ
