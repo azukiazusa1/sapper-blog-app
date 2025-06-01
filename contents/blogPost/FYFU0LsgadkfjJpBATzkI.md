@@ -9,7 +9,7 @@ tags: ["AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3zTYTwURRF5jaAFynNF83o/e39e009fe5e5a003cfa25ed2194cda01/icecream_chocolate-mint_illust_988.png"
   title: "チョコミントアイスクリームのイラスト"
-audio: "https://downloads.ctfassets.net/in6v9lxmm5c8/64b93hOINsZ8kPaReeZyNo/6f8dc7881acca8b6f21640ed2a3718f6/%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A6_%C2%AA%C3%A6__.wav"
+audio: "https://downloads.ctfassets.net/in6v9lxmm5c8/2hhMvjVbzfXJxuBCYkl6qG/3e018fa61c33a4037a88e0347b8da2bb/coding-agents-and-developers-work.wav"
 selfAssessment:
   quizzes:
     - question: "この記事では「30分以内で完了する小さなタスク」はどのようなタイプのコーディングエージェントを選択すべきと述べていますか？"
