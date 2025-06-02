@@ -17,16 +17,8 @@
     audio?: string;
   }
 
-  let {
-    title,
-    about,
-    contents,
-    tags,
-    createdAt,
-    thumbnail,
-    slug,
-    audio,
-  }: Props = $props();
+  let { title, about, contents, tags, createdAt, thumbnail, slug }: Props =
+    $props();
 
   // <baseline-status> を読み込む
   onMount(() => {
@@ -281,7 +273,7 @@
           {about}
         </p>
 
-        {#if audio}
+        <!-- {#if audio}
           <div class="my-4 rounded-lg bg-gray-100 p-4 dark:bg-zinc-800">
             <h2 class="mb-4 text-lg font-semibold">音声による概要</h2>
             <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
@@ -292,7 +284,7 @@
               ご利用のブラウザは audio 要素をサポートしていません。
             </audio>
           </div>
-        {/if}
+        {/if} -->
       </div>
     </header>
 
