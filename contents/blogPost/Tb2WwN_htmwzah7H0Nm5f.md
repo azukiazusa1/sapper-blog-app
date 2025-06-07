@@ -9,7 +9,7 @@ tags: ["AG-UI", "AI", "Typescript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1mFDNQ7A4cOZs9azMMwRow/a5d24db289891f25f6c9661172c7d2e5/icecream_strawberry_illust_989.png"
   title: "ストロベリーアイスクリームのイラスト"
-audio: ""
+audio: null
 selfAssessment:
   quizzes:
     - question: "AG-UI エージェントを実装する際に継承するクラスはどれですか？"
