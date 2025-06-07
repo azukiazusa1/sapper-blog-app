@@ -5,7 +5,7 @@ slug: "how-to-standardize-frontend-apps-connecting-to-agents"
 about: "AG-UI はフロントエンドアプリケーションがエージェントに接続する方法を標準化するプロトコルです。この記事では AG-UI を使用してフロントエンドアプリケーションがエージェントに接続する方法を紹介します。"
 createdAt: "2025-06-07T09:45+09:00"
 updatedAt: "2025-06-07T09:45+09:00"
-tags: ["AG-UI", "AI", "typescript"]
+tags: ["AG-UI", "AI", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1mFDNQ7A4cOZs9azMMwRow/a5d24db289891f25f6c9661172c7d2e5/icecream_strawberry_illust_989.png"
   title: "icecream strawberry illust 989"
