@@ -5,7 +5,7 @@ slug: "typescript-ai-agent-framework-mastra"
 about: "Mastra は TypeScript 製の AI エージェントフレームワークであり Gatsby の開発チームによって開発されています。Mastra サーバーを実行することで REST API サーバーを介してエージェントとやり取りすることができます。Mastra はAI エージェントを構築するために必要なプリミティブな機能を提供するために設計されています。"
 createdAt: "2025-03-09T10:16+09:00"
 updatedAt: "2025-03-09T10:16+09:00"
-tags: ["AI", "Mastra", "OpenTelemetry", ""]
+tags: ["AI", "Mastra", "OpenTelemetry", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5m9GakLihc997ujoamvxZ3/7341ffcb10a2b431fe089f5da95f718e/chocolate-mousse-cake_17001-768x768.png"
   title: "チョコレートムースのイラスト"

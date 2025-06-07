@@ -5,7 +5,7 @@ slug: "vuetify-theme-css-variables"
 about: "VuetifyのテーマをCSSの変数として生成して使用します。"
 createdAt: "2021-08-22T00:00+09:00"
 updatedAt: "2021-08-22T00:00+09:00"
-tags: ["", "Vuetify"]
+tags: ["Vue.js", "Vuetify"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2syUTBqt1yNSCib7itM2j3/ae8f0d236741f62a03f953532436f0e3/22138497.png"
   title: "vuetify"

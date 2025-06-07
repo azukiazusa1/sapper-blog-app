@@ -5,7 +5,7 @@ slug: "typescript-4-9-in"
 about: "TypeScript において `in` 演算子を `unknown` 型に対して使用した際の挙動が改善されました。"
 createdAt: "2022-11-20T00:00+09:00"
 updatedAt: "2022-11-20T00:00+09:00"
-tags: [""]
+tags: ["TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
   title: "typescript"

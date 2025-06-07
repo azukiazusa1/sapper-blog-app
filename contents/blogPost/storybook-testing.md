@@ -5,7 +5,7 @@ slug: "storybook-testing"
 about: "Storybook の Component Story Format 3.0 では新機能として play() 関数が追加されました。  `play()` 関数は Storybook 上で ユーザーのインタラクションな操作を表現することができます。  以前は composeStories() 関数により Storybook 上で作成したストーリーを Jest で再利用する方法を書いたのですが、どうやら Storybook のみで完結してテストを実行することができるようですのでこちらを試してみます。"
 createdAt: "2022-03-06T00:00+09:00"
 updatedAt: "2022-03-06T00:00+09:00"
-tags: ["storybook", "Jest", ""]
+tags: ["storybook", "Jest", "Vue.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6227wXx8L1Wfr9qr1jtXjk/24c91422719e5745e8df997d14995b90/sOct-Txm_400x400.png"
   title: "storybook"

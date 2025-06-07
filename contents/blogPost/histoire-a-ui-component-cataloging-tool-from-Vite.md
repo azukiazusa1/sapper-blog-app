@@ -5,7 +5,7 @@ slug: "histoire-a-ui-component-cataloging-tool-from-Vite"
 about: "Histoireはフランス語で「Story」という意味の単語であり、Storybook のように UI コンポーネントのカタログを作成するツールです。Vite にネイティブ対応、Vue の SFC 形式で Story を書けるといった特徴があります。"
 createdAt: "2022-06-05T00:00+09:00"
 updatedAt: "2022-06-05T00:00+09:00"
-tags: ["", "Histoire"]
+tags: ["Vue.js", "Histoire"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/VtA12UmYSnuVCHdFqa96V/390679a1977d3e5f9bc88369fa249eae/histoire.svg"
   title: "histoire"

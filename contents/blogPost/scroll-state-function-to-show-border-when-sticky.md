@@ -5,7 +5,7 @@ slug: "scroll-state-function-to-show-border-when-sticky"
 about: "scroll-state() はコンテナ要素のスクロール状態に応じてスタイルを変更することができるコンテナクエリです。例えば、スクロール中にヘッダーを sticky な場合の境界線を表示することが挙げられます。"
 createdAt: "2025-01-18T19:59+09:00"
 updatedAt: "2025-01-18T19:59+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/csohw4ouPaQG4zqoEiYMa/f537169c1916a02da33973932a6eea56/banrinochoujou_6743-768x605.png"
   title: "banrinochoujou 6743-768x605"

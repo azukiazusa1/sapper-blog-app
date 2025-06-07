@@ -1,14 +1,14 @@
 ---
 id: Tb2WwN_htmwzah7H0Nm5f
 title: "フロントエンドアプリケーションがエージェントに接続する方法を標準化する AG-UI"
-slug: "how-to-standardize-frontend-apps-connecting-to-agents" 
+slug: "how-to-standardize-frontend-apps-connecting-to-agents"
 about: "AG-UI はフロントエンドアプリケーションがエージェントに接続する方法を標準化するプロトコルです。この記事では AG-UI を使用してフロントエンドアプリケーションがエージェントに接続する方法を紹介します。"
 createdAt: "2025-06-07T09:45+09:00"
 updatedAt: "2025-06-07T09:45+09:00"
-tags: ["AG-UI", "AI", "Typescript"]
+tags: ["AG-UI", "AI", "typescript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1mFDNQ7A4cOZs9azMMwRow/a5d24db289891f25f6c9661172c7d2e5/icecream_strawberry_illust_989.png"
-  title: "ストロベリーアイスクリームのイラスト"
+  title: "icecream strawberry illust 989"
 audio: null
 selfAssessment:
   quizzes:
@@ -16,34 +16,32 @@ selfAssessment:
       answers:
         - text: "BaseAgent"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "AbstractAgent"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "Agent"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "CoreAgent"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "エージェントの実行が開始されたことを通知するイベントタイプはどれですか？"
       answers:
         - text: "AGENT_STARTED"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "RUN_STARTED"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "EXECUTION_STARTED"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "PROCESS_STARTED"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [AG-UI](https://docs.ag-ui.com/) は、フロントエンドアプリケーションがエージェントに接続する方法を標準化するためのプロトコルです。AG-UI はイベント駆動のアーキテクチャを基盤としており、チャット UI を構築するために必要なリアルタイムインタラクション・ストリーミング・human-in-the-loop（AI システムに人間の介入を組み込むこと）などの機能を提供します。
 
 AG-UI プロトコルは現在以下のエージェントフレームワークでサポートされており、フレームワークの選択に関係なく、フロントエンドアプリケーションは同じ方法でエージェントと通信できます。

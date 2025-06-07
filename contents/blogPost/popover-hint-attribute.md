@@ -5,7 +5,7 @@ slug: "popover-hint-attribute"
 about: "ポップオーバー API は 2024 年の Baseline に組み込まれており、主要なブラウザでサポートされています。Chrome Beta 133 では 3 番目の値として `hint` が追加されました。`popover=hint` はユーザーに対してヒントを表示する「ツールチップ」として動作します。この記事では `popover=hint` 属性について詳しく見ていきます。"
 createdAt: "2025-01-18T12:25+09:00"
 updatedAt: "2025-01-18T12:25+09:00"
-tags: ["HTML", ""]
+tags: ["HTML", "JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/A8RqJOVzwDWoeB5TdGtJC/27dfae6d55b286533a39a15774ed896d/kotatsu_mikan_illust_1797-768x603.png"
   title: "kotatsu mikan illust 1797-768x603"

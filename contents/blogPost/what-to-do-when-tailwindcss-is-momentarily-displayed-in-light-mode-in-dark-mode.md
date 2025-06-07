@@ -5,7 +5,7 @@ slug: "what-to-do-when-tailwindcss-is-momentarily-displayed-in-light-mode-in-dar
 about: "ユーザーの OS の設定や LocalStorage の値をもとにダークモードかどうか判定する場合、コンテンツが読み込まれる前にスクリプトの実行が完了している必要があります。"
 createdAt: "2022-12-11T00:00+09:00"
 updatedAt: "2022-12-11T00:00+09:00"
-tags: ["", "ダークモード"]
+tags: ["tailwindcss", "ダークモード"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1fU89aRBH4MAakN0HQtUK9/703645f396295d93d07322857ad125ed/_Pngtree_crescent_moon_and_star_8390658.png"
   title: "moon and star"

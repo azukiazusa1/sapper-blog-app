@@ -5,7 +5,7 @@ slug: "typescript-esmodules"
 about: "ほぼ設定なしで TypeScript + ESModules の開発環境をシュッと作る時のレシピです。"
 createdAt: "2023-02-19T00:00+09:00"
 updatedAt: "2023-02-19T00:00+09:00"
-tags: ["", "Vitest"]
+tags: ["TypeScript", "Vitest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7lLOLI2gyBtTYgZLlKSdu3/27b5cb3659a10058e4e730001448a91c/_Pngtree_a_green_leaf_7049657.png"
   title: "leaf"

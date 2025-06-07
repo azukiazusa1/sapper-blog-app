@@ -5,7 +5,7 @@ slug: "vercel-ai-sdk-nextjs"
 about: "Vercel AI SDK は TypeScript 向けの AI 機能を活用するプロダクトを構築するためのツールです。AI SDK は AI モデルのプロバイダー間における API の違いを抽象化することで、開発者はアプリケーションの開発に集中できるようになります。この記事では Vercel AI SDK の使い方を確認し、最終的に Next.js で構築した Web アプリケーションに AI 機能を追加する方法を紹介します。"
 createdAt: "2025-03-16T20:29+09:00"
 updatedAt: "2025-03-16T20:29+09:00"
-tags: ["Next.js", "AI", ""]
+tags: ["Next.js", "AI", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1b8vONvIjaZxs8R2oyGQSe/ece7af15f4324f145ab2ed8e977879aa/fruitsand_strawberry_13168-768x620.png"
   title: "いちごのフルーツサンドのイラスト"

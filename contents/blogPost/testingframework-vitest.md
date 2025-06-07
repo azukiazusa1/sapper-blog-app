@@ -5,7 +5,7 @@ slug: "testingframework-vitest"
 about: "Vitest は Vite ベースの JavaScript のテスティングフレームワークです。"
 createdAt: "2021-12-26T00:00+09:00"
 updatedAt: "2021-12-26T00:00+09:00"
-tags: ["", "Vite", "Vitest"]
+tags: ["JavaScript", "Vite", "Vitest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3QOBjWm7zktdAtik7H1O3d/b2b88eab54f5c20dca1000c0351ee090/logo.svg"
   title: "vitest"

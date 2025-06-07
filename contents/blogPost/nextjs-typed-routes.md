@@ -5,7 +5,7 @@ slug: "nextjs-typed-routes"
 about: "Next.js では実験的な機能として、型安全なルーティングを利用できます。この機能を使うことでリンク先のパス名を静的に検査できるため、typo などのエラーを事前に防ぐことができます。"
 createdAt: "2024-04-28T15:46+09:00"
 updatedAt: "2024-04-28T15:46+09:00"
-tags: ["Next.js", ""]
+tags: ["Next.js", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2f5DWYmpUm8NH4pVgXZefW/7503480fd589bfe618383b8020ffdacb/bike_goggles-helmet_15989-768x768.png"
   title: "ゴーグル付きのヘルメットのイラスト"

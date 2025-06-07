@@ -5,7 +5,7 @@ slug: "atomic-css-engine-unocss"
 about: "UnoCSS はフレームワークではなく、Atomic CSS エンジンです。全ては柔軟性とパフォーマンスを考慮して設計されています。UnoCSS にはコアユーティリティはなく、すべての機能はプリセットで提供されます。"
 createdAt: "2022-06-11T00:00+09:00"
 updatedAt: "2022-06-11T00:00+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/62Rm9VoIOW7mjUVoyY7bxg/d0e5bfc94f47dd45cbabad251c705b08/icon-gray.svg"
   title: "uno-css"

@@ -5,7 +5,7 @@ slug: "nuxt-sentry-user-feedback"
 about: "Sentryでは、エラーが発生した際に簡単にユーザーフォードバックを求めるダイアログを表示することができます。  Nuxt.jsでは、エラーが発生した際には`layouts/error.vue`へ遷移させることでエラーページを表示するので、このエラーコンポーネントにダイアログを表示させる処理を書いていきます。"
 createdAt: "2021-06-06T00:00+09:00"
 updatedAt: "2021-06-06T00:00+09:00"
-tags: ["", "Nuxt.js", "Sentry"]
+tags: ["Vue.js", "Nuxt.js", "Sentry"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2ZX9dm3CTG5TopZ3a6ueL6/835658999c0b4b2ed24ccc2adc5906a5/Sentry.png"
   title: "Sentry"

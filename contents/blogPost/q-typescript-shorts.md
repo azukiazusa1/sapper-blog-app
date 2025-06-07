@@ -5,7 +5,7 @@ slug: "q-typescript-shorts"
 about: "TypeScript において関数の返り値の型は推論させることは可能ですが、これはコードベース全体に意図しない型の変更による影響が広がる可能性があります。"
 createdAt: "2022-02-13T00:00+09:00"
 updatedAt: "2022-02-13T00:00+09:00"
-tags: [""]
+tags: ["TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
   title: "typescript"

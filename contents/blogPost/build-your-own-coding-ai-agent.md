@@ -5,7 +5,7 @@ slug: "build-your-own-coding-ai-agent"
 about: "好むと好まずと関わらず、ソフトウェア開発において AI の活用は重要なパラダイムシフトの 1 つです。AI エージェントはユーザーからの指示を元に自律的にタスクを選択し、実行します。この記事では、コーディング AI エージェントを自作する過程を紹介します。"
 createdAt: "2025-04-05T09:31+09:00"
 updatedAt: "2025-04-05T09:31+09:00"
-tags: ["AI", "", ""]
+tags: ["AI", "Node.js", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2Dl9yjAHAo2HjqcGvH8nWV/a25221e7b5afca84db5931d475e0e39c/tunnel-entrance_18403-768x591.png"
   title: "トンネルの入口のイラスト"

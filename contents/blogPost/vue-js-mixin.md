@@ -5,7 +5,7 @@ slug: "vue-js-mixin"
 about: "禁止まで言ってしまうとなんだか強い言葉のように聞こえてしまいますが、mixinは基本的にあまり良いアプローチとは考えられません。  実際に、Reactにも過去にはMixinが存在していましたが現在は廃止されています。"
 createdAt: "2021-09-05T00:00+09:00"
 updatedAt: "2021-09-05T00:00+09:00"
-tags: [""]
+tags: ["Vue.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
   title: "Vue.js"

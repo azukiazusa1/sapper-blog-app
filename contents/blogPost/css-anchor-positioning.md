@@ -5,7 +5,7 @@ slug: "css-anchor-positioning"
 about: "CSS Anchor Positioning とは、特定の要素を Anchor（基準）としてツールチップなどの要素の位置を決定する機能の総称です。CSS Anchor Positioning を使用することで、Floating UI のように自動で画面内に表示されるツールチップやコンテキストメニューを実装できます。"
 createdAt: "2024-04-13T15:49+09:00"
 updatedAt: "2024-04-13T15:49+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1EPm4o37p3DUb9Cbyd9hfm/caed52576bb54a5e721f1a201db29252/ikari_13001.png"
   title: "錨のイラスト"

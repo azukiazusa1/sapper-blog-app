@@ -5,7 +5,7 @@ slug: "typescript-ai-agent-voltagent"
 about: "VoltAgent は TypeScript で AI を活用したアプリケーションを構築するためのツールキットです。VoltAgent Console を使用すると、エージェントの状態をリアルタイムで確認したり、エージェントのワークフローを可視化できる点が特徴です。"
 createdAt: "2025-05-18T18:18+09:00"
 updatedAt: "2025-05-18T18:18+09:00"
-tags: ["VoltAgent", "AI", ""]
+tags: ["VoltAgent", "AI", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5ZmRG2M1gFydxRXn6EonE/9dd992c3429f9e2f7599e6c11a42ab2e/bird_cute_raichou_10916.png"
   title: "ライチョウのイラスト"

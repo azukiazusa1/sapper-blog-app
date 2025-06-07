@@ -5,7 +5,7 @@ slug: "chrome-internal-ai-language-detection-api"
 about: "Language Detection API は Chrome に組み込まれた AI により、クライアントサイドで言語を判定するための提案です。この API を利用することで、テキストの言語を判定することが可能になります。"
 createdAt: "2024-10-14T16:58+09:00"
 updatedAt: "2024-10-14T16:58+09:00"
-tags: ["", "Chrome", "AI"]
+tags: ["JavaScript", "Chrome", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4HU2SvM3QCahNp1DeKtSdG/211aa4dde7f5ca4499f879c6c687d6d8/halloween-lanthanum-ghost_20763-768x729.png"
   title: "ハロウィンのランタンを持ったおばけのイラスト"

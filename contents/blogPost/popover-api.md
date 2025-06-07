@@ -5,7 +5,7 @@ slug: "popover-api"
 about: "Chrome 114 から追加されたポップオーバー API を使うと、JavaScript を使わずに簡単にポップアップを表示することができます。"
 createdAt: "2023-06-11T14:12+09:00"
 updatedAt: "2023-06-11T14:12+09:00"
-tags: ["HTML", ""]
+tags: ["HTML", "JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/pvlbjQtVe4nU6bC0ldMTM/0d9b1a018fd5d7a2bcc196f5cc7f1688/bread-g41ce9fcdd_640.jpg"
   title: "toast"

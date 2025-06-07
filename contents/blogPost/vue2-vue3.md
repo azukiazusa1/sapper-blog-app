@@ -5,7 +5,7 @@ slug: "vue2-vue3"
 about: "Vue 3が正式リリースされてから約1年が経過しました。  Vuetifyのリリース目標である2021年Q3も近づく中でそろそろVue3へのアップデートを検討されている方もいらっしゃることでしょうか？  この記事ではVue 2からVue 3への移行手順を記述していきます。"
 createdAt: "2021-09-12T00:00+09:00"
 updatedAt: "2021-09-12T00:00+09:00"
-tags: [""]
+tags: ["Vue.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/KlxddWUk3mnLDCFG4qxu2/f36940cc38418e433c2b6be88032e44c/articles_2FuOVZsTkluuNqWfpBJSFq_2Fthumbnail_7D.png"
   title: "Vue.js"

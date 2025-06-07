@@ -5,7 +5,7 @@ slug: "calc-size-animation"
 about: "CSS において height プロパティを 0 から auto に変化させた場合に、アニメーションが適用されないのはよく知られた問題です。この記事では calc-size() 関数を使って height: auto; な要素のアニメーションを実装する方法を紹介します。"
 createdAt: "2024-09-14T15:06+09:00"
 updatedAt: "2024-09-14T15:06+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5KmmkJ9bsVEjBZtfVTuf4q/164b74d0014bc1177449cdd146d5a2f9/shiromi_osashimi_7881-768x591.png"
   title: "shiromi osashimi 7881-768x591"

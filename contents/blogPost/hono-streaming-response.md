@@ -5,7 +5,7 @@ slug: "hono-streaming-response"
 about: "Server-Sent events（SSE）は、サーバーからクライアントに向けてイベントをストリーミングするための仕組みです。WebSocket と比較すると、サーバーからの単方向の通信、HTTP で通信するという特徴があります。この記事では Hono を使って OpenAI API を使ったテキスト生成をストリーミングする方法を紹介します。"
 createdAt: "2024-02-01T20:43+09:00"
 updatedAt: "2024-02-01T20:43+09:00"
-tags: ["Hono", "OpenAI", ""]
+tags: ["Hono", "OpenAI", "JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3KIAnqvoojslYIa5b1babv/2a1a5729b81bde5fb21422c1f7a00be7/pellet-stove_illust_1774.png"
   title: "ストーブのイラスト"

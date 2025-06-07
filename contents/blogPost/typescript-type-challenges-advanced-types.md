@@ -5,7 +5,7 @@ slug: "typescript-type-challenges-advanced-types"
 about: "type-challengesを知っていますか？  これは TypeScript の型についての問題集で、問題文の条件を満たす独自のユーティリティ型を作るチャレンジです。いわゆる「型パズル」ってやつですね。  問題の回答はPlayground上で行えるので実際に手を動かしながら問題を解くことができます。型パズルを通じてTypeScript の高度な型について学んでいきましょう。"
 createdAt: "2021-10-17T00:00+09:00"
 updatedAt: "2021-10-17T00:00+09:00"
-tags: [""]
+tags: ["TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3qAVi9TcPTIHc7YH7APBaP/f504dfb93add3ac6e0490ed4aee26fd9/____________________________2021-10-17_21.54.19.png"
   title: "スクリーンショット 2021-10-17 21.54.19"

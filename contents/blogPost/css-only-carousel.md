@@ -5,7 +5,7 @@ slug: "css-only-carousel"
 about: "カルーセルは Web アプリケーションでよく使われる UI コンポーネントの一つであるものの、標準化された実装方法が存在しないため、各ライブラリやフレームワークで独自の実装が行われています。この問題を解決するため、CSS だけを使用してカルーセルを実装するための新しい仕様が提案されています。:この仕様では ::scroll-button と ::scroll-marker 擬似要素を使用してカルーセルを実装します。"
 createdAt: "2025-03-22T10:47+09:00"
 updatedAt: "2025-03-22T10:47+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3NIiIv95Y3LE0DFID3IfDr/7506445d554037aff677ce70410828e4/merry-go-round_9366-768x828.png"
   title: "メリーゴランドのイラスト"

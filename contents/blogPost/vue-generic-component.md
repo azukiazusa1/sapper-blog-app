@@ -5,7 +5,7 @@ slug: "vue-generic-component"
 about: "Vue.js 3.3 から `<script setup>` 構文を使用してコンポーネントを記述する際に、型引数を指定することができるようになりました。TypeScript で関数に型引数を指定するのと同じように、コンポーネントの props の型を指定することができます。"
 createdAt: "2023-06-04T14:16+09:00"
 updatedAt: "2023-06-04T14:16+09:00"
-tags: [""]
+tags: ["Vue.js"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6VNUyPtmK0OyhUZ47iAu2R/e6e54f19bf6f82a50199f8e8434a8c22/___Pngtree___shine_jewelry_white_diamond_5318738.png"
   title: "white diamond"

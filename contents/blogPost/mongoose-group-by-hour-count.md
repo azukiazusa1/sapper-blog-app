@@ -5,7 +5,7 @@ slug: "mongoose-group-by-hour-count"
 about: "タイトルのとおりです"
 createdAt: "2021-07-18T00:00+09:00"
 updatedAt: "2021-07-18T00:00+09:00"
-tags: ["", "MongoDB"]
+tags: ["JavaScript", "MongoDB"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3i47kGqS3gax6sXpJ2AXAF/ccaba154f07ca03a5345cdfcfbb3a8bb/MongoDB-logo.png"
   title: "MongoDB"

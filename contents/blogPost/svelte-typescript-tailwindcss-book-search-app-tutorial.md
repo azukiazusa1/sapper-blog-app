@@ -5,7 +5,7 @@ slug: "svelte-typescript-tailwindcss-book-search-app-tutorial"
 about: "この記事でははSvelte + TypeScript + tailwindcssで本検索サイトを作成します。 Svelteを使ってアプリケーションを作成1から作成することができます。 以下のことが学べます。  - Svelteの基礎文法 - Svelteのルーティング - Svelteのストア  HTML・CSS・JavaScriptの基礎的な理解がある人が対象です。"
 createdAt: "2021-02-07T00:00+09:00"
 updatedAt: "2021-02-07T00:00+09:00"
-tags: ["", "", "", ""]
+tags: ["Svelte", "JavaScript", "tailwindcss", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/10yOrB3tXKM12ZJbJdJlw5/e7d9e7de67e916bb0a59695d9882f061/1200px-Svelte_Logo.svg.png"
   title: "Svelte"

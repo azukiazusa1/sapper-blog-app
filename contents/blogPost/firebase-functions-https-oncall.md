@@ -5,7 +5,7 @@ slug: "firebase-functions-https-oncall"
 about: "Firebase Functionsとは、Firebaseの提供するサーバレスフレームワークです。HTTPSリクエストによって関数を実行したり、FireStore・Cloud Storage・AuthenticationのCRUDイベントをトリガーに関数を実行することができます。使用できる言語はJavaScript・TypeScriptに限られているというデメリットはあるものの、手軽にデプロイでき簡単にプロジェクトの他のFirebaseの機能と統合できるメリットがあります。"
 createdAt: "2021-01-10T00:00+09:00"
 updatedAt: "2021-01-10T00:00+09:00"
-tags: [""]
+tags: ["firebase"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/44W4bTCfa2vT60k8cr4bpy/bbc60b09e00fa77e02cea2012006e896/firebase-cloud-functions.jpeg"
   title: "firebase-cloud-functions"

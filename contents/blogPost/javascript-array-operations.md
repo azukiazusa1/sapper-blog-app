@@ -5,7 +5,7 @@ slug: "javascript-array-operations"
 about: "JavaScriptで配列操作をする際には、まずはJavascriptが持つ配列のメソッドを眺めて見るとよいでしょう。JavaScriptはライブラリに頼らなくとも自前で高度な操作を可能にしてくれます。  組み込みの配列メソッドはたくさんありますが、その中で私がよく使うメソッドを紹介します。"
 createdAt: "2020-11-29T00:00+09:00"
 updatedAt: "2020-11-29T00:00+09:00"
-tags: [""]
+tags: ["JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1oOuwue6Ki0IRZkFa6y6Qi/5359bf10fca29a24eaf9260cc78240bc/es2015-001.jpg"
   title: "JavaScript"

@@ -5,7 +5,7 @@ slug: "what-is-tailwindcss"
 about: "TailWindCSSはBootStrap・Materialize CSSなどに代表するCSSフレームワークの一つです。 その特徴として、**Utility First**を掲げています。"
 createdAt: "2021-01-31T00:00+09:00"
 updatedAt: "2021-01-31T00:00+09:00"
-tags: ["", ""]
+tags: ["tailwindcss", "CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2GQfDJKqG7T0kWVwn1DZeJ/679ebd658ac716ded2dd61bb200e4780/tailwindcss.png"
   title: "tailwindcss"

@@ -5,7 +5,7 @@ slug: "react-errorboundary"
 about: "Error Boundaryとは、自身の子コンポーネントツリーで発生したJavaScriptのエラーをキャッチ・記録しフォールバックのUIを表示するコンポーネントです。  例えるなら、`try/catch`構文を行うコンポーネントのようなものと言えます。"
 createdAt: "2021-06-20T00:00+09:00"
 updatedAt: "2021-06-20T00:00+09:00"
-tags: ["", "React"]
+tags: ["JavaScript", "React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2c9EyCXfherkq4ICwfDHaM/13bcad3dd62573b050eb8ad25dce4275/1200px-React-icon.svg.png"
   title: "React"

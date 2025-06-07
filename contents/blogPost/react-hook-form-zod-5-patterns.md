@@ -5,7 +5,7 @@ slug: "react-hook-form-zod-5-patterns"
 about: "React Hook Form で Zod を使用する時によくあるバリデーションのパターンを 5 つ紹介します"
 createdAt: "2023-02-12T00:00+09:00"
 updatedAt: "2023-02-12T00:00+09:00"
-tags: ["", "Zod"]
+tags: ["TypeScript", "Zod"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/HwTFMkoAmZ6qo2gIea9Nw/e9ccce37ebbdfa7cdf560b1ff393305f/___Pngtree___lightning_bolt_yellow_transparent_images_8995404.png"
   title: "lightning bolt"

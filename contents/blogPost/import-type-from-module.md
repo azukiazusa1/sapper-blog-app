@@ -5,7 +5,7 @@ slug: "import-type-from-module"
 about: "TypeScript のプロジェクトにおいて `import type { ... } from \"./module\"` という記述を見たことはないでしょうか？  これは Type-Only imports and export と呼ばれる機能で TypeScript3.8 より導入されました。これは名前の通りモジュールから型情報のみをインポートするために使用されます。これは通常の利用用途ではあまり考慮する必要はないのですが、特定の問題に立ち向かうために利用されることがあります。"
 createdAt: "2022-03-27T00:00+09:00"
 updatedAt: "2022-03-27T00:00+09:00"
-tags: [""]
+tags: ["TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
   title: "typescript"

@@ -5,7 +5,7 @@ slug: "vue-a11y-testing"
 about: "様々な方法でアクセシビリティを自動で検査します"
 createdAt: "2022-01-30T00:00+09:00"
 updatedAt: "2022-01-30T00:00+09:00"
-tags: ["アクセシビリティ", "", "storybook", "Jest"]
+tags: ["アクセシビリティ", "Vue.js", "storybook", "Jest"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/r6513NBn4sCbGq4sYPhA0/02c228b5c22ce862bbf3c24a62ff86c8/wheelchair-symbol_267f.png"
   title: "accesibility"

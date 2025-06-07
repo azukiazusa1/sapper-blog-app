@@ -5,7 +5,7 @@ slug: "css-pseudo-class-focus-within"
 about: ":focus-within は CSS の擬似クラスであり、その要素または子孫要素にフォーカスがある場合に一致します。"
 createdAt: "2022-09-18T00:00+09:00"
 updatedAt: "2022-09-18T00:00+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5ArE2K72ratyY0GPq8q5NM/22893b1244a22afea5dcb583358c9ded/julia-koi-K87TvPSCCgI-unsplash.jpg"
   title: "julia-koi-K87TvPSCCgI-unsplash"

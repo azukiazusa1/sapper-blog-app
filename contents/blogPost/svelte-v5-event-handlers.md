@@ -5,7 +5,7 @@ slug: "svelte-v5-event-handlers"
 about: "Svelte v5 では、イベントハンドラの書き方が一新され、いくつか非推奨となった書き方があります。この記事では、Svelte v4 と Svelte v5 のイベントハンドラの書き方の違いについて見ていきます。"
 createdAt: "2024-05-05T15:15+09:00"
 updatedAt: "2024-05-05T15:15+09:00"
-tags: [""]
+tags: ["Svelte"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/xBERA0jHZ420rvwgG6hQK/27f792a616ddcdbae832e2ab85c88b57/ball-juggling_male_20221.png"
   title: "ボールジャグリングをする男性のイラスト"

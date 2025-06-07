@@ -5,7 +5,7 @@ slug: "exhaustive-checks-in-typescript"
 about: "パターンマッチを備えている言語では、コンパイル時に網羅性が検査され、網羅的でない場合にはコンパイルエラーとなります。例えば Rust では match 式は網羅性を検査します。列挙型が取りうる値をすべて網羅していない場合にはコンパイルエラーとなります。TypeScript にはパターンマッチがないため、網羅性の検査は行われません。ですが、TypeScript では `never` 型を利用することで網羅性の検査を行うことができます。"
 createdAt: "2023-03-11T14:37+09:00"
 updatedAt: "2023-03-11T14:37+09:00"
-tags: [""]
+tags: ["TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5J9CZJmXmgGyZGgWhHTRg7/94c94bbfbbfd9a56715a2df5c36a7d62/_Pngtree_japanese_temple_2751470.png"
   title: "—Pngtree—japanese temple_2751470.png"

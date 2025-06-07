@@ -5,7 +5,7 @@ slug: "svelte-v5-snippet-feature"
 about: "Svelte v5 ではスニペットと呼ばれる新しい機能が導入されます。スニペットとは、コンポーネント内で使用できる再利用可能なマークアップのことです。`#snippet` ディレクティブを使用してスニペットを定義し、引数を受け取ることができます。スニペットを呼び出す際には `@render` ディレクティブを使用します。またスニペットは単なる値として扱われるため、コンポーネントの Props として渡すことができます。"
 createdAt: "2024-05-19T13:36+09:00"
 updatedAt: "2024-05-19T13:36+09:00"
-tags: [""]
+tags: ["Svelte"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6lfMvi62wyl8rRoC32uJ1H/1ea1384cdc7bdad3c9b97bb3a8f62681/food_futomaki_cut_4755-768x609.png"
   title: "カットされた太巻きのイラスト"

@@ -5,7 +5,7 @@ slug: "satori-sveltekit-ogp-image"
 about: "Satori とは Vercel が公開している OGP 画像生成ライブラリです。OGP 画像を表示したい場合、記事ごとに対応する OGP 画像が必要になるわけで、新しい記事を投稿するたびに新たな画像を生成しなければいけません。都度画像を生成する手間は取れないわけで、このOGP 画像を生成する工程を自動化する仕組みが必要となります。Satori は記事のタイトルなどをもとに動的 OGP 画像を生成するユースケースのために使用できます。"
 createdAt: "2022-12-18T00:00+09:00"
 updatedAt: "2022-12-18T00:00+09:00"
-tags: ["", "SvelteKit", "OGP"]
+tags: ["Svelte", "SvelteKit", "OGP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1EU8H77Fm4VPXNwhQoNV8M/ca8c727bc40d8203c2736dd36d85b615/card.png"
   title: "satori"

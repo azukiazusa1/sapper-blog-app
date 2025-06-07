@@ -5,7 +5,7 @@ slug: "scrollbar-gutter-css-property-to-prevent-screen-jitter-due-to-scroll-bar-
 about: "子要素が親要素のボックスからはみ出した時、overflow プロパティの値が auto または scroll の場合にスクロールバーが表示されます。スクロールバーがクラシックスクロールバーの場合、スクロールバーの表示・非表示によりボックスの幅が変わるため、画面がガタつくことがあります。scrollbar-gutter プロパティを使うとスクロールバー用のスペースをあらかじめ確保でき、画面のガタツキを解消できます。"
 createdAt: "2024-06-01T15:30+09:00"
 updatedAt: "2024-06-01T15:30+09:00"
-tags: [""]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5AsM3B5qBh0qMWxvcDTZHQ/4d03e02e5dc069db16af3cfff092a288/flower_ajisai_8974-768x662.png"
   title: "紫陽花のイラスト"

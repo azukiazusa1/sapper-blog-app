@@ -5,7 +5,7 @@ slug: "jsdoc-typescript"
 about: "時には、TypeScriptという概念が存在しない退屈な世界で開発を行わなけらばならない状況はあるでしょう。私はもはやキーボードでタイピングすることすらままなりません。  そんなJavaScriptしか利用できない状況で代替手段となるのが、JSDocです。JSDocのアノテーションによって型を付与することによって最低限の支援を受けることができます。"
 createdAt: "2021-08-15T00:00+09:00"
 updatedAt: "2021-08-15T00:00+09:00"
-tags: ["", ""]
+tags: ["JavaScript", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6zTzB66mCu7Oi65BeJO0Nh/c9a64c4494dde084026cbfa28fa0d044/__________________________3_.png"
   title: "typescript"

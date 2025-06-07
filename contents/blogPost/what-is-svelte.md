@@ -5,7 +5,7 @@ slug: "what-is-svelte"
 about: "Svelteとは、ReactやVue.jsのような宣言的UIライブラリの一種です。その最大の特徴は、ReactやVue.js・Angularと異なりSvelteはコンパイラであることを謳っているところです。Svelteによってコンパイルされたコードは、すべてVanilla JS  - ネイティブのJavaScript- にで生成されます。 そのため、コンパイル後のファイルサイズも小さくパフォーマンス上での利点が期待されています。"
 createdAt: "2021-01-24T00:00+09:00"
 updatedAt: "2021-01-24T00:00+09:00"
-tags: ["", "", ""]
+tags: ["Svelte", "JavaScript", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/10yOrB3tXKM12ZJbJdJlw5/e7d9e7de67e916bb0a59695d9882f061/1200px-Svelte_Logo.svg.png"
   title: "Svelte"

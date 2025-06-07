@@ -5,7 +5,7 @@ slug: "return-await-return"
 about: "`Promise` を返す非同期関数を扱う時 `Promise` をそのまま返す書き方と `Promise` を `await` してから返す二通りの方法があります。これらは一見同じように動作するように見えますが異なる点が存在します。"
 createdAt: "2022-04-03T00:00+09:00"
 updatedAt: "2022-04-03T00:00+09:00"
-tags: [""]
+tags: ["JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7aQAosNLTF1lP6MiXWayqO/c6afbeeb9ed62e05e7491c884438807b/javascript.png"
   title: "JavaScript"

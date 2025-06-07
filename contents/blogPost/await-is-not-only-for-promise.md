@@ -5,7 +5,7 @@ slug: "await-is-not-only-for-promise"
 about: "await キーワードは `then()` という名前のメソッドを持つオブジェクトに対して使用できます。このようなオブジェクトを thenable object と呼びます。await キーワードが Promise オブジェクトではなく thenable オブジェクトを対象としているのは、ライブラリの相互運用のためです。"
 createdAt: "2023-08-20T17:41+09:00"
 updatedAt: "2023-08-20T17:41+09:00"
-tags: ["", "Promise"]
+tags: ["JavaScript", "Promise"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2okG3Yt0KXmAOz1xECemkd/4705c28d4b1a453ad56a5fe628f371c0/kingyo-sukui_18384.png"
   title: "金魚すくいのイラスト"

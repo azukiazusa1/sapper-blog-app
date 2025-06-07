@@ -5,7 +5,7 @@ slug: "sveltekit-tutorial-create-a-blog-site"
 about: "SvelteKit は Svelte と Vite で構築たフレームワークです。SvelteKit は Web アプリケーションを開発するために必要な機能を提供します。この記事では、SvelteKit を使用して記事投稿サイトを作成するチュートリアルを紹介します。記事投稿サイトは、記事の一覧表示、記事の詳細表示、記事の投稿、記事の削除の機能を持つシンプルな Web アプリケーションです。"
 createdAt: "2024-05-26T14:28+09:00"
 updatedAt: "2024-05-26T14:28+09:00"
-tags: ["", "SvelteKit"]
+tags: ["Svelte", "SvelteKit"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7mdm4EnhrzOR58aNNAkpJd/d0e06570e684bf7f3337fd8fb323ad1b/fuusha_6155-768x748.png"
   title: "青空と風車のイラスト"

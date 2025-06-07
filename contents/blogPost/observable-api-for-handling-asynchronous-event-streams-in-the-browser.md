@@ -5,7 +5,7 @@ slug: "observable-api-for-handling-asynchronous-event-streams-in-the-browser"
 about: "Observable API は非同期イベントストリームを処理するための API です。 EventTarget に .when() メソッドを追加し addEventListener() よりも宣言的で優れたイベントハンドリングを提供します。"
 createdAt: "2025-02-22T18:39+09:00"
 updatedAt: "2025-02-22T18:39+09:00"
-tags: [""]
+tags: ["JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4BJ7c0e1SP9gcFruYJCtw9/47d5bb8747dc57d033d6a846ad296140/bird_aobazuku_13858-768x689.png"
   title: "アオバズクのイラスト"
