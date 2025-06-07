@@ -48,6 +48,7 @@ const fetchTags = async (): Promise<ContentfulTag[]> => {
 
   const tags = await client.getEntries({
     content_type: "tag",
+    limit: 500,
   });
 
   cache = {
