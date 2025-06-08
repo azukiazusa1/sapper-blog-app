@@ -8,7 +8,7 @@ updatedAt: "2025-06-08T09:18+09:00"
 tags: ["OpenAI", "AI", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2QXAglNLh4H28vk5spkCH5/3870b244224e372a6e3ddb3899202409/22801990.png"
-  title: "クッキーアンドクリームのアイスクリームのイラスト"
+  title: "22801990"
 audio: null
 selfAssessment:
   quizzes:
@@ -16,7 +16,7 @@ selfAssessment:
       answers:
         - text: "tripwireTriggered"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "outputInfo"
           correct: false
           explanation: "outputInfoはガードレールの出力に関する情報であり、実行の中断には使用されません。"
@@ -26,25 +26,22 @@ selfAssessment:
         - text: "guardrailStatus"
           correct: false
           explanation: "guardrailStatusは存在しません。"
-       
     - question: "Human-in-the-Loop (HITL) 機能でツールの実行を承認するために使用するメソッドはどれですか？"
       answers:
         - text: "result.state.accept()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "result.state.approve"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "result.state.confirm()"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "result.state.allow()"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 OpenAI Agents SDK は AI エージェントを構築するためのパッケージです。軽量で使いやすく、抽象化を最小限に抑えているのが特徴です。以前実験的に公開されていた [Swarm](https://github.com/openai/swarm/tree/main) を本番環境向けにアップグレードされたものです。Agents SDK には以下のプリミティブな機能が含まれています。
 
 - エージェント：instructions とツールを持つ LLM。特定のタスクを完了するまでループを実行する
