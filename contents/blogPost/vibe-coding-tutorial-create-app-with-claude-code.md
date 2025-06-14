@@ -103,7 +103,7 @@ Node.js のインストールが完了したら、ターミナルを開いて以
 npm install -g @anthropic-ai/claude-code
 ```
 
-?> オプショナルとして [gh](https://cli.github.com/) コマンドや [rg](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation) コマンドをインストールしておくと Claude Code がより便利に使えるようになります。
+!> オプショナルとして [gh](https://cli.github.com/) コマンドや [rg](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation) コマンドをインストールしておくと Claude Code がより便利に使えるようになります。
 
 インストールが完了したら、以下のコマンドで Claude Code を起動できます。
 
@@ -309,7 +309,7 @@ claude "/init"
 
 ファイルの内容を確認して問題がなければ「1. Yes」を入力して Enter キーを押しましょう。実際に実行すると、以下のような内容の `CLAUDE.md` ファイルが生成されました。
 
-```markdown
+~~~markdown
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
@@ -364,7 +364,7 @@ docker-compose up -d
 
 # Reset database
 docker-compose down -v && docker-compose up -d
-````
+```
 
 ## Key Configuration
 
@@ -372,7 +372,7 @@ docker-compose down -v && docker-compose up -d
 - **Paths**: Uses `@/*` alias mapping to project root
 - **Tailwind**: Configured for CSS variables with neutral base color
 - **TypeScript**: Strict mode enabled with Next.js plugin
-```
+~~~
 
 このファイルはプロジェクトの概要やアーキテクチャ、データベースのスキーマ、開発コマンドなどを記述しています。必要に応じて追加の指示を書き加えることもできます。例えば、「常に日本語で応答する」といった Claude Code のシステムプロンプトとして機能するような内容や、「`any` 型の使用を禁止する」といったコーディング規約を記述すると有効に活用できます。
 
@@ -526,7 +526,6 @@ https://github.com/azukiazusa1/vibe-kanban-app/commit/8ba8f5c892e92e52c7ef5280dd
 
 この過程で問題が発生したり、改善したい点があれば、Claude Code にフィードバックを与えて修正を依頼できます。ここでは「フォームの送信中は button を disabled にして送信中と表示してください」というフィードバックを与えてみました。すると、`useFormStatus` フックを使ってフォームの送信状態を管理し、ボタンを適切に制御するコードを提案してくれました。
 
-
 !> 人間の介入を最小限に押されたい場合には、Claude Code にテストコードを書かせて実行させることが有効です。lint やテストをセッションの中で実行させるように `CLAUDE.md` に記述しておくと、素早いイテレーションでコードの不具合を発見し修正できます。
 
 トップページに作成したボードの一覧を表示する機能を追加してこのセッションを完了させましょう。以下のプロンプトを入力して、ボード一覧の表示を依頼します。
@@ -546,7 +545,6 @@ https://github.com/azukiazusa1/vibe-kanban-app/commit/8ba8f5c892e92e52c7ef5280dd
 さらに `Module not found: Can't resolve '@/components/ui/card'` というエラーが発生したため、このエラーメッセージをそのままプロンプトに入力して修正を依頼しました。`shadcn/ui` の `Card` コンポーネントをインストールするコマンドを実行し、無事にエラーが解消されました。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/1SdpqUfuT7Q8KYTE9hKRrH/df5cf785f2c4e67ea8768d0366f970f3/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-06-14_11.06.41.png)
-
 
 ここまでの変更を Claude Code に commit してもらいましょう。Claude Code `git log` の情報を参照して適切なコミットメッセージを生成してくれます。以下のプロンプトを入力して、コミットを依頼します。GitHub レポジトリと連携している場合は、コミット後にプルリクエストを作成することもできます。
 
@@ -875,7 +873,6 @@ npx ccusage@latest
 - Plan モードを有効にすることで、Claude Code が実装計画を立ててからコードを生成する。これにより、より高い精度で要件を満たすコードが得られる
 - 「よく考えて」「深く考えて」などのキーワードをプロンプトに含めることで、Claude Code の拡張思考モードを有効にできる。これにより、より深い推論を行い、複雑な問題に対処できる
 - Claude Code を並行稼働させる場合には Git Worktree を使用することが推奨される。これにより、同じリポジトリ内で複数のブランチを独立して作業できる
-
 
 ## 参考
 
