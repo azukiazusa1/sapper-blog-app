@@ -5,7 +5,7 @@ slug: "vibe-coding-tutorial-create-app-with-claude-code"
 about: "バイブコーディングとは、AI エージェントを活用して直感的にアプリケーションを開発する新しいコーディングスタイルです。このチュートリアルでは、Claude Code を使って Next.js でカンバンボードアプリケーションを作成します。"
 createdAt: "2025-06-12T19:55+09:00"
 updatedAt: "2025-06-12T19:55+09:00"
-tags: ["vibe-coding", "claude-code", "nextjs", "prisma"]
+tags: ["vibe-coding", "claude-code", "nextjs", "Prisma"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7x7hKIilc9di84JbmfGIRn/97f1ae7221672c861628836ff78e97e2/night_hotaru_11497.png"
   title: "星空とホタルのイラスト"
@@ -25,8 +25,7 @@ selfAssessment:
           explanation: "バイブコーディングではAIの出力にランダム要素があり、同じプロンプトでも毎回異なる結果が得られる可能性があります。"
         - text: "コードの品質よりもスピードを重視する"
           correct: false
-          explanation: ""
-
+          explanation: null
     - question: "Claude CodeのPlan モードにを有効にするための操作はどれですか？"
       answers:
         - text: "claude --plan コマンドで起動する"
@@ -34,17 +33,15 @@ selfAssessment:
           explanation: "`--plan` オプションは存在しません。"
         - text: "Shift + Tabキーを2回押す"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "プロンプトに「よく考えて」というキーワードを含める"
           correct: false
           explanation: "「よく考えて」は拡張思考モードをトリガーするキーワードであり、Plan モードではありません。"
         - text: "`/plan` コマンドを実行する"
           correct: false
           explanation: "`/plan` コマンドは存在しません。"
-
 published: true
 ---
-
 気がつけばコーディングの分野で AI エージェントを活用することが一般的になりつつあります。特に「バイブコーディング（Vibe Coding）」と呼ばれる新しいタイプのコーディングスタイルは一種のバズワードになっています。Vibe とは元々音楽シーンで使われていた言葉で「雰囲気・フィーリング・ノリ」といった意味を持ちます。プログラマーは技術的な詳細にとらわれるのではなく、自らの直感的なアイディアを AI エージェントに自然言語で伝えることで、AI エージェントが主体になってアプリケーションの開発を進めていきます。このスタイルではプログラマーはほとんどコードを書くことはありません。
 
 このチュートリアルでは、Claude Code を使ってバイブコーディングの基本的な流れを体験してみましょう。Claude Code は Anthropic が開発したエージェント型コーディングツールです。ターミナル上で動作するものの、VS Code のような IDE と統合して使うこともできるため使いやすいインターフェースで操作できます。月 $20 の Pro プランに加入することで月額固定で利用可能なことも人気を集めている理由の 1 つです。
