@@ -16,7 +16,6 @@
     "update": "tsx src/commands/update.ts",
     "new": "tsx src/commands/new.ts",
     "validate": "tsx src/commands/validate.ts",
-    "summarize": "tsx src/commands/summarize.ts",
     "recap": "tsx src/commands/recap.ts"
   },
   "repository": {
@@ -35,7 +34,6 @@
     "@google-analytics/data": "^4.3.0",
     "contentful-management": "^10.29.3",
     "nanoid": "^3.3.6",
-    "openai": "^3.2.1",
     "slugify": "^1.6.5",
     "string-similarity": "^4.0.4",
     "tsconfig": "^0.0.0",
