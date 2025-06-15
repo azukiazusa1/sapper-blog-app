@@ -34,7 +34,6 @@ selfAssessment:
           explanation: null
         - text: "submitted"
           correct: true
-          explanation: null
           explanation: "新しいタスクの場合、TaskStatus が `submitted` の状態で初期化されます。この状態は、タスクが受け付けられたが、まだ処理が開始されていないことを示します。"
         - text: "pending"
           correct: false
