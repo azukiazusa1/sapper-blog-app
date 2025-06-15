@@ -5,13 +5,13 @@ slug: "a2a-protocol-js-sdk"
 about: "A2A プロトコルはエージェント間の通信を標準化するためのプロトコルです。JavaScript SDK を使って A2A サーバーとクライアントを実装し、エージェント間通信を試してみます。"
 createdAt: "2025-06-15T11:01+09:00"
 updatedAt: "2025-06-15T11:01+09:00"
-tags: ["A2A", "Typescript", "AI"]
+tags: ["A2A", "TypeScript", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1i2cYBTxAfHbT3ZnZN2FiU/5816a12dc35cbe3385f0d7d61adffe60/cute_oumugai_10615-768x640.png"
-  title: "かわいいオウムガイのイラスト"
+  title: "cute oumugai 10615-768x640"
 audio: null
 selfAssessment:
-  quizzes:    
+  quizzes:
     - question: "AgentExecutor クラスで実装が必要な2つのメソッドは何ですか？"
       answers:
         - text: "start と stop"
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "send と receive"
           correct: false
           explanation: null
-    
     - question: "タスクのライフサイクルで最初の状態は何ですか？"
       answers:
         - text: "working"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "initialized"
           correct: false
           explanation: null
-    
     - question: "A2A クライアントでストリーミング応答を受け取るために使用するメソッドは何ですか？"
       answers:
         - text: "sendMessage"
@@ -56,10 +54,8 @@ selfAssessment:
         - text: "streamMessage"
           correct: false
           explanation: null
-
 published: true
 ---
-
 [A2A プロトコル](https://google-a2a.github.io/A2A/latest/)は、エージェント間の通信を標準化するためのプロトコルです。多様なフレームワークやベンダー間での相互運用性を促進することを目的としています。
 
 A2A の仕様に基づいて実装された JavaScript SDK が新たに公開されました。この記事では A2A プロトコルの JavaScript SDK を使って、エージェント間通信を試してみます。
