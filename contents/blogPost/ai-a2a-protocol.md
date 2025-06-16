@@ -209,7 +209,7 @@ export const agentCard: AgentCard = {
   ],
 };
 ```
-  
+
 `src/server/index.ts` に Hono を使って `.well-known/agent.json` に AgentCard をホストするサーバーを実装します。
 
 ```ts:src/server/index.ts
@@ -393,25 +393,6 @@ export interface ErrorMessage {
   }
 }
 
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "tasks/send",
-  "params": {
-    id: "de38c76d-d54c-436c-8b9f-4c2703648d64",
-    "message": {
-      "role": "user",
-      "parts": [
-        {
-          "type": "text",
-          "text": "サイコロを振ってください。"
-        }
-      ]
-    },
-  },
-  "metadata": {}
-}
 ```
 
 このタスクに対するレスポンスとして、以下のような JSON が返されます。
@@ -621,7 +602,7 @@ import { generateText } from "ai";
 import { google } from "@ai-sdk/google";
 
 async function handleSendTask(c: Context, body: any) {
-  
+
   const getOrCreateTaskResult = getOrCreateTask(params.id, params.message);
 
   // タスクの状態を "working" に更新する
@@ -717,7 +698,6 @@ async function handleSendTask(c: Context, body: any) {
   return c.json(response);
 }
 ```
-
 
 `handleGetTask` はタスク ID を指定してメモリストアからタスクを取得します。タスクが存在しない場合はエラーを返します。
 
