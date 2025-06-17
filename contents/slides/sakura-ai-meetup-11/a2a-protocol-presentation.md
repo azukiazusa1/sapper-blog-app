@@ -15,12 +15,6 @@ style: |
   h2 {
     font-size: 40px;
     color: #00d4ff;
-    position: absolute;
-    top: 60px;
-    left: 40px;
-    right: 40px;
-    margin: 0;
-    margin-bottom: 20px;
   }
   h3 {
     font-size: 32px;
@@ -36,15 +30,25 @@ style: |
     color: #ffffff;
     font-size: 20px;
   }
+  .line {
+    line-height: 1.5;
+  }
   ul li {
     font-size: 28px;
     margin-bottom: 10px;
+  }
+
+  .top {
+    position: absolute;
+    top: 60px;
+    left: 40px;
   }
 ---
 
 # A2A プロトコルを試してみる
 
-TypeScript による実装と体験
+さくらのAI Meetup vol.11「Agent2Agent（A2A）」
+2025/06/25(水)
 
 <!--
 こんにちは。本日はお忙しい中お時間をいただき、ありがとうございます。
@@ -85,56 +89,41 @@ Agent2Agent プロトコル、略して A2A は、AI エージェント間の連
 
 ## なぜ A2A が必要か？
 
-AI エージェントが効果的に目的を達成するために
+AI エージェントが効果的に目的を達成するためには、多様なエージェントがエコシステム内で連携できることが重要
 
 - 旅行計画の例：
   - 天気予報を調べる
   - 宿泊先を予約する
   - 交通機関を予約する
 
+
 <!--
 では、なぜ A2A プロトコルが必要なのでしょうか。
 AI エージェントが効果的に目的を達成するためには、多様なエージェントがエコシステム内で連携することが重要です。
-例えば、旅行の計画を立てる場合を考えてみてください。
-天気予報を調べて最適な日程を決める、宿泊先を検索・比較して予約する、交通機関の空き状況を確認して予約するなど、
-それぞれ異なる専門性を持ったエージェントが協力することで、より良い結果を得ることができます。
-現在のように各エージェントが独立して動作するだけでは、このような複雑な連携は困難です。
+例えば、旅行の計画を立てる場合を考えてみてください。AI エージェントを使わずに人間が計画を立てたとしても、天気予報を調べて最適な日程を決める、宿泊先を検索・比較して予約する、交通機関の空き状況を確認して予約するなど、様々なタスクがあると思います。
 -->
 
 ---
 
-## 既存プロトコルとの関係
-
-- **MCP**: エージェントとツールの接続
-- **A2A**: エージェント同士の通信
-
-競合ではなく**補完**関係
+![bg contain](./images/travel-agent.svg)
 
 <!--
-AI エージェントの通信プロトコルといえば、既に Model Context Protocol、MCP が存在しています。
-ここで重要なのは、A2A と MCP は競合するものではなく、むしろ補完し合う関係だということです。
-MCP はエージェントとツールやデータソースの間の接続を標準化するのに対し、
-A2A はエージェント同士の通信を標準化します。
-つまり、MCP でエージェントが外部ツールを使えるようになり、A2A で複数のエージェントが連携できるようになるという形で、
-両方を組み合わせることでより強力なマルチエージェントシステムを構築できるのです。
--->
-
+それぞれのタスクには専門性が求められていて、単独のエージェントだけでは完結できないことが多いです。とはいえそれぞれの専門家に対してユーザーが個別に指示を出すのは効率が悪いですよね。
+そこで AI エージェント同士の連携が必要になります。おそらく天気予報を調べるエージェントと宿泊先を予約するエージェント、は別々の会社や部門で開発されることになると思うんですよね。それぞれ持っているデータは異なるでしょうし。ただ会社ごとに　API を作ってしまうと、連携が困難になってしまう、そこで標準的なプロトコルが必要になるわけです。
+--> 
 ---
 
-## A2A の 3 つのアクター
 
-1. **ユーザー**: 指示を出す人間
-2. **A2A クライアント**: ユーザーに代わってリクエストを開始
-3. **A2A サーバー**: タスクを処理しレスポンスを提供
+<h2 class="top">A2A の 3 つのアクター</h2>
 
 <!--
 A2A プロトコルでは、3つのアクターが登場します。
 まず「ユーザー」。これは目的を達成するためにエージェントに指示を出す人間です。
-次に「クライアント」。これはユーザーに代わってエージェントにアクションを要求する役割を担います。
-そして「リモートエージェント」。これはサーバー側でクライアントからのリクエストを受け取り、実際にアクションを実行します。
-この構造により、ユーザーは直接複数のエージェントを管理する必要がなく、
-クライアントが仲介役となって適切なエージェントに処理を依頼することができます。
+次に「クライアント」。これはユーザーに代わってエージェントにアクションを要求する役割を担います。A2A プロトコルは JSON-RPC 形式で通信を行うため、クライアントはそのリクエストを適切な形式に変換して送信します。
+そして「リモートエージェント」。これは HTTP サーバー上で動作し、クライアントからのリクエストを受け取り、処理を行います。リモートエージェントは、ユーザーの要求に応じて必要なタスクを実行し、その結果をクライアントに返します。例えばホテルの予約などですね。
 -->
+
+![bg contain](./images/a2a-actors.svg)
 
 ---
 
@@ -143,42 +132,16 @@ A2A プロトコルでは、3つのアクターが登場します。
 エージェントの機能を記述するメタデータ
 
 - エージェントの名前・説明
+- サポートされている機能（ストリーミング、プッシュ通知）
 - 提供するスキル
 - 認証メカニズム
 - `/.well-known/agent.json` でホスト
 
----
-
-## 今回の実装：サイコロエージェント
-
-TypeScript で A2A 準拠のサーバーを構築
-
-- **機能**: サイコロを振る
-- **技術**: Hono + Vercel AI SDK
-- **モデル**: Google Gemini
-
 <!--
-それでは実際に A2A プロトコルを体験してみましょう。
-今回は TypeScript を使って、サイコロを振る機能を持つエージェントを実装します。
-シンプルな機能ですが、A2A プロトコルの全体的な流れを理解するには十分です。
-技術スタックとしては、Web サーバーに Hono、AI 機能に Vercel AI SDK、そして LLM として Google Gemini を使用します。
-これらはすべて TypeScript で開発できるので、フロントエンドエンジニアの方にも馴染みやすいかと思います。
+A2A プロトコルによってエージェントがどのようにやり取りを行うのか見ていきましょう。A2A サーバーはエージェントカードと呼ばれるものを JSON 形式で公開する必要があります。
+エージェントカードはによりエージェントが持つ機能やスキルを公開します。例えばストリーミングによる配信をサポートしているとか、天気予報を調べるスキルを持っているとか、そういった情報が含まれます。
+エージェントカードは `/.well-known/agent.json` というパスで公開することが推奨されています。クライアントはこのエンドポイントにアクセスすることで、エージェントの機能を把握し、どのタスクをどのえーじぇんとに依頼すればよいかを判断できます。
 -->
-
----
-
-## プロジェクトセットアップ
-
-```bash
-npm init -y
-npm install ai @ai-sdk/google zod hono @hono/node-server
-npm install --save-dev @types/node tsx typescript
-```
-
-**環境変数**
-```bash
-export GOOGLE_GENERATIVE_AI_API_KEY=your_api_key
-```
 
 ---
 
@@ -190,30 +153,51 @@ export const agentCard: AgentCard = {
   description: "サイコロを振るエージェント",
   url: "https://localhost:3000",
   version: "1.0.0",
-  defaultInputModes: ["text"],
-  defaultOutputModes: ["text"],
+  defaultInputModes: ["text/plain"],
+  defaultOutputModes: ["text/plan"],
+  capabilities: {
+    streaming: true,
+    pushNotifications: false,
+  },
   skills: [{
     id: "dice-roll",
-    name: "サイコロを振る",
-    description: "1から6までの整数を返す",
-    tags: ["dice", "random"]
+    name: "diceRoll",
+    description: "ランダムな数字を生成するサイコロツール",
+    example: [
+      "サイコロを振ってください",
+      "12面のサイコロを振ってください",
+    ],
+    tags: ["dice", "random"],
+    inputModes: ["text/plain"],
+    outputModes: ["text/plain"],
   }]
 };
 ```
 
+<!--
+エージェントカードの実装例です。ここでは、サイコロを振るエージェントを定義しています。
+skills を見ると、12面のサイコロを振ってくださいというリクエストに対して、ランダムな数字を生成するサイコロツールを提供することがわかります。
+-->
+
 ---
 
-## サーバー実装
+## AgentCard の実装
 
 ```typescript
+import { Hono } from 'hono'
+import { agentCard } from './agentCard';
+const app = new Hono()
+
 app.get("/.well-known/agent.json", (c) => {
   return c.json(agentCard);
 });
 
-app.route("/", taskApp);
 ```
 
-AgentCard を公開し、タスク処理を開始
+<!--
+作成したエージェントカードを Hono フレームワークを使って公開する例です。
+`/.well-known/agent.json` エンドポイントにアクセスすると、エージェントカードの内容が JSON 形式で返されます。
+--> 
 
 ---
 
@@ -221,32 +205,45 @@ AgentCard を公開し、タスク処理を開始
 
 クライアントとサーバー間の通信を管理
 
-- **ステートフル**: 状態を保持
-- **履歴管理**: 会話履歴を記録
-- **アーティファクト**: 最終結果を保存
+- クライアントは `Message` にプロンプトを含めて送信
+- サーバーはタスクの現在の状態（作業開始・完了・失敗など）を更新して返す
+- 最終結果として `Message` や `Artifact` を返す
 
+<!--
+続いて、A2A プロトコルの中心となる Task オブジェクトについて説明します。クライアントとサーバーは Task オブジェクトを通じて通信を行います。
+クライアントは `Message` オブジェクトにプロンプトを含めてサーバーに送信します。サーバーはそのタスクの現在の状態を更新し、作業が開始されたことや完了したこと、失敗した場合はその理由などを返します。
+最終的な結果として、サーバーは `Message` や `Artifact` を返します。`Message` プロンプトに対する応答や、`Artifact` はファイルやデータのような具体的な成果物を指します。
+Task オブジェクトにより、クライアントはタスクの進行状況を追跡できるわけです。
+-->
 ---
 
 ## Task の状態遷移
 
-- `submitted`: 提出済み
-- `working`: 処理中
-- `input-required`: 入力待ち
+- `submitted`: サーバーにリクエストが受理された
+- `working`: エージェントによりタスクの処理が開始された
+- `input-required`: 追加の入力が必要
 - `completed`: 完了
-- `failed`: 失敗
 - `canceled`: キャンセル
+- `failed`: 失敗
 - `rejected`: 拒否
 - `auth-required`: 認証必要
+- `unknown`: 不明な状態
+
+<!--
+タスクが持ちうる状態は Enum 型で定義されていて、以下のような状態があります。
+-->
 
 ---
 
 ## JSON-RPC 形式の通信
 
+リクエストとレスポンスは JSON-RPC 2.0 形式で行われる。POST リクエストで送信
+
 ```json
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "tasks/send",
+  "method": "message/send",
   "params": {
     "id": "uuid",
     "message": {
@@ -257,54 +254,179 @@ AgentCard を公開し、タスク処理を開始
 }
 ```
 
+<!-- 
+A2A プロトコルでは、リクエストとレスポンスは JSON-RPC 2.0 形式で行われます。
+例えば、タスクを送信するリクエストは以下のような形式になります。
+ -->
+
 ---
 
-## サイコロツールの実装
+## レスポンス例
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "id": "de38c76d-d54c-436c-8b9f-4c2703648d64",
+    "sessionId": "a3e5f7b6-3e4b-4f5a-8b9f-4c2703648d64",
+    "status": {
+      "state": "completed",
+      "message": [
+        {
+          "role": "agent",
+          "parts": [{"type": "text", "text": "サイコロの目は 1 でした"}]
+        }
+      ]
+    },
+  }
+}
+```
+
+<!--
+レスポンスの例です。`result` フィールドにはタスクの結果が含まれています。
+タスクの状態は `status` フィールドで表され、ここでは `completed` となっていて慣用していることがわかります。
+`message` フィールドにはエージェントからの応答が含まれています。
+-->
+
+---
+
+## プロトコルRPCメソッド
+
+定義済みの `method` に対応する `params` を含むリクエストを送信
+
+- `message/send`: メッセージを送信
+- `message/stream`: メッセージをストリーミング送信
+- `tasks/get`: タスクを送信
+- `tasks/cancel`: タスクをキャンセル
+
+<!--
+A2A プロトコルでは、いくつかの定義済みの RPC メソッドが用意されています。
+例えば、`message/send` もしくは `message/stream` メソッドはクライアントからサーバーに最初のメッセージを送信するために使用されます。
+`tasks/get` メソッドは通信が開始された後に、クライアントが現在のタスクの状態を取得するために使用します。
+`tasks/cancel` メソッドは、実行中のタスクをキャンセルするために使用されます。
+-->
+
+---
+
+## サーバーを実装してみる
+
+- エンドポイント `/` で POST リクエストを受け付ける
+- JSON-RPC 2.0 形式のリクエストか検証
 
 ```typescript
-const dice = tool({
-  description: "入力された面数のサイコロを振ります",
-  parameters: z.object({
-    dice: z.number().min(1).default(6)
-  }),
-  execute: async ({ dice = 6 }) => {
-    return Math.floor(Math.random() * dice) + 1;
+import { Hono } from "hono";
+const taskApp = new Hono();
+
+taskApp.post("/", async (c) => {
+  const body = await c.req.json();
+  if (!isValidJsonRpcRequest(body)) {
+    const errorResponse = {
+      code: -32600,
+      message: "Invalid Request",
+    };
+    return c.json(errorResponse, 400);
+  }
+  // リクエストの処理ロジックをここに実装
+});
+```
+
+---
+
+### body の `method` を確認
+
+```typescript
+taskApp.post("/", async (c) => {
+  const body = await c.req.json();
+  // ...
+  switch (body.method) {
+    case "message/send":
+      return handleSendMessage(c, body);
+    case "tasks/get":
+      return handleGetTask(c, body);
+    // 省略
+    default:
+      const errorResponse: ErrorMessage = {
+        code: -32601,
+        message: "Method not found",
+      };
+      return c.json(errorResponse, 404);
   }
 });
 ```
 
 ---
 
-## AI エージェントの実装
+### `params` の検証
 
 ```typescript
-const result = await generateText({
-  model: google("gemini-2.5-pro-exp-03-25"),
-  tools: { dice },
-  maxSteps: 5,
-  messages: [/* ユーザーメッセージ */]
-});
+async function handleSendMessage(c: Context, body: any) {
+  const params: MessageSendParams = body.params;
+  // params の検証
+  if (!params || !params.id || !params.message) {
+    const errorResponse: ErrorMessage = {
+      code: -32602,
+      message: "Invalid params",
+    };
+    return c.json(errorResponse, 400);
+  }
+ 
+  const getOrCreateTaskResult = getOrCreateTask(params.id, params.message);
+}
+
 ```
 
-LLM がツールを呼び出してサイコロを振る
+---
 
+### エージェントを呼び出し結果を返す
+
+```typescript
+async function handleSendTask(c: Context, body: any) {
+  const getOrCreateTaskResult = getOrCreateTask(params.id, params.message);
+  // タスクの状態を "working" に更新する
+  taskStore.set(params.id, {})
+  // AI エージェントを呼び出す
+  const result = await generateText({...});
+  // タスクの状態を "completed" に更新する
+  taskStore.set(params.id, {
+    status: {
+      state: "completed",
+      timestamp: new Date().toISOString(),
+      message: [
+        {
+          role: "agent",
+          parts: [{ type: "text", text: `サイコロの目は ${result} でした` }],
+        },
+      ],
+    },
+  });
+
+  return c.json({...})
+}
+```
 ---
 
 ## クライアント実装
 
 ```typescript
 export class A2AClient {
-  async sendTask(params: TaskSendParams): Promise<any> {
+  async sendMessage(params: MessageSendParams): Promise<any> {
     const response = await fetch(`${this.baseUrl}/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         jsonrpc: "2.0",
         method: "tasks/send",
-        params
+        params,
+        id: crypto.randomUUID(),
       })
     });
     return response.json();
+  }
+
+  agentCard(): Promise<AgentCard> {
+    return fetch(`${this.baseUrl}/.well-known/agent.json`)
+      .then((res) => res.json());
   }
 }
 ```
@@ -331,7 +453,23 @@ for (const skill of agentCard.skills) {
 
 ---
 
-## 実行結果
+### `main()` 関数の実装
+
+```typescript
+async function main() {
+  const input = await lr.question("You: ");
+  const response = await generateText({
+    messages: [{ role: "user", content: input }],
+    tools, // エージェントカードを元に定義したツールをセット
+  }); 
+
+  console.log(`AI: ${response.message.parts[0].text}`);
+}
+```
+
+---
+
+### 実行結果
 
 ```bash
 あなた: サイコロを振って
@@ -340,44 +478,46 @@ AI: サイコロを振った結果は 4 でした！
 もう一度振りますか？
 ```
 
-リモートエージェントと正常に通信完了
-
 ---
 
 ## JavaScript SDK
+
+Google が提供する公式 SDK で A2A エージェント開発を簡略化
 
 https://github.com/google-a2a/a2a-js
 
 ```bash
 npm install @a2a-js/sdk
 ```
+
 <!--
-A2A プロトコルのクライアント SDK も提供されています。
+ここでは A2A の仕様を知るために手動で実装してきましたが、実際のプロダクション環境では、より簡単に実装できる SDK やフレームワークを使いたいものです。
+Google 公式の A2A プロトコルのクライアント SDK も提供されています。
 これを使うことで、A2A 準拠のエージェントと簡単に通信できます。
+簡単に使い方を見ていきましょう。
 -->
 
 ---
 
 ## AgentExecutor クラスを継承する
 
+AgentExecutor を継承してカスタムエージェントを作成
+
 ```typescript
 import { AgentExecutor } from "@a2a-js/sdk";
 
 export class DiceAgent extends AgentExecutor {
-  private cancelledTasks = new Set<string>();
-
   public cancelTask = async (
       taskId: string,
       eventBus: ExecutionEventBus,
   ): Promise<void> => {
-      this.cancelledTasks.add(taskId);
+    // 実行中のタスクをキャンセルするロジックを実装
   };
-
   async execute(
     requestContext: RequestContext,
     eventBus: ExecutionEventBus
   ): Promise<void> {
-    // タスクの実行ロジック
+    // message/send or message/stream が呼び出されたときの処理を実装
   }
 }
 ```
@@ -385,46 +525,100 @@ export class DiceAgent extends AgentExecutor {
 <!--
 JavaScript SDK では `AgentExecutor` クラスを継承して独自のエージェントを実装できます。
 開発者は `execute` メソッドと `cancelTask` メソッドを実装することが求められます。
-`cancelTask` 引数で渡された task をキャンセルするメカニズムを提供します。
+`execute` メソッドがメインの処理ロジックで message/send もしくは message/stream が呼び出され処理が開始された時に実行されます。
+`cancelTask` は実行中のタスクをキャンセルするメカニズムを提供します。
 -->
 
 ---
-## `execute` メソッドの実装
+### `execute` メソッドの実装
 
+```typescript
+// クライアントのリクエストを受け取る
+const { taskId, message } = requestContext;
+
+// 新しいタスクを作成してクライアントに通知する
+eventBus.publish({ id: taskId, status: { state: "submitted" }});
+// タスクの状態を "working" に更新
+eventBus.publish({ id: taskId, status: { state: "working" }});
+
+const result = generateText(message.parts[0].text);
+// タスクの状態を "completed" に更新して結果を返す
+eventBus.publish({
+  id: taskId,
+  status: {
+    state: "completed",
+    message: [{ role: "agent", parts: [{ type: "text", text: `サイコロの目は ${result} でした` }] }],
+  },
+});
+```
+
+<!--
+`execute` メソッド内での処理を見ていきましょう。
+クライアントから受け取ったパラメータは `requestContext` から取得できるので、ここからユーザーからのメッセージを取得します。
+taskId を使って新しいタスクを作成し、処理が受理されたことを意味する `submitted` 状態を EventBus を使用して通知します。
+次にタスクの状態を `working` に更新し、実際の処理を行います。
+ここではサイコロを振る処理を `generateText` 関数で行い、その結果を取得します。
+最後にタスクの状態を `completed` に更新し、結果をクライアントに返します。
+この実装により、同期的な処理とストリーミングの両方に対応できます。
+-->
 
 ---
 
 ## サーバーを起動
 
 ```typescript
+import { InMemoryTaskStore, DefaultRequestHandler, A2AExpressApp } from "@a2a-js/sdk";
+import express from "express";
+
 const taskStore: TaskStore = new InMemoryTaskStore();
-const agentExecutor: AgentExecutor = new MyAgentExecutor();
+const agentExecutor: AgentExecutor = new DiceAgent();
 
 const requestHandler = new DefaultRequestHandler(
-  coderAgentCard,
+  agentCard,  // AgentCard の定義
   taskStore,
   agentExecutor
 );
 
 const appBuilder = new A2AExpressApp(requestHandler);
 const expressApp = appBuilder.setupRoutes(express(), '');
+
 expressApp.listen(3000, () => {
   console.log("A2A server is running on https://localhost:3000");
 });
 ```
 <!--
 A2A プロトコルのサーバーを起動するためのコードです。
-このコードでは、`AgentExecutor` クラスを継承して独自のエージェントを実装し、
-`DefaultRequestHandler` を使ってリクエストを処理します。
+defaultRequestHandler を使って、エージェントカードとタスクストア、エージェントの実装をセットアップします。
+ここでは InMemoryTaskStore を使ってタスクの状態をメモリ上で管理していますが、本番環境ではデータベースのような永続的なストレージを使用することになるでしょう。
+A2AExpressApp を使って Express アプリケーションにルーティングを設定し、サーバーを起動します。
 -->
 
 ---
+## クライアントの実装
 
-## セキュリティ要件
+`A2AClient` を使ってエージェントと通信
 
-- **HTTPS 必須**: プロダクションでは HTTPS 通信が必須
-- **認証**: エンタープライズレベルのセキュリティ対応
-- **トークン管理**: out-of-band クレデンシャル管理
+```typescript
+import { A2AClient } from "@a2a-js/sdk";
+import { randomUUID } from "node:crypto";
+ 
+const serverUrl = "http://localhost:41241";
+const client = new A2AClient(serverUrl);
+
+const result = await client.sendMessage({
+  id: randomUUID(),
+  message: {
+    role: "user",
+    parts: [{ type: "text", text: "サイコロを振って" }],
+  },
+});
+```
+
+<!--
+SDK ではクライアント側の実装も用意されています。"
+`A2AClient` を使ってサーバーに接続し、sendMessage を使って "message/send" メソッドを呼び出します。
+他にも `sendStream` メソッドを使えば、ストリーミングでメッセージを送信することもできたり、getTask メソッドを使えば、タスクの状態を取得することもできます。
+-->
 
 ---
 
@@ -437,24 +631,12 @@ TypeScript AI エージェントフレームワーク
 - **ストリーミング**: SSE による実時間更新
 
 <!--
-ここまで手動で A2A プロトコルを実装してきましたが、
-実際のプロダクション環境では、より簡単に実装できるフレームワークを使いたいものです。
-そこで Mastra というフレームワークをご紹介します。
+次に Mastra というフレームワークをご紹介します。
 Mastra は TypeScript で AI エージェントを構築するためのフレームワークで、
 A2A プロトコルを標準でサポートしています。
 特別な設定をしなくても、エージェントを作成するだけで自動的に A2A 準拠のサーバーが立ち上がります。
 また、クライアント SDK も提供されているので、A2A プロトコルを使った通信も簡単に実装できます。
 -->
-
----
-
-## Mastra とは
-
-TypeScript で AI エージェントを構築するフレームワーク
-
-- エージェント、ツール、ワークフローの統合
-- A2A プロトコル自動対応
-- 豊富なプロバイダーサポート
 
 ---
 
@@ -466,9 +648,7 @@ cd my-mastra-app
 npm run dev
 ```
 
-- 自動的に A2A サーバーが起動
 - `/.well-known/{agentId}/agent.json` でAgentCard公開
-- ダッシュボードで管理
 
 ---
 
@@ -483,11 +663,30 @@ export const travelAgent = new Agent({
 });
 ```
 
-設定するだけで A2A 準拠エージェントが完成
+---
+
+## Mastra のエントリーポイント
+
+```typescript
+import { Mastra } from "@mastra/core";
+import { travelAgent } from "./agents/travelAgent";
+ 
+export const mastra = new Mastra({
+  agents: { travelAgent },
+});
+```
 
 ---
 
-## Mastra の AgentCard 取得
+## Mastra クライアント
+
+```bash
+npm install @mastra/client-js
+```
+
+---
+
+### エージェントカードを取得
 
 ```typescript
 const client = new MastraClient({
@@ -500,7 +699,7 @@ const agentCard = await a2a.getCard();
 
 ---
 
-## Mastra でのメッセージ送信
+### Mastra でのメッセージ送信
 
 ```typescript
 const response = await a2a.sendMessage({
@@ -514,16 +713,7 @@ const response = await a2a.sendMessage({
 
 ---
 
-## Mastra の便利な機能
-
-- **タスク管理**: `getTask()` でポーリング
-- **キャンセル**: `cancelTask()` で中断
-- **ストリーミング**: `sendAndSubscribe()` でリアルタイム
-- **型安全**: TypeScript 完全対応
-
----
-
-## ストリーミング通信
+### ストリーミング通信
 
 ```typescript
 const response = await a2a.sendAndSubscribe({
@@ -545,19 +735,18 @@ while (true) {
 ## まとめ
 
 - A2A はエージェント間連携の標準プロトコル
-- TypeScript で実装可能（手動・Mastra）
-- Mastra により簡単に A2A 対応
-- 今後のマルチエージェント時代に必須
+- エージェントカードでエージェントの機能やスキルを公開
+- タスクオブジェクトでクライアントとサーバー間の通信
+- JSON-RPC 形式でリクエストとレスポンスをやり取り
+- JavaScript SDK や Mastra で A2A に準拠したエージェントを簡単に実装可能
 
 <!--
-最後にまとめさせていただきます。
-A2A プロトコルは、AI エージェント間の連携を標準化する重要なプロトコルです。
-今日ご紹介したように、TypeScript を使って手動で実装することも、Mastra のようなフレームワークを使って簡単に実装することも可能です。
-特に Mastra を使えば、A2A プロトコルの詳細を知らなくても、簡単に準拠したエージェントを作成できます。
-AI エージェントがますます普及している現在、複数のエージェントが連携するマルチエージェントシステムは今後さらに重要になってくると思います。
-A2A プロトコルは、そのような未来において必須の技術となるでしょう。
+最後に、A2A プロトコルのまとめです。
+A2A はエージェント間の連携を標準化するプロトコルであり、エージェントカードを使ってエージェントの機能やスキルを公開します。
+タスクオブジェクトを通じてクライアントとサーバー間の通信を行い、JSON-RPC 形式でリクエストとレスポンスをやり取りします。
+また、JavaScript SDK や Mastra フレームワークを使うことで、A2A 準拠のエージェントを簡単に実装できます。
+これにより、AI エージェント同士の連携がよりスムーズになり、複雑なタスクを効率的に処理できるようになります。
 -->
-
 ---
 
 ## 参考資料

@@ -1,0 +1,71 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- ユーザー -->
+    <g transform="translate(450, 50)">
+        <circle cx="0" cy="0" r="40" fill="#4a9eff" stroke="#00d4ff" stroke-width="3"/>
+        <path d="M -15,-10 Q 0,-20 15,-10 L 15,10 Q 0,20 -15,10 Z" fill="#ffffff"/>
+        <text x="0" y="60" text-anchor="middle" fill="#ffffff" font-size="16">ユーザー</text>
+    </g>
+    
+    <!-- メインエージェント -->
+    <g transform="translate(450, 200)">
+        <rect x="-80" y="-40" width="160" height="80" rx="10" fill="#4a9eff" stroke="#00d4ff" stroke-width="3"/>
+        <text x="0" y="0" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">旅行計画</text>
+        <text x="0" y="20" text-anchor="middle" fill="#ffffff" font-size="14">エージェント</text>
+    </g>
+    
+    <!-- サブエージェント -->
+    <g transform="translate(150, 400)">
+        <rect x="-70" y="-35" width="140" height="70" rx="8" fill="#ff9e4a" stroke="#ff9e4a" stroke-width="2"/>
+        <text x="0" y="0" text-anchor="middle" fill="#ffffff" font-size="14">天気予報</text>
+        <text x="0" y="18" text-anchor="middle" fill="#ffffff" font-size="12">エージェント</text>
+    </g>
+    
+    <g transform="translate(450, 400)">
+        <rect x="-70" y="-35" width="140" height="70" rx="8" fill="#ff9e4a" stroke="#ff9e4a" stroke-width="2"/>
+        <text x="0" y="0" text-anchor="middle" fill="#ffffff" font-size="14">ホテル予約</text>
+        <text x="0" y="18" text-anchor="middle" fill="#ffffff" font-size="12">エージェント</text>
+    </g>
+    
+    <g transform="translate(750, 400)">
+        <rect x="-70" y="-35" width="140" height="70" rx="8" fill="#ff9e4a" stroke="#ff9e4a" stroke-width="2"/>
+        <text x="0" y="0" text-anchor="middle" fill="#ffffff" font-size="14">交通予約</text>
+        <text x="0" y="18" text-anchor="middle" fill="#ffffff" font-size="12">エージェント</text>
+    </g>
+    
+    <!-- 矢印と説明 -->
+    <defs>
+        <marker id="arrowhead3" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+        </marker>
+    </defs>
+    
+    <!-- ユーザーからメインへ -->
+    <path d="M 450,90 L 450,160" stroke="#00d4ff" stroke-width="3" marker-end="url(#arrowhead3)"/>
+    <text x="520" y="125" fill="#ffffff" font-size="12">「箱根旅行を計画して」</text>
+    
+    <!-- メインから各サブへ -->
+    <path d="M 400,240 L 200,365" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowhead3)"/>
+    <path d="M 450,240 L 450,365" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowhead3)"/>
+    <path d="M 500,240 L 700,365" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowhead3)"/>
+    
+    <!-- レスポンス -->
+    <path d="M 180,365 L 380,240" stroke="#4aff9e" stroke-width="2" marker-end="url(#arrowhead3)" stroke-dasharray="5,5"/>
+    <path d="M 450,365 L 450,240" stroke="#4aff9e" stroke-width="2" marker-end="url(#arrowhead3)" stroke-dasharray="5,5"/>
+    <path d="M 720,365 L 520,240" stroke="#4aff9e" stroke-width="2" marker-end="url(#arrowhead3)" stroke-dasharray="5,5"/>
+    
+    <!-- 結果 -->
+    <g transform="translate(450, 520)">
+        <rect x="-150" y="-25" width="300" height="50" rx="25" fill="#4aff9e" stroke="#4aff9e" stroke-width="2"/>
+        <text x="0" y="5" text-anchor="middle" fill="#1a1a1a" font-size="14" font-weight="bold">統合された旅行プラン</text>
+    </g>
+    
+    <!-- タイムライン -->
+    <text x="50" y="300" fill="#999999" font-size="12">1. 天気確認</text>
+    <text x="50" y="320" fill="#999999" font-size="12">→ 晴れの日</text>
+    
+    <text x="350" y="300" fill="#999999" font-size="12">2. ホテル検索</text>
+    <text x="350" y="320" fill="#999999" font-size="12">→ 空室確認</text>
+    
+    <text x="650" y="300" fill="#999999" font-size="12">3. 交通手配</text>
+    <text x="650" y="320" fill="#999999" font-size="12">→ 予約確定</text>
+</svg>
