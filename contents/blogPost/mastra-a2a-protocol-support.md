@@ -145,8 +145,7 @@ npm run dev
 
 http://localhost:4111 にアクセスすると Mastra のダッシュボードが表示されます。Agents タブを選択すると作成した `travel-agent` が表示されていることが確認できます。
 
-
-![https://images.ctfassets.net/in6v9lxmm5c8/6vgOkXpIQPfEHbsUTqveWX/f63d28217d73173facccdba5ebdcad59/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-05-24_13.52.31.png]
+![](https://images.ctfassets.net/in6v9lxmm5c8/6vgOkXpIQPfEHbsUTqveWX/f63d28217d73173facccdba5ebdcad59/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-05-24_13.52.31.png)
 
 ## A2A クライアント
 
