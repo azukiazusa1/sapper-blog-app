@@ -1,0 +1,41 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- ユーザー -->
+    <g transform="translate(100, 200)">
+        <circle cx="0" cy="0" r="50" fill="#4a9eff" stroke="#00d4ff" stroke-width="3"/>
+        <path d="M -20,-15 Q 0,-25 20,-15 L 20,15 Q 0,25 -20,15 Z" fill="#ffffff"/>
+        <text x="0" y="80" text-anchor="middle" fill="#ffffff" font-size="20">ユーザー</text>
+        <text x="0" y="105" text-anchor="middle" fill="#999999" font-size="14">指示を出す人間</text>
+    </g>
+    
+    <!-- A2Aクライアント -->
+    <g transform="translate(400, 200)">
+        <rect x="-60" y="-40" width="120" height="80" rx="10" fill="#4a9eff" stroke="#00d4ff" stroke-width="3"/>
+        <text x="0" y="5" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Client</text>
+        <text x="0" y="80" text-anchor="middle" fill="#ffffff" font-size="20">A2Aクライアント</text>
+        <text x="0" y="105" text-anchor="middle" fill="#999999" font-size="14">リクエストを開始</text>
+    </g>
+    
+    <!-- A2Aサーバー -->
+    <g transform="translate(700, 200)">
+        <rect x="-60" y="-40" width="120" height="80" rx="10" fill="#4a9eff" stroke="#00d4ff" stroke-width="3"/>
+        <text x="0" y="5" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Server</text>
+        <text x="0" y="80" text-anchor="middle" fill="#ffffff" font-size="20">A2Aサーバー</text>
+        <text x="0" y="105" text-anchor="middle" fill="#999999" font-size="14">タスクを処理</text>
+    </g>
+    
+    <!-- 矢印 -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+        </marker>
+    </defs>
+    
+    <line x1="150" y1="200" x2="340" y2="200" stroke="#00d4ff" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <text x="245" y="185" text-anchor="middle" fill="#ffffff" font-size="14">指示</text>
+    
+    <line x1="460" y1="200" x2="640" y2="200" stroke="#00d4ff" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <text x="550" y="185" text-anchor="middle" fill="#ffffff" font-size="14">JSON-RPC</text>
+    
+    <line x1="640" y1="220" x2="460" y2="220" stroke="#00d4ff" stroke-width="3" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+    <text x="550" y="240" text-anchor="middle" fill="#ffffff" font-size="14">レスポンス</text>
+</svg>
