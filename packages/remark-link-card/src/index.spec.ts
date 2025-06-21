@@ -9,13 +9,37 @@ import {
 import { remark } from "remark";
 import markdown from "remark-parse";
 import html from "remark-html";
-import { HttpResponse, http } from "msw";
-import { setupServer } from "msw/node";
+import { MockAgent, setGlobalDispatcher } from "undici";
 import remarkLinkCard from "./index";
 
-const server = setupServer(
-  http.get("https://example.com", () => {
-    return HttpResponse.text(`
+const mockAgent = new MockAgent();
+
+beforeAll(() => {
+  setGlobalDispatcher(mockAgent);
+  mockAgent.disableNetConnect();
+});
+beforeEach(() => {
+  // 各テスト前にプールをリセット
+  mockAgent.removeAllListeners();
+});
+afterAll(() => {
+  mockAgent.close();
+});
+
+const processor = remark().use(markdown).use(remarkLinkCard).use(html);
+
+describe("remark-link-card", () => {
+  test("リンクのみの行が存在する場合、カードに変換する", async () => {
+    // モック設定
+    const examplePool = mockAgent.get("https://example.com");
+    examplePool
+      .intercept({
+        path: "/",
+        method: "GET",
+      })
+      .reply(
+        200,
+        `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,27 +53,21 @@ const server = setupServer(
 <body>
 </body>
 </html>
-`);
-  }),
-  http.head("https://www.google.com/s2/favicons", () => {
-    return new Response(null, { status: 200 });
-  }),
-);
+`,
+        {
+          headers: { "content-type": "text/html" },
+        },
+      );
 
-beforeAll(() => {
-  server.listen();
-});
-beforeEach(() => {
-  server.resetHandlers();
-});
-afterAll(() => {
-  server.close();
-});
-
-const processor = remark().use(markdown).use(remarkLinkCard).use(html);
-
-describe("remark-link-card", () => {
-  test("リンクのみの行が存在する場合、カードに変換する", async () => {
+    const faviconPool = mockAgent.get("https://www.google.com");
+    faviconPool
+      .intercept({
+        path: (path) => path.includes("/s2/favicons"),
+        method: "HEAD",
+      })
+      .reply(200, "", {
+        headers: { "content-type": "image/x-icon" },
+      });
     const { value } = await processor.process(`
 ## test
 
@@ -85,11 +103,43 @@ describe("remark-link-card", () => {
   });
 
   test("ファビコン確認のリクエストに失敗した場合、ファビコンを表示しない", async () => {
-    server.use(
-      http.head("https://www.google.com/s2/favicons", () => {
-        return new Response(null, { status: 404 });
-      }),
-    );
+    // モック設定
+    const examplePool = mockAgent.get("https://example.com");
+    examplePool
+      .intercept({
+        path: "/",
+        method: "GET",
+      })
+      .reply(
+        200,
+        `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta property="og:title" content="Example Site" />
+  <meta property="og:description" content="This is description" />
+  <meta property="og:url" content="http://example.com" />
+  <meta property="og:image" content="http://example.com/" />
+  <title>Example Site</title>
+</head>
+<body>
+</body>
+</html>
+`,
+        {
+          headers: { "content-type": "text/html" },
+        },
+      );
+
+    // ファビコンリクエストを404にオーバーライド
+    const faviconPool = mockAgent.get("https://www.google.com");
+    faviconPool
+      .intercept({
+        path: (path) => path.includes("/s2/favicons"),
+        method: "HEAD",
+      })
+      .reply(404, "");
     const { value } = await processor.process(`
 ## test
 
@@ -101,9 +151,16 @@ describe("remark-link-card", () => {
   });
 
   test("画像の URL の形式が不正な場合、画像を表示しない", async () => {
-    server.use(
-      http.get("https://example.com", () => {
-        return HttpResponse.text(`
+    // 不正な画像URLを含むレスポンス
+    const examplePool = mockAgent.get("https://example.com");
+    examplePool
+      .intercept({
+        path: "/",
+        method: "GET",
+      })
+      .reply(
+        200,
+        `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,9 +174,21 @@ describe("remark-link-card", () => {
 <body>
 </body>
 </html>
-`);
-      }),
-    );
+`,
+        {
+          headers: { "content-type": "text/html" },
+        },
+      );
+
+    const faviconPool = mockAgent.get("https://www.google.com");
+    faviconPool
+      .intercept({
+        path: (path) => path.includes("/s2/favicons"),
+        method: "HEAD",
+      })
+      .reply(200, "", {
+        headers: { "content-type": "image/x-icon" },
+      });
     const { value } = await processor.process(`
 ## test
 
@@ -132,9 +201,16 @@ describe("remark-link-card", () => {
   });
 
   test("title,description はサニタイズされる", async () => {
-    server.use(
-      http.get("https://example.com", () => {
-        return HttpResponse.text(`
+    // 悪意のあるスクリプトを含むレスポンス
+    const examplePool = mockAgent.get("https://example.com");
+    examplePool
+      .intercept({
+        path: "/",
+        method: "GET",
+      })
+      .reply(
+        200,
+        `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,9 +224,21 @@ describe("remark-link-card", () => {
 <body>
 </body>
 </html>
-`);
-      }),
-    );
+`,
+        {
+          headers: { "content-type": "text/html" },
+        },
+      );
+
+    const faviconPool = mockAgent.get("https://www.google.com");
+    faviconPool
+      .intercept({
+        path: (path) => path.includes("/s2/favicons"),
+        method: "HEAD",
+      })
+      .reply(200, "", {
+        headers: { "content-type": "image/x-icon" },
+      });
     const { value } = await processor.process(`
 ## test
 

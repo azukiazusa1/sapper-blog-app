@@ -3,23 +3,6 @@ import client from "open-graph-scraper";
 import type { Plugin } from "unified";
 import sanitizeHtml from "sanitize-html";
 
-interface OgImage {
-  url?: string;
-  width?: string;
-  height?: string;
-  type?: string;
-}
-
-interface Result {
-  ogTitle?: string;
-  ogType?: string;
-  ogUrl?: string;
-  ogDescription?: string;
-  ogImage?: OgImage;
-  requestUrl?: string;
-  success?: boolean;
-}
-
 /**
  * 指定したURLのfaviconのURLを返す
  * @param url
@@ -82,17 +65,17 @@ const remarkLinkCard: Plugin = () => async (tree) => {
           .then(async ({ error, result }) => {
             if (error) return;
 
-            const r = result as Result;
+            const r = result;
             const url = new URL(node.url);
 
             let imageUrl = "";
 
             try {
-              imageUrl = new URL(r.ogImage?.url ?? "").toString();
+              const imageUrlString = r.ogImage?.[0]?.url || "";
+              imageUrl = new URL(imageUrlString).toString();
             } catch (e) {
               imageUrl = "";
             }
-
             const faviconUrl = await faviconImageSrc(url);
 
             node.children = [
