@@ -8,7 +8,7 @@ updatedAt: "2025-06-21T13:31+09:00"
 tags: ["MCP", "React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/64rVauxa86lu68SiqFJ4Mu/a9d82a4728d3f6419737459fb89d6215/bird_suzume_9916.png"
-  title: "スズメのイラスト"
+  title: "bird suzume 9916"
 audio: null
 selfAssessment:
   quizzes:
@@ -16,19 +16,18 @@ selfAssessment:
       answers:
         - text: "discovering"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "authenticating"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "initialized"
           correct: true
           explanation: "initialized は state の値に含まれていません。正しくは discovering, authenticating, connecting, loading, ready, failed です。"
         - text: "ready"
           correct: false
-          explanation: ""
+          explanation: null
 published: true
 ---
-
 `use-mcp` はリモートの[Model Context Protocol (MCP)](https://modelcontextprotocol.org/) サーバーに接続するための React フックです。このフックを使用すると AI システムへの認証やツールの呼び出しを簡単に行うことができます。
 
 https://github.com/modelcontextprotocol/use-mcp
