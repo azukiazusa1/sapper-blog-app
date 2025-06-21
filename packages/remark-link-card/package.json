@@ -20,16 +20,16 @@
   "devDependencies": {
     "eslint": "^8.56.0",
     "eslint-config-custom": "^0.0.0",
-    "msw": "^2.0.9",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
     "rimraf": "^5.0.0",
     "tsconfig": "^0.0.0",
     "typescript": "^5.3.3",
+    "undici": "^7.10.0",
     "vitest": "^3.0.5"
   },
   "dependencies": {
-    "open-graph-scraper": "^5.0.1",
+    "open-graph-scraper": "^6.10.0",
     "sanitize-html": "^2.10.0",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.2"
