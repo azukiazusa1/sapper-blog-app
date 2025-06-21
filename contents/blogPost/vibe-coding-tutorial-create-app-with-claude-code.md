@@ -384,7 +384,7 @@ docker-compose down -v && docker-compose up -d
 
 まずはボードの作成から始めましょう。いきなりコードの実装を任せるのではなく、Plan モードを使って実装の計画を立てることから始めます。Plan モードではファイルの編集を行わず、タスクをどのような方針で進めるかの計画を提案してくれます。Plan モードはある程度複雑なタスクを実装する際に特に有効です。今回のように参考となるコードベースが存在しない場合や、実装の方針が明確でない場合に特に役立ちます。
 
-Plan モードを有効にするには `claude` コマンドを実行した後に `Shift + Tab` キーを 2 回押します。Plan モードが有効になっていれば、「 ⏸ plan mode on (shift+tab to cycle)」と表示されます。
+Plan モードを有効にするには `claude` コマンドを実行した後に `Shift + Tab` キーを 2 回押します。Plan モードが有効になっていれば、「⏸ plan mode on (shift+tab to cycle)」と表示されます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/7tUdkY1a4olubAcCGJVato/c45d60e654a7515347c5dfab6fa8baf7/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-06-14_9.37.07.png)
 

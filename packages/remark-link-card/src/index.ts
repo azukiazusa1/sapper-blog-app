@@ -114,19 +114,13 @@ const remarkLinkCard: Plugin = () => async (tree) => {
                       ]),
                     ]),
                     imageUrl
-                      ? (() => {
-                          return h(
-                            "div",
-                            { className: "link-card__thumbnail" },
-                            [
-                              h("img", {
-                                src: imageUrl,
-                                className: "link-card__image",
-                                alt: "",
-                              }),
-                            ],
-                          );
-                        })()
+                      ? h("div", { className: "link-card__thumbnail" }, [
+                          h("img", {
+                            src: imageUrl,
+                            className: "link-card__image",
+                            alt: "",
+                          }),
+                        ])
                       : h("div"),
                   ],
                 ),
