@@ -9,18 +9,19 @@ blogPost/$ARGUMENTS.md の内容を元にクイズを作成し、ファイルの
 
 ```yaml
 selfAssessment:
-  - question: "クイズの問題文"
-    answers:
-      - text: "選択肢1"
-        correct: true
-        explanation: "正解の理由"
-      - text: "選択肢2"
-        correct: false
-        explanation: "不正解の理由"
-      - text: "選択肢3"
-        correct: false
-        explanation: null
-      - text: "選択肢4"
-        correct: false
-        explanation: null
+  quizzes:
+    - question: "クイズの問題文"
+      answers:
+        - text: "選択肢1"
+          correct: true
+          explanation: "正解の理由"
+        - text: "選択肢2"
+          correct: false
+          explanation: "不正解の理由"
+        - text: "選択肢3"
+          correct: false
+          explanation: null
+        - text: "選択肢4"
+          correct: false
+          explanation: null
 ```

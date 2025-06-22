@@ -11,48 +11,49 @@ thumbnail:
   title: "ターミナルでスラッシュコマンドを入力している様子"
 audio: null
 selfAssessment:
-  - question: "Claude Codeでカスタムスラッシュコマンドを作成する際、マークダウンファイルをどこに配置すればプロジェクト単位でコマンドを定義できますか？"
-    answers:
-      - text: "`.claude/commands`"
-        correct: true
-        explanation: "プロジェクト単位でカスタムスラッシュコマンドを定義する場合は、プロジェクトのルートディレクトリに `.claude/commands` ディレクトリを作成し、その中にマークダウンファイルを配置します。"
-      - text: "`~/.claude/commands`"
-        correct: false
-        explanation: "これはユーザー単位でコマンドを定義する場合の配置場所です。"
-      - text: "`.claude/slash-commands`"
-        correct: false
-        explanation: ""
-      - text: "`./claude`"
-        correct: false
-        explanation: ""
-  - question: "カスタムスラッシュコマンドのマークダウンファイル内で、コマンドの引数を参照するために使用するキーワードは何ですか？"
-    answers:
-      - text: "$ARGUMENTS"
-        correct: true
-        explanation: "`$ARGUMENTS` はコマンドの引数を参照するためのキーワードで、コマンド実行時にユーザーが入力した引数がここに置き換えられます。"
-      - text: "$PARAMS"
-        correct: false
-        explanation: ""
-      - text: "$INPUT"
-        correct: false
-        explanation: ""
-      - text: "$ARGS"
-        correct: false
-        explanation: ""
-  - question: "マークダウンファイル内で `!` で始まる行はどのような目的で使用されますか？"
-    answers:
-      - text: "スラッシュコマンドを実行する前にBashコマンドを実行し、出力結果をスラッシュコマンドのコンテキストとして使用する"
-        correct: true
-        explanation: "`!` で始まる行はスラッシュコマンド実行前にBashコマンドを実行し、その出力結果をコンテキストとして使用できます。"
-      - text: "コメントを記述するため"
-        correct: false
-        explanation: ""
-      - text: "重要な注意事項をマークするため"
-        correct: false
-        explanation: ""
-      - text: "ファイルのパスを指定するため"
-        correct: false
-        explanation: "ファイルのパスを指定するには `@` を使用します。"
+  quizzes:
+    - question: "Claude Codeでカスタムスラッシュコマンドを作成する際、マークダウンファイルをどこに配置すればプロジェクト単位でコマンドを定義できますか？"
+      answers:
+        - text: "`.claude/commands`"
+          correct: true
+          explanation: "プロジェクト単位でカスタムスラッシュコマンドを定義する場合は、プロジェクトのルートディレクトリに `.claude/commands` ディレクトリを作成し、その中にマークダウンファイルを配置します。"
+        - text: "`~/.claude/commands`"
+          correct: false
+          explanation: "これはユーザー単位でコマンドを定義する場合の配置場所です。"
+        - text: "`.claude/slash-commands`"
+          correct: false
+          explanation: ""
+        - text: "`./claude`"
+          correct: false
+          explanation: ""
+    - question: "カスタムスラッシュコマンドのマークダウンファイル内で、コマンドの引数を参照するために使用するキーワードは何ですか？"
+      answers:
+        - text: "$ARGUMENTS"
+          correct: true
+          explanation: "`$ARGUMENTS` はコマンドの引数を参照するためのキーワードで、コマンド実行時にユーザーが入力した引数がここに置き換えられます。"
+        - text: "$PARAMS"
+          correct: false
+          explanation: ""
+        - text: "$INPUT"
+          correct: false
+          explanation: ""
+        - text: "$ARGS"
+          correct: false
+          explanation: ""
+    - question: "マークダウンファイル内で `!` で始まる行はどのような目的で使用されますか？"
+      answers:
+        - text: "スラッシュコマンドを実行する前にBashコマンドを実行し、出力結果をスラッシュコマンドのコンテキストとして使用する"
+          correct: true
+          explanation: "`!` で始まる行はスラッシュコマンド実行前にBashコマンドを実行し、その出力結果をコンテキストとして使用できます。"
+        - text: "コメントを記述するため"
+          correct: false
+          explanation: ""
+        - text: "重要な注意事項をマークするため"
+          correct: false
+          explanation: ""
+        - text: "ファイルのパスを指定するため"
+          correct: false
+          explanation: "ファイルのパスを指定するには `@` を使用します。"
 
 published: true
 ---
