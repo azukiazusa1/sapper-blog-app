@@ -6,8 +6,8 @@
     "lint:textlint": "textlint blogPost/ --quiet",
     "lint:textlint:fix": "textlint --fix blogPost/",
     "dev": "marp --engine ./slides/engine.mjs -s ./slides --html",
-    "build:html": "marp --engine ./slides/engine.mjs --html",
-    "build:pdf": "marp --engine ./slides/engine.mjs --pdf"
+    "build:html": "marp --engine ./slides/engine.mjs --html --allow-local-files --notes",
+    "build:pdf": "marp --engine ./slides/engine.mjs --pdf --allow-local-files"
   },
   "dependencies": {
     "@marp-team/marp-cli": "^4.1.1",

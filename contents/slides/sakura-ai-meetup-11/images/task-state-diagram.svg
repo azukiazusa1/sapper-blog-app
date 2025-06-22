@@ -1,0 +1,95 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+            refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff" />
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#1a1a1a"/>
+  
+  <!-- States -->
+  <!-- submitted -->
+  <rect x="500" y="50" width="180" height="80" rx="10" fill="#2d2d2d" stroke="#00d4ff" stroke-width="2"/>
+  <text x="590" y="95" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">submitted</text>
+  
+  <!-- working -->
+  <rect x="500" y="250" width="180" height="80" rx="10" fill="#2d2d2d" stroke="#00d4ff" stroke-width="2"/>
+  <text x="590" y="295" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">working</text>
+  
+  <!-- input-required -->
+  <rect x="850" y="250" width="180" height="80" rx="10" fill="#2d2d2d" stroke="#00d4ff" stroke-width="2"/>
+  <text x="940" y="295" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">input-required</text>
+  
+  <!-- completed -->
+  <rect x="500" y="450" width="180" height="80" rx="10" fill="#2d2d2d" stroke="#00d4ff" stroke-width="2"/>
+  <text x="590" y="495" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">completed</text>
+  
+  <!-- canceled -->
+  <rect x="250" y="450" width="180" height="80" rx="10" fill="#2d2d2d" stroke="#00d4ff" stroke-width="2"/>
+  <text x="340" y="495" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">canceled</text>
+  
+  <!-- failed -->
+  <rect x="750" y="450" width="180" height="80" rx="10" fill="#2d2d2d" stroke="#00d4ff" stroke-width="2"/>
+  <text x="840" y="495" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">failed</text>
+  
+  <!-- rejected -->
+  <rect x="100" y="250" width="180" height="80" rx="10" fill="#2d2d2d" stroke="#00d4ff" stroke-width="2"/>
+  <text x="190" y="295" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">rejected</text>
+  
+  <!-- auth-required -->
+  <rect x="100" y="650" width="180" height="80" rx="10" fill="#2d2d2d" stroke="#00d4ff" stroke-width="2"/>
+  <text x="190" y="695" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">auth-required</text>
+  
+  <!-- unknown -->
+  <rect x="850" y="650" width="180" height="80" rx="10" fill="#2d2d2d" stroke="#00d4ff" stroke-width="2"/>
+  <text x="940" y="695" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">unknown</text>
+  
+  <!-- Start point -->
+  <circle cx="590" cy="20" r="15" fill="#00d4ff"/>
+  
+  <!-- Arrows -->
+  <!-- Start to submitted -->
+  <line x1="590" y1="35" x2="590" y2="50" stroke="#ffffff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- submitted to working -->
+  <line x1="590" y1="130" x2="590" y2="250" stroke="#ffffff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="650" y="190" text-anchor="start" fill="#ffffff" font-size="16" font-family="Arial, sans-serif">処理開始</text>
+  
+  <!-- working to input-required -->
+  <line x1="680" y1="290" x2="850" y2="290" stroke="#ffffff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="765" y="280" text-anchor="middle" fill="#ffffff" font-size="16" font-family="Arial, sans-serif">追加入力必要</text>
+  
+  <!-- input-required back to working -->
+  <path d="M 850 270 Q 765 230 680 270" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="765" y="245" text-anchor="middle" fill="#ffffff" font-size="16" font-family="Arial, sans-serif">入力受信</text>
+  
+  <!-- working to completed -->
+  <line x1="590" y1="330" x2="590" y2="450" stroke="#ffffff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="650" y="390" text-anchor="start" fill="#ffffff" font-size="16" font-family="Arial, sans-serif">成功</text>
+  
+  <!-- working to canceled -->
+  <path d="M 500 290 Q 340 370 340 450" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="350" y="370" text-anchor="start" fill="#ffffff" font-size="16" font-family="Arial, sans-serif">キャンセル要求</text>
+  
+  <!-- working to failed -->
+  <path d="M 680 290 Q 840 370 840 450" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="760" y="370" text-anchor="end" fill="#ffffff" font-size="16" font-family="Arial, sans-serif">エラー発生</text>
+  
+  <!-- submitted to rejected -->
+  <path d="M 500 90 Q 190 170 190 250" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="300" y="170" text-anchor="middle" fill="#ffffff" font-size="16" font-family="Arial, sans-serif">拒否</text>
+  
+  <!-- submitted to auth-required -->
+  <path d="M 500 130 Q 190 390 190 650" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="300" y="390" text-anchor="middle" fill="#ffffff" font-size="16" font-family="Arial, sans-serif">認証必要</text>
+  
+  <!-- auth-required to working -->
+  <path d="M 280 690 Q 435 470 500 290" stroke="#ffffff" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="360" y="550" text-anchor="middle" fill="#ffffff" font-size="16" font-family="Arial, sans-serif">認証成功</text>
+  
+  <!-- Any state to unknown -->
+  <path d="M 590 530 Q 765 590 940 650" stroke="#ffffff" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  <text x="765" y="590" text-anchor="middle" fill="#ffffff" font-size="16" font-family="Arial, sans-serif">不明な状態</text>
+</svg>
