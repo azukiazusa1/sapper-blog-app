@@ -22,10 +22,10 @@ selfAssessment:
           explanation: "これはユーザー単位でコマンドを定義する場合の配置場所です。"
         - text: "`.claude/slash-commands`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`./claude`"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "カスタムスラッシュコマンドのマークダウンファイル内で、コマンドの引数を参照するために使用するキーワードは何ですか？"
       answers:
         - text: "$ARGUMENTS"
@@ -33,13 +33,13 @@ selfAssessment:
           explanation: "`$ARGUMENTS` はコマンドの引数を参照するためのキーワードで、コマンド実行時にユーザーが入力した引数がここに置き換えられます。"
         - text: "$PARAMS"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "$INPUT"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "$ARGS"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "マークダウンファイル内で `!` で始まる行はどのような目的で使用されますか？"
       answers:
         - text: "スラッシュコマンドを実行する前にBashコマンドを実行し、出力結果をスラッシュコマンドのコンテキストとして使用する"
@@ -47,17 +47,15 @@ selfAssessment:
           explanation: "`!` で始まる行はスラッシュコマンド実行前にBashコマンドを実行し、その出力結果をコンテキストとして使用できます。"
         - text: "コメントを記述するため"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "重要な注意事項をマークするため"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "ファイルのパスを指定するため"
           correct: false
           explanation: "ファイルのパスを指定するには `@` を使用します。"
-
 published: true
 ---
-
 Claude Code では `/` で始まる文字列が組み込みのスラッシュコマンドとして定義されています。スラッシュコマンドを使用することであらかじめ割り当てられた操作を実行できます。よく使われるスラッシュコマンドには以下のようなものがあります。
 
 - `/add-dir`: 現在のディレクトリに加えて、新しいワーキングディレクトリを追加する
