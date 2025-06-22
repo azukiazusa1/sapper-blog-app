@@ -5,7 +5,7 @@ slug: "claude-code-custom-slash-command"
 about: "Claude Code では `/` で始まる文字列がスラッシュコマンドとして定義されておりあらかじめ割り当てられた操作を実行できます。スラッシュコマンドはユーザーが独自に定義することもできます。この記事では、Claude Code でカスタムスラッシュコマンドを作成する方法について説明します。"
 createdAt: "2025-06-22T08:10+09:00"
 updatedAt: "2025-06-22T08:10+09:00"
-tags: ["Claude Code", "AI"]
+tags: ["AI", "claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2dlS4hYK4u0rDx3snenCHT/b6fe043d8582c9b4b8a60c59609a56bf/claude_code_thumbnail.svg"
   title: "ターミナルでスラッシュコマンドを入力している様子"
