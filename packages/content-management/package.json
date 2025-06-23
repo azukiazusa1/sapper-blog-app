@@ -5,7 +5,8 @@
   "main": "main.ts",
   "type": "module",
   "scripts": {
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "lint": "npm run format:check && npm run lint:eslint",
     "lint:eslint": "eslint .",
     "lint:eslint:fix": "eslint --fix ./src",
