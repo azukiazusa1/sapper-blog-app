@@ -20,7 +20,7 @@ selfAssessment:
         - text: "ink-form"
           correct: false
           explanation: null
-        - text: "ink-text-input"
+        - text: "ink-input"
           correct: false
           explanation: null
         - text: "ink-user-input"
