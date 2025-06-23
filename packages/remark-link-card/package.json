@@ -14,7 +14,8 @@
     "dev": "tsc -w",
     "build": "tsc -p tsconfig.build.json",
     "prebuild": "rimraf build",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
