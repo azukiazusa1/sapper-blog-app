@@ -20,6 +20,7 @@
 
   let post = $derived(data.post);
   let contents = $derived(data.contents);
+  let rawMarkdown = $derived(data.rawMarkdown);
   let contributors = $derived(data.contributors);
 
   let url = $derived(`${variables.baseURL}/blog/${post.slug}`);
@@ -63,6 +64,7 @@
         url: post.thumbnail?.url ?? "",
       }}
       {contents}
+      {rawMarkdown}
     />
   {/key}
 

@@ -57,7 +57,7 @@
   <!-- 記事内の小さなタグ -->
   <a
     href={`/tags/${slug}`}
-    class="inline-flex items-center rounded-full bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors mb-2 mr-2"
+    class="inline-flex items-center rounded-full bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors"
   >
     #{name}
     {@render children?.()}
