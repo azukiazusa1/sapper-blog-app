@@ -4,6 +4,7 @@
   import type { Tag } from "../../generated/graphql";
   import Image from "../Image/Image.svelte";
   import NavButton from "./NavButton.svelte";
+  import MarkdownCopyButton from "../MarkdownCopyButton/MarkdownCopyButton.svelte";
   import { onMount } from "svelte";
 
   interface Props {
@@ -259,12 +260,17 @@
           </div>
         </div>
 
-        <h1
-          class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl"
-          style:--tag="h-{slug}"
-        >
-          {title}
-        </h1>
+        <div class="mt-4 flex items-start justify-between gap-4">
+          <h1
+            class="text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl"
+            style:--tag="h-{slug}"
+          >
+            {title}
+          </h1>
+          <div class="flex-shrink-0 pt-2">
+            <MarkdownCopyButton {slug} {contents} />
+          </div>
+        </div>
 
         <p
           class="my-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
