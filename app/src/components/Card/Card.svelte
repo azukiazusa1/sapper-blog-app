@@ -268,9 +268,9 @@
             <Time date={createdAt} />
           </div>
         </div>
-        <div class="mt-4 flex flex-wrap items-center justify-between gap-4">
+        <div class="mt-4 flex flex-wrap items-center justify-between">
           <div
-            class="flex flex-wrap items-center leading-none self-center"
+            class="flex flex-wrap items-center leading-none self-center gap-2"
             style:--tag="tag-{slug}"
           >
             {#each tags as tag (tag.slug)}
