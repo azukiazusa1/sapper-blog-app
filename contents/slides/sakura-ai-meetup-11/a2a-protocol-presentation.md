@@ -76,6 +76,8 @@ AI エージェント間の連携を標準化するプロトコル
 - Google が開発・発表
 - 異なるベンダーのエージェント同士が連携
 - 標準的な HTTP 上に構築
+- Linux Foundation に寄贈された
+  - https://developers.googleblog.com/en/google-cloud-donates-a2a-to-linux-foundation
 
 <!--
 まず、A2A プロトコルとは何かについてご説明いたします。
