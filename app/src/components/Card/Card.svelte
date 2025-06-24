@@ -11,6 +11,7 @@
     title: string;
     about: string;
     contents: string;
+    rawMarkdown: string;
     tags: Pick<Tag, "name" | "slug">[];
     createdAt: string;
     thumbnail: { title: string; url: string };
@@ -18,8 +19,16 @@
     audio?: string;
   }
 
-  let { title, about, contents, tags, createdAt, thumbnail, slug }: Props =
-    $props();
+  let {
+    title,
+    about,
+    contents,
+    rawMarkdown,
+    tags,
+    createdAt,
+    thumbnail,
+    slug,
+  }: Props = $props();
 
   // <baseline-status> を読み込む
   onMount(() => {
@@ -230,6 +239,14 @@
           {slug}
           main
         />
+        <div class="mt-4 flex items-start justify-between gap-4">
+          <h1
+            class="text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl"
+            style:--tag="h-{slug}"
+          >
+            {title}
+          </h1>
+        </div>
         <div
           class="mt-6 flex flex-wrap items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400"
         >
@@ -250,26 +267,17 @@
             </svg>
             <Time date={createdAt} />
           </div>
+        </div>
+        <div class="mt-4 flex flex-wrap items-center justify-between gap-4">
           <div
-            class="flex flex-wrap items-center leading-none"
+            class="flex flex-wrap items-center leading-none self-center"
             style:--tag="tag-{slug}"
           >
             {#each tags as tag (tag.slug)}
               <AppTag {...tag} />
             {/each}
           </div>
-        </div>
-
-        <div class="mt-4 flex items-start justify-between gap-4">
-          <h1
-            class="text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl"
-            style:--tag="h-{slug}"
-          >
-            {title}
-          </h1>
-          <div class="flex-shrink-0 pt-2">
-            <MarkdownCopyButton {slug} {contents} />
-          </div>
+          <MarkdownCopyButton contents={rawMarkdown} />
         </div>
 
         <p

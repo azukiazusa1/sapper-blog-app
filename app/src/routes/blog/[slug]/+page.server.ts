@@ -21,6 +21,7 @@ export const load: PageServerLoad = async ({ params }) => {
   const contents = await markdownToHtml(input);
   return {
     contents,
+    rawMarkdown: input,
     post: data.blogPostCollection.items[0],
     contributors,
   };
