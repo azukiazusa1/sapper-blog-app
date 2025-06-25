@@ -625,24 +625,6 @@ async function execute(
   });
 }
 ```
-// クライアントのリクエストを受け取る
-const { taskId, message } = requestContext;
-
-// 新しいタスクを作成してクライアントに通知する
-eventBus.publish({ id: taskId, status: { state: "submitted" }});
-// タスクの状態を "working" に更新
-eventBus.publish({ id: taskId, status: { state: "working" }});
-
-const result = generateText(message.parts[0].text);
-// タスクの状態を "completed" に更新して結果を返す
-eventBus.publish({
-  id: taskId,
-  status: {
-    state: "completed",
-    message: [{ role: "agent", parts: [{ type: "text", text: `サイコロの目は ${result} でした` }] }],
-  },
-});
-```
 
 <!--
 `execute` メソッド内での処理を見ていきましょう。
