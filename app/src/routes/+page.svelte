@@ -29,7 +29,12 @@
 
 <div class="container mx-auto px-4">
   <div class="my-8">
-    <TagList tags={tags.tagCollection.items} />
+    <TagList
+      tags={tags.tagCollection.items.map((tag) => ({
+        name: tag.name,
+        slug: tag.slug,
+      }))}
+    />
   </div>
 
   <h2
@@ -92,8 +97,8 @@
   <div class="mb-8">
     <TalkTimelines limit={3} />
   </div>
-  <div class="flex flex-row-reverse">
-    <Link href="/slides">
+  <div class="flex flex-row-reverse mb-8">
+    <Link href="/talks">
       すべての登壇資料を見る
       <svg
         fill="none"

@@ -11,16 +11,22 @@
   let { tags }: Props = $props();
 </script>
 
-<div class="w-full overflow-x-auto whitespace-nowrap py-4 no-scrollbar">
-  <div class="flex gap-2">
-    {#each tags as tag}
-      <a
-        href={`/blog/tags/${tag.slug}`}
-        class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
-      >
-        {tag.name}
-      </a>
-    {/each}
+<div class="container mx-auto">
+  <div class="relative">
+    <div class="overflow-x-auto no-scrollbar px-4">
+      <div class="flex gap-3 w-max pr-20">
+        {#each tags as tag}
+          <div class="flex-shrink-0">
+            <a
+              href={`/tags/${tag.slug}`}
+              class="inline-flex items-center rounded-full bg-white dark:bg-zinc-800 hover:bg-gray-50 dark:hover:bg-zinc-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors border border-gray-200 dark:border-zinc-600 shadow-sm hover:shadow-md"
+            >
+              #{tag.name}
+            </a>
+          </div>
+        {/each}
+      </div>
+    </div>
   </div>
 </div>
 

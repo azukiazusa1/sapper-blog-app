@@ -12,7 +12,7 @@
   import SearchDialog from "../SearchDialog/SearchDialog.svelte";
   import SearchBar from "../SearchDialog/SearchBar.svelte";
 
-  let routes = ["/blog", "/about", "/slides", "/recap"];
+  let routes = ["/blog", "/about", "/talks", "/recap"];
   let html: HTMLElement;
   let lastScrollY = 0;
   let hideHeader = $state(false);
