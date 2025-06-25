@@ -96,17 +96,29 @@
   ];
 
   const displaySlides = limit ? slides.slice(0, limit) : slides;
-  let lastYear = 0;
+  
+  // Pre-process slides to determine which ones should show year headers
+  const slidesWithYearHeaders = displaySlides.map((slide, index) => {
+    const year = new Date(slide.eventDate).getFullYear();
+    const prevYear = index > 0 ? new Date(displaySlides[index - 1].eventDate).getFullYear() : null;
+    const showYearHeader = year !== prevYear;
+    
+    return {
+      ...slide,
+      year,
+      showYearHeader
+    };
+  });
 </script>
 
 <ol class="relative border-s border-gray-200 dark:border-gray-700 ml-32">
-  {#each displaySlides as slide}
-    {@const year = new Date(slide.eventDate).getFullYear()}
-    {#if year !== lastYear}
+  {#each slidesWithYearHeaders as slide}
+    {#if slide.showYearHeader}
       <li class="mb-6 mt-10 -ml-32">
-        <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-200">{year}</h2>
+        <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-200">
+          {slide.year}
+        </h2>
       </li>
-      {@const _ = (lastYear = year)}
     {/if}
     <Timeline
       eventTitle={slide.eventTitle}
