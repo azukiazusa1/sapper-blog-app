@@ -3,26 +3,15 @@
   import Pagination from "../../../../../components/Pagination/Pagination.svelte";
   import type { PageData } from "./$types";
   import variables from "$lib/variables";
-  import Breadcrumb from "../../../../../components/Breadcrumb/Breadcrumb.svelte";
 
-  interface Props {
-    data: PageData;
-  }
+  export let data: PageData;
 
-  let { data }: Props = $props();
+  $: tag = data.tag;
+  $: page = data.page;
 
-  let tag = $derived(data.tag);
-  let page = $derived(data.page);
-
-  let tagName = $derived(tag.tagCollection.items[0].name);
-  let tagSlug = $derived(tag.tagCollection.items[0].slug);
-  let posts = $derived(tag.tagCollection.items[0].linkedFrom);
-
-  let items = $derived([
-    { label: "Home", url: "/" },
-    { label: "Tags", url: "/tags" },
-    { label: tagName },
-  ]);
+  $: tagName = tag.tagCollection.items[0].name;
+  $: tagSlug = tag.tagCollection.items[0].slug;
+  $: posts = tag.tagCollection.items[0].linkedFrom;
 </script>
 
 <svelte:head>
@@ -37,17 +26,19 @@
   {/if}
 </svelte:head>
 
-<div class="container mx-auto my-6">
-  <Breadcrumb {items} />
-
-  <div class="mt-6 px-4">
-    <PostList posts={posts.blogPostCollection.items} />
-  </div>
-
-  <Pagination
-    {page}
-    total={posts.blogPostCollection.total}
-    limit={posts.blogPostCollection.limit}
-    href={`/tags/${tagSlug}/page/`}
-  />
+<div class="lounded-lg mb-12 flex items-center justify-center">
+  <h1 class="text-2xl font-bold">
+    #{tagName}
+  </h1>
 </div>
+
+<div class="mt-6">
+  <PostList posts={posts.blogPostCollection.items} />
+</div>
+
+<Pagination
+  {page}
+  total={posts.blogPostCollection.total}
+  limit={posts.blogPostCollection.limit}
+  href={`/tags/${tagSlug}/page/`}
+/>
