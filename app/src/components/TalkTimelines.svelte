@@ -96,17 +96,20 @@
   ];
 
   const displaySlides = limit ? slides.slice(0, limit) : slides;
-  
+
   // Pre-process slides to determine which ones should show year headers
   const slidesWithYearHeaders = displaySlides.map((slide, index) => {
     const year = new Date(slide.eventDate).getFullYear();
-    const prevYear = index > 0 ? new Date(displaySlides[index - 1].eventDate).getFullYear() : null;
+    const prevYear =
+      index > 0
+        ? new Date(displaySlides[index - 1].eventDate).getFullYear()
+        : null;
     const showYearHeader = year !== prevYear;
-    
+
     return {
       ...slide,
       year,
-      showYearHeader
+      showYearHeader,
     };
   });
 </script>
