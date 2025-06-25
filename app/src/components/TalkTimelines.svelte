@@ -4,6 +4,14 @@
 
 <ol class="relative border-s border-gray-200 dark:border-gray-700">
   <Timeline
+    eventTitle="#さくらのAI Meetup vol.11「Agent2Agent（A2A）」"
+    eventDate="2025-06-25"
+    presentationTitle="A2A プロトコルを試してみる"
+    presentationLink="https://speakerdeck.com/azukiazusa1/a2a-purotokoruwoshi-sitemiru"
+    description="Google が開発しLinux Foundationに寄贈されたAgent2Agent（A2A）プロトコルについて、TypeScriptで
+の実装を通じて学ぶプレゼンテーションです。AIエージェント間の標準的な連携を可能にするA2Aプロト コルの基本概念から、エージェントカードの定義、タスク管理、JSON-RPC 2.0通信、そして公式JavaScript SDKやMastraフレームワークを使った実装例まで、包括的に解説します。"
+  />
+  <Timeline
     eventTitle="Svelte Japan Online Meetup #6"
     eventDate="2025-02-07"
     presentationTitle="依存関係があるコンポーネントは Barrel ファイルでまとめよう"
