@@ -39,4 +39,36 @@ describe("rehype-alert", () => {
     const { value } = await processor.process(`b> 12345`);
     expect(value).toMatchSnapshot();
   });
+
+  test(":::note で始まるブロックを note に変換する", async () => {
+    const markdown = `:::note
+This is a note
+:::`;
+    const { value } = await processor.process(markdown);
+    expect(value).toMatchSnapshot();
+  });
+
+  test(":::alert で始まるブロックを alert に変換する", async () => {
+    const markdown = `:::alert
+This is an alert
+:::`;
+    const { value } = await processor.process(markdown);
+    expect(value).toMatchSnapshot();
+  });
+
+  test(":::tip で始まるブロックを tip に変換する", async () => {
+    const markdown = `:::tip
+This is a tip
+:::`;
+    const { value } = await processor.process(markdown);
+    expect(value).toMatchSnapshot();
+  });
+
+  test(":::warning で始まるブロックを warning に変換する", async () => {
+    const markdown = `:::warning
+This is a warning
+:::`;
+    const { value } = await processor.process(markdown);
+    expect(value).toMatchSnapshot();
+  });
 });

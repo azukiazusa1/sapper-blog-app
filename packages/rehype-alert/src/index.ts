@@ -23,16 +23,36 @@ const text = (value = "") => {
   };
 };
 
+const alertTypes = {
+  note: {
+    svgPath: "m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z",
+    title: "Note",
+  },
+  alert: {
+    svgPath: "M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z",
+    title: "Caution",
+  },
+  tip: {
+    svgPath: "M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25",
+    title: "Tip",
+  },
+  warning: {
+    svgPath: "M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z",
+    title: "Warning",
+  },
+};
+
 const rehypeAlert: Plugin = () => {
   return (tree) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    visit(tree, "element", (node: any, index) => {
+    visit(tree, "element", (node: any, index, parent) => {
       if (node.tagName !== "p") return;
       if (node.children === undefined || node.children.length === 0) return;
       const [{ type, value }, ...siblings] = node.children;
       if (type !== "text") return;
 
       if (value.startsWith("x>")) {
+        const { svgPath, title } = alertTypes.alert;
         node.children = [
           h("div", { className: "alert alert-error" }, [
             h("p", { className: "alert-title" }, [
@@ -46,20 +66,11 @@ const rehypeAlert: Plugin = () => {
                   strokeWidth: "1.5",
                   stroke: "currentColor",
                 },
-                [
-                  h("path", {
-                    strokeLinecap: "round",
-                    strokeLinejoin: "round",
-                    d: "M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z",
-                  }),
-                ],
+                [h("path", { strokeLinecap: "round", strokeLinejoin: "round", d: svgPath })],
               ),
-              h("text", {}, [text("Caution")]),
+              h("text", {}, [text(title)]),
             ]),
-            h("p", { className: "alert-content" }, [
-              text(value.slice(2).trimStart()),
-              ...siblings,
-            ]),
+            h("p", { className: "alert-content" }, [text(value.slice(2).trimStart()), ...siblings]),
           ]),
         ];
 
@@ -68,6 +79,7 @@ const rehypeAlert: Plugin = () => {
       }
 
       if (value.startsWith("!>")) {
+        const { svgPath, title } = alertTypes.note;
         node.children = [
           h("div", { className: "alert alert-note" }, [
             h("p", { className: "alert-title" }, [
@@ -81,20 +93,11 @@ const rehypeAlert: Plugin = () => {
                   strokeWidth: "1.5",
                   stroke: "currentColor",
                 },
-                [
-                  h("path", {
-                    strokeLinecap: "round",
-                    strokeLinejoin: "round",
-                    d: "m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z",
-                  }),
-                ],
+                [h("path", { strokeLinecap: "round", strokeLinejoin: "round", d: svgPath })],
               ),
-              h("text", {}, [text("Note")]),
+              h("text", {}, [text(title)]),
             ]),
-            h("p", { className: "alert-content" }, [
-              text(value.slice(2).trimStart()),
-              ...siblings,
-            ]),
+            h("p", { className: "alert-content" }, [text(value.slice(2).trimStart()), ...siblings]),
           ]),
         ];
 
@@ -103,6 +106,7 @@ const rehypeAlert: Plugin = () => {
       }
 
       if (value.startsWith("->")) {
+        const { svgPath, title } = alertTypes.tip;
         node.children = [
           h("div", { className: "alert alert-tip" }, [
             h("p", { className: "alert-title" }, [
@@ -116,20 +120,11 @@ const rehypeAlert: Plugin = () => {
                   strokeWidth: "1.5",
                   stroke: "currentColor",
                 },
-                [
-                  h("path", {
-                    strokeLinecap: "round",
-                    strokeLinejoin: "round",
-                    d: "M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25",
-                  }),
-                ],
+                [h("path", { strokeLinecap: "round", strokeLinejoin: "round", d: svgPath })],
               ),
-              h("text", {}, [text("Tip")]),
+              h("text", {}, [text(title)]),
             ]),
-            h("p", { className: "alert-content" }, [
-              text(value.slice(2).trimStart()),
-              ...siblings,
-            ]),
+            h("p", { className: "alert-content" }, [text(value.slice(2).trimStart()), ...siblings]),
           ]),
         ];
 
@@ -138,6 +133,7 @@ const rehypeAlert: Plugin = () => {
       }
 
       if (value.startsWith("?>")) {
+        const { svgPath, title } = alertTypes.warning;
         node.children = [
           h("div", { className: "alert alert-warning" }, [
             h("p", { className: "alert-title" }, [
@@ -151,20 +147,11 @@ const rehypeAlert: Plugin = () => {
                   strokeWidth: "1.5",
                   stroke: "currentColor",
                 },
-                [
-                  h("path", {
-                    strokeLinecap: "round",
-                    strokeLinejoin: "round",
-                    d: "M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z",
-                  }),
-                ],
+                [h("path", { strokeLinecap: "round", strokeLinejoin: "round", d: svgPath })],
               ),
-              h("text", {}, [text("Warning")]),
+              h("text", {}, [text(title)]),
             ]),
-            h("p", { className: "alert-content" }, [
-              text(value.slice(2).trimStart()),
-              ...siblings,
-            ]),
+            h("p", { className: "alert-content" }, [text(value.slice(2).trimStart()), ...siblings]),
           ]),
         ];
         // @ts-expect-error tree に children はある
@@ -184,6 +171,42 @@ const rehypeAlert: Plugin = () => {
 
         // @ts-expect-error tree に children はある
         tree.children.splice(index, 1, ...node.children);
+      }
+
+      if (value.startsWith(":::")) {
+        const lines = value.split("\n");
+        const type = lines[0].slice(3).trim() as keyof typeof alertTypes;
+        if (!Object.keys(alertTypes).includes(type)) return;
+
+        const content = lines.slice(1, lines.length - 1).join("\n");
+        const { svgPath, title } = alertTypes[type];
+
+        const newChildren = h("div", { className: `alert alert-${type}` }, [
+          h("p", { className: "alert-title" }, [
+            h(
+              "svg",
+              {
+                className: "alert-icon",
+                xmlns: "http://www.w3.org/2000/svg",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                strokeWidth: "1.5",
+                stroke: "currentColor",
+              },
+              [
+                h("path", {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  d: svgPath,
+                }),
+              ],
+            ),
+            h("text", {}, [text(title)]),
+          ]),
+          h("p", { className: "alert-content" }, [text(content)]),
+        ]);
+
+        parent.children.splice(index, 1, newChildren);
       }
     });
   };

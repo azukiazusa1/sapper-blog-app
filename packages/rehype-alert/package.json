@@ -16,7 +16,7 @@
     "build": "tsc -p tsconfig.build.json",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:update": "vitest --update",
+    "test:update": "vitest run --update",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
