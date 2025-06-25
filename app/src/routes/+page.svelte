@@ -6,13 +6,14 @@
   import type { PageData } from "./$types";
   import TalkTimelines from "../components/TalkTimelines.svelte";
   import ShortList from "../components/ShortList.svelte";
+  import TagList from "../components/TagList.svelte";
 
   interface Props {
     data: PageData;
   }
 
   let { data }: Props = $props();
-  let { latestPosts, shorts, popularPosts } = $derived(data);
+  let { latestPosts, shorts, popularPosts, tags } = $derived(data);
 </script>
 
 <svelte:head>
@@ -27,6 +28,10 @@
 <HeroSection />
 
 <div class="container mx-auto px-4">
+  <div class="my-8">
+    <TagList tags={tags.tagCollection.items} />
+  </div>
+
   <h2
     class="mt-16 mb-8 relative text-3xl font-extrabold dark:text-white after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-20 after:h-1 after:bg-indigo-500"
   >
@@ -84,7 +89,23 @@
     登壇資料
   </h2>
 
-  <div class="mb-16">
-    <TalkTimelines />
+  <div class="mb-8">
+    <TalkTimelines limit={3} />
+  </div>
+  <div class="flex flex-row-reverse">
+    <Link href="/slides">
+      すべての登壇資料を見る
+      <svg
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        class="ml-2 h-4 w-4"
+        viewBox="0 0 24 24"
+      >
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </Link>
   </div>
 </div>
