@@ -26,7 +26,7 @@
 
 <Tabs value="blog">
   {#snippet blog()}
-    <div class="px-4">
+    <div class="px-4 max-w-7xl mx-auto">
       <PostList posts={posts.blogPostCollection.items} />
       <Pagination
         total={posts.blogPostCollection.total}

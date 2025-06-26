@@ -16,14 +16,15 @@
   <link rel="canonical" href={`${variables.baseURL}/tags/${tagSlug}`} />
 </svelte:head>
 
-<div class="lounded-lg mb-12 flex items-center justify-center">
+<div class="lounded-lg mt-4 mb-12 flex items-center justify-center">
   <h1 class="text-2xl font-bold">
     #{tagName}
   </h1>
 </div>
 
-<PostList posts={posts.blogPostCollection.items} />
-
+<div class="mx-auto max-w-7xl px-4">
+  <PostList posts={posts.blogPostCollection.items} />
+</div>
 <Pagination
   total={posts.blogPostCollection.total}
   limit={posts.blogPostCollection.limit}
