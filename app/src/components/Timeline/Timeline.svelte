@@ -25,9 +25,7 @@
     class="absolute -left-[14px] top-[12px] flex h-[28px] w-[28px] items-center justify-center rounded-full bg-indigo-700 ring-4 ring-white dark:ring-gray-900"
   >
   </span>
-  <div
-    class="ml-12 bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-lg dark:shadow-none"
-  >
+  <div class="ml-12 bg-white dark:bg-zinc-900 p-6 rounded-lg">
     <h3
       class="mb-1 flex items-center text-xl font-semibold text-gray-900 dark:text-white"
     >
