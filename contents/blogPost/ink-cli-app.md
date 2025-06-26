@@ -59,7 +59,6 @@ npm install --save-dev typescript @types/react tsx @types/node
 
 Ink の `render()` 関数を使用して、ターミナル上に React コンポーネントをレンダリングします。
 
-
 ```tsx:src/cli.tsx
 import React from "react";
 import { render, Text } from "ink";
