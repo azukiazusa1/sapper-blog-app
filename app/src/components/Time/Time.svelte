@@ -15,7 +15,7 @@
 
 <time
   datetime={date}
-  class="text-grey-darker text-sm text-zinc-900/70 dark:text-gray-50/60"
+  class="text-grey-darker text-base font-medium text-zinc-900/70 dark:text-gray-50/60"
 >
   {format()}
 </time>
