@@ -266,8 +266,12 @@ h6 .icon-link::before {
   @apply relative my-6 rounded-lg rounded-l-none border-l-4 border-l-gray-300 px-4 py-6 md:my-8;
 }
 
-.alert p {
+.alert p:first-child {
   margin-top: 0 !important;
+}
+
+.alert p:last-child {
+  margin-bottom: 0 !important;
 }
 
 .alert-icon {
