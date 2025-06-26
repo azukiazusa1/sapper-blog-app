@@ -22,7 +22,7 @@
     <Time date={eventDate} />
   </div>
   <span
-    class="absolute -left-[14px] top-[12px] flex h-[28px] w-[28px] items-center justify-center rounded-full bg-indigo-700 ring-4 ring-white dark:ring-gray-900"
+    class="absolute -left-[6px] top-[18px] flex h-[12px] w-[12px] items-center justify-center rounded-full bg-indigo-400 dark:bg-indigo-700 ring-zinc-300 dark:ring-zinc-500 ring-4"
   >
   </span>
   <div class="ml-12 bg-white dark:bg-zinc-900 p-6 rounded-lg">
