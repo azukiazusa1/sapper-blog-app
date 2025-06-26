@@ -26,13 +26,13 @@
   {/if}
 </svelte:head>
 
-<div class="lounded-lg mb-12 flex items-center justify-center">
+<div class="lounded-lg mt-4 mb-12 flex items-center justify-center">
   <h1 class="text-2xl font-bold">
     #{tagName}
   </h1>
 </div>
 
-<div class="mt-6">
+<div class="mt-6 mx-auto max-w-7xl px-4">
   <PostList posts={posts.blogPostCollection.items} />
 </div>
 

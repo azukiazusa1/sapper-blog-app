@@ -27,7 +27,7 @@
 
 <HeroSection />
 
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 max-w-7xl">
   <div class="my-8">
     <TagList
       tags={tags.tagCollection.items.map((tag) => ({
@@ -93,24 +93,25 @@
   >
     登壇資料
   </h2>
-
-  <div class="mb-8">
-    <TalkTimelines limit={3} />
-  </div>
-  <div class="flex flex-row-reverse mb-8">
-    <Link href="/talks">
-      すべての登壇資料を見る
-      <svg
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        class="ml-2 h-4 w-4"
-        viewBox="0 0 24 24"
-      >
-        <path d="M5 12h14M12 5l7 7-7 7" />
-      </svg>
-    </Link>
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-8">
+      <TalkTimelines limit={3} />
+    </div>
+    <div class="flex flex-row-reverse mb-8">
+      <Link href="/talks">
+        すべての登壇資料を見る
+        <svg
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          class="ml-2 h-4 w-4"
+          viewBox="0 0 24 24"
+        >
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </Link>
+    </div>
   </div>
 </div>
