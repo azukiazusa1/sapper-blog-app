@@ -19,13 +19,13 @@ selfAssessment:
           explanation: "outputSchema フィールドを使用してツールの出力のスキーマを定義します。"
         - text: "responseSchema"
           correct: false
-          explanation: "正しいフィールド名は outputSchema です。"
+          explanation: ""
         - text: "resultSchema"
           correct: false
-          explanation: "正しいフィールド名は outputSchema です。"
+          explanation: ""
         - text: "structureSchema"
           correct: false
-          explanation: "正しいフィールド名は outputSchema です。"
+          explanation: ""
     - question: "構造化された出力はどのフィールドに格納されますか？"
       answers:
         - text: "structuredContent"
@@ -33,14 +33,13 @@ selfAssessment:
           explanation: "構造化された出力は structuredContent フィールドに JSON 形式で格納されます。"
         - text: "structuredData"
           correct: false
-          explanation: "正しいフィールド名は structuredContent です。"
+          explanation: ""
         - text: "outputData"
           correct: false
-          explanation: "正しいフィールド名は structuredContent です。"
+          explanation: ""
         - text: "content"
           correct: false
-          explanation: "content フィールドは従来の文字列形式の出力用です。構造化された出力は structuredContent に格納されます。"
-          explanation: "正しいパッケージ名は @modelcontextprotocol/inspector です。"
+          explanation: "content フィールドは構造化されていない形式の出力を返すために使用されます。"
 
 published: true
 ---
