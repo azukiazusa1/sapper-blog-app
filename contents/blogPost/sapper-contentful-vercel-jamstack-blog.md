@@ -7,8 +7,8 @@ createdAt: "2021-02-14T00:00+09:00"
 updatedAt: "2021-02-14T00:00+09:00"
 tags: ["Sapper", "graphQL", "JavaScript", "Svelte"]
 thumbnail:
-  url: "https://images.ctfassets.net/in6v9lxmm5c8/2nVc0113aL8VwYQwWLDPyl/90bc28445ce7ff4ee2c190a858defee5/contentful.jpg"
-  title: "contentful"
+  url: "https:undefined"
+  title: ""
 audio: null
 selfAssessment: null
 published: true

@@ -7,8 +7,8 @@ createdAt: "2021-02-17T00:00+09:00"
 updatedAt: "2021-02-17T00:00+09:00"
 tags: ["graphQL"]
 thumbnail:
-  url: "https://images.ctfassets.net/in6v9lxmm5c8/20rVGECVoaOHWGAsGCnTa/94bb349a41d63575a4549fdb6fa18a24/GraphQL_Logo.png"
-  title: "graphQL"
+  url: "https:undefined"
+  title: ""
 audio: null
 selfAssessment: null
 published: true

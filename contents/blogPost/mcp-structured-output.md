@@ -8,7 +8,7 @@ updatedAt: "2025-06-28T14:47+09:00"
 tags: ["MCP", "TypeScript", "Zod"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3432BmKwnX5ApyXcIwZm6e/94f0817b5325bccd8b8c7e93d499f7e3/kakigoori_21151.png"
-  title: "かき氷のイラスト"
+  title: "kakigoori 21151"
 audio: null
 selfAssessment:
   quizzes:
@@ -19,13 +19,13 @@ selfAssessment:
           explanation: "outputSchema フィールドを使用してツールの出力のスキーマを定義します。"
         - text: "responseSchema"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "resultSchema"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "structureSchema"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "構造化された出力はどのフィールドに格納されますか？"
       answers:
         - text: "structuredContent"
@@ -33,17 +33,15 @@ selfAssessment:
           explanation: "構造化された出力は structuredContent フィールドに JSON 形式で格納されます。"
         - text: "structuredData"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "outputData"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "content"
           correct: false
           explanation: "content フィールドは構造化されていない形式の出力を返すために使用されます。"
-
 published: true
 ---
-
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) ではサーバーが LLM が呼び出すことができるツールを公開できます。ツールは LLM が外部のシステムと対話をすることを可能にします。例えばユーザーが LLM に対して旅行の計画を依頼した場合には、予約可能なホテルのリストを取得して正確な情報を提供したり、ユーザーのカレンダーに予定を追加したりできます。
 
 MCP ツールを定義する際には `inputSchema` フィールドにより JSON Schema を使用してツールの入力を定義することで、LLM が適切にツールを呼び出すことができます。以下の例は天気予報を取得するツールの定義です。`inputSchema` フィールドを参照すると `location` を指定する必要があることがわかります。
