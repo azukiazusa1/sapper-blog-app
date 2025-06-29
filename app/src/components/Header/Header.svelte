@@ -57,7 +57,7 @@
 
 <SideMenu {isOpen} {segment} {routes} on:close={closeSideMenu} />
 <header
-  class={`sticky left-0 z-10 w-full transition-all duration-300 ease-in-out
+  class={`sticky left-0 z-50 w-full transition-all duration-300 ease-in-out
     ${hideHeader ? "-top-20" : "top-0"}
   `}
 >
