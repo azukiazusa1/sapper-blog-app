@@ -128,191 +128,410 @@
   <link rel="canonical" href={`${variables.baseURL}/about`} />
 </svelte:head>
 
-<section class="py-4 lg:py-8 min-h-screen bg-gradient-to-br">
-  <div class="container mx-auto flex flex-col px-1 lg:px-5 max-w-5xl">
+<section
+  class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900"
+>
+  <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
     {#if visible}
-      <h1
-        class="text-5xl font-bold mb-12 text-center italic"
-        in:fly={{ y: -20, duration: 800 }}
+      <!-- Hero Section -->
+      <div
+        class="pt-16 pb-8 text-center"
+        in:fade={{ delay: 100, duration: 1000 }}
       >
-        About Me
-      </h1>
+        <h1
+          class="text-6xl lg:text-7xl font-black mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight"
+          in:fly={{ y: -30, duration: 1000, delay: 200 }}
+        >
+          About Me
+        </h1>
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+          in:fly={{ y: 20, duration: 800, delay: 400 }}
+        >
+          フロントエンドエンジニア・技術ブロガー・登壇者
+        </p>
+      </div>
 
-      <div class="overflow-hidden" in:fade={{ delay: 300, duration: 800 }}>
-        <div class="flex flex-col lg:flex-row h-full">
-          <!-- Profile Section - Added h-full to maintain full height -->
+      <!-- Main Content Grid -->
+      <div
+        class="grid lg:grid-cols-12 gap-8 lg:gap-12"
+        in:fade={{ delay: 600, duration: 1000 }}
+      >
+        <!-- Profile Card -->
+        <div class="lg:col-span-4">
           <div
-            class="lg:w-1/3 bg-gradient-to-br from-orange-500 to-red-600 p-4 lg:p-8 flex flex-col items-center justify-center text-white lg:h-full rounded-lg"
+            class="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-slate-700/50 sticky top-8"
           >
-            <div class="relative">
+            <!-- Profile Image with Floating Animation -->
+            <div class="relative mb-8">
               <div
-                class="absolute inset-0 rounded-full bg-white opacity-20 transform scale-110 animate-pulse"
+                class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-20 blur-xl animate-pulse"
               ></div>
-              <div class="relative">
-                <Avatar alt="azukiazusa1" src={author} size="lg" />
+              <div class="relative mx-auto w-32 h-32 lg:w-40 lg:h-40">
+                <div
+                  class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 animate-spin"
+                  style="animation-duration: 8s;"
+                ></div>
+                <div
+                  class="absolute inset-1 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center"
+                >
+                  <img
+                    src={author}
+                    alt="azukiazusa1"
+                    class="w-28 h-28 lg:w-36 lg:h-36 rounded-full object-cover"
+                  />
+                </div>
               </div>
             </div>
 
-            <h2 class="mt-6 text-2xl font-bold">azukiazusa1</h2>
-            <div class="bg-white my-4 h-1 w-16 rounded-full"></div>
+            <!-- Name and Title -->
+            <div class="text-center mb-8">
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                azukiazusa1
+              </h2>
+              <div
+                class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-4"
+              ></div>
+              <p class="text-gray-600 dark:text-gray-300 font-medium">
+                Frontend Engineer
+              </p>
+            </div>
 
-            <div class="flex space-x-4 mt-4">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-2 gap-4 mb-8">
+              <div
+                class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/20 dark:to-purple-400/20 rounded-2xl p-4 text-center border border-blue-200/50 dark:border-blue-400/30"
+              >
+                <div
+                  class="text-2xl font-bold text-blue-600 dark:text-blue-400"
+                >
+                  週1回
+                </div>
+                <div class="text-sm text-gray-600 dark:text-gray-300">
+                  ブログ更新
+                </div>
+              </div>
+              <div
+                class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 dark:from-purple-400/20 dark:to-pink-400/20 rounded-2xl p-4 text-center border border-purple-200/50 dark:border-purple-400/30"
+              >
+                <div
+                  class="text-2xl font-bold text-purple-600 dark:text-purple-400"
+                >
+                  登壇
+                </div>
+                <div class="text-sm text-gray-600 dark:text-gray-300">
+                  積極的
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex justify-center space-x-4">
               <a
                 href="https://x.com/azukiazusa9"
                 target="_blank"
                 rel="noreferrer noopener"
-                class="transition-transform hover:scale-110"
+                class="group p-3 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                 aria-label="X"
               >
-                <TwitterIcon className="h-6 w-6 text-white" />
+                <TwitterIcon
+                  className="h-6 w-6 text-white group-hover:scale-110 transition-transform"
+                />
               </a>
               <a
                 href="https://github.com/azukiazusa1"
                 target="_blank"
                 rel="noreferrer noopener"
-                class="transition-transform hover:scale-110"
+                class="group p-3 bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                 aria-label="GitHub"
               >
-                <GitHub className="h-6 w-6 text-white" />
+                <GitHub
+                  className="h-6 w-6 text-white group-hover:scale-110 transition-transform"
+                />
               </a>
             </div>
           </div>
+        </div>
 
-          <!-- Content Section - Added fixed height and flex column structure -->
-          <div
-            class="lg:w-2/3 px-2 py-4 lg:p-12 flex flex-col h-[400px] lg:h-[600px]"
-          >
-            <!-- Chat UI - Changed to flex-grow to fill available space -->
+        <!-- Content Section -->
+        <div class="lg:col-span-8">
+          <div class="space-y-8">
+            <!-- Interactive Chat Interface -->
             <div
-              class="space-y-4 overflow-y-auto chat-container pr-2 flex-grow"
-              bind:this={chatContainer}
+              class="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 dark:border-slate-700/50 overflow-hidden"
             >
-              {#each messages.slice(0, visibleMessages + 1) as message, i}
-                {#if i < visibleMessages}
-                  <!-- Fully displayed message -->
-                  {#if message.type === "question"}
-                    <div
-                      class="chat-message question"
-                      in:fly={{ y: 20, duration: 300 }}
-                    >
-                      <div
-                        class="bg-blue-100 dark:bg-blue-900 text-gray-800 dark:text-gray-200 p-3 rounded-lg rounded-tr-none inline-block max-w-[80%]"
-                      >
-                        {message.text}
-                      </div>
-                      <div class="text-xs text-gray-500 mt-1 text-right">
-                        あなた
-                      </div>
-                    </div>
-                  {:else}
-                    <div
-                      class="chat-message answer"
-                      in:fly={{ y: 20, duration: 300 }}
-                    >
-                      <div class="flex items-start">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-6">
+                <h3 class="text-2xl font-bold text-white mb-2">
+                  💬 Chat with azukiazusa
+                </h3>
+                <p class="text-blue-100">私について質問してみてください</p>
+              </div>
+              <div
+                class="p-6 h-[500px] overflow-y-auto chat-container"
+                bind:this={chatContainer}
+              >
+                <div class="space-y-6">
+                  {#each messages.slice(0, visibleMessages + 1) as message, i}
+                    {#if i < visibleMessages}
+                      <!-- Fully displayed message -->
+                      {#if message.type === "question"}
                         <div
-                          class="w-8 h-8 rounded-full overflow-hidden mr-2 flex-shrink-0"
+                          class="flex justify-end"
+                          in:fly={{ y: 20, duration: 400 }}
                         >
-                          <img
-                            src={author}
-                            alt="azukiazusa1"
-                            class="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div>
-                          <div
-                            class="bg-white dark:bg-zinc-700 p-3 rounded-lg rounded-tl-none shadow-sm inline-block max-w-[80%]"
-                          >
-                            {message.text}
-                          </div>
-                          <div class="text-xs text-gray-500 mt-1">
-                            azukiazusa1
+                          <div class="max-w-[80%]">
+                            <div
+                              class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-2xl rounded-tr-md shadow-lg"
+                            >
+                              {message.text}
+                            </div>
+                            <div
+                              class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-right font-medium"
+                            >
+                              あなた
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  {/if}
-                {:else if i === visibleMessages}
-                  <!-- Currently typing message -->
-                  {#if message.type === "question"}
-                    <div
-                      class="chat-message question"
-                      in:fly={{ y: 20, duration: 300 }}
-                    >
-                      <div
-                        class="bg-blue-100 dark:bg-blue-900 text-gray-800 dark:text-gray-200 p-3 rounded-lg rounded-tr-none inline-block max-w-[80%]"
-                      >
-                        {displayedTexts[i]}
-                        {#if displayedTexts[i].length === message.text.length}
-                          <span class="typing-cursor"></span>
-                        {/if}
-                      </div>
-                      <div class="text-xs text-gray-500 mt-1 text-right">
-                        あなた
-                      </div>
-                    </div>
-                  {:else}
-                    <div
-                      class="chat-message answer"
-                      in:fly={{ y: 20, duration: 300 }}
-                    >
-                      <div class="flex items-start">
+                      {:else}
                         <div
-                          class="w-8 h-8 rounded-full overflow-hidden mr-2 flex-shrink-0"
+                          class="flex items-start space-x-3"
+                          in:fly={{ y: 20, duration: 400 }}
                         >
-                          <img
-                            src={author}
-                            alt="azukiazusa1"
-                            class="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div>
                           <div
-                            class="bg-white dark:bg-zinc-700 p-3 rounded-lg rounded-tl-none shadow-sm inline-block max-w-[80%]"
+                            class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-blue-200 dark:ring-blue-800"
                           >
-                            {displayedTexts[i]}
-                            {#if displayedTexts[i].length < message.text.length}
-                              <span class="typing-cursor"></span>
-                            {/if}
+                            <img
+                              src={author}
+                              alt="azukiazusa1"
+                              class="w-full h-full object-cover"
+                            />
                           </div>
-                          <div class="text-xs text-gray-500 mt-1">
-                            azukiazusa1
+                          <div class="max-w-[80%]">
+                            <div
+                              class="bg-gray-100 dark:bg-slate-700 text-gray-900 dark:text-gray-100 p-4 rounded-2xl rounded-tl-md shadow-lg"
+                            >
+                              {message.text}
+                            </div>
+                            <div
+                              class="text-xs text-gray-500 dark:text-gray-400 mt-2 font-medium"
+                            >
+                              azukiazusa1
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  {/if}
-                {/if}
-              {/each}
+                      {/if}
+                    {:else if i === visibleMessages}
+                      <!-- Currently typing message -->
+                      {#if message.type === "question"}
+                        <div
+                          class="flex justify-end"
+                          in:fly={{ y: 20, duration: 400 }}
+                        >
+                          <div class="max-w-[80%]">
+                            <div
+                              class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-2xl rounded-tr-md shadow-lg"
+                            >
+                              {displayedTexts[i]}
+                              {#if displayedTexts[i].length === message.text.length}
+                                <span class="typing-cursor"></span>
+                              {/if}
+                            </div>
+                            <div
+                              class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-right font-medium"
+                            >
+                              あなた
+                            </div>
+                          </div>
+                        </div>
+                      {:else}
+                        <div
+                          class="flex items-start space-x-3"
+                          in:fly={{ y: 20, duration: 400 }}
+                        >
+                          <div
+                            class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-blue-200 dark:ring-blue-800"
+                          >
+                            <img
+                              src={author}
+                              alt="azukiazusa1"
+                              class="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div class="max-w-[80%]">
+                            <div
+                              class="bg-gray-100 dark:bg-slate-700 text-gray-900 dark:text-gray-100 p-4 rounded-2xl rounded-tl-md shadow-lg"
+                            >
+                              {displayedTexts[i]}
+                              {#if displayedTexts[i].length < message.text.length}
+                                <span class="typing-cursor bg-blue-500"></span>
+                              {/if}
+                            </div>
+                            <div
+                              class="text-xs text-gray-500 dark:text-gray-400 mt-2 font-medium"
+                            >
+                              azukiazusa1
+                            </div>
+                          </div>
+                        </div>
+                      {/if}
+                    {/if}
+                  {/each}
 
-              {#if visibleMessages < messages.length && displayedTexts[visibleMessages]?.length === messages[visibleMessages]?.text.length}
-                <div class="flex items-center space-x-2 pl-10 mt-2">
-                  <div class="typing-indicator">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
+                  {#if visibleMessages < messages.length && displayedTexts[visibleMessages]?.length === messages[visibleMessages]?.text.length}
+                    <div class="flex items-center space-x-3 pl-12">
+                      <div
+                        class="w-2 h-2 bg-blue-500 rounded-full animate-bounce"
+                        style="animation-delay: 0ms"
+                      ></div>
+                      <div
+                        class="w-2 h-2 bg-purple-500 rounded-full animate-bounce"
+                        style="animation-delay: 150ms"
+                      ></div>
+                      <div
+                        class="w-2 h-2 bg-indigo-500 rounded-full animate-bounce"
+                        style="animation-delay: 300ms"
+                      ></div>
+                      <span
+                        class="text-sm text-gray-500 dark:text-gray-400 ml-2"
+                        >入力中...</span
+                      >
+                    </div>
+                  {/if}
                 </div>
-              {/if}
+              </div>
             </div>
 
-            <!-- Added bottom actions container -->
-            <div class="flex flex-col sm:flex-row gap-4 mt-8">
-              <LinkButton variant="primary" href="/blog">
-                ブログを読む
-                <svg
-                  class="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </LinkButton>
+            <!-- Feature Cards -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <!-- Skills Card -->
+              <div
+                class="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-slate-700/50"
+              >
+                <div class="flex items-center mb-6">
+                  <div
+                    class="p-3 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl"
+                  >
+                    <svg
+                      class="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-gray-900 dark:text-white ml-4"
+                  >
+                    技術スキル
+                  </h3>
+                </div>
+                <div class="space-y-3">
+                  <div
+                    class="flex items-center text-gray-700 dark:text-gray-300"
+                  >
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    フロントエンド開発
+                  </div>
+                  <div
+                    class="flex items-center text-gray-700 dark:text-gray-300"
+                  >
+                    <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                    最新技術トレンド
+                  </div>
+                  <div
+                    class="flex items-center text-gray-700 dark:text-gray-300"
+                  >
+                    <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                    ヘッドレスUI
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hobbies Card -->
+              <div
+                class="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-slate-700/50"
+              >
+                <div class="flex items-center mb-6">
+                  <div
+                    class="p-3 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl"
+                  >
+                    <svg
+                      class="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-gray-900 dark:text-white ml-4"
+                  >
+                    趣味
+                  </h3>
+                </div>
+                <div class="space-y-3">
+                  <div
+                    class="flex items-center text-gray-700 dark:text-gray-300"
+                  >
+                    <div class="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                    麻雀
+                  </div>
+                  <div
+                    class="flex items-center text-gray-700 dark:text-gray-300"
+                  >
+                    <div class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                    ポーカー
+                  </div>
+                  <div
+                    class="flex items-center text-gray-700 dark:text-gray-300"
+                  >
+                    <div class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></div>
+                    読書
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div
+              class="bg-gradient-to-r from-blue-600 to-purple-700 rounded-3xl p-8 text-white shadow-2xl"
+            >
+              <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">
+                  もっと詳しく知りたい方へ
+                </h3>
+                <p class="text-blue-100 mb-8">
+                  技術ブログで最新の記事をチェックしてみてください
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                  <LinkButton
+                    variant="secondary"
+                    href="/blog"
+                    className="bg-white/20 hover:bg-white/30 text-white border-white/30"
+                  >
+                    📚 ブログを読む
+                  </LinkButton>
+                  <LinkButton
+                    variant="secondary"
+                    href="/talks"
+                    className="bg-white/20 hover:bg-white/30 text-white border-white/30"
+                  >
+                    🎤 登壇資料を見る
+                  </LinkButton>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -322,102 +541,113 @@
 </section>
 
 <style>
-  @keyframes pulse {
+  /* Custom gradient animations */
+  @keyframes gradient-x {
     0%,
     100% {
-      opacity: 0.2;
-      transform: scale(1.05);
+      transform: translateX(-100%);
     }
     50% {
-      opacity: 0.3;
-      transform: scale(1.1);
+      transform: translateX(100%);
     }
   }
 
-  .animate-pulse {
-    animation: pulse 3s infinite;
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
   }
 
-  .chat-message.question {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(79, 70, 229, 0.6);
+    }
   }
 
-  .chat-message.answer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
+  /* Smooth scrollbar styling */
   .chat-container {
     scrollbar-width: thin;
-    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+    scrollbar-color: rgba(99, 102, 241, 0.3) transparent;
   }
 
   .chat-container::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
   }
 
   .chat-container::-webkit-scrollbar-track {
     background: transparent;
+    border-radius: 10px;
   }
 
   .chat-container::-webkit-scrollbar-thumb {
-    background-color: rgba(156, 163, 175, 0.5);
-    border-radius: 20px;
+    background: linear-gradient(
+      to bottom,
+      rgba(99, 102, 241, 0.3),
+      rgba(139, 92, 246, 0.3)
+    );
+    border-radius: 10px;
+    transition: all 0.3s ease;
   }
 
-  .typing-indicator {
-    display: flex;
-    align-items: center;
+  .chat-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      to bottom,
+      rgba(99, 102, 241, 0.5),
+      rgba(139, 92, 246, 0.5)
+    );
   }
 
-  .typing-indicator span {
-    height: 8px;
-    width: 8px;
-    margin: 0 1px;
-    background-color: #9ca3af;
-    border-radius: 50%;
-    display: block;
-    opacity: 0.4;
-  }
-
-  .typing-indicator span:nth-of-type(1) {
-    animation: blink 1s infinite 0.3s;
-  }
-
-  .typing-indicator span:nth-of-type(2) {
-    animation: blink 1s infinite 0.5s;
-  }
-
-  .typing-indicator span:nth-of-type(3) {
-    animation: blink 1s infinite 0.7s;
-  }
-
-  @keyframes blink {
-    50% {
-      opacity: 1;
-    }
-  }
-
+  /* Enhanced typing cursor */
   .typing-cursor {
     display: inline-block;
     width: 2px;
-    height: 1em;
-    background-color: currentColor;
-    margin-left: 2px;
-    vertical-align: middle;
-    animation: cursor-blink 1s infinite;
+    height: 1.2em;
+    background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+    margin-left: 3px;
+    vertical-align: text-bottom;
+    border-radius: 1px;
+    animation: cursor-blink 1.2s infinite;
   }
 
   @keyframes cursor-blink {
     0%,
-    100% {
+    50% {
       opacity: 1;
     }
-    50% {
+    51%,
+    100% {
       opacity: 0;
     }
+  }
+
+  /* Backdrop blur support */
+  @supports (backdrop-filter: blur(10px)) {
+    .backdrop-blur-xl {
+      backdrop-filter: blur(16px);
+    }
+  }
+
+  /* Smooth animations */
+  * {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  /* Hover effects */
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
   }
 </style>
