@@ -158,7 +158,7 @@ dxt pack
 
 このコマンドでは `manifest.json` を検証し、問題がなければ `.dxt` ファイルを作成します。例えば、上記の例では `my-mcp-servers.dxt` というファイルが作成されます。
 
-`dxt sign` コマンドを使用して `.dxt` ファイルに署名できます `--cert` オプションで署名に使用する証明書を、`--key` オプションで秘密鍵を指定します。`--self-signed` オプションを指定すると自己署名証明書を生成して署名できます。
+`dxt sign` コマンドを使用して `.dxt` ファイルに署名できます `--cert` オプションで署名に使用する証明書を、`--key` オプションで秘密鍵を指定します。`--self-signed` オプションを指定すると自己署名の証明書を生成して署名できます。
 
 ```bash
 dxt sign my-mcp-servers.dxt --cert path/to/cert.pem --key path/to/key.pem
