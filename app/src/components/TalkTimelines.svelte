@@ -114,7 +114,9 @@
   });
 </script>
 
-<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-6 md:ml-32">
+<ol
+  class="relative border-s border-gray-200 dark:border-gray-700 ml-6 md:ml-32"
+>
   {#each slidesWithYearHeaders as slide}
     {#if slide.showYearHeader}
       <li class="mb-6 mt-10 -ml-6 md:-ml-32">
