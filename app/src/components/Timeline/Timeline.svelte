@@ -18,14 +18,15 @@
 </script>
 
 <li class="mb-10 relative">
-  <div class="absolute -left-32 top-[12px]">
+  <div class="ml-[-16px] md:ml-0 mb-2 md:mb-0 md:absolute -left-32 top-[12px]">
     <Time date={eventDate} />
   </div>
+
   <span
-    class="absolute -left-[7px] top-[18px] flex h-[13px] w-[13px] items-center justify-center rounded-full bg-indigo-400 dark:bg-indigo-700 ring-zinc-300 dark:ring-zinc-500 ring-4"
+    class="absolute -left-[7px] md:top-[18px] top-[42px] flex h-[13px] w-[13px] items-center justify-center rounded-full bg-indigo-400 dark:bg-indigo-700 ring-zinc-300 dark:ring-zinc-500 ring-4"
   >
   </span>
-  <div class="ml-12 bg-white dark:bg-zinc-900 p-6 rounded-lg">
+  <div class="ml-6 md:ml-12 bg-white dark:bg-zinc-900 p-4 md:p-6 rounded-lg">
     <h3
       class="mb-1 flex items-center text-xl font-semibold text-gray-900 dark:text-white"
     >
