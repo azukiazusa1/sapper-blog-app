@@ -59,7 +59,7 @@ MCP の抱える課題の 1 つにインストールの複雑さがあります�
 `.dxt` ファイルを作成するプロセスを簡易的にするための CLI ツールが提供されています。以下のコマンドで CLI ツールをインストールできます。
 
 ```bash
-npm install -g @anthropics/dxt-cli
+npm install -g @anthropic-ai/dxt
 ```
 
 まずは、MCP サーバーのコードを含むディレクトリを作成します。以下の例では `my-mcp-servers` というディレクトリを作成し、[Playwright MCP](https://github.com/microsoft/playwright-mcp) をインストールします。
