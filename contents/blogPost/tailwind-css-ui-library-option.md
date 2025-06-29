@@ -7,8 +7,8 @@ createdAt: "2022-05-15T00:00+09:00"
 updatedAt: "2022-05-15T00:00+09:00"
 tags: ["tailwindcss"]
 thumbnail:
-  url: "https://images.ctfassets.net/in6v9lxmm5c8/2GQfDJKqG7T0kWVwn1DZeJ/679ebd658ac716ded2dd61bb200e4780/tailwindcss.png"
-  title: "tailwindcss"
+  url: "https:undefined"
+  title: ""
 audio: null
 selfAssessment: null
 published: true

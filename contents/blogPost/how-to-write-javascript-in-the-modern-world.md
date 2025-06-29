@@ -7,8 +7,8 @@ createdAt: "2020-12-05T00:00+09:00"
 updatedAt: "2021-02-05T00:00+09:00"
 tags: ["JavaScript"]
 thumbnail:
-  url: "https://images.ctfassets.net/in6v9lxmm5c8/1oOuwue6Ki0IRZkFa6y6Qi/5359bf10fca29a24eaf9260cc78240bc/es2015-001.jpg"
-  title: "JavaScript"
+  url: "https:undefined"
+  title: ""
 audio: null
 selfAssessment: null
 published: true

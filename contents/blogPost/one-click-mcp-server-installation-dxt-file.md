@@ -8,12 +8,11 @@ updatedAt: "2025-06-29T08:17+09:00"
 tags: ["MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/kKUXz4aZRUJSxsvdfm54k/89899e6adcc20c3e5c20708f7a699add/rice-cooker_22142.png"
-  title: "炊飯器のイラスト"
+  title: "rice-cooker 22142"
 audio: null
 selfAssessment:
   quizzes:
     - question: ".dxt ファイルに含める MCP サーバーの機能を記述するファイルの名前は？"
-    
       answers:
         - text: "manifest.json"
           correct: true
@@ -31,20 +30,18 @@ selfAssessment:
       answers:
         - text: "@anthropics/dxt-cli"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "@modelcontextprotocol/dxt-cli"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "@mcp/dxt-cli"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "dxt-cli"
           correct: false
-          explanation: ""
-
-published: false
+          explanation: null
+published: true
 ---
-
 [Model Context Protocol (MCP)](https://modelcontextprotocol.org/) LLM が外部のツールと対話する方法として標準的な地位を確立しつつあります。現在では MCP の仕様を提案した Anthropic 社が提供する Claude のみならず、OpenAI の GPT-4o や Google の Gemini Pro など、主要な LLM が MCP をサポートしています。
 
 MCP の抱える課題の 1 つにインストールの複雑さがあります。[stdio](https://modelcontextprotocol.io/docs/concepts/transports#standard-input%2Foutput-stdio) トランスポートで実行される MCP サーバーはツールを利用するユーザー自身が MCP サーバーのパッケージをローカルにインストールして実行する必要があります。多くの MCP パッケージは Node.js の npm や Python の uv といったパッケージ管理ツールを利用してインストールされますが、これらのツールは開発者向けのツールであり、一般のユーザーにとってはハードルが高いものです。
