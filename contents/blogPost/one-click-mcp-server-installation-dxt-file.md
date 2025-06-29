@@ -186,7 +186,7 @@ dxt sign my-mcp-servers.dxt --cert path/to/cert.pem --key path/to/key.pem
 - MCP サーバーは LLM が外部のツールと対話するための標準的な方法。インストールの方法が複雑で開発者以外のユーザーにとってはハードルが高いという課題がある
 - `.dxt` ファイルは MCP サーバーを簡単にインストールできるパッケージ形式
 - `.dxt` ファイルは MCP サーバーのコードと `manifest.json` ファイルを含む ZIP アーカイブ
-- `@anthropics/dxt-cli` を使用して `.dxt` ファイルを作成できる
+- `@anthropic-ai/dxt` を使用して `.dxt` ファイルを作成できる
 - `.dxt` ファイルを Claude Desktop にドラッグ＆ドロップすることで MCP サーバーをインストールできる
 
 ## 参考
@@ -194,3 +194,4 @@ dxt sign my-mcp-servers.dxt --cert path/to/cert.pem --key path/to/key.pem
 - [Claude Desktop Extensions: One-click MCP server installation for Claude Desktop \ Anthropic](https://www.anthropic.com/engineering/desktop-extensions)
 - [anthropics/dxt: Desktop Extensions: One-click local MCP server installation in desktop apps](https://github.com/anthropics/dxt)
 - [dxt/MANIFEST.md at main · anthropics/dxt](https://github.com/anthropics/dxt/blob/main/MANIFEST.md)
+
