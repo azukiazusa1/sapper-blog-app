@@ -107,7 +107,7 @@ stdin から受け取った JSON データから `tool_input.file_path` を抽�
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path' | select(endswith(\".js\") or endswith(\".ts\") or endswith(\".jsx\") or endswith(\".tsx\")) | xargs -r npx prettier --write"
+            "command": "jq -r '.tool_input.file_path | select(endswith(\".js\") or endswith(\".ts\") or endswith(\".jsx\") or endswith(\".tsx\"))' | xargs -r npx prettier --write"
           }
         ]
       }
