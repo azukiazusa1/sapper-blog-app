@@ -66,16 +66,33 @@ const fetchAssets = async (): Promise<contentful.Asset[]> => {
 
   const client = await createClient();
 
-  const assets = await client.getAssets({
-    limit: 1000,
-  });
+  let allAssets: contentful.Asset[] = [];
+  let skip = 0;
+  const limit = 1000;
+
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    const assets = await client.getAssets({
+      limit,
+      skip,
+    });
+
+    allAssets = [...allAssets, ...assets.items];
+
+    // If we got less than the limit, we've reached the end
+    if (assets.items.length < limit) {
+      break;
+    }
+
+    skip += limit;
+  }
 
   cache = {
     ...cache,
-    assets: assets.items,
+    assets: allAssets,
   };
 
-  return assets.items;
+  return allAssets;
 };
 
 const fetchBlogs = async (): Promise<ContentfulBlogPost[]> => {
@@ -164,10 +181,20 @@ export const getBlogPosts = async ({
         const asset = assets.find(
           (a) => a.sys.id === blog.fields.thumbnail["en-US"].sys.id,
         );
-        thumbnail = {
-          url: "https:" + asset?.fields.file["en-US"]?.url || "",
-          title: asset?.fields.title["en-US"] || "",
-        };
+
+        if (!asset) {
+          console.warn(
+            `Asset not found for blog post "${blog.fields.title["en-US"]}" with asset ID: ${blog.fields.thumbnail["en-US"].sys.id}`,
+          );
+          thumbnail = undefined;
+        } else {
+          thumbnail = {
+            url: asset.fields.file["en-US"]?.url
+              ? "https:" + asset.fields.file["en-US"].url
+              : "",
+            title: asset.fields.title["en-US"] || "",
+          };
+        }
       }
 
       const blogTags: string[] =
