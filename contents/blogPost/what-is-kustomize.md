@@ -2,7 +2,7 @@
 id: 2kPYTtq7o08cwP6bDfQopm
 title: "Kustomizeとは"
 slug: "what-is-kustomize"
-about: "Kustomizeとは、Kuberbetsコミュニティのsig-cliが提供しているマニフェストのテンプレーティングツールです。環境ごとにマニフェストを生成したり特定のフィールドを上書きするといった機能が提供されています。"
+about: "Kustomizeとは、Kubernetesコミュニティのsig-cliが提供しているマニフェストのテンプレーティングツールです。環境ごとにマニフェストを生成したり特定のフィールドを上書きするといった機能が提供されています。"
 createdAt: "2021-03-21T00:00+09:00"
 updatedAt: "2021-03-21T00:00+09:00"
 tags: ["Kubernetes", "Kustomize"]
@@ -15,7 +15,7 @@ published: true
 ---
 # Kustomizeとは
 
-Kustomize とは、Kuberbets コミュニティの sig-cli が提供しているマニフェストのテンプレーティングツールです。環境ごとにマニフェストを生成したり特定のフィールドを上書きするといった機能が提供されています。
+Kustomize とは、Kubernetes コミュニティの sig-cli が提供しているマニフェストのテンプレーティングツールです。環境ごとにマニフェストを生成したり特定のフィールドを上書きするといった機能が提供されています。
 
 https://kustomize.io/
 
@@ -158,7 +158,7 @@ spec:
 `overlays` フォルダを確認します。
 
 `patch.yaml` ファイルには、適用する差分を記述しています。
-`base` ディレクトリの `daployment.yaml` では `replicas: 1` に設定されていました、この値を `replicas: 3` に修正します。
+`base` ディレクトリの `deployment.yaml` では `replicas: 1` に設定されていました、この値を `replicas: 3` に修正します。
 
 - patch.yaml
 
@@ -172,7 +172,7 @@ spec:
 ```
 
 `overlays` フォルダの `kustomization.yaml` の `bases` には `base` フォルダのパスを指定します。
-`pathes` はさきほどの修正差分を記述したファイルのパスを定義します。
+`patches` はさきほどの修正差分を記述したファイルのパスを定義します。
 
 ?> サンプルコードでは bases が resources になっていましたが、エラーとなるので修正しています。
 

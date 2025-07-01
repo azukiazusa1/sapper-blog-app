@@ -24,7 +24,7 @@ published: true
 - オプションを持つ要素に [listbox](https://w3c.github.io/aria/#listbox) ロールを付与する
 - リストボックスの子要素には 1 つ以上の[option](https://w3c.github.io/aria/#option) ロールが必要
 - listbox ロールを付与した要素には [aria-labelledby](https://w3c.github.io/aria/#aria-labelledby) または [aria-label](https://w3c.github.io/aria/#aria-label) 属性を付与してアクセシブルな名前をつける（画面上で可視化されるため、`aria-labelledby` がより良い）
-- もしリストボックスが複数選択可能であるならば、`listbox` ロールを持った要素に対して [aria-bultiselectable="true"](https://w3c.github.io/aria/#aria-multiselectable) を設定する（デフォルトでは `false`）
+- もしリストボックスが複数選択可能であるならば、`listbox` ロールを持った要素に対して [aria-multiselectable="true"](https://w3c.github.io/aria/#aria-multiselectable) を設定する（デフォルトでは `false`）
 - option ロールを付与した要素の中で、現在アクティブな要素には [aria-selected="true"](https://w3c.github.io/aria/#aria-selected) を付与する。アクティブでない要素には aria-selected="false" を付与する（もしくは [aria-checked](https://w3c.github.io/aria/#aria-checked)）
 - ドロップダウンメニューを表示させる要素（コンボボックス）には以下を付与する
   - [combobox](https://w3c.github.io/aria/#combobox) ロール 
@@ -44,8 +44,8 @@ published: true
 - `↓`：次のオプションにフォーカスを移動する
 - `↑`：前のオプションにフォーカスを移動する
 - `Space`：フォーカスされたオプションの選択状態を変更する
-- `Esc`：リストボックスが開いている場合閉じ、コンボボックスにフォーカスを戻す
-- `Tab`：リスナーをが開いている場合とき、通常の `Tab` キーが押されたときの動作（次の要素のフォーカスを移す）を実行します。
+- `Esc`：リストボックスが開いている場合、閉じてコンボボックスにフォーカスを戻す
+- `Tab`：リストボックスが開いている場合、通常の `Tab` キーが押されたときの動作（次の要素にフォーカスを移す）を実行します。
 
 #### 複数選択リストボックスの場合
 
@@ -166,9 +166,9 @@ return (
     </button>
 ```
 
-`combobox` はユーザーが複数の項目から値を選択できるように関連するポップアップを備えている入力ウィジェットです。`aria-haspopup="listbox"` を指定することでこのコンボボックスはリストボックスをポップアップすることを伝えます。`aria-controls` でこのコンボボックスと関連するリストボックスを `id` で指定します。アクセシビリティ対応のため要素同士を関連付けるには `id` 属性が多く用いられますが、Reacrt18 で追加された [useId](https://reactjs.org/docs/hooks-reference.html#useid) フックを使うのが適しています。このフックで生成された ID を使用すれば、ページ内で一意であることが担保されます。
+`combobox` はユーザーが複数の項目から値を選択できるように関連するポップアップを備えている入力ウィジェットです。`aria-haspopup="listbox"` を指定することでこのコンボボックスはリストボックスをポップアップすることを伝えます。`aria-controls` でこのコンボボックスと関連するリストボックスを `id` で指定します。アクセシビリティ対応のため要素同士を関連付けるには `id` 属性が多く用いられますが、React18 で追加された [useId](https://reactjs.org/docs/hooks-reference.html#useid) フックを使うのが適しています。このフックで生成された ID を使用すれば、ページ内で一意であることが担保されます。
 
-同様に `aria-labbeledby` を使用してコンボボックスとラベルを紐付けています。`aria-expanded` はコンボボックスがコントロールする要素（`aria-controls` で指定した要素）が現在表示されているかどうかを指定します。`aria-activeddescendant` はリストボックスのオプションの中で現在アクティブな要素を `id` で指定します。
+同様に `aria-labbeledby` を使用してコンボボックスとラベルを紐付けています。`aria-expanded` はコンボボックスがコントロールする要素（`aria-controls` で指定した要素）が現在表示されているかどうかを指定します。`aria-activedescendant` はリストボックスのオプションの中で現在アクティブな要素を `id` で指定します。
 
 続いてリストボックス要素です。
 
@@ -315,7 +315,7 @@ const closedKeydownHandler = ({ open }: any) => {
 };
 ```
 
-続いて `openedKeydownHandler` です。`Escape` または `TabP キーが押された場合はポップアップを閉じます。`↑` はアクティブなオプションを1つ前に戻します。先頭のオプションがアクティブな場合には、最後のオプションをアクティブにします。`↓` はアクティブなオプションを1つ後にします。最後のオプションがアクティブな場合、先頭のオプションをアクティブにします。`Enter` または `Scape` キーが押された場合は現在アクティブなオプションを選択します。 
+続いて `openedKeydownHandler` です。`Escape` または `Tab` キーが押された場合はポップアップを閉じます。`↑` はアクティブなオプションを1つ前に戻します。先頭のオプションがアクティブな場合には、最後のオプションをアクティブにします。`↓` はアクティブなオプションを1つ後にします。最後のオプションがアクティブな場合、先頭のオプションをアクティブにします。`Enter` または `Space` キーが押された場合は現在アクティブなオプションを選択します。 
 
 ```tsx
 const openedKeydownHandler = ({

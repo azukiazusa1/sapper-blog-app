@@ -240,7 +240,7 @@ http://localhost:8000/
 `http://localhost:8000/` にアクセスすると次のように表示されているはずです！
 ![スクリーンショット 20200518 1.56.19.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2FF2z5J7aePghFMh2hqfVK%2F30318c8d890e66997ffe751265148cca.png?alt=media&token=8c70892b-43c0-4f8c-9af8-3c53f4df4a40)
 
-### 変更点5 Web APIの実装によるブラウザとの互換性の向上
+### 変更点6 Web APIの実装によるブラウザとの互換性の向上
 [Web API](https://developer.mozilla.org/ja/docs/Learn/JavaScript/Client-side_web_APIs)は Web ブラウザに組み込まれている機能です。ブラウザやコンピュータの環境の情報を取得し、これを使って役に立つややこしいことを行えるようにするものです。
 代表的なものでいえば、`DOM`,`Canvas API`,`Storage`,`fetch API` などがあります。
 

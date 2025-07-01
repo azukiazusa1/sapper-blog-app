@@ -2,7 +2,7 @@
 id: 20j7YgNX5HCR9OY5hAgqyE
 title: "【TypeScript】型アノテーションと型アサーションの違い"
 slug: "typescript-type-annotation-vs-type-assetion"
-about: "型アノテーションと型アサーションによる変数宣言は、一見同じ結果ををもたらすように見えます。しかし、型アサーションには明確な欠点が存在します。"
+about: "型アノテーションと型アサーションによる変数宣言は、一見同じ結果をもたらすように見えます。しかし、型アサーションには明確な欠点が存在します。"
 createdAt: "2021-07-24T00:00+09:00"
 updatedAt: "2021-07-24T00:00+09:00"
 tags: ["TypeScript"]
@@ -59,7 +59,7 @@ interface User {
 const alice: User = {
     id: 1,
     username: 'alice',
-    password: 'passowrd'
+    password: 'password'
 }
 // Type '{ id: number; username: string; password: string; }' is not assignable to type 'User'.
   Object literal may only specify known properties, and 'password' does not exist in type 'User'.
@@ -67,6 +67,6 @@ const alice: User = {
 const bob = {
     id: 2,
     username: 'bob',
-    password: 'passowrd'
+    password: 'password'
 } as User
 ```

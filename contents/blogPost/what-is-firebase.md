@@ -59,12 +59,12 @@ HTML、CSS、JavaScript で構成された Web アプリケーションなど、
 適当にプロジェクトの名前を付けます。
 ![スクリーンショット 20200412 21.47.39.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2Fccf60d20a09db3bfc67b47f2d6506a15.png?alt=media&token=9dfc0fd0-babf-4968-81c0-cbdb24a47190)
 
-いくつかの項目を聞かれるので（Google Analtics の使用の有無など）確認したら続行をクリックします。
+いくつかの項目を聞かれるので（Google Analytics の使用の有無など）確認したら続行をクリックします。
 
 以下のような画面になったらプロジェクトの作成は完了です。
 ![スクリーンショット 20200412 21.48.28.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2F7645011104b0258e89adf3f284b68f87.png?alt=media&token=636d757f-6dad-4182-9b26-96ee58083e6f)
 
-Firebase を利用するための API キーを取得しましょう。今回は `JavaScript` 使用するので、Web アプリケーションのアイコンをクリックします。
+Firebase を利用するための API キーを取得しましょう。今回は `JavaScript` を使用するので、Web アプリケーションのアイコンをクリックします。
 
 ![スクリーンショット 20200412 21.55.10.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2Ff0a4eeb6fd2c296026e62144636ef7f2.png?alt=media&token=5671b4ac-cfce-4e54-8153-c5941697bc25)
 
@@ -155,12 +155,12 @@ loginBtn.addEventListener('click', () => {
 - ログインページにリダイレクトでログイン
 `signInWithRedirect` を呼び出す。
 
-今回はポップアップをでログインをしましょう。以下のように呼び出します。
+今回はポップアップでログインをしましょう。以下のように呼び出します。
 
 ```js
 loginBtn.addEventListener('click', () => {
   firebase.auth().signInWithPopup(provider).then(result => {
-    // GoogleプロパイダのOAuthトークンを取得します。
+    // GoogleプロバイダのOAuthトークンを取得します。
     const token = result.credential.accessToken
     // ログインしたユーザーの情報を取得します。
     const user = result.user
@@ -191,7 +191,7 @@ loginBtn.addEventListener('click', () => {
 
 ![スクリーンショット 20200412 23.17.37.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2Fbf5ab6971f7d34efa9a5cf93aa061ab6.png?alt=media&token=68593e81-6fd6-4547-b569-2ab95e56ec1e)
 
-これで、Google プロパイダが有効になりました。
+これで、Googleプロバイダが有効になりました。
 
 ![スクリーンショット 20200412 23.20.52.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2F7c384c395379a237126f9bd60e2b36af.png?alt=media&token=b2f4c489-9df6-48d6-9a14-e3859523c01a)
 
@@ -250,7 +250,7 @@ user.isAnonymous
 
 ## ログアウト
 ログインしたなら当然ログアウトもしたはずです。
-ログアウトは `singOut` を呼び出すだけです。
+ログアウトは `signOut` を呼び出すだけです。
 
 ```js
 const logoutBtn = document.getElementById('logout')
@@ -266,4 +266,4 @@ logoutBtn.addEventListener('click', () => {
 
 以上のように、普通に実装したらめんどくさい認証機能も簡単に実装できました。
 
-ここまで長くなったので Fire Strage と Firestore は来週に回します。
+ここまで長くなったので Cloud Storage と Firestore は来週に回します。

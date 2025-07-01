@@ -17,7 +17,7 @@ Picture-in-Picture（PiP）とは、動画を別ウィンドウで表示する�
 
 Document Picture-in-Picture は、`<video>` 要素に限らず任意の要素を PiP できるようにする提案です。これにより、動画以外の要素を PiP できるようになります。主なユースケースとして、カスタムのメディア・コントロールを使用したり、プレイリストとともに動画を PiP することが挙げられます。
 
-他にも Google Meet の Picture-in-Picuture ではビデオだけでなく Picture-in-Picture のウィンドウで挙手やミーティングチャットが利用できるようになっています。
+他にも Google Meet の Picture-in-Picture ではビデオだけでなく Picture-in-Picture のウィンドウで挙手やミーティングチャットが利用できるようになっています。
 
 [Googleが「Google Meet」のピクチャーインピクチャー機能を強化](https://forest.watch.impress.co.jp/docs/news/1507533.html)
 
@@ -25,7 +25,7 @@ Document Picture-in-Picture は、`<video>` 要素に限らず任意の要素を
 
 まずは最も簡単な使い方を見てみましょう。2023 年 7 月 16 日現在、Document Picture-in-Picture は Google Chrome の origin trial で提供されています。ローカル環境で実験したい場合には、`chrome://flags/#document-picture-in-picture-api` を有効にすることで Document Picture-in-Picture を使用できます。
 
-![Google Chrome の設定画面 Document-Picuture-in-Picture が Enabled になっている](https://images.ctfassets.net/in6v9lxmm5c8/4VMy4RXc16Nlm8ER5jDGx9/3c8d2a887600b84b8615f86e1bfc6e7b/____________________________2023-07-16_15.00.53.png)
+![Google Chrome の設定画面 Document-Picture-in-Picture が Enabled になっている](https://images.ctfassets.net/in6v9lxmm5c8/4VMy4RXc16Nlm8ER5jDGx9/3c8d2a887600b84b8615f86e1bfc6e7b/____________________________2023-07-16_15.00.53.png)
 
 以下のようなコードで任意の要素を PiP できます。
 

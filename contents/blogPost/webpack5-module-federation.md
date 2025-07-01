@@ -13,13 +13,13 @@ audio: null
 selfAssessment: null
 published: true
 ---
-## Module Feaderation とは
+## Module Federationとは
 
-Module Feaderation は Webpack 5 からコア機能として導入されました。
+Module Federation は Webpack 5 からコア機能として導入されました。
 
 https://webpack.js.org/concepts/module-federation/
 
-Module Feaderation を使用すると、異なる JavaScript アプリケーションから動的にコードをロードできます。これは複数の個別のビルドによって単一のアプリケーションを構築する手段を目的としています。
+Module Federation を使用すると、異なる JavaScript アプリケーションから動的にコードをロードできます。これは複数の個別のビルドによって単一のアプリケーションを構築する手段を目的としています。
 
 これは**マイクロフロントエンド**という言葉でよく知られていると思いますが Module Federation の目的としてはそれに限定されません。
 
@@ -31,7 +31,7 @@ https://micro-frontends.org/
 
 ## マイクロフロントエンドアプリケーションを作成する
 
-それでは、実際に Module Feaderation を使ってアプリケーションを作成してみましょう。
+それでは、実際に Module Federation を使ってアプリケーションを作成してみましょう。
 例として、以下の 3 つのフロントエンドチームが存在すると仮定しましょう。
 
 - ヘッダーチーム：ヘッダー部分を作成するチーム。React
@@ -99,9 +99,9 @@ yarn start
 
 ### Module Federation の設定
 
-ここまでは通常通りの React アプリケーションの作成であり、あまり面白みのないセクションです。ここでは作成したヘッダーコンポーネントを異なるアプリケーションから使用できるように Wepback の設定を行います。
+ここまでは通常通りの React アプリケーションの作成であり、あまり面白みのないセクションです。ここでは作成したヘッダーコンポーネントを異なるアプリケーションから使用できるように Webpack の設定を行います。
 
-初めに `create-react-app` で作成した wepback の設定を上書き必要があるのでその作業を行います。
+初めに `create-react-app` で作成した Webpack の設定を上書き必要があるのでその作業を行います。
 
 ```sh
 yarn add -D webpack webpack-cli webpack-dev-server html-webpack-plugin serve
@@ -326,7 +326,7 @@ module.exports = {
 }
 ```
 
-ヘッダーアプリケーションの時とは設定に変更点があります。メインコンテンツアプリケーションではモジュールを公開しないので `expose` の設定は記載しておりません。その代わりに異なるアプリケーションからもモジュールをローカルで使用できるようにするために `remotes` プロパティを指定しています。
+ヘッダーアプリケーションの時とは設定に変更点があります。メインコンテンツアプリケーションではモジュールを公開しないので `exposes` の設定は記載しておりません。その代わりに異なるアプリケーションからもモジュールをローカルで使用できるようにするために `remotes` プロパティを指定しています。
 
 `remote` プロパティはオブジェクト形式で指定し、取り込みたい名前をキーとし Module Federation によって出力したファイルを値に設定します。
 
