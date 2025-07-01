@@ -266,7 +266,7 @@ const theme = ref("light");
 
 ![vuetyfy-change-theme](//images.ctfassets.net/in6v9lxmm5c8/OfvmLVPevrzSlht0fzHEk/e8fb2e762bed1451db3a3740c0c839f1/vuetyfy-change-theme.gif)
 
-### Theme providres
+### Theme providers
 
 `<v-theme-provider>` コンポーネントは配下のコンポーネントのみにテーマを適用できます。
 
@@ -469,7 +469,7 @@ if (display.platform.value.chrome) {
 ```vue
 <template>
   <v-app class="app">
-    <div class="flex flex-colmun">
+    <div class="flex flex-column">
       <v-btn color="primary" class="mx-2" x-small>Extra Small Button</v-btn>
       <v-btn color="primary" class="mx-2" small>Small Button</v-btn>
       <v-btn color="primary" class="mx-2">Default Button</v-btn>
@@ -484,7 +484,7 @@ if (display.platform.value.chrome) {
 ```vue
 <template>
   <v-app class="app">
-    <div class="flex flex-colmun">
+    <div class="flex flex-column">
       <v-btn color="primary" class="mx-2" size="x-small">Extra Small Button</v-btn>
       <v-btn color="primary" class="mx-2" size="small">Small Button</v-btn>
       <v-btn color="primary" class="mx-2" size="default">Default Button</v-btn>

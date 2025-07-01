@@ -44,7 +44,7 @@ const color = ref("#000000");
 ![スクリーンショット 2021-09-19 22.41.48](//images.contentful.com/in6v9lxmm5c8/3m4rIIOwj1HDzFkxVt5GUS/2d8df58ddea780714b7fbafd15355b4d/____________________________2021-09-19_22.41.48.png)
 
 1. `--7ba5bd90-color` のようにハッシュ化された CSS 変数がインラインスタイルとして定義されます。
-2. `<style>` タグでバインドした JavaScippt 変数は上記のハッシュ化された CSS 変数が適用されます。
+2. `<style>` タグでバインドした JavaScript 変数は上記のハッシュ化された CSS 変数が適用されます。
 
 もちろん、JavaScript で宣言したリアクティブな変数の値が変更されるたびに CSS 変数の値も変化されます。
 
@@ -56,7 +56,7 @@ const color = ref("#000000");
 
 VSCode にはなにか怒られるけれど、`<template>` での `v-bind` と同じく三項演算子など JavaScript の式を評価させることができます。
 
-JavaScipt の式を評価させる場合にはクォートで加工必要があるようです。
+JavaScript の式を評価させる場合にはクォートで囲う必要があるようです。
 
 ```vue
 <script setup lang="ts">
