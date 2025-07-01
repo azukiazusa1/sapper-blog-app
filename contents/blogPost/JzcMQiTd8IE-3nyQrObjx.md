@@ -7,7 +7,7 @@ createdAt: "2025-07-01T11:03+09:00"
 updatedAt: "2025-07-01T11:03+09:00"
 tags: ["claude-code"]
 thumbnail:
-  url: "https://images.ctfassets.net/in6v9lxmm5c8/1IZ67RjTaWdAfsgRzM9QXO/d9ae6718c313a13a4b582fc6bf45b137/correction-tape_17136.png
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1IZ67RjTaWdAfsgRzM9QXO/d9ae6718c313a13a4b582fc6bf45b137/correction-tape_17136.png"
   title: "修正テープのイラスト"
 audio: null
 selfAssessment:
