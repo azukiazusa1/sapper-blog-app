@@ -8,7 +8,7 @@ updatedAt: "2025-07-01T11:03+09:00"
 tags: ["claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1IZ67RjTaWdAfsgRzM9QXO/d9ae6718c313a13a4b582fc6bf45b137/correction-tape_17136.png"
-  title: "修正テープのイラスト"
+  title: "correction-tape 17136"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "Stop"
           correct: false
           explanation: "StopはClaudeが応答を終了する直前のイベントです"
-
 published: true
 ---
-
 Claude Code hooks は Claude Code のライフサイクルの特定のタイミングで実行されるユーザー定義のシェルスクリプトです。hooks は LLM の実行判断に依存せずに特定のアクションが常に実行されることを保証します。
 
 よくある例としては、コードのフォーマッターを実行することです。人間がコードを書いていた頃はエディタの自動フォーマット機能を使用していたため、フォーマットを実行するタイミングを意識することはなかったと思います。しかし LLM がコードを書く場合、フォーマットを実行するかどうかを LLM が判断するため、フォーマットが実行されずにコードがコミットされることが多々あります。hooks を使用することで、コードのフォーマットを常に実行できます。

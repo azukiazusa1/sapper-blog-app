@@ -7,8 +7,8 @@ createdAt: "2020-05-03T00:00+09:00"
 updatedAt: "2020-05-03T00:00+09:00"
 tags: ["Vue.js", "firebase", "JavaScript"]
 thumbnail:
-  url: "https://images.ctfassets.net/in6v9lxmm5c8/57MXX73Nx2rUnUI730EykA/8d13236943bb46948155f92f2325369e/firebase.png"
-  title: "firebase"
+  url: "https:undefined"
+  title: ""
 audio: null
 selfAssessment: null
 published: true
