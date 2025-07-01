@@ -21,7 +21,7 @@ Rust の得意とする分野は OS やコンパイラなどのいわゆる低�
 
 Web フロントエンドの領域では高速化を目的として Rust から WebAssembly（以下、WASM）を生成して JavaScript から実行する用途がよく知られています。その他にも [SWC](https://swc.rs/) と呼ばれる Rust ベースで作成されているビルドツールが高速に動作することで注目を集めています。（実際に [jestの実行](https://swc.rs/docs/usage/jest) に試してみたところ実行時間が 3 倍ほどになって驚いています）
 
-現状 WASM では JavaScript のように DOM や Web API を直接操作できないので計算負荷の高い特定の領域のパフォーマンスを改善する用途で使用されるのが主流となっています。そのため単に現状のコードを単に Rust に置き換えるだけでは望まれているパフォーマンスの向上は得られないでしょうし、単に複雑性をもたらすだけの結果になってしまうことでしょう。
+現状 WASM では JavaScript のように DOM や Web API を直接操作できないので計算負荷の高い特定の領域のパフォーマンスを改善する用途で使用されるのが主流となっています。そのため単に現状のコードを単に Rust に置き換えるだけでは望まれているパフォーマンスの工場は得られないでしょうし、単に複雑性をもたらすだけの結果になってしまうことでしょう。
 
 そんな中、以下のような Rust で　Web フロントアプリケーションを作成するフレームワークも登場しています。
 
@@ -630,7 +630,7 @@ pub fn todo_item() -> Html {
 
 続いて、ユーザーの入力した値を保持できるように hooks を利用しましょう。そう、あの hooks です。
 
-関数コンポーネント内で状態を管理するために [use_state](https://yew.rs/docs/0.19.0/concepts/function-components/pre-defined-hooks#use_state) フックを使用します。`use_state` は初期値を返却する関数を引数に受け取ります。下記例では初期値を返す関数に[クロージャー](https://doc.rust-jp.rs/book-ja/ch13-01-closures.html)使用しています。クロージャーは簡単に言うと匿名関数です。クロージャーは `||` で定義され引数があれば `|arg1, arg2|` のように `||` の間に入れます。
+関数コンポーネント内で状態を管理するために [use_state](https://yew.rs/docs/concepts/function-components/pre-defined-hooks#use_state) フックを使用します。`use_state@ は初期値を返却する関数を引数に受け取ります。下記例では初期値を返す関数に[クロージャー](https://doc.rust-jp.rs/book-ja/ch13-01-closures.html)使用しています。クロージャーは簡単に言うと匿名関数です。クロージャーは `||` で定義され引数があれば `|arg1, arg2|` のように `||` の間に入れます。
 
 ```rs
 let counter = use_state(|| 0)
@@ -638,14 +638,12 @@ let counter = use_state(|| 0)
 
 `use_state` は `UseStateHandle` を返します。`UseStateHandle` は `set` メソッドにより値を設定します。また `UseStateHandle` より現在の状態を取得するには `*` 演算子により参照を外す必要があります。
 
-```rs
 ```re
 let counter = use_state(|| 0)
-counter.set(*counter + 1);
-```
+counter.set(*counter *+1);
 ```
 
-`use_state` は新たな状態がセットされるたびにコンポーネントが再描画されます。新たな状態が前回の値と異なる場合のみに再描画をしたいような場合には [use_state_eq](https://yew.rs/docs/0.19.0/concepts/function-components/pre-defined-hooks#use_state_eq) が使えます。
+`use_state` は新たな状態がセットされるたびにコンポーネントが再描画されます。新たな状態が前回の値と異なる場合のみに再描画をしたいような場合には [use_state_eq](https://yew.rs/docs/concepts/function-components/pre-defined-hooks#use_state_eq) が使えます。
 
 それでは実際に `<TodoForm>` コンポーネントでフォームの値を `use_state` で保持するようにしましょう。
 
@@ -738,7 +736,7 @@ let oninput = {
 
 [クロージャで環境をキャプチャする](https://doc.rust-jp.rs/book-ja/ch13-01-closures.html#%E3%82%AF%E3%83%AD%E3%83%BC%E3%82%B8%E3%83%A3%E3%81%A7%E7%92%B0%E5%A2%83%E3%82%92%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A3%E3%81%99%E3%82%8B)
 
-続いてクロージャの引数については `yew::InputEvent` を指定しています。`InputEvent` のような Web API に存在する型は [web-sys](https://rustwasm.github.io/wasm-bindgen/api/web_sys/) と呼ばれるクレートで定義されていますが、これらのイベントの型は yew によって再エクスポートされているので yew からインポートすることが推奨されています。
+続いてクロージャの引数については `yew::InputEvent` を指定しています。`InputEvent` のような Web API に存在する型は [web-sys](https://rustwasm.github.io/wasm-bindgen/api/web_sys/) と呼ばれるクリートで定義されていますが、これらのイベントの型は yew によって再エクスポートされているので yew からインポートすることが推奨されています。
 
 ユーザーの入力値は `InputEvent` の `data()` から取得できますが、これは [Option](https://doc.rust-jp.rs/rust-by-example-ja/std/option.html) という値に包まれています。`Option<T>` 型は取得できるかどうかわからない値を表現する列挙型です。
 
@@ -783,7 +781,7 @@ match value {
   }
 ```
 
-ここで本当にボタンが押されたときに `onclick` が呼ばれているのかどうか確認したいのですが、Rust からは直接 `console.log()` のような Web API にはアクセスできません。`console.log()` を呼び出せないのはちょっと不便なので [https://crates.io/crates/wasm-logger](https://crates.io/crates/wasm-logger) と呼ばれるクレートを追加しましょう。`Cargo.toml` ファイルを編集して `
+ここで本当にボタンが押されたときに `onclick` が呼ばれているのかどうか確認したいのですが、Rust からは直接 `console.log()` のような Web API にはアクセスできません。`console.log()` を呼び出せないのはちょっと不便なので [https://crates.io/crates/wasm-logger](https://crates.io/crates/wasm-logger) と呼ばれるクリートを追加しましょう。`Cargo.toml` ファイルを編集して `
 [dependencies]` に追加します。
 
 - Carto.toml

@@ -2,7 +2,7 @@
 id: fQDfqQV8cZ0kmhwHBtQzb
 title: " JavaScriptライブラリ Svelteとは"
 slug: "what-is-svelte"
-about: "Svelteとは、ReactやVue.jsのような宣言的UIライブラリの一種です。その最大の特徴は、ReactやVue.js・Angularと異なりSvelteはコンパイラであることを謳っているところです。Svelteによってコンパイルされたコードは、すべてVanilla JS  - ネイティブのJavaScript- にて生成されます。 そのため、コンパイル後のファイルサイズも小さくパフォーマンス上での利点が期待されています。"
+about: "Svelteとは、ReactやVue.jsのような宣言的UIライブラリの一種です。その最大の特徴は、ReactやVue.js・Angularと異なりSvelteはコンパイラであることを謳っているところです。Svelteによってコンパイルされたコードは、すべてVanilla JS  - ネイティブのJavaScript- にで生成されます。 そのため、コンパイル後のファイルサイズも小さくパフォーマンス上での利点が期待されています。"
 createdAt: "2021-01-24T00:00+09:00"
 updatedAt: "2021-01-24T00:00+09:00"
 tags: ["Svelte", "JavaScript", "TypeScript"]
@@ -14,7 +14,7 @@ selfAssessment: null
 published: true
 ---
 Svelte とは、React や Vue.js・Angular のような宣言的 UI ライブラリの一種です。
-その最大の特徴は、React や Vue.js・Angular と異なり Svelte は**コンパイラ**であることを謳っているところです。Svelte によってコンパイルされたコードは、すべて Vanilla JS  - ネイティブの JavaScript- にて生成されます。
+その最大の特徴は、React や Vue.js・Angular と異なり Svelte は**コンパイラ**であることを謳っているところです。Svelte によってコンパイルされたコードは、すべて Vanilla JS  - ネイティブの JavaScript- にで生成されます。
 
 そのため、コンパイル後のファイルサイズも小さくパフォーマンス上での利点が期待されています。 実際に React の**35倍**、Vue.js の**50倍**のベンチマークが計測されているようです。
 

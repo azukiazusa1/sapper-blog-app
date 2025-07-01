@@ -212,7 +212,7 @@ $ npm run test -w frontend
 ```json
 // frontend/package.json
 {
-  "name": "frontend",
+  "name": "fronend",
   "scripts": {
     "test": "jest"
   },
