@@ -36,7 +36,6 @@ Claude Code hooks は Claude Code のライフサイクルの特定のタイミ�
 hooks で実行されるシェルコマンドはユーザーの確認なしに実行されるため、予期せぬコマンドが実行される可能性があります。hooks の仕様ではユーザー自身が全責任を負うことが明記されています。https://docs.anthropic.com/en/docs/claude-code/hooks#security-considerations
 :::
 
-
 この記事では hooks を使用してコードの変更後に prettier が実行されるように設定してみましょう。
 
 ## hooks の設定
