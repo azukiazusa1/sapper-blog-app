@@ -40,7 +40,7 @@ $ npm run build
 ### lint & typecheck
 
 ```sh
-$ npn run lint
+$ npm run lint
 $ npm run typecheck
 ```
 
