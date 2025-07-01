@@ -24,11 +24,11 @@ console.log(arr) // [1, 2, 3]
 console.log(newArr) // [1, 4, 3]
 ```
 
-`Array.prototype.with()` は Change Array by copy と呼ばれるプロポーサルで提案されたメソッドの 1 つです。Change Array by copy は配列のメソッドに非破壊のメソッドを追加するものです。他にも `Array.prototype.srot()` の非破壊版である `Array.prototype.toSorted()` などが提案されています。
+`Array.prototype.with()` は Change Array by copy と呼ばれるプロポーザルで提案されたメソッドの 1 つです。Change Array by copy は配列のメソッドに非破壊のメソッドを追加するものです。他にも `Array.prototype.srot()` の非破壊版である `Array.prototype.toSorted()` などが提案されています。
 
 https://github.com/tc39/proposal-change-array-by-copy
 
-このプロポーサルは [ECMAScript 2023](https://tc39.es/ecma262/2023/) に取り込まれています。既に Node.js 20.0.0 で実装されていて使用できます。最新の実装状況は [Can I use](https://caniuse.com/mdn-javascript_builtins_array_with) で確認できます。
+このプロポーザルは [ECMAScript 2023](https://tc39.es/ecma262/2023/) に取り込まれています。既に Node.js 20.0.0 で実装されていて使用できます。最新の実装状況は [Can I use](https://caniuse.com/mdn-javascript_builtins_array_with) で確認できます。
 
 
 ## 使い方
