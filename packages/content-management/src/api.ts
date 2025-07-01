@@ -151,7 +151,7 @@ const getAssetIdFromUrl = (url: string): string => {
   const [
     , /* https: */
     , /* '' */
-    , /* images.ctfassets.net */
+    , /* images.ctfassets.net */ // cSpell:ignore ctfassets
     , /* {spaceId} */
     assetId,
   ] = url.split('/')
