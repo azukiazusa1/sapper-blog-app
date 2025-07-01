@@ -185,6 +185,7 @@ describe("getBlogPosts", () => {
           request,
         }): StrictResponse<
           | { items: ContentfulTag[] }
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           | { items: ContentfulBlogPost[]; includes?: { Asset?: any[] } }
         > => {
           const url = new URL(request.url);
