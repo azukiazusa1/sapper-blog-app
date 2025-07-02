@@ -7,8 +7,8 @@ createdAt: "2022-06-19T00:00+09:00"
 updatedAt: "2022-06-19T00:00+09:00"
 tags: ["Deno", "TypeScript"]
 thumbnail:
-  url: "https:undefined"
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1HTtCzd88cKLfxFe7MRWwD/06cfd6e73779844ecf28c8ba2b5d91c4/fresh.png"
+  title: "Fresh"
 audio: null
 selfAssessment: null
 published: true

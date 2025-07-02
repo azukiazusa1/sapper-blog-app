@@ -7,8 +7,8 @@ createdAt: "2020-06-07T00:00+09:00"
 updatedAt: "2021-02-07T00:00+09:00"
 tags: ["Node.js", "JavaScript"]
 thumbnail:
-  url: "https:undefined"
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4z6cPW6RU0f0O22jxIVINl/7c4bc80d99a5ad11e02d1cc83b42a2b5/articles_2FmDVbWFeXeln9BJXqBa76_2F027ab8d7dc7cdb4ab9c09c0a057af2e7.png"
+  title: "Node.js"
 audio: null
 selfAssessment: null
 published: true

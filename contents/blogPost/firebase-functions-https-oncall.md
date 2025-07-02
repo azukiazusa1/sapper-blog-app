@@ -7,8 +7,8 @@ createdAt: "2021-01-10T00:00+09:00"
 updatedAt: "2021-01-10T00:00+09:00"
 tags: ["firebase"]
 thumbnail:
-  url: "https:undefined"
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/47tpjHGd8xJR1UgOIkkrEa/22b02bb6fcb2c7e97b503cbfe6c1ace3/firebase.png"
+  title: "Firebase"
 audio: null
 selfAssessment: null
 published: true
