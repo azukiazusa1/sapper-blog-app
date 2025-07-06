@@ -191,7 +191,7 @@ loginBtn.addEventListener('click', () => {
 
 ![スクリーンショット 20200412 23.17.37.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2Fbf5ab6971f7d34efa9a5cf93aa061ab6.png?alt=media&token=68593e81-6fd6-4547-b569-2ab95e56ec1e)
 
-これで、Googleプロバイダが有効になりました。
+これで、Google プロバイダが有効になりました。
 
 ![スクリーンショット 20200412 23.20.52.png](https://firebasestorage.googleapis.com/v0/b/app-blog-1ef41.appspot.com/o/articles%2Fgr6RsHqtjuEd40b68r9u%2F7c384c395379a237126f9bd60e2b36af.png?alt=media&token=b2f4c489-9df6-48d6-9a14-e3859523c01a)
 
