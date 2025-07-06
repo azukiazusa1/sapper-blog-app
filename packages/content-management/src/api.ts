@@ -15,10 +15,21 @@ import {
   type Thumbnail,
 } from "./types";
 
+// Type for Contentful Collection with includes
+type ContentfulCollectionWithIncludes<T> = {
+  items: T[];
+  includes?: {
+    Asset?: contentful.Asset[];
+    Entry?: contentful.Entry[];
+  };
+  total: number;
+  skip: number;
+  limit: number;
+};
+
 type Cache = {
   tags?: ContentfulTag[];
   environment?: contentful.Environment;
-  assets?: contentful.Asset[];
 };
 
 let cache: Cache = {};
@@ -59,32 +70,29 @@ const fetchTags = async (): Promise<ContentfulTag[]> => {
   return tags.items as unknown as ContentfulTag[];
 };
 
-const fetchAssets = async (): Promise<contentful.Asset[]> => {
-  if (cache.assets) {
-    return cache.assets;
+const fetchBlogs = async (): Promise<{
+  blogs: ContentfulBlogPost[];
+  assets: Map<string, contentful.Asset>;
+}> => {
+  const client = await createClient();
+  const posts = (await client.getEntries({
+    content_type: "blogPost",
+    include: 2, // Include linked assets
+    limit: 1000,
+  })) as unknown as ContentfulCollectionWithIncludes<ContentfulBlogPost>;
+
+  // Create asset map from included assets
+  const assetMap = new Map<string, contentful.Asset>();
+  if (posts.includes?.Asset) {
+    for (const asset of posts.includes.Asset) {
+      assetMap.set(asset.sys.id, asset);
+    }
   }
 
-  const client = await createClient();
-
-  const assets = await client.getAssets({
-    limit: 1000,
-  });
-
-  cache = {
-    ...cache,
-    assets: assets.items,
+  return {
+    blogs: posts.items,
+    assets: assetMap,
   };
-
-  return assets.items;
-};
-
-const fetchBlogs = async (): Promise<ContentfulBlogPost[]> => {
-  const client = await createClient();
-  const posts = await client.getEntries({
-    content_type: "blogPost",
-    limit: 1000,
-  });
-  return posts.items as unknown as ContentfulBlogPost[];
 };
 
 const fetchBlogsByCreatedAt = async ({
@@ -93,15 +101,31 @@ const fetchBlogsByCreatedAt = async ({
 }: {
   startDate: string;
   endDate: string;
-}): Promise<ContentfulBlogPost[]> => {
+}): Promise<{
+  blogs: ContentfulBlogPost[];
+  assets: Map<string, contentful.Asset>;
+}> => {
   const client = await createClient();
-  const posts = await client.getEntries({
+  const posts = (await client.getEntries({
     content_type: "blogPost",
+    include: 2, // Include linked assets
     limit: 1000,
     "fields.createdAt[gte]": startDate,
     "fields.createdAt[lte]": endDate,
-  });
-  return posts.items as unknown as ContentfulBlogPost[];
+  })) as unknown as ContentfulCollectionWithIncludes<ContentfulBlogPost>;
+
+  // Create asset map from included assets
+  const assetMap = new Map<string, contentful.Asset>();
+  if (posts.includes?.Asset) {
+    for (const asset of posts.includes.Asset) {
+      assetMap.set(asset.sys.id, asset);
+    }
+  }
+
+  return {
+    blogs: posts.items,
+    assets: assetMap,
+  };
 };
 
 const flattenField = <T>(field: FieldValue<T>): T => {
@@ -127,7 +151,7 @@ const getAssetIdFromUrl = (url: string): string => {
   const [
     , /* https: */
     , /* '' */
-    , /* images.ctfassets.net */
+    , /* images.ctfassets.net */ // cSpell:ignore ctfassets
     , /* {spaceId} */
     assetId,
   ] = url.split('/')
@@ -148,26 +172,36 @@ export const getBlogPosts = async ({
   };
 } = {}): Promise<BlogPost[]> => {
   const tags = await fetchTags();
-  const blogs =
+  const blogData =
     createdAt !== undefined
       ? await fetchBlogsByCreatedAt({
           startDate: createdAt.startDate,
           endDate: createdAt.endDate,
         })
       : await fetchBlogs();
-  const assets = await fetchAssets();
+
+  const { blogs, assets } = blogData;
 
   const result = await Promise.all(
     blogs.map(async (blog) => {
       let thumbnail: Thumbnail | undefined;
       if (blog.fields.thumbnail) {
-        const asset = assets.find(
-          (a) => a.sys.id === blog.fields.thumbnail["en-US"].sys.id,
-        );
-        thumbnail = {
-          url: "https:" + asset?.fields.file["en-US"]?.url || "",
-          title: asset?.fields.title["en-US"] || "",
-        };
+        const assetId = blog.fields.thumbnail["en-US"].sys.id;
+        const asset = assets.get(assetId);
+
+        if (!asset) {
+          console.warn(
+            `Asset not found for blog post "${blog.fields.title["en-US"]}" with asset ID: ${assetId}`,
+          );
+          thumbnail = undefined;
+        } else {
+          thumbnail = {
+            url: asset.fields.file["en-US"]?.url
+              ? "https:" + asset.fields.file["en-US"].url
+              : "",
+            title: asset.fields.title["en-US"] || "",
+          };
+        }
       }
 
       const blogTags: string[] =

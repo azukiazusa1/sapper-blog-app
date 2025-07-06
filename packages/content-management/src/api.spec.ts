@@ -13,6 +13,30 @@ import { createBlogPost, getBlogPosts, updateBlogPost } from "./api.ts";
 import type { BlogPost, ContentfulBlogPost, ContentfulTag } from "./types.ts";
 import { createDummyMetaSysProps } from "./test-utils.ts";
 
+// Type for test mock Asset objects
+type TestAsset = {
+  sys: {
+    id: string;
+    type: "Asset";
+    version: number;
+  };
+  fields: {
+    title: {
+      "en-US": string;
+    };
+    description: {
+      "en-US": string;
+    };
+    file: {
+      "en-US": {
+        url: string;
+        fileName: string;
+        contentType: string;
+      };
+    };
+  };
+};
+
 vi.mock("./searchRelatedArticles", () => {
   return {
     searchRelatedArticles: async () => {
@@ -152,7 +176,7 @@ const server = setupServer(
             },
             file: {
               "en-US": {
-                url: "//images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
+                url: "//images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png", // cSpell:ignore ctfassets
                 fileName: "image.png",
                 contentType: "image/png",
               },
@@ -184,7 +208,8 @@ describe("getBlogPosts", () => {
         ({
           request,
         }): StrictResponse<
-          { items: ContentfulTag[] } | { items: ContentfulBlogPost[] }
+          | { items: ContentfulTag[] }
+          | { items: ContentfulBlogPost[]; includes?: { Asset?: TestAsset[] } }
         > => {
           const url = new URL(request.url);
           if (url.searchParams.get("content_type") === "tag") {
@@ -295,6 +320,32 @@ describe("getBlogPosts", () => {
                 },
               },
             ],
+            includes: {
+              Asset: [
+                {
+                  sys: {
+                    id: "asset1",
+                    type: "Asset",
+                    version: 1,
+                  },
+                  fields: {
+                    title: {
+                      "en-US": "title",
+                    },
+                    description: {
+                      "en-US": "description",
+                    },
+                    file: {
+                      "en-US": {
+                        url: "//images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png", // cSpell:ignore ctfassets
+                        fileName: "image.png",
+                        contentType: "image/png",
+                      },
+                    },
+                  },
+                },
+              ],
+            },
           });
         },
       ),
@@ -394,6 +445,32 @@ describe("getBlogPosts", () => {
               },
             },
           ],
+          includes: {
+            Asset: [
+              {
+                sys: {
+                  id: "asset1",
+                  type: "Asset",
+                  version: 1,
+                },
+                fields: {
+                  title: {
+                    "en-US": "title",
+                  },
+                  description: {
+                    "en-US": "description",
+                  },
+                  file: {
+                    "en-US": {
+                      url: "//images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png", // cSpell:ignore ctfassets
+                      fileName: "image.png",
+                      contentType: "image/png",
+                    },
+                  },
+                },
+              },
+            ],
+          },
         });
       }),
     );
@@ -451,6 +528,9 @@ describe("getBlogPosts", () => {
               fields: {},
             },
           ],
+          includes: {
+            Asset: [],
+          },
         });
       }),
     );

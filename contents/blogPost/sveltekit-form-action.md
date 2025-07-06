@@ -7,8 +7,8 @@ createdAt: "2023-04-30T13:59+09:00"
 updatedAt: "2023-04-30T13:59+09:00"
 tags: ["Svelte", "SvelteKit"]
 thumbnail:
-  url: "https:undefined"
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/3KqGIXfQvFo8d7Bx7Cc5Qh/a0a8c2c4e8d5b8b7b8a6c4e8a7d5b8c6/svelte.png"
+  title: "Svelte"
 audio: null
 selfAssessment: null
 published: true
