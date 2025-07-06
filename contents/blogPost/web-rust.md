@@ -630,7 +630,7 @@ pub fn todo_item() -> Html {
 
 続いて、ユーザーの入力した値を保持できるように hooks を利用しましょう。そう、あの hooks です。
 
-関数コンポーネント内で状態を管理するために [use_state](https://yew.rs/docs/0.19.0/concepts/function-components/pre-defined-hooks#use_state) フックを使用します。`use_state` は初期値を返却する関数を引数に受け取ります。下記例では初期値を返す関数に[クロージャー](https://doc.rust-jp.rs/book-ja/ch13-01-closures.html)使用しています。クロージャーは簡単に言うと匿名関数です。クロージャーは `||` で定義され引数があれば `|arg1, arg2|` のように `||` の間に入れます。
+関数コンポーネント内で状態を管理するために [use_state](https://yew.rs/docs/0.19.0/concepts/function-components/pre-defined-hooks#use_state) フックを使用します。`use_state` は初期値を返す関数を引数に受け取ります。下記例では初期値を返す関数に[クロージャー](https://doc.rust-jp.rs/book-ja/ch13-01-closures.html)使用しています。クロージャーは簡単に言うと匿名関数です。クロージャーは `||` で定義され引数があれば `|arg1, arg2|` のように `||` の間に入れます。
 
 ```rs
 let counter = use_state(|| 0)
