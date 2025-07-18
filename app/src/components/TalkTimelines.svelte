@@ -10,7 +10,8 @@
     {
       eventTitle: "Cloudflare Workers Tech Talks in Kyoto #1",
       eventDate: "2025-07-18",
-      presentationTitle: "バイブコーディング超えてバイブデプロイ〜Cloudflare MCP 実現する、未来のアプリケーションデリバリー",
+      presentationTitle:
+        "バイブコーディング超えてバイブデプロイ〜Cloudflare MCP 実現する、未来のアプリケーションデリバリー",
       presentationLink:
         "https://speakerdeck.com/azukiazusa1/baibukodeinguchao-etebaibudepuroi-cloudflaremcpdeshi-xian-suru-wei-lai-noapurikesiyonderibari",
       description:
