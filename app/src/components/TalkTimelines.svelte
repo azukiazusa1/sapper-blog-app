@@ -8,6 +8,16 @@
 
   const slides = [
     {
+      eventTitle: "Cloudflare Workers Tech Talks in Kyoto #1",
+      eventDate: "2025-07-18",
+      presentationTitle:
+        "バイブコーディング超えてバイブデプロイ〜Cloudflare MCP 実現する、未来のアプリケーションデリバリー",
+      presentationLink:
+        "https://speakerdeck.com/azukiazusa1/baibukodeinguchao-etebaibudepuroi-cloudflaremcpdeshi-xian-suru-wei-lai-noapurikesiyonderibari",
+      description:
+        "バイブコーディングとは、AIエージェントが自律的にコードを生成・実行する技術です。Cloudflare Workers MCPを使って、AIエージェントがCloudflareのリソースを操作し、アプリケーションをデプロイする方法を実践します。",
+    },
+    {
       eventTitle: "#さくらのAI Meetup vol.11「Agent2Agent（A2A）」",
       eventDate: "2025-06-25",
       presentationTitle: "A2A プロトコルを試してみる",
