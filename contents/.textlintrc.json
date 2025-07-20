@@ -25,10 +25,11 @@
         "severity": "warning"
       },
       "sentence-length": false,
-      "max-kanji-continuous-length": {
+      "max-kanji-continuous-len": {
         "max": 10
       }
     },
+
     "preset-ja-spacing": {
       "ja-space-between-half-and-full-width": {
         "space": "always",

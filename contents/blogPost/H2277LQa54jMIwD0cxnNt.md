@@ -64,7 +64,7 @@ published: true
 - 開発手法・プロセス
   - エクストリームプログラミング
   - 継続的デリバリー 信頼できるソフトウェアリリースのためのビルド・テスト・デプロイメントの自動化
-  - GitHub 実践入門──Pull Request による開発の変革
+  - GitHub 実践入門─Pull Request による開発の変革
 - インフラ・運用
   - 新しい Linux の教科書
   - イラストでわかる Docker と Kubernetes Software Design plus
@@ -100,7 +100,7 @@ published: true
 
 ![Web API: The Good Parts](https://m.media-amazon.com/images/I/91iQh271SHL._SY385_.jpg)
 
-前述の「Web を支える技術」でも紹介された REST の考え方を Web API でどのように実装するかを解説した書籍です。設計の美しい API は、使いやすい、変更しやすい、頑強である、恥ずかしくない」という考えのもと、API をどのように設計し運用すればより効果的なのか、ありがちな罠や落とし穴を避けるにはどういう点に気をつけなければいけないのかを明らかにします。
+前述の「Web を支える技術」でも紹介された REST の考え方を Web API でどのように実装するかを解説した書籍です。設計の美しい API は「使いやすい, 変更しやすい, 頑強である, 恥ずかしくない」という考えのもと、API をどのように設計し運用すればより効果的なのか、ありがちな罠や落とし穴を避けるにはどういう点に気をつけなければいけないのかを明らかにします。
 
 ### [体系的に学ぶ 安全なWebアプリケーションの作り方](https://www.amazon.co.jp/dp/B07DVY4H3M/)
 
@@ -256,7 +256,7 @@ Clean Architecture は「ボブおじさん」と呼ばれるロバート・C・
 
 継続デリバリーは市場での競争力を維持するために不可欠な要素であり、日々新しい機能を迅速に提供するための基盤となります。また近頃話題になっている AI プログラミングでは AI が素早く生成するコードを迅速にチェックするために CI/CD の仕組みが必要不可欠となっています。
 
-### [GitHub実践入門──Pull Requestによる開発の変革](https://www.amazon.co.jp/dp/B07JLJSDMJ/)
+### [GitHub実践入門─Pull Requestによる開発の変革](https://www.amazon.co.jp/dp/B07JLJSDMJ/)
 
 ![GitHub実践入門](https://m.media-amazon.com/images/I/81PH1ef35kL._SY425_.jpg)
 
