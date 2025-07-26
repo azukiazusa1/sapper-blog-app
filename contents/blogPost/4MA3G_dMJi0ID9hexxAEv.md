@@ -233,4 +233,5 @@ github-pr-creator サブエージェントを使ってプルリクエストを�
 - [Sub agents - Anthropic](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
 - [How we built our multi-agent research system \ Anthropic](https://www.anthropic.com/engineering/built-multi-agent-research-system)
 - [humanlayer/12-factor-agents: What are the principles we can use to build LLM-powered software that is actually good enough to put in the hands of production customers?](https://github.com/humanlayer/12-factor-agents?tab=readme-ov-file)
+- [Benchmarking Multi-Agent Architectures](https://blog.langchain.com/benchmarking-multi-agent-architectures/)
 - [AI エンジニアの立場からみた、AI コーディング時代の開発の品質向上の取り組みと妄想 - Speaker Deck](https://speakerdeck.com/soh9834/ai-enzinianoli-chang-karamita-ai-kodeingushi-dai-nokai-fa-nopin-zhi-xiang-shang-noqu-rizu-mitowang-xiang)
