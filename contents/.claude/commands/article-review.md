@@ -30,10 +30,4 @@ description: "引数で指定した記事のレビューを行います。"
 
 ## コンテキスト
 
-- 文書校正を行うコマンド: !`npx textlint blogPost/$ARGUMENTS.md`
 - 筆者の文章のスタイルは @writing-style.md を参照
-
----
-記事本文
-
-@blogPost/$ARGUMENTS.md
