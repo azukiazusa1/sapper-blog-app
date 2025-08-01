@@ -48,7 +48,7 @@ selfAssessment:
         - text: "任意のイベントハンドラから呼び出すことができる"
           correct: true
           explanation: "command 関数は `form` 関数と異なり `<form>` 以外の場所からも呼び出すことができます。"
-        - text: "副作用を含む処理を行うことが出来る
+        - text: "副作用を含む処理を行うことが出来る"
           correct: false
           explanation: ""
         - text: "複数回同じ引数で呼び出された場合キャッシュされる"
