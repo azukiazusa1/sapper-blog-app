@@ -44,7 +44,7 @@ selfAssessment:
 published: false
 ---
 
-Serena はセマンティックなコード検索・編集能力を追加するオープンソースのツールキットです。[MCP（Model Context Protocol）](https://modelcontextprotocol.org/) サーバーとして動作しているため、Cloud Code や Cursor, VS Code のように MCP に対応しているクライアントであれば利用できます。またエージェントフレームワークとして [Agno](https://docs.agno.com/introduction) を使用しているため、特定の LLM モデルに依存せずに動作します。
+Serena はセマンティックなコード検索・編集能力を追加するオープンソースのツールキットです。[MCP（Model Context Protocol）](https://modelcontextprotocol.org/) サーバーとして動作しているため、Claude Code や Cursor, VS Code のように MCP に対応しているクライアントであれば利用できます。またエージェントフレームワークとして [Agno](https://docs.agno.com/introduction) を使用しているため、特定の LLM モデルに依存せずに動作します。
 
 Serena は LSP（Language Server Protocol）を使用してセマンティックなコードを解析するのが特徴です。LSP はコードの構文解析やシンボルの解決、コード補完などを提供するプロトコルで、Serena はこれを利用してコードベースの理解と操作を行います。これにより Serena は大規模で複雑なコードベースであっても適切なコンテキストを効率的に取得しタスクを実行できます。
 
@@ -392,7 +392,7 @@ npx ccusage session
 ## まとめ
 
 - Serena はセマンティックなコード検索・編集能力を追加するオープンソースのツールキット。LSP を使用してコードの構文解析やシンボルの解決などを提供する
-- Serena は MCP サーバーとして動作するため、Cloud Code や Cursor, VS Code のように MCP に対応しているクライアントであれば利用できる
+- Serena は MCP サーバーとして動作するため、Claude Code や Cursor, VS Code のように MCP に対応しているクライアントであれば利用できる
 - Serena は `uvx` コマンドを使用してローカルで MCP サーバーを起動できる
 - Serena はオンボーディングプロセスを通じてプロジェクトのコードベースを理解し、将来のインタラクションで利用するメモリを構築する
 - Serena はコードベースを分析する際に `get_symbols_overview`, `find_symbol`, `search_for_pattern` などのツールを使用して効率的に情報を収集する
