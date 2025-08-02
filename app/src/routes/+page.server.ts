@@ -1,23 +1,16 @@
 import type { PageServerLoad } from "./$types";
-import RepositoryFactory, {
-  ANALYTICS_DATA,
-  SHORT,
-  POST,
-  TAG,
-} from "../repositories/RepositoryFactory";
-const PostRepository = RepositoryFactory[POST];
-const ShortRepository = RepositoryFactory[SHORT];
-const AnalyticsDataRepository = RepositoryFactory[ANALYTICS_DATA];
-const TagRepository = RepositoryFactory[TAG];
+import { useRepositories } from "../repositories/useRepositories";
+
+const { post, short, analyticsData, tag } = useRepositories();
 
 export const load: PageServerLoad = async () => {
   const [latestPosts, shorts, popularPosts, tags] = await Promise.all([
-    PostRepository.get({
+    post.get({
       limit: 3,
     }),
-    ShortRepository.get({}),
-    AnalyticsDataRepository.getPopularPosts(),
-    TagRepository.get(),
+    short.get({}),
+    analyticsData.getPopularPosts(),
+    tag.get(),
   ]);
 
   tags.tagCollection.items.sort((a, b) => {

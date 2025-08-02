@@ -1,15 +1,14 @@
 import { generateShortOgpImage } from "$lib/server/generateOgpImage";
 import type { RequestHandler } from "@sveltejs/kit";
-import RepositoryFactory, {
-  SHORT,
-} from "../../../../../repositories/RepositoryFactory";
-const ShortRepository = RepositoryFactory[SHORT];
+import { useRepositories } from "../../../../../repositories/useRepositories";
+
+const { short } = useRepositories();
 export const prerender = true;
 
 export const GET: RequestHandler = async ({ params }) => {
   const { id } = params;
-  const { short } = await ShortRepository.findById(id || "");
-  const png = await generateShortOgpImage(short?.title || "");
+  const { short: shortData } = await short.findById(id || "");
+  const png = await generateShortOgpImage(shortData?.title || "");
 
   return new Response(png, {
     headers: {

@@ -1,7 +1,8 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import RepositoryFactory, { POST } from "../../repositories/RepositoryFactory";
+import { useRepositories } from "../../repositories/useRepositories";
 import variables from "$lib/variables";
-const PostRepository = RepositoryFactory[POST];
+
+const { post } = useRepositories();
 export const prerender = true;
 
 const siteUrl = variables.baseURL;
@@ -26,7 +27,7 @@ ${items
   .join("\n")}
   `;
 export const GET: RequestHandler = async () => {
-  const posts = await PostRepository.findAll();
+  const posts = await post.findAll();
   const items = posts.blogPostCollection.items
     .sort(
       (a, b) =>
