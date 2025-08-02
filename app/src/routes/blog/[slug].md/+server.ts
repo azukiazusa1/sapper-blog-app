@@ -1,19 +1,18 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import RepositoryFactory, {
-  POST,
-} from "../../../repositories/RepositoryFactory";
-const PostRepository = RepositoryFactory[POST];
+import { useRepositories } from "../../../repositories/useRepositories";
+
+const { post: postRepo } = useRepositories();
 
 export const prerender = true;
 export const GET: RequestHandler = async ({ params }) => {
   const { slug } = params;
-  const post = await PostRepository.find(slug);
+  const postData = await postRepo.find(slug);
 
-  if (!post) {
+  if (!postData) {
     return new Response("Not found", { status: 404 });
   }
 
-  const blogPost = post.blogPostCollection.items[0];
+  const blogPost = postData.blogPostCollection.items[0];
   const body = `# ${blogPost.title}
 
 ${blogPost.article}

@@ -1,13 +1,12 @@
 import type { PageServerLoad } from "./$types";
-import RepositoryFactory, {
-  SHORT,
-} from "../../../../repositories/RepositoryFactory";
+import { useRepositories } from "../../../../repositories/useRepositories";
 import { markdownToHtml } from "$lib/server/markdownToHtml";
-const ShortRepository = RepositoryFactory[SHORT];
+
+const { short: shortRepo } = useRepositories();
 
 export const load: PageServerLoad = async ({ params }) => {
   const { id } = params;
-  const { short } = await ShortRepository.findById(id);
+  const { short } = await shortRepo.findById(id);
 
   const inputs = [
     short.content1,
@@ -21,7 +20,7 @@ export const load: PageServerLoad = async ({ params }) => {
     )
   ).filter((content) => content !== "");
 
-  const allShorts = await ShortRepository.getAll();
+  const allShorts = await shortRepo.getAll();
   const allShortsIds = allShorts.shortCollection.items.map(
     (short) => short.sys.id,
   );

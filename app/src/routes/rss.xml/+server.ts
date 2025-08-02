@@ -1,11 +1,8 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import RepositoryFactory, {
-  POST,
-  SHORT,
-} from "../../repositories/RepositoryFactory";
+import { useRepositories } from "../../repositories/useRepositories";
 import variables from "$lib/variables";
-const PostRepository = RepositoryFactory[POST];
-const ShortRepository = RepositoryFactory[SHORT];
+
+const { post, short } = useRepositories();
 export const prerender = true;
 
 const siteUrl = variables.baseURL;
@@ -53,8 +50,8 @@ const renderXmlRssFeed = (
 `;
 
 export const GET: RequestHandler = async () => {
-  const posts = await PostRepository.findAll();
-  const shorts = await ShortRepository.getAll();
+  const posts = await post.findAll();
+  const shorts = await short.getAll();
 
   // posts と shorts を結合して、createdAt でソートする
   const items = [
