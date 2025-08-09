@@ -13,3 +13,6 @@ app/node_modules
 build
 node_modules
 storybook-static/
+
+.serena/cache
+*.local.json
