@@ -46,7 +46,9 @@ published: true
 
 [MCP UI](https://mcpui.dev/) は [Model Context Protocol (MCP)](https://modelcontextprotocol.org/) を拡張して、AI エージェントがインタラクティブな UI コンポーネントを返すことを可能にする仕組みです。MCP UI を使用することで、AI エージェントとのチャットの返答としてグラフを表示したり、商品の画像ギャラリーや購入フォームを表示することが可能になります。従来のテキストベースの応答に加えて、ユーザーは AI エージェントとの対話をよりリッチでインタラクティブなものにできます。
 
-この記事では MCP UI の SDK を利用して、AI エージェントがインタラクティブな UI コンポーネントを返す方法を試してみます。
+この記事では MCP UI の SDK を利用して、AI エージェントがインタラクティブな UI コンポーネントを返す方法を試してみます。この記事で書いたコードのサンプルは以下のリポジトリで公開しています。
+
+https://github.com/azukiazusa1/mcp-ui-example
 
 ## TypeScript SDK を使用して MCP UI を実装する
 
