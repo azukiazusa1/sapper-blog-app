@@ -20,7 +20,7 @@ selfAssessment:
         - text: "output-style"
           correct: true
           explanation: "Claude Code の学習モードは output-style コマンドで Learning スタイルを選択することで有効になります。"
-        - text: ".claude/settings.json 
+        - text: ".claude/settings.json"
           correct: false
           explanation: null
         - text: "CLAUDE.md"
