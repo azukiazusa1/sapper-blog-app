@@ -5,36 +5,84 @@ class: invert
 style: |
   section {
     font-size: 28px;
-    background-color: #1a1a1a;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
     color: #ffffff;
     place-content: start center;
+    position: relative;
+  }
+  section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
   }
   h1 {
-    font-size: 48px;
+    font-size: 56px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
   }
   h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
+    font-size: 44px;
+    font-weight: 700;
+    color: #ffffff;
+    padding-left: 20px;
+    letter-spacing: -0.01em;
   }
   h3 {
-    font-size: 32px;
+    font-size: 36px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
   }
   code {
-    background-color: #2d2d2d;
-    color: #ffffff;
+    background: linear-gradient(135deg, #1e1e2e, #2a2d3a);
+    color: #00d4ff;
     font-size: 24px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', 'SF Mono', Monaco, Inconsolata, 'Fira Code', 'Droid Sans Mono', 'Source Code Pro', monospace;
   }
   pre {
-    background-color: #2d2d2d;
+    background: linear-gradient(135deg, #1a1a2e, #252850);
     color: #ffffff;
     font-size: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
   }
   .line {
     line-height: 1.5;
   }
-  ul li {
-    font-size: 28px;
-    margin-bottom: 10px;
+  ul {
+    padding-left: 0 !important;
+  }
+
+  li {
+    font-size: 30px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    position: relative;
+    padding-left: 30px;
+    line-height: 1.4;
+    list-style: none;
+  }
+  ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #00d4ff;
+    font-weight: bold;
+    font-size: 20px;
   }
 
   .top {
@@ -44,38 +92,61 @@ style: |
   }
 
   .box {
-    background-color: #333333;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    background: linear-gradient(135deg, rgba(30, 30, 46, 0.9) 0%, rgba(42, 45, 58, 0.9) 100%);
+    padding: 30px;
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     align-items: center;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    min-width: 280px;
+    min-height: 320px;
   }
 
   .box-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 34px;
+    color: #00d4ff;
+    text-align: center;
   }
 
   .flex {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .grid {
     display: grid;
-    grid-template-columns: 1fr 600px;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 30px 0;
+  }
+  
+  .grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
   }
 
   .g {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 30px;
+    margin: 30px 0;
   }
 
   .background-blur {
@@ -89,16 +160,19 @@ style: |
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-15deg);
+    transform: translate(-50%, -50%) rotate(-10deg);
     z-index: 10;
-    color: #00D8FF;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    font-size: 3rem;
-    font-weight: bold;
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 800;
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.3;
     white-space: nowrap;
-    font-size: 2rem;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    background: linear-gradient(135deg, rgba(30, 30, 46, 0.9) 0%, rgba(42, 45, 58, 0.9) 100%);
+    padding: 30px;
   }
 
   .center {
@@ -108,11 +182,36 @@ style: |
     align-items: center;
     height: 100%;
     flex-direction: column;
+    position: relative;
+    z-index: 2;
   }
 
   .text-sm {
-    font-size: 24px;
+    font-size: 26px;
+    color: #a0a0a0;
   }
+  
+  .gradient-text {
+    color: #00d4ff;
+    font-weight: 700;
+  }
+  
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  .slide-in {
+    animation: slideInFromLeft 0.6s ease-out;
+  }
+  @keyframes slideInFromLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
   ---
 
 <div class="center">
@@ -157,7 +256,7 @@ style: |
 
 # AIコーディング支援の進化
 
-<div class="flex">
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
 <div class="box">
   <div style="font-size: 48px; line-height: 1;">⌨️</div>
   <div class="box-title">補完型</div>
@@ -166,7 +265,7 @@ style: |
   <p>GitHub Copilot</p>
 </div>
 
-→
+<div style="font-size: 48px; color: #00d4ff;">→</div>
 
 <div class="box">
   <div style="font-size: 48px; line-height: 1;">💬</div>
@@ -177,7 +276,7 @@ style: |
   <p>ChatGPT</p>
 </div>
 
-→
+<div style="font-size: 48px; color: #00d4ff;">→</div>
 
 <div class="box">
   <div style="font-size: 48px; line-height: 1;">🤖</div>
@@ -356,7 +455,6 @@ AI エージェントは、複雑なタスクを最終的な解決に向けた�
   <div class="box-title">エディタ型</div>
 
   - 開発者が常に監視・介入可能
-  - 安全性重視
   - よく使い慣れたエディタで動作
 
   <p class="text-sm">Cursor, Cline, Windsurf</p>
@@ -368,7 +466,6 @@ AI エージェントは、複雑なタスクを最終的な解決に向けた�
 
   - ターミナルやファイルシステムで動作
   - 重要な判断時に確認を求める
-  - 効率性重視
 
   <p class="text-sm">Claude Code, Codex CLI</p>
 </div>
@@ -378,7 +475,6 @@ AI エージェントは、複雑なタスクを最終的な解決に向けた�
   <div class="box-title">自律型</div>
 
   - 目標設定と結果確認のみ
-  - 生産性最大化
   - 緊急時以外は介入しない
 
   <p class="text-sm">Devin, OpenHands</p>
@@ -539,7 +635,7 @@ Slackで「フィーチャーフラグxxxを削除して」と指示
 </div>
 </div>
 
-<p style="text-align: center; font-size: 24px; margin-top: 20px; background: linear-gradient(to right, #ff7e5f, #feb47b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+<p style="text-align: center; font-size: 24px; margin-top: 20px; color: #ff6b9d;">
 戦略的で俯瞰的な役割へとシフトしていく  
 </p>
 
@@ -615,9 +711,7 @@ AIを使うことは、もはやマネジメントであるという記事がこ
 
 ```md
 カンバンボードのタスク操作に関するテストケースを作成してください
-
 - カンバンボードに表示されるタスクは、API から取得したデータに基づいていること
-- 「新規追加」ボタンをクリックすると「新規追加ダイアログ」が表示されること
 - タイトルを入力するまで submit ボタンは無効化されていること
 - API のコールに失敗した場合、エラーメッセージがトーストで表示されること
 
@@ -849,21 +943,25 @@ AI がコードを書く速度と比較すると、テストや Lint を実行�
 
 <div class="g">
 <div class="box">
-  <h3>❌ 期待しすぎてはいけないこと</h3>
-  <ul>
-    <li>何も介入せずに完璧なコードが仕上がる</li>
-    <li>複雑な要求も一発で正確に実装してくれる</li>
-    <li>プロジェクト全体の設計を任せられる</li>
-  </ul>
+  <h3 class="text-2xl">期待しすぎてはいけないこと</h3>
+  <div class="highlight">
+    <ul class="">
+      <li>何も介入せずに完璧なコードが仕上がる</li>
+      <li>複雑な要求も一発で正確に実装してくれる</li>
+      <li>プロジェクト全体の設計を任せられる</li>
+    </ul>
+  </div>
 </div>
 
 <div class="box">
-  <h3>✅ 実際の価値</h3>
-  <ul>
-    <li><strong>コードを書き始めるハードルを下げる</strong></li>
-    <li>最初の足がかりを提供してくれる</li>
-    <li>そこから人間が改善・修正していく</li>
-  </ul>
+  <h3 class="text-2xl">実際の価値</h3>
+  <div class="highlight">
+    <ul class="">
+      <li><strong class="gradient-text">コードを書き始めるハードルを下げる</strong></li>
+      <li>最初の足がかりを提供してくれる</li>
+      <li>そこから人間が改善・修正していく</li>
+    </ul>
+  </div>
 </div>
 
 </div>
@@ -883,28 +981,28 @@ AI がコードを書く速度と比較すると、テストや Lint を実行�
 
 # 「机に5分座る」効果
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+<div class="grid">
 
 <div class="box">
-  <h3>🪑 勉強のやる気を出すテクニック</h3>
-  <div>
-    <div>「とりあえず机に5分座る」</div>
-    <div style="margin-top: 28px">
-      <strong>作業興奮（Arbeitsrausch）</strong><br>
-      「やる気が出るから行動する」のではなく、「行動するからやる気が出る」
-    </div>
+  <h3 class="gradient-text">勉強のやる気を出すテクニック</h3>
+  <div class="highlight">
+    <div class="text-2xl">「とりあえず机に5分座る」</div>
   </div>
+    <div>
+      <strong class="gradient-text">作業興奮（Arbeitsrausch）</strong><br>
+      <p class="text-sm">「やる気が出るから行動する」のではなく、「行動するからやる気が出る」</p>
+    </div>
 </div>
 
 <div class="box">
-  <h3>💻 コーディングでも同じ</h3>
-  <div>
-    <div>「とりあえずAIに骨格コードを生成してもらう」</div>
-    <div class="text-sm">→ 何かができてしまえば、そこから改善していくやる気が湧く</div>
-    <div style="margin-top: 28px">
-      動くコードが目の前にあると「もう少し改善しよう」という気持ちが自然に湧く
-    </div>
+  <h3 class="gradient-text">コーディングでも同じ</h3>
+  <div class="highlight">
+    <div class="text-2xl">「とりあえずAIに骨格コードを生成してもらう」</div>
+    <div class="text-sm" style="margin-top: 15px;">→ 何かができてしまえば、そこから改善していくやる気が湧く</div>
   </div>
+    <div>
+      <p class="gradient-text">動くコードが目の前にあると「もう少し改善しよう」という気持ちが自然に湧く</p>
+    </div>
 </div>
 
 </div>
@@ -995,7 +1093,7 @@ github のブログでもジュニアエンジニアを採用することの重�
 
 ---
 
-<div style="display: grid; place-items: center; font-size: 96px; height: 100%; background: linear-gradient(to right, #ff7e5f, #feb47b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+<div style="display: grid; place-items: center; font-size: 96px; height: 100%; color: #ff6b9d;">
 基礎力 + 瞬発力
 
 </div>
@@ -1087,7 +1185,7 @@ AI が提案するコードを妄信的に受け入れてしまった結果、�
 
 <div style="text-align: center;">
   <div style="font-size: 10rem;">🎭</div>
-  <div class="text-sm">
+  <div >
     権威への盲従は<br>
     判断力を奪う
   </div>
@@ -1109,7 +1207,7 @@ AI 時代においても、この「劇場のイドラ」が強く働く可能�
 
 # 批判的思考力の重要性
 
-<div class="flex">
+<div class="flex" style="flex-wrap: nowrap;">
 
 <div>
 
@@ -1141,7 +1239,7 @@ AI がなぜそのコードを出力し、どのような根拠でその解決�
 
 # 時代の転換点を楽しもう
 
-<div class="box">
+<div>
 
 **人類の歴史は技術革新による仕事の変化の連続**
 
