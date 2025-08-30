@@ -4,7 +4,8 @@ theme: default
 class: invert
 style: |
   section {
-    font-size: 28px;
+    font-size: 26px;
+    line-height: 1.5;
     background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
     color: #ffffff;
     place-content: start center;
@@ -17,46 +18,53 @@ style: |
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.08) 0%, transparent 50%);
     pointer-events: none;
   }
   h1 {
-    font-size: 56px;
+    font-size: 52px;
     font-weight: 800;
     color: #ffffff;
     letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
   }
   h2 {
-    font-size: 44px;
+    font-size: 40px;
     font-weight: 700;
     color: #ffffff;
-    padding-left: 20px;
+    padding-left: 16px;
     letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin-bottom: 1.2rem;
   }
   h3 {
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 600;
     color: #ffffff;
-    margin: 0;
+    margin: 0 0 0.8rem 0;
+    line-height: 1.3;
   }
   code {
     background: linear-gradient(135deg, #1e1e2e, #2a2d3a);
-    color: #00d4ff;
-    font-size: 24px;
-    border: 1px solid rgba(0, 212, 255, 0.3);
+    color: #4dd0e1;
+    font-size: 22px;
+    border: 1px solid rgba(77, 208, 225, 0.4);
     border-radius: 6px;
+    padding: 3px 6px;
     font-family: 'JetBrains Mono', 'SF Mono', Monaco, Inconsolata, 'Fira Code', 'Droid Sans Mono', 'Source Code Pro', monospace;
   }
   pre {
     background: linear-gradient(135deg, #1a1a2e, #252850);
     color: #ffffff;
     font-size: 20px;
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px 0;
+    line-height: 1.4;
+    border: 1px solid rgba(77, 208, 225, 0.3);
+    border-radius: 10px;
+    padding: 18px;
+    margin: 18px 0;
     position: relative;
     overflow: hidden;
   }
@@ -68,21 +76,22 @@ style: |
   }
 
   li {
-    font-size: 30px;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    font-size: 28px;
+    margin-bottom: 16px;
+    margin-top: 16px;
     position: relative;
     padding-left: 30px;
-    line-height: 1.4;
+    line-height: 1.5;
     list-style: none;
   }
   ul li::before {
     content: '▸';
     position: absolute;
     left: 0;
-    color: #00d4ff;
+    color: #4dd0e1;
     font-weight: bold;
     font-size: 20px;
+    top: 2px;
   }
 
   .top {
@@ -93,30 +102,31 @@ style: |
 
   .box {
     background: linear-gradient(135deg, rgba(30, 30, 46, 0.9) 0%, rgba(42, 45, 58, 0.9) 100%);
-    padding: 30px;
-    border-radius: 16px;
+    padding: 24px;
+    border-radius: 14px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
     align-items: center;
-    border: 1px solid rgba(0, 212, 255, 0.2);
+    border: 1px solid rgba(77, 208, 225, 0.4);
     position: relative;
     overflow: hidden;
-    min-width: 280px;
-    min-height: 320px;
+    min-width: 260px;
+    min-height: 300px;
   }
 
   .box-title {
     font-weight: 700;
-    margin-bottom: 15px;
-    font-size: 34px;
-    color: #00d4ff;
+    margin-bottom: 12px;
+    font-size: 30px;
+    color: #4dd0e1;
     text-align: center;
+    line-height: 1.2;
   }
 
   .flex {
     display: flex;
-    gap: 30px;
+    gap: 24px;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
@@ -125,28 +135,32 @@ style: |
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 30px;
+    align-items: start;
   }
   
   .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin: 30px 0;
+    gap: 24px;
+    margin: 24px 0;
+    align-items: start;
   }
   
   .grid-auto {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin: 30px 0;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin: 24px 0;
+    align-items: start;
   }
 
   .g {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin: 30px 0;
+    gap: 24px;
+    margin: 24px 0;
+    align-items: start;
   }
 
   .background-blur {
@@ -163,16 +177,15 @@ style: |
     transform: translate(-50%, -50%) rotate(-10deg);
     z-index: 10;
     color: #fff;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 800;
     text-align: center;
     line-height: 1.3;
     white-space: nowrap;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 212, 255, 0.2);
+    padding: 24px;
+    border-radius: 10px;
+    border: 1px solid rgba(77, 208, 225, 0.4);
     background: linear-gradient(135deg, rgba(30, 30, 46, 0.9) 0%, rgba(42, 45, 58, 0.9) 100%);
-    padding: 30px;
   }
 
   .center {
@@ -187,12 +200,16 @@ style: |
   }
 
   .text-sm {
-    font-size: 26px;
-    color: #a0a0a0;
+    font-size: 22px;
+    color: #e0e0e0;
+    line-height: 1.4;
   }
   
   .gradient-text {
-    color: #00d4ff;
+    background: linear-gradient(135deg, #00d4ff 0%, #64ffda 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 700;
   }
   
@@ -201,15 +218,28 @@ style: |
   }
   @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    50% { opacity: 0.8; }
   }
   
   .slide-in {
-    animation: slideInFromLeft 0.6s ease-out;
+    animation: slideInFromLeft 0.8s ease-out;
   }
   @keyframes slideInFromLeft {
     from { transform: translateX(-100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
+  }
+  
+  .highlight {
+    background: linear-gradient(135deg, rgba(77, 208, 225, 0.12) 0%, rgba(128, 222, 234, 0.12) 100%);
+    border-left: 3px solid #4dd0e1;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 6px;
+  }
+  
+  .text-2xl {
+    font-size: 30px;
+    line-height: 1.3;
   }
   
   ---
@@ -1034,9 +1064,10 @@ AI がコードを書く速度と比較すると、テストや Lint を実行�
 
 # AI に精通したジュニアエンジニアが活躍するチャンス
 
+- AI の登場でむしろエンジニアの仕事の密度が濃くなった
 - 新しいAI時代のエンジニアは、AIを活用したうえでプログラミングの学習を始めることが予測される
   - AIは学習コーチとして適切な存在であり、わからないことを自然言語で質問したり、知らない知識を教えてくれたりする
-- AI ネイティブの世代が登場した場合、私達が思いも寄らない観点での問題解決や新しいアイデアを提供してくれる可能性がある
+  - AIネイティブの世代が登場した場合、始めから AI とうまく付き合うことができる可能性がある
 
 https://github.blog/ai-and-ml/generative-ai/junior-developers-arent-obsolete-heres-how-to-thrive-in-the-age-of-ai/
 
@@ -1069,8 +1100,6 @@ github のブログでもジュニアエンジニアを採用することの重�
 
 # 学習でのAI活用法
 
-<div class="text-2xl mt-8 space-y-6">
-
 - **学習目的では**AIに頼らずに書く
   - すぐに答えを求めるのではなく、自分で考える
 - プログラミングでは**写経**と呼ばれる学習方法が広く行われてきた
@@ -1078,8 +1107,7 @@ github のブログでもジュニアエンジニアを採用することの重�
 - **自分の言葉でAIに質問する**
   - 知らなかった構文や書き方を学ぶためにAIを活用
   - AIをパーソナルコーチのように活用することで、学習の効率を高める
-
-</div>
+  - 学習モードの活用
 
 <!-- 
 
@@ -1089,7 +1117,19 @@ github のブログでもジュニアエンジニアを採用することの重�
 
 一方で自分の言葉でAIにコードの質問をしたり、知らなかった構文や書き方を学ぶためにAIを活用するのは非常に有効です。AIをパーソナルコーチのように活用することで、学習の効率を高めることができます。
 
+最近は学習モードのような機能も提供されており、AI が直接答えを教えるのではなく、ヒントを出してユーザーに考えさせるようなインタラクションも可能です。
+
  -->
+
+---
+
+## 学習モード
+
+<div class="center">
+
+![w:900](./images/learning-mode.png)
+
+</div>
 
 ---
 
