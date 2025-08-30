@@ -77,9 +77,9 @@ PORT=3000 npx vibe-kanban
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/1O455nkWFU3svV3INz9wSh/19eeb393b40a844f7f278ccaa711bf76/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-08-30_14.38.11.png)
 
-続いて GitHub アカウントに接続するための認証をします。GitHub アカウントに接続することで、Vibe Kanban からリポジトリにアクセスしてプルリクエストを作成したり、コードをコミットしたりできます。この設定はスキップできます。
+続いて GitHub アカウントに接続するための認証をします。GitHub アカウントに接続することで、Vibe Kanban からリポジトリにアクセスしてプルリクエストを作成したり、コードをコミットしたりできます。この設定はスキップできます。GitHub に認証をする形式の他に、GitHub Personal Access Token を使用する形式もサポートされており、後から設定画面で設定できます。
 
-![](https://images.ctfassets.net/in6v9lxmm5c8/1O455nkWFU3svV3INz9wSh/19eeb393b40a844f7f278ccaa711bf76/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-08-30_14.38.11.png)
+![](https://images.ctfassets.net/in6v9lxmm5c8/3AkRLhWTDrajhGsc9rDizf/f8fb59b426a68c11856563aacd5711a2/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-08-30_17.56.58.png)
 
 最後にフィードバックデータの収集に関する設定をすると、Vibe Kanban の初期設定は完了です。
 
