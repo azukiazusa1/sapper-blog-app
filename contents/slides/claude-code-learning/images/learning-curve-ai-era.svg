@@ -1,0 +1,60 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e1e1e"/>
+  
+  <!-- Grid lines -->
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#333" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="400" fill="url(#grid)"/>
+  
+  <!-- Axes -->
+  <line x1="80" y1="320" x2="720" y2="320" stroke="#ffffff" stroke-width="2"/>
+  <line x1="80" y1="320" x2="80" y2="60" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Axis labels -->
+  <text x="400" y="360" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16">時間</text>
+  <text x="40" y="190" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" transform="rotate(-90, 40, 190)">スキル</text>
+  
+  <!-- Apparent skill level (flat high line) -->
+  <path d="M 80 320 L 120 120 L 720 120" 
+        fill="none" stroke="#FF5722" stroke-width="4"/>
+  
+  <!-- Actual skill level (low flat line) -->
+  <path d="M 80 320 L 120 280 L 720 280" 
+        fill="none" stroke="#607D8B" stroke-width="4" stroke-dasharray="8,4"/>
+  
+  <!-- Labels for skill levels -->
+  <text x="600" y="110" fill="#FF5722" font-family="Arial, sans-serif" font-size="14" font-weight="bold">表面的な成果</text>
+  <text x="600" y="270" fill="#607D8B" font-family="Arial, sans-serif" font-size="14" font-weight="bold">実際のスキル</text>
+  
+  <!-- Gap indication -->
+  <path d="M 500 120 L 500 280" fill="none" stroke="#FFC107" stroke-width="3" stroke-dasharray="3,3"/>
+  <path d="M 495 125 L 500 120 L 505 125" fill="#FFC107"/>
+  <path d="M 495 275 L 500 280 L 505 275" fill="#FFC107"/>
+  
+  <!-- Gap label -->
+  <text x="520" y="200" fill="#FFC107" font-family="Arial, sans-serif" font-size="14" font-weight="bold">深刻な乖離</text>
+  
+  <!-- Warning area -->
+  <rect x="120" y="120" width="600" height="160" fill="#FF5722" opacity="0.1"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="bold">AI時代の問題パターン</text>
+  
+  <!-- Problem annotation -->
+  <text x="400" y="50" text-anchor="middle" fill="#FF9800" font-family="Arial, sans-serif" font-size="14">瞬間的成果と持続的成長の深刻な乖離</text>
+  
+  <!-- Key points -->
+  <circle cx="120" cy="120" r="4" fill="#FF5722"/>
+  <circle cx="120" cy="280" r="4" fill="#607D8B"/>
+  
+  <!-- Legend -->
+  <rect x="50" y="340" width="20" height="4" fill="#FF5722"/>
+  <text x="80" y="348" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">見かけ上のスキル</text>
+  
+  <rect x="200" y="340" width="20" height="4" fill="#607D8B" stroke-dasharray="2,1"/>
+  <text x="230" y="348" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">実際のスキル</text>
+</svg>

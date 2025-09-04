@@ -1,0 +1,51 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e1e1e"/>
+  
+  <!-- Grid lines -->
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#333" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="400" fill="url(#grid)"/>
+  
+  <!-- Axes -->
+  <line x1="80" y1="320" x2="720" y2="320" stroke="#ffffff" stroke-width="2"/>
+  <line x1="80" y1="320" x2="80" y2="60" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Axis labels -->
+  <text x="400" y="360" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16">時間</text>
+  <text x="40" y="190" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" transform="rotate(-90, 40, 190)">スキル</text>
+  
+  <!-- Learning curve path -->
+  <path d="M 80 320 Q 120 200 180 140 Q 240 100 400 100 L 550 100 Q 600 95 720 80" 
+        fill="none" stroke="#4CAF50" stroke-width="4"/>
+  
+  <!-- Phase labels -->
+  <text x="140" y="50" text-anchor="middle" fill="#4CAF50" font-family="Arial, sans-serif" font-size="14" font-weight="bold">基礎固め期間</text>
+  <text x="395" y="50" text-anchor="middle" fill="#FFC107" font-family="Arial, sans-serif" font-size="14" font-weight="bold">プラトー期間</text>
+  <text x="635" y="50" text-anchor="middle" fill="#2196F3" font-family="Arial, sans-serif" font-size="14" font-weight="bold">深い理解</text>
+  
+  <!-- Phase dividers -->
+  <line x1="240" y1="320" x2="240" y2="100" stroke="#FFC107" stroke-width="2" stroke-dasharray="5,5" opacity="0.7"/>
+  <line x1="550" y1="320" x2="550" y2="100" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5" opacity="0.7"/>
+  
+  <!-- Phase arrows -->
+  <path d="M 140 70 L 140 160" fill="none" stroke="#4CAF50" stroke-width="2"/>
+  <path d="M 135 155 L 140 160 L 145 155" fill="#4CAF50"/>
+  
+  <path d="M 395 70 L 395 100" fill="none" stroke="#FFC107" stroke-width="2"/>
+  <path d="M 390 95 L 395 100 L 400 95" fill="#FFC107"/>
+  
+  <path d="M 635 70 L 635 85" fill="none" stroke="#2196F3" stroke-width="2"/>
+  <path d="M 630 80 L 635 85 L 640 80" fill="#2196F3"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="bold">従来の健全な学習曲線</text>
+  
+  <!-- Key points on curve -->
+  <circle cx="140" cy="220" r="4" fill="#4CAF50"/>
+  <circle cx="395" cy="100" r="4" fill="#FFC107"/>
+  <circle cx="635" cy="85" r="4" fill="#2196F3"/>
+</svg>
