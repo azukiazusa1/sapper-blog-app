@@ -25,7 +25,7 @@ selfAssessment:
           explanation: null
         - text: "AI エージェントが生成したコードを自動的にプロダクション環境にデプロイ"
           correct: true
-          explanation: ""
+          explanation: null
     - question: "Vibe Kanban でタスクを作成後、AI エージェントが作業を行うブランチの管理に使用される Git の機能は何ですか？"
       answers:
         - text: "Git Worktree"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "Git Stash"
           correct: false
           explanation: null
-
 published: true
 ---
-
 AI コーディングエージェントが登場して以来、開発者の仕事はコードの生成からコードのレビューや設計、AI エージェントの管理へとシフトしつつあります。AI コーディングエージェントは大量のコードを高速に生成できる一方で、生成されたコードが正しいか、セキュリティ上の問題がないか、プロジェクトのスタイルガイドに準拠しているかを確認する必要があります。また、AI エージェントに適切なプロンプトを与え、タスクを分割して効率的に作業を進めるための管理も重要です。
 
 Vibe Kanban は、AI コーディングエージェントの管理を支援するためのツールです。Vibe Kanban は名前の通りカンバン方式の UI でタスクを管理します。従来のプロジェクト管理ツールと異なる点は、各タスクに対して AI エージェントを割り当てて人間がその進捗を管理できることです。Vibe Kanban は以下のような特徴を持っています。

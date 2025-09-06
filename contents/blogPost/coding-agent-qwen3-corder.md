@@ -16,16 +16,16 @@ selfAssessment:
       answers:
         - text: "@qwen-code/qwen-code"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "@qwen/qwen3-coder"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "qwen-cli"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "qwen3-coder-cli"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "Qwen Code でセッションのトークンリミットを超過した場合の対処法として正しくないものはどれですか？"
       answers:
         - text: "/clear コマンドで新しいセッションを開始する"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "/reset コマンドでモデルをリセットする"
           correct: true
           explanation: "/reset コマンドは存在しません。"
-
 published: true
 ---
-
 [Qwen3-Coder](https://github.com/QwenLM/Qwen3-Coder) は、Alibaba が開発した Qwen3 系列の LLM モデルです。Agentic Coding（エージェントを活用したコーディング⁠）や Agentic Browser-Use（エージェントを通したブラウザ操作⁠）⁠⁠の分野で特筆した成果を上げており、Claude Sonnet 4 に匹敵する性能を持つと言及されています。また 256k トークンの長いコンテキストを持つことができ、長大なドキュメントの処理や複雑なコードベースの理解に優れています。
 
 最新のモデルは Qwen3-Coder-30B-A3B-Instruct で Hugging Face で Apache 2.0 ライセンスのもとで公開されています。

@@ -16,20 +16,18 @@ selfAssessment:
       answers:
         - text: "大きく複雑なシステムを一度に構築する"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "スモール・イズ・ビューティフル（小さいものは美しい）"
           correct: true
           explanation: "記事ではUNIXの設計思想の根底に「スモール・イズ・ビューティフル」があると述べられています"
         - text: "グラフィカルユーザーインターフェースの重視"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "高性能なハードウェアの活用"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 現代は知らないことがあればすぐにインターネットで調べたり、AI に質問できる時代です。このような時代において本を読む必要はあるのでしょうか？
 
 答えは Yes です。なぜなら、検索をしたり AI に質問をするためには、ある程度の基礎知識が必要だからです。下地となる知識がなければそもそも適切なキーワードで検索できません。また知識として整理されていることを知らずに AI に質問をする発想すら生まれないかもしれません。
