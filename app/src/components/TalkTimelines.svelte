@@ -8,6 +8,16 @@
 
   const slides = [
     {
+      eventTitle: "大吉祥寺.pm 2025",
+      eventDate: "2025-09-06",
+      presentationTitle:
+        "2025 年のコーディングエージェントの現在地とエンジニアの仕事の変化について",
+      presentationLink:
+        "https://speakerdeck.com/azukiazusa1/2025-nian-nokodeinguezientonoxian-zai-di-toenzinianoshi-shi-nobian-hua-nituite",
+      description:
+        "2025年現在、開発現場では「コードを書く」から「AIと協働する」への大転換が起きています。GitHub Copilotのような補完型から始まったAI支援は、今や自律的にタスクを遂行するエージェントへと進化しました。2025 年時点ではどのような類型のコーディングエージェントが存在しているか、コーディングエージェントの登場により私達エンジニアの仕事がどのように変化しているのか、急速な変化に伴いどのような課題が発生しているのかについて話します。そして数年後に、「2025年は確かに時代の転換点だったね」と振り返ってその瞬間に立ち会えたことを楽しめるようにしましょう。",
+    },
+    {
       eventTitle: "Cloudflare Workers Tech Talks in Kyoto #1",
       eventDate: "2025-07-18",
       presentationTitle:
