@@ -19,13 +19,13 @@ selfAssessment:
           explanation: "environment_run_cmd はサンドボックス環境内でコマンドを実行するための MCP ツールです。"
         - text: "env_run_cmd"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "environment_exec_cmd"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "run_cmd"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "AI コーディングエージェントの実行ログを確認するコマンドはどれですか？"
       answers:
         - text: "container-use log <env_id>"
@@ -40,11 +40,8 @@ selfAssessment:
         - text: "container-use terminal <env_id>"
           correct: false
           explanation: "container-use terminal <env_id> はサンドボックス環境内のシェルに接続するためのコマンドです。"
-
-
-published: false
+published: true
 ---
-
 Claude Code, Cline, Cursor といった AI コーディングエージェントは多くの開発者に受け入れられており、生産性の向上に大きく貢献しています。他方で安全のために AI コーディングエージェントの実行には注意を払う必要があることを忘れてはいけません。基本的にはユーザーに都度許可を求めるように設計されているものの、AI コーディングエージェントは任意の Bash コマンドを実行できます。例えば `rm -rf ~/` のようなコマンドを実行されると、ユーザーのホームディレクトリが意図せず削除されてしまいますし、`curl` コマンドで悪意のあるコードをダウンロードして実行されると、ユーザーのシステムに深刻な被害を与える可能性があります。
 
 はじめのうちは AI コーディングエージェントがこれから実行しようとするコマンドを、注意深く確認してから許可を与えるように扱っていたユーザーも多いでしょう。ですが Bash コマンドの許可システムは利便性とのトレードオフです。多くの許可を求められていくうちに、ユーザーは次第に許可を出すことに対して無頓着になっていくことがあります。これにより、意図しないコマンドが実行されるリスクが高まります。

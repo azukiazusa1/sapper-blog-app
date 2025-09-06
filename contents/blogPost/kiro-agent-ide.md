@@ -19,32 +19,29 @@ selfAssessment:
           explanation: "Kiro は要件（EARS表記法によるユーザーストーリー）、設計（アーキテクチャと実装方針）、タスク（実行手順）の3つのファイルを生成します。"
         - text: "planning.md、implementation.md、testing.md"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "analysis.md、design.md、coding.md"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "specification.md、development.md、deployment.md"
           correct: false
-          explanation: ""
-
+          explanation: null
     - question: "Kiro で使用できるAIモデルはどれですか？"
       answers:
         - text: "Claude Sonnet 4.0 と Claude Sonnet 3.7"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "GPT-4 と GPT-3.5"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "Llama 3"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "Gemini Pro と Gemini Flash"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [Kiro](https://kiro.dev/) は AWS が開発した IDE 内蔵型の AI コーディングエージェントです。Kiro の特徴は単なるバイブコーディングにとどまらず、[スペック](https://kiro.dev/docs/specs/index)を使用して仕様駆動開発でアプリケーションを開発できることです。要件や設計を文書化し、プロダクションレベルのアプリケーションを継続的に開発することを念頭に置いて設計されています。
 
 ユーザーは自然言語でアプリケーションのアイディアを伝えることで、Kiro は以下の 3 つのフェーズを経てアプリケーションのスペックを生成します。
@@ -180,7 +177,7 @@ React と TailwindCSS を使用したモダンな ToDo アプリケーション�
 3. WHEN ユーザーがデスクトップでアクセス THEN システムはデスクトップ向けに最適化されたレイアウトを表示する SHALL
 ```
 
-</detail>
+</details>
 
 要件が定義されたら、次はアプリケーションの設計をします。設計ではアプリケーションのアーキテクチャや実装方針を定義し、`design.md` ファイルが生成されます。設計書にはどのような技術スタックを採用するか、ディレクトリ構成、主要なコンポーネントの設計などが含まれます。設計書を確認し、必要に応じてチャットで修正を加えます。
 
@@ -366,7 +363,7 @@ interface TodoAppData {
 - Code splitting (if needed for future features)
 - Optimized build configuration
 ~~~
-</detail>
+</details>
 
 最後にタスクの実行手順を定義する `tasks.md` ファイルが生成されます。タスクはアプリケーションの実装に必要な具体的なステップを示します。
 
@@ -454,7 +451,7 @@ interface TodoAppData {
   - _Requirements: 全ての要件の最終検証_
 ```
 
-</detail>
+</details>
 
 設計・計画フェーズが完了したら実装フェーズに移行します。実装を開始するためには `tasks.md` ファイルに記載されたタスク項目の横に表示される「Start Task」をクリックします。
 
@@ -683,9 +680,17 @@ src/
 └── test-utils.ts        # Testing utilities and setup
 ```
 ~~~
-</detail>
+</details>
+
+## まとめ
+
+- Kiro は AWS が提供する AI IDE。スペックを使用した設計駆動開発を行える点が特徴
+- スペックではアプリケーションの要件を EARS 表記法で定義し、設計書とタスクを自動生成
+- フックを使用して定型的なタスクを自動化できる。例えば TypeScript ファイルの保存時に自動フォーマットを実行するなど
+- Steering 機能を使用してプロジェクトの長期記憶を管理できる。プロジェクトの目的や技術スタック、ディレクトリ構造などを文書化することで Kiro がプロジェクトのコンテキストを理解しやすくなる
 
 ## 参考
 
 - [Kiro: The AI IDE for prototype to production](https://kiro.dev/index)
 - [Kiro のご紹介 – プロトタイプからプロダクションまで、あなたと共に働く新しい Agentic IDE | Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/introducing-kiro/)
+

@@ -7,8 +7,8 @@ createdAt: "2021-07-11T00:00+09:00"
 updatedAt: "2021-07-11T00:00+09:00"
 tags: ["TypeScript", "Node.js", "MongoDB"]
 thumbnail:
-  url: "https://images.ctfassets.net/in6v9lxmm5c8/gUb4ioFz7oPB9kKBzqh0u/79b2e6a6b33b1dd13fbcb47e0b8c78ae/mongoose.png"
-  title: "Mongoose"
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4z6cPW6RU0f0O22jxIVINl/7c4bc80d99a5ad11e02d1cc83b42a2b5/articles_2FmDVbWFeXeln9BJXqBa76_2F027ab8d7dc7cdb4ab9c09c0a057af2e7.png"
+  title: "Node.js"
 audio: null
 selfAssessment: null
 published: true

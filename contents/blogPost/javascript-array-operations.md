@@ -7,7 +7,7 @@ createdAt: "2020-11-29T00:00+09:00"
 updatedAt: "2020-11-29T00:00+09:00"
 tags: ["JavaScript"]
 thumbnail:
-  url: "https://images.ctfassets.net/in6v9lxmm5c8/64DUF8wR2iu4a9vEJJtm6t/d8cb5ccd5a4e1b9bf6f5a7e02c306c8f/javascript.png"
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1oOuwue6Ki0IRZkFa6y6Qi/5359bf10fca29a24eaf9260cc78240bc/es2015-001.jpg"
   title: "JavaScript"
 audio: null
 selfAssessment: null

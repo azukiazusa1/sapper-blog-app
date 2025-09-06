@@ -5,7 +5,7 @@ slug: "create-custom-sub-agent-in-claude-code"
 about: "Claude Code では特定の種類のタスクを処理するために呼び出されるカスタムサブエージェントを作成できます。カスタムサブエージェントを使用することでメインの会話セッションとは別に独立したコンテキストウィンドウを持つことができ、コンテキストの汚染を防ぐことができます。この記事では、Claude Code でカスタムサブエージェントを作成する方法とその利点について解説します。"
 createdAt: "2025-07-26T12:17+09:00"
 updatedAt: "2025-07-26T12:17+09:00"
-tags: ["Claude Code"]
+tags: ["claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3oPIOF58bJNhQifItARnIf/79f7046623ff1aeaeb0dcd86a4f4171f/food_takoyaki_7482-768x576.png"
   title: "たこ焼きのイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "./agents ディレクトリ"
           correct: false
           explanation: null
-
 published: true
 ---
-
 Claude Code では特定の種類のタスクを処理するために呼び出されるカスタムサブエージェントを作成できます。例えばバックエンド領域に特化したエージェント、コードレビューを専門に行うエージェント、デバッグを行うエージェントといった具合です。
 
 カスタムサブエージェントでは特有のシステムプロンプトやツール、独立したコンテキストウィンドウを持ち、Claude Code はサブエージェントにタスクを委任することでより効率的な問題解決を可能にします。
@@ -133,7 +131,7 @@ Claude の応答をしばらく待った後、使用可能なツールを選択�
 
 最後にサブエージェントに割り当てる色を選択します。サブエージェントの色はメインの会話セッションでサブエージェントを呼び出した際に表示され、どのサブエージェントを呼び出したのか視覚的に識別するために便利です。
 
-![](https://images.ctfassets.net/in6v9lxmm5c8/1b0d2k3a4g7j4q8h5k9l0m/3e1c2f3b4d5e6f7g8h9i0j1k2l3m4n5o/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-07-26_14.34.45.png)
+![](https://images.ctfassets.net/in6v9lxmm5c8/wMf9DZLJ2b8sswn4etSGh/3b7e652bc7ef662d15f8086f4fc2e664/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-07-26_14.33.22.png)
 
 作成されるサブエージェントのファイルのプレビューが表示されます。問題がなければ Enter キーを押してサブエージェントの作成を完了します。
 
@@ -159,7 +157,6 @@ Your primary responsibility is to create GitHub pull requests following a specif
 3. **Commit Changes**: Stage and commit all changes with a clear, conventional commit message. Use prefixes like `feat:`, `fix:`, `refactor:`, `docs:`, `test:`, etc. followed by a concise description of what was changed.
 4. **Pull Request Creation**: Create the pull request using the template from `.github/pull_request_template.md`. The PR title must follow the same conventional format as the commit message (e.g., `feat: add user authentication`, `fix: resolve login validation issue`).
 
-
 **Critical Requirements**:
 - Always use the PR template from `.github/pull_request_template.md` - read this file and populate it appropriately
 - PR titles must use conventional prefixes: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`, `chore:`, etc.
@@ -181,7 +178,7 @@ Your primary responsibility is to create GitHub pull requests following a specif
 
 You should be proactive in explaining each step as you perform it, and always confirm successful completion of the pull request creation process.
 ```
-  
+
 ## サブエージェントを呼び出す
 
 メインの会話セッションにおいて Claude Code がタスクを実行するためにサブエージェントに委任すべきだと判断した場合にサブエージェントが呼び出されます。Claude Code は以下の観点に基づいてサブエージェントを呼び出すかどうかを判断します。
@@ -211,7 +208,6 @@ github-pr-creator サブエージェントを使ってプルリクエストを�
 サブエージェントのシステムプロンプトで期待した通り、`.github/pull_request_template.md` ファイルの内容を元にプルリクエストの説明を生成していることがわかります。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/4c7SwgH5hL9km40qiYJi9P/f9d833c9492a540cf21c19f391a10387/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-07-26_15.31.08.png)
-
 
 :::tip
 常にサブエージェントにタスクを委任することが効率的と限らないことに注意してください。サブエージェントの呼び出しは常に白紙の状態から始まるため、タスクを実行するために必要なコンテキストの収集から始める必要があるためです。例えばプルリクエストの作成をする場合には、サブエージェントはまず変更内容を確認するために `git status` や `git diff` を実行する必要がありますが、メインの会話セッションではすでに変更内容がコンテキストに含まれているためより早くタスクを完了できる場合があります。

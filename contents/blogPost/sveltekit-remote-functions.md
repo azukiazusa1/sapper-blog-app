@@ -5,7 +5,7 @@ slug: "sveltekit-remote-functions"
 about: "SvelteKit の remote functions を使用することで、コンポーネント内で直接非同期にデータを取得したり、サーバーにデータを書き込むことができます。これにより、コンポーネントごとに必要なデータを個別に取得できるようになり、コードの責任の分離が容易になります。remote functions は SvelteKit v2.27 以降で利用可能です。"
 createdAt: "2025-08-01T19:31+09:00"
 updatedAt: "2025-08-01T19:31+09:00"
-tags: ["svelte", "sveltekit"]
+tags: ["Svelte", "SvelteKit"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/166APKkxoUHddjAduR4olG/d6f493ed712b36e4fcd61bcd021ebbd5/castella_15340-768x660.png"
   title: "カステラのイラスト"
@@ -44,20 +44,18 @@ selfAssessment:
       answers:
         - text: "JavaScript が無効な環境でも動作する"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "任意のイベントハンドラから呼び出すことができる"
           correct: true
           explanation: "command 関数は `form` 関数と異なり `<form>` 以外の場所からも呼び出すことができます。"
         - text: "副作用を含む処理を行うことが出来る"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "複数回同じ引数で呼び出された場合キャッシュされる"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 昨今の Web フロントエンド開発においてはサーバーとクライアントが統合されたアーキテクチャが主流となりつつあります。例えば React の Server Components はサーバーサイドもしくはビルド時にコンポーネントを事前にレンダリングし、クライアントに静的な HTML を配信することで、初期表示の高速化や SEO の向上を図ることができます。
 
 Server Components 以前よりも Next.js や SvelteKit などのフレームワークでは、サーバーサイドでのデータ取得や処理を行うための仕組みが提供されていました。例えば Next.js では `getServerSideProps` や `getStaticProps` といった関数を使用して、ページコンポーネントのレンダリング前にサーバーサイドでデータを取得できます。

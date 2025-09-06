@@ -54,10 +54,8 @@ selfAssessment:
         - text: "chat.view"
           correct: false
           explanation: null
-
 published: true
 ---
-
 [v0](https://v0.dev/) は Vercel が開発した AI ベースの Web アプリケーション・UI 生成ツールです。
 
 自然言語でアプリケーションの要件を v0 に伝えることで React, Next.js, Tailwind CSS を使用した Web アプリケーションのコードを自動生成します。生成したコードは Web ブラウザ上で実行でき、さらにワンクリックで Vercel 上のインフラストラクチャにデプロイが可能です。デザインのモックアップやプロトタイプを迅速に作成するためのツールとして非常に便利です。

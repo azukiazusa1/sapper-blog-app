@@ -19,13 +19,13 @@ selfAssessment:
           explanation: "MCP UI では ui:// スキーマを使用して Resource を識別します。クライアント側の実装ではこのスキーマで MCP UI として検出されます。"
         - text: "blob://"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "resource://"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "https://"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "MCP UI の Resource のコンテンツタイプで、React や Web コンポーネントでレンダリングされるスクリプトを指定するタイプはどれですか？"
       answers:
         - text: "remoteDom"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "component"
           correct: false
           explanation: "component というタイプは MCP UI には存在しません。"
-
 published: true
 ---
-
 [MCP UI](https://mcpui.dev/) は [Model Context Protocol (MCP)](https://modelcontextprotocol.org/) を拡張して、AI エージェントがインタラクティブな UI コンポーネントを返すことを可能にする仕組みです。MCP UI を使用することで、AI エージェントとのチャットの返答としてグラフを表示したり、商品の画像ギャラリーや購入フォームを表示することが可能になります。従来のテキストベースの応答に加えて、ユーザーは AI エージェントとの対話をよりリッチでインタラクティブなものにできます。
 
 この記事では MCP UI の SDK を利用して、AI エージェントがインタラクティブな UI コンポーネントを返す方法を試してみます。この記事で書いたコードのサンプルは以下のリポジトリで公開しています。
@@ -729,4 +727,3 @@ const App: React.FC = () => {
 - [idosal/mcp-ui: SDK for UI over MCP. Create next-gen UI experiences!](https://github.com/idosal/mcp-ui?tab=readme-ov-file)
 - [MCP UI: Breaking the text wall with interactive components (2025) - Shopify](https://shopify.engineering/mcp-ui-breaking-the-text-wall)
 - [Agentic commerce has arrived](https://shopify.dev/docs/agents)
-

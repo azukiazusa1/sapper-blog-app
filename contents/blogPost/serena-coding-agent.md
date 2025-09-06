@@ -5,7 +5,7 @@ slug: "serena-coding-agent"
 about: "LSP を活用してセマンティックなコード検索・編集能力を提供する MCP サーバー Serena の導入・使用方法を紹介。Claude Code でのオンボーディングからリファクタリングまでの実践的な活用例を解説します。"
 createdAt: "2025-08-02T11:11+09:00"
 updatedAt: "2025-08-02T11:11+09:00"
-tags: ["claude-code", "mcp", "serena"]
+tags: ["claude-code", "MCP", "serena"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/33HKmYzIbKpMrZf62Z04Gf/f8e6791ec9c4b75f63e19cca31996c46/nori-bento_18593-768x591.png"
   title: "のり弁当のイラスト"
@@ -25,7 +25,7 @@ selfAssessment:
           explanation: null
         - text: "auto_complete_code"
           correct: true
-          explanation: ""
+          explanation: null
     - question: "Serena のオンボーディングプロセスで実施されないことはどれですか？"
       answers:
         - text: "プロジェクトのディレクトリ構造の解析"
@@ -39,11 +39,9 @@ selfAssessment:
           explanation: null
         - text: "不明な点があればユーザーに質問する"
           correct: true
-          explanation: ""
-
-published: false
+          explanation: null
+published: true
 ---
-
 Serena はセマンティックなコード検索・編集能力を追加するオープンソースのツールキットです。[MCP（Model Context Protocol）](https://modelcontextprotocol.org/) サーバーとして動作しているため、Claude Code や Cursor, VS Code のように MCP に対応しているクライアントであれば利用できます。またエージェントフレームワークとして [Agno](https://docs.agno.com/introduction) を使用しているため、特定の LLM モデルに依存せずに動作します。
 
 Serena は LSP（Language Server Protocol）を使用してセマンティックなコードを解析するのが特徴です。LSP はコードの構文解析やシンボルの解決、コード補完などを提供するプロトコルで、Serena はこれを利用してコードベースの理解と操作を行います。これにより Serena は大規模で複雑なコードベースであっても適切なコンテキストを効率的に取得しタスクを実行できます。
@@ -55,21 +53,26 @@ Serena は LSP（Language Server Protocol）を使用してセマンティック
 現在 Serena は以下のプログラミング言語をサポートしています。
 
 - Python
-- TypeScript/JavaScript（不安定な問題がある）
-- PHP
-- Go
-- Rust
-- Java
+- TypeScript/JavaScript
+- PHP（Intelephense LSPを使用；プレミアム機能には`INTELEPHENSE_LICENSE_KEY`環境変数の設定が必要）
+- Go（goplsのインストールが必要）
+- R（`languageserver` Rパッケージのインストールが必要）
+- Rust（rustupが必要 - ツールチェーンのrust-analyzerを使用）
+- C/C++（参照の検索で問題が発生する可能性があります。現在対応中）
+- Zig（ZLS - Zig Language Serverのインストールが必要）
 - C#
-- Elixir
+- Ruby（デフォルトではruby-lspを使用。以前のsolargraphベースの実装を使用するには、言語としてruby_solargraphを指定）
+- Swift
+- Kotlin（プレアルファ版の公式kotlin LSを使用。問題が発生する可能性があります）
+- Java（*注意*：起動が遅く、特に初回起動は時間がかかります。macOSとLinuxでJavaに関する問題が発生する可能性があります。現在対応中）
 - Clojure
-- C/C++
-
-以下の言語はサポートされているもののテストが不十分なため、動作しない可能性があります。
-
-- Ruby
-- Kotlin
 - Dart
+- Bash
+- Lua（インストールされていない場合、自動的にlua-language-serverをダウンロード）
+- Nix（nixdのインストールが必要）
+- Elixir（NextLSとElixirのインストールが必要；**Windowsはサポート対象外**）
+- Erlang（beamとerlang_lsのインストールが必要。実験的機能のため、動作が遅いまたはハングする可能性があります）
+- AL
 
 この記事では実際に Serena を Claude Code にインストールして、コードの検索や編集を行う方法を紹介します。
 
@@ -220,7 +223,6 @@ ignored_paths: []
 # If set to true, all editing tools will be disabled and attempts to use them will result in an error
 # Added on 2025-04-18
 read_only: false
-
 
 # list of tool names to exclude. We recommend not excluding any tools, see the readme for more details.
 # Below is the complete list of tools for convenience.
@@ -403,3 +405,4 @@ npx ccusage session
 
 - [oraios/serena](https://github.com/oraios/serena/tree/main)
 - [Serena MCPはClaude Codeを救うのか？](https://blog.lai.so/serena/)
+

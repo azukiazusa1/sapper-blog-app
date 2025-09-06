@@ -54,10 +54,8 @@ selfAssessment:
         - text: "<set>"
           correct: false
           explanation: null
-
 published: true
 ---
-
 高度な AI エージェントを開発する際、システムプロンプトの設計は最も重要な要素の 1 つです。システムプロンプトは AI エージェントが果たす役割や、どのようなツールを使用するか、ユーザーと効率的に会話するための工夫が含まれます。このシステムプロンプトの設計が AI エージェントの性能に大きな影響を与えます。例えばコーディングエージェントである [Cline](https://cline.ai/) のシステムプロンプトを覗いてみると、800 行ものの長大なプロンプトが定義されていることがわかります。
 
 https://github.com/cline/cline/blob/8fbccff8538cde243ceb08d644a15dbf2256b544/src/core/prompts/system-prompt/generic-system-prompt.ts#L8
