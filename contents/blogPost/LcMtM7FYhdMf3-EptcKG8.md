@@ -580,7 +580,7 @@ https://github.com/azukiazusa1/todo-app-by-spec-kit/specs/001-todo-taskflow-1/ta
 
 - 仕様駆動開発は AI との対話を通じて仕様書を作成し、その仕様に基づいてコードを生成する新しい開発スタイル
 - 仕様駆動開発により AI に正確に要件を伝えることができ、期待に沿ったコードが生成される可能性が高まる、また仕様書を唯一の真実として運用できるという利点がある
-- GitHub が提供するSpec Kit は仕様駆動開発を支援するためのツールキットであり、仕様書の作成、実装計画の策定、タスクの生成といったワークフローを提供する
+- GitHub が提供する Spec Kit は仕様駆動開発を支援するためのツールキットであり、仕様書の作成、実装計画の策定、タスクの生成といったワークフローを提供する
 - `uvx --from git+https://github.com/username/repo.git specify init <PROJECT_NAME>` コマンドで Spec Kit プロジェクトを初期化できる
 - `/specify` コマンドで仕様書を作成し、Claude Code と対話しながら反復的に改善する
 - `/plan` コマンドで実装計画を作成し、技術スタックやアーキテクチャを指定する
