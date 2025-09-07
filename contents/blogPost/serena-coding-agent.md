@@ -405,4 +405,3 @@ npx ccusage session
 
 - [oraios/serena](https://github.com/oraios/serena/tree/main)
 - [Serena MCPはClaude Codeを救うのか？](https://blog.lai.so/serena/)
-

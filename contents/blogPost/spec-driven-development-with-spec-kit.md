@@ -16,7 +16,7 @@ selfAssessment:
       answers:
         - text: "/specify、/plan、/tasks"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "/create、/build、/test"
           correct: false
           explanation: null
@@ -54,10 +54,8 @@ selfAssessment:
         - text: "コードの記述量が大幅に減る"
           correct: true
           explanation: "仕様駆動開発は開発プロセスの改善であり、必ずしもコード量の削減を保証するものではありません"
-
 published: true
 ---
-
 [Kiro](https://kiro.dev/) と呼ばれる AI IDE の登場は、仕様駆動開発と呼ばれる AI コーディングエージェントを活用した新しい開発スタイルの可能性を示しました。仕様駆動開発とは、まず AI と対話しながら要件定義・システム設計を行い、その後作成した設計書をもとに AI にコード生成を行わせる開発スタイルです。
 
 ユーザーの要求をまず明確な仕様として定義することで、ユーザーが頭の中で思い浮かべていた要件を言語化し AI に正確に伝えることができるため、期待に沿ったコードが生成される可能性を高めることができます。
