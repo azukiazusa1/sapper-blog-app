@@ -7,8 +7,8 @@ createdAt: "2020-05-24T00:00+09:00"
 updatedAt: "2020-05-24T00:00+09:00"
 tags: ["firebase", "JavaScript"]
 thumbnail:
-  url: "https://images.ctfassets.net/in6v9lxmm5c8/47tpjHGd8xJR1UgOIkkrEa/22b02bb6fcb2c7e97b503cbfe6c1ace3/firebase.png"
-  title: "Firebase"
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/2kQrXA9Amina8TOc9oC4PF/9033b78047d09b10c90b126439e33287/firestore.png"
+  title: "firestore"
 audio: null
 selfAssessment: null
 published: true
