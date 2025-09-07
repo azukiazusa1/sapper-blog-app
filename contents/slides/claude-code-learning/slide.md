@@ -75,6 +75,19 @@ style: |
 
 ---
 
+## 自己紹介
+
+- azukiazusa
+- https://azukiazusa.dev
+- FE（フロントエンド|ファイアーエムブレム）が好き
+
+![bg right:40% w:300px](./images/azukiazusa.png)
+
+<!-- はじめに簡単に自己紹介です。普段 azukiazusa という名前で活動していています。azukiazusa.dev というブログを運営しています。。 -->
+
+
+---
+
 ## 本日の問いかけ
 
 **「AIに聞けば3秒で答えが出る時代に、なぜ私たちは学び続ける必要があるのか？」**
@@ -467,7 +480,7 @@ Claude では output style で「学習モード」を選択することで、�
   - 曖昧に理解した知識が明確になる
   - 答えを出す過程が重要
 - AI をメンターとして活用することの利点
-  - 恥を欠かない
+  - 恥を欠かない→素直に質問できる
   - 24時間365日いつでも利用できる
 
 <!-- 
@@ -586,7 +599,7 @@ Claude Code では学習モードが提供されています。
 
 ## `output-style` を設定
 
-- Claude Code の学習モードは [output-style](https://docs.anthropic.com/en/docs/claude-code/output-styleshttps://docs.anthropic.com/en/docs/claude-code/output-styles) の 1 つ
+- Claude Code の学習モードは [output-style](https://docs.anthropic.com/en/docs/claude-code/output-styles) の 1 つ
 - `output-style` は Claude Code のシステムスタイルを直接変更する
 - デフォルトで以下の3つのスタイルが用意されている
   - `default`
