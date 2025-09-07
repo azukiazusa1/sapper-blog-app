@@ -221,6 +221,97 @@ style: |
     50% { opacity: 0.8; }
   }
   
+  .flow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .icon-large {
+    font-size: 48px;
+    line-height: 1;
+  }
+  
+  .arrow-blue {
+    font-size: 48px;
+    color: #00d4ff;
+  }
+  
+  .margin-top-lg {
+    margin-top: 40px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .grid-3-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  .grid-2-col-gap {
+    display: grid;
+    grid-template-columns: 1fr 50px 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .flex-gap {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .column-left {
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .margin-top-small {
+    margin-top: 15px;
+  }
+  
+  .grid-center {
+    display: grid;
+    place-items: center;
+    font-size: 96px;
+    height: 100%;
+  }
+  
+  .flex-nowrap {
+    flex-wrap: nowrap;
+  }
+  
+  .margin-top-2rem {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .heading-96 {
+    font-size: 96px;
+  }
+  
+  .font-56 {
+    font-size: 56px;
+  }
+  
+  .icon-emoji {
+    font-size: 10rem;
+  }
+  
+  .flex-gap-12 {
+    gap: 12rem;
+  }
+  
   .slide-in {
     animation: slideInFromLeft 0.8s ease-out;
   }
@@ -286,19 +377,19 @@ style: |
 
 # AIコーディング支援の進化
 
-<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+<div class="flow-container">
 <div class="box">
-  <div style="font-size: 48px; line-height: 1;">⌨️</div>
+  <div class="icon-large">⌨️</div>
   <div class="box-title">補完型</div>
 
   <p>コード補完やリファクタリングを支援</p>
   <p>GitHub Copilot</p>
 </div>
 
-<div style="font-size: 48px; color: #00d4ff;">→</div>
+<div class="arrow-blue">→</div>
 
 <div class="box">
-  <div style="font-size: 48px; line-height: 1;">💬</div>
+  <div class="icon-large">💬</div>
   <div class="box-title">チャット型</div>
 
   自然言語での指示に基づくコード生成
@@ -306,10 +397,10 @@ style: |
   <p>ChatGPT</p>
 </div>
 
-<div style="font-size: 48px; color: #00d4ff;">→</div>
+<div class="arrow-blue">→</div>
 
 <div class="box">
-  <div style="font-size: 48px; line-height: 1;">🤖</div>
+  <div class="icon-large">🤖</div>
   <div class="box-title">エージェント型</div>
 
   自律的にタスクを完了するAI
@@ -432,7 +523,7 @@ Chat型のAIは自然言語でプログラミングを行うという新たな�
 - [Cursor](https://cursor.so/) が登場したあたりから注目を集めた
 
 
-<div style="margin-top: 40px; text-align: center; font-size: 36px;">
+<div class="margin-top-lg text-center" style="font-size: 36px;">
 
 日本では[CLINEに全部賭けろ](https://zenn.dev/mizchi/articles/all-in-on-cline)の記事が出た頃から話題に
 
@@ -476,10 +567,10 @@ AI エージェントは、複雑なタスクを最終的な解決に向けた�
 
 # コーディングエージェントの3つの類型 <sup class="text-sm">(1)</sup>
 
-<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+<div class="grid-3-col">
 
 <div class="box">
-  <div style="font-size: 48px; line-height: 1;">📝</div>
+  <div class="icon-large">📝</div>
   <div class="box-title">エディタ型</div>
 
   - 開発者が常に監視・介入可能
@@ -489,7 +580,7 @@ AI エージェントは、複雑なタスクを最終的な解決に向けた�
 </div>
 
 <div class="box">
-  <div style="font-size: 48px; line-height: 1;">💻</div>
+  <div class="icon-large">💻</div>
   <div class="box-title">CLI型</div>
 
   - ターミナルやファイルシステムで動作
@@ -499,7 +590,7 @@ AI エージェントは、複雑なタスクを最終的な解決に向けた�
 </div>
 
 <div class="box">
-  <div style="font-size: 48px; line-height: 1;">🤖</div>
+  <div class="icon-large">🤖</div>
   <div class="box-title">自律型</div>
 
   - 目標設定と結果確認のみ
@@ -634,9 +725,9 @@ Slackで「フィーチャーフラグxxxを削除して」と指示
 
 ## エンジニアの仕事はこう変わった
 
-<div style="display: grid; grid-template-columns: 1fr 50px 1fr; gap: 20px; align-items: center;">
+<div class="grid-2-col-gap">
 <div class="box">
-  <div style="font-size: 48px; line-height: 1;">👨‍💻</div>
+  <div class="icon-large">👨‍💻</div>
   <div class="box-title">コードを書く</div>
 
   - コードを書く時間が多くを占めていた
@@ -648,7 +739,7 @@ Slackで「フィーチャーフラグxxxを削除して」と指示
 →
 
 <div class="box">
-  <div style="font-size: 48px; line-height: 1;">👨‍💼</div>
+  <div class="icon-large">👨‍💼</div>
   <div class="box-title">タスクを管理する</div>
 
   - コードはAIが高速で生成
@@ -658,7 +749,7 @@ Slackで「フィーチャーフラグxxxを削除して」と指示
 </div>
 </div>
 
-<p style="text-align: center; font-size: 24px; margin-top: 20px; ">
+<p class="text-center" style="font-size: 24px; margin-top: 20px;">
 戦略的で俯瞰的な役割へとシフトしていく  
 </p>
 
@@ -701,7 +792,7 @@ Slackで「フィーチャーフラグxxxを削除して」と指示
 
 # AIを使うことは、もはやマネジメントである<sup class="text-sm">(1)</sup>
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center;">
+<div class="grid-2-col">
 
 - マネージャーの仕事は作業分担と権限委譲
 - 指示の言語化が重要
@@ -829,7 +920,7 @@ AI エージェントを効果的に活用するためには、プロンプト�
 
 → LLM の仕組みを理解し、適切なプロンプトを設計する
 
-<div style="display: flex; gap: 20px;">
+<div class="flex-gap">
 
 - [Prompt Engineering Guide](https://www.promptingguide.ai/jp)
 - [プロンプトエンジニアリングの概要 - Anthropic](https://docs.anthropic.com/ja/docs/build-with-claude/prompt-engineering/overview)
@@ -984,7 +1075,7 @@ AIは学習コーチとして適切な存在です。わからないことを自
 
 ---
 
-<div class="center" style="flex-direction: column; text-align: left;">
+<div class="center column-left">
 
 # 生成 AI との付き合い方
 
@@ -1066,7 +1157,7 @@ AIは学習コーチとして適切な存在です。わからないことを自
   <h3 class="gradient-text">コーディングでも同じ</h3>
   <div class="highlight">
     <div class="text-2xl">「とりあえずAIに骨格コードを生成してもらう」</div>
-    <div class="text-sm" style="margin-top: 15px;">→ 何かができてしまえば、そこから改善していくやる気が湧く</div>
+    <div class="text-sm margin-top-small">→ 何かができてしまえば、そこから改善していくやる気が湧く</div>
   </div>
     <div>
       <p class="gradient-text">動くコードが目の前にあると「もう少し改善しよう」という気持ちが自然に湧く</p>
@@ -1122,7 +1213,7 @@ AIは学習コーチとして適切な存在です。わからないことを自
 
 ---
 
-<div style="display: grid; place-items: center; font-size: 96px; height: 100%;">
+<div class="grid-center">
 基礎力 + 瞬発力
 
 </div>
@@ -1173,7 +1264,7 @@ AIとのチャットでのやり取りでは、体系的に学習することは
 
 ---
 
-<div class="center" style="flex-direction: column;">
+<div class="center column-left">
 
 # 生成AIの盲信
 
@@ -1194,7 +1285,7 @@ AI が提案するコードを妄信的に受け入れてしまった結果、�
 
 # 劇場のイドラ（Theater of Idols）
 
-<div class="flex" style="gap: 12rem;">
+<div class="flex flex-gap-12">
 
 <div class="text-2xl space-y-6">
 
@@ -1211,7 +1302,7 @@ AI が提案するコードを妄信的に受け入れてしまった結果、�
 </div>
 
 <div style="text-align: center;">
-  <div style="font-size: 10rem;">🎭</div>
+  <div class="icon-emoji">🎭</div>
   <div >
     権威への盲従は<br>
     判断力を奪う
@@ -1234,7 +1325,7 @@ AI 時代においても、この「劇場のイドラ」が強く働く可能�
 
 # 批判的思考力の重要性
 
-<div class="flex" style="flex-wrap: nowrap;">
+<div class="flex flex-nowrap">
 
 <div>
 
@@ -1267,7 +1358,7 @@ AI がなぜそのコードを出力し、どのような根拠でその解決�
 # 時代の転換点を楽しもう
 
 
-<div class="flex" style="flex-wrap: nowrap;">
+<div class="flex flex-nowrap">
 <div>
 
 **人類の歴史は技術革新による仕事の変化の連続**
@@ -1275,7 +1366,7 @@ AI がなぜそのコードを出力し、どのような根拠でその解決�
 狩猟採集 → 農耕社会 → 産業革命 → 情報化社会 → **AI時代**
 
 
-<div style="font-size: 2rem; margin-top: 2rem;">
+<div class="margin-top-2rem">
 
 - 歴史の転換点に立ち会える貴重な体験  
 - 数年後に「2025年は変化に戸惑っていたけど、確かに時代の転換点だったね」と言える日が来る
@@ -1307,13 +1398,13 @@ AI がなぜそのコードを出力し、どのような根拠でその解決�
 
 <div class="center">
 
-<h2 style="font-size: 96px"> ここで一句</h2>
+<h2 class="heading-96"> ここで一句</h2>
 
 </div>
 
 ---
 
-<div class="center" style="text-align: left; font-size: 56px;">
+<div class="center column-left font-56">
 
 はい、承知いたしました。プレゼンテーションのまとめとして、最後のスライドに俳句を追加します。
 
