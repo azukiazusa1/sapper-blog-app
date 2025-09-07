@@ -11,6 +11,63 @@ style: |
     display: flex;
   }
 
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .center-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .flex-gap-12 {
+    display: flex;
+    gap: 12rem;
+  }
+
+  .flex-nowrap {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .font-size-10rem {
+    font-size: 10rem;
+  }
+
+  .flex-space-between {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .flex-gap-16 {
+    display: flex;
+    gap: 16px;
+  }
+
+  .img-width-100 {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .img-width-600 {
+    width: 600px;
+    height: auto;
+  }
+
+  .img-width-500 {
+    width: 500px;
+    height: auto;
+  }
+
 ---
 
 # AIと共存する時代の学習法
@@ -158,7 +215,7 @@ AIエージェントはあくまでツールであって、最終的な意思決
 
 ---
 
-<div class="center" style="flex-direction: column;">
+<div class="center-column">
 
 ## 生成AIの盲信
 
@@ -180,7 +237,7 @@ AI の出力を無批判に受け入れるのではなく、批判的な思考�
 
 ## 劇場のイドラ（Theater of Idols）
 
-<div class="flex" style="gap: 12rem;">
+<div class="flex-gap-12">
 
 <div>
 
@@ -196,9 +253,9 @@ AI の出力を無批判に受け入れるのではなく、批判的な思考�
 
 </div>
 
-<div style="text-align: center;">
-  <div style="font-size: 10rem;">🎭</div>
-  <div >
+<div class="text-center">
+  <div class="font-size-10rem">🎭</div>
+  <div>
     権威への盲従は<br>
     判断力を奪う
   </div>
@@ -220,7 +277,7 @@ AI 時代においても、この「劇場のイドラ」が強く働く可能�
 
 ## 批判的思考力の重要性
 
-<div class="flex" style="flex-wrap: nowrap;">
+<div class="flex-nowrap">
 
 <div>
 
@@ -234,7 +291,7 @@ AI 時代においても、この「劇場のイドラ」が強く働く可能�
 
 </div>
 
-<img src="./images/critical-thinking.jpg" alt="批判的思考" >
+<img src="./images/critical-thinking.jpg" alt="批判的思考">
 
 </div>
 
@@ -303,7 +360,7 @@ AIによるコード生成を活用すれば。「React TODOアプリを作っ�
 
 ### 従来の健全な成長パターン
 
-<img src="./images/learning-curve-traditional.svg" alt="従来の健全な学習曲線" style="width: 100%; max-width: 800px;">
+<img src="./images/learning-curve-traditional.svg" alt="従来の健全な学習曲線" class="img-width-100">
 
 <!-- 
 学習曲線の変化について説明します。従来の健全な成長パターンは、始めに急激にスキルが伸びルキ感があり、その後プラトー期間と呼ばれる停滞期を経て、さらに深い理解へと進んでいく形です。
@@ -318,7 +375,7 @@ AIによるコード生成を活用すれば。「React TODOアプリを作っ�
 
 <div class="flex">
 
-<img src="./images/learning-curve-traditional.svg" alt="従来の健全な学習曲線" style="width: 100%; max-width: 800px;">
+<img src="./images/learning-curve-traditional.svg" alt="従来の健全な学習曲線" class="img-width-100">
 
 - プラトー期間は、脳が知識を整理・成熟させる期間
 - この期間を乗り越えることで、さらなる応用力や思考速度の向上につながるとも言われている
@@ -334,7 +391,7 @@ AIによるコード生成を活用すれば。「React TODOアプリを作っ�
 
 ## AI時代の問題パターン
 
-<img src="./images/learning-curve-ai-era.svg" alt="AI時代の問題パターン" style="width: 100%; max-width: 800px;">
+<img src="./images/learning-curve-ai-era.svg" alt="AI時代の問題パターン" class="img-width-100">
 
 基礎が伴わないまま表面的な成果だけが得られる
 
@@ -425,10 +482,10 @@ AI をメンターとして活用することの利点として、以下の 2 �
 
 ## 実際の学習モードの例
 
-<div style="display: flex; justify-content: space-between; gap: 16px;">
+<div class="flex-space-between">
 
-<img src="./images/learning-mode-example1.png" alt="Learning Mode Example 1" style="width: 600px; height: auto;"/>
-<img src="./images/learning-mode-example2.png" alt="Learning Mode Example 2" style="width: 600px; height: auto;"/>
+<img src="./images/learning-mode-example1.png" alt="Learning Mode Example 1" class="img-width-600"/>
+<img src="./images/learning-mode-example2.png" alt="Learning Mode Example 2" class="img-width-600"/>
 
 </div>
 
@@ -444,7 +501,7 @@ AI をメンターとして活用することの利点として、以下の 2 �
 
 ## メタ認知の重要性
 
-<div style="display: flex; gap: 16px;">
+<div class="flex-gap-16">
 
 
 <div>
@@ -457,7 +514,7 @@ AI をメンターとして活用することの利点として、以下の 2 �
 
 </div>
 
-<img src="./images/metacognition.jpg" alt="Metacognition" style="width: 500px; height: auto;"/>
+<img src="./images/metacognition.jpg" alt="Metacognition" class="img-width-500"/>
 
 </div>
 
@@ -493,7 +550,7 @@ Claude Code では学習モードが提供されています。
 
 ## 自分で手を動かした経験は長期的に記憶に残る
 
-<div style="display: flex; gap: 16px;">
+<div class="flex-gap-16">
 
 - インプット（読む、聞く）だけでは記憶に定着しない
 - アウトプット（書く、話す、行動する）を通じて初めて定着する
@@ -501,7 +558,7 @@ Claude Code では学習モードが提供されています。
 - コードをそのまま書き写す「写経」と呼ばれる学習法も長く知られてきた
 
 
-<img src="./images/output.jpg" alt="" style="width: 600px; height: auto;"/>
+<img src="./images/output.jpg" alt="" class="img-width-600"/>
 
 </div>
 
