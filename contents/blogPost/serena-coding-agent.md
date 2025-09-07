@@ -54,24 +54,24 @@ Serena は LSP（Language Server Protocol）を使用してセマンティック
 
 - Python
 - TypeScript/JavaScript
-- PHP（Intelephense LSPを使用；プレミアム機能には`INTELEPHENSE_LICENSE_KEY`環境変数の設定が必要）
-- Go（goplsのインストールが必要）
-- R（`languageserver` Rパッケージのインストールが必要）
-- Rust（rustupが必要 - ツールチェーンのrust-analyzerを使用）
+- PHP（Intelephense LSP を使用；プレミアム機能には `INTELEPHENSE_LICENSE_KEY` 環境変数の設定が必要）
+- Go（gopls のインストールが必要）
+- R（`languageserver` R パッケージのインストールが必要）
+- Rust（rustup が必要 - ツールチェーンの rust-analyzer を使用）
 - C/C++（参照の検索で問題が発生する可能性があります。現在対応中）
-- Zig（ZLS - Zig Language Serverのインストールが必要）
+- Zig（ZLS - Zig Language Server のインストールが必要）
 - C#
-- Ruby（デフォルトではruby-lspを使用。以前のsolargraphベースの実装を使用するには、言語としてruby_solargraphを指定）
+- Ruby（デフォルトでは ruby-lsp を使用。以前の solargraph ベースの実装を使用するには、言語として ruby_solargraph を指定）
 - Swift
-- Kotlin（プレアルファ版の公式kotlin LSを使用。問題が発生する可能性があります）
-- Java（*注意*：起動が遅く、特に初回起動は時間がかかります。macOSとLinuxでJavaに関する問題が発生する可能性があります。現在対応中）
+- Kotlin（プレアルファ版の公式 kotlin LS を使用。問題が発生する可能性があります）
+- Java（*注意*：起動が遅く、特に初回起動は時間がかかります。macOS と Linux で Java に関する問題が発生する可能性があります。現在対応中）
 - Clojure
 - Dart
 - Bash
-- Lua（インストールされていない場合、自動的にlua-language-serverをダウンロード）
-- Nix（nixdのインストールが必要）
-- Elixir（NextLSとElixirのインストールが必要；**Windowsはサポート対象外**）
-- Erlang（beamとerlang_lsのインストールが必要。実験的機能のため、動作が遅いまたはハングする可能性があります）
+- Lua（インストールされていない場合、自動的に lua-language-server をダウンロード）
+- Nix（nixd のインストールが必要）
+- Elixir（NextLS と Elixir のインストールが必要；**Windowsはサポート対象外**）
+- Erlang（beam と erlang_ls のインストールが必要。実験的機能のため、動作が遅いまたはハングする可能性があります）
 - AL
 
 この記事では実際に Serena を Claude Code にインストールして、コードの検索や編集を行う方法を紹介します。
