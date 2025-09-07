@@ -527,7 +527,8 @@ https://github.com/azukiazusa1/todo-app-by-spec-kit/specs/001-todo-taskflow-1
 
 前提条件を満たしている場合、タスクの一覧が `/specs/番号-機能名/tasks.md` ファイルに生成されます。以下は生成されたタスクの一部です。`[P]` マークは並行して実行可能なタスクを示します。
 
-```markdown:specs/001-todo-taskflow-1/tasks.md# Tasks: TaskFlow TODO Management Application
+```markdown:specs/001-todo-taskflow-1/tasks.md
+# Tasks: TaskFlow TODO Management Application
 
 **Input**: Design documents from `/Users/xxx/sandbox/spec-driven-todo-app/specs/001-todo-taskflow-1/`
 **Prerequisites**: plan.md, research.md, data-model.md, contracts/, page-structure.md, quickstart.md
