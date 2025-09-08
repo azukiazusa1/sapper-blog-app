@@ -453,7 +453,6 @@ A user opens TaskFlow to manage their daily work and personal tasks. They create
 
 最終的にすべてのチェック項目にチェックが入り、仕様書が完成しました。続いて実装計画フェースに移ります。
 
-
 ## 2. 実装計画の作成
 
 仕様書の作成が完了したら、次に `/plan` コマンドを使用して実装計画を作成します。`/plan` コマンドでは具体的にどのような技術スタックで実装するのかを指定します。
@@ -511,7 +510,7 @@ plan.mdに記録された実装戦略
 
 最終的に作成された実行計画は以下のリンクから確認できます。
 
-https://github.com/azukiazusa1/todo-app-by-spec-kit/specs/001-todo-taskflow-1
+https://github.com/azukiazusa1/todo-app-by-spec-kit/blob/main/specs/001-todo-taskflow-1/
 
 ## 3. タスクの作成
 
@@ -551,7 +550,7 @@ https://github.com/azukiazusa1/todo-app-by-spec-kit/specs/001-todo-taskflow-1
 
 すべてのタスクの内容は以下のリンクから確認できます。
 
-https://github.com/azukiazusa1/todo-app-by-spec-kit/specs/001-todo-taskflow-1/tasks.md
+https://github.com/azukiazusa1/todo-app-by-spec-kit/blob/main/specs/001-todo-taskflow-1/tasks.md
 
 ## 4. タスクの実行
 
