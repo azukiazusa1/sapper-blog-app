@@ -207,40 +207,7 @@ gh aw compile test
 <details>
 <summary>`.lock.yml` ファイルの内容</summary>
 
-```yaml:.github/workflows/test.lock.yml
----
-on:
-  workflow_dispatch:
-  pull_request:
-    branches:
-      - main
-
-permissions: read-all
-
-network: defaults
-
-safe-outputs:
-  push-to-pr-branch:
-  create-issue:
-    title-prefix: "${{ github.workflow }}"
-  add-issue-comment:
-
-tools:
-  web-fetch:
-  web-search:
-  bash: [":*"]
----
-
-# Workflow for Running Code Tests, Linting, and Formatting
-
-Your job is to run tests, linting, and formatting on code submitted to pull requests, make necessary fixes, and reflect the changes to the pull request.
-Please execute the task following these steps:
-
-1. Run test, lint, and format commands
-2. Check the output and fix any errors
-3. Reflect changes to the pull request
-4. Repeat steps 1-3 until all tests pass and there are no lint or formatting errors
-```
+https://github.com/azukiazusa1/workflow-test/blob/main/.github/workflows/test.lock.yml
 
 </details>
 
@@ -287,3 +254,4 @@ https://github.com/githubnext/agentics/blob/main/workflows/pr-fix.md?plain=1
 - [githubnext/gh-aw: Safe Natural Language Agentic Workflows](https://github.com/githubnext/gh-aw?tab=readme-ov-file)
 - [githubnext/agentics: Samples for GitHub Agentic Workflows](https://github.com/githubnext/agentics)
 - [GitHub Next | Continuous AI](https://githubnext.com/projects/continuous-ai)
+
