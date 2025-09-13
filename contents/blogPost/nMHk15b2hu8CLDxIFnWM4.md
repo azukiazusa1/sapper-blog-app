@@ -288,4 +288,4 @@ https://github.com/githubnext/agentics/blob/main/workflows/pr-fix.md?plain=1
 - [GitHub Next | Agentic Workflows](https://githubnext.com/projects/agentic-workflows/)
 - [githubnext/gh-aw: Safe Natural Language Agentic Workflows](https://github.com/githubnext/gh-aw?tab=readme-ov-file)
 - [githubnext/agentics: Samples for GitHub Agentic Workflows](https://github.com/githubnext/agentics)
-- [GitHub Next | Agentic Workflows](https://githubnext.com/projects/agentic-workflows/)
+- [GitHub Next | Continuous AI](https://githubnext.com/projects/continuous-ai)
