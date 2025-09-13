@@ -5,7 +5,7 @@ slug: "natural-language-ci-cd-with-agentic-workflows"
 about: "Agentic Workflows は自然言語で CI/CD パイプラインを定義できるツールとして GitHub Next が開発しています。自然言語で定義されたワークフローは GitHub CLI の拡張機能として提供される gh aw コマンドでコンパイルして実行できます。これは継続体なAI（Continuous AI）を実現するためのツールです。"
 createdAt: "2025-09-13T11:26+09:00"
 updatedAt: "2025-09-13T11:26+09:00"
-tags: ["GitHub Actions", "ai", "CI/CD"]
+tags: ["GitHub Actions", "AI", "CI/CD"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7nSEeZr4RFMX6N4ftTgh0T/22af67e044646aa986857fb541b94f34/bitter-melon_22598.png"
   title: "ゴーヤのイラスト"
@@ -54,10 +54,8 @@ selfAssessment:
         - text: "gh workflow compile"
           correct: false
           explanation: null
-
 published: true
 ---
-
 :::warning
 Agentic Workflows は 2025 年 9 月現在研究目的のデモンストレーションとして提供されており、大幅に機能が変更される可能性があります。本番環境での使用は推奨されません。また自己責任で使用してください。
 :::
