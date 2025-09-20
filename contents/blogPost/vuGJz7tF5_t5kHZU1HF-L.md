@@ -33,7 +33,7 @@ selfAssessment:
           explanation: "AP2ではリアルタイム購入（人間が立ち会っている場合）と委任タスク（人間が立ち会っていない場合）の2つの方法をサポートしています。"
         - text: "オンライン決済とオフライン決済"
           correct: false
-          explanation: "
+          explanation: ""
         - text: "カード決済とデジタルウォレット決済"
           correct: false
           explanation: ""
