@@ -19,13 +19,13 @@ selfAssessment:
           explanation: "AP2では改ざん防止機能を備え、暗号化署名されたデジタル契約である「Mandates」を用いて信頼を構築します。"
         - text: "Contracts"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "Agreements"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "Certificates"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "AP2で支援される支払い方法として、記事で説明されている2つのシナリオは何ですか？"
       answers:
         - text: "リアルタイム購入と委任タスク"
@@ -33,17 +33,15 @@ selfAssessment:
           explanation: "AP2ではリアルタイム購入（人間が立ち会っている場合）と委任タスク（人間が立ち会っていない場合）の2つの方法をサポートしています。"
         - text: "オンライン決済とオフライン決済"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "カード決済とデジタルウォレット決済"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "自動決済と手動決済"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 今日ではユーザーの操作を代行する AI エージェントが普及しつつあります。ユーザーが旅行の計画を立てる際には、AI エージェントがウェブサイトを検索し宿泊施設やフライトの手段を提案したり、カレンダーから空き時間を確認してスケジュールを調整するといった操作を委任できます。とはいえすべての操作を AI エージェントに任せるわけにはいきません。宿泊施設の予約やフライトの購入といった支払いを伴う操作は、ユーザー自身が行う必要があります。決済を伴う操作は承認や信頼、説明責任の問題が関わってくるからです。これらの要素をおろそかにすると、ユーザーが不正な請求を受けたり、詐欺に巻き込まれたりするリスクがあります。
 
 現状の決済システムでは人間が信頼できる画面上で直接購入ボタンをクリックすることを前提としており、自立型の AI エージェントがユーザーに代わって決済することは想定されていません。そこで Google により [Agent Payments Protocol (AP2)](https://github.com/google-agentic-commerce/AP2) と呼ばれる新しいプロトコルが提案されました。プラットフォーム間でエージェント主導の決済を安全に開始・処理することを可能にします。このプロトコルは [Model Context Protocol (MCP)](https://modelcontextprotocol.org/) や [A2A](https://a2a-protocol.org/latest/) といった現在標準化が進められている AI エージェント間通信プロトコルを拡張して使用できます。
