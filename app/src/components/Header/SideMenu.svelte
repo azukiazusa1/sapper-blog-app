@@ -43,7 +43,7 @@
   ></div>
 {/if}
 <aside
-  class={`fixed top-0 left-0 z-50 flex h-full w-72 transform flex-col justify-between overflow-auto bg-white transition-all duration-300 ease-in-out shadow-xl dark:bg-zinc-800 ${
+  class={`fixed top-0 left-0 z-60 flex h-full w-72 transform flex-col justify-between overflow-auto bg-white transition-all duration-300 ease-in-out shadow-xl dark:bg-zinc-800 ${
     isOpen ? "visible translate-x-0 " : "invisible -translate-x-full"
   }`}
 >
