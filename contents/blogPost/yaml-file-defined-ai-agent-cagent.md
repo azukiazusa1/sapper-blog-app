@@ -30,7 +30,7 @@ selfAssessment:
       answers:
         - text: "cagent new"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "cagent create"
           correct: false
           explanation: null
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "cagent generate"
           correct: false
           explanation: null
-
 published: true
 ---
-
 [cagent](https://github.com/docker/cagent) は Docker 社が開発した AI エージェントのフレームワークです。コードを 1 行も書かずに YAML ファイルでエージェントの振る舞い・役割・使用するツールを定義できる点が特徴です。Kubernetes のようにエージェントがどのように動作するかを宣言的に定義できるため、エージェントの構築と管理が容易になるように設計されています。1 つの YAML ファイルで複数のエージェントの動作を定義できるため、エージェントの共有や再利用・バージョン管理も容易となるでしょう。
 
 この記事では cagent の概要とインストール方法、YAML ファイルの書き方、実際にエージェントを動作させるまでの手順を解説します。
