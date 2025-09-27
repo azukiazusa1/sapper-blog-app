@@ -19,7 +19,7 @@ selfAssessment:
           explanation: null
         - text: "claude mcp add chrome-devtools npx chrome-devtools-mcp@latest"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "claude install chrome-devtools-mcp"
           correct: false
           explanation: null
@@ -39,11 +39,9 @@ selfAssessment:
           explanation: "コンソールログを一覧表示するツールとして記事で使用されています。"
         - text: "list_cookies"
           correct: true
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 自律的な AI エージェントを利用したコーディングでは、生成したコードを実行した結果からフィードバックを得て、コードを改善していく反復的なプロセスが重要です。バックエンドや CLI ツールの開発では、生成したコードはターミナル上で実行されログが表示されるため、AI エージェントはコードの実行結果を容易に取得できます。しかし、フロントエンド開発では、生成したコードはブラウザ上で実行されるため、AI エージェントが直接コードを実行したり、ブラウザのコンソールログを取得したりすることは困難です。そのため人間の開発者がコードをブラウザで実行し、コンソールログを AI エージェントに提供する必要がありました。
 
 [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) はこの課題を解決するためのツールです。Chrome DevTools MCP により以下のことが可能になります。
