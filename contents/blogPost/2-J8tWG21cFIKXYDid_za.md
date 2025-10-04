@@ -28,9 +28,9 @@ selfAssessment:
           explanation: "TODO 項目を更新するツールはデータを変更するため、`readOnlyHint` を `true` に設定すべきではありません。"
     - question: "`idempotentHint` を `true` に設定するのはどのような場合ですか？"
       answers:
-        - text: "ツールが同じ入力に対して何度呼び出しても同じ結果を返す場合"
-          correct: false
-          explanation: "`idempotentHint` はツールの動作が冪等であることを示します"
+        - text: "ツールが同じ入力に対して何度呼び出しても同じ副作用が生じる場合"
+          correct: true
+          explanation: "`idempotentHint` はツールの動作が冪等であることを示します。つまり、同じ入力に対して何度呼び出しても同じ副作用が生じる場合です。"
         - text: "ツールが破壊的な変更を行う可能性がある場合"
           correct: false
           explanation: "これは `destructiveHint` に関する説明です。"
@@ -39,7 +39,7 @@ selfAssessment:
           explanation: "これは `openWorldHint` に関する説明です。"
         - text: "ツールがセンシティブなデータを扱う場合"
           correct: false
-          explanation: ""
+          explanation: "これはツールアノテーションの対象外です。センシティブなデータの扱いはアノテーションではなく、適切な権限管理やセキュリティ対策で対応すべき事項です。"
 published: true
 ---
 
@@ -52,7 +52,7 @@ MCP ではツールの利用に関するユーザー体験を向上させるた�
 - `title`: 人間が読めるツールの名前
 - `readOnlyHint`: `true` の場合、ツールはデータを変更しないことを示す
 - `destructiveHint`: `true` の場合、ツールは破壊的な変更を行う可能性があることを示す（`readOnlyHint` が `false` の場合にのみ意味を持つ）
-- `idempotentHint`: `true` の場合、ツールは冪等であることを示す。つまり、同じ入力に対して何度呼び出しても同じ結果を返す（`readOnlyHint` が `false` の場合にのみ意味を持つ）
+- `idempotentHint`: `true` の場合、ツールは冪等であることを示す。つまり、同じ入力に対して何度呼び出しても同じ副作用が生じる（`readOnlyHint` が `false` の場合にのみ意味を持つ）
 - `openWorldHint`: `true` の場合、ツールは外部のエンティティと相互作用する可能性があることを示す。例えば Web 検索ツールは `openWorldHint` を `true` に設定することが推奨されるが、メモリツールは `false` に設定される
 
 ただし、これらのアノテーションはあくまでヒントであり、MCP サーバーがツールの動作を保証するものではありません。例えば `readOnlyHint` が `true` に設定されていても、ツールが実際にはデータを変更する可能性があります。そのためセキュリティ上の判断として利用するべきではありません。
@@ -75,7 +75,7 @@ npm install -D @types/node typescript
 ```json:package.json
 {
   "scripts": {
-    "build": "tsc && chmod 755 build/index.js",
+    "build": "tsc && chmod 755 build/index.js"
   }
 }
 ```
@@ -203,7 +203,7 @@ claude add mcp todo -- node /path/to/your/project/build/index.js
   - `title`: 人間が読めるツールの名前
   - `readOnlyHint`: `true` の場合、ツールはデータを変更しないことを示す
   - `destructiveHint`: `true` の場合、ツールは破壊的な変更を行う可能性があることを示す（`readOnlyHint` が `false` の場合にのみ意味を持つ）
-  - `idempotentHint`: `true` の場合、ツールは冪等であることを示す。つまり、同じ入力に対して何度呼び出しても同じ結果を返す（`readOnlyHint` が `false` の場合にのみ意味を持つ）
+  - `idempotentHint`: `true` の場合、ツールは冪等であることを示す。つまり、同じ入力に対して何度呼び出しても同じ副作用が生じる（`readOnlyHint` が `false` の場合にのみ意味を持つ）
   - `openWorldHint`: `true` の場合、ツールは外部のエンティティと相互作用する可能性があることを示す。例えば Web 検索ツールは `openWorldHint` を `true` に設定することが推奨されるが、メモリツールは `false` に設定される
 - これらのアノテーションはあくまでヒントであり、MCP サーバーがツールの動作を保証するものではないため、セキュリティ上の判断として利用するべきではない
 - Claude Code ではツール一覧画面で設定したタイトルが表示されたことと、`readOnlyHint` が `true` のツールには「(read-only)」と表示されたことを確認できた
