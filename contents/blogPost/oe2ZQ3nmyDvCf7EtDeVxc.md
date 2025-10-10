@@ -55,13 +55,13 @@ selfAssessment:
           explanation: "フックはプラグインに含めることができる設定の1つです。特定のイベントに応じて自動的に実行されます。"
     - question: "プラグインをインストールするコマンドの正しい形式はどれですか?"
       answers:
-        - text: "/plugins install my-plugin@my-marketplace"
+        - text: "/plugin install my-plugin@my-marketplace"
           correct: true
-          explanation: "プラグインは `/plugins install <プラグイン名>@<マーケットプレイス名>` の形式でインストールします。"
-        - text: "/plugin install my-plugin"
+          explanation: "プラグインは `/plugin install <プラグイン名>@<マーケットプレイス名>` の形式でインストールします。"
+        - text: "/plugin install @my-marketplace/my-plugin"
           correct: false
           explanation: null
-        - text: "/marketplace install my-plugin"
+        - text: "/install-plugin my-plugin@my-marketplace"
           correct: false
           explanation: null
         - text: "/install my-plugin@my-marketplace"
@@ -183,7 +183,7 @@ Validating marketplace manifest: /claude-code-plugin-test/my-marketplace/.claude
 
 ### マーケットプレイスとプラグインのインストール
 
-Claude Code を起動し `/plugins` コマンドを実行してマーケットプレイスを追加します。
+Claude Code を起動し `/plugin`（もしくは `/plugins`）コマンドを実行してマーケットプレイスを追加します。
 
 ```bash
 /plugin marketplace add ./my-marketplace
@@ -196,7 +196,7 @@ Claude Code を起動し `/plugins` コマンドを実行してマーケット�
 マーケットプレイスを追加した後、以下のコマンドを実行してプラグインをインストールします。
 
 ```bash
-/plugins install my-plugin@my-marketplace
+/plugin install my-plugin@my-marketplace
 ```
 
 コマンドを実行するとプラグインの説明が表示され、インストールするかどうかを確認されます。「Install now」クリックするとプラグインがインストールされます。
@@ -211,7 +211,7 @@ Claude Code を起動し `/plugins` コマンドを実行してマーケット�
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/3qWRJdmKIGbPjA4gaKi9Go/1eac59174ec92860fc67c398792bba68/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-10-10_20.28.01.png)
 
-インストールしたプラグインは `/plugins` コマンド→「Manage & uninstall plugins」→「my-marketplace」→「my-plugin」から確認できます。ここではプラグインの有効・無効の切り替えやアンインストール、更新ができます。
+インストールしたプラグインは `/plugin` コマンド→「Manage & uninstall plugins」→「my-marketplace」→「my-plugin」から確認できます。ここではプラグインの有効・無効の切り替えやアンインストール、更新ができます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/6PrIB7llBji6ZV4jMyb1Ns/565dbf96e8663d7ef35bfee37004afac/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-10-10_20.31.40.png)
 
@@ -222,7 +222,7 @@ Claude Code を起動し `/plugins` コマンドを実行してマーケット�
 - [davila7/claude-code-templates: CLI tool for configuring and monitoring Claude Code](https://github.com/davila7/claude-code-templates)
 - [wshobson/agents: A collection of production-ready subagents for Claude Code](https://github.com/wshobson/agents)
 
-https://www.aitmpl.com/plugins にアクセスするとインタラクティブな Web UI でプラグインを探すことができます。
+https://www.aitmpl.com/plugin にアクセスするとインタラクティブな Web UI でプラグインを探すことができます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/eD4KmU51FYzFjQn0ua6qI/a74ea7a59a81c0aca96af378e997317c/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-10-10_20.40.54.png)
 
@@ -232,7 +232,7 @@ https://www.aitmpl.com/plugins にアクセスするとインタラクティブ�
 /plugin marketplace add https://github.com/davila7/claude-code-templates
 ```
 
-マーケットプレイスを追加したら Claude Code 上でマーケットプレイスが利用可能なプラグインの一覧を確認できます。`/plugins` コマンドを実行し、「1. Browse & install plugins」→「claude-code-templates」を選択します。
+マーケットプレイスを追加したら Claude Code 上でマーケットプレイスが利用可能なプラグインの一覧を確認できます。`/plugin` コマンドを実行し、「1. Browse & install plugins」→「claude-code-templates」を選択します。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/3EB3BvUFCHvw5DBpsiFvvP/f92500e136c63cc8d4f1cf7d36369d6d/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-10-10_20.44.35.png)
 
@@ -251,11 +251,11 @@ Claude Code を再起動するとプラグインが提供するコマンドや M
 - プラグインにはスラッシュコマンド、サブエージェント、MCP サーバー、フックなどの設定を含めることができる
 - プラグインの作成にはプラグインマニフェストとマーケットプレイスマニフェストを作成する必要がある
 - プラグインはローカルのマーケットプレイスや GitHub などでホストされたマーケットプレイスからインストールできる
-- インストールしたプラグインは `/plugins` コマンドから管理できる
+- インストールしたプラグインは `/plugin` コマンドから管理できる
 
 ## 参考
 
 - [Customize Claude Code with plugins \ Anthropic](https://www.anthropic.com/news/claude-code-plugins)
-- [Plugins reference - Claude Docs](https://docs.claude.com/en/docs/claude-code/plugins-reference)
-- [Plugins - Claude Docs](https://docs.claude.com/en/docs/claude-code/plugins)
+- [Plugins reference - Claude Docs](https://docs.claude.com/en/docs/claude-code/plugin-reference)
+- [Plugins - Claude Docs](https://docs.claude.com/en/docs/claude-code/plugin)
 - [Plugin marketplaces - Claude Docs](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces)
