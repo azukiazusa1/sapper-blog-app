@@ -38,6 +38,7 @@ selfAssessment:
           correct: false
           explanation: null
         - text: "manifest.json"
+          correct: false
           explanation: null
     - question: "プラグインに含めることができる設定として、記事で紹介されていないものはどれですか?"
       answers:
