@@ -8,7 +8,7 @@ updatedAt: "2025-10-10T19:32+09:00"
 tags: ["claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/Uuys9NLsN2Xle30mHUd23/33d8310b4563b93435e62081ef5a7973/sudachi_22613-768x610.png"
-  title: "すだちのイラスト"
+  title: "sudachi 22613-768x610"
 audio: null
 selfAssessment:
   quizzes:
@@ -68,10 +68,8 @@ selfAssessment:
         - text: "/install my-plugin@my-marketplace"
           correct: false
           explanation: null
-
 published: true
 ---
-
 [Claude Code](https://docs.claude.com/ja/docs/agents-and-tools/claude-code/overview) を使用してコーディングを行う上では、以下の設定を活用することでより効果的に作業を進めることが期待できます。
 
 - スラッシュコマンド: よく使う操作をスラッシュコマンドとして登録し、素早くアクセスできるようにする
