@@ -1,6 +1,6 @@
 ---
 id: -It-1UetBotacoSSJ7bou
-title: "ChatGPT 内でアプリを直接操作する Apps SDK を試してみた"
+title: "ChatGPT 内でアプリを直接操作する Apps SDK に自作のアプリを接続する"
 slug: "chatgpt-apps-sdk"
 about: "Apps in ChatGPT は ChatGPT のチャット内で会話の流れに応じて外部のアプリを呼び出し、インタラクティブな操作を可能にする機能です。アプリごとに独自の UI コンポーネントを提供し、ユーザーはチャット画面からシームレスな体験でアプリを操作できます。この記事では Apps SDK を使用して、実際に ChatGPT 内で動作するシンプルなアプリを作成する手順を紹介します。"
 createdAt: "2025-10-11T11:31+09:00"
