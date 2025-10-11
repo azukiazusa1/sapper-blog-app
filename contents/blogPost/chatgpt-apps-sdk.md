@@ -16,16 +16,16 @@ selfAssessment:
       answers:
         - text: "text/html+skybridge"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "application/html"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "text/html+component"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "text/html+widget"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "ChatGPT の iframe 内で利用可能な window.openai オブジェクトのメソッドとして正しくないものはどれですか?"
       answers:
         - text: "callFunction()"
@@ -54,10 +54,8 @@ selfAssessment:
         - text: "openai/widgetUri"
           correct: false
           explanation: "openai/widgetUri というキーは存在しません。"
-
 published: true
 ---
-
 Apps in ChatGPT は ChatGPT のチャット内で会話の流れに応じて外部のアプリを呼び出し、インタラクティブな操作を可能にする機能です。アプリごとに独自の UI コンポーネントを提供し、ユーザーはチャット画面からシームレスな体験でアプリを操作できます。
 
 例えば「Booking.com, 箱根の旅行を提案して」といったプロンプトを入力すると、ChatGPT は Booking.com のアプリを呼び出して箱根のホテルの一覧をカスタム UI コンポーネントとして表示し、ユーザーはその中からホテルを選択して予約を進めることができます。これは新しいフロントエンド開発のパラダイムとも言えるもので、LLM がユーザーの意図を理解して適切なアプリを呼び出し、ユーザーはそのアプリの UI を通じて操作するという流れが自然に実現されます。
