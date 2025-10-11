@@ -276,7 +276,7 @@ UI コンポーネントがユーザーとのインタラクションを処理�
 
 - `callTool(name, args)` - MCP サーバー上のツールを呼び出し、完全なレスポンスを返す
 - `sendFollowUpMessage({ prompt })` - ChatGPT の会話に追加のメッセージを送信してターンを継続
-- `openExternal({ href })` - 外部リンクを開く(Webページまたはモバイルアプリへリダイレクト)
+- `openExternal({ href })` - 外部リンクを開く(Web ページまたはモバイルアプリへリダイレクト)
 - `requestDisplayMode({ mode })` - 表示モードの変更をリクエスト(インライン⇔フルスクリーン⇔PiP)
 - `setWidgetState(state)` - ウィジェットの状態を永続化
 
