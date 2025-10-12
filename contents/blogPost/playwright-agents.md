@@ -5,7 +5,7 @@ slug: "playwright-agents"
 about: "Playwright v1.56 で導入された Playwright Agents は、Planner、Generator、Healer の 3 つのエージェントで構成されており、アプリケーションコードを解析してテストケースの計画、テストコードの生成、失敗したテストの修正を自動化できます。この記事では、Claude Code から Playwright Agents を呼び出して、シンプルなカンバンアプリのテストコードを自動生成する手順を紹介します。"
 createdAt: "2025-10-12T11:39+09:00"
 updatedAt: "2025-10-12T11:39+09:00"
-tags: ["Playwright", "claude-code", "MCP"]
+tags: ["playwright", "claude-code", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/41JUiCkrDUUGIfPkFl8dMW/3b0467ea99d187d07b242ea761891c32/fruit-babaco_22705-768x591.png"
   title: "ババコのイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "npx create-playwright-agents"
           correct: false
           explanation: null
-
 published: true
 ---
-
 Playwright v1.56 ではアプリのコードを解析し、テストコードを自動生成する 3 つのエージェントが導入されました。以下の 3 つのエージェントは順番に実行されることが想定されていますが、それぞれこれ単体で利用できます。
 
 - Planner: アプリのコードを解析し、テストケースの計画を Markdown 形式で生成する
