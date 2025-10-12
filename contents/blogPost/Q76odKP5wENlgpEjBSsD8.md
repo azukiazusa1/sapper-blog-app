@@ -72,7 +72,7 @@ npx playwright init-agents --loop=claude
 - `.mcp.json`: Claude Code におけるプロジェクト単位の MCP 設定ファイル。[playwright-test](https://github.com/microsoft/playwright-mcp) MCP サーバーが設定されている
 - `seed.spec.ts`: アプリを操作するために必要な環境を設定するファイル。初めは空の状態
 
-```seed.spec.ts
+```typescript:tests/seed.spec.ts
 import { test, expect } from '@playwright/test';
 
 test.describe('Test group', () => {
