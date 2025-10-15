@@ -205,9 +205,16 @@ style: |
 
 <div class="center">
 
-# MCPサーバーの基礎から実践レベルの知識まで
+# ないなら作るMCPサーバー構築ハンズオン
+
+## MCPサーバーの基礎から実践レベルの知識まで
 
 </div>
+
+<!--
+それでは「ないなら作るMCPサーバー構築ハンズオン」というタイトルで発表を初めます。この発表では、MCP サーバーの基礎的な内容から、実践的な知識までをカバーします。
+
+ -->
 
 ---
 
@@ -219,13 +226,22 @@ style: |
 
 ![bg right:40% w:300px](./images/azukiazusa.png)
 
+<!--
+初めに簡単な自己紹介です。azukiazusa という名前で活動をしていて、主にフロントエンド領域を中心に開発をしています。azukiazusa.dev というブログも運営していて、最近は AI 関連の記事も多く書いています。
+
+ -->
+
 ---
 
 # アジェンダ
 
 - MCP サーバーの基礎知識について(10分)
-- MCP サーバー構築デモ(15分)
-- MCP サーバーの実践的な知識について(20分)
+- MCP サーバー構築ハンズオン(20分)
+- MCP サーバーの実践的な知識について(15分)
+
+<!--
+今回の発表ではまず初めに MCP サーバーとはなんなのか、どのような仕組みで動いているのかといった基礎的な知識について改めておさらいしたいと思います。続いて実際に MCP サーバーを構築するハンズオンを通じて、より具体的なイメージを持っていただければと思います。最後に私自身が実際に MCP サーバーを開発・運用してきた中で得た、実践的な知識について共有したいと思います。
+ -->
 
 ---
 
@@ -235,27 +251,49 @@ style: |
 
 アプリケーションが LLM にコンテキストを渡す方法を標準化するためのプロトコル
 
-- Anthropicが開発・発表
-- LSP(Language Server Protocol)の発想を参考
+- Claude を提供するAnthropicが開発・発表
 - ツールのインターフェースを統一
+- AIアプリケーション用のUSB-Cポートのようなもの
+
+<!--
+MCP とは Model Context Protocol の略で、アプリケーションが LLM にコンテキストを渡す方法を標準化するためのプロトコルです。Claude を提供する Anthropic が開発・発表しました。MCP はツールのインターフェースを統一することで、ツールの開発者が LLM の実装の違いを意識せずにツールを開発できるようにすることを目的としています。
+
+MPC は AI アプリケーション用の USB-C ポートのようなものと説明されており、、USB-C ポートがさまざまなデバイスで共通のインターフェースを提供するように、LLM が外部システムに接続できるようなイメージです。
+ -->
 
 ---
 
 # なぜMCPが必要なのか?
 
 - LLMには知識カットオフがあり、最新の情報や組織内の情報を取得できない
-- Web 検索をしたり、社内ドキュメントを参照しその情報をコンテキストに渡す必要がある
-- 従来は function calling といった仕組みが使われてきた
-  - 天気情報を取得するために天気情報 API を呼び出したり、Slack API を呼び出してメッセージを送信したりする関数を LLM が呼び出す
+  - Web 検索をしたり、社内ドキュメントを参照しその情報をコンテキストに渡す必要がある
+- ChatGPT の Plugins では外部のツールを呼び出す仕組みが提供された
+  - Excel や PDF をアップロードして、組織内の情報を取得できるように
+  - メールの送信やカレンダーの予定作成など、日常的なタスクを自動化できるように
+
+→ ChatGPT の Plugins は OpenAI 独自の仕組みであり、他の LLM では利用できない
+
+<!--
+なぜ MCP は必要なのでしょうか? LLM には知識カットオフがあり、最新の情報や組織内の情報を取得できないという課題があります。例えば、最新のニュースや株価情報、あるいは社内のドキュメントなど、LLM が直接アクセスできない情報を取得するために、Web 検索をしたり、社内ドキュメントを参照しその情報をコンテキストに渡す必要があります。
+
+このような問題を解決するために、ChatGPT ではかつて Plugins と呼ばれる外部のツールを呼び出す仕組みが提供されていました。これを使うことにより、Excel や PDF をアップロードして、組織内の情報を取得できるようになったり、メールの送信やカレンダーの予定作成など、日常的なタスクを自動化できるようになりました。
+
+しかし、ChatGPT の Plugins は OpenAI 独自の仕組みであり、せっかくプラグインを開発しても他の LLM では利用できないという課題がありました。
+ -->
 
 ---
 
 # function calling
 
-- ツールのインターフェースが標準化されていない
-- LLMごとに異なる実装が必要
-- ツールを配布する手段がない
-- 開発者が独自に実装する必要がある
+- 開発者がコードレベルで LLM に外部ツールを呼び出させるためには、function calling といった仕組みが使われてきた
+  - 天気情報を取得するために天気情報 API を呼び出したり、Slack API を呼び出してメッセージを送信したりする関数を LLM が呼び出す
+- LLM の SDK ごとに異なる実装が必要で、開発者にとっては負担が大きい
+
+<!--
+他にも LLM アプリケーションを開発するうえで function calling といった仕組みが使われてきました。function calling では、天気情報を取得するために天気情報 API を呼び出したり、Slack API を呼び出してメッセージを送信したりする関数を LLM が呼び出すことで、外部ツールと連携します。
+
+しかし、function calling は LLM の SDK ごとに異なる実装が必要で、開発者にとっては負担が大きいという課題がありました。
+ -->
 
 ---
 
@@ -316,31 +354,36 @@ const response = await anthropic.messages.create({
 
 </div>
 
-→ **ベンダーごとに異なるインターフェース**
+<!--
+参考に OpenAI と Anthropic の SDK の function calling の例を示します。やりたいことは同じであっても、SDK ごとに異なるインターフェイスが提供されていることがわかりますね。
+ -->
 
 ---
 
 # MCP が解決したこと
 
-- ツールのインターフェースを標準化し、パッケージマネージャーでの配布も容易になった
-- 各プログラミング言語向けの SDK が提供されているため、効率よく MCP サーバーを開発できた
+- 1 つの MCP サーバーを開発すれば、複数のクライアントから利用できる
+- 各プログラミング言語向けの SDK が提供されているため、効率よく MCP サーバーを開発し、パッケージマネージャーで配布できる
 - 企業が自社のデータを LLM に提供する手段として普及が進んだ
 - 現在では Anthropic が提供する Claude だけでなく、OpenAI の GPT や Google の Gemini など、主要な LLM が MCP をサポートし事実上の標準となっている
 
----
+<!--
+このような状況の中で、MCP が登場しました。MCP はツールのインターフェースを標準化し、たことにより、1 つの MCP サーバーを開発すれば、複数のクライアントから利用できるようになりました。また各プログラミング言語向けの SDK が提供されているため、効率よく MCP サーバーを開発し、パッケージマネージャーで配布できるようになりました。
 
-# MCPがあるとできること
-
-- Googleカレンダーに予定を追加
-- Notionにメモを追加
-- Slackにメッセージを送信
-- Web検索を実行
+さらに企業が自社のデータを LLM に提供する手段として MCP の普及が進みました。現在では Anthropic が提供する Claude だけでなく、OpenAI の GPT や Google の Gemini など、主要な LLM が MCP をサポートし事実上の標準となっています。
+ -->
 
 ---
 
 # MCPの仕組み
 
 ![](./images/mcp-architecture-diagram.svg)
+
+<!--
+MCP がどのような仕組みで動いているのか、簡単に説明します。MCP は クライアント・サーバーモデルに基づいています。Claude Desktop や Cursor などの LLM を使用するアプリケーションがホストとなり、 MCP クライアントにツールの呼び出しを要求します。
+
+要求を受けた MCP クライアントは、MCP サーバーに対してツールの呼び出しを行います。MCP サーバーはツールの定義と実装を管理し、要求に応じてツールを実行し、その結果を MCP クライアントに返します。MCP クライアントはその結果を受け取り、LLM に返します。
+ -->
 
 ---
 
@@ -354,11 +397,20 @@ const response = await anthropic.messages.create({
 ### Streamable HTTP
 
 - HTTP を使用した通信
-- Web ブラウザ上で動作するので注目を浴びている
+- ユーザーは MCP をローカルにインストールする必要がない
 
 ### SSE(非推奨)
 
 - 互換性維持のために残されている
+
+<!--
+MCP はクライアントとサーバー間の通信に複数のトランスポート方式をサポートしています。現在使用でき定義されているトランスポート方式は stdio、Streamable HTTP の 2 つです。
+
+stdio は標準入力/出力を使用した通信方式で、ローカル環境で動作します。Streamable HTTP は HTTP を使用した通信方式で、使用するユーザーは MCP をローカルにインストールする必要がなく、手軽に使用できるので注目を集めています。
+
+SSE は互換性維持のために残されているトランスポート方式で、現在は非推奨となっています。現在の仕様では Streamable HTTP を実装するときは同時に SSE も実装する必要があります。
+
+ -->
 
 ---
 
@@ -381,6 +433,12 @@ const response = await anthropic.messages.create({
 }
 ```
 
+<!--
+MCP のクライアントとサーバーは JSON-RPC 2.0 を使用して通信します。JSON-RPC とは、リモートプロシージャコール (RPC) を JSON フォーマットで実装するための軽量なプロトコルです。
+
+このコード例のように `method` フィールドに呼び出したいメソッド名を指定し、`params` フィールドに引数を指定することで、リモートのサーバーに対して関数を呼び出すことができます。
+ -->
+
 ---
 
 # MCPの3つの機能
@@ -399,6 +457,13 @@ LLM が呼び出せる外部ツール
 
 → **この発表ではツールに焦点を当てる**
 
+<!--
+
+そして現在の MCP では、リソース、プロンプト、ツールの 3 つの主要な機能が提供されています。リソースはユーザーや LLM がアクセスできるデータを指し、例えば、ドキュメントや画像、あるいは UI コンポーネントなどが含まれます。プロンプトは再利用可能なプロンプトテンプレートを指し、LLM に対して効果的なプロンプトを共有するために使用されます。ツールは LLM が呼び出せる外部ツールを指し、例えば、天気情報の取得やタスク管理、あるいは計算などが含まれます。
+
+現在の MCP では最後のツールの機能に最も注目が集まっており、この発表でもツールに焦点を当てて説明します。
+ -->
+
 ---
 
 # MCP サーバー構築デモ
@@ -407,11 +472,23 @@ TypeScript SDK を使用してサイコロツールを実装
 
 ---
 
-# TypeScript SDKのインストール
+# プロジェクトのセットアップ
 
 ```bash
-npm install @modelcontextprotocol/sdk zod
+git clone https://github.com/azukiazusa1/mcp-handson.git
 ```
+
+```bash
+cd mcp-handson
+npm install
+```
+
+---
+
+# 使用するパッケージ
+
+- `@modelcontextprotocol/sdk`: MCP サーバーを構築するための公式 SDK
+- `zod`: ツールの入力と出力のスキーマを定義するためのライブラリ
 
 ---
 
@@ -420,6 +497,7 @@ npm install @modelcontextprotocol/sdk zod
 ```typescript
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
+// MCP サーバーのインスタンスを作成
 const server = new McpServer({
   name: "dice-server",
   version: "1.0.0",
@@ -476,69 +554,70 @@ server.registerTool(
 ```typescript
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
-const transport = new StdioServerTransport();
-await server.connect(transport);
-```
+// stdio transport を使用してサーバーを起動
 
-stdio 通信でサーバーを起動
+async function main() {
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+  // stdio で通信するので、console.log は使わない
+  console.error("MCP Server is running...");
+}
+main();
+```
 
 ---
 
-# Streamable HTTP の場合
+# サーバーをビルド
 
-```typescript
-import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
-import express from "express";
-
-const app = express();
-app.use(express.json());
-
-app.post("/mcp", async (req, res) => {
-  const transport = new StreamableHTTPServerTransport({
-    sessionIdGenerator: undefined,
-    enableJsonResponse: true,
-  });
-
-  res.on("close", () => {
-    transport.close();
-  });
-
-  await server.connect(transport);
-  await transport.handleRequest(req, res, req.body);
-});
-
-const port = parseInt(process.env.PORT || "3000");
-app.listen(port, () => {
-  console.log(`MCP Server running on http://localhost:${port}/mcp`);
-});
+```bash
+npm run build
 ```
 
-→ **Web ベースで動作するため、Claude Code などのブラウザクライアントから利用可能**
+→ `build/server.js` が生成される
 
 ---
 
 # MCP Inspectorで動作確認
 
 ```bash
-npx @modelcontextprotocol/inspector node build/index.js
+npx @modelcontextprotocol/inspector node build/server.js
 ```
 
-- ブラウザでツールの動作をテスト
-- リクエスト・レスポンスの確認
-- デバッグに便利
+- LLM は実装したツールを確実に呼び出してくれるとは限らない
+- ブラウザ上の UI でツールの動作をテストできる
+
+---
+
+# MCP Inspectorでの接続操作
+
+![w:900](./images/mcp-inspector-connect.png)
+
+---
+
+# roll_dice ツールの動作確認
+
+![w:900](./images/mcp-inspector-roll-dice.png)
 
 ---
 
 # Claude Desktopでの設定
 
-`~/Library/Application Support/Claude/claude_desktop_config.json`
+Settings > Developer > Edit Config
+
+![w:800](./images/claude-desktop-settings.png)
+
+---
+
+# JSON設定例
+
+`claude_desktop_config.json` ファイルに以下を追加
 
 ```json
 {
   "mcpServers": {
     "dice": {
       "command": "node",
-      "args": ["/path/to/build/index.js"]
+      "args": ["/path/to/build/server.js"]
     }
   }
 }
@@ -546,12 +625,26 @@ npx @modelcontextprotocol/inspector node build/index.js
 
 ---
 
+# MCP サーバーのツールが追加されたことを確認
+
+Claude Desktop を再起動して、ツールの一覧に `dice` が表示されていることを確認
+
+![w:500](./images/claude-desktop-tools.png)
+
+---
+
 # Claude Desktopで実行
 
-- Claude Desktopを再起動
-- チャットで「サイコロを振って」と入力
-- ツールが自動的に呼び出される
-- 結果が返される
+「人生ゲームをプレイするので、サイコロを振ってください」とプロンプトを入力
+→ `Roll Dice` ツールの呼び出しの許可が求められる
+
+![w:500](./images/claude-desktop-roll-dice.png)
+
+---
+
+# サイコロを振った結果を元に Claude が応答
+
+![w:500](./images/claude-desktop-dice-result.png)
 
 ---
 
@@ -562,6 +655,11 @@ npx @modelcontextprotocol/inspector node build/index.js
 - 私が実際に本番レベルで MCP サーバーを開発してきた中で得た知見・失敗談を共有
 
 </div>
+
+<!--
+ここからはハンズオンでは触れられなかった、MCP サーバーの実践的な知識について共有したいと思います。私が実際に本番レベルで MCP サーバーを開発してきた中で得た知見や失敗談を中心にお話しします。
+
+ -->
 
 ---
 
@@ -578,13 +676,20 @@ npx @modelcontextprotocol/inspector node build/index.js
 
 ---
 
-# APIのラッパーとして提供すると失敗する
+# 1. APIのラッパーとして提供すると失敗する
 
 - REST APIはエンドポイントベースの設計
   - 1 つのリソースに対して GET、POST、PUT、DELETE などの操作ごとにエンドポイントが存在
 - ツールはユーザーが達成したいタスクベースの設計
 - プログラミングでは 1 つのタスクを達成するために複数の API を組み合わせることが一般的
 - LLM は複数のツールを組み合わせてタスクを達成することが苦手
+
+<!--
+よくある失敗例として、API のラッパーとして MCP サーバーを提供してしまうことが挙げられます。従来の REST API はエンドポイントベースの設計であり、1 つのリソースに対して GET、POST、PUT、DELETE などの操作ごとにエンドポイントが存在します。
+一方で MCP サーバーのツールはユーザーが達成したいタスクベースの設計が求められます。プログラムの世界では 1 つのタスクを達成するために複数の API を組み合わせることが一般的ですが、LLM は複数のツールを組み合わせてタスクを達成することが苦手です。
+
+そのため、API のラッパーとして MCP サーバーを提供してしまうと、LLM が適切にツールを選択できず、期待した結果が得られないことがあります。
+ -->
 
 ---
 
@@ -603,6 +708,14 @@ npx @modelcontextprotocol/inspector node build/index.js
 - `schedule_meeting` - ミーティングをスケジュール（ツールの実装の中で複数のAPIを呼び出す）
 
 → **1つのタスクを1つのツールで完結**
+
+<!--
+例えば、カレンダー API を MCP サーバーで提供する場合を考えます。従来の API 設計では、`GET /users` でユーザーを取得し、`GET /events` でイベントを取得し、`POST /events` でイベントを作成するといったエンドポイントが存在します。この設計に従うと、MCP サーバーでは `get_users`, `get_events`, `create_event` といったツールを作りたくなります。
+
+しかし、より効果的なツール設計としては、`schedule_meeting` のように 1 つのタスクを 1 つのツールで完結させることが重要です。このツールの実装の中で複数の API を呼び出し、ユーザーがミーティングをスケジュールするというタスクを達成できるようにします。
+
+一方でツールの詳細度を上げすぎてしまうと、汎用性が低くなってしまうのでいい塩梅を見つける必要があります。
+ -->
 
 ---
 
@@ -678,24 +791,47 @@ server.registerTool(
 
 </div>
 
+<!--
+従来型のプログラミングと MCP サーバーの設計の違いを具体的なコード例で示します。左側が従来のプログラミングの例で、右側が MCP サーバーの例です。
+
+従来型のプログラミングは、1 つのタスクを達成するために複数の API を組み合わせて実装しています。一方で MCP サーバーの例では、`schedule_meeting` という 1 つのツールでタスクを完結させています。このツールの実装の中でユーザーの検索、予定の取得、空き時間の見つける、ミーティングの作成といった一連の処理を実行しています。
+ -->
+
 ---
 
 # ツール設計のポイント
 
 - 提供するツールの数が多くなると、LLMがどのツールを使うべきか迷ってしまう
+  - 多くのユーザーは複数の MCP サーバーを同時に利用するので、思ったよりもツールの数が多くなりがち
+  - コンテキストを多く消費するツールは避けられてしまうかも
 - ユーザーが何を達成したいのか、ユースケースを考えてツールを設計する
   - ユーザーを取得したいのは何のため？
     - 会議のスケジュールのために空き時間を知りたいの真の目的
 
+<!--
+ツール設計のポイントとして、提供するツールをよく選定することが重要です。提供するツールの数が多くなると、LLM がどのツールを使うべきか迷ってしまうことがあります。特に多くのユーザーは複数の MCP サーバーを同時に利用するので、思ったよりもツールの数が多くなりがちです。
+
+またツールは LLM の起動時に自動で説明がコンテキストに追加されるため、コンテキストを多く消費するツールは避けられてしまうかもしれません。
+
+そのため、ユーザーが何を達成したいのか、ユースケースを考えてツールを設計することが重要です。例えば、ユーザーを取得したいのは何のためかと考えると、会議のスケジュールのために空き時間を知りたいというのが真の目的であることがわかります。
+ -->
+
 ---
 
-# コンテキストが大きくなりすぎる問題
+# 2. コンテキストが大きくなりすぎる問題
 
 LLMにはコンテキスト長の制限がある
 
 - Claude Code: デフォルトで 25,000 トークン
+  - これを超えるとエラーレスポンスが返される
 - コンテキストが大きいと性能が低下
   - LLM が無関係な情報に注意を奪われる → コンテキスト汚染
+
+<!--
+2つ目の問題は、コンテキストが大きくなりすぎる問題です。LLM にはコンテキスト長の制限があり、例えば Claude Code ではデフォルトで 25,000 トークンまでしか扱えません。これを超えるとエラーレスポンスが返され、やり取りが終了してしまいます。
+
+たとえエラーが発生しなくても、コンテキストが大きいと性能が低下する恐れがります。。LLM が無関係な情報に注意を奪われることで、コンテキスト汚染が発生し、期待した応答が得られなくなることがあります。
+ -->
 
 ---
 
@@ -703,8 +839,15 @@ LLMにはコンテキスト長の制限がある
 
 - 現代の富豪的プログラミングでは1,000件のリストをメモリに載せてフィルタリング・ソートしても問題ない
 - LLM ではコンテキスト制限があるため同じアプローチは不可
+- 限られたコンテキストサイズで必要な情報だけを提供する工夫が必要
 
 → API の応答をそのまま返すのは避ける
+
+<!--
+富豪的プログラミングと呼ばれる現代のプログラミングでは、メモリが豊富にあるため、1,000件のリストをメモリに載せてフィルタリング・ソートしても問題なく動作することでしょう。しかし、LLM ではコンテキスト制限があるため、同じアプローチは不可です。限られたコンテキストサイズで必要な情報だけを提供する工夫が必要です。
+
+一般的に、API の応答をそのまま返すのは避けるべきです。
+ -->
 
 ---
 
@@ -738,6 +881,11 @@ server.registerTool(
 );
 ```
 
+<!--
+コンテキストが大きくなりすぎる問題の解決策として、ページネーションの導入が挙げられます。ツールの入力スキーマに `limit` と `offset` のパラメータを追加し、取得するデータの件数を制限します。これにより、一度に大量のデータを返すことを避け、コンテキストのサイズを抑えることができます。
+
+ -->
+
 ---
 
 # 解決策2: 必要なフィールドだけ取得
@@ -766,6 +914,10 @@ server.registerTool(
 );
 ```
 
+<!--
+2つ目の解決策として、必要なフィールドだけを取得する方法があります。イメージとしては GraphQL のクエリに似ています。ツールの入力スキーマに `fields` パラメータを追加し、ユーザーが必要とするフィールドだけを指定できるようにします。これにより、不要なデータを返すことを避け、コンテキストのサイズを抑えることができます。
+ -->
+
 ---
 
 # 解決策3: データを要約・整形
@@ -792,11 +944,19 @@ server.registerTool(
 );
 ```
 
+<!--
+最後の解決策として、データを要約・整形する方法があります。ツールの入力スキーマに `responseFormat` パラメータを追加し、LLMが詳細なデータか要約されたデータかを選択できるようにします。これにより、必要に応じてコンテキストのサイズを調整できます。
+ -->
+
 ---
 
-# LLMが誤ったツール呼び出しを行う
+# 3. LLMが誤ったツール呼び出しを行う
 
 ホストメトリック取得ツールで存在しないメトリック名を繰り返し呼び出して失敗し続ける
+
+<!--
+3つ目の問題は、LLM が誤ったツール呼び出しを行うことです。例えば、ホストメトリック取得ツールで存在しないメトリック名を繰り返し呼び出して失敗し続けるといったケースがありました。
+ -->
 
 ---
 
@@ -937,42 +1097,17 @@ get_product_by_id("prod_abc123");
 
 ---
 
-# 人間が読める名前のメリット
+# まとめ
 
-- LLMの理解精度が向上
-- 幻覚(ハルシネーション)の軽減
-- 検索タスクの精度向上
+- MCP はツールのインターフェースを標準化するプロトコル
+- Claude だけでなく主要な LLM が MCP をサポートし事実上の標準に
 
-### 実装のポイント
+- TypeScript SDK でツールの開発を行った
+- ツールの description と入力スキーマの設計が重要
 
-内部的にIDに変換する処理を実装
-
----
-
-# まとめ: MCP基礎知識
-
-- MCPはツールのインターフェースを標準化
-- クライアント・サーバーモデル
-- JSON-RPC 2.0で通信
-- リソース・プロンプト・ツールの3つの機能
-
----
-
-# まとめ: 実装のポイント
-
-- TypeScript SDKで簡単に実装可能
-- MCP Inspectorでデバッグ
-- Claude Desktopで実際に使用
-
----
-
-# まとめ: 本番レベルの実装
-
-- タスクベースで設計
-- コンテキストサイズに注意
-- descriptionをプロンプトエンジニアリング
-- エラー応答を詳細に
-- 人間が読める名前を使用
+- Web API のラッパーではなく、タスクベースでツールを設計
+- コンテキストサイズを意識し、ページネーションや要約を活用
+- LLM に優しい description とエラー応答で誤呼び出しを防ぐ
 
 ---
 
@@ -980,19 +1115,15 @@ get_product_by_id("prod_abc123");
 
 - Model Context Protocol公式ドキュメント
   https://modelcontextprotocol.io/
+- やさしい MCP 入門
+  https://www.shuwasystem.co.jp/book/9784798075730.html
+
 - TypeScript SDK
   https://github.com/modelcontextprotocol/typescript-sdk
+
 - Writing Tools for Agents
   https://www.anthropic.com/engineering/writing-tools-for-agents
 - The second wave of MCP: Building for LLMs, not developers
   https://vercel.com/blog/the-second-wave-of-mcp-building-for-llms-not-developers
-- やさしい MCP 入門
-  https://www.shuwasystem.co.jp/book/9784798075730.html
 
 ---
-
-<div class="center">
-
-# ご清聴ありがとうございました
-
-</div>
