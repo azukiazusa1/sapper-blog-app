@@ -82,10 +82,8 @@ selfAssessment:
         - text: "this.setState()"
           correct: false
           explanation: null
-
 published: true
 ---
-
 2025 年 10 月 10 日に行われた [Remix Jam 2025](https://www.youtube.com/live/xt_iEOn2a6Y?t=11764s) にて、Remix v3 が発表されました。Remix v3 は React から離れ、独自のフレームワークとして再設計されるという大きな変更が行われています。Remix v3 で新しいアーキテクチャが導入された理由について、以下の 3 つが挙げられています。
 
 - 従来のフロントエンドエコシステムの複雑性の解消
