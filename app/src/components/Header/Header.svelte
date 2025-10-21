@@ -70,7 +70,7 @@
       class={`flex mx-auto items-center justify-between rounded-full px-4 py-2 transition-all duration-300 lg:w-max
         ${
           isScrolled
-            ? "bg-white/70 dark:bg-zinc-800/70 backdrop-blur-2xl shadow-lg border border-gray-300/50 dark:border-zinc-600/50 dark:shadow-zinc-900/40"
+            ? "bg-white/40 dark:bg-zinc-800/40 backdrop-blur-2xl shadow-lg border border-gray-300/50 dark:border-zinc-600/50 dark:shadow-zinc-900/40"
             : "bg-white/95 dark:bg-zinc-800/95 backdrop-blur-lg shadow-md border border-gray-200 dark:border-zinc-700 dark:shadow-zinc-900/20"
         }
       `}
