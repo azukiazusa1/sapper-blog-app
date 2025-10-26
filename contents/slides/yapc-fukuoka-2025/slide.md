@@ -790,46 +790,83 @@ https://pub.jmam.co.jp/book/b626919.html
 
 ---
 
-## AIとの適切な距離感
+## AIとの共創による技術記事執筆
 
-### 良い使い方
-
-- **壁打ち相手**として文書構成を検討
-- **校正・誤字脱字**チェック
-
-### 避けるべき使い方
-
-- 文章の改善（内容が変質）
-- 創作部分の代筆
+- 壁打ち相手として文書構成を検討
+- 校正・誤字脱字チェック
+- 文書の形式の変換
 
 ---
 
-## Claude Codeの活用例
+## AIを活用した文章校正
 
-<div class="center">
-
-**カスタムスラッシュコマンド**で
-文章校正を効率化
-
-</div>
-
-- 文法チェック
-- 表記統一
-- 読みやすさの向上
+- 誤字脱字や文法の誤りをチェック
+- 表現の改善提案
 
 ---
 
-## これからの技術探求
+### 注意点
 
-<div class="center">
+- いきなり編集を任せない
+  - 文章の意図が変わってしまったり、大事な箇所を削除されたりする可能性がある
+  - AI には提案させるにとどめ、最終的な判断は自分で行う
+- 記事の評価はさせずに、あくまで校正に限定する
+  - AI は大抵最高評価を与える傾向があるため、ノイズになりがち
 
-**AI × 人間 = 最強**
+---
 
+### Claude Codeの活用例
+
+**カスタムスラッシュコマンド**で文章校正を依頼
+
+````markdown
+---
+allowed_tools: Bash(git:*), Bash(npm:*), Read(*.md), Fetch(*)
+description: "引数で指定した記事のレビューを行います。"
+---
+
+あなたはプロの編集者です。技術記事を読んで、誤字脱字、文法的な誤り、不自然な表現を指摘してください。
+
+## 出力形式
+
+```
+
+【誤字脱字・表記ミス】
+
+- 該当箇所：「〇〇〇」
+  修正案：「×××」
+  理由：[具体的な理由]
+
+  ...
+```
+````
+
+---
+
+## 文書の形式の変換
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 3rem;">
+  <div>
+    <img src="./images/memo.png" alt="memo" width="200" />
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 2rem;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="width: 80px; height: 2px; background: #3b82f6;"></div>
+      <div style="width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 12px solid #3b82f6;"></div>
+      <img src="./images/article.png" alt="article" width="150" />
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="width: 80px; height: 2px; background: #3b82f6;"></div>
+      <div style="width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 12px solid #3b82f6;"></div>
+      <img src="./images/slide.png" alt="slide" width="150" />
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="width: 80px; height: 2px; background: #3b82f6;"></div>
+      <div style="width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 12px solid #3b82f6;"></div>
+      <img src="./images/mermaid.svg" alt="mermaid" width="150" />
+    </div>
+  </div>
 </div>
-
-- AIで効率化
-- 人間の強みを活かす
-- 個性と体験を大切に
 
 ---
 
@@ -837,36 +874,57 @@ https://pub.jmam.co.jp/book/b626919.html
 
 ---
 
-## 本日のキーメッセージ
+## 本日のまとめ
 
-1. **おもしろさ**が探求の原動力
-2. **アウトプット**で理解を深める
-3. **AI時代こそ**人間らしさが重要
+<div class="grid two-column">
+
+<div>
+
+### 1. なぜ探求するのか
+
+- **おもしろさが原動力**
+- **習慣の力**を活用
+- **自分のため**にアウトプット
+
+</div>
+
+<div>
+
+### 2. 効果的な記事の書き方
+
+- **コンテキストファースト**
+- **黄金構成**を意識
+- **ライブ感**を大切に
+
+</div>
+
+</div>
+
+<div class="center" style="margin-top: 2rem;">
+
+### 3. AI時代の技術探求
+
+<div class="highlight">AIは増幅ツール。学習のプロセスは人間が主体となるべき</div>
+
+</div>
 
 <!--
-40分間、長時間のご清聴ありがとうございました。最後に、本日のキーメッセージを3つにまとめさせていただきます。
+ここまでの内容を簡単にまとめましょう。
 
-まず、おもしろさが探求の原動力であること。外発的動機ではなく、内発的動機で継続することが大切です。
+第1部では、技術探求の原動力について3つのポイントをお話ししました。新しい技術を学ぶことのおもしろさ、それを継続するための習慣の力、そして自分自身の学習効果を最大化するためのアウトプットの重要性です。
 
-次に、アウトプットで理解を深めること。学んだことを他人に説明することで、自分の理解も深まります。
+第2部では、効果的な技術記事の書き方について、コンテキストファーストの重要性、記事の黄金構成、そして試行錯誤のライブ感を提供することの価値をお伝えしました。
 
-最後に、AI時代だからこそ人間らしさが重要であること。AIには書けない体験や感情を大切にしてください。
+第3部では、AI時代における技術記事の在り方について考えました。AIは自分の知識を増幅する道具として活用すべきであり、学習のプロセスそのものは人間が主体となるべきだということです。
+
+これら全てに共通するのは、技術探求は自分自身の成長のためであり、その過程そのものに価値があるということです。
 -->
 
 ---
 
-## 明日から始められること
+## クイズ
 
-- **週1回**の技術記事執筆
-- **固定構成**でハードルを下げる
-- **体験ベース**の記事作成
-- **AI校正**の活用
-
----
-
-## クイズタイム
-
-<div class="center large">
+<div class="center">
 
 **技術記事で最も重要なのは？**
 
@@ -893,27 +951,3 @@ C. コードをたくさん載せる
 -->
 
 ---
-
-## 参考資料・連絡先
-
-- **ブログ**: https://azukiazusa.dev
-- **X**: @azukiazusa1
-- **GitHub**: azukiazusa1
-
-<div class="center highlight">
-
-**ご清聴ありがとうございました！**
-
-</div>
-
-<!--
-以上で「技術の探求」についてのお話を終わらせていただきます。
-
-私のブログやSNSでは、今日お話ししたような技術記事を定期的に公開しています。よろしければフォローしていただけると嬉しいです。
-
-今日のお話が、皆さんの技術探求やアウトプットに少しでもお役に立てることを願っています。
-
-本日はありがとうございました！
-
-何かご質問がありましたら、お気軽にお声がけください。
--->
