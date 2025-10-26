@@ -8,7 +8,7 @@ updatedAt: "2025-10-26T10:23+09:00"
 tags: ["claude"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/647wqryHihaEIfmM2ID2eC/4545a05bbb10dabf69c4374b9cb2d4f4/goma-toufu_22787-768x591.png"
-  title: "ゴマ豆腐のイラスト"
+  title: "goma-toufu 22787-768x591"
 audio: null
 selfAssessment:
   quizzes:
@@ -19,13 +19,13 @@ selfAssessment:
           explanation: "name と description フィールドがまず読み込まれ、必要な場合のみ SKILL.md の本文が読み込まれます。これにより、使用頻度の低いスキルの詳細説明がコンテキストを圧迫することを防いでいます。"
         - text: "スキルのディレクトリの構造をモジュール化するため"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "セキュリティリスクを軽減するため"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "複数のスキルを同時に実行できるようにするため"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "SKILL.md ファイルの YAML フロントマターで必須のフィールドはどれですか？"
       answers:
         - text: "name と description"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "name、description、author"
           correct: false
           explanation: "author フィールドは必須ではありません。必須なのは name と description のみです。"
-
 published: true
 ---
-
 Claude ではスプレッドシートやスライドを作成するためにスキルと呼ばれる機能を利用します。例えば「以下のマークダウンを元にスライドを作成してください」という指示を与えると、pptx スキル・html2pptx.md ファイルを読み込みスライドの作成方法を確認したうえで、アーティファクトとして pptx ファイルを生成します。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/14xQ6dSTj2jK8eDyrbgwg9/19f9fc7161069bc68cce0338aa5bb92b/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-10-26_10.55.44.png)
