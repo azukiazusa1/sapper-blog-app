@@ -327,6 +327,10 @@ https://www.hayakawa-online.co.jp/shop/g/g0000612738/
 
 ---
 
+# これを技術探求に応用する
+
+---
+
 ## 技術探求を習慣化するには
 
 - きっかけを設定する
@@ -348,7 +352,7 @@ https://www.hayakawa-online.co.jp/shop/g/g0000612738/
 
 ---
 
-## 情報収集チャネルの例
+## 習慣化のコツ: 情報収集チャネルの例
 
 - 𝕏（Twitter）
   - おすすめタブを眺めてブクマしておく
@@ -364,7 +368,7 @@ https://www.hayakawa-online.co.jp/shop/g/g0000612738/
 
 ---
 
-## ルーティンを決める
+## 習慣化のコツ: ルーティンを決める
 
 - 毎週決まった時間に情報収集・アウトプットを行う
   - いつやるか？という意思決定はエネルギーを消費する
@@ -382,7 +386,7 @@ https://www.hayakawa-online.co.jp/shop/g/g0000612738/
 
 ---
 
-## 取り組みのハードルを下げる工夫
+## 習慣化のコツ: 取り組みのハードルを下げる工夫
 
 - 初めは継続しやすいように短時間から始める
   - はじめは5分でも良い、継続することを目指す
@@ -403,7 +407,7 @@ https://www.hayakawa-online.co.jp/shop/g/g0000612738/
 
 ---
 
-## 報酬を用意する
+## 習慣化のコツ: 報酬を用意する
 
 - 記事を書き終えた後の充足感
   - 知らなかったことを知れた、理解が深まった喜び
@@ -419,6 +423,28 @@ https://www.hayakawa-online.co.jp/shop/g/g0000612738/
 
 また、目に見える形で記録を残すことも効果的です。例えばGitHubで草を生やすとか、ブログの投稿数をカウントするとかですね。ただし、記録を残す工程は必ず自動化することをお勧めします。手動で行うと面倒になり、記録を残すことに失敗したことが要因となって継続が途切れてしまう可能性があります。
   -->
+
+---
+
+## 習慣化のコツ: 私の週次習慣
+
+- 平日: X、はてなブックマークを眺め、気になった投稿をブックマーク
+- 土曜の昼頃: ブックマークから1つを選んで深堀り開始
+  - 実際に動かしながら並行してブログ記事を執筆
+- 記事完成が完成したらプルリクエストのマージボタンを押す
+  - このタイミングが一種の達成感となる
+
+<!--
+ここで、私自身の週次の習慣を具体例として紹介します。
+
+平日は X やはてなブックマークを眺めて、気になった投稿をブックマークしています。この時点では深く読み込むわけではなく、あくまで「気になったものをストックする」という軽い作業です。
+
+そして、土曜の昼くらいから、ブックマークした中から1つを選んで深堀りを始めます。実際にコードを動かしたり、技術を試したりしながら、並行してブログ記事を書いていきます。
+
+最後に、ブログを書き終えてプルリクエストのマージボタンを押すタイミングが、一種の達成感となります。これが習慣ループにおける「報酬」の役割を果たしており、継続のモチベーションになっています。
+
+このサイクルは、きっかけ（平日の情報収集）、ルーティン（土曜の深堀りと執筆）、報酬（PRマージ時の達成感）という習慣のループを体現しています。また、すでにブックマーク済みのトピックから選ぶことで、取り組みのハードルも下がっています。
+ -->
 
 ---
 
@@ -983,39 +1009,84 @@ https://textlint.org/
 
 ## 文書の形式の変換
 
-<div style="display: flex; align-items: center; justify-content: center; gap: 3rem;">
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+<style>
+.conversion-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.conversion-source {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.conversion-caption {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+.conversion-targets {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.conversion-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.conversion-arrow {
+  flex-shrink: 0;
+}
+
+.conversion-target {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.conversion-label {
+  font-size: 0.6rem;
+  color: #666;
+  margin: 0;
+}
+</style>
+
+<div class="conversion-container">
+  <div class="conversion-source">
     <img src="./images/memo.png" alt="memo" width="600" />
-    <p style="font-size: 1rem; color: #666; margin: 0;">
+    <p class="conversion-caption">
       メモや箇条書きでアイデアを整理
     </p>
   </div>
-  <div style="display: flex; flex-direction: column; gap: 2rem;">
-    <div style="display: flex; align-items: center; gap: 1rem;">
-      <svg width="100" height="24" viewBox="0 0 100 24" style="flex-shrink: 0;">
-        <path d="M0 12 L85 12 L81 8 M85 12 L81 16" stroke="#3b82f6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-        <img src="./images/article.png" alt="article" width="200" />
-        <p style="font-size: 0.9rem; color: #666; margin: 0;">ブログ記事</p>
+  <div class="conversion-targets">
+    <div class="conversion-item">
+      <img src="./images/arrow-blue.svg" alt="arrow" width="80" height="24" class="conversion-arrow" />
+      <div class="conversion-target">
+        <img src="./images/article.png" alt="article" width="160" />
+        <p class="conversion-label">ブログ記事</p>
       </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 1rem;">
-      <svg width="100" height="24" viewBox="0 0 100 24" style="flex-shrink: 0;">
-        <path d="M0 12 L85 12 L81 8 M85 12 L81 16" stroke="#3b82f6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-        <img src="./images/slide.png" alt="slide" width="200" />
-        <p style="font-size: 0.9rem; color: #666; margin: 0;">スライド</p>
+    <div class="conversion-item">
+      <img src="./images/arrow-blue.svg" alt="arrow" width="80" height="24" class="conversion-arrow" />
+      <div class="conversion-target">
+        <img src="./images/slide.png" alt="slide" width="160" />
+        <p class="conversion-label">スライド</p>
       </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 1rem;">
-      <svg width="100" height="24" viewBox="0 0 100 24" style="flex-shrink: 0;">
-        <path d="M0 12 L85 12 L81 8 M85 12 L81 16" stroke="#3b82f6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-        <img src="./images/output-learning-diagram.svg" alt="mermaid" width="200" />
-        <p style="font-size: 0.9rem; color: #666; margin: 0;">図</p>
+    <div class="conversion-item">
+      <img src="./images/arrow-blue.svg" alt="arrow" width="80" height="24" class="conversion-arrow" />
+      <div class="conversion-target">
+        <img src="./images/output-learning-diagram.svg" alt="mermaid" width="160" />
+        <p class="conversion-label">図</p>
       </div>
     </div>
   </div>
