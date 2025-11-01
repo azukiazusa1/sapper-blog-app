@@ -8,7 +8,7 @@ updatedAt: "2025-11-01T14:47+09:00"
 tags: ["claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1pTALrlRu2w7oQTYGRYF1A/23a79ab1be9ac116fa29c957e158bfe4/cheesecake_21072-768x591.png"
-  title: "お皿に乗ったチーズケーキのイラスト"
+  title: "cheesecake 21072-768x591"
 audio: null
 selfAssessment:
   quizzes:
@@ -54,10 +54,8 @@ selfAssessment:
         - text: "サンドボックス環境ではネットワークアクセスは常に拒否される"
           correct: false
           explanation: null
-
 published: true
 ---
-
 Claude Code をはじめとする AI コーディングエージェントは、ファイルの作成・編集・削除やコードの検証を行うためにホストマシンのファイルシステムにアクセスしたり、任意の bash コマンドを実行できる強力な機能を備えています。しかしこれらの機能は誤用や悪用されるリスクも伴います。例えば、エージェントが誤って重要なシステムファイルを削除したり、悪意のあるコードを実行してしまう可能性があります。
 
 そのため AI コーディングエージェントはファイルの編集やコマンドの実行を行う際に、ユーザーの承認を求める仕組みが備わっていることが一般的です。しかし AI コーディングエージェントがコマンドを実行するたびにユーザーの承認を求めることは以下のような問題があります。

@@ -8,7 +8,7 @@ updatedAt: "2025-10-26T10:23+09:00"
 tags: ["claude"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/647wqryHihaEIfmM2ID2eC/4545a05bbb10dabf69c4374b9cb2d4f4/goma-toufu_22787-768x591.png"
-  title: "goma-toufu 22787-768x591"
+  title: "ごま豆腐のイラスト"
 audio: null
 selfAssessment:
   quizzes:
