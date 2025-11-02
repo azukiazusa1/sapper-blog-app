@@ -4,7 +4,7 @@ theme: default
 class: invert
 style: |
   section {
-    font-size: 26px;
+    font-size: 28px;
     line-height: 1.5;
     background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
     color: #ffffff;
@@ -35,7 +35,6 @@ style: |
     font-size: 40px;
     font-weight: 700;
     color: #ffffff;
-    padding-left: 16px;
     letter-spacing: -0.01em;
     line-height: 1.3;
     margin-bottom: 1.2rem;
@@ -49,7 +48,6 @@ style: |
   }
   code {
     background: linear-gradient(135deg, #1e1e2e, #2a2d3a);
-    color: #4dd0e1;
     font-size: 22px;
     border: 1px solid rgba(77, 208, 225, 0.4);
     border-radius: 6px;
@@ -82,8 +80,12 @@ style: |
     position: relative;
     padding-left: 30px;
     line-height: 1.5;
+  }
+
+  ul li {
     list-style: none;
   }
+
   ul li::before {
     content: '▸';
     position: absolute;
@@ -107,7 +109,6 @@ style: |
     display: flex;
     flex-direction: column;
     gap: 16px;
-    align-items: center;
     border: 1px solid rgba(77, 208, 225, 0.4);
     position: relative;
     overflow: hidden;
@@ -158,6 +159,11 @@ style: |
     z-index: 2;
   }
 
+  .centered-image {
+    display: grid;
+    place-items: center;
+  }
+
   .text-sm {
     font-size: 22px;
     color: #e0e0e0;
@@ -201,6 +207,11 @@ style: |
     margin: 12px 0;
     border-radius: 6px;
   }
+
+  .f {
+    display: flex;
+    gap: 12px;
+  }
 ---
 
 <div class="center">
@@ -218,7 +229,7 @@ style: |
 
 ---
 
-# 自己紹介
+## 自己紹介
 
 - azukiazusa
 - https://azukiazusa.dev
@@ -233,7 +244,7 @@ style: |
 
 ---
 
-# アジェンダ
+## アジェンダ
 
 - MCP サーバーの基礎知識について(10分)
 - MCP サーバー構築ハンズオン(20分)
@@ -245,7 +256,15 @@ style: |
 
 ---
 
-# MCPとは何か
+<div class="center">
+
+# MCP サーバーの基礎知識
+
+</div>
+
+---
+
+## MCPとは何か
 
 **Model Context Protocol (MCP)**
 
@@ -258,12 +277,12 @@ style: |
 <!--
 MCP とは Model Context Protocol の略で、アプリケーションが LLM にコンテキストを渡す方法を標準化するためのプロトコルです。Claude を提供する Anthropic が開発・発表しました。MCP はツールのインターフェースを統一することで、ツールの開発者が LLM の実装の違いを意識せずにツールを開発できるようにすることを目的としています。
 
-MPC は AI アプリケーション用の USB-C ポートのようなものと説明されており、、USB-C ポートがさまざまなデバイスで共通のインターフェースを提供するように、LLM が外部システムに接続できるようなイメージです。
+MCP は AI アプリケーション用の USB-C ポートのようなものと説明されており、、USB-C ポートがさまざまなデバイスで共通のインターフェースを提供するように、LLM が外部システムに接続できるようなイメージです。
  -->
 
 ---
 
-# なぜMCPが必要なのか?
+## なぜMCPが必要なのか?
 
 - LLMには知識カットオフがあり、最新の情報や組織内の情報を取得できない
   - Web 検索をしたり、社内ドキュメントを参照しその情報をコンテキストに渡す必要がある
@@ -283,7 +302,7 @@ MPC は AI アプリケーション用の USB-C ポートのようなものと�
 
 ---
 
-# function calling
+## function calling
 
 - 開発者がコードレベルで LLM に外部ツールを呼び出させるためには、function calling といった仕組みが使われてきた
   - 天気情報を取得するために天気情報 API を呼び出したり、Slack API を呼び出してメッセージを送信したりする関数を LLM が呼び出す
@@ -297,7 +316,7 @@ MPC は AI アプリケーション用の USB-C ポートのようなものと�
 
 ---
 
-# function callingの例
+### function callingの例
 
 <div class="grid">
 
@@ -360,7 +379,7 @@ const response = await anthropic.messages.create({
 
 ---
 
-# MCP が解決したこと
+## MCP が解決したこと
 
 - 1 つの MCP サーバーを開発すれば、複数のクライアントから利用できる
 - 各プログラミング言語向けの SDK が提供されているため、効率よく MCP サーバーを開発し、パッケージマネージャーで配布できる
@@ -375,7 +394,16 @@ const response = await anthropic.messages.create({
 
 ---
 
-# MCPの仕組み
+## MCP サーバーの例
+
+- [Slack MCP サーバー](https://docs.slack.dev/ai/mcp-server/): Slack の情報を検索したり、メッセージを送信したりできる
+- [Playwright MCP サーバー](https://github.com/microsoft/playwright-mcp): Web ブラウザを操作して情報を取得したり、操作を自動化したりできる
+- [Figma MCP サーバー](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server): Figma のリソースを元にコードを生成
+- [Sentry MCP サーバー](https://docs.sentry.io/product/sentry-mcp/): Sentry のエラー情報を取得し、原因の特定や修正方法を提案
+
+---
+
+## MCPの仕組み
 
 ![](./images/mcp-architecture-diagram.svg)
 
@@ -387,21 +415,22 @@ MCP がどのような仕組みで動いているのか、簡単に説明しま�
 
 ---
 
-# MCPのトランスポート
+## MCPのトランスポート
 
-### stdio(標準入出力)
+#### stdio(標準入出力)
 
 - 標準入力/出力を使用した通信
-- ローカル環境で動作
+- ローカル環境で動作するため、パッケージをインストールする必要がある
 
-### Streamable HTTP
+#### Streamable HTTP
 
 - HTTP を使用した通信
 - ユーザーは MCP をローカルにインストールする必要がない
 
-### SSE(非推奨)
+#### SSE(非推奨)
 
 - 互換性維持のために残されている
+- Streamable HTTP を実装した場合、後方互換性のために SSE も実装する必要がある
 
 <!--
 MCP はクライアントとサーバー間の通信に複数のトランスポート方式をサポートしています。現在定義されているトランスポート方式は stdio、Streamable HTTP の 2 つです。
@@ -414,7 +443,7 @@ SSE は互換性維持のために残されているトランスポート方式�
 
 ---
 
-# JSON-RPC 2.0
+## JSON-RPC 2.0
 
 - JSON-RPC 2.0 (https://www.jsonrpc.org/specification)を使用して通信
 - JSON-RPC とは、リモートプロシージャコール (RPC) を JSON フォーマットで実装するための軽量なプロトコル
@@ -441,19 +470,19 @@ MCP のクライアントとサーバーは JSON-RPC 2.0 を使用して通信�
 
 ---
 
-# MCPの3つの機能
+## MCPの3つの機能
 
-### リソース
+#### リソース
 
 - ユーザーや LLM がアクセスできるデータ
 - 例: ドキュメント、画像、UI コンポーネント
 
-### プロンプト
+#### プロンプト
 
 - 再利用可能なプロンプトテンプレート
 - 組織内で効果的なプロンプトを共有
 
-### ツール
+#### ツール
 
 - LLM が呼び出せる外部ツール
 
@@ -468,13 +497,17 @@ MCP のクライアントとサーバーは JSON-RPC 2.0 を使用して通信�
 
 ---
 
+<div class="center">
+
 # MCP サーバー構築デモ
 
 ## TypeScript SDK を使用してサイコロツールを実装
 
+</div>
+
 ---
 
-# プロジェクトのセットアップ
+## プロジェクトのセットアップ
 
 ```bash
 git clone https://github.com/azukiazusa1/mcp-handson.git
@@ -487,7 +520,7 @@ npm install
 
 ---
 
-# 使用するパッケージ
+## 使用するパッケージ
 
 - `@modelcontextprotocol/sdk`: MCP サーバーを構築するための公式 SDK
 - `zod`: ツールの入力と出力のスキーマを定義するためのライブラリ
@@ -495,7 +528,7 @@ npm install
 
 ---
 
-# サーバーの基本構造
+## サーバーの基本構造
 
 `src/server.ts`
 
@@ -517,18 +550,13 @@ MCP サーバークラスを import して、`new McpServer` でサーバーイ�
 
 ---
 
-# ツールの定義と実装
-
-<div class="grid">
-
-<div>
+## ツールの定義と実装
 
 ```typescript
 import { z } from "zod";
 
 server.registerTool(
-  // ツール名
-  "roll_dice",
+  "roll_dice", // ツールの一意な名前
   {
     title: "Roll Dice", // 人間が読めるツールの名前
     description: "ランダムな数字を生成するサイコロツール", // ツールの説明
@@ -541,6 +569,7 @@ server.registerTool(
       result: z.number(),
     },
   },
+  // LLM がツールを呼び出したときに実行される関数
   async ({ sides = 6 }) => {
     const result = Math.floor(Math.random() * sides) + 1;
 
@@ -552,15 +581,22 @@ server.registerTool(
 );
 ```
 
-</div>
+---
 
-- description はツールがツールを呼び出す判断に影響するため重要
-- Zod でスキーマを定義し、LLM に入力と出力の形式を伝える
-- 第 3 引数で呼び出した関数の結果が LLM に返される
+### ツールのポイント
+
+- `title` はツールの一覧に表示されるため、人間が理解しやすい名前にする
+- `description` は LLM がツールを呼び出す判断に影響するため重要
+  - LLM のシステムプロンプトに自動で追加される
+- `inputSchema` と `outputSchema` でツールのインターフェイスを定義
+  - JSON Schema に基づいている。TypeScript では zod を使用して定義可能
+- `outputSchema` は必須ではないが、定義することでクライアントや LLM がツールを適切に処理しやすくなる
+- ツールの戻り値の `structuredContent` は `outputSchema` に準拠している必要がある
+- `outputSchema` をサポートしていないクライアントのために、`content` も返す
 
 ---
 
-# サーバーの起動(stdio)
+## サーバーの起動(stdio)
 
 ```typescript
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -578,7 +614,7 @@ main();
 
 ---
 
-# サーバーをビルド
+## サーバーをビルド
 
 ```bash
 npm run build
@@ -588,38 +624,42 @@ npm run build
 
 ---
 
-# MCP Inspectorで動作確認
+## MCP Inspectorで動作確認
 
 ```bash
 npx @modelcontextprotocol/inspector node build/server.js
 ```
 
-- LLM は実装したツールを確実に呼び出してくれるとは限らない
-- ブラウザ上の UI でツールの動作をテストできる
+- LLM は実装したツールを確実に呼び出してくれるとは限らないので、ツールの動作確認が難しい
+- ブラウザ上の UI でツールを直接呼び出して動作確認でき
 
 ---
 
-# MCP Inspectorでの接続操作
+## MCP Inspectorでの接続操作
 
 ![w:900](./images/mcp-inspector-connect.png)
 
 ---
 
-# roll_dice ツールの動作確認
+## roll_dice ツールの動作確認
 
 ![w:900](./images/mcp-inspector-roll-dice.png)
 
 ---
 
-# Claude Desktopでの設定
+## Claude Desktopでの設定
 
 Settings > Developer > Edit Config
 
-![w:800](./images/claude-desktop-settings.png)
+<div class="centered-image">
+
+![w:600](./images/claude-desktop-settings.png)
+
+</div>
 
 ---
 
-# JSON設定例
+## JSON設定例
 
 `claude_desktop_config.json` ファイルに以下を追加
 
@@ -636,30 +676,41 @@ Settings > Developer > Edit Config
 
 ---
 
-# MCP サーバーのツールが追加されたことを確認
+## MCP サーバーのツールが追加されたことを確認
 
 Claude Desktop を再起動して、ツールの一覧に `dice` が表示されていることを確認
 
+<div class="centered-image">
+
 ![w:500](./images/claude-desktop-tools.png)
+
+</div>
 
 ---
 
-# Claude Desktopで実行
+## Claude Desktopで実行
 
-「人生ゲームをプレイするので、サイコロを振ってください」とプロンプトを入力
-→ `Roll Dice` ツールの呼び出しの許可が求められる
+`Roll Dice` ツールの呼び出しの許可が求められる
+
+<div class="centered-image">
 
 ![w:500](./images/claude-desktop-roll-dice.png)
 
+</div>
+
 ---
 
-# サイコロを振った結果を元に Claude が応答
+## サイコロを振った結果を元に Claude が応答
+
+<div class="centered-image">
 
 ![w:500](./images/claude-desktop-dice-result.png)
 
+</div>
+
 ---
 
-# MCP サーバーを提供するには
+## MCP サーバーを提供するには
 
 - stdio: プログラミング言語のパッケージマネージャー・もしくは Docker コンテナで配布するのが一般的
   - TypeScript: npm
@@ -683,14 +734,14 @@ Claude Desktop を再起動して、ツールの一覧に `dice` が表示され
 
 ---
 
-# Mackerel MCP サーバーを開発
+## Mackerel MCP サーバーを開発
 
 <div class="flex">
 
 <div>
 
 - Mackerel は株式会社はてなが提供するクラウド型サーバー監視サービス
-- MCPサーバーを利用してAIと連携することで、アラート情報の取得から原因分析、詳細な対処手順の提案までをAIが支援し
+- MCPサーバーを利用してAIと連携することで、アラート情報の取得から原因分析、詳細な対処手順の提案までをAIが支援
 
 </div>
 
@@ -706,7 +757,15 @@ Claude Desktop を再起動して、ツールの一覧に `dice` が表示され
 
 <div class="center">
 
-# Web API の設計知識は捨てる
+## MCPサーバー設計で大切なこと
+
+</div>
+
+---
+
+<div class="center">
+
+## Web API の設計知識は捨てる
 
 </div>
 
@@ -717,7 +776,23 @@ Claude Desktop を再起動して、ツールの一覧に `dice` が表示され
 
 ---
 
-# 1. APIのラッパーとして提供すると失敗する
+## MCPサーバー設計で実際に失敗したこと
+
+1. APIのラッパーとして提供してしまう
+2. レスポンスのコンテキストサイズが大きすぎる
+3. LLM がツールの呼び出し方を誤る
+
+---
+
+<div class="center">
+
+# 1. APIのラッパーとして提供してしまう
+
+</div>
+
+---
+
+## APIのラッパーとして提供すると失敗する
 
 - REST APIはエンドポイントベースの設計
   - 1 つのリソースに対して GET、POST、PUT、DELETE などの操作ごとにエンドポイントが存在
@@ -734,9 +809,9 @@ Claude Desktop を再起動して、ツールの一覧に `dice` が表示され
 
 ---
 
-# 例: カレンダーAPI
+## 例: カレンダーAPI
 
-### 従来のAPI設計
+#### 従来のAPI設計
 
 - `GET /users` - ユーザー取得
 - `GET /events` - イベント取得
@@ -744,7 +819,7 @@ Claude Desktop を再起動して、ツールの一覧に `dice` が表示され
 
 → この設計に従うと、`get_users`, `get_events`, `create_event` といったツールを作りたくなる
 
-### より効果的なツール設計
+#### LLM向けのツール設計
 
 - `schedule_meeting` - ミーティングをスケジュール（ツールの実装の中で複数のAPIを呼び出す）
 
@@ -764,42 +839,34 @@ Claude Desktop を再起動して、ツールの一覧に `dice` が表示され
 
 <div>
 
-## 従来のプログラミングの例
+### 従来のプログラミングの例
 
 ```typescript
-async function scheduleMeetingWithTanaka() {
-  // 1. ユーザーを検索
-  const users = await fetch("https://api.example.com/users?name=田中").then(
-    (r) => r.json(),
+app.get("/get_user", async (req, res) => {
+  const user = await searchUser(req.query.name);
+  res.json(user);
+});
+
+app.get("/get_events", async (req, res) => {
+  const events = await getEvents(req.query.userId, req.query.date);
+  res.json(events);
+});
+
+app.post("/create_event", async (req, res) => {
+  const event = await createEvent(
+    req.body.title,
+    req.body.attendeeIds,
+    req.body.timeSlot,
   );
-  const tanaka = users.find((u) => u.name.includes("田中"));
-
-  // 2. 田中さんの予定を取得
-  const events = await fetch(
-    `https://api.example.com/events?userId=${tanaka.id}&date=2025-10-06`,
-  ).then((r) => r.json());
-
-  // 3. 空き時間を見つける
-  const freeSlots = findFreeSlots(events);
-
-  // 4. ミーティングを作成
-  await fetch("https://api.example.com/events", {
-    method: "POST",
-    body: JSON.stringify({
-      title: "定例会議",
-      attendees: [tanaka.id],
-      startTime: freeSlots[0].start,
-      endTime: freeSlots[0].end,
-    }),
-  });
-}
+  res.json(event);
+});
 ```
 
 </div>
 
 <div>
 
-## MCPサーバーの例
+### MCPサーバーの例
 
 ```typescript
 // MCP ツール: 1つのツールでタスクを完結
@@ -840,27 +907,48 @@ server.registerTool(
 
 ---
 
-# ツール設計のポイント
+## ツール設計のポイント
+
+### 提供するツールの数を絞る
 
 - 提供するツールの数が多くなると、LLMがどのツールを使うべきか迷ってしまう
   - 多くのユーザーは複数の MCP サーバーを同時に利用するので、思ったよりもツールの数が多くなりがち
   - `description` の内容は LLM のシステムプロンプトに自動で追加されるため、コンテキストの圧迫につながる
   - MCP サーバーのコンテキストの圧迫という課題に対して Claude Skills という機能も発表された
-- ユーザーが何を達成したいのか、ユースケースを考えてツールを設計する
-  - ユーザーを取得したいのは何のため？
-    - 会議のスケジュールのために空き時間を知りたいの真の目的
 
 <!--
 ツール設計のポイントとして、提供するツールをよく選定することが重要です。提供するツールの数が多くなると、LLM がどのツールを使うべきか迷ってしまうことがあります。特に多くのユーザーは複数の MCP サーバーを同時に利用するので、思ったよりもツールの数が多くなりがちです。
 
 またツールは LLM の起動時に自動で説明がコンテキストに追加されるため、提供するツールが多すぎるとコンテキストの圧迫につながります。MCP サーバーのコンテキストの圧迫という課題に対して Claude Skills という機能も発表されたりもしていますね。
+ -->
 
+---
+
+## ツール設計のポイント
+
+### タスクベースで設計
+
+- ユーザーが達成したいタスクを中心にツールを設計
+  - 例: 会議のスケジュール、レポートの生成、データの分析
+- ツールの実装の中で複数の API を組み合わせてタスクを達成
+- ツールの詳細度を上げすぎない
+  - 汎用性が低くなり、LLM が適切にツールを選択できなくなる
+
+<!--
 そのため、ユーザーが何を達成したいのか、ユースケースを考えてツールを設計することが重要です。例えば、ユーザーを取得したいのは何のためかと考えると、会議のスケジュールのために空き時間を知りたいというのが真の目的であることがわかります。
  -->
 
 ---
 
-# 2. レスポンスのコンテキストが大きくなりすぎる
+<div class="center">
+
+# 2. レスポンスのコンテキストが大きすぎる
+
+</div>
+
+---
+
+## レスポンスのコンテキストが大きすぎる問題
 
 LLMにはツールレスポンスのコンテキスト長の制限がある
 
@@ -877,7 +965,7 @@ LLMにはツールレスポンスのコンテキスト長の制限がある
 
 ---
 
-# 従来のプログラミングとの違い
+## 従来のプログラミングとの考え方の違い
 
 - 現代の富豪的プログラミングでは1,000件のリストをメモリに載せてフィルタリング・ソートしても問題ない
 - LLM ではコンテキスト制限があるため同じアプローチは不可
@@ -893,7 +981,7 @@ LLMにはツールレスポンスのコンテキスト長の制限がある
 
 ---
 
-# 解決策1: ページネーションの導入
+## 解決策1: ページネーションの導入
 
 ```typescript
 server.registerTool(
@@ -907,9 +995,7 @@ server.registerTool(
   },
   async ({ query, limit = 10, offset = 0 }) => {
     const users = await db.users.search(query).limit(limit).offset(offset);
-
     // ...
-
     return {
       content: [{ type: "text", text: JSON.stringify(result) }],
       structuredContent: result,
@@ -925,7 +1011,7 @@ server.registerTool(
 
 ---
 
-# 解決策2: 必要なフィールドだけ取得
+## 解決策2: 必要なフィールドだけ取得
 
 ```typescript
 server.registerTool(
@@ -957,7 +1043,7 @@ server.registerTool(
 
 ---
 
-# 解決策3: データを要約・整形
+## 解決策3: データの粒度を選択させる
 
 ```typescript
 server.registerTool(
@@ -987,11 +1073,28 @@ server.registerTool(
 
 ---
 
+<div class="center">
+
 # 3. LLMが誤ったツール呼び出しを行う
 
-ホストメトリック取得ツールで存在しないメトリック名を繰り返し呼び出して失敗し続ける
+</div>
 
-_ホストメトリック: CPU使用率、メモリ使用率、ディスク使用率など、サーバーのパフォーマンスを示す指標のこと。_
+---
+
+## 3. LLMが正しいツールの呼び出し方を理解していない問題
+
+- ホストメトリック取得ツールを実装
+- 存在しないメトリック名を繰り返し呼び出して失敗し続ける
+
+<div class="box">
+
+_ホストメトリック: 監視対象のホストに対応する指標。例えば..._
+
+- `cpu.user.percentage`: CPU使用率
+- `memory.used`: メモリ使用率
+- `lambda.count.invocations`: AWS Lambdaの呼び出し回数
+
+</div>
 
 <!--
 3つ目の問題は、LLM が誤ったツール呼び出しを行うことです。例えば、ホストメトリック取得ツールで存在しないメトリック名を繰り返し呼び出して失敗し続けるといったケースがありました。
@@ -999,9 +1102,9 @@ _ホストメトリック: CPU使用率、メモリ使用率、ディスク使�
 
 ---
 
-# 解決策1: descriptionのプロンプトエンジニアリング
+## 解決策1: descriptionのプロンプトエンジニアリング
 
-<div class="grid">
+<div class="f">
 
 <div>
 
@@ -1010,15 +1113,17 @@ _ホストメトリック: CPU使用率、メモリ使用率、ディスク使�
   - サポートしている値の一覧を含める
   - ツールの使用例を Few-shot で示す
 
+https://www.oreilly.co.jp/books/9784814401130/
+
 </div>
 
 <div>
 
-<img src="./images/prompt-engineering.jpeg" style="width: 300px;"/>
+<img src="./images/prompt-engineering.jpeg" width="400"/>
 
 ---
 
-# ツールの description の良い例
+## ツールの description の例
 
 ```typescript
 {
@@ -1026,9 +1131,9 @@ _ホストメトリック: CPU使用率、メモリ使用率、ディスク使�
   description: `ホストのメトリックを取得します。
 
 サポートされているメトリック:
-- cpu_usage: CPU使用率
-- memory_usage: メモリ使用率
-- disk_usage: ディスク使用率
+- cpu.user.percentage: CPU使用率
+- memory.used: メモリ使用率
+- disk.used.percentage: ディスク使用率
 
 以下のユーザーの質問に答えるためにこのツールを使用してください:
 - ホストAはスケールアップが必要かどうか調査してください
@@ -1036,8 +1141,8 @@ _ホストメトリック: CPU使用率、メモリ使用率、ディスク使�
 - ホストCのディスク使用率が高いか確認してください
 
 <example>
-- ホストAのCPU使用率を取得: get_host_metric("hostA", "cpu_usage")
-- ホストBのメモリ使用率を取得: get_host_metric("hostB", "memory_usage")
+- ホストAのCPU使用率を取得: get_host_metric("hostA", "cpu.user.percentage")
+- ホストBのメモリ使用率を取得: get_host_metric("hostB", "memory.used")
 </example>
   `,
   // ...
@@ -1046,9 +1151,9 @@ _ホストメトリック: CPU使用率、メモリ使用率、ディスク使�
 
 ---
 
-# 解決策2: エラー応答を詳細にする
+## 解決策2: エラー応答を詳細にする
 
-### 悪い例
+#### 悪い例
 
 ```json
 {
@@ -1057,11 +1162,12 @@ _ホストメトリック: CPU使用率、メモリ使用率、ディスク使�
 }
 ```
 
-LLMにとって意味のない応答
+- LLMにとって意味のない応答で、この結果を下にLLMがどのように問題を解決すればよいか分からない
+- AI エージェントの「行動・フィードバック・改善」フィードバックループが回せない
 
 ---
 
-## エラー応答をドキュメンテーションする
+### エラー応答をドキュメンテーションする
 
 - なぜツールの呼び出しが失敗したのか、どのように問題を解決できるのかをマークダウン形式で返す
   - エラーコードやスタックトレースを返すのではなく、具体的かつ実用的な情報を提供
@@ -1070,21 +1176,16 @@ LLMにとって意味のない応答
 
 ---
 
-# 良いエラー応答の例
+## 良いエラー応答の例
 
 ```typescript
 server.registerTool("get_host_metric", async ({ host, metric }) => {
   try {
     // ...
   } catch (error) {
-    const errorMessage = `## メトリクスが見つかりません
+    const errorMessage = `# メトリクスが見つかりません
 
-指定されたメトリクス名が無効であるか、
-このホストで利用できないため、リクエストが失敗しました。
-
-## エラーの概要
-
-${error.message}
+指定されたメトリクス名が無効であるか、このホストで利用できないため、リクエストが失敗しました。
 
 ## 考えられる原因
 
@@ -1107,9 +1208,17 @@ ${error.message}
 
 ---
 
-# IDより人間が読める名前を使う
+<div class="center">
 
-### 問題点
+# その他の Tips
+
+</div>
+
+---
+
+## IDより人間が読める名前を使う
+
+#### 問題点
 
 LLMは難解な識別子の処理が苦手
 
@@ -1118,7 +1227,7 @@ LLMは難解な識別子の処理が苦手
 
 ---
 
-# 推奨されるアプローチ
+## 推奨されるアプローチ
 
 ### 良い例
 
@@ -1136,7 +1245,15 @@ get_product_by_id("prod_abc123");
 
 ---
 
-# まとめ
+## ツールを実際に試してフィードバックを収集する
+
+- 従来のプログラミングと異なり、LLM のツール呼び出しは決定的ではない
+- 実際に LLM を通じてツールを試してみないと発見できない問題が多い
+- ツールで達成したいユースケースを通じてフィードバックを収集し、ツールを改善していく
+
+---
+
+## まとめ
 
 - MCP はツールのインターフェースを標準化するプロトコル
 - Claude だけでなく主要な LLM が MCP をサポートし事実上の標準に
@@ -1150,7 +1267,7 @@ get_product_by_id("prod_abc123");
 
 ---
 
-# 参考資料
+## 参考資料
 
 - Model Context Protocol公式ドキュメント
   https://modelcontextprotocol.io/
