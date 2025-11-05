@@ -212,6 +212,15 @@ style: |
     display: flex;
     gap: 12px;
   }
+
+  a {
+    color: #64b5f6;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: #90caf9;
+  }
 ---
 
 <div class="center">
@@ -268,23 +277,23 @@ style: |
 
 **Model Context Protocol (MCP)**
 
-アプリケーションが LLM にコンテキストを渡す方法を標準化するための規格
+AI エージェントを外部システムに接続するための標準規格
 
 - Claude を提供する Anthropic が開発・発表
 - ツールのインターフェースを統一
 - AI アプリケーション用の USB-C ポートのようなもの
 
 <!--
-MCP とは Model Context Protocol の略で、アプリケーションが LLM にコンテキストを渡す方法を標準化するためのプロトコルです。Claude を提供する Anthropic が開発・発表しました。MCP はツールのインターフェースを統一することで、ツールの開発者が LLM の実装の違いを意識せずにツールを開発できるようにすることを目的としています。
+MCP とは Model Context Protocol の略で、AI エージェントを外部システムに接続するための標準規格です。Claude を提供する Anthropic が開発・発表しました。MCP はツールのインターフェースを統一することで、ツールの開発者が LLM の実装の違いを意識せずにツールを開発できるようにすることを目的としています。
 
 MCP は AI アプリケーション用の USB-C ポートのようなものと説明されており、、USB-C ポートがさまざまなデバイスで共通のインターフェースを提供するように、LLM が外部システムに接続できるようなイメージです。
  -->
 
 ---
 
-## なぜ MCP が必要なのか?
+## なぜ AI エージェントが外部システムと接続する必要があるのか
 
-→ LLM の機能を拡張するため
+→ LLM の機能を拡張し、より高度なタスクを達成するため
 
 - LLM には知識カットオフがあり、最新の情報や組織内の情報を取得できない
   - Web 検索をしたり、社内ドキュメントを参照しその情報をコンテキストに渡す必要がある
@@ -295,7 +304,8 @@ MCP は AI アプリケーション用の USB-C ポートのようなものと�
 → ChatGPT の Plugins は OpenAI 独自の仕組みであり、他の LLM では利用できない
 
 <!--
-なぜ MCP は必要なのでしょうか? LLM には知識カットオフがあり、最新の情報や組織内の情報を取得できないという課題があります。例えば、最新のニュースや株価情報、あるいは社内のドキュメントなど、LLM が直接アクセスできない情報を取得するために、Web 検索をしたり、社内ドキュメントを参照しその情報をコンテキストに渡す必要があります。
+MCP の目的は AI エージェントが外部システムと接続することと述べましたが、なぜ外部システムと接続する必要があるのでしょうか？それは LLM の機能を拡張して、より高度なタスクを達成するためです。
+LLM には知識カットオフがあり、最新の情報や組織内の情報を取得できないという課題があります。例えば、最新のニュースや株価情報、あるいは社内のドキュメントなど、LLM が直接アクセスできない情報を取得するために、Web 検索をしたり、社内ドキュメントを参照しその情報をコンテキストに渡す必要があります。
 
 このような問題を解決するために、ChatGPT ではかつて Plugins と呼ばれる外部のツールを呼び出す仕組みが提供されていました。これを使うことにより、Excel や PDF をアップロードして、組織内の情報を取得できるようになったり、メールの送信やカレンダーの予定作成など、日常的なタスクを自動化できるようになりました。
 
@@ -403,7 +413,11 @@ const response = await anthropic.messages.create({
 - [Figma MCP サーバー](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server): Figma のリソースを元にコードを生成
 - [Sentry MCP サーバー](https://docs.sentry.io/product/sentry-mcp/): Sentry のエラー情報を取得し、原因の特定や修正方法を提案
 
-Registry で MCP サーバーを探してみよう https://github.com/mcp
+MCP サーバーを探してみよう
+
+- https://github.com/modelcontextprotocol/servers
+- https://github.com/mcp
+- https://hub.docker.com/u/mcp
 
 ---
 
@@ -933,14 +947,26 @@ server.registerTool(
 
 - 提供するツールの数が多くなると、LLM がどのツールを使うべきか迷ってしまう
   - 多くのユーザーは複数の MCP サーバーを同時に利用するので、思ったよりもツールの数が多くなりがち
-  - `description` の内容は LLM のシステムプロンプトに自動で追加されるため、コンテキストの圧迫につながる
-  - MCP サーバーのコンテキストの圧迫という課題に対して Claude Skills という機能も発表された
+- さらに `description` の内容は LLM のシステムプロンプトに自動で追加されるため、コンテキストの圧迫につながる
 
 <!--
 ツール設計のポイントとして、提供するツールをよく選定することが重要です。提供するツールの数が多くなると、LLM がどのツールを使うべきか迷ってしまうことがあります。特に多くのユーザーは複数の MCP サーバーを同時に利用するので、思ったよりもツールの数が多くなりがちです。
 
 またツールは LLM の起動時に自動で説明がコンテキストに追加されるため、提供するツールが多すぎるとコンテキストの圧迫につながります。MCP サーバーのコンテキストの圧迫という課題に対して Claude Skills という機能も発表されたりもしていますね。
  -->
+
+---
+
+<div class="box">
+
+<div class="box-title">
+コラム: Claude Skills
+</div>
+
+- MCP サーバーのコンテキストの圧迫という課題に対して Claude Skills という機能が発表された
+- Claude Skills 必要なときに必要な情報をロードする **Progressive Disclosure** がコンセプト
+- 最初はスキルのメタデータ（~100 tokens）だけを LLM に提供し、LLM がスキルを使いたいと判断したときに詳細な説明（~5,000 tokens）を提供する仕組み
+- MCP サーバーのツールを直接呼び出すのではなく、コードを実行させるというアプローチも紹介されている [Code execution with MCP: building more efficient AI agents \ Anthropic](https://www.anthropic.com/engineering/code-execution-with-mcp)
 
 ---
 
@@ -1339,13 +1365,22 @@ get_product_by_id("prod_abc123");
   https://modelcontextprotocol.io/
 - やさしい MCP 入門
   https://www.shuwasystem.co.jp/book/9784798075730.html
-
+- Python ではじめる MCP 開発入門
+  https://www.kodansha.co.jp/book/products/0000419324
 - TypeScript SDK
   https://github.com/modelcontextprotocol/typescript-sdk
+
+---
+
+## 参考資料 (続き)
 
 - Writing Tools for Agents
   https://www.anthropic.com/engineering/writing-tools-for-agents
 - The second wave of MCP: Building for LLMs, not developers
   https://vercel.com/blog/the-second-wave-of-mcp-building-for-llms-not-developers
+- Equipping agents for the real world with Agent Skills
+  https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
+- Code execution with MCP: building more efficient AI agent
+  https://www.anthropic.com/engineering/code-execution-with-mcp
 
 ---
