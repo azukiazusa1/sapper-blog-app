@@ -1,0 +1,89 @@
+<svg viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1000" height="400" fill="#1A202C"/>
+  
+  <!-- 定義 -->
+  <defs>
+    <!-- 矢印マーカー -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#A0AEC0" />
+    </marker>
+    
+    <!-- グラデーション -->
+    <linearGradient id="hostGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#667EEA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5A67D8;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="clientGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#48BB78;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38A169;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="serverGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ED8936;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DD6B20;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- タイトル -->
+  <text x="500" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#E2E8F0">
+    MCP クライアント・サーバーモデル
+  </text>
+  
+  <!-- ホスト -->
+  <rect x="50" y="120" width="240" height="200" rx="12" fill="url(#hostGradient)" stroke="#4C51BF" stroke-width="3"/>
+  <text x="170" y="165" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">
+    ホスト
+  </text>
+  <text x="170" y="190" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">
+    (Host)
+  </text>
+  <text x="170" y="230" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#E6FFFA">
+    Claude Desktop
+  </text>
+  <text x="170" y="255" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#E6FFFA">
+    Cursor
+  </text>
+  <text x="170" y="280" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#E6FFFA">
+    Cline
+  </text>
+  
+  <!-- 矢印: ホスト → クライアント -->
+  <line x1="290" y1="220" x2="370" y2="220" stroke="#A0AEC0" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="330" y="210" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#CBD5E0">リクエスト</text>
+  
+  <!-- クライアント -->
+  <rect x="380" y="120" width="240" height="200" rx="12" fill="url(#clientGradient)" stroke="#2F855A" stroke-width="3"/>
+  <text x="500" y="165" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">
+    クライアント
+  </text>
+  <text x="500" y="190" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">
+    (Client)
+  </text>
+  <text x="500" y="235" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#E6FFFA">
+    MCP サーバーとの
+  </text>
+  <text x="500" y="260" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#E6FFFA">
+    通信を担当
+  </text>
+  
+  <!-- 矢印: クライアント → サーバー -->
+  <line x1="620" y1="220" x2="700" y2="220" stroke="#A0AEC0" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="660" y="210" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#CBD5E0">JSON-RPC 2.0</text>
+  
+  <!-- サーバー -->
+  <rect x="710" y="120" width="240" height="200" rx="12" fill="url(#serverGradient)" stroke="#C05621" stroke-width="3"/>
+  <text x="830" y="165" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">
+    MCP サーバー
+  </text>
+  <text x="830" y="190" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">
+    (Server)
+  </text>
+  <text x="830" y="235" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#FFF5F0">
+    外部ツールを提供
+  </text>
+  <text x="830" y="265" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#FED7D7">
+    (API, データベース等)
+  </text>
+</svg>
