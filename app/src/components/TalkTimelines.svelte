@@ -8,6 +8,15 @@
 
   const slides = [
     {
+      eventTitle: "ないなら作るMCPサーバー構築ハンズオン",
+      eventDate: "2025-11-06",
+      presentationTitle: "MCP サーバーの基礎から実践レベルの知識まで",
+      presentationLink:
+        "https://speakerdeck.com/azukiazusa1/mcp-sabanoji-chu-karashi-jian-reberunozhi-shi-made",
+      description:
+        "この発表では MCP サーバーの基礎的な知識から入り、ハンズオン形式で実施に MCP サーバーを自分の手で構築する体験を通じて理解を深めていきます。後半パートでは実際に本番レベルで MCP サーバーを開発した経験を元に、実践的な知識や失敗談などを共有します。",
+    },
+    {
       eventTitle: "Claude Codeで開発と学習を両立する方法",
       eventDate: "2025-09-11",
       presentationTitle:
