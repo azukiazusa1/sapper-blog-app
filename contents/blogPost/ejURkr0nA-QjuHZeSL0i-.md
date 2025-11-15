@@ -13,13 +13,13 @@ thumbnail:
 audio: null
 selfAssessment:
   quizzes:
-    - question: '次のコードで `/users/123` にマッチし、`{ id: "123" }` を抽出する URLPattern の定義はどれですか？"
+    - question: '次のコードで `/users/123` にマッチし、`{ id: "123" }` を抽出する URLPattern の定義はどれですか？'
       answers:
         - text: "new URLPattern({ pathname: '/users/{id}' })"
           correct: false
           explanation: "`{id}` はグループ区切り文字であり、結果にキャプチャされません。したがって `id` パラメーターは抽出されません。"
         - text: "new URLPattern({ pathname: '/users/:id' })"
-          correct: false
+          correct: true
           explanation: "`:id` は名前付きグループで、任意の文字列にマッチします。したがって `/users/123` にマッチします。"
         - text: 'new URLPattern({ pathname: "/users/[id]" })'
           correct: false
