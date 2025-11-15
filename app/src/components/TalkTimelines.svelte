@@ -11,8 +11,7 @@
       eventTitle: "YAPC::Fukuoka 2025",
       eventDate: "2025-11-15",
       presentationTitle: "探求の技術",
-      presentationLink:
-        "https://speakerdeck.com/azukiazusa1/tan-qiu-noji-shu",
+      presentationLink: "https://speakerdeck.com/azukiazusa1/tan-qiu-noji-shu",
       description:
         "本発表では、急速に進化する技術の世界において、いかに効果的に新しい技術を探求し、その知見を価値あるアウトプットに変換していくかについて、実践的な方法論を共有します。私は毎週技術ブログを執筆し、年間300冊の本を読むという活動を続けています。この継続的な探求活動から得られた知見を基に、技術者として成長し続けるための具体的なテクニックをお伝えします。技術探求の原動力について、効果的な技術記事の書き方に、AI時代における技術探求の在り方について話します。",
     },
