@@ -25,7 +25,7 @@ selfAssessment:
           correct: false
           explanation: "`[id]` は URLPattern の構文では使用されません。"
         - text: "new URLPattern({ pathname: '/users/[:id]' })"
-          explanation: "`[:id]` は URLPattern の構文では使用されません。
+          explanation: "`[:id]` は URLPattern の構文では使用されません。"
           correct: false
     - question: "URLPattern のインスタンスでパスにマッチしたかどうか真偽値をで取得するにはどのメソッドを使用しますか？"
       answers:
