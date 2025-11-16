@@ -9,11 +9,10 @@ tags: ["Web API", "URLPattern"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/10XfYfmllC32jzxDDaca2Y/9be5f21041bd28bc2417fd1ba5c56b20/niku-udon_16433.png"
   title: "肉うどんのイラスト"
-
 audio: null
 selfAssessment:
   quizzes:
-    - question: '次のコードで `/users/123` にマッチし、`{ id: "123" }` を抽出する URLPattern の定義はどれですか？'
+    - question: "次のコードで `/users/123` にマッチし、`{ id: \"123\" }` を抽出する URLPattern の定義はどれですか？"
       answers:
         - text: "new URLPattern({ pathname: '/users/{id}' })"
           correct: false
@@ -21,12 +20,12 @@ selfAssessment:
         - text: "new URLPattern({ pathname: '/users/:id' })"
           correct: true
           explanation: "`:id` は名前付きグループで、任意の文字列にマッチします。したがって `/users/123` にマッチします。"
-        - text: 'new URLPattern({ pathname: "/users/[id]" })'
+        - text: "new URLPattern({ pathname: \"/users/[id]\" })"
           correct: false
           explanation: "`[id]` は URLPattern の構文では使用されません。"
         - text: "new URLPattern({ pathname: '/users/[:id]' })"
-          explanation: "`[:id]` は URLPattern の構文では使用されません。"
           correct: false
+          explanation: "`[:id]` は URLPattern の構文では使用されません。"
     - question: "URLPattern のインスタンスでパスにマッチしたかどうか真偽値をで取得するにはどのメソッドを使用しますか？"
       answers:
         - text: "match() メソッド"
@@ -48,17 +47,15 @@ selfAssessment:
           explanation: "`ignoreCase` オプションを `true` に設定すると、大文字・小文字を区別しないマッチングが可能になります。"
         - text: "パターン内で正規表現を使用する"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "URLPattern は常に大文字・小文字を区別しない"
           correct: false
           explanation: "デフォルトでは大文字・小文字を区別します。"
         - text: "URLPattern コンストラクタのオプションで caseSensitive を false に設定する"
           correct: false
           explanation: "`caseSensitive` というオプションは存在しません。"
-
 published: false
 ---
-
 Web アプリケーションにおいてルーティングは重要な要素です。URL はアプリケーションの状態を表現し、ユーザーが特定のリソースにアクセスするための手段となります。`id` や `slug` のような一意な識別子を URL に含めることによる動的なコンテキストの提供は、一般的な手法として広く採用されています。
 
 動的なルーティングを実現するために標準的な手法は存在していませんが、[Express](https://expressjs.com/) や [Hono](https://hono.dev/), [Next.js](https://nextjs.org/) のような多くの Web フレームワークは [path-to-regexp](https://github.com/pillarjs/path-to-regexp) に基づいた構文を採用しています。フレームワークごとに多少の方言はあるものの、基本的な考え方は共通しています。
