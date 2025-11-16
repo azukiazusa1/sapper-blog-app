@@ -54,7 +54,7 @@ selfAssessment:
         - text: "URLPattern コンストラクタのオプションで caseSensitive を false に設定する"
           correct: false
           explanation: "`caseSensitive` というオプションは存在しません。"
-published: false
+published: true
 ---
 Web アプリケーションにおいてルーティングは重要な要素です。URL はアプリケーションの状態を表現し、ユーザーが特定のリソースにアクセスするための手段となります。`id` や `slug` のような一意な識別子を URL に含めることによる動的なコンテキストの提供は、一般的な手法として広く採用されています。
 
