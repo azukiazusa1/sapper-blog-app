@@ -19,7 +19,7 @@
           <div class="flex-shrink-0">
             <a
               href={`/tags/${tag.slug}`}
-              class="inline-flex items-center rounded-full bg-white dark:bg-zinc-800 hover:bg-gray-50 dark:hover:bg-zinc-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors border border-gray-200 dark:border-zinc-600 shadow-sm hover:shadow-md"
+              class="inline-flex items-center rounded-full bg-white dark:bg-zinc-800 hover:bg-gray-50 dark:hover:bg-zinc-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors border border-gray-200 dark:border-zinc-600"
             >
               #{tag.name}
             </a>
