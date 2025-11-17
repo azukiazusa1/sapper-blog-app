@@ -25,7 +25,7 @@
   <div class="flex items-center gap-2">
     {#if hasPrev}
       <a
-        class="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-zinc-900 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400"
+        class="flex h-12 w-12 items-center justify-center rounded-full bg-white transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-zinc-900 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400"
         href={`${href}${prevPage}`}
       >
         <div class="sr-only">前のページ</div>
@@ -45,14 +45,14 @@
     </div>
     <div class="flex md:hidden">
       <div
-        class="flex h-12 items-center justify-center rounded-full bg-white px-4 shadow-md dark:bg-zinc-900"
+        class="flex h-12 items-center justify-center rounded-full bg-white px-4 dark:bg-zinc-900"
       >
         <span class="font-medium">Page {page} of {totalPage}</span>
       </div>
     </div>
     {#if hasNext}
       <a
-        class="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-zinc-900 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400"
+        class="flex h-12 w-12 items-center justify-center rounded-full bg-white transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-zinc-900 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400"
         href={`${href}${nextPage}`}
       >
         <div class="sr-only">次のページ</div>
