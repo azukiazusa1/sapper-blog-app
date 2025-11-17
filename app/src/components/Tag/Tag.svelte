@@ -36,7 +36,7 @@
   <!-- タグ一覧ページでの大きなタグカード -->
   <a href={`/tags/${slug}`} class="block h-full w-full">
     <div
-      class="h-full rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-md overflow-hidden flex flex-col dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800"
+      class="h-full rounded-xl bg-white transition-all duration-300 hover:shadow-md overflow-hidden flex flex-col dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800"
     >
       <div
         class="bg-gradient-to-r {colorClass} p-3 flex items-center justify-center opacity-90"
