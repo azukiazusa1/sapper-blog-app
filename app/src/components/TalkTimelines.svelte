@@ -8,6 +8,14 @@
 
   const slides = [
     {
+      eventTitle: "開発組織でアクセシビリティを進める技術 by SmartHR",
+      eventDate: "2025-11-19",
+      presentationTitle: "持続可能なアクセシビリティ開発",
+      presentationLink: "https://speakerdeck.com/azukiazusa1/chi-sok-ke-neng-naakusesibiriteikai-fa",
+      description:
+        "持続可能なアクセシビリティ開発は「誰が書いても80%の要件を満たす状態を目指す」ことです。なぜ私たちのチームではこの目標を設定したのか、持続可能なアクセシビリティ開発を達成するためにどのようなアプローチを取っているのかについて発表します。",
+    },
+    {
       eventTitle: "YAPC::Fukuoka 2025",
       eventDate: "2025-11-15",
       presentationTitle: "探求の技術",
