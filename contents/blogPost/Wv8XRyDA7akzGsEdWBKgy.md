@@ -45,7 +45,7 @@ selfAssessment:
         - text: "text/html"
           correct: false
           explanation: "MCP Apps 固有の MIME タイプとして `text/html+mcp` が使用されます。"
-          - text: "app/html"
+        - text: "app/html"
           correct: false
           explanation: null
         - text: "text/html+mcp"
