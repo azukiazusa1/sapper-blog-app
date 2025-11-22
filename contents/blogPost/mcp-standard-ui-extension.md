@@ -8,7 +8,7 @@ updatedAt: "2025-11-22T15:09+09:00"
 tags: ["MCP", "MCP Apps"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2L19vT7qxpRS3QWbhqjbW3/1f8cbccd422b1d8b8bf441695fc072e5/takeout-coffee_illust_3657.png"
-  title: "テイクアウトコーヒーのイラスト"
+  title: "takeout-coffee illust 3657"
 audio: null
 selfAssessment:
   quizzes:
@@ -54,10 +54,8 @@ selfAssessment:
         - text: "text/html+skybridge"
           correct: false
           explanation: "text/html+skybridge は ChatGPT の Apps SDK で使用される MIME タイプであり、MCP Apps では使用されません。"
-
 published: true
 ---
-
 ChatGPT の [Apps SDK](https://developers.openai.com/apps-sdk/) や [MCP-UI](https://mcpui.dev/) のように AI エージェントがチャット形式の対話だけでなく、インタラクティブな UI を通じてユーザーとやり取りできる仕組みが注目されています。AI エージェントが UI を返すことで、会話の流れの中で以下のような体験を提供できます。
 
 - 「おすすめのランニングシューズを探して」と尋ねると、複数のシューズの画像と価格が表示され、ユーザーは気に入ったものをクリックしてカートに追加できる
