@@ -63,7 +63,7 @@ ChatGPT の [Apps SDK](https://developers.openai.com/apps-sdk/) や [MCP-UI](htt
 - 希望にあった賃貸物件を探す際に、地図上に物件の位置が表示され、ユーザーは地図を操作して周辺環境を確認できる
 - ユーザーが提示した図形を元に Figma 上でデザイン案を生成し、ユーザーは生成されたデザインを直接編集できる
 
-![](https://images.ctfassets.net/kftzwdyauwt9/2vKwAh34bawGmCw0ozfjg/191c1d3488fb6f331f935830008ce021/Booking_16x9__3_.png?w=1920&q=90&fm=webp)
+![](https://images.ctfassets.net/in6v9lxmm5c8/25MDS30kp1EsCTn7gtiQmN/26d270777fa13d1f620a80fc1266488b/Booking_16x9__3_.webp)
 
 https://openai.com/ja-JP/index/introducing-apps-in-chatgpt/ より引用。
 
