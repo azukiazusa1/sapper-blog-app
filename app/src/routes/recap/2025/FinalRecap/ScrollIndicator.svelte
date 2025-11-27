@@ -1,6 +1,13 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
   import AllowDown from "../../../../components/Icons/AllowDown.svelte";
+  import { themes, defaultTheme, type ThemeId } from "../themes";
+
+  interface Props {
+    theme?: ThemeId;
+  }
+
+  let { theme = defaultTheme }: Props = $props();
 
   const handleClick = () => {
     const element = document.getElementById("blog-stats");
@@ -21,7 +28,7 @@
 </script>
 
 <div
-  class="scroll-indicator"
+  class="scroll-indicator {themes[theme].colors.focusRing}"
   role="button"
   aria-label="今年書いた記事セクションにスクロール"
   tabindex="0"
@@ -53,11 +60,7 @@
     opacity: 0.8;
   }
 
-  .scroll-indicator:focus {
-    outline: 2px solid #7c3aed;
-    outline-offset: 4px;
-    border-radius: 0.5rem;
-  }
+  /* Focus outline handled inline with data attribute */
 
   .arrow-container {
     display: flex;

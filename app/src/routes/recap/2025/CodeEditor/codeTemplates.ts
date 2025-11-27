@@ -40,7 +40,7 @@ export const tagsCode = `<script lang="ts">
   {#each recap2025.topTags as tag, i}
     <div
       in:scale={{ delay: i * 200, duration: 500 }}
-      class="rounded-full bg-purple-100 px-6 py-3"
+      class="rounded-full bg-orange-100 px-6 py-3"
     >
       <span class="text-2xl font-bold">{tag.name}</span>
       <span class="text-gray-600">({tag.count})</span>
@@ -62,7 +62,7 @@ export const postsCode = `<script lang="ts">
       class="block rounded-lg bg-white p-6 shadow hover:shadow-lg"
     >
       <h3 class="text-xl font-bold">{post.title}</h3>
-      <div class="mt-2 text-2xl font-bold text-purple-600">
+      <div class="mt-2 text-2xl font-bold text-orange-600">
         <CountUp value={post.views} /> views
       </div>
     </a>

@@ -1,6 +1,13 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
   import { recap2025 } from "../Data2025";
+  import { themes, defaultTheme, type ThemeId } from "../themes";
+
+  interface Props {
+    theme?: ThemeId;
+  }
+
+  let { theme = defaultTheme }: Props = $props();
 </script>
 
 <div
@@ -9,7 +16,9 @@
   {#each recap2025.topTags as tag, i}
     <div
       in:fade={{ delay: i * 100, duration: 300 }}
-      class="rounded-xl border border-gray-200 bg-white p-6 text-center transition-all duration-200 hover:border-purple-300 hover:shadow-lg"
+      class="rounded-xl border border-gray-200 bg-white p-6 text-center transition-all duration-200 {themes[
+        theme
+      ].colors.cardHoverBorder} hover:shadow-lg"
     >
       <div class="mb-1 text-3xl font-bold text-gray-900">
         {tag.count}

@@ -2,6 +2,13 @@
   import { fade } from "svelte/transition";
   import CountUp from "../../CountUp.svelte";
   import { recap2025 } from "../Data2025";
+  import { themes, defaultTheme, type ThemeId } from "../themes";
+
+  interface Props {
+    theme?: ThemeId;
+  }
+
+  let { theme = defaultTheme }: Props = $props();
 </script>
 
 <div class="mx-auto max-w-3xl space-y-6">
@@ -9,7 +16,9 @@
     <a
       href={post.url}
       in:fade={{ delay: i * 100, duration: 300 }}
-      class="group flex items-start gap-6 rounded-xl border border-gray-200 bg-white p-8 transition-all duration-200 hover:border-purple-300 hover:shadow-lg"
+      class="group flex items-start gap-6 rounded-xl border border-gray-200 bg-white p-8 transition-all duration-200 {themes[
+        theme
+      ].colors.cardHoverBorder} hover:shadow-lg"
     >
       <!-- Ranking badge -->
       <div class="flex-shrink-0 text-4xl font-bold text-gray-300">
@@ -19,7 +28,9 @@
       <div class="flex-1">
         <!-- Title -->
         <h3
-          class="mb-3 text-xl font-semibold text-gray-900 transition-colors group-hover:text-purple-600"
+          class="mb-3 text-xl font-semibold text-gray-900 transition-colors {themes[
+            theme
+          ].colors.hoverTextAccentColor}"
         >
           {post.title}
         </h3>

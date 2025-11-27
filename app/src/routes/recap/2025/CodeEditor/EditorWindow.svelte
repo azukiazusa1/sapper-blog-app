@@ -6,12 +6,14 @@
   import BlogStats from "../FinalRecap/BlogStats.svelte";
   import PopularTags from "../FinalRecap/PopularTags.svelte";
   import PopularPosts from "../FinalRecap/PopularPosts.svelte";
+  import { themes, defaultTheme, type ThemeId } from "../themes";
 
   interface Props {
     onComplete: () => void;
+    theme?: ThemeId;
   }
 
-  let { onComplete }: Props = $props();
+  let { onComplete, theme = defaultTheme }: Props = $props();
 
   type Stage = {
     tab: string;
@@ -41,7 +43,7 @@
     2: [
       // PopularTags.svelte
       "$ svelte compile tags-component",
-      "→ タグクラウドを生成してみます",
+      "→ よく使われたタグを生成してみます",
       "→ AI、MCP、TypeScript...技術記事が多いですね",
       "→ scaleアニメーションでタグを浮かび上がらせます",
       "→ レスポンシブ対応も忘れずに完了",
@@ -81,7 +83,7 @@
       code: tagsCode,
       preview: PopularTags,
       terminal:
-        "✓ タグクラウド生成: 主要トピック(AI×33, MCP×20, TypeScript×13)を認識",
+        "✓ よく使われたタグ生成: 主要トピック(AI×33, MCP×20, TypeScript×13)を認識",
       duration: 3000,
     },
     {
@@ -280,7 +282,8 @@
       {/each}
       {#if !buildComplete && !isBuilding}
         <button
-          class="file-tab build-tab"
+          class="file-tab build-tab bg-gradient-to-r {themes[theme].colors
+            .editorBuildTab}"
           onclick={runBuildAnimation}
           disabled={isTyping}
         >
@@ -310,13 +313,15 @@
         {#if previewComponent}
           {@const Component = previewComponent}
           <div in:fade={{ duration: 300 }}>
-            <Component />
+            <Component {theme} />
           </div>
         {:else if isBuilding}
           <div class="flex h-full items-center justify-center">
             <div class="text-center">
               <div
-                class="mb-4 h-16 w-16 animate-spin rounded-full border-4 border-purple-200 border-t-purple-600"
+                class="mb-4 h-16 w-16 animate-spin rounded-full border-4 {themes[
+                  theme
+                ].colors.editorSpinner}"
               ></div>
               <p class="text-lg text-gray-700">Building...</p>
             </div>
@@ -419,13 +424,11 @@
   }
 
   .build-tab {
-    background: linear-gradient(to right, #7c3aed, #ec4899);
     color: white;
     font-weight: 600;
   }
 
   .build-tab:hover:not(:disabled) {
-    background: linear-gradient(to right, #6d28d9, #db2777);
     transform: translateY(-1px);
   }
 

@@ -16,7 +16,9 @@
   <div class="absolute top-0 left-0 z-10 p-4">
     <a href="/recap">
       <span class="sr-only">戻る</span>
-      <PrevIcon className="h-6 w-6 text-gray-600 hover:text-gray-900 transition-colors" />
+      <PrevIcon
+        className="h-6 w-6 text-gray-600 hover:text-gray-900 transition-colors"
+      />
     </a>
   </div>
 
@@ -25,7 +27,7 @@
     class="relative z-10 mx-auto max-w-5xl space-y-12 px-8 text-center"
   >
     <!-- Minimal accent line -->
-    <div class="mx-auto h-1 w-16 bg-purple-600"></div>
+    <div class="mx-auto h-1 w-16 bg-orange-600"></div>
 
     <!-- Main typography -->
     <h1 class="text-8xl font-light tracking-tighter text-gray-900 md:text-9xl">

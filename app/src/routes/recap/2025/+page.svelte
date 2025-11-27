@@ -9,10 +9,12 @@
   import TalksTimeline from "./FinalRecap/TalksTimeline.svelte";
   import ThankYou from "./FinalRecap/ThankYou.svelte";
   import ScrollIndicator from "./FinalRecap/ScrollIndicator.svelte";
+  import { defaultTheme, type ThemeId } from "./themes";
 
   type Section = "hero" | "chat" | "editor" | "recap";
   let currentSection = $state<Section>("hero");
   let showSkipButton = $state(false);
+  let selectedTheme = $state<ThemeId>(defaultTheme);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -55,12 +57,16 @@
     }, 100);
   };
 
+  const handleThemeSelected = (theme: ThemeId) => {
+    selectedTheme = theme;
+  };
+
   // Check for prefers-reduced-motion
   let prefersReducedMotion = $state(false);
   $effect(() => {
     if (typeof window !== "undefined") {
       prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
+        "(prefers-reduced-motion: reduce)",
       ).matches;
     }
   });
@@ -79,8 +85,7 @@
   <button
     in:fade
     onclick={handleSkipToResults}
-    class="fixed top-4 right-4 z-50 rounded-lg bg-white px-4 py-2 shadow-lg transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-hidden focus:ring-4 focus:ring-purple-300"
-    aria-label="アニメーションをスキップして結果を表示"
+    class="fixed top-4 right-4 z-50 rounded-lg bg-white px-4 py-2 shadow-lg transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-hidden focus:ring-4 focus:ring-orange-300 text-black"
   >
     結果を見る →
   </button>
@@ -93,7 +98,10 @@
 
 <!-- Chat Interface -->
 {#if currentSection !== "hero"}
-  <ChatInterface onSubmit={handleChatSubmit} />
+  <ChatInterface
+    onSubmit={handleChatSubmit}
+    onThemeSelected={handleThemeSelected}
+  />
 {/if}
 
 <!-- Code Editor Animation -->
@@ -105,14 +113,14 @@
         <p class="mb-4 text-xl">読み込み中...</p>
         <button
           onclick={handleSkipToResults}
-          class="rounded-lg bg-purple-600 px-6 py-3 text-white hover:bg-purple-700"
+          class="rounded-lg bg-orange-600 px-6 py-3 text-white hover:bg-orange-700"
         >
           結果を表示
         </button>
       </div>
     </div>
   {:else}
-    <EditorWindow onComplete={handleEditorComplete} />
+    <EditorWindow onComplete={handleEditorComplete} theme={selectedTheme} />
   {/if}
 {/if}
 
@@ -120,21 +128,19 @@
 {#if currentSection === "recap"}
   <div id="final-recap" class="scroll-mt-8">
     <!-- Intro Section -->
-    <section
-      class="recap-section bg-gray-50"
-      in:fade={{ delay: 300 }}
-    >
+    <section class="recap-section bg-gray-50" in:fade={{ delay: 300 }}>
       <div class="mx-auto max-w-4xl text-center">
         <h2 class="section-title text-gray-900">
           azukiazusa.dev<br />2025 Recap
         </h2>
         <p class="text-xl text-gray-600 md:text-2xl">
-          AI エージェント時代の幕開けとともに歩んだ、<br />2025年の技術探求の旅を振り返ります
+          AI エージェント時代の幕開けとともに歩んだ、<br
+          />2025年の技術探求の旅を振り返ります
         </p>
       </div>
 
       <!-- Scroll Indicator -->
-      <ScrollIndicator />
+      <ScrollIndicator theme={selectedTheme} />
     </section>
 
     <!-- Blog Statistics -->
@@ -152,7 +158,7 @@
     <section class="recap-section bg-gray-50">
       <div class="mx-auto max-w-4xl">
         <h2 class="section-title text-gray-900">人気のタグ</h2>
-        <PopularTags />
+        <PopularTags theme={selectedTheme} />
         <p class="mt-8 text-center text-lg text-gray-600">
           AI と MCP の記事が特に多く読まれました
         </p>
@@ -163,7 +169,7 @@
     <section class="recap-section bg-white">
       <div class="mx-auto max-w-4xl">
         <h2 class="section-title text-gray-900">人気の記事 Top 3</h2>
-        <PopularPosts />
+        <PopularPosts theme={selectedTheme} />
       </div>
     </section>
 
@@ -174,14 +180,14 @@
         <p class="mb-8 text-center text-xl text-gray-600">
           今年は9つのイベントで発表しました
         </p>
-        <TalksTimeline />
+        <TalksTimeline theme={selectedTheme} />
       </div>
     </section>
 
     <!-- Thank You -->
     <section class="recap-section bg-white">
       <div class="mx-auto max-w-4xl">
-        <ThankYou />
+        <ThankYou theme={selectedTheme} />
       </div>
     </section>
   </div>

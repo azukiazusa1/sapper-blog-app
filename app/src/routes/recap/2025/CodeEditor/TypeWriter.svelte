@@ -8,18 +8,14 @@
     showCursor?: boolean;
   }
 
-  let {
-    text,
-    speed = 100,
-    onComplete,
-    showCursor = true,
-  }: Props = $props();
+  let { text, speed = 100, onComplete, showCursor = true }: Props = $props();
 
   let displayedText = $state("");
   let currentIndex = $state(0);
   let isComplete = $state(false);
 
-  const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
   async function typeText() {
     const delay = 1000 / speed;
