@@ -8,6 +8,7 @@
   import PopularPosts from "./FinalRecap/PopularPosts.svelte";
   import TalksTimeline from "./FinalRecap/TalksTimeline.svelte";
   import ThankYou from "./FinalRecap/ThankYou.svelte";
+  import ScrollIndicator from "./FinalRecap/ScrollIndicator.svelte";
 
   type Section = "hero" | "chat" | "editor" | "recap";
   let currentSection = $state<Section>("hero");
@@ -131,10 +132,13 @@
           AI エージェント時代の幕開けとともに歩んだ、<br />2025年の技術探求の旅を振り返ります
         </p>
       </div>
+
+      <!-- Scroll Indicator -->
+      <ScrollIndicator />
     </section>
 
     <!-- Blog Statistics -->
-    <section class="recap-section bg-white">
+    <section id="blog-stats" class="recap-section bg-white">
       <div class="mx-auto max-w-4xl">
         <h2 class="section-title text-gray-900">今年書いた記事</h2>
         <BlogStats />

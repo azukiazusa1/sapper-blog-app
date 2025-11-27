@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fade, fly } from "svelte/transition";
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import { highlightCode, getLanguageForTab } from "./syntaxHighlight";
   import { dataCode, statsCode, tagsCode, postsCode } from "./codeTemplates";
   import BlogStats from "../FinalRecap/BlogStats.svelte";
@@ -21,33 +21,75 @@
     duration: number;
   };
 
+  const progressMessages = {
+    0: [
+      // Data2025.ts
+      "$ ts-node analyze 2025",
+      "→ さっそく2025年のデータを見てみますね",
+      "→ おお、78記事も書いてますね！すごい",
+      "→ 合計779,239語...これは読み応えありそう",
+      "→ トップタグ3件もチェックしておきます",
+    ],
+    1: [
+      // BlogStats.svelte
+      "$ svelte compile stats-component",
+      "→ 年間成果を表示するコンポーネント作りましょう",
+      "→ CountUpアニメーション、これいい感じになりますよ",
+      "→ 78記事の数字が動くとカッコよくなります",
+      "→ スタイル調整中...もうすぐです",
+    ],
+    2: [
+      // PopularTags.svelte
+      "$ svelte compile tags-component",
+      "→ タグクラウドを生成してみます",
+      "→ AI、MCP、TypeScript...技術記事が多いですね",
+      "→ scaleアニメーションでタグを浮かび上がらせます",
+      "→ レスポンシブ対応も忘れずに完了",
+    ],
+    3: [
+      // PopularPosts.svelte
+      "$ svelte compile posts-component",
+      "→ アクセス数でランキングを作っていきます",
+      "→ トップ記事は47K閲覧...人気ですね！",
+      "→ flyアニメーションで記事が飛び込んでくる感じに",
+      "→ ホバーエフェクト追加して完成です",
+    ],
+  } as const;
+
+  function getProgressMessagesForStage(index: number): readonly string[] {
+    return progressMessages[index as keyof typeof progressMessages] || [];
+  }
+
   const stages: Stage[] = [
     {
       tab: "Data2025.ts",
       code: dataCode,
       preview: null,
-      terminal: "✓ Data compiled successfully",
+      terminal: "✓ 2025年ブログデータを解析: 78記事・779,239語を認識",
       duration: 3000,
     },
     {
       tab: "BlogStats.svelte",
       code: statsCode,
       preview: BlogStats,
-      terminal: "✓ BlogStats.svelte compiled",
+      terminal:
+        "✓ BlogStats コンポーネント最適化: 年間成果(78記事)の可視化完了",
       duration: 3000,
     },
     {
       tab: "PopularTags.svelte",
       code: tagsCode,
       preview: PopularTags,
-      terminal: "✓ PopularTags.svelte compiled",
+      terminal:
+        "✓ タグクラウド生成: 主要トピック(AI×33, MCP×20, TypeScript×13)を認識",
       duration: 3000,
     },
     {
       tab: "PopularPosts.svelte",
       code: postsCode,
       preview: PopularPosts,
-      terminal: "✓ PopularPosts.svelte compiled",
+      terminal:
+        "✓ トレンド分析完了: アクセス数でランキング集計(47K, 32K, 27K閲覧)",
       duration: 3000,
     },
   ];
@@ -60,17 +102,75 @@
   let isBuilding = $state(false);
   let buildComplete = $state(false);
   let isTyping = $state(false);
+  let autoAdvanceTimer: ReturnType<typeof setTimeout> | null = $state(null);
+  let showBuildPrompt: boolean = $state(false);
+  let isAutoAdvancing: boolean = $state(false);
   let terminalElement: HTMLDivElement;
 
-  const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
-  async function typeCode(code: string, speed: number = 150) {
+  function clearAutoAdvanceTimer() {
+    if (autoAdvanceTimer) {
+      clearTimeout(autoAdvanceTimer);
+      autoAdvanceTimer = null;
+      isAutoAdvancing = false;
+    }
+  }
+
+  async function startAutoAdvanceTimer() {
+    // 最後のタブの場合：ビルド促進メッセージを表示
+    if (currentStageIndex >= stages.length - 1) {
+      isAutoAdvancing = true;
+      autoAdvanceTimer = setTimeout(async () => {
+        showBuildPrompt = true;
+        await addTerminalLine("✓ 全部のコンポーネント準備できました！");
+        await addTerminalLine(
+          "$ さあ、ビルドボタンを押して完成させましょう 🎉",
+        );
+        autoAdvanceTimer = null;
+        isAutoAdvancing = false;
+      }, 1500);
+      return;
+    }
+
+    // それ以外：次のタブに自動遷移
+    isAutoAdvancing = true;
+    autoAdvanceTimer = setTimeout(() => {
+      autoAdvanceTimer = null;
+      isAutoAdvancing = false;
+      handleTabClick(currentStageIndex + 1);
+    }, 1500);
+  }
+
+  async function typeCode(
+    code: string,
+    stageIndex: number,
+    speed: number = 150,
+  ) {
     displayedCode = "";
     const delay = 1000 / speed;
+    const messages = getProgressMessagesForStage(stageIndex);
 
+    // 0.5秒間隔でメッセージをスケジュール
+    messages.forEach((msg, idx) => {
+      setTimeout(
+        () => {
+          terminalLines = [...terminalLines, msg];
+        },
+        500 * (idx + 1),
+      );
+    });
+
+    // コードを文字ごとにタイプ
     for (let i = 0; i < code.length; i++) {
       displayedCode = code.substring(0, i + 1);
       await sleep(delay);
+    }
+
+    // 最後のメッセージが表示されるまで待機
+    if (messages.length > 0) {
+      await sleep(500);
     }
   }
 
@@ -82,13 +182,19 @@
   const handleTabClick = async (index: number) => {
     if (isTyping) return; // タイピング中は無視
 
+    // 既存の自動遷移タイマーをクリア（手動クリック時）
+    clearAutoAdvanceTimer();
+
     isTyping = true;
     const stage = stages[index];
     currentStageIndex = index;
     currentTab = stage.tab;
 
-    // タイピングアニメーション
-    await typeCode(stage.code, 150);
+    // ビルドプロンプトをリセット
+    showBuildPrompt = false;
+
+    // 進捗メッセージ付きでコードをタイプ
+    await typeCode(stage.code, index, 150);
 
     // ハイライトを適用
     const lang = getLanguageForTab(stage.tab);
@@ -103,17 +209,24 @@
     }
 
     isTyping = false;
+
+    // 次のタブへの自動遷移、またはビルドプロンプトを開始
+    await startAutoAdvanceTimer();
   };
 
   async function runBuildAnimation() {
     isBuilding = true;
-    await addTerminalLine("$ npm run build");
+    await addTerminalLine("$ npm run build -- analyze-2025-recap");
     await sleep(500);
-    await addTerminalLine("✓ Compiling components...");
+    await addTerminalLine(
+      "✓ 全4ステージを検査中: データ・統計・タグ・トレンド記事の確認...",
+    );
     await sleep(800);
-    await addTerminalLine("✓ Build complete (1.2s)");
+    await addTerminalLine(
+      "✓ バンドル統合完了 (1.2s) | 最適化レベル: 高 | ファイルサイズ: 最小化",
+    );
     await sleep(500);
-    await addTerminalLine("✓ Preview ready! 🎉");
+    await addTerminalLine("✓ ビルド成功! 2025年の成果レポート準備完了 🎉");
     await sleep(1000);
 
     buildComplete = true;
@@ -127,6 +240,10 @@
   onMount(() => {
     // 最初のタブを自動表示
     handleTabClick(0);
+  });
+
+  onDestroy(() => {
+    clearAutoAdvanceTimer();
   });
 
   // 新しい行が追加されたときに自動的に最下部にスクロール
@@ -189,7 +306,7 @@
       </div>
 
       <!-- Preview Pane -->
-      <div class="preview-pane">
+      <div class="preview-pane max-h-[500px]">
         {#if previewComponent}
           {@const Component = previewComponent}
           <div in:fade={{ duration: 300 }}>
@@ -274,7 +391,10 @@
     padding: 10px 20px;
     border-right: 1px solid #1e1e1e;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s, color 0.2s;
+    transition:
+      background-color 0.2s,
+      transform 0.1s,
+      color 0.2s;
     white-space: nowrap;
     font-size: 13px;
   }
@@ -347,9 +467,8 @@
     padding: 16px;
     font-family: "Menlo", "Monaco", "Courier New", monospace;
     font-size: 13px;
-    min-height: 150px;
-    max-height: 300px;
-    overflow-y: auto;
+    height: 150px;
+    overflow-y: scroll;
     border-top: 2px solid #2d2d30;
   }
 
