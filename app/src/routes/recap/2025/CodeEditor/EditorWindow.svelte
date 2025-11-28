@@ -2,7 +2,12 @@
   import { fade, fly } from "svelte/transition";
   import { onMount, onDestroy } from "svelte";
   import { highlightCode, getLanguageForTab } from "./syntaxHighlight";
-  import { dataCode, statsCode, tagsCode, postsCode } from "./codeTemplates";
+  import {
+    getDataCode,
+    getStatsCode,
+    getTagsCode,
+    getPostsCode,
+  } from "./codeTemplates";
   import BlogStats from "../FinalRecap/BlogStats.svelte";
   import PopularTags from "../FinalRecap/PopularTags.svelte";
   import PopularPosts from "../FinalRecap/PopularPosts.svelte";
@@ -65,14 +70,14 @@
   const stages: Stage[] = [
     {
       tab: "Data2025.ts",
-      code: dataCode,
+      code: getDataCode(),
       preview: null,
       terminal: "✓ 2025年ブログデータを解析: 78記事・779,239語を認識",
       duration: 3000,
     },
     {
       tab: "BlogStats.svelte",
-      code: statsCode,
+      code: getStatsCode(theme),
       preview: BlogStats,
       terminal:
         "✓ BlogStats コンポーネント最適化: 年間成果(78記事)の可視化完了",
@@ -80,7 +85,7 @@
     },
     {
       tab: "PopularTags.svelte",
-      code: tagsCode,
+      code: getTagsCode(theme),
       preview: PopularTags,
       terminal:
         "✓ よく使われたタグ生成: 主要トピック(AI×33, MCP×20, TypeScript×13)を認識",
@@ -88,7 +93,7 @@
     },
     {
       tab: "PopularPosts.svelte",
-      code: postsCode,
+      code: getPostsCode(theme),
       preview: PopularPosts,
       terminal:
         "✓ トレンド分析完了: アクセス数でランキング集計(47K, 32K, 27K閲覧)",

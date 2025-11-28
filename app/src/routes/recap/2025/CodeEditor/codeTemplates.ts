@@ -1,4 +1,7 @@
-export const dataCode = `interface RecapData {
+import type { ThemeId } from "../themes";
+import { getTheme } from "../themes";
+
+export const getDataCode = () => `interface RecapData {
   totalPosts: number;
   totalWords: number;
   topTags: Array<{ name: string; count: number }>;
@@ -14,24 +17,29 @@ export const recap2025: RecapData = {
   ],
 };`;
 
-export const statsCode = `<script lang="ts">
+export const getStatsCode = (themeId: ThemeId) => {
+  const theme = getTheme(themeId);
+  return `<script lang="ts">
   import CountUp from "../CountUp.svelte";
   import { recap2025 } from "./Data2025";
 </script>
 
 <div class="text-center">
-  <div class="text-6xl font-bold">
+  <div class="text-6xl font-bold ${theme.colors.textAccentColor}">
     <CountUp value={recap2025.totalPosts} />
     <span class="text-xl">Posts</span>
   </div>
   <p class="text-xl">文字数に換算すると</p>
-  <div class="text-6xl font-bold">
+  <div class="text-6xl font-bold ${theme.colors.textAccentColor}">
     <CountUp value={recap2025.totalWords} />
     <span class="text-2xl">Words</span>
   </div>
 </div>`;
+};
 
-export const tagsCode = `<script lang="ts">
+export const getTagsCode = (themeId: ThemeId) => {
+  const theme = getTheme(themeId);
+  return `<script lang="ts">
   import { scale } from "svelte/transition";
   import { recap2025 } from "./Data2025";
 </script>
@@ -40,15 +48,18 @@ export const tagsCode = `<script lang="ts">
   {#each recap2025.topTags as tag, i}
     <div
       in:scale={{ delay: i * 200, duration: 500 }}
-      class="rounded-full bg-orange-100 px-6 py-3"
+      class="rounded-full bg-neutral-100 px-6 py-3"
     >
-      <span class="text-2xl font-bold">{tag.name}</span>
+      <span class="text-2xl font-bold ${theme.colors.textAccentColor}">{tag.name}</span>
       <span class="text-gray-600">({tag.count})</span>
     </div>
   {/each}
 </div>`;
+};
 
-export const postsCode = `<script lang="ts">
+export const getPostsCode = (themeId: ThemeId) => {
+  const theme = getTheme(themeId);
+  return `<script lang="ts">
   import { fly } from "svelte/transition";
   import CountUp from "../CountUp.svelte";
   import { recap2025 } from "./Data2025";
@@ -62,9 +73,10 @@ export const postsCode = `<script lang="ts">
       class="block rounded-lg bg-white p-6 shadow hover:shadow-lg"
     >
       <h3 class="text-xl font-bold">{post.title}</h3>
-      <div class="mt-2 text-2xl font-bold text-orange-600">
+      <div class="mt-2 text-2xl font-bold ${theme.colors.textAccentColor}">
         <CountUp value={post.views} /> views
       </div>
     </a>
   {/each}
 </div>`;
+};
