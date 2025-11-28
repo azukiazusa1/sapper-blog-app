@@ -13,7 +13,6 @@
 
   type Section = "hero" | "chat" | "editor" | "recap";
   let currentSection = $state<Section>("hero");
-  let showSkipButton = $state(false);
   let selectedTheme = $state<ThemeId>(defaultTheme);
 
   const scrollToSection = (id: string) => {
@@ -35,7 +34,6 @@
 
   const handleChatSubmit = () => {
     currentSection = "editor";
-    showSkipButton = true;
     setTimeout(() => {
       scrollToSection("code-editor");
     }, 100);
@@ -43,7 +41,6 @@
 
   const handleEditorComplete = () => {
     currentSection = "recap";
-    showSkipButton = false;
     setTimeout(() => {
       scrollToSection("final-recap");
     }, 500);
@@ -51,7 +48,6 @@
 
   const handleSkipToResults = () => {
     currentSection = "recap";
-    showSkipButton = false;
     setTimeout(() => {
       scrollToSection("final-recap");
     }, 100);
@@ -80,17 +76,6 @@
   />
 </svelte:head>
 
-<!-- Skip Animation Button -->
-{#if showSkipButton}
-  <button
-    in:fade
-    onclick={handleSkipToResults}
-    class="fixed top-4 right-4 z-50 rounded-lg bg-white px-4 py-2 shadow-lg transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-hidden focus:ring-4 focus:ring-orange-300 text-black"
-  >
-    結果を見る →
-  </button>
-{/if}
-
 <!-- Hero Section -->
 <div id="hero">
   <HeroSection onGetStarted={handleGetStarted} />
@@ -101,6 +86,8 @@
   <ChatInterface
     onSubmit={handleChatSubmit}
     onThemeSelected={handleThemeSelected}
+    onSkip={handleSkipToResults}
+    {currentSection}
   />
 {/if}
 
@@ -145,9 +132,9 @@
 
     <!-- Blog Statistics -->
     <section id="blog-stats" class="recap-section bg-white">
-      <div class="mx-auto max-w-4xl">
+      <div class="mx-auto">
         <h2 class="section-title text-gray-900">今年書いた記事</h2>
-        <BlogStats />
+        <BlogStats theme={selectedTheme} />
         <p class="mt-8 text-center text-lg text-gray-600">
           文庫本約8冊分の文字数を執筆しました
         </p>
@@ -185,10 +172,8 @@
     </section>
 
     <!-- Thank You -->
-    <section class="recap-section bg-white">
-      <div class="mx-auto max-w-4xl">
-        <ThankYou theme={selectedTheme} />
-      </div>
+    <section class="thank-you-section bg-gray-50">
+      <ThankYou theme={selectedTheme} />
     </section>
   </div>
 {/if}
@@ -201,6 +186,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .thank-you-section {
+    min-height: 100vh;
+    padding-top: 64px;
   }
 
   .section-title {

@@ -7,24 +7,55 @@
   interface Props {
     onSubmit: () => void;
     onThemeSelected?: (theme: ThemeId) => void;
+    onSkip?: () => void;
+    currentSection?: "hero" | "chat" | "editor" | "recap";
   }
 
-  let { onSubmit, onThemeSelected }: Props = $props();
+  let {
+    onSubmit,
+    onThemeSelected,
+    onSkip,
+    currentSection = "chat",
+  }: Props = $props();
 
   // Message constants
   const AI_GREETING_MESSAGE = `こんにちは！なにかお手伝いできることはありますか？`;
 
-  const IMPLEMENTATION_PLAN_MESSAGE = `かしこまりました！以下の手順で実装を進めます：
+  const PLAN_THINKING_MESSAGE = `了解しました！2025年のazukiazusa.devのRecap画面を構築するための実装プランを考えています...`;
 
-1. まず、Data2025.ts でデータ定義を作成します
-2. 次に、BlogStats.svelte で統計情報を表示します
-3. その後、PopularTags.svelte でよく使われたタグを表示します
-4. 最後に、PopularPosts.svelte で人気記事をランキング表示します
+  const THEME_QUESTION_MESSAGE = `実装に入る前に質問をさせてください。Recap画面のテーマカラーはどのような色がお好みですか？`;
 
-実装を始める前に、いくつか質問をさせてください：
-- どのようなテーマカラーがお好みですか？`;
+  const USER_INPUT_TEXT =
+    "azukiazusa.dev の 2025 年の振り返りを作成してください。";
 
-  const USER_INPUT_TEXT = "azukiazusa.dev の 2025 年の振り返りを教えて";
+  // Dynamic plan message based on selected theme
+  let aiPlanMessage = $state("");
+
+  // Generate AI plan message based on selected theme
+  const getAIPlanMessage = (themeId: ThemeId) => {
+    const themeNames: Record<ThemeId, string> = {
+      orange: "オレンジ",
+      blue: "ブルー",
+      purple: "パープル",
+      green: "グリーン",
+      pink: "ピンク",
+    };
+
+    return `了解しました！${themeNames[themeId]}テーマで進めます。
+
+以下の実装プランで2025年のRecap画面を構築します：
+
+1. 統計情報の表示
+   - 総記事数と総文字数をカウントアップアニメーションで表示
+   - グラデーションテキストを使用した大きな数字
+2. 人気タグの表示
+   - トップ3のタグをグラデーション背景のバッジで表示
+   - タグごとに記事数を表示
+3. 人気記事ランキング
+   - 閲覧数の多い記事TOP3を表示
+   - グラデーション境界線とランクバッジ付きカード
+それでは実装を開始します...`;
+  };
 
   // State management
   let showAIGreeting = $state(false);
@@ -37,11 +68,19 @@
   let showPlanTyping = $state(false);
   let showPlanText = $state(false);
 
+  // Plan thinking states (shown first)
+  let showPlanThinking = $state(false);
+  let showPlanThinkingTyping = $state(false);
+  let showPlanThinkingText = $state(false);
+
+  // Theme question states (shown after plan thinking)
+  let showThemeQuestion = $state(false);
+  let showThemeQuestionTyping = $state(false);
+  let showThemeQuestionText = $state(false);
+
   // Theme selection state
   let selectedTheme = $state<ThemeId | null>(null);
   let showThemeSelection = $state(false);
-  let themeConfirmed = $state(false);
-  let showThemeConfirmation = $state(false);
 
   // Initial animation timeline (on mount)
   $effect(() => {
@@ -73,6 +112,27 @@
     }, 500);
   };
 
+  // Handle plan thinking message typing complete
+  const handlePlanThinkingComplete = () => {
+    setTimeout(() => {
+      showThemeQuestion = true;
+      showThemeQuestionTyping = true;
+
+      setTimeout(() => {
+        showThemeQuestionTyping = false;
+        showThemeQuestionText = true;
+      }, 1000);
+    }, 500);
+  };
+
+  // Handle theme question typing complete
+  const handleThemeQuestionComplete = () => {
+    setTimeout(() => {
+      showThemeSelection = true;
+      setTimeout(scrollToBottom, 100);
+    }, 300);
+  };
+
   // Scroll to bottom utility
   const scrollToBottom = () => {
     const messagesArea = document.querySelector(".messages-area");
@@ -93,43 +153,44 @@
     setTimeout(() => {
       showUserMessage = true;
       setTimeout(scrollToBottom, 100);
+
+      // Show plan thinking message
+      setTimeout(() => {
+        showPlanThinking = true;
+        showPlanThinkingTyping = true;
+        setTimeout(scrollToBottom, 100);
+
+        // Hide typing indicator and show text animation
+        setTimeout(() => {
+          showPlanThinkingTyping = false;
+          showPlanThinkingText = true;
+        }, 1500);
+      }, 300);
     }, 300);
-
-    setTimeout(() => {
-      showAIPlan = true;
-      showPlanTyping = true;
-      setTimeout(scrollToBottom, 100);
-    }, 800);
-
-    setTimeout(() => {
-      showPlanTyping = false;
-      showPlanText = true;
-    }, 2300);
-  };
-
-  // Handle plan typing complete - show theme selector instead of immediately transitioning
-  const handlePlanTypingComplete = () => {
-    setTimeout(() => {
-      showThemeSelection = true;
-      setTimeout(scrollToBottom, 100);
-    }, 500);
   };
 
   // Handle theme selection
   const handleThemeSelect = (themeId: ThemeId) => {
     selectedTheme = themeId;
     showThemeSelection = false;
-    themeConfirmed = true;
+
+    // Generate plan message with selected theme
+    aiPlanMessage = getAIPlanMessage(themeId);
 
     // Notify parent component
     onThemeSelected?.(themeId);
 
-    // Show confirmation message
+    // Show implementation plan directly
     setTimeout(() => {
-      showThemeConfirmation = true;
+      showAIPlan = true;
+      showPlanTyping = false;
+      showPlanText = true;
       setTimeout(scrollToBottom, 100);
     }, 300);
+  };
 
+  // Handle plan typing complete - transition to code editor
+  const handlePlanTypingComplete = () => {
     // Transition to code editor
     setTimeout(() => {
       onSubmit();
@@ -142,6 +203,16 @@
   class="relative flex min-h-screen {themes[selectedTheme]?.colors
     .chatBackground}"
 >
+  <!-- スキップボタン（右上固定） -->
+  {#if currentSection !== "recap"}
+    <button
+      onclick={() => onSkip?.()}
+      class="fixed top-4 right-4 z-50 rounded-lg bg-white px-4 py-2 shadow-lg transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-300 text-black font-semibold"
+    >
+      スキップする →
+    </button>
+  {/if}
+
   <!-- メッセージエリア（上部、スクロール可能） -->
   <div class="messages-area">
     <div class="messages-container" role="log">
@@ -166,16 +237,30 @@
         </div>
       {/if}
 
-      <!-- AI実装プランメッセージ -->
-      {#if showAIPlan}
+      <!-- プラン作成中メッセージ -->
+      {#if showPlanThinking}
         <div in:fly={{ y: 50, duration: 500 }}>
           <MessageBubble
             type="ai"
             sender="AI Agent"
-            message={IMPLEMENTATION_PLAN_MESSAGE}
-            showTypingIndicator={showPlanTyping}
-            isTyping={showPlanText}
-            onTypingComplete={handlePlanTypingComplete}
+            message={PLAN_THINKING_MESSAGE}
+            showTypingIndicator={showPlanThinkingTyping}
+            isTyping={showPlanThinkingText}
+            onTypingComplete={handlePlanThinkingComplete}
+          />
+        </div>
+      {/if}
+
+      <!-- テーマ質問メッセージ -->
+      {#if showThemeQuestion}
+        <div in:fly={{ y: 50, duration: 500 }}>
+          <MessageBubble
+            type="ai"
+            sender="AI Agent"
+            message={THEME_QUESTION_MESSAGE}
+            showTypingIndicator={showThemeQuestionTyping}
+            isTyping={showThemeQuestionText}
+            onTypingComplete={handleThemeQuestionComplete}
           />
         </div>
       {/if}
@@ -187,13 +272,16 @@
         </div>
       {/if}
 
-      <!-- テーマ確認メッセージ -->
-      {#if showThemeConfirmation}
+      <!-- AI実装プランメッセージ -->
+      {#if showAIPlan}
         <div in:fly={{ y: 50, duration: 500 }}>
           <MessageBubble
             type="ai"
             sender="AI Agent"
-            message={`✓ ${themes[selectedTheme].name}のテーマで進めます！`}
+            message={aiPlanMessage}
+            showTypingIndicator={showPlanTyping}
+            isTyping={showPlanText}
+            onTypingComplete={handlePlanTypingComplete}
           />
         </div>
       {/if}
@@ -201,7 +289,7 @@
   </div>
 
   <!-- 入力フォームエリア（下部固定） -->
-  {#if showInputForm && !formSubmitted}
+  {#if showInputForm && !formSubmitted && currentSection === "chat"}
     <div
       class="input-form-container"
       style="background: linear-gradient(to top, {selectedTheme === 'orange'
