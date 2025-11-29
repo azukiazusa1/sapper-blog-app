@@ -76,7 +76,7 @@
 
 <div
   use:inview
-  on:inview_change={(e) => { isInView = e.detail.inView; }}
+  oninview_change={(e) => { isInView = e.detail.inView; }}
   class="relative overflow-hidden min-h-screen w-full
          bg-gradient-to-br {gradient.bg.from} {gradient.bg.via} {gradient.bg.to}"
 >

@@ -13,6 +13,7 @@
     step?: number;
     roundto?: number;
     format?: boolean;
+    onComplete?: () => void;
   }
 
   let {
@@ -22,6 +23,7 @@
     step = $bindable(1),
     roundto = 1,
     format = true,
+    onComplete,
   }: Props = $props();
 
   function formatNumber(input) {
@@ -40,6 +42,7 @@
   }
 
   counterResult[id] = initial;
+  let hasCalledComplete = false;
   timers[id] = setInterval(
     () => {
       if (isInView) {
@@ -48,6 +51,11 @@
         } else {
           clearInterval(timers[id]);
           counterResult[id] = Math.round(max / roundto) * roundto;
+          // Call onComplete callback if provided
+          if (onComplete && !hasCalledComplete) {
+            hasCalledComplete = true;
+            onComplete();
+          }
         }
       }
     },

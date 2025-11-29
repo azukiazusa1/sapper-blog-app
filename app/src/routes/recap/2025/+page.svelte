@@ -25,7 +25,7 @@
     }
   };
 
-  const handleGetStarted = () => {
+  const handleGetStarted = async () => {
     currentSection = "chat";
     setTimeout(() => {
       scrollToSection("chat-interface");
