@@ -40,7 +40,7 @@ selfAssessment:
         - text: "defer_loading_toolset"
           correct: false
           explanation: null
-      - question: "ツール検索ツールを使用すべきではない状況はどれですか？"
+    - question: "ツール検索ツールを使用すべきではない状況はどれですか？"
       answers:
         - text: "すべてのツールが頻繁に使用される場合"
           correct: true
