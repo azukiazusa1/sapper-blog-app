@@ -13,19 +13,19 @@ audio: null
 selfAssessment:
   quizzes: 
   - question: "Claude Code のプランモードの主な改善点は次のうちどれですか？"                          
-       answers:                                                                                          
-        - text: "新しい UI デザインが導入された。"                                                        
-          correct: false                                                                                
-          explanation: null                                                                             
-        - text: "プランの計画にサブエージェントを使用するようになった。"                                
-          correct: true                                                                                 
-          explanation: ""
-        - text: "オフラインでの作業が可能になった。"                                                    
-          correct: false                                                                               
-          explanation: null                                                                             
-        - text: "対応プログラミング言語が増えた。"                                                     
-          correct: false                                                                               
-          explanation: null 
+      answers:                                                                                          
+      - text: "新しい UI デザインが導入された。"                                                        
+        correct: false                                                                                
+        explanation: null                                                                             
+      - text: "プランの計画にサブエージェントを使用するようになった。"                                
+        correct: true                                                                                 
+        explanation: ""
+      - text: "オフラインでの作業が可能になった。"                                                    
+        correct: false                                                                               
+        explanation: null                                                                             
+      - text: "対応プログラミング言語が増えた。"                                                     
+        correct: false                                                                               
+        explanation: null 
 
 published: true
 ---
