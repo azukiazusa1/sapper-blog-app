@@ -5,7 +5,7 @@ slug: "trying-claude-tool-finder"
 about: "MCP では多くのツール定義が LLM のコンテキストを圧迫する問題があります。Claude のツール検索ツールを使用すると、必要に応じて関連するツールのみを LLM に提供でき、コンテキスト圧迫を軽減できます。この記事では Claude の TypeScript クライアントを使用して、ツール検索ツールを実際に使用した例を紹介します。"
 createdAt: "2025-11-30T15:11+09:00"
 updatedAt: "2025-11-30T15:11+09:00"
-tags: ["AI", "Claude", "MCP"]
+tags: ["AI", "claude", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/34a3JBTrFBQNdB0dwmHCHX/49be25dffbc91e384355db7944a81c7a/bike_american_15903-768x591.png"
   title: "アメリカンバイクのイラスト"
@@ -56,7 +56,6 @@ selfAssessment:
           explanation: null
 published: true
 ---
-
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) の問題点の 1 つとしてツールの定義が LLM のコンテキストを圧迫することが挙げられます。ほとんどの MCP クライアントはツールの定義を LLM のシステムプロンプトにすべて渡す設計となっています。これは LLM に事前に利用可能なツールを認識させるために必要な手法です。しかし、タスクの実行に不要なツールの定義まで渡されてしまうため、LLM のコンテキストが無駄に消費されてしまいます。
 
 多くの場合 1 つの MCP サーバーにつき 10 ~ 20 個程度のツールが登録されており、またユーザーは複数の MCP サーバーを同時に利用することもあるため 1 度にシステムプロンプトに渡されるツールの数は 100 個を超えることもあります。ツールの定義だけで 50,000 以上のトークンが消費されることもありました。
