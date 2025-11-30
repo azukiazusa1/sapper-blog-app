@@ -5,31 +5,29 @@ slug: "claude-code-plan-mode-improved"
 about: "Claude Code のプランモードはリリース当初から定期的に改善が加えられており、より正確な計画を立てられるようになっています。この記事では最近の改善点について紹介します。"
 createdAt: "2025-11-30T14:39+09:00"
 updatedAt: "2025-11-30T14:39+09:00"
-tags: ["AI","claude-code"]
+tags: ["AI", "claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6KaNkSkaBnYY0GBC1w7WeT/9f1a98fe66c2ad448a3ee10b8009349b/iekei-ramen_22854-768x689.png"
   title: "家系ラーメンのイラスト"
 audio: null
 selfAssessment:
-  quizzes: 
-    - question: "Claude Code のプランモードの主な改善点は次のうちどれですか？"                          
-      answers:                                                                                          
-        - text: "新しい UI デザインが導入された。"                                                        
-          correct: false                                                                                
-          explanation: null                                                                             
-        - text: "プランの計画にサブエージェントを使用するようになった。"                                
-          correct: true                                                                                 
-          explanation: ""
-        - text: "オフラインでの作業が可能になった。"                                                    
-          correct: false                                                                               
-          explanation: null                                                                             
-        - text: "対応プログラミング言語が増えた。"                                                     
-          correct: false                                                                               
-          explanation: null 
-
+  quizzes:
+    - question: "Claude Code のプランモードの主な改善点は次のうちどれですか？"
+      answers:
+        - text: "新しい UI デザインが導入された。"
+          correct: false
+          explanation: null
+        - text: "プランの計画にサブエージェントを使用するようになった。"
+          correct: true
+          explanation: null
+        - text: "オフラインでの作業が可能になった。"
+          correct: false
+          explanation: null
+        - text: "対応プログラミング言語が増えた。"
+          correct: false
+          explanation: null
 published: true
 ---
-
 [Claude Code v2.0.51](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md#2051) のリリースノートでは「Plan Mode now builds more precise plans and executes more thoroughly（プランモードがより正確な計画を立て、より徹底的に実行するようになりました）」と記載されています。リリースノートでは 1 行だけの説明で具体的な改善内容がわからないのですが、実際に Claude Code のプランモードは定期的に新しい機能が追加されており、プランモードが生まれた当初と比べて大きく進化していることがわかります。
 
 プランモードの改善点は主に以下の 3 つです。
