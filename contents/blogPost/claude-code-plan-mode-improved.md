@@ -72,7 +72,7 @@ v2.0.34 からはプランモードの計画を `~/.claude/plans/xxx.md` に保�
 
 実際に「タスク編集・削除機能の実装」という指示でプランモードを実行すると、以下のような計画が生成されました。
 
-<detail>
+<details>
 <summary>タスク編集・削除機能の実装プラン</summary>
 
 ~~~md:~/.claude/plans/misty-hugging-stonebraker.md
@@ -443,7 +443,7 @@ useSensor(PointerSensor, {
 **合計: 2-3 時間**
 ~~~
 
-</detail>
+</details>
 
 公式には明言されていないものの、これは [Kiro](https://kiro.dev/) を発端とする仕様駆動開発 (Specification-Driven Development, SDD) の考え方に近いものと言えるでしょう。Kiro は Claude を使用してソフトウェアの仕様書を生成し、その仕様書に基づいてコードを生成します。Claude Code のプランモードも同様に、実装の計画を詳細な仕様書として生成し、その仕様書に基づいてコードを生成するようになっています。
 
