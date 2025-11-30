@@ -1,4 +1,4 @@
----v
+---
 id: Hh__7xFnHjA7R3FMann03
 title: "Claude Code のプランモードがより正確な計画を立てられるようになっていた"
 slug: "claude-code-plan-mode-improved"
