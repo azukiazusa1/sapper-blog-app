@@ -14,12 +14,12 @@ selfAssessment:
   quizzes: 
   - question: "Claude Code のプランモードの主な改善点は次のうちどれですか？"                          
        answers:                                                                                          
-         - text: "新しい UI デザインが導入された。"                                                        
-           correct: false                                                                                
-           explanation: null                                                                             
-         - text: "プランの計画にサブエージェントを使用するようになった。"                                
-           correct: true                                                                                 
-           explanation: ""
+        - text: "新しい UI デザインが導入された。"                                                        
+          correct: false                                                                                
+          explanation: null                                                                             
+        - text: "プランの計画にサブエージェントを使用するようになった。"                                
+          correct: true                                                                                 
+          explanation: ""
         - text: "オフラインでの作業が可能になった。"                                                    
           correct: false                                                                               
           explanation: null                                                                             
