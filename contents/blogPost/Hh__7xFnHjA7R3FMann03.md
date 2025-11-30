@@ -13,7 +13,7 @@ audio: null
 selfAssessment:
   quizzes: 
   - question: "Claude Code のプランモードの主な改善点は次のうちどれですか？"                          
-      answers:                                                                                          
+    answers:                                                                                          
       - text: "新しい UI デザインが導入された。"                                                        
         correct: false                                                                                
         explanation: null                                                                             
