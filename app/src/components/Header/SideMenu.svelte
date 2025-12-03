@@ -8,6 +8,7 @@
   import GitHub from "../Icons/GitHub.svelte";
   import RssIcon from "../Icons/Rss.svelte";
   import Robot from "../Icons/Robot.svelte";
+  import type { Route } from "$lib/types";
 
   const dispatch = createEventDispatcher<{
     close: void;
@@ -27,7 +28,7 @@
   interface Props {
     isOpen?: boolean;
     segment: string;
-    routes: string[];
+    routes: Route[];
   }
 
   let { isOpen = false, segment, routes }: Props = $props();
@@ -58,15 +59,24 @@
           <li>
             <a
               onclick={close}
-              aria-current={isMatchPath(route, segment) ? "page" : undefined}
-              href={route}
-              class={`flex items-center rounded-xl px-4 py-3 capitalize font-medium transition-all duration-300 hover:bg-gray-100 dark:hover:bg-zinc-700 ${
-                isMatchPath(route, segment)
+              aria-current={isMatchPath(route.path, segment) ? "page" : undefined}
+              href={route.path}
+              class={`relative flex items-center rounded-xl px-4 py-3 capitalize font-medium transition-all duration-300 hover:bg-gray-100 dark:hover:bg-zinc-700 ${
+                isMatchPath(route.path, segment)
                   ? "text-indigo-600 dark:text-indigo-300 bg-gray-100 dark:bg-zinc-700"
                   : ""
               }`}
             >
-              {route.slice(1)}
+              {route.path.slice(1)}
+              {#if route.showIndicator}
+                <span
+                  class="ml-2 inline-flex items-center rounded-full bg-indigo-600 dark:bg-indigo-500 px-2 py-0.5 text-xs font-semibold text-white"
+                  aria-label="新しいコンテンツがあります"
+                  role="status"
+                >
+                  NEW
+                </span>
+              {/if}
             </a>
           </li>
         {/each}
