@@ -9,6 +9,9 @@
 >
   <ul class="space-y-4">
     <li>
+      <a class="text-xl hover:underline" href="/recap/2025">2025</a>
+    </li>
+    <li>
       <a class="text-xl hover:underline" href="/recap/2024">2024</a>
     </li>
     <li>
