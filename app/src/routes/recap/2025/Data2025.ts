@@ -17,30 +17,30 @@ export interface RecapData {
 }
 
 export const recap2025: RecapData = {
-  totalPosts: 78,
-  totalWords: 779239,
+  totalPosts: 81,
+  totalWords: 800846,
   topTags: [
-    { name: "AI", count: 33 },
-    { name: "MCP", count: 20 },
+    { name: "AI", count: 35 },
+    { name: "MCP", count: 21 },
     { name: "TypeScript", count: 13 },
-    { name: "claude-code", count: 12 },
+    { name: "claude-code", count: 13 },
     { name: "CSS", count: 7 },
   ],
   popularPosts: [
     {
       title:
         "コーディングエージェントの現状の整理とエンジニアの仕事の変化について",
-      views: 47003,
+      views: 47084,
       url: "/blog/coding-agents-and-developers-work/",
     },
     {
       title: "コーディングエージェントの能力を拡張する Serena を試してみた",
-      views: 32751,
+      views: 33768,
       url: "/blog/serena-coding-agent/",
     },
     {
       title: "私のキャリアに影響を与えたコンピューター・IT の定番書籍",
-      views: 27373,
+      views: 27457,
       url: "/blog/computer-it-books/",
     },
   ],

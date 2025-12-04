@@ -27,8 +27,6 @@
           {#if route.showIndicator}
             <span
               class="ml-1.5 inline-flex items-center rounded-full bg-indigo-600 dark:bg-indigo-500 px-2 py-0.5 text-xs font-semibold text-white"
-              aria-label="新しいコンテンツがあります"
-              role="status"
             >
               NEW
             </span>

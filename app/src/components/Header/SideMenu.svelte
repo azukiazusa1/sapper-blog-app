@@ -59,7 +59,9 @@
           <li>
             <a
               onclick={close}
-              aria-current={isMatchPath(route.path, segment) ? "page" : undefined}
+              aria-current={isMatchPath(route.path, segment)
+                ? "page"
+                : undefined}
               href={route.path}
               class={`relative flex items-center rounded-xl px-4 py-3 capitalize font-medium transition-all duration-300 hover:bg-gray-100 dark:hover:bg-zinc-700 ${
                 isMatchPath(route.path, segment)
@@ -71,8 +73,6 @@
               {#if route.showIndicator}
                 <span
                   class="ml-2 inline-flex items-center rounded-full bg-indigo-600 dark:bg-indigo-500 px-2 py-0.5 text-xs font-semibold text-white"
-                  aria-label="新しいコンテンツがあります"
-                  role="status"
                 >
                   NEW
                 </span>
