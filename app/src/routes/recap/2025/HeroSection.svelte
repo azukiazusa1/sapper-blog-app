@@ -1,10 +1,7 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import { onMount } from "svelte";
   import PrevIcon from "../../../components/Icons/Prev.svelte";
   import ParticleBackground from "$lib/effects/ParticleBackground.svelte";
-  import Confetti from "$lib/effects/Confetti.svelte";
-  import { getDeviceSettings } from "$lib/effects/utils";
 
   interface Props {
     onGetStarted: () => void;
@@ -12,26 +9,8 @@
 
   let { onGetStarted }: Props = $props();
 
-  const deviceSettings = getDeviceSettings();
-
-  let triggerConfetti = $state(false);
-
   // Particle background colors (orange theme)
   const particleColors = ["#ea580c", "#dc2626", "#f97316", "#fb923c"];
-
-  // Trigger confetti on mount (after delay)
-  onMount(() => {
-    // Trigger confetti burst after 600ms (synchronized with 3D entrance)
-    const confettiTimer = setTimeout(() => {
-      if (deviceSettings.confettiParticles > 0) {
-        triggerConfetti = true;
-      }
-    }, 600);
-
-    return () => {
-      clearTimeout(confettiTimer);
-    };
-  });
 </script>
 
 <div
@@ -39,14 +18,6 @@
 >
   <!-- Particle Background -->
   <ParticleBackground colors={particleColors} density="medium" />
-
-  <!-- Confetti -->
-  <Confetti
-    bind:trigger={triggerConfetti}
-    particleCount={50}
-    themeId="orange"
-    spread={120}
-  />
 
   <!-- Back button -->
   <div class="absolute top-0 left-0 z-10 p-4">
