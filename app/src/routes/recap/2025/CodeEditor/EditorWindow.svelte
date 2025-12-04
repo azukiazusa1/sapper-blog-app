@@ -113,6 +113,7 @@
   let showBuildPrompt: boolean = $state(false);
   let isAutoAdvancing: boolean = $state(false);
   let terminalElement: HTMLDivElement;
+  let completedTabs = $state<Set<number>>(new Set());
 
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
@@ -153,10 +154,12 @@
   async function typeCode(
     code: string,
     stageIndex: number,
-    speed: number = 150,
+    speed: number = 300, // Increased from 150 to 300 chars/sec for better performance
   ) {
     displayedCode = "";
-    const delay = 1000 / speed;
+    // Batch update: update multiple characters at once to reduce DOM updates
+    const charsPerUpdate = 5; // Update 5 characters at a time
+    const delay = (1000 / speed) * charsPerUpdate;
     const messages = getProgressMessagesForStage(stageIndex);
 
     // 0.5秒間隔でメッセージをスケジュール
@@ -169,9 +172,10 @@
       );
     });
 
-    // コードを文字ごとにタイプ
-    for (let i = 0; i < code.length; i++) {
-      displayedCode = code.substring(0, i + 1);
+    // コードを複数文字ずつタイプ（パフォーマンス最適化）
+    for (let i = 0; i < code.length; i += charsPerUpdate) {
+      const endIndex = Math.min(i + charsPerUpdate, code.length);
+      displayedCode = code.substring(0, endIndex);
       await sleep(delay);
     }
 
@@ -200,6 +204,24 @@
     // ビルドプロンプトをリセット
     showBuildPrompt = false;
 
+    // Check if this tab was already completed
+    if (completedTabs.has(index)) {
+      // Skip animation - directly set code and highlight
+      displayedCode = stage.code;
+      const lang = getLanguageForTab(stage.tab);
+      highlightedCode = await highlightCode(stage.code, lang);
+      previewComponent = stage.preview;
+
+      // Ensure terminal line exists
+      if (!terminalLines.includes(stage.terminal)) {
+        terminalLines = [...terminalLines, stage.terminal];
+      }
+
+      isTyping = false;
+      return; // Don't proceed to typeCode or auto-advance
+    }
+
+    // First time viewing this tab - run animation
     // 進捗メッセージ付きでコードをタイプ
     await typeCode(stage.code, index, 150);
 
@@ -214,6 +236,9 @@
     if (!terminalLines.includes(stage.terminal)) {
       terminalLines = [...terminalLines, stage.terminal];
     }
+
+    // Mark this tab as completed
+    completedTabs.add(index);
 
     isTyping = false;
 
@@ -285,14 +310,22 @@
           {stage.tab}
         </button>
       {/each}
-      {#if !buildComplete && !isBuilding}
+      {#if !buildComplete}
         <button
           class="file-tab build-tab bg-gradient-to-r {themes[theme].colors
-            .editorBuildTab}"
+            .editorBuildTab} relative"
           onclick={runBuildAnimation}
-          disabled={isTyping}
+          disabled={isTyping || isBuilding}
         >
-          ▶ Build
+          {#if isBuilding}
+            <span class="build-spinner"></span>
+            Building...
+          {:else}
+            ▶ Build
+            {#if showBuildPrompt}
+              <span class="build-badge">!</span>
+            {/if}
+          {/if}
         </button>
       {/if}
     </div>
@@ -391,6 +424,10 @@
     border-radius: 50%;
   }
 
+  .file-tabs-wrapper {
+    overflow: visible;
+  }
+
   .file-tabs {
     background: #2d2d30;
   }
@@ -460,6 +497,8 @@
   .code-content {
     white-space: pre-wrap;
     word-wrap: break-word;
+    will-change: contents;
+    transform: translateZ(0); /* Enable GPU acceleration */
   }
 
   .preview-pane {
@@ -505,6 +544,50 @@
     51%,
     100% {
       opacity: 0;
+    }
+  }
+
+  .build-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #ef4444;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    animation: badge-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes badge-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  .build-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 6px;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
     }
   }
 

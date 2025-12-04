@@ -21,7 +21,8 @@
 
 	const particleCount = $derived(() => {
 		if (deviceSettings.backgroundParticles === 0) return 0;
-		const densityMap = { low: 20, medium: 35, high: 50 };
+		// Reduced particle counts for better performance
+		const densityMap = { low: 15, medium: 25, high: 35 };
 		return Math.min(densityMap[density], deviceSettings.backgroundParticles);
 	});
 
@@ -61,10 +62,13 @@
 		}
 
 		draw(context: CanvasRenderingContext2D) {
+			// Removed blur filter for better performance
+			// Using shadow instead of blur for a softer look with less GPU overhead
 			context.save();
-			context.filter = `blur(${this.blur}px)`;
 			context.fillStyle = this.color;
 			context.globalAlpha = this.opacity;
+			context.shadowBlur = this.blur * 0.5; // Reduced blur intensity
+			context.shadowColor = this.color;
 			context.beginPath();
 			context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
 			context.fill();

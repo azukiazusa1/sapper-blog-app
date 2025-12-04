@@ -18,11 +18,14 @@
     new Promise((resolve) => setTimeout(resolve, ms));
 
   async function typeText() {
-    const delay = 1000 / speed;
+    // Batch update: update multiple characters at once for better performance
+    const charsPerUpdate = 3; // Update 3 characters at a time
+    const delay = (1000 / speed) * charsPerUpdate;
 
-    for (let i = 0; i < text.length; i++) {
-      displayedText = text.substring(0, i + 1);
-      currentIndex = i + 1;
+    for (let i = 0; i < text.length; i += charsPerUpdate) {
+      const endIndex = Math.min(i + charsPerUpdate, text.length);
+      displayedText = text.substring(0, endIndex);
+      currentIndex = endIndex;
       await sleep(delay);
     }
 

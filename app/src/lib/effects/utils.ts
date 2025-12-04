@@ -9,20 +9,20 @@ export interface DeviceSettings {
 
 export const DEVICE_SETTINGS: Record<DeviceProfile, DeviceSettings> = {
   low: {
-    confettiParticles: 30,
-    backgroundParticles: 15,
+    confettiParticles: 20,
+    backgroundParticles: 10,
     enable3D: false,
     enableParallax: false,
   },
   medium: {
-    confettiParticles: 60,
-    backgroundParticles: 30,
+    confettiParticles: 40,
+    backgroundParticles: 20,
     enable3D: true,
     enableParallax: false,
   },
   high: {
-    confettiParticles: 100,
-    backgroundParticles: 50,
+    confettiParticles: 70,
+    backgroundParticles: 35,
     enable3D: true,
     enableParallax: true,
   },

@@ -90,6 +90,8 @@
     border-radius: 1rem;
     line-height: 1.6;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    will-change: contents;
+    transform: translateZ(0); /* Enable GPU acceleration */
   }
 
   .message-bubble p {

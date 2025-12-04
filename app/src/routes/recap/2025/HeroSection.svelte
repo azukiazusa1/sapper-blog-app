@@ -124,6 +124,7 @@
     letter-spacing: -0.05em;
     color: #111827;
     transform-style: preserve-3d;
+    will-change: transform, background-position;
     animation:
       hero3DEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both,
       textShine 2s ease-in-out 0.6s 1,
@@ -207,6 +208,7 @@
     letter-spacing: 0.15em;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform: perspective(500px) translateZ(0);
+    will-change: transform, box-shadow;
     animation:
       buttonScale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s both,
       buttonPulse 2s ease-in-out 2s infinite;
