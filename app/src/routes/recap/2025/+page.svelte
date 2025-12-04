@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { fade } from "svelte/transition";
   import HeroSection from "./HeroSection.svelte";
   import ChatInterface from "./ChatInterface.svelte";
@@ -10,10 +11,16 @@
   import ThankYou from "./FinalRecap/ThankYou.svelte";
   import ScrollIndicator from "./FinalRecap/ScrollIndicator.svelte";
   import { defaultTheme, type ThemeId } from "./themes";
+    import Ogp from "../../../components/Ogp.svelte";
 
   type Section = "hero" | "chat" | "editor" | "recap";
   let currentSection = $state<Section>("hero");
   let selectedTheme = $state<ThemeId>(defaultTheme);
+
+  // Auto-dismiss the recap banner when visiting the recap page
+  onMount(() => {
+    localStorage.setItem("recap-2025-banner-dismissed", "true");
+  });
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -72,9 +79,16 @@
   <title>azukiazusa.dev 2025 Recap</title>
   <meta
     name="description"
-    content="AI エージェントが作成する、azukiazusa.dev の 2025 年の振り返り"
+    content="2025 年の azukiazusa.dev の記録を振り返りましょう。"
   />
 </svelte:head>
+
+<Ogp
+  title="azukiazusa.dev 2025 Recap"
+  description="2025 年の azukiazusa.dev の記録を振り返りましょう。"
+  url="https://azukiazusa.dev/recap/2025"
+  image="https://azukiazusa.dev/recap/2025/ogp.png"
+/>
 
 <!-- Hero Section -->
 <div id="hero">
@@ -147,7 +161,7 @@
         <h2 class="section-title text-gray-900">人気のタグ</h2>
         <PopularTags theme={selectedTheme} />
         <p class="mt-8 text-center text-lg text-gray-600">
-          AI と MCP の記事が特に多く読まれました
+          2025 年は AI 関連のトピックが話題になった年でした
         </p>
       </div>
     </section>
@@ -157,6 +171,9 @@
       <div class="mx-auto max-w-4xl">
         <h2 class="section-title text-gray-900">人気の記事 Top 3</h2>
         <PopularPosts theme={selectedTheme} />
+        <p class="mt-8 text-center text-lg text-gray-600">
+          あなたが好きな記事はありましたか？
+        </p>
       </div>
     </section>
 

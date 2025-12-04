@@ -162,16 +162,6 @@
         Xで共有
       </a>
     </div>
-
-    <!-- Back to top link -->
-    <div class="mt-12 md:mt-16">
-      <a
-        href="#hero"
-        class="{gradient.backLink} transition-colors duration-200 text-sm md:text-base"
-      >
-        ↑ トップに戻る
-      </a>
-    </div>
   </div>
 </div>
 
