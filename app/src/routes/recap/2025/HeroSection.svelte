@@ -17,7 +17,7 @@
   let triggerConfetti = $state(false);
 
   // Particle background colors (orange theme)
-  const particleColors = ['#ea580c', '#dc2626', '#f97316', '#fb923c'];
+  const particleColors = ["#ea580c", "#dc2626", "#f97316", "#fb923c"];
 
   // Trigger confetti on mount (after delay)
   onMount(() => {
@@ -41,7 +41,12 @@
   <ParticleBackground colors={particleColors} density="medium" />
 
   <!-- Confetti -->
-  <Confetti bind:trigger={triggerConfetti} particleCount={50} themeId="orange" spread={120} />
+  <Confetti
+    bind:trigger={triggerConfetti}
+    particleCount={50}
+    themeId="orange"
+    spread={120}
+  />
 
   <!-- Back button -->
   <div class="absolute top-0 left-0 z-10 p-4">
@@ -61,9 +66,7 @@
     <div class="accent-line mx-auto h-1 w-16 bg-orange-600"></div>
 
     <!-- Main typography with 3D effects -->
-    <h1 class="hero-year">
-      2025
-    </h1>
+    <h1 class="hero-year">2025</h1>
 
     <div class="hero-subtitle">
       azukiazusa.dev
@@ -226,9 +229,8 @@
   }
 
   .enter-button:focus-visible {
-    outline: none;
-    ring: 4px;
-    ring-color: #d1d5db;
+    outline: 4px solid #d1d5db;
+    outline-offset: 2px;
   }
 
   @keyframes buttonScale {

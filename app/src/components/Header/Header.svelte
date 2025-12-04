@@ -18,7 +18,7 @@
     { path: "/blog" },
     { path: "/about" },
     { path: "/talks" },
-    { path: "/recap", showIndicator: SHOW_RECAP_INDICATOR }
+    { path: "/recap", showIndicator: SHOW_RECAP_INDICATOR },
   ];
   let html: HTMLElement;
   let lastScrollY = 0;

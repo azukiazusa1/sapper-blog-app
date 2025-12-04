@@ -187,7 +187,9 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    transition: transform 0.3s ease-out, filter 0.3s ease-out;
+    transition:
+      transform 0.3s ease-out,
+      filter 0.3s ease-out;
   }
 
   .stat-card.celebrating {
