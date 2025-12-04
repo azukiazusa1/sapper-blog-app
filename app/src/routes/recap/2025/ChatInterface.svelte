@@ -2,7 +2,7 @@
   import { fade, fly } from "svelte/transition";
   import MessageBubble from "./ChatInterface/MessageBubble.svelte";
   import ThemeSelector from "./ChatInterface/ThemeSelector.svelte";
-  import { themes, defaultTheme, type ThemeId } from "./themes";
+  import { themes, type ThemeId } from "./themes";
 
   interface Props {
     onSubmit: () => void;

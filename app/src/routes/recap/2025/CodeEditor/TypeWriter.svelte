@@ -11,7 +11,6 @@
   let { text, speed = 100, onComplete, showCursor = true }: Props = $props();
 
   let displayedText = $state("");
-  let currentIndex = $state(0);
   let isComplete = $state(false);
 
   const sleep = (ms: number) =>
@@ -39,7 +38,7 @@
 </script>
 
 <span class="relative">
-  {@html displayedText}
+  {displayedText}
   {#if showCursor && !isComplete}
     <span class="typing-cursor">|</span>
   {/if}

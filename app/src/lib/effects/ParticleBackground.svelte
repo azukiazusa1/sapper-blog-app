@@ -9,7 +9,7 @@
     density?: "low" | "medium" | "high";
   }
 
-  let { colors, themeId = "orange", density = "medium" }: Props = $props();
+  let { colors, density = "medium" }: Props = $props();
 
   let canvas = $state<HTMLCanvasElement>();
   let ctx: CanvasRenderingContext2D | null = null;

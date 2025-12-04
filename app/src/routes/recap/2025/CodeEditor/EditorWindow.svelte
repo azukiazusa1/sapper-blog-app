@@ -23,6 +23,7 @@
   type Stage = {
     tab: string;
     code: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     preview: any;
     terminal: string;
     duration: number;
@@ -105,13 +106,13 @@
   let currentTab = $state("Data2025.ts");
   let displayedCode = $state("");
   let terminalLines = $state<string[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let previewComponent = $state<any>(null);
   let isBuilding = $state(false);
   let buildComplete = $state(false);
   let isTyping = $state(false);
   let autoAdvanceTimer: ReturnType<typeof setTimeout> | null = $state(null);
   let showBuildPrompt: boolean = $state(false);
-  let isAutoAdvancing: boolean = $state(false);
   let terminalElement: HTMLDivElement;
   let completedTabs = $state<Set<number>>(new Set());
 
@@ -341,6 +342,7 @@
             <span class="typing-cursor">|</span>
           {:else}
             <!-- タイピング完了後 -->
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
             {@html highlightedCode}
           {/if}
         </div>

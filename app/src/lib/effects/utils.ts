@@ -32,6 +32,7 @@ export function getDeviceProfile(): DeviceProfile {
   if (typeof window === "undefined") return "medium";
 
   const cores = navigator.hardwareConcurrency || 2;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const memory = (navigator as any).deviceMemory || 4;
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(
     navigator.userAgent,
