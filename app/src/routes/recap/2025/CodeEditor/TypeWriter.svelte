@@ -24,7 +24,6 @@
     for (let i = 0; i < text.length; i += charsPerUpdate) {
       const endIndex = Math.min(i + charsPerUpdate, text.length);
       displayedText = text.substring(0, endIndex);
-      currentIndex = endIndex;
       await sleep(delay);
     }
 
