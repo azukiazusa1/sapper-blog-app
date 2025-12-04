@@ -293,23 +293,9 @@
       <div class="window-dot bg-yellow-500"></div>
       <div class="window-dot bg-green-500"></div>
       <span class="ml-4 text-sm text-gray-400">recap-2025/</span>
-    </div>
-
-    <!-- File Tabs -->
-    <div class="file-tabs flex overflow-x-auto border-b border-gray-700">
-      {#each stages as stage, i}
-        <button
-          class={`file-tab ${currentTab === stage.tab ? "active" : ""}`}
-          onclick={() => handleTabClick(i)}
-          disabled={isTyping}
-        >
-          {stage.tab}
-        </button>
-      {/each}
       {#if !buildComplete}
         <button
-          class="file-tab build-tab bg-gradient-to-r {themes[theme].colors
-            .editorBuildTab} relative"
+          class="build-button bg-gradient-to-r"
           onclick={runBuildAnimation}
           disabled={isTyping || isBuilding}
         >
@@ -324,6 +310,19 @@
           {/if}
         </button>
       {/if}
+    </div>
+
+    <!-- File Tabs -->
+    <div class="file-tabs flex overflow-x-auto border-b border-gray-700">
+      {#each stages as stage, i}
+        <button
+          class={`file-tab ${currentTab === stage.tab ? "active" : ""}`}
+          onclick={() => handleTabClick(i)}
+          disabled={isTyping}
+        >
+          {stage.tab}
+        </button>
+      {/each}
     </div>
 
     <!-- Editor Body -->
@@ -344,7 +343,7 @@
       </div>
 
       <!-- Preview Pane -->
-      <div class="preview-pane max-h-[500px]">
+      <div class="preview-pane max-h-[500px] hidden md:block">
         {#if previewComponent}
           {@const Component = previewComponent}
           <div in:fade={{ duration: 300 }}>
@@ -419,6 +418,28 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
+  }
+
+  .build-button {
+    color: white;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+      transform 0.1s,
+      opacity 0.2s;
+    font-size: 13px;
+    position: relative;
+  }
+
+  .build-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  .build-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .file-tabs-wrapper {

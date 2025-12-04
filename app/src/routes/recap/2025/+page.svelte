@@ -146,7 +146,7 @@
 
     <!-- Blog Statistics -->
     <section id="blog-stats" class="recap-section bg-white">
-      <div class="mx-auto">
+      <div class="mx-auto max-w-full">
         <h2 class="section-title text-gray-900">今年書いた記事</h2>
         <BlogStats theme={selectedTheme} />
         <p class="mt-8 text-center text-lg text-gray-600">
