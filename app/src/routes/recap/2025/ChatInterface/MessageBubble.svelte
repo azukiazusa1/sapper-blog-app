@@ -106,7 +106,7 @@
   }
 
   .message-bubble.user {
-    background: #f3f4f6;
+    background: white;
     border-top-right-radius: 0.25rem;
     color: #1f2937;
   }
