@@ -60,6 +60,7 @@ type LifecycleEventDetails = {
 };
 
 declare namespace svelteHTML {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface HTMLAttributes<T> {
     oninview_change?: (event: CustomEvent<ObserverEventDetails>) => void;
     oninview_enter?: (event: CustomEvent<ObserverEventDetails>) => void;

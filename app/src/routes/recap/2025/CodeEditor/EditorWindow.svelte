@@ -123,14 +123,12 @@
     if (autoAdvanceTimer) {
       clearTimeout(autoAdvanceTimer);
       autoAdvanceTimer = null;
-      isAutoAdvancing = false;
     }
   }
 
   async function startAutoAdvanceTimer() {
     // 最後のタブの場合：ビルド促進メッセージを表示
     if (currentStageIndex >= stages.length - 1) {
-      isAutoAdvancing = true;
       autoAdvanceTimer = setTimeout(async () => {
         showBuildPrompt = true;
         await addTerminalLine("✓ 全部のコンポーネント準備できました！");
@@ -138,16 +136,13 @@
           "$ さあ、ビルドボタンを押して完成させましょう 🎉",
         );
         autoAdvanceTimer = null;
-        isAutoAdvancing = false;
       }, 1500);
       return;
     }
 
     // それ以外：次のタブに自動遷移
-    isAutoAdvancing = true;
     autoAdvanceTimer = setTimeout(() => {
       autoAdvanceTimer = null;
-      isAutoAdvancing = false;
       handleTabClick(currentStageIndex + 1);
     }, 1500);
   }
