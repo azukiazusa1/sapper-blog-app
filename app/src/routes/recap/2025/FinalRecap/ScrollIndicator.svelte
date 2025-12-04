@@ -30,7 +30,6 @@
 <div
   class="scroll-indicator {themes[theme].colors.focusRing}"
   role="button"
-  aria-label="今年書いた記事セクションにスクロール"
   tabindex="0"
   onclick={handleClick}
   onkeydown={handleKeydown}

@@ -29,5 +29,8 @@
   },
   "dependencies": {
     "@prettier/plugin-oxc": "^0.0.4"
+  },
+  "overrides": {
+    "esbuild": "0.17.19"
   }
 }
