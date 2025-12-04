@@ -7,6 +7,7 @@
   import { navigating } from "$app/stores";
   import Header from "../components/Header/Header.svelte";
   import Footer from "../components/Footer/Footer.svelte";
+  import RecapNotificationBanner from "../components/RecapNotificationBanner/RecapNotificationBanner.svelte";
   import { page } from "$app/stores";
   import GoogleAnalytics from "../components/GoogleAnalytics.svelte";
   import { removeTrailingSlash } from "$lib/utils";
@@ -75,7 +76,8 @@
 <div
   class="min-h-screen bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-50"
 >
-  {#if removeTrailingSlash($page.url.pathname) !== "/recap/2024"}
+  {#if removeTrailingSlash($page.url.pathname) !== "/recap/2024" && removeTrailingSlash($page.url.pathname) !== "/recap/2025"}
+    <RecapNotificationBanner />
     <Header segment={$page.url.pathname} />
   {/if}
 
@@ -83,7 +85,7 @@
     {@render children?.()}
   </main>
 
-  {#if removeTrailingSlash($page.url.pathname) !== "/recap/2024"}
+  {#if removeTrailingSlash($page.url.pathname) !== "/recap/2024" && removeTrailingSlash($page.url.pathname) !== "/recap/2025"}
     <Footer />
   {/if}
 </div>
