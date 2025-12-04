@@ -11,7 +11,7 @@
   import ThankYou from "./FinalRecap/ThankYou.svelte";
   import ScrollIndicator from "./FinalRecap/ScrollIndicator.svelte";
   import { defaultTheme, type ThemeId } from "./themes";
-    import Ogp from "../../../components/Ogp.svelte";
+  import Ogp from "../../../components/Ogp.svelte";
 
   type Section = "hero" | "chat" | "editor" | "recap";
   let currentSection = $state<Section>("hero");
