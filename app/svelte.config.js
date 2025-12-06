@@ -7,6 +7,10 @@ const config = {
   // for more information about preprocessors
   preprocess: preprocess(),
 
+  compilerOptions: {
+    runes: true,
+  },
+
   kit: {
     adapter: adapter({
       fallback: "spa",
