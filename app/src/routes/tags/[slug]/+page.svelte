@@ -3,11 +3,11 @@
   import Pagination from "../../../components/Pagination/Pagination.svelte";
   import variables from "$lib/variables";
   import type { PageData } from "./$types";
-  export let data: PageData;
+  let { data }: { data: PageData } = $props();
 
-  $: tagName = data.tagCollection.items[0].name;
-  $: tagSlug = data.tagCollection.items[0].slug;
-  $: posts = data.tagCollection.items[0].linkedFrom;
+  let tagName = $derived(data.tagCollection.items[0].name);
+  let tagSlug = $derived(data.tagCollection.items[0].slug);
+  let posts = $derived(data.tagCollection.items[0].linkedFrom);
 </script>
 
 <svelte:head>

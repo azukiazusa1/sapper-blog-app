@@ -3,7 +3,7 @@
   import type { PageData } from "./$types";
   import variables from "$lib/variables";
 
-  export let data: PageData;
+  let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
