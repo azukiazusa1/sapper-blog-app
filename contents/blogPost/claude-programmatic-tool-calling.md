@@ -5,7 +5,7 @@ slug: "claude-programmatic-tool-calling"
 about: "MCP ツールの呼び出しはコンテキスト汚染や推論のオーバーヘッドなどの課題があります。Claude のプログラムによるツール呼び出し機能を利用することで、これらの課題を解決する方法について解説します。"
 createdAt: "2025-12-07T11:42+09:00"
 updatedAt: "2025-12-07T11:42+09:00"
-tags: ["AI", "Claude", "MCP"]
+tags: ["AI", "claude", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4wVvC7bUw0FnrmDgBHwMhC/4841e2bfcbea1b0c226d30a80b5cac37/washoku_nimono_7877-768x576.png"
   title: "煮物のイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "Java"
           correct: false
           explanation: null
-
 published: true
 ---
-
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) は LLM が外部ツールと連携するために今や欠かせない仕組みとなっています。しかし MCP の登場から 1 年が経過した現在、いくつかの課題が明らかになっています。Anthropic 社のエンジニアリングチームによると、MCP のツール呼び出しでは以下の 2 つの問題点が指摘されています。
 
 - ツール呼び出し中間結果によるコンテキスト汚染: ツールを実行した結果はすべて LLM のコンテキストウィンドウに追加される。例えば検索ツールを呼び出したとき、実際に必要な情報は上位の数件だけであるにもかかわらず、ツールが返した検索結果がすべてコンテキストに追加されてしまう。これにより、LLM のコンテキストウィンドウが不要な情報で溢れ、重要な情報が埋もれてしまう可能性がある。
