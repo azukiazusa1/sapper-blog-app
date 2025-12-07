@@ -14,7 +14,7 @@ selfAssessment:
   quizzes:
     - question: "TanStack AI でツールのスキーマを定義する方法はどれですか？"
       answers:
-        - text: "createTool()
+        - text: "createTool()"
           correct: false
           explanation: ""
         - text: "defineTool()"
