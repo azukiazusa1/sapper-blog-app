@@ -44,7 +44,7 @@ published: true
 ---
 AI エージェントの開発をする上で LLM の API 呼び出しを抽象化してくれるフレームワークは欠かせないものと言えるでしょう。OpenAI や Anthropic などの主要な LLM プロバイダーはそれぞれ公式 SDK を提供していますが、それぞれ異なるインターフェイスを提供しているため複数の LLM モデルを切り替えながら開発する場合には煩雑さが増してしまいます。
 
-この差異を吸収してくれるフレームワークとして TypeScript なら [AI SDK](https://ai-sdk.dev/)、Python なら [LangChain](https://langchain.com/) がよく知られています。これらの SDK は最低限の機能のみを提供しシンプルな抽象化が行われているため、初めに導入しやすいという利点があります。また AI SDK なら [Mastra](https://mastra.dev/) や [VoltAgent](https://voltagent.dev/)、LangChain なら [LangGraph](https://langgraph.com/) などのより高機能なフレームワークの基盤としても利用されています。
+この差異を吸収してくれるフレームワークとして TypeScript なら [AI SDK](https://ai-sdk.dev/)、Python なら [LangChain](https://langchain.com/) がよく知られています。これらの SDK は最低限の機能のみを提供しシンプルな抽象化が行われているため、初めに導入しやすいという利点があります。また AI SDK なら [Mastra](https://mastra.ai/) や [VoltAgent](https://voltagent.dev/)、LangChain なら [LangGraph](https://langgraph.com/) などのより高機能なフレームワークの基盤としても利用されています。
 
 AI SDK や LangChain のようにシンプルな AI フレームワークとして [TanStack AI](https://tanstack.com/ai/latest) が最近リリースされました。TanStack AI は TypeScript/JavaScript 向けの軽量な AI SDK で、TanStack チームが開発しています。この記事では TanStack AI の概要と基本的な使い方を紹介します。
 
