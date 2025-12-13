@@ -16,16 +16,16 @@ selfAssessment:
       answers:
         - text: "import 'server-only';"
           correct: false
-          explanation: ""
-        - text: '"use server" ディレクティブ'
+          explanation: null
+        - text: "\"use server\" ディレクティブ"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "createServerFn() 関数"
           correct: true
           explanation: "createServerFn() はサーバー側でのみ実行される関数を定義します。クライアント側から呼ばれた場合はネットワーク経由でサーバーにリクエストが送信されます。"
         - text: "ファイル名を .server.ts にする"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "TanStack Start のファイルベースルーティングで、パスパラメータ `/posts/:postId` に対応するファイル名はどれですか？"
       answers:
         - text: "src/routes/posts/$postId.tsx"
@@ -33,17 +33,15 @@ selfAssessment:
           explanation: "パスパラメータはファイル名の先頭に $ を付けて表現します。`$postId.tsx` が `/posts/:postId` に対応します。"
         - text: "src/routes/posts/[postId].tsx"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "src/routes/posts/:postId.tsx"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "src/routes/posts/{postId}.tsx"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 TanStack Start は [TanStack Router](https://tanstack.com/router/latest) と [Vite](https://vitejs.dev/) をベースにしたフルスタック React フレームワークです。TanStack Router が提供する型安全なルーティング機能に加えて、サーバーサイドレンダリング（SSR）, ストリーミング, サーバー関数, API ルートなどの機能を備えています。この記事では TanStack Start の概要と基本的な使い方を紹介します。TanStack Start は Next.js や Remix と同じ立ち位置のフレームワークと言えるでしょう。
 
 この記事では TanStack Start の概要と基本的な使い方を紹介します。
