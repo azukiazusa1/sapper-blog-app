@@ -43,7 +43,7 @@
   ];
 
   // Add reference to chat container
-  let chatContainer;
+  let chatContainer = $state();
 
   // Function to scroll to bottom of chat
   async function scrollToBottom() {
@@ -54,10 +54,10 @@
   }
 
   // Simulate typing effect
-  let visibleMessages = 0;
-  let typingInterval;
-  let currentTypingIndex = 0;
-  let displayedTexts = messages.map(() => "");
+  let visibleMessages = $state(0);
+  let typingInterval = $state();
+  let currentTypingIndex = $state(0);
+  let displayedTexts = $state(messages.map(() => ""));
   let typingSpeed = 30; // ms per character
 
   function startTypingEffect() {
@@ -100,7 +100,7 @@
     }, typingSpeed);
   }
 
-  let visible = false;
+  let visible = $state(false);
 
   onMount(() => {
     visible = true;
@@ -110,11 +110,11 @@
   });
 
   // Watch for changes in messages length and scroll to bottom
-  $: {
+  $effect(() => {
     if (visibleMessages) {
       scrollToBottom();
     }
-  }
+  });
 
   // For meta tag
   const content = content1 + content2 + content3;

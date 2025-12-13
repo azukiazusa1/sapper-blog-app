@@ -4,14 +4,14 @@
   import type { PageData } from "./$types";
   import variables from "$lib/variables";
 
-  export let data: PageData;
+  let { data }: { data: PageData } = $props();
 
-  $: tag = data.tag;
-  $: page = data.page;
+  let tag = $derived(data.tag);
+  let page = $derived(data.page);
 
-  $: tagName = tag.tagCollection.items[0].name;
-  $: tagSlug = tag.tagCollection.items[0].slug;
-  $: posts = tag.tagCollection.items[0].linkedFrom;
+  let tagName = $derived(tag.tagCollection.items[0].name);
+  let tagSlug = $derived(tag.tagCollection.items[0].slug);
+  let posts = $derived(tag.tagCollection.items[0].linkedFrom);
 </script>
 
 <svelte:head>
