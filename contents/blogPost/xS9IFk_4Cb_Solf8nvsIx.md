@@ -26,7 +26,6 @@ selfAssessment:
         - text: "`command + c` を 2 回押す"
           correct: false
           explanation: null
-ｓ
 published: true
 ---
 
