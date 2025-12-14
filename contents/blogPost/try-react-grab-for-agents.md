@@ -140,7 +140,7 @@ npm run dev
 
 プロンプトを送信すると、ブラウザ上で Claude Code エージェントが起動し、選択した要素に対応するコードコンテキストを元にコードの修正が行われます。そして修正が完了すると即座にブラウザ上に変更が反映される様子が確認できます。
 
-<video src="https://videos.ctfassets.net/in6v9lxmm5c8/3k0BqAY8tHf9xUdZE4o5Dk/b53466ff842d9263a5d7268fb408a70d/%C3%A7__%C3%A9__%C3%A5__%C3%A9___2025-12-14_11.38.28.mov" controls autoplay loop></video>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/3k0BqAY8tHf9xUdZE4o5Dk/b53466ff842d9263a5d7268fb408a70d/%C3%A7__%C3%A9__%C3%A5__%C3%A9___2025-12-14_11.38.28.mov" controls></video>
 
 Claude Code の実行ログを確認すると、以下のようなプロンプトが送信されていることがわかります。
 
