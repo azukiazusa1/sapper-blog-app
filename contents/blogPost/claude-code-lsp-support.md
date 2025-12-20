@@ -30,7 +30,7 @@ selfAssessment:
       answers:
         - text: ".lsp.json"
           correct: true
-          explanation: ""
+          explanation: null
         - text: ".lsp.yaml"
           correct: false
           explanation: null
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "lsp.config.js"
           correct: false
           explanation: null
-
 published: true
 ---
-
 コーディングエージェントが LSP（Language Server Protocol）を扱えるようになることで、エージェントがより効率的にタスクを遂行できるようになります。文字列でコードベース全体を検索するのではなく、LSP を通じてコードの構造やシンボル情報にアクセスできるため、正確な情報を迅速に取得・編集できるためトークンと時間を大きく節約できます。このことはコーディングエージェントにセマンティックなコード検索・編集ツールを提供する [Serena](https://github.com/oraios/serena) を試したことがある方には特に理解しやすいでしょう。
 
 Claude Code の v2.0.74 から LSP サポートが追加されました。LSP サポートは Claude Code の[プラグイン機能](https://code.claude.com/docs/en/plugins-reference)の一部として提供されています。LSP 機能を有効化することで、Claude Code はコードベースに対して以下のような操作が可能になります。
