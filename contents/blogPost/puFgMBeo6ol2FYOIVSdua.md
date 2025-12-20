@@ -117,7 +117,7 @@ mkdir -p my-lsp-plugin/.claude-plugin
 }
 ```
 
-プラグインに LSP サポートを追加するために、プラグインディレクトリのルートに `.lsp.json` ファイルを作成し、以下のように記述します。TypeScript の LSP サーバーを使用する例を示します。
+プラグインに LSP サポートを追加するために、プラグインディレクトリのルートに `.lsp.json` ファイルを作成し、以下のように記述します。TypeScript の LSP サーバーを使用する例です。
 
 ```json:.lsp.json
 {
@@ -126,9 +126,7 @@ mkdir -p my-lsp-plugin/.claude-plugin
     "args": ["--stdio"],
     "extensionToLanguage": {
       ".ts": "typescript",
-      ".tsx": "typescript",
-      ".js": "javascript",
-      ".jsx": "javascript"
+      ".tsx": "typescript"
     }
   }
 }
@@ -137,7 +135,7 @@ mkdir -p my-lsp-plugin/.claude-plugin
 作成したプラグインをテストするには `--plugin-dir` オプションを使用して Claude Code を起動します。
 
 ```bash
-claude-code --plugin-dir ./my-lsp-plugin
+claude --plugin-dir ./my-lsp-plugin
 ```
 
 `/plugin` コマンドを実行してプラグインが正しく認識されていることを確認します。`--plugin-dir` で指定したプラグインは `inline` マーケットプレイスとして認識されます。
