@@ -5,7 +5,7 @@ slug: "enable-claude-code-tool-search-to-reduce-mcp-token-usage"
 about: "Claude Code のツール検索ツールを有効にすることで、MCP ツールの定義を事前にコンテキストウィンドウに読み込まず、必要に応じて動的にツールを検索・呼び出しできます。これにより、多数の MCP ツールをインストールしている場合でもトークン使用量を大幅に削減できる可能性があります。この記事では Claude Code のツール検索ツールの概要と使用方法を紹介します。"
 createdAt: "2025-12-30T14:32+09:00"
 updatedAt: "2025-12-30T14:32+09:00"
-tags: ["claude-code", "mcp"]
+tags: ["claude-code", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3e6uvd4NOdnb4DZMm4eEOG/1fe143e6637dc03d16845f4e29a7f3e4/ramen-without-toppings_22851-768x630.png"
   title: "具無しラーメンのイラスト"
@@ -39,11 +39,9 @@ selfAssessment:
           explanation: null
         - text: "無制限"
           correct: false
-          explanation: ""
-
-published: false
+          explanation: null
+published: true
 ---
-
 Claude の[ツール検索ツール](https://platform.claude.com/docs/ja/agents-and-tools/tool-use/tool-search-tool) は Claude がすべてのツール定義を事前にコンテキストウィンドウに読み込むのではなく、必要に応じてツールを検索・呼び出すことができる機能です。これにより、不必要なツール定義がコンテキストウィンドウに含まれてコンテキストを圧迫する問題を回避できます。
 
 2025 年 12 月現在、環境変数 `ENABLE_TOOL_SEARCH=true` を有効にすることで実験的に Claude Code でツール検索ツールが利用可能になっています。これにより MCP ツールの定義が事前にコンテキストウィンドウに含まれなくなるため、MCP ツールを多数インストールしている場合でもトークン使用量を大幅に削減できる可能性があります。
