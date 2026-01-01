@@ -11,15 +11,8 @@
   import Robot from "../Icons/Robot.svelte";
   import SearchDialog from "../SearchDialog/SearchDialog.svelte";
   import SearchBar from "../SearchDialog/SearchBar.svelte";
-  import { SHOW_RECAP_INDICATOR } from "$lib/config";
-  import type { Route } from "$lib/types";
 
-  let routes: Route[] = [
-    { path: "/blog" },
-    { path: "/about" },
-    { path: "/talks" },
-    { path: "/recap", showIndicator: SHOW_RECAP_INDICATOR },
-  ];
+  let routes = ["/blog", "/about", "/talks", "/recap"];
   let html: HTMLElement;
   let lastScrollY = 0;
   let hideHeader = $state(false);
