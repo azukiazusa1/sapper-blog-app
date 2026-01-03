@@ -5,7 +5,7 @@ slug: "using-figma-mcp-to-provide-design-system-for-ai-coding-agents"
 about: "AI コーディングエージェントにフロントエンドのコードを書かせる際、Figma MCP を使用してデザインコンテキストやデザイントークンを提供することで、一貫したデザインガイドラインを遵守させる方法を紹介します。"
 createdAt: "2026-01-03T10:27:00+09:00"
 updatedAt: "2026-01-03T10:27:00+09:00"
-tags: ["AI", "figma", "mcp", "claude-code"]
+tags: ["AI", "figma", "MCP", "claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4l94jJLmBwLhEVfbEUhHKl/53bc961ff90a64b588ba7c788b77e641/koucha_tea_5898-768x656.png"
   title: "紅茶のイラスト"
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "Figma コンポーネントの Variants 情報を取得する"
           correct: false
           explanation: "Variants 情報は `get_design_context` ツールで取得されます。"
-
 published: true
 ---
-
 AI コーディングエージェントにフロントエンドのコードを書かせる際、デザインの正確なコンテキストを提供することが課題の 1 つです。特に何も指定せずにフロントエンドのコードを書かせると、紫色の配色やグラデーションに偏りすぎたり、Inter や Roboto など特定のフォントばかり使用する傾向があります。これは Tailwind UI のような人気の UI フレームワークの初期設定に Indigo（紫色）を採用しており、それが AI モデルの学習データに多く含まれていることが原因と考えられます。
 
 AI によって誰でも一定水準のフロントエンドコードを書けるようになる一方で、画一的な安易なデザインになりがちという問題が指摘されています。このような問題を脱却するためには人間による細かな指示やデザインスキルの重要性がこれまで以上に高まっています。このような問題をより詳細に理解するために以下のリソースが参考になります。
