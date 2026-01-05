@@ -5,7 +5,7 @@ slug: "motia-backend-framework"
 about: "Motia はバックエンド開発をシンプルにすることを目指したコードファーストのバックエンドフレームワークです。この記事では Motia を使用して簡単な TODO REST API を構築する方法を紹介します。"
 createdAt: "2026-01-05T19:23+09:00"
 updatedAt: "2026-01-05T19:23+09:00"
-tags: ["motia", "typescript"]
+tags: ["motia", "TypeScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/58Ag5lam6rB2NBzOMGJTPD/cc50e60fec9d48a728dcaa9529b3f3e2/cute_bird_tsuru_11780.png"
   title: "かわいい鶴のイラスト"
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "Resolver"
           correct: true
           explanation: "Motia の Step を構成する 4 つの要素は Trigger, Subscribe, Handler, Emit です。Resolver は Step の構成要素ではありません。"
-
 published: true
 ---
-
 [Motia](https://motia.dev/) はバックエンド開発をシンプルにすることを目指したフレームワークです。Motia はコアプリミティブな概念である Step で設計されており、REST API, バックグラウンドジョブ, マルチステップワークフロー, AI エージェントの構築など、さまざまなバックエンド機能を 1 つのフレームワークで一貫した方法で実装できます。
 
 Motia の目的は複雑になりすぎたバックエンドの開発をシンプルにし、開発者体験を向上させることです。現代のバックエンド開発では REST API のためのフレームワーク、SQS のようなジョブキューを通じたバックグラウンドジョブ、更にはバッチ処理など、多くの異なるツールやフレームワークを組み合わせて構築されています。そして異なるシステム間でデータの受け渡しや状態を管理するためのオーケストレーションやオブザーバビリティの確保も必要になります。
