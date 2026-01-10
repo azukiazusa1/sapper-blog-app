@@ -26,10 +26,8 @@ selfAssessment:
         - text: "`~/.statusline/settings.json`"
           correct: false
           explanation: null
-
 published: true
 ---
-
 Claude Code の下部に表示されるステータスラインは自分好みにカスタマイズできます。これは oh-my-zsh のターミナルプロンプト（PS1）をカスタマイズするのと似ています。ステータスラインをカスタマイズすれば以下のように現在のブランチやコンテキストの使用量などを一目で確認できるようになります。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/6DNpfmQMkAUVyRgSk2qHM8/d9cf30e717c793c54b3caf8b57acf1a6/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2026-01-10_10.55.53.png)
