@@ -1,0 +1,241 @@
+<svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  
+  <!-- Left side: Before Output (Scattered Knowledge) -->
+  <g id="before">
+    <!-- Person illustration (abstract) -->
+    <g id="person-left">
+      <!-- Simple head circle -->
+      <circle cx="200" cy="240" r="35" fill="#95a5a6" stroke="#2c3e50" stroke-width="2"/>
+      <!-- Simple body rectangle -->
+      <rect x="175" y="275" width="50" height="70" fill="#95a5a6" stroke="#2c3e50" stroke-width="2" rx="5"/>
+      <!-- Simple eyes -->
+      <circle cx="190" cy="238" r="4" fill="#2c3e50"/>
+      <circle cx="210" cy="238" r="4" fill="#2c3e50"/>
+      <!-- Neutral/thinking mouth -->
+      <line x1="190" y1="255" x2="210" y2="255" stroke="#2c3e50" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Thought cloud indicating thinking -->
+    <ellipse cx="280" cy="180" rx="120" ry="90" fill="#ecf0f1" stroke="#95a5a6" stroke-width="2" stroke-dasharray="5,5" opacity="0.8"/>
+    
+    <!-- Scattered knowledge fragments inside thought cloud -->
+    <g id="scattered-knowledge">
+      <!-- Fragment 1 -->
+      <ellipse cx="240" cy="150" rx="22" ry="18" fill="#ff6b6b" opacity="0.7"/>
+      <text x="240" y="155" font-size="11" text-anchor="middle" fill="#fff">知識A</text>
+      
+      <!-- Fragment 2 -->
+      <ellipse cx="310" cy="160" rx="22" ry="18" fill="#4ecdc4" opacity="0.7"/>
+      <text x="310" y="165" font-size="11" text-anchor="middle" fill="#fff">知識B</text>
+      
+      <!-- Fragment 3 -->
+      <ellipse cx="270" cy="200" rx="22" ry="18" fill="#95e1d3" opacity="0.7"/>
+      <text x="270" y="205" font-size="11" text-anchor="middle" fill="#fff">知識C</text>
+      
+      <!-- Fragment 4 -->
+      <ellipse cx="330" cy="210" rx="22" ry="18" fill="#f38181" opacity="0.7"/>
+      <text x="330" y="215" font-size="11" text-anchor="middle" fill="#fff">知識D</text>
+      
+      <!-- Fragment 5 -->
+      <ellipse cx="250" cy="230" rx="22" ry="18" fill="#aa96da" opacity="0.7"/>
+      <text x="250" y="235" font-size="11" text-anchor="middle" fill="#fff">知識E</text>
+      
+      <!-- Fragment 6 -->
+      <ellipse cx="320" cy="130" rx="22" ry="18" fill="#fcbad3" opacity="0.7"/>
+      <text x="320" y="135" font-size="11" text-anchor="middle" fill="#fff">知識F</text>
+      
+      <!-- Confusion marks -->
+      <text x="220" y="120" font-size="26" fill="#e74c3c" opacity="0.6">?</text>
+      <text x="340" y="180" font-size="26" fill="#e74c3c" opacity="0.6">?</text>
+      <text x="290" y="250" font-size="26" fill="#e74c3c" opacity="0.6">?</text>
+    </g>
+    
+    <text x="270" y="360" font-size="16" font-weight="bold" text-anchor="middle" fill="#7f8c8d">
+      散らばった知識
+    </text>
+    <text x="270" y="380" font-size="12" text-anchor="middle" fill="#95a5a6">
+      断片的・表面的
+    </text>
+  </g>
+  
+  <!-- Center Top: Self Output Process -->
+  <g id="output-process-self">
+    <!-- Arrow pointing right and up -->
+    <defs>
+      <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+        <polygon points="0 0, 10 3, 0 6" fill="#27ae60" />
+      </marker>
+    </defs>
+    
+    <path d="M 400 240 Q 550 180, 720 150" stroke="#27ae60" stroke-width="6" 
+          fill="none" marker-end="url(#arrowhead-green)"/>
+    
+    <!-- Output label -->
+    <rect x="440" y="180" width="140" height="45" fill="#27ae60" rx="10"/>
+    <text x="510" y="200" font-size="15" font-weight="bold" text-anchor="middle" fill="#fff">
+      自分で
+    </text>
+    <text x="510" y="218" font-size="15" font-weight="bold" text-anchor="middle" fill="#fff">
+      アウトプット
+    </text>
+  </g>
+  
+  <!-- Top Right: After Self Output (Structured Understanding) -->
+  <g id="after-self">
+    <!-- Person illustration (abstract) -->
+    <g id="person-top-right">
+      <!-- Simple head circle -->
+      <circle cx="780" cy="150" r="30" fill="#3498db" stroke="#2c3e50" stroke-width="2"/>
+      <!-- Simple body rectangle -->
+      <rect x="760" y="180" width="40" height="50" fill="#3498db" stroke="#2c3e50" stroke-width="2" rx="5"/>
+      <!-- Simple eyes -->
+      <circle cx="772" cy="148" r="3" fill="#fff"/>
+      <circle cx="788" cy="148" r="3" fill="#fff"/>
+      <!-- Simple smile -->
+      <path d="M 770 160 Q 780 165, 790 160" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Thought cloud with structured knowledge -->
+    <ellipse cx="910" cy="140" rx="110" ry="80" fill="#e8f8f5" stroke="#27ae60" stroke-width="2" stroke-dasharray="5,5" opacity="0.9"/>
+    
+    <!-- Structured knowledge network -->
+    <g id="structured-knowledge">
+      <!-- Central concept -->
+      <circle cx="910" cy="140" r="28" fill="#27ae60" stroke="#1e8449" stroke-width="2.5"/>
+      <text x="910" y="143" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff">
+        本質的
+      </text>
+      <text x="910" y="155" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff">
+        理解
+      </text>
+      
+      <!-- Connected knowledge nodes -->
+      <circle cx="875" cy="100" r="18" fill="#52be80"/>
+      <text x="875" y="104" font-size="9" text-anchor="middle" fill="#fff">知識A</text>
+      
+      <circle cx="945" cy="100" r="18" fill="#52be80"/>
+      <text x="945" y="104" font-size="9" text-anchor="middle" fill="#fff">知識B</text>
+      
+      <circle cx="965" cy="140" r="18" fill="#52be80"/>
+      <text x="965" y="144" font-size="9" text-anchor="middle" fill="#fff">知識C</text>
+      
+      <circle cx="945" cy="180" r="18" fill="#52be80"/>
+      <text x="945" y="184" font-size="9" text-anchor="middle" fill="#fff">知識D</text>
+      
+      <circle cx="875" cy="180" r="18" fill="#52be80"/>
+      <text x="875" y="184" font-size="9" text-anchor="middle" fill="#fff">知識E</text>
+      
+      <circle cx="855" cy="140" r="18" fill="#52be80"/>
+      <text x="855" y="144" font-size="9" text-anchor="middle" fill="#fff">知識F</text>
+      
+      <!-- Connection lines -->
+      <line x1="885" y1="110" x2="900" y2="125" stroke="#27ae60" stroke-width="2"/>
+      <line x1="935" y1="110" x2="918" y2="125" stroke="#27ae60" stroke-width="2"/>
+      <line x1="948" y1="140" x2="938" y2="140" stroke="#27ae60" stroke-width="2"/>
+      <line x1="935" y1="170" x2="922" y2="155" stroke="#27ae60" stroke-width="2"/>
+      <line x1="885" y1="170" x2="902" y2="155" stroke="#27ae60" stroke-width="2"/>
+      <line x1="872" y1="140" x2="882" y2="140" stroke="#27ae60" stroke-width="2"/>
+      
+      <!-- Check marks -->
+      <text x="985" y="115" font-size="20" fill="#27ae60">✓</text>
+      <text x="985" y="165" font-size="20" fill="#27ae60">✓</text>
+    </g>
+    
+    <text x="850" y="250" font-size="16" font-weight="bold" text-anchor="middle" fill="#27ae60">
+      構造的・本質的な理解
+    </text>
+    <text x="850" y="270" font-size="12" text-anchor="middle" fill="#27ae60">
+      ✓ 知識がつながる
+    </text>
+    <text x="850" y="286" font-size="12" text-anchor="middle" fill="#27ae60">
+      ✓ 長期記憶として定着
+    </text>
+  </g>
+  
+  <!-- Center Bottom: AI Output Process -->
+  <g id="output-process-ai">
+    <!-- Arrow pointing right and down -->
+    <defs>
+      <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+        <polygon points="0 0, 10 3, 0 6" fill="#e74c3c" />
+      </marker>
+    </defs>
+    
+    <path d="M 400 260 Q 550 340, 720 420" stroke="#e74c3c" stroke-width="6" 
+          fill="none" marker-end="url(#arrowhead-red)" stroke-dasharray="10,5"/>
+    
+    <!-- AI Output label -->
+    <rect x="440" y="275" width="140" height="45" fill="#e74c3c" rx="10"/>
+    <text x="510" y="295" font-size="15" font-weight="bold" text-anchor="middle" fill="#fff">
+      AIに代替
+    </text>
+    <text x="510" y="313" font-size="13" text-anchor="middle" fill="#fff">
+      (スキップ)
+    </text>
+  </g>
+  
+  <!-- Bottom Right: After AI Output (Knowledge Still Scattered) -->
+  <g id="after-ai">
+    <!-- Person illustration with disappointed expression (abstract) -->
+    <g id="person-bottom-right">
+      <!-- Simple head circle -->
+      <circle cx="780" cy="410" r="30" fill="#e67e22" stroke="#2c3e50" stroke-width="2"/>
+      <!-- Simple body rectangle -->
+      <rect x="760" y="440" width="40" height="50" fill="#e67e22" stroke="#2c3e50" stroke-width="2" rx="5"/>
+      <!-- Simple eyes -->
+      <circle cx="772" cy="408" r="3" fill="#fff"/>
+      <circle cx="788" cy="408" r="3" fill="#fff"/>
+      <!-- Simple concerned mouth -->
+      <path d="M 770 422 Q 780 418, 790 422" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Thought cloud with STILL scattered knowledge -->
+    <ellipse cx="910" cy="400" rx="110" ry="80" fill="#ffe8e8" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5" opacity="0.8"/>
+    
+    <!-- Still scattered knowledge -->
+    <g id="scattered-knowledge-remain">
+      <ellipse cx="870" cy="370" rx="20" ry="16" fill="#ff6b6b" opacity="0.7"/>
+      <text x="870" y="374" font-size="9" text-anchor="middle" fill="#fff">知識A</text>
+      
+      <ellipse cx="930" cy="365" rx="20" ry="16" fill="#4ecdc4" opacity="0.7"/>
+      <text x="930" y="369" font-size="9" text-anchor="middle" fill="#fff">知識B</text>
+      
+      <ellipse cx="895" cy="400" rx="20" ry="16" fill="#95e1d3" opacity="0.7"/>
+      <text x="895" y="404" font-size="9" text-anchor="middle" fill="#fff">知識C</text>
+      
+      <ellipse cx="945" cy="410" rx="20" ry="16" fill="#f38181" opacity="0.7"/>
+      <text x="945" y="414" font-size="9" text-anchor="middle" fill="#fff">知識D</text>
+      
+      <ellipse cx="875" cy="425" rx="20" ry="16" fill="#aa96da" opacity="0.7"/>
+      <text x="875" y="429" font-size="9" text-anchor="middle" fill="#fff">知識E</text>
+      
+      <ellipse cx="935" cy="380" rx="20" ry="16" fill="#fcbad3" opacity="0.7"/>
+      <text x="935" y="384" font-size="9" text-anchor="middle" fill="#fff">知識F</text>
+      
+      <!-- Confusion marks -->
+      <text x="850" y="355" font-size="22" fill="#e74c3c" opacity="0.7">?</text>
+      <text x="960" y="390" font-size="22" fill="#e74c3c" opacity="0.7">?</text>
+      <text x="905" y="440" font-size="22" fill="#e74c3c" opacity="0.7">?</text>
+    </g>
+    
+    <text x="850" y="510" font-size="16" font-weight="bold" text-anchor="middle" fill="#e74c3c">
+      知識は依然として断片的
+    </text>
+    <text x="850" y="530" font-size="12" text-anchor="middle" fill="#e74c3c">
+      ✗ つなげる作業がスキップ
+    </text>
+    <text x="850" y="546" font-size="12" text-anchor="middle" fill="#e74c3c">
+      ✗ 理解が深まらない
+    </text>
+  </g>
+  
+  <!-- AI explanation text -->
+  <g id="ai-explanation">
+    <text x="550" y="395" font-size="12" text-anchor="middle" fill="#e74c3c">
+      タスクは完了するが
+    </text>
+    <text x="550" y="412" font-size="12" text-anchor="middle" fill="#e74c3c">
+      学習は起こらない
+    </text>
+  </g>
+</svg>

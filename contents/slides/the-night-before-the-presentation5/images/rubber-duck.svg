@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Shadow -->
+  <ellipse cx="100" cy="180" rx="60" ry="15" fill="#000000" opacity="0.2"/>
+  
+  <!-- Body -->
+  <ellipse cx="100" cy="120" rx="55" ry="50" fill="#FFD700"/>
+  
+  <!-- Head -->
+  <circle cx="100" cy="70" r="35" fill="#FFD700"/>
+  
+  <!-- Beak -->
+  <ellipse cx="115" cy="75" rx="18" ry="10" fill="#FF8C00"/>
+  <path d="M 115 70 Q 125 75 115 80" fill="#FF6600"/>
+  
+  <!-- Eyes -->
+  <circle cx="90" cy="65" r="6" fill="#FFFFFF"/>
+  <circle cx="90" cy="65" r="4" fill="#000000"/>
+  <circle cx="88" cy="63" r="2" fill="#FFFFFF"/>
+  
+  <!-- Wing -->
+  <ellipse cx="65" cy="120" rx="20" ry="30" fill="#FFC700" transform="rotate(-20 65 120)"/>
+  
+  <!-- Tail -->
+  <path d="M 50 130 Q 35 135 40 145 Q 45 140 50 140 Z" fill="#FFC700"/>
+  
+  <!-- Cheek blush -->
+  <ellipse cx="80" cy="80" rx="8" ry="5" fill="#FFB6C1" opacity="0.6"/>
+  
+  <!-- Water ripples (optional decorative element) -->
+  <ellipse cx="100" cy="170" rx="70" ry="5" fill="none" stroke="#87CEEB" stroke-width="2" opacity="0.4"/>
+  <ellipse cx="100" cy="175" rx="80" ry="6" fill="none" stroke="#87CEEB" stroke-width="2" opacity="0.3"/>
+</svg>

@@ -1,0 +1,62 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="600" height="600" fill="#f8f9fa"/>
+  
+  <!-- 中央のタイトル -->
+  <text x="300" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">習慣ループ</text>
+  <text x="300" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#7f8c8d">The Habit Loop</text>
+  
+  <!-- きっかけ（Cue）- 上 -->
+  <g transform="translate(300, 120)">
+    <circle cx="0" cy="0" r="80" fill="#3498db" opacity="0.9"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">きっかけ</text>
+    <text x="0" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Cue</text>
+  </g>
+  
+  <!-- ルーティン（Routine）- 右下 -->
+  <g transform="translate(450, 380)">
+    <circle cx="0" cy="0" r="80" fill="#e74c3c" opacity="0.9"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">ルーティン</text>
+    <text x="0" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Routine</text>
+  </g>
+  
+  <!-- 報酬（Reward）- 左下 -->
+  <g transform="translate(150, 380)">
+    <circle cx="0" cy="0" r="80" fill="#2ecc71" opacity="0.9"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">報酬</text>
+    <text x="0" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Reward</text>
+  </g>
+  
+  <!-- 矢印の定義 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#34495e"/>
+    </marker>
+  </defs>
+  
+  <!-- きっかけ → ルーティン -->
+  <path d="M 355 170 Q 420 250 410 320" stroke="#34495e" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- ルーティン → 報酬 -->
+  <path d="M 380 410 Q 300 450 220 410" stroke="#34495e" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- 報酬 → きっかけ -->
+  <path d="M 190 320 Q 180 250 245 170" stroke="#34495e" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- 説明テキスト -->
+  <g font-family="Arial, sans-serif" font-size="12" fill="#5d6d7e">
+    <!-- きっかけの説明 -->
+    <text x="300" y="40" text-anchor="middle">引き金となる刺激</text>
+    
+    <!-- ルーティンの説明 -->
+    <text x="450" y="490" text-anchor="middle">習慣的な行動</text>
+    
+    <!-- 報酬の説明 -->
+    <text x="150" y="490" text-anchor="middle">満足感・快感</text>
+  </g>
+  
+  <!-- 強化のシンボル（中央の循環矢印） -->
+  <g transform="translate(300, 300)" opacity="0.3">
+    <path d="M 0,-40 A 40,40 0 1,1 -35,20" stroke="#34495e" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  </g>
+</svg>

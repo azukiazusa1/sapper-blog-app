@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <style>
+      .title { font-family: 'Noto Sans JP', sans-serif; font-size: 28px; font-weight: bold; fill: #2c3e50; }
+      .subtitle { font-family: 'Noto Sans JP', sans-serif; font-size: 18px; font-weight: bold; fill: #34495e; }
+      .label { font-family: 'Noto Sans JP', sans-serif; font-size: 16px; font-weight: bold; fill: white; }
+      .answer-label { font-family: 'Noto Sans JP', sans-serif; font-size: 15px; font-weight: bold; fill: #e74c3c; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" class="title">SCQフレームワーク：マーケティング戦略の例</text>
+  
+  <!-- Main Example -->
+  <rect x="30" y="80" width="870" height="340" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="3"/>
+  
+  <!-- S -->
+  <rect x="60" y="120" width="250" height="150" rx="8" fill="#3498db"/>
+  <text x="185" y="145" text-anchor="middle" class="label">Situation</text>
+  <text x="185" y="165" text-anchor="middle" class="label">状況</text>
+  <foreignObject x="70" y="175" width="230" height="80">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color: white; font-size: 12px; line-height: 1.5; font-family: 'Noto Sans JP', sans-serif; padding: 5px;">
+      当社製品は30代・40代の顧客層に高い支持を得ており、この層での認知度は80%に達している。リピート率も業界平均を上回っている。
+    </div>
+  </foreignObject>
+  
+  <!-- Arrow 1 -->
+  <path d="M 310 185 L 340 185" fill="none" stroke="#7f8c8d" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="325" y="175" text-anchor="middle" style="font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: bold; fill: #7f8c8d;">次に</text>
+  
+  <!-- C -->
+  <rect x="340" y="120" width="250" height="150" rx="8" fill="#e74c3c"/>
+  <text x="465" y="145" text-anchor="middle" class="label">Complication</text>
+  <text x="465" y="165" text-anchor="middle" class="label">複雑化</text>
+  <foreignObject x="350" y="175" width="230" height="80">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color: white; font-size: 12px; line-height: 1.5; font-family: 'Noto Sans JP', sans-serif; padding: 5px;">
+      一方、20代の認知度はわずか15%。この世代の市場規模は今後10年で2倍に成長する見込みだが、当社は取り込めていない。
+    </div>
+  </foreignObject>
+  
+  <!-- Arrow 2 -->
+  <path d="M 590 185 L 620 185" fill="none" stroke="#7f8c8d" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="605" y="175" text-anchor="middle" style="font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: bold; fill: #7f8c8d;">そして</text>
+  
+  <!-- Q -->
+  <rect x="620" y="120" width="250" height="150" rx="8" fill="#27ae60"/>
+  <text x="745" y="145" text-anchor="middle" class="label">Question</text>
+  <text x="745" y="165" text-anchor="middle" class="label">疑問</text>
+  <foreignObject x="630" y="175" width="230" height="80">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color: white; font-size: 12px; line-height: 1.5; font-family: 'Noto Sans JP', sans-serif; padding: 5px;">
+      20代の顧客を獲得するために、どのようなマーケティング戦略を展開すべきか？既存顧客との両立は可能か？
+    </div>
+  </foreignObject>
+  
+  <!-- Arrow down -->
+  <path d="M 450 260 L 450 290" fill="none" stroke="#7f8c8d" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="480" y="280" style="font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: bold; fill: #7f8c8d;">答え</text>
+  
+  <!-- Answer -->
+  <rect x="150" y="300" width="600" height="110" rx="8" fill="#f8f9fa" stroke="#95a5a6" stroke-width="3"/>
+  <text x="160" y="325" class="answer-label">Answer（答え）:提案する戦略</text>
+  <foreignObject x="160" y="330" width="570" height="75">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color: #2c3e50; font-size: 13px; line-height: 1.6; font-family: 'Noto Sans JP', sans-serif; padding: 5px;">
+      SNSインフルエンサーとのコラボレーションと若者向けサブブランドの立ち上げにより、2年以内に20代の認知度を50%まで引き上げる。既存のメインブランドは維持し、両ブランドで異なる顧客層にアプローチする。
+    </div>
+  </foreignObject>
+
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="3" orient="auto">
+      <polygon points="0 0, 12 3, 0 6" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+</svg>
