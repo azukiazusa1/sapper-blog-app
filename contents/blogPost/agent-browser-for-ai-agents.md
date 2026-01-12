@@ -5,7 +5,7 @@ slug: "agent-browser-for-ai-agents"
 about: "agent-browser は Vercel が開発した CLI でブラウザを操作するツールであり、AI エージェントにブラウザ操作能力を提供するために設計されています。この記事では agent-browser のインストール方法、基本的な使い方、AI エージェントからの利用方法について紹介します。"
 createdAt: "2026-01-12T15:25+09:00"
 updatedAt: "2026-01-12T15:25+09:00"
-tags: ["ai", "playwright", "agent-browser"]
+tags: ["AI", "playwright", "agent-browser"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/47y6ll5kU7u5gfhvpoXheV/c0a3b2ea1585de5d3456a1995118391b/sudachi_22613-768x610.png"
   title: "すだちのイラスト"
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "agent-browser browser"
           correct: false
           explanation: null
-
 published: true
 ---
-
 AI エージェントにより効果的にタスクを実行させるためには、適切なフィードバックループを構築することが重要です。特にフロントエンドの開発においては、ブラウザ上での動作確認が欠かせません。しかし AI エージェントは通常ブラウザを直接操作する能力を持っていないので、ツールを提供して AI エージェントがブラウザを操作できるようにする必要があります。
 
 AI エージェントにブラウザを操作させるツールとして [Playwright MCP](https://github.com/microsoft/playwright-mcp) や [ChromeDevTools/chrome-devtools-mcp: Chrome DevTools for coding agents](https://github.com/ChromeDevTools/chrome-devtools-mcp) が主に知られています。しかし MCP ツールはツールの定義がコンテキストを多く消費してしまったり、ナビゲーションやクリック、フォーム入力など目的の結果を達成するまでの中間操作のコンテキストがすべて AI のコンテキストウィンドウに含まれてしまうという課題があります。
