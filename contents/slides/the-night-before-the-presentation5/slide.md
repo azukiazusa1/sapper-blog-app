@@ -2,6 +2,7 @@
 marp: true
 theme: default
 size: 16:9
+description: 技術探求を続けるための3つの鍵について解説します。習慣化の仕組み、AIを補助ツールとして活用した技術記事執筆法、そして自己ラベリングからの脱却と環境の重要性について、実践例を交えながら説明します。
 style: |
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&display=swap');
 
