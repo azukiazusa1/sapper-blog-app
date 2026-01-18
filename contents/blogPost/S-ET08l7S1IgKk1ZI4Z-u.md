@@ -16,7 +16,7 @@ selfAssessment:
       answers:
         - text: "Yoga"
           correct: true
-          explanation: "OpenTUI の Renderables クラスは Yoga レイアウトエンジンを使用しており、フレックスベースのを簡単に実現できます。"
+          explanation: "OpenTUI の Renderables クラスは Yoga レイアウトエンジンを使用しており、フレックスベースのレイアウトを簡単に実現できます。"
         - text: "Flexbox"
           correct: false
           explanation: "Flexbox は CSS のレイアウトモデルの名前であり、レイアウトエンジンではありません。"
