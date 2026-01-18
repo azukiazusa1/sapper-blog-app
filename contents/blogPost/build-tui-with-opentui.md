@@ -47,17 +47,15 @@ selfAssessment:
           explanation: "環境変数 DEV を true に設定してアプリケーションを起動すると、React DevTools が自動的に接続されます。"
         - text: "DEBUG=true"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "NODE_ENV=development"
           correct: false
           explanation: null
         - text: "DEVTOOLS=true"
           correct: false
           explanation: null
-
 published: true
 ---
-
 AI コーディングエージェントの普及により、ターミナルにふれる時間が増えた開発者が多いでしょう。そんな中、ターミナルベースの TUI (Text-based User Interface) アプリケーションの需要が高まっています。[OpenTUI](https://github.com/anomalyco/opentui) は Typescript で TUI アプリケーションを簡単に構築できるライブラリです。OpenTUI は [opencode](https://opencode.ai/) の基盤として利用されていることもあり、今後も開発が活発に続けられることが期待されます。この記事では OpenTUI の特徴と基本的な使い方を紹介します。
 
 ## OpenTUI プロジェクトを作成する
