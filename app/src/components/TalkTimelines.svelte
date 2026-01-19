@@ -8,6 +8,15 @@
 
   const slides = [
     {
+      eventTitle: "登壇前夜 「技術に取り残される」 不安への処方箋 -エキスパートとしてのキャリア-",
+      eventDate: "2026-01-18",
+      presentationTitle: "習慣とAIと環境 — 技術探求を続ける3つの鍵",
+      presentationLink:
+        "https://speakerdeck.com/azukiazusa1/xi-guan-toaitohuan-jing-ji-shu-tan-qiu-wosok-keru3tunojian",
+      description:
+        "技術探求を続けるための3つの鍵について解説します。習慣化の仕組み、AIを補助ツールとして活用した技術記事執筆法、そして自己ラベリングからの脱却と環境の重要性について、実践例を交えながら説明します。",
+    },
+    {
       eventTitle: "開発組織でアクセシビリティを進める技術 by SmartHR",
       eventDate: "2025-11-19",
       presentationTitle: "持続可能なアクセシビリティ開発",
