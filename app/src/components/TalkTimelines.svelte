@@ -8,7 +8,18 @@
 
   const slides = [
     {
-      eventTitle: "登壇前夜 「技術に取り残される」 不安への処方箋 -エキスパートとしてのキャリア-",
+      eventTitle: "Hatena Engineer Seminar #36 プロダクトを支えるAI編",
+      eventDate: "2026-01-22",
+      presentationTitle:
+        "AI によるインシデント初動調査の自動化を行う AI インシデントコマンダーを作った話",
+      presentationLink:
+        "https://speakerdeck.com/azukiazusa1/ai-niyoruinsidentochu-dong-diao-cha-nozi-dong-hua-woxing-u-ai-insidentokomandawozuo-tutahua",
+      description:
+        "サーバー監視ツール Mackerel の障害対応を効率化するために開発した AI インシデントコマンダーについて紹介します。Mastra フレームワークを活用し、アラート発生時のログ分析やメトリクス確認などの初動調査を、複数の専門 AI エージェントが協調して自動で実行する仕組みを構築しました。最後に AI エージェントを構築した上で得られた品質を保証する実装についても触れたいと思います。",
+    },
+    {
+      eventTitle:
+        "登壇前夜 「技術に取り残される」 不安への処方箋 -エキスパートとしてのキャリア-",
       eventDate: "2026-01-18",
       presentationTitle: "習慣とAIと環境 — 技術探求を続ける3つの鍵",
       presentationLink:
