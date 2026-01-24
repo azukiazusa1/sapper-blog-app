@@ -33,17 +33,15 @@ selfAssessment:
           explanation: "`get_editor_state` は現在のエディタ状態、選択中の要素、利用可能なコンポーネントの情報を取得するツールです。これにより AI コーディングツールがデザインの文脈を理解できます。"
         - text: "デザインファイルのバージョン履歴"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "他のユーザーの編集状況"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "クラウドストレージの同期状態"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 [Pencil](https://www.pencil.dev/) は、Figma のような使用感で UI デザインができるツールです。Pencil MCP サーバーを利用して双方向に AI コーディングツールと連携し、デザインからコードを書き出したり、プロンプトでデザインを生成したりすることができます。オープン形式の `.pen` ファイルを使用しており、テキストエディタで内容を確認したり、バージョン管理システムで管理したりすることも可能です。また Figma からのインポートにも対応しています。
 
 この記事では Pencil を実際に試してみた感想を共有します。
