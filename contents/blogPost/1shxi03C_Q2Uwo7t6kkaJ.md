@@ -26,6 +26,20 @@ selfAssessment:
         - text: ".xd ファイル"
           correct: false
           explanation: ".xd ファイルは Adobe XD で使用される形式です。Pencil は .pen ファイルを使用します。"
+    - question: "Pencil MCP の `get_editor_state` ツールで取得できる情報として正しいものはどれですか?"
+      answers:
+        - text: "現在のエディタ状態、選択要素、利用可能なコンポーネント"
+          correct: true
+          explanation: "`get_editor_state` は現在のエディタ状態、選択中の要素、利用可能なコンポーネントの情報を取得するツールです。これにより AI コーディングツールがデザインの文脈を理解できます。"
+        - text: "デザインファイルのバージョン履歴"
+          correct: false
+          explanation: ""
+        - text: "他のユーザーの編集状況"
+          correct: false
+          explanation: ""
+        - text: "クラウドストレージの同期状態"
+          correct: false
+          explanation: ""
 
 published: true
 ---
