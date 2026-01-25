@@ -22,15 +22,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^8.57.0",
-    "@vitest/mocker": "^3.0.5",
     "prettier": "^3.6.0",
     "prettier-plugin-tailwindcss": "^0.5.0",
     "svelte": "^5.20.5",
-    "tinyexec": "^1.0.2",
-    "tinyglobby": "^0.2.15",
     "turbo": "^1.8.2"
-  },
-  "dependencies": {
-    "@prettier/plugin-oxc": "^0.1.3"
   }
 }
