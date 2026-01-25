@@ -29,5 +29,10 @@
   },
   "dependencies": {
     "@prettier/plugin-oxc": "^0.0.4"
+  },
+  "overrides": {
+    "wrangler": {
+      "esbuild": "0.17.19"
+    }
   }
 }
