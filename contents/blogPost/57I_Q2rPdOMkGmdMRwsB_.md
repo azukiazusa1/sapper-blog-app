@@ -55,7 +55,7 @@ selfAssessment:
           correct: false
           explanation: null
 
-published: false
+published: true
 ---
 
 [MoonBit](https://moonbitlang.com/) は、WebAssembly (Wasm) や JavaScript (JS) へのコンパイルに対応した新しいプログラミング言語です。中国のスタートアップにより開発されており、以下のような特徴があります。
