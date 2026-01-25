@@ -54,10 +54,8 @@ selfAssessment:
         - text: "関数名の先頭を大文字にする"
           correct: false
           explanation: null
-
 published: true
 ---
-
 [MoonBit](https://moonbitlang.com/) は、WebAssembly (Wasm) や JavaScript (JS) へのコンパイルに対応した新しいプログラミング言語です。中国のスタートアップにより開発されており、以下のような特徴があります。
 
 - 高速なコンパイル
