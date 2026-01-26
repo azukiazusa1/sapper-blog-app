@@ -68,7 +68,7 @@
     return progressMessages[index as keyof typeof progressMessages] || [];
   }
 
-  const stages: Stage[] = [
+  const stages: Stage[] = $derived([
     {
       tab: "Data2025.ts",
       code: getDataCode(),
@@ -100,7 +100,7 @@
         "✓ トレンド分析完了: アクセス数でランキング集計(47K, 32K, 27K閲覧)",
       duration: 3000,
     },
-  ];
+  ]);
 
   let currentStageIndex = $state(0);
   let currentTab = $state("Data2025.ts");

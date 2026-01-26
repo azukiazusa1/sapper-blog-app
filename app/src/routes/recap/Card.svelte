@@ -8,7 +8,7 @@
 
   let { title, slug, views, isTestBuild }: Props = $props();
 
-  const href = isTestBuild ? `/blog` : `/blog/${slug}`;
+  const href = $derived(isTestBuild ? `/blog` : `/blog/${slug}`);
 </script>
 
 <a

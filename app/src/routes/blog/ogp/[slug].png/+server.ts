@@ -14,7 +14,7 @@ export const GET: RequestHandler = async ({ params }) => {
     tagsCollection.items.map((tag) => tag.name),
   );
 
-  return new Response(png, {
+  return new Response(new Uint8Array(png), {
     headers: {
       "Content-Type": "image/png",
     },
