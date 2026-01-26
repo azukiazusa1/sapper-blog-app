@@ -10,7 +10,7 @@ export const GET: RequestHandler = async ({ params }) => {
   const { short: shortData } = await short.findById(id || "");
   const png = await generateShortOgpImage(shortData?.title || "");
 
-  return new Response(png, {
+  return new Response(new Uint8Array(png), {
     headers: {
       "Content-Type": "image/png",
     },
