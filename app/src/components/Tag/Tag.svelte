@@ -29,7 +29,7 @@
     return colorClasses[index];
   }
 
-  const colorClass = getTagColor(slug);
+  const colorClass = $derived(getTagColor(slug));
 </script>
 
 {#if count !== undefined}

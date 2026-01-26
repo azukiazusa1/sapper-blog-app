@@ -36,31 +36,41 @@
   const counterResult = $state([]);
   const timers = [];
 
-  const max = value;
-  while (duration / ((max - initial) / step) < 2) {
-    step++;
-  }
+  $effect(() => {
+    const max = value;
+    let currentStep = step;
+    while (duration / ((max - initial) / currentStep) < 2) {
+      currentStep++;
+    }
+    step = currentStep;
 
-  counterResult[id] = initial;
-  let hasCalledComplete = false;
-  timers[id] = setInterval(
-    () => {
-      if (isInView) {
-        if (counterResult[id] <= max) {
-          counterResult[id] += step;
-        } else {
-          clearInterval(timers[id]);
-          counterResult[id] = Math.round(max / roundto) * roundto;
-          // Call onComplete callback if provided
-          if (onComplete && !hasCalledComplete) {
-            hasCalledComplete = true;
-            onComplete();
+    counterResult[id] = initial;
+    let hasCalledComplete = false;
+    timers[id] = setInterval(
+      () => {
+        if (isInView) {
+          if (counterResult[id] <= max) {
+            counterResult[id] += step;
+          } else {
+            clearInterval(timers[id]);
+            counterResult[id] = Math.round(max / roundto) * roundto;
+            // Call onComplete callback if provided
+            if (onComplete && !hasCalledComplete) {
+              hasCalledComplete = true;
+              onComplete();
+            }
           }
         }
+      },
+      duration / ((max - initial) / step),
+    );
+
+    return () => {
+      if (timers[id]) {
+        clearInterval(timers[id]);
       }
-    },
-    duration / ((max - initial) / step),
-  );
+    };
+  });
 </script>
 
 <!-- svelte-ignore event_directive_deprecated -->
