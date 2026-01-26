@@ -2,9 +2,7 @@ import secrets from "$lib/server/secrets";
 import type { AnalyticsDataRepositoryInterface, PopularPost } from "./types";
 import { analyticsDataClient } from "./client";
 
-export class AnalyticsDataRepository
-  implements AnalyticsDataRepositoryInterface
-{
+export class AnalyticsDataRepository implements AnalyticsDataRepositoryInterface {
   async getPopularPosts(): Promise<PopularPost[]> {
     const response = await analyticsDataClient.runReport({
       property: "properties/" + secrets.propertyId,
