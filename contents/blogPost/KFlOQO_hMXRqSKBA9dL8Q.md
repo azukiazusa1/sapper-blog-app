@@ -283,7 +283,7 @@ server.registerTool(
 </html>
 ```
 
-ホストとの通信を行うスクリプト部分である `src/mcp-app.ts` を実装します。このスクリプトでは以下の処理を行います。
+ホストとの通信を行うスクリプト部分である `src/mcp-app.ts` を実装します。このスクリプトでは以下の処理を行います。以下ようなホストとの通信はすべて [postMessage](https://developer.mozilla.org/ja/docs/Web/API/Window/postMessage) API を介して行われますが、`@modelcontextprotocol/ext-apps` パッケージがラップして提供する `App` クラスを使用することで簡単に実装できます。
 
 - MCP クライアントを初期化し、ホストと接続する
 - ツールのレスポンスに含まれる現在のカウント数を取得し、ボタンに表示する
