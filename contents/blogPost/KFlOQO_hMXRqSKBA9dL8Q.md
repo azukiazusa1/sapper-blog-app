@@ -58,7 +58,7 @@ selfAssessment:
 published: true
 ---
 
-AI エージェントとチャット形式の対話ではなく、インタラクティブな UI を通じてやり取りを行うことが求められるケースがあります。例えば、グラフやチャートとして視覚的に表示したり、購入したい商品の一覧をカード形式で表示したうえで、ユーザーがクリックして購入を完了できるようにしたりするといったケースが考えられます。このようなインタラクティブな UI のやり取りを可能にした [Apps in ChatGPT](https://developers.openai.com/apps-sdk/) や [MCP-UI](https://mcpui.dev/)は大きな注目を集めました。
+AI エージェントとチャット形式の対話ではなく、インタラクティブな UI を通じてやり取りすることが求められるケースがあります。例えば、グラフやチャートとして視覚的に表示したり、購入したい商品の一覧をカード形式で表示したうえで、ユーザーがクリックして購入を完了できるようにしたりするといったケースが考えられます。このようなインタラクティブな UI のやり取りを可能にした [Apps in ChatGPT](https://developers.openai.com/apps-sdk/) や [MCP-UI](https://mcpui.dev/)は大きな注目を集めました。
 
 Apps SDK や MCP-UI はそれぞれ [[Model Context Protocol (MCP)](https://modelcontextprotocol.io/)] を基盤としており、MCP の仕組みを拡張して任意の HTML, CSS, JavaScript を含む UI コンポーネントをエージェントが返せるようにしています。しかし、それぞれが独自に MCP を拡張しているため、異なるプラットフォーム間で互換性がなく、同じ UI コンポーネントを複数のエージェントで共有することが困難です。
 
@@ -275,6 +275,7 @@ server.registerTool(
 <head>
   <meta charset="UTF-8" />
   <title>Get Current Count</title>
+  <link rel="stylesheet" href="./src/mcp-app.css" />
 </head>
 <body>
   <button id="count-button">Loading...</button>
@@ -283,9 +284,129 @@ server.registerTool(
 </html>
 ```
 
-ホストとの通信を行うスクリプト部分である `src/mcp-app.ts` を実装します。このスクリプトでは以下の処理を行います。以下ようなホストとの通信はすべて [postMessage](https://developer.mozilla.org/ja/docs/Web/API/Window/postMessage) API を介して行われますが、`@modelcontextprotocol/ext-apps` パッケージがラップして提供する `App` クラスを使用することで簡単に実装できます。
+スタイルシートファイル `src/mcp-app.css` を作成します。
+
+```css:src/mcp-app.css
+body {
+  margin: 0;
+  padding: 16px;
+}
+
+#count-button {
+  padding: 12px 24px;
+  background: var(--color-background-primary, light-dark(#3b82f6, #2563eb));
+  color: var(--color-text-secondary, light-dark(#ffffff, #f3f4f6));
+  border: 1px solid var(--color-border-primary, light-dark(#2563eb, #3b82f6));
+  border-radius: var(--border-radius-medium, 8px);
+  font-size: var(--font-text-md-size, 16px);
+  box-shadow: var(--shadow-medium, 0 4px 6px rgba(0, 0, 0, 0.1));
+  cursor: pointer;
+}
+```
+
+MCP Apps ではホスト環境と視覚的な一貫性を保つために、標準化された CSS カスタムプロパティ（CSS 変数）をサポートしています。ホストはホストコンテキストを通じてスタイル変数を提供することができ、UI コンポーネントはこれらの変数を使用してホストの外観に合わせてスタイリングを行うことができます。
+
+仕様では以下のカテゴリの CSS 変数が定義されています。
+
+```css/** CSS variable keys available to Views for theming. */
+type McpUiStyleVariableKey =
+  // Background colors
+  | "--color-background-primary"
+  | "--color-background-secondary"
+  | "--color-background-tertiary"
+  | "--color-background-inverse"
+  | "--color-background-ghost"
+  | "--color-background-info"
+  | "--color-background-danger"
+  | "--color-background-success"
+  | "--color-background-warning"
+  | "--color-background-disabled"
+  // Text colors
+  | "--color-text-primary"
+  | "--color-text-secondary"
+  | "--color-text-tertiary"
+  | "--color-text-inverse"
+  | "--color-text-info"
+  | "--color-text-danger"
+  | "--color-text-success"
+  | "--color-text-warning"
+  | "--color-text-disabled"
+  | "--color-text-ghost"
+  // Border colors
+  | "--color-border-primary"
+  | "--color-border-secondary"
+  | "--color-border-tertiary"
+  | "--color-border-inverse"
+  | "--color-border-ghost"
+  | "--color-border-info"
+  | "--color-border-danger"
+  | "--color-border-success"
+  | "--color-border-warning"
+  | "--color-border-disabled"
+  // Ring colors
+  | "--color-ring-primary"
+  | "--color-ring-secondary"
+  | "--color-ring-inverse"
+  | "--color-ring-info"
+  | "--color-ring-danger"
+  | "--color-ring-success"
+  | "--color-ring-warning"
+  // Typography - Family
+  | "--font-sans"
+  | "--font-mono"
+  // Typography - Weight
+  | "--font-weight-normal"
+  | "--font-weight-medium"
+  | "--font-weight-semibold"
+  | "--font-weight-bold"
+  // Typography - Text Size
+  | "--font-text-xs-size"
+  | "--font-text-sm-size"
+  | "--font-text-md-size"
+  | "--font-text-lg-size"
+  // Typography - Heading Size
+  | "--font-heading-xs-size"
+  | "--font-heading-sm-size"
+  | "--font-heading-md-size"
+  | "--font-heading-lg-size"
+  | "--font-heading-xl-size"
+  | "--font-heading-2xl-size"
+  | "--font-heading-3xl-size"
+  // Typography - Text Line Height
+  | "--font-text-xs-line-height"
+  | "--font-text-sm-line-height"
+  | "--font-text-md-line-height"
+  | "--font-text-lg-line-height"
+  // Typography - Heading Line Height
+  | "--font-heading-xs-line-height"
+  | "--font-heading-sm-line-height"
+  | "--font-heading-md-line-height"
+  | "--font-heading-lg-line-height"
+  | "--font-heading-xl-line-height"
+  | "--font-heading-2xl-line-height"
+  | "--font-heading-3xl-line-height"
+  // Border radius
+  | "--border-radius-xs"
+  | "--border-radius-sm"
+  | "--border-radius-md"
+  | "--border-radius-lg"
+  | "--border-radius-xl"
+  | "--border-radius-full"
+  // Border width
+  | "--border-width-regular"
+  // Shadows
+  | "--shadow-hairline"
+  | "--shadow-sm"
+  | "--shadow-md"
+  | "--shadow-lg";
+```
+
+スタイルの提供はオプショナルであるため、UI コンポーネント側でフォールバック値を設定しておく必要があります。上記の例では `var()` 関数の第二引数としてフォールバック値を指定しています（例：`var(--color-background-primary, light-dark(#ffffff, #1a1a1a))`）。色の値には CSS の `light-dark()` 関数を使用することで、ライトモードとダークモードの両方に対応できます。
+
+ホストとの通信をするスクリプト部分である `src/mcp-app.ts` を実装します。このスクリプトでは以下の処理を行います。以下ようなホストとの通信はすべて [postMessage](https://developer.mozilla.org/ja/docs/Web/API/Window/postMessage) API を介して行われますが、`@modelcontextprotocol/ext-apps` パッケージがラップして提供する `App` クラスを使用することで簡単に実装できます。
 
 - MCP クライアントを初期化し、ホストと接続する
+- ホストコンテキストを通じてスタイル変数を取得し、UI コンポーネントに適用する
 - ツールのレスポンスに含まれる現在のカウント数を取得し、ボタンに表示する
 - ユーザーがボタンをクリックした場合に `increment-count` ツールを呼び出し、更新されたカウント数を取得してボタンに表示する
 
@@ -297,6 +418,15 @@ import { App } from "@modelcontextprotocol/ext-apps";
 const app = new App({ name: "Get Current Count App", version: "0.0.1" });
 
 app.connect()
+```
+
+ホストコンテキストを通じてスタイル変数を取得し、UI コンポーネントに適用します。`app.onhostcontextchanged` イベントをリッスンしてホストが提供するスタイル変数を取得できます。取得したスタイル変数は `document.documentElement.style.setProperty` 関数を使用して CSS カスタムプロパティとして設定します。
+
+```ts:src/mcp-app.ts
+const context = app.getHostContext();
+for (const [key, value] of Object.entries(context?.styles?.variables || {})) {
+  document.documentElement.style.setProperty(key, value || "");
+}
 ```
 
 ツールの結果を取得するために `app.ontoolresult` イベントをリッスンします。このイベントはホストがツールの結果をアプリにプッシュしたときに発生します。ここでは `get-current-count` ツールの結果を受け取り、ボタンに現在のカウント数を表示します。
@@ -382,7 +512,7 @@ Claude に戻り、新しいチャットを開始します。追加した Connec
 
 プロンプトとして「現在のカウント数を教えて」と入力して送信します。MCP Apps に対応したホストであれば、ツールの応答に含まれる UI コンポーネントがレンダリングされ、ボタンとして表示されます。ボタンをクリックするとカウント数がインクリメントされ、更新されたカウント数が表示されます。
 
-<video src="https://videos.ctfassets.net/in6v9lxmm5c8/2t5CWR2INltvaDCTRK9zv3/5e753d2b5faf7ffbcae59e2178628928/%C3%A7__%C3%A9__%C3%A5__%C3%A9___2026-01-27_21.37.32.mov" controls></video>
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/7jeVN60alsltvQ1zsfkuYN/fb9bbf225d3aac700c0390667b56fd46/%C3%A7__%C3%A9__%C3%A5__%C3%A9___2026-01-27_22.25.03.mov" controls></video>
 
 ## まとめ
 
@@ -397,3 +527,4 @@ Claude に戻り、新しいチャットを開始します。追加した Connec
 - [Quickstart | @modelcontextprotocol/ext-apps - v1.0.1](https://modelcontextprotocol.github.io/ext-apps/api/documents/Quickstart.html)
 - [modelcontextprotocol/ext-apps: Official repo for spec & SDK of MCP Apps protocol - standard for UIs embedded AI chatbots, served by MCP servers](https://github.com/modelcontextprotocol/ext-apps)
 - [MCP Apps - Bringing UI Capabilities To MCP Clients | Model Context Protocol Blog](https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/)
+- [SEP-1865: MCP Apps: Interactive User Interfaces for MCP](https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx#theming)
