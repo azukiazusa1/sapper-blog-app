@@ -19,27 +19,27 @@ selfAssessment:
           explanation: "MCP Apps では UI コンポーネントのリソース URI として ui:// スキームを使用します。"
         - text: "mcp://"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "app://"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "resource://"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "MCP Apps において、ツールが UI コンポーネントを返すことを示すために使用するメタ情報のフィールド名は何ですか？"
       answers:
         - text: "_meta.app.resourceUri"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "_meta.ui.resourceUri"
           correct: true
           explanation: "ツールのメタ情報の _meta.ui.resourceUri フィールドに UI コンポーネントのリソース URI を指定することで、ホストが UI コンポーネントをレンダリングできるようになります。"
         - text: "_meta.ui.component"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "_meta.resource.uri"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "MCP Apps のクライアント側で、UI コンポーネントからサーバーのツールを呼び出すために使用するメソッドは何ですか？"
       answers:
         - text: "app.callServerTool"
@@ -47,17 +47,15 @@ selfAssessment:
           explanation: "app.callServerTool メソッドを使用して、UI コンポーネントからサーバー側のツールを呼び出すことができます。"
         - text: "app.callTool"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "app.invokeTool"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "app.executeTool"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 AI エージェントとチャット形式の対話ではなく、インタラクティブな UI を通じてやり取りすることが求められるケースがあります。例えば、グラフやチャートとして視覚的に表示したり、購入したい商品の一覧をカード形式で表示したうえで、ユーザーがクリックして購入を完了できるようにしたりするといったケースが考えられます。このようなインタラクティブな UI のやり取りを可能にした [Apps in ChatGPT](https://developers.openai.com/apps-sdk/) や [MCP-UI](https://mcpui.dev/)は大きな注目を集めました。
 
 Apps SDK や MCP-UI はそれぞれ[[Model Context Protocol (MCP)](https://modelcontextprotocol.io/)]を基盤としており、MCP の仕組みを拡張して任意の HTML, CSS, JavaScript を含む UI コンポーネントをエージェントが返せるようにしています。しかし、それぞれが独自に MCP を拡張しているため、異なるプラットフォーム間で互換性がなく、同じ UI コンポーネントを複数のエージェントで共有することが困難です。
