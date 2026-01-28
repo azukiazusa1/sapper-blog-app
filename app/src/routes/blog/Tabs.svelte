@@ -82,10 +82,10 @@
         {/if}
       </Tabs.Trigger>
     </Tabs.List>
-    <Tabs.Content value="blog" class="animate-[fade-in_0.5s_ease-out]">
+    <Tabs.Content value="blog">
       {@render blog?.()}
     </Tabs.Content>
-    <Tabs.Content value="shorts" class="animate-[fade-in_0.5s_ease-out]">
+    <Tabs.Content value="shorts">
       {@render shorts?.()}
     </Tabs.Content>
   {/snippet}

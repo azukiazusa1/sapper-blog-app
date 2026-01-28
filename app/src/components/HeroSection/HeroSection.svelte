@@ -10,7 +10,7 @@
     class="mx-auto grid max-w-(--breakpoint-xl) px-4 py-12 lg:grid-cols-12 lg:gap-8 xl:gap-0"
   >
     <div class="mr-auto place-self-center lg:col-span-7">
-      <div class="animate-[fade-in_0.6s_ease-out]">
+      <div>
         <h1
           class="mb-4 max-w-2xl text-4xl leading-none font-extrabold md:text-5xl xl:text-6xl text-white"
         >
@@ -46,10 +46,10 @@
     </div>
     <div class="hidden lg:col-span-5 lg:mt-0 lg:flex lg:justify-center">
       <div
-        class="relative overflow-hidden rounded-full border-4 border-indigo-300/30 p-2 shadow-2xl animate-[fade-in_0.8s_ease-out]"
+        class="relative overflow-hidden rounded-full border-4 border-indigo-300/30 p-2 shadow-2xl"
       >
         <div
-          class="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-indigo-400/20 animate-[rotate_30s_ease-in-out_infinite]"
+          class="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-indigo-400/20"
         ></div>
         <picture>
           <source
