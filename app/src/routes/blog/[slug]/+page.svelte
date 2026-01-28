@@ -70,9 +70,7 @@
 
   <div class="mx-auto max-w-5xl px-4 py-6">
     {#if post.selfAssessment?.quizzes.length > 0}
-      <div
-        class="animate-[fade-in_0.5s_ease-out] rounded-xl bg-gray-50 p-6 shadow-sm dark:bg-zinc-900"
-      >
+      <div class="rounded-xl bg-gray-50 p-6 shadow-sm dark:bg-zinc-900">
         <SelfAssessment quizzes={post.selfAssessment.quizzes} />
       </div>
     {/if}
@@ -84,12 +82,12 @@
     ></div>
     <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
       <div
-        class="animate-[fade-in_0.5s_ease-out] overflow-hidden rounded-xl bg-white p-6 shadow-sm dark:bg-zinc-900"
+        class="overflow-hidden rounded-xl bg-white p-6 shadow-sm dark:bg-zinc-900"
       >
         <Contributors {contributors} />
       </div>
       <div
-        class="animate-[fade-in_0.7s_ease-out] overflow-hidden rounded-xl bg-white p-6 shadow-sm dark:bg-zinc-900"
+        class="overflow-hidden rounded-xl bg-white p-6 shadow-sm dark:bg-zinc-900"
       >
         <div class="flex flex-col gap-4">
           <GitHubEditButton slug={post.slug} />
@@ -138,7 +136,7 @@
   >
     関連記事
   </h2>
-  <div class="animate-[fade-in_0.5s_ease-out]">
+  <div>
     <PostList posts={post.relatedArticleCollection?.items} small />
   </div>
 </div>
