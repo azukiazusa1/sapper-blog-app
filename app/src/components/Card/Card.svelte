@@ -229,7 +229,7 @@
 
 <article data-pagefind-body class="bg-white dark:bg-zinc-900 rounded-2xl">
   <div class="mx-auto px-4 py-8 md:py-12">
-    <header class="animate-[fade-in_0.5s_ease-out]">
+    <header>
       <div class="mx-auto max-w-3xl">
         <Image
           src={thumbnail.url}
