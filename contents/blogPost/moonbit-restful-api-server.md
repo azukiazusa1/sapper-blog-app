@@ -25,7 +25,7 @@ selfAssessment:
           explanation: "`async` キーワードを使用して非同期関数を定義します。"
         - text: "キーワードは不要"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "MoonBit の `obj..method` の用途として正しいものはどれですか？"
       answers:
         - text: "1 つのオブジェクトに対して複数のメソッドを連続して呼び出す"
@@ -36,15 +36,15 @@ selfAssessment:
           explanation: "改行は関係なく、カスケード記法は複数のメソッドを連続して呼び出すための構文です。"
         - text: "エラーを無視してメソッドを呼び出す"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "非同期メソッドを呼び出す"
           correct: false
-          explanation: ""
-    - question: '`#cfg(target="native")` 属性の役割は何ですか？'
+          explanation: null
+    - question: "`#cfg(target=\"native\")` 属性の役割は何ですか？"
       answers:
         - text: "ネイティブターゲットでコンパイルする場合にのみコードを含める"
           correct: true
-          explanation: '`#cfg(target="native")` は条件付きコンパイル属性で、ネイティブターゲット向けにのみコードをコンパイルします。`@socket` や `@http` パッケージがネイティブ環境のみ利用可能なため使用されています。'
+          explanation: "`#cfg(target=\"native\")` は条件付きコンパイル属性で、ネイティブターゲット向けにのみコードをコンパイルします。`@socket` や `@http` パッケージがネイティブ環境のみ利用可能なため使用されています。"
         - text: "コードの実行速度を最適化する"
           correct: false
           explanation: "最適化のための属性ではなく、条件付きコンパイルのための属性です。"
@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "ライブラリのリンクは `link` フィールドで設定します。`#cfg` は条件付きコンパイルのための属性です。"
 published: true
 ---
-
 [MoonBit](https://www.moonbitlang.com/) は、WebAssembly や JavaScript にコンパイルできる新しいプログラミング言語です。Rust のような構文とパフォーマンスを持ちつつ、ガベージコレクションを採用し所有権やライフタイムといった概念がないという点が特徴です。
 
 この記事では、MoonBit を使用してシンプルな RESTful API サーバーを構築する方法を紹介します。TODO アイテムを管理するための基本的な CRUD 操作を提供する API サーバーの作成を通じて、以下の内容をカバーします。
