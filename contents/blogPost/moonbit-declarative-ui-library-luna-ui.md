@@ -40,7 +40,7 @@ selfAssessment:
         - text: "条件分岐のための演算子"
           correct: false
           explanation: null
-published: false
+published: true
 ---
 [Luna](https://luna.mizchi.workers.dev/) は、MoonBit と JavaScript を使用して Web アプリケーションのユーザーインターフェースを構築するための宣言型 UI ライブラリです。Luna はクラウドおよびエッジコンピューティング向けに設計された言語である [MoonBit](https://www.moonbitlang.com/) で書かれているのが特徴です。その他の JavaScript フレームワークと比較してバンドルサイズが小さく抑えるように設計されています。また Web Components First を謳っており、ネイティブなブラウザ標準を重視しています。
 
