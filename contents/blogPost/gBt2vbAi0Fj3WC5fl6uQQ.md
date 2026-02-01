@@ -242,7 +242,7 @@ import "mbt:internal/myapp";
 
 ## カウンターアプリケーションの内部の仕組み
 
-カウンターアプリケーションがどのように動作しているのか、コードを順に追っていきましょう。はじめに `@js_dom.document()` を使用してブラウザのドキュメントオブジェクトを取得しています。`@js_dom` は `mizchi/js/browser/dom` モジュールのエイリアスで、ブラウザの DOM 操作を行うための関数が提供されています。`@js_dom.document()` は Web API の `window.document` に対応しています。
+カウンターアプリケーションがどのように動作しているのか、コードを順に追っていきましょう。はじめに `@js_dom.document()` を使用してブラウザのドキュメントオブジェクトを取得しています。`@js_dom` は `mizchi/js/browser/dom` モジュールのエイリアスで、ブラウザの DOM 操作をするための関数が提供されています。`@js_dom.document()` は Web API の `window.document` に対応しています。
 
 `doc.getElementById("app")` を使用して、HTML 内の `id="app"` の要素を取得しています。結果は `Option` 型で返され、要素が存在する場合は `Some(el)`、存在しない場合は `None` となります。`match` 式を使用して結果を分岐しています。`id="app"` の要素が存在する場合、Luna UI のコンポーネントを作成してレンダリングします。
 
@@ -267,7 +267,7 @@ fn main {
 let app = @dom.div([@dom.h1([@dom.text("Hello, Luna UI!")])])
 ```
 
-アプリケーションをレンダリングするには、`@dom.render` 関数を使用します。最初の引数にコンポーネントをレンダリングするコンテナ要素を、2 番目の引数にレンダリングする DOM Nodeを指定します。親要素は `el |> @dom.DomElement::from_dom` を使用して `@js_dom.Element` 型を `@dom.DomElement` 型に変換しています。
+アプリケーションをレンダリングするには、`@dom.render` 関数を使用します。最初の引数にコンポーネントをレンダリングするコンテナ要素を、2 番目の引数にレンダリングする DOM Node を指定します。親要素は `el |> @dom.DomElement::from_dom` を使用して `@js_dom.Element` 型を `@dom.DomElement` 型に変換しています。
 
 :::info
 `|>` 演算子はパイプライン演算子で、左辺の値を右辺の関数の最初の引数として渡します。`el |> @dom.DomElement::from_dom` は `@dom.DomElement::from_dom(el)` と同等です。パイプライン演算子はデータの流れを直感的に表現できたり、関数適用のネストを減らせる利点があります。
@@ -291,7 +291,7 @@ fn main {
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/2xiMWyCs3TeVr5JTmPcwmy/e2f3c0442e86b568a08335646ac6f719/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2026-02-01_16.30.54.png)
 
-コンポーネントは別の関数に分割して定義することもできます。以下の例では `counter` 関数を定義し、その中でコンポーネントを作成しています。`main` 関数は単に `counter()` を呼び出して結果をレンダリングするだけになりました。今後はこの `counter` 関数内で状態管理やイベント処理を追加していきます。
+コンポーネントは別の関数に分割して定義できます。以下の例では `counter` 関数を定義し、その中でコンポーネントを作成しています。`main` 関数は単に `counter()` を呼び出して結果をレンダリングするだけになりました。今後はこの `counter` 関数内で状態管理やイベント処理を追加していきます。
 
 ```mbt:src/lib.mbt {1-4, 11}
 ///|
@@ -314,7 +314,7 @@ fn main {
 
 ### Signals を使用したリアクティブな状態管理
 
-状態管理のコードを見ていきましょう。Luna UI では [Signals](https://mooncakes.io/docs/mizchi/signals) ライブラリを使用してリアクティブな状態管理を行います。Signal は [alien-signals](https://github.com/stackblitz/alien-signals) や [Solid.js](https://www.solidjs.com/) の影響を受けており、依存関係を自動で追跡し、Signal の値が変更されたときそれに依存するすべての計算と effect が再実行されます。
+状態管理のコードを見ていきましょう。Luna UI では [Signals](https://mooncakes.io/docs/mizchi/signals) ライブラリを使用してリアクティブな状態管理をします。Signal は [alien-signals](https://github.com/stackblitz/alien-signals) や [Solid.js](https://www.solidjs.com/) の影響を受けており、依存関係を自動で追跡し、Signal の値が変更されたときそれに依存するすべての計算と effect が再実行されます。
 
 まず、`@signals.signal(0)` を使用して `count` という Signal を作成しています。初期値は `0` です。Signal はリアクティブな状態を表現するための基本的な単位です。
 
@@ -649,7 +649,7 @@ Luna UI には [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/
 }
 ```
 
-既存の Button 要素を `spinbutton` コンポーネントに置き換えます。`spinbutton` コンポーネントは [Spinbutton Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/) に基づいており、現在の値を表示するテキストフィールド、増加ボタン、減少ボタンの3つのコンポーネントで構成されます。
+既存の Button 要素を `spinbutton` コンポーネントに置き換えます。`spinbutton` コンポーネントは [Spinbutton Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/) に基づいており、現在の値を表示するテキストフィールド、増加ボタン、減少ボタンの 3 つのコンポーネントで構成されます。
 
 `@spinbutton.spinbutton()` 関数は `@mizchi/luna/core.Node[@js_core.Any, String]` 型を返すので、`@dom_client.render_vnode_to_dom` で `@js_dom.Node` 型に変換してからさらに `@dom.dom_node()` で `@dom.DomNode` 型に変換しています。
 
@@ -669,7 +669,7 @@ fn counter() -> @dom.DomNode {
 }
 ```
 
-これでスピンボタンコンポーネントが表示され、増加・減少ボタンをクリックすると `count` の値が更新されるようになりました。BEM 命名規則に基づいたクラス名がコンポーネントの各要素に割り当てられているため、このクラスを使用してスタイルをカスタマイズすることも可能です。`.spinbutton` や `.spinbutton__button` などのクラス名が割り当てられています。
+これでスピンボタンコンポーネントが表示され、増加・減少ボタンをクリックすると `count` の値が更新されるようになりました。BEM 命名規則に基づいたクラス名がコンポーネントの各要素に割り当てられているため、このクラスを使用してスタイルをカスタマイズできます。`.spinbutton` や `.spinbutton__button` などのクラス名が割り当てられています。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/5thEYEpv1bSgTc7xWZAUlg/204556066ec78df574514e4fa74f0b6d/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2026-02-01_18.41.48.png)
 
