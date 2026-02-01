@@ -25,7 +25,7 @@ selfAssessment:
           explanation: "そのような関数は存在しません。"
         - text: "@signals.text()"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "MoonBit で `|>` 演算子の役割は何ですか？"
       answers:
         - text: "左辺の値を右辺の関数の最初の引数として渡すパイプライン演算子"
@@ -36,14 +36,12 @@ selfAssessment:
           explanation: "ビット演算ではなく、関数のパイプライン演算子です。"
         - text: "型注釈のための演算子"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "条件分岐のための演算子"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: false
 ---
-
 [Luna](https://luna.mizchi.workers.dev/) は、MoonBit と JavaScript を使用して Web アプリケーションのユーザーインターフェースを構築するための宣言型 UI ライブラリです。Luna はクラウドおよびエッジコンピューティング向けに設計された言語である [MoonBit](https://www.moonbitlang.com/) で書かれているのが特徴です。その他の JavaScript フレームワークと比較してバンドルサイズが小さく抑えるように設計されています。また Web Components First を謳っており、ネイティブなブラウザ標準を重視しています。
 
 Luna のエコシステムは以下の 3 つの主要なパッケージで構成されています。
