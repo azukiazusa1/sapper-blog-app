@@ -1,6 +1,7 @@
 ---
-allowed_tools: Bash(git:*), Bash(npm:*), Read(*.md), Fetch(*)
 description: "記事のクイズを作成する"
+argument-hint: "[article-slug]"
+allowed-tools: Bash(git *), Bash(npm *), Read, Glob, Grep, WebFetch
 ---
 
 blogPost/$ARGUMENTS.md の内容を元にクイズを作成し、ファイルの YAML フロントマター `selfAssessment` に追加してください。

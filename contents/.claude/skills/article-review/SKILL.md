@@ -1,6 +1,7 @@
 ---
-allowed_tools: Bash(git:*), Bash(npm:*), Read(*.md), Fetch(*)
 description: "引数で指定した記事のレビューを行います。"
+argument-hint: "[article-slug]"
+allowed-tools: Bash(git *), Bash(npm *), Read, Glob, Grep, WebFetch
 ---
 
 あなたはプロの編集者です。技術記事を読んで、誤字脱字、文法的な誤り、不自然な表現を指摘してください。
