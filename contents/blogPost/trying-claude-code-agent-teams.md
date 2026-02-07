@@ -8,7 +8,7 @@ updatedAt: "2026-02-07T14:09+09:00"
 tags: ["claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2XMA4AVV2krvvVe4RbV3P7/089a6131cc3f26b53dcd59623554eb9d/engawa_sushi_21463-768x591.png"
-  title: "えんがわの寿司のイラスト"
+  title: "えんがわ寿司のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -19,10 +19,10 @@ selfAssessment:
           explanation: "従来のサブエージェントはメインエージェントのみに結果を報告する一方向の関係でしたが、エージェントチームではメンバー同士やユーザーと直接やり取りできます。"
         - text: "サブエージェントよりも多くのメンバーを追加できる"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "サブエージェントよりもトークンの消費量が少ない"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "メンバーがリーダーのコンテキストを共有できる"
           correct: false
           explanation: "各メンバーは独立したコンテキストで動作し、リーダーエージェントとの会話履歴は共有されません。"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "チームメンバーを自動的にシャットダウンする"
           correct: false
           explanation: "シャットダウンは shutdown_request メッセージで行います。delegate モードとは無関係です。"
-
 published: true
 ---
-
 Claude Code のエージェントチームを使用すると、複数の Claude Code インスタンスが連携して動作するようになります。1 つのセッションがチームリーダーとして機能し、他のセッションにタスクを割り当てたり作業を調整したりします。チームメンバーは独立したコンテキストで動作し、それぞれのメンバーと直接やり取りできます。
 
 従来の[サブエージェント](https://code.claude.com/docs/ja/sub-agents)機能では、メインのエージェントがサブエージェントにタスクを委任する一方向の関係であり、サブエージェントはメインエージェントのみに結果を報告できました。一方エージェントチームでは、リーダーを介さずにメンバー同士もしくはユーザー自身と直接コミュニケーションを取ることができるという点で大きく異なります。
