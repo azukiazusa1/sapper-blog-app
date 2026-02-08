@@ -69,7 +69,7 @@ selfAssessment:
           correct: false
           explanation: null
 
-published: false
+published: true
 ---
 
 [Remotion](https://www.remotion.dev/) は React を使ってプログラム的に動画を作成できるフレームワークです。React コンポーネントとして動画を作成することにより、CSS や SVG, Canvas API などのウェブ技術を活用したり、変数や関数、ループ、条件分岐などのプログラミングの概念を利用して動画を生成できます。
