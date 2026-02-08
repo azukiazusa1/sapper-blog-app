@@ -68,10 +68,8 @@ selfAssessment:
         - text: "clipStart と clipEnd"
           correct: false
           explanation: null
-
 published: true
 ---
-
 [Remotion](https://www.remotion.dev/) は React を使ってプログラム的に動画を作成できるフレームワークです。React コンポーネントとして動画を作成することにより、CSS や SVG, Canvas API などのウェブ技術を活用したり、変数や関数、ループ、条件分岐などのプログラミングの概念を利用して動画を生成できます。
 
 この記事では Remotion の基本的な使い方を紹介します。
