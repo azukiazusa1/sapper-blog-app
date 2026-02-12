@@ -8,6 +8,14 @@
 
   const slides = [
     {
+      eventTitle: "技育CAMPアカデミア",
+      eventDate: "2026-02-12",
+      presentationTitle: "探求の技術 なぜ新しい技術を学び続けるのか",
+      presentationLink: "https://speakerdeck.com/azukiazusa1/tan-qiu-noji-shu",
+      description:
+        "急速に進化する技術の世界において、いかに効果的に新しい技術を探求し、その知見を価値あるアウトプットに変換していくかについて、実践的な方法論を共有します。毎週の技術ブログ執筆と年間300冊の読書から得た知見を基に、技術者として成長し続けるための具体的なテクニックをお伝えします。",
+    },
+    {
       eventTitle: "Hatena Engineer Seminar #36 プロダクトを支えるAI編",
       eventDate: "2026-01-22",
       presentationTitle:
