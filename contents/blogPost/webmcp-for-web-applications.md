@@ -58,6 +58,10 @@ published: true
 ---
 WebMCP は Web 開発者が Web アプリケーションの機能をツールとして公開できるようにする JavaScript インターフェイスです。これは AI エージェントや支援技術から呼び出せる自然言語による説明と構造化スキーマを備えた JavaScript 関数です。WebMCP を使用する Web アプリケーションは [MCP](https://modelcontextprotocol.io/docs/getting-started/intro) サーバーとみなすことができます。これにより従来の AI エージェントがウェブページのスクリーンショットを解析して情報を取得するのではなく、Web アプリケーションが提供するツールを直接呼び出して操作できるようになるため、より正確で効率的なインタラクションが可能になります。
 
+:::warning
+Web サービスの規約により bot からの操作を禁止されている場合、Web サイト上で AI エージェントを動かすのは規約に抵触するおそれがあるので注意してください。
+:::
+
 ## WebMCP を実装する
 
 WebMCP を実装するための JavaScript API を利用するためには Chrome 146 以降が必要です。[Chrome Canary](https://www.google.com/intl/ja/chrome/canary/) のような最新の Chrome ビルドを使用してください。さらに `chrome://flags#webmcp-for-testing` フラグを有効にする必要があります。
