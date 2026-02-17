@@ -85,7 +85,7 @@ export OPENAI_BASE_URL="https://openrouter.ai/api/v1"
 export OPENAI_MODEL="qwen/qwen3-coder:free"
 ```
 
-:::info
+:::note
 `qwen/qwen3-coder:free` モデルでは中国国外のユーザーの場合 1 日あたり 1,000 回の無料 API コールが可能です。
 :::
 
