@@ -52,7 +52,7 @@ Pencil は以下のリンクからダウンロードできます。現時点で�
 
 https://www.pencil.dev/downloads
 
-:::info
+:::note
 当面の間 Pencil は無料で利用できますが、将来的には有料プランが導入される予定です。
 :::
 

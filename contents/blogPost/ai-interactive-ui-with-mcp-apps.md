@@ -486,7 +486,7 @@ http://localhost:6277 にアクセスし、「Transport Type」で「Streamable 
 
 MCP Apps に対応したホストで UI コンポーネントが正しくレンダリングされるかどうかを確認してみましょう。ここでは Claude を使用して確認します。
 
-:::info
+:::note
 現時点では Pro プラン以上のサブスクリプションが必要です。
 :::
 
