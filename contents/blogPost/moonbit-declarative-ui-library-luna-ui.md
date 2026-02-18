@@ -267,7 +267,7 @@ let app = @dom.div([@dom.h1([@dom.text("Hello, Luna UI!")])])
 
 アプリケーションをレンダリングするには、`@dom.render` 関数を使用します。最初の引数にコンポーネントをレンダリングするコンテナ要素を、2 番目の引数にレンダリングする DOM Node を指定します。親要素は `el |> @dom.DomElement::from_dom` を使用して `@js_dom.Element` 型を `@dom.DomElement` 型に変換しています。
 
-:::note
+:::info
 `|>` 演算子はパイプライン演算子で、左辺の値を右辺の関数の最初の引数として渡します。`el |> @dom.DomElement::from_dom` は `@dom.DomElement::from_dom(el)` と同等です。パイプライン演算子はデータの流れを直感的に表現できたり、関数適用のネストを減らせる利点があります。
 :::
 

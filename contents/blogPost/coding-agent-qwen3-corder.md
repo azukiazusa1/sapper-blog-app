@@ -68,7 +68,6 @@ qwen
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/4KZQIjhnN6g5NApwrdZ3Wh/b6fb8d2ebfe2ebbb8e4b2d27e8483572/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2025-08-03_10.11.39.png)
 
-
 始めに認証方式を選択するように求められます。ここでは OpenAI を選択し、[OpenRouter](https://openrouter.ai/) 経由で認証します。https://openrouter.ai/settings/keys から API キーを取得して入力します。
 
 - API Key: `<your-api-key>`
