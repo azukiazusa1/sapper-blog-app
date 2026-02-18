@@ -25,12 +25,12 @@ selfAssessment:
           explanation: null
         - text: "generate_figma_design"
           correct: true
-          explanation: ""
+          explanation: null
     - question: "既存の Figma ファイルにデザインを生成する場合、`outputMode` に指定する値はどれか？"
       answers:
         - text: "existingFile"
           correct: true
-          explanation: '既存の Figma ファイルに対してデザインを生成する場合は `outputMode="existingFile"` を指定し、引数に `fileKey` と `nodeId` を指定します。'
+          explanation: "既存の Figma ファイルに対してデザインを生成する場合は `outputMode=\"existingFile\"` を指定し、引数に `fileKey` と `nodeId` を指定します。"
         - text: "newFile"
           correct: false
           explanation: "`newFile` は新しい Figma ファイルを作成する場合に使用します。"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "updateFile"
           correct: false
           explanation: null
-
 published: true
 ---
-
 [Figma MCP サーバー](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server) に新しいツールがリリースされ、ブラウザ上の UI からコードを Figma デザインに変換できるようになりました。これにより、ローカルで開発したコードから Figma デザインを生成して、さらに Figma 上で編集した内容をコードに反映させるという双方向のワークフローが実現できるようになります。この記事では実際のコードから Figma デザインを生成する方法を試してみます。
 
 ## Figma MCP サーバーのセットアップ
