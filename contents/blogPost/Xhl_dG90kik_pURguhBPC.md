@@ -27,7 +27,7 @@ selfAssessment:
           correct: false
           explanation: null
 
-published: false
+published: true
 ---
 
 Claude Code のデスクトップアプリに新しい Preview 機能がリリースされました。これを使用すると、コードから起動したアプリケーションの UI を直接確認しながら、同時にログやコードも確認して問題を解決できます。この記事では Preview 機能の使い方を紹介します。
