@@ -26,10 +26,8 @@ selfAssessment:
         - text: ".claude/config.json"
           correct: false
           explanation: null
-
 published: true
 ---
-
 Claude Code のデスクトップアプリに新しい Preview 機能がリリースされました。これを使用すると、コードから起動したアプリケーションの UI を直接確認しながら、同時にログやコードも確認して問題を解決できます。この記事では Preview 機能の使い方を紹介します。
 
 ## Preview 機能を使用する
