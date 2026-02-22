@@ -11,26 +11,13 @@ import rehypeCodeTitles from "rehype-code-titles";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
+import { extractToc } from "$lib/utils";
 
 export type TocItem = {
   id: string;
   text: string;
   level: number;
 };
-
-export function extractToc(htmlString: string): TocItem[] {
-  const toc: TocItem[] = [];
-  const headingRegex = /<(h[2-4])\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/\1>/g;
-  let match;
-  while ((match = headingRegex.exec(htmlString)) !== null) {
-    const level = parseInt(match[1].charAt(1), 10);
-    const id = match[2];
-    // タグを除去してテキストだけ抽出
-    const text = match[3].replace(/<[^>]+>/g, "").trim();
-    toc.push({ id, text, level });
-  }
-  return toc;
-}
 
 export const markdownToHtml = async (
   input: string,
