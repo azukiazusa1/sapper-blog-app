@@ -20,6 +20,7 @@
 
   let post = $derived(data.post);
   let contents = $derived(data.contents);
+  let toc = $derived(data.toc);
   let rawMarkdown = $derived(data.rawMarkdown);
   let contributors = $derived(data.contributors);
 
@@ -64,6 +65,7 @@
         url: post.thumbnail?.url ?? "",
       }}
       {contents}
+      {toc}
       {rawMarkdown}
     />
   {/key}

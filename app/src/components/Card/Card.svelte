@@ -2,9 +2,11 @@
   import AppTag from "../Tag/Tag.svelte";
   import Time from "../Time/Time.svelte";
   import type { Tag } from "../../generated/graphql";
+  import type { TocItem } from "$lib/server/markdownToHtml";
   import Image from "../Image/Image.svelte";
   import NavButton from "./NavButton.svelte";
   import MarkdownCopyButton from "../MarkdownCopyButton/MarkdownCopyButton.svelte";
+  import TableOfContents from "../TableOfContents/TableOfContents.svelte";
   import { onMount } from "svelte";
 
   interface Props {
@@ -16,6 +18,7 @@
     createdAt: string;
     thumbnail: { title: string; url: string };
     slug: string;
+    toc?: TocItem[];
     audio?: string;
   }
 
@@ -28,6 +31,7 @@
     createdAt,
     thumbnail,
     slug,
+    toc = [],
   }: Props = $props();
 
   // <baseline-status> を読み込む
@@ -115,63 +119,6 @@
       button.insertAdjacentElement("afterend", popup);
     });
   });
-
-  // スクロールした時に、目次のアクティブなリンクを変更する
-  onMount(() => {
-    const contents = document.getElementById("contents");
-    const headings = contents?.querySelectorAll("h1, h2, h3, h4, h5, h6");
-    const links = document.querySelectorAll(".toc-link");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            links.forEach((link) => {
-              if (link.getAttribute("href") === `#${id}`) {
-                link.classList.add("text-indigo-600");
-                link.classList.add("dark:text-indigo-400");
-                link.classList.add("font-bold");
-              } else {
-                link.classList.remove("text-indigo-600");
-                link.classList.remove("dark:text-indigo-400");
-                link.classList.remove("font-bold");
-              }
-            });
-          }
-        });
-      },
-      {
-        rootMargin: "-1px 0px -90% 0px",
-      },
-    );
-    headings?.forEach((heading) => {
-      observer.observe(heading);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  });
-
-  // nav-button の高さは markdown-body - toc の高さに合わせる
-  onMount(() => {
-    const navButton = document.getElementById("nav-button");
-    const contents = document.getElementById("contents");
-    navButton?.setAttribute(
-      "style",
-      `height: ${contents?.clientHeight - 240}px`,
-    );
-  });
-
-  function closeToc() {
-    document.documentElement.classList.remove("open-toc");
-    localStorage.setItem("toc-state", "close");
-  }
-
-  function openToc() {
-    document.documentElement.classList.add("open-toc");
-    localStorage.setItem("toc-state", "open");
-  }
 
   onMount(() => {
     // 画像をクリックした時、拡大表示する
@@ -299,6 +246,12 @@
             </audio>
           </div>
         {/if} -->
+
+        {#if toc.length > 0}
+          <div class="toc-mobile">
+            <TableOfContents items={toc} highlight={false} />
+          </div>
+        {/if}
       </div>
     </header>
 
@@ -307,50 +260,15 @@
         id="contents"
         class="prose prose-lg dark:prose-invert prose-zinc show-line-number mx-auto mt-12 max-w-6xl px-4 md:px-8"
       >
-        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-        {@html contents}
-      </div>
-      <div id="nav-button" class="absolute top-10 right-12">
-        <NavButton
-          click={closeToc}
-          label="目次を閉じる"
-          className="close-toc-button"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="h-6 w-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-            />
-          </svg>
-        </NavButton>
-        <NavButton
-          click={openToc}
-          label="目次を表示"
-          className="open-toc-button"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="h-7 w-7"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-            />
-          </svg>
-        </NavButton>
+        {#if toc.length > 0}
+          <div class="toc-desktop">
+            <TableOfContents items={toc} />
+          </div>
+        {/if}
+        <div class="markdown-body">
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+          {@html contents}
+        </div>
       </div>
     </div>
   </div>
