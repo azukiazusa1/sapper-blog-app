@@ -15,10 +15,10 @@ export const load: PageServerLoad = async ({ params }) => {
     short.content4,
   ];
   const contents = (
-    await Promise.all(
-      inputs.map((input) => markdownToHtml(input, { toc: false })),
-    )
-  ).filter((content) => content !== "");
+    await Promise.all(inputs.map((input) => markdownToHtml(input)))
+  )
+    .map((result) => result.html)
+    .filter((content) => content !== "");
 
   const allShorts = await shortRepo.getAll();
   const allShortsIds = allShorts.shortCollection.items.map(

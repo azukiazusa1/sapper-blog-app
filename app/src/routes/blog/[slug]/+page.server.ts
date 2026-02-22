@@ -15,9 +15,10 @@ export const load: PageServerLoad = async ({ params }) => {
     error(404, "Not Found");
   }
   const input = data.blogPostCollection.items[0].article;
-  const contents = await markdownToHtml(input);
+  const { html: contents, toc } = await markdownToHtml(input);
   return {
     contents,
+    toc,
     rawMarkdown: input,
     post: data.blogPostCollection.items[0],
     contributors,
