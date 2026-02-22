@@ -4,7 +4,6 @@
   import type { Tag } from "../../generated/graphql";
   import type { TocItem } from "$lib/server/markdownToHtml";
   import Image from "../Image/Image.svelte";
-  import NavButton from "./NavButton.svelte";
   import MarkdownCopyButton from "../MarkdownCopyButton/MarkdownCopyButton.svelte";
   import TableOfContents from "../TableOfContents/TableOfContents.svelte";
   import { onMount } from "svelte";
