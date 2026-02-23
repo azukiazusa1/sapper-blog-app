@@ -12,6 +12,7 @@ thumbnail:
 audio: null
 selfAssessment:
   quizzes:
+    - question: "`.worktreeinclude` に記述されたファイルが Worktree にコピーされる条件として正しいものはどれですか？"
       answers:
         - text: "`.worktreeinclude` に記述されているファイルはすべてコピーされる"
           correct: false
@@ -25,6 +26,20 @@ selfAssessment:
         - text: "プロジェクトルート直下のファイルのみコピーされる"
           correct: false
           explanation: "ディレクトリの深さは関係ありません。`.gitignore` と同じパターン構文でサブディレクトリのファイルも指定できます。"
+    - question: "Claude Code CLI で Worktree が作成されたときに呼び出される hook の名前はどれですか？"
+      answers:
+        - text: "WorktreeCreate"
+          correct: true
+          explanation: "`.claude/settings.json` の `hooks.WorktreeCreate` に設定することで、Worktree 作成時に任意のコマンドを実行できます。"
+        - text: "WorktreeInit"
+          correct: false
+          explanation: "そのような hook は存在しません。正しくは `WorktreeCreate` です。"
+        - text: "OnWorktree"
+          correct: false
+          explanation: "そのような hook は存在しません。正しくは `WorktreeCreate` です。"
+        - text: "PostWorktree"
+          correct: false
+          explanation: "そのような hook は存在しません。正しくは `WorktreeCreate` です。"
 
 published: true
 ---
