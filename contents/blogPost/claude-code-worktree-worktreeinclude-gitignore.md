@@ -40,10 +40,8 @@ selfAssessment:
         - text: "PostWorktree"
           correct: false
           explanation: "そのような hook は存在しません。正しくは `WorktreeCreate` です。"
-
 published: true
 ---
-
 AI コーディングエージェントを使用して複数のセッションを同時に開発する場合、[Git Worktree](https://git-scm.com/docs/git-worktree) を使用するプラクティスが一般的です。Git Worktree を使用すると、同じリポジトリの複数のブランチを同時にチェックアウトでき、互いの変更を干渉させることなく作業できます。Claude Code では Git Worktree をネイティブサポートしており、CLI では `--worktree` オプションを使用して、デスクトップ版では「Worktree」チェックボックスをオンにすることで、Worktree を作成しつつ新しいセッションを開始できます。
 
 しかし、Git Worktree を使用していると、`.gitignore` で除外されているファイルが新しい Worktree に引き継がれないという問題が発生することがあります。特に `.env` ファイルなど、開発環境に必要なファイルが除外されている場合、Worktree で開発環境をセットアップするのが困難になります。Worktree を作成するたびに都度 `.env` ファイルをコピーするというワークアラウンドが必要になりますが、これは手間がかかります。
