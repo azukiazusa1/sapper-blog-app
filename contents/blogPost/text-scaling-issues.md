@@ -19,18 +19,18 @@ selfAssessment:
           explanation: "絶対単位である `px` を使用している場合、Google Chrome ではユーザーのテキストサイズの設定が反映されなくなってしまいます。相対単位である `rem` や `%` を使用することが推奨されます。"
         - text: "`rem`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`em`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`%`"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "`text-scale` meta タグの `content` 属性に指定できる値として正しい組み合わせはどれか？"
       answers:
         - text: "`none` と `auto`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`legacy` と `scale`"
           correct: true
           explanation: "`legacy` は従来の挙動を維持し、`scale` はユーザーのテキストサイズの設定を尊重して拡大する挙動を指定します。"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "`fixed` と `dynamic`"
           correct: false
           explanation: null
-
 published: true
 ---
-
 WCAG 2.2 では、ユーザーが画像拡大ソフトや支援技術を使用せずに、200% までテキストを拡大してもコンテンツが正しく表示されることを要求しています（[1.4.4 Resize Text](https://www.w3.org/TR/WCAG22/#resize-text)）。ロービジョンのユーザーの多くは OS やブラウザのテキストサイズの設定を使用してテキストを拡大しています。しかし、テキストサイズの拡大に関しては、ブラウザや OS の設定を尊重せず、ユーザーがテキストサイズを拡大してもコンテンツが拡大されないという問題が長年存在していました。大きく分けて以下の 2 つの問題があります。
 
 - フォントサイズの単位に `px` を使用している場合、一部のブラウザではユーザーのテキストサイズの設定が無視され、テキストが拡大されない問題
