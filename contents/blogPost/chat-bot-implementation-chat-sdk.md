@@ -40,7 +40,7 @@ selfAssessment:
         - text: "streamingUpdateIntervalMs"
           correct: true
           explanation: "Chat クラスのインスタンスを作成するときに streamingUpdateIntervalMs オプションでストリーミングの更新間隔を指定できます。"
-published: false
+published: true
 ---
 生成 AI の普及に伴い、チャット型 UI を構築する機会が増えた開発者も多いのではないでしょうか。Slack や Microsoft Teams、Discord などのチャットコミュニケーションツールは AI と対話するインターフェイスとしても優れており、これらのプラットフォーム向けにチャットボットを開発するケースも増えています。しかし、各プラットフォームはそれぞれ独自の API を提供しているため、複数のプラットフォームに対応するチャットボットを開発するには、API ごとに個別の実装が必要になります。
 
