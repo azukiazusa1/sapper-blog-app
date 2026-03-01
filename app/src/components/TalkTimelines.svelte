@@ -12,7 +12,8 @@
       eventDate: "2026-02-28",
       presentationTitle:
         "コーディングエージェントにフロントエンドを書かせるとき、フィードバックはどのように与えるか？",
-      presentationLink: "https://azukiazusa.dev/slides/react-tokyo-fes-2025.pdf",
+      presentationLink:
+        "https://azukiazusa.dev/slides/react-tokyo-fes-2025.pdf",
       description:
         "LLMベースのコーディングエージェント(Claude Code、Codexなど)が普及しているが、LLMの反復改善プロセスにおいて、コード実行結果のフィードバックがなぜ不可欠です。バックエンド開発では実行結果やテストを通じて即座にフィードバックを得られる一方、フロントエンド開発では独特の課題が存在します。本発表では、コーディングエージェントがフロントエンドコードを生成する際の「フィードバックループの問題」に焦点を当て、実践的な解決策とそのトレードオフについて議論します。",
     },
