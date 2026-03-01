@@ -8,6 +8,24 @@
 
   const slides = [
     {
+      eventTitle: "React Tokyo Fes 2025",
+      eventDate: "2026-02-28",
+      presentationTitle:
+        "コーディングエージェントにフロントエンドを書かせるとき、フィードバックはどのように与えるか？",
+      presentationLink: "https://azukiazusa.dev/slides/react-tokyo-fes-2025.pdf",
+      description:
+        "LLMベースのコーディングエージェント(Claude Code、Codexなど)が普及しているが、LLMの反復改善プロセスにおいて、コード実行結果のフィードバックがなぜ不可欠です。バックエンド開発では実行結果やテストを通じて即座にフィードバックを得られる一方、フロントエンド開発では独特の課題が存在します。本発表では、コーディングエージェントがフロントエンドコードを生成する際の「フィードバックループの問題」に焦点を当て、実践的な解決策とそのトレードオフについて議論します。",
+    },
+    {
+      eventTitle: "KMC交流会 LT",
+      eventDate: "2026-02-26",
+      presentationTitle: "学生時代に熱中したことが、社会人の今も生きている話",
+      presentationLink:
+        "https://speakerdeck.com/azukiazusa1/xue-sheng-shi-dai-nire-zhong-sitakotoga-she-hui-ren-nojin-mosheng-kiteiruhua",
+      description:
+        "学生時代に麻雀に熱中した経験から得た「上達のスキーマ」が、社会人になってからのプログラミング学習にも通じるという話。書籍での体系的な学習、プラトーの乗り越え方、生涯学習の大切さについて紹介します。",
+    },
+    {
       eventTitle: "技育CAMPアカデミア",
       eventDate: "2026-02-12",
       presentationTitle: "探求の技術 なぜ新しい技術を学び続けるのか",
