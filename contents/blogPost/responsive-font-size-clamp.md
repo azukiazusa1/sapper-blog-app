@@ -5,7 +5,7 @@ slug: "responsive-font-size-clamp"
 about: "レスポンシブデザインにおいてメディアクエリを使用して異なる画面サイズに対して異なるフォントサイズを指定する方法は一般的ですが、いくつかの課題点もあります。`clamp()` 関数を使用することで、画面幅の変化に対してフォントサイズが滑らかに変化するようにできます。また煩雑なメディアクエリの管理を減らすことができます。"
 createdAt: "2026-03-01T09:50+09:00"
 updatedAt: "2026-03-01T09:50+09:00"
-tags: ["css"]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/uua3nrvA2S9pIV6oFbHOv/046fab224e4ab143c8f8315b58575c98/image.png"
   title: "スパナのイラスト"
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "最小値, 最大値, 理想値"
           correct: false
           explanation: null
-
 published: true
 ---
-
 CSS によるレスポンシブデザインにおいて、メディアクエリを使用して異なる画面サイズに対して異なるフォントサイズを指定する方法を真っ先に思い浮かべる人が多いと思います。例えば以下のスタイルは、画面幅が 768px 以上のときにフォントサイズを 1.125rem に、1280px 以上のときに 1.25rem というように段階的にフォントサイズを大きくしています。
 
 ```css
