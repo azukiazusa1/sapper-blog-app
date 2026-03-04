@@ -16,34 +16,32 @@ selfAssessment:
       answers:
         - text: "`navigator.vibrate()` のポリフィルを使用する"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "Web Audio API を用いて振動を音波で模倣する"
           correct: false
-          explanation: ""
-        - text: '`<input type="checkbox" switch>` 要素のタップ時に発生するデフォルトの触覚フィードバックを活用する'
+          explanation: null
+        - text: "`<input type=\"checkbox\" switch>` 要素のタップ時に発生するデフォルトの触覚フィードバックを活用する"
           correct: true
-          explanation: 'iOS Safari では `navigator.vibrate()` が使えないため、タップ時に触覚フィードバックが発生する `<input type="checkbox" switch>` 要素を動的に生成し、プログラムからクリックすることで実現しています。'
+          explanation: "iOS Safari では `navigator.vibrate()` が使えないため、タップ時に触覚フィードバックが発生する `<input type=\"checkbox\" switch>` 要素を動的に生成し、プログラムからクリックすることで実現しています。"
         - text: "ネイティブの iOS アプリと連携して触覚フィードバックを実現する"
           correct: false
-          explanation: ""
+          explanation: null
     - question: "WebKit チームが Vibration API に反対している理由として、記事で挙げられていないものはどれですか？"
       answers:
         - text: "既存の API で十分な触覚フィードバックが提供できるから"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "機能が悪用されるおそれがあるから"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "デバイスへの依存性があるから"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "API の機能が制限されすぎていて開発者が必要とする触覚機能を提供できないから"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 触覚フィードバック（haptic feedback）とは、デバイスが振動や力の変化などを通じて、ユーザーの皮膚や筋肉に物理的な感覚を伝える技術のことです。これにより、視覚や聴覚だけでは伝えられないリアリティのある体験を提供できます。例えばボタンを押した時に振動が発生することで、ユーザーは操作が成功したことを感じ取れます。
 
 今日のモバイルデバイス（iPhone や Android スマートフォンなど）には、触覚フィードバックを提供するためのハードウェアが組み込まれており、ネイティブアプリの実装では簡単に利用できます。例えば iOS では `UIFeedbackGenerator` クラスを使用して、様々な種類の触覚フィードバックを生成できます。
