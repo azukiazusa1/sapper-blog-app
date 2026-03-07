@@ -23,7 +23,6 @@ selfAssessment:
         - text: "256文字"
           correct: false
           explanation: null
-          explanation: ""
         - text: "1024文字"
           correct: true
           explanation: "`description` フィールドはスキルを呼び出すかどうかの判断に利用されるため、常にシステムプロンプトに含まれます。コンテキストを圧迫しないように 1024 文字の制限があります。"
