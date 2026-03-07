@@ -5,7 +5,7 @@ slug: "skill-create-skill-creation-and-improvement"
 about: "オープンスタンダードである Agent Skills に従い Claude Code にドメインの専門知識や組織のナレッジを提供するスキルが最近注目を集めていますが、スキルの作成にはいくつかのハードルがあります。Anthropic は skill-creator と呼ばれるスキルの作成と改善のプロセス、パフォーマンス測定を支援するツールを提供しています。この記事では skill-creator を使用してスキルを作成・改善を行うプロセスを実際に体験してみます"
 createdAt: "2026-03-07T11:08+09:00"
 updatedAt: "2026-03-07T11:08+09:00"
-tags: ["claude code", "agent skill", "skill-creator"]
+tags: ["agent skill", "skill-creator", "claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2zjJyzLOtRXdLMHJUvrJ2f/755f49ac07b162cb246ece7cdf9d5df6/onsen-manjyu_16831-768x610.png"
   title: "温泉まんじゅうのイラスト"
