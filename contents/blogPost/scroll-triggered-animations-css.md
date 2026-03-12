@@ -40,10 +40,8 @@ selfAssessment:
         - text: "`animation-timeline` と `animation-trigger`"
           correct: false
           explanation: "トリガーの定義には `timeline-trigger-name` と `timeline-trigger-source` を使います。"
-
 published: true
 ---
-
 要素が画面内に入った時にアニメーションを開始するスクロールトリガーアニメーションは、ユーザーの注目を集める効果的な方法です。例えば、ユーザーがページをスクロールしてカード要素が画面内に入った時に、カードがフェードインするようなアニメーションを実装できます。これまでは JavaScript を使用して `Intersection Observer API` を利用する方法が一般的でした。
 
 ```javascript
