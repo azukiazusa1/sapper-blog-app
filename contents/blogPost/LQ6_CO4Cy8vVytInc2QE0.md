@@ -43,7 +43,7 @@ selfAssessment:
 published: true
 ---
 
-近年の Web 開発のプロセスはますます複雑化しています。フロントエンドの構築のためには、モジュールバンドラー, トランスパイラー, リンター, テストランナーなど、多くのツールが必要になりますが、設定ファイルも複雑になりがちです。Webpack の設定のために専門の職人が必要になるという話もよく聞きますね。このような Web 開発のプロセスを簡略化することを目的に [Vite+](https://viteplus.dev/) が [Void 0](https://voidzero.dev/) 社によって開発されました。
+近年の Web 開発のプロセスはますます複雑化しています。フロントエンドの構築のためには、モジュールバンドラー, トランスパイラー, リンター, テストランナーなど、多くのツールが必要になりますが、設定ファイルも複雑になりがちです。Webpack の設定のために専門の職人が必要になるという話もよく聞きましたね。現代でも `.eslintrc`, `.prettierrc`, `jest.config.js`, `tsconfig.json` など、プロジェクトのルートディレクトリには多くの設定ファイルが存在することが一般的です。このような Web 開発のプロセスを簡略化することを目的に [Vite+](https://viteplus.dev/) が [Void 0](https://voidzero.dev/) 社によって開発されました。
 
 Vite+ は Vite（開発サーバー）, Vitest（テストランナー）, Oxlint（高速リンター）, Oxfmt（高速フォーマッター）, Rolldown（Rust 製バンドラー）, tsdown（TypeScript ライブラリビルダー）といった人気のツールを統合し、開発, テスト, ビルド, リント, フォーマットなどのフロントエンド開発に必要な機能を1つのツールチェインで提供します。また新しいタスクランナーである Vite Task を採用しており、Node.js のランタイムやパッケージマネージャーも Vite+ が管理することで、プロジェクトごとに異なる環境を簡単に切り替えることができます。
 
@@ -186,7 +186,7 @@ pass: All 9 files are correctly formatted (233ms, 8 threads)
 pass: Found no warnings, lint errors, or type errors in 3 files (896ms, 8 threads)
 ```
 
-リントの設定は `vite.config.ts` の `lint` フィールドで、フォーマットの設定は `vite.config.ts` の `format` フィールドでそれぞれ行います。詳細な設定項目は [oxlint のドキュメント](https://oxc.rs/docs/guide/usage/linter/config.html) と [oxfmt のドキュメント](https://oxc.rs/docs/guide/usage/formatter/config.html) を参照してください。
+リントの設定は `vite.config.ts` の `lint` フィールドで、フォーマットの設定は `vite.config.ts` の `fmt` フィールドでそれぞれ行います。詳細な設定項目は [oxlint のドキュメント](https://oxc.rs/docs/guide/usage/linter/config.html) と [oxfmt のドキュメント](https://oxc.rs/docs/guide/usage/formatter/config.html) を参照してください。
 
 ```ts:vite.config.ts
 import { defineConfig } from "vite-plus";
