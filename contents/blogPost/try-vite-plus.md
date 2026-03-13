@@ -16,7 +16,7 @@ selfAssessment:
       answers:
         - text: "設定は `vite.config.js` ファイルの `test` フィールドで行う"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "デフォルトで watch モードで実行される"
           correct: false
           explanation: "Vitest はデフォルトで watch モードで実行されますが、`vp test` はデフォルトでは watch モードで実行されません。"
@@ -30,19 +30,18 @@ selfAssessment:
       answers:
         - text: ".node-version"
           correct: true
+          explanation: null
         - text: ".nvmrc"
           correct: false
-          explanation: ""
+          explanation: null
         - text: ".vp-node-version"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "package.json の `engines.node` フィールド"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 近年の Web 開発のプロセスはますます複雑化しています。フロントエンドの構築のためには、モジュールバンドラー, トランスパイラー, リンター, テストランナーなど、多くのツールが必要になりますが、設定ファイルも複雑になりがちです。Webpack の設定のために専門の職人が必要になるという話もよく聞きましたね。現代でも `.eslintrc`, `.prettierrc`, `jest.config.js`, `tsconfig.json` など、プロジェクトのルートディレクトリには多くの設定ファイルが存在することが一般的です。このような Web 開発のプロセスを簡略化することを目的に [Vite+](https://viteplus.dev/) が [Void 0](https://voidzero.dev/) 社によって開発されました。
 
 Vite+ は Vite（開発サーバー）, Vitest（テストランナー）, Oxlint（高速リンター）, Oxfmt（高速フォーマッター）, Rolldown（Rust 製バンドラー）, tsdown（TypeScript ライブラリビルダー）といった人気のツールを統合し、開発, テスト, ビルド, リント, フォーマットなどのフロントエンド開発に必要な機能を 1 つのツールチェインで提供します。また新しいタスクランナーである Vite Task を採用しており、Node.js のランタイムやパッケージマネージャーも Vite+ が管理することで、プロジェクトごとに異なる環境を簡単に切り替えることができます。
