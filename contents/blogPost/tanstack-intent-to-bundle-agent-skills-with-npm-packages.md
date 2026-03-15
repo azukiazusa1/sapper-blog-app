@@ -5,7 +5,7 @@ slug: "tanstack-intent-to-bundle-agent-skills-with-npm-packages"
 about: "ライブラリのメンテナが Agent Skills を生成・検証して npm パッケージに同梱することを支援するツールである `@tanstack/intent` を使用して、ライブラリの使用者側と、メンテナ側の両方の観点から Agent Skills を利用する方法を紹介します。"
 createdAt: "2026-03-15T11:13+09:00"
 updatedAt: "2026-03-15T11:13+09:00"
-tags: ["tanstack", "agent skills"]
+tags: ["TanStack", "agent skills"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7fcUqtJtOjBaacYfIVjdlh/adc1fe9664b3e243ac00e8880ed3e2b5/sweets_cheesecake_illust_3630-768x494.png"
   title: "チーズケーキのイラスト"
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "`npx @tanstack/intent@latest stale`"
           correct: false
           explanation: "`stale` は参照しているスキルが最新かどうか確認するコマンドです。"
-
 published: true
 ---
-
 コーディングエージェントがコードを生成する際に、学習データの量と質の多さが生成するコードの品質に大きく影響を与えると言われています。例えば TypeScript や Python は GitHub 上のオープンソースコードの多くを占めているため、LLM の訓練データに含まれる割合が高くなり、結果として言語のイディオムやプラクティスを深く理解しているため、生成されるコードの品質も高くなる傾向があります。
 
 npm や PyPI などのパッケージマネージャーに公開されているコードについても同じことが言えます。例えば React のような人気のあるライブラリは、LLM の訓練データに大量に含まれているため、特別な指示を与えなくとも React のプラクティスに従ったコードを生成する可能性が高くなります。その一方、LLM のカットオフ以降に公開された新興のライブラリではコーディングエージェントが誤った使い方をしてしまうリスクが高くなります。
