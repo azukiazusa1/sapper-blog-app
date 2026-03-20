@@ -8,7 +8,7 @@ updatedAt: "2026-03-20T14:01+09:00"
 tags: ["claude-code", "discord"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4A2t0FJTIbUdN33xg07uKu/57d93f0ab8fd7919d3c01fffe9fad543/meat-ball_15991-768x591.png"
-  title: "ミートボールのイラスト"
+  title: "meat-ball 15991-768x591"
 audio: null
 selfAssessment:
   quizzes:
@@ -16,7 +16,7 @@ selfAssessment:
       answers:
         - text: "Bun"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "Node.js"
           correct: false
           explanation: "Discord チャンネルプラグインは Node.js ではなく Bun が必要です。"
@@ -33,17 +33,15 @@ selfAssessment:
           explanation: "オプション名は --discord ではなく --channels です。"
         - text: "claude --plugin discord"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "claude --channels discord"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "claude --channels plugin:discord@claude-plugins-official"
           correct: true
           explanation: "--channels オプションに「plugin:discord@claude-plugins-official」を指定して起動します。これにより Discord 上の Bot がオンラインになります。"
-
 published: true
 ---
-
 Claude Code v2.1.80 から Research Preview 版として Claude Code channels（以下、チャンネル）が利用できるようになりました。チャンネルとは実行中の Claude Code のセッションに対して、外部からイベントを送ることができる MCP サーバーのことです。チャンネルは双方向通信が可能で、Claude Code がイベントを受け取ったとき同じチャンネルを通じて応答できます。チャンネルを使用して外部サービスからやり取りしたい場合、Claude Code のセッションが開いている必要があるため、Claude Code をバックグラウンドプロセスもしくはサーバーとして実行しておく必要があります。
 
 公式のチャンネルのプラグインとして以下が提供されています。プラグインを使用せずに独自のチャンネルの実装も可能です。
