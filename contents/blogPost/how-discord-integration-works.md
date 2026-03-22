@@ -5,10 +5,10 @@ slug: "how-discord-integration-works"
 about: "Claude Code v2.1.80 から Research Preview 版として Claude Code channels（以下、チャンネル）が利用できるようになりました。チャンネルとは実行中の Claude Code のセッションに対して、外部からイベントを送ることができる MCP サーバーのことです。この記事では、Claude Code と Discord 連携がどのように動作しているのか、その仕組みを解説します。"
 createdAt: "2026-03-22T11:24+09:00"
 updatedAt: "2026-03-22T11:24+09:00"
-tags: ["claude-code", "discord", "mcp"]
+tags: ["claude-code", "discord", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6wA10DVL4zmoQJoL7yg6TS/0b30eef83b157178339d708c5122b0ff/chirimen_ochazuke_15386-768x660.png"
-  title: "ちりめん山椒のイラスト"
+  title: "https://illust8.com/wp-content/uploads/2021/11/chirimen_ochazuke_15386-768x660.pnghttps://illust8.com/wp-content/uploads/2021/11/chirimen_ochazuke_15386-768x660.png"
 audio: null
 selfAssessment:
   quizzes:
@@ -19,17 +19,15 @@ selfAssessment:
           explanation: "MCP サーバーは capabilities の experimental フィールドに claude/channel を宣言する必要があります。Claude Code は起動時にこの宣言を検出し、notifications/claude/channel の通知リスナーを登録します。"
         - text: "capabilities.experimental.notifications"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "capabilities.experimental.channels"
           correct: false
           explanation: null
         - text: "capabilities.experimental.tools"
           correct: false
           explanation: "capabilities.tools はツールのサポートを宣言するためのフィールドであり、チャンネルのイベント通知とは別の機能です。"
-
 published: true
 ---
-
 Claude Code v2.1.80 から Research Preview 版として Claude Code channels（以下、チャンネル）が利用できるようになりました。この機能を使用すると、Discord や Telegram などの外部サービスから実行中の Claude Code セッションにイベントを送り、双方向のやり取りが可能になります。一見すると複雑に見えるこの連携ですが、実際には単なる MCP サーバーとして機能している点がポイントです。
 
 Claude Code は `--channels` フラグを付けて起動することで、MCP サーバーの [Notification](https://modelcontextprotocol.io/specification/draft/basic/index#notifications) による通知の購読を開始します。Notification によるメッセージは一方向の通信なので、Claude Code が応答を返すためには、MCP サーバーのツールを呼び出します。
