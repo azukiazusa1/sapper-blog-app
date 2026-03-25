@@ -7,8 +7,8 @@ createdAt: "2026-03-25T19:52+09:00"
 updatedAt: "2026-03-25T19:52+09:00"
 tags: ["storybook", "mcp", "ai"]
 thumbnail:
-  url: "伊達巻のイラスト"
-  title: "https://images.ctfassets.net/in6v9lxmm5c8/3WIohHZlckIUcjEZXUuVfq/2daf2a87d8ef17fc6f01242402d16963/datemaki_16498-768x591.png"
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/3WIohHZlckIUcjEZXUuVfq/2daf2a87d8ef17fc6f01242402d16963/datemaki_16498-768x591.png"
+  title: "伊達巻のイラスト"
 audio: null
 selfAssessment:
   quizzes:
