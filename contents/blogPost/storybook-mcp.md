@@ -5,7 +5,7 @@ slug: "storybook-mcp"
 about: "Storybook MCP は Storybook と AI エージェントを接続し、エージェントがコンポーネントドキュメントを参照しつつコードを生成したり、ストーリーを作成して UI コンポーネントをテストしたりできるようにする機能です。この記事では、Storybook MCP を実際に試してみた内容を紹介します。"
 createdAt: "2026-03-25T19:52+09:00"
 updatedAt: "2026-03-25T19:52+09:00"
-tags: ["storybook", "mcp", "ai"]
+tags: ["storybook", "MCP", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3WIohHZlckIUcjEZXUuVfq/2daf2a87d8ef17fc6f01242402d16963/datemaki_16498-768x591.png"
   title: "伊達巻のイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "run-story-tests"
           correct: false
           explanation: "run-story-tests はストーリーのテストを実行するツールです"
-
 published: true
 ---
-
 AI エージェントに UI の生成を任せる際、せっかく用意した UI コンポーネントを使ってもらえず、デザインシステムと一貫しない UI が生成されてしまうことがあります。また UI のインタラクションテストを実行する環境が整っていないと、人間が実際に試してみて初めて問題に気づき、AI にフィードバックを送るという非効率なやり取りが発生しがちです。Storybook MCP はこうした課題を解決するために、エージェントが Storybook のドキュメントを直接参照しながらコードを生成し、ストーリーのテストまで自律的に実行できる仕組みを提供します。
 
 この記事では、Storybook MCP を実際に試してみた内容を紹介します。
