@@ -5,7 +5,7 @@ slug: "use-figma-mcp-tool"
 about: "2026 年 3 月末、Figma の MCP サーバーに Figma のキャンバスを直接操作できる `use_figma` ツールが追加されました。`use_figma` ツールは Figma Plugin API を通じて Figma ファイル上で JavaScript を直接実行する汎用ツールとして設計されている点が特徴です。この記事では、実際に `use_figma` ツールを使用して Figma のキャンバスを操作する方法を試してみます。"
 createdAt: "2026-03-28T12:45+09:00"
 updatedAt: "2026-03-28T12:45+09:00"
-tags: ["figma", "mcp", "ai"]
+tags: ["figma", "MCP", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2uEs8vYobgC6UJXJXA5jaa/eb7334dc7c99fdaca0b6e4c99cb491ba/okinawa-rail_22982-768x689.png"
   title: "ヤンバルクイナのイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "Figma のオートセーブ機能に依存して操作履歴を保持する"
           correct: false
           explanation: "Figma のオートセーブはデザインファイルのUI状態を保存するものであり、スキルの実行進捗とは無関係です。"
-
 published: true
 ---
-
 2026 年 3 月末、Figma の MCP サーバーに Figma のキャンバスを直接操作できる `use_figma` ツールが追加されました。以前から `generate_figma_design` ツールを使用して Web アプリ上のデザインをキャプチャして Figma のファイルに変換できましたが、見た目の再現はできるものの Variant や Component などの構造は生成されないため、そのままデザインシステムに組み込むのは難しいものでした。
 
 https://azukiazusa.dev/blog/claude-code-to-figma/
