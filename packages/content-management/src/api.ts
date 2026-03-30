@@ -454,6 +454,7 @@ const removeLocaleValue = <T>(
   if (!field || !(locale in field)) {
     return field;
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { [locale]: _, ...rest } = field;
   return rest;
 };
