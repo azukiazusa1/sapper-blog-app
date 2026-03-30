@@ -10,6 +10,7 @@ import {
   type ContentfulTag,
   type DraftBlogPost,
   type FieldValue,
+  type Locale,
   type PopularPost,
   type PublishedBlogPost,
   type Thumbnail,
@@ -364,72 +365,65 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
   }
 };
 
-export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
+export const updateBlogPost = async (
+  blog: BlogPost,
+  locale: Locale = "en-US",
+): Promise<void> => {
   const client = await createClient();
   const entry = await client.getEntry(blog.id);
 
   const fields = entry.fields;
+  const isTranslation = locale !== "en-US";
 
   if (blog.title) {
-    fields["title"] = {
-      "en-US": blog.title,
-    };
+    fields["title"] = { ...fields["title"], [locale]: blog.title };
   }
-  if (blog.slug) {
-    fields["slug"] = {
-      "en-US": blog.slug,
-    };
+  if (blog.slug && !isTranslation) {
+    fields["slug"] = { ...fields["slug"], [locale]: blog.slug };
   }
   if (blog.about) {
-    fields["about"] = {
-      "en-US": blog.about,
-    };
+    fields["about"] = { ...fields["about"], [locale]: blog.about };
   }
   if (blog.article) {
-    fields["article"] = {
-      "en-US": blog.article,
-    };
+    fields["article"] = { ...fields["article"], [locale]: blog.article };
   }
-  if (blog.createdAt) {
-    fields["createdAt"] = {
-      "en-US": blog.createdAt,
-    };
+  if (blog.createdAt && !isTranslation) {
+    fields["createdAt"] = { ...fields["createdAt"], [locale]: blog.createdAt };
   }
-  if (blog.updatedAt) {
-    fields["updatedAt"] = {
-      "en-US": blog.updatedAt,
-    };
+  if (blog.updatedAt && !isTranslation) {
+    fields["updatedAt"] = { ...fields["updatedAt"], [locale]: blog.updatedAt };
   }
 
-  fields["tags"] = {
-    "en-US": await tagNamesToTagIds(blog.tags),
-  };
+  if (!isTranslation) {
+    fields["tags"] = {
+      "en-US": await tagNamesToTagIds(blog.tags),
+    };
 
-  fields["relatedArticle"] = {
-    "en-US": await searchRelatedArticles(blog),
-  };
+    fields["relatedArticle"] = {
+      "en-US": await searchRelatedArticles(blog),
+    };
 
-  if (blog.thumbnail) {
-    fields["thumbnail"] = {
-      "en-US": {
-        sys: {
-          type: "Link",
-          linkType: "Asset",
-          id: getAssetIdFromUrl(blog.thumbnail.url),
+    if (blog.thumbnail) {
+      fields["thumbnail"] = {
+        "en-US": {
+          sys: {
+            type: "Link",
+            linkType: "Asset",
+            id: getAssetIdFromUrl(blog.thumbnail.url),
+          },
         },
-      },
-    };
-  }
+      };
+    }
 
-  if (blog.audio) {
-    fields["audio"] = {
-      "en-US": blog.audio,
-    };
+    if (blog.audio) {
+      fields["audio"] = { "en-US": blog.audio };
+    }
   }
 
   if (blog.selfAssessment) {
     fields["selfAssessment"] = {
-      "en-US": blog.selfAssessment,
+      ...fields["selfAssessment"],
+      [locale]: blog.selfAssessment,
     };
   }
 
@@ -440,7 +434,7 @@ export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
   }
 };
 
-export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
+const findBlogPostEntry = async (slugOrId: string) => {
   const client = await createClient();
   const entities = await client.getEntries({
     content_type: "blogPost",
@@ -448,9 +442,48 @@ export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
   });
 
   // slug で検索してもヒットしなかった場合は id で検索する
-  const entry = entities.items[0]
+  return entities.items[0]
     ? entities.items[0]
     : await client.getEntry(slugOrId);
+};
+
+const removeLocaleValue = <T>(
+  field: Record<string, T> | undefined,
+  locale: string,
+) => {
+  if (!field || !(locale in field)) {
+    return field;
+  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { [locale]: _, ...rest } = field;
+  return rest;
+};
+
+export const clearBlogPostLocale = async (
+  slugOrId: string,
+  locale: Locale,
+): Promise<void> => {
+  const entry = await findBlogPostEntry(slugOrId);
+
+  const fields = entry.fields;
+
+  fields["title"] = removeLocaleValue(fields["title"], locale);
+  fields["about"] = removeLocaleValue(fields["about"], locale);
+  fields["article"] = removeLocaleValue(fields["article"], locale);
+  fields["selfAssessment"] = removeLocaleValue(
+    fields["selfAssessment"],
+    locale,
+  );
+
+  const updatedEntry = await entry.update();
+
+  if (contentful.isPublished(entry)) {
+    await updatedEntry.publish();
+  }
+};
+
+export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
+  const entry = await findBlogPostEntry(slugOrId);
 
   await entry.delete();
 };

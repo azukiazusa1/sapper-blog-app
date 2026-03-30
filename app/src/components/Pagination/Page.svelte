@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { localizeHref } from "$paraglide/runtime";
+
   interface Props {
     href?: string;
     current: boolean;
@@ -20,7 +22,11 @@
 </script>
 
 {#if href}
-  <a {href} class={className} aria-current={current ? "page" : undefined}>
+  <a
+    href={localizeHref(href)}
+    class={className}
+    aria-current={current ? "page" : undefined}
+  >
     {@render children?.()}
   </a>
 {:else}

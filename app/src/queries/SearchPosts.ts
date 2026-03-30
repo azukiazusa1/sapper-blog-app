@@ -6,11 +6,13 @@ export const searchPostsQuery = gql`
     $limit: Int = 12
     $skip: Int = 0
     $q: String!
+    $locale: String
   ) {
     blogPostCollection(
       limit: $limit
       skip: $skip
       order: [$order]
+      locale: $locale
       where: {
         OR: [
           { about_contains: $q }

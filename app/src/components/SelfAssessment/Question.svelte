@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import type { Quiz } from "./types";
 
   interface Props {
@@ -44,7 +45,7 @@
                     />
                   </svg>
 
-                  正解！
+                  {m.selfAssessmentCorrect()}
                 </span>
               {:else}
                 <span class="flex items-center gap-2 text-red-500">
@@ -63,7 +64,7 @@
                     />
                   </svg>
 
-                  もう一度考えてみましょう
+                  {m.selfAssessmentTryAgain()}
                 </span>
               {/if}
             </p>

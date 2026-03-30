@@ -1,5 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+  import { localizeHref } from "$paraglide/runtime";
   import Tag from "../Tag/Tag.svelte";
   import type { PreviewPostsQuery } from "../../generated/graphql";
 
@@ -24,10 +25,10 @@
       {#each data.blogPostCollection?.items ?? [] as draft (draft.sys.id)}
         <tr
           class="cursor-pointer border-b hover:bg-gray-50 dark:border-zinc-700 dark:hover:bg-zinc-700"
-          onclick={() => goto(`/drafts/${draft.sys.id}`)}
+          onclick={() => goto(localizeHref(`/drafts/${draft.sys.id}`))}
         >
           <th scope="row" class="px-6 py-4 whitespace-nowrap">
-            <a href={`/drafts/${draft.sys.id}`}>
+            <a href={localizeHref(`/drafts/${draft.sys.id}`)}>
               {draft.title || "No title"}
             </a>
           </th>

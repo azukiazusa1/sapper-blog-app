@@ -1,8 +1,8 @@
 import { gql } from "@urql/core";
 
 export const postBySlugQuery = gql`
-  query postBySlug($slug: String!) {
-    blogPostCollection(where: { slug: $slug }, limit: 1) {
+  query postBySlug($slug: String!, $locale: String) {
+    blogPostCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
       items {
         title
         slug

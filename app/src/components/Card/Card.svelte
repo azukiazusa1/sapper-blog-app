@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import AppTag from "../Tag/Tag.svelte";
   import Time from "../Time/Time.svelte";
   import type { Tag } from "../../generated/graphql";
@@ -70,7 +71,7 @@
       // エディタと同じ色
       button.style.backgroundColor = "#212121";
       button.innerHTML = copyIcon;
-      button.ariaLabel = "コピー";
+      button.ariaLabel = m.cardCopyCode();
       const popup = document.createElement("div");
       popup.classList.add(
         "absolute",
@@ -89,7 +90,7 @@
         "opacity-0",
         "pointer-events-none",
       );
-      popup.textContent = "Copied!";
+      popup.textContent = m.cardCopied();
       button.addEventListener("click", () => {
         const text = block.querySelector("code")?.textContent;
         navigator.clipboard.writeText(text);

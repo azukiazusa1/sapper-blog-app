@@ -12,6 +12,7 @@
   import PopularTags from "../FinalRecap/PopularTags.svelte";
   import PopularPosts from "../FinalRecap/PopularPosts.svelte";
   import { themes, defaultTheme, type ThemeId } from "../themes";
+  import { m } from "$paraglide/messages";
 
   interface Props {
     onComplete: () => void;
@@ -29,42 +30,38 @@
     duration: number;
   };
 
-  const progressMessages = {
+  const progressMessages = $derived({
     0: [
-      // Data2025.ts
-      "$ ts-node analyze 2025",
-      "→ さっそく2025年のデータを見てみますね",
-      "→ おお、81記事も書いてますね！すごい",
-      "→ 合計800,846語...これは読み応えありそう",
-      "→ トップタグ3件もチェックしておきます",
+      m.recap2025Terminal00(),
+      m.recap2025Terminal01(),
+      m.recap2025Terminal02(),
+      m.recap2025Terminal03(),
+      m.recap2025Terminal04(),
     ],
     1: [
-      // BlogStats.svelte
-      "$ svelte compile stats-component",
-      "→ 年間成果を表示するコンポーネント作りましょう",
-      "→ CountUpアニメーション、これいい感じになりますよ",
-      "→ 81記事の数字が動くとカッコよくなります",
-      "→ スタイル調整中...もうすぐです",
+      m.recap2025Terminal10(),
+      m.recap2025Terminal11(),
+      m.recap2025Terminal12(),
+      m.recap2025Terminal13(),
+      m.recap2025Terminal14(),
     ],
     2: [
-      // PopularTags.svelte
-      "$ svelte compile tags-component",
-      "→ よく使われたタグを生成してみます",
-      "→ AI、MCP、TypeScript...技術記事が多いですね",
-      "→ scaleアニメーションでタグを浮かび上がらせます",
-      "→ レスポンシブ対応も忘れずに完了",
+      m.recap2025Terminal20(),
+      m.recap2025Terminal21(),
+      m.recap2025Terminal22(),
+      m.recap2025Terminal23(),
+      m.recap2025Terminal24(),
     ],
     3: [
-      // PopularPosts.svelte
-      "$ svelte compile posts-component",
-      "→ アクセス数でランキングを作っていきます",
-      "→ トップ記事は47K閲覧...人気ですね！",
-      "→ flyアニメーションで記事が飛び込んでくる感じに",
-      "→ ホバーエフェクト追加して完成です",
+      m.recap2025Terminal30(),
+      m.recap2025Terminal31(),
+      m.recap2025Terminal32(),
+      m.recap2025Terminal33(),
+      m.recap2025Terminal34(),
     ],
-  } as const;
+  });
 
-  function getProgressMessagesForStage(index: number): readonly string[] {
+  function getProgressMessagesForStage(index: number): string[] {
     return progressMessages[index as keyof typeof progressMessages] || [];
   }
 
@@ -73,31 +70,28 @@
       tab: "Data2025.ts",
       code: getDataCode(),
       preview: null,
-      terminal: "✓ 2025年ブログデータを解析: 78記事・779,239語を認識",
+      terminal: m.recap2025TerminalStage0(),
       duration: 3000,
     },
     {
       tab: "BlogStats.svelte",
       code: getStatsCode(theme),
       preview: BlogStats,
-      terminal:
-        "✓ BlogStats コンポーネント最適化: 年間成果(81記事)の可視化完了",
+      terminal: m.recap2025TerminalStage1(),
       duration: 3000,
     },
     {
       tab: "PopularTags.svelte",
       code: getTagsCode(theme),
       preview: PopularTags,
-      terminal:
-        "✓ よく使われたタグ生成: 主要トピック(AI×35, MCP×20, TypeScript×13)を認識",
+      terminal: m.recap2025TerminalStage2(),
       duration: 3000,
     },
     {
       tab: "PopularPosts.svelte",
       code: getPostsCode(theme),
       preview: PopularPosts,
-      terminal:
-        "✓ トレンド分析完了: アクセス数でランキング集計(47K, 32K, 27K閲覧)",
+      terminal: m.recap2025TerminalStage3(),
       duration: 3000,
     },
   ]);
@@ -131,10 +125,8 @@
     if (currentStageIndex >= stages.length - 1) {
       autoAdvanceTimer = setTimeout(async () => {
         showBuildPrompt = true;
-        await addTerminalLine("✓ 全部のコンポーネント準備できました！");
-        await addTerminalLine(
-          "$ さあ、ビルドボタンを押して完成させましょう 🎉",
-        );
+        await addTerminalLine(m.recap2025TerminalAllReady());
+        await addTerminalLine(m.recap2025TerminalBuildPrompt());
         autoAdvanceTimer = null;
       }, 1500);
       return;
@@ -244,17 +236,13 @@
 
   async function runBuildAnimation() {
     isBuilding = true;
-    await addTerminalLine("$ npm run build -- analyze-2025-recap");
+    await addTerminalLine(m.recap2025TerminalBuild0());
     await sleep(500);
-    await addTerminalLine(
-      "✓ 全4ステージを検査中: データ・統計・タグ・トレンド記事の確認...",
-    );
+    await addTerminalLine(m.recap2025TerminalBuild1());
     await sleep(800);
-    await addTerminalLine(
-      "✓ バンドル統合完了 (1.2s) | 最適化レベル: 高 | ファイルサイズ: 最小化",
-    );
+    await addTerminalLine(m.recap2025TerminalBuild2());
     await sleep(500);
-    await addTerminalLine("✓ ビルド成功! 2025年の成果レポート準備完了 🎉");
+    await addTerminalLine(m.recap2025TerminalBuild3());
     await sleep(1000);
 
     buildComplete = true;

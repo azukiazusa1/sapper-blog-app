@@ -3,7 +3,7 @@ import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import yamlFront from "yaml-front-matter";
-import { BlogPost, BlogPostSchema } from "./types.ts";
+import { BlogPost, BlogPostSchema, type Locale } from "./types.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -115,10 +115,14 @@ const rmLFCode = (str: string) => {
   return str.replace(/^\n+|\n+$/g, "");
 };
 
-export const loadBlogPost = async (filename: string): Promise<Result> => {
+export const loadBlogPost = async (
+  filename: string,
+  locale: Locale = "en-US",
+): Promise<Result> => {
+  const subdir = locale === "en-GB" ? "en/" : "";
   const dirname = path.join(
     __dirname,
-    `../../../contents/blogPost/${filename}.md`,
+    `../../../contents/blogPost/${subdir}${filename}.md`,
   );
 
   try {

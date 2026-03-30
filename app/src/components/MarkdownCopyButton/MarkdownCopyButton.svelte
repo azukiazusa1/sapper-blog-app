@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   interface Props {
     contents: string;
   }
@@ -53,5 +54,5 @@
       />
     </svg>
   {/if}
-  Markdown をコピー
+  {m.copyAsMarkdown()}
 </button>

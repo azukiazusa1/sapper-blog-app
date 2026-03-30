@@ -2,6 +2,8 @@
   import { fade } from "svelte/transition";
   import PrevIcon from "../../../components/Icons/Prev.svelte";
   import ParticleBackground from "$lib/effects/ParticleBackground.svelte";
+  import { localizeHref } from "$paraglide/runtime";
+  import { m } from "$paraglide/messages";
 
   interface Props {
     onGetStarted: () => void;
@@ -21,8 +23,8 @@
 
   <!-- Back button -->
   <div class="absolute top-0 left-0 z-10 p-4">
-    <a href="/recap">
-      <span class="sr-only">戻る</span>
+    <a href={localizeHref("/recap")}>
+      <span class="sr-only">{m.shortBack()}</span>
       <PrevIcon
         className="h-6 w-6 text-gray-600 hover:text-gray-900 transition-colors"
       />

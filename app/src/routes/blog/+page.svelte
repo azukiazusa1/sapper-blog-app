@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import PostList from "../../components/PostList.svelte";
   import Pagination from "../../components/Pagination/Pagination.svelte";
   import type { PageData } from "./$types";
@@ -16,11 +17,8 @@
 </script>
 
 <svelte:head>
-  <title>azukiazusaのテックブログ2</title>
-  <meta
-    name="description"
-    content="azukiazusaのテックブログ2です。週に1回 Web 開発に関する記事をお届けします。フロントエンドに関する分野の記事が中心です。"
-  />
+  <title>{m.siteTitle()}</title>
+  <meta name="description" content={m.siteDescription()} />
   <link rel="canonical" href={`${variables.baseURL}/blog`} />
 </svelte:head>
 
@@ -38,7 +36,7 @@
     <ShortList shorts={shortBlogs.shortCollection.items} />
 
     <div class="my-16 flex justify-center">
-      <LinkButton href="/blog/shorts/page/1">もっと見る</LinkButton>
+      <LinkButton href="/blog/shorts/page/1">{m.shortsMore()}</LinkButton>
     </div>
   {/snippet}
 </Tabs>

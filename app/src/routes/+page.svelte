@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import variables from "$lib/variables";
   import HeroSection from "../components/HeroSection/HeroSection.svelte";
   import PostList from "../components/PostList.svelte";
@@ -17,11 +18,8 @@
 </script>
 
 <svelte:head>
-  <title>azukiazusaのテックブログ2</title>
-  <meta
-    name="description"
-    content="azukiazusaのテックブログ2です。週に1回 Web 開発に関する記事をお届けします。フロントエンドに関する分野の記事が中心です。"
-  />
+  <title>{m.siteTitle()}</title>
+  <meta name="description" content={m.siteDescription()} />
   <link rel="canonical" href={`${variables.baseURL}`} />
 </svelte:head>
 
@@ -40,14 +38,14 @@
   <h2
     class="mt-16 mb-8 relative text-3xl font-extrabold dark:text-white after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-20 after:h-1 after:bg-indigo-500"
   >
-    最新記事
+    {m.homeLatestArticles()}
   </h2>
   <div class="mb-8">
     <PostList posts={latestPosts.blogPostCollection.items} />
   </div>
   <div class="flex flex-row-reverse">
     <Link href="/blog">
-      すべての記事を見る
+      {m.homeSeeAllArticles()}
       <svg
         fill="none"
         stroke="currentColor"
@@ -72,7 +70,7 @@
     <h2
       class="mb-8 relative text-3xl font-extrabold dark:text-white after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-20 after:h-1 after:bg-purple-500"
     >
-      人気記事
+      {m.homePopularArticles()}
     </h2>
     <ol class="list-inside list-decimal space-y-4">
       {#each popularPosts as post}
@@ -91,7 +89,7 @@
   <h2
     class="mt-16 mb-8 relative text-3xl font-extrabold dark:text-white after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-20 after:h-1 after:bg-indigo-500"
   >
-    登壇資料
+    {m.homeTalks()}
   </h2>
   <div class="max-w-5xl mx-auto">
     <div class="mb-8">
@@ -99,7 +97,7 @@
     </div>
     <div class="flex flex-row-reverse mb-8">
       <Link href="/talks">
-        すべての登壇資料を見る
+        {m.homeSeeAllTalks()}
         <svg
           fill="none"
           stroke="currentColor"

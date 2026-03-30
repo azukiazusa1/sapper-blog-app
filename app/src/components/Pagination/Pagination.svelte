@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import PrevIcon from "../Icons/Prev.svelte";
   import NextIcon from "../Icons/Next.svelte";
   import Page from "./Page.svelte";
   import Ellipsis from "./Ellipsis.svelte";
   import { getPages } from "./getPages";
+  import { localizeHref } from "$paraglide/runtime";
 
   interface Props {
     page?: number;
@@ -21,14 +23,17 @@
   let nextPage = $derived(page + 1);
 </script>
 
-<nav class="my-20 flex flex-col items-center" aria-label="ページネーション">
+<nav
+  class="my-20 flex flex-col items-center"
+  aria-label={m.paginationNavLabel()}
+>
   <div class="flex items-center gap-2">
     {#if hasPrev}
       <a
         class="flex h-12 w-12 items-center justify-center rounded-full bg-white transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-zinc-900 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400"
-        href={`${href}${prevPage}`}
+        href={localizeHref(`${href}${prevPage}`)}
       >
-        <div class="sr-only">前のページ</div>
+        <div class="sr-only">{m.paginationPrev()}</div>
         <PrevIcon className="h-6 w-6" />
       </a>
     {/if}
@@ -47,15 +52,20 @@
       <div
         class="flex h-12 items-center justify-center rounded-full bg-white px-4 dark:bg-zinc-900"
       >
-        <span class="font-medium">Page {page} of {totalPage}</span>
+        <span class="font-medium"
+          >{m.paginationMobileLabel({
+            page: String(page),
+            totalPage: String(totalPage),
+          })}</span
+        >
       </div>
     </div>
     {#if hasNext}
       <a
         class="flex h-12 w-12 items-center justify-center rounded-full bg-white transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-zinc-900 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400"
-        href={`${href}${nextPage}`}
+        href={localizeHref(`${href}${nextPage}`)}
       >
-        <div class="sr-only">次のページ</div>
+        <div class="sr-only">{m.paginationNext()}</div>
         <NextIcon />
       </a>
     {/if}

@@ -67,7 +67,8 @@ async function main(): Promise<void> {
   }
 
   if (slug) {
-    const key = `blog/ogp/${slug}.png`;
+    const isEnglish = values.file?.includes("/blogPost/en/") ?? false;
+    const key = isEnglish ? `blog/ogp/en/${slug}.png` : `blog/ogp/${slug}.png`;
     const contentHash = hash(title + JSON.stringify(tags));
 
     if (await checkImageExists(key, contentHash)) {

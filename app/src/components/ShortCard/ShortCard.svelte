@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { localizeHref } from "$paraglide/runtime";
+
   interface Props {
     title: string;
     id: string;
@@ -15,14 +17,17 @@
     rounded-xl bg-black p-4 text-lg text-white transition-all
     duration-300 ease-in-out hover:scale-105 hover:shadow-xl
     "
-    href={`/blog/shorts/${id}`}
+    href={localizeHref(`/blog/shorts/${id}`)}
     style:--tag="card-{id}"
   >
     {@render children?.()}
   </a>
   <div class="mt-2">
     <h2 class="line-clamp-2 font-bold">
-      <a class="no-underline hover:underline" href={`/blog/shorts/${id}`}>
+      <a
+        class="no-underline hover:underline"
+        href={localizeHref(`/blog/shorts/${id}`)}
+      >
         {title}
       </a>
     </h2>

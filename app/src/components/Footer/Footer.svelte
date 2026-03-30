@@ -1,3 +1,10 @@
+<script lang="ts">
+  import { m } from "$paraglide/messages";
+
+  const privacyPolicyUrl =
+    "https://policies.google.com/technologies/partner-sites";
+</script>
+
 <footer
   class="border-t border-gray-300 text-sm text-gray-600 md:h-24 dark:border-zinc-700 dark:text-gray-400"
 >
@@ -6,12 +13,11 @@
       © {new Date().getFullYear()} - Copyright azukiazusa, All Rights Reserved.
     </p>
     <p>
-      このサイトは Google Analytics を使用しています。詳しくは <a
-        class="underline hover:opacity-75"
-        href="https://policies.google.com/technologies/partner-sites?hl=ja"
-        >Google のサービスを使用するサイトやアプリから収集した情報の Google
-        による使用 – ポリシーと規約</a
-      > をご覧ください。
+      {m.googleAnalyticsDescriptionPrefix()}
+      <a class="underline hover:opacity-75" href={privacyPolicyUrl}
+        >{m.googleAnalyticsPrivacyPolicy()}</a
+      >
+      {m.googleAnalyticsDescriptionSuffix()}
     </p>
   </div>
 </footer>

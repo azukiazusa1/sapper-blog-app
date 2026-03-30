@@ -11,7 +11,7 @@
   <div
     class="flex h-10 w-60 items-center justify-between rounded-l-lg pr-4 opacity-80 focus:outline-hidden"
   >
-    検索
+    Search
 
     <div>
       <kbd class="font-sans">⌘</kbd>

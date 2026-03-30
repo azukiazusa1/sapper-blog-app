@@ -5,8 +5,14 @@ export const postsQuery = gql`
     $order: BlogPostOrder = createdAt_DESC
     $limit: Int = 12
     $skip: Int = 0
+    $locale: String
   ) {
-    blogPostCollection(limit: $limit, skip: $skip, order: [$order]) {
+    blogPostCollection(
+      limit: $limit
+      skip: $skip
+      order: [$order]
+      locale: $locale
+    ) {
       total
       skip
       limit

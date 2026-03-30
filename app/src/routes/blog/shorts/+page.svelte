@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import variables from "$lib/variables";
   import type { PageData } from "../$types";
   import LinkButton from "../../../components/LinkButton/LinkButton.svelte";
@@ -16,11 +17,8 @@
 </script>
 
 <svelte:head>
-  <title>ショート | azukiazusaのテックブログ2</title>
-  <meta
-    name="description"
-    content="サクサク読める短い記事をショートとして投稿しています。"
-  />
+  <title>{m.shortsTitle()} | {m.siteTitle()}</title>
+  <meta name="description" content={m.shortsDescription()} />
   <link rel="canonical" href={`${variables.baseURL}/blog/shorts`} />
 </svelte:head>
 
@@ -38,7 +36,7 @@
     <ShortList shorts={shortBlogs.shortCollection.items} />
 
     <div class="my-16 flex justify-center">
-      <LinkButton href="/blog/shorts/page/1">もっと見る</LinkButton>
+      <LinkButton href="/blog/shorts/page/1">{m.shortsMore()}</LinkButton>
     </div>
   {/snippet}
 </Tabs>

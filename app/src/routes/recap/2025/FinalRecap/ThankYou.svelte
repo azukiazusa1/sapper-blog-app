@@ -1,6 +1,7 @@
 <script lang="ts">
   import { inview } from "svelte-inview";
   import { defaultTheme, type ThemeId } from "../themes";
+  import { m } from "$paraglide/messages";
 
   interface Props {
     theme?: ThemeId;
@@ -11,8 +12,8 @@
   let isInView = $state(false);
 
   const url = "https://azukiazusa.dev/recap/2025";
-  const text = "2025年のazukiazusa.devの記録を振り返りましょう🙏";
-  const escapedText = encodeURIComponent(text);
+  const text = $derived(m.recap2025MetaDescription());
+  const escapedText = $derived(encodeURIComponent(text));
 
   // Get gradient colors based on theme
   const gradients: Record<
@@ -113,20 +114,14 @@
         .via} {gradient.title.to}
                bg-clip-text text-transparent leading-tight px-4"
     >
-      2025年も<br class="md:hidden" />ありがとう<br
-        class="hidden md:inline"
-      />ございました！
+      {m.recap2025ThankYouTitle()}
     </h2>
 
     <!-- Body text (white) -->
     <p
       class="text-base md:text-lg lg:text-xl text-gray-100 max-w-3xl mx-auto mb-10 md:mb-12 leading-relaxed px-4"
     >
-      今年は AI
-      エージェント時代の幕開けとともに、新たな技術探求の旅が始まりました。 81
-      本の記事、9
-      回の登壇を通じて、多くの方々と知見を共有できたことを嬉しく思います。
-      2026年も、変化し続ける技術の世界で、みなさんと一緒に学び、成長していきたいと思います。
+      {m.recap2025ThankYouBody()}
     </p>
 
     <!-- CTA buttons -->
@@ -147,7 +142,7 @@
             .from} {gradient.ctaPrimary.to}
                     rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300"
         ></div>
-        <span class="relative text-white">ブログを見る</span>
+        <span class="relative text-white">{m.recap2025ViewBlog()}</span>
       </a>
 
       <!-- Secondary CTA (outline) -->
@@ -159,7 +154,7 @@
                border-2 {gradient.ctaSecondary}
                transition-all duration-300 hover:scale-105"
       >
-        Xで共有
+        {m.shareOnX()}
       </a>
     </div>
   </div>

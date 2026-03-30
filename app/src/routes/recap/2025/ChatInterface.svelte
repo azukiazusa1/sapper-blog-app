@@ -3,6 +3,7 @@
   import MessageBubble from "./ChatInterface/MessageBubble.svelte";
   import ThemeSelector from "./ChatInterface/ThemeSelector.svelte";
   import { themes, type ThemeId } from "./themes";
+  import { m } from "$paraglide/messages";
 
   interface Props {
     onSubmit: () => void;
@@ -19,14 +20,10 @@
   }: Props = $props();
 
   // Message constants
-  const AI_GREETING_MESSAGE = `こんにちは！なにかお手伝いできることはありますか？`;
-
-  const PLAN_THINKING_MESSAGE = `了解しました！2025年のazukiazusa.devのRecap画面を構築するための実装プランを考えています...`;
-
-  const THEME_QUESTION_MESSAGE = `実装に入る前に質問をさせてください。Recap画面のテーマカラーはどのような色がお好みですか？`;
-
-  const USER_INPUT_TEXT =
-    "azukiazusa.dev の 2025 年の振り返りを作成してください。";
+  const AI_GREETING_MESSAGE = $derived(m.recap2025ChatGreeting());
+  const PLAN_THINKING_MESSAGE = $derived(m.recap2025ChatPlanThinking());
+  const THEME_QUESTION_MESSAGE = $derived(m.recap2025ChatThemeQuestion());
+  const USER_INPUT_TEXT = $derived(m.recap2025ChatUserInput());
 
   // Dynamic plan message based on selected theme
   let aiPlanMessage = $state("");
@@ -34,27 +31,14 @@
   // Generate AI plan message based on selected theme
   const getAIPlanMessage = (themeId: ThemeId) => {
     const themeNames: Record<ThemeId, string> = {
-      orange: "オレンジ",
-      blue: "ブルー",
-      purple: "パープル",
-      green: "グリーン",
-      pink: "ピンク",
+      orange: m.recap2025ChatThemeOrange(),
+      blue: m.recap2025ChatThemeBlue(),
+      purple: m.recap2025ChatThemePurple(),
+      green: m.recap2025ChatThemeGreen(),
+      pink: m.recap2025ChatThemePink(),
     };
 
-    return `了解しました！${themeNames[themeId]}テーマで進めます。
-
-以下の実装プランで2025年のRecap画面を構築します：
-
-1. 統計情報の表示
-   - 総記事数と総文字数をカウントアップアニメーションで表示
-   - グラデーションテキストを使用した大きな数字
-2. 人気タグの表示
-   - トップ3のタグをグラデーション背景のバッジで表示
-   - タグごとに記事数を表示
-3. 人気記事ランキング
-   - 閲覧数の多い記事TOP3を表示
-   - グラデーション境界線とランクバッジ付きカード
-それでは実装を開始します...`;
+    return m.recap2025ChatAIPlan({ themeName: themeNames[themeId] });
   };
 
   // State management
@@ -209,7 +193,7 @@
       onclick={() => onSkip?.()}
       class="fixed top-4 right-4 z-50 rounded-lg bg-white px-4 py-2 shadow-lg transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-300 text-black font-semibold"
     >
-      スキップする →
+      {m.recap2025SkipButton()}
     </button>
   {/if}
 
@@ -308,7 +292,7 @@
         <input
           type="text"
           value={USER_INPUT_TEXT}
-          aria-label="メッセージ入力"
+          aria-label={m.recap2025MessageInput()}
           class="input-field {themes[selectedTheme]?.colors
             .inputFocusBorder} focus:outline-none focus:shadow-lg {themes[
             selectedTheme

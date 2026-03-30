@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
+  import { m } from "$paraglide/messages";
   import HeroSection from "./HeroSection.svelte";
   import ChatInterface from "./ChatInterface.svelte";
   import EditorWindow from "./CodeEditor/EditorWindow.svelte";
@@ -77,15 +78,12 @@
 
 <svelte:head>
   <title>azukiazusa.dev 2025 Recap</title>
-  <meta
-    name="description"
-    content="2025 年の azukiazusa.dev の記録を振り返りましょう。"
-  />
+  <meta name="description" content={m.recap2025MetaDescription()} />
 </svelte:head>
 
 <Ogp
   title="azukiazusa.dev 2025 Recap"
-  description="2025 年の azukiazusa.dev の記録を振り返りましょう。"
+  description={m.recap2025MetaDescription()}
   url="https://azukiazusa.dev/recap/2025"
   image="https://azukiazusa.dev/recap/2025/ogp.png"
 />
@@ -111,12 +109,12 @@
     <!-- Skip animation for reduced motion preference -->
     <div class="flex min-h-screen items-center justify-center">
       <div class="text-center">
-        <p class="mb-4 text-xl">読み込み中...</p>
+        <p class="mb-4 text-xl">{m.recap2025Loading()}</p>
         <button
           onclick={handleSkipToResults}
           class="rounded-lg bg-orange-600 px-6 py-3 text-white hover:bg-orange-700"
         >
-          結果を表示
+          {m.recap2025ShowResults()}
         </button>
       </div>
     </div>
@@ -135,8 +133,7 @@
           azukiazusa.dev<br />2025 Recap
         </h2>
         <p class="text-xl text-gray-600 md:text-2xl">
-          AI エージェント時代の幕開けとともに歩んだ、<br
-          />2025年の技術探求の旅を振り返ります
+          {m.recap2025IntroSubtitle()}
         </p>
       </div>
 
@@ -147,10 +144,12 @@
     <!-- Blog Statistics -->
     <section id="blog-stats" class="recap-section bg-white">
       <div class="mx-auto max-w-full">
-        <h2 class="section-title text-gray-900">今年書いた記事</h2>
+        <h2 class="section-title text-gray-900">
+          {m.recap2025ArticlesSection()}
+        </h2>
         <BlogStats theme={selectedTheme} />
         <p class="mt-8 text-center text-lg text-gray-600">
-          文庫本約8冊分の文字数を執筆しました
+          {m.recap2025WordsWritten()}
         </p>
       </div>
     </section>
@@ -158,10 +157,12 @@
     <!-- Popular Tags -->
     <section class="recap-section bg-gray-50">
       <div class="mx-auto max-w-4xl">
-        <h2 class="section-title text-gray-900">人気のタグ</h2>
+        <h2 class="section-title text-gray-900">
+          {m.recap2025PopularTagsSection()}
+        </h2>
         <PopularTags theme={selectedTheme} />
         <p class="mt-8 text-center text-lg text-gray-600">
-          2025 年は AI 関連のトピックが話題になった年でした
+          {m.recap2025PopularTagsDescription()}
         </p>
       </div>
     </section>
@@ -169,10 +170,12 @@
     <!-- Popular Posts -->
     <section class="recap-section bg-white">
       <div class="mx-auto max-w-4xl">
-        <h2 class="section-title text-gray-900">人気の記事 Top 3</h2>
+        <h2 class="section-title text-gray-900">
+          {m.recap2025PopularPostsSection()}
+        </h2>
         <PopularPosts theme={selectedTheme} />
         <p class="mt-8 text-center text-lg text-gray-600">
-          あなたが好きな記事はありましたか？
+          {m.recap2025PopularPostsDescription()}
         </p>
       </div>
     </section>
@@ -180,9 +183,9 @@
     <!-- Talks & Presentations -->
     <section class="recap-section bg-gray-50">
       <div class="mx-auto max-w-4xl">
-        <h2 class="section-title text-gray-900">登壇したイベント</h2>
+        <h2 class="section-title text-gray-900">{m.recap2025TalksSection()}</h2>
         <p class="mb-8 text-center text-xl text-gray-600">
-          今年は9つのイベントで発表しました
+          {m.recap2025TalksDescription()}
         </p>
         <TalksTimeline theme={selectedTheme} />
       </div>

@@ -6,6 +6,8 @@
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
   import avatarImage from "../../../assets/images/azukiazusa.jpeg";
+  import { localizeHref } from "$paraglide/runtime";
+  import { m } from "$paraglide/messages";
   let inView = $state(false);
   let el = $state(null);
   let dance = $state(false);
@@ -110,10 +112,10 @@
         }}
       >
         <a
-          href="/"
+          href={localizeHref("/")}
           class="mr-3 inline-flex items-center justify-center rounded-lg bg-indigo-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900"
         >
-          トップへ戻る
+          {m.backToHome()}
         </a>
         <TwitterShareButton
           url="https://azukiazusa.dev/recap/2024"

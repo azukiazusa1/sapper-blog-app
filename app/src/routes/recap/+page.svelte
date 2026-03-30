@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { localizeHref } from "$paraglide/runtime";
+</script>
+
 <svelte:head>
   <title>Recap</title>
   <link rel="canonical" href="https://azukiazusa.dev/recap" />
@@ -9,13 +13,19 @@
 >
   <ul class="space-y-4">
     <li>
-      <a class="text-xl hover:underline" href="/recap/2025">2025</a>
+      <a class="text-xl hover:underline" href={localizeHref("/recap/2025")}
+        >2025</a
+      >
     </li>
     <li>
-      <a class="text-xl hover:underline" href="/recap/2024">2024</a>
+      <a class="text-xl hover:underline" href={localizeHref("/recap/2024")}
+        >2024</a
+      >
     </li>
     <li>
-      <a class="text-xl hover:underline" href="/recap/2023">2023</a>
+      <a class="text-xl hover:underline" href={localizeHref("/recap/2023")}
+        >2023</a
+      >
     </li>
   </ul>
 </div>
