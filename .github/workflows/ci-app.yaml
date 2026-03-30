@@ -11,6 +11,7 @@ env:
   SPACE: ${{ secrets.PREVIEW_SPACE }}
   ENVIRONMENTS: test
   PUBLIC_BASE_URL: http://localhost:3000
+  PUBLIC_OGP_BASE_URL: https://ogp.azukiazusa.dev
   PUBLIC_ANALYTICS_ID: ""
   GITHUB_TOKEN: ""
   PRIVATE_KEY: ""

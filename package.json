@@ -14,7 +14,8 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "new:article": "npm run new -w=packages/content-management",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "generate:ogp": "npm run generate -w=packages/ogp-generator"
   },
   "volta": {
     "node": "20.13.1",
