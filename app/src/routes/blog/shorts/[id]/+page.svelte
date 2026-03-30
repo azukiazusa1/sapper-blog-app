@@ -24,7 +24,7 @@
   title={short.title}
   description={short.content1}
   {url}
-  image={`${variables.baseURL}/blog/shorts/ogp/${short.sys.id}.png`}
+  image={`${variables.ogpBaseURL}/blog/shorts/ogp/${short.sys.id}.png`}
 />
 
 <div class="container mx-auto py-4">
@@ -35,9 +35,3 @@
     {contents}
   />
 </div>
-<!-- ogp を静的に生成するために空のリンクを設置している -->
-<a
-  href={`/blog/shorts/ogp/${encodeURIComponent(short.sys.id)}.png`}
-  aria-hidden="true"
-  tabindex="-1"
-></a>

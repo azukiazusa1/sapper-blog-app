@@ -18,7 +18,7 @@ async function getFontData(url: string) {
     /src: url\((.+)\) format\('(opentype|truetype)'\)/,
   );
 
-  if (!resource) return;
+  if (!resource?.[1]) return;
 
   return await fetch(resource[1]).then((res) => res.arrayBuffer());
 }
@@ -32,8 +32,8 @@ const generateOgpImage = async (element: React.ReactNode) => {
       "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap",
     );
 
-    fontCache.set("regular", fontRegular);
-    fontCache.set("bold", fontBold);
+    fontCache.set("regular", fontRegular!);
+    fontCache.set("bold", fontBold!);
   }
 
   const svg = await satori(element, {
@@ -67,9 +67,6 @@ const generateOgpImage = async (element: React.ReactNode) => {
   return image.asPng();
 };
 
-/**
- * ブログ記事向けのOGP画像を生成する
- */
 export const generateBlogOgpImage = async (title: string, tags: string[]) => {
   return generateOgpImage(
     <div
@@ -143,9 +140,6 @@ export const generateBlogOgpImage = async (title: string, tags: string[]) => {
   );
 };
 
-/**
- * ショート記事向けのOGP画像を生成する
- */
 export const generateShortOgpImage = async (title: string) => {
   return generateOgpImage(
     <div

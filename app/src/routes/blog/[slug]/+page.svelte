@@ -38,7 +38,7 @@
   title={post.title}
   description={post.about}
   {url}
-  image={`${variables.baseURL}/blog/ogp/${post.slug}.png`}
+  image={`${variables.ogpBaseURL}/blog/ogp/${post.slug}.png`}
 />
 
 <div class="mx-auto my-6 px-4 max-w-6xl">
@@ -143,5 +143,3 @@
   </div>
 </div>
 
-<!-- ogp を静的に生成するために空のリンクを設置している -->
-<a href={`/blog/ogp/${post.slug}.png`} aria-hidden="true" tabindex="-1"></a>
