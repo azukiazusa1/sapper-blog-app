@@ -13,7 +13,7 @@
 
   const url = "https://azukiazusa.dev/recap/2025";
   const text = $derived(m.recap2025MetaDescription());
-  const escapedText = encodeURIComponent(text);
+  const escapedText = $derived(encodeURIComponent(text));
 
   // Get gradient colors based on theme
   const gradients: Record<
