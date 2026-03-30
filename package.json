@@ -18,11 +18,7 @@
     "generate:ogp": "npm run generate -w=packages/ogp-generator"
   },
   "engines": {
-    "node": ">=20.18.1"
-  },
-  "volta": {
-    "node": "20.18.1",
-    "npm": "9.9.3"
+    "node": ">=24.14.1"
   },
   "devDependencies": {
     "@eslint/js": "^8.57.0",
