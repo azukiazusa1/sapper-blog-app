@@ -11,6 +11,7 @@ declare module "$env/static/private" {
 declare module "$env/static/public" {
   export const PUBLIC_ANALYTICS_ID: string;
   export const PUBLIC_BASE_URL: string;
+  export const PUBLIC_OGP_BASE_URL: string;
 }
 
 /**
