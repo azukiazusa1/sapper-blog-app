@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import Heroimage from "../../assets/images/heroImage.png";
   import LinkButton from "../LinkButton/LinkButton.svelte";
 </script>
@@ -22,12 +23,11 @@
         <p
           class="mb-6 max-w-2xl leading-relaxed font-light text-indigo-100 md:text-lg lg:mb-8 lg:text-xl"
         >
-          週に1回 Web
-          開発に関する記事をお届けします。フロントエンドに関する分野の記事が中心です。
+          {m.heroDescription()}
         </p>
         <div class="flex gap-3">
           <LinkButton variant="primary" href="/blog">
-            ブログを読む
+            {m.heroReadBlog()}
             <svg
               class="-mr-1 ml-2 h-5 w-5"
               fill="currentColor"
@@ -40,7 +40,9 @@
               /></svg
             >
           </LinkButton>
-          <LinkButton href="/about" variant="transparent">About me</LinkButton>
+          <LinkButton href="/about" variant="transparent"
+            >{m.heroAboutMe()}</LinkButton
+          >
         </div>
       </div>
     </div>

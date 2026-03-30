@@ -1,6 +1,8 @@
 <script lang="ts">
   import AllowDown from "../../../components/Icons/AllowDown.svelte";
   import PrevIcon from "../../../components/Icons/Prev.svelte";
+  import { localizeHref } from "$paraglide/runtime";
+  import { m } from "$paraglide/messages";
   const handleClick = () => {
     document.getElementById("article-info").scrollIntoView({
       block: "center",
@@ -11,8 +13,8 @@
 
 <div class="relative flex h-screen items-center justify-center overflow-hidden">
   <div class="absolute top-0 left-0 z-10 p-4">
-    <a href="/recap">
-      <div class="sr-only">戻る</div>
+    <a href={localizeHref("/recap")}>
+      <div class="sr-only">{m.shortBack()}</div>
       <PrevIcon className="h-6 w-6" />
     </a>
   </div>

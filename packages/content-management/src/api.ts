@@ -434,7 +434,7 @@ export const updateBlogPost = async (
   }
 };
 
-export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
+const findBlogPostEntry = async (slugOrId: string) => {
   const client = await createClient();
   const entities = await client.getEntries({
     content_type: "blogPost",
@@ -442,9 +442,41 @@ export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
   });
 
   // slug で検索してもヒットしなかった場合は id で検索する
-  const entry = entities.items[0]
+  return entities.items[0]
     ? entities.items[0]
     : await client.getEntry(slugOrId);
+};
+
+const removeLocaleValue = <T>(field: Record<string, T> | undefined, locale: string) => {
+  if (!field || !(locale in field)) {
+    return field;
+  }
+  const { [locale]: _, ...rest } = field;
+  return rest;
+};
+
+export const clearBlogPostLocale = async (
+  slugOrId: string,
+  locale: Locale,
+): Promise<void> => {
+  const entry = await findBlogPostEntry(slugOrId);
+
+  const fields = entry.fields;
+
+  fields["title"] = removeLocaleValue(fields["title"], locale);
+  fields["about"] = removeLocaleValue(fields["about"], locale);
+  fields["article"] = removeLocaleValue(fields["article"], locale);
+  fields["selfAssessment"] = removeLocaleValue(fields["selfAssessment"], locale);
+
+  const updatedEntry = await entry.update();
+
+  if (contentful.isPublished(entry)) {
+    await updatedEntry.publish();
+  }
+};
+
+export const deleteBlogPost = async (slugOrId: string): Promise<void> => {
+  const entry = await findBlogPostEntry(slugOrId);
 
   await entry.delete();
 };

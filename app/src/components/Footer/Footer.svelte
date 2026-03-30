@@ -1,5 +1,8 @@
 <script lang="ts">
   import { m } from "$paraglide/messages";
+
+  const privacyPolicyUrl =
+    "https://policies.google.com/technologies/partner-sites";
 </script>
 
 <footer
@@ -13,7 +16,7 @@
       {m.googleAnalyticsDescriptionPrefix()}
       <a
         class="underline hover:opacity-75"
-        href="https://policies.google.com/technologies/partner-sites"
+        href={privacyPolicyUrl}
         >{m.googleAnalyticsPrivacyPolicy()}</a
       >
       {m.googleAnalyticsDescriptionSuffix()}

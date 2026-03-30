@@ -1,4 +1,9 @@
-import { createBlogPost, updateBlogPost, deleteBlogPost } from "../api.ts";
+import {
+  createBlogPost,
+  updateBlogPost,
+  deleteBlogPost,
+  clearBlogPostLocale,
+} from "../api.ts";
 import { loadBlogPost } from "../fileOperation.ts";
 import { basename } from "path";
 
@@ -73,12 +78,11 @@ if (MODIFIED_FILES) {
 if (DELETED_FILES) {
   const deletedFiles = DELETED_FILES.split(" ");
   for (const file of deletedFiles) {
+    const filename = getFilename(file);
     if (isEnglishFile(file)) {
-      // 英語ファイルの削除は en-GB フィールドのクリアのみ（エントリ自体は削除しない）
-      console.log(`Skipping deletion of English file: ${file}`);
+      await clearBlogPostLocale(filename, "en-GB");
       continue;
     }
-    const filename = getFilename(file);
     await deleteBlogPost(filename);
   }
 }

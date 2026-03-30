@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import { Tabs } from "bits-ui";
   import { cubicInOut } from "svelte/easing";
   import { crossfade } from "svelte/transition";
@@ -29,9 +30,11 @@
   class="w-full bg-gradient-to-r from-indigo-900 to-purple-900 py-16 dark:from-indigo-950 dark:to-purple-950 mb-16"
 >
   <div class="container mx-auto px-4">
-    <h1 class="text-center text-4xl font-extrabold text-white mb-6">Blog</h1>
+    <h1 class="text-center text-4xl font-extrabold text-white mb-6">
+      {m.blogTabsTitle()}
+    </h1>
     <p class="text-center text-lg text-indigo-100 max-w-2xl mx-auto mb-10">
-      Web開発とフロントエンド技術に関する記事を探索しましょう
+      {m.blogTabsSubtitle()}
     </p>
   </div>
 </div>
@@ -51,7 +54,7 @@
           class:text-gray-700={value !== "blog"}
           class:dark:text-gray-300={value !== "blog"}
         >
-          ブログ
+          {m.blogTabBlog()}
         </span>
         {#if value === "blog"}
           <div
@@ -71,7 +74,7 @@
           class:text-gray-700={value !== "shorts"}
           class:dark:text-gray-300={value !== "shorts"}
         >
-          ショート
+          {m.blogTabShorts()}
         </span>
         {#if value === "shorts"}
           <div

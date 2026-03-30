@@ -3,6 +3,7 @@
   import CountUp from "../../CountUp.svelte";
   import { recap2025 } from "../Data2025";
   import { defaultTheme, type ThemeId } from "../themes";
+  import { m } from "$paraglide/messages";
 
   interface Props {
     theme?: ThemeId;
@@ -124,7 +125,7 @@
         <div
           class="mb-6 text-sm uppercase tracking-widest text-gray-500 font-semibold"
         >
-          Total Posts
+          {m.recap2025TotalPosts()}
         </div>
         <div
           class="bg-gradient-to-br {gradient.from} {gradient.via} {gradient.to} bg-clip-text text-transparent text-6xl md:text-7xl lg:text-8xl font-black leading-tight py-2 tabular-nums"
@@ -160,7 +161,7 @@
         <div
           class="mb-6 text-sm uppercase tracking-widest text-gray-500 font-semibold"
         >
-          Total Words
+          {m.recap2025TotalWords()}
         </div>
         <div
           class="bg-gradient-to-br {gradient.from} {gradient.via} {gradient.to} bg-clip-text text-transparent text-6xl md:text-7xl lg:text-8xl font-black leading-tight py-2 tabular-nums"

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import { page } from "$app/stores";
   import LinkButton from "../components/LinkButton/LinkButton.svelte";
 
@@ -7,8 +8,8 @@
   );
   let message = $derived(
     $page.error.message === "Not Found"
-      ? "お探しのページは見つかりませんでした。削除、変更されたか URL が間違っている可能性がございます。"
-      : "予期せぬエラーが発生しました。",
+      ? m.error404Message()
+      : m.error500Message(),
   );
 </script>
 
@@ -31,7 +32,7 @@
       </p>
     </div>
     <div>
-      <LinkButton href="/">トップに戻る</LinkButton>
+      <LinkButton href="/">{m.backToHome()}</LinkButton>
     </div>
   </div>
 </div>

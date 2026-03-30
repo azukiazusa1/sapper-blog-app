@@ -1,5 +1,6 @@
 <script lang="ts">
   import { isMatchPath } from "$lib/utils";
+  import { localizeHref } from "$paraglide/runtime";
 
   interface Props {
     segment: string;
@@ -15,7 +16,7 @@
       <li>
         <a
           aria-current={isMatchPath(route, segment) ? "page" : undefined}
-          href={route}
+          href={localizeHref(route)}
           class={`rounded-full capitalize font-medium transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-zinc-700 px-3 py-1.5 ${
             isMatchPath(route, segment)
               ? "text-indigo-600 dark:text-indigo-300 bg-gray-100 dark:bg-zinc-700"

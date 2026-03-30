@@ -1,5 +1,6 @@
 <script lang="ts">
   import clsx from "clsx";
+  import { localizeHref } from "$paraglide/runtime";
   interface Props {
     variant?: "primary" | "secondary" | "transparent";
     href: string;
@@ -15,10 +16,13 @@
     rel = undefined,
     children,
   }: Props = $props();
+
+  const getHref = (value: string) =>
+    value.startsWith("/") ? localizeHref(value) : value;
 </script>
 
 <a
-  {href}
+  href={getHref(href)}
   {target}
   {rel}
   class={clsx(

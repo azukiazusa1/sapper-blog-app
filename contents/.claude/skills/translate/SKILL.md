@@ -21,7 +21,7 @@ allowed-tools: Bash(git *), Bash(mkdir *), Read, Write, Glob, Grep
 - `title`: 英語に翻訳する
 - `slug`: **変更しない**（日本語版と全く同じ値を維持。Contentful で同じエントリを参照するために必須）
 - `id`: **変更しない**（日本語版と全く同じ値を維持。Contentful でエントリを特定するために必須）
-- `about`: 英語に翻訳する
+- `about`: 英語に翻訳する。**250 文字以内**に収める（超える場合は内容を損なわないよう要約する）
 - `tags`: 英語の一般的なタグに翻訳する（例: "型安全" → "type-safety"）
 - `selfAssessment`: クイズの `question`, `text`, `explanation` を英語に翻訳する
 - `published`: **変更しない**（日本語版と同じ値を維持）

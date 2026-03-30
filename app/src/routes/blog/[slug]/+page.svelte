@@ -11,7 +11,7 @@
   import Contributors from "../../../components/Contributors/Contributors.svelte";
   import Prev from "../../../components/Icons/Prev.svelte";
   import SelfAssessment from "../../../components/SelfAssessment/SelfAssessment.svelte";
-  import { getLocale } from "$paraglide/runtime";
+  import { getLocale, localizeHref } from "$paraglide/runtime";
   import { m } from "$paraglide/messages";
 
   interface Props {
@@ -28,6 +28,9 @@
 
   let url = $derived(`${variables.baseURL}/blog/${post.slug}`);
   let isEnglish = $derived(getLocale() === "en");
+  let originalJapaneseUrl = $derived(
+    localizeHref(`/blog/${post.slug}`, { locale: "ja" }),
+  );
 </script>
 
 <svelte:head>
@@ -41,12 +44,14 @@
   title={post.title}
   description={post.about}
   {url}
-  image={`${variables.ogpBaseURL}/blog/ogp/${post.slug}.png`}
+  image={isEnglish
+    ? `${variables.ogpBaseURL}/blog/ogp/en/${post.slug}.png`
+    : `${variables.ogpBaseURL}/blog/ogp/${post.slug}.png`}
 />
 
 <div class="mx-auto my-6 px-4 max-w-6xl">
   <a
-    href="/blog"
+    href={localizeHref("/blog")}
     class="inline-flex items-center gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-800 transition-colors dark:bg-zinc-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-zinc-700"
   >
     <Prev className="h-4 w-4" />
@@ -79,9 +84,9 @@
           This article was translated from Japanese by AI and may contain
           inaccuracies. For the most accurate content, please refer to the
           <a
-            href="/blog/{post.slug}"
+            href={originalJapaneseUrl}
             class="font-medium underline underline-offset-2 hover:opacity-75"
-            >original Japanese version</a
+            data-sveltekit-reload>original Japanese version</a
           >.
         </span>
       </div>
@@ -142,7 +147,7 @@
           </div>
           <div class="text-sm text-gray-500 dark:text-gray-400">
             <a
-              href={`/blog/${post.slug}.md`}
+              href={localizeHref(`/blog/${post.slug}.md`)}
               class="inline-flex items-center gap-1 text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
             >
               <svg

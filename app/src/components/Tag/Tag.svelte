@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
+  import { localizeHref } from "$paraglide/runtime";
+
   interface Props {
     name?: string;
     slug?: string;
@@ -34,7 +37,7 @@
 
 {#if count !== undefined}
   <!-- タグ一覧ページでの大きなタグカード -->
-  <a href={`/tags/${slug}`} class="block h-full w-full">
+  <a href={localizeHref(`/tags/${slug}`)} class="block h-full w-full">
     <div
       class="h-full rounded-xl bg-white transition-all duration-300 hover:shadow-md overflow-hidden flex flex-col dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800"
     >
@@ -48,7 +51,9 @@
           <span class="block text-xl font-bold text-gray-700 dark:text-gray-200"
             >{count}</span
           >
-          <span class="text-xs text-gray-500 dark:text-gray-400">記事</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400"
+            >{m.tagArticlesCountLabel()}</span
+          >
         </div>
       </div>
     </div>
@@ -56,7 +61,7 @@
 {:else}
   <!-- 記事内の小さなタグ -->
   <a
-    href={`/tags/${slug}`}
+    href={localizeHref(`/tags/${slug}`)}
     class="inline-flex items-center rounded-full bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors"
   >
     #{name}

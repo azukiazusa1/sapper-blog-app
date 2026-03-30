@@ -2,6 +2,12 @@
   import { self } from "svelte/legacy";
 
   import { isMatchPath } from "$lib/utils";
+  import {
+    localizeHref,
+    deLocalizeHref,
+    getLocale,
+    locales,
+  } from "$paraglide/runtime";
   import { createEventDispatcher } from "svelte";
   import Title from "./Title.svelte";
   import ToggleDarkMode from "./ToggleDarkMode.svelte";
@@ -31,6 +37,8 @@
   }
 
   let { isOpen = false, segment, routes }: Props = $props();
+  let baseHref = $derived(deLocalizeHref(segment));
+  let currentLocale = $derived(getLocale());
 </script>
 
 <svelte:window onkeydown={handleWindowKeyDown} />
@@ -59,7 +67,7 @@
             <a
               onclick={close}
               aria-current={isMatchPath(route, segment) ? "page" : undefined}
-              href={route}
+              href={localizeHref(route)}
               class={`flex items-center rounded-xl px-4 py-3 capitalize font-medium transition-all duration-300 hover:bg-gray-100 dark:hover:bg-zinc-700 ${
                 isMatchPath(route, segment)
                   ? "text-indigo-600 dark:text-indigo-300 bg-gray-100 dark:bg-zinc-700"
@@ -72,10 +80,26 @@
         {/each}
       </ul>
     </div>
+    <div class="mt-4 px-3">
+      <div class="flex gap-2">
+        {#each locales as locale}
+          <a
+            href={localizeHref(baseHref, { locale })}
+            data-sveltekit-reload
+            onclick={close}
+            class={`flex-1 rounded-xl px-4 py-2 text-center text-sm font-medium uppercase transition-all duration-300 ${
+              currentLocale === locale
+                ? "bg-indigo-600 text-white"
+                : "bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+            }`}>{locale}</a
+          >
+        {/each}
+      </div>
+    </div>
   </div>
   <div class="flex w-full items-center justify-center gap-2 p-6">
     <a
-      href="/rss.xml"
+      href={localizeHref("/rss.xml")}
       target="_blank"
       class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
       rel="noopener noreferrer"
@@ -84,7 +108,7 @@
       <RssIcon className="h-5 w-5" />
     </a>
     <a
-      href="/llms.txt"
+      href={localizeHref("/llms.txt")}
       target="_blank"
       class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
       rel="noopener noreferrer"

@@ -12,6 +12,9 @@ const config = {
       routes: {
         exclude: ["/*"],
       },
+      paths: {
+        relative: false,
+      },
     }),
     env: {
       dir: "../",

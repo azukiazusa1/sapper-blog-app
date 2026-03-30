@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import Pagination from "../../../../../components/Pagination/Pagination.svelte";
   import type { PageData } from "./$types";
   import variables from "$lib/variables";
@@ -14,17 +15,14 @@
   const breadcrumbItems = $derived([
     { label: "Home", url: "/" },
     { label: "Shorts", url: "/blog/shorts" },
-    { label: `${data.page}ページ目` },
+    { label: m.pageNumberLabel({ page: String(data.page) }) },
   ]);
 </script>
 
 <svelte:head>
-  <title>ショート | azukiazusaのテックブログ2</title>
+  <title>{m.shortsTitle()} | {m.siteTitle()}</title>
   <link rel="canonical" href={`${variables.baseURL}/blog/page/${data.page}`} />
-  <meta
-    name="description"
-    content="サクサク読める短い記事をショートとして投稿しています。"
-  />
+  <meta name="description" content={m.shortsDescription()} />
 </svelte:head>
 
 <div class="container mx-auto mt-16">

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import Nav from "./Nav.svelte";
   import Title from "./Title.svelte";
   import ToggleDarkMode from "./ToggleDarkMode.svelte";
@@ -11,6 +12,12 @@
   import Robot from "../Icons/Robot.svelte";
   import SearchDialog from "../SearchDialog/SearchDialog.svelte";
   import SearchBar from "../SearchDialog/SearchBar.svelte";
+  import {
+    localizeHref,
+    deLocalizeHref,
+    getLocale,
+    locales,
+  } from "$paraglide/runtime";
 
   let routes = ["/blog", "/about", "/talks", "/recap"];
   let html: HTMLElement;
@@ -31,6 +38,8 @@
 
   let { segment }: Props = $props();
   let isOpen = $state(false);
+  let baseHref = $derived(deLocalizeHref(segment));
+  let currentLocale = $derived(getLocale());
 
   const handleScroll = () => {
     // ガラス効果の制御
@@ -79,7 +88,7 @@
         <button
           class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 lg:invisible lg:hidden dark:bg-zinc-700 dark:hover:bg-zinc-600 transition-all duration-300"
           onclick={openSideMenu}
-          aria-label="サイドメニューを開く"
+          aria-label={m.openSideMenu()}
         >
           <MenuIcon className="h-5 w-5" />
         </button>
@@ -109,8 +118,24 @@
           <div class="mx-2">
             <ToggleDarkMode />
           </div>
+          <div
+            class="mx-1 flex items-center overflow-hidden rounded-full border border-gray-200 dark:border-zinc-600"
+          >
+            {#each locales as locale}
+              <a
+                href={localizeHref(baseHref, { locale })}
+                data-sveltekit-reload
+                class={`px-2 py-1 text-xs font-medium uppercase transition-colors ${
+                  currentLocale === locale
+                    ? "bg-indigo-600 text-white"
+                    : "hover:bg-gray-100 dark:hover:bg-zinc-700"
+                }`}
+                aria-label={`Switch to ${locale}`}>{locale}</a
+              >
+            {/each}
+          </div>
           <a
-            href="/rss.xml"
+            href={localizeHref("/rss.xml")}
             target="_blank"
             class={`invisible mx-1 hidden rounded-full p-2 hover:bg-gray-100 lg:visible lg:block dark:hover:bg-zinc-700 transition-all duration-300 p-2`}
             rel="noopener noreferrer"
@@ -119,7 +144,7 @@
             <RssIcon className="h-5 w-5" />
           </a>
           <a
-            href="/llms.txt"
+            href={localizeHref("/llms.txt")}
             target="_blank"
             class={`invisible mx-1 hidden rounded-full hover:bg-gray-100 lg:visible lg:block dark:hover:bg-zinc-700 transition-all duration-300 p-2`}
             rel="noopener noreferrer"

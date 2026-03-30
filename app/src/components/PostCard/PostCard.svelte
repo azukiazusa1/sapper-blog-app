@@ -3,6 +3,7 @@
   import Image from "../Image/Image.svelte";
   import Tag from "../Tag/Tag.svelte";
   import Time from "../Time/Time.svelte";
+  import { localizeHref } from "$paraglide/runtime";
 
   interface Props {
     title: string;
@@ -31,7 +32,7 @@
   class="group relative m-auto flex w-full flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:shadow-xl dark:bg-zinc-900 dark:shadow-zinc-800/20 h-full max-w-[400px]"
 >
   <a
-    href={`/blog/${slug}`}
+    href={localizeHref(`/blog/${slug}`)}
     class="overflow-hidden"
     aria-hidden="true"
     tabindex="-1"
@@ -83,7 +84,10 @@
         class="mb-2 text-xl font-bold leading-tight transition-colors group-hover:text-indigo-600 dark:group-hover:text-indigo-400"
         style:--tag={small ? null : `h-${slug}`}
       >
-        <a class="no-underline line-clamp-3" href={`/blog/${slug}`}>{title}</a>
+        <a
+          class="no-underline line-clamp-3"
+          href={localizeHref(`/blog/${slug}`)}>{title}</a
+        >
       </h2>
     </header>
 

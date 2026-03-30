@@ -6,6 +6,7 @@
   import { onMount } from "svelte";
   import { tick } from "svelte"; // Import tick for handling DOM updates
   import GitHub from "../../components/Icons/GitHub.svelte";
+  import { localizeHref } from "$paraglide/runtime";
 
   const content1 =
     "azukiazusaさんは、主にフロントエンド分野に焦点を当てたWeb開発に関する記事を執筆している技術ブロガーです。彼のブログ「azukiazusaのテックブログ2」では、週に1回のペースで最新の技術情報やトレンドを紹介しています。";
@@ -733,13 +734,13 @@
                   </p>
                   <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a
-                      href="/blog"
+                      href={localizeHref("/blog")}
                       class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-center text-base font-medium bg-white/80 dark:bg-black/50 hover:bg-white/90 dark:hover:bg-black/70 text-cyan-800 dark:text-cyan-400 border border-cyan-600/60 dark:border-cyan-500/50 hover:border-cyan-700 dark:hover:border-cyan-400 hover:shadow-cyan-500/25 hover:shadow-lg transition-all duration-300 font-mono"
                     >
                       <span class="mr-2">></span> BLOG.APP
                     </a>
                     <a
-                      href="/talks"
+                      href={localizeHref("/talks")}
                       class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-center text-base font-medium bg-white/80 dark:bg-black/50 hover:bg-white/90 dark:hover:bg-black/70 text-pink-800 dark:text-pink-400 border border-pink-600/60 dark:border-pink-500/50 hover:border-pink-700 dark:hover:border-pink-400 hover:shadow-pink-500/25 hover:shadow-lg transition-all duration-300 font-mono"
                     >
                       <span class="mr-2">></span> TALKS.SH

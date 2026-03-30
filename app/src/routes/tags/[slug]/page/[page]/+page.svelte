@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import PostList from "../../../../../components/PostList.svelte";
   import Pagination from "../../../../../components/Pagination/Pagination.svelte";
   import type { PageData } from "./$types";
@@ -15,7 +16,7 @@
 </script>
 
 <svelte:head>
-  <title>{tagName} | タグ</title>
+  <title>{tagName} | {m.tagLabel()}</title>
   {#if page === 1}
     <link rel="canonical" href={`${variables.baseURL}/tags/${tagSlug}`} />
   {:else}

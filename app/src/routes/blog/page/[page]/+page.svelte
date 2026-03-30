@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import PostList from "../../../../components/PostList.svelte";
   import Pagination from "../../../../components/Pagination/Pagination.svelte";
   import Breadcrumb from "../../../../components/Breadcrumb/Breadcrumb.svelte";
@@ -14,12 +15,12 @@
   const breadcrumbItems = $derived([
     { label: "Home", url: "/" },
     { label: "Blog", url: "/blog" },
-    { label: `${data.page}ページ目` },
+    { label: m.pageNumberLabel({ page: String(data.page) }) },
   ]);
 </script>
 
 <svelte:head>
-  <title>{data.page}ページ目 | azukiazusaのテックブログ2</title>
+  <title>{m.pageNumberLabel({ page: String(data.page) })} | {m.siteTitle()}</title>
   {#if data.page === 1}
     <link rel="canonical" href={`${variables.baseURL}/blog`} />
   {:else}

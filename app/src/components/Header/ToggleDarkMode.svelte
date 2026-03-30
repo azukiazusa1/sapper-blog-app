@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import { onMount } from "svelte";
   import { type Theme, getTheme, changeTheme } from "../../utils/darkTheme";
   import { DropdownMenu } from "bits-ui";
@@ -44,7 +45,7 @@
 <DropdownMenu.Root>
   <DropdownMenu.Trigger
     class="flex items-center rounded-lg border border-gray-300 p-2 dark:border-zinc-600"
-    aria-label="カラーテーマを選択する"
+    aria-label={m.selectColorTheme()}
   >
     <Moon className="h-6 w-6 hidden dark:block" />
     <Sun className="h-6 w-6 block dark:hidden" />

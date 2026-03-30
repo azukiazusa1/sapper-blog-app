@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import PostList from "../../../components/PostList.svelte";
   import Pagination from "../../../components/Pagination/Pagination.svelte";
   import variables from "$lib/variables";
@@ -11,8 +12,8 @@
 </script>
 
 <svelte:head>
-  <title>{tagName} | タグ</title>
-  <meta name="description" content="{tagName}の記事一覧です。" />
+  <title>{tagName} | {m.tagLabel()}</title>
+  <meta name="description" content={m.tagPageDescription({ tagName })} />
   <link rel="canonical" href={`${variables.baseURL}/tags/${tagSlug}`} />
 </svelte:head>
 

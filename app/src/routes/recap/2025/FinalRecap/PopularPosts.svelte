@@ -3,6 +3,7 @@
   import CountUp from "../../CountUp.svelte";
   import { recap2025 } from "../Data2025";
   import { defaultTheme, type ThemeId } from "../themes";
+  import { m } from "$paraglide/messages";
 
   interface Props {
     theme?: ThemeId;
@@ -127,7 +128,7 @@
               </span>
               <span
                 class="text-sm uppercase tracking-wider text-gray-500 font-semibold"
-                >views</span
+                >{m.recap2025Views()}</span
               >
             </div>
           </div>

@@ -1528,3 +1528,76 @@ article
     error: expect.any(Error),
   });
 });
+
+describe("en-GB ロケールのファイル読み込み", () => {
+  test("en-GB ロケールを指定した場合 en/ サブディレクトリからファイルを読み込む", async () => {
+    mockedReadFile.mockResolvedValueOnce(
+      `---
+id: o9W5QctRVW29UWUEOPFSU
+title: "Managing Multiple Coding Agents at Scale with Cline Kanban"
+slug: "cline-kanban"
+about: "Cline Kanban is a tool by Cline for staying sane while managing dozens of agents."
+createdAt: "2026-03-28T17:18+09:00"
+updatedAt: "2026-03-28T17:18+09:00"
+tags: ["cline", "kanban", "AI", "claude-code"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/37nInp8ktkbRZRDVNy5FDO/80c150cb75246808619ba73ef00f26d2/image.png"
+  title: "焼き鮭定食のイラスト"
+published: true
+---
+article body\n`,
+    );
+
+    const result = await loadBlogPost("cline-kanban", "en-GB");
+
+    expect(mockedReadFile).toHaveBeenCalledWith(
+      `/contents/blogPost/en/cline-kanban.md`,
+      "utf-8",
+    );
+    expect(result).toEqual<Result>({
+      success: true,
+      data: {
+        id: "o9W5QctRVW29UWUEOPFSU",
+        title: "Managing Multiple Coding Agents at Scale with Cline Kanban",
+        about:
+          "Cline Kanban is a tool by Cline for staying sane while managing dozens of agents.",
+        article: "article body",
+        createdAt: "2026-03-28T17:18+09:00",
+        updatedAt: "2026-03-28T17:18+09:00",
+        slug: "cline-kanban",
+        tags: ["cline", "kanban", "AI", "claude-code"],
+        thumbnail: {
+          url: "https://images.ctfassets.net/in6v9lxmm5c8/37nInp8ktkbRZRDVNy5FDO/80c150cb75246808619ba73ef00f26d2/image.png",
+          title: "焼き鮭定食のイラスト",
+        },
+        published: true,
+      },
+    });
+  });
+
+  test("ロケールを指定しない場合はデフォルトの blogPost/ ディレクトリからファイルを読み込む", async () => {
+    mockedReadFile.mockResolvedValueOnce(
+      `---
+id: o9W5QctRVW29UWUEOPFSU
+title: "Cline Kanban で複数のコーディングエージェントを一括管理する"
+slug: "cline-kanban"
+about: "概要"
+createdAt: "2026-03-28T17:18+09:00"
+updatedAt: "2026-03-28T17:18+09:00"
+tags: ["cline"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/37nInp8ktkbRZRDVNy5FDO/80c150cb75246808619ba73ef00f26d2/image.png"
+  title: "サムネイル"
+published: true
+---
+本文\n`,
+    );
+
+    await loadBlogPost("cline-kanban");
+
+    expect(mockedReadFile).toHaveBeenCalledWith(
+      `/contents/blogPost/cline-kanban.md`,
+      "utf-8",
+    );
+  });
+});

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
+  import { localizeHref } from "$paraglide/runtime";
   import { createBubbler, stopPropagation } from "svelte/legacy";
 
   const bubble = createBubbler();
@@ -77,7 +79,7 @@
     const randomIndex = Math.floor(Math.random() * filteredIds.length);
     const nextId = filteredIds[randomIndex];
 
-    goto(`/blog/shorts/${nextId}`);
+    goto(localizeHref(`/blog/shorts/${nextId}`));
   }
 </script>
 
@@ -93,8 +95,11 @@
     class="relative flex h-full w-full flex-col items-center justify-center rounded-xl bg-black text-lg text-white"
   >
     <div class="absolute top-0 left-0 z-10 px-4 py-6">
-      <a href="/blog/shorts" onclick={stopPropagation(bubble("click"))}>
-        <div class="sr-only">戻る</div>
+      <a
+        href={localizeHref("/blog/shorts")}
+        onclick={stopPropagation(bubble("click"))}
+      >
+        <div class="sr-only">{m.shortBack()}</div>
         <PrevIcon className="h-8 w-8" />
       </a>
     </div>
@@ -110,7 +115,7 @@
         class="relative flex h-4 w-48 gap-4 overflow-hidden"
         value={active + 1}
         max={slidesCount}
-        aria-label="スライドの進捗"
+        aria-label={m.shortSlideProgress()}
       >
         {#each Array.from({ length: slidesCount }, (_, i) => i) as i}
           <Indicator active={active === i} />
@@ -123,7 +128,7 @@
       </h2>
     </div>
     <FloatingActionButton click={handleClickNextButton}>
-      <div class="sr-only">次へ</div>
+      <div class="sr-only">{m.shortNext()}</div>
       <ForwardIcon className="h-8 w-8" />
     </FloatingActionButton>
   </article>

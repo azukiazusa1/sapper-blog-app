@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import HatenaBookmarkIcon from "../assets/images/hatenabookmark_symbolmark.png";
 
   interface Props {
@@ -16,7 +17,7 @@
 <a {href} target="_blank" rel="noopener noreferrer">
   <img
     src={HatenaBookmarkIcon}
-    alt="はてなブックマークに追加"
+    alt={m.addToHatenaBookmark()}
     class="h-6 w-6"
   />
 </a>

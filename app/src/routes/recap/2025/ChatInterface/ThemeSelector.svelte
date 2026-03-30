@@ -1,5 +1,6 @@
 <script lang="ts">
   import { themes, type ThemeId } from "../themes";
+  import { m } from "$paraglide/messages";
 
   interface Props {
     onSelectTheme: (theme: ThemeId) => void;
@@ -27,7 +28,7 @@
 </script>
 
 <div class="theme-selector-container">
-  <p class="theme-selector-prompt">お好みのカラーテーマを選んでください：</p>
+  <p class="theme-selector-prompt">{m.recap2025SelectThemePrompt()}</p>
 
   <div class="theme-selector-grid">
     {#each themeOrder as themeId}

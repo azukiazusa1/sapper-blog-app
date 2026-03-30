@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { m } from "$paraglide/messages";
   import { Dialog } from "bits-ui";
   import { PagefindUI } from "@pagefind/default-ui";
   import "@pagefind/default-ui/css/ui.css";
@@ -38,11 +39,10 @@
           element: "#search",
           showSubResults: true,
           translations: {
-            clear_search: "クリア",
-            zero_results:
-              "[SEARCH_TERM] に一致する記事は見つかりませんでした。",
-            many_results: "[SEARCH_TERM] の検索結果（[COUNT] 件）",
-            one_result: "[SEARCH_TERM] の検索結果（[COUNT] 件）",
+            clear_search: m.searchClear(),
+            zero_results: m.searchZeroResults(),
+            many_results: m.searchManyResults(),
+            one_result: m.searchOneResult(),
           },
           processResult: (result) => {
             // 何故か &amp; が含まれているので置換する

@@ -9,7 +9,12 @@ import {
   test,
   vi,
 } from "vitest";
-import { createBlogPost, getBlogPosts, updateBlogPost } from "./api.ts";
+import {
+  clearBlogPostLocale,
+  createBlogPost,
+  getBlogPosts,
+  updateBlogPost,
+} from "./api.ts";
 import type { BlogPost, ContentfulBlogPost, ContentfulTag } from "./types.ts";
 import { createDummyMetaSysProps } from "./test-utils.ts";
 
@@ -1067,6 +1072,90 @@ describe("updateBlogPost", () => {
     });
   });
 
+  test("en-GB ロケールを指定した場合、翻訳フィールド（title, about, article, selfAssessment）のみ更新する", async () => {
+    const body = vi.fn();
+    server.use(
+      http.get(contentful("/entries/:entryId"), ({ params }) => {
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({
+            id: params["entryId"] as string,
+            published: false,
+          }),
+          fields: {
+            title: { "en-US": "日本語タイトル" },
+            about: { "en-US": "日本語の概要" },
+            article: { "en-US": "日本語本文" },
+            slug: { "en-US": "cline-kanban" },
+            createdAt: { "en-US": "2026-03-28T17:18+09:00" },
+            updatedAt: { "en-US": "2026-03-28T17:18+09:00" },
+          },
+        });
+      }),
+      http.put(contentful("/entries/:entryId"), async ({ request, params }) => {
+        const _body = await request.json();
+        body(_body);
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({
+            id: params["entryId"] as string,
+            published: false,
+          }),
+          fields: _body,
+        });
+      }),
+    );
+
+    await updateBlogPost(
+      {
+        id: "o9W5QctRVW29UWUEOPFSU",
+        title: "Managing Multiple Coding Agents at Scale with Cline Kanban",
+        about:
+          "Cline Kanban is a tool by Cline for staying sane while managing dozens of agents.",
+        article: "English article body",
+        createdAt: "2026-03-28T17:18+09:00",
+        updatedAt: "2026-03-28T17:18+09:00",
+        slug: "cline-kanban",
+        published: false,
+        thumbnail: {
+          title: "焼き鮭定食のイラスト",
+          url: "https://images.ctfassets.net/in6v9lxmm5c8/37nInp8ktkbRZRDVNy5FDO/80c150cb75246808619ba73ef00f26d2/image.png",
+        },
+        tags: ["cline", "kanban", "AI", "claude-code"],
+      },
+      "en-GB",
+    );
+
+    expect(body).toHaveBeenCalledOnce();
+    const calledBody = body.mock.calls[0]![0] as {
+      fields: Record<string, unknown>;
+    };
+    const fields = calledBody.fields;
+
+    // 翻訳フィールドは en-GB で更新される
+    expect(fields["title"]).toEqual({
+      "en-US": "日本語タイトル",
+      "en-GB": "Managing Multiple Coding Agents at Scale with Cline Kanban",
+    });
+    expect(fields["about"]).toEqual({
+      "en-US": "日本語の概要",
+      "en-GB":
+        "Cline Kanban is a tool by Cline for staying sane while managing dozens of agents.",
+    });
+    expect(fields["article"]).toEqual({
+      "en-US": "日本語本文",
+      "en-GB": "English article body",
+    });
+
+    // slug, createdAt, updatedAt, tags, relatedArticle, thumbnail は en-GB では更新されない
+    expect(fields["slug"]).toEqual({ "en-US": "cline-kanban" });
+    expect(fields["createdAt"]).toEqual({ "en-US": "2026-03-28T17:18+09:00" });
+    expect(fields["updatedAt"]).toEqual({ "en-US": "2026-03-28T17:18+09:00" });
+    expect(fields["tags"]).toBeUndefined();
+    expect(fields["relatedArticle"]).toBeUndefined();
+    expect(fields["thumbnail"]).toBeUndefined();
+  });
+
   test("selfAssessment がスキーマに一致している場合更新する", async () => {
     const body = vi.fn();
     server.use(
@@ -1198,6 +1287,71 @@ describe("updateBlogPost", () => {
             ],
           },
         },
+      },
+      metadata: {
+        tags: [],
+      },
+    });
+  });
+});
+
+describe("clearBlogPostLocale", () => {
+  test("指定ロケールの翻訳フィールドだけを削除する", async () => {
+    const body = vi.fn();
+    server.use(
+      http.get(contentful("/entries"), ({ request }) => {
+        const url = new URL(request.url);
+        if (url.searchParams.get("content_type") === "blogPost") {
+          return HttpResponse.json({
+            items: [],
+          });
+        }
+        return HttpResponse.json({
+          items: tags,
+        });
+      }),
+      http.get(contentful("/entries/:entryId"), ({ params }) => {
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({
+            id: params["entryId"] as string,
+            published: false,
+          }),
+          fields: {
+            title: { "en-US": "日本語タイトル", "en-GB": "English title" },
+            about: { "en-US": "日本語概要", "en-GB": "English about" },
+            article: { "en-US": "日本語本文", "en-GB": "English article" },
+            selfAssessment: {
+              "en-US": { quizzes: [] },
+              "en-GB": { quizzes: [] },
+            },
+            slug: { "en-US": "slug-only-base-locale" },
+          },
+        });
+      }),
+      http.put(contentful("/entries/:entryId"), async ({ request, params }) => {
+        const _body = await request.json();
+        body(_body);
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({
+            id: params["entryId"] as string,
+            published: false,
+          }),
+          fields: _body,
+        });
+      }),
+    );
+
+    await clearBlogPostLocale("blog1", "en-GB");
+
+    expect(body).toHaveBeenCalledWith({
+      fields: {
+        title: { "en-US": "日本語タイトル" },
+        about: { "en-US": "日本語概要" },
+        article: { "en-US": "日本語本文" },
+        selfAssessment: { "en-US": { quizzes: [] } },
+        slug: { "en-US": "slug-only-base-locale" },
       },
       metadata: {
         tags: [],
