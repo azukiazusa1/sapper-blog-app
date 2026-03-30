@@ -1,11 +1,14 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { useRepositories } from "../../repositories/useRepositories";
 import variables from "$lib/variables";
+import { getLocale } from "$paraglide/runtime";
 
 const { post, short } = useRepositories();
 export const prerender = true;
 
 const siteUrl = variables.baseURL;
+const toContentfulLocale = (locale: string): string | undefined =>
+  locale === "en" ? "en-GB" : undefined;
 
 type Item = {
   title: string;
@@ -50,7 +53,8 @@ const renderXmlRssFeed = (
 `;
 
 export const GET: RequestHandler = async () => {
-  const posts = await post.findAll();
+  const locale = toContentfulLocale(getLocale());
+  const posts = await post.findAll(locale);
   const shorts = await short.getAll();
 
   // posts と shorts を結合して、createdAt でソートする
