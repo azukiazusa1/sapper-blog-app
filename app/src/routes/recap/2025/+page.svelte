@@ -78,10 +78,7 @@
 
 <svelte:head>
   <title>azukiazusa.dev 2025 Recap</title>
-  <meta
-    name="description"
-    content={m.recap2025MetaDescription()}
-  />
+  <meta name="description" content={m.recap2025MetaDescription()} />
 </svelte:head>
 
 <Ogp
@@ -147,7 +144,9 @@
     <!-- Blog Statistics -->
     <section id="blog-stats" class="recap-section bg-white">
       <div class="mx-auto max-w-full">
-        <h2 class="section-title text-gray-900">{m.recap2025ArticlesSection()}</h2>
+        <h2 class="section-title text-gray-900">
+          {m.recap2025ArticlesSection()}
+        </h2>
         <BlogStats theme={selectedTheme} />
         <p class="mt-8 text-center text-lg text-gray-600">
           {m.recap2025WordsWritten()}
@@ -158,7 +157,9 @@
     <!-- Popular Tags -->
     <section class="recap-section bg-gray-50">
       <div class="mx-auto max-w-4xl">
-        <h2 class="section-title text-gray-900">{m.recap2025PopularTagsSection()}</h2>
+        <h2 class="section-title text-gray-900">
+          {m.recap2025PopularTagsSection()}
+        </h2>
         <PopularTags theme={selectedTheme} />
         <p class="mt-8 text-center text-lg text-gray-600">
           {m.recap2025PopularTagsDescription()}
@@ -169,7 +170,9 @@
     <!-- Popular Posts -->
     <section class="recap-section bg-white">
       <div class="mx-auto max-w-4xl">
-        <h2 class="section-title text-gray-900">{m.recap2025PopularPostsSection()}</h2>
+        <h2 class="section-title text-gray-900">
+          {m.recap2025PopularPostsSection()}
+        </h2>
         <PopularPosts theme={selectedTheme} />
         <p class="mt-8 text-center text-lg text-gray-600">
           {m.recap2025PopularPostsDescription()}

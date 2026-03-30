@@ -14,9 +14,7 @@
     </p>
     <p>
       {m.googleAnalyticsDescriptionPrefix()}
-      <a
-        class="underline hover:opacity-75"
-        href={privacyPolicyUrl}
+      <a class="underline hover:opacity-75" href={privacyPolicyUrl}
         >{m.googleAnalyticsPrivacyPolicy()}</a
       >
       {m.googleAnalyticsDescriptionSuffix()}

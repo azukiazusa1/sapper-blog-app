@@ -20,7 +20,9 @@
 </script>
 
 <svelte:head>
-  <title>{m.pageNumberLabel({ page: String(data.page) })} | {m.siteTitle()}</title>
+  <title
+    >{m.pageNumberLabel({ page: String(data.page) })} | {m.siteTitle()}</title
+  >
   {#if data.page === 1}
     <link rel="canonical" href={`${variables.baseURL}/blog`} />
   {:else}

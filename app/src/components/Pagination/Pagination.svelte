@@ -23,7 +23,10 @@
   let nextPage = $derived(page + 1);
 </script>
 
-<nav class="my-20 flex flex-col items-center" aria-label={m.paginationNavLabel()}>
+<nav
+  class="my-20 flex flex-col items-center"
+  aria-label={m.paginationNavLabel()}
+>
   <div class="flex items-center gap-2">
     {#if hasPrev}
       <a

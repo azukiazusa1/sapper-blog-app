@@ -15,9 +15,5 @@
 </script>
 
 <a {href} target="_blank" rel="noopener noreferrer">
-  <img
-    src={HatenaBookmarkIcon}
-    alt={m.addToHatenaBookmark()}
-    class="h-6 w-6"
-  />
+  <img src={HatenaBookmarkIcon} alt={m.addToHatenaBookmark()} class="h-6 w-6" />
 </a>
