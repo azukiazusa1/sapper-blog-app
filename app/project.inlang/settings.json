@@ -1,0 +1,11 @@
+{
+  "$schema": "https://inlang.com/schema/project-settings",
+  "baseLocale": "ja",
+  "locales": ["ja", "en"],
+  "modules": [
+    "./node_modules/@inlang/plugin-json/dist/index.js"
+  ],
+  "plugin.inlang.json": {
+    "pathPattern": "./messages/{languageTag}.json"
+  }
+}

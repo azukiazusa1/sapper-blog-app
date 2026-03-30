@@ -11,6 +11,7 @@
   import Contributors from "../../../components/Contributors/Contributors.svelte";
   import Prev from "../../../components/Icons/Prev.svelte";
   import SelfAssessment from "../../../components/SelfAssessment/SelfAssessment.svelte";
+  import { getLocale } from "$paraglide/runtime";
 
   interface Props {
     data: PageData;
@@ -25,6 +26,7 @@
   let contributors = $derived(data.contributors);
 
   let url = $derived(`${variables.baseURL}/blog/${post.slug}`);
+  let isEnglish = $derived(getLocale() === "en");
 </script>
 
 <svelte:head>
@@ -52,6 +54,38 @@
 </div>
 
 <div>
+  {#if isEnglish}
+    <div class="mx-auto mb-4 max-w-5xl px-4">
+      <div
+        class="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-300"
+        role="note"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="mt-0.5 h-4 w-4 shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+          />
+        </svg>
+        <span>
+          This article was translated from Japanese by AI and may contain
+          inaccuracies. For the most accurate content, please refer to the
+          <a
+            href="/blog/{post.slug}"
+            class="font-medium underline underline-offset-2 hover:opacity-75"
+          >original Japanese version</a>.
+        </span>
+      </div>
+    </div>
+  {/if}
+
   {#key post.slug}
     <Card
       slug={post.slug}

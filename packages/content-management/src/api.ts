@@ -10,6 +10,7 @@ import {
   type ContentfulTag,
   type DraftBlogPost,
   type FieldValue,
+  type Locale,
   type PopularPost,
   type PublishedBlogPost,
   type Thumbnail,
@@ -364,72 +365,65 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
   }
 };
 
-export const updateBlogPost = async (blog: BlogPost): Promise<void> => {
+export const updateBlogPost = async (
+  blog: BlogPost,
+  locale: Locale = "en-US",
+): Promise<void> => {
   const client = await createClient();
   const entry = await client.getEntry(blog.id);
 
   const fields = entry.fields;
+  const isTranslation = locale !== "en-US";
 
   if (blog.title) {
-    fields["title"] = {
-      "en-US": blog.title,
-    };
+    fields["title"] = { ...fields["title"], [locale]: blog.title };
   }
-  if (blog.slug) {
-    fields["slug"] = {
-      "en-US": blog.slug,
-    };
+  if (blog.slug && !isTranslation) {
+    fields["slug"] = { ...fields["slug"], [locale]: blog.slug };
   }
   if (blog.about) {
-    fields["about"] = {
-      "en-US": blog.about,
-    };
+    fields["about"] = { ...fields["about"], [locale]: blog.about };
   }
   if (blog.article) {
-    fields["article"] = {
-      "en-US": blog.article,
-    };
+    fields["article"] = { ...fields["article"], [locale]: blog.article };
   }
-  if (blog.createdAt) {
-    fields["createdAt"] = {
-      "en-US": blog.createdAt,
-    };
+  if (blog.createdAt && !isTranslation) {
+    fields["createdAt"] = { ...fields["createdAt"], [locale]: blog.createdAt };
   }
-  if (blog.updatedAt) {
-    fields["updatedAt"] = {
-      "en-US": blog.updatedAt,
-    };
+  if (blog.updatedAt && !isTranslation) {
+    fields["updatedAt"] = { ...fields["updatedAt"], [locale]: blog.updatedAt };
   }
 
-  fields["tags"] = {
-    "en-US": await tagNamesToTagIds(blog.tags),
-  };
+  if (!isTranslation) {
+    fields["tags"] = {
+      "en-US": await tagNamesToTagIds(blog.tags),
+    };
 
-  fields["relatedArticle"] = {
-    "en-US": await searchRelatedArticles(blog),
-  };
+    fields["relatedArticle"] = {
+      "en-US": await searchRelatedArticles(blog),
+    };
 
-  if (blog.thumbnail) {
-    fields["thumbnail"] = {
-      "en-US": {
-        sys: {
-          type: "Link",
-          linkType: "Asset",
-          id: getAssetIdFromUrl(blog.thumbnail.url),
+    if (blog.thumbnail) {
+      fields["thumbnail"] = {
+        "en-US": {
+          sys: {
+            type: "Link",
+            linkType: "Asset",
+            id: getAssetIdFromUrl(blog.thumbnail.url),
+          },
         },
-      },
-    };
-  }
+      };
+    }
 
-  if (blog.audio) {
-    fields["audio"] = {
-      "en-US": blog.audio,
-    };
+    if (blog.audio) {
+      fields["audio"] = { "en-US": blog.audio };
+    }
   }
 
   if (blog.selfAssessment) {
     fields["selfAssessment"] = {
-      "en-US": blog.selfAssessment,
+      ...fields["selfAssessment"],
+      [locale]: blog.selfAssessment,
     };
   }
 

@@ -28,6 +28,8 @@
     "turbo": "^1.8.2"
   },
   "dependencies": {
+    "@inlang/paraglide-js": "^2.15.1",
+    "@inlang/plugin-json": "^5.1.56",
     "@prettier/plugin-oxc": "^0.0.4"
   },
   "overrides": {

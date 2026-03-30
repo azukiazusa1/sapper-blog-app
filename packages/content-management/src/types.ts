@@ -83,6 +83,8 @@ export type BlogPost = z.infer<typeof BlogPostSchema>;
 export type PublishedBlogPost = Extract<BlogPost, { published?: true }>;
 export type DraftBlogPost = Extract<BlogPost, { published?: false }>;
 
+export type Locale = "en-US" | "en-GB";
+
 export type FieldValue<T> = {
   "en-US": T;
 };

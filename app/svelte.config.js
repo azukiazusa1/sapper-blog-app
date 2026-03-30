@@ -16,6 +16,9 @@ const config = {
     env: {
       dir: "../",
     },
+    alias: {
+      "$paraglide/*": "./src/paraglide/*",
+    },
   },
 };
 

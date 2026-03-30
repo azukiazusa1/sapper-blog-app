@@ -29,14 +29,14 @@ export class PostRepository implements PostRepositoryInterFace {
     return posts as SearchPostsQuery;
   }
 
-  async find(slug: string) {
-    const post = await request(postBySlugQuery, { slug });
+  async find(slug: string, locale?: string) {
+    const post = await request(postBySlugQuery, { slug, locale });
 
     return post as PostBySlugQuery;
   }
 
-  async findAll() {
-    const post = await request(allPostsQuery);
+  async findAll(locale?: string) {
+    const post = await request(allPostsQuery, { locale });
 
     return post as AllPostsQuery;
   }

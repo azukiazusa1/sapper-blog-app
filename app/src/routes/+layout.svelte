@@ -11,6 +11,8 @@
   import GoogleAnalytics from "../components/GoogleAnalytics.svelte";
   import { removeTrailingSlash } from "$lib/utils";
   import { onNavigate } from "$app/navigation";
+  import { locales, localizeHref } from "$paraglide/runtime";
+
   interface Props {
     children?: import("svelte").Snippet;
   }
@@ -72,6 +74,11 @@
 </svelte:head>
 
 <GoogleAnalytics />
+{#each locales as locale}
+  <a href={localizeHref($page.url.pathname, { locale })} data-sveltekit-reload>
+    {locale}
+  </a>
+{/each}
 <div
   class="min-h-screen bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-50"
 >
