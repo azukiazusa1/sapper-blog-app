@@ -3,8 +3,15 @@
   "relatedArticles": "関連記事",
   "readInEnglish": "Read in English",
   "readInJapanese": "日本語で読む",
+  "closeTableOfContents": "目次を閉じる",
+  "openTableOfContents": "目次を開く",
   "tableOfContents": "目次",
-  "tags": "タグ",
-  "publishedAt": "公開日",
-  "updatedAt": "更新日"
+  "copyAsMarkdown": "Markdown をコピー",
+  "markdownVersion": "Markdown バージョン",
+  "comprehensionCheck": "記事の理解度チェック",
+  "comprehensionCheckDescription": "以下の問題に答えて、記事の理解を深めましょう。",
+  "suggestEditOnGitHub": "GitHub で修正を提案する",
+  "googleAnalyticsDescriptionPrefix": "このサイトでは、Google Analytics を使用してアクセス解析を行っています。Google Analytics は、ユーザーのサイト訪問に関する情報を収集しますが、個人を特定できる情報は収集しません。詳しくは、{link}をご覧ください。",
+  "googleAnalyticsPrivacyPolicy": "Google のサービスを使用するサイトやアプリから収集した情報の Google による使用 – ポリシーと規約 ",
+  "googleAnalyticsDescriptionSuffix": "をご覧ください。"
 }

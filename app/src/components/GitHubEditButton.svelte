@@ -1,6 +1,7 @@
 <script lang="ts">
   import GitHubIcon from "./Icons/GitHub.svelte";
   import LinkButton from "./LinkButton/LinkButton.svelte";
+  import { m } from "$paraglide/messages";
   interface Props {
     slug: string;
   }
@@ -14,5 +15,5 @@
   rel="noopener noreferrer"
 >
   <GitHubIcon className="h6 w-6 mr-2" />
-  GitHub で修正を提案する
+  {m.suggestEditOnGitHub()}
 </LinkButton>

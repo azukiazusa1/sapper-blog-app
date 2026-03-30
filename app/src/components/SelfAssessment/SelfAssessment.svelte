@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Quiz } from "./types";
   import Question from "./Question.svelte";
+  import { m } from "$paraglide/messages";
 
   interface Props {
     quizzes: Quiz[];
@@ -27,10 +28,10 @@
     />
   </svg>
 
-  記事の理解度チェック
+  {m.comprehensionCheck()}
 </h2>
 
-<p class="mb-8">以下の問題に答えて、記事の理解を深めましょう。</p>
+<p class="mb-8">{m.comprehensionCheckDescription()}</p>
 
 <div class="flex flex-col gap-8">
   {#each quizzes as quiz}

@@ -3,8 +3,15 @@
   "relatedArticles": "Related articles",
   "readInEnglish": "Read in English",
   "readInJapanese": "日本語で読む",
+  "openTableOfContents": "Open table of contents",
+  "closeTableOfContents": "Close table of contents",
   "tableOfContents": "Table of contents",
-  "tags": "Tags",
-  "publishedAt": "Published at",
-  "updatedAt": "Updated at"
+  "copyAsMarkdown": "Copy as Markdown",
+  "markdownVersion": "Markdown version",
+  "comprehensionCheck": "Comprehension check",
+  "comprehensionCheckDescription": "Answer the following questions to deepen your understanding of the article.",
+  "suggestEditOnGitHub": "Suggest an edit on GitHub",
+  "googleAnalyticsDescriptionPrefix": "This site uses Google Analytics to analyze access. Google Analytics collects information about users' visits to the site, but does not collect personally identifiable information. For more details, please see",
+  "googleAnalyticsPrivacyPolicy": "Google's use of information from sites and apps that use Google services – Policies and Terms",
+  "googleAnalyticsDescriptionSuffix": "."
 }

@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { TocItem } from "$lib/server/markdownToHtml";
   import { onMount } from "svelte";
+  import { m } from "$paraglide/messages";
 
   interface Props {
     items: TocItem[];
@@ -66,7 +67,7 @@
   <button
     onclick={toggle}
     class="toc-toggle"
-    aria-label={isOpen ? "目次を閉じる" : "目次を開く"}
+    aria-label={isOpen ? m.closeTableOfContents() : m.openTableOfContents()}
     aria-expanded={isOpen}
   >
     <svg
@@ -83,7 +84,7 @@
         d="M4 6h16M4 12h16M4 18h7"
       />
     </svg>
-    <span class="text-sm font-medium">目次</span>
+    <span class="text-sm font-medium">{m.tableOfContents()}</span>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-3 w-3 transition-transform duration-200"
@@ -98,7 +99,7 @@
   </button>
 
   {#if isOpen}
-    <nav class="toc-nav" aria-label="目次">
+    <nav class="toc-nav" aria-label={m.tableOfContents()}>
       <ol class="toc-list">
         {#each items as item (item.id)}
           <li class={indent(item.level)}>

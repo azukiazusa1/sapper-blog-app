@@ -12,6 +12,7 @@
   import Prev from "../../../components/Icons/Prev.svelte";
   import SelfAssessment from "../../../components/SelfAssessment/SelfAssessment.svelte";
   import { getLocale } from "$paraglide/runtime";
+  import { m } from "$paraglide/messages";
 
   interface Props {
     data: PageData;
@@ -80,7 +81,8 @@
           <a
             href="/blog/{post.slug}"
             class="font-medium underline underline-offset-2 hover:opacity-75"
-          >original Japanese version</a>.
+            >original Japanese version</a
+          >.
         </span>
       </div>
     </div>
@@ -130,7 +132,7 @@
           <div class="flex">
             <ShareButton {url} text={post.title}>
               {#snippet fallback()}
-                <div class="mr-2 font-medium">この記事をシェアする</div>
+                <div class="mr-2 font-medium">{m.shareArticle()}</div>
                 <div class="flex gap-2">
                   <TwitterShareButton {url} text={post.title} />
                   <HatenaShareButton {url} text={post.title} />
@@ -157,7 +159,7 @@
                   d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
-              Markdown バージョン
+              {m.markdownVersion()}
             </a>
           </div>
         </div>
@@ -170,7 +172,7 @@
   <h2
     class="mb-6 text-2xl font-extrabold leading-none after:mt-2 after:block after:h-1 after:w-16 after:bg-indigo-500 after:content-['']"
   >
-    関連記事
+    {m.relatedArticles()}
   </h2>
   <div>
     <PostList posts={post.relatedArticleCollection?.items} small />
