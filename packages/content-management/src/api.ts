@@ -447,7 +447,10 @@ const findBlogPostEntry = async (slugOrId: string) => {
     : await client.getEntry(slugOrId);
 };
 
-const removeLocaleValue = <T>(field: Record<string, T> | undefined, locale: string) => {
+const removeLocaleValue = <T>(
+  field: Record<string, T> | undefined,
+  locale: string,
+) => {
   if (!field || !(locale in field)) {
     return field;
   }
@@ -466,7 +469,10 @@ export const clearBlogPostLocale = async (
   fields["title"] = removeLocaleValue(fields["title"], locale);
   fields["about"] = removeLocaleValue(fields["about"], locale);
   fields["article"] = removeLocaleValue(fields["article"], locale);
-  fields["selfAssessment"] = removeLocaleValue(fields["selfAssessment"], locale);
+  fields["selfAssessment"] = removeLocaleValue(
+    fields["selfAssessment"],
+    locale,
+  );
 
   const updatedEntry = await entry.update();
 
