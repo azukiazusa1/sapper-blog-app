@@ -142,4 +142,3 @@
     <PostList posts={post.relatedArticleCollection?.items} small />
   </div>
 </div>
-
