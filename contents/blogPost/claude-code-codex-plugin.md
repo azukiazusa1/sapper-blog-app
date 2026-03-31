@@ -40,7 +40,7 @@ selfAssessment:
         - text: "各コマンドは Claude Code の Agent ツールを使って Codex のプロンプトを直接実行している"
           correct: false
           explanation: "コマンドは Agent ツール経由ではなく、Bash で codex-companion.mjs を実行する形で処理されています。"
-published: false
+published: true
 ---
 [Claude Code](https://code.claude.com/docs/en/overview) でコードを実装（計画・生成）させてから、[Codex](https://developers.openai.com/codex/cli) にレビューさせるというワークフローが流行りつつあります。筆者の観測では、このワークフローの強みはモデルの強みを補完できる点にあります。Claude Code は設計力が高くシステム全体の構造を考えるのが得意であり、巨大なコンテキストウィンドウを扱えるため、抽象的なゴールから計画を立てたうえで動くコードを生成させるのに適しています。一方で Codex は深い推論を時間をかけて行う論理的思考力の高さから、細かい穴やエッジケースを洗い出すのが上手であると評価されています。Claude Code の創造性と Codex の批判的思考力を組み合わせることで、より質の高いコードを実装できる可能性が高まります。
 
