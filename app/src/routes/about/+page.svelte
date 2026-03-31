@@ -121,7 +121,7 @@
 
 <svelte:head>
   <title>{m.aboutTitle()} | {m.siteTitle()}</title>
-  <meta name="description" content={content} />
+  <meta name="description" {content} />
   <link rel="canonical" href={`${variables.baseURL}/about`} />
 </svelte:head>
 
