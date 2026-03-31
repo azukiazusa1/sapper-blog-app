@@ -185,5 +185,14 @@
   "recap2025TerminalBuild2": "✓ バンドル統合完了 (1.2s) | 最適化レベル: 高 | ファイルサイズ: 最小化",
   "recap2025TerminalBuild3": "✓ ビルド成功! 2025年の成果レポート準備完了 🎉",
   "recap2025TerminalAllReady": "✓ 全部のコンポーネント準備できました！",
-  "recap2025TerminalBuildPrompt": "$ さあ、ビルドボタンを押して完成させましょう 🎉"
+  "recap2025TerminalBuildPrompt": "$ さあ、ビルドボタンを押して完成させましょう 🎉",
+  "aboutTitle": "About",
+  "aboutMetaDescription": "azukiazusaさんは、主にフロントエンド分野に焦点を当てたWeb開発に関する記事を執筆している技術ブロガーです。「azukiazusaのテックブログ2」では、週に1回のペースで最新の技術情報やトレンドを紹介しています。登壇活動も積極的に行っており、趣味は麻雀・ポーカー・読書です。",
+  "aboutContent1": "azukiazusaさんは、主にフロントエンド分野に焦点を当てたWeb開発に関する記事を執筆している技術ブロガーです。彼のブログ「azukiazusaのテックブログ2」では、週に1回のペースで最新の技術情報やトレンドを紹介しています。",
+  "aboutContent2": "登壇活動も積極的に行っており、2024年11月23日のJSConf JP 2024では、ヘッドレスUIライブラリの重要性とデザインシステムへの取り入れ方について講演しています。",
+  "aboutContent3": "全体的に、azukiazusaさんはWeb開発、特にフロントエンド技術に精通し、ブログ執筆や講演を通じて情報発信を行っているエンジニアであると考えられます。また、趣味は麻雀・ポーカー・読書であると公言しています。",
+  "aboutChatQuestion1": "こんにちは！azukiazusa について教えてください。",
+  "aboutChatQuestion2": "最近の活動について教えてください。",
+  "aboutChatQuestion3": "他に何か知っておくべきことはありますか？",
+  "aboutProcessingData": "PROCESSING_DATA..."
 }

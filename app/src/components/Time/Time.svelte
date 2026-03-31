@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { getLocale } from "$paraglide/runtime";
+
   interface Props {
     date: string;
   }
@@ -7,6 +9,13 @@
 
   const format = () => {
     const d = new Date(date);
+    if (getLocale() === "en") {
+      return d.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+    }
     const m = `0${d.getMonth() + 1}`.slice(-2);
     const dd = `0${d.getDate()}`.slice(-2);
     return `${d.getFullYear()}.${m}.${dd}`;

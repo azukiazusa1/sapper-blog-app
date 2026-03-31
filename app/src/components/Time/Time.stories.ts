@@ -29,3 +29,15 @@ export const Default: Story = {
     expect(time).toHaveAttribute("datetime", "2021-01-01T00:00:00.000Z");
   },
 };
+
+export const English: Story = {
+  args: {
+    date: "2021-01-01T00:00:00.000Z",
+  },
+  play: ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const time = canvas.getByText("Jan 1, 2021");
+
+    expect(time).toHaveAttribute("datetime", "2021-01-01T00:00:00.000Z");
+  },
+};
