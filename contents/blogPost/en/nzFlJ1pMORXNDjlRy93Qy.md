@@ -280,7 +280,7 @@ You can check the progress of the Codex job with `/codex:status`.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/3GB5G4lyN9g3q8ccULmHOM/18c3d2218e0b6228344d08ab23e3fa99/image.png)
 
-Once the review is complete, Codex shows the review results. In this case, it pointed out two issues: "[P1] Date filters should be parsed in local time rather than UTC" and "[P2] Requests should be rejected when `transaction.type` and `category.type` do not match." Because it identifies concrete spots where bugs or inconsistencies can occur, it's very easy to understand what should be fixed and where.
+Once the review is complete, Codex shows the review results. In this case, it pointed out two issues: "[P1]Date filters should be parsed in local time rather than UTC" and "[P2]Requests should be rejected when `transaction.type` and `category.type` do not match." Because it identifies concrete spots where bugs or inconsistencies can occur, it's very easy to understand what should be fixed and where.
 
 ```txt
 ⏺ Codex Review
