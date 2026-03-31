@@ -188,5 +188,14 @@
   "recap2025TerminalBuild2": "✓ Bundle integration complete (1.2s) | Optimization level: High | File size: Minified",
   "recap2025TerminalBuild3": "✓ Build successful! 2025 achievement report ready 🎉",
   "recap2025TerminalAllReady": "✓ All components ready!",
-  "recap2025TerminalBuildPrompt": "$ Now press the Build button to finish 🎉"
+  "recap2025TerminalBuildPrompt": "$ Now press the Build button to finish 🎉",
+  "aboutTitle": "About",
+  "aboutMetaDescription": "azukiazusa is a tech blogger writing articles on web development, mainly focused on frontend. New articles are posted weekly on \"azukiazusa's Tech Blog 2\". He is also active as a speaker and enjoys mahjong, poker, and reading.",
+  "aboutContent1": "azukiazusa is a tech blogger writing articles on web development, mainly focused on frontend. His blog, \"azukiazusa's Tech Blog 2\", introduces the latest tech news and trends on a weekly basis.",
+  "aboutContent2": "He is also active as a speaker. At JSConf JP 2024 on November 23, 2024, he gave a talk on the importance of headless UI libraries and how to integrate them into design systems.",
+  "aboutContent3": "Overall, azukiazusa is an engineer well-versed in web development, especially frontend technologies, who shares knowledge through blogging and speaking. He has also publicly stated that his hobbies are mahjong, poker, and reading.",
+  "aboutChatQuestion1": "Hello! Tell me about azukiazusa.",
+  "aboutChatQuestion2": "Tell me about recent activities.",
+  "aboutChatQuestion3": "Is there anything else I should know?",
+  "aboutProcessingData": "PROCESSING_DATA..."
 }

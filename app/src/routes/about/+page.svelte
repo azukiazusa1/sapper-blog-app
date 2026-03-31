@@ -7,19 +7,17 @@
   import { tick } from "svelte"; // Import tick for handling DOM updates
   import GitHub from "../../components/Icons/GitHub.svelte";
   import { localizeHref } from "$paraglide/runtime";
+  import { m } from "$paraglide/messages";
 
-  const content1 =
-    "azukiazusaさんは、主にフロントエンド分野に焦点を当てたWeb開発に関する記事を執筆している技術ブロガーです。彼のブログ「azukiazusaのテックブログ2」では、週に1回のペースで最新の技術情報やトレンドを紹介しています。";
-  const content2 =
-    "登壇活動も積極的に行っており、2024年11月23日のJSConf JP 2024では、ヘッドレスUIライブラリの重要性とデザインシステムへの取り入れ方について講演しています。";
-  const content3 =
-    "全体的に、azukiazusaさんはWeb開発、特にフロントエンド技術に精通し、ブログ執筆や講演を通じて情報発信を行っているエンジニアであると考えられます。また、趣味は麻雀・ポーカー・読書であると公言しています。";
+  const content1 = m.aboutContent1();
+  const content2 = m.aboutContent2();
+  const content3 = m.aboutContent3();
 
   // Chat messages
   const messages = [
     {
       type: "question",
-      text: "こんにちは！azukiazusa について教えてください。",
+      text: m.aboutChatQuestion1(),
     },
     {
       type: "answer",
@@ -27,7 +25,7 @@
     },
     {
       type: "question",
-      text: "最近の活動について教えてください。",
+      text: m.aboutChatQuestion2(),
     },
     {
       type: "answer",
@@ -35,7 +33,7 @@
     },
     {
       type: "question",
-      text: "他に何か知っておくべきことはありますか？",
+      text: m.aboutChatQuestion3(),
     },
     {
       type: "answer",
@@ -118,12 +116,12 @@
   });
 
   // For meta tag
-  const content = content1 + content2 + content3;
+  const content = m.aboutMetaDescription();
 </script>
 
 <svelte:head>
-  <title>About</title>
-  <meta name="description" {content} />
+  <title>{m.aboutTitle()} | {m.siteTitle()}</title>
+  <meta name="description" content={content} />
   <link rel="canonical" href={`${variables.baseURL}/about`} />
 </svelte:head>
 
@@ -561,7 +559,7 @@
                       ></div>
                       <span
                         class="text-sm text-cyan-700/80 dark:text-cyan-400/70 ml-4 font-mono"
-                        >PROCESSING_DATA...</span
+                        >{m.aboutProcessingData()}</span
                       >
                     </div>
                   {/if}
