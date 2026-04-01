@@ -17,6 +17,7 @@
     deLocalizeHref,
     getLocale,
     locales,
+    localStorageKey,
   } from "$paraglide/runtime";
 
   let routes = ["/blog", "/about", "/talks", "/recap"];
@@ -125,6 +126,7 @@
               <a
                 href={localizeHref(baseHref, { locale })}
                 data-sveltekit-reload
+                onclick={() => localStorage.setItem(localStorageKey, locale)}
                 class={`px-2 py-1 text-xs font-medium uppercase transition-colors ${
                   currentLocale === locale
                     ? "bg-indigo-600 text-white"
