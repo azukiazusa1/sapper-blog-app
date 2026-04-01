@@ -87,7 +87,10 @@
           <a
             href={localizeHref(baseHref, { locale })}
             data-sveltekit-reload
-            onclick={() => { localStorage.setItem(localStorageKey, locale); close(); }}
+            onclick={() => {
+              localStorage.setItem(localStorageKey, locale);
+              close();
+            }}
             class={`flex-1 rounded-xl px-4 py-2 text-center text-sm font-medium uppercase transition-all duration-300 ${
               currentLocale === locale
                 ? "bg-indigo-600 text-white"
