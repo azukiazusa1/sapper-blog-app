@@ -8,7 +8,7 @@ const config = {
     paraglideVitePlugin({
       project: "./project.inlang",
       outdir: "./src/paraglide",
-      strategy: ["localStorage", "preferredLanguage", "url", "baseLocale"],
+      strategy: ["url", "preferredLanguage", "baseLocale"],
     }),
     sveltekit(),
     tailwindcss(),
