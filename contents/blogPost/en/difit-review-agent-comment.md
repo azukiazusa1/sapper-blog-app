@@ -5,7 +5,7 @@ slug: "difit-review-agent-comment"
 about: "difit is a CLI tool for reviewing local git diffs in a GitHub-style interface. With the difit-review skill, an agent can launch difit with comments attached to code changes. This article shows how to use it."
 createdAt: "2026-04-02T19:20+09:00"
 updatedAt: "2026-04-02T19:20+09:00"
-tags: ["difit", "agent-skills"]
+tags: ["difit", "agent skills"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6IxkYer4azMRxPmCi3M43i/08e5110afe8102cbc6958b9cea208194/mushroom_kinoko_illust_1037-768x558.png"
   title: "キノコのイラスト"
@@ -54,7 +54,7 @@ selfAssessment:
         - text: "Launch `/difit` and write the review comments manually in a separate file afterward."
           correct: false
           explanation: "The point of `difit-review` in the article is to launch difit with comments already attached."
-published: false
+published: true
 ---
 [difit](https://github.com/yoshiko-pg/difit) is a CLI tool for reviewing local git diffs in a GitHub-style viewer. In an era where AI agents often spend more time reviewing code than writing it, one of its biggest strengths is that you can inspect code diffs in a familiar interface without pushing changes to a remote repository. With the `npx difit <target>` command, you can inspect the diff for a specific commit, and you can also use keywords like `staged` and `working` to inspect diffs in the staging area or working tree.
 

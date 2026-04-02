@@ -5,7 +5,7 @@ slug: "difit-review-agent-comment"
 about: "difit はローカルの git 差分を GitHub スタイルのインターフェースで確認できる CLI ツールです。difit-review スキルを使用することでエージェントがコードの変更点にコメントを残した状態で difit を起動できます。この記事では、difit-review スキルを使用してエージェント自身にコードの変更点をコメントしてもらう方法を紹介します。"
 createdAt: "2026-04-02T19:20+09:00"
 updatedAt: "2026-04-02T19:20+09:00"
-tags: ["difit", "agent-skills"]
+tags: ["difit", "agent skills"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6IxkYer4azMRxPmCi3M43i/08e5110afe8102cbc6958b9cea208194/mushroom_kinoko_illust_1037-768x558.png"
   title: "キノコのイラスト"
@@ -54,7 +54,7 @@ selfAssessment:
         - text: "`/difit` コマンドで起動したあと、レビューコメントは手動で別ファイルにまとめる"
           correct: false
           explanation: "記事で紹介しているのは `difit-review` スキルにより、コメントが付いた状態で起動する方法です。"
-published: false
+published: true
 ---
 [difit](https://github.com/yoshiko-pg/difit) は GitHub スタイルのビューワーでローカルの git 差分を確認・レビューできる CLI ツールです。コードを自分で書くよりもレビューすることが多くなった AI エージェント時代に、リモートに変更をプッシュすることなく見慣れたインターフェースでコードの差分を確認できるという点が魅力的です。`npx difit <target>` コマンドで特定のコミットを指定して差分を確認できるほか、`staged` や `working` といったキーワードでステージングエリアやワーキングツリーの差分を確認できます。
 
