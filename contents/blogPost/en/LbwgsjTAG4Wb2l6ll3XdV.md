@@ -54,10 +54,8 @@ selfAssessment:
         - text: "Launch `/difit` and write the review comments manually in a separate file afterward."
           correct: false
           explanation: "The point of `difit-review` in the article is to launch difit with comments already attached."
-
 published: false
 ---
-
 [difit](https://github.com/yoshiko-pg/difit) is a CLI tool for reviewing local git diffs in a GitHub-style viewer. In an era where AI agents often spend more time reviewing code than writing it, one of its biggest strengths is that you can inspect code diffs in a familiar interface without pushing changes to a remote repository. With the `npx difit <target>` command, you can inspect the diff for a specific commit, and you can also use keywords like `staged` and `working` to inspect diffs in the staging area or working tree.
 
 ```bash

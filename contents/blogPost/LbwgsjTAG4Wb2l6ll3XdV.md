@@ -54,10 +54,8 @@ selfAssessment:
         - text: "`/difit` コマンドで起動したあと、レビューコメントは手動で別ファイルにまとめる"
           correct: false
           explanation: "記事で紹介しているのは `difit-review` スキルにより、コメントが付いた状態で起動する方法です。"
-
 published: false
 ---
-
 [difit](https://github.com/yoshiko-pg/difit) は GitHub スタイルのビューワーでローカルの git 差分を確認・レビューできる CLI ツールです。コードを自分で書くよりもレビューすることが多くなった AI エージェント時代に、リモートに変更をプッシュすることなく見慣れたインターフェースでコードの差分を確認できるという点が魅力的です。`npx difit <target>` コマンドで特定のコミットを指定して差分を確認できるほか、`staged` や `working` といったキーワードでステージングエリアやワーキングツリーの差分を確認できます。
 
 ```bash
