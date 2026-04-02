@@ -1,4 +1,5 @@
 ---
+name: article-review
 description: "引数で指定した記事のレビューを行います。記事スラッグを引数に渡すと、textlint による自動校正と誤字脱字・文法的な誤りの指摘を行います。/article-review [スラッグ] の形式で呼び出してください。記事を書いた後のチェック、公開前の校正、文章の品質確認にも使用してください。"
 argument-hint: "[article-slug]"
 allowed-tools: Bash(git *), Bash(npm *), Read, Glob, Grep, mcp__textlint__lintFile

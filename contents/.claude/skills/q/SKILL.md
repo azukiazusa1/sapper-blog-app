@@ -1,4 +1,5 @@
 ---
+name: q
 description: "記事のクイズを作成する。記事を書いた後や公開前に、読者の理解度を確認するためのクイズを自動生成する。/q [スラッグ] の形式で呼び出す。"
 argument-hint: "[article-slug]"
 allowed-tools: Bash(git *), Bash(npm *), Read, Glob, Grep, WebFetch

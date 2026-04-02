@@ -85,14 +85,12 @@ export type DraftBlogPost = Extract<BlogPost, { published?: false }>;
 
 export type Locale = "en-US" | "en-GB";
 
-export type FieldValue<T> = {
-  "en-US": T;
-};
+export type FieldValue<T> = Partial<Record<Locale, T>>;
 
 export type ContentfulBlogPost = {
   metadata: { tags: [] };
   sys: MetaSysProps;
-  fields: {
+  fields: Partial<{
     about: FieldValue<string>;
     article: FieldValue<string>;
     createdAt: FieldValue<string>;
@@ -103,7 +101,7 @@ export type ContentfulBlogPost = {
     slug: FieldValue<string>;
     tags: FieldValue<{ sys: MetaLinkProps }[]>;
     audio: FieldValue<string>;
-  };
+  }>;
 };
 
 export type ContentfulTag = {

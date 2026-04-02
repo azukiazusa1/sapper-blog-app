@@ -5,12 +5,18 @@ import type { DraftBlogPost, PublishedBlogPost } from "./types.ts";
 
 const mockedWriteFile = fs.writeFile as MockedFunction<typeof fs.writeFile>;
 const mockedReadFile = fs.readFile as MockedFunction<typeof fs.readFile>;
+const mockedMkdir = fs.mkdir as MockedFunction<typeof fs.mkdir>;
+const mockedAccess = fs.access as MockedFunction<typeof fs.access>;
+const mockedUnlink = fs.unlink as MockedFunction<typeof fs.unlink>;
 
 vi.mock("fs", () => {
   return {
     promises: {
-      writeFile: vi.fn(),
+      access: vi.fn(),
+      mkdir: vi.fn(),
       readFile: vi.fn(),
+      unlink: vi.fn(),
+      writeFile: vi.fn(),
     },
   };
 });
@@ -20,8 +26,11 @@ vi.mock("url", () => ({
 }));
 
 afterEach(() => {
+  mockedAccess.mockClear();
+  mockedMkdir.mockClear();
   mockedWriteFile.mockClear();
   mockedReadFile.mockClear();
+  mockedUnlink.mockClear();
 });
 
 describe("createBlogFile", () => {
@@ -45,6 +54,9 @@ describe("createBlogFile", () => {
 
     await createBlogFile(blog);
 
+    expect(mockedMkdir).toHaveBeenCalledWith(`/contents/blogPost/`, {
+      recursive: true,
+    });
     expect(mockedWriteFile).toHaveBeenCalledWith(
       `/contents/blogPost/slug.md`,
       `---
@@ -82,6 +94,9 @@ article\n`,
 
     await createBlogFile(blog);
 
+    expect(mockedMkdir).toHaveBeenCalledWith(`/contents/blogPost/`, {
+      recursive: true,
+    });
     expect(mockedWriteFile).toHaveBeenCalledWith(
       `/contents/blogPost/id.md`,
       `---
@@ -155,6 +170,9 @@ published: false
 
     await createBlogFile(blog);
 
+    expect(mockedMkdir).toHaveBeenCalledWith(`/contents/blogPost/`, {
+      recursive: true,
+    });
     expect(mockedWriteFile).toHaveBeenCalledWith(
       `/contents/blogPost/slug-"slug".md`,
       `---
@@ -190,6 +208,34 @@ selfAssessment:
 published: true
 ---
 article "article"\n`,
+    );
+  });
+
+  test("en-GB ロケールを指定した場合 en/ 配下にファイルを書き出せる", async () => {
+    const blog = {
+      id: "id",
+      title: "title",
+      about: "about",
+      article: "article",
+      createdAt: "2023-02-05T00:00+09:00",
+      updatedAt: "2023-02-05T00:00+09:00",
+      slug: "slug",
+      tags: ["tag1"],
+      thumbnail: {
+        url: "https://images.ctfassets.net/3",
+        title: "title",
+      },
+      published: true,
+    } satisfies PublishedBlogPost;
+
+    await createBlogFile(blog, "en-GB");
+
+    expect(mockedMkdir).toHaveBeenCalledWith(`/contents/blogPost/en/`, {
+      recursive: true,
+    });
+    expect(mockedWriteFile).toHaveBeenCalledWith(
+      `/contents/blogPost/en/slug.md`,
+      expect.any(String),
     );
   });
 });
@@ -512,6 +558,56 @@ article
         }),
       ],
     });
+  });
+});
+
+describe("deletePublishedBlogFile", () => {
+  test("公開済み記事の旧日本語 id ファイルを削除する", async () => {
+    const { deletePublishedBlogFile } = await import("./fileOperation.ts");
+    const blog = {
+      id: "id",
+      title: "title",
+      about: "about",
+      article: "article",
+      createdAt: "2023-02-05T00:00+09:00",
+      updatedAt: "2023-02-05T00:00+09:00",
+      slug: "slug",
+      tags: [],
+      thumbnail: {
+        url: "https://images.ctfassets.net/3",
+        title: "title",
+      },
+      published: true,
+    } satisfies PublishedBlogPost;
+
+    await deletePublishedBlogFile(blog);
+
+    expect(mockedAccess).toHaveBeenCalledWith(`/contents/blogPost/id.md`);
+    expect(mockedUnlink).toHaveBeenCalledWith(`/contents/blogPost/id.md`);
+  });
+
+  test("公開済み記事の旧英語 id ファイルを削除する", async () => {
+    const { deletePublishedBlogFile } = await import("./fileOperation.ts");
+    const blog = {
+      id: "id",
+      title: "title",
+      about: "about",
+      article: "article",
+      createdAt: "2023-02-05T00:00+09:00",
+      updatedAt: "2023-02-05T00:00+09:00",
+      slug: "slug",
+      tags: [],
+      thumbnail: {
+        url: "https://images.ctfassets.net/3",
+        title: "title",
+      },
+      published: true,
+    } satisfies PublishedBlogPost;
+
+    await deletePublishedBlogFile(blog, "en-GB");
+
+    expect(mockedAccess).toHaveBeenCalledWith(`/contents/blogPost/en/id.md`);
+    expect(mockedUnlink).toHaveBeenCalledWith(`/contents/blogPost/en/id.md`);
   });
 });
 
