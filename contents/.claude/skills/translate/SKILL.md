@@ -1,4 +1,5 @@
 ---
+name: translate
 description: "記事を英語に翻訳する。記事スラッグを引数に渡すと、日本語の記事を英語に翻訳して contents/blogPost/en/ に出力する。/translate [スラッグ] の形式で呼び出す。"
 argument-hint: "[article-slug]"
 allowed-tools: Bash(git *), Bash(mkdir *), Read, Write, Glob, Grep

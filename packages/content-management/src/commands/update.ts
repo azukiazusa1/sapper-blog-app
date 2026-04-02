@@ -21,26 +21,30 @@ const getFilename = (filePath: string) => basename(filePath, ".md");
 if (ADDED_FILES) {
   const addedFiles = ADDED_FILES.split(" ");
   let hasError = false;
-  for (const file of addedFiles) {
+  const japaneseFiles = addedFiles.filter((file) => !isEnglishFile(file));
+  const englishFiles = addedFiles.filter((file) => isEnglishFile(file));
+
+  for (const file of japaneseFiles) {
     const filename = getFilename(file);
-    if (isEnglishFile(file)) {
-      // 英語ファイルは既存エントリの en-GB locale を更新する
-      const result = await loadBlogPost(filename, "en-GB");
-      if (!result.success) {
-        hasError = true;
-        console.error(result.error);
-        continue;
-      }
-      await updateBlogPost(result.data, "en-GB");
-    } else {
-      const result = await loadBlogPost(filename);
-      if (!result.success) {
-        hasError = true;
-        console.error(result.error);
-        continue;
-      }
-      await createBlogPost(result.data);
+    const result = await loadBlogPost(filename);
+    if (!result.success) {
+      hasError = true;
+      console.error(result.error);
+      continue;
     }
+    await createBlogPost(result.data);
+  }
+
+  for (const file of englishFiles) {
+    const filename = getFilename(file);
+    // 英語ファイルは既存エントリの en-GB locale を更新する
+    const result = await loadBlogPost(filename, "en-GB");
+    if (!result.success) {
+      hasError = true;
+      console.error(result.error);
+      continue;
+    }
+    await updateBlogPost(result.data, "en-GB");
   }
   if (hasError) {
     process.exit(1);

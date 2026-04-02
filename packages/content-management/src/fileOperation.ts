@@ -30,7 +30,10 @@ const addNewLine = (content: string): string => {
 /**
  * Contentful から取得したブログ記事を yaml front matter 形式でファイルに書き出す
  */
-export const createBlogFile = async (blog: BlogPost) => {
+export const createBlogFile = async (
+  blog: BlogPost,
+  locale: Locale = "en-US",
+) => {
   const { title, about, article, createdAt, updatedAt, slug, tags, published } =
     blog;
 
@@ -72,26 +75,31 @@ published: ${published}
 ${article ? addNewLine(article) : ""}`;
   // 下書き記事の場合は slug がない可能性があるので、id をファイル名にする
   const pathName = published ? slug : blog.id;
+  const subdir = locale === "en-GB" ? "en/" : "";
 
-  const outDir = path.join(
-    __dirname,
-    `../../../contents/blogPost/${pathName}.md`,
-  );
-  await fs.writeFile(outDir, content);
+  const outDir = path.join(__dirname, `../../../contents/blogPost/${subdir}`);
+  const outFile = path.join(outDir, `${pathName}.md`);
+
+  await fs.mkdir(outDir, { recursive: true });
+  await fs.writeFile(outFile, content);
 };
 
 /**
  * 下書き → 公開に変更されたブログ記事のファイルを削除する
  */
-export const deletePublishedBlogFile = async (blog: BlogPost) => {
+export const deletePublishedBlogFile = async (
+  blog: BlogPost,
+  locale: Locale = "en-US",
+) => {
   if (!blog.published) {
     return;
   }
 
   const pathName = blog.id;
+  const subdir = locale === "en-GB" ? "en/" : "";
   const dirname = path.join(
     __dirname,
-    `../../../contents/blogPost/${pathName}.md`,
+    `../../../contents/blogPost/${subdir}${pathName}.md`,
   );
 
   // ファイルが存在しない場合は何もしない

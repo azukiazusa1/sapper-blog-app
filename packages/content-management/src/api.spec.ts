@@ -13,6 +13,7 @@ import {
   clearBlogPostLocale,
   createBlogPost,
   getBlogPosts,
+  getLocalizedBlogPosts,
   updateBlogPost,
 } from "./api.ts";
 import type { BlogPost, ContentfulBlogPost, ContentfulTag } from "./types.ts";
@@ -551,6 +552,205 @@ describe("getBlogPosts", () => {
       thumbnail: undefined,
       published: false,
     });
+  });
+});
+
+describe("getLocalizedBlogPosts", () => {
+  test("en-GB の翻訳が揃っている記事を取得できる", async () => {
+    server.use(
+      http.get(
+        contentful("/entries"),
+        ({
+          request,
+        }): StrictResponse<
+          | { items: ContentfulTag[] }
+          | { items: ContentfulBlogPost[]; includes?: { Asset?: TestAsset[] } }
+        > => {
+          const url = new URL(request.url);
+          if (url.searchParams.get("content_type") === "tag") {
+            return HttpResponse.json({
+              items: tags,
+            });
+          }
+
+          return HttpResponse.json({
+            items: [
+              {
+                metadata: { tags: [] },
+                sys: createDummyMetaSysProps({ id: "blog1" }),
+                fields: {
+                  title: {
+                    "en-US": "日本語タイトル",
+                    "en-GB": "English title",
+                  },
+                  about: {
+                    "en-US": "日本語概要",
+                    "en-GB": "English about",
+                  },
+                  createdAt: {
+                    "en-US": "2021-01-01",
+                  },
+                  updatedAt: {
+                    "en-US": "2021-01-02",
+                  },
+                  slug: {
+                    "en-US": "slug",
+                  },
+                  article: {
+                    "en-US": "日本語本文",
+                    "en-GB": "English article",
+                  },
+                  thumbnail: {
+                    "en-US": {
+                      sys: {
+                        id: "asset1",
+                        type: "Link",
+                        linkType: "Asset",
+                      },
+                    },
+                  },
+                  tags: {
+                    "en-US": [
+                      {
+                        sys: {
+                          id: "tag1",
+                          type: "Link",
+                          linkType: "Entry",
+                        },
+                      },
+                    ],
+                  },
+                  selfAssessment: {
+                    "en-US": {
+                      quizzes: [],
+                    },
+                    "en-GB": {
+                      quizzes: [
+                        {
+                          question: "question",
+                          answers: [
+                            {
+                              correct: true,
+                              text: "answer",
+                              explanation: "explanation",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                },
+              },
+            ],
+            includes: {
+              Asset: [
+                {
+                  sys: {
+                    id: "asset1",
+                    type: "Asset",
+                    version: 1,
+                  },
+                  fields: {
+                    title: {
+                      "en-US": "title",
+                    },
+                    description: {
+                      "en-US": "description",
+                    },
+                    file: {
+                      "en-US": {
+                        url: "//images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
+                        fileName: "image.png",
+                        contentType: "image/png",
+                      },
+                    },
+                  },
+                },
+              ],
+            },
+          });
+        },
+      ),
+    );
+
+    const result = await getLocalizedBlogPosts("en-GB");
+
+    expect(result).toEqual<BlogPost[]>([
+      {
+        id: "blog1",
+        title: "English title",
+        about: "English about",
+        createdAt: "2021-01-01",
+        updatedAt: "2021-01-02",
+        slug: "slug",
+        article: "English article",
+        published: true,
+        thumbnail: {
+          title: "title",
+          url: "https://images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
+        },
+        tags: ["tag1-name"],
+        selfAssessment: {
+          quizzes: [
+            {
+              question: "question",
+              answers: [
+                {
+                  correct: true,
+                  text: "answer",
+                  explanation: "explanation",
+                },
+              ],
+            },
+          ],
+        },
+      },
+    ]);
+  });
+
+  test("en-GB の翻訳が無い draft 記事は除外する", async () => {
+    server.use(
+      http.get(
+        contentful("/entries"),
+        ({
+          request,
+        }): StrictResponse<
+          | { items: ContentfulTag[] }
+          | { items: ContentfulBlogPost[]; includes?: { Asset?: TestAsset[] } }
+        > => {
+          const url = new URL(request.url);
+          if (url.searchParams.get("content_type") === "tag") {
+            return HttpResponse.json({
+              items: tags,
+            });
+          }
+
+          return HttpResponse.json({
+            items: [
+              {
+                metadata: { tags: [] },
+                sys: createDummyMetaSysProps({ id: "blog1", published: false }),
+                fields: {
+                  title: {
+                    "en-US": "日本語タイトル",
+                  },
+                  slug: {
+                    "en-US": "slug",
+                  },
+                },
+              },
+            ],
+            includes: {
+              Asset: [],
+            },
+          });
+        },
+      ),
+    );
+
+    const result = await getLocalizedBlogPosts("en-GB");
+
+    expect(result).toEqual([]);
   });
 });
 

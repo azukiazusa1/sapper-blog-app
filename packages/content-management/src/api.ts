@@ -4,15 +4,14 @@ import slugify from "slugify";
 import { Env } from "./env.ts";
 import { searchRelatedArticles } from "./searchRelatedArticles.ts";
 import {
+  BlogPostSchema,
   isSelfAssessment,
   type BlogPost,
   type ContentfulBlogPost,
   type ContentfulTag,
-  type DraftBlogPost,
   type FieldValue,
   type Locale,
   type PopularPost,
-  type PublishedBlogPost,
   type Thumbnail,
 } from "./types";
 
@@ -122,14 +121,21 @@ const fetchBlogsByCreatedAt = async ({
   return posts.items as unknown as ContentfulBlogPost[];
 };
 
-const flattenField = <T>(field: FieldValue<T>): T => {
-  return field["en-US"];
+const flattenField = <T>(field: FieldValue<T>, locale: Locale = "en-US"): T => {
+  const value = field[locale];
+
+  if (value === undefined) {
+    throw new Error(`Field for locale ${locale} is not found`);
+  }
+
+  return value;
 };
 
 const flattenOptionalField = <T>(
   field: FieldValue<T> | undefined,
+  locale: Locale = "en-US",
 ): T | undefined => {
-  return field ? field["en-US"] : undefined;
+  return field ? field[locale] : undefined;
 };
 
 /**
@@ -157,14 +163,116 @@ const getAssetIdFromUrl = (url: string): string => {
   return assetId;
 };
 
-export const getBlogPosts = async ({
-  createdAt,
-}: {
-  createdAt?: {
-    startDate: string;
-    endDate: string;
-  };
-} = {}): Promise<BlogPost[]> => {
+const createLocalizedBlogPost = async (
+  blog: ContentfulBlogPost,
+  tags: ContentfulTag[],
+  assets: contentful.Asset[],
+  locale: Locale,
+): Promise<BlogPost | undefined> => {
+  let thumbnail: Thumbnail | undefined;
+  const thumbnailField = flattenOptionalField(blog.fields.thumbnail);
+
+  if (thumbnailField) {
+    const asset = assets.find((a) => a.sys.id === thumbnailField.sys.id);
+
+    if (!asset) {
+      const title = flattenOptionalField(blog.fields.title) ?? blog.sys.id;
+      console.warn(
+        `Asset not found for blog post "${title}" with asset ID: ${thumbnailField.sys.id}`,
+      );
+      thumbnail = undefined;
+    } else {
+      thumbnail = {
+        url: asset.fields.file["en-US"]?.url
+          ? "https:" + asset.fields.file["en-US"].url
+          : "",
+        title: asset.fields.title["en-US"] || "",
+      };
+    }
+  }
+
+  const blogTags: string[] =
+    blog.fields.tags?.["en-US"]?.map((tag) => {
+      const foundTag = tags.find((t) => t.sys.id === tag.sys.id);
+      return foundTag ? flattenField(foundTag.fields.name) : "";
+    }) ?? [];
+
+  const translatedTitle = flattenOptionalField(blog.fields.title, locale);
+  const translatedAbout = flattenOptionalField(blog.fields.about, locale);
+  const translatedArticle = flattenOptionalField(blog.fields.article, locale);
+  const translatedSelfAssessment = flattenOptionalField(
+    blog.fields.selfAssessment,
+    locale,
+  );
+  const maybeSelfAssessment = isSelfAssessment(translatedSelfAssessment)
+    ? translatedSelfAssessment
+    : undefined;
+
+  const localizedBlogPost = contentful.isPublished(blog)
+    ? {
+        id: blog.sys.id,
+        title: translatedTitle,
+        slug: flattenOptionalField(blog.fields.slug),
+        about: translatedAbout,
+        article: translatedArticle,
+        createdAt: flattenOptionalField(blog.fields.createdAt),
+        updatedAt: flattenOptionalField(blog.fields.updatedAt),
+        published: true,
+        tags: blogTags,
+        thumbnail,
+        audio: flattenOptionalField(blog.fields.audio),
+        selfAssessment: maybeSelfAssessment,
+      }
+    : {
+        id: blog.sys.id,
+        title: translatedTitle,
+        slug: flattenOptionalField(blog.fields.slug),
+        about: translatedAbout,
+        article: translatedArticle,
+        createdAt: flattenOptionalField(blog.fields.createdAt),
+        updatedAt: flattenOptionalField(blog.fields.updatedAt),
+        published: false,
+        tags: blogTags,
+        thumbnail,
+        audio: flattenOptionalField(blog.fields.audio),
+        selfAssessment: maybeSelfAssessment,
+      };
+
+  if (
+    locale !== "en-US" &&
+    !localizedBlogPost.title &&
+    !localizedBlogPost.about &&
+    !localizedBlogPost.article &&
+    !localizedBlogPost.selfAssessment
+  ) {
+    return undefined;
+  }
+
+  if (locale === "en-US") {
+    if (contentful.isPublished(blog) && thumbnail === undefined) {
+      throw new Error(
+        "公開済みの記事なら thumbnail は必ず存在するはず" + blog.sys.id,
+      );
+    }
+
+    return localizedBlogPost as BlogPost;
+  }
+
+  const result = BlogPostSchema.safeParse(localizedBlogPost);
+  return result.success ? result.data : undefined;
+};
+
+export const getLocalizedBlogPosts = async (
+  locale: Locale,
+  {
+    createdAt,
+  }: {
+    createdAt?: {
+      startDate: string;
+      endDate: string;
+    };
+  } = {},
+): Promise<BlogPost[]> => {
   const tags = await fetchTags();
   const blogs =
     createdAt !== undefined
@@ -176,81 +284,25 @@ export const getBlogPosts = async ({
   const assets = await fetchAssets();
 
   const result = await Promise.all(
-    blogs.map(async (blog) => {
-      let thumbnail: Thumbnail | undefined;
-      if (blog.fields.thumbnail) {
-        const asset = assets.find(
-          (a) => a.sys.id === blog.fields.thumbnail["en-US"].sys.id,
-        );
-
-        if (!asset) {
-          console.warn(
-            `Asset not found for blog post "${blog.fields.title["en-US"]}" with asset ID: ${blog.fields.thumbnail["en-US"].sys.id}`,
-          );
-          thumbnail = undefined;
-        } else {
-          thumbnail = {
-            url: asset.fields.file["en-US"]?.url
-              ? "https:" + asset.fields.file["en-US"].url
-              : "",
-            title: asset.fields.title["en-US"] || "",
-          };
-        }
-      }
-
-      const blogTags: string[] =
-        blog.fields.tags?.["en-US"]?.map((tag) => {
-          const foundTag = tags.find((t) => t.sys.id === tag.sys.id);
-          return foundTag ? flattenField(foundTag.fields.name) : "";
-        }) ?? [];
-
-      const maybeSelfAssessment = flattenOptionalField(
-        blog.fields.selfAssessment,
-      );
-
-      if (contentful.isPublished(blog)) {
-        if (thumbnail === undefined)
-          throw new Error(
-            "公開済みの記事なら thumbnail は必ず存在するはず" + blog.sys.id,
-          );
-
-        return {
-          id: blog.sys.id,
-          title: flattenField(blog.fields.title),
-          slug: flattenField(blog.fields.slug),
-          about: flattenField(blog.fields.about),
-          article: flattenField(blog.fields.article),
-          createdAt: flattenField(blog.fields.createdAt),
-          updatedAt: flattenField(blog.fields.updatedAt),
-          published: true,
-          tags: blogTags,
-          thumbnail,
-          audio: flattenOptionalField(blog.fields.audio),
-          selfAssessment: isSelfAssessment(maybeSelfAssessment)
-            ? maybeSelfAssessment
-            : undefined,
-        } satisfies PublishedBlogPost;
-      } else {
-        return {
-          id: blog.sys.id,
-          title: flattenOptionalField(blog.fields.title),
-          slug: flattenOptionalField(blog.fields.slug),
-          about: flattenOptionalField(blog.fields.about),
-          article: flattenOptionalField(blog.fields.article),
-          createdAt: flattenOptionalField(blog.fields.createdAt),
-          updatedAt: flattenOptionalField(blog.fields.updatedAt),
-          published: false,
-          tags: blogTags,
-          thumbnail,
-          audio: flattenOptionalField(blog.fields.audio),
-          selfAssessment: isSelfAssessment(maybeSelfAssessment)
-            ? maybeSelfAssessment
-            : undefined,
-        } satisfies DraftBlogPost;
-      }
-    }),
+    blogs.map((blog) => createLocalizedBlogPost(blog, tags, assets, locale)),
   );
-  return result;
+
+  return result.filter(
+    (blogPost): blogPost is BlogPost => blogPost !== undefined,
+  );
+};
+
+export const getBlogPosts = async ({
+  createdAt,
+}: {
+  createdAt?: {
+    startDate: string;
+    endDate: string;
+  };
+} = {}): Promise<BlogPost[]> => {
+  return createdAt
+    ? getLocalizedBlogPosts("en-US", { createdAt })
+    : getLocalizedBlogPosts("en-US");
 };
 
 const createTag = async (tagName: string): Promise<contentful.Entry> => {

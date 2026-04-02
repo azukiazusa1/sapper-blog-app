@@ -16,6 +16,8 @@ const token = TOKEN as string;
 const octokit = getOctokit(token);
 
 const getFilename = (path: string) => basename(path, ".md");
+const isEnglishFile = (filePath: string) =>
+  filePath.includes("/blogPost/en/") || filePath.includes("blogPost/en/");
 
 const bodyTemplate = (
   file: string,
@@ -35,7 +37,10 @@ if (ADDED_FILES) {
   const addedFiles = ADDED_FILES.split(" ");
   for (const file of addedFiles) {
     const filename = getFilename(file);
-    const result = await loadBlogPost(filename);
+    const result = await loadBlogPost(
+      filename,
+      isEnglishFile(file) ? "en-GB" : "en-US",
+    );
     if (!result.success) {
       hasError = true;
       await octokit.rest.issues.createComment({
@@ -52,7 +57,10 @@ if (MODIFIED_FILES) {
   const modifiedFiles = MODIFIED_FILES.split(" ");
   for (const file of modifiedFiles) {
     const filename = getFilename(file);
-    const result = await loadBlogPost(filename);
+    const result = await loadBlogPost(
+      filename,
+      isEnglishFile(file) ? "en-GB" : "en-US",
+    );
     if (!result.success) {
       hasError = true;
       await octokit.rest.issues.createComment({

@@ -35,6 +35,50 @@ afterEach(() => {
 });
 
 describe("commands/update", () => {
+  test("日本語と英語が同時追加された場合は日本語を作成後に英語ロケールを更新する", async () => {
+    process.env["ADDED_FILES"] =
+      "contents/blogPost/sample-post.md contents/blogPost/en/sample-post.md";
+
+    mocks.loadBlogPost.mockResolvedValue({
+      success: true,
+      data: {
+        id: "sample-post",
+        title: "title",
+        about: "about",
+        article: "article",
+        createdAt: "2026-04-01T00:00+09:00",
+        updatedAt: "2026-04-01T00:00+09:00",
+        slug: "sample-post",
+        tags: [],
+        thumbnail: {
+          url: "https://images.ctfassets.net/3",
+          title: "title",
+        },
+        published: true,
+      },
+    });
+
+    await import("./update.ts");
+
+    expect(mocks.loadBlogPost).toHaveBeenNthCalledWith(1, "sample-post");
+    expect(mocks.createBlogPost).toHaveBeenCalledTimes(1);
+    expect(mocks.loadBlogPost).toHaveBeenNthCalledWith(
+      2,
+      "sample-post",
+      "en-GB",
+    );
+    expect(mocks.updateBlogPost).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "sample-post" }),
+      "en-GB",
+    );
+    const createOrder = mocks.createBlogPost.mock.invocationCallOrder[0];
+    const updateOrder = mocks.updateBlogPost.mock.invocationCallOrder[0];
+
+    expect(createOrder).toBeDefined();
+    expect(updateOrder).toBeDefined();
+    expect(createOrder as number).toBeLessThan(updateOrder as number);
+  });
+
   test("英語記事ファイル削除時は en-GB ロケールをクリアする", async () => {
     process.env["DELETED_FILES"] = "contents/blogPost/en/sample-post.md";
 

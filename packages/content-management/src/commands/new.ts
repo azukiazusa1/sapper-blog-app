@@ -1,10 +1,11 @@
 import { createBlogFile } from "../fileOperation.ts";
 import { nanoid } from "nanoid";
 import { now } from "../datetime.ts";
+import type { DraftBlogPost } from "../types.ts";
 
 const id = nanoid();
 
-await createBlogFile({
+const blogPost: DraftBlogPost = {
   id,
   title: undefined,
   slug: undefined,
@@ -21,6 +22,9 @@ await createBlogFile({
     quizzes: [],
   },
   published: false,
-});
+};
 
-console.log(`Created new blog post: ${id}`);
+await createBlogFile(blogPost);
+await createBlogFile(blogPost, "en-GB");
+
+console.log(`Created new blog post templates (ja/en): ${id}`);
