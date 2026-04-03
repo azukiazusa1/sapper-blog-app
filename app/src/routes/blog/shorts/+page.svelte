@@ -2,7 +2,6 @@
   import { m } from "$paraglide/messages";
   import variables from "$lib/variables";
   import type { PageData } from "../$types";
-  import LinkButton from "../../../components/LinkButton/LinkButton.svelte";
   import Pagination from "../../../components/Pagination/Pagination.svelte";
   import PostList from "../../../components/PostList.svelte";
   import ShortList from "../../../components/ShortList.svelte";
@@ -34,9 +33,5 @@
   {/snippet}
   {#snippet shorts()}
     <ShortList shorts={shortBlogs.shortCollection.items} />
-
-    <div class="my-16 flex justify-center">
-      <LinkButton href="/blog/shorts/page/1">{m.shortsMore()}</LinkButton>
-    </div>
   {/snippet}
 </Tabs>

@@ -1,4 +1,5 @@
 import type { PageServerLoad } from "./$types";
+import { renderShortList } from "$lib/server/shorts";
 import { useRepositories } from "../repositories/useRepositories";
 import { getLocale } from "$paraglide/runtime";
 
@@ -14,7 +15,7 @@ export const load: PageServerLoad = async () => {
       limit: 3,
       locale,
     }),
-    short.get({}),
+    short.get({ limit: 5 }),
     analyticsData.getPopularPosts(),
     tag.get(),
   ]);
@@ -27,7 +28,13 @@ export const load: PageServerLoad = async () => {
 
   return {
     latestPosts,
-    shorts,
+    shorts: {
+      ...shorts,
+      shortCollection: {
+        ...shorts.shortCollection,
+        items: await renderShortList(shorts.shortCollection.items),
+      },
+    },
     popularPosts,
     tags,
   };
