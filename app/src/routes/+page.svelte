@@ -176,9 +176,9 @@
       </section>
     </div>
 
-    <section class="space-y-6">
+    <section class="min-w-0 space-y-6">
       <h2
-        class="relative text-3xl font-extrabold dark:text-white after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-20 after:bg-sky-500 after:content-['']"
+        class="relative text-3xl font-extrabold dark:text-white after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-20 after:bg-indigo-500 after:content-['']"
       >
         {m.shortsTitle()}
       </h2>
