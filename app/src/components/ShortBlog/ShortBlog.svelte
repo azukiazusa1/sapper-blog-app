@@ -68,7 +68,7 @@
         </div>
 
         <div
-          class="prose prose-zinc mt-5 max-w-none break-words dark:prose-invert"
+          class="short-thread-content prose prose-zinc mt-5 max-w-none break-words dark:prose-invert"
         >
           {@html htmlThreadItems[0]}
         </div>
@@ -101,7 +101,7 @@
             azukiazusa
           </p>
           <div
-            class="prose prose-zinc mt-3 max-w-none break-words dark:prose-invert"
+            class="short-thread-content prose prose-zinc mt-3 max-w-none break-words dark:prose-invert"
           >
             {@html threadItem}
           </div>

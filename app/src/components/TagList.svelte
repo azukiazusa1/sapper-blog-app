@@ -14,7 +14,7 @@
 </script>
 
 <div class="container mx-auto">
-  <div class="relative">
+  <div class="relative overflow-x-hidden">
     <div class="overflow-x-auto no-scrollbar px-4">
       <div class="flex gap-3 w-max pr-20">
         {#each tags as tag}

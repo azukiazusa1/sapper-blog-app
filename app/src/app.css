@@ -378,6 +378,19 @@ figure[data-rehype-pretty-code-figure] {
   font-size: 17px;
 }
 
+.short-thread-content figure[data-rehype-pretty-code-figure] {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.short-thread-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 0.875rem;
+}
+
 .show-line-number code {
   counter-reset: line;
   counter-increment: step 0;

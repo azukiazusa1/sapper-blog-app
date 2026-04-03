@@ -26,6 +26,10 @@ export default [
     },
   },
   {
-    ignores: ["playwright.config.ts", "src/generated/graphql.ts"],
+    ignores: [
+      "playwright.config.ts",
+      "src/generated/graphql.ts",
+      "src/paraglide/**",
+    ],
   },
 ];

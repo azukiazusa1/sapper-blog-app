@@ -99,7 +99,7 @@
             onclick={() => toggleThread(item.id)}
           >
             <div
-              class="prose prose-zinc max-w-none break-words text-[15px] leading-7 dark:prose-invert"
+              class="short-thread-content prose prose-zinc max-w-none break-words text-[15px] leading-7 dark:prose-invert"
             >
               {@html item.htmlThreadItems[0]}
             </div>
@@ -125,9 +125,13 @@
 
           {#if expanded && item.threadCount > 1}
             <div id={"thread-" + item.id} class="mt-4">
-              {#each item.htmlThreadItems.slice(1) as threadItem, index}
-                <div class="flex gap-4 py-4">
-                  <div class="flex w-12 shrink-0 flex-col items-center">
+              {#each item.htmlThreadItems.slice(1) as threadItem}
+                <div
+                  class="relative min-w-0 border-t py-4 border-zinc-200 dark:border-zinc-800"
+                >
+                  <div
+                    class="absolute top-4 left-[-4rem] flex w-12 items-start justify-center"
+                  >
                     <img
                       src={avatarImage}
                       alt="azukiazusa"
@@ -137,21 +141,16 @@
                       loading="lazy"
                       decoding="async"
                     />
-                    {#if index !== item.threadCount - 2}
-                      <div
-                        class="mt-3 w-px flex-1 bg-zinc-200 dark:bg-zinc-700"
-                      ></div>
-                    {/if}
                   </div>
 
-                  <div class="min-w-0 flex-1">
+                  <div class="min-w-0">
                     <p
                       class="text-sm font-semibold text-zinc-950 dark:text-zinc-50"
                     >
                       azukiazusa
                     </p>
                     <div
-                      class="prose prose-zinc mt-2 max-w-none break-words text-[15px] leading-7 dark:prose-invert"
+                      class="short-thread-content prose prose-zinc mt-2 max-w-none break-words text-[15px] leading-7 dark:prose-invert"
                     >
                       {@html threadItem}
                     </div>
