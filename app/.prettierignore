@@ -1,6 +1,7 @@
 graphql.schema.json
 src/service-worker.ts
 src/generated/graphql.ts
+src/paraglide
 .DS_Store
 /node_modules/
 yarn-error.log
