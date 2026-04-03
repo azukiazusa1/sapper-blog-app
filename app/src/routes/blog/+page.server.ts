@@ -1,4 +1,5 @@
 import type { PageServerLoad } from "./$types";
+import { renderShortList } from "$lib/server/shorts";
 import { useRepositories } from "../../repositories/useRepositories";
 import { getLocale } from "$paraglide/runtime";
 
@@ -12,5 +13,14 @@ export const load: PageServerLoad = async () => {
   const promises = [post.get({ locale }), short.get({})] as const;
 
   const [posts, shorts] = await Promise.all(promises);
-  return { posts, shorts };
+  return {
+    posts,
+    shorts: {
+      ...shorts,
+      shortCollection: {
+        ...shorts.shortCollection,
+        items: await renderShortList(shorts.shortCollection.items),
+      },
+    },
+  };
 };

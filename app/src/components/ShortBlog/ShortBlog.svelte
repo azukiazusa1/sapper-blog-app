@@ -1,135 +1,112 @@
 <script lang="ts">
   import { m } from "$paraglide/messages";
-  import { localizeHref } from "$paraglide/runtime";
-  import { createBubbler, stopPropagation } from "svelte/legacy";
-
-  const bubble = createBubbler();
-  import PrevIcon from "../Icons/Prev.svelte";
-  import ForwardIcon from "../Icons/Forward.svelte";
-  import FloatingActionButton from "../FloatingActionButton/FloatingActionButton.svelte";
-  import { Progress } from "bits-ui";
-  import Slide from "./Slide.svelte";
-  import Indicator from "./Indicator.svelte";
-  import { goto } from "$app/navigation";
-  import { onMount } from "svelte";
+  import avatarImage from "../../assets/images/azukiazusa.jpeg";
+  import CopyLinkButton from "../CopyLinkButton.svelte";
+  import Link from "../Link/Link.svelte";
+  import Time from "../Time/Time.svelte";
 
   interface Props {
-    id: string;
     title: string;
-    contents: string[];
-    ids: string[];
+    htmlThreadItems: string[];
+    backHref: string;
+    shareUrl: string;
+    createdAt?: string | null;
   }
 
-  let { id, title, contents, ids }: Props = $props();
-
-  let active = $state(0);
-  let slidesCount = $derived(contents.length);
-
-  function nextSlide() {
-    if (active === slidesCount - 1) {
-      return;
-    }
-    active = (active + 1) % slidesCount;
-  }
-
-  function prevSlide() {
-    if (active === 0) {
-      return;
-    }
-    active = (active - 1) % slidesCount;
-  }
-
-  function handleClick(e: MouseEvent) {
-    // テキストを選択しているときは何もしない
-    if (window.getSelection()?.toString()) {
-      return;
-    }
-
-    // 左半分をクリックしたら前のスライドへ、右半分をクリックしたら次のスライドへ
-    if (e.clientX < window.innerWidth / 2) {
-      prevSlide();
-    } else {
-      nextSlide();
-    }
-  }
-
-  function handleKeyDown(e: KeyboardEvent) {
-    if (e.key === "ArrowLeft") {
-      prevSlide();
-    } else if (e.key === "ArrowRight") {
-      nextSlide();
-    } else if (e.shiftKey && e.key === "N") {
-      handleClickNextButton();
-    }
-  }
-
-  onMount(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  });
-  /**
-   * 今表示しているショートのIDを除いたすべてのショートのIDからランダムに1つ選ぶ
-   */
-  function handleClickNextButton() {
-    active = 0;
-
-    const filteredIds = ids.filter((v) => id !== v);
-    const randomIndex = Math.floor(Math.random() * filteredIds.length);
-    const nextId = filteredIds[randomIndex];
-
-    goto(localizeHref(`/blog/shorts/${nextId}`));
-  }
+  let {
+    title,
+    htmlThreadItems,
+    backHref,
+    shareUrl,
+    createdAt = null,
+  }: Props = $props();
 </script>
 
 <!-- eslint-disable svelte/no-at-html-tags -->
-<!-- eslint-disable-next-line svelte/valid-compile -->
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<div
-  class="h-screen supports-[height:100svh]:h-[100svh] absolute top-0 left-0 z-20 mx-auto w-screen sm:static sm:z-0 sm:h-[700px] sm:w-[430px]"
-  onclick={handleClick}
->
+<div class="mx-auto max-w-[600px] px-4 py-6">
+  <div class="mb-5">
+    <Link href={backHref}>{m.shortBack()}</Link>
+  </div>
+
   <article
-    class="relative flex h-full w-full flex-col items-center justify-center rounded-xl bg-black text-lg text-white"
+    class="overflow-hidden rounded-[32px] border border-zinc-200/80 bg-white/95 shadow-[0_20px_64px_-32px_rgba(15,23,42,0.45)] dark:border-zinc-800 dark:bg-zinc-950/90"
   >
-    <div class="absolute top-0 left-0 z-10 px-4 py-6">
-      <a
-        href={localizeHref("/blog/shorts")}
-        onclick={stopPropagation(bubble("click"))}
-      >
-        <div class="sr-only">{m.shortBack()}</div>
-        <PrevIcon className="h-8 w-8" />
-      </a>
+    <div class="flex gap-4 p-5 sm:p-7">
+      <div class="flex w-12 shrink-0 flex-col items-center">
+        <img
+          src={avatarImage}
+          alt="azukiazusa"
+          class="mt-1 h-10 w-10 rounded-full object-cover"
+          width="40"
+          height="40"
+          loading="lazy"
+          decoding="async"
+        />
+        {#if htmlThreadItems.length > 1}
+          <div class="mt-3 w-px flex-1 bg-zinc-200 dark:bg-zinc-700"></div>
+        {/if}
+      </div>
+
+      <div class="min-w-0 flex-1">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <p class="text-sm font-semibold text-zinc-950 dark:text-zinc-50">
+              azukiazusa
+            </p>
+            <h1
+              class="mt-1 text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50"
+            >
+              {title}
+            </h1>
+          </div>
+
+          {#if createdAt}
+            <div class="shrink-0 pt-1">
+              <Time date={createdAt} />
+            </div>
+          {/if}
+        </div>
+
+        <div
+          class="prose prose-zinc mt-5 max-w-none break-words dark:prose-invert"
+        >
+          {@html htmlThreadItems[0]}
+        </div>
+
+        <div class="mt-5">
+          <CopyLinkButton url={shareUrl} label={m.shortCopyLink()} />
+        </div>
+      </div>
     </div>
-    <div class="flex w-full p-6 prose-invert prose-zing" id="contents">
-      {#each contents as content, i}
-        <Slide active={active === i}>
-          {@html content}
-        </Slide>
-      {/each}
-    </div>
-    <div class="absolute right-0 bottom-24 left-0 mx-auto flex justify-center">
-      <Progress.Root
-        class="relative flex h-4 w-48 gap-4 overflow-hidden"
-        value={active + 1}
-        max={slidesCount}
-        aria-label={m.shortSlideProgress()}
-      >
-        {#each Array.from({ length: slidesCount }, (_, i) => i) as i}
-          <Indicator active={active === i} />
-        {/each}
-      </Progress.Root>
-    </div>
-    <div class="absolute bottom-6 left-4 w-[70%]">
-      <h2 class="font-sm line-clamp-2">
-        {title}
-      </h2>
-    </div>
-    <FloatingActionButton click={handleClickNextButton}>
-      <div class="sr-only">{m.shortNext()}</div>
-      <ForwardIcon className="h-8 w-8" />
-    </FloatingActionButton>
+
+    {#each htmlThreadItems.slice(1) as threadItem, index}
+      <div class="flex gap-4 p-5 sm:p-7">
+        <div class="flex w-12 shrink-0 flex-col items-center">
+          <img
+            src={avatarImage}
+            alt="azukiazusa"
+            class="mt-1 h-8 w-8 rounded-full object-cover"
+            width="32"
+            height="32"
+            loading="lazy"
+            decoding="async"
+          />
+          {#if index !== htmlThreadItems.length - 2}
+            <div class="mt-3 w-px flex-1 bg-zinc-200 dark:bg-zinc-700"></div>
+          {/if}
+        </div>
+
+        <div class="min-w-0 flex-1 rounded-2xl bg-zinc-50 p-5 dark:bg-zinc-900">
+          <p class="text-sm font-semibold text-zinc-950 dark:text-zinc-50">
+            azukiazusa
+          </p>
+          <div
+            class="prose prose-zinc mt-3 max-w-none break-words dark:prose-invert"
+          >
+            {@html threadItem}
+          </div>
+        </div>
+      </div>
+    {/each}
   </article>
 </div>

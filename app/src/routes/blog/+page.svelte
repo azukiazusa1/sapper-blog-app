@@ -36,7 +36,7 @@
     <ShortList shorts={shortBlogs.shortCollection.items} />
 
     <div class="my-16 flex justify-center">
-      <LinkButton href="/blog/shorts/page/1">{m.shortsMore()}</LinkButton>
+      <LinkButton href="/blog/shorts">{m.shortsMore()}</LinkButton>
     </div>
   {/snippet}
 </Tabs>

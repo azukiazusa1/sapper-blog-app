@@ -10,7 +10,7 @@
 
   let { data }: Props = $props();
 
-  let { short, contents, allShortsIds } = $derived(data);
+  let { short, htmlThreadItems } = $derived(data);
   let url = $derived(`${variables.baseURL}/blog/shorts/${short.sys.id}`);
 </script>
 
@@ -29,9 +29,10 @@
 
 <div class="container mx-auto py-4">
   <ShortBlog
-    id={short.sys.id}
     title={short.title}
-    ids={allShortsIds}
-    {contents}
+    backHref="/blog/shorts"
+    createdAt={short.createdAt}
+    shareUrl={url}
+    {htmlThreadItems}
   />
 </div>
