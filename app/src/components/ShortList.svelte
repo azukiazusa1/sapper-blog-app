@@ -125,7 +125,7 @@
 
           {#if expanded && item.threadCount > 1}
             <div id={"thread-" + item.id} class="mt-4">
-              {#each item.htmlThreadItems.slice(1) as threadItem, index}
+              {#each item.htmlThreadItems.slice(1) as threadItem}
                 <div
                   class="relative min-w-0 border-t py-4 border-zinc-200 dark:border-zinc-800"
                 >
