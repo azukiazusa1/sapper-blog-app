@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { localizeHref } from "$paraglide/runtime";
   import variables from "$lib/variables";
   import Ogp from "../../../../components/Ogp.svelte";
   import ShortBlog from "../../../../components/ShortBlog/ShortBlog.svelte";
@@ -11,7 +12,7 @@
   let { data }: Props = $props();
 
   let { short, htmlThreadItems } = $derived(data);
-  let url = $derived(`${variables.baseURL}/blog/shorts/${short.sys.id}`);
+  let url = $derived(`${variables.baseURL}${localizeHref(`/blog/shorts/${short.sys.id}`)}`);
 </script>
 
 <svelte:head>
