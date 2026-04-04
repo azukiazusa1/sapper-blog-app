@@ -9,6 +9,7 @@ const config = {
       project: "./project.inlang",
       outdir: "./src/paraglide",
       strategy: ["url", "preferredLanguage", "baseLocale"],
+      disableAsyncLocalStorage: true,
     }),
     sveltekit(),
     tailwindcss(),
