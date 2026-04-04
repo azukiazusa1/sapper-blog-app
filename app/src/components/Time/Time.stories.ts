@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/svelte";
-import { within } from "@storybook/test";
-import { expect } from "@storybook/test";
+import { expect, within } from "storybook/test";
 import Time from "./Time.svelte";
 
 const meta: Meta<Time> = {

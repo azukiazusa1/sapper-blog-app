@@ -1,6 +1,5 @@
-import { expect } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/svelte";
-import { within } from "@storybook/test";
+import { expect, within } from "storybook/test";
 import Pagination from "./Pagination.svelte";
 
 const meta: Meta<Pagination> = {
