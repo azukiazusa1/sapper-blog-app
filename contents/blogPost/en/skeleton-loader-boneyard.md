@@ -5,7 +5,7 @@ slug: "skeleton-loader-boneyard"
 about: "Skeleton loaders are placeholders shown before content finishes loading. Boneyard is a framework that removes the manual work of measuring and updating them. This article explains how to implement skeleton loaders easily with Boneyard."
 createdAt: "2026-04-04T14:19+09:00"
 updatedAt: "2026-04-04T14:19+09:00"
-tags: ["react"]
+tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3YJGQefGSEYpWVSKrbtvid/e59f92783e295d74888f094965ca6ccd/fruit_grape_muscat_illust_120-768x778.png"
   title: "マスカットのイラスト"
@@ -54,10 +54,8 @@ selfAssessment:
         - text: "Pass the path to the JSON file through a `src` prop on the `<Skeleton>` component"
           correct: false
           explanation: "The `<Skeleton>` component does not have a `src` prop. The skeleton definitions are linked automatically by importing `registry.js`."
-
 published: true
 ---
-
 Skeleton loaders are placeholders shown before content finishes loading, giving users a visual cue that the page is still loading. Compared with a simple loading spinner, skeleton loaders have advantages such as preventing layout shifts by presenting a more concrete layout and helping users anticipate the structure of the content.
 
 That said, implementing skeleton loaders is more work than it looks. To prevent layout shifts, you need a skeleton loader that matches the layout of the real content, which means manually measuring the height of the actual DOM and setting the skeleton loader's height accordingly. Since the skeleton also needs to be updated whenever the real UI changes, the maintenance cost can become quite high.
@@ -258,3 +256,4 @@ For the actual implementation, see https://github.com/0xGF/boneyard/blob/main/pa
 ## References
 
 - [boneyard - skeleton screens for your UI](https://boneyard.vercel.app/features)
+
