@@ -26,7 +26,9 @@
   let rawMarkdown = $derived(data.rawMarkdown);
   let contributors = $derived(data.contributors);
 
-  let url = $derived(`${variables.baseURL}${localizeHref(`/blog/${post.slug}`)}`);
+  let url = $derived(
+    `${variables.baseURL}${localizeHref(`/blog/${post.slug}`)}`,
+  );
   let isEnglish = $derived(getLocale() === "en");
   let originalJapaneseUrl = $derived(
     localizeHref(`/blog/${post.slug}`, { locale: "ja" }),

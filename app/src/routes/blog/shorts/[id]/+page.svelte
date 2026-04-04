@@ -12,7 +12,9 @@
   let { data }: Props = $props();
 
   let { short, htmlThreadItems } = $derived(data);
-  let url = $derived(`${variables.baseURL}${localizeHref(`/blog/shorts/${short.sys.id}`)}`);
+  let url = $derived(
+    `${variables.baseURL}${localizeHref(`/blog/shorts/${short.sys.id}`)}`,
+  );
 </script>
 
 <svelte:head>
