@@ -1157,6 +1157,46 @@ describe("createBlogPost", () => {
       },
     });
   });
+
+  test("publish: false を指定した場合は published 記事でも publish しない", async () => {
+    const publish = vi.fn();
+    server.use(
+      http.put(contentful("/entries/:entryId"), async ({ request }) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const body = (await request.json()) as any;
+        return HttpResponse.json({
+          metadata: { tags: [] },
+          sys: createDummyMetaSysProps({ id: "blog2" }),
+          fields: body.fields,
+        });
+      }),
+      http.put(contentful("/entries/:entryId/published"), async ({ params }) => {
+        publish(params["entryId"]);
+        return new Response(undefined, { status: 200 });
+      }),
+    );
+
+    await createBlogPost(
+      {
+        id: "id",
+        title: "title",
+        about: "about",
+        createdAt: "2021-01-01",
+        updatedAt: "2021-01-02",
+        slug: "slug",
+        article: "article",
+        published: true,
+        thumbnail: {
+          title: "title",
+          url: "https://images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
+        },
+        tags: ["tag1-name", "tag2-name"],
+      },
+      { publish: false },
+    );
+
+    expect(publish).not.toHaveBeenCalled();
+  });
 });
 
 describe("updateBlogPost", () => {
