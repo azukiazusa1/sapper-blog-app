@@ -15,7 +15,7 @@
     "typecheck": "turbo run typecheck",
     "new:article": "npm run new -w=packages/content-management",
     "test": "turbo run test",
-    "generate:ogp": "npm run generate -w=packages/ogp-generator"
+    "generate:ogp": "npm run generate -w=packages/ogp-generator --"
   },
   "engines": {
     "node": ">=24.14.1"

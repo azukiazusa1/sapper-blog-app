@@ -23,6 +23,7 @@ if (ADDED_FILES) {
   let hasError = false;
   const japaneseFiles = addedFiles.filter((file) => !isEnglishFile(file));
   const englishFiles = addedFiles.filter((file) => isEnglishFile(file));
+  const englishFileNames = new Set(englishFiles.map(getFilename));
 
   for (const file of japaneseFiles) {
     const filename = getFilename(file);
@@ -32,7 +33,8 @@ if (ADDED_FILES) {
       console.error(result.error);
       continue;
     }
-    await createBlogPost(result.data);
+    const shouldPublish = !englishFileNames.has(filename);
+    await createBlogPost(result.data, { publish: shouldPublish });
   }
 
   for (const file of englishFiles) {

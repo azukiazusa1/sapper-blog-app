@@ -362,7 +362,10 @@ const tagNamesToTagIds = async (
   );
 };
 
-export const createBlogPost = async (blog: BlogPost): Promise<void> => {
+export const createBlogPost = async (
+  blog: BlogPost,
+  options?: { publish?: boolean },
+): Promise<void> => {
   const client = await createClient();
   const entry = await client.createEntryWithId("blogPost", blog.id, {
     fields: {
@@ -412,7 +415,9 @@ export const createBlogPost = async (blog: BlogPost): Promise<void> => {
     },
   });
 
-  if (blog.published) {
+  const shouldPublish = options?.publish ?? true;
+
+  if (blog.published && shouldPublish) {
     await entry.publish();
   }
 };
