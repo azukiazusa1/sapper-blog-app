@@ -8,7 +8,7 @@ updatedAt: "2026-04-05T11:29+09:00"
 tags: ["codex"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6F37q3sUBNcslGybG5Jj4/a78d727bb3ccbf53bd06831408b95fe0/omelette_21156-768x591.png"
-  title: "オムレツのイラスト"
+  title: "omelette 21156-768x591"
 audio: null
 selfAssessment:
   quizzes:
@@ -54,10 +54,8 @@ selfAssessment:
         - text: "When approval is required, the decision can be delegated to a sub-agent instead of asking the user every time, reducing approval frequency"
           correct: true
           explanation: "The article presents this as the main benefit of `guardian_approval`: fewer user approvals and less approval fatigue."
-
 published: true
 ---
-
 One of the key design questions when using coding agents is how much command auto-approval should be allowed. Letting the agent act autonomously without asking for approval for every command can improve workflow efficiency, but it also introduces risks such as running incorrect commands or executing malicious code. There have even been reports of coding agents mistakenly running dangerous commands such as `rm -rf ~/`.
 
 On the other hand, requiring user approval before every single command does not automatically make things safer. If approval prompts appear too frequently, users may gradually begin approving them casually, creating the risk of approving actions reflexively without checking what will actually be run. This is often called "authorization fatigue," and from a security perspective it can create a more dangerous situation. It is important to define flexible approval rules based on command type and risk level, such as auto-approving lower-risk commands like `ls` and `cat` while requiring approval for commands like `rm` and `mv` that affect the filesystem.
