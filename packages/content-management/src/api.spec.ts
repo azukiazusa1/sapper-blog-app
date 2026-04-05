@@ -1170,10 +1170,13 @@ describe("createBlogPost", () => {
           fields: body.fields,
         });
       }),
-      http.put(contentful("/entries/:entryId/published"), async ({ params }) => {
-        publish(params["entryId"]);
-        return new Response(undefined, { status: 200 });
-      }),
+      http.put(
+        contentful("/entries/:entryId/published"),
+        async ({ params }) => {
+          publish(params["entryId"]);
+          return new Response(undefined, { status: 200 });
+        },
+      ),
     );
 
     await createBlogPost(
