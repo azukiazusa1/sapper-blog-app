@@ -8,7 +8,7 @@ updatedAt: "2026-01-24T14:09+09:00"
 tags: ["AI", "Pencil", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/24M87rJdt7ZyWWZYynxEDM/fc362ed03c3234a8b02d532527d95476/image.png"
-  title: "Illustration of a notebook and pencil"
+  title: "ノートと鉛筆のイラスト"
 audio: null
 selfAssessment:
   quizzes:

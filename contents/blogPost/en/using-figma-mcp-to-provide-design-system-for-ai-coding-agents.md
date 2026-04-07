@@ -5,10 +5,10 @@ slug: "using-figma-mcp-to-provide-design-system-for-ai-coding-agents"
 about: "This article introduces how to use Figma MCP to provide design context and design tokens when AI coding agents generate frontend code, so they can follow consistent design guidelines."
 createdAt: "2026-01-03T10:27:00+09:00"
 updatedAt: "2026-01-03T10:27:00+09:00"
-tags: ["AI", "Figma", "MCP", "Claude Code"]
+tags: ["AI", "figma", "MCP", "claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4l94jJLmBwLhEVfbEUhHKl/53bc961ff90a64b588ba7c788b77e641/koucha_tea_5898-768x656.png"
-  title: "Illustration of black tea"
+  title: "紅茶のイラスト"
 audio: null
 selfAssessment:
   quizzes:

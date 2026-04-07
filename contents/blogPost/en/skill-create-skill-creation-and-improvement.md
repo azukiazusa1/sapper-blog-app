@@ -5,10 +5,10 @@ slug: "skill-create-skill-creation-and-improvement"
 about: "Agent Skills that give Claude Code domain expertise are gaining attention, but creating them still involves hurdles. This article explores skill-creator, Anthropic's tool for skill creation, improvement, and performance measurement."
 createdAt: "2026-03-07T11:08+09:00"
 updatedAt: "2026-03-07T11:08+09:00"
-tags: ["Agent Skills", "skill-creator", "Claude Code"]
+tags: ["agent skill", "skill-creator", "claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2zjJyzLOtRXdLMHJUvrJ2f/755f49ac07b162cb246ece7cdf9d5df6/onsen-manjyu_16831-768x610.png"
-  title: "Illustration of onsen manju"
+  title: "温泉まんじゅうのイラスト"
 audio: null
 selfAssessment:
   quizzes:
