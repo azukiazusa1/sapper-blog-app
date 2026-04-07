@@ -38,19 +38,19 @@
 </script>
 
 <div class="relative h-72 overflow-y-hidden px-2">
-  <ol class="animate-scroll mt-28 border-l border-gray-200">
+  <ol class="animate-scroll mt-28 border-l border-stone-200">
     {#each timelineData as item}
       <li class="ml-4">
         <div
-          class="border-gray absolute -left-1.5 z-10 mt-1.5 h-3 w-3 rounded-full border bg-gray-200"
+          class="absolute -left-1.5 z-10 mt-1.5 h-3 w-3 rounded-full border border-stone-200 bg-stone-200"
         ></div>
-        <time class="mb-1 text-sm leading-none font-normal text-gray-400"
+        <time class="mb-1 text-sm leading-none font-normal text-stone-400"
           >{item.date}</time
         >
-        <h3 class="text-lg font-semibold text-gray-900">
+        <h3 class="text-lg font-semibold text-stone-900">
           {item.title}
         </h3>
-        <p class="mb-4 text-base font-normal text-gray-500">
+        <p class="mb-4 text-base font-normal text-stone-500">
           {item.description}
         </p>
       </li>

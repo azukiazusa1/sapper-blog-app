@@ -48,11 +48,11 @@
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div
     onclick={self(close)}
-    class="fixed inset-0 z-10 overflow-y-auto bg-zinc-900 opacity-50"
+    class="fixed inset-0 z-10 overflow-y-auto bg-stone-900 opacity-50"
   ></div>
 {/if}
 <aside
-  class={`fixed top-0 left-0 z-60 flex h-full w-72 transform flex-col justify-between overflow-auto bg-white transition-all duration-300 ease-in-out shadow-xl dark:bg-zinc-800 ${
+  class={`fixed top-0 left-0 z-60 flex h-full w-72 transform flex-col justify-between overflow-auto bg-stone-50 transition-all duration-300 ease-in-out border-r border-stone-200 dark:border-stone-800 dark:bg-stone-950 ${
     isOpen ? "visible translate-x-0 " : "invisible -translate-x-full"
   }`}
 >
@@ -69,11 +69,14 @@
               onclick={close}
               aria-current={isMatchPath(route, segment) ? "page" : undefined}
               href={localizeHref(route)}
-              class={`flex items-center rounded-xl px-4 py-3 capitalize font-medium transition-all duration-300 hover:bg-gray-100 dark:hover:bg-zinc-700 ${
+              class={`flex items-center rounded px-4 py-3 capitalize font-medium transition-colors hover:bg-stone-100 dark:hover:bg-stone-800 ${
                 isMatchPath(route, segment)
-                  ? "text-indigo-600 dark:text-indigo-300 bg-gray-100 dark:bg-zinc-700"
+                  ? "bg-stone-100 dark:bg-stone-800"
                   : ""
               }`}
+              style={isMatchPath(route, segment)
+                ? "color: var(--color-accent)"
+                : ""}
             >
               {route.slice(1)}
             </a>
@@ -91,10 +94,10 @@
               localStorage.setItem(localStorageKey, locale);
               close();
             }}
-            class={`flex-1 rounded-xl px-4 py-2 text-center text-sm font-medium uppercase transition-all duration-300 ${
+            class={`flex-1 rounded px-4 py-2 text-center text-sm font-mono font-medium uppercase transition-colors ${
               currentLocale === locale
-                ? "bg-indigo-600 text-white"
-                : "bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                ? "bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900"
+                : "bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700"
             }`}>{locale}</a
           >
         {/each}
@@ -105,7 +108,7 @@
     <a
       href={localizeHref("/rss.xml")}
       target="_blank"
-      class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+      class="flex h-10 w-10 items-center justify-center rounded bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700"
       rel="noopener noreferrer"
       aria-label="RSS"
     >
@@ -114,7 +117,7 @@
     <a
       href={localizeHref("/llms.txt")}
       target="_blank"
-      class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+      class="flex h-10 w-10 items-center justify-center rounded bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700"
       rel="noopener noreferrer"
       aria-label="LLMS"
     >
@@ -125,7 +128,7 @@
       target="_blank"
       rel="noopener noreferrer"
       aria-label="GitHub"
-      class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+      class="flex h-10 w-10 items-center justify-center rounded bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700"
     >
       <GitHub className="h-5 w-5" />
     </a>

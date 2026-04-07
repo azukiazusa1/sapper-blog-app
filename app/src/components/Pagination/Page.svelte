@@ -13,10 +13,10 @@
   let className = $derived(
     `h-12 flex ${
       sm ? "px-4" : "w-12"
-    } rounded-full justify-center items-center cursor-pointer leading-5 font-medium transition-all duration-200 ${
+    } rounded-lg justify-center items-center cursor-pointer leading-5 font-medium transition-colors border ${
       current && !sm
-        ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white dark:from-indigo-500 dark:to-purple-500"
-        : "bg-white hover:bg-indigo-50 hover:text-indigo-600 dark:bg-zinc-900 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400"
+        ? "bg-stone-800 text-white border-stone-800 dark:bg-stone-100 dark:text-stone-900 dark:border-stone-100"
+        : "bg-white border-stone-200 hover:bg-stone-100 dark:bg-stone-900 dark:border-stone-800 dark:hover:bg-stone-800"
     }`,
   );
 </script>

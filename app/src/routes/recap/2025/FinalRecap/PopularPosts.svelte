@@ -112,7 +112,7 @@
           <div class="flex-1">
             <!-- Title with gradient on hover -->
             <h3
-              class="text-xl md:text-2xl font-bold mb-4 text-gray-900
+              class="text-xl md:text-2xl font-bold mb-4 text-stone-900
                        transition-all duration-300
                        group-hover:bg-gradient-to-r {gradient.titleHover
                 .from} {gradient.titleHover.to}
@@ -123,11 +123,11 @@
 
             <!-- View count -->
             <div class="flex items-baseline gap-2">
-              <span class="text-3xl md:text-4xl font-black text-gray-800">
+              <span class="text-3xl md:text-4xl font-black text-stone-800">
                 <CountUp value={post.views} duration={1200} />
               </span>
               <span
-                class="text-sm uppercase tracking-wider text-gray-500 font-semibold"
+                class="text-sm uppercase tracking-wider text-stone-500 font-semibold"
                 >{m.recap2025Views()}</span
               >
             </div>

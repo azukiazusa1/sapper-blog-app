@@ -29,7 +29,7 @@
   </div>
 
   <article
-    class="overflow-hidden rounded-[32px] border border-zinc-200/80 bg-white/95 shadow-[0_20px_64px_-32px_rgba(15,23,42,0.45)] dark:border-zinc-800 dark:bg-zinc-950/90"
+    class="overflow-hidden rounded-lg border border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-950"
   >
     <div class="flex gap-4 p-5 sm:p-7">
       <div class="flex w-12 shrink-0 flex-col items-center">
@@ -43,18 +43,18 @@
           decoding="async"
         />
         {#if htmlThreadItems.length > 1}
-          <div class="mt-3 w-px flex-1 bg-zinc-200 dark:bg-zinc-700"></div>
+          <div class="mt-3 w-px flex-1 bg-stone-200 dark:bg-stone-700"></div>
         {/if}
       </div>
 
       <div class="min-w-0 flex-1">
         <div class="flex items-start justify-between gap-3">
           <div>
-            <p class="text-sm font-semibold text-zinc-950 dark:text-zinc-50">
+            <p class="text-sm font-semibold text-stone-900 dark:text-stone-100">
               azukiazusa
             </p>
             <h1
-              class="mt-1 text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50"
+              class="mt-1 text-2xl font-semibold tracking-tight text-stone-900 dark:text-stone-100"
             >
               {title}
             </h1>
@@ -92,12 +92,14 @@
             decoding="async"
           />
           {#if index !== htmlThreadItems.length - 2}
-            <div class="mt-3 w-px flex-1 bg-zinc-200 dark:bg-zinc-700"></div>
+            <div class="mt-3 w-px flex-1 bg-stone-200 dark:bg-stone-700"></div>
           {/if}
         </div>
 
-        <div class="min-w-0 flex-1 rounded-2xl bg-zinc-50 p-5 dark:bg-zinc-900">
-          <p class="text-sm font-semibold text-zinc-950 dark:text-zinc-50">
+        <div
+          class="min-w-0 flex-1 rounded-lg bg-stone-50 p-5 border border-stone-100 dark:bg-stone-900 dark:border-stone-800"
+        >
+          <p class="text-sm font-semibold text-stone-900 dark:text-stone-100">
             azukiazusa
           </p>
           <div

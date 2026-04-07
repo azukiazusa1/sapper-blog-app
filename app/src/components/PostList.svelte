@@ -17,9 +17,7 @@
 
 <div class="grid gap-8">
   {#each posts as post, i (post.slug)}
-    <div
-      class="transform transition-all duration-300 hover:-translate-y-1 h-full flex"
-    >
+    <div class="h-full flex">
       <PostCard
         title={post.title}
         slug={post.slug}

@@ -29,49 +29,49 @@
     }
   > = {
     orange: {
-      bg: { from: "from-orange-900", via: "via-red-900", to: "to-gray-900" },
+      bg: { from: "from-orange-900", via: "via-red-900", to: "to-stone-900" },
       orb1: { from: "from-orange-500", to: "to-red-600" },
       orb2: { from: "from-red-500", to: "to-orange-600" },
       title: { from: "from-white", via: "via-orange-200", to: "to-white" },
       ctaPrimary: { from: "from-orange-500", to: "to-red-600" },
       ctaSecondary: "border-orange-400 text-orange-300 hover:bg-orange-400/10",
-      backLink: "text-gray-400 hover:text-orange-300",
+      backLink: "text-stone-400 hover:text-orange-300",
     },
     blue: {
-      bg: { from: "from-blue-900", via: "via-cyan-900", to: "to-gray-900" },
+      bg: { from: "from-blue-900", via: "via-cyan-900", to: "to-stone-900" },
       orb1: { from: "from-blue-500", to: "to-cyan-600" },
       orb2: { from: "from-cyan-500", to: "to-blue-600" },
       title: { from: "from-white", via: "via-blue-200", to: "to-white" },
       ctaPrimary: { from: "from-blue-500", to: "to-cyan-600" },
       ctaSecondary: "border-blue-400 text-blue-300 hover:bg-blue-400/10",
-      backLink: "text-gray-400 hover:text-blue-300",
+      backLink: "text-stone-400 hover:text-blue-300",
     },
     purple: {
-      bg: { from: "from-purple-900", via: "via-pink-900", to: "to-gray-900" },
+      bg: { from: "from-purple-900", via: "via-pink-900", to: "to-stone-900" },
       orb1: { from: "from-purple-500", to: "to-pink-600" },
       orb2: { from: "from-pink-500", to: "to-purple-600" },
       title: { from: "from-white", via: "via-purple-200", to: "to-white" },
       ctaPrimary: { from: "from-purple-500", to: "to-pink-600" },
       ctaSecondary: "border-purple-400 text-purple-300 hover:bg-purple-400/10",
-      backLink: "text-gray-400 hover:text-purple-300",
+      backLink: "text-stone-400 hover:text-purple-300",
     },
     green: {
-      bg: { from: "from-green-900", via: "via-emerald-900", to: "to-gray-900" },
+      bg: { from: "from-green-900", via: "via-emerald-900", to: "to-stone-900" },
       orb1: { from: "from-green-500", to: "to-emerald-600" },
       orb2: { from: "from-emerald-500", to: "to-green-600" },
       title: { from: "from-white", via: "via-green-200", to: "to-white" },
       ctaPrimary: { from: "from-green-500", to: "to-emerald-600" },
       ctaSecondary: "border-green-400 text-green-300 hover:bg-green-400/10",
-      backLink: "text-gray-400 hover:text-green-300",
+      backLink: "text-stone-400 hover:text-green-300",
     },
     pink: {
-      bg: { from: "from-pink-900", via: "via-rose-900", to: "to-gray-900" },
+      bg: { from: "from-pink-900", via: "via-rose-900", to: "to-stone-900" },
       orb1: { from: "from-pink-500", to: "to-rose-600" },
       orb2: { from: "from-rose-500", to: "to-pink-600" },
       title: { from: "from-white", via: "via-pink-200", to: "to-white" },
       ctaPrimary: { from: "from-pink-500", to: "to-rose-600" },
       ctaSecondary: "border-pink-400 text-pink-300 hover:bg-pink-400/10",
-      backLink: "text-gray-400 hover:text-pink-300",
+      backLink: "text-stone-400 hover:text-pink-300",
     },
   };
 
@@ -119,7 +119,7 @@
 
     <!-- Body text (white) -->
     <p
-      class="text-base md:text-lg lg:text-xl text-gray-100 max-w-3xl mx-auto mb-10 md:mb-12 leading-relaxed px-4"
+      class="text-base md:text-lg lg:text-xl text-stone-100 max-w-3xl mx-auto mb-10 md:mb-12 leading-relaxed px-4"
     >
       {m.recap2025ThankYouBody()}
     </p>

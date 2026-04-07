@@ -11,7 +11,7 @@
 
 <div class="flex flex-col justify-center">
   <h3
-    class="rounded-ss-md bg-gray-200 px-4 py-8 text-lg font-medium dark:bg-zinc-600"
+    class="rounded-ss-md bg-stone-100 px-4 py-8 text-lg font-medium dark:bg-stone-700"
   >
     {quiz.question}
   </h3>
@@ -19,10 +19,10 @@
     {#each quiz.answers as answer}
       <li role="listitem">
         <details
-          class="border border-t-0 border-gray-300 font-medium text-gray-900 dark:border-zinc-600 dark:text-gray-50"
+          class="border border-t-0 border-stone-200 font-medium text-stone-900 dark:border-stone-700 dark:text-stone-100"
         >
           <summary
-            class="cursor-pointer p-4 text-lg hover:bg-gray-100 dark:hover:bg-zinc-700"
+            class="cursor-pointer p-4 text-lg hover:bg-stone-100 dark:hover:bg-stone-700"
           >
             {answer.text}
           </summary>

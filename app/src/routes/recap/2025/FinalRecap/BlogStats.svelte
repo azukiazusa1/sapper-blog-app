@@ -123,7 +123,7 @@
         style="--glow-color: {gradient.glow};"
       >
         <div
-          class="mb-6 text-sm uppercase tracking-widest text-gray-500 font-semibold"
+          class="mb-6 text-sm uppercase tracking-widest text-stone-500 font-semibold"
         >
           {m.recap2025TotalPosts()}
         </div>
@@ -159,7 +159,7 @@
         style="--glow-color: {gradient.glow};"
       >
         <div
-          class="mb-6 text-sm uppercase tracking-widest text-gray-500 font-semibold"
+          class="mb-6 text-sm uppercase tracking-widest text-stone-500 font-semibold"
         >
           {m.recap2025TotalWords()}
         </div>

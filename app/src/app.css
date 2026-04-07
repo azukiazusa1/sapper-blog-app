@@ -4,8 +4,34 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
+  /*
+   * 未使用のカラーパレットを無効化（DESIGN.md Section 2）
+   * グレー系は stone に統一。使わないパレットのユーティリティクラスを
+   * 生成しないことで、誤使用を防止する。
+   */
+  --color-slate-*: initial;
+  --color-gray-*: initial;
+  --color-zinc-*: initial;
+  --color-neutral-*: initial;
+  --color-lime-*: initial;
+  --color-teal-*: initial;
+  --color-sky-*: initial;
+  --color-fuchsia-*: initial;
+
   --animate-fade-in: fadeIn 0.2s ease-out;
   --animate-rotate: rotate 30s ease-in-out infinite;
+
+  --font-sans:
+    "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+    "Noto Sans JP", sans-serif;
+
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+
+  --color-accent: oklch(52% 0.086 182);
+  --color-accent-light: oklch(78% 0.133 182);
 
   @keyframes fade-in {
     0% {
@@ -42,7 +68,63 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-stone-200, currentColor);
+  }
+
+  /* 汎用的な文章の折り返し指定 */
+  :where(:root) {
+    overflow-wrap: anywhere;
+    line-break: strict;
+  }
+
+  /* 日本語と英数字間のスペース自動挿入 */
+  :where(:root) {
+    text-autospace: normal;
+  }
+
+  :where(
+    pre,
+    time,
+    input:not([type="button" i], [type="submit" i], [type="reset" i]),
+    textarea,
+    [contenteditable]
+  ) {
+    text-autospace: no-autospace;
+  }
+
+  /* 約物スペースの自動除去 */
+  :where(:root) {
+    text-spacing-trim: trim-start;
+  }
+
+  :where(pre) {
+    text-spacing-trim: space-all;
+  }
+
+  /* カーニング：日本語は見出しのみ、英語はデフォルトで有効 */
+  :where(:lang(en)) {
+    font-kerning: normal;
+  }
+
+  :where(:lang(ja)) {
+    font-kerning: none;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6, caption) {
+    font-kerning: normal;
+
+    &:lang(ja) {
+      font-feature-settings: "palt";
+
+      @supports (word-break: auto-phrase) {
+        word-break: auto-phrase;
+        text-wrap: balance;
+      }
+    }
+
+    &:lang(en) {
+      text-wrap: balance;
+    }
   }
 }
 
@@ -60,37 +142,68 @@ html:has(dialog[open]) {
 /* style for Markdown */
 
 #contents {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.9;
 }
 
-@media (min-width: 768px) {
+@media (min-width: calc(768 / 16 * 1em)) {
   #contents {
-    font-size: 17px;
+    font-size: 1.0625rem;
     line-height: 2;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.04em;
+  }
+}
+
+#contents :is(h1, h2, h3, h4, h5, h6) {
+  font-feature-settings: "palt";
+  font-kerning: normal;
+
+  @supports (word-break: auto-phrase) {
+    word-break: auto-phrase;
+    text-wrap: balance;
   }
 }
 
 #contents h1,
 #contents h2 {
-  @apply border-b border-gray-200 dark:border-zinc-700 text-gray-800 dark:text-gray-100;
+  @apply border-b border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100;
+  text-wrap: balance;
 }
 
 #contents h3 {
-  @apply text-gray-800 dark:text-gray-100;
+  @apply text-stone-800 dark:text-stone-100;
+  text-wrap: balance;
 }
 
 #contents h4 {
-  @apply text-gray-800 dark:text-gray-100;
+  @apply text-stone-800 dark:text-stone-100;
+  text-wrap: balance;
+}
+
+/* sticky header 分のスクロールオフセット */
+#contents .markdown-body h2,
+#contents .markdown-body h3,
+#contents .markdown-body h4 {
+  scroll-margin-top: 5rem;
+}
+
+/* セクション間の呼吸（読書リズム） */
+#contents .markdown-body h2 {
+  margin-top: 3em;
+}
+
+#contents .markdown-body h3 {
+  margin-top: 2em;
 }
 
 #contents blockquote {
-  @apply my-6 border-l-4 border-l-indigo-400 bg-indigo-50/50 py-3 px-5 text-gray-700 rounded-r-lg md:my-8 dark:border-l-indigo-500 dark:bg-indigo-950/30 dark:text-gray-300;
+  @apply my-6 border-l-4 py-3 px-5 text-stone-700 rounded-r-lg md:my-8 dark:text-stone-300;
+  border-left-color: var(--color-accent);
+  background-color: color-mix(in oklch, var(--color-accent) 8%, transparent);
 }
 
 #contents details[open] {
-  @apply rounded-lg border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800;
+  @apply rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800;
 }
 
 #contents details > p {
@@ -99,7 +212,18 @@ html:has(dialog[open]) {
 
 #contents summary {
   padding: 0.75rem 1.25rem;
-  @apply mb-6 cursor-pointer rounded-t-lg bg-indigo-50 font-medium text-indigo-800 md:mb-8 dark:bg-indigo-900/30 dark:text-indigo-200;
+  @apply mb-6 cursor-pointer rounded-t-lg font-medium md:mb-8;
+  background-color: color-mix(in oklch, var(--color-accent) 10%, transparent);
+  color: var(--color-accent);
+}
+
+html.dark #contents summary {
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-light) 8%,
+    transparent
+  );
+  color: var(--color-accent-light);
 }
 
 #contents img,
@@ -121,27 +245,27 @@ html:has(dialog[open]) {
 }
 
 #contents .markdown-body a {
-  color: #4361ee;
+  color: var(--color-accent);
   word-break: break-all;
   text-decoration: none;
   font-weight: 500;
-  border-bottom: 1px dotted #4361ee;
+  border-bottom: 1px dotted var(--color-accent);
   transition: all 0.2s ease;
 }
 
 #contents .markdown-body a:hover {
-  color: #2f3cc9;
-  border-bottom: 1px solid #2f3cc9;
+  opacity: 0.75;
+  border-bottom: 1px solid var(--color-accent);
 }
 
 html.dark #contents .markdown-body a {
-  color: #738aff;
-  border-bottom: 1px dotted #738aff;
+  color: var(--color-accent-light);
+  border-bottom: 1px dotted var(--color-accent-light);
 }
 
 html.dark #contents .markdown-body a:hover {
-  color: #96a5ff;
-  border-bottom: 1px solid #96a5ff;
+  opacity: 0.85;
+  border-bottom: 1px solid var(--color-accent-light);
 }
 
 /* 見出しの # */
@@ -149,7 +273,7 @@ html.dark #contents .markdown-body a:hover {
   text-decoration: none !important;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: calc(1024 / 16 * 1em)) {
   #contents {
     @apply grid items-start;
     grid-template-columns: minmax(0, 1fr) 240px;
@@ -189,7 +313,7 @@ html.dark #contents .markdown-body a:hover {
 }
 
 /* TOC スタイル */
-@media (min-width: 1024px) {
+@media (min-width: calc(1024 / 16 * 1em)) {
   .toc-desktop .toc-wrapper {
     position: sticky;
     top: 5rem;
@@ -208,11 +332,11 @@ html.dark #contents .markdown-body a:hover {
 }
 
 .toc-toggle {
-  @apply flex items-center gap-2 rounded-lg px-3 py-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-zinc-800 dark:hover:text-gray-200;
+  @apply flex items-center gap-2 rounded px-3 py-2 text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-700 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-200;
 }
 
 .toc-nav {
-  @apply mt-2 border-l-2 border-gray-200 dark:border-zinc-700;
+  @apply mt-2 border-l-2 border-stone-200 dark:border-stone-700;
 }
 
 .toc-list {
@@ -220,17 +344,20 @@ html.dark #contents .markdown-body a:hover {
 }
 
 .toc-link {
-  @apply block rounded-r-md py-1 pr-3 pl-3 text-sm leading-relaxed text-gray-600 no-underline transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-zinc-800 dark:hover:text-gray-200;
+  @apply block rounded-r py-1 pr-3 pl-3 text-sm leading-relaxed text-stone-600 no-underline transition-colors hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-200;
   border-bottom: none !important;
 }
 
 .toc-link--active {
-  @apply border-l-2 border-l-indigo-500 bg-indigo-50/80 font-medium text-indigo-700 dark:border-l-indigo-400 dark:bg-indigo-950/40 dark:text-indigo-300;
+  @apply border-l-2 font-medium;
+  border-left-color: var(--color-accent);
+  background-color: color-mix(in oklch, var(--color-accent) 8%, transparent);
+  color: var(--color-accent);
 }
 
 /* モバイルではデスクトップ TOC を非表示、モバイル TOC を表示 */
 .toc-mobile {
-  @apply mt-6 rounded-lg border border-gray-200 p-4 dark:border-zinc-700;
+  @apply mt-6 rounded-lg border border-stone-200 p-4 dark:border-stone-700;
 }
 
 .toc-mobile .toc-wrapper {
@@ -243,7 +370,7 @@ html.dark #contents .markdown-body a:hover {
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: calc(1024 / 16 * 1em)) {
   .toc-mobile {
     display: none;
   }
@@ -290,13 +417,13 @@ h6 .icon-link::before {
 }
 
 .icon-link {
-  @apply mr-2 text-gray-400 no-underline hover:text-gray-600;
+  @apply mr-2 text-stone-400 no-underline hover:text-stone-600;
 }
 
 .alert {
   font-size: 1rem;
   line-height: 1.9;
-  @apply relative my-6 rounded-lg rounded-l-none border-l-4 border-l-gray-300 px-4 py-6 md:my-8;
+  @apply relative my-6 rounded-lg rounded-l-none border-l-4 border-l-stone-300 px-4 py-6 md:my-8;
 }
 
 .alert p:first-child {
@@ -360,7 +487,7 @@ h6 .icon-link::before {
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-  @apply dark:bg-zinc-800 font-normal;
+  @apply dark:bg-stone-800 font-normal;
 }
 
 /* コードブロックのコンテナ */
@@ -411,7 +538,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 .link-card {
-  @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-gray-100 md:flex-row dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700;
+  @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-stone-50 md:flex-row dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700;
   border-bottom: none !important;
 }
 
@@ -423,22 +550,26 @@ figure[data-rehype-pretty-code-figure] {
   width: 60%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: calc(768 / 16 * 1em)) {
   .link-card__main:has(+ .link-card__thumbnail) {
     width: 70%;
   }
 }
 
 .link-card__title {
-  @apply truncate text-lg font-bold tracking-tight text-slate-900 dark:text-white;
+  @apply truncate text-lg font-bold tracking-tight text-stone-900 dark:text-white;
 }
 
 .link-card__description {
   display: -webkit-box;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: block-axis;
   -webkit-line-clamp: 2;
-  overflow: hidden;
-  @apply mt-1 text-sm font-normal text-gray-700 dark:text-gray-300;
+  overflow-block: clip;
+  @apply mt-1 text-sm font-normal text-stone-700 dark:text-stone-300;
+
+  @supports not (overflow-block: clip) {
+    overflow-y: clip;
+  }
 }
 
 .link-card__meta {
@@ -451,7 +582,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 .link-card__url {
-  @apply ml-2 text-zinc-900 dark:text-white;
+  @apply ml-2 text-stone-900 dark:text-white;
 }
 
 .link-card__thumbnail {
@@ -478,8 +609,8 @@ span[style*="color:#545454"] {
 }
 
 [data-highlighted-chars] {
-  @apply rounded-sm bg-zinc-600/50;
-  box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+  @apply rounded-sm bg-stone-600/50;
+  box-shadow: 0 0 0 4px rgb(87 83 78 / 0.5);
 }
 
 [data-chars-id] {
@@ -504,10 +635,10 @@ span[style*="color:#545454"] {
 
 section[data-footnotes] {
   font-size: 0.9em;
-  @apply mt-8 border-t border-gray-300 dark:border-zinc-700;
+  @apply mt-8 border-t border-stone-200 dark:border-stone-700;
 }
 
 baseline-status {
   color: inherit;
-  @apply my-6 border border-gray-300 px-6 pt-4 md:my-8 dark:border-zinc-700;
+  @apply my-6 border border-stone-200 px-6 pt-4 md:my-8 dark:border-stone-700;
 }

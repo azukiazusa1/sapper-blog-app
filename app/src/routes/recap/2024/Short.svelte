@@ -38,7 +38,7 @@
   {#each shorts as short, index}
     {#if isVisible}
       <div
-        class={`card absolute -mr-1.5 h-64 w-44 cursor-pointer rounded-xl border-2 border-gray-800 bg-black shadow-lg ${index === 0 || index === 4 ? "hidden md:block" : ""}`}
+        class={`card absolute -mr-1.5 h-64 w-44 cursor-pointer rounded-xl border-2 border-stone-800 bg-black shadow-lg ${index === 0 || index === 4 ? "hidden md:block" : ""}`}
         style={`transform: translateX(calc(${index - 2.2} * 100px)); rotate: ${(index - 2.2) * 15}deg; --index: ${index + 1}`}
         transition:getAnimation={{ delay: index * 300, duration: 700, index }}
       >

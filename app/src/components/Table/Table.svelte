@@ -13,7 +13,7 @@
 
 <div class="relative overflow-x-auto rounded-lg">
   <table class="w-full text-left text-sm">
-    <thead class="bg-gray-200 text-xs uppercase dark:bg-zinc-600">
+    <thead class="bg-stone-100 text-xs uppercase dark:bg-stone-700">
       <tr>
         <th scope="col" class="px-6 py-3">Title</th>
         <th scope="col" class="px-6 py-3 text-center">Thumbnail</th>
@@ -24,7 +24,7 @@
     <tbody>
       {#each data.blogPostCollection?.items ?? [] as draft (draft.sys.id)}
         <tr
-          class="cursor-pointer border-b hover:bg-gray-50 dark:border-zinc-700 dark:hover:bg-zinc-700"
+          class="cursor-pointer border-b border-stone-100 hover:bg-stone-50 dark:border-stone-800 dark:hover:bg-stone-800"
           onclick={() => goto(localizeHref(`/drafts/${draft.sys.id}`))}
         >
           <th scope="row" class="px-6 py-4 whitespace-nowrap">

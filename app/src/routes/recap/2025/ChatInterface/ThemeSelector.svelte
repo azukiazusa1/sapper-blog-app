@@ -67,7 +67,7 @@
     text-align: center;
     font-size: 1rem;
     font-weight: 500;
-    color: #374151; /* gray-700 */
+    color: #374151; /* stone-700 */
   }
 
   .theme-selector-grid {
@@ -89,7 +89,7 @@
     gap: 0.5rem;
     padding: 1rem 0.75rem;
     background: white;
-    border: 2px solid #e5e7eb; /* gray-200 */
+    border: 2px solid #e5e7eb; /* stone-200 */
     border-radius: 0.75rem;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -97,7 +97,7 @@
 
   .theme-button:hover {
     transform: scale(1.05);
-    border-color: #d1d5db; /* gray-300 */
+    border-color: #d1d5db; /* stone-300 */
     box-shadow:
       0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -105,7 +105,7 @@
 
   .theme-button:focus {
     outline: none;
-    border-color: #9ca3af; /* gray-400 */
+    border-color: #9ca3af; /* stone-400 */
     box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
   }
 
@@ -125,13 +125,13 @@
   .theme-name {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #1f2937; /* gray-800 */
+    color: #1f2937; /* stone-800 */
     text-align: center;
   }
 
   .theme-description {
     font-size: 0.75rem;
-    color: #6b7280; /* gray-500 */
+    color: #6b7280; /* stone-500 */
     text-align: center;
   }
 </style>

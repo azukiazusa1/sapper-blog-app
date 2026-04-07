@@ -124,7 +124,7 @@
                 >
                   {talk.eventDate}
                 </div>
-                <h4 class="text-base md:text-lg font-bold text-gray-900 mb-2">
+                <h4 class="text-base md:text-lg font-bold text-stone-900 mb-2">
                   {talk.eventTitle}
                 </h4>
                 <a
@@ -138,7 +138,7 @@
                   {talk.presentationTitle}
                 </a>
                 {#if talk.description}
-                  <p class="text-sm text-gray-600 mt-2">
+                  <p class="text-sm text-stone-600 mt-2">
                     {talk.description}
                   </p>
                 {/if}
@@ -163,7 +163,7 @@
               >
                 {talk.eventDate}
               </div>
-              <h4 class="text-base font-bold text-gray-900 mb-2">
+              <h4 class="text-base font-bold text-stone-900 mb-2">
                 {talk.eventTitle}
               </h4>
               <a
@@ -177,7 +177,7 @@
                 {talk.presentationTitle}
               </a>
               {#if talk.description}
-                <p class="text-sm text-gray-600 mt-2">
+                <p class="text-sm text-stone-600 mt-2">
                   {talk.description}
                 </p>
               {/if}

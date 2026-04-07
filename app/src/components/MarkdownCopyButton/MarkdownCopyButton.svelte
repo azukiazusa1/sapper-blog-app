@@ -21,7 +21,7 @@
 
 <button
   onclick={copyMarkdown}
-  class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-center text-sm transition-all gap-2 bg-transparent text-white border-white/20 dark:border-zinc-700 dark:text-gray-50 border hover:opacity-70"
+  class="inline-flex items-center justify-center rounded px-3 py-1.5 text-center text-xs transition-colors gap-2 border border-stone-300 text-stone-600 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-400 dark:hover:bg-stone-800"
 >
   {#if copied}
     <svg

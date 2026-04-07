@@ -127,12 +127,12 @@
 {#if currentSection === "recap"}
   <div id="final-recap" class="scroll-mt-8">
     <!-- Intro Section -->
-    <section class="recap-section bg-gray-50" in:fade={{ delay: 300 }}>
+    <section class="recap-section bg-stone-50" in:fade={{ delay: 300 }}>
       <div class="mx-auto max-w-4xl text-center">
-        <h2 class="section-title text-gray-900">
+        <h2 class="section-title text-stone-900">
           azukiazusa.dev<br />2025 Recap
         </h2>
-        <p class="text-xl text-gray-600 md:text-2xl">
+        <p class="text-xl text-stone-600 md:text-2xl">
           {m.recap2025IntroSubtitle()}
         </p>
       </div>
@@ -144,24 +144,24 @@
     <!-- Blog Statistics -->
     <section id="blog-stats" class="recap-section bg-white">
       <div class="mx-auto max-w-full">
-        <h2 class="section-title text-gray-900">
+        <h2 class="section-title text-stone-900">
           {m.recap2025ArticlesSection()}
         </h2>
         <BlogStats theme={selectedTheme} />
-        <p class="mt-8 text-center text-lg text-gray-600">
+        <p class="mt-8 text-center text-lg text-stone-600">
           {m.recap2025WordsWritten()}
         </p>
       </div>
     </section>
 
     <!-- Popular Tags -->
-    <section class="recap-section bg-gray-50">
+    <section class="recap-section bg-stone-50">
       <div class="mx-auto max-w-4xl">
-        <h2 class="section-title text-gray-900">
+        <h2 class="section-title text-stone-900">
           {m.recap2025PopularTagsSection()}
         </h2>
         <PopularTags theme={selectedTheme} />
-        <p class="mt-8 text-center text-lg text-gray-600">
+        <p class="mt-8 text-center text-lg text-stone-600">
           {m.recap2025PopularTagsDescription()}
         </p>
       </div>
@@ -170,21 +170,21 @@
     <!-- Popular Posts -->
     <section class="recap-section bg-white">
       <div class="mx-auto max-w-4xl">
-        <h2 class="section-title text-gray-900">
+        <h2 class="section-title text-stone-900">
           {m.recap2025PopularPostsSection()}
         </h2>
         <PopularPosts theme={selectedTheme} />
-        <p class="mt-8 text-center text-lg text-gray-600">
+        <p class="mt-8 text-center text-lg text-stone-600">
           {m.recap2025PopularPostsDescription()}
         </p>
       </div>
     </section>
 
     <!-- Talks & Presentations -->
-    <section class="recap-section bg-gray-50">
+    <section class="recap-section bg-stone-50">
       <div class="mx-auto max-w-4xl">
-        <h2 class="section-title text-gray-900">{m.recap2025TalksSection()}</h2>
-        <p class="mb-8 text-center text-xl text-gray-600">
+        <h2 class="section-title text-stone-900">{m.recap2025TalksSection()}</h2>
+        <p class="mb-8 text-center text-xl text-stone-600">
           {m.recap2025TalksDescription()}
         </p>
         <TalksTimeline theme={selectedTheme} />
@@ -192,7 +192,7 @@
     </section>
 
     <!-- Thank You -->
-    <section class="thank-you-section bg-gray-50">
+    <section class="thank-you-section bg-stone-50">
       <ThankYou theme={selectedTheme} />
     </section>
   </div>

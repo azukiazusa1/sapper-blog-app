@@ -1,31 +1,34 @@
 <script lang="ts">
   import { m } from "$paraglide/messages";
-  import Heroimage from "../../assets/images/heroImage.png";
   import LinkButton from "../LinkButton/LinkButton.svelte";
 </script>
 
 <section
-  class="bg-gradient-to-br from-indigo-900 via-indigo-800 to-purple-900 dark:from-indigo-950 dark:via-indigo-900 dark:to-purple-950"
+  class="border-b border-stone-200 bg-stone-50 dark:border-stone-800 dark:bg-stone-950"
 >
   <div
-    class="mx-auto grid max-w-(--breakpoint-xl) px-4 py-12 lg:grid-cols-12 lg:gap-8 xl:gap-0"
+    class="relative mx-auto flex min-h-[34rem] max-w-(--breakpoint-xl) items-center px-4 py-20 md:min-h-[38rem]"
   >
-    <div class="mr-auto place-self-center lg:col-span-7">
+    <div class="mx-auto max-w-3xl text-center">
       <div>
-        <h1
-          class="mb-4 max-w-2xl text-4xl leading-none font-extrabold md:text-5xl xl:text-6xl text-white"
+        <p
+          class="mb-3 font-mono text-xs tracking-[0.2em] uppercase text-stone-700 dark:text-stone-200"
+          style="color: var(--color-accent)"
         >
-          Hey, I'm <span
-            class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-indigo-400"
-            >azukiazusa</span
-          ><span class="waving-hand">👋</span>
+          Web Developer
+        </p>
+        <h1
+          class="mb-4 text-4xl leading-tight font-bold text-stone-950 dark:text-white md:text-5xl xl:text-6xl"
+          style="font-family: var(--font-display)"
+        >
+          Hey, I'm azukiazusa<span class="waving-hand">👋</span>
         </h1>
         <p
-          class="mb-6 max-w-2xl leading-relaxed font-light text-indigo-100 md:text-lg lg:mb-8 lg:text-xl"
+          class="mb-6 leading-relaxed text-stone-700 dark:text-stone-200 md:text-lg lg:mb-8 lg:text-xl"
         >
           {m.heroDescription()}
         </p>
-        <div class="flex gap-3">
+        <div class="flex justify-center gap-3">
           <LinkButton variant="primary" href="/blog">
             {m.heroReadBlog()}
             <svg
@@ -40,34 +43,10 @@
               /></svg
             >
           </LinkButton>
-          <LinkButton href="/about" variant="transparent"
+          <LinkButton href="/about" variant="secondary"
             >{m.heroAboutMe()}</LinkButton
           >
         </div>
-      </div>
-    </div>
-    <div class="hidden lg:col-span-5 lg:mt-0 lg:flex lg:justify-center">
-      <div
-        class="relative overflow-hidden rounded-full border-4 border-indigo-300/30 p-2 shadow-2xl"
-      >
-        <div
-          class="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-indigo-400/20"
-        ></div>
-        <picture>
-          <source
-            media="(min-width: 1024px)"
-            srcset={Heroimage}
-            width="400"
-            height="400"
-          />
-          <img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
-            alt=""
-            width="1"
-            height="1"
-            class="relative rounded-full"
-          />
-        </picture>
       </div>
     </div>
   </div>

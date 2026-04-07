@@ -7,7 +7,7 @@
 </script>
 
 <span
-  class="ml-2 inline-flex items-center justify-center rounded-full bg-gray-600 px-2 py-1 text-xs font-bold leading-none text-white"
+  class="ml-2 inline-flex items-center justify-center rounded bg-stone-700 px-2 py-0.5 font-mono text-xs font-bold leading-none text-white"
 >
   {@render children?.()}
 </span>

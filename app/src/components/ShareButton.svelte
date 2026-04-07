@@ -30,7 +30,7 @@
 {#if supportNavigationShare}
   <button
     type="button"
-    class="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-gray-200 px-3 text-sm font-semibold dark:bg-neutral-700"
+    class="group inline-flex h-9 items-center whitespace-nowrap rounded border border-stone-300 bg-stone-100 px-3 text-sm font-medium transition hover:bg-stone-200 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700"
     onclick={share}
   >
     <ShareIcon className="h-6 w-6 mr-2" />

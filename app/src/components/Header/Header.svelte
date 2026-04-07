@@ -24,7 +24,6 @@
   let html: HTMLElement;
   let lastScrollY = 0;
   let hideHeader = $state(false);
-  let isScrolled = $state(false);
 
   onMount(() => {
     html = document.documentElement;
@@ -43,14 +42,9 @@
   let currentLocale = $derived(getLocale());
 
   const handleScroll = () => {
-    // ガラス効果の制御
-    isScrolled = window.scrollY > 0;
-
-    // 上にスクロールしたらヘッダーを表示する
     if (window.scrollY < lastScrollY) {
       hideHeader = false;
     } else if (window.scrollY > 100) {
-      // 少しスクロールしたら隠す
       hideHeader = true;
     }
     lastScrollY = window.scrollY;
@@ -71,31 +65,20 @@
 
 <SideMenu {isOpen} {segment} {routes} on:close={closeSideMenu} />
 <header
-  class={`sticky left-0 z-50 w-full transition-all duration-300 ease-in-out
+  class={`sticky left-0 z-50 w-full transition-all duration-300 ease-in-out bg-stone-50 dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800
     ${hideHeader ? "-top-20" : "top-0"}
   `}
 >
-  <div class="mx-auto px-4 py-3 transition-all duration-500 ease-in-out">
-    <div
-      class={`flex mx-auto items-center justify-between rounded-full px-4 py-2 transition-all duration-300 lg:w-max
-        ${
-          isScrolled
-            ? "bg-white/40 dark:bg-zinc-800/40 backdrop-blur-2xl shadow-lg border border-gray-300/50 dark:border-zinc-600/50 dark:shadow-zinc-900/40"
-            : "bg-white/95 dark:bg-zinc-800/95 backdrop-blur-lg shadow-md border border-gray-200 dark:border-zinc-700 dark:shadow-zinc-900/20"
-        }
-      `}
-    >
-      <div class="flex items-center">
+  <div class="mx-auto px-4 py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
         <button
-          class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 lg:invisible lg:hidden dark:bg-zinc-700 dark:hover:bg-zinc-600 transition-all duration-300"
+          class="flex h-9 w-9 items-center justify-center rounded bg-stone-100 hover:bg-stone-200 lg:invisible lg:hidden dark:bg-stone-800 dark:hover:bg-stone-700 transition-colors"
           onclick={openSideMenu}
           aria-label={m.openSideMenu()}
         >
           <MenuIcon className="h-5 w-5" />
         </button>
-      </div>
-
-      <div class="ml-2">
         <Title />
       </div>
 
@@ -120,17 +103,17 @@
             <ToggleDarkMode />
           </div>
           <div
-            class="mx-1 flex items-center overflow-hidden rounded-full border border-gray-200 dark:border-zinc-600"
+            class="mx-1 flex items-center overflow-hidden rounded border border-stone-200 dark:border-stone-700"
           >
             {#each locales as locale}
               <a
                 href={localizeHref(baseHref, { locale })}
                 data-sveltekit-reload
                 onclick={() => localStorage.setItem(localStorageKey, locale)}
-                class={`px-2 py-1 text-xs font-medium uppercase transition-colors ${
+                class={`px-2 py-1 text-xs font-mono font-medium uppercase transition-colors ${
                   currentLocale === locale
-                    ? "bg-indigo-600 text-white"
-                    : "hover:bg-gray-100 dark:hover:bg-zinc-700"
+                    ? "bg-stone-800 text-white dark:bg-stone-100 dark:text-stone-900"
+                    : "hover:bg-stone-100 dark:hover:bg-stone-800"
                 }`}
                 aria-label={`Switch to ${locale}`}>{locale}</a
               >
@@ -139,7 +122,7 @@
           <a
             href={localizeHref("/rss.xml")}
             target="_blank"
-            class={`invisible mx-1 hidden rounded-full p-2 hover:bg-gray-100 lg:visible lg:block dark:hover:bg-zinc-700 transition-all duration-300 p-2`}
+            class={`invisible mx-1 hidden rounded p-2 hover:bg-stone-100 lg:visible lg:block dark:hover:bg-stone-800 transition-colors`}
             rel="noopener noreferrer"
             aria-label="RSS"
           >
@@ -148,7 +131,7 @@
           <a
             href={localizeHref("/llms.txt")}
             target="_blank"
-            class={`invisible mx-1 hidden rounded-full hover:bg-gray-100 lg:visible lg:block dark:hover:bg-zinc-700 transition-all duration-300 p-2`}
+            class={`invisible mx-1 hidden rounded hover:bg-stone-100 lg:visible lg:block dark:hover:bg-stone-800 transition-colors p-2`}
             rel="noopener noreferrer"
             aria-label="LLMS"
           >
@@ -159,7 +142,7 @@
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            class={`invisible mx-1 hidden rounded-full hover:bg-gray-100 lg:visible lg:block dark:hover:bg-zinc-700 transition-all duration-300 p-2`}
+            class={`invisible mx-1 hidden rounded hover:bg-stone-100 lg:visible lg:block dark:hover:bg-stone-800 transition-colors p-2`}
           >
             <GitHub className="h-5 w-5" />
           </a>

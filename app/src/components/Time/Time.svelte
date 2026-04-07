@@ -24,7 +24,7 @@
 
 <time
   datetime={date}
-  class="text-grey-darker text-base font-medium text-zinc-900/70 dark:text-gray-50/60"
+  class="font-mono text-sm text-stone-500 dark:text-stone-400"
 >
   {format()}
 </time>

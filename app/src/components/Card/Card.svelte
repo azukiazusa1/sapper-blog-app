@@ -51,21 +51,21 @@
         "right-2",
         "top-2",
         "rounded-md",
-        "text-gray-200",
+        "text-stone-200",
         "opacity-50",
         "p-2",
         "ring-2",
-        "ring-gray-500",
+        "ring-stone-500",
         "ring-opacity-50",
         "text-outline-none",
-        "hover:text-gray-500",
-        "hover:bg-gray-500",
+        "hover:text-stone-500",
+        "hover:bg-stone-500",
         "hover:opacity-100",
         "hover:ring-2",
-        "hover:ring-gray-500",
-        "focus:text-gray-500",
+        "hover:ring-stone-500",
+        "focus:text-stone-500",
         "focus:ring-2",
-        "focus:ring-gray-500",
+        "focus:ring-stone-500",
         "focus:opacity-100",
       );
       // エディタと同じ色
@@ -80,10 +80,10 @@
         "px-2",
         "py-1",
         "rounded-md",
-        "bg-gray-100",
-        "dark:bg-zinc-500",
-        "text-gray-500",
-        "dark:text-gray-300",
+        "bg-stone-100",
+        "dark:bg-stone-700",
+        "text-stone-600",
+        "dark:text-stone-200",
         "text-sm",
         "transition-opacity",
         "duration-300",
@@ -96,9 +96,9 @@
         navigator.clipboard.writeText(text);
 
         button.innerHTML = checkIcon;
-        button.classList.remove("text-gray-200");
-        button.classList.remove("hover:text-gray-500");
-        button.classList.remove("focus:text-gray-500");
+        button.classList.remove("text-stone-200");
+        button.classList.remove("hover:text-stone-500");
+        button.classList.remove("focus:text-stone-500");
         button.classList.add("text-green-500");
 
         // ポップアップを表示
@@ -109,9 +109,9 @@
           popup.classList.add("opacity-0");
           button.innerHTML = copyIcon;
           button.classList.remove("text-green-500");
-          button.classList.add("text-gray-200");
-          button.classList.add("hover:text-gray-500");
-          button.classList.add("focus:text-gray-500");
+          button.classList.add("text-stone-200");
+          button.classList.add("hover:text-stone-500");
+          button.classList.add("focus:text-stone-500");
         }, 1000);
       });
 
@@ -174,7 +174,10 @@
   </script>
 </svelte:head>
 
-<article data-pagefind-body class="bg-white dark:bg-zinc-900 rounded-2xl">
+<article
+  data-pagefind-body
+  class="bg-stone-50 dark:bg-stone-950"
+>
   <div class="mx-auto px-4 py-8 md:py-12">
     <header>
       <div class="mx-auto max-w-3xl">
@@ -188,14 +191,15 @@
         />
         <div class="mt-4 flex items-start justify-between gap-4">
           <h1
-            class="text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl"
+            class="text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl"
+            style="font-family: var(--font-display)"
             style:--tag="h-{slug}"
           >
             {title}
           </h1>
         </div>
         <div
-          class="mt-6 flex flex-wrap items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+          class="mt-6 flex flex-wrap items-center gap-2 font-mono text-xs font-medium text-stone-400 dark:text-stone-500"
         >
           <div class="flex items-center pr-4" style:--tag="time-{slug}">
             <svg
@@ -228,16 +232,16 @@
         </div>
 
         <p
-          class="my-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+          class="my-4 text-lg leading-relaxed text-stone-600 dark:text-stone-400"
           style:--tag="about-{slug}"
         >
           {about}
         </p>
 
         <!-- {#if audio}
-          <div class="my-4 rounded-lg bg-gray-100 p-4 dark:bg-zinc-800">
+          <div class="my-4 rounded-lg bg-stone-100 p-4 dark:bg-stone-800">
             <h2 class="mb-4 text-lg font-semibold">音声による概要</h2>
-            <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+            <p class="text-sm text-stone-700 dark:text-stone-300 mb-4">
               この音声概要は AI
               によって生成されており、誤りを含む可能性があります。
             </p>
@@ -258,7 +262,7 @@
     <div class="relative mx-auto max-w-6xl">
       <div
         id="contents"
-        class="prose prose-lg dark:prose-invert prose-zinc show-line-number mx-auto mt-12 max-w-6xl px-4 md:px-8"
+        class="prose prose-lg dark:prose-invert prose-stone show-line-number mx-auto mt-12 max-w-6xl px-4 md:px-8"
       >
         {#if toc.length > 0}
           <div class="toc-desktop">

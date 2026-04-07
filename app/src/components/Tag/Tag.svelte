@@ -10,48 +10,30 @@
   }
 
   let { name = "", slug = "", count, children }: Props = $props();
-
-  // タグの色をスラッグに基づいてランダムに割り当て（控えめな色合い）
-  function getTagColor(slug: string): string {
-    const colorClasses = [
-      "from-indigo-400 to-indigo-500 dark:from-indigo-600 dark:to-indigo-700",
-      "from-gray-500 to-gray-600 dark:from-gray-600 dark:to-gray-700",
-      "from-blue-400 to-blue-500 dark:from-blue-600 dark:to-blue-700",
-      "from-slate-400 to-slate-500 dark:from-slate-600 dark:to-slate-700",
-      "from-zinc-400 to-zinc-500 dark:from-zinc-600 dark:to-zinc-700",
-    ];
-
-    // スラッグの文字をハッシュ化して一貫したインデックスを生成
-    let hash = 0;
-    for (let i = 0; i < slug.length; i++) {
-      hash = (hash << 5) - hash + slug.charCodeAt(i);
-      hash |= 0; // 32ビット整数に変換
-    }
-
-    const index = Math.abs(hash) % colorClasses.length;
-    return colorClasses[index];
-  }
-
-  const colorClass = $derived(getTagColor(slug));
 </script>
 
 {#if count !== undefined}
   <!-- タグ一覧ページでの大きなタグカード -->
   <a href={localizeHref(`/tags/${slug}`)} class="block h-full w-full">
     <div
-      class="h-full rounded-xl bg-white transition-all duration-300 hover:shadow-md overflow-hidden flex flex-col dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800"
+      class="h-full rounded-lg bg-stone-50 transition-colors hover:bg-stone-100 overflow-hidden flex flex-col dark:bg-stone-950 dark:hover:bg-stone-900 border border-stone-200 dark:border-stone-700"
     >
       <div
-        class="bg-gradient-to-r {colorClass} p-3 flex items-center justify-center opacity-90"
+        class="p-3 flex items-center justify-center border-b border-stone-200 dark:border-stone-800"
+        style="background-color: color-mix(in srgb, var(--color-accent) 10%, transparent)"
       >
-        <span class="text-white text-base font-medium">#{name}</span>
+        <span
+          class="font-mono text-sm font-medium"
+          style="color: var(--color-accent)">#{name}</span
+        >
       </div>
       <div class="p-4 flex-1 flex items-center justify-center">
         <div class="text-center">
-          <span class="block text-xl font-bold text-gray-700 dark:text-gray-200"
+          <span
+            class="block text-xl font-bold text-stone-700 dark:text-stone-200"
             >{count}</span
           >
-          <span class="text-xs text-gray-500 dark:text-gray-400"
+          <span class="text-xs text-stone-500 dark:text-stone-400"
             >{m.tagArticlesCountLabel()}</span
           >
         </div>
@@ -62,7 +44,7 @@
   <!-- 記事内の小さなタグ -->
   <a
     href={localizeHref(`/tags/${slug}`)}
-    class="inline-flex items-center rounded-full bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors"
+    class="inline-flex items-center rounded bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 px-2 py-0.5 font-mono text-xs font-medium text-stone-700 dark:text-stone-300 transition-colors"
   >
     #{name}
     {@render children?.()}

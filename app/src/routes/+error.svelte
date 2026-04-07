@@ -26,7 +26,7 @@
         {title}
       </h1>
       <p
-        class="mt-4 mb-6 max-w-2xl leading-relaxed font-light text-gray-500 md:text-lg lg:mb-8 lg:text-xl dark:text-gray-300"
+        class="mt-4 mb-6 max-w-2xl leading-relaxed font-light text-stone-500 md:text-lg lg:mb-8 lg:text-xl dark:text-stone-300"
       >
         {message}
       </p>
