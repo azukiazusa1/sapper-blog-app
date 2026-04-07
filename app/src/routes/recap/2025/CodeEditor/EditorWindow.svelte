@@ -272,7 +272,7 @@
 
 <div
   id="code-editor"
-  class="flex min-h-screen items-center justify-center bg-linear-to-b from-gray-900 to-gray-800 p-4"
+  class="flex min-h-screen items-center justify-center bg-linear-to-b from-stone-900 to-stone-800 p-4"
 >
   <div class="editor-window w-full max-w-7xl">
     <!-- Window Controls -->
@@ -280,7 +280,7 @@
       <div class="window-dot bg-red-500"></div>
       <div class="window-dot bg-yellow-500"></div>
       <div class="window-dot bg-green-500"></div>
-      <span class="ml-4 text-sm text-gray-400">recap-2025/</span>
+      <span class="ml-4 text-sm text-stone-400">recap-2025/</span>
       {#if !buildComplete}
         <button
           class="build-button bg-gradient-to-r"
@@ -301,7 +301,7 @@
     </div>
 
     <!-- File Tabs -->
-    <div class="file-tabs flex overflow-x-auto border-b border-gray-700">
+    <div class="file-tabs flex overflow-x-auto border-b border-stone-700">
       {#each stages as stage, i}
         <button
           class={`file-tab ${currentTab === stage.tab ? "active" : ""}`}
@@ -345,11 +345,11 @@
                   theme
                 ].colors.editorSpinner}"
               ></div>
-              <p class="text-lg text-gray-700">Building...</p>
+              <p class="text-lg text-stone-700">Building...</p>
             </div>
           </div>
         {:else}
-          <div class="flex h-full items-center justify-center text-gray-400">
+          <div class="flex h-full items-center justify-center text-stone-400">
             <svg
               class="h-24 w-24"
               fill="none"

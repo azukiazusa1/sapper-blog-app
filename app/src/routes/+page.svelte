@@ -46,7 +46,7 @@
     <div class="min-w-0 space-y-16">
       <section>
         <h2
-          class="relative mb-8 text-3xl font-extrabold dark:text-white after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-20 after:bg-indigo-500 after:content-['']"
+          class="mb-8 border-b border-stone-200 pb-3 font-mono text-base font-medium uppercase tracking-[0.2em] text-stone-500 dark:border-stone-700 dark:text-stone-400"
         >
           {m.homeLatestArticles()}
         </h2>
@@ -68,7 +68,7 @@
         <div class="hidden gap-6 lg:grid lg:grid-cols-2">
           {#if featuredLatest}
             <article
-              class="group col-span-2 flex min-w-0 overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900"
+              class="group col-span-2 flex min-w-0 overflow-hidden rounded-lg border border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-950"
             >
               <a
                 href={localizeHref(`/blog/${featuredLatest.slug}`)}
@@ -77,25 +77,27 @@
                 <div class="min-w-0 flex-1 p-6">
                   <div class="mb-4 flex items-center gap-3">
                     <div
-                      class="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium dark:bg-zinc-800"
+                      class="inline-flex items-center gap-1 font-mono text-xs font-medium text-stone-400 dark:text-stone-500"
                     >
                       <Time date={featuredLatest.createdAt} />
                     </div>
                     <span
-                      class="text-xs font-semibold tracking-[0.24em] text-indigo-600 uppercase dark:text-indigo-400"
+                      class="font-mono text-xs font-medium tracking-[0.2em] uppercase"
+                      style="color: var(--color-accent)"
                     >
                       Feature
                     </span>
                   </div>
 
                   <h3
-                    class="mb-4 text-2xl leading-tight font-bold transition-colors group-hover:text-indigo-600 dark:text-white dark:group-hover:text-indigo-400"
+                    class="mb-4 text-2xl leading-tight font-bold transition-colors dark:text-white"
+                    style="font-family: var(--font-display)"
                   >
                     {featuredLatest.title}
                   </h3>
 
                   <p
-                    class="mb-6 line-clamp-4 text-sm leading-7 text-zinc-700 dark:text-zinc-300"
+                    class="mb-6 line-clamp-4 text-sm leading-relaxed text-stone-600 dark:text-stone-400"
                   >
                     {featuredLatest.about}
                   </p>
@@ -154,18 +156,18 @@
       </section>
 
       <section
-        class="rounded-3xl bg-linear-to-r from-purple-50 to-indigo-50 px-6 py-8 dark:from-purple-950/40 dark:to-indigo-950/40"
+        class="rounded-lg px-6 py-8 border border-stone-200 dark:border-stone-700"
       >
         <h2
-          class="relative mb-8 text-3xl font-extrabold dark:text-white after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-20 after:bg-purple-500 after:content-['']"
+          class="mb-8 border-b border-stone-300 pb-3 font-mono text-base font-medium uppercase tracking-[0.2em] text-stone-500 dark:border-stone-700 dark:text-stone-400"
         >
           {m.homePopularArticles()}
         </h2>
         <ol class="list-inside list-decimal space-y-4">
           {#each popularPosts as post}
-            <li class="transition-transform duration-200 hover:translate-x-1">
+            <li>
               <a
-                class="text-lg hover:text-indigo-600 dark:hover:text-indigo-400"
+                class="text-base transition-colors dark:text-stone-200 hover:underline focus-visible:underline focus-visible:outline-hidden hover:[color:var(--color-accent)] focus-visible:[color:var(--color-accent)]"
                 href={post.path}
               >
                 {post.title}
@@ -178,7 +180,7 @@
 
     <section class="min-w-0 space-y-6">
       <h2
-        class="relative text-3xl font-extrabold dark:text-white after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-20 after:bg-indigo-500 after:content-['']"
+        class="border-b border-stone-200 pb-3 font-mono text-base font-medium uppercase tracking-[0.2em] text-stone-500 dark:border-stone-700 dark:text-stone-400"
       >
         {m.shortsTitle()}
       </h2>
@@ -192,7 +194,7 @@
   </div>
 
   <h2
-    class="mt-16 mb-8 relative text-3xl font-extrabold dark:text-white after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-20 after:h-1 after:bg-indigo-500"
+    class="mt-16 mb-8 border-b border-stone-200 pb-3 font-mono text-base font-medium uppercase tracking-[0.2em] text-stone-500 dark:border-stone-700 dark:text-stone-400"
   >
     {m.homeTalks()}
   </h2>

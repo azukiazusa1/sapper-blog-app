@@ -28,7 +28,7 @@
     </a>
     <div class="min-w-0 flex-1">
       <div class="flex items-center justify-between">
-        <p class="truncate text-sm font-medium text-gray-900">
+        <p class="truncate text-sm font-medium text-stone-900">
           <a
             href={snsLink}
             target="_blank"
@@ -39,7 +39,7 @@
           </a>
         </p>
       </div>
-      <p class="mt-1 text-sm text-gray-500">{comment}</p>
+      <p class="mt-1 text-sm text-stone-500">{comment}</p>
     </div>
   </div>
 {/if}

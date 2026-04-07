@@ -22,7 +22,7 @@
 
 <button
   type="button"
-  class="inline-flex items-center gap-2 rounded-full border border-zinc-300 px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900"
+  class="inline-flex items-center gap-2 rounded border border-stone-300 px-3 py-1.5 font-mono text-xs font-medium text-stone-700 transition hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800"
   onclick={copyLink}
 >
   <svg

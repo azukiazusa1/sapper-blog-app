@@ -21,7 +21,7 @@
           <div class="flex-shrink-0">
             <a
               href={localizeHref(`/tags/${tag.slug}`)}
-              class="inline-flex items-center rounded-full bg-white dark:bg-zinc-800 hover:bg-gray-50 dark:hover:bg-zinc-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors border border-gray-200 dark:border-zinc-600"
+              class="inline-flex items-center rounded bg-white dark:bg-stone-900 hover:bg-stone-50 dark:hover:bg-stone-800 px-3 py-1.5 font-mono text-sm font-medium text-stone-700 dark:text-stone-300 transition-colors border border-stone-200 dark:border-stone-700"
             >
               #{tag.name}
             </a>

@@ -11,7 +11,7 @@
 </script>
 
 <h2
-  class="flex items-center gap-2 border-b border-gray-300 dark:border-zinc-700"
+  class="flex items-center gap-2 border-b border-stone-200 dark:border-stone-700"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"

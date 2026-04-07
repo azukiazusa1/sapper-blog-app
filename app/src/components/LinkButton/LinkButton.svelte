@@ -26,16 +26,16 @@
   {target}
   {rel}
   class={clsx(
-    "inline-flex items-center justify-center rounded-lg px-4 py-2 text-center text-base font-medium transition-all hover:opacity-80",
+    "inline-flex items-center justify-center rounded px-4 py-2 text-center text-base font-medium transition-colors",
     {
-      "border border-gray-300 text-gray-900  dark:border-zinc-600 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-zinc-700":
+      "border border-stone-300 text-stone-900 dark:border-stone-600 dark:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800":
         variant === "secondary",
-      "bg-indigo-700 text-white  focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900 hover:bg-indigo-800 dark:bg-indigo-600 dark:hover:bg-indigo-700":
-        variant === "primary",
-      "bg-transparent text-white border-white/20 dark:border-zinc-700 dark:text-gray-50 border hover:opacity-70":
+      "text-white hover:opacity-80": variant === "primary",
+      "bg-transparent border border-stone-300 text-stone-700 dark:border-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800":
         variant === "transparent",
     },
   )}
+  style={variant === "primary" ? "background-color: var(--color-accent)" : ""}
 >
   {@render children?.()}
 </a>

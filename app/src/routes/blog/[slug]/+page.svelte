@@ -54,7 +54,7 @@
 <div class="mx-auto my-6 px-4 max-w-6xl">
   <a
     href={localizeHref("/blog")}
-    class="inline-flex items-center gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-800 transition-colors dark:bg-zinc-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-zinc-700"
+    class="inline-flex items-center gap-1 px-4 py-2 text-sm font-medium text-stone-800 transition-colors dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-stone-700"
   >
     <Prev className="h-4 w-4" />
     Back to blog
@@ -115,25 +115,19 @@
 
   <div class="mx-auto max-w-5xl px-4 py-6">
     {#if post.selfAssessment?.quizzes.length > 0}
-      <div class="rounded-xl bg-gray-50 p-6 shadow-sm dark:bg-zinc-900">
+      <div class="py-6">
         <SelfAssessment quizzes={post.selfAssessment.quizzes} />
       </div>
     {/if}
   </div>
 
   <div class="mx-auto max-w-5xl px-4">
-    <div
-      class="my-8 h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-zinc-700"
-    ></div>
-    <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-      <div
-        class="overflow-hidden rounded-xl bg-white p-6 shadow-sm dark:bg-zinc-900"
-      >
+    <div class="my-8 border-t border-stone-200 dark:border-stone-800"></div>
+    <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 md:items-stretch">
+      <div class="flex flex-col p-6">
         <Contributors {contributors} />
       </div>
-      <div
-        class="overflow-hidden rounded-xl bg-white p-6 shadow-sm dark:bg-zinc-900"
-      >
+      <div class="flex flex-col p-6">
         <div class="flex flex-col gap-4">
           <GitHubEditButton slug={post.slug} />
           <div class="flex">
@@ -147,10 +141,11 @@
               {/snippet}
             </ShareButton>
           </div>
-          <div class="text-sm text-gray-500 dark:text-gray-400">
+          <div class="text-sm text-stone-500 dark:text-stone-400">
             <a
               href={localizeHref(`/blog/${post.slug}.md`)}
-              class="inline-flex items-center gap-1 text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
+              class="inline-flex items-center gap-1 hover:underline"
+              style="color: var(--color-accent)"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +172,7 @@
 
 <div class="mx-auto mt-16 max-w-6xl px-4 py-8">
   <h2
-    class="mb-6 text-2xl font-extrabold leading-none after:mt-2 after:block after:h-1 after:w-16 after:bg-indigo-500 after:content-['']"
+    class="mb-6 border-b border-stone-200 pb-3 font-mono text-xs font-medium uppercase tracking-[0.2em] text-stone-500 dark:border-stone-700 dark:text-stone-400"
   >
     {m.relatedArticles()}
   </h2>

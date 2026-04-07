@@ -44,14 +44,14 @@
 
 <DropdownMenu.Root>
   <DropdownMenu.Trigger
-    class="flex items-center rounded-lg border border-gray-300 p-2 dark:border-zinc-600"
+    class="flex items-center rounded border border-stone-300 p-2 dark:border-stone-700"
     aria-label={m.selectColorTheme()}
   >
     <Moon className="h-6 w-6 hidden dark:block" />
     <Sun className="h-6 w-6 block dark:hidden" />
   </DropdownMenu.Trigger>
   <DropdownMenu.Content
-    class="rounded-br-md rounded-bl-md border-2 border-t-0 border-gray-200 bg-white shadow-lg dark:border-zinc-600 dark:bg-zinc-700"
+    class="rounded-b-lg border-2 border-t-0 border-stone-200 bg-white shadow-md dark:border-stone-700 dark:bg-stone-900"
     forceMount
     {side}
   >
@@ -63,7 +63,7 @@
               {#each items as item}
                 <DropdownMenu.RadioItem
                   value={item.value}
-                  class={`z-50 flex w-32 transform cursor-pointer items-center px-2 py-3 transition-colors duration-200 hover:bg-gray-100 data-highlighted:bg-gray-100  dark:border-zinc-600 dark:hover:bg-zinc-500 dark:data-highlighted:bg-zinc-500`}
+                  class={`z-50 flex w-32 cursor-pointer items-center px-3 py-2.5 transition-colors hover:bg-stone-100 data-highlighted:bg-stone-100 dark:hover:bg-stone-800 dark:data-highlighted:bg-stone-800`}
                 >
                   {#snippet children({ checked })}
                     {#if item.value === "system"}
@@ -78,9 +78,7 @@
                     </span>
                     <div class="ml-auto">
                       {#if checked}
-                        <Check
-                          className="h-4 w-4 text-indigo-600 dark:text-indigo-400"
-                        />
+                        <Check className="h-4 w-4" />
                       {/if}
                     </div>
                   {/snippet}

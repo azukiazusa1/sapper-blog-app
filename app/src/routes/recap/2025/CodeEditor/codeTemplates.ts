@@ -33,13 +33,13 @@ export const getStatsCode = (themeId: ThemeId) => {
 
 <div class="flex flex-col gap-12 max-w-4xl mx-auto">
   <div class="text-center">
-    <div class="text-sm text-gray-500 mb-4">Total Posts</div>
+    <div class="text-sm text-stone-500 mb-4">Total Posts</div>
     <div class="text-7xl font-black text-${colors.primary}-600">
       <CountUp value={recap2025.totalPosts} />
     </div>
   </div>
   <div class="text-center">
-    <div class="text-sm text-gray-500 mb-4">Total Words</div>
+    <div class="text-sm text-stone-500 mb-4">Total Words</div>
     <div class="text-7xl font-black text-${colors.primary}-600">
       <CountUp value={recap2025.totalWords} />
     </div>
@@ -94,7 +94,7 @@ export const getPostsCode = (themeId: ThemeId) => {
     <div class="flex-1">
       <h3 class="text-2xl font-bold mb-2">{post.title}</h3>
       <div><span class="text-4xl font-black">
-        <CountUp value={post.views} /></span> <span class="text-sm text-gray-500">views</span>
+        <CountUp value={post.views} /></span> <span class="text-sm text-stone-500">views</span>
       </div>
     </div>
   </a>

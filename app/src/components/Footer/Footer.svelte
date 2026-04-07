@@ -6,7 +6,7 @@
 </script>
 
 <footer
-  class="border-t border-gray-300 text-sm text-gray-600 md:h-24 dark:border-zinc-700 dark:text-gray-400"
+  class="border-t border-stone-200 text-sm text-stone-500 md:h-24 dark:border-stone-800 dark:text-stone-400"
 >
   <div class="container mx-auto flex h-full flex-col justify-center gap-4 p-4">
     <p>

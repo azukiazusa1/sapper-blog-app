@@ -13,14 +13,14 @@
 
 <a
   {href}
-  class="block rounded-lg border border-gray-200 bg-white px-6 py-4 shadow-sm hover:bg-gray-100 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+  class="block rounded-lg border border-stone-200 bg-white px-6 py-4 shadow-sm hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700"
 >
   <h3
-    class="mb-2 text-xl font-bold tracking-tight text-gray-900 md:text-2xl dark:text-white"
+    class="mb-2 text-xl font-bold tracking-tight text-stone-900 md:text-2xl dark:text-white"
   >
     {title}
   </h3>
-  <p class="font-normal text-gray-700 dark:text-gray-400">{views} Views</p>
+  <p class="font-normal text-stone-700 dark:text-stone-400">{views} Views</p>
 </a>
 
 <style>

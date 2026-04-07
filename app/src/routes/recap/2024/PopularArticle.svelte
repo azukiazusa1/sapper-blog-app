@@ -34,10 +34,10 @@
           x: 100,
           delay: index * 400,
         }}
-        class="block rounded-lg bg-gray-200 p-2 hover:bg-gray-300 md:p-4"
+        class="block rounded-lg bg-stone-200 p-2 hover:bg-stone-300 md:p-4"
       >
         <h3 class="font-bold">{post.title}</h3>
-        <p class="mt-2 text-sm text-gray-700">
+        <p class="mt-2 text-sm text-stone-700">
           {post.views.toLocaleString()} views
         </p>
       </a>

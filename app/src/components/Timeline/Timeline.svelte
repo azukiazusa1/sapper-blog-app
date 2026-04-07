@@ -23,17 +23,21 @@
   </div>
 
   <span
-    class="absolute -left-[7px] md:top-[18px] top-[42px] flex h-[13px] w-[13px] items-center justify-center rounded-full bg-indigo-400 dark:bg-indigo-700 ring-zinc-300 dark:ring-zinc-500 ring-4"
+    class="absolute -left-[7px] md:top-[18px] top-[42px] flex h-[13px] w-[13px] items-center justify-center rounded-full ring-stone-200 dark:ring-stone-700 ring-4"
+    style="background-color: var(--color-accent)"
   >
   </span>
-  <div class="ml-6 md:ml-12 bg-white dark:bg-zinc-900 p-4 md:p-6 rounded-lg">
+  <div
+    class="ml-6 md:ml-12 bg-stone-50 dark:bg-stone-950 p-4 md:p-6 rounded-lg border border-stone-200 dark:border-stone-700"
+  >
     <h3
-      class="mb-1 flex items-center text-xl font-semibold text-gray-900 dark:text-white"
+      class="mb-1 flex items-center text-xl font-semibold text-stone-900 dark:text-stone-100"
     >
       {eventTitle}
     </h3>
     <p
-      class="mt-2 flex items-center gap-2 text-lg font-bold text-indigo-700 underline dark:text-indigo-400"
+      class="mt-2 flex items-center gap-2 text-lg font-bold underline"
+      style="color: var(--color-accent)"
     >
       <a
         class="no-underline hover:underline"
@@ -58,7 +62,7 @@
         />
       </svg>
     </p>
-    <p class="my-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+    <p class="my-2 text-sm font-normal text-stone-500 dark:text-stone-400">
       {description}
     </p>
   </div>

@@ -72,7 +72,7 @@
   <Dialog.Portal>
     <Dialog.Overlay class="backdrop-blur-xs fixed inset-0 z-50 bg-black/80" />
     <Dialog.Content
-      class="outline-hidden fixed left-0 right-0 top-0 z-50 mx-auto mt-8 flex max-h-[90%] min-h-[15rem] max-w-2xl overflow-y-scroll rounded-lg border bg-white p-5 text-zinc-800 md:mt-16 md:max-h-[80%] dark:border-zinc-700 dark:bg-zinc-800 dark:text-gray-50"
+      class="outline-hidden fixed left-0 right-0 top-0 z-50 mx-auto mt-8 flex max-h-[90%] min-h-[15rem] max-w-2xl overflow-y-scroll rounded-lg border border-stone-200 bg-white p-5 text-stone-800 md:mt-16 md:max-h-[80%] dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100"
     >
       <div id="search" class="w-full"></div>
     </Dialog.Content>
@@ -81,16 +81,16 @@
 
 <style>
   :global(html) {
-    --pagefind-ui-primary: rgb(79 70 229);
-    --pagefind-ui-text: rgb(38 38 38);
+    --pagefind-ui-primary: #1a7a6d;
+    --pagefind-ui-text: rgb(41 37 36);
     --pagefind-ui-background: #ffffff;
-    --pagefind-ui-border: rgb(209 213 219);
+    --pagefind-ui-border: rgb(214 211 209);
   }
 
   :global(html.dark) {
-    --pagefind-ui-primary: rgb(129 140 248);
-    --pagefind-ui-text: rgb(249 250 251);
-    --pagefind-ui-background: rgb(24 24 27);
-    --pagefind-ui-border: rgb(63 63 70);
+    --pagefind-ui-primary: #2dd4bf;
+    --pagefind-ui-text: rgb(245 245 244);
+    --pagefind-ui-background: rgb(28 25 23);
+    --pagefind-ui-border: rgb(68 64 60);
   }
 </style>

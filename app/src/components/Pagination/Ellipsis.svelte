@@ -1,5 +1,5 @@
 <span
-  class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-gray-500 dark:bg-zinc-800 dark:text-gray-400"
+  class="flex h-12 w-12 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-400 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-500"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"

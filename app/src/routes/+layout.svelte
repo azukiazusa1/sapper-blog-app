@@ -75,7 +75,7 @@
 <GoogleAnalytics />
 
 <div
-  class="min-h-screen bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-50"
+  class="grain min-h-screen bg-stone-50 text-stone-800 dark:bg-stone-950 dark:text-stone-100"
 >
   {#if removeTrailingSlash($page.url.pathname) !== "/recap/2024" && removeTrailingSlash($page.url.pathname) !== "/recap/2025"}
     <Header segment={$page.url.pathname} />

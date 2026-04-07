@@ -21,15 +21,16 @@
           <Link href={item.url}>{item.label}</Link>
         {:else}
           <span
-            class="text-gray-700 dark:text-gray-50/60"
+            class="text-stone-700 dark:text-stone-50/60"
             aria-current={index === items.length - 1 ? "page" : undefined}
             >{item.label}</span
           >
         {/if}
 
         {#if index < items.length - 1}
-          <span class="mx-2 text-gray-500 dark:text-gray-400" aria-hidden="true"
-            >&gt;</span
+          <span
+            class="mx-2 text-stone-500 dark:text-stone-400"
+            aria-hidden="true">&gt;</span
           >
         {/if}
       </li>

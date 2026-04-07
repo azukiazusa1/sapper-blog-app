@@ -14,7 +14,8 @@
 </script>
 
 <a
-  class="inline-flex items-center text-indigo-700 hover:underline dark:text-indigo-400"
+  class="inline-flex items-center hover:underline"
+  style="color: var(--color-accent)"
   href={href ? getHref(href) : undefined}
   {target}
   rel={target === "_blank" ? "noopener noreferrer" : undefined}

@@ -16,7 +16,7 @@
 </script>
 
 <div
-  class="hero-container relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 to-white"
+  class="hero-container relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-stone-50 to-white"
 >
   <!-- Particle Background -->
   <ParticleBackground colors={particleColors} density="medium" />
@@ -26,7 +26,7 @@
     <a href={localizeHref("/recap")}>
       <span class="sr-only">{m.shortBack()}</span>
       <PrevIcon
-        className="h-6 w-6 text-gray-600 hover:text-gray-900 transition-colors"
+        className="h-6 w-6 text-stone-600 hover:text-stone-900 transition-colors"
       />
     </a>
   </div>

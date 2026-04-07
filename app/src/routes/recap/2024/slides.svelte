@@ -125,7 +125,7 @@
       <button
         onclick={() => setPreviousSlide()}
         disabled={currentSlide === 0}
-        class="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
+        class="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors hover:bg-stone-800 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
       >
         Previous
       </button>
@@ -143,7 +143,7 @@
       <button
         onclick={() => setNextSlide()}
         disabled={currentSlide === slides.length - 1}
-        class="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
+        class="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors hover:bg-stone-800 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
       >
         Next
       </button>

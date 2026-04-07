@@ -30,7 +30,7 @@
   <div class="flex items-center gap-2">
     {#if hasPrev}
       <a
-        class="flex h-12 w-12 items-center justify-center rounded-full bg-white transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-zinc-900 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400"
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-white border border-stone-200 transition-colors hover:bg-stone-100 dark:bg-stone-900 dark:border-stone-800 dark:hover:bg-stone-800"
         href={localizeHref(`${href}${prevPage}`)}
       >
         <div class="sr-only">{m.paginationPrev()}</div>
@@ -50,7 +50,7 @@
     </div>
     <div class="flex md:hidden">
       <div
-        class="flex h-12 items-center justify-center rounded-full bg-white px-4 dark:bg-zinc-900"
+        class="flex h-12 items-center justify-center rounded-lg bg-white border border-stone-200 px-4 dark:bg-stone-900 dark:border-stone-800"
       >
         <span class="font-medium"
           >{m.paginationMobileLabel({
@@ -62,7 +62,7 @@
     </div>
     {#if hasNext}
       <a
-        class="flex h-12 w-12 items-center justify-center rounded-full bg-white transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-zinc-900 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400"
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-white border border-stone-200 transition-colors hover:bg-stone-100 dark:bg-stone-900 dark:border-stone-800 dark:hover:bg-stone-800"
         href={localizeHref(`${href}${nextPage}`)}
       >
         <div class="sr-only">{m.paginationNext()}</div>

@@ -207,12 +207,12 @@
 </script>
 
 <ol
-  class="relative border-s border-gray-200 dark:border-gray-700 ml-6 md:ml-32"
+  class="relative border-s border-stone-200 dark:border-stone-700 ml-6 md:ml-32"
 >
   {#each slidesWithYearHeaders as slide}
     {#if slide.showYearHeader}
       <li class="mb-6 mt-10 -ml-6 md:-ml-32">
-        <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-200">
+        <h2 class="text-3xl font-bold text-stone-800 dark:text-stone-200">
           {slide.year}
         </h2>
       </li>
