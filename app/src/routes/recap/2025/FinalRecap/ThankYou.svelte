@@ -56,7 +56,11 @@
       backLink: "text-stone-400 hover:text-purple-300",
     },
     green: {
-      bg: { from: "from-green-900", via: "via-emerald-900", to: "to-stone-900" },
+      bg: {
+        from: "from-green-900",
+        via: "via-emerald-900",
+        to: "to-stone-900",
+      },
       orb1: { from: "from-green-500", to: "to-emerald-600" },
       orb2: { from: "from-emerald-500", to: "to-green-600" },
       title: { from: "from-white", via: "via-green-200", to: "to-white" },

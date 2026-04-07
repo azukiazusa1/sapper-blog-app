@@ -183,7 +183,9 @@
     <!-- Talks & Presentations -->
     <section class="recap-section bg-stone-50">
       <div class="mx-auto max-w-4xl">
-        <h2 class="section-title text-stone-900">{m.recap2025TalksSection()}</h2>
+        <h2 class="section-title text-stone-900">
+          {m.recap2025TalksSection()}
+        </h2>
         <p class="mb-8 text-center text-xl text-stone-600">
           {m.recap2025TalksDescription()}
         </p>

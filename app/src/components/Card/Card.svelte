@@ -174,10 +174,7 @@
   </script>
 </svelte:head>
 
-<article
-  data-pagefind-body
-  class="bg-stone-50 dark:bg-stone-950"
->
+<article data-pagefind-body class="bg-stone-50 dark:bg-stone-950">
   <div class="mx-auto px-4 py-8 md:py-12">
     <header>
       <div class="mx-auto max-w-3xl">
