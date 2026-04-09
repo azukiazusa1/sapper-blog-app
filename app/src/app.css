@@ -150,7 +150,7 @@ html:has(dialog[open]) {
   #contents {
     font-size: 1.0625rem;
     line-height: 2;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.01em;
   }
 }
 
