@@ -172,7 +172,7 @@
 
 <div class="mx-auto mt-16 max-w-6xl px-4 py-8">
   <h2
-    class="mb-6 border-b border-stone-200 pb-3 font-mono text-xs font-medium uppercase tracking-[0.2em] text-stone-500 dark:border-stone-700 dark:text-stone-400"
+    class="mb-6 border-b border-stone-200 pb-3 font-mono text-base font-medium uppercase tracking-[0.2em] text-stone-500 dark:border-stone-700 dark:text-stone-400"
   >
     {m.relatedArticles()}
   </h2>
