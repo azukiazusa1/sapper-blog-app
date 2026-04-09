@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "ネットワーク設定の unrestricted モードはネットワークアクセスの許可に関するもので、GitHub の認証とは無関係です。"
 published: true
 ---
-
 クラウドホスト型エージェントを大規模に構築・展開するためのサービスである Claude Managed Agents がパブリックベータとしてリリースされました。Claude Managed Agents は Claude を自律的なエージェントとして動作させるための[ハーネス](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)とインフラストラクチャーを提供します。長時間かかるタスクや非同期のタスクを実行するために使用するのが想定されています。
 
 自律的に動作するエージェントを動かす環境を作ろうとすると、安全なサンドボックス環境・エージェントの状態を保存するためのストレージ・エージェントの状態を監視するためのモニタリングツール・アクセス権限など、様々な開発工数がかかります。Managed Agents を使用することで、これらのインフラストラクチャーを構築する必要がなくなり、ユーザーに価値を提供するという本質的な開発に集中できます。Managed Agents は AI モデルとして Claude 専用に開発されており、Claude の能力を最大限に引き出すための最適化が施されています。

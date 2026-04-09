@@ -8,7 +8,7 @@ updatedAt: "2026-04-09T19:03+09:00"
 tags: ["claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6g3zNuqfqDdQzRP2hUNOLB/bdfd663d721484aedb24af8836a61ce4/standard_bicycle_12094-768x591.png"
-  title: "Illustration of a bicycle"
+  title: "自転車のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "The unrestricted network mode only controls network access and has nothing to do with GitHub authentication."
 published: true
 ---
-
 Claude Managed Agents, a service for building and deploying cloud-hosted agents at scale, has been released in public beta. Claude Managed Agents provides the [harness](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) and infrastructure needed to run Claude as an autonomous agent. It is intended for long-running and asynchronous tasks.
 
 If you try to build an environment for autonomous agents yourself, you need to invest engineering effort in a secure sandbox, storage for agent state, monitoring tools, access controls, and more. By using Managed Agents, you no longer have to build that infrastructure yourself, and can focus on the core work of delivering value to users. Managed Agents is built specifically for Claude and optimized to get the most out of its capabilities.
