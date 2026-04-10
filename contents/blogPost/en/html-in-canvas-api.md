@@ -5,10 +5,10 @@ slug: "html-in-canvas-api"
 about: "HTML in Canvas API is an experimental API proposed at WICG for rendering HTML directly inside a canvas. This article explains how it works, what problems it solves, and the kinds of use cases it enables."
 createdAt: "2026-04-10T19:17+09:00"
 updatedAt: "2026-04-10T19:17+09:00"
-tags: ["Web API", "Canvas"]
+tags: ["Web API", "canvas"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2XFLFPVE4flo0iwpx3MCmS/c32d6999b93000d4a7cbbb44e10a2cec/chess_14477-768x768.png"
-  title: "Illustration of chess pieces"
+  title: "チェスの駒のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "`drawElementImage`"
           correct: false
           explanation: "This is not an attribute. It is the name of the method used to draw child elements."
-
 published: true
 ---
-
 HTML in Canvas API is an experimental API proposed at WICG that enables rendering HTML directly inside a canvas. Today's `<canvas>` element has no standard way to render rich text or HTML content, which creates a real limitation. The `fillText()` method provides basic text rendering, but layout and styling control are limited, so developers have had to rely on third-party libraries or custom implementations to build more complex text rendering. As a result, accessibility issues and performance drawbacks can arise.
 
 For reference, a simple example of drawing text with `fillText()` looks like this:
