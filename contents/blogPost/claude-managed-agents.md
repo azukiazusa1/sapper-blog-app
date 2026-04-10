@@ -62,7 +62,7 @@ published: true
 
 この記事では実際に Claude Managed Agents を試してみた内容を紹介します。この記事を読むと、Claude Managed Agents の基本概念を把握し、Claude Console でセッションを開始して、GitHub リポジトリに接続したエージェントに実務的なタスクを依頼する流れをひととおり追えるようになります。
 
-:::info
+:::note
 Claude Managed Agents は従量課金制のサービスです。通常の Claude API のトークン使用量に加えて、セッションが `running` 状態だった時間に対して 1 セッション時間あたり 0.08 ドルが加算されます。`idle` や `terminated` の時間は課金対象に含まれません。料金の詳細は[ドキュメント](https://platform.claude.com/docs/en/about-claude/pricing#claude-managed-agents-pricing)を参照してください。
 :::
 
