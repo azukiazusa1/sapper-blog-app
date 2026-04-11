@@ -7,6 +7,7 @@ app/build/
 app/test-results/
 app/artifacts/
 app/node_modules
+app/.wrangler/
 .env
 .vercel
 .turbo

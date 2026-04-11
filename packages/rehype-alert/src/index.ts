@@ -37,7 +37,7 @@ const handleNewSyntax = (tree: any) => {
       const firstChild = node.children[0];
       if (firstChild.type === "text" && firstChild.value) {
         const match = firstChild.value.match(
-          /^:::(note|alert|tip|warning)\s*\n([\s\S]*?)\n:::$/,
+          /^:::(note|info|alert|tip|warning)\s*\n([\s\S]*?)\n:::$/,
         );
         if (match) {
           const alertType = match[1];
@@ -63,7 +63,7 @@ const handleNewSyntax = (tree: any) => {
           // This handles markdown processing like **bold** and *italic*
           const nodeText = reconstructTextFromChildren(node.children);
           const blockMatch = nodeText.match(
-            /^:::(note|alert|tip|warning)\s*\n([\s\S]*?)\n:::$/,
+            /^:::(note|info|alert|tip|warning)\s*\n([\s\S]*?)\n:::$/,
           );
           if (blockMatch && blockMatch[1]) {
             const alertType: string = blockMatch[1];
@@ -109,7 +109,7 @@ const reconstructTextFromChildren = (children: any[]): string => {
 const extractContentNodes = (children: any[]): any[] => {
   const allText = reconstructTextFromChildren(children);
   const match = allText.match(
-    /^:::(note|alert|tip|warning)\s*\n([\s\S]*?)\n:::$/,
+    /^:::(note|info|alert|tip|warning)\s*\n([\s\S]*?)\n:::$/,
   );
 
   if (!match || !match[2]) return [];
@@ -130,6 +130,11 @@ const extractContentNodes = (children: any[]): any[] => {
 // Type mapping for alert configurations
 const ALERT_TYPE_MAPPING = {
   note: {
+    className: "alert-note",
+    title: "Note",
+    icon: "m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z",
+  },
+  info: {
     className: "alert-note",
     title: "Note",
     icon: "m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z",

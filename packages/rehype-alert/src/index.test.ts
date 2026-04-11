@@ -79,6 +79,13 @@ This is the second line
       expect(value).toMatchSnapshot();
     });
 
+    test(":::info を Note に変換する（note のエイリアス）", async () => {
+      const { value } = await processor.process(`:::info
+This is an info
+:::`);
+      expect(value).toMatchSnapshot();
+    });
+
     test(":::tip でMarkdownコンテンツを含む", async () => {
       const { value } = await processor.process(`:::tip
 This has **bold** text and *italic* text.
