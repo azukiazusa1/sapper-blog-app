@@ -40,10 +40,8 @@ selfAssessment:
         - text: "You need to package the consultation content as JSON arguments"
           correct: false
           explanation: "The article does not describe building JSON arguments. It says you simply call the tool."
-
 published: true
 ---
-
 Coding-agent-based development is no longer unusual, and as it becomes more common, the discussion around cost becomes impossible to ignore. More capable AI models can handle more complex tasks, but they also cost more. In principle, it would be ideal to use lightweight models such as Haiku or Sonnet for simple tasks and high-performance models such as Opus for more complex ones. In practice, though, designing how to assign each task to the right model is itself a complicated challenge.
 
 The newly added [Advisor tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool) in Claude addresses that performance-versus-cost tradeoff. It allows routine work to be handled by lightweight models such as Haiku or Sonnet, while enabling the executor to "consult" a higher-performance model such as Opus when it encounters a complex problem it cannot resolve on its own. When Opus receives that consultation, it can access the shared context and return plans, revisions, or stop signals. In a sense, this inverts the usual idea of delegating work to a sub-agent in large-scale agent orchestration. Because the high-performance model is called only when needed, you can keep costs down while still making full use of its capabilities.
