@@ -2,7 +2,7 @@
 id: MPEh7n0SXWiZkKf-vKUGo
 title: "apm: A Package Manager for AI Agents"
 slug: "apm-package-manager"
-about: "apm (Agent Package Manager) is a package manager for AI agents developed by Microsoft. It resolves dependencies like npm or pip while packaging and managing agent prompts, tools, skills, and MCP as manifests. This article introduces the basics of using apm."
+about: "apm is a package manager for AI agents by Microsoft. Like npm or pip, it resolves dependencies while packaging agent skills and MCP as manifests. This article covers the basics of using apm."
 createdAt: "2026-04-16T19:55+09:00"
 updatedAt: "2026-04-16T19:55+09:00"
 tags: ["apm", "agent-skills", "mcp"]
