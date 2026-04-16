@@ -5,10 +5,10 @@ slug: "apm-package-manager"
 about: "apm is a package manager for AI agents by Microsoft. Like npm or pip, it resolves dependencies while packaging agent skills and MCP as manifests. This article covers the basics of using apm."
 createdAt: "2026-04-16T19:55+09:00"
 updatedAt: "2026-04-16T19:55+09:00"
-tags: ["apm", "agent-skills", "mcp"]
+tags: ["apm", "agent skills", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6bcoL9NTLsCTlwPjpgFNkO/370d0d80c6b6e6f33aee9d4b24796868/wild-plants_itadori_21652.png"
-  title: "Illustration of Japanese knotweed"
+  title: "イタドリのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "applyTo specifies target file path patterns, not priority."
 published: true
 ---
-
 Context is crucial for AI coding agents to work effectively. Developers need to combine various elements such as prompt engineering, tool design, skills, and MCP to ensure agents can access the right information. However, the current situation is that individual developers manage these elements locally, making it difficult to share and reuse them across teams.
 
 apm (Agent Package Manager) is a package manager for AI agents developed by Microsoft. It resolves dependencies like npm or pip while providing a system to package, manage, and share agent prompts, tools, skills, and MCP as manifests. Manifests are hosted on Git repositories such as GitHub and can be installed from there. This is expected to make it easy to share and reuse agent building blocks within teams.

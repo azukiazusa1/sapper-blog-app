@@ -5,7 +5,7 @@ slug: "apm-package-manager"
 about: "apm は Microsoft が開発した AI エージェント向けパッケージマネージャーです。npm や pip のように依存関係を解決しながら、エージェントのスキルや MCP をパッケージ化して管理・共有できます。この記事では apm の基本的な使い方を紹介します。"
 createdAt: "2026-04-16T19:55+09:00"
 updatedAt: "2026-04-16T19:55+09:00"
-tags: ["apm", "agent skills", "mcp"]
+tags: ["apm", "agent skills", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6bcoL9NTLsCTlwPjpgFNkO/370d0d80c6b6e6f33aee9d4b24796868/wild-plants_itadori_21652.png"
   title: "イタドリのイラスト"
@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "applyTo は優先度ではなく、適用対象のファイルパスパターンを指定するフィールドです。"
 published: true
 ---
-
 AI コーディングエージェントを効果的に動作させるためにはコンテキストが肝要です。開発者はプロンプトエンジニアリング, ツールの設計, スキル, MCP といった様々な要素を組み合わせて、エージェントが適切な情報にアクセスできるようにする必要があります。しかし現状では個々の開発者が手元でこれらの要素を管理しており、チームでの共有や再利用が難しいという課題があります。
 
 apm (Agent Package Manager) は Microsoft が開発している、AI エージェント向けのパッケージマネージャーです。npm や pip と同様の仕組みで依存関係を解決しながら、エージェントのプロンプトやツール、スキル、MCP をマニフェストとしてパッケージ化して管理・共有できる仕組みを提供します。マニフェストは GitHub などの Git リポジトリでホストされインストールできます。これにより、エージェントの構成要素をチーム内で簡単に共有・再利用できるようになることが期待されます。
