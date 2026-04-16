@@ -2,7 +2,7 @@
 id: MPEh7n0SXWiZkKf-vKUGo
 title: "AI エージェント向けのパッケージマネージャー apm"
 slug: "apm-package-manager"
-about: "apm (Agent Package Manager) は Microsoft が開発している、AI エージェント向けのパッケージマネージャーです。npm や pip と同様の仕組みで依存関係を解決しながら、エージェントのプロンプトやツール、スキル、MCP をマニフェストとしてパッケージ化して管理・共有できる仕組みを提供します。この記事では apm の基本的な使い方について紹介します。"
+about: "apm は Microsoft が開発した AI エージェント向けパッケージマネージャーです。npm や pip のように依存関係を解決しながら、エージェントのスキルや MCP をパッケージ化して管理・共有できます。この記事では apm の基本的な使い方を紹介します。"
 createdAt: "2026-04-16T19:55+09:00"
 updatedAt: "2026-04-16T19:55+09:00"
 tags: ["apm", "agent skills", "mcp"]
