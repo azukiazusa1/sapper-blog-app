@@ -5,7 +5,7 @@ slug: "gh-agent-skill-management"
 about: "GitHub CLI に `gh skill` コマンドが追加され、GitHub 上のエージェントスキルを簡単にインストール・検索・管理できるようになりました。この記事では `gh skill` コマンドの使い方について紹介します。"
 createdAt: "2026-04-19T10:52+09:00"
 updatedAt: "2026-04-19T10:52+09:00"
-tags: ["github-cli", "", "agent skills"]
+tags: ["github-cli", "agent skills"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/48zQwRU5Eko8dyRpo74U9z/4ad91b858ba118fe04362510de88a736/wakasagi_tempura_15710-768x591.png"
   title: "ワカサギの天ぷらのイラスト"
