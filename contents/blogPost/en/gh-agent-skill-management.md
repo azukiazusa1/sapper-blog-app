@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "`preview` is for reviewing contents before installation. It does not install the skill, so avoiding `install` is not the intended safety mechanism."
 published: true
 ---
-
 In the era of coding agents, the importance of sharing [agent skills](https://agentskills.io/home) across a team has become widely recognized. Reusing practices that emerged from individual experimentation across the whole team can significantly improve development speed and stabilize quality. Agent skills also help turn tacit knowledge into explicit, documented knowledge, which is valuable from a team knowledge management perspective.
 
 For sharing and distributing skills, [npx skills](https://github.com/vercel-labs/skills) provided by Vercel had been widely used. It lets you install skills published on GitHub with a single command, `npx skills add owner/repo`, and it was a very convenient tool because it abstracted away differences between coding agents.
