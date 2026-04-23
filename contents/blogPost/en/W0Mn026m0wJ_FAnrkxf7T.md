@@ -2,7 +2,7 @@
 id: W0Mn026m0wJ_FAnrkxf7T
 title: "Imperatively Notify Assistive Technologies with the `ariaNotify()` Method"
 slug: "aria-notify-method"
-about: "The `ariaNotify()` method is a Web API that provides an imperative way to notify users of assistive technologies about dynamic content updates. Traditional WAI-ARIA patterns typically relied on declarative attributes, but `ariaNotify()` lets JavaScript send notifications at the exact timing you intend."
+about: "The `ariaNotify()` method is a Web API for notifying assistive technologies about dynamic content updates. Unlike traditional WAI-ARIA patterns based on declarative attributes, it lets JavaScript send notifications at the exact timing you intend."
 createdAt: "2026-04-21T20:04+09:00"
 updatedAt: "2026-04-21T20:04+09:00"
 tags: ["Web API", "Accessibility"]
