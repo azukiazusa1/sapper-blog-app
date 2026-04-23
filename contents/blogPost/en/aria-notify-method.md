@@ -5,10 +5,10 @@ slug: "aria-notify-method"
 about: "The `ariaNotify()` method is a Web API for notifying assistive technologies about dynamic content updates. Unlike traditional WAI-ARIA patterns based on declarative attributes, it lets JavaScript send notifications at the exact timing you intend."
 createdAt: "2026-04-21T20:04+09:00"
 updatedAt: "2026-04-21T20:04+09:00"
-tags: ["Web API", "Accessibility"]
+tags: ["Web API", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1z5Uwhp5WNxRofatcykwXT/70e20696e3e65d27879cc64d6552f9d8/egg-tart_23461-768x591.png"
-  title: "Illustration of egg tarts"
+  title: "エッグタルトのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,18 +26,18 @@ selfAssessment:
         - text: "To preserve backward compatibility with older assistive technologies"
           correct: false
           explanation: "Backward compatibility is not given as the reason in the article."
-    - question: 'According to the article, `document.ariaNotify(message, { priority: "normal" })` is roughly equivalent to which traditional `aria-live` value?'
+    - question: "According to the article, `document.ariaNotify(message, { priority: \"normal\" })` is roughly equivalent to which traditional `aria-live` value?"
       answers:
-        - text: '`aria-live="assertive"`'
+        - text: "`aria-live=\"assertive\"`"
           correct: false
-          explanation: '`priority: "high"` is the one that roughly corresponds to `aria-live="assertive"`.'
-        - text: '`aria-live="off"`'
+          explanation: "`priority: \"high\"` is the one that roughly corresponds to `aria-live=\"assertive\"`."
+        - text: "`aria-live=\"off\"`"
           correct: false
-          explanation: '`aria-live="off"` disables announcements and does not match `priority: "normal"`.'
-        - text: '`aria-live="polite"`'
+          explanation: "`aria-live=\"off\"` disables announcements and does not match `priority: \"normal\"`."
+        - text: "`aria-live=\"polite\"`"
           correct: true
-          explanation: 'The article explains that `priority: "normal"` roughly maps to `aria-live="polite"`, while `priority: "high"` maps to `aria-live="assertive"`.'
-        - text: '`aria-atomic="true"`'
+          explanation: "The article explains that `priority: \"normal\"` roughly maps to `aria-live=\"polite\"`, while `priority: \"high\"` maps to `aria-live=\"assertive\"`."
+        - text: "`aria-atomic=\"true\"`"
           correct: false
           explanation: "`aria-atomic` controls whether the whole live region is read as a unit, so it is not equivalent to `priority`."
     - question: "How does the article explain language selection when assistive technology reads a notification sent with `ariaNotify()`?"
@@ -68,10 +68,8 @@ selfAssessment:
         - text: "Only the first notification is read and all later ones are ignored"
           correct: false
           explanation: "The article says the opposite is more likely: only the latest notification may be read."
-
 published: true
 ---
-
 The `ariaNotify()` method is a Web API that provides an imperative way to notify users of assistive technologies about dynamic content updates. Traditional WAI-ARIA patterns usually conveyed information to assistive technologies through declarative attributes such as `aria-label="xxx"` or `aria-checked="true"`. In contrast, `ariaNotify()` is notable because it lets JavaScript send a notification at a specific moment.
 
 The `ariaNotify()` method is intended for scenarios such as the following.

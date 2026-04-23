@@ -26,18 +26,18 @@ selfAssessment:
         - text: "古いバージョンの支援技術との後方互換性を保つため"
           correct: false
           explanation: "後方互換性を理由として挙げている記述は記事にはありません。"
-    - question: '記事の説明に従うと、`document.ariaNotify(message, { priority: "normal" })` は、従来の `aria-live` 属性のどの値とほぼ同等の意味になりますか?'
+    - question: "記事の説明に従うと、`document.ariaNotify(message, { priority: \"normal\" })` は、従来の `aria-live` 属性のどの値とほぼ同等の意味になりますか?"
       answers:
-        - text: '`aria-live="assertive"`'
+        - text: "`aria-live=\"assertive\"`"
           correct: false
-          explanation: '`aria-live="assertive"` とほぼ同等なのは `priority: "high"` です。`"normal"` と取り違えないよう注意が必要です。'
-        - text: '`aria-live="off"`'
+          explanation: "`aria-live=\"assertive\"` とほぼ同等なのは `priority: \"high\"` です。`\"normal\"` と取り違えないよう注意が必要です。"
+        - text: "`aria-live=\"off\"`"
           correct: false
-          explanation: '`aria-live="off"` は通知を行わない設定であり、`priority: "normal"` の説明とは一致しません。'
-        - text: '`aria-live="polite"`'
+          explanation: "`aria-live=\"off\"` は通知を行わない設定であり、`priority: \"normal\"` の説明とは一致しません。"
+        - text: "`aria-live=\"polite\"`"
           correct: true
-          explanation: '記事では `priority: "normal"` が `aria-live="polite"` に、`priority: "high"` が `aria-live="assertive"` にほぼ対応すると説明されています。'
-        - text: '`aria-atomic="true"`'
+          explanation: "記事では `priority: \"normal\"` が `aria-live=\"polite\"` に、`priority: \"high\"` が `aria-live=\"assertive\"` にほぼ対応すると説明されています。"
+        - text: "`aria-atomic=\"true\"`"
           correct: false
           explanation: "`aria-atomic` は通知領域内の変更を丸ごと読み上げるかどうかを指定する別の属性で、`priority` と同等ではありません。"
     - question: "`ariaNotify()` で送られた通知を支援技術が読み上げる際の言語決定について、記事ではどのように説明されていますか?"
@@ -68,10 +68,8 @@ selfAssessment:
         - text: "最初に呼ばれた通知のみが読み上げられ、以降は無視される"
           correct: false
           explanation: "最初の通知が優先されるのではなく、「最新の通知のみが読み上げられる可能性が高い」と記事では説明されています。"
-
 published: true
 ---
-
 `ariaNotify()` メソッドは、支援技術を使用しているユーザーに対して、動的なコンテンツの更新を通知するための命令的な方法を提供する Web API です。従来の WAI-ARIA の仕様では `aria-label="xxx"` や `aria-checked="true"` のように宣言的な属性を使用して支援技術に情報を伝える方法が一般的でしたが、`ariaNotify()` メソッドは JavaScript を使用して、特定のタイミングで支援技術に通知を送ることができるという点が特徴です。
 
 `ariaNotify()` メソッドは、以下のようなシナリオで使用されることが想定されています。
