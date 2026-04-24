@@ -671,6 +671,151 @@ App 側が意識すべき制約
 
 ---
 
+## Agent が UI を返す方法は MCP Apps だけではない
+
+MCP Apps は **HTML を iframe に埋め込む** アプローチ
+→ ホスト側のサンドボックス前提で表現力を確保している
+
+一方で、**「宣言的な JSON を返す」** という別解もある
+
+- AI は HTML ではなく、コンポーネント spec の JSON を生成する
+- ホスト側がそれを **ネイティブ部品** として描画する
+
+代表的な提案として、**json-render** (Vercel Labs) と **A2UI** (Google) を見ていく
+
+<!--
+ここまで MCP Apps の話をしてきましたが、Agent が UI を返す方法は MCP Apps だけではありません。MCP Apps が HTML を iframe に埋め込む路線なのに対して、AI には宣言的な JSON だけを返してもらって、ホスト側がそれをネイティブのコンポーネントとして描画する、というアプローチが並行して提案されています。代表的なものに、Vercel Labs の json-render と Google の A2UI があります。順に紹介していきます。
+-->
+
+---
+
+## json-render — Vercel Labs
+
+- AI は **HTML ではなく構造化された JSON** を返す
+- 開発者が定義した **コンポーネントカタログ** にあるものだけを使える
+- 出力はホスト側で React / Vue / Svelte などのネイティブ部品にマップされる
+
+3 ステップの仕組み
+
+1. 開発者が **カタログ** (Zod スキーマ) を定義
+2. AI が **カタログ準拠の JSON** をストリーミング生成
+3. クライアントが **React コンポーネント** として描画
+
+→ "guardrails through constraints"。AI は決められた部品しか出力できない
+
+<!--
+まず json-render です。Vercel Labs が公開しているフレームワークで、AI に HTML ではなく JSON を返させる路線を取っています。ポイントは、開発者があらかじめコンポーネントのカタログを Zod で定義して、AI はそのカタログにあるものしか使えないようにすることです。AI が出した JSON はホスト側で React や Vue のネイティブ部品として描画されます。
+guardrails through constraints と表現されているのですが、AI に自由に HTML を出させるのではなく、決められた部品の組み合わせだけを許す、という設計思想ですね。
+-->
+
+---
+
+## json-render のコード例
+
+カタログを Zod で定義する
+
+```ts
+export const catalog = defineCatalog(schema, {
+  components: {
+    Card:   { props: z.object({ title: z.string() }), slots: ["default"] },
+    Metric: { props: z.object({ label: z.string(), value: z.string() }) },
+  },
+});
+```
+
+AI が生成する JSON はカタログに完全に拘束される
+
+```json
+{
+  "root": "card-1",
+  "elements": {
+    "card-1": { "type": "Card",   "props": { "title": "Revenue" }, "children": ["m1"] },
+    "m1":     { "type": "Metric", "props": { "label": "Total", "value": "$48,200" } }
+  }
+}
+```
+
+<!--
+コード例を見てみましょう。上が開発者が定義するカタログです。Card と Metric というコンポーネントを Zod スキーマ付きで登録しています。
+下が AI が実際に生成する JSON です。AI は Card や Metric を使った構造を返してきますが、カタログにない型は出せませんし、props のスキーマもバリデーションされます。仮に AI がハルシネーションしても、未定義のコンポーネントや不正な props は弾かれる、という安全網が機能します。
+-->
+
+---
+
+## A2UI — Google
+
+- 同じく **JSON でコンポーネントを宣言** するプロトコル
+- 大きな違いは **フレームワーク非依存**
+  - 同じ Agent レスポンスが React / Angular / **Flutter** / ネイティブで描画される
+- LLM が **インクリメンタルに生成しやすい** フラットな構造
+  - 完成 JSON を待たずにストリーミング描画できる
+- A2A プロトコルをトランスポートとして利用できる
+
+→ "How can AI agents safely send rich UIs across trust boundaries?" への解として提案されている
+
+<!--
+次に A2UI です。Google が公開しているプロトコルで、こちらも JSON でコンポーネントを宣言する路線です。json-render と違うのは、フレームワーク非依存を強く打ち出している点です。同じ Agent のレスポンスが React、Angular、Flutter、ネイティブモバイルでも同じように描画されます。
+もう一つの特徴は、LLM がインクリメンタルに生成しやすいよう、フラットな構造になっていることです。完成した JSON を待つ必要がなくて、断片が届くたびに UI を更新できます。
+ちなみに A2UI は MCP に依存しているわけではなくて、A2A プロトコルをトランスポートに使えるなど、独立した立ち位置を取っています。
+-->
+
+---
+
+## A2UI のメッセージ例 (v0.9 draft)
+
+Agent はフラットな JSON で UI を記述する
+
+```json
+{ "id": "header", "component": "Text",      "text": "# Book Your Table" }
+{ "id": "date",   "component": "TextField", "label": "Date" }
+{ "id": "submit", "component": "Button",    "label": "Reserve",
+  "action": { "type": "submit", "target": "/reservation" } }
+```
+
+データはパス指定で別メッセージとして注入する
+
+```json
+{ "path": "/reservation",
+  "value": { "date": "2025-12-15", "time": "19:00", "guests": 2 } }
+```
+
+ID 参照のフラット構造 → ストリーミングで部分更新が容易
+
+<!--
+A2UI のメッセージ例です。コンポーネントは ID を持ったフラットなレコードの並びで届きます。上の例では、Text のヘッダ、TextField の日付欄、Button の送信ボタンが、それぞれ独立したメッセージとして送られてきます。
+データは UI の構造とは別に、パス指定で注入されます。これによって UI の構造とデータが疎結合になり、Agent はデータだけ部分更新することもできます。
+ID 参照のフラット構造になっているおかげで、ストリーミングで届いた断片だけで UI を組み立てたり、後から差分だけ更新したりできるのが、A2UI が LLM フレンドリーと言われる理由です。
+-->
+
+---
+
+## Agent が UI を返す 3 つのアプローチ
+
+<div class="fit">
+
+|             | MCP Apps           | json-render             | A2UI                          |
+| ----------- | ------------------ | ----------------------- | ----------------------------- |
+| 返すもの    | **HTML** リソース  | JSON spec               | JSON spec                     |
+| 描画方式    | 二重 iframe        | ネイティブ React など   | 複数 FW (React / Flutter / …) |
+| 安全性      | サンドボックス分離 | **カタログ制約**        | 宣言的・コード実行なし        |
+| 強み        | 表現力・既存資産   | React エコシステム親和  | プラットフォーム横断          |
+
+</div>
+
+共通する設計思想
+
+- **事前定義された部品カタログ** から AI に選ばせる (任意 UI を作らせない)
+- **ストリーミング前提** でプログレッシブに描画する
+- **人間と AI が同じ UI を共有** して協業する
+
+<!--
+3 つを並べて比べると、MCP Apps が HTML と iframe による表現力重視のアプローチであるのに対して、json-render と A2UI は JSON とカタログによる制約と安全性、そしてフレームワーク独立性を取っていることがわかります。
+ただ重要なのは、これらは競合関係というよりは、自社のサービスをどの粒度で AI に開放したいか、で選ぶ選択肢が増えてきた、ということです。
+そして 3 つに共通する設計思想があります。事前に定義された部品カタログから AI に選ばせる、ストリーミング前提でプログレッシブに描画する、そして人間と AI が同じ UI を共有して協業する、この 3 点です。Agent が UI を返す世界全体が、同じ方向に収束しつつあるとも言えるでしょう。
+-->
+
+---
+
 <div class="hero">
   <div class="small">よく見られる言説</div>
   <div class="quote">
@@ -1064,6 +1209,8 @@ UI はなくならないし、むしろ重要になります。
 - AI Content Disclosure: https://github.com/dweekly/ai-content-disclosure
 - Markdown for agents: https://blog.cloudflare.com/ja-jp/markdown-for-agents/
 - WebMCP: https://github.com/webmachinelearning/webmcp
+- json-render: https://json-render.dev/
+- A2UI: https://a2ui.org/
 
 <!--
 参考リンクです。
