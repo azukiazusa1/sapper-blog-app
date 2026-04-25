@@ -273,7 +273,7 @@ Here, we generate a system prompt from the catalog and pass it to the AI model. 
 >
 > - Button: { label: string, variant: "primary" | "secondary" } - クリック可能なボタンコンポーネントでアクションをトリガーするために使用されます。
 > - Card: { title: string } [accepts children]
-> - Input: { label?: string, placeholder?: string, type: "text" | "email" | "password" | "number", value?: string } - テキスト入力コンポーネントです。ユーザーがテキストを入力するために使用されます。$bindState でステートと双方向バインディングできます。
+> - Input: props are label?: string, placeholder?: string, type: "text" | "email" | "password" | "number", value?: string - テキスト入力コンポーネントです。ユーザーがテキストを入力するために使用されます。$bindState でステートと双方向バインディングできます。
 >   ...
 >   RULES:
 >
@@ -375,7 +375,7 @@ Now let's run the app and try it. For example, if you send the prompt "Show a ca
 }
 ```
 
-When you check the generated UI, you can see that a card titled "サンプルカード" is indeed displayed.
+When you check the generated UI, you can see that the sample card is indeed displayed.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/1imr1xTTbfR3qcf0T2y6ac/7cec4ee92059ceb5f58101d92756d1f2/image.png)
 
@@ -533,7 +533,7 @@ The `on` prop of the `submit-button` component defines a `press` event, and when
 }
 ```
 
-When you interact with the rendered UI, the "入力された名前" card appears only after you enter a name and click the submit button, and the text inside it is updated by the `submitForm` action. For example, if you enter "azusa", the `submitForm` action saves the uppercase value to `/formData/name`, so it displays "こんにちは、AZUSAさん！".
+When you interact with the rendered UI, the result card appears only after you enter a name and click the submit button, and the text inside it is updated by the `submitForm` action. For example, if you enter "azusa", the `submitForm` action saves the uppercase value to `/formData/name`, so the greeting with AZUSA is displayed.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/3lVhHeFZZfSu4xskATCykY/f702322f575c406e13ee22699b91e45b/image.png)
 

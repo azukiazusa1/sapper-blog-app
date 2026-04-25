@@ -273,7 +273,7 @@ export async function POST(req: Request) {
 >
 > - Button: { label: string, variant: "primary" | "secondary" } - クリック可能なボタンコンポーネントでアクションをトリガーするために使用されます。
 > - Card: { title: string } [accepts children]
-> - Input: { label?: string, placeholder?: string, type: "text" | "email" | "password" | "number", value?: string } - テキスト入力コンポーネントです。ユーザーがテキストを入力するために使用されます。$bindState でステートと双方向バインディングできます。
+> - Input: props are label?: string, placeholder?: string, type: "text" | "email" | "password" | "number", value?: string - テキスト入力コンポーネントです。ユーザーがテキストを入力するために使用されます。$bindState でステートと双方向バインディングできます。
 >   ...
 >   RULES:
 >
@@ -464,7 +464,7 @@ export default function Home() {
 }
 ```
 
-先程のカードを表示する例の `spec` に加えて、入力フォームと送信ボタン、そして送信された名前を表示するカードが追加されていることがわかります。いくつか注目すべき点を見てみましょう。`name-input` コンポーネントの `value` プロパティは `$bindState` を使用して `/form/name` というパスににバインドされているため、ユーザーが入力した値が状態に反映されるようになっています。json-reader のパスは JSON Pointer　形式（RFC 6901）で表されます。
+先程のカードを表示する例の `spec` に加えて、入力フォームと送信ボタン、そして送信された名前を表示するカードが追加されていることがわかります。いくつか注目すべき点を見てみましょう。`name-input` コンポーネントの `value` プロパティは `$bindState` を使用して `/form/name` というパスにバインドされているため、ユーザーが入力した値が状態に反映されるようになっています。json-render のパスは JSON Pointer 形式（RFC 6901）で表されます。
 
 `form/name` は `state` オブジェクトの中で初期化されていることもわかります。
 
@@ -535,7 +535,7 @@ export default function Home() {
 }
 ```
 
-レンダリングされた UI を操作してみると、名前を入力して送信ボタンをクリックした時に初めて「入力された名前」というカードが表示され、さらにその中のテキストが `submitForm` アクションによって更新されることがわかります。例えば「azusa」と入力した場合、`submitForm` アクションが `/formData/name` に大文字化した値を保存するため、「こんにちは、AZUSAさん！」と表示されます。
+レンダリングされた UI を操作してみると、名前を入力して送信ボタンをクリックした時に初めて「入力された名前」というカードが表示され、さらにその中のテキストが `submitForm` アクションによって更新されることがわかります。例えば「azusa」と入力した場合、`submitForm` アクションが `/formData/name` に大文字化した値を保存するため、「こんにちは、AZUSA さん！」と表示されます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/3lVhHeFZZfSu4xskATCykY/f702322f575c406e13ee22699b91e45b/image.png)
 
