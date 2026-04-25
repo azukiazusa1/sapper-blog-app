@@ -54,10 +54,8 @@ selfAssessment:
         - text: "Manage showing and hiding UI elements based on conditions contained in the assembled spec"
           correct: true
           explanation: "As described in the article, `<VisibilityProvider>` shows or hides elements based on conditions such as `{ visible: { $state: '/some/state/path' } }`."
-
-published: false
+published: true
 ---
-
 In interactions with AI, it is becoming increasingly common to show UI instead of only exchanging text. UI helps express information visually when text alone is not enough, and it can also provide interfaces that users can interact with. For example, when planning a trip, seeing a route on a map is easier to understand than receiving a plain text explanation of how to get to a destination. When ordering food, photos and prices make menu items easier to choose, and selecting an item by pressing a button is more user-friendly than replying with text.
 
 In fact, if you ask Claude, "Tell me about sightseeing spots in Hakone," it does more than answer with text. It can show spots on a map and display photos and details for each spot as cards. This technique, where AI generates UI, is called Generative UI, and it has the potential to significantly improve the user experience.
