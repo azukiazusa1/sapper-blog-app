@@ -533,7 +533,7 @@ The `on` prop of the `submit-button` component defines a `press` event, and when
 }
 ```
 
-When you interact with the rendered UI, the result card appears only after you enter a name and click the submit button, and the text inside it is updated by the `submitForm` action. For example, if you enter "azusa", the `submitForm` action saves the uppercase value to `/formData/name`, so the greeting with AZUSA is displayed.
+When you interact with the rendered UI, you will notice that the "Entered Name" card is displayed only after you enter a name and click the submit button, and the text within it displays "Hello, <entered name>!".
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/3lVhHeFZZfSu4xskATCykY/f702322f575c406e13ee22699b91e45b/image.png)
 
