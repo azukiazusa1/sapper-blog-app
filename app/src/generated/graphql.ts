@@ -1571,6 +1571,14 @@ export type AllPostsQueryVariables = Exact<{
 
 export type AllPostsQuery = { __typename?: 'Query', blogPostCollection?: { __typename?: 'BlogPostCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, about?: string | null, createdAt?: any | null } | null> } | null };
 
+export type AllPostsWithDetailsQueryVariables = Exact<{
+  order?: InputMaybe<BlogPostOrder>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type AllPostsWithDetailsQuery = { __typename?: 'Query', blogPostCollection?: { __typename?: 'BlogPostCollection', total: number, skip: number, limit: number, items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, about?: string | null, article?: string | null, audio?: string | null, createdAt?: any | null, updatedAt?: any | null, selfAssessment?: any | null, relatedArticleCollection?: { __typename?: 'BlogPostRelatedArticleCollection', items: Array<{ __typename?: 'BlogPost', title?: string | null, slug?: string | null, createdAt?: any | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null } | null> } | null, thumbnail?: { __typename?: 'Asset', title?: string | null, url?: string | null } | null, tagsCollection?: { __typename?: 'BlogPostTagsCollection', items: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null } | null> } | null } | null> } | null };
+
 export type AllShortsQueryVariables = Exact<{
   order?: InputMaybe<ShortOrder>;
 }>;
