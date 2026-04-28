@@ -5,7 +5,7 @@ slug: "automatic-contrast-adjustment-with-contrast-color-function"
 about: "The `contrast-color()` function returns either `white` or `black`, whichever has a higher contrast ratio against a given color. It helps when colors change dynamically or users apply custom themes."
 createdAt: "2026-04-28T20:58+09:00"
 updatedAt: "2026-04-28T20:58+09:00"
-tags: ["CSS", "accessibility"]
+tags: ["CSS", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/10j9bepBZ34HUkLxtsSLfz/4ac28382b1c7f186e89baa4864b10322/pirate-ship_13574-768x729.png"
   title: "海賊船のイラスト"
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "It returns a browser-selected color from an arbitrary list of candidate colors"
           correct: false
           explanation: "Early versions of the specification proposed candidate color lists and configurable algorithms, but the implementation described in the article returns either `black` or `white`."
-
 published: true
 ---
-
 Contrast ratio is a numerical representation of the difference in brightness between the foreground color and background color of text or an element. From the perspective of web accessibility, ensuring sufficient contrast is important. For users with visual impairments or older users, low-contrast text can be difficult to read and harder to understand. The importance of contrast also increases under environmental conditions such as strong outdoor sunlight.
 
 The WCAG (Web Content Accessibility Guidelines) criteria define minimum contrast ratios as follows.
