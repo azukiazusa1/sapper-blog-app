@@ -134,6 +134,12 @@ Chrome v147 以降で `contrast-color()` 関数が機能していることが確
 }
 ```
 
+<iframe height="300" style="width: 100%;" scrolling="no" title="contract-color" src="https://codepen.io/azukiazusa1/embed/GgNKPOg?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true">
+  See the Pen <a href="https://codepen.io/azukiazusa1/pen/GgNKPOg">
+  contract-color</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
 ただし、元の背景色の割合（ここは 20%）を増やすと、コントラスト比が下がる可能性があります。この手法を使用する場合には、コントラスト比が十分であることを確認するために、WCAG のコントラスト比チェッカーなどを使用してテストすることをおすすめします。
 
 もしくは、`if()` 関数を使用して、`black` と `white` を条件に異なる色を返す方法も考えられます。この場合も、コントラスト比が十分であることを確認するために、テストを行うことが重要です。

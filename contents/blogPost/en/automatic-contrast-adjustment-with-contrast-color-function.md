@@ -134,6 +134,12 @@ To work around the limitation that only `black` or `white` can be returned, you 
 }
 ```
 
+<iframe height="300" style="width: 100%;" scrolling="no" title="contract-color" src="https://codepen.io/azukiazusa1/embed/GgNKPOg?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true">
+  See the Pen <a href="https://codepen.io/azukiazusa1/pen/GgNKPOg">
+  contract-color</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
 However, increasing the proportion of the original background color (20% in this example) may lower the contrast ratio. When using this approach, I recommend testing with a WCAG contrast checker or a similar tool to confirm that the contrast ratio is sufficient.
 
 Alternatively, you can use the `if()` function to return different colors depending on whether the result is `black` or `white`. In this case as well, it is important to test and confirm that the contrast ratio is sufficient.
