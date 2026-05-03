@@ -16,20 +16,18 @@ selfAssessment:
       answers:
         - text: "playwright-cli annotate"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "playwright-cli screenshot --annotate"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "playwright-cli show --annotate"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "playwright-cli open --annotate"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 AI エージェントを使用してフロントエンドを開発する際、どのように視覚的なフィードバックを提供するかはよくある課題です。AI エージェントは自身が書いたコードに対してテストや Lint から得られるフィードバックをもとに改善するというサイクルを繰り返すことによってコードの品質を向上させることができます。しかし、フロントエンドの開発では、例えば CSS が実際にどのように適用されているか、あるいは JavaScript がどのように動作しているかといった視覚的なフィードバックが必要になります。一方で、AI 自身はブラウザを操作する手段を持ちません。そのため Playwright や Chrome DevTools Protocol といったブラウザ自動化ツールを利用して、AI エージェントがコードの変更に対して視覚的なフィードバックを得る方法が考えられます。最近ではコーディングエージェントのデスクトップアプリからブラウザを操作できるといった機能も提供されています。
 
 とはいえすべての視覚的なフィードバックを自動化できるわけではなく、人間が実際に操作してフィードバックを与えることも大切です。マウスやスワイプ操作をする人間の操作方法と要素を直接選択してクリックする AI の操作方法は異なりますし、現時点での AI エージェントではアニメーションの体験を評価することが難しいです。実際に Web アプリケーションを操作するのは人間ですから、AI エージェントがコードを変更した後に人間が実際に操作してフィードバックを与えるというサイクルも重要になります。

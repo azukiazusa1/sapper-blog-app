@@ -16,20 +16,18 @@ selfAssessment:
       answers:
         - text: "playwright-cli annotate"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "playwright-cli screenshot --annotate"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "playwright-cli show --annotate"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "playwright-cli open --annotate"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 When using AI agents for frontend development, a common challenge is how to provide visual feedback. AI agents can improve code quality by repeatedly using feedback from tests and linting to refine the code they wrote. However, frontend development often requires visual feedback, such as how CSS is actually applied or how JavaScript behaves. At the same time, AI agents do not have a way to operate a browser on their own. One possible approach is to use browser automation tools such as Playwright or Chrome DevTools Protocol so that AI agents can get visual feedback on code changes. Recently, desktop apps for coding agents have also started providing features that let agents control a browser.
 
 That said, not all visual feedback can be automated, and it is also important for humans to actually operate the application and provide feedback. The way humans interact with an application using a mouse or swipe gestures differs from the way an AI directly selects and clicks elements. At the current stage, it is also difficult for AI agents to evaluate the experience of animations. Since real people are the ones who use web applications, a cycle where humans try the application and provide feedback after an AI agent changes the code is also important.
