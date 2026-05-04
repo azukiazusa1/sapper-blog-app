@@ -8,7 +8,7 @@ updatedAt: "2026-05-04T11:54+09:00"
 tags: ["codex", "ios", "SwiftUI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7lOrkKlhi3uEm418yPS0kA/edbe20537ac7076c735b66e332565898/shoebill_22981.png"
-  title: "Illustration of a Shoebill"
+  title: "ハシビロコウのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -54,10 +54,8 @@ selfAssessment:
         - text: "It silently ignores the error and continues as if execution succeeded"
           correct: false
           explanation: "try? does not ignore errors — it converts them into nil, letting the caller handle the situation with a nil check."
-
 published: true
 ---
-
 The emergence of AI agents has sparked a democratization-of-coding movement. Because AI agents can write code from natural-language instructions alone, people who previously had no access to programming can now bring their ideas to life. I have a background in web development but almost no experience with iOS app development. I wanted to see how far I could get building an iOS app using Codex, an AI coding agent. Rather than simply letting the agent build something without looking inside — what you might call "vibe coding" — I focused primarily on a learning-oriented approach: asking questions like "Why is this code necessary?" and "Could we design this better?" as we went along. This article documents that experiment.
 
 The Codex use-cases page includes an iOS app development example, so I used that as a reference while trying things out.
