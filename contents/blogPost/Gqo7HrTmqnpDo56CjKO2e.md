@@ -342,7 +342,7 @@ xcrun simctl list devices available
 - `mcp__xcodebuildmcp__.build_run_sim`: ツールビルドとシミュレータを起動する
 - `mcp__xcodebuildmcp__.screenshot`: スクリーンショットを取得
 
-UI 操作には [Computer Use](https://developers.openai.com/codex/app/computer-use) ツールを使用していました。これは Codex が macOS 上の GUI を見て、クリックや入力、画面遷移を行えるようにする機能です。Computer Use ツールを使用するためにはアクセシビリティと画面収録とシステム録音の許可が必要になります。これらはシステム設定 → プライバシーとセキュリティ から設定できます。
+UI 操作には [Computer Use](https://developers.openai.com/codex/app/computer-use) ツールを使用していました。これは Codex が macOS 上の GUI を見て、クリックや入力、画面遷移を行えるようにする機能です。Computer Use ツールを使用するためにはアクセシビリティと画面収録とシステム録音の許可が必要になります。これらはシステム設定 → プライバシーとセキュリティから設定できます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/31qbQZyvy2YH8EDhS6V65b/95dc07a2c266a762edfe3adb411983f5/image.png)
 
