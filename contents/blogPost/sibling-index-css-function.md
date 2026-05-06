@@ -5,10 +5,10 @@ slug: "sibling-index-css-function"
 about: "`sibling-index()` は要素の兄弟要素の中でのインデックスを返します。`sibling-index()` 関数により取得したインデックスを使用することにより、スタッガー（時間差）アニメーションや、色相を段階的に変えるといった、兄弟要素の位置に基づいたスタイリングが可能になります。これまでは JavaScript を使用して実装する必要があったような効果も、純粋な CSS で実現できるようになります。"
 createdAt: "2026-05-06T11:55+09:00"
 updatedAt: "2026-05-06T11:55+09:00"
-tags: ["css"]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3ulQYe5NFc8ZqEjhPXHo2x/cc22085819bfa4cd457cbb5fc2548ff9/animal_cute_shika_4776-768x759.png"
-  title: "かわいいシカのイラスト"
+  title: "かわいい鹿のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "親要素から見た子孫要素全体の階層の深さ"
           correct: false
           explanation: "記事では階層の深さを返す関数としては説明されていません。対象は同じ親を持つ兄弟要素の中での位置です。"
-
 published: true
 ---
-
 `sibling-index()` は CSS Values and Units Module Level 5 で定義された関数で、要素の兄弟要素の中でのインデックスを返します。インデックスは 1 から始まり、同じ親を持つ要素の中で、現在の要素が何番目に位置しているかを示します。例えば、ある要素が親の子要素の中で 3 番目に位置している場合、`sibling-index()` は 3 を返します。
 
 ```css

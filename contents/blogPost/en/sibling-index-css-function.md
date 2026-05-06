@@ -5,10 +5,10 @@ slug: "sibling-index-css-function"
 about: "`sibling-index()` returns an element's index among its siblings. It enables styling based on sibling position, such as staggered animations and gradual hue changes, using only CSS."
 createdAt: "2026-05-06T11:55+09:00"
 updatedAt: "2026-05-06T11:55+09:00"
-tags: ["css"]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3ulQYe5NFc8ZqEjhPXHo2x/cc22085819bfa4cd457cbb5fc2548ff9/animal_cute_shika_4776-768x759.png"
-  title: "かわいいシカのイラスト"
+  title: "かわいい鹿のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "The depth of all descendants as seen from the parent element"
           correct: false
           explanation: "The article does not describe it as a function that returns tree depth. It returns the current element's position among siblings with the same parent."
-
 published: true
 ---
-
 `sibling-index()` is a function defined in CSS Values and Units Module Level 5. It returns an element's index among its sibling elements. The index starts at 1 and indicates where the current element is positioned among elements that share the same parent. For example, if an element is the third child of its parent, `sibling-index()` returns 3.
 
 ```css
