@@ -18,6 +18,14 @@
 
   const slides = $derived<SlideBase[]>([
     {
+      eventDate: "2026-05-09",
+      presentationLink:
+        "https://speakerdeck.com/azukiazusa1/hurontoendonoxiang-shou-gabian-watuta-aigajia-watutawebnoxin-siiintahuesushe-ji",
+      eventTitle: m.talkTimeline00EventTitle(),
+      presentationTitle: m.talkTimeline00PresentationTitle(),
+      description: m.talkTimeline00Description(),
+    },
+    {
       eventDate: "2026-02-28",
       presentationLink:
         "https://azukiazusa.dev/slides/react-tokyo-fes-2025.pdf",
