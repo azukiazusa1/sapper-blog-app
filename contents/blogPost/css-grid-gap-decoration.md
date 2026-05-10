@@ -5,7 +5,7 @@ slug: "css-grid-gap-decoration"
 about: "グリッドレイアウトで「列の間に線を引く」といった装飾は多くの場面で必要になります。しかし、flexbox や grid で列の間に線を引くためのプロパティは存在せず、ボーダーや背景色を利用して線のように見せるといったワークアラウンドが必要でした。CSS Grid Layout の gap を装飾する `column-rule` と `row-rule` を使用することにより、flexbox や grid で簡単に列や行の間に線を引くことができるようになります。"
 createdAt: "2026-05-08T20:34+09:00"
 updatedAt: "2026-05-08T20:34+09:00"
-tags: ["css"]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4M8U2MzWbXPSm546ch1Am/e59afed7052907ffd32bf643e27ae694/tempura_omusubi_18424-768x768.png"
   title: "天むすのイラスト"
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "flexbox では使えず、CSS Multi-column Layout だけに適用される"
           correct: false
           explanation: "記事全体では、従来 multicol 専用だった `column-rule` を flexbox や grid にも適用できるようにする提案として CSS Gap Decorations が説明されています。"
-
 published: true
 ---
-
 グリッドレイアウトで「列の間に線を引く」といった装飾は多くの場面で必要になります。CSS で「列の間に区切り線を引く」ためのプロパティとして [`column-rule`](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/column-rule) がありますが、これらは[段組みレイアウト](https://developer.mozilla.org/ja/docs/Learn_web_development/Core/CSS_layout/Multiple-column_Layout)（multicol）専用のプロパティであり、flexbox や grid には適用されませんでした。
 
 flexbox や grid で列の間に線を引きたいという要望は多く存在したものの、それを実現する手段が存在しませんでした。そのためボーダーを特定の列にだけつける、あるいは背景色を利用して線のように見せたり、あるいは `::before` 擬似要素を利用して線を引くといったワークアラウンドが使われてきました。

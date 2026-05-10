@@ -5,7 +5,7 @@ slug: "css-grid-gap-decoration"
 about: "CSS Gap Decorations introduces `column-rule` and `row-rule` properties that work with flexbox and grid, enabling decorative lines between columns and rows — no more border or background-color workarounds."
 createdAt: "2026-05-08T20:34+09:00"
 updatedAt: "2026-05-08T20:34+09:00"
-tags: ["css"]
+tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4M8U2MzWbXPSm546ch1Am/e59afed7052907ffd32bf643e27ae694/tempura_omusubi_18424-768x768.png"
   title: "天むすのイラスト"
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "Not applicable to flexbox, only works with CSS Multi-column Layout"
           correct: false
           explanation: "The entire article describes CSS Gap Decorations as a proposal to extend the formerly multicol-only `column-rule` to flexbox and grid as well."
-
 published: true
 ---
-
 Decorating grid layouts with dividing lines between columns is a common requirement. CSS has the [`column-rule`](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/column-rule) property for drawing dividing lines between columns, but it is exclusive to [multi-column layout](https://developer.mozilla.org/ja/docs/Learn_web_development/Core/CSS_layout/Multiple-column_Layout) (multicol) and does not apply to flexbox or grid.
 
 Despite widespread demand for drawing lines between columns in flexbox or grid layouts, no dedicated CSS mechanism existed. Developers resorted to workarounds such as applying borders to specific items, using background colors to simulate dividers, or using `::before` pseudo-elements to draw lines.
