@@ -1,8 +1,8 @@
 ---
 id: _qNIir62uPR53rf44EB0m
-title: "Decorating CSS Grid Layout gaps with `column-rule` and `row-rule`"
+title: "Decorating CSS Grid Layout Gaps with `column-rule` and `row-rule`"
 slug: "css-grid-gap-decoration"
-about: "CSS Gap Decorations let you draw lines between rows and columns in flexbox and grid layouts with `column-rule` and `row-rule`, avoiding border, background, and pseudo-element workarounds."
+about: "CSS Gap Decorations introduces `column-rule` and `row-rule` properties that work with flexbox and grid, enabling decorative lines between columns and rows — no more border or background-color workarounds."
 createdAt: "2026-05-08T20:34+09:00"
 updatedAt: "2026-05-08T20:34+09:00"
 tags: ["css"]
@@ -12,30 +12,30 @@ thumbnail:
 audio: null
 selfAssessment:
   quizzes:
-    - question: "Which explanation of `rule-break` matches the article?"
+    - question: "Which of the following best describes `rule-break` based on the article?"
       answers:
-        - text: "It is a property that increases or decreases the gap width itself, and its default value is `none`."
+        - text: "A property that increases or decreases the gap width itself, with a default of `none`"
           correct: false
-          explanation: "`rule-break` is not a property for changing the gap width. The article explains it as a property that controls whether decoration lines break at intersections."
-        - text: "It controls whether row decorations break at intersections, and with the default value `normal`, lines break at T-shaped intersections."
+          explanation: "`rule-break` is not a property that changes gap width, but one that controls whether decoration lines break at intersections."
+        - text: "Specifies whether row decorations break at intersections; with the default `normal`, lines break at T-intersections"
           correct: true
-          explanation: "The article explains that the default value of `rule-break` is `normal`; with T-shaped intersections, the line breaks, while with cross intersections, it does not."
-        - text: "It switches the line color at each intersection, and `intersection` alternates between red and blue."
+          explanation: "The article explains that `rule-break` defaults to `normal`, where lines break at T-intersections but continue through cross-intersections."
+        - text: "A property that switches line colors at each intersection, where `intersection` alternates between red and blue"
           correct: false
-          explanation: "Color patterns are covered in the explanation of `rule-color` and `repeat()`. `intersection` is introduced as a value that adjusts overlaps at intersections."
-        - text: "It cannot be used with flexbox and applies only to CSS Multi-column Layout."
+          explanation: "Color pattern specification is covered in the `rule-color` and `repeat()` section. `intersection` is introduced as a value that adjusts rendering at cross-intersection points."
+        - text: "Not applicable to flexbox, only works with CSS Multi-column Layout"
           correct: false
-          explanation: "The article explains CSS Gap Decorations as a proposal that extends the formerly multicol-only `column-rule` concept so it can also apply to flexbox and grid."
+          explanation: "The entire article describes CSS Gap Decorations as a proposal to extend the formerly multicol-only `column-rule` to flexbox and grid as well."
 
 published: true
 ---
 
-Decorations such as "drawing a line between columns" are needed in many grid layout use cases. CSS has [`column-rule-width`](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/column-rule-width), [`column-rule-style`](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/column-rule-style), and [`column-rule-color`](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/column-rule-color) as properties for drawing separators between columns, but these were defined in the CSS Multi-column Layout Module and did not apply to flexbox or grid.
+Decorating grid layouts with dividing lines between columns is a common requirement. CSS has the [`column-rule`](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/column-rule) property for drawing dividing lines between columns, but it is exclusive to [multi-column layout](https://developer.mozilla.org/ja/docs/Learn_web_development/Core/CSS_layout/Multiple-column_Layout) (multicol) and does not apply to flexbox or grid.
 
-There has long been demand for drawing lines between columns in flexbox and grid, but there was no direct way to do it. As a result, developers have used workarounds such as adding borders only to specific columns, using background colors to make gaps look like lines, or drawing lines with `::before` pseudo-elements.
+Despite widespread demand for drawing lines between columns in flexbox or grid layouts, no dedicated CSS mechanism existed. Developers resorted to workarounds such as applying borders to specific items, using background colors to simulate dividers, or using `::before` pseudo-elements to draw lines.
 
 ```css
-/* Method 1: Use border-right / border-bottom on each item, then remove them from the last column and row */
+/* Method 1: Add border-right / border-bottom to each item, then remove them from the last column/row */
 .card {
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
@@ -58,24 +58,26 @@ There has long been demand for drawing lines between columns in flexbox and grid
 }
 
 .card {
-  /* Fill the cells with a background color */
+  /* Fill each cell with a background color */
   background-color: white;
 }
 ```
 
-However, these workarounds are not intuitive. They require extra code purely for visual presentation, which also goes against the principle of semantic HTML. The border-based approach also has a maintainability problem: when the column width changes, the line position changes too, so you need to keep adjusting selectors such as `nth-child`.
+However, these workarounds are unintuitive and require extra code solely for visual presentation, which conflicts with the principle of semantic HTML. The border approach also has a maintainability problem: when column widths change, the line positions shift as well, requiring `nth-child` selectors to be updated every time.
 
-To solve this kind of problem, a proposal was made to allow the existing `column-rule` property, which had been limited to multicol, to apply to flexbox and grid as well. A complementary `row-rule` property was also added for drawing lines between rows. By using these properties, you can draw lines between columns and rows in flexbox and grid more easily.
+To solve these issues, a proposal was made to extend the existing `column-rule` (formerly limited to multicol) to flexbox and grid layouts, while adding a complementary `row-rule` property for drawing lines between rows. With these properties, it becomes easy to draw lines between columns and rows in flexbox or grid.
 
 b> gap-decorations
 
-!> CSS Gap Decorations are still experimental. In Chrome and Edge 139, they are available as a Developer Trial, and you need to enable Experimental Web Platform Features from `chrome://flags` or `edge://flags` to use them.
+!> CSS Gap Decorations is currently an experimental feature. It is available as a Developer Trial in Chrome and Edge 139. To use it, enable **Experimental Web Platform Features** at `chrome://flags/#enable-experimental-web-platform-features` (or `edge://flags/#enable-experimental-web-platform-features` for Edge).
 
-This article explains `column-rule` and `row-rule`, which decorate gaps in CSS Grid Layout.
+This article explains how to use `column-rule` and `row-rule` to decorate gaps in CSS Grid Layout.
 
-## How to use `column-rule` and `row-rule`
+## Using `column-rule` and `row-rule`
 
-The code for drawing lines between columns with `column-rule` and `row-rule` is very simple. For a flexbox or grid container, reserve spacing with `gap`, then decorate it with `column-rule` / `row-rule`.
+The code for drawing lines between columns using `column-rule` and `row-rule` is very simple. Add `gap` to a flexbox or grid container for spacing, then apply `column-rule` / `row-rule` for decoration.
+
+`column-rule` is a shorthand for three sub-properties: `column-rule-width` (line thickness), `column-rule-style` (line style), and `column-rule-color` (line color). Similarly, `row-rule` is a shorthand for `row-rule-width`, `row-rule-style`, and `row-rule-color`.
 
 ```css
 .grid {
@@ -95,9 +97,29 @@ The code for drawing lines between columns with `column-rule` and `row-rule` is 
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
-## Drawing complex line patterns with `repeat()` values
+It also works with flexbox. Even when combined with `display: flex` and `flex-wrap: wrap`, `column-rule` and `row-rule` apply decorations to the gaps.
 
-The `rule-color` property specifies the color of gap decorations. Because it can be combined with the `repeat()` function, you can also define complex color patterns. In the following example, the lines between columns alternate between red and blue.
+```css
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  column-rule: 1px solid #ccc;
+  row-rule: 1px solid #ccc;
+}
+```
+
+![](https://images.ctfassets.net/in6v9lxmm5c8/2Fbw6zOXvhT9BNtSBlfv7I/803c6e2f588e56158f1fcac4dae270ca/image.png)
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="column-decorations" src="https://codepen.io/azukiazusa1/embed/XJNdzjE?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true">
+  See the Pen <a href="https://codepen.io/azukiazusa1/pen/XJNdzjE">
+  column-decorations</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+## Drawing Complex Patterns with `repeat()`
+
+The `rule-color` property specifies the color of gap decorations. It can be combined with the `repeat()` function to define complex color patterns. The following example alternates the column rule color between red and blue.
 
 ```css
 .grid {
@@ -120,7 +142,7 @@ The `rule-color` property specifies the color of gap decorations. Because it can
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
-The `rule-width` property can also be combined with the `repeat()` function. For a Sudoku-like grid, for example, you can easily make some of the lines between columns thicker so that the sections are easier to distinguish.
+The `rule-width` property can also be combined with `repeat()`. This makes it easy to draw thicker lines every three columns in a sudoku-like grid to clearly delineate sections.
 
 ```css
 .sudoku {
@@ -133,7 +155,7 @@ The `rule-width` property can also be combined with the `repeat()` function. For
   padding: 8px;
   width: max-content;
 
-  /* Draw a thicker line every 3 columns */
+  /* Draw thicker lines every 3 columns */
   column-rule:
     repeat(2, 1px solid #bbb),
     4px solid #111,
@@ -158,11 +180,11 @@ The `rule-width` property can also be combined with the `repeat()` function. For
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
-## Breaking lines at intersections with `rule-break`
+## Controlling How Lines Break at Intersections with `rule-break`
 
-`rule-break` is a property that controls whether row decorations break at intersections. The default value is `normal`; lines break at T-shaped intersections, while cross intersections remain unbroken.
+`rule-break` is a property that specifies whether decoration lines break at intersections. The default is `normal`, where lines break at T-intersections but continue through cross-intersections.
 
-A spreadsheet-like tabular layout is a good way to understand this. When there is a heading that spans multiple columns, like a merged cell, a T-shaped intersection occurs. With `rule-break: normal`, you can see that the line between the columns spanned by the merged cell is interrupted.
+Think of a spreadsheet-style table layout. When a cell spans multiple columns, a T-intersection occurs. With `rule-break: normal`, you can see that the line between the merged columns is interrupted.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/36ivGxgUcPVTFlQZ1rYa3v/86fb4d7e59ed076a9e4d054da822e07d/image.png)
 
@@ -172,12 +194,16 @@ A spreadsheet-like tabular layout is a good way to understand this. When there i
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
-In addition to `normal`, `rule-break` has the following values.
+The other values for `rule-break` are:
 
-- `none`: Ignores all intersections and always draws the line from end to end
-- `intersection`: Adjusts overlaps at intersections
+- `none`: Ignores cell span and always draws lines from end to end of the gap. Lines pass through even when cells are merged.
+- `intersection`: Adjusts rendering at cross-intersection points where `column-rule` and `row-rule` meet, so they do not overlap. Produces a clean finish at grid intersections.
 
-When you set `rule-break` to `intersection`, table-like layouts get a more natural appearance where lines do not overlap at intersections.
+In the cell-span example above, setting `rule-break: none` causes the line between merged columns to be drawn without interruption.
+
+![](https://images.ctfassets.net/in6v9lxmm5c8/5gCrS8xyC7bPZrQUdMgvjA/807cfff046e78055c56462041de6ea65/image.png)
+
+The difference between `rule-break: intersection` and `rule-break: normal` shows up at cross-intersection points. With `normal`, `column-rule` and `row-rule` are drawn overlapping each other, whereas with `intersection`, the rendering at the intersection is adjusted so the lines appear as a uniform grid. For table-like layouts where rows and columns are equally important, `intersection` is the better choice.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/4o5SBHzqtsKeAQztDQKJbz/8fad5cbc8a61b9394d905de5e1b640d6/image.png)
 
@@ -189,10 +215,10 @@ When you set `rule-break` to `intersection`, table-like layouts get a more natur
 
 ## Summary
 
-- To solve the problem that drawing lines between columns in grid layouts required workarounds, `column-rule` became applicable to flexbox and grid, and `row-rule` was added for drawing lines between rows
-- With `column-rule` and `row-rule`, you can draw lines between columns and rows in a simple way
-- By using `repeat()` in the value, you can also draw complex line patterns
-- With the `rule-break` property, you can specify whether lines break at intersections. The default value is `normal`, where T-shaped intersections break the line and cross intersections do not. Setting it to `intersection` creates a natural table-like appearance where lines do not overlap at intersections
+- To address the problem of needing workarounds to draw lines between columns in grid layouts, `column-rule` can now be applied to flexbox and grid, and a new `row-rule` property has been added for drawing lines between rows
+- Using `column-rule` and `row-rule`, you can easily draw lines between columns and rows
+- Using `repeat()` in value specifications allows you to create complex line patterns
+- The `rule-break` property controls whether lines break at intersections. The default is `normal`, where lines break at T-intersections but continue through cross-intersections. Setting it to `intersection` produces a natural look in table-like layouts where lines do not overlap at intersection points
 
 ## References
 

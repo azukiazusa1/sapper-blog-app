@@ -30,7 +30,7 @@ selfAssessment:
 published: true
 ---
 
-グリッドレイアウトで「列の間に線を引く」といった装飾は多くの場面で必要になります。CSS で「列の間に区切り線を引く」ためのプロパティとして [`column-rule-width](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/column-rule-width), [`column-rule-style`](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/column-rule-style), [`column-rule-color`](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/column-rule-color) がありますが、これらは CSS Multi-column Layout Module で定義されたプロパティであり、flexbox や grid には適用されませんでした。
+グリッドレイアウトで「列の間に線を引く」といった装飾は多くの場面で必要になります。CSS で「列の間に区切り線を引く」ためのプロパティとして [`column-rule`](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/column-rule) がありますが、これらは[段組みレイアウト](https://developer.mozilla.org/ja/docs/Learn_web_development/Core/CSS_layout/Multiple-column_Layout)（multicol）専用のプロパティであり、flexbox や grid には適用されませんでした。
 
 flexbox や grid で列の間に線を引きたいという要望は多く存在したものの、それを実現する手段が存在しませんでした。そのためボーダーを特定の列にだけつける、あるいは背景色を利用して線のように見せたり、あるいは `::before` 擬似要素を利用して線を引くといったワークアラウンドが使われてきました。
 
@@ -69,13 +69,15 @@ flexbox や grid で列の間に線を引きたいという要望は多く存在
 
 b> gap-decorations
 
-!> CSS Gap Decorations は現時点では実験的な機能です。Chrome と Edge 139 では Developer Trial として提供されており、使用するには `chrome://flags` または `edge://flags` で Experimental Web Platform Features を有効にする必要があります。
+!> CSS Gap Decorations は現時点では実験的な機能です。Chrome と Edge 139 では Developer Trial として提供されており、使用するには `chrome://flags/#enable-experimental-web-platform-features` Experimental Web Platform Features を有効にする必要があります。
 
 この記事では CSS Grid Layout の gap を装飾する `column-rule` と `row-rule` について解説します。
 
 ## `column-rule` と `row-rule` の使い方
 
 `column-rule` と `row-rule` を使用した「列の間に線を引く」ためのコードは非常にシンプルです。以下のように flexbox や grid のコンテナに対して、`gap` で余白を確保し、`column-rule` / `row-rule` で装飾します。
+
+`column-rule` は `column-rule-width`（線の太さ）、`column-rule-style`（線のスタイル）、`column-rule-color`（線の色）の 3 つのサブプロパティのショートハンドです。`row-rule` も同様に `row-rule-width`、`row-rule-style`、`row-rule-color` のショートハンドです。
 
 ```css
 .grid {
@@ -92,6 +94,26 @@ b> gap-decorations
 <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/azukiazusa1/embed/wBoMQQq?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true">
   See the Pen <a href="https://codepen.io/azukiazusa1/pen/wBoMQQq">
   Untitled</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+flexbox でも同様に使用できます。`display: flex` と `flex-wrap: wrap` を組み合わせた場合でも、`column-rule` と `row-rule` は gap に対して装飾を適用します。
+
+```css
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  column-rule: 1px solid #ccc;
+  row-rule: 1px solid #ccc;
+}
+```
+
+![](https://images.ctfassets.net/in6v9lxmm5c8/2Fbw6zOXvhT9BNtSBlfv7I/803c6e2f588e56158f1fcac4dae270ca/image.png)
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="column-decorations" src="https://codepen.io/azukiazusa1/embed/XJNdzjE?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true">
+  See the Pen <a href="https://codepen.io/azukiazusa1/pen/XJNdzjE">
+  column-decorations</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
@@ -158,7 +180,7 @@ b> gap-decorations
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
-## `rule-break` で交差点で線を途切れさせる
+## `rule-break` で交差点で線を途切方を指定する
 
 `rule-break` は行の装飾が交差点で途切れるかどうかを指定するプロパティです。デフォルトは `normal` で T 字に交差する場合は線が途切れ、十字交差は線が途切れない状態になります。
 
@@ -174,10 +196,14 @@ b> gap-decorations
 
 `rule-break` には `normal` の他に以下のような値があります。
 
-- `none`: すべての交差を無視して、常に端から端まで線を引く
-- `intersection`: 交差点での重なりを調整する
+- `none`: セルの結合状況を無視して、常に gap の端から端まで線を引く。セル結合があっても線は貫通する
+- `intersection`: `column-rule` と `row-rule` が交差する十字点で、両者が重なり合わないよう描画を調整する。格子の交点で自然な仕上がりになる
 
-`rule-break` を `intersection` に設定すると、テーブルのようなレイアウトで交差点で線が重ならない自然な見た目になります。
+先程のセル結合の例で `rule-break: none` にすると、セル結合している列の間の線も途切れずに引かれることがわかります。
+
+![](https://images.ctfassets.net/in6v9lxmm5c8/5gCrS8xyC7bPZrQUdMgvjA/807cfff046e78055c56462041de6ea65/image.png)
+
+`rule-break: intersection` と `rule-break: normal` の違いは、十字交差点での見た目に現れます。`normal` では `column-rule` と `row-rule` がそのまま重なって描画されますが、`intersection` では交差点の描画が調整されるため、均一な格子線として見えます。テーブルのように行と列が対等に存在するレイアウトでは `intersection` が適しています。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/4o5SBHzqtsKeAQztDQKJbz/8fad5cbc8a61b9394d905de5e1b640d6/image.png)
 
