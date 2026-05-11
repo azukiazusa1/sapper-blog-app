@@ -3,8 +3,8 @@ id: _qNIir62uPR53rf44EB0m
 title: "Decorating CSS Grid Layout Gaps with `column-rule` and `row-rule`"
 slug: "css-grid-gap-decoration"
 about: "CSS Gap Decorations introduces `column-rule` and `row-rule` properties that work with flexbox and grid, enabling decorative lines between columns and rows — no more border or background-color workarounds."
-createdAt: "2026-05-08T20:34+09:00"
-updatedAt: "2026-05-08T20:34+09:00"
+createdAt: "2026-05-10T20:34+09:00"
+updatedAt: "2026-05-10T20:34+09:00"
 tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4M8U2MzWbXPSm546ch1Am/e59afed7052907ffd32bf643e27ae694/tempura_omusubi_18424-768x768.png"

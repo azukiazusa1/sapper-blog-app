@@ -3,8 +3,8 @@ id: _qNIir62uPR53rf44EB0m
 title: "CSS Grid Layout の gap を装飾する `column-rule` と `row-rule`"
 slug: "css-grid-gap-decoration"
 about: "グリッドレイアウトで「列の間に線を引く」といった装飾は多くの場面で必要になります。しかし、flexbox や grid で列の間に線を引くためのプロパティは存在せず、ボーダーや背景色を利用して線のように見せるといったワークアラウンドが必要でした。CSS Grid Layout の gap を装飾する `column-rule` と `row-rule` を使用することにより、flexbox や grid で簡単に列や行の間に線を引くことができるようになります。"
-createdAt: "2026-05-08T20:34+09:00"
-updatedAt: "2026-05-08T20:34+09:00"
+createdAt: "2026-05-10T20:34+09:00"
+updatedAt: "2026-05-10T20:34+09:00"
 tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4M8U2MzWbXPSm546ch1Am/e59afed7052907ffd32bf643e27ae694/tempura_omusubi_18424-768x768.png"
