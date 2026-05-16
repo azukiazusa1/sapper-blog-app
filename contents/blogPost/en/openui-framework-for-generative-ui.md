@@ -5,7 +5,7 @@ slug: "openui-framework-for-generative-ui"
 about: "OpenUI is a framework for building Generative UI. It provides a new approach where the AI is instructed to construct UIs using a dedicated declarative language called OpenUI Language. This article walks through how to build Generative UI with OpenUI."
 createdAt: "2026-05-16T20:11+09:00"
 updatedAt: "2026-05-16T20:11+09:00"
-tags: ["openui", "generative-ui"]
+tags: ["openui", "Generative UI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1vd4QovV13ktYVZDeT8Ssy/179724ebc8f2883ba8aac0915c585875/wild-plants_koshiabura_21653.png"
   title: "こしあぶらのイラスト"

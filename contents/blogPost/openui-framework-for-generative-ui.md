@@ -5,7 +5,7 @@ slug: "openui-framework-for-generative-ui"
 about: "OpenUI は Generative UI を構築するためのフレームワークです。OpenUI 言語と呼ばれる独自の宣言型言語を使用して、AI が UI を構築するための指示を与えるという新しいアプローチを提供します。この記事では OpenUI を使用して Generative UI を実装する方法について解説します。"
 createdAt: "2026-05-16T20:11+09:00"
 updatedAt: "2026-05-16T20:11+09:00"
-tags: ["openui", "generative-ui"]
+tags: ["openui", "Generative UI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1vd4QovV13ktYVZDeT8Ssy/179724ebc8f2883ba8aac0915c585875/wild-plants_koshiabura_21653.png"
   title: "こしあぶらのイラスト"
