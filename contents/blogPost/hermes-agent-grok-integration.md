@@ -5,7 +5,7 @@ slug: "hermes-agent-grok-integration"
 about: "Hermes Agent は v0.14.0 で xAI の Grok モデルとの統合できるようになりました。Grok モデルは X（旧 Twitter）の投稿を検索できる `x_search` ツールを使えることが特徴で、リアルタイムでトレンドを把握したり、最新の情報を取得できることが強みとなっています。この記事では Hermes Agent と Grok の統合を試してみた様子を紹介します。"
 createdAt: "2026-05-18T19:10+09:00"
 updatedAt: "2026-05-18T19:10+09:00"
-tags: ["hermes-agent", "grok"]
+tags: ["hermes-agent", "Grok"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/NxiM8may9dWy0pwGBJDh4/1ce347657e363d7eb40705629f676431/image.png"
   title: "抹茶クリームとあずきのパフェのイラスト"
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "text_to_speech（テキストを音声に変換するツール）"
           correct: false
           explanation: "text_to_speech も OAuth ログイン時に同じトークンで利用可能になる 4 つのツールに含まれていると記事で説明されています。"
-
 published: true
 ---
-
 [Hermes Agent](https://hermes-agent.nousresearch.com/) は Nous Research が開発している AI エージェントです。学習したことを記憶し、稼働時間が長くなるほど能力が高まる自律型エージェントとして設計されています。CLI, Slack, Discord など様々なプラットフォームからアクセスできるようになっており、特定の AI モデルに依存しない設計になっています。
 
 v0.14.0 では xAI の Grok モデルとの本格的な統合が発表されました。Grok モデルは X（旧 Twitter）の投稿を検索できる `x_search` ツールを使える点が特徴で、リアルタイムでトレンドを把握したり、最新の情報を取得できることが強みとなっています。今回発表された Hermes Agent と Grok の統合は API キーを使用せずに OAuth 認証を使用して SuperGrok サブスクリプションから Grok を利用できるという点が特徴です。つまり、既に SuperGrok が利用可能な X アカウントを持っていれば、追加の課金なしで AI エージェントから X の投稿を検索して活用できるようになります。

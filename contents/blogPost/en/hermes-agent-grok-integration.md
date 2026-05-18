@@ -5,10 +5,10 @@ slug: "hermes-agent-grok-integration"
 about: "Hermes Agent v0.14.0 adds integration with xAI's Grok. Grok's `x_search` tool can search posts on X (formerly Twitter), making it great for tracking real-time trends. This article walks through the Hermes Agent and Grok integration."
 createdAt: "2026-05-18T19:10+09:00"
 updatedAt: "2026-05-18T19:10+09:00"
-tags: ["hermes-agent", "grok"]
+tags: ["hermes-agent", "Grok"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/NxiM8may9dWy0pwGBJDh4/1ce347657e363d7eb40705629f676431/image.png"
-  title: "Illustration of a matcha cream and azuki bean parfait"
+  title: "抹茶クリームとあずきのパフェのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "text_to_speech (a tool for converting text to speech)"
           correct: false
           explanation: "text_to_speech is also listed in the article as one of the four tools that become available with the same token after OAuth login."
-
 published: true
 ---
-
 [Hermes Agent](https://hermes-agent.nousresearch.com/) is an AI agent developed by Nous Research. It is designed as an autonomous agent that remembers what it has learned and grows more capable the longer it operates. It can be accessed from a variety of platforms—CLI, Slack, Discord, and others—and is built to be model-agnostic, not tied to any specific AI model.
 
 In v0.14.0, full-fledged integration with xAI's Grok model was announced. A standout feature of Grok is the `x_search` tool, which can search posts on X (formerly Twitter), making it well suited for tracking real-time trends and pulling in the latest information. The newly announced Hermes Agent and Grok integration is notable because it lets you use Grok from your SuperGrok subscription via OAuth authentication, without an API key. In other words, if you already have an X account with SuperGrok enabled, you can search and make use of X posts from an AI agent without any additional charges.
