@@ -5,7 +5,7 @@ slug: "hermes-agent-grok-integration"
 about: "Hermes Agent は v0.14.0 で xAI の Grok モデルとの統合できるようになりました。Grok モデルは X（旧 Twitter）の投稿を検索できる `x_search` ツールを使えることが特徴で、リアルタイムでトレンドを把握したり、最新の情報を取得できることが強みとなっています。この記事では Hermes Agent と Grok の統合を試してみた様子を紹介します。"
 createdAt: "2026-05-18T19:10+09:00"
 updatedAt: "2026-05-18T19:10+09:00"
-tags: ["hermes-agent", "Grok"]
+tags: ["Hermes Agent", "Grok"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/NxiM8may9dWy0pwGBJDh4/1ce347657e363d7eb40705629f676431/image.png"
   title: "抹茶クリームとあずきのパフェのイラスト"
