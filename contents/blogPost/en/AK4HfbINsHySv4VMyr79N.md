@@ -2,7 +2,7 @@
 id: AK4HfbINsHySv4VMyr79N
 title: "Trying Out the Hermes Agent and Grok Integration"
 slug: "hermes-agent-grok-integration"
-about: "Hermes Agent v0.14.0 introduced integration with xAI's Grok model. A standout feature of Grok is the `x_search` tool, which can search posts on X (formerly Twitter), making it well suited for tracking real-time trends and pulling in the latest information. This article walks through what it's like to use the Hermes Agent and Grok integration."
+about: "Hermes Agent v0.14.0 adds integration with xAI's Grok. Grok's `x_search` tool can search posts on X (formerly Twitter), making it great for tracking real-time trends. This article walks through the Hermes Agent and Grok integration."
 createdAt: "2026-05-18T19:10+09:00"
 updatedAt: "2026-05-18T19:10+09:00"
 tags: ["hermes-agent", "grok"]
