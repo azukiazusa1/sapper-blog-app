@@ -2,7 +2,7 @@
 id: -2URyJ2st2EssgACXErg4
 title: "The 2026-07-28 MCP Specification Becomes Stateless-First"
 slug: "mcp-stateless"
-about: "The biggest change in the 2026-07-28 MCP specification release candidate is that MCP servers become stateless-first. This lets MCP servers scale behind simple load balancers. It also enables traffic routing based on the `Mcp-Method` header and caching of server responses. This article introduces the stateless protocol changes in the 2026-07-28 MCP specification release candidate."
+about: "The 2026-07-28 MCP release candidate makes MCP servers stateless-first. This enables scaling behind simple load balancers, routing based on the `Mcp-Method` header, and caching of server responses."
 createdAt: "2026-05-24T11:05+09:00"
 updatedAt: "2026-05-24T11:05+09:00"
 tags: ["mcp"]
