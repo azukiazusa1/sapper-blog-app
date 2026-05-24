@@ -5,10 +5,10 @@ slug: "mcp-stateless"
 about: "The 2026-07-28 MCP release candidate makes MCP servers stateless-first. This enables scaling behind simple load balancers, routing based on the `Mcp-Method` header, and caching of server responses."
 createdAt: "2026-05-24T11:05+09:00"
 updatedAt: "2026-05-24T11:05+09:00"
-tags: ["mcp"]
+tags: ["MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/8Ar8kIwLUSLeUpiBkezry/ed1efe8fdb63319bed61b3c475596a17/cafe_ice-coffee_illust_3515.png"
-  title: "Illustration of iced coffee"
+  title: "アイスコーヒーのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "`Mcp-Session-Id` identifies stateful sessions in the current specification. In the new specification, the session itself is removed."
 published: true
 ---
-
 In the early stages of MCP (Model Context Protocol), MCP servers were used as a way to provide tools to AI agents through local stdio. However, MCP servers that run locally depend on the environment where the AI agent is running. This creates problems when the AI agent runs in the cloud, where local servers may not be available or setup can become complicated.
 
 Streamable HTTP made it possible to run MCP servers remotely, which greatly accelerated adoption in production environments. But as MCP servers started to be operated at larger scale, new challenges became visible. The first challenge is that Streamable HTTP is a stateful protocol. Here, a session means connection-level state identified by the `Mcp-Session-Id` header. The server uses this ID as a key to retain the client's capability declarations and in-progress operations, so later requests from the same client must be routed to the same server instance. This kind of stateful session makes load balancer configuration more complex and limits scaling flexibility. The second challenge is that there is no standard way for crawlers and similar clients to learn what capabilities an MCP server provides without connecting to the server.
