@@ -1,54 +1,52 @@
 ---
 id: LpFl_88dN6xV2XXV_8yUo
-title: "Trying Dynamic Workflow in Claude Code"
+title: "Claude Code の Dynamic Workflow を試してみた"
 slug: "claude-code-dynamic-workflow"
-about: "Claude Code v2.1.154 added Dynamic Workflow, a feature for large tasks that can take hours or days. This article walks through trying it in Claude Code."
+about: "Claude Code v2.1.154 で Dynamic Workflow と呼ばれる機能が追加されました。Dynamic Workflow は数時間から数日かかるような大規模な作業を実行するために設計されています。ワークフローは JavaScript で定義され、複数のサブエージェントをオーケストレーションすることができます。この記事では Claude Code の Dynamic Workflow を試してみた様子を紹介します。"
 createdAt: "2026-05-29T19:20+09:00"
 updatedAt: "2026-05-29T19:20+09:00"
 tags: ["claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3aJ5BsDvvLfsHdlA1cntHE/d2411e9e2aea84823f6ae6f51900f485/ikura-tsutsumi_sushi_21470-768x542.png"
-  title: "Illustration of salmon roe sushi"
+  title: "いくらつつみのお寿司のイラスト"
 audio: null
 selfAssessment:
   quizzes:
-    - question: "Which method does the article mention for having Claude create and run a workflow?"
+    - question: "Claude にワークフローを作成し、実行してもらう方法として、記事で挙げられているものはどれですか?"
       answers:
-        - text: "Include the word \"workflow\" in the prompt"
+        - text: "プロンプトに「workflow」という単語を含める"
           correct: true
-          explanation: "The article introduces the method of including the word \"workflow\" in the prompt."
-        - text: "Run the `/workflow create` command"
+          explanation: "記事では、プロンプトに「workflow」という単語を含める方法が紹介されています。"
+        - text: "`/workflow create` コマンドを実行する"
           correct: false
-          explanation: "The article does not introduce such a command."
-        - text: "Manually place a JavaScript file in `.claude/workflows`"
+          explanation: "記事ではそのようなコマンドは紹介されていません。"
+        - text: "JavaScript ファイルを手動で `.claude/workflows` に配置する"
           correct: false
-          explanation: "The article explains how to have Claude create a workflow, not how to manually place one in `.claude/workflows`."
-        - text: "No special action is needed to run a workflow"
+          explanation: "記事では `.claude/workflows` に配置する方法ではなく、Claude にワークフローを作成してもらう方法を説明しています。"
+        - text: "ワークフローを実行する特別な操作は不要"
           correct: false
-          explanation: "A regular session does not run as a Dynamic Workflow unless it is triggered."
-
+          explanation: "通常のセッションでは Dynamic Workflow として実行されません。"
 published: true
 ---
-
-Claude Code v2.1.154 added a feature called Dynamic Workflow. Dynamic Workflow is designed for large-scale tasks that can take anywhere from hours to days. Recently, the [project to port Bun from Zig to Rust](https://github.com/oven-sh/bun/pull/30412) attracted a lot of attention, and it appears that Dynamic Workflow was used in that project as well.
+Claude Code v2.1.154 で Dynamic Workflow と呼ばれる機能が追加されました。Dynamic Workflow は数時間から数日かかるような大規模な作業を実行するために設計されています。最近では [Bun を Zig から Rust に移植するプロジェクト](https://github.com/oven-sh/bun/pull/30412) が話題を呼びましたが、このプロジェクトにおいても Dynamic Workflow が利用されていたようです。
 
 https://x.com/jarredsumner/status/2060050578026189172
 
-Dynamic Workflow is a JavaScript script for orchestrating multiple subagents. When a workflow starts, the plan is converted into code. Claude generates a workflow script based on the task, and at runtime the script and runtime manage the order in which subagents run and the intermediate results they produce. By codifying the plan, Dynamic Workflow can do more than simply increase the number of agents; it can apply repeatable patterns. Independent agents can also review each other's findings adversarially before they are reported, or draft plans from multiple angles and compare them, which can produce more reliable results than a single pass.
+Dynamic Workflow は複数のサブエージェントをオーケストレーションするための JavaScript スクリプトのことです。ワークフローが開始されると計画をコードに変換します。Claude はタスクに応じてワークフローのスクリプトを生成し、実行時にはそのスクリプトとランタイムがサブエージェントの実行順序や中間結果を管理します。計画をコード化することにより、単にエージェントの数を増やすだけでなく、再現可能なパターンを適用できるようになります。また独立したエージェントが互いの調査結果を報告前に競合的にレビューしたり、複数の角度から計画を立案して比較検討したりすることで、単一の処理よりも信頼性の高い結果を得ることができます。
 
-Dynamic Workflow can consume significantly more resources than a regular session, so it should be used with care. For that reason, Claude Code asks for confirmation before running a Dynamic Workflow, and administrators can disable it through managed settings.
+Dynamic Workflow は通常のセッションと比較して大幅に多くのリソースを消費するため、利用する際には注意が必要です。そのため Dynamic Workflow が実行される前に事前に確認を求められたり、管理者設定により無効にできるようになっています。
 
-This article walks through trying Dynamic Workflow in Claude Code.
+この記事では Claude Code の Dynamic Workflow を試してみた様子を紹介します。
 
-## Trying the Built-In Dynamic Workflow
+## 組み込みの Dynamic Workflow を試してみる
 
-Claude Code provides `/deep-research` as a built-in Dynamic Workflow, so I will try that first. The `/deep-research` command is a Dynamic Workflow for conducting in-depth research on a topic provided by the user, and it lets you observe agents processing a series of phases in the background.
+組み込みの Dynamic Workflow として `/deep-research` コマンドが提供されているので、まずはこれを試してみます。`/deep-research` コマンドは、ユーザーが提供したトピックに関する深い調査を行うための Dynamic Workflow で、エージェントがバックグラウンドで一連のフェーズを処理する様子を確認できます。
 
-Before running a workflow, make sure the `Dynamic workflows` option is set to `true`. You can check this with the `/config` command.
+ワークフローを実行する場合 `Dynamic workflows` オプションが `true` になっていることを確認してください。`/config` コマンドで確認できます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/7ci3t1P4EsOjZoMWvduZpk/b829af245f42325b4e05af8164ec42ac/image.png)
 
-Pass the topic you want to investigate as the argument to the `/deep-research` command. For example, I asked it to research the recently discussed "Hermes Agent."
+`/deep-research` コマンドの引数には調査したいトピックを入力します。例えば最近話題の「Hermes Agent」について調査してもらいます。
 
 ```txt
 /deep-research Hermes Agent について何ができるか、Open Claw との違いはなにか、ユースケースはなにか、などを調査して
@@ -56,16 +54,16 @@ Pass the topic you want to investigate as the argument to the `/deep-research` c
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/QDBGpovZyrjIkGRJjFBqT/a74837c750daec1bef4cf59c673c907e/image.png)
 
-When you run the `/deep-research` command, Claude Code asks for permission to run the workflow. This prompt explains the outline of the `/deep-research` command and the steps used for the research. It also warns that token usage will be high because many subagents run in parallel.
+`/deep-research` コマンドを実行すると、ワークフローを実行する許可が求められます。ここでは `/deep-research` コマンドの概要と、どのようなステップで調査が行われるのかが説明されます。そのうえで「多数のサブエージェントを並列実行するためトークン消費が多い」という注意事項も説明されます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/7LPeuOv819yMltDUBt5IJe/76390d0a680c99a774b15dd916c6fcb7/image.png)
 
-### Checking the Code Used by `/deep-research`
+### `/deep-research` コマンドのコードを確認する
 
-Select "3. View raw script" to inspect the JavaScript code that will actually run as the Dynamic Workflow.
+「3. View raw script」を選択すると、実際に実行される Dynamic Workflow の JavaScript コードを確認できます。
 
 <details>
-<summary>Code used by the `/deep-research` command</summary>
+<summary>`/deep-research` コマンドで使用されるコード</summary>
 
 ```js
 export const meta = {
@@ -705,15 +703,15 @@ return {
 
 </details>
 
-Let's briefly look at the code. The overall flow is divided into the following five phases:
+簡単にコードを見てみましょう。全体の流れは以下の 5 つのフェーズに分かれています。
 
-- Scope: Break the user's question into five different angles
-- Search: Run five search agents in parallel, one for each angle
-- Fetch: Deduplicate URLs, fetch the top 15 sources, and extract falsifiable claims
-- Verify: Run three-vote adversarial verification for each claim and reject claims with two or more refutations
-- Synthesize: Merge verified claims, evaluate confidence, and generate the final report
+- Scope: ユーザーの質問を 5 つの異なる角度に分解する
+- Search: 各角度に 1 つずつ、計 5 つの検索エージェントを並列実行
+- Fetch: 重複 URL を除いたうえで上位 15 ソースを取得し、検証可能な主張を抽出
+- Verify: 各主張に対して 3 票制の敵対的検証を実施し、2 票以上の反証があれば主張を却下
+- Synthesize: 検証済みの主張を統合し、信頼度を評価して最終的なレポートを生成
 
-In the Scope phase, the command argument is received through `args` and passed to `agent`, instructing it to break the question into multiple angles. It is interesting that each phase is separated with `phase("phase name")`.
+Scope フェーズでは `args` でコマンド引数を受けとり、`agent` に渡して質問を複数の角度に分解するよう指示しています。それぞれのフェーズは `phase("フェーズ名")` で区切られているのが面白いですね。
 
 ```js
 phase("Scope");
@@ -725,7 +723,7 @@ const scope = await agent(
 );
 ```
 
-`SCOPE_SCHEMA` is a JSON Schema that defines the expected output structure for this phase. This requires the agent to return structured data, making it easier for later phases to use that data.
+`SCOPE_SCHEMA` はこのフェーズの出力がどのような構造になるべきかを定義した JSON Schema です。これによりエージェントは構造化されたデータを返すことが求められ、後続のフェーズでそのデータを利用しやすくなります。
 
 ```js
 const SCOPE_SCHEMA = {
@@ -752,7 +750,7 @@ const SCOPE_SCHEMA = {
 };
 ```
 
-In the Search and Fetch phases, `pipeline` is used to run multiple agents in sequence. `pipeline` is a utility function for passing the output of one agent as the input to the next. Here, search agents are run in parallel for each angle in `scope.angles`.
+Search, Fetch フェーズでは `pipeline` を使って複数のエージェントを順次実行しています。`pipeline` は前のエージェントの出力を次のエージェントの入力として渡すためのユーティリティ関数です。ここでは `scope.angles` の各角度に対して検索エージェントを並列に実行しています。
 
 ```js
 const searchResults = await pipeline(
@@ -761,7 +759,7 @@ const searchResults = await pipeline(
   ...,
 
   (searchResult) => {
-    // Deduplicate URLs, manage fetch slots, and perform related processing
+    // 重複URLの除外やフェッチのスロット管理などの処理
     return parallel(
       novel.map((source) => () =>
         agent(FETCH_PROMPT(source, searchResult.angle), { schema: EXTRACT_SCHEMA }),
@@ -771,7 +769,7 @@ const searchResults = await pipeline(
 );
 ```
 
-In the Verify phase, multiple verification agents run in parallel for each claim, and each verification agent attempts to refute it. If at least two out of three agents refute the claim, the claim is rejected.
+Verify フェーズでは、各主張に対して複数の検証エージェントを並列に実行し、検証エージェントがそれぞれ反論を試みます。2/3 以上の反論があればその主張は却下されます。
 
 ```js
 const VOTES_PER_CLAIM = 3;
@@ -787,7 +785,7 @@ await parallel(rankedClaims.map((claim) => () =>
 ));
 ```
 
-Finally, in the Synthesize phase, the claims that passed verification are merged to generate the final report.
+最後に Synthesize フェーズでは、検証を通過した主張を統合して最終的なレポートを生成します。
 
 ```js
 const report = await agent("## Synthesis: research report\n\n...", {
@@ -795,36 +793,36 @@ const report = await agent("## Synthesis: research report\n\n...", {
 });
 ```
 
-### Running the Workflow and Checking Progress
+### ワークフローを実行し、進行状況を確認する
 
-Now that we have inspected the script, let's actually run the `/deep-research` command. Select "1. Yes, run it" to start the workflow. The workflow runs in the background, and a small progress indicator appears at the bottom of the terminal. Run the `/workflows` command to see more detailed progress. You can use the up and down arrow keys to switch between workflow steps.
+スクリプトの内容が確認できたので、次は実際に `/deep-research` コマンドを実行してみましょう。「1. Yes, run it」を選択してワークフローを開始します。ワークフローはバックグラウンドで実行され、進行状況はターミナルの一番下に小さく表示されています。`/workflows` コマンドを実行すると、ワークフローの詳細な進行状況を確認できます。上下の矢印キーでワークフローのステップを切り替えることができます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/6cW1KDnSpUpfl5mB85vkoT/ed6ba5ae4c9e32ef525a4634a06d3558/%C3%A3__%C3%A3__%C3%A3_%C2%AA%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3__%C3%A3___2026-05-29_20.09.32.png)
 
-You can also inspect the output from each agent. For example, the output from an agent in the Search phase shows which URLs it accessed and what results it found.
+それぞれのエージェントの出力も確認できます。例えば Search フェーズのエージェントの出力ではどの URL にアクセスして、どのような結果が得られたのかが確認できますね。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/1kayNP9BHprVogmbEZ3NVq/ee15d8f749c9229bb22b92c5a4c7c599/image.png)
 
-When the workflow completes, the final report is displayed. In my actual run, however, I hit the rate limit and could not confirm the report output.
+ワークフローが完了すると、最終的なレポートが表示されます。なお、実際に実行した場合はレートリミットに達してしまいレポートの出力までは確認できませんでした。
 
-## Having Claude Write a Workflow
+## ワークフローを Claude に書いてもらう
 
-After trying the built-in Dynamic Workflow, let's have Claude write a workflow. There are two ways to have Claude create a workflow:
+組み込みの Dynamic Workflow を試したあとは、実際に自分でワークフローを書いてみましょう。Claude にワークフローを作成してもらうためには以下の 2 つの方法があります。
 
-1. Include the word "workflow" in the prompt when instructing the agent
-2. Use `/effort ultracode` to enable xhigh-equivalent reasoning and automatic Dynamic Workflow decisions
+1. プロンプトに「workflow」という単語を含めてエージェントに指示する
+2. `/effort ultracode` で、xhigh 相当の推論と Dynamic Workflow の自動判断を有効にする
 
-Here, I will try the method of including the word "workflow" in the prompt. I will ask Claude to create a workflow for replacing ESLint + Prettier with Oxlint + Oxfmt in a project.
+ここではプロンプトに「workflow」という単語を含めてワークフローを作成してもらう方法を試してみます。ここではプロジェクトの ESLint + Prettier を Oxlint + Oxfmt に置き換えるワークフローを作成してもらうよう指示してみます。
 
 ```txt
 プロジェクトの ESLint + Prettier を Oxlint + Oxfmt に置き換える workflow を作成して
 ```
 
-You can see that the word "workflow" is highlighted in rainbow colors. This is the keyword for creating a workflow. When the session will run as a Dynamic Workflow, Claude Code also shows the message "Dynamic workflow requested for this turn · meta+w to ignore."
+「workflow」という単語が虹色にハイライトされているのがわかりますね。これがワークフローを作成するためのキーワードになります。このセッションが Dynamic Workflow として実行される場合は「Dynamic workflow requested for this turn · meta+w to ignore」というメッセージも表示されます。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/2XO26crpoxK3vBNxIN1YOa/bf7dcdb6d24eae546db90a018082c325/image.png)
 
-Claude understood the overall project structure and generated the workflow as JavaScript code. Select "View raw script" to inspect the generated code.
+Claude はプロジェクトの全体構造を把握したうえ、JavaScript コードとしてワークフローを生成してくれました。「View raw script」を選択すると、実際に生成されたコードを確認できます。
 
 ```js
 export const meta = {
@@ -842,23 +840,23 @@ export const meta = {
 };
 ```
 
-If the generated workflow looks good, you can run it as is. While the workflow is running, run the `/workflows` command and press `s` to save the workflow for reuse. Workflows can be saved at the project level (`.claude/workflows`) or the user level (`~/.claude/workflows`), and can later be run as commands.
+作成されたワークフローに問題がなければ、このままワークフローを実行してもらえます。ワークフローの実行中に `/workflows` コマンドを実行して `s` キーを押すと、ワークフローを保存して再利用できるようになります。ワークフローはプロジェクト単位（`.claude/workflows`）もしくはユーザー単位（`~/.claude/workflows`）で保存され、後からコマンドとして実行できるようになります。
 
-For example, if you save a workflow named `migrate-eslint-prettier-to-oxlint-oxfmt`, you can reuse it by running the following command:
+例えば `migrate-eslint-prettier-to-oxlint-oxfmt` という名前でワークフローを保存した場合は、以下のようにコマンドを実行することでワークフローを再利用できます。
 
 ```txt
 /migrate-eslint-prettier-to-oxlint-oxfmt
 ```
 
-## Summary
+## まとめ
 
-- Dynamic Workflow lets you break complex tasks into multiple steps and run them
-- Workflows are defined in JavaScript, and each step runs by passing prompts to agents
-- You can try built-in workflows or have Claude create workflows for you
-- You can check workflow progress and each step's output with the `/workflows` command
-- Workflows can be saved at the project or user level and reused later as commands
+- Dynamic Workflow を使うと、複雑なタスクを複数のステップに分解して実行できる
+- ワークフローは JavaScript で定義され、各ステップはエージェントにプロンプトを渡して実行される
+- 組み込みのワークフローを試したり、Claude にワークフローを作成してもらうことができる
+- ワークフローの進行状況や各ステップの出力は `/workflows` コマンドで確認できる
+- ワークフローはプロジェクト単位もしくはユーザー単位で保存して再利用できる。保存したワークフローはコマンドとして実行できる
 
-## References
+## 参考
 
 - [Introducing dynamic workflows | Claude](https://claude.com/blog/introducing-dynamic-workflows-in-claude-code)
 - [Orchestrate subagents at scale with dynamic workflows - Claude Code Docs](https://code.claude.com/docs/en/workflows)
