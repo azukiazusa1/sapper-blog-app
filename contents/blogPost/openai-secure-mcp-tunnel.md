@@ -5,7 +5,7 @@ slug: "openai-secure-mcp-tunnel"
 about: "OpenAI の Secure MCP Tunnel を利用すると、プライベートな MCP サーバーをパブリックなインターネットに公開することなく OpenAI のプロダクトに接続できるようになります。この記事では Secure MCP Tunnel を試してみた様子を紹介します。"
 createdAt: "2026-05-31T19:04+09:00"
 updatedAt: "2026-05-31T19:04+09:00"
-tags: ["openai", "mcp"]
+tags: ["OpenAI", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2iO58AAEE03fT33QcfIKQF/e69d9a34fcb985fad5d8749f1c1fc61f/traffic_tunnel_18400-768x591.png"
   title: "トンネルのイラスト"
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "MCP プロトコル自体を高速化するための新しいトランスポート仕様"
           correct: false
           explanation: "記事では新しいトランスポートではなく、既存の MCP サーバーを安全に OpenAI のプロダクトに接続するための仕組みとして説明されています。"
-
     - question: "記事によると、OpenAI プラットフォームでトンネルを作成するためのロールには、Permissions の Tunnels でどの権限を有効にする必要がありますか？"
       answers:
         - text: "Read と Use"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "Admin と Write"
           correct: false
           explanation: "記事中にそのような権限名は登場しません。必要なのは Manage と Use です。"
-
     - question: "記事の手順に従って tunnel-client init を実行した場合、生成されるプロファイルファイルのパスはどれですか？"
       answers:
         - text: "/etc/tunnel-client/config.yaml"
@@ -56,10 +54,8 @@ selfAssessment:
         - text: "カレントディレクトリの tunnel.yaml"
           correct: false
           explanation: "記事ではカレントディレクトリではなく、ホーム配下の `~/tunnel-client/` 以下に生成されると説明されています。"
-
 published: true
 ---
-
 MCP（Model Context Protocol）にはローカルで実行される stdio トランスポートと、リモートで実行される Streamable HTTP トランスポートの 2 種類があります。MCP の登場当初は stdio トランスポートが主に使用されていましたが、以下のような理由から Streamable HTTP トランスポートの利用が増えてきています。
 
 - セットアップ手順が手軽でエンジニア以外も利用しやすい

@@ -5,10 +5,10 @@ slug: "openai-secure-mcp-tunnel"
 about: "OpenAI's Secure MCP Tunnel lets you connect a private MCP server to OpenAI products without exposing it to the public internet. In this article, I walk through what it looks like to actually try out Secure MCP Tunnel."
 createdAt: "2026-05-31T19:04+09:00"
 updatedAt: "2026-05-31T19:04+09:00"
-tags: ["openai", "mcp"]
+tags: ["OpenAI", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2iO58AAEE03fT33QcfIKQF/e69d9a34fcb985fad5d8749f1c1fc61f/traffic_tunnel_18400-768x591.png"
-  title: "Illustration of a tunnel"
+  title: "トンネルのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "A new transport specification that makes the MCP protocol itself faster"
           correct: false
           explanation: "The article does not describe it as a new transport. It is a mechanism for safely connecting existing MCP servers to OpenAI products."
-
     - question: "Following the steps in the article, where is the profile file generated when you run tunnel-client init?"
       answers:
         - text: "/etc/tunnel-client/config.yaml"
@@ -41,10 +40,8 @@ selfAssessment:
         - text: "tunnel.yaml in the current directory"
           correct: false
           explanation: "The article specifies that the file is generated under ~/tunnel-client/, not in the current working directory."
-
 published: true
 ---
-
 MCP (Model Context Protocol) defines two transports: the stdio transport, which runs locally, and the Streamable HTTP transport, which runs remotely. When MCP first appeared, the stdio transport was the main one in use, but the Streamable HTTP transport has been gaining traction for reasons such as:
 
 - It is easy to set up and accessible even to non-engineers
