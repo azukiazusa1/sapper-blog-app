@@ -5,10 +5,10 @@ slug: "editor-zed"
 about: "Zed is a native application written in Rust, known for its blazing-fast performance and lightweight design. In this article, I walk through how to install Zed and share the key features and impressions from my hands-on experience."
 createdAt: "2026-06-05T19:04+09:00"
 updatedAt: "2026-06-05T19:04+09:00"
-tags: ["zed"]
+tags: ["Zed"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1DDmqwLCQ9zLvAeD9L3TAS/67c62eb1f005b326521c428080c0d05d/kuma_sake_13180-768x610.png"
-  title: "Illustration of a bear holding a salmon in its mouth"
+  title: "鮭を咥えるクマのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "The article describes installing Claude via the ACP registry, not via an API key, and states that usage is consumed from the credit balance."
 published: true
 ---
-
 Looking back, since I started my career as an engineer, I spent the vast majority of my time writing code with Visual Studio Code as my companion. My first encounter with VS Code was nothing short of a shock — the impact was immeasurable. At the time, editors like Sublime Text and Atom were mainstream, yet VS Code occupied a perfect sweet spot between a full IDE and a lightweight editor, with snappy performance and a rich ecosystem of extensions — the very embodiment of what engineers had always wanted. Since then, VS Code became my home for writing code, and I spent countless hours customizing themes, keybindings, and trying out extension after extension to craft exactly the environment I wanted.
 
 For engineers, an editor is something that goes beyond being called a mere tool. It's fair to say that I spent the majority of my day inside it. But in recent years, I've started to sense a shift in that dynamic. The catalyst is, without doubt, the rise of AI coding agents. Around 2026, as agent capabilities improved dramatically, the role of human developers seemed to shift away from writing code directly toward making judgments and giving instructions — activities like requirements definition, design, code review, and validation. The terminal and desktop apps used to direct agents are becoming the new home for coding time, and the editor is transforming from a place to write code into a place to read and understand it.
