@@ -2,7 +2,7 @@
 id: VZPnDNw_g6KuDzl-y8u2l
 title: "A `/goal` Command Use Case: How I Sped Up Vitest by 6x"
 slug: "goal-command-use-case-vitest"
-about: "Enabling Vitest's `isolate: false` option cut our test execution time dramatically, but required large-scale code changes. Claude Code's `/goal` command makes the agent autonomously plan and execute the steps to reach the goal. This article shares that journey."
+about: "Enabling Vitest's `isolate: false` slashed our test execution time but required large-scale code changes. Claude Code's `/goal` command lets the agent autonomously work toward the final goal. This article shares the experience."
 createdAt: "2026-06-06T10:43+09:00"
 updatedAt: "2026-06-06T10:43+09:00"
 tags: ["vitest", "claude-code"]
