@@ -123,8 +123,9 @@
   onMount(() => {
     // 画像をクリックした時、拡大表示する
     const images = document.querySelectorAll("#contents img");
+    // リンク内の画像（リンクカードのサムネイルやファビコンなど）は拡大表示の対象外にする
     const filteredImages = Array.from(images).filter(
-      (image) => !(image.parentElement.tagName === "A"),
+      (image) => !image.closest("a"),
     );
     const handleClick = (e: MouseEvent) => {
       const modal = document.createElement("dialog");
