@@ -231,8 +231,8 @@ while :; do cat PROMPT.md | claude-code ; done
 
 興味があれば元になった Ralph ループがどのように実装されているのか見てみると面白いでしょう。
 
-- https://github.com/ghuntley/how-to-ralph-wiggum
-- https://ghuntley.com/ralph/
+- [ghuntley/how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum)
+- [plugins/ralph-wiggum](https://github.com/anthropics/claude-code/blob/main/plugins/ralph-wiggum/README.md)
 
 ## まとめ
 
