@@ -5,10 +5,10 @@ slug: "goal-command-use-case-vitest"
 about: "Enabling Vitest's `isolate: false` slashed our test execution time but required large-scale code changes. Claude Code's `/goal` command lets the agent autonomously work toward the final goal. This article shares the experience."
 createdAt: "2026-06-06T10:43+09:00"
 updatedAt: "2026-06-06T10:43+09:00"
-tags: ["vitest", "claude-code"]
+tags: ["Vitest", "claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6D0dbF2QzIgTnnPyageVVM/aa99fbdb3a355db004e02a7511482426/fruit_gold-kiwi_11118-768x542.png"
-  title: "Illustration of a gold kiwi"
+  title: "ゴールドキウイのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "Because it automatically tree-shakes dependent modules to reduce the amount of code loaded"
           correct: false
           explanation: "The article does not mention tree shaking. The reduction comes from sharing cached module evaluation results."
-
     - question: "According to the article, how does the `/goal` command work?"
       answers:
         - text: "It evaluates the goal condition at session start, and if it judges that the goal is unattainable, it immediately ends the session"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "It runs a fixed number of loops without evaluating the goal condition, and asks the user for a completion check at the end"
           correct: false
           explanation: "It does not run a fixed-count loop. Behavior is governed by evaluating whether the goal has been met."
-
     - question: "According to the article, which of the following is a tip for using the `/goal` command effectively?"
       answers:
         - text: "Keep the goal condition as abstract as possible to give Claude Code maximum interpretive freedom"
@@ -56,10 +54,8 @@ selfAssessment:
         - text: "Set a hard cap on token consumption to shorten total runtime"
           correct: false
           explanation: "The article notes high token consumption as a caveat, but does not present setting a cap as a tip."
-
 published: true
 ---
-
 A certain project had a very long frontend test execution time, which was significantly hurting development productivity. Long test times mean longer CI waits and slower feedback loops between writing code and seeing results — a particularly serious bottleneck when you're letting an AI agent write the code. To describe the project in broad strokes: the frontend is built with React, and tests are written using Vitest and Testing Library. There were roughly 10,000 tests in total, and running them all took more than 12 minutes.
 
 In this effort, enabling Vitest's `isolate: false` option cut test execution time from 12 minutes to 2 minutes — a roughly 6x speedup. Setting up `isolate: false` required large-scale code changes, and most of that work was done with Claude Code. Normally, however, handing a large-scale task to Claude Code and expecting it to be completed end-to-end is difficult. You typically need a human to step in, break the task into small chunks, and drive it forward incrementally. This time, though, by leveraging Claude Code's `/goal` command, I was able to have it autonomously decide and execute the steps needed to reach the final goal.
