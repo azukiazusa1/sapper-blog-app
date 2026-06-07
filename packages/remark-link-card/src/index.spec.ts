@@ -90,6 +90,21 @@ describe("remark-link-card", () => {
 `);
   });
 
+  test("リスト内のリンクはカードに変換しない", async () => {
+    const { value } = await processor.process(`
+intro
+
+- [https://github.com/ghuntley/how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum)
+- [https://ghuntley.com/ralph/](https://ghuntley.com/ralph/)
+`);
+    expect(value.toString()).toBe(`<p>intro</p>
+<ul>
+<li><a href="https://github.com/ghuntley/how-to-ralph-wiggum">https://github.com/ghuntley/how-to-ralph-wiggum</a></li>
+<li><a href="https://ghuntley.com/ralph/">https://ghuntley.com/ralph/</a></li>
+</ul>
+`);
+  });
+
   test("リンクのテキストと URL が異なる場合、カードに変換しない", async () => {
     const { value } = await processor.process(`
 ## test
