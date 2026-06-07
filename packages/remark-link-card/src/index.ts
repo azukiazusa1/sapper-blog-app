@@ -44,7 +44,11 @@ const text = (value = "") => {
 const remarkLinkCard: Plugin = () => async (tree) => {
   const transformers: Promise<void>[] = [];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  visit(tree, "paragraph", (paragraphNode: any, index) => {
+  visit(tree, "paragraph", (paragraphNode: any, index, parent) => {
+    if (parent !== tree) {
+      return;
+    }
+
     if (paragraphNode.children.length !== 1) {
       return;
     }

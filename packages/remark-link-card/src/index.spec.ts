@@ -90,6 +90,21 @@ describe("remark-link-card", () => {
 `);
   });
 
+  test("リスト内のリンクはカードに変換しない", async () => {
+    const { value } = await processor.process(`
+intro
+
+- [https://example.com/first-link](https://example.com/first-link)
+- [https://example.org/second-link](https://example.org/second-link)
+`);
+    expect(value.toString()).toBe(`<p>intro</p>
+<ul>
+<li><a href="https://example.com/first-link">https://example.com/first-link</a></li>
+<li><a href="https://example.org/second-link">https://example.org/second-link</a></li>
+</ul>
+`);
+  });
+
   test("リンクのテキストと URL が異なる場合、カードに変換しない", async () => {
     const { value } = await processor.process(`
 ## test
