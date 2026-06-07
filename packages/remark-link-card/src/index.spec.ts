@@ -94,13 +94,13 @@ describe("remark-link-card", () => {
     const { value } = await processor.process(`
 intro
 
-- [https://github.com/ghuntley/how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum)
-- [https://ghuntley.com/ralph/](https://ghuntley.com/ralph/)
+- [https://example.com/first-link](https://example.com/first-link)
+- [https://example.org/second-link](https://example.org/second-link)
 `);
     expect(value.toString()).toBe(`<p>intro</p>
 <ul>
-<li><a href="https://github.com/ghuntley/how-to-ralph-wiggum">https://github.com/ghuntley/how-to-ralph-wiggum</a></li>
-<li><a href="https://ghuntley.com/ralph/">https://ghuntley.com/ralph/</a></li>
+<li><a href="https://example.com/first-link">https://example.com/first-link</a></li>
+<li><a href="https://example.org/second-link">https://example.org/second-link</a></li>
 </ul>
 `);
   });
