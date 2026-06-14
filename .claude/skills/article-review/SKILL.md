@@ -2,7 +2,7 @@
 name: article-review
 description: "引数で指定した記事のレビューを行います。記事スラッグを引数に渡すと、textlint による自動校正と誤字脱字・文法的な誤りの指摘を行います。/article-review [スラッグ] の形式で呼び出してください。記事を書いた後のチェック、公開前の校正、文章の品質確認にも使用してください。"
 argument-hint: "[article-slug]"
-allowed-tools: Bash(git *), Bash(npm *), Read, Glob, Grep, mcp__textlint__lintFile
+allowed-tools: Bash(git *), Bash(npm *), Bash(./contents/node_modules/.bin/textlint:*), Read, Glob, Grep
 ---
 
 あなたはプロの編集者です。`blogPost/$ARGUMENTS.md` の技術記事をレビューし、改善すべき点を指摘してください。
@@ -10,7 +10,14 @@ allowed-tools: Bash(git *), Bash(npm *), Read, Glob, Grep, mcp__textlint__lintFi
 ## 手順
 
 1. `blogPost/$ARGUMENTS.md` を読む
-2. `mcp__textlint__lintFile` で自動校正を実行する（ファイルパスは絶対パスで指定）
+2. textlint CLI で自動校正を実行する。リポジトリルートから次のコマンドを実行する:
+
+   ```bash
+   ./contents/node_modules/.bin/textlint --config ./contents/.textlintrc.json ./contents/blogPost/$ARGUMENTS.md
+   ```
+
+   - 設定ファイル（`contents/.textlintrc.json`）とプラグイン・プリセットは `contents/node_modules` から解決されるため、`--config` を明示すればルートから実行しても問題ない
+   - `error` と `warning` を区別して扱う。`.textlintrc.json` で `warning` 設定されているルール（冗長表現・弱い表現など）は、筆者の文体スタイルと整合する場合は無理に修正を求めない
 3. `writing-style.md` を参照して筆者の文体スタイルを確認する
 4. 下記の出力形式でレビュー結果をまとめる
 
