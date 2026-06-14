@@ -5,10 +5,10 @@ slug: "before-implementation-interview-design-requirements-grill-me"
 about: "As coding agents grow more autonomous and parallel agent work becomes normal, shared understanding before implementation matters more than ever. This article introduces `/grill-me`, a skill for clarifying requirements and aligning humans and AI."
 createdAt: "2026-06-14T11:14+09:00"
 updatedAt: "2026-06-14T11:14+09:00"
-tags: ["AI", "design", "Agent Skills"]
+tags: ["AI", "設計", "agent skills"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4xowL5JOKPL0QSGA5o0YEb/47a6e43fbc2f52773641116fa8619d46/image.png"
-  title: "An illustration of pudding a la mode"
+  title: "プリンアラモードのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "Because it never asks questions, ambiguities in the requirements remain unresolved"
           correct: false
           explanation: "The article says that plan mode asks the user questions when something is unclear, so it is not true that no questions are asked."
-
     - question: "According to the article, what interaction format does the `/grill-me` skill use to keep control of the design on the human side?"
       answers:
         - text: "AI asks questions, and the user answers them"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "AI and the user take turns writing code while refining the design"
           correct: false
           explanation: "`/grill-me` is a skill for asking repeated questions during the design phase before implementation, not for proceeding while writing code."
-
     - question: "Which statement correctly describes the difference between \"low-fidelity questions\" and \"high-fidelity questions\" in the article?"
       answers:
         - text: "Low-fidelity questions are less important questions, while high-fidelity questions are more important questions"
@@ -56,10 +54,8 @@ selfAssessment:
         - text: "Low-fidelity questions are for beginners, while high-fidelity questions are for experienced users"
           correct: false
           explanation: "The article does not distinguish them by reader level. It distinguishes them by whether a prototype is needed."
-
 published: true
 ---
-
 When coding agents first appeared, I remember that the common way to use them was to approve every command execution and every code generation step, while watching closely enough to intervene whenever they seemed likely to head in the wrong direction. Recently, however, improvements in AI models themselves and advances in harness engineering have made it possible for agents to complete tasks autonomously. Greater agent autonomy leads to further productivity gains because users no longer need to monitor every single action the agent takes. Today, it has become normal to run multiple tasks in parallel or to build large-scale workflows around agents.
 
 Now that running multiple agents in parallel is becoming normal, monitoring every action each agent takes is no longer realistic. In the past, even if an instruction remained somewhat ambiguous, you could often detect a gap in understanding early by watching what happened during implementation. Now that we can no longer physically monitor agent behavior in the same way, gaps in understanding may only become visible after the agent has completed its task. If you do not notice that gap until the task is done, and the original requirement has not been met, everything may need to be redone. Even when the requirement has technically been met, if the code architecture is inappropriate or the code quality is low, major revisions may still be needed during code review. For that reason, in today's development workflows it is increasingly important to clarify requirements during the design phase before implementation and to build shared understanding between humans and AI.
