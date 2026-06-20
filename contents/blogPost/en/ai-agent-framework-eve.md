@@ -8,7 +8,7 @@ updatedAt: "2026-06-20T10:29+09:00"
 tags: ["AI", "eve"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2rV4FN2S3cjjqtzMDyuYwI/4e18973d212583e90015351084df72da/limestone-cave_23707-768x591.png"
-  title: "Illustration of a limestone cave"
+  title: "鍾乳洞のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -82,10 +82,8 @@ selfAssessment:
         - text: "Evals cannot be integrated into CI/CD and can only be run locally"
           correct: false
           explanation: "The article states that you can integrate evals into a CI/CD pipeline and, for example, block a PR from being merged if the score is below a threshold."
-
 published: true
 ---
-
 Vercel has announced [eve](https://vercel.com/eve), a new AI agent framework. Built on the design philosophy of Next.js, eve comes with the following features needed to run in production. Just as Next.js is the framework that has everything you need for the web, eve is positioned as the framework that has everything you need for AI agent development.
 
 - Durable sessions (even if a session is paused, it can resume exactly where it left off)

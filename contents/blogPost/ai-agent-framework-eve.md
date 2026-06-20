@@ -54,10 +54,8 @@ selfAssessment:
         - text: "approval()"
           correct: false
           explanation: "記事で紹介されているユーティリティは always() / never() / once() の3つで、approval() という関数は登場しません。"
-
 published: true
 ---
-
 Vercel が新しい AI エージェントフレームワーク [eve](https://vercel.com/eve) を発表しました。eve は Next.js の設計思想に基づいて構築され、本番環境で実行するために必要な以下の機能を備えています。ウェブで必要なものがすべて揃ったフレームワークが Next.js であるように、AI エージェントの開発に必要なものがすべて揃ったフレームワークが eve という位置付けです。
 
 - 耐久性のあるセッション（セッションが一時停止しても、停止した場所から正確に再開できる）
