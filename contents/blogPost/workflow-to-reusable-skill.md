@@ -5,7 +5,7 @@ slug: "workflow-to-reusable-skill"
 about: "Codex の Record & Replay は macOS 上でのユーザーの操作を実演することで再利用可能なスキルに変換する機能です。例えば経費精算の提出や勤怠アプリへの打刻や工数入力、定期的なレポートの作成などをスキルとして記録し、煩雑な定型業務を AI に任せることが期待できます。この記事では、Record & Replay を実際に試してみた様子を紹介します。"
 createdAt: "2026-06-21T09:39+09:00"
 updatedAt: "2026-06-21T09:39+09:00"
-tags: ["codex", "agent-skills"]
+tags: ["codex", "agent skills"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/28ceu9midNI5PTWD7Y6VJD/9473b8af9c286d6800b1676ebc372734/blue-and-white-flycatcher_23746-768x729.png"
   title: "オオルリのイラスト"

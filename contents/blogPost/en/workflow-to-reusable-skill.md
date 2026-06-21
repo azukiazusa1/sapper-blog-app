@@ -5,7 +5,7 @@ slug: "workflow-to-reusable-skill"
 about: "Codex's Record & Replay turns your actions on macOS into a reusable skill by demonstration. You can record routine chores like filing expenses or entering work hours and hand them off to AI. This article walks through actually trying it out."
 createdAt: "2026-06-21T09:39+09:00"
 updatedAt: "2026-06-21T09:39+09:00"
-tags: ["codex", "agent-skills"]
+tags: ["codex", "agent skills"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/28ceu9midNI5PTWD7Y6VJD/9473b8af9c286d6800b1676ebc372734/blue-and-white-flycatcher_23746-768x729.png"
   title: "オオルリのイラスト"
