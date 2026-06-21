@@ -54,10 +54,8 @@ selfAssessment:
         - text: "Passwords are automatically encrypted during recording"
           correct: false
           explanation: "Handling of sensitive information is mentioned, but the benefit of not using coordinates is resilience to screen layout changes."
-
 published: true
 ---
-
 Codex's Record & Replay is a feature that turns your actions on macOS into a reusable skill by demonstration. Record & Replay shines when a workflow is routine and you repeat it frequently, or when showing the actual steps is easier to understand than describing them in a prompt. Examples include filing expense reports, clocking in or entering work hours on an attendance app, and producing regular reports. By recording these actions as a skill and combining it with [Computer Use](https://developers.openai.com/codex/app/computer-use), you can expect to hand tedious, repetitive chores off to AI. Record & Replay is especially well suited to workflows whose steps are stable and whose success criteria are clear.
 
 In this article, I'll walk through actually trying out Record & Replay. This time, I'll use a fictional attendance app called "TimePort" running locally to record a clock-in and work-hour entry workflow, and show an example of reusing it as a skill.
