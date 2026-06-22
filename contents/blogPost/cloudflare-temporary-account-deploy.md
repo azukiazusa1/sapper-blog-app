@@ -5,7 +5,7 @@ slug: "cloudflare-temporary-account-deploy"
 about: "Cloudflare の Temporary Cloudflare Accounts を使用すると、人間が介入することなく AI エージェントが即座に Cloudflare Workers にデプロイできるようになります。この記事では、Temporary Cloudflare Accounts を使用して実際に Cloudflare Workers にデプロイする方法を試してみます。"
 createdAt: "2026-06-22T19:48+09:00"
 updatedAt: "2026-06-22T19:48+09:00"
-tags: ["cloudflare-workers", "Cloudflare", "AI"]
+tags: ["", "Cloudflare", "AI", "Cloudflare Workers"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/20lwFyK2B0Mti321V9nW34/fc2c1178bf3d2b6dbad1c59d851a7471/nori-bento_18592-768x591.png"
   title: "海苔弁のイラスト"
