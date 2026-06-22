@@ -5,7 +5,7 @@ slug: "cloudflare-temporary-account-deploy"
 about: "With Cloudflare's Temporary Cloudflare Accounts, an AI agent can deploy to Cloudflare Workers instantly without any human intervention. In this article, I actually try deploying to Cloudflare Workers using Temporary Cloudflare Accounts."
 createdAt: "2026-06-22T19:48+09:00"
 updatedAt: "2026-06-22T19:48+09:00"
-tags: ["cloudflare-workers", "cloudflare", "AI"]
+tags: ["cloudflare-workers", "Cloudflare", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/20lwFyK2B0Mti321V9nW34/fc2c1178bf3d2b6dbad1c59d851a7471/nori-bento_18592-768x591.png"
   title: "海苔弁のイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "There is no limit; it stays until you delete it manually"
           correct: false
           explanation: "The claim that there is no limit is incorrect. If you do not claim ownership, it is automatically deleted after 60 minutes."
-
 published: true
 ---
-
 In today's development workflows, a style is becoming increasingly common where an AI agent works autonomously until it achieves its goal, improving the application through feedback. In this kind of workflow, what matters is building out the so-called harness—the guardrails, execution environment, and automated verification tools that let the agent run with as little human intervention as possible. The more often a human has to step in, the more development speed drops.
 
 Against this backdrop, deploying an application has long been one of the tasks where an AI agent inevitably needs a human to step in. Creating an account on some platform, retrieving credentials from a dashboard, and satisfying multi-factor authentication—this whole sequence is not something you can leave entirely to an AI agent. While this work is going on, the AI agent just keeps waiting.

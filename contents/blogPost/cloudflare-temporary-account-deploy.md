@@ -5,7 +5,7 @@ slug: "cloudflare-temporary-account-deploy"
 about: "Cloudflare の Temporary Cloudflare Accounts を使用すると、人間が介入することなく AI エージェントが即座に Cloudflare Workers にデプロイできるようになります。この記事では、Temporary Cloudflare Accounts を使用して実際に Cloudflare Workers にデプロイする方法を試してみます。"
 createdAt: "2026-06-22T19:48+09:00"
 updatedAt: "2026-06-22T19:48+09:00"
-tags: ["cloudflare-workers", "cloudflare", "AI"]
+tags: ["cloudflare-workers", "Cloudflare", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/20lwFyK2B0Mti321V9nW34/fc2c1178bf3d2b6dbad1c59d851a7471/nori-bento_18592-768x591.png"
   title: "海苔弁のイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "期限はなく、手動で削除するまで残り続ける"
           correct: false
           explanation: "期限がないという説明は誤りです。所有権を主張しなければ 60 分で自動的に削除されます。"
-
 published: true
 ---
-
 現在の開発のワークフローでは AI エージェントをゴールを達成するまで自律的に動作させて、フィードバックを通じてアプリケーションを改善していくというスタイルが増えてきています。このような開発ワークフローでは、人間ができる限り介入することなく動かせるようなガードレール・実行環境・自動検証ツールを整備するいわゆるハーネスが重要になってきます。人間が介入する頻度が高ければ高いほど、開発のスピードが落ちてしまうからです。
 
 そんな中 AI エージェントがアプリケーションをデプロイするための作業は、どうしても人間が介入する必要のある作業の 1 つでした。何らかのプラットフォームにアカウントを作成し、認証情報をダッシュボードから取得し、多要素認証を満たすという一連の流れは AI エージェントだけに任せることはできません。この作業を行っている間 AI エージェントはただ待ち続けることになってしまいます。
