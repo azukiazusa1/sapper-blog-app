@@ -26,7 +26,6 @@ selfAssessment:
         - text: "Recreate every flag manually from the dashboard"
           correct: false
           explanation: "Automatic registration adds flags from the code in draft state, so there is no need to recreate them manually."
-
     - question: "According to the article, what is the role of the `identify` function when enabling a flag only for specific users?"
       answers:
         - text: "Send information about entities such as users to Vercel Flags when retrieving the flag state"
@@ -41,10 +40,8 @@ selfAssessment:
         - text: "Cache duplicate calls within the same request"
           correct: false
           explanation: "Caching duplicate calls is the role of the `dedupe` function, not `identify` itself."
-
 published: true
 ---
-
 Feature flags have become an essential tool in modern application development. A feature flag is a mechanism that lets you add a new feature to the codebase while enabling it only for specific users or environments. In code, it is commonly used with a conditional branch like this:
 
 ```tsx
