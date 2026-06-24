@@ -1,6 +1,6 @@
 ---
 id: VgtGm2TFq9XC_W1Xi-e-3
-title: "Vercel で Feature Flags を制御する"
+title: "Vercel で Feature Flags を管理する"
 slug: "vercel-feature-flags"
 about: "今日のアプリケーション開発において、Feature Flags（機能フラグ）は欠かせないツールとなっています。Vercel Flags を使用することで、Vercel 上でホストされているアプリケーションに Feature Flags を簡単に導入することができます。この記事では、Vercel Flags を使用して Vercel 上でホストされているアプリケーションに Feature Flags を導入する方法を試してみます。"
 createdAt: "2026-06-24T19:37+09:00"
