@@ -7,8 +7,8 @@ createdAt: "2026-06-24T19:37+09:00"
 updatedAt: "2026-06-24T19:37+09:00"
 tags: ["Vercel", "Feature Flags", "Next.js"]
 thumbnail:
-  url: "ハイビスカス付きのトロピカルジュースのイラスト"
-  title: "https://images.ctfassets.net/in6v9lxmm5c8/19go4RnlygrUW9dzto1xQA/beea9aaffea99561c547e5b4d800d5ea/tropical-juice_illust_3388-768x798.png"
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/19go4RnlygrUW9dzto1xQA/beea9aaffea99561c547e5b4d800d5ea/tropical-juice_illust_3388-768x798.png"
+  title: "ハイビスカス付きのトロピカルジュースのイラスト"
 audio: null
 selfAssessment:
   quizzes:
