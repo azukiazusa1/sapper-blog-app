@@ -98,7 +98,7 @@ export interface CommitResponse {
   html_url: string;
   comments_url: string;
   commit: Commit;
-  author: Author2;
-  committer: Committer2;
+  author: Author2 | null;
+  committer: Committer2 | null;
   parents: Parent[];
 }

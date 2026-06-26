@@ -6,6 +6,14 @@ import type {
 } from "./types";
 
 export class GitHubRepository implements GitHubRepositoryInterface {
+  private readonly defaultContributors: Contributor[] = [
+    {
+      username: "azukiazusa1",
+      avatar: "https://avatars.githubusercontent.com/u/59350345?v=4",
+      url: "https://github.com/azukiazusa1",
+    },
+  ];
+
   private removeDeplicateContributors(
     contributors: Contributor[],
   ): Contributor[] {
@@ -35,37 +43,52 @@ export class GitHubRepository implements GitHubRepositoryInterface {
   ];
 
   async getContributorsByFile(slug: string) {
-    const res = await fetch(
-      `https://api.github.com/repos/azukiazusa1/sapper-blog-app/commits?path=${this.getFilePath(
-        slug,
-      )}`,
-      {
-        headers: {
-          Authorization: `Bearer ${secrets.githubToken}`,
-        },
-      },
-    );
-    const json: CommitResponse[] = await res.json();
-    const contributors = json
-      .map((commit) => {
-        return {
-          username: commit.author.login,
-          avatar: commit.author.avatar_url,
-          url: commit.author.html_url,
-        };
-      })
-      .filter((contributor) => !this.botUsers.includes(contributor.username));
-
-    if (contributors.length === 0) {
-      return [
+    try {
+      const res = await fetch(
+        `https://api.github.com/repos/azukiazusa1/sapper-blog-app/commits?path=${this.getFilePath(
+          slug,
+        )}`,
         {
-          username: "azukiazusa1",
-          avatar: "https://avatars.githubusercontent.com/u/59350345?v=4",
-          url: "https://github.com/azukiazusa1",
+          headers: {
+            Authorization: `Bearer ${secrets.githubToken}`,
+          },
         },
-      ];
-    } else {
-      return this.removeDeplicateContributors(contributors);
+      );
+
+      if (!res.ok) {
+        console.warn(
+          `Failed to fetch GitHub contributors for ${slug}: ${res.status} ${res.statusText}`,
+        );
+        return this.defaultContributors;
+      }
+
+      const json: unknown = await res.json();
+      if (!Array.isArray(json)) {
+        console.warn(
+          `Failed to fetch GitHub contributors for ${slug}: unexpected response`,
+        );
+        return this.defaultContributors;
+      }
+
+      const contributors = (json as CommitResponse[])
+        .filter((commit) => commit.author)
+        .map((commit) => {
+          return {
+            username: commit.author.login,
+            avatar: commit.author.avatar_url,
+            url: commit.author.html_url,
+          };
+        })
+        .filter((contributor) => !this.botUsers.includes(contributor.username));
+
+      if (contributors.length === 0) {
+        return this.defaultContributors;
+      } else {
+        return this.removeDeplicateContributors(contributors);
+      }
+    } catch (error) {
+      console.warn(`Failed to fetch GitHub contributors for ${slug}`, error);
+      return this.defaultContributors;
     }
   }
 }

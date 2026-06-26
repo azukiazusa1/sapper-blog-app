@@ -110,6 +110,31 @@ describe("GitHubRepository", () => {
     ]);
   });
 
+  test("GitHub API がエラーを返した場合は自分を返す", async () => {
+    vi.spyOn(console, "warn").mockImplementation(() => undefined);
+    server.use(
+      http.get(
+        "https://api.github.com/repos/azukiazusa1/sapper-blog-app/commits",
+        () => {
+          return HttpResponse.json(
+            { message: "API rate limit exceeded" },
+            { status: 403 },
+          );
+        },
+      ),
+    );
+
+    const contributors = await gitHubRepository.getContributorsByFile("slug");
+
+    expect(contributors).toEqual<Contributor[]>([
+      {
+        username: "azukiazusa1",
+        avatar: "https://avatars.githubusercontent.com/u/59350345?v=4",
+        url: "https://github.com/azukiazusa1",
+      },
+    ]);
+  });
+
   test("重複した contributor は除外する", async () => {
     server.use(
       http.get(
