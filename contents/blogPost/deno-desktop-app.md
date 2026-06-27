@@ -5,7 +5,7 @@ slug: "deno-desktop-app"
 about: "Deno v2.9.0 以降で `deno desktop` コマンドが使えるようになりました。`deno desktop` コマンドは単一の TypeScript ファイルから Next.js プロジェクトまで、デスクトップアプリに変換できます。この記事では Deno でデスクトップアプリを作る方法について紹介します。"
 createdAt: "2026-06-26T19:53+09:00"
 updatedAt: "2026-06-26T19:53+09:00"
-tags: ["deno"]
+tags: ["Deno"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/50yV6nEKq4irm2pzjUODHF/084884e81784f30b38ca007585748cab/cute_tyrannosaurus_8183-768x564.png"
   title: "かわいいティラノサウルスのイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "Deno.serve() のルーティングに関数を登録して呼び出す"
           correct: false
           explanation: "Deno.serve() は HTML を返す HTTP サーバーの役割で、関数バインディングの登録には win.bind を使います。"
-
 published: true
 ---
-
 Deno v2.9.0 以降で `deno desktop` コマンドが使えるようになりました。`deno desktop` コマンドは単一の TypeScript ファイルから Next.js プロジェクトまで、デスクトップアプリに変換できます。今までも Web 技術を使用してデスクトップアプリを作るためのフレームワークとして、[Electron](https://www.electronjs.org/) や [Tauri](https://tauri.app/), [Electrobun](https://blackboard.sh/framework/) などがありましたが、それぞれにトレードオフがありました。Electron は Node.js を使用しているため、Node.js のエコシステムを活用できる一方で、アプリのサイズが大きくなりがちです。Tauri はフロントエンドに Web 技術を使える一方で、バックエンドのロジックを Rust で書く必要があるため、Node.js（npm）のサーバーサイドのエコシステムをそのまま活用できません。
 
 `deno desktop` コマンドはデフォルトで軽量で、Node.js との互換性を備えているのが特徴です。デフォルトでは WebView バックエンドを使用しているため、バイナリサイズを小さく抑えつつ、Node.js のエコシステムを活用できます。一方で WebView バックエンドの場合 OS ごとに異なる WebView を使用するため、見た目の違いが出てしまうことがあります。バンドルサイズは増えてしまうものの、Chromium バックエンドを使用することで、OS 間で見た目の違いが出ないようにできます。

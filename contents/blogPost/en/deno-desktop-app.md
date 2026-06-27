@@ -5,7 +5,7 @@ slug: "deno-desktop-app"
 about: "Starting with Deno v2.9.0, the `deno desktop` command can turn anything from a single TypeScript file to a Next.js project into a desktop app. This article explains how to build desktop apps with Deno."
 createdAt: "2026-06-26T19:53+09:00"
 updatedAt: "2026-06-26T19:53+09:00"
-tags: ["deno"]
+tags: ["Deno"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/50yV6nEKq4irm2pzjUODHF/084884e81784f30b38ca007585748cab/cute_tyrannosaurus_8183-768x564.png"
   title: "かわいいティラノサウルスのイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "Register the function in Deno.serve() routing and call it"
           correct: false
           explanation: "Deno.serve() acts as the HTTP server that returns HTML. Function bindings are registered with win.bind."
-
 published: true
 ---
-
 Starting with Deno v2.9.0, the `deno desktop` command became available. The `deno desktop` command can turn anything from a single TypeScript file to a Next.js project into a desktop app. Frameworks such as [Electron](https://www.electronjs.org/), [Tauri](https://tauri.app/), and [Electrobun](https://blackboard.sh/framework/) have already made it possible to build desktop apps with web technologies, but each comes with trade-offs. Electron uses Node.js, so you can take advantage of the Node.js ecosystem, but app size tends to become large. Tauri lets you use web technologies for the frontend, but because backend logic has to be written in Rust, you cannot directly use the Node.js (npm) server-side ecosystem as-is.
 
 The `deno desktop` command is lightweight by default and has Node.js compatibility. It uses a WebView backend by default, keeping binary size small while still allowing you to use the Node.js ecosystem. On the other hand, with the WebView backend, each OS uses a different WebView, so visual differences can appear across platforms. Although the bundle size increases, using the Chromium backend lets you avoid visual differences between operating systems.
