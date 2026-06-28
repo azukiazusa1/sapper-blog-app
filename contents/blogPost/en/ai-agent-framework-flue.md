@@ -54,10 +54,8 @@ selfAssessment:
         - text: "Tools"
           correct: false
           explanation: "The article explicitly says tools themselves can be placed wherever you like. src/tools is the implementation location used in the article."
-
 published: true
 ---
-
 [Flue](https://flueframework.com/) is a TypeScript framework for building AI agents. Flue adopts the harness-driven architecture used by coding agents such as Claude Code, and it can use a wide range of AI models as agents. As the foundation for this harness architecture, Flue uses [Pi](https://pi.dev), which is also used by [OpenCrew](https://www.opencrewai.com/). Pi is described as a "minimal terminal coding harness": a harness that provides the minimum set of features needed to run coding agents in a terminal. Flue builds on Pi and makes it possible to build and manage more advanced agents.
 
 Flue provides a comprehensive set of features needed to build agents.

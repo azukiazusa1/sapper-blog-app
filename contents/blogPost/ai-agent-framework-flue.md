@@ -54,10 +54,8 @@ selfAssessment:
         - text: "ツール"
           correct: false
           explanation: "記事では、ツール自体は好きな場所に配置できると説明されています。src/tools はこの記事での実装例です。"
-
 published: true
 ---
-
 [Flue](https://flueframework.com/) は AI エージェントを構築するための TypeScript フレームワークです。Flue は Claude Code をはじめとするコーディングエージェントが採用しているハーネス駆動のアーキテクチャを採用しており、あらゆる AI モデルをエージェントとして利用することができます。ハーネスアーキテクチャを構成する基盤として [OpenCrew](https://www.opencrewai.com/) においても採用されている [Pi](https://pi.dev) が利用されています。Pi は「minimal terminal coding harness」と説明されており、ターミナル上でのコーディングエージェントの実行に必要な最小限の機能を提供するハーネスです。Flue は Pi をベースにしており、より高度なエージェントの構築や管理を可能にしています。
 
 Flue は、エージェントの構築に必要な機能を包括的に提供しています。
