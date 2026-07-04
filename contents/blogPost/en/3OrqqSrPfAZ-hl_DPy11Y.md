@@ -2,7 +2,7 @@
 id: 3OrqqSrPfAZ-hl_DPy11Y
 title: "Enabling AI Agents to Control Safari with the Safari MCP Server"
 slug: "safari-mcp-server"
-about: "Real-browser testing matters for web development, and tools like Playwright CLI, agent-browser, and chrome-devtools-mcp let agents drive browsers, though most depend on Chromium. Safari Technology Preview 247 adds an MCP server that lets agents connect to Safari and read page content."
+about: "Real-browser testing matters for web development. Tools like Playwright CLI and chrome-devtools-mcp let agents drive browsers, but most depend on Chromium. Safari Technology Preview 247 adds an MCP server that connects agents to Safari."
 createdAt: "2026-07-04T20:36+09:00"
 updatedAt: "2026-07-04T20:36+09:00"
 tags: ["MCP", "safari"]
@@ -61,6 +61,25 @@ If you're using Claude Code, you can add the Safari MCP server with the followin
 ```bash
 claude mcp add safari-mcp-stp -- "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver" --mcp
 ```
+
+If you're using Codex, you can add it with a similar command:
+
+```bash
+codex mcp add safari-mcp-stp -- "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver" --mcp
+```
+
+For other MCP-compatible agents, add an entry like this to your `mcp.json`, `config.json`, or equivalent configuration file:
+
+```json
+{
+  "safari-mcp-stp": {
+    "command": "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver",
+    "args": ["--mcp"]
+  }
+}
+```
+
+The server name `safari-mcp-stp` is arbitrary, so you can rename it if you prefer.
 
 `safaridriver` is the WebDriver implementation bundled with macOS by default — a CLI tool for controlling Safari through the WebDriver protocol (a standardized protocol for browser automation). The Safari MCP server works by launching `safaridriver` with the `--mcp` flag, which starts it as an MCP server instead of a WebDriver endpoint. Note that running plain `safaridriver` without this flag drives the regular Safari installation, so you need to point to the Safari Technology Preview binary specifically, as in `"/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver"`.
 

@@ -2,7 +2,7 @@
 id: 3OrqqSrPfAZ-hl_DPy11Y
 title: "Safari MCP サーバーでエージェントが Safari ブラウザを操作できるようにする"
 slug: "safari-mcp-server"
-about: "Web アプリケーションの開発には実ブラウザでの動作確認やデバッグが必要不可欠です。そのために Playwright CLI, agent-browser, chrome-devtools-mcp などブラウザを操作させるツールが数多く提供されていますが、多くは Chromium ベースのブラウザに依存しています。Safari Technology Preview 247 で導入された MCP サーバーは、エージェントが Safari ブラウザに接続し、操作やページ内容の取得を行えるようにします。"
+about: "Web アプリケーションの開発には実ブラウザでの動作確認が必要不可欠です。Playwright CLI や chrome-devtools-mcp などエージェント向けのブラウザ操作ツールは多くが Chromium に依存しています。Safari Technology Preview 247 の MCP サーバーは、エージェントを Safari に接続し操作できるようにします。"
 createdAt: "2026-07-04T20:36+09:00"
 updatedAt: "2026-07-04T20:36+09:00"
 tags: ["MCP", "safari"]
@@ -62,6 +62,25 @@ Claude Code を使用している場合には以下のコマンドで Safari MCP
 claude mcp add safari-mcp-stp -- "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver" --mcp
 ```
 
+Codex を使用している場合には、同様に以下のコマンドで追加できます。
+
+```bash
+codex mcp add safari-mcp-stp -- "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver" --mcp
+```
+
+その他の MCP に対応したエージェントでは、`mcp.json` や `config.json` などの設定ファイルに以下のように記述します。
+
+```json
+{
+  "safari-mcp-stp": {
+    "command": "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver",
+    "args": ["--mcp"]
+  }
+}
+```
+
+サーバー名の `safari-mcp-stp` は任意の名前に変更できます。
+
 `safaridriver` は macOS に標準でインストールされている WebDriver 実装であり、Safari を WebDriver プロトコル（ブラウザの自動操作を行うための標準化されたプロトコル）で操作するための CLI ツールです。Safari MCP サーバーは、`safaridriver` を `--mcp` オプション付きで起動することで WebDriver プロトコルではなく MCP サーバーとして起動されます。なお、単に `safaridriver` を起動した場合は通常の Safari を操作するように動作するため、`"/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver"` のように Safari Technology Preview のパスを指定する必要があります。
 
 `/mcp` コマンドで Safari MCP サーバーが追加されていることを確認してみましょう。
@@ -100,7 +119,7 @@ Safari MCP サーバーが提供するツールの一覧は以下の通りです
 
 ## Safari MCP サーバーを使用してエージェントが Safari ブラウザを操作する
 
-エージェントが Safari ブラウザを操作する例として、例えば「azukiazusa.dev は safari でアクセシブルな実装になっていますか？」というプロンプトを Claude に送信してみましょう。まずは `safari-mcp-stp` の `navigate_to_url` コマンドを使用して、Safari Technology Preview で azukiazusa.dev にアクセスします。
+エージェントが Safari ブラウザを操作する例として、例えば「azukiazusa.dev は Safari でアクセシブルな実装になっていますか？」というプロンプトを Claude に送信してみましょう。まずは `safari-mcp-stp` の `navigate_to_url` コマンドを使用して、Safari Technology Preview で azukiazusa.dev にアクセスします。
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/1XiUedoOFjaFJUtFSQz57b/a1109cb2c4c4af009664e7a8c8ad36c9/image.png)
 
