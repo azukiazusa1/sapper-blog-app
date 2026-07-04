@@ -8,7 +8,7 @@ updatedAt: "2026-07-04T19:59+09:00"
 tags: ["MCP Apps", "MCP"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/2dSHMhB5vk2wA8MrAI90Xp/6b233698025f3c7fe7eb2498986b5ecb/ninja_23810-768x768.png"
-  title: "Illustration of a ninja"
+  title: "忍者のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "Make the first argument's name in registerResource match the tool name"
           correct: false
           explanation: "The resource name doesn't need to match the tool name. The link is established solely through the URI specified in _meta.ui.resourceUri."
-
     - question: "According to the article, what happens when a tool's _meta.ui.visibility is set to [\"app\"] only?"
       answers:
         - text: "The tool is excluded from the MCP server's tools/list response"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "The tool's execution result no longer includes structuredContent"
           correct: false
           explanation: "visibility has nothing to do with the shape of the tool's return value. The article's refreshDashboardData tool also returns structuredContent."
-
     - question: "According to the article, what is the purpose of the sandbox proxy checking event.source === window.parent when receiving a postMessage?"
       answers:
         - text: "To guarantee the arrival order of messages"
@@ -56,10 +54,8 @@ selfAssessment:
         - text: "To prevent an untrusted iframe from spoofing sandbox-resource-ready and having itself recreated with allow-same-origin"
           correct: true
           explanation: "As the article explains, without this check a malicious iframe could send a forged notification to trigger createAppFrame and have itself regenerated with allow-same-origin, completing the attack."
-
 published: true
 ---
-
 Vercel's AI SDK v7 adds support for [MCP Apps](https://modelcontextprotocol.io/extensions/apps/overview). MCP Apps is an extension to the Model Context Protocol (MCP) that lets tools return an interactive UI instead of plain text. When a tool the AI model calls as usual is linked to a `ui://` resource, the application can render that UI in a sandboxed environment. This makes it possible for users to view data as a chart, or view a list of restaurants as cards and click a reservation button, and so on.
 
 Applications that support MCP Apps need to handle their own iframe communication and security constraints for sandboxing, but AI SDK provides convenient APIs for MCP Apps support, making the application-side implementation relatively easy. This post walks through trying out AI SDK's MCP Apps support.

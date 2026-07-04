@@ -26,7 +26,6 @@ selfAssessment:
         - text: "registerResource の第 1 引数の名前をツール名と一致させる"
           correct: false
           explanation: "リソースの名前とツール名を一致させる必要はありません。紐付けはあくまで _meta.ui.resourceUri に指定する URI で行います。"
-
     - question: "ツールの _meta.ui.visibility を [\"app\"] のみに設定した場合の挙動として、記事で説明されているものはどれですか?"
       answers:
         - text: "MCP サーバーの tools/list のレスポンスからそのツールが除外される"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "ツールの実行結果が structuredContent を含まなくなる"
           correct: false
           explanation: "visibility とツールの戻り値の形式は無関係です。記事の refreshDashboardData も structuredContent を返しています。"
-
     - question: "サンドボックスプロキシが postMessage の受信時に event.source === window.parent をチェックする目的として、記事で説明されているものはどれですか?"
       answers:
         - text: "メッセージの到着順序を保証するため"
@@ -56,10 +54,8 @@ selfAssessment:
         - text: "信頼できない iframe が sandbox-resource-ready を偽装し、allow-same-origin 付きで自分自身を再生成させる攻撃を防ぐため"
           correct: true
           explanation: "記事の通り、このチェックがないと悪意ある iframe が偽の通知を送りつけて createAppFrame を呼ばせ、allow-same-origin 付きの iframe として再生成される攻撃が成立してしまいます。"
-
 published: true
 ---
-
 Vercel が提供する AI SDK の v7 では、[MCP Apps](https://modelcontextprotocol.io/extensions/apps/overview) 対応が追加されました。MCP Apps は Model Context Protocol (MCP) のツールがプレーンテキストの代わりにインタラクティブな UI を返せるようにするための拡張機能です。AI モデルは通常通りツールを呼び出す際に `ui://` リソースが紐付けられていれば、アプリケーション側でその UI をサンドボックス化された環境でレンダリングすることができます。これにより、ユーザーはグラフ形式でデータを確認したり、レストランの一覧をカード形式で表示したうえで、予約ボタンを押すといった操作が可能になります。
 
 MCP Apps に対応するアプリケーション側ではサンドボックス化のために独自の iframe の通信やセキュリティ上の制約を考慮する必要がありますが、AI SDK では MCP Apps 対応のための便利な API が提供されており、アプリケーション側での実装を比較的容易に行うことができます。この記事では AI SDK の MCP Apps 対応を試してみた内容を紹介します。
