@@ -2,7 +2,7 @@
 id: 3OrqqSrPfAZ-hl_DPy11Y
 title: "Enabling AI Agents to Control Safari with the Safari MCP Server"
 slug: "safari-mcp-server"
-about: "Real-browser testing matters for web development, and tools like Playwright CLI, agent-browser, and chrome-devtools-mcp let agents drive browsers, though most depend on Chromium. Safari Technology Preview 247 adds an MCP server for Safari."
+about: "Real-browser testing matters for web development, and tools like Playwright CLI, agent-browser, and chrome-devtools-mcp let agents drive browsers, though most depend on Chromium. Safari Technology Preview 247 adds an MCP server that lets agents connect to Safari and read page content."
 createdAt: "2026-07-04T20:36+09:00"
 updatedAt: "2026-07-04T20:36+09:00"
 tags: ["MCP", "safari"]

@@ -2,7 +2,7 @@
 id: 3OrqqSrPfAZ-hl_DPy11Y
 title: "Safari MCP サーバーでエージェントが Safari ブラウザを操作できるようにする"
 slug: "safari-mcp-server"
-about: "Web アプリケーションの開発においては、実ブラウザでの動作確認やデバッグが必要不可欠です。そのために Playwright CLI, agent-browser, chrome-devtools-mcp などエージェントにブラウザを操作させるためのツールが数多く提供されています。Safari Technology Preview 247 で導入された MCP サーバーはエージェントが Safari ブラウザに接続することができるようにするための MCP ツールを提供しており、ユーザー操作のエミュレートやページ内容の取得、ネットワークリクエストの取得などを行うことができます。"
+about: "Web アプリケーションの開発には実ブラウザでの動作確認やデバッグが必要不可欠です。そのために Playwright CLI, agent-browser, chrome-devtools-mcp などブラウザを操作させるツールが数多く提供されていますが、多くは Chromium ベースのブラウザに依存しています。Safari Technology Preview 247 で導入された MCP サーバーは、エージェントが Safari ブラウザに接続し、操作やページ内容の取得を行えるようにします。"
 createdAt: "2026-07-04T20:36+09:00"
 updatedAt: "2026-07-04T20:36+09:00"
 tags: ["MCP", "safari"]
