@@ -5,10 +5,10 @@ slug: "safari-mcp-server"
 about: "Real-browser testing matters for web development. Tools like Playwright CLI and chrome-devtools-mcp let agents drive browsers, but most depend on Chromium. Safari Technology Preview 247 adds an MCP server that connects agents to Safari."
 createdAt: "2026-07-04T20:36+09:00"
 updatedAt: "2026-07-04T20:36+09:00"
-tags: ["MCP", "safari"]
+tags: ["MCP", "Safari"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4U7FcNQbqpUDcqJlUOJ0VA/f40a29edc0e67100247a2e7e102bb5b0/houi-jishaku_compass_8771.png"
-  title: "Illustration of a compass"
+  title: "コンパスのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "safari-mcp-cli"
           correct: false
           explanation: "This is easy to confuse with the MCP server name specified in the `claude mcp add` command (safari-mcp-stp), but the CLI tool actually launched is safaridriver."
-
 published: true
 ---
-
 The importance of providing agents with a proper feedback loop during development has been discussed at length. This is especially true for web application development, where verifying and debugging behavior in a real browser is essential. That's why tools like [Playwright CLI](https://github.com/microsoft/playwright-cli), [agent-browser](https://github.com/vercel-labs/agent-browser), and [chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) have emerged to let agents drive a browser.
 
 However, most tools available today share a common limitation: they depend on Google Chrome or other Chromium-based browsers. Since web standards can be implemented or behave differently across browsers, and some APIs are only available in specific ones, it has long been standard practice to verify behavior across every browser you support. So even when an agent used a browser automation tool to check its work, it still couldn't accurately capture how the app would actually behave for users on other browsers.

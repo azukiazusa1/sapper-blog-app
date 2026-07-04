@@ -5,7 +5,7 @@ slug: "safari-mcp-server"
 about: "Web アプリケーションの開発には実ブラウザでの動作確認が必要不可欠です。Playwright CLI や chrome-devtools-mcp などエージェント向けのブラウザ操作ツールは多くが Chromium に依存しています。Safari Technology Preview 247 の MCP サーバーは、エージェントを Safari に接続し操作できるようにします。"
 createdAt: "2026-07-04T20:36+09:00"
 updatedAt: "2026-07-04T20:36+09:00"
-tags: ["MCP", "safari"]
+tags: ["MCP", "Safari"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4U7FcNQbqpUDcqJlUOJ0VA/f40a29edc0e67100247a2e7e102bb5b0/houi-jishaku_compass_8771.png"
   title: "コンパスのイラスト"
@@ -26,10 +26,8 @@ selfAssessment:
         - text: "safari-mcp-cli"
           correct: false
           explanation: "これは `claude mcp add` コマンドで指定する MCP サーバー名（safari-mcp-stp）と紛らわしいですが、実際に起動される CLI ツールは safaridriver です。"
-
 published: true
 ---
-
 コーディングエージェントの開発ワークフローにおいて、適切にフィードバックを得られる環境を提供することの重要性は十分に語られ尽くされているかと思います。特に Web アプリケーションの開発においては、実ブラウザでの動作確認やデバッグが必要不可欠です。そのために [Playwright CLI](https://github.com/microsoft/playwright-cli), [agent-browser](https://github.com/vercel-labs/agent-browser), [chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) などエージェントにブラウザを操作させるためのツールが数多く提供されています。
 
 しかしながら、現時点で提供されているツールの多くは、Google Chrome や Chromium ベースのブラウザに依存しているという課題があります。ブラウザによっては、Web 標準の実装や挙動が異なる場合があったり、特定のブラウザでしか利用できない API が存在する場合があるため、サポート対象としているすべてのブラウザで動作確認を行うことが従来の開発手順における常識でした。そのためたとえエージェントがブラウザ自動化ツールを使用して動作確認を行ったとしても、実際のユーザーが使用するブラウザでの挙動を正確に把握することは困難でした。
