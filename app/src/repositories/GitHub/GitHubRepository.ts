@@ -42,7 +42,20 @@ export class GitHubRepository implements GitHubRepositoryInterface {
     "renovate[bot]",
   ];
 
-  async getContributorsByFile(slug: string) {
+  // プリレンダリング中は同じ記事に対して複数ページ（日英ロケールなど）から
+  // 呼ばれるため、slug ごとに結果を再利用して GitHub API の呼び出しを 1 回に抑える
+  private contributorsCache = new Map<string, Promise<Contributor[]>>();
+
+  getContributorsByFile(slug: string): Promise<Contributor[]> {
+    let cached = this.contributorsCache.get(slug);
+    if (!cached) {
+      cached = this.fetchContributorsByFile(slug);
+      this.contributorsCache.set(slug, cached);
+    }
+    return cached;
+  }
+
+  private async fetchContributorsByFile(slug: string) {
     try {
       const res = await fetch(
         `https://api.github.com/repos/azukiazusa1/sapper-blog-app/commits?path=${this.getFilePath(

@@ -1,12 +1,18 @@
-import { describe, test, expect, vi } from "vitest";
+import { describe, test, expect, vi, beforeEach } from "vitest";
 import { HttpResponse, http } from "msw";
 import { createDummyGitHubCommit } from "../../test-utils/createDummyGitHub";
 import type { Contributor } from "./types";
 import { GitHubRepository } from "./GitHubRepository";
 import { server } from "../../test-utils/server";
-const gitHubRepository = new GitHubRepository();
+
+// slug ごとのキャッシュがテスト間で共有されないように、テストごとに新しいインスタンスを作る
+let gitHubRepository: GitHubRepository;
 
 describe("GitHubRepository", () => {
+  beforeEach(() => {
+    gitHubRepository = new GitHubRepository();
+  });
+
   test("commit から contributor の一覧を取得する", async () => {
     const fn = vi.fn();
     server.use(

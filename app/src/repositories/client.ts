@@ -18,8 +18,14 @@ const ssr = ssrExchange({
   initialState: !isServerSide ? (window as any).__URQL_DATA__ : undefined,
 });
 
-export const client = (preview: boolean) =>
-  createClient({
+// クライアントを毎回生成すると cacheExchange が機能せず、プリレンダリング中に
+// 同一クエリが Contentful へ何度も飛ぶため、preview フラグごとに再利用する
+const clients = new Map<boolean, ReturnType<typeof createClient>>();
+
+export const client = (preview: boolean) => {
+  const cached = clients.get(preview);
+  if (cached) return cached;
+  const created = createClient({
     url: `https://graphql.contentful.com/content/v1/spaces/${secrets.space}/environments/${secrets.environments}`,
     fetch,
     exchanges: [dedupExchange, cacheExchange, ssr, fetchExchange],
@@ -34,6 +40,9 @@ export const client = (preview: boolean) =>
       };
     },
   });
+  clients.set(preview, created);
+  return created;
+};
 
 export const request = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
