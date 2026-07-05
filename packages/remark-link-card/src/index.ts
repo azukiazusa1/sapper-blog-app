@@ -3,18 +3,42 @@ import client from "open-graph-scraper";
 import type { Plugin } from "unified";
 import sanitizeHtml from "sanitize-html";
 
+// ビルド中（プロセス生存中）は同じ URL・ホストへのリクエストを再利用する。
+// Promise ごとキャッシュすることで、並行して同じ URL を処理する場合も 1 リクエストに抑える
+const ogCache = new Map<string, ReturnType<typeof client>>();
+const faviconCache = new Map<string, Promise<string>>();
+
+/** テスト用: キャッシュをクリアする */
+export const clearLinkCardCache = () => {
+  ogCache.clear();
+  faviconCache.clear();
+};
+
+const fetchOg = (url: string) => {
+  let cached = ogCache.get(url);
+  if (!cached) {
+    cached = client({ url });
+    ogCache.set(url, cached);
+  }
+  return cached;
+};
+
 /**
  * 指定したURLのfaviconのURLを返す
  * @param url
  */
-const faviconImageSrc = async (url: URL) => {
-  const faviconUrl = `https://www.google.com/s2/favicons?domain=${url.hostname}&sz=14`;
+const faviconImageSrc = (url: URL) => {
+  let cached = faviconCache.get(url.hostname);
+  if (!cached) {
+    const faviconUrl = `https://www.google.com/s2/favicons?domain=${url.hostname}&sz=14`;
 
-  // favicon が存在するか確認する
-  const res = await fetch(faviconUrl, { method: "HEAD" });
-  if (!res.ok) return "";
-
-  return faviconUrl;
+    // favicon が存在するか確認する
+    cached = fetch(faviconUrl, { method: "HEAD" })
+      .then((res) => (res.ok ? faviconUrl : ""))
+      .catch(() => "");
+    faviconCache.set(url.hostname, cached);
+  }
+  return cached;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -65,7 +89,7 @@ const remarkLinkCard: Plugin = () => async (tree) => {
       }
 
       transformers.push(
-        client({ url: node.url })
+        fetchOg(node.url)
           .then(async ({ error, result }) => {
             if (error) return;
 

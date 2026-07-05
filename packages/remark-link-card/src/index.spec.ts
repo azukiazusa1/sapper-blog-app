@@ -10,7 +10,7 @@ import { remark } from "remark";
 import markdown from "remark-parse";
 import html from "remark-html";
 import { MockAgent, setGlobalDispatcher } from "undici";
-import remarkLinkCard from "./index";
+import remarkLinkCard, { clearLinkCardCache } from "./index";
 
 const mockAgent = new MockAgent();
 
@@ -21,6 +21,8 @@ beforeAll(() => {
 beforeEach(() => {
   // 各テスト前にプールをリセット
   mockAgent.removeAllListeners();
+  // モジュールレベルの OGP キャッシュもリセットする
+  clearLinkCardCache();
 });
 afterAll(() => {
   mockAgent.close();
