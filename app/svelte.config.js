@@ -19,9 +19,6 @@ const config = {
     env: {
       dir: "../",
     },
-    prerender: {
-      concurrency: 10,
-    },
     alias: {
       "$paraglide/*": "./src/paraglide/*",
     },
