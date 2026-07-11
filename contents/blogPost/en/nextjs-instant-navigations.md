@@ -8,7 +8,7 @@ updatedAt: "2026-07-11T09:46+09:00"
 tags: ["nextjs"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1qfNXsMO7MsfFmOd8Xjx8q/72b3ad8edf7d0357dfa03ecbb37ce26f/fried-shrimp_14566-768x630.png"
-  title: "Illustration of fried shrimp"
+  title: "エビフライのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "A new rendering method that renders pages without going through the server"
           correct: false
           explanation: "Instant Navigations retains the server-driven model while delivering SPA-like perceived speed; it does not eliminate the server."
-
     - question: "Which setting must be added to next.config.ts to use Instant Navigations?"
       answers:
         - text: "instant: true"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "partialPrefetching: true"
           correct: false
           explanation: "partialPrefetching enables partial prefetching, whereas cacheComponents: true is required to enable Instant Navigations itself."
-
     - question: "Which approach described in the article explicitly indicates that the destination cannot render immediately and clears the warning?"
       answers:
         - text: "Specify export const instant = false in a page or layout file"
@@ -56,10 +54,8 @@ selfAssessment:
         - text: "Delete the loading.tsx file"
           correct: false
           explanation: "The article does not list deleting loading.tsx as a way to clear the warning."
-
 published: true
 ---
-
 Next.js 16.3 Preview introduces a new feature called Instant Navigations. When navigating to a page that fetches data on the server, the next page may not render until the server responds. From the user's perspective, this can make it feel as though nothing happened after they clicked a link. Many developers have likely used a library such as [NProgress](https://github.com/rstacruz/nprogress) to display a progress bar that indicates navigation is in progress.
 
 The conventional App Router already provides `loading.tsx` and `<Suspense>` fallbacks, and when component caching is enabled, it can display loading UI immediately after a click. Instant Navigations does not add capabilities like these; instead, it detects areas that cannot render immediately during development and encourages you to fix them.

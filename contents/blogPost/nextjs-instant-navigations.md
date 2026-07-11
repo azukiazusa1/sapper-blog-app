@@ -26,7 +26,6 @@ selfAssessment:
         - text: "サーバーを経由せずにページを描画する新しいレンダリング方式"
           correct: false
           explanation: "Instant Navigations はサーバー駆動のモデルを維持したまま SPA のような体感速度を実現する仕組みであり、サーバーを経由しなくなるわけではありません。"
-
     - question: "Instant Navigations を使用するために next.config.ts へ追加する必要がある設定はどれですか?"
       answers:
         - text: "instant: true"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "partialPrefetching: true"
           correct: false
           explanation: "partialPrefetching は部分的な prefetch を有効にするための設定であり、Instant Navigations 自体の有効化に必要なのは cacheComponents: true です。"
-
     - question: "遷移先の画面が即時表示できない（サーバーからの応答を待つ）ことを明示して警告を解消する方法として、記事で説明されているものはどれですか?"
       answers:
         - text: "ページまたはレイアウトファイルで export const instant = false を指定する"
@@ -56,10 +54,8 @@ selfAssessment:
         - text: "loading.tsx ファイルを削除する"
           correct: false
           explanation: "loading.tsx の削除は記事で警告の解消方法として挙げられていません。"
-
 published: true
 ---
-
 Next.js 16.3 Preview では、Instant Navigations という新機能が導入されました。サーバーでデータを取得する画面へ遷移する場合、サーバーからのレスポンスを待ってから次の画面が描画されることがあります。これはユーザーの体験として、リンクをクリックしても何も起こらないように感じさせてしまう問題があります。ナビゲーションが進行中であることを示すため [NProgress](https://github.com/rstacruz/nprogress) などのライブラリを使用してプログレスバーを表示させていたという方も多いのではないでしょうか。
 
 従来の App Router でも、`loading.tsx` や `<Suspense>` のフォールバックが提供されていたり、コンポーネントのキャッシュが有効となっていれば、クリック直後にローディング UI を表示できます。Instant Navigations 自体はこのような新たな機能を追加するのではなく、即時表示できない箇所を開発時に検出し、修正を促すための機能です。
