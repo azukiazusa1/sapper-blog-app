@@ -5,7 +5,7 @@ slug: "recent-ai-coding-development-process-centered-on-design"
 about: "As AI coding agents grow more autonomous and parallel workflows become routine, design is replacing implementation as the most time-consuming phase. This article covers design sessions, Git worktrees, autonomous verification, and AI code review."
 createdAt: "2026-07-18T12:09+09:00"
 updatedAt: "2026-07-18T12:09+09:00"
-tags: ["AI", "software-design", "claude-code"]
+tags: ["AI", "設計", "claude-code"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6JgkDi4PDElMnwMeOn4K6B/9fdf55b98d9aee6ee3c69eca4b452de6/suisha_23850-768x571.png"
   title: "水車小屋のイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "Humans focus on the overall design and high-risk changes, while individual implementations primarily go through AI review and automated verification"
           correct: true
           explanation: "As the article explains, code review can be layered so that humans focus on requirements, responsibility boundaries, APIs, data models, permissions, and other high-risk changes, while local implementation is primarily checked through AI review and automated verification."
-
 published: true
 ---
-
 In an earlier article, "[A Candid Conversation with AI: What Will Happen to Engineers?](https://azukiazusa.dev/blog/ai-talk-what-will-happen-to-engineers/)," I wrote that using AI coding agents had reduced the time I spent writing code and increased the time I spent thinking about design. Since then, both the models themselves and the harnesses used to run agents have improved further, and running multiple agents in parallel has become routine for me. I feel this trend more strongly than ever.
 
 These days, I rarely write code myself. That does not mean I spend less time on software development. Instead, I spend much more time discussing design with AI and breaking work into units that can be executed independently. The design session before implementation has become the most time-consuming part of development.
