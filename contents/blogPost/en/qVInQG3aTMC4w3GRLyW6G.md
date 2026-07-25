@@ -11,6 +11,7 @@ thumbnail:
   title: "コーヒーゼリーのイラスト"
 audio: null
 selfAssessment:
+  quizzes:
     - question: "Which statement correctly describes how the Canvas UI components introduced in this article are distributed and managed after installation?"
       answers:
         - text: "They are distributed as npm packages and managed as dependencies in node_modules"

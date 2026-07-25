@@ -11,6 +11,7 @@ thumbnail:
   title: "コーヒーゼリーのイラスト"
 audio: null
 selfAssessment:
+  quizzes:
     - question: "記事で紹介されている Canvas UI のコンポーネントの配布方法と、インストール後の扱いとして正しいものはどれですか?"
       answers:
         - text: "npm パッケージとして配布され、node_modules 内の依存パッケージとして管理する"
