@@ -137,7 +137,7 @@ Select provider:
 「Select terminal backend」ではどの環境で Hermes Agent を動かすかを選択します。ここでは「local（このマシンで直接実行）」を選択しました。
 
 :::warning
-Hermes Agent をローカルで動かす場合、意図せず重要なフィルを削除してしまったり、ホスト環境の認証情報を取得し外部に送信してしまうリスクがあります。本番相当の環境で Agent を動かす場合は、Docker や Modal、Daytona などのサンドボックス環境で実行することを推奨します。
+Hermes Agent をローカルで動かす場合、意図せず重要なファイルを削除してしまったり、ホスト環境の認証情報を取得し外部に送信してしまうリスクがあります。本番相当の環境で Agent を動かす場合は、Docker や Modal、Daytona などのサンドボックス環境で実行することを推奨します。
 :::
 
 ```bash
@@ -298,7 +298,7 @@ Next steps:
      `hermes setup`.
 ```
 
-スクラッチで Slaack App を作成する方法も紹介します。https://api.slack.com/apps にアクセスして「新しいアプリを作成」をクリックして Slack App を作成します。App Token は Slack App 管理画面の左メニューから Socket Mode を開き、Socket Mode を有効化することで取得できます。Bot Token は OAuth & Permissions → スコープから Bot Token Scopes に必要な権限を追加し、「Install to Workspace」をクリックすることで取得できます。必要なスコープは以下の通りです。
+スクラッチで Slack App を作成する方法も紹介します。https://api.slack.com/apps にアクセスして「新しいアプリを作成」をクリックして Slack App を作成します。App Token は Slack App 管理画面の左メニューから Socket Mode を開き、Socket Mode を有効化することで取得できます。Bot Token は OAuth & Permissions → スコープから Bot Token Scopes に必要な権限を追加し、「Install to Workspace」をクリックすることで取得できます。必要なスコープは以下の通りです。
 
 ```txt
 chat:write
@@ -329,7 +329,7 @@ app_mention
 
 最後に Slack から Hermes Agent に DM イベントを送信するための設定を行います。`App Home` を開き、`Show Tabs` から `Messages Tab` を有効にします。`Allow users to send Slash commands and messages from the messages tab` にチェックを入れてください。
 
-詳しい Slack App の作成方法やトークンの取得方法については、[Slack API ドキュメント](https://api.slack.com/) や [][Hermes Agent の Slack 連携ガイド](https://hermes-agent.nousresearch.com/docs/user-guide/messaging/slack)を参照してください。
+詳しい Slack App の作成方法やトークンの取得方法については、[Slack API ドキュメント](https://api.slack.com/) や [Hermes Agent の Slack 連携ガイド](https://hermes-agent.nousresearch.com/docs/user-guide/messaging/slack)を参照してください。
 
 Hermes Agent では [Gateway](https://hermes-agent.nousresearch.com/docs/user-guide/messaging/) と呼ばれる仕組みを使用して、Discord, Slack, Telegram などのチャットツールと連携することができます。Gateway では各チャットプラットフォームのアダプタがメッセージを受信し、チャットセッションごとのストアをルーティングしてから AI モデルに渡すという仕組みになっています。
 
@@ -339,7 +339,7 @@ Gateway の設定は `hermes gateway setup` コマンドを使用すると便利
 hermes gateway setup
 ```
 
-コマンドを実行したらプラットフォームの一覧が表示されるので、Slack を選択します。その後 Slack Bot Token と App Token、会話を許可するユーザーの ID 一覧、ホームチャンネルを入力します。会話を許可するユーザーは Slack のユーザーは 1 人以上指定する必要があります。複数人指定する場合は、カンマ区切りで入力します。ユーザー ID は Slack のユーザーのプロフィールの三点リーダーから「メンバー ID をコピー」を選択すると取得できます。ホームチャンネルは Hermes Agent が cron ジョブや定期的な通知を送信するためのチャンネルです。これは設定しなくても構いません。
+コマンドを実行したらプラットフォームの一覧が表示されるので、Slack を選択します。その後 Slack Bot Token と App Token、会話を許可するユーザーの ID 一覧、ホームチャンネルを入力します。会話を許可する Slack のユーザーを 1 人以上指定する必要があります。複数人指定する場合は、カンマ区切りで入力します。ユーザー ID は Slack のユーザーのプロフィールの三点リーダーから「メンバー ID をコピー」を選択すると取得できます。ホームチャンネルは Hermes Agent が cron ジョブや定期的な通知を送信するためのチャンネルです。これは設定しなくても構いません。
 
 設定した内容は `~/.hermes/.env` に保存されます。
 
@@ -424,7 +424,7 @@ $ hermes gateway restart
 
 `SOUL.md` ファイルを編集すると、Hermes Agent の人格や役割をカスタマイズすることができます。`SOUL.md` ファイルはシステムプロンプトの前に読み込まれ、エージェントが誰であるのかを定義します。`SOUL.md` ファイルにはエージェントのトーンやコミュニケーションスタイル、インタラクションのスタイルなどエージェントの人格に関する情報を記載します。リポジトリ固有の規約やアーキテクチャといった情報は `AGENTS.md` に記載することが推奨されています。
 
-一言で表すと、それがどの場所でも適用すべきであれば `SOUL.md` に、リポジトリ固有 であれば　`AGENTS.md` に記載するという役割分担です。
+一言で表すと、それがどの場所でも適用すべきであれば `SOUL.md` に、リポジトリ固有であれば `AGENTS.md` に記載するという役割分担です。
 
 `~/.hermes/SOUL.md` を以下のように編集し、設計者としてどのような手順で設計を進めるかを定義します。
 
@@ -553,7 +553,7 @@ save_issue
 
 ## Coding Worker エージェント
 
-Linear にチケットが登録されたら、Coding Worker エージェントが自律的にコードを書き、PR を作成するところまでを実装します。Coding Worker エージェントは TODO チケットの中から依存関係や仕様を読み実装可能かを判断し、実装可能なチケットがあればコードを書きセルフチェックを行ったうえで PR を作成し Slack に通知します。
+Linear にチケットが登録されたら、Coding Worker エージェントが自律的にコードを書き、PR を作成するところまでを実装します。Coding Worker エージェントは `Todo` チケットの中から依存関係や仕様を読み実装可能かを判断し、実装可能なチケットがあればコードを書きセルフチェックを行ったうえで PR を作成し Slack に通知します。
 
 Planner とは独立したエージェントを作成するためにプロファイルを作成します。プロファイルを作成することで、`SOUL.md` や有効なツールやスキル、認証情報などを独立して管理することができます。Coding Worker エージェント用のプロファイルを作成するために、`hermes profile create` コマンドを実行します。プロファイル名は `worker` としました。
 
@@ -690,7 +690,7 @@ Slack 上でも Worker エージェントが Draft PR を作成したことが�
 
 ここまでは動作確認のために Planner エージェントを手元のマシンで動かしていましたが、このままだと PC を閉じた時に Hermes Agent が停止してしまいます。Hermes Agent をリモートで動かすために、クラウド上の仮想マシンや VPS を用意し、そこに Hermes Agent をインストールして動作させることができます。Hermes Agent はバックグラウンドで動作するため、常時稼働させることが可能です。
 
-ここでは VPS サービスとして [ConoHa VPS](https://vps.conoha.jp/) を使用して、Hermes Agent をリモートで動かしてみます。。あらかじめ ConoHa VPS のアカウントを作成しておきましょう。Ubuntu 22.04 LTS の仮想マシンを作成します。検証目的であれば、最小構成の 1GB メモリ、1vCPU のプランで十分でしょう。料金プランは時間課金制にしておくと最低限に抑えれると思います。仮想マシンの作成が完了したら、グローバル IP アドレスを控えておきましょう。
+ここでは VPS サービスとして [ConoHa VPS](https://vps.conoha.jp/) を使用して、Hermes Agent をリモートで動かしてみます。あらかじめ ConoHa VPS のアカウントを作成しておきましょう。Ubuntu 22.04 LTS の仮想マシンを作成します。検証目的であれば、最小構成の 1GB メモリ、1vCPU のプランで十分でしょう。料金プランは時間課金制にしておくと最低限に抑えられると思います。仮想マシンの作成が完了したら、グローバル IP アドレスを控えておきましょう。
 
 手元のマシンから　SSH で接続して Hermes Agent をインストールし、手元で行ったことと同じ手順で Slack との連携や Linear との連携を行います。
 
@@ -710,7 +710,7 @@ sudo apt install -y curl git build-essential
 後は基本的にはローカルマシンで行った Hermes Agent のインストール手順と同じように Slack との連携や Linear との連携を行います。ただし、VPS 上で Hermes Agent を動作させる場合、ローカルマシンで行った手順といくつか異なる点があります。
 
 - Docker を使用して Hermes Agent を動作させる: VPS の OS と Hermes Agent の依存関係を分離するために、Docker を使用して Hermes Agent をコンテナとして動作させる https://hermes-agent.nousresearch.com/docs/user-guide/docker/
-- Linear の OAuth 認証を行う際に、VPS 上でブラウザを開くことができないためリダイレクトURLを貼り付ける か SSH トンネルを使用してローカルマシンのブラウザで認証を行う https://hermes-agent.nousresearch.com/docs/guides/oauth-over-ssh
+- Linear の OAuth 認証を行う際に、VPS 上でブラウザを開くことができないためリダイレクト URL を貼り付けるか SSH トンネルを使用してローカルマシンのブラウザで認証を行う https://hermes-agent.nousresearch.com/docs/guides/oauth-over-ssh
 
 ## まとめ
 
