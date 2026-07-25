@@ -40,10 +40,8 @@ selfAssessment:
         - text: "A color is layered over the entire screen, tinting it with the specified hue"
           correct: false
           explanation: "The tint and tintStrength props shown in the article apply a color overlay to the content."
-
 published: true
 ---
-
 Canvas UI is a component library that uses the [HTML-in-Canvas](https://github.com/WICG/html-in-canvas) API to build creative interfaces with effects such as fluid simulations and shaders. HTML-in-Canvas is an experimental API that makes the rendered output of HTML elements placed inside a `<canvas>` element available to 2D Canvas, WebGL, and WebGPU. Because the original HTML remains in the DOM, WebGL effects can be applied while preserving pointer and keyboard interaction and participation in the accessibility tree, provided that the canvas rendering and DOM positions are synchronized correctly.
 
 :::info

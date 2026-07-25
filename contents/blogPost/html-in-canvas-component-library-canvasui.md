@@ -40,10 +40,8 @@ selfAssessment:
         - text: "画面全体に色が重なり、指定した色味に染まったように見える"
           correct: false
           explanation: "コンテンツに色を重ねるのは記事のコード中にある tint と tintStrength です。"
-
 published: true
 ---
-
 Canvas UI は [HTML-in-Canvas](https://github.com/WICG/html-in-canvas) API を活用し、液体シミュレーションやシェーダーといったクリエイティブな UI を構築するためのコンポーネントライブラリです。HTML-in-Canvas は、`<canvas>` 要素の子として配置した HTML 要素の描画結果を、2D Canvas や WebGL、WebGPU で利用するための実験的な API です。元の HTML は DOM として保たれるため、Canvas 上の表示と DOM の位置を適切に同期することで、ポインターやキーボードによる操作、アクセシビリティツリーへの参加を維持したまま WebGL エフェクトを適用できます。
 
 :::info
