@@ -26,7 +26,6 @@ selfAssessment:
         - text: "grill-with-docs → to-tickets → to-spec"
           correct: false
           explanation: "Before splitting into tickets, to-spec organizes the agreed-upon content into an implementation spec."
-
     - question: "When invoking a Hermes Agent skill from within a Slack thread, which format does the article use?"
       answers:
         - text: "@grill-with-docs"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "!grill-with-docs"
           correct: true
           explanation: "To avoid `/` being interpreted as a command on Slack, the article invokes skills by prefixing them with `!`."
-
     - question: "In configuring Planner Hermes, which of the following correctly describes how responsibilities are split between SOUL.md and AGENTS.md?"
       answers:
         - text: "SOUL.md holds the agent's persona and way of speaking, while AGENTS.md holds repository-specific conventions and workflow"
@@ -56,10 +54,8 @@ selfAssessment:
         - text: "SOUL.md holds test code, while AGENTS.md holds application code"
           correct: false
           explanation: "Neither file is meant to hold source code — both hold instructions for the agent."
-
 published: true
 ---
-
 Now that AI agents writing code has become the norm, the workflow of interacting with a local CLI to generate code has started causing problems it never used to. Running agents for long stretches has become the default assumption, but closing your laptop stops the agent dead. Running multiple agents in parallel can also hog your local machine's resources. And when you don't have your PC with you, you simply can't give the agent any instructions at all. Now that we rarely write code by hand anymore, a smartphone or other mobile device is more than enough for giving instructions, so what's wanted is an environment where you can direct an agent from anywhere.
 
 Given this situation, remote AI agents seem to be gaining attention as an option. A remote agent doesn't tie up your local machine's resources, and you can give it instructions from a smartphone or other mobile device. It can also keep running for extended periods. Beyond that, it opens the door to autonomous behavior that isn't triggered by a human at all — for example, picking up an issue from a project management tool on its own and starting implementation, or automatically reviewing a PR once it's created.
