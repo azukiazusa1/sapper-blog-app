@@ -7,8 +7,8 @@ createdAt: "2026-07-26T19:18+09:00"
 updatedAt: "2026-07-26T19:18+09:00"
 tags: ["CSS"]
 thumbnail:
-  url: ""
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4WzPAvYMrOoAD3YYoMaHkW/90695b05f4991bce7942ac7d2ab9a0ab/paris_gaisenmon_6623-768x720.png"
+  title: "凱旋門のイラスト"  
 audio: null
 selfAssessment:
   quizzes:
@@ -40,7 +40,7 @@ selfAssessment:
         - text: "Items 1–2 go in column 1, items 3–4 in column 2, and items 5–6 in column 3"
           correct: false
           explanation: "Grid Lanes does not split items into consecutive per-lane groups. In the article's example, it cycles through the lanes in order."
-published: false
+published: true
 ---
 
 !> As of July 2026, Safari 26.4 and later is the only browser that implements CSS Grid Lanes. The specification is still being drafted, so the syntax and behavior may change.
@@ -120,6 +120,12 @@ As many columns of at least 15rem as will fit are created for the available widt
 The demo below arranges eight cards of differing heights with Grid Lanes. Resize the window and you will see the column count change automatically.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/5P1zuiStUZJi5f21C0DxnO/77302869a6fafc8fbf5dd84307c5c703/image.png)
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="grid lanes gallery" src="https://codepen.io/azukiazusa1/embed/QwdZwzK?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true">
+  See the Pen <a href="https://codepen.io/azukiazusa1/pen/QwdZwzK">
+  grid lanes gallery</a> by azukiazusa1 (<a href="https://codepen.io/azukiazusa1">@azukiazusa1</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 
 ## Laying out items along rows
 
