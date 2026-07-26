@@ -8,7 +8,7 @@ updatedAt: "2026-07-26T15:00+09:00"
 tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4WzPAvYMrOoAD3YYoMaHkW/90695b05f4991bce7942ac7d2ab9a0ab/paris_gaisenmon_6623-768x720.png"
-  title: "凱旋門のイラスト"  
+  title: "凱旋門のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "Grid Lanes はアイテムをレーン単位の連続したグループに分割しません。記事の例ではレーンを順番に巡回します。"
 published: true
 ---
-
 !> 2026 年 7 月現在、CSS Grid Lanes を実装しているのは Safari 26.4 以降のみです。仕様は策定中であり、今後構文や動作が変更される可能性があります。
 
 Pinterest の画像ギャラリーのように、高さの異なるアイテムを複数の列へ隙間なく配置するレイアウトは、Masonry（石積み）レイアウトと呼ばれます。

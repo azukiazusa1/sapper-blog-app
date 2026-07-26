@@ -3,12 +3,12 @@ id: yWVpTheHT_sTxvxqtpVwD
 title: "Implementing Masonry Layouts with CSS Grid Lanes"
 slug: "css-grid-lanes"
 about: "CSS Grid Lanes is a layout method that packs items of differing heights into multiple lanes without gaps. Setting `display: grid-lanes` lets you build a Masonry layout without JavaScript. This article covers the basics of the syntax."
-createdAt: "2026-07-26T19:18+09:00"
-updatedAt: "2026-07-26T19:18+09:00"
+createdAt: "2026-07-26T15:00+09:00"
+updatedAt: "2026-07-26T15:00+09:00"
 tags: ["CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4WzPAvYMrOoAD3YYoMaHkW/90695b05f4991bce7942ac7d2ab9a0ab/paris_gaisenmon_6623-768x720.png"
-  title: "凱旋門のイラスト"  
+  title: "凱旋門のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "Grid Lanes does not split items into consecutive per-lane groups. In the article's example, it cycles through the lanes in order."
 published: true
 ---
-
 !> As of July 2026, Safari 26.4 and later is the only browser that implements CSS Grid Lanes. The specification is still being drafted, so the syntax and behavior may change.
 
 A layout that packs items of differing heights into multiple columns without leaving gaps — like the image galleries on Pinterest — is known as a Masonry layout.
