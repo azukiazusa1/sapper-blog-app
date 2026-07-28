@@ -3,8 +3,8 @@ id: 7j43coVQLgrnSe5w3Byk7
 title: "矢印キーによるフォーカス移動を宣言的に実装する `focusgroup` 属性"
 slug: "focusgroup-html-attribute"
 about: "`focusgroup` 属性は、ツールバーやタブリストなどの複合ウィジェットにおける矢印キーのフォーカス移動を宣言的に実装する HTML 属性です。従来必要だった roving tabindex の JavaScript をブラウザに任せ、単一の Tab ストップ、折り返し、最後にフォーカスした項目の記憶などを提供します。この記事では Chrome 150 で利用可能になった `focusgroup` 属性の使い方を紹介します。"
-createdAt: "2026-07-29T15:00+09:00"
-updatedAt: "2026-07-29T15:00+09:00"
+createdAt: "2026-07-28T15:00+09:00"
+updatedAt: "2026-07-28T15:00+09:00"
 tags: ["HTML", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4t9IQJgE4lC3lhfC9YhX2w/8e87c4bd4df3651e9a3eaac71032a0b2/fruit_gold-kiwi_11118-768x542.png"
@@ -439,7 +439,7 @@ tabs.forEach((tab) => {
 また、behavior token としてどのパターンを認めるかも検討中です。たとえば MDN は `grid` と `listbox` を複合ウィジェットとして使わないよう推奨しているため、`focusgroup` がこれらをサポートすること自体が「使ってよい」というシグナルになってしまう、という指摘があります。
 
 :::note
-2 次元のグリッド状のナビゲーション（`grid` パターンのように、上下の矢印キーで行を、左右の矢印キーで列を移動する操作）は、実装の複雑さを理由に Future Considerations へ移されており、現行の提案には含まれていません。データテーブルやカレンダーのような UI では、引き続き JavaScript でフォーカスを管理する必要があります。
+2 次元のグリッド状のナビゲーションは、実装の複雑さを理由に Future Considerations へ移されています。これは `grid` パターンのように、上下の矢印キーで行を移動し、左右の矢印キーで列を移動する操作です。現行の提案には含まれていません。データテーブルやカレンダーのような UI では、引き続き JavaScript でフォーカスを管理する必要があります。
 :::
 
 ## 対応状況を検出する

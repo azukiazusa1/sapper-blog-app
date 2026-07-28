@@ -171,7 +171,7 @@ When users press Tab to enter an element with `focusgroup="toolbar"`, the browse
 
 In addition to the arrow keys, Home and End can move to the first and last items in the group. However, this behavior is optional for browsers according to the specification. When focus is on an element with its own Home and End behavior, such as a text input, the browser does not perform this movement.
 
-By default, the browser also remembers the last-focused item. For example, if you press Tab to leave the toolbar while the “下線” button has focus and then return with Shift+Tab, focus returns to the “下線” button.
+By default, the browser also remembers the last-focused item. For example, if you press Tab to leave the toolbar while the “Underline” button has focus and then return with Shift+Tab, focus returns to the “Underline” button.
 
 <video src="https://videos.ctfassets.net/in6v9lxmm5c8/6AR3g17eWIGoX5YoqIZo9n/fae4370993a7b761b2d2c112eda5eeae/5f146449-6895-44b6-bff4-793ba17f4f3a.mov" controls></video>
 
@@ -232,7 +232,7 @@ To focus a particular item the first time a user enters a focusgroup, add the `f
 <button type="button">focusgroup の後</button>
 ```
 
-In this example, entering the focusgroup from either surrounding button with Tab or Shift+Tab moves focus to the “中央揃え” button.
+In this example, entering the focusgroup from either surrounding button with Tab or Shift+Tab moves focus to the “Center align” button.
 
 <iframe height="300" style="width: 100%;" title="Demo combining focusgroupstart with nomemory" src="https://codepen.io/azukiazusa1/embed/myRzwMB?default-tab=html%2Cresult" loading="lazy">
   See the Pen <a href="https://codepen.io/azukiazusa1/pen/myRzwMB">
@@ -283,7 +283,7 @@ In the example above, the `<span>` containing “ヘルプ” and “ショー�
 - Excluded elements: “ヘルプ”, “ショートカット一覧”
 - Segment 2: “保存”
 
-Each segment is guaranteed to have one Tab stop. Pressing Tab therefore moves focus in this order: an item in segment 1 → “ヘルプ” → “ショートカット一覧” → “保存” in segment 2. Because the excluded elements are not managed by the focusgroup, each remains an independent Tab stop as usual.
+Each segment is guaranteed to have one Tab stop. Pressing Tab therefore moves focus in this order: an item in segment 1 → “Help” → “Keyboard shortcuts” → “Save” in segment 2. Because the excluded elements are not managed by the focusgroup, each remains an independent Tab stop as usual.
 
 Arrow-key navigation, on the other hand, can cross segment boundaries. Pressing the Right Arrow key on “やり直す” in segment 1 skips the two excluded buttons and moves to “保存” in segment 2. In other words, `focusgroup="none"` keeps the elements in the Tab-key path while removing them only from the arrow-key path.
 
@@ -396,7 +396,7 @@ tabs.forEach((tab) => {
 });
 ```
 
-The JavaScript updates `focusgroupstart` because the group has `nomemory`. With memory disabled, the browser looks for the item with `focusgroupstart` each time the user enters the group. Without moving this attribute, leaving the group with the “通知” tab selected and returning with Tab would always focus the first tab, “一般”.
+The JavaScript updates `focusgroupstart` because the group has `nomemory`. With memory disabled, the browser looks for the item with `focusgroupstart` each time the user enters the group. Without moving this attribute, leaving the group with the “Notifications” tab selected and returning with Tab would always focus the first tab, “General”.
 
 You might wonder whether default focus memory would produce the same result by returning to the last-focused tab. When selection changes together with focus, as it does in this example, the result is indeed the same. However, memory tracks the last-focused item, not the selected item. The APG tabs pattern requires the latter.
 For example, if JavaScript changes the selected tab while restoring state from a URL query, memory continues to point to the old focus position.
