@@ -4,7 +4,7 @@ title: "focusgroup で矢印キーによるフォーカスナビゲーション�
 slug: "focusgroup-arrow-key-focus-navigation"
 about: "カスタム UI ウィジェットを実装する際には、ウィジェットのロールに応じたキーボード操作によるフォーカスナビゲーションを実装することが求められています。従来このようなキーボード操作は JavaScript を用いて実装する必要がありました。`focusgroup` の提案は、このようなキーボード操作を独立して使用できるプリミティブとして提案されています。この機能を利用することで、開発者は JavaScript を用いることなく一貫したフォーカスナビゲーションを実装できます。"
 createdAt: "2023-10-09T14:22+09:00"
-updatedAt: "2023-10-09T14:22+09:00"
+updatedAt: "2026-07-27T21:27+09:00"
 tags: ["HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1O7pJ4CancGYPONNS7fexD/8e328193917523d13df3eb65319004a7/kinomi_donguri_illust_1034.png"
@@ -13,7 +13,7 @@ audio: null
 selfAssessment: null
 published: true
 ---
-!> この記事で紹介している機能は Chrome Canary の Experimental Web Platform features フラグを有効にした場合のみ利用可能です。将来にわたって API が変更される可能性があります。
+!> 2026 年 7 月追記：この記事は 2023 年当時の古い `focusgroup` の提案を扱っており、現在の仕様とは構文や機能が大きく異なります。現在の提案では behavior token の指定が必須となり、この記事で紹介している CSS による指定やグリッドのサポートは将来の検討事項へ移されました。最新の使い方は「[矢印キーによるフォーカス移動を宣言的に実装する `focusgroup` 属性](https://azukiazusa.dev/blog/focusgroup-html-attribute/)」を参照してください。
 
 カスタム UI ウィジェットを実装する際には、ウィジェットのロールに応じたキーボード操作によるフォーカスナビゲーションを実装することが求められています。例として [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/patterns/) を参照すると、以下のようなキーボード操作が求められていることがわかります。
 
