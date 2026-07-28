@@ -5,7 +5,7 @@ slug: "focusgroup-html-attribute"
 about: "`focusgroup` is an HTML attribute that adds declarative arrow-key focus navigation to composite widgets such as toolbars and tablists. This article covers its single Tab stop, wrapping, focus memory, and related features available in Chrome 150."
 createdAt: "2026-07-28T15:00+09:00"
 updatedAt: "2026-07-28T15:00+09:00"
-tags: ["HTML", "accessibility"]
+tags: ["HTML", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4t9IQJgE4lC3lhfC9YhX2w/8e87c4bd4df3651e9a3eaac71032a0b2/fruit_gold-kiwi_11118-768x542.png"
   title: "ゴールドキウイのイラスト"
@@ -26,7 +26,7 @@ selfAssessment:
         - text: "Every press of the Tab key returns focus to the first item in the group"
           correct: false
           explanation: "By default, the last-focused item is remembered. Focus does not always return to the first item."
-    - question: 'What behavior does `wrap` provide in `focusgroup="toolbar wrap"`?'
+    - question: "What behavior does `wrap` provide in `focusgroup=\"toolbar wrap\"`?"
       answers:
         - text: "Moving past the last item sends focus to the first item"
           correct: true
@@ -42,19 +42,19 @@ selfAssessment:
           explanation: "`nomemory`, not `wrap`, disables focus memory."
     - question: "Which value should you add if an item with `focusgroupstart` should receive focus every time the user enters the group?"
       answers:
-        - text: 'Combine it with `focusgroup="toolbar wrap"`'
+        - text: "Combine it with `focusgroup=\"toolbar wrap\"`"
           correct: false
           explanation: "`wrap` controls wrapping for arrow-key navigation. It does not disable focus memory."
-        - text: 'Add `tabindex="-1"` to the target item'
+        - text: "Add `tabindex=\"-1\"` to the target item"
           correct: false
-          explanation: '`tabindex="-1"` generally removes the item from the regular candidate set; it does not pin the entry item.'
-        - text: 'Set `focusgroup="none"` on the container'
+          explanation: "`tabindex=\"-1\"` generally removes the item from the regular candidate set; it does not pin the entry item."
+        - text: "Set `focusgroup=\"none\"` on the container"
           correct: false
           explanation: "`none` excludes an element and its descendants from an ancestor focusgroup."
         - text: "Add `nomemory` to the container"
           correct: true
           explanation: "Default focus memory takes precedence over `focusgroupstart`. With `nomemory`, the start item is also used on re-entry."
-    - question: 'According to the article, how does a subtree with `focusgroup="none"` behave?'
+    - question: "According to the article, how does a subtree with `focusgroup=\"none\"` behave?"
       answers:
         - text: "It becomes unreachable with both arrow keys and the Tab key"
           correct: false
@@ -70,7 +70,6 @@ selfAssessment:
           explanation: "Creating an independent group requires a different valid behavior token. `none` does not create a group."
 published: true
 ---
-
 !> As of July 2026, the `focusgroup` attribute is available in Chrome 150 and later. However, parts of the design, including role inference, are still under discussion. Before using it in a production application, check current browser support and the latest specification.
 
 UIs that treat multiple controls as a single unit, such as toolbars, tablists, and menus, are known as [composite widgets](https://www.w3.org/TR/wai-aria-1.2/#composite). WAI-ARIA 1.2 defines the `composite` role as “a widget that may contain navigable descendants or owned children.” In a composite widget, users typically press Tab to enter the widget and use arrow keys to move between its items.

@@ -26,7 +26,7 @@ selfAssessment:
         - text: "Tab キーを押すたびにグループ内の先頭項目へ戻る"
           correct: false
           explanation: "デフォルトでは最後にフォーカスした項目が記憶されます。常に先頭へ戻るわけではありません。"
-    - question: '`focusgroup="toolbar wrap"` の `wrap` がもたらす挙動として正しいものはどれですか？'
+    - question: "`focusgroup=\"toolbar wrap\"` の `wrap` がもたらす挙動として正しいものはどれですか？"
       answers:
         - text: "最後の項目からさらに進むと、先頭の項目へフォーカスが移る"
           correct: true
@@ -42,19 +42,19 @@ selfAssessment:
           explanation: "フォーカスの記憶を無効にするのは `nomemory` です。`wrap` とは別の機能です。"
     - question: "`focusgroupstart` を付けた項目を、グループへ入るたびにフォーカスさせたい場合の指定はどれですか？"
       answers:
-        - text: '`focusgroup="toolbar wrap"` と組み合わせる'
+        - text: "`focusgroup=\"toolbar wrap\"` と組み合わせる"
           correct: false
           explanation: "`wrap` は矢印キー移動の折り返しを制御します。フォーカスの記憶は無効になりません。"
-        - text: '対象の項目へ `tabindex="-1"` を追加する'
+        - text: "対象の項目へ `tabindex=\"-1\"` を追加する"
           correct: false
-          explanation: '`tabindex="-1"` は通常の候補から項目を外す方向に働き、開始項目の固定には使いません。'
-        - text: 'コンテナへ `focusgroup="none"` を指定する'
+          explanation: "`tabindex=\"-1\"` は通常の候補から項目を外す方向に働き、開始項目の固定には使いません。"
+        - text: "コンテナへ `focusgroup=\"none\"` を指定する"
           correct: false
           explanation: "`none` は祖先の focusgroup から要素とその子孫を除外するための値です。"
         - text: "コンテナへ `nomemory` を追加する"
           correct: true
           explanation: "デフォルトの記憶は `focusgroupstart` より優先されます。`nomemory` を指定すると、再入場時にも開始項目が使われます。"
-    - question: '`focusgroup="none"` を指定した部分ツリーについて、記事で説明されている挙動はどれですか？'
+    - question: "`focusgroup=\"none\"` を指定した部分ツリーについて、記事で説明されている挙動はどれですか？"
       answers:
         - text: "矢印キーと Tab キーのどちらからも到達できなくなる"
           correct: false
@@ -70,7 +70,6 @@ selfAssessment:
           explanation: "独立したグループを作るには別の有効な behavior token を指定します。`none` 自体はグループを作りません。"
 published: true
 ---
-
 !> 2026 年 7 月現在、`focusgroup` 属性は Chrome 150 以降で利用できます。一方でロール推論を含む一部の設計は議論が続いています。実際のプロダクトで利用する場合は、ブラウザの対応状況と最新の仕様を確認してください。
 
 ツールバーやタブリスト、メニューのように、複数の操作項目を 1 つのまとまりとして扱う UI は[複合ウィジェット（composite widget）](https://www.w3.org/TR/wai-aria-1.2/#composite)と呼ばれます。WAI-ARIA 1.2 では `composite` ロールを「ナビゲーション可能な子孫または所有された子要素を含むことができるウィジェット」と定義しています。複合ウィジェットでは、Tab キーでウィジェットの中に入り、項目間は矢印キーで移動する操作が一般的です。
