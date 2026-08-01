@@ -26,7 +26,6 @@ selfAssessment:
         - text: "エージェント名として登録される文字列"
           correct: false
           explanation: "エージェント名は `agentName` プロパティ、または省略時は関数名から決まります。返り値は使われません。"
-
     - question: "Agent Hooks が React の Hooks と異なる点として、記事で挙げられているのはどれですか?"
       answers:
         - text: "条件分岐の中でフックを呼び出せる"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "エージェント関数は一度だけ実行され、フックは再評価されない"
           correct: false
           explanation: "React と同じように、エージェント関数が呼び出されるたびに再レンダリングされてフックが再評価されます。"
-
     - question: "`usePersistentState` で管理した状態について、記事で説明されている内容として正しいのはどれですか?"
       answers:
         - text: "会話が終了すると破棄されるため、再起動後はリセットされる"
@@ -58,7 +56,6 @@ selfAssessment:
           explanation: "デフォルトは SQLite で、`src/db.ts` のアダプターを差し替えることで Postgres や libSQL なども選べます。"
 published: true
 ---
-
 [Flue](https://flueframework.com/) は [Astro](https://astro.build/) の制作者によって作られた TypeScript 製の AI エージェントフレームワークです。Flue 2.0 では、従来の静的なエージェントの定義方法から、Agent Hooks と呼ばれる hook ベースのエージェントフレームワークへと変化しました。Agent Hooks では React の hooks と同様の API を用いて、エージェントの状態やライフサイクルを管理することができます。
 
 ```ts

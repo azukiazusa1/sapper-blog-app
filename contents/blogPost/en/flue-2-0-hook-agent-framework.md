@@ -26,7 +26,6 @@ selfAssessment:
         - text: "As the string used to register the agent name"
           correct: false
           explanation: "The agent name comes from the `agentName` property or, when omitted, the function name. The return value is not used for this purpose."
-
     - question: "Which difference between Agent Hooks and React Hooks does the article highlight?"
       answers:
         - text: "Hooks can be called inside conditional branches"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "The agent function runs only once and hooks are never re-evaluated"
           correct: false
           explanation: "The agent function re-renders and its hooks are re-evaluated each time it runs."
-
     - question: "Which statement about state managed with `usePersistentState` is correct?"
       answers:
         - text: "It is discarded when the conversation ends and resets after a restart"
@@ -58,7 +56,6 @@ selfAssessment:
           explanation: "SQLite is the default, and the adapter in `src/db.ts` can be replaced with Postgres, libSQL, or another supported backend."
 published: true
 ---
-
 [Flue](https://flueframework.com/) is a TypeScript AI agent framework created by the people behind [Astro](https://astro.build/). Flue 2.0 moves away from static agent definitions and introduces Agent Hooks, a hook-based agent framework. Agent Hooks provide an API similar to React hooks for managing agent state and lifecycle behavior.
 
 ```ts
