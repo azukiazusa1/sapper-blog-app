@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "HTTP スパンを作成する役割は HttpInstrumentation です。Pino Instrumentation はログを対象とします。"
 published: true
 ---
-
 [OpenTelemetry](https://opentelemetry.io/) は、トレース・メトリクス・ログといったテレメトリーデータを作成、収集、エクスポートするためのオブザーバビリティフレームワークです。ベンダーに依存しない API、SDK、プロトコルを提供しており、アプリケーションの実装と監視バックエンドを分離できることが特徴です。
 
 OpenTelemetry は分散トレーシングの文脈でよく知られていますが、ログを表現するための[データモデル](https://opentelemetry.io/docs/specs/otel/logs/data-model/)も定義されています。アプリケーションのログを OpenTelemetry の形式で送信すると、ログに現在のスパンの Trace ID と Span ID を付与できます。これにより、エラーログから関連するトレースを開き、どの処理で問題が発生したのか調査できます。

@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "Creating HTTP spans is the job of HttpInstrumentation. Pino Instrumentation targets logs."
 published: true
 ---
-
 [OpenTelemetry](https://opentelemetry.io/) is an observability framework for creating, collecting, and exporting telemetry data such as traces, metrics, and logs. It provides vendor-neutral APIs, SDKs, and protocols, which lets you decouple your application code from your monitoring backend.
 
 OpenTelemetry is best known in the context of distributed tracing, but it also defines a [data model](https://opentelemetry.io/docs/specs/otel/logs/data-model/) for representing logs. When you send application logs in the OpenTelemetry format, each log can carry the Trace ID and Span ID of the current span. That lets you jump from an error log straight to the related trace and investigate exactly where the problem occurred.
