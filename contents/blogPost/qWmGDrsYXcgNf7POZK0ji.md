@@ -6,7 +6,9 @@ about: "OpenTelemetry を使用すると、アプリケーションのログを�
 createdAt: "2026-08-02T11:43+09:00"
 updatedAt: "2026-08-02T11:43+09:00"
 tags: ["Hono", "OpenTelemetry", "Node.js"]
-thumbnail: null
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/1Ra4GMG4ydHHw0PNq7zyuH/126e30649a6ed34fb8da14ac847069de/fast-food-takeout_15179-768x768.png"
+  title: "ファストフードのテイクアウトのイラスト"
 audio: null
 selfAssessment:
   quizzes:
