@@ -26,9 +26,8 @@ selfAssessment:
         - text: "1 度だけ空文字列を流してから閉じる"
           correct: false
           explanation: "チャンクは 1 つも流れず、そのまま閉じられます。"
-published: false
+published: true
 ---
-
 !> Fetch API の `textStream()` メソッドは現時点で Chrome v 151 以降でのみ利用可能です。
 
 fetch で取得したレスポンスを、最後まで待たずに届いた分から順に画面へ描画することで、ユーザーは待ち時間を短く感じられます。生成 AI のチャット UI のように、テキストが少しずつ表示されていく体験がその代表例で、普段から見慣れているのではないでしょうか。

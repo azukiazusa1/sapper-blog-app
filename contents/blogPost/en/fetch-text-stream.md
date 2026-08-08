@@ -26,9 +26,8 @@ selfAssessment:
         - text: "It emits an empty string once and then closes"
           correct: false
           explanation: "It closes without emitting any chunks."
-published: false
+published: true
 ---
-
 !> At the time of writing, the Fetch API's `textStream()` method is available only in Chrome 151 and later.
 
 Rendering a response as data arrives, rather than waiting for the entire response, can make the wait feel shorter for users. A familiar example is a generative AI chat UI, where text appears a little at a time.
