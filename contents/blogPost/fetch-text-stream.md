@@ -70,7 +70,7 @@ for await (const chunk of res.body.pipeThrough(new TextDecoderStream())) {
 ```diff
  const res = await fetch("/api/chat");
 -if (!res.body) return;
- 
+
 -for await (const chunk of res.body.pipeThrough(new TextDecoderStream())) {
 +for await (const chunk of res.textStream()) {
    output.textContent += chunk;
@@ -79,9 +79,9 @@ for await (const chunk of res.body.pipeThrough(new TextDecoderStream())) {
 
 返り値は `ReadableStream` なので、`for await...of` でそのまま反復できます。`TextDecoderStream` で行っていたデコード処理はブラウザの内部へ移っています。仕様上の `textStream()` は、新しい `TextDecoderStream` を UTF-8 でセットアップし、ボディのストリームをそこに通した結果を返すと定義されています。
 
-::::info
+:::info
 `textStream()` は、レスポンスの `Content-Type` ヘッダーに指定された `charset` の値にかかわらず、常に UTF-8 でデコードします。UTF-8 以外でエンコードされたレスポンスを読み取る場合には、`TextDecoderStream` を使用して文字コードを明示する必要があります。
-::::
+:::
 
 `if (!res.body)` の分岐が要らなくなるのも、仕様で定められた挙動によるものです。`res.body` は 204 のレスポンスや HEAD リクエストへのレスポンスなど、ボディを持たない場合に `null` になります。`null` に対して `pipeThrough()` は呼び出せないため、これまでは事前の分岐が必要でした。一方、`textStream()` は、ボディが `null` の場合に空のストリームを作って即座に閉じたうえで返します。そのため分岐せずに `for await...of` へ渡せます。単にループが 1 回も回らないだけで、例外は投げられません。
 

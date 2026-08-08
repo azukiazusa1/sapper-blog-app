@@ -70,7 +70,7 @@ The `textStream()` method, added to the Fetch Standard in [whatwg/fetch#1862](ht
 ```diff
  const res = await fetch("/api/chat");
 -if (!res.body) return;
- 
+
 -for await (const chunk of res.body.pipeThrough(new TextDecoderStream())) {
 +for await (const chunk of res.textStream()) {
    output.textContent += chunk;
@@ -79,9 +79,9 @@ The `textStream()` method, added to the Fetch Standard in [whatwg/fetch#1862](ht
 
 The return value is a `ReadableStream`, so you can iterate over it directly with `for await...of`. The decoding previously performed by `TextDecoderStream` now happens inside the browser. The specification defines `textStream()` as setting up a new UTF-8 `TextDecoderStream` and returning the result of piping the body stream through it.
 
-::::info
+:::info
 `textStream()` always decodes as UTF-8, regardless of the `charset` value specified in the response's `Content-Type` header. To read a response encoded in a character encoding other than UTF-8, use `TextDecoderStream` and specify the encoding explicitly.
-::::
+:::
 
 The fact that you no longer need the `if (!res.body)` branch also follows from behavior defined by the specification. `res.body` is `null` when a response has no body, such as a 204 response or a response to a HEAD request. Because you cannot call `pipeThrough()` on `null`, the previous approach required a guard. In contrast, when the body is `null`, `textStream()` creates an empty stream, closes it immediately, and returns it. You can therefore pass it to `for await...of` without branching. The loop simply does not run, and no exception is thrown.
 
