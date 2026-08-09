@@ -5,7 +5,7 @@ slug: "aria-actions-attribute"
 about: "`aria-actions` associates an element with separate interactive elements that provide actions for it. This article explains the problem it solves and demonstrates its use with secondary actions in an email list."
 createdAt: "2026-08-09T15:00+09:00"
 updatedAt: "2026-08-09T15:00+09:00"
-tags: ["accessibility", "HTML"]
+tags: ["アクセシビリティ", "HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/7pFI6TdLQvho2K66w7RbWX/e5d1129d9979b94a9242ded45b4ab81e/sashimi_ika_15581-768x591.png"
   title: "イカのお刺身のイラスト"
@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "The element must respond to a `click` event that an assistive technology can invoke, rather than being limited to a particular input modality."
 published: true
 ---
-
 !> As of August 2026, `aria-actions` has been proposed for inclusion in WAI-ARIA 1.3, but the specification is not yet finalized. Firefox has already shipped it, Chrome 151 supports it on Windows, macOS, and Linux, and Safari makes it available behind a flag. Behavior may still vary depending on the browser and assistive technology combination, so when using it in a production application, provide conventional keyboard interaction as a fallback and test it in each environment you intend to support.
 
 The `aria-actions` attribute was proposed to help assistive technology users discover and perform secondary actions associated with an item, such as a Close button on a tab or a Delete button on an email.
