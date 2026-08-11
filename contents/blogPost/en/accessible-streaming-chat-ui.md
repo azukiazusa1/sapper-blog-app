@@ -5,7 +5,7 @@ slug: "accessible-streaming-chat-ui"
 about: "Generative AI chat UIs reveal answers a few characters at a time. Piping those updates into a live region makes screen readers read the response in fragments. I survey ChatGPT, Claude, and four chat UI libraries, then build an accessible sample."
 createdAt: "2026-08-11T10:42+09:00"
 updatedAt: "2026-08-11T10:42+09:00"
-tags: ["accessibility", "HTML"]
+tags: ["アクセシビリティ", "HTML"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/690k8v3n0hHk9XhusHAYoC/0a23f8cfdbe244e286053550bb867ee3/bird-osprey_23912-768x748.png"
   title: "ミサゴのイラスト"
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "It interrupts whatever is currently being read and announces immediately"
           correct: false
           explanation: "Interrupting is what `aria-live=\"assertive\"` does. The article notes it should be reserved for a small number of cases, such as important warnings."
-
     - question: "Why does the sample's `announce()` function clear `textContent` first and then set the message after a short delay?"
       answers:
         - text: "Because an element with `role=\"status\"` is not announced right after it is inserted into the DOM"
@@ -43,7 +42,6 @@ selfAssessment:
           explanation: "`polite` already waits for a moment that does not interrupt the user. You do not need to add a delay yourself; the article presents the 100 milliseconds as a way to make the change detectable."
 published: true
 ---
-
 Since generative AI arrived, chat UIs that let you talk to an AI through a text box have become part of everyday life. Traditional chat apps typically appended each message once it was complete, but an LLM (large language model) reveals its response gradually, over several seconds to tens of seconds.
 
 Sighted users can tell that generation has started, and that it is still going, simply by watching the text grow. Screen readers, on the other hand, do not announce content just because the DOM changed. Without any extra work, users never learn that a response has started, and they are not told when it finishes.
