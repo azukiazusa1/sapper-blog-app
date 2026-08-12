@@ -11,6 +11,7 @@
   "comprehensionCheck": "Comprehension check",
   "comprehensionCheckDescription": "Answer the following questions to deepen your understanding of the article.",
   "suggestEditOnGitHub": "Suggest an edit on GitHub",
+  "setAsPreferredSource": "Add as a preferred source on Google",
   "googleAnalyticsDescriptionPrefix": "This site uses Google Analytics to analyze access. Google Analytics collects information about users' visits to the site, but does not collect personally identifiable information. For more details, please see",
   "googleAnalyticsPrivacyPolicy": "Google's use of information from sites and apps that use Google services – Policies and Terms",
   "googleAnalyticsDescriptionSuffix": ".",
