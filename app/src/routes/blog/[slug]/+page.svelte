@@ -5,6 +5,7 @@
   import TwitterShareButton from "../../../components/TwitterShareButton.svelte";
   import HatenaShareButton from "../../../components/HatenaShareButton.svelte";
   import GitHubEditButton from "../../../components/GitHubEditButton.svelte";
+  import PreferredSourceButton from "../../../components/PreferredSourceButton.svelte";
   import type { PageData } from "./$types";
   import variables from "$lib/variables";
   import ShareButton from "../../../components/ShareButton.svelte";
@@ -130,16 +131,19 @@
       <div class="flex flex-col p-6">
         <div class="flex flex-col gap-4">
           <GitHubEditButton slug={post.slug} />
-          <div class="flex">
+          <div class="flex flex-wrap items-center gap-3">
             <ShareButton {url} text={post.title}>
               {#snippet fallback()}
-                <div class="mr-2 font-medium">{m.shareArticle()}</div>
-                <div class="flex gap-2">
-                  <TwitterShareButton {url} text={post.title} />
-                  <HatenaShareButton {url} text={post.title} />
+                <div class="flex items-center">
+                  <div class="mr-2 font-medium">{m.shareArticle()}</div>
+                  <div class="flex gap-2">
+                    <TwitterShareButton {url} text={post.title} />
+                    <HatenaShareButton {url} text={post.title} />
+                  </div>
                 </div>
               {/snippet}
             </ShareButton>
+            <PreferredSourceButton />
           </div>
           <div class="text-sm text-stone-500 dark:text-stone-400">
             <a
