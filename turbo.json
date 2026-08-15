@@ -17,6 +17,7 @@
         "remark-link-card#build",
         "remark-contentful-image#build",
         "rehype-alert#build",
+        "rehype-link-favicon#build",
         "remark-video#build"
       ]
     }

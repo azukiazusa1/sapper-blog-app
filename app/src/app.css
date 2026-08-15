@@ -258,6 +258,20 @@ html.dark #contents summary {
   border-bottom: 1px solid var(--color-accent);
 }
 
+#contents .markdown-body .link-favicon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 0 0.3rem 0 0;
+  vertical-align: -0.125rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#contents .markdown-body .link-with-favicon {
+  overflow-wrap: anywhere;
+}
+
 html.dark #contents .markdown-body a {
   color: var(--color-accent-light);
   border-bottom: 1px dotted var(--color-accent-light);
