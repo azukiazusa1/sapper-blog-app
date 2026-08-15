@@ -11,6 +11,7 @@ import rehypeCodeTitles from "rehype-code-titles";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
+import rehypeLinkFavicon from "rehype-link-favicon";
 import { extractToc } from "$lib/utils";
 
 export type TocItem = {
@@ -36,7 +37,7 @@ export const markdownToHtml = async (
       bypassInlineCode: true,
       defaultLang: "plaintext",
     })
-
+    .use(rehypeLinkFavicon)
     .use(rehypeSlug)
     .use(rehypeAutoLinkHeadings);
 
