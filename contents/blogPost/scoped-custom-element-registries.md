@@ -6,10 +6,10 @@ about: "Web Components を利用してアプリケーションを構築する際
 createdAt: "2026-08-15T15:46+09:00"
 updatedAt: "2026-08-15T15:46+09:00"
 tags: ["JavaScript", "Web Components", "HTML"]
-audio: null
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1uG010TUCDlIiMzvVhkMUF/4c6312183326e9121297be3c9343a430/shark-fin_21263-768x591.png"
-  title: "フカヒレのイラスト"
+  title: "shark-fin 21263-768x591"
+audio: null
 selfAssessment:
   quizzes:
     - question: "同じページで同名のカスタム要素に異なる実装を割り当てる方法として正しいものはどれですか？"
@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "elementRegistry という attachShadow() のオプションはありません。"
 published: true
 ---
-
 b> scoped-custom-element-registries
 
 [Web Components](https://developer.mozilla.org/ja/docs/Web/API/Web_components) は、再利用可能な独自の HTML 要素を作成するための技術の総称です。主に、独自の要素名と振る舞いを定義する Custom Elements、DOM 構造やスタイルをカプセル化する Shadow DOM、再利用するマークアップを宣言する `<template>` 要素や `<slot>` 要素から構成されます。これらはブラウザが提供する標準 API であり、React や Vue.js といったフレームワークに依存せずに利用できることが特徴です。

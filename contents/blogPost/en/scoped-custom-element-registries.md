@@ -6,10 +6,10 @@ about: "When you build with Web Components, name collisions happen if two librar
 createdAt: "2026-08-15T15:46+09:00"
 updatedAt: "2026-08-15T15:46+09:00"
 tags: ["JavaScript", "Web Components", "HTML"]
-audio: null
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1uG010TUCDlIiMzvVhkMUF/4c6312183326e9121297be3c9343a430/shark-fin_21263-768x591.png"
-  title: "フカヒレのイラスト"
+  title: "shark-fin 21263-768x591"
+audio: null
 selfAssessment:
   quizzes:
     - question: "Which of the following correctly assigns different implementations to custom elements with the same name on a single page?"
@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "attachShadow() has no elementRegistry option."
 published: true
 ---
-
 b> scoped-custom-element-registries
 
 [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) is an umbrella term for the technologies used to build reusable, custom HTML elements. It consists mainly of Custom Elements, which define your own element names and behavior; Shadow DOM, which encapsulates DOM structure and styles; and the `<template>` and `<slot>` elements, which declare reusable markup. These are standard APIs provided by the browser, and their defining trait is that you can use them without depending on a framework such as React or Vue.js.
