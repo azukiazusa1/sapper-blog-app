@@ -12,7 +12,7 @@ thumbnail:
 audio: null
 selfAssessment:
   quizzes:
-    - qustion: "Which pseudo-class can be used with `<usermedia>` and matches when permission has been granted?"
+    - question: "Which pseudo-class can be used with `<usermedia>` and matches when permission has been granted?"
       answers:
         - text: ":granted"
           correct: true

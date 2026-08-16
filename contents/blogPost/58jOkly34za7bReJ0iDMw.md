@@ -12,7 +12,7 @@ thumbnail:
 audio: null
 selfAssessment:
   quizzes:
-    - qustion: "`<usermedia>` の疑似クラスとして使用でき、権限が許可されている場合にマッチするものはどれですか?"
+    - question: "`<usermedia>` の疑似クラスとして使用でき、権限が許可されている場合にマッチするものはどれですか?"
       answers:
         - text: ":granted"
           correct: true
