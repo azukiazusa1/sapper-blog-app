@@ -8,7 +8,7 @@ updatedAt: "2026-08-16T16:40+09:00"
 tags: ["HTML", "WebRTC"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/57ZRQJeVGx4QvLkQn2N3qP/a7bc11c1da4c0deeffcb0fc48c347523/antique_camera_8236-768x626.png"
-  title: "アンティークカメラのイラスト"
+  title: "antique camera 8236-768x626"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,7 +26,6 @@ selfAssessment:
         - text: ":permission"
           correct: false
           explanation: "`:permission` is not a pseudo-class for `<usermedia>`."
-
 published: true
 ---
 !> As of August 2026, the `<usermedia>` element is available only in Chrome 151 and later. It is also still being standardized, so its specification may change in the future.

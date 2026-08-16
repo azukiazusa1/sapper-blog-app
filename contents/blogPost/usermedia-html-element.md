@@ -8,7 +8,7 @@ updatedAt: "2026-08-16T16:40+09:00"
 tags: ["HTML", "WebRTC"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/57ZRQJeVGx4QvLkQn2N3qP/a7bc11c1da4c0deeffcb0fc48c347523/antique_camera_8236-768x626.png"
-  title: "アンティークカメラのイラスト"
+  title: "antique camera 8236-768x626"
 audio: null
 selfAssessment:
   quizzes:
@@ -26,7 +26,6 @@ selfAssessment:
         - text: ":permission"
           correct: false
           explanation: "`:permission` は `<usermedia>` の疑似クラスではありません。"
-
 published: true
 ---
 !> `<usermedia>` 要素は 2026 年 8 月時点で Chrome 151 以降でのみ利用できます。また、標準化作業中の機能であり、今後仕様が変更される可能性があります。
