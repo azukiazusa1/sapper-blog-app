@@ -24,8 +24,9 @@ describe("remark-contentful-image", () => {
     expect(value.toString()).toContain('loading="lazy"');
     expect(value.toString()).toContain('decoding="async"');
     expect(value.toString()).toContain(
-      'sizes="auto, (max-width: 1024px) 100vw, 1024px"',
+      'sizes="(max-width: 1024px) 100vw, 1024px"',
     );
+    expect(value.toString()).not.toContain('sizes="auto,');
     expect(value.toString()).toContain(
       "789.jpg?fm=webp&#x26;q=60&#x26;w=320 320w",
     );

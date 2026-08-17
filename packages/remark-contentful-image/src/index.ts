@@ -36,7 +36,7 @@ const remarkContentfulImage: Plugin<[], Root> = () => {
         srcSet: widths
           .map((width) => `${optimizeUrl(source, width)} ${width}w`)
           .join(", "),
-        sizes: "auto, (max-width: 1024px) 100vw, 1024px",
+        sizes: "(max-width: 1024px) 100vw, 1024px",
       };
     });
   };
