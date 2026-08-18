@@ -5,7 +5,7 @@ slug: "react-accessible-tree-view"
 about: "ARIA roles alone do not make a Tree View accessible. Learn to build a single-select Tree View in React with roving tabindex, arrow-key navigation, selection, and type-ahead, following the WAI-ARIA APG."
 createdAt: "2026-08-18T14:16+09:00"
 updatedAt: "2026-08-18T14:16+09:00"
-tags: ["React", "accessibility"]
+tags: ["React", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/JrxXIoS5OaDdfASrHYPpN/91d7b1ebe5c146c174f03d0aa83474d2/cityscape_tokyo-skytree_6521-768x768.png"
   title: "街並みとスカイツリーのイラスト"
@@ -54,10 +54,8 @@ selfAssessment:
         - text: "To let Tab move through every node in sequence"
           correct: false
           explanation: "Arrow keys move within the Tree View, while Tab moves into and out of the Tree View as a whole."
-
 published: true
 ---
-
 A Tree View is a UI for presenting hierarchical structures such as file systems and product categories. Expanding a parent node reveals its children, and collapsing it hides them again. Visually, it may seem easy to build with a nested `<ul>` and some expand-and-collapse logic.
 
 ![Example of a file tree represented as a hierarchical nested list](https://images.ctfassets.net/in6v9lxmm5c8/3KwilyudLU5nx50JiBRWMh/896772ed0f0c9468f361178159732497/image.png)

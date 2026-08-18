@@ -54,10 +54,8 @@ selfAssessment:
         - text: "Tab キーで各ノードを順番に移動できるようにするため"
           correct: false
           explanation: "Tree View 内の移動には矢印キーを使い、Tab キーでは Tree View 全体へ出入りします。"
-
 published: true
 ---
-
 Tree View は、ファイルシステムや商品カテゴリのような階層構造を表示するための UI です。親ノードを展開すると子ノードが現れ、折りたたむと再び隠れます。見た目だけであれば、入れ子にした `<ul>` と開閉処理で簡単に作れそうに見えます。
 
 ![入れ子のリストで階層構造を表現したファイルツリーの表示例](https://images.ctfassets.net/in6v9lxmm5c8/3KwilyudLU5nx50JiBRWMh/896772ed0f0c9468f361178159732497/image.png)
