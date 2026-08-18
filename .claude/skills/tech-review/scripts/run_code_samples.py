@@ -7,7 +7,7 @@ run_code_samples.py - Markdownファイル内のJS/TS/Reactコードサンプル
 
 対応言語:
     - JavaScript (js, javascript) → node で実行
-    - TypeScript (ts, typescript) → ts-node または npx tsx で実行
+    - TypeScript (ts, typescript) → インストール済みの tsx または ts-node で実行
     - JSX/TSX (jsx, tsx) → 構文チェックのみ（React環境が必要なため）
     - React → 構文チェックのみ
 """
@@ -173,30 +173,32 @@ def run_javascript(block: CodeBlock, tmpdir: str) -> CodeResult:
                               error=result.stderr.strip())
 
 
+def find_typescript_runner() -> list[str] | None:
+    """インストール済みの TypeScript runner だけを探す。"""
+    for name in ("tsx", "ts-node"):
+        executable = shutil.which(name)
+        if executable:
+            return [executable]
+
+        local_executable = os.path.join(os.getcwd(), "node_modules", ".bin", name)
+        if os.path.isfile(local_executable) and os.access(local_executable, os.X_OK):
+            return [local_executable]
+
+    return None
+
+
 def run_typescript(block: CodeBlock, tmpdir: str) -> CodeResult:
     """TypeScriptコードを実行する（tsx または ts-node を使用）"""
     filepath = os.path.join(tmpdir, f"block_{block.index}.ts")
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(block.code)
 
-    # tsx を優先的に試す（インストール済みかチェック）
-    runner = None
-    for candidate in ['npx tsx', 'npx ts-node']:
-        cmd_parts = candidate.split()
-        try:
-            result = subprocess.run(
-                cmd_parts + ['--version'],
-                capture_output=True, text=True, timeout=5
-            )
-            if result.returncode == 0:
-                runner = cmd_parts
-                break
-        except (subprocess.TimeoutExpired, FileNotFoundError):
-            continue
+    # npx は未導入パッケージを取得する可能性があるため使用しない
+    runner = find_typescript_runner()
 
     if runner is None:
         return CodeResult(block, "skipped",
-                          note="ts-node または tsx が見つからないためスキップ。npm install -g tsx で導入できます。")
+                          note="インストール済みの tsx または ts-node が見つからないためスキップ")
 
     if not is_likely_runnable(block.code):
         # ts-node で構文チェック相当（--dry-run 的な実行）
