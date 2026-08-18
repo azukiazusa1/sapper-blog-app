@@ -1,0 +1,4 @@
+interface:
+  display_name: "技術記事の正確性をレビュー"
+  short_description: "一次情報、コード、再現性、互換性を検証します"
+  default_prompt: "$tech-review を使って、この技術記事の主張、根拠、コード、再現性をレビューしてください。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "CodePen でサンプルを共有"
+  short_description: "検証済みのブラウザ向けサンプルを未保存 Pen へ転送します"
+  default_prompt: "$codepen-share を使って、この検証済みサンプルを CodePen Prefill で共有する準備をしてください。"

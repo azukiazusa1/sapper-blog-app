@@ -1,0 +1,4 @@
+interface:
+  display_name: "技術記事を編集レビュー"
+  short_description: "azukiazusa.dev の構成・文体・表記で記事をレビューします"
+  default_prompt: "$article-review を使って、この技術記事を構成、文体、明確さ、表記の観点からレビューしてください。"
