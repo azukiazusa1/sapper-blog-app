@@ -792,15 +792,15 @@ export function TreeView({
 
 ## Manually testing with VoiceOver
 
-Now try operating the `TreeView` component with VoiceOver on macOS. When you move to the `TreeView`, VoiceOver announces “プロジェクトファイル、ひょう、何も選択されていません” (“Project files, table, nothing selected”), including the accessible name from `aria-label` and the role. VoiceOver appears to announce the Tree View hierarchy as “ひょう” (“table”) in Japanese.
+Now try operating the `TreeView` component with VoiceOver on macOS. When you move to the `TreeView`, VoiceOver announces `プロジェクトファイル、ひょう、何も選択されていません` (“Project files, table, nothing selected”), including the accessible name from `aria-label` and the role. VoiceOver appears to announce the Tree View hierarchy as `ひょう` (“table”) in Japanese.
 
 ![Screenshot of VoiceOver announcing “プロジェクトファイル、ひょう、何も選択されていません”](https://images.ctfassets.net/in6v9lxmm5c8/66H7hUcUMgrjG6i4lBgUEW/61bbe12c4d0a326c2d53b0d6c44b90e7/image.png)
 
-When an item is selected, VoiceOver also announces its position and selection state, such as “行 2 / 5、選択中” (“row 2 of 5, selected”).
+When an item is selected, VoiceOver also announces its position and selection state, such as `行 2 / 5、選択中` (“row 2 of 5, selected”).
 
 ![Screenshot of VoiceOver announcing “行 2 / 5、選択中”](https://images.ctfassets.net/in6v9lxmm5c8/4tfVJ37pivt6e0J3XNyioC/b39dd6c72837a417f6e2d3b978d53d16/image.png)
 
-When you select a parent node with children, VoiceOver announces its expansion state and hierarchy, for example, “public、字間広く、アウトライン行（2 / 3）.” In this environment, VoiceOver announces `aria-expanded=true` as “字間広く” and `aria-expanded=false` as “下位項目が折りたたまれました.”
+When you select a parent node with children, VoiceOver announces its expansion state and hierarchy, for example, `public、字間広く、アウトライン行（2 / 3）`. In this environment, VoiceOver announces `aria-expanded=true` as `字間広く` and `aria-expanded=false` as `下位項目が折りたたまれました`.
 
 ![Screenshot of VoiceOver announcing “public、字間広く、アウトライン行（2 / 3）”](https://images.ctfassets.net/in6v9lxmm5c8/3KPeyM9iVZ9j9Tu5hz4oTm/4fb8bed4ff390397ce3e75b45839dd65/image.png)
 
