@@ -5,7 +5,7 @@ slug: "virtualize-large-list-with-tanstack-virtual"
 about: "Adding thousands of elements to the DOM at once drives up rendering and update costs. TanStack Virtual is a headless library that renders only the items needed for the current scroll position. This article covers virtualizing a list in React."
 createdAt: "2026-08-18T21:25+09:00"
 updatedAt: "2026-08-20T21:39+09:00"
-tags: ["React", "accessibility"]
+tags: ["React", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6Ge0fX1rDucVd3S2FtZLdE/c0ed8842fb70f094789c15055d0180c6/yellow-rumped-flycatcher_23947-768x689.png"
   title: "マミジロキビタキのイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "Browser find-in-page can reach all 10,000 items, but initial rendering gets slower"
           correct: false
           explanation: "Even with a larger overscan, not every item is in the DOM, so it does not extend find-in-page to the entire set."
-
 published: true
 ---
-
 When a web application lists a large number of logs or messages, rendering every element at once can leave the page unresponsive or even crash the browser tab. Even if only a handful of items are visible on screen, the browser still builds DOM nodes for the off-screen elements, runs style calculations and layout for them, and rendering costs climb. The number of items is not the only factor either — DOM size starts to affect performance when conditions like these overlap.
 
 - Each item is built from a deep tree with many child elements, making the page's overall DOM large
