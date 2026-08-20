@@ -190,6 +190,8 @@ export function App() {
 
 `top` に `VirtualItem.start` を指定しても配置できますが、`transform` の変更は、条件が整えばレイアウトと再描画を省略して合成処理だけで更新できるため、スクロールに伴う位置の更新コストを抑えやすいという特徴があります。
 
+実際に試してみると、LCP と INP ともにスコアが大きく改善していることがわかります。
+
 ![](https://images.ctfassets.net/in6v9lxmm5c8/7lcuTZgvDy9DV2EP9dNU4O/62e7774a5b58393af2dfc3fbc25fb94c/image.png)
 
 ## 可変高さの要素を `measureElement` で測定する
