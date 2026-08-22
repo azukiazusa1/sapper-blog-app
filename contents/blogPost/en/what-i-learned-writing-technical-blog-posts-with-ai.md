@@ -40,10 +40,8 @@ selfAssessment:
         - text: "From writing to asking, verifying, and editing"
           correct: true
           explanation: "The article says that learning did not disappear; its center moved from writing to asking, verifying, and editing."
-
 published: true
 ---
-
 Until recently, I did not have a good impression of letting AI write articles. AI-generated text leans too heavily on generalities and tends to be wordy. It looks polished, yet there is no particular reason to read that person's article over anyone else's. I had seen writing like that many times.
 
 My main reason for writing a technical blog is to learn new technology myself. I also worried that letting AI write the articles would let me skip the process of researching, thinking, and putting things into words. So I kept writing articles by hand and limited AI to pointing out typos.
