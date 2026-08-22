@@ -60,7 +60,7 @@ AI に記事を書かせることに対して、これまで抱いていた嫌�
 
 AI 特有の文体とならないように、まずは過去に書いた記事から共通する構成や文体を AI に分析させるところから始めました。幸いにも、私は過去に書いた記事を GitHub 上で管理しており、5 年分のブログ記事をすべて参照させることができたので良い材料になりました。導入では読者が抱える具体的な問題から始めること、必要な概念を説明してからコードへ進むこと、最後にまとめと参考資料を置くことといった構成の共通点を抽出し、文体の特徴も分析させました。
 
-https://github.com/azukiazusa1/sapper-blog-app/blob/main/contents/BLOG_WRITING_GUIDE.md
+[BLOG_WRITING_GUIDE.md](https://github.com/azukiazusa1/sapper-blog-app/blob/main/contents/BLOG_WRITING_GUIDE.md)
 
 分析結果をもとに、技術ブログを書くための[スキル](https://github.com/azukiazusa1/skills/blob/a7f996f1cd700a4a56827f6cf2a130ff5a9ceedf/skills/writing/write-blog-article/SKILL.md)を作成しました。単に過去記事の文体を真似させるだけでなく、普段私が記事を書くときに行っている以下の過程を組み込んでいます。
 
