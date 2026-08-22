@@ -9,11 +9,24 @@ type HastNode = {
   children?: HastNode[];
 };
 
-const hasClassName = (node: HastNode, className: string) => {
+const getClassNames = (node: HastNode) => {
   const classNames = node.properties?.["className"];
 
-  return Array.isArray(classNames) && classNames.includes(className);
+  if (typeof classNames === "string") {
+    return classNames.split(/\s+/).filter(Boolean);
+  }
+
+  if (Array.isArray(classNames)) {
+    return classNames.filter(
+      (candidate): candidate is string => typeof candidate === "string",
+    );
+  }
+
+  return [];
 };
+
+const hasClassName = (node: HastNode, className: string) =>
+  getClassNames(node).includes(className);
 
 const addFavicon = (node: HastNode) => {
   if (node.type === "element" && node.tagName === "a") {
@@ -38,9 +51,7 @@ const addFavicon = (node: HastNode) => {
       return;
     }
 
-    const classNames = Array.isArray(node.properties?.["className"])
-      ? node.properties["className"]
-      : [];
+    const classNames = getClassNames(node);
     node.properties = {
       ...node.properties,
       className: [...classNames, "link-with-favicon"],

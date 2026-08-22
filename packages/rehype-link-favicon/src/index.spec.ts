@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import type { Root } from "hast";
 import { unified } from "unified";
 import markdown from "remark-parse";
 import remark2rehype from "remark-rehype";
@@ -32,6 +33,33 @@ describe("rehypeLinkFavicon", () => {
   ])("%sには favicon を追加しない", async (_, input) => {
     const result = await process(input);
 
+    expect(result).not.toContain("link-favicon");
+  });
+
+  it("文字列の className を持つリンクカードには favicon を追加しない", async () => {
+    const tree = {
+      type: "root",
+      children: [
+        {
+          type: "element",
+          tagName: "a",
+          properties: {
+            className: "link-card",
+            href: "https://example.com/",
+          },
+          children: [{ type: "text", value: "Example" }],
+        },
+      ],
+    };
+
+    const transformedTree = (await unified()
+      .use(rehypeLinkFavicon)
+      .run(tree)) as Root;
+    const result = unified().use(html).stringify(transformedTree);
+
+    expect(result).toBe(
+      '<a class="link-card" href="https://example.com/">Example</a>',
+    );
     expect(result).not.toContain("link-favicon");
   });
 });
