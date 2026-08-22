@@ -26,10 +26,8 @@ selfAssessment:
         - text: "It can only be opened from the \"Artifacts\" tab in the sidebar"
           correct: false
           explanation: "The article says you can run the artifact right there once the HTML file is shared, and says nothing about where it can be opened from."
-
 published: true
 ---
-
 In software development today, it has become routine to build things quickly and easily with coding agents like Claude Code, Codex, and Devin. These agents run in a terminal on an individual's machine, though, which means the conversation stays confined to that person's environment and makes sharing information across a team difficult.
 
 For example, an exchange with a coding agent holds a wealth of context about why a particular design was chosen, or why another one was not. By the time the work reaches review, most of that context is gone, and reviewers can struggle to understand the intent behind the design. And even when an individual has figured out more effective ways to work with an agent, there has rarely been an opportunity to share that knowledge with the rest of the team.
