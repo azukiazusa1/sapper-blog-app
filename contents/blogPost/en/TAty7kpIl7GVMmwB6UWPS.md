@@ -97,5 +97,5 @@ Once a session is finished, you can hide it by clicking the "×" button in the s
 ## References
 
 - [Agentic coding is now multiplayer: Introducing Slack Code](https://x.com/SlackHQ/status/2090415566351659267)
-- [Build with AI as a team using Slack Code | Slack](https://slack.com/intl/ja-jp/help/articles/54310833022355-Slack-%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%81%E3%83%BC%E3%83%A0%E3%81%A8%E3%81%97%E3%81%A6-AI-%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B)
+- [Build with AI as a team using Slack Code | Slack](https://slack.com/intl/en-gb/help/articles/54310833022355-Build-with-AI-as-a-team-using-Slack-Code)
 - [Turning conversation into knowledge: how Slack builds human-agent teams | Claude by Anthropic](https://claude.com/blog/turning-conversation-into-knowledge-how-slack-builds-human-agent-teams)
