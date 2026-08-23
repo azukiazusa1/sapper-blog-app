@@ -40,10 +40,8 @@ selfAssessment:
         - text: "It must have a method keyed by `Symbol.dispose`"
           correct: true
           explanation: "This matches the article. In Vitest 3.2.0, mock functions implement this `Symbol.dispose`, and it calls `mockRestore()` internally."
-
 published: true
 ---
-
 When a Vitest test deals with code that depends on an external API or the current time, you often reach for `vi.spyOn()` to mock a method on an object temporarily. Because a spy overwrites the target method, you have to put the original implementation back once the test finishes. Forget to restore it, and another test ends up calling the mocked implementation, which makes your results depend on the order the tests happen to run in.
 
 ```ts
