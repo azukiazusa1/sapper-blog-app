@@ -6,6 +6,9 @@ about: "IndexedDB is an asynchronous, transactional database for storing structu
 createdAt: "2026-08-22T14:56+09:00"
 updatedAt: "2026-08-23T20:04+09:00"
 tags: ["JavaScript", "React"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4lmY8TlxppcIn5IXx9114N/aef04601027c9b200f6b3ea82c771f25/drink_ramune_10460.png"
+  title: "ラムネのイラスト"
 audio: null
 selfAssessment:
   quizzes:
