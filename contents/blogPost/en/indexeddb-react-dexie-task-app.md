@@ -3,8 +3,8 @@ id: G1KFgAieZqFI_1cJBhgxt
 title: "Build a Task Management App with IndexedDB, React, and Dexie.js"
 slug: "indexeddb-react-dexie-task-app"
 about: "IndexedDB is an asynchronous, transactional database for storing structured data in the browser. Learn its fundamentals through the native API, then build a task management app with React and Dexie.js."
-createdAt: "2026-08-22T14:56+09:00"
-updatedAt: "2026-08-23T20:04+09:00"
+createdAt: "2026-08-25T14:56+09:00"
+updatedAt: "2026-08-25T20:04+09:00"
 tags: ["JavaScript", "React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4lmY8TlxppcIn5IXx9114N/aef04601027c9b200f6b3ea82c771f25/drink_ramune_10460.png"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "Because fetch() responses are incompatible with the structured clone algorithm"
           correct: false
           explanation: "The issue discussed in this article concerns how long the transaction remains active, not which values can be stored."
-
 published: true
 ---
-
 When you want to keep data entered in a web application in the browser, `localStorage` is a common choice. However, storing only simple strings becomes cumbersome when you need to persist large amounts of structured data. [IndexedDB](https://w3c.github.io/IndexedDB/) is an API for storing this kind of data in the browser. It supports key-based lookups, indexes, and transactions, and lets you read and write JavaScript objects asynchronously.
 
 That said, not all browser-side data belongs in IndexedDB. For a few kilobytes of key-value data, such as a theme preference, whether a sidebar is open, or the most recently selected tab, `localStorage` is simpler. Because `localStorage` is a synchronous API, the code also stays straightforward. IndexedDB, on the other hand, is asynchronous and crosses the event loop several times between opening a database and retrieving a value.

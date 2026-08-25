@@ -3,8 +3,8 @@ id: G1KFgAieZqFI_1cJBhgxt
 title: "IndexedDB と React・Dexie.js でタスク管理アプリを作ってみる"
 slug: "indexeddb-react-dexie-task-app"
 about: "IndexedDB は、構造化されたデータをブラウザへ保存できる非同期・トランザクション型のデータベースです。この記事では素の IndexedDB API で基本的な仕組みを確認した後、React と Dexie.js でタスク管理アプリを実装します。"
-createdAt: "2026-08-22T14:56+09:00"
-updatedAt: "2026-08-23T20:04+09:00"
+createdAt: "2026-08-25T14:56+09:00"
+updatedAt: "2026-08-25T20:04+09:00"
 tags: ["JavaScript", "React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4lmY8TlxppcIn5IXx9114N/aef04601027c9b200f6b3ea82c771f25/drink_ramune_10460.png"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "fetch() のレスポンスは structured clone algorithm に対応していないため"
           correct: false
           explanation: "この記事で扱った問題は保存可能な値の種類ではなく、トランザクションがアクティブである期間です。"
-
 published: true
 ---
-
 Web アプリケーションで入力したデータをブラウザに残したいとき、よく使われる選択肢が `localStorage` です。しかし、構造化されたデータを大量に保存する用途では、単純な文字列の保存だけでは扱いづらくなります。[IndexedDB](https://w3c.github.io/IndexedDB/) は、このようなデータをブラウザ内に保存するための API です。キーによる検索、インデックス、トランザクションを備えており、JavaScript のオブジェクトを非同期に読み書きできます。
 
 とはいえ、ブラウザへ保存したいデータのすべてが IndexedDB に向いているわけではありません。テーマの設定、サイドバーを開いているかどうか、直前に選択していたタブといった数 KB のキーと値であれば、`localStorage` のほうが簡潔です。`localStorage` は同期 API であるため、コードもシンプルになります。一方、IndexedDB は非同期 API であり、データベースを開いて値を取得するまでに何度かイベントループをまたぎます。
