@@ -1,6 +1,6 @@
 ---
 id: G1KFgAieZqFI_1cJBhgxt
-title: "IndexedDB from Basics to Practice: Build a Task Management App with React and Dexie.js"
+title: "Build a Task Management App with IndexedDB, React, and Dexie.js"
 slug: "indexeddb-react-dexie-task-app"
 about: "IndexedDB is an asynchronous, transactional database for storing structured data in the browser. Learn its fundamentals through the native API, then build a task management app with React and Dexie.js."
 createdAt: "2026-08-22T14:56+09:00"

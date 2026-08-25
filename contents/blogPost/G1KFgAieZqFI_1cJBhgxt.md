@@ -1,6 +1,6 @@
 ---
 id: G1KFgAieZqFI_1cJBhgxt
-title: "IndexedDB の基礎から実践まで、React と Dexie.js でタスク管理アプリを作る"
+title: "IndexedDB と React・Dexie.js でタスク管理アプリを作ってみる"
 slug: "indexeddb-react-dexie-task-app"
 about: "IndexedDB は、構造化されたデータをブラウザへ保存できる非同期・トランザクション型のデータベースです。この記事では素の IndexedDB API で基本的な仕組みを確認した後、React と Dexie.js でタスク管理アプリを実装します。"
 createdAt: "2026-08-22T14:56+09:00"
