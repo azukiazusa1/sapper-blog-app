@@ -1,8 +1,8 @@
 ---
 id: ieMtCuTw5EdieC-ueStqa
-title: "ChatGPT デスクトップの Codex から WebMCP 対応 TODO アプリを操作する"
+title: "Driving a WebMCP TODO App from Codex in ChatGPT Desktop"
 slug: "chatgpt-desktop-codex-webmcp-todo-app"
-about: "ChatGPT デスクトップの内蔵ブラウザが、Web サイトの機能を AI エージェント向けのツールとして公開する WebMCP に対応しました。この記事では WebMCP に対応した TODO アプリを実装し、Codex が呼び出した Site tools の引数や結果を実行履歴から確認します。"
+about: "ChatGPT desktop's built-in browser now supports WebMCP, which lets a website expose its features as tools for AI agents. We build a WebMCP-enabled TODO app and inspect the arguments and results of the Site tools Codex calls from its execution history."
 createdAt: "2026-08-27T20:09+09:00"
 updatedAt: "2026-08-27T20:09+09:00"
 tags: ["ChatGPT", "WebMCP"]
@@ -12,75 +12,73 @@ thumbnail:
 audio: null
 selfAssessment:
   quizzes:
-    - question: "現行の WebMCP で、ページから AI エージェント向けのツールを登録するために呼び出すメソッドはどれですか?"
+    - question: "At the time this article was verified, which models can use Site tools in ChatGPT desktop?"
+      answers:
+        - text: "Only GPT-5.6 Luna"
+          correct: false
+          explanation: "WebMCP is disabled for GPT-5.6 Luna."
+        - text: "GPT-5.6 Sol or GPT-5.6 Terra"
+          correct: true
+          explanation: "The article lists GPT-5.6 Sol or GPT-5.6 Terra as the requirement for using Site tools."
+        - text: "GPT-5.6 Terra or GPT-5.6 Luna"
+          correct: false
+          explanation: "GPT-5.6 Terra is supported, but GPT-5.6 Luna is not."
+        - text: "Every model can use it, regardless of which one"
+          correct: false
+          explanation: "Availability depends on model requirements as well as a staged rollout."
+    - question: "In the current WebMCP, which method does a page call to register a tool for AI agents?"
       answers:
         - text: "document.modelContext.registerTool()"
           correct: true
-          explanation: "記事のサンプルでは document.modelContext.registerTool() にツールの定義を渡して登録しています。戻り値は Promise なので await します。"
+          explanation: "The article's examples register tools by passing a tool definition to document.modelContext.registerTool(). It returns a Promise, so it is awaited."
         - text: "navigator.modelContext.registerTool()"
           correct: false
-          explanation: "登録メソッドが生えているのは navigator ではなく document.modelContext です。"
+          explanation: "The registration method lives on document.modelContext, not on navigator."
         - text: "window.mcp.provideContext()"
           correct: false
-          explanation: "そのような API は存在しません。ツールは document.modelContext.registerTool() で 1 件ずつ登録します。"
+          explanation: "No such API exists. Tools are registered one at a time with document.modelContext.registerTool()."
         - text: "document.registerTool()"
           correct: false
-          explanation: "document 直下ではなく document.modelContext のメソッドとして呼び出します。"
-    - question: "記事の検証時点で、ChatGPT デスクトップの Site tools を利用できるモデルはどれですか?"
-      answers:
-        - text: "GPT-5.6 Luna のみ"
-          correct: false
-          explanation: "GPT-5.6 Luna では WebMCP が無効になっています。"
-        - text: "GPT-5.6 Sol または GPT-5.6 Terra"
-          correct: true
-          explanation: "記事では Site tools の利用条件として GPT-5.6 Sol または GPT-5.6 Terra を挙げています。"
-        - text: "GPT-5.6 Terra または GPT-5.6 Luna"
-          correct: false
-          explanation: "GPT-5.6 Terra は対応しますが、GPT-5.6 Luna は対応しません。"
-        - text: "モデルに関係なくすべて利用できる"
-          correct: false
-          explanation: "利用可否にはモデルの条件があり、段階的なロールアウトにも依存します。"
-
+          explanation: "It is called as a method of document.modelContext, not directly on document."
 published: true
 ---
-
 b> document-modelcontext
 
-AI エージェントが Web ページを操作するとき、画面上のボタンや入力欄を探してクリックする方法では安定性に欠け、トークンの消費も大きくなります。Web サイト側が「何を実行できるか」と「どのような引数が必要か」を構造化されたツールとして公開できれば、エージェントは画面を推測して操作する必要がありません。
+When an AI agent operates a web page by locating on-screen buttons and input fields and clicking them, the approach is fragile and consumes a large number of tokens. If a website can instead expose "what can be done" and "what arguments are required" as structured tools, the agent no longer has to guess at the screen in order to act.
 
-[WebMCP](https://webmachinelearning.github.io/webmcp/) は、Web アプリケーションの機能を AI エージェントが呼び出せるツールとして公開するための JavaScript API です。AI エージェントは WebMCP で公開されたツールを呼び出すことにより、直接 Web アプリケーションのロジックを実行できます。
+[WebMCP](https://webmachinelearning.github.io/webmcp/) is a JavaScript API for exposing a web application's features as tools that an AI agent can call. By calling the tools exposed through WebMCP, an AI agent can run the web application's logic directly.
 
-2026 年 8 月 25 日、ChatGPT デスクトップの内蔵ブラウザが [Site tools（WebMCP）](https://learn.chatgpt.com/docs/changelog#codex-2026-08-25-browser) に対応しました。ChatGPT Work と Codex は、内蔵ブラウザで開いている Web サイトが提供するツールを発見して呼び出せます。
+On August 25, 2026, the built-in browser in ChatGPT desktop gained support for [Site tools (WebMCP)](https://learn.chatgpt.com/docs/changelog#codex-2026-08-25-browser). ChatGPT Work and Codex can discover and call the tools provided by a website open in the built-in browser.
 
-この記事では、ChatGPT デスクトップの Codex から TODO の追加・完了・削除を依頼し、どのように WebMCP のツールが呼び出されているかを確認します。
+In this article, we ask Codex in ChatGPT desktop to add, complete, and delete TODOs, and observe how the WebMCP tools are called.
 
 :::warning
-WebMCP は W3C Web Machine Learning Community Group が策定している提案仕様です。2026 年 8 月 27 日時点では W3C 標準でも W3C Standards Track 上の仕様でもなく、API は今後変更される可能性があります。
+WebMCP is a proposal being developed by the W3C Web Machine Learning Community Group. As of August 27, 2026, it is neither a W3C standard nor a specification on the W3C Standards Track, and the API may change in the future.
 :::
 
-## WebMCP の仕組み
+## How WebMCP works
 
-WebMCP で公開するツールは、名前、タイトル、自然言語による説明、JSON Schema 形式の入力スキーマ、処理を実行するコールバック関数を持ちます。読み取り専用かどうかといった補足情報は `annotations` で添えられます。
+A tool exposed through WebMCP has a name, a title, a natural-language description, an input schema in JSON Schema format, and a callback function that performs the work. Supplementary information, such as whether the tool is read-only, can be attached via `annotations`.
 
-今回使用する TODO アプリでは、次のように `document.modelContext.registerTool()` でツールを登録します。ここでは新しい TODO を追加する `add_todo` の例です。
+The TODO app used here registers its tools with `document.modelContext.registerTool()`, as shown below. This is the example for `add_todo`, which adds a new TODO.
 
 ```js:app.js
-// フォーム送信時にも呼ばれる、UI と共通のアプリケーションロジック。
-// TODO を追加して localStorage と画面に反映し、追加した TODO オブジェクトを返す。
+// Shared application logic, also called on form submit.
+// Adds a TODO, reflects it in localStorage and the UI, and returns the added TODO object.
 function addTodo(title) {
-  // ...バリデーションと状態更新...
+  // ...validation and state update...
 }
 
 await document.modelContext.registerTool({
   name: "add_todo",
-  title: "TODO を追加",
-  description: "新しい未完了の TODO を 1 件追加します。",
+  title: "Add a TODO",
+  description: "Adds a single new, incomplete TODO.",
   inputSchema: {
     type: "object",
     properties: {
       title: {
         type: "string",
-        description: "追加する TODO のタイトル",
+        description: "Title of the TODO to add",
         minLength: 1,
         maxLength: 200,
       },
@@ -90,42 +88,42 @@ await document.modelContext.registerTool({
   },
   execute: async ({ title }) => {
     const todo = addTodo(title);
-    return { message: `「${todo.title}」を追加しました。`, todo };
+    return { message: `Added "${todo.title}".`, todo };
   },
 });
 ```
 
-`name`・`description` はエージェントがツールを選ぶ手がかりになり、`inputSchema` は受け取る引数を JSON Schema で定義します。`execute` はツールが呼び出されたときに実行され、ここでは UI と共通の `addTodo()` を呼び出したうえで、エージェントに返す結果オブジェクトを組み立てています。
+`name` and `description` are the cues the agent uses to choose a tool, and `inputSchema` defines the arguments it accepts using JSON Schema. `execute` runs when the tool is called; here it invokes the shared `addTodo()` used by the UI and then builds the result object returned to the agent.
 
-状態を変更しないツールには `annotations.readOnlyHint` を付けられます。TODO の一覧を返す `list_todos` は次のように登録します。
+Tools that do not change state can carry `annotations.readOnlyHint`. The `list_todos` tool, which returns the list of TODOs, is registered like this:
 
 ```js:app.js
 await document.modelContext.registerTool({
   name: "list_todos",
-  title: "TODO の一覧を取得",
-  description: "現在の TODO 一覧を ID、タイトル、完了状態とともに取得します。",
+  title: "Get the list of TODOs",
+  description: "Returns the current list of TODOs with their ID, title, and completion state.",
   inputSchema: { type: "object", properties: {}, additionalProperties: false },
   annotations: { readOnlyHint: true },
   execute: async () => ({ count: todos.length, todos }),
 });
 ```
 
-ただし、`readOnlyHint` はあくまでヒントであり、その動作を保証するものではありません。悪意がある Web ページは、読み取り専用と宣言していても状態を変更する処理を実行する可能性があります。
+That said, `readOnlyHint` is only a hint and does not guarantee the behavior. A malicious web page could declare a tool read-only yet still run code that changes state.
 
-実際に Web ページに登録されているツールの一覧は、Chrome DevTools の Application パネルの WebMCP から確認できます。
+You can inspect the tools actually registered on a web page from the WebMCP section of the Application panel in Chrome DevTools.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/6z2ksFEyq6nK4NCkf14Kvi/545330a2636ca8ca7734868b1c1b3df6/image.png)
 
-ツールを選択して「ツールを実行」を引数を入力して実行することでツールのデバッグも可能です。
+You can also debug a tool by selecting it, entering arguments, and clicking "Run tool".
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/3vZu2R6dhT5bIBQLGoS3QO/a4373ebb50d281a6bfac6b05a6a3a173/image.png)
 
-WebMCP のツールは現在開いているページに結びつくため、エージェントはユーザーと同じ画面、ページの状態、ログインセッションを使って操作します。これにより人間と AI が同じ画面を見ながら共同で作業を行うことが可能になります。また、既存のログインセッションを使うため、AI が操作を行うために新たな認証の仕組みを導入する必要がないという点もメリットの 1 つと言えるでしょう。
+Because WebMCP tools are bound to the page that is currently open, the agent operates using the same screen, page state, and login session as the user. This makes it possible for a human and an AI to work together while looking at the same screen. And because it reuses the existing login session, there is no need to introduce a new authentication mechanism just so the AI can act, which is another benefit.
 
-この記事で使用する TODO アプリの全コードは次のとおりです。TODO は `localStorage` に保存し、`list_todos`・`add_todo`・`complete_todo`・`delete_todo` の 4 つのツールを登録します。
+Here is the full code of the TODO app used in this article. TODOs are stored in `localStorage`, and four tools are registered: `list_todos`, `add_todo`, `complete_todo`, and `delete_todo`.
 
 <details>
-<summary>TODO アプリの全コード（<code>index.html</code> / <code>app.js</code>）</summary>
+<summary>Full code of the TODO app (<code>index.html</code> / <code>app.js</code>)</summary>
 
 ```html:index.html
 <!doctype html>
@@ -182,15 +180,15 @@ function saveTodos() {
 
 function addTodo(title) {
   if (typeof title !== "string") {
-    throw new TypeError("TODO のタイトルは文字列で指定してください。");
+    throw new TypeError("The TODO title must be a string.");
   }
 
   const normalizedTitle = title.trim();
   if (!normalizedTitle) {
-    throw new Error("TODO のタイトルを入力してください。");
+    throw new Error("Please enter a TODO title.");
   }
   if (normalizedTitle.length > 200) {
-    throw new Error("TODO のタイトルは 200 文字以内で入力してください。");
+    throw new Error("The TODO title must be 200 characters or fewer.");
   }
 
   const todo = {
@@ -206,7 +204,7 @@ function addTodo(title) {
 function updateTodo(id, completed) {
   const todo = todos.find((item) => item.id === id);
   if (!todo) {
-    throw new Error(`ID が ${id} の TODO は見つかりません。`);
+    throw new Error(`No TODO found with ID ${id}.`);
   }
 
   todo.completed = completed;
@@ -217,7 +215,7 @@ function updateTodo(id, completed) {
 function deleteTodo(id) {
   const index = todos.findIndex((item) => item.id === id);
   if (index === -1) {
-    throw new Error(`ID が ${id} の TODO は見つかりません。`);
+    throw new Error(`No TODO found with ID ${id}.`);
   }
 
   const [deletedTodo] = todos.splice(index, 1);
@@ -266,16 +264,16 @@ form.addEventListener("submit", (event) => {
 
 async function registerWebMCPTools() {
   if (typeof document.modelContext?.registerTool !== "function") {
-    console.info("このブラウザでは WebMCP を利用できません。");
+    console.info("WebMCP is not available in this browser.");
     return;
   }
 
   const tools = [
     {
       name: "list_todos",
-      title: "TODO の一覧を取得",
+      title: "Get the list of TODOs",
       description:
-        "現在の TODO 一覧を ID、タイトル、完了状態とともに取得します。更新や削除の対象 ID が不明な場合は、先にこのツールを呼び出してください。",
+        "Returns the current list of TODOs with their ID, title, and completion state. If you do not know the target ID for an update or delete, call this tool first.",
       inputSchema: {
         type: "object",
         properties: {},
@@ -286,14 +284,14 @@ async function registerWebMCPTools() {
     },
     {
       name: "add_todo",
-      title: "TODO を追加",
-      description: "新しい未完了の TODO を 1 件追加します。",
+      title: "Add a TODO",
+      description: "Adds a single new, incomplete TODO.",
       inputSchema: {
         type: "object",
         properties: {
           title: {
             type: "string",
-            description: "追加する TODO のタイトル",
+            description: "Title of the TODO to add",
             minLength: 1,
             maxLength: 200,
           },
@@ -303,20 +301,20 @@ async function registerWebMCPTools() {
       },
       execute: async ({ title }) => {
         const todo = addTodo(title);
-        return { message: `「${todo.title}」を追加しました。`, todo };
+        return { message: `Added "${todo.title}".`, todo };
       },
     },
     {
       name: "complete_todo",
-      title: "TODO を完了",
+      title: "Complete a TODO",
       description:
-        "指定した ID の TODO を完了状態に変更します。ID が不明な場合は list_todos を先に呼び出してください。",
+        "Marks the TODO with the given ID as completed. If you do not know the ID, call list_todos first.",
       inputSchema: {
         type: "object",
         properties: {
           id: {
             type: "string",
-            description: "完了にする TODO の ID",
+            description: "ID of the TODO to complete",
           },
         },
         required: ["id"],
@@ -324,20 +322,20 @@ async function registerWebMCPTools() {
       },
       execute: async ({ id }) => {
         const todo = updateTodo(id, true);
-        return { message: `「${todo.title}」を完了にしました。`, todo };
+        return { message: `Marked "${todo.title}" as completed.`, todo };
       },
     },
     {
       name: "delete_todo",
-      title: "TODO を削除",
+      title: "Delete a TODO",
       description:
-        "指定した ID の TODO をブラウザのローカルデータから削除します。ID が不明な場合は list_todos を先に呼び出してください。",
+        "Deletes the TODO with the given ID from the browser's local data. If you do not know the ID, call list_todos first.",
       inputSchema: {
         type: "object",
         properties: {
           id: {
             type: "string",
-            description: "削除する TODO の ID",
+            description: "ID of the TODO to delete",
           },
         },
         required: ["id"],
@@ -345,7 +343,7 @@ async function registerWebMCPTools() {
       },
       execute: async ({ id }) => {
         const todo = deleteTodo(id);
-        return { message: `「${todo.title}」を削除しました。`, todo };
+        return { message: `Deleted "${todo.title}".`, todo };
       },
     },
   ];
@@ -357,41 +355,41 @@ async function registerWebMCPTools() {
 
 renderTodos();
 registerWebMCPTools().catch((error) => {
-  console.error("WebMCP ツールの登録に失敗しました。", error);
+  console.error("Failed to register WebMCP tools.", error);
 });
 ```
 
 </details>
 
-## ChatGPT デスクトップの Site tools
+## Site tools in ChatGPT desktop
 
-ChatGPT では WebMCP の規格を実装したものを [Site tools](https://learn.chatgpt.com/docs/webmcp) と呼びます。ChatGPT デスクトップの内蔵ブラウザで WebMCP 対応ページを開くと、エージェントは利用可能な操作を検出して呼び出すことができます。
+ChatGPT calls its implementation of the WebMCP spec [Site tools](https://learn.chatgpt.com/docs/webmcp). When you open a WebMCP-enabled page in the built-in browser of ChatGPT desktop, the agent can detect and call the available operations.
 
 :::warning
-現時点で WebMCP を使用するには GPT-5.6 Sol または GPT-5.6 Terra が必要です。GPT-5.6 Luna では WebMCP が無効になっています。
+At present, using WebMCP requires GPT-5.6 Sol or GPT-5.6 Terra. WebMCP is disabled for GPT-5.6 Luna.
 :::
 
-ChatGPT デスクトップを最新バージョンに更新し、設定画面を開いて「ブラウザ」→「サイトツールを有効にする」がオンになっていることを確認してください。
+Update ChatGPT desktop to the latest version, open Settings, and confirm that "Browser" → "Enable site tools" is turned on.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/3BtpQsGUoFVbjXLureq6tt/0c5212f9b415b3de9931c7500d2243f6/image.png)
 
-内蔵ブラウザのアドレスバーにあるサイトツールのアイコンをクリックすると、ページが公開しているツールを確認できます。ツールが呼び出された後は、「最近使用したツール」から最近の呼び出しも確認できます。
+Clicking the site tools icon in the built-in browser's address bar shows the tools the page exposes. After a tool has been called, you can also review recent invocations under "Recently used tools".
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/7wwkvMuWqGA38KlgxOAwkw/042e788355f79f9844f798a1bfe08ca5/image.png)
 
-## Codex から TODO アプリを操作する
+## Operating the TODO app from Codex
 
-それでは実際に、Codex から TODO アプリを操作してみましょう。
+Now let's actually operate the TODO app from Codex.
 
-### TODO を追加する
+### Adding TODOs
 
-まず、内蔵ブラウザで TODO アプリのページを開き、以下のように依頼しました。
+First, I opened the TODO app page in the built-in browser and made the following request:
 
 ```txt
-http://localhost:4173/ を開いて TODO に牛乳を買う、請求書を送るを追加して
+Open http://localhost:4173/ and add "buy milk" and "send the invoice" to the TODOs
 ```
 
-まずは ChatGPT デスクトップ内蔵ツールの `webmcp_list_tools` を呼び出して、ページが公開しているツールの一覧を取得しているようです。
+It appears that Codex first calls the ChatGPT desktop built-in tool `webmcp_list_tools` to retrieve the list of tools the page exposes.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/6ExKdb5JfIiI4dj64WzhHN/ec9c86a54e34ebd65c5c8fe943ae5674/image.png)
 
@@ -483,7 +481,7 @@ http://localhost:4173/ を開いて TODO に牛乳を買う、請求書を送る
 }
 ```
 
-ツールの一覧から `add_todo` を選び実行してる様子も確認できます。
+You can also see it pick `add_todo` from the tool list and run it.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/3zNG6sFJJdKvcLPt1gbfzP/1ada936a1fe662a97d01b400e3daeefe/image.png)
 
@@ -516,19 +514,19 @@ http://localhost:4173/ を開いて TODO に牛乳を買う、請求書を送る
 ]
 ```
 
-内蔵ブラウザで開いている TODO リストにも 2 件が追加されていることを確認できます。
+You can confirm that the two items were also added to the TODO list open in the built-in browser.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/1nuAjMmvGPGUzWsyGHphjR/8a9b5f02a35c6d4e71dde4a1b359c4b5/image.png)
 
-### 一覧から対象を選んで完了する
+### Picking a target from the list and completing it
 
-続いて、TODO を完了にする依頼をしました。
+Next, I asked it to mark a TODO as completed.
 
 ```txt
-買い物の TODO を完了にして
+Mark the shopping TODO as completed
 ```
 
-Codex はまず読み取り専用の `list_todos` を呼び出しました。戻り値に含まれるタイトルから「牛乳を買う」を買い物の TODO と判断し、その UUID を `complete_todo` へ渡しています。
+Codex first called the read-only `list_todos`. From the titles in the return value, it decided that "buy milk" was the shopping TODO and passed its UUID to `complete_todo`.
 
 ```json
 [
@@ -566,25 +564,25 @@ Codex はまず読み取り専用の `list_todos` を呼び出しました。戻
 ]
 ```
 
-### 削除の直前には確認が求められた
+### A confirmation was required right before the delete
 
-最後に以下のように TODO の削除を依頼しました。
+Finally, I asked it to delete a TODO, as follows.
 
 ```txt
-完了済みの TODO を削除して
+Delete the completed TODOs
 ```
 
-Codex は削除対象を決めた後、`delete_todo` を呼び出す前に「牛乳を買う」というローカルデータを削除してよいか、会話上で確認を求めてきました。
+After deciding what to delete, and before calling `delete_todo`, Codex asked in the conversation whether it was OK to delete the local data for "buy milk".
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/12S2IAeYB8hfcV5FXguCzM/106b4c98a650af5cab838952a1d923b0/image.png)
 
-これは ChatGPT の安全性レビューと確認ポリシーによるものです。ChatGPT の公式ドキュメントでは、内蔵ブラウザが各ツールを呼び出す前に安全性レビューへ通し、削除・購入・メッセージ送信・権限変更などには通常の確認ポリシーが適用されると説明されています。
+This is due to ChatGPT's safety review and confirmation policy. ChatGPT's official documentation explains that the built-in browser runs a safety review before invoking each tool, and that the normal confirmation policy applies to actions such as deleting, purchasing, sending messages, and changing permissions.
 
 :::warning
-これらのチェックはリスクを軽減するものであり、ウェブサイトやその出力の信頼性を保証するものではありません。ツールの説明や `readonly` アノテーションは必ずしも正しいとは限らないことに注意してください。
+These checks reduce risk; they do not guarantee the trustworthiness of a website or its output. Keep in mind that a tool's description and its `readonly` annotation are not necessarily accurate.
 :::
 
-承認後、Codex は `list_todos` で最新の状態を再取得してから `delete_todo` を呼び出しました。
+After approval, Codex re-fetched the latest state with `list_todos` and then called `delete_todo`.
 
 ```json
 [
@@ -622,18 +620,18 @@ Codex は削除対象を決めた後、`delete_todo` を呼び出す前に「牛
 ]
 ```
 
-## まとめ
+## Conclusion
 
-- ChatGPT デスクトップの Codex は、内蔵ブラウザで開いたページの WebMCP ツールを Site tools として発見・実行できる
-- 現行の WebMCP では `document.modelContext.registerTool()` を使い、既存の UI と同じアプリケーションロジックをツールから呼び出す
-- Codex はツールの一覧から目的に合うものを選び、引数を入力して呼び出した
-- 削除では対象が確定した実行直前に確認が求められた
+- Codex in ChatGPT desktop can discover and run the WebMCP tools of a page opened in the built-in browser as Site tools.
+- In the current WebMCP, you use `document.modelContext.registerTool()` and call the same application logic from the tool as the existing UI does.
+- Codex picked the tool that fit the goal from the tool list, filled in the arguments, and called it.
+- For deletion, a confirmation was required right before execution, once the target had been determined.
 
-## 参考
+## References
 
 - [Site tools - OpenAI Docs](https://learn.chatgpt.com/docs/webmcp)
 - [ChatGPT & Codex changelog - OpenAI Docs](https://learn.chatgpt.com/docs/changelog#codex-2026-08-25-browser)
 - [WebMCP Draft Community Group Report](https://webmachinelearning.github.io/webmcp/)
-- [WebMCP ツールをデバッグする  |  Chrome DevTools  |  Chrome for Developers](https://developer.chrome.com/docs/devtools/application/webmcp?hl=ja)
+- [Debug WebMCP tools  |  Chrome DevTools  |  Chrome for Developers](https://developer.chrome.com/docs/devtools/application/webmcp?hl=en)
 - [webmachinelearning/webmcp](https://github.com/webmachinelearning/webmcp)
 - [Imperative API - Chrome for Developers](https://developer.chrome.com/docs/ai/webmcp/imperative-api)
