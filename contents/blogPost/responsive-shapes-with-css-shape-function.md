@@ -54,10 +54,8 @@ selfAssessment:
         - text: "水平線"
           correct: false
           explanation: "水平線を描く命令は `hline` です。制御点を持つ `curve` とは役割が異なります。"
-
 published: true
 ---
-
 b> shape-function
 
 カードや画像を吹き出しのような形に切り抜きたい場合、CSS の [`clip-path`](https://www.w3.org/TR/css-masking-1/#the-clip-path) プロパティを使用できます。例えば、正方形の画像へ `circle(50%)` を指定すると、画像の中心を基準とした円形に切り抜けます。

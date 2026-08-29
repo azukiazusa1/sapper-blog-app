@@ -54,10 +54,8 @@ selfAssessment:
         - text: "A horizontal line"
           correct: false
           explanation: "Horizontal lines are drawn with `hline`, which plays a different role from `curve` and its control points."
-
 published: true
 ---
-
 b> shape-function
 
 When you want to clip a card or an image into a shape such as a speech bubble, you can use the CSS [`clip-path`](https://www.w3.org/TR/css-masking-1/#the-clip-path) property. For example, applying `circle(50%)` to a square image clips it into a circle centered on the image.
