@@ -54,10 +54,8 @@ selfAssessment:
         - text: "vite-plugin-devtools-json を Vite の plugins に追加する"
           correct: true
           explanation: "記事では Chrome DevTools チームの vite-plugin-devtools-json をインストールし、Vite 設定へ追加する方法を紹介しています。"
-
 published: true
 ---
-
 フロントエンドの開発をしているとき、開発サーバーのログで以下のような覚えのないリクエストが記録されているのを見たことがあるのではないでしょうか？
 
 ```txt

@@ -54,10 +54,8 @@ selfAssessment:
         - text: "Add vite-plugin-devtools-json to Vite's plugins array"
           correct: true
           explanation: "The article shows how to install the Chrome DevTools team's vite-plugin-devtools-json and add it to the Vite config."
-
 published: true
 ---
-
 If you do frontend development, you have probably noticed an unfamiliar request like this in your dev server logs:
 
 ```txt
