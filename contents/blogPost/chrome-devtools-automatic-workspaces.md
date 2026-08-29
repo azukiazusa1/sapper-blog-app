@@ -45,7 +45,7 @@ selfAssessment:
         - text: "Vite の server.fs.strict を false にする"
           correct: false
           explanation: "記事では server.fs.strict の変更を紹介していません。これは Workspace の JSON を生成する設定ではありません。"
-        - text: "特に対応する必要はなく、Vite は既定で JSON を返す"
+        - text: "特に対応する必要はなく、Vite はデフォルトで JSON を返す"
           correct: false
           explanation: "記事では Vite 本体は JSON を返さないと説明しています。専用プラグインを追加する必要があります。"
         - text: "public に空の com.chrome.devtools.json を置く"
@@ -95,7 +95,7 @@ DevTools がこの JSON を取得しようとするのは、検証している�
 
 Automatic Workspace Folders は Chrome 135 で追加されました。当初は試験運用のためフラグが必要でしたが、プロジェクト設定の取得は Chrome 136、自動的なファイルシステム接続は Chrome 137 から既定で有効になりました。古い記事にある `chrome://flags` の変更は、現在の Chrome では不要です。
 
-この機能が解決するのは、従来の Workspace 設定が見つけづらく、プロジェクトや別の checkout を開くたびにフォルダを手動で追加・削除する必要があったという問題です。開発サーバーが現在のプロジェクトを通知することで、DevTools はページを開いている間だけ対応するフォルダを接続できます。
+従来の Workspace 設定が見つけづらく、プロジェクトを開くたびにフォルダを手動で追加・削除する必要があったという問題がありました。Automatic Workspace Folders により開発サーバーが現在のプロジェクトを通知することで、DevTools はページを開いている間だけ対応するフォルダを接続できます。
 
 ## `com.chrome.devtools.json` の内容
 
@@ -269,7 +269,7 @@ Vite 本体へ組み込む案も[議論されました](https://github.com/vitej
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/1WJyzGQh3uLTB94gvuw4Zx/0616ad04f835dc032b3244f5ece9d5d2/image.png)
 
-## Next.js は開発サーバーが既定で応答する
+## Next.js は開発サーバーがデフォルトで応答する
 
 Next.js は [PR #80260](https://github.com/vercel/next.js/pull/80260) で、開発サーバーが `com.chrome.devtools.json` を返す処理を追加しました。この変更は `15.4.0-canary.76` から入り、安定版では `15.4.1` 以降に含まれています。`15.4.0` は PR がマージされる前に公開されているため、このエンドポイントを持っていない点に注意してください。
 
@@ -287,7 +287,7 @@ Next.js の場合も同様に、DevTools で React コンポーネントを編�
 - Workspace を利用しない開発サーバーが 404 を返しても、通常は無害であり対応する必要はない
 - 有効な `root` と安定した UUID を返すと、Workspace の接続候補が DevTools に表示される
 - ユーザーの許可後に DevTools から HTML、CSS、JavaScript をローカルファイルへ保存できる
-- Vite では `vite-plugin-devtools-json` を追加でき、Next.js 15.4.1 以降の開発サーバーは既定でエンドポイントを提供する
+- Vite では `vite-plugin-devtools-json` を追加でき、Next.js 15.4.1 以降の開発サーバーはデフォルトでエンドポイントを提供する
 - 絶対パスの漏えいを防ぐため、`com.chrome.devtools.json` はローカル開発時だけ配信する
 
 ## 参考
