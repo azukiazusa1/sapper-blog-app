@@ -54,10 +54,8 @@ selfAssessment:
         - text: "It automatically switches to build-time compilation"
           correct: false
           explanation: "z.compile() is not a feature that switches to another approach at build time. When in-process code generation is rejected, it falls back to the standard parser."
-
 published: true
 ---
-
 When you validate data received from a Web API request or an external file with Zod, it normally parses the input by walking the structure of your schema. This approach is easy to work with and gives you detailed errors, but in code that uses the same complex schema over and over, the execution time can become significant.
 
 Zod 4.5 adds [`z.compile()`](https://zod.dev/compile), which generates a JavaScript function specialized for validating a given schema. A compiled schema keeps the same API, types, and errors as a regular schema while processing valid input faster.
