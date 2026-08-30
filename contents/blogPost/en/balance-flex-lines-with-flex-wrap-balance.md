@@ -40,10 +40,8 @@ selfAssessment:
         - text: "It hides every flex item from the second line onward"
           correct: false
           explanation: "`flex-line-count` is not a property for truncating what's displayed; it is used when distributing flex items across lines."
-
 published: true
 ---
-
 b> flexbox-flex-wrap-balance
 
 When you lay out tags or navigation items in a row with Flexbox, you reach for `flex-wrap: wrap` so that items which don't fit in the container move to the next line. Normal wrapping packs as many items as possible onto each preceding line, though, which can leave a single item stranded on the last line. And when that lone item stretches to fill the container thanks to `flex-grow`, the size difference against the items on the other lines becomes hard to miss.
