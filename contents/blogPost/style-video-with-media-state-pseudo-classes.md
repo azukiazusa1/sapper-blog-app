@@ -7,8 +7,8 @@ createdAt: "2026-09-01T20:00+09:00"
 updatedAt: "2026-09-01T20:00+09:00"
 tags: ["CSS", "HTML"]
 thumbnail:
-  title: "リュウグウノツカイのイラスト"
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5wVZWwTOMdxu4k3IASoptL/62956f32b247f1b009c8c3b68232b3e4/ryugunotsukai_17496-768x542.png"
+  title: "リュウグウノツカイのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "ページから音量を変更できない環境でのみ一致する"
           correct: false
           explanation: "ページから音量を変更できない状態を表すのは `:volume-locked` です。"
-
 published: true
 ---
-
 b> media-pseudos
 
 `<video>` 要素の再生状態に応じて、動画プレイヤーの見た目を変えたい場合があります。例えば YouTube では再生中かどうかで再生ボタンの表示を切り替えたり、ミュート状態では音声のアイコンを変えたりしています。従来は `play`、`pause`、`volumechange` などのイベントを監視し、CSS から参照するクラスを JavaScript で付け替える方法が使われてきました。

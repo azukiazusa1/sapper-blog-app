@@ -7,8 +7,8 @@ createdAt: "2026-09-01T20:00+09:00"
 updatedAt: "2026-09-01T20:00+09:00"
 tags: ["CSS", "HTML"]
 thumbnail:
-  title: "リュウグウノツカイのイラスト"
   url: "https://images.ctfassets.net/in6v9lxmm5c8/5wVZWwTOMdxu4k3IASoptL/62956f32b247f1b009c8c3b68232b3e4/ryugunotsukai_17496-768x542.png"
+  title: "リュウグウノツカイのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "It only matches in environments where the page cannot change the volume"
           correct: false
           explanation: "`:volume-locked` is what represents a state where the page cannot change the volume."
-
 published: true
 ---
-
 b> media-pseudos
 
 Sometimes you want the appearance of a video player to change with the playback state of its `<video>` element. YouTube, for example, swaps the play button depending on whether the video is playing, and changes the audio icon when it is muted. The traditional approach has been to listen for events such as `play`, `pause`, and `volumechange`, and use JavaScript to toggle the classes that CSS refers to.
