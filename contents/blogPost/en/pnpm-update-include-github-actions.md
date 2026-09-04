@@ -40,10 +40,8 @@ selfAssessment:
         - text: "`pnpm outdated --include-github-actions`"
           correct: false
           explanation: "`pnpm outdated` displays update candidates, but it does not rewrite workflows."
-
 published: true
 ---
-
 In GitHub Actions workflows, you specify the version of an Action with the `uses` key, as shown below. For security reasons, pinning to a full commit SHA rather than a tag is recommended.
 
 ```yaml:.github/workflows/ci.yml

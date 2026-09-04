@@ -40,10 +40,8 @@ selfAssessment:
         - text: "`pnpm outdated --include-github-actions`"
           correct: false
           explanation: "`pnpm outdated` は更新候補を表示しますが、ワークフローを書き換えません。"
-
 published: true
 ---
-
 GitHub Actions のワークフローでは、以下のように `uses` キーで Action のバージョンを指定します。セキュリティ上の理由から、タグではなく完全なコミット SHA に固定することが推奨されています。
 
 ```yaml:.github/workflows/ci.yml
