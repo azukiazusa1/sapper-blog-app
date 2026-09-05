@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "point.datum is not a coordinate-only shape; it keeps the original Sale or Campaign row."
 published: true
 ---
-
 There are already many libraries for displaying charts in web applications, including Chart.js, Recharts, D3, and Observable Plot. If you have implemented a basic line or bar chart before, you have probably used one of them.
 
 However, using a chart as an application feature over time requires more than drawing data as lines and bars. The chart must work with application state and lifecycle concerns such as resizing when a sidebar opens or closes, navigating with the selected data, and adding annotations from a different dataset. The API used to describe these operations, and how much responsibility the library assumes, differ from one library to another.
