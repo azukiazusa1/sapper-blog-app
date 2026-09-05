@@ -25,7 +25,7 @@ selfAssessment:
           explanation: "You pass your original data to each mark, and the chart definition is independent of React."
         - text: "A design where an in-browser AI inspects the data and picks a suitable chart"
           correct: false
-          explanation: "Exploring data and choosing a chart are not the runtime's responsibility. The emphasis is on ordinary typed code that is easy to generate and modify."
+          explanation: "Exploring data and choosing a chart are not the runtime's responsibility."
     - question: "In the sample that shows revenue and campaigns on the same chart, how are the two arrays handled?"
       answers:
         - text: "The campaign names are joined onto the revenue array, which is then passed to every mark"
