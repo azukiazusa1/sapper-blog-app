@@ -56,31 +56,51 @@ function escapeHtmlAttribute(unsafe: string): string {
     .replace(/'/g, "&#039;");
 }
 
+/**
+ * `!v(url)` または `!v(url 1280x720)` にマッチする。
+ * 寸法は省略可能だが、指定するとレイアウトシフトを防げるため
+ * アップロード CLI は常に付与する。
+ */
+const videoPattern = /!v\(([^\s)]+)(?:\s+(\d+)x(\d+))?\)/g;
+
+/**
+ * 自動再生はしない。GIF を避ける理由が「読者が停止できない」ことなので、
+ * 自動再生を入れると同じ問題を再生産してしまう。
+ *
+ * - preload="metadata": 本体を先読みせず、先頭フレームだけ見せる
+ * - playsinline: iPhone で再生時にフルスクリーンへ乗っ取られるのを防ぐ
+ */
+function buildVideoTag(
+  rawUrl: string,
+  width?: string,
+  height?: string,
+): string | null {
+  if (!isValidVideoUrl(rawUrl)) {
+    return null;
+  }
+
+  const escapedUrl = escapeHtmlAttribute(decodeHtmlEntities(rawUrl));
+  const size = width && height ? ` width="${width}" height="${height}"` : "";
+
+  return `<video src="${escapedUrl}"${size} controls preload="metadata" playsinline></video>`;
+}
+
 const remarkVideo: Plugin = () => {
   return (tree) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     visit(tree, "text", (node: any) => {
       if (!node.value) return;
 
-      // Match the pattern !v(url)
-      const videoPattern = /!v\(([^)]+)\)/g;
       const matches = [...node.value.matchAll(videoPattern)];
 
       if (matches.length === 0) return;
 
       // If the text node contains only the video pattern, replace the entire node
       if (matches.length === 1 && node.value.trim() === matches[0][0]) {
-        const rawUrl = matches[0][1];
+        const html = buildVideoTag(matches[0][1], matches[0][2], matches[0][3]);
 
-        // Validate URL for security
-        if (!isValidVideoUrl(rawUrl)) {
-          return; // Skip invalid URLs, leave original text
-        }
-
-        // Decode HTML entities for the final URL and then escape for HTML attributes
-        const decodedUrl = decodeHtmlEntities(rawUrl);
-        const escapedUrl = escapeHtmlAttribute(decodedUrl);
-        const html = `<video src="${escapedUrl}" controls></video>`;
+        // Skip invalid URLs, leave original text
+        if (!html) return;
 
         node.type = "html";
         node.value = html;
@@ -91,17 +111,11 @@ const remarkVideo: Plugin = () => {
       // If there are multiple patterns or mixed content, split the text
       let newValue = node.value;
       for (const match of matches) {
-        const rawUrl = match[1];
+        const html = buildVideoTag(match[1], match[2], match[3]);
 
-        // Validate URL for security
-        if (!isValidVideoUrl(rawUrl)) {
-          continue; // Skip invalid URLs, leave original pattern
-        }
+        // Skip invalid URLs, leave original pattern
+        if (!html) continue;
 
-        // Decode HTML entities for the final URL and then escape for HTML attributes
-        const decodedUrl = decodeHtmlEntities(rawUrl);
-        const escapedUrl = escapeHtmlAttribute(decodedUrl);
-        const html = `<video src="${escapedUrl}" controls></video>`;
         newValue = newValue.replace(match[0], html);
       }
 

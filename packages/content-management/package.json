@@ -16,6 +16,7 @@
     "sync": "tsx src/commands/sync.ts",
     "update": "tsx src/commands/update.ts",
     "new": "tsx src/commands/new.ts",
+    "upload:media": "tsx src/commands/upload-media.ts",
     "validate": "tsx src/commands/validate.ts",
     "recap": "tsx src/commands/recap.ts"
   },
