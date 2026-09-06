@@ -85,8 +85,60 @@ function buildVideoTag(
   return `<video src="${escapedUrl}"${size} controls preload="metadata" playsinline></video>`;
 }
 
+/**
+ * `!v(` の直後に続く自動リンクの末尾。`)` か ` 1280x720)` にマッチする
+ */
+const AUTOLINKED_TAIL = /^(?:\s+(\d+)x(\d+))?\)/;
+
+const VIDEO_PREFIX = "!v(";
+
+/**
+ * remark-gfm の autolink literal は micromark の拡張としてパース時に効くため、
+ * プラグインの適用順に関係なく `!v(https://...)` の URL が link ノードになり、
+ * テキストノードが `!v(` / link / ` 1280x720)` の 3 つに割れる。
+ * 割れた並びを 1 つの video 要素へ畳み直す。
+ */
+const collapseAutolinkedVideos = (tree: unknown) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  visit(tree as any, (node: any) => {
+    if (!Array.isArray(node.children)) return;
+
+    for (let index = 0; index < node.children.length - 2; index++) {
+      const head = node.children[index];
+      const link = node.children[index + 1];
+      const tail = node.children[index + 2];
+
+      if (
+        head?.type !== "text" ||
+        typeof head.value !== "string" ||
+        !head.value.endsWith(VIDEO_PREFIX)
+      ) {
+        continue;
+      }
+
+      if (link?.type !== "link" || typeof link.url !== "string") continue;
+      if (tail?.type !== "text" || typeof tail.value !== "string") continue;
+
+      const match = AUTOLINKED_TAIL.exec(tail.value);
+
+      if (!match) continue;
+
+      const html = buildVideoTag(link.url, match[1], match[2]);
+
+      // 不正な URL はそのまま残す
+      if (!html) continue;
+
+      head.value = head.value.slice(0, -VIDEO_PREFIX.length);
+      tail.value = tail.value.slice(match[0].length);
+      node.children[index + 1] = { type: "html", value: html };
+    }
+  });
+};
+
 const remarkVideo: Plugin = () => {
   return (tree) => {
+    collapseAutolinkedVideos(tree);
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     visit(tree, "text", (node: any) => {
       if (!node.value) return;
