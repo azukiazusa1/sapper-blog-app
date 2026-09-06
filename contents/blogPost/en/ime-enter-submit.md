@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "Switching to keyup does not make it possible to tell whether the key press came from confirming a conversion."
 published: true
 ---
-
 When you implement "press Enter to send a message" in a chat UI, you need to account for users who type through an IME. In languages such as Japanese and Chinese, text is assembled by picking a conversion candidate and then confirming it with the Enter key. If you submit on `event.key === "Enter"` alone, the user presses Enter intending to confirm the text, and a half-written message gets sent instead.
 
 !v(https://videos.ctfassets.net/in6v9lxmm5c8/2PwLZE8dzwixEuoNf1cpSy/07cc88ad3df13884ccbb665917df1bec/ime-enter-submit-3.mp4 482x176)
