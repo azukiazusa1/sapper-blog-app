@@ -66,7 +66,7 @@ If `isComposing` already expresses whether the IME is mid-conversion, why check 
 
 ## The Enter Key Confirms IME Conversions, Not Just Submissions
 
-An IME (Input Method Editor) is a mechanism for entering characters such as Japanese by combining key presses. For instance, you type「にほんご」(*nihongo*, spelled out phonetically), pick the candidate「日本語」(the word written in kanji), and confirm it with the Enter key.
+An IME (Input Method Editor) is a mechanism for entering characters such as Japanese by combining key presses. For instance, you type *nihongo* phonetically in kana, pick the kanji candidate for it from the list the IME offers, and confirm that candidate with the Enter key.
 
 Browsers treat this kind of text assembly as a composition session. The [UI Events specification](https://w3c.github.io/uievents/#events-compositionevents) defines the following events.
 
