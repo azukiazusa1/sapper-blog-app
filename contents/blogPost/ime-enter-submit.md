@@ -44,7 +44,7 @@ published: true
 ---
 チャット UI などで Enter キーを押したらメッセージを送信する機能を実装するとき、IME を利用するユーザーへの配慮が必要です。日本語や中国語などの入力では、文字を組み立てるために変換候補を選んでから Enter キーで確定します。単純に `event.key === "Enter"` だけで送信すると、ユーザーは文字を確定したつもりなのに、書きかけのメッセージが送られてしまいます。
 
-!v(https://videos.ctfassets.net/in6v9lxmm5c8/2PwLZE8dzwixEuoNf1cpSy/07cc88ad3df13884ccbb665917df1bec/ime-enter-submit-3.mp4 482x176)
+<video src="https://videos.ctfassets.net/in6v9lxmm5c8/2PwLZE8dzwixEuoNf1cpSy/07cc88ad3df13884ccbb665917df1bec/ime-enter-submit-3.mp4" controls></video>
 
 変換を確定するつもりで押した Enter キーによって、書きかけのメッセージがそのまま送信されてしまっています。
 
