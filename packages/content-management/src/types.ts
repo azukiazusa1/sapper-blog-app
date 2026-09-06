@@ -31,11 +31,68 @@ export const isSelfAssessment = (value: unknown): value is SelfAssessment => {
   return selfAssessmentSchema.safeParse(value).success;
 };
 
+/**
+ * 本文中の Markdown 画像 `![alt](url)` と動画 `!v(url)` の参照先を取り出す
+ */
+const IMAGE_REFERENCE = /!\[[^\]]*\]\(\s*([^)\s]+)/g;
+const VIDEO_REFERENCE = /!v\(\s*([^)\s]+)/g;
+
+/** 既存記事は `//images.ctfassets.net/...` のプロトコル相対 URL も使っている */
+const isRemoteImage = (url: string) => /^(?:https?:)?\/\//.test(url);
+
+/** remark-video は new URL() で検証するため、プロトコル相対 URL は再生できない */
+const isRemoteVideo = (url: string) => /^https?:\/\//.test(url);
+
+/**
+ * アップロードされずに残ったローカルの画像・動画参照を集める。
+ *
+ * 執筆中の Markdown には Zed が貼り付けた `![](image_1.png)` や、
+ * 手で置いた `!v(recording.mov)` のようなローカルパスが入る。
+ * 公開時にこれが残ると Contentful 側の本文が壊れるため、
+ * published: true の記事でだけ弾く。
+ */
+const findLocalMediaReferences = (article: string): string[] => {
+  const references: string[] = [];
+
+  for (const [, url] of article.matchAll(IMAGE_REFERENCE)) {
+    if (url && !isRemoteImage(url)) {
+      references.push(url);
+    }
+  }
+
+  for (const [, url] of article.matchAll(VIDEO_REFERENCE)) {
+    if (url && !isRemoteVideo(url)) {
+      references.push(url);
+    }
+  }
+
+  return references;
+};
+
+const publishedArticleSchema = z
+  .string()
+  .max(50000)
+  .superRefine((article, ctx) => {
+    const references = findLocalMediaReferences(article);
+
+    if (references.length === 0) {
+      return;
+    }
+
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message:
+        "アップロードされていないローカルの画像・動画が残っています: " +
+        references.join(", ") +
+        "。npm run upload:media -w=packages/content-management -- <記事 ID> を実行してください。",
+    });
+  });
+
 export const BlogPostSchema = z.discriminatedUnion("published", [
   z.object({
     id: z.string(),
     about: z.string().max(255),
-    article: z.string().max(50000),
+    article: publishedArticleSchema,
     createdAt: z
       .string()
       .refine((v) => new Date(v).toString() !== "Invalid Date"),

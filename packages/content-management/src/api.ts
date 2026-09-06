@@ -1,3 +1,4 @@
+import { createReadStream } from "node:fs";
 import contentful, { MetaLinkProps } from "contentful-management";
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import slugify from "slugify";
@@ -603,4 +604,59 @@ export const getPopularPosts = async ({
     };
   });
   return popularPosts;
+};
+
+export type UploadedAsset = {
+  url: string;
+  assetId: string;
+};
+
+/**
+ * ローカルのファイルを Contentful の Asset として登録し、公開して URL を返す。
+ *
+ * Asset は publish しないと URL が 403 を返すため、必ず publish まで行う。
+ */
+export const uploadAsset = async ({
+  filePath,
+  fileName,
+  contentType,
+  title,
+}: {
+  filePath: string;
+  fileName: string;
+  contentType: string;
+  title: string;
+}): Promise<UploadedAsset> => {
+  const client = await createClient();
+
+  const asset = await client.createAssetFromFiles({
+    fields: {
+      title: { "en-US": title },
+      description: { "en-US": "" },
+      file: {
+        "en-US": {
+          contentType,
+          fileName,
+          file: createReadStream(filePath),
+        },
+      },
+    },
+  });
+
+  // 画像処理は非同期。既定の 500ms x 5 回では動画に足りないので待ち時間を伸ばす
+  const processed = await asset.processForAllLocales({
+    processingCheckWait: 2000,
+    processingCheckRetries: 30,
+  });
+
+  const published = await processed.publish();
+
+  const url = published.fields.file["en-US"]?.url;
+
+  if (!url) {
+    throw new Error(`Asset の URL を取得できませんでした: ${fileName}`);
+  }
+
+  // Contentful は "//images.ctfassets.net/..." のようなプロトコル相対 URL を返す
+  return { url: `https:${url}`, assetId: published.sys.id };
 };

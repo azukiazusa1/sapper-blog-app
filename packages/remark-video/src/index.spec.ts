@@ -20,7 +20,7 @@ describe("remark-video", () => {
       `!v(https://example.com/video.mp4)`,
     );
     expect(value.toString()).toBe(
-      `<p><video src="https://example.com/video.mp4" controls></video></p>`,
+      `<p><video src="https://example.com/video.mp4" controls preload="metadata" playsinline></video></p>`,
     );
   });
 
@@ -29,7 +29,7 @@ describe("remark-video", () => {
       `Here is a video: !v(https://example.com/video1.mp4) and another: !v(https://example.com/video2.mp4)`,
     );
     expect(value.toString()).toBe(
-      `<p>Here is a video: <video src="https://example.com/video1.mp4" controls></video> and another: <video src="https://example.com/video2.mp4" controls></video></p>`,
+      `<p>Here is a video: <video src="https://example.com/video1.mp4" controls preload="metadata" playsinline></video> and another: <video src="https://example.com/video2.mp4" controls preload="metadata" playsinline></video></p>`,
     );
   });
 
@@ -47,7 +47,7 @@ describe("remark-video", () => {
       `!v(https://example.com/video.mp4?t=30&autoplay=1)`,
     );
     expect(value.toString()).toBe(
-      `<p><video src="https://example.com/video.mp4?t=30&autoplay=1" controls></video></p>`,
+      `<p><video src="https://example.com/video.mp4?t=30&autoplay=1" controls preload="metadata" playsinline></video></p>`,
     );
   });
 
@@ -56,7 +56,7 @@ describe("remark-video", () => {
       `Check out this video: !v(https://example.com/video.mp4) - it's great!`,
     );
     expect(value.toString()).toBe(
-      `<p>Check out this video: <video src="https://example.com/video.mp4" controls></video> - it's great!</p>`,
+      `<p>Check out this video: <video src="https://example.com/video.mp4" controls preload="metadata" playsinline></video> - it's great!</p>`,
     );
   });
 
@@ -99,7 +99,7 @@ describe("remark-video", () => {
       `!v(http://example.com/video.mp4)`,
     );
     expect(value.toString()).toBe(
-      `<p><video src="http://example.com/video.mp4" controls></video></p>`,
+      `<p><video src="http://example.com/video.mp4" controls preload="metadata" playsinline></video></p>`,
     );
   });
 
@@ -108,7 +108,7 @@ describe("remark-video", () => {
       `!v(https://example.com/video.mp4)`,
     );
     expect(value.toString()).toBe(
-      `<p><video src="https://example.com/video.mp4" controls></video></p>`,
+      `<p><video src="https://example.com/video.mp4" controls preload="metadata" playsinline></video></p>`,
     );
   });
 
@@ -117,7 +117,7 @@ describe("remark-video", () => {
       `Valid: !v(https://example.com/video.mp4) Invalid: !v(javascript:alert('xss'))`,
     );
     expect(value.toString()).toBe(
-      `<p>Valid: <video src="https://example.com/video.mp4" controls></video> Invalid: !v(javascript:alert('xss'))</p>`,
+      `<p>Valid: <video src="https://example.com/video.mp4" controls preload="metadata" playsinline></video> Invalid: !v(javascript:alert('xss'))</p>`,
     );
   });
 
@@ -129,5 +129,32 @@ describe("remark-video", () => {
   test("blocks malformed URLs", async () => {
     const { value } = await processor.process(`!v(not-a-valid-url)`);
     expect(value.toString()).toBe(`<p>!v(not-a-valid-url)</p>`);
+  });
+
+  test("adds width and height when dimensions are given", async () => {
+    const { value } = await processor.process(
+      `!v(https://example.com/video.mp4 1280x720)`,
+    );
+    expect(value.toString()).toBe(
+      `<p><video src="https://example.com/video.mp4" width="1280" height="720" controls preload="metadata" playsinline></video></p>`,
+    );
+  });
+
+  test("handles dimensions in a paragraph with other content", async () => {
+    const { value } = await processor.process(
+      `Before: !v(https://example.com/video.mp4 640x480) after.`,
+    );
+    expect(value.toString()).toBe(
+      `<p>Before: <video src="https://example.com/video.mp4" width="640" height="480" controls preload="metadata" playsinline></video> after.</p>`,
+    );
+  });
+
+  test("leaves the pattern untouched when dimensions are malformed", async () => {
+    const { value } = await processor.process(
+      `!v(https://example.com/video.mp4 1280x)`,
+    );
+    expect(value.toString()).toBe(
+      `<p>!v(https://example.com/video.mp4 1280x)</p>`,
+    );
   });
 });

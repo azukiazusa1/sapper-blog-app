@@ -14,6 +14,7 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "new:article": "npm run new -w=packages/content-management",
+    "upload:media": "npm run upload:media -w=packages/content-management --",
     "test": "turbo run test",
     "generate:ogp": "npm run generate -w=packages/ogp-generator --"
   },
