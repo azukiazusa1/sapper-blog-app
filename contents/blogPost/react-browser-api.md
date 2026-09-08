@@ -8,7 +8,7 @@ updatedAt: "2026-09-08T20:05+09:00"
 tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4BrxUmBFr509uTsABXJm7N/436750624d87f22782cd82e5e2f46b2d/hamburger_fried-potato_illust_3406.png"
-  title: "ハンバーガーとフライドポテトのイラスト"
+  title: "ハンバーガーとポテトフライのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "onShellReady は最初に送れる HTML の準備ができたときの通知であり、ブラウザへ任せた理由の通知先ではありません。"
 published: true
 ---
-
 フォームの下書きを `localStorage` に保存しておき、ページを開き直したときに復元したい場面を考えてみましょう。ブラウザでのみ動くアプリなら、コンポーネントの初期化時に保存内容を安全に読み取れます。しかし、サーバーで HTML を生成する SSR（サーバーサイドレンダリング）を使っている場合、サーバーからユーザーのブラウザの `localStorage` を読むことはできないため、コンポーネントがサーバーで実行されているかブラウザで実行されているかを判定して、保存内容を読み取るタイミングを制御する必要があります。
 
 従来は `useEffect` の中で保存内容を読み取り、state を更新して表示を切り替える方法が使われていました。これは `useEffect` がサーバーでは実行されず、ブラウザでマウントされた後に実行されることを利用した方法です。

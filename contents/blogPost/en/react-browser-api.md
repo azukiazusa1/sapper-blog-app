@@ -8,7 +8,7 @@ updatedAt: "2026-09-08T20:05+09:00"
 tags: ["React"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4BrxUmBFr509uTsABXJm7N/436750624d87f22782cd82e5e2f46b2d/hamburger_fried-potato_illust_3406.png"
-  title: "ハンバーガーとフライドポテトのイラスト"
+  title: "ハンバーガーとポテトフライのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "onShellReady signals that the initial HTML is ready to send. It is not where the reason for deferring to the browser is reported."
 published: true
 ---
-
 Imagine saving a form draft to `localStorage` so it can be restored when the user reopens the page. In a browser-only app, you can safely read the saved content when the component initializes. With SSR (server-side rendering), however, the server cannot read the user's `localStorage`, so you have to work out whether the component is running on the server or in the browser and control when the saved content is read.
 
 The traditional approach reads the saved content inside `useEffect` and updates state to switch what is displayed. It relies on the fact that `useEffect` does not run on the server and only runs after the component has mounted in the browser.
