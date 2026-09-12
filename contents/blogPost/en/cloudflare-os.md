@@ -3,8 +3,8 @@ id: z49V2qSJR2A5CfkLs81Je
 title: "Trying Out Cloudflare OS, a Workspace for Running AI Agents and Apps"
 slug: "cloudflare-os"
 about: "Using AI agents at work requires access to internal knowledge and systems, plus a way to share what they produce. Cloudflare OS is a workspace for running agents and small apps. This article covers running it locally, the runtime, and permissions."
-createdAt: "2026-09-09T20:04+09:00"
-updatedAt: "2026-09-11T20:00+09:00"
+createdAt: "2026-09-12T20:04+09:00"
+updatedAt: "2026-09-12T20:00+09:00"
 tags: ["Cloudflare", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1yl63wJhyMQwjQggIS5j8t/8949b9d91d3d1fe2a8a28bceb5b6408c/sanma_nitsuke_15755-768x591.png"

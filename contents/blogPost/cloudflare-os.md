@@ -3,8 +3,8 @@ id: z49V2qSJR2A5CfkLs81Je
 title: "AI エージェントとアプリを動かす Cloudflare OS を試してみた"
 slug: "cloudflare-os"
 about: "AI エージェントを業務に使うには、社内の知識やシステムへのアクセスと、成果物を共有する仕組みが必要です。Cloudflare OS は、エージェントと小さなアプリを動かすワークスペースを提供します。この記事ではローカルでの利用手順と、アプリの実行環境や Gatekeepers による権限管理の仕組みを紹介します。"
-createdAt: "2026-09-09T20:04+09:00"
-updatedAt: "2026-09-11T20:00+09:00"
+createdAt: "2026-09-12T20:04+09:00"
+updatedAt: "2026-09-12T20:00+09:00"
 tags: ["Cloudflare", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1yl63wJhyMQwjQggIS5j8t/8949b9d91d3d1fe2a8a28bceb5b6408c/sanma_nitsuke_15755-768x591.png"
