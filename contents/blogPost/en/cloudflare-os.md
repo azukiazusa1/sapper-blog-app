@@ -40,10 +40,8 @@ selfAssessment:
         - text: "The chat history from when the app was built"
           correct: false
           explanation: "Chat history is not shared as part of a Blueprint."
-
 published: true
 ---
-
 When you hand work over to an AI agent, the hard part is giving it access to your organization's knowledge and systems. Explaining company-specific terms and procedures every time, or handing over the documents it needs, quickly becomes tedious. And if you want to share an app the agent built with your colleagues, you also have to think about who is allowed to see the internal data that app reads.
 
 [Cloudflare OS](https://github.com/cloudflare/cloudflare-os) is a workspace for running agents and apps while drawing on your organization's knowledge and external services. You give instructions from the browser to produce documents and apps, and your team can keep using what comes out of it.

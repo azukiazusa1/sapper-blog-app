@@ -5,10 +5,10 @@ slug: "cloudflare-os"
 about: "AI エージェントを業務に使うには、社内の知識やシステムへのアクセスと、成果物を共有する仕組みが必要です。Cloudflare OS は、エージェントと小さなアプリを動かすワークスペースを提供します。この記事ではローカルでの利用手順と、アプリの実行環境や Gatekeepers による権限管理の仕組みを紹介します。"
 createdAt: "2026-09-09T20:04+09:00"
 updatedAt: "2026-09-11T20:00+09:00"
+tags: ["Cloudflare", "AI"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1yl63wJhyMQwjQggIS5j8t/8949b9d91d3d1fe2a8a28bceb5b6408c/sanma_nitsuke_15755-768x591.png"
   title: "秋刀魚の煮付けのイラスト"
-tags: ["Cloudflare", "AI"]
 audio: null
 selfAssessment:
   quizzes:
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "アプリを作ったときの会話履歴"
           correct: false
           explanation: "会話履歴は Blueprint の共有対象に含まれません。"
-
 published: true
 ---
-
 AI エージェントに業務を任せるときに、いかに社内の知識やシステムにアクセスさせるかが課題になります。毎回会社の用語や手順を説明したり、必要な資料を渡したりするのは手間がかかります。また、エージェントが作ったアプリを同僚と共有するなら、アプリが参照した社内データを誰に見せてよいかも考える必要があるでしょう。
 
 [Cloudflare OS](https://github.com/cloudflare/cloudflare-os) は、組織の知識や外部サービスを利用しながら、エージェントとアプリを動かすためのワークスペースです。ブラウザから指示を出して文書やアプリを作り、その成果物をチームで共有して利用できます。
