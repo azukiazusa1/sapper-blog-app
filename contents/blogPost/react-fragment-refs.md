@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "setEditing(true) の直後には新しい入力欄がまだありません。ref が設定されるタイミングで操作します。"
 published: true
 ---
-
 注文内容の確認画面で「配送先を編集」ボタンを押したら、編集フォームを表示し、最初の入力欄へフォーカスを移したい場面を考えてみましょう。
 
 !v(https://videos.ctfassets.net/in6v9lxmm5c8/6UrB92FhUipJ25D76GKYwV/32fde6046cdf6de2e71e8961a3ed4dfb/react-fragment-refs-1.mp4 622x514)

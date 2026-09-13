@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "Right after setEditing(true), the new inputs don't exist yet. The operation runs when the ref is attached."
 published: true
 ---
-
 Imagine an order confirmation screen where clicking an "Edit shipping address" button shows an edit form and moves focus to the first input.
 
 !v(https://videos.ctfassets.net/in6v9lxmm5c8/6UrB92FhUipJ25D76GKYwV/32fde6046cdf6de2e71e8961a3ed4dfb/react-fragment-refs-1.mp4 622x514)
