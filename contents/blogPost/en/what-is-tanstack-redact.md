@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "nano does not add concurrent scheduling."
 published: true
 ---
-
 [TanStack Redact](https://github.com/TanStack/redact) is a lightweight runtime that supports React's APIs. It replaces the React implementation used at runtime while letting you keep your existing code written with JSX and Hooks.
 
 [Preact](https://preactjs.com/guide/v10/differences-to-react/) is another lightweight alternative to React. Preact itself does not aim to be a reimplementation of React. Instead, it lets you use React code and libraries through a compatibility layer called `preact/compat`.

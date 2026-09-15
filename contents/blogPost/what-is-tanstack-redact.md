@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "nano は concurrent scheduling を追加する設定ではありません。"
 published: true
 ---
-
 [TanStack Redact](https://github.com/TanStack/redact) は、React の API に対応する軽量なランタイムです。既存の JSX や Hooks を使ったコードを維持しながら、実行時に使われる React の実装を置き換えます。
 
 React の軽量な代替としては [Preact](https://preactjs.com/guide/v10/differences-to-react/) もあります。Preact 自体は React の再実装を目的としておらず、`preact/compat` という互換レイヤーを通じて React のコードやライブラリを利用できるようにしています。
