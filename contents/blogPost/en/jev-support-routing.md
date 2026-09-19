@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "Choice is the question type that returns a probability distribution over candidates."
 published: true
 ---
-
 Large language models (LLMs) are designed to generate text for humans to read. They are well suited to everyday chat, document generation, and summarization, but because it is hard to get deterministic results from them, they are difficult to wire into application control flow such as conditional branching. Common workarounds include designing prompts that make the LLM return structured decisions, or parsing the generated output and converting it into a form that can drive a branch.
 
 [Jev](https://docs.typesafe.ai/introduction), provided by [TypeSafe AI](https://typesafe.ai/), is a model that evaluates typed questions against a given state. TypeSafe calls this class of model System One. System One models are designed to make fast, structured decisions that software can consume directly.
