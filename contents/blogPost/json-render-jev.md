@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "description は候補の説明、initialState は初期状態です。この 2 つだけでは編集後の値を反映できません。"
 published: true
 ---
-
 [json-render](https://json-render.dev/) は AI が UI を生成する Generative UI のためのライブラリです。カタログに定義したコンポーネントとアクションを使って、AI が UI の構造を表す JSON を生成し、その JSON を元に React などのフレームワークで描画します。AI は事前に定義された部品の中から選択して JSON を組み立てます。とはいえ JSON 自体はモデルが生成するため、狙いどおりの JSON を出力させるプロンプトの設計が欠かせませんでした。
 
 TypeSafe AI 社が新たに発表した AI モデル [Jev](https://docs.typesafe.ai/introduction) は、文章を生成するのではなく、あらかじめ定めた出力候補と形式に沿って結果を返します。TypeSafe AI はこのモデルを、低コストかつ高速に構造化された意思決定を行うものとして説明しています。構造化された JSON を生成する Generative UI の用途に向いていると言えるでしょう。
