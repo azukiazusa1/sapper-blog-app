@@ -26,10 +26,8 @@ selfAssessment:
         - text: "resources/get"
           correct: false
           explanation: "resources/get は存在しないメソッドです。SKILL.md の取得には resources/read を使用します。"
-
 published: true
 ---
-
 MCP（Model Context Protocol）サーバーに接続すると、AI エージェントから外部サービスのツールを呼び出せます。しかし、ツールの説明だけで業務の手順まで伝えられるとは限りません。例えば返金処理では、注文の検索、返金条件の確認、返金の実行といった操作に加えて、どの条件で処理を中断するかという判断も必要です。
 
 こうした手順や判断基準をまとめる方法が [Agent Skills](https://agentskills.io/specification) です。`SKILL.md` に指示を書き、必要な資料やスクリプトとともにディレクトリとして管理します。最近ではプラグインといった仕組みを使用して、スキルと関連するツールを同梱して配布するケースもあります。ツールを提供する MCP サーバーから、そのツールを使うためのスキルも取得できれば、利用者が別々に探して導入する手間を減らせます。

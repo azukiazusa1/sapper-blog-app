@@ -26,10 +26,8 @@ selfAssessment:
         - text: "resources/get"
           correct: false
           explanation: "There is no resources/get method. Use resources/read to retrieve SKILL.md."
-
 published: true
 ---
-
 Connecting to an MCP (Model Context Protocol) server lets an AI agent call tools provided by external services. However, tool descriptions alone do not necessarily explain an entire business process. A refund workflow, for example, requires searching for an order, checking refund eligibility, and issuing the refund, as well as deciding when to stop the process.
 
 [Agent Skills](https://agentskills.io/specification) provide a way to organize these procedures and decision criteria. Instructions go in `SKILL.md`, which is managed in a directory alongside any supporting documents and scripts. Plugins are also increasingly used to bundle skills with related tools. If users can retrieve skills from the same MCP server that provides the tools, they have less to find and install separately.
