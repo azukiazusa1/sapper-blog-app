@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "auto does not disable locking for a specific axis. The value that disables axis locking is none."
 published: true
 ---
-
 Have you ever tried to scroll a map or spreadsheet diagonally with a trackpad, only to find it moving straight up and down? Browsers infer the user's intent from the initial direction of a gesture and sometimes lock scrolling to a single axis, either vertical or horizontal. This behavior is called "axis locking."
 
 Axis locking keeps content from drifting sideways unintentionally while you read down a page. On the other hand, it can get in the way of UIs like maps, where users want to move freely in both directions.
