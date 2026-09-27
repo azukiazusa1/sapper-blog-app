@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "After the content change is reflected in the DOM, the child requests a size update. There is no need to pass a height value."
 published: true
 ---
-
 b> frame-sizing
 
 When adding a third-party comment section to a blog, one common approach is to embed the service's UI with an `<iframe>`. This lets the service handle storing comments and signing in, while readers can still read and post comments without leaving the blog.
