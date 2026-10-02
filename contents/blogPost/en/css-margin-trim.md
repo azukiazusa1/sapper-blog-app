@@ -7,8 +7,8 @@ createdAt: "2026-09-27T17:32+09:00"
 updatedAt: "2026-09-27T17:32+09:00"
 tags: ["CSS"]
 thumbnail:
-  title: "鷹のイラスト"
   url: "https://images.ctfassets.net/in6v9lxmm5c8/54vAuSdF1IPhj0E6UjgyL2/e51c0f5b7c9518fa0ca3c09c7a6eb828/bird-hawk_22480.png"
+  title: "鷹のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "margin-trim trims child margins at the inner edges of the element it is specified on. Specifying it on the parent would target the card's own margins, not those of the heading and paragraphs inside the card."
 published: true
 ---
-
 b> margin-trim
 
 Suppose you set `padding: 24px` on a card to get even spacing on all sides. However, if the heading at the top of the card and the paragraph at the bottom also have a `margin`, the top and bottom spacing ends up larger than intended.

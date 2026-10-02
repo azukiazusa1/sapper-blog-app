@@ -7,8 +7,8 @@ createdAt: "2026-09-27T17:32+09:00"
 updatedAt: "2026-09-27T17:32+09:00"
 tags: ["CSS"]
 thumbnail:
-  title: "鷹のイラスト"
   url: "https://images.ctfassets.net/in6v9lxmm5c8/54vAuSdF1IPhj0E6UjgyL2/e51c0f5b7c9518fa0ca3c09c7a6eb828/bird-hawk_22480.png"
+  title: "鷹のイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "margin-trim は、指定した要素の直接の内側の端で子要素のマージンを取り除きます。親要素に指定すると、カード内の見出しや段落ではなく、カード自身のマージンが対象になります。"
 published: true
 ---
-
 b> margin-trim
 
 カードの内側に `padding: 24px` を指定して、上下左右の余白を揃えたいとします。しかし、カードの先頭にある見出しや最後の段落にも `margin` が設定されていると、上下の余白が意図より大きくなってしまいます。
