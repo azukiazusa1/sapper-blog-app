@@ -9,6 +9,7 @@ import {
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const mocks = vi.hoisted(() => ({
   uploadAsset: vi.fn(),
@@ -43,6 +44,7 @@ published: false
 `;
 
 let blogPostDir: string;
+let repositoryRoot: string;
 const logs: string[] = [];
 const log = (message: string) => logs.push(message);
 
@@ -70,8 +72,9 @@ const exists = (filePath: string) =>
 beforeEach(async () => {
   vi.clearAllMocks();
   logs.length = 0;
-  blogPostDir = await mkdtemp(join(tmpdir(), "upload-media-spec-"));
-  await mkdir(join(blogPostDir, "en"));
+  repositoryRoot = await mkdtemp(join(tmpdir(), "upload-media-spec-"));
+  blogPostDir = join(repositoryRoot, "contents/blogPost");
+  await mkdir(join(blogPostDir, "en"), { recursive: true });
   mocks.uploadAsset.mockImplementation(async ({ fileName }) => ({
     url: `https://images.ctfassets.net/space/asset/token/${fileName}`,
     assetId: "assetId",
@@ -86,7 +89,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  await rm(blogPostDir, { recursive: true, force: true });
+  await rm(repositoryRoot, { recursive: true, force: true });
 });
 
 describe("uploadMedia", () => {
@@ -223,5 +226,110 @@ describe("uploadMedia", () => {
       "![Diagram](https://images.ctfassets.net/space/asset/token/example-slug-2.png)",
     );
     expect(await exists(join(blogPostDir, "en", "later.png"))).toBe(false);
+  });
+});
+
+describe("画像の配置と参照パス", () => {
+  test.each([
+    ["記事からの相対パス", "../../assets/image.png"],
+    ["リポジトリ基準のパス", "assets/image.png"],
+    ["絶対パス", "absolute"],
+    ["file URL", "file-url"],
+    ["空白を含むパス", "space"],
+  ])(
+    "%s で参照した画像をアップロードし、元画像は保持する",
+    async (_label, path) => {
+      const sourcePath = join(
+        repositoryRoot,
+        "assets",
+        path === "space" ? "my image.png" : "image.png",
+      );
+      await mkdir(join(repositoryRoot, "assets"));
+      await writeFile(sourcePath, "image");
+      const reference =
+        path === "absolute"
+          ? sourcePath
+          : path === "file-url"
+            ? pathToFileURL(sourcePath).href
+            : path === "space"
+              ? "<../../assets/my image.png>"
+              : path;
+      await writeJa(`![図](${reference})`);
+
+      await uploadMedia({ blogPostDir, id: "testId", log });
+
+      expect(mocks.uploadAsset).toHaveBeenCalledTimes(1);
+      expect(await readJa()).toContain(
+        "![図](https://images.ctfassets.net/space/asset/token/example-slug-1.png)",
+      );
+      expect(await exists(sourcePath)).toBe(true);
+    },
+  );
+
+  test("/images の URL を app/static から解決し、別名での同じ参照も一度だけアップロードする", async () => {
+    const sourcePath = join(repositoryRoot, "app/static/images/demo/image.png");
+    await mkdir(join(repositoryRoot, "app/static/images/demo"), {
+      recursive: true,
+    });
+    await writeFile(sourcePath, "image");
+    await writeJa("![図](/images/demo/image.png)");
+    await writeEn("![Diagram](../../../app/static/images/demo/image.png)");
+
+    await uploadMedia({ blogPostDir, id: "testId", log });
+
+    expect(mocks.uploadAsset).toHaveBeenCalledTimes(1);
+    expect(await readJa()).toContain(
+      "![図](https://images.ctfassets.net/space/asset/token/example-slug-1.png)",
+    );
+    expect(await readEn()).toContain(
+      "![Diagram](https://images.ctfassets.net/space/asset/token/example-slug-1.png)",
+    );
+    expect(await exists(sourcePath)).toBe(true);
+  });
+
+  test("同名でも別ディレクトリにある画像を混同しない", async () => {
+    await mkdir(join(blogPostDir, "a"));
+    await mkdir(join(blogPostDir, "b"));
+    await writeFile(join(blogPostDir, "a/image.png"), "first");
+    await writeFile(join(blogPostDir, "b/image.png"), "second");
+    await writeJa("![A](a/image.png)\n![B](b/image.png)");
+    await writeEn("![B](../b/image.png)");
+
+    await uploadMedia({ blogPostDir, id: "testId", log });
+
+    expect(mocks.uploadAsset).toHaveBeenCalledTimes(2);
+    expect(await readJa()).toContain(
+      "![A](https://images.ctfassets.net/space/asset/token/example-slug-1.png)",
+    );
+    expect(await readJa()).toContain(
+      "![B](https://images.ctfassets.net/space/asset/token/example-slug-2.png)",
+    );
+    expect(await readEn()).toContain(
+      "![B](https://images.ctfassets.net/space/asset/token/example-slug-2.png)",
+    );
+  });
+
+  test("日英に同名の別画像がある場合は各記事のディレクトリを優先する", async () => {
+    await writeJa("![日本語](image.png)");
+    await writeEn("![English](image.png)");
+    await writeFile(join(blogPostDir, "image.png"), "ja");
+    await writeFile(join(blogPostDir, "en/image.png"), "en");
+
+    await uploadMedia({ blogPostDir, id: "testId", log });
+
+    expect(mocks.uploadAsset).toHaveBeenCalledTimes(2);
+    expect(await readJa()).toContain("example-slug-1.png");
+    expect(await readEn()).toContain("example-slug-2.png");
+  });
+
+  test("明示されたパスがなければ同名の別ファイルに置き換えない", async () => {
+    await writeJa("![](missing/image.png)");
+    await writeFile(join(blogPostDir, "image.png"), "wrong");
+
+    await expect(
+      uploadMedia({ blogPostDir, id: "testId", log }),
+    ).rejects.toThrow("missing/image.png");
+    expect(mocks.uploadAsset).not.toHaveBeenCalled();
+    expect(await exists(join(blogPostDir, "image.png"))).toBe(true);
   });
 });

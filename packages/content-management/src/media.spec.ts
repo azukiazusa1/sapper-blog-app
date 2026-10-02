@@ -231,3 +231,12 @@ describe("contentTypeOf", () => {
     expect(() => contentTypeOf("a.mov")).toThrowError();
   });
 });
+
+test("空白を含む画像パスを取り出し、同名の別パスは置き換えない", () => {
+  const source = "![図](<../my images/image.png>)\n![別](other/image.png)";
+  const reference = findLocalMedia(source)[0]!;
+  expect(reference.filePath).toBe("../my images/image.png");
+  expect(
+    replaceReference(source, reference, "https://example.com/uploaded.png"),
+  ).toBe("![図](https://example.com/uploaded.png)\n![別](other/image.png)");
+});

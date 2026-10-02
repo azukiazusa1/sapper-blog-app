@@ -2,13 +2,15 @@ import {
   access,
   mkdtemp,
   readFile,
+  realpath,
   rm,
   stat,
   unlink,
   writeFile,
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { basename, dirname, join } from "node:path";
+import { basename, dirname, isAbsolute, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import yamlFront from "yaml-front-matter";
 import { uploadAsset } from "./api.ts";
 import { convertImageToPng } from "./image.ts";
@@ -34,21 +36,59 @@ const formatSize = (bytes: number) => `${(bytes / 1024).toFixed(1)} KB`;
 
 type Target = { label: string; filePath: string; content: string };
 
-/**
- * 同じファイルが日英の両方から参照されることがあるため basename で束ね、
- * 1 度だけアップロードする。参照先は md のあるディレクトリを基準に解決するので、
- * Zed が挿入するパスの形式に依存しない。
- */
-type Job = { reference: MediaReference; sourcePath: string };
+/** 実体のパスで束ね、各記事で同じ実体を指す参照だけを置き換える。 */
+type Job = {
+  reference: MediaReference;
+  sourcePath: string;
+  references: { target: Target; reference: MediaReference }[];
+};
+
+const resolveMediaPath = async (
+  filePath: string,
+  target: Target,
+  targets: Target[],
+  repositoryRoot: string,
+): Promise<string | undefined> => {
+  const localPath = filePath.startsWith("file:")
+    ? fileURLToPath(filePath)
+    : filePath;
+  const candidates = filePath.startsWith("file:")
+    ? [localPath]
+    : isAbsolute(localPath)
+      ? [localPath, resolve(repositoryRoot, "app/static", `.${localPath}`)]
+      : [
+          resolve(dirname(target.filePath), localPath),
+          resolve(repositoryRoot, localPath),
+          // 翻訳記事のファイル名だけの参照は、日本語側の画像も探す。
+          ...(basename(localPath) === localPath
+            ? targets.map((t) => resolve(dirname(t.filePath), localPath))
+            : []),
+        ];
+
+  for (const candidate of candidates) {
+    if (
+      await stat(candidate).then(
+        (s) => s.isFile(),
+        () => false,
+      )
+    ) {
+      return realpath(candidate);
+    }
+  }
+
+  return undefined;
+};
 
 export const uploadMedia = async ({
   blogPostDir,
   id,
+  repositoryRoot = resolve(blogPostDir, "../.."),
   dryRun = false,
   log = console.log,
 }: {
   blogPostDir: string;
   id: string;
+  repositoryRoot?: string;
   dryRun?: boolean;
   log?: (message: string) => void;
 }): Promise<void> => {
@@ -85,34 +125,31 @@ export const uploadMedia = async ({
 
   for (const target of targets) {
     for (const reference of findLocalMedia(target.content)) {
-      const fileName = basename(reference.filePath);
-
-      if (jobs.has(fileName)) {
-        continue;
-      }
-
       if (!isSupported(reference)) {
         unsupported.push(`${reference.raw} (${target.label})`);
         continue;
       }
 
-      let sourcePath: string | undefined;
-
-      for (const candidate of targets.map((t) =>
-        join(dirname(t.filePath), fileName),
-      )) {
-        if (await exists(candidate)) {
-          sourcePath = candidate;
-          break;
-        }
-      }
+      const sourcePath = await resolveMediaPath(
+        reference.filePath,
+        target,
+        targets,
+        repositoryRoot,
+      );
 
       if (!sourcePath) {
         missing.push(`${reference.raw} (${target.label})`);
         continue;
       }
 
-      jobs.set(fileName, { reference, sourcePath });
+      const jobKey = `${reference.kind}:${sourcePath}`;
+      const job: Job = jobs.get(jobKey) ?? {
+        reference,
+        sourcePath,
+        references: [],
+      };
+      job.references.push({ target, reference });
+      jobs.set(jobKey, job);
     }
   }
 
@@ -140,7 +177,8 @@ export const uploadMedia = async ({
   );
 
   try {
-    for (const [fileName, { reference, sourcePath }] of jobs) {
+    for (const { reference, sourcePath, references } of jobs.values()) {
+      const fileName = basename(sourcePath);
       const assetName = assetFileName(slug, sequence, reference);
 
       // 動画は常に H.264 mp4 へ変換する。寸法は remark-video が width / height にする
@@ -182,8 +220,13 @@ export const uploadMedia = async ({
 
       // 1 件ずつ「アップロード → 置換 → 削除」を完結させる。
       // 途中で失敗しても成功分は確定し、再実行は残りだけを処理する。
-      for (const target of targets) {
-        const replaced = replaceReference(target.content, reference, url, size);
+      for (const { target, reference: localReference } of references) {
+        const replaced = replaceReference(
+          target.content,
+          localReference,
+          url,
+          size,
+        );
 
         if (replaced !== target.content) {
           target.content = replaced;
@@ -191,7 +234,13 @@ export const uploadMedia = async ({
         }
       }
 
-      await unlink(sourcePath);
+      // 従来の記事直下の貼り付け画像のみ削除し、静的資産や外部の元画像は保持する。
+      const articleDirectories = await Promise.all(
+        targets.map((target) => realpath(dirname(target.filePath))),
+      );
+      if (articleDirectories.includes(dirname(sourcePath))) {
+        await unlink(sourcePath);
+      }
 
       log(`${fileName} -> ${assetName}${detail}`);
       log(`  ${url}`);

@@ -17,6 +17,7 @@ try {
   await uploadMedia({
     blogPostDir: join(__dirname, "../../../../contents/blogPost"),
     id,
+    repositoryRoot: join(__dirname, "../../../.."),
     dryRun: options.includes("--dry-run"),
   });
 } catch (error) {

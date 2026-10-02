@@ -12,11 +12,14 @@ export type MediaReference = {
   alt: string;
 };
 
-/** `![alt](path)`。パスに空白は許さない（Zed が生成する名前は空白を含まない） */
-const IMAGE_PATTERN = /!\[([^\]]*)\]\(\s*([^)\s]+)\s*\)/g;
+/** `![alt](path)` または空白を含む `![alt](<path>)`。 */
+const IMAGE_PATTERN = /!\[([^\]]*)\]\(\s*(<[^>\n]+>|[^)\s]+)\s*\)/g;
 
 /** `!v(path)` または `!v(path 1280x720)` */
 const VIDEO_PATTERN = /!v\(\s*([^)\s]+)(?:\s+\d+x\d+)?\s*\)/g;
+
+const unwrapPath = (value: string) =>
+  value.startsWith("<") && value.endsWith(">") ? value.slice(1, -1) : value;
 
 /** 既存記事は `//images.ctfassets.net/...` のプロトコル相対 URL も使っている */
 const isRemote = (url: string) => /^(?:https?:)?\/\//.test(url);
@@ -77,7 +80,8 @@ export const findLocalMedia = (article: string): MediaReference[] => {
   const references: MediaReference[] = [];
 
   for (const match of article.matchAll(IMAGE_PATTERN)) {
-    const [raw, alt, filePath] = match;
+    const [raw, alt, destination] = match;
+    const filePath = destination ? unwrapPath(destination) : undefined;
 
     if (filePath && !isRemote(filePath)) {
       references.push({ kind: "image", raw, filePath, alt: alt ?? "" });
@@ -137,7 +141,8 @@ export const assetFileName = (
  * 同じファイルを指すローカル参照を、アップロード後の記法へすべて置き換える。
  *
  * 日本語と英語で alt が異なることがあるため、マッチした文字列ではなく
- * 参照先のファイル名で照合し、alt は各出現のものを保つ。
+ * 参照先のパスで照合し、alt は各出現のものを保つ。
+ * 別表記で同じ実体を指す参照は、呼び出し側で個別に渡す。
  *
  * 動画には寸法を付ける。remark-video が width / height として出力し、
  * 読み込み前後のレイアウトシフトを防ぐ。
@@ -148,9 +153,9 @@ export const replaceReference = (
   url: string,
   size?: { width: number; height: number },
 ): string => {
-  const fileName = path.basename(reference.filePath);
   const isSameFile = (filePath: string) =>
-    !isRemote(filePath) && path.basename(filePath) === fileName;
+    !isRemote(unwrapPath(filePath)) &&
+    unwrapPath(filePath) === reference.filePath;
 
   if (reference.kind === "image") {
     return article.replace(
