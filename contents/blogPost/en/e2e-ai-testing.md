@@ -5,10 +5,10 @@ slug: "e2e-ai-testing"
 about: "e2e is a testing framework that combines natural-language actions with element-based actions and assertions. This article builds tests for a Todo app that let AI perform the actions and verify the results in code."
 createdAt: "2026-10-02T12:52+09:00"
 updatedAt: "2026-10-03T17:26+09:00"
-tags: ["testing", "AI", "Playwright"]
+tags: ["テスト", "AI", "playwright"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6DHX1P0mHD80xtFeWeg8Iz/5d78f033da991439fa40f87fd513e9c9/food_katsudon_7648-768x576.png"
-  title: "カツ丼のイラスト"
+  title: "food katsudon 7648-768x576"
 audio: null
 selfAssessment:
   quizzes:
@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "Even with different names, you still need to clean up data or isolate environments separately."
 published: true
 ---
-
 E2E (end-to-end) tests verify the flows a user goes through when using an application. Tools like Playwright let you automate those interactions, but you have to write each step by pointing at specific input fields and buttons. That means that when the screen layout changes, you often need to update those steps as well. As a result, E2E tests have generally been seen as highly effective but costly to write and maintain.
 
 [e2e](https://tester.army/e2e) is a testing framework that lets you describe the goal of an action in natural language. Give it a goal such as "add a Todo," and an AI agent inspects the screen and chooses the necessary actions. This means you can write tests from the perspective of whether a feature works correctly, without depending on concrete steps like clicking a particular button. Within the same test, you can also use element-based actions and regular assertions.

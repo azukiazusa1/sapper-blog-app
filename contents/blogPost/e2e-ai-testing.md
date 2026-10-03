@@ -5,10 +5,10 @@ slug: "e2e-ai-testing"
 about: "e2e は自然言語による操作と、要素を指定した操作・アサーションを組み合わせられるテストフレームワークです。この記事では Todo アプリを対象に、AI に操作を任せて結果をコードで検証するテストを作成します。"
 createdAt: "2026-10-02T12:52+09:00"
 updatedAt: "2026-10-03T17:26+09:00"
-tags: ["テスト", "AI", "Playwright"]
+tags: ["テスト", "AI", "playwright"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/6DHX1P0mHD80xtFeWeg8Iz/5d78f033da991439fa40f87fd513e9c9/food_katsudon_7648-768x576.png"
-  title: "カツ丼のイラスト"
+  title: "food katsudon 7648-768x576"
 audio: null
 selfAssessment:
   quizzes:
@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "異なる名前を使っても、データの削除や環境の分離は別途必要です。"
 published: true
 ---
-
 E2E（End-to-End）テストでは、ユーザーがアプリケーションを操作する一連の流れを検証します。Playwright などを使えば操作を自動化できますが、入力欄やボタンを指定して手順を書く必要があります。これは画面の構成が変わったときには、その手順の修正も必要になることを意味します。そのため、効果は高いものの、テストの作成や保守に手間がかかるという見方が一般的でした。
 
 [e2e](https://tester.army/e2e) は、操作の目標を自然言語で記述できるテストフレームワークです。「Todo を追加する」といった目標を渡すと、AI エージェントが画面を確認し、必要な操作を選びます。そのため、特定のボタンをクリックするという具体的な手順に依存せずに、特定の機能が正しく動作するかという観点でテストを作成できるという特徴があります。また同じテストの中で、要素を指定した操作や通常のアサーションも使用できます。
