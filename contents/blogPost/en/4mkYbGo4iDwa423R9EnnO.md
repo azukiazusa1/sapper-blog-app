@@ -70,7 +70,7 @@ test("自然言語で Todo を追加する", async ({ app, agent, screen }) => {
 });
 ```
 
-`app.open()` opens the page under test, and `agent.act()` receives the goal of the action. The instruction is just a regular string; here it asks the agent to add "牛乳を買う" ("Buy milk") as a Todo. In this example, typing into the input field and pressing the add button are left to the agent.
+`app.open()` opens the page under test, and `agent.act()` receives the goal of the action. The instruction is just a regular string; here it asks the agent to add `牛乳を買う` ("Buy milk") as a Todo. In this example, typing into the input field and pressing the add button are left to the agent.
 
 The result is verified with `expect()` assertions. `screen.getByRole()` returns a locator that identifies an element by its role, such as a button or a list item. A locator is an object that specifies the element to act on or verify. `toHaveText()` checks that the element's text matches the expected value. The way you verify elements is the same as in Playwright.
 
@@ -278,7 +278,7 @@ You can see the actions in the following video.
 
 !v(https://videos.ctfassets.net/in6v9lxmm5c8/7vZ7JgjoPgOwY0ukNa1dJn/2b098e557a2327048ab4e04e4bd6d8a5/e2e-ai-testing-2.mp4 640x320)
 
-"牛乳を買う" appears in the list, and the count reads "1 件の Todo." In addition to the change on screen, the test's assertions passed as well.
+`牛乳を買う` appears in the list, and the count reads `1 件の Todo`. In addition to the change on screen, the test's assertions passed as well.
 
 ### Combining with Element-Based Tests
 
@@ -356,7 +356,7 @@ You can also pass `--strict-cache` to detect when an existing recording can no l
 
 ## Reusing Actions with Different Test Data Every Run
 
-The Todo app so far loses its data every time the page is opened, so we can test it with a fixed "牛乳を買う." In real E2E tests, however, the results of actions are often saved to a server-side database. If data created by a previous test remains, registering a user with the same email address may fail with a duplicate error, or you may mistake a previously created item with the same name for this run's result. When multiple tests run in parallel, data with the same name can also interfere with each other.
+The Todo app so far loses its data every time the page is opened, so we can test it with a fixed `牛乳を買う`. In real E2E tests, however, the results of actions are often saved to a server-side database. If data created by a previous test remains, registering a user with the same email address may fail with a duplicate error, or you may mistake a previously created item with the same name for this run's result. When multiple tests run in parallel, data with the same name can also interfere with each other.
 
 To avoid these situations, a common practice is to use a different, randomly generated value for each test.
 
