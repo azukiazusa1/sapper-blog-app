@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "The traditional browser setup uses msw/browser. The virtual module that provides network is virtual:msw."
 published: true
 ---
-
 [Mock Service Worker (MSW)](https://mswjs.io/) is a library that intercepts network requests and returns mocked responses. It is used to develop the frontend before the backend API is ready, or to reproduce specific responses in tests.
 
 In the traditional browser setup, you place `mockServiceWorker.js` in the public directory with the `msw init` command, and then configure the worker from your application with `setupWorker()`. Because this file is tied to a specific MSW version, you need to keep it in sync whenever you update the library.

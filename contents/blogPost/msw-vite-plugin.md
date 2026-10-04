@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "従来のブラウザ向け設定では msw/browser を使います。network を提供する仮想モジュールは virtual:msw です。"
 published: true
 ---
-
 [Mock Service Worker（MSW）](https://mswjs.io/) は、ネットワークリクエストを横取りしてモックのレスポンスを返すライブラリです。バックエンドの API が完成する前にフロントエンドを開発したり、テストで特定のレスポンスを再現したりするために利用します。
 
 従来のブラウザ向けセットアップでは、`msw init` コマンドで `mockServiceWorker.js` を公開ディレクトリに配置し、アプリケーションから `setupWorker()` で Worker を設定していました。このファイルは MSW のバージョンに対応するため、ライブラリの更新に合わせて管理する必要があります。
