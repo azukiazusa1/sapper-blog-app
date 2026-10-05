@@ -8,7 +8,7 @@ updatedAt: "2026-10-05T15:00+09:00"
 tags: ["Go", "MyGo"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4JDmy7Xa0pEx7L278fs9P/c3a2fa31cb690ac7b10a8f5bc0871c4f/drum_19501-768x591.png"
-  title: "ドラム演奏のイラスト"
+  title: "drum 19501-768x591"
 audio: null
 selfAssessment:
   quizzes:
@@ -42,8 +42,6 @@ selfAssessment:
           explanation: "os.WriteFile が失敗した場合は、Go の Save メソッドはエラーを返します。空文字列は返りません。"
 published: true
 ---
-
-
 [MyGo](https://mygo.egoist.dev/) は Go でデスクトップアプリを作るフレームワークです。ウィンドウに表示する画面として Web フロントエンド方式と Native UI 方式の 2 つを用意しています。Web フロントエンド方式では画面には HTML・CSS・JavaScript を使い、ファイルへの書き込みなどの処理を Go で実装できます。Go 側のメソッドを呼び出す TypeScript クライアントが生成されるため、フロントエンドとバックエンドの連携で『迷子』にならずに済みます。
 
 この記事では MyGo の Web フロントエンド方式を使って、入力したテキストをファイルに保存するメモアプリを作成します。プロジェクトの作成から、Go と TypeScript の連携、macOS の保存ダイアログ、ビルドしたアプリの起動までを試してみましょう。

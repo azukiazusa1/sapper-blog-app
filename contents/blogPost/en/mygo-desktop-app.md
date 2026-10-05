@@ -8,7 +8,7 @@ updatedAt: "2026-10-05T15:00+09:00"
 tags: ["Go", "MyGo"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4JDmy7Xa0pEx7L278fs9P/c3a2fa31cb690ac7b10a8f5bc0871c4f/drum_19501-768x591.png"
-  title: "ドラム演奏のイラスト"
+  title: "drum 19501-768x591"
 audio: null
 selfAssessment:
   quizzes:
@@ -42,8 +42,6 @@ selfAssessment:
           explanation: "If os.WriteFile fails, the Go Save method returns an error, not an empty string."
 published: true
 ---
-
-
 [MyGo](https://mygo.egoist.dev/) is a framework for building desktop apps in Go. It offers two ways to build the UI shown in a window: a web frontend and native UI. With a web frontend, you build the UI with HTML, CSS, and JavaScript, and implement work such as writing files in Go. MyGo generates a TypeScript client for calling your Go methods, so you won't get "lost" (*maigo* in Japanese) wiring the frontend to the backend.
 
 In this article, we'll use MyGo's web frontend approach to build a memo app that saves text you type into a file. We'll go from creating a project, through connecting Go and TypeScript and opening the macOS save dialog, to launching the built app.
