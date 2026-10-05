@@ -360,7 +360,7 @@ After typing a memo in the app, the screen looks like this:
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/1B4YEsxlIYW8pUlimJYLFT/266cfa526d19cd86f74aafd876bf9e8f/mygo-desktop-app-1.png)
 
-Clicking "名前を付けて保存" (Save As) goes through the Go logic and opens the macOS save dialog. As shown below, you can choose the file name and location.
+Clicking the save button goes through the Go logic and opens the macOS save dialog. As shown below, you can choose the file name and location.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/6ysGqqpmIXzuAG2JleJo5e/ce28726b7dea0168886bfd205993f8f8/mygo-desktop-app-2.png)
 
