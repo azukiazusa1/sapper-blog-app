@@ -7,7 +7,7 @@
   import GitHubEditButton from "../../../components/GitHubEditButton.svelte";
   import PreferredSourceButton from "../../../components/PreferredSourceButton.svelte";
   import type { PageData } from "./$types";
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
   import ShareButton from "../../../components/ShareButton.svelte";
   import Contributors from "../../../components/Contributors/Contributors.svelte";
   import Prev from "../../../components/Icons/Prev.svelte";

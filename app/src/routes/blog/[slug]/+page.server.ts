@@ -4,7 +4,7 @@ const { post, github } = useRepositories();
 
 import type { PageServerLoad } from "./$types";
 import { error } from "@sveltejs/kit";
-import { markdownToHtml } from "$lib/server/markdownToHtml";
+import { markdownToHtml } from "#lib/server/markdownToHtml.js";
 import { getLocale } from "$paraglide/runtime";
 
 const toContentfulLocale = (locale: string): string | undefined =>

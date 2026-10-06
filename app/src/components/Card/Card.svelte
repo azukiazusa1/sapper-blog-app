@@ -3,7 +3,7 @@
   import AppTag from "../Tag/Tag.svelte";
   import Time from "../Time/Time.svelte";
   import type { Tag } from "../../generated/graphql";
-  import type { TocItem } from "$lib/server/markdownToHtml";
+  import type { TocItem } from "#lib/server/markdownToHtml.js";
   import Image from "../Image/Image.svelte";
   import MarkdownCopyButton from "../MarkdownCopyButton/MarkdownCopyButton.svelte";
   import TableOfContents from "../TableOfContents/TableOfContents.svelte";

@@ -14,8 +14,9 @@ export class MockAnalyticsDataRepository implements AnalyticsDataRepositoryInter
         views: 50,
       },
       {
-        title: "Go 言語のパッケージ管理ツール Go Modules",
-        path: "/blog/go-modules-go-1-11-go-gopath-go-usdgopath-src",
+        title:
+          "SvelteKit の remote functions でコンポーネント内で非同期にデータを取得する",
+        path: "/blog/sveltekit-remote-functions",
         views: 10,
       },
     ]);

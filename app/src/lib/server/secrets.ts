@@ -7,7 +7,7 @@ import {
   PRIVATE_KEY,
   CLIENT_EMAIL,
   PROPERTY_ID,
-} from "$env/static/private";
+} from "$app/env/private";
 
 const secrets = {
   apiKey: API_KEY,

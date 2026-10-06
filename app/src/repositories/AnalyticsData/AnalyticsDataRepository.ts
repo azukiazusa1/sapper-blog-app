@@ -1,4 +1,4 @@
-import secrets from "$lib/server/secrets";
+import secrets from "#lib/server/secrets.js";
 import type { AnalyticsDataRepositoryInterface, PopularPost } from "./types";
 import { analyticsDataClient } from "./client";
 

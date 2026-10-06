@@ -1,6 +1,6 @@
 <script lang="ts">
   import { localizeHref } from "$paraglide/runtime";
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
   import Ogp from "../../../../components/Ogp.svelte";
   import ShortBlog from "../../../../components/ShortBlog/ShortBlog.svelte";
   import type { PageData } from "./$types";

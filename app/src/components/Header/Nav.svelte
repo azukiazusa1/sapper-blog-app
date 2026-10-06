@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isMatchPath } from "$lib/utils";
+  import { isMatchPath } from "#lib/utils.js";
   import { localizeHref } from "$paraglide/runtime";
 
   interface Props {

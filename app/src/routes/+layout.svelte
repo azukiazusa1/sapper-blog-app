@@ -4,12 +4,12 @@
   import "../app.css";
   import "nprogress/nprogress.css";
   import NProgress from "nprogress";
-  import { navigating } from "$app/stores";
+  import { navigating } from "$app/state";
   import Header from "../components/Header/Header.svelte";
   import Footer from "../components/Footer/Footer.svelte";
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   import GoogleAnalytics from "../components/GoogleAnalytics.svelte";
-  import { removeTrailingSlash } from "$lib/utils";
+  import { removeTrailingSlash } from "#lib/utils.js";
   import { onNavigate } from "$app/navigation";
 
   interface Props {
@@ -19,6 +19,7 @@
   let { children }: Props = $props();
 
   onNavigate((navigation) => {
+    if (navigation.shallow) return;
     if (!document.startViewTransition) return;
 
     return new Promise((resolve) => {
@@ -34,10 +35,10 @@
   });
 
   run(() => {
-    if ($navigating) {
+    if (navigating.to) {
       NProgress.start();
     }
-    if (!$navigating) {
+    if (!navigating.to) {
       NProgress.done();
     }
   });
@@ -77,15 +78,15 @@
 <div
   class="grain min-h-screen bg-stone-50 text-stone-800 dark:bg-stone-950 dark:text-stone-100"
 >
-  {#if removeTrailingSlash($page.url.pathname) !== "/recap/2024" && removeTrailingSlash($page.url.pathname) !== "/recap/2025"}
-    <Header segment={$page.url.pathname} />
+  {#if removeTrailingSlash(page.url.pathname) !== "/recap/2024" && removeTrailingSlash(page.url.pathname) !== "/recap/2025"}
+    <Header segment={page.url.pathname} />
   {/if}
 
   <main>
     {@render children?.()}
   </main>
 
-  {#if removeTrailingSlash($page.url.pathname) !== "/recap/2024" && removeTrailingSlash($page.url.pathname) !== "/recap/2025"}
+  {#if removeTrailingSlash(page.url.pathname) !== "/recap/2024" && removeTrailingSlash(page.url.pathname) !== "/recap/2025"}
     <Footer />
   {/if}
 </div>

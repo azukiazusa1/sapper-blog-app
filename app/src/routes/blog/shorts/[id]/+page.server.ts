@@ -1,5 +1,5 @@
 import type { PageServerLoad } from "./$types";
-import { renderShortThread } from "$lib/server/shorts";
+import { renderShortThread } from "#lib/server/shorts.js";
 import { useRepositories } from "../../../../repositories/useRepositories";
 
 const { short: shortRepo } = useRepositories();

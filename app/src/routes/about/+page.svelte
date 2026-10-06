@@ -1,5 +1,5 @@
 <script>
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
   import author from "../../assets/images/azukiazusa.jpeg";
   import TwitterIcon from "../../components/Icons/Twitter.svelte";
   import { fly, fade } from "svelte/transition";

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { m } from "$paraglide/messages";
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
   import type { PageData } from "../$types";
   import Pagination from "../../../components/Pagination/Pagination.svelte";
   import PostList from "../../../components/PostList.svelte";

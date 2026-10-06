@@ -1,5 +1,5 @@
 import type { PageServerLoad } from "./$types";
-import { renderShortList } from "$lib/server/shorts";
+import { renderShortList } from "#lib/server/shorts.js";
 import { useRepositories } from "../../repositories/useRepositories";
 import { getLocale } from "$paraglide/runtime";
 

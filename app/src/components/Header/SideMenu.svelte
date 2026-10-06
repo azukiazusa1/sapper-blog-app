@@ -1,7 +1,7 @@
 <script lang="ts">
   import { self } from "svelte/legacy";
 
-  import { isMatchPath } from "$lib/utils";
+  import { isMatchPath } from "#lib/utils.js";
   import {
     localizeHref,
     deLocalizeHref,
