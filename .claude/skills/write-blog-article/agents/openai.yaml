@@ -1,0 +1,4 @@
+interface:
+  display_name: "ブログ記事を執筆"
+  short_description: "執筆プロセスを通じて新しい技術を学び、検証済みの記事を作成します"
+  default_prompt: "$write-blog-article を使って、新しい技術を学びながらブログ記事を作成してください。"
