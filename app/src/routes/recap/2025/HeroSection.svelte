@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
   import PrevIcon from "../../../components/Icons/Prev.svelte";
-  import ParticleBackground from "$lib/effects/ParticleBackground.svelte";
+  import ParticleBackground from "#lib/effects/ParticleBackground.svelte";
   import { localizeHref } from "$paraglide/runtime";
   import { m } from "$paraglide/messages";
 

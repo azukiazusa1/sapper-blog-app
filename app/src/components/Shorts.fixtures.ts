@@ -1,4 +1,4 @@
-import type { ShortSource } from "$lib/shorts";
+import type { ShortSource } from "#lib/shorts.js";
 
 export const shortFixtures: ShortSource[] = [
   {

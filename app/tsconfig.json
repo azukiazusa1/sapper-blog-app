@@ -1,29 +1,20 @@
 {
   "compilerOptions": {
-    "moduleResolution": "bundler",
     "module": "es2022",
     "lib": ["es2022", "DOM"],
     "target": "es2022",
-    /**
-			svelte-preprocess cannot figure out whether you have a value or a type, so tell TypeScript
-			to enforce using \`import type\` instead of \`import\` for Types.
-			*/
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "resolveJsonModule": true,
-    /**
-			To have warnings/errors of the Svelte compiler at the correct position,
-			enable source maps by default.
-			*/
     "sourceMap": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowJs": true,
-    "checkJs": true,
     "jsx": "react-jsx",
+    "strict": false
   },
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.tsx", "src/**/*.svelte", "tests/**/*.ts"],
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.svelte",
+    "tests/**/*.ts"
+  ],
   "exclude": ["src/**/*.stories.ts"],
-  "extends": "./.svelte-kit/tsconfig.json" 
+  "extends": "$app/tsconfig"
 }

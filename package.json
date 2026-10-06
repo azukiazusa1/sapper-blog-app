@@ -25,7 +25,7 @@
     "@eslint/js": "^8.57.0",
     "prettier": "^3.6.0",
     "prettier-plugin-tailwindcss": "^0.5.0",
-    "svelte": "^5.55.1",
+    "svelte": "^5.57.1",
     "turbo": "^1.8.2",
     "@inlang/paraglide-js": "^2.15.1"
   },

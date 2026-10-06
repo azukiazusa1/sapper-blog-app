@@ -1,13 +1,13 @@
 <script lang="ts">
   import { m } from "$paraglide/messages";
   import { localizeHref } from "$paraglide/runtime";
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
   import avatarImage from "../assets/images/azukiazusa.jpeg";
   import CopyLinkButton from "./CopyLinkButton.svelte";
   import Link from "./Link/Link.svelte";
   import Time from "./Time/Time.svelte";
-  import type { ShortListSource } from "$lib/shorts";
-  import { toShortListEntry } from "$lib/shorts";
+  import type { ShortListSource } from "#lib/shorts.js";
+  import { toShortListEntry } from "#lib/shorts.js";
 
   interface Props {
     shorts?: ShortListSource[];

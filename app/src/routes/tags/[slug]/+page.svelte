@@ -2,7 +2,7 @@
   import { m } from "$paraglide/messages";
   import PostList from "../../../components/PostList.svelte";
   import Pagination from "../../../components/Pagination/Pagination.svelte";
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
   import type { PageData } from "./$types";
   let { data }: { data: PageData } = $props();
 

@@ -1,13 +1,13 @@
 <script lang="ts">
   import { m } from "$paraglide/messages";
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   import LinkButton from "../components/LinkButton/LinkButton.svelte";
 
   let title = $derived(
-    $page.error.message === "Not Found" ? "404" : "500 Internal Server Error",
+    page.error.message === "Not Found" ? "404" : "500 Internal Server Error",
   );
   let message = $derived(
-    $page.error.message === "Not Found"
+    page.error.message === "Not Found"
       ? m.error404Message()
       : m.error500Message(),
   );

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TocItem } from "$lib/server/markdownToHtml";
+  import type { TocItem } from "#lib/server/markdownToHtml.js";
   import { onMount } from "svelte";
   import { m } from "$paraglide/messages";
 

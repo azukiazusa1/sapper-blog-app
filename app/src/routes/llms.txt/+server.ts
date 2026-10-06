@@ -1,6 +1,6 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { useRepositories } from "../../repositories/useRepositories";
-import variables from "$lib/variables";
+import variables from "#lib/variables.js";
 
 const { post } = useRepositories();
 export const prerender = true;

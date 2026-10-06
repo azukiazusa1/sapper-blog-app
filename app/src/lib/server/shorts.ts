@@ -1,5 +1,5 @@
-import type { ShortListSource, ShortSource } from "$lib/shorts";
-import { getShortThreadItems } from "$lib/shorts";
+import type { ShortListSource, ShortSource } from "#lib/shorts.js";
+import { getShortThreadItems } from "#lib/shorts.js";
 import { markdownToHtml } from "./markdownToHtml";
 
 export const renderShortList = async (

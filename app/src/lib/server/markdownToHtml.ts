@@ -12,7 +12,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 import rehypeLinkFavicon from "rehype-link-favicon";
-import { extractToc } from "$lib/utils";
+import { extractToc } from "#lib/utils.js";
 
 export type TocItem = {
   id: string;

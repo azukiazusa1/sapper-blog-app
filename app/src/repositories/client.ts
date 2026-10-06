@@ -8,7 +8,7 @@ import {
 import type { TypedDocumentNode } from "@urql/core";
 import type { DocumentNode } from "graphql";
 import { pipe, subscribe } from "wonka";
-import secrets from "$lib/server/secrets";
+import secrets from "#lib/server/secrets.js";
 
 const isServerSide = typeof window === "undefined";
 

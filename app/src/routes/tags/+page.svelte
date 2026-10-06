@@ -2,7 +2,7 @@
   import { m } from "$paraglide/messages";
   import Tag from "../../components/Tag/Tag.svelte";
   import type { PageData } from "./$types";
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
 
   let { data }: { data: PageData } = $props();
 </script>

@@ -1,4 +1,4 @@
-import secrets from "$lib/server/secrets";
+import secrets from "#lib/server/secrets.js";
 import type {
   CommitResponse,
   Contributor,

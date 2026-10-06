@@ -1,5 +1,5 @@
 <script lang="ts">
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
   import { getLocale } from "$paraglide/runtime";
   import { m } from "$paraglide/messages";
 

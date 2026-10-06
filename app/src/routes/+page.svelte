@@ -1,7 +1,7 @@
 <script lang="ts">
   import { m } from "$paraglide/messages";
   import { localizeHref } from "$paraglide/runtime";
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
   import HeroSection from "../components/HeroSection/HeroSection.svelte";
   import Image from "../components/Image/Image.svelte";
   import PostCard from "../components/PostCard/PostCard.svelte";

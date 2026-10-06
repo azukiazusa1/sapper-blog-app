@@ -1,6 +1,6 @@
 <script lang="ts">
   import ShareIcon from "./Icons/Share.svelte";
-  import { browser } from "$app/environment";
+  import { browser } from "$app/env";
 
   interface Props {
     text: string;

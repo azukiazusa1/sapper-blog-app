@@ -2,7 +2,7 @@ import {
   PUBLIC_ANALYTICS_ID,
   PUBLIC_BASE_URL,
   PUBLIC_OGP_BASE_URL,
-} from "$env/static/public";
+} from "$app/env/public";
 
 const variables = {
   analyticsId: PUBLIC_ANALYTICS_ID,

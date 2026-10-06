@@ -1,5 +1,5 @@
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
-import secrets from "$lib/server/secrets";
+import secrets from "#lib/server/secrets.js";
 
 export const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: {

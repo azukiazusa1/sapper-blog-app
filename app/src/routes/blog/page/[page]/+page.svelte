@@ -4,7 +4,7 @@
   import Pagination from "../../../../components/Pagination/Pagination.svelte";
   import Breadcrumb from "../../../../components/Breadcrumb/Breadcrumb.svelte";
   import type { PageData } from "./$types";
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
 
   interface Props {
     data: PageData;

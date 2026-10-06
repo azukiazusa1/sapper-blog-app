@@ -1,7 +1,7 @@
 import { beforeAll, beforeEach, afterAll, vi } from "vitest";
 import { server } from "./server";
 
-vi.mock("$env/static/private", () => ({
+vi.mock("$app/env/private", () => ({
   API_KEY: "API_KEY",
   PREVIEW_API_KEY: "PREVIEW_API_KEY",
   SPACE: "SPACE",
@@ -12,9 +12,10 @@ vi.mock("$env/static/private", () => ({
   PROPERTY_ID: "PROPERTY_ID",
 }));
 
-vi.mock("$env/static/public", () => ({
+vi.mock("$app/env/public", () => ({
   PUBLIC_ANALYTICS_ID: "PUBLIC_ANALYTICS_ID",
   PUBLIC_BASE_URL: "PUBLIC_BASE_URL",
+  PUBLIC_OGP_BASE_URL: "PUBLIC_OGP_BASE_URL",
 }));
 
 beforeAll(() => {

@@ -1,7 +1,7 @@
 <script>
   import { run } from "svelte/legacy";
-  import { page } from "$app/stores";
-  import variables from "$lib/variables";
+  import { page } from "$app/state";
+  import variables from "#lib/variables.js";
 
   const id = variables.analyticsId;
   if (typeof window !== "undefined") {
@@ -29,9 +29,7 @@
     if (typeof gtag !== "undefined") {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
-      window.gtag("config", id, {
-        page_path: $page.url.pathname,
-      });
+      window.gtag("config", id, { page_path: page.url.pathname });
     }
   });
 </script>

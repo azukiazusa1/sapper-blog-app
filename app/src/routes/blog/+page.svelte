@@ -3,7 +3,7 @@
   import PostList from "../../components/PostList.svelte";
   import Pagination from "../../components/Pagination/Pagination.svelte";
   import type { PageData } from "./$types";
-  import variables from "$lib/variables";
+  import variables from "#lib/variables.js";
   import Tabs from "./Tabs.svelte";
   import ShortList from "../../components/ShortList.svelte";
   import LinkButton from "../../components/LinkButton/LinkButton.svelte";
