@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "逆に、名前の衝突を防ぐために探索範囲を閉じ込めるものです。ドキュメント全体で一意にする機能ではありません。"
 published: true
 ---
-
 b> view-transitions-element-scoped
 
 [View Transition API](https://developer.mozilla.org/ja/docs/Web/API/View_Transition_API) を使うと、ページ遷移の際のアニメーションを簡単に実装できます。View Transition API はブラウザが自動でスナップショットを取得し、DOM の更新前後の状態を比較してアニメーションを生成します。`document.startViewTransition()` のコールバック関数内で DOM を更新すると、DOM の更新に伴うアニメーションが自動で実行されますが、ドキュメント全体に対して 1 つしか実行できないためいくつかの制約があります。

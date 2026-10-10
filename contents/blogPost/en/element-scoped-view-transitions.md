@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "It does the opposite: it confines the search range to prevent name collisions. It does not make names unique across the document."
 published: true
 ---
-
 b> view-transitions-element-scoped
 
 The [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) makes it easy to animate transitions between page states. The browser automatically captures snapshots and compares the states before and after a DOM update to generate the animation. When you update the DOM inside the callback of `document.startViewTransition()`, the animation for that update runs automatically. However, only one transition can run per document, which comes with several limitations.
