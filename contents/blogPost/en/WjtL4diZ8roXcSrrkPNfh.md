@@ -7,8 +7,8 @@ createdAt: "2026-10-10T14:58+09:00"
 updatedAt: "2026-10-10T14:58+09:00"
 tags: ["CSS"]
 thumbnail:
-  url: ""
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/WhViYCVyHnmkyy3MGoIiu/3d6f76fc0c5689f647115007e44b9dbc/bread_cream-cornet_13474-768x768.png"
+  title: "クリームコロネのイラスト"
 audio: null
 selfAssessment:
   quizzes:
