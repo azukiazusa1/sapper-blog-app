@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "Use --verify for a read-only check."
 published: true
 ---
-
 When you use an Action in GitHub Actions, you can specify its version with a tag, as in `uses: actions/checkout@v6`. However, the commit that a tag or branch points to can change later, so the code that runs may differ from the code you had in mind when you chose the version. This opens the door to malicious code being executed. In fact, in March 2025, the tags of `tj-actions/changed-files` were rewritten to point to a malicious commit, and many workflows referencing those tags leaked CI secrets into their logs.
 
 One countermeasure is to write the full commit SHA in `uses`. Because a SHA alone doesn't tell you the version, it has been common practice to add the version as a comment, as in `uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0`. However, there is no guarantee that the comment matches the actual SHA, and pinning a SHA doesn't necessarily pin the other Actions that the Action calls internally.
