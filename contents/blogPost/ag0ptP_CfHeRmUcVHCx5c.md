@@ -1,0 +1,266 @@
+---
+id: ag0ptP_CfHeRmUcVHCx5c
+title: "GitHub Actions の依存関係を lockfile で固定する"
+slug: "github-actions-workflow-lockfiles"
+about: "GitHub Actions でタグやブランチを参照すると、ワークフローを変更しなくても実行するコードが変わる可能性があります。Workflow dependency lockfiles を使うと、読みやすいタグ表記を残しながら依存先をコミット SHA に固定できます。この記事では GitHub Actions の依存関係を lockfile で固定する方法を紹介します。"
+createdAt: "2026-10-15T09:49+09:00"
+updatedAt: "2026-10-15T09:49+09:00"
+tags: ["GitHub Actions"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/4p5ZkulBOaXyc0mr2G0eMO/446fd78f08aeecbe64c977040a37a012/kalbi-nigiri-sushi_21408-768x591.png"
+  title: "カルビの握り寿司のイラスト"
+audio: null
+selfAssessment:
+  quizzes:
+    - question: "Workflow dependency lockfiles を使ったとき、実行する Action のコミットはどこで管理されますか？"
+      answers:
+        - text: "ワークフローのタグだけで管理する"
+          correct: false
+          explanation: "タグだけではなく、lockfile に実行対象のコミットを記録します。"
+        - text: "actions.lock の commit で管理する"
+          correct: true
+          explanation: "ワークフローのタグ表記を残し、lockfile の commit に実行対象を記録します。"
+        - text: "Dependabot の設定だけで管理する"
+          correct: false
+          explanation: "Dependabot は更新を支援しますが、実行対象のコミットは lockfile が管理します。"
+        - text: "実行時に最新のリリースから選ぶ"
+          correct: false
+          explanation: "最新リリースへ自動的に追従せず、固定したコミットが実行対象になります。"
+    - question: "ネットワーク接続なしで参照の更新漏れを確認するコマンドはどれですか？"
+      answers:
+        - text: "gh actions-lock --verify"
+          correct: false
+          explanation: "--verify は GitHub にアクセスして固定された参照を検証します。"
+        - text: "gh actions-lock --relock"
+          correct: false
+          explanation: "--relock は既存の参照を解決し直す操作です。"
+        - text: "gh actions-lock --verify-local"
+          correct: true
+          explanation: "--verify-local はオフラインで参照と lockfile のエントリーの対応を確認します。"
+        - text: "gh actions-lock --no-narrow"
+          correct: false
+          explanation: "--no-narrow は部分的なバージョン指定の絞り込みを無効にするオプションです。"
+    - question: "gh actions-lock --relock が行う操作はどれですか？"
+      answers:
+        - text: "既存の参照を解決し直してコミットを更新する"
+          correct: true
+          explanation: "ブランチや部分的なタグの移動を反映するために既存の参照を解決し直します。"
+        - text: "すべての参照を最新メジャーバージョンへ変更する"
+          correct: false
+          explanation: "--relock は新しいバージョンタグを選ぶ操作ではありません。"
+        - text: "ネットワークを使わずエントリーの有無だけ確認する"
+          correct: false
+          explanation: "オフラインの対応確認には --verify-local を使用します。"
+        - text: "ワークフローの内容を変えず不整合だけ報告する"
+          correct: false
+          explanation: "読み取り専用の検証には --verify を使用します。"
+published: true
+---
+
+GitHub Actions で Action を利用するとき、`uses: actions/checkout@v6` のようにタグでバージョンを指定できます。しかし、タグやブランチが指すコミットは後から変更される可能性があるため、バージョンを指定したタイミングとは異なるコードが実行されることがあります。これは悪意のあるコードが実行されるリスクにつながります。実際に 2025 年 3 月には、`tj-actions/changed-files` のタグが書き換えられて悪意のあるコミットを指すようになり、タグを参照していた多くのワークフローで CI のシークレットがログに出力される事件が起きました。
+
+この問題への対策として、`uses` に完全なコミット SHA を記述する方法があります。SHA だけではバージョンが読み取れないため、`uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0` のようにコメントでバージョンを補うのが一般的でした。ただし、コメントは実際の SHA と一致している保証がないうえ、呼び出した Action が内部で参照する別の Action まで固定できるとは限らないという課題がありました。
+
+[Workflow dependency lockfiles](https://docs.github.com/en/actions/concepts/security/workflow-dependency-lockfiles) を使うと、ワークフローにはタグ表記を残し、実行対象のコミットを別のファイルで管理できます。この記事では、GitHub Actions の依存関係を lockfile で固定する方法を紹介します。
+
+!> 2026 年 10 月 15 日時点で public preview の機能です。
+
+## lockfile の仕組み
+
+lockfile は `.github/workflows/actions.lock` に配置します。ワークフローごとに利用する依存関係を登録し、それぞれの参照が解決されたコミット SHA を記録します。登録済みのワークフローでは、GitHub Actions が記録されたコミットを実行します。
+
+通常のタグ指定と違い、タグが移動しても新しいコードへ自動的に追従しません。タグが移動しただけであれば、記録されたコミットがそのまま実行されます。ただし、記録されたコミットや参照先のリポジトリが信頼できなくなった場合は、検証に失敗して実行できなくなります。具体的には次のような場合です。
+
+- force push による履歴の書き換えなどで、記録されたコミットが参照先リポジトリのどのブランチからも到達できなくなった場合
+- 参照先のリポジトリが削除された、またはアクセスできなくなった場合
+- 同じ名前のリポジトリが、記録された ID とは異なる別のリポジトリに置き換わった場合
+
+なお、リポジトリの名前変更や移管のように ID が変わらない場合は、リダイレクトをたどって記録されたコミットが実行されます。
+
+また、Action が別の Action を呼び出すような「推移的な依存関係」も対象になります。一方、再利用可能なワークフローを呼び出す場合、その内部の依存関係は定義元のリポジトリの lockfile が管理する必要があります。
+
+## `gh actions-lock` で lockfile を生成する
+
+lockfile は GitHub CLI の拡張である [`gh-actions-lock`](https://github.com/github/gh-actions-lock) で生成します。以下のコマンドで拡張を導入します。
+
+```bash
+gh extension install github/gh-actions-lock --pin v0.2.0
+gh actions-lock --version
+```
+
+最小の例として、次のワークフローを用意します。
+
+```yaml:.github/workflows/ci.yml
+name: Lockfile example
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: echo 'Lockfile example'
+```
+
+リポジトリのルートで次のコマンドを実行します。
+
+```bash
+gh actions-lock
+```
+
+このコマンドは `.github/workflows/` 配下のワークフローを調べて lockfile を生成します。特定のワークフローから段階的に導入したい場合は、`gh actions-lock .github/workflows/ci.yml` のようにパスを指定できます。
+
+コマンドを実行すると、以下のように出力されます。
+
+```text
+Pinned 1 action across 1 workflow
+  actions/checkout@v6.1.0 (d23441a)
+    └─ .github/workflows/ci.yml
+```
+
+生成された lockfile は次のとおりです。
+
+```yaml:.github/workflows/actions.lock
+# This file is machine-generated by `gh actions-lock`.
+# Do not edit by hand; run `gh actions-lock` to update.
+# Docs: https://gh.io/actions-lockfile
+version: 'v0.0.3'
+workflows:
+    '.github/workflows/ci.yml':
+        - 'actions/checkout@v6.1.0'
+dependencies:
+    'actions/checkout@v6.1.0':
+        ref: 'v6.1.0'
+        commit: 'sha1-d23441a48e516b6c34aea4fa41551a30e30af803'
+        owner_id: 44036562
+        repo_id: 197814629
+```
+
+`workflows` には登録したワークフローとその依存関係、`dependencies` には参照先の情報が記録されています。`commit` が実行対象のコミットです。`owner_id` と `repo_id` は、同じ名前のリポジトリが別の実体に置き換わっていないかを確認するための ID です。
+
+ワークフローの `uses` も次のように変わりました。
+
+```diff:.github/workflows/ci.yml
+-      - uses: actions/checkout@v6
++      - uses: actions/checkout@v6.1.0
+```
+
+拡張は初めて固定する部分的なバージョン指定を、具体的なバージョンタグに絞り込みます。これを無効にするには `--no-narrow` を指定します。
+
+### 同じリポジトリ内の Action は `$/` に書き換えられる
+
+`uses: ./.github/actions/hello` のように同じリポジトリ内の Action を参照している場合も、`uses` が書き換えられます。次のようなローカルの composite action を呼び出すワークフローで `gh actions-lock` を実行してみます。
+
+```yaml:.github/workflows/ci.yml
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/hello
+```
+
+実行すると `Migrated 1 local action to $/…` と出力され、ワークフローは次のように変わりました。
+
+```diff:.github/workflows/ci.yml
+-      - uses: actions/checkout@v6
+-      - uses: ./.github/actions/hello
++      - uses: actions/checkout@v6.1.0
++      - uses: $/.github/actions/hello
+```
+
+書き換えが必要な理由は、`./` と `$/` の参照先が異なるためです。
+
+`./` は、実行時のワークスペースに置かれたファイルを参照します。ワークスペースの中身は直前の `actions/checkout` で取得した ref や、それより前のステップの処理によって変わるため、どのコードが実行されるかを lockfile で固定できません。そのため `./` を含むワークフローは lockfile に登録できないのです。
+
+一方、`$/` は定義元のリポジトリの実行中のコミットから Action を解決する記法です。参照先は常にワークフロー自体と同じコミットになるため、lockfile にエントリーを追加しなくても固定されているとみなされます。`$/` の後に `@v1` のような ref を付けることはできません。また、`./` と同じくリポジトリのルートからのパスで指定します。
+
+## lockfile とワークフローの不整合を検出する
+
+依存先を変更したのに lockfile を更新し忘れた場合は、検証コマンドで検出できます。
+
+```bash
+gh actions-lock --verify
+```
+
+`--verify` はファイルを書き換えず、GitHub にアクセスして固定された参照を検証します。生成直後のサンプルで `gh actions-lock --verify --json` を実行すると、次の JSON が出力されました。
+
+```json
+{
+  "cli_version": "v0.2.0",
+  "findings": [],
+  "lockfile_version": "v0.0.3",
+  "valid": true,
+  "workflows": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "valid": true,
+      "findings": [],
+      "dependencies": [
+        {
+          "nwo": "actions/checkout",
+          "ref": "v6.1.0",
+          "sha": "d23441a48e516b6c34aea4fa41551a30e30af803",
+          "hash_algo": "sha1",
+          "direct": true
+        }
+      ]
+    }
+  ]
+}
+```
+
+`valid` が `true` で、`findings` が空配列であれば問題はありません。`dependencies` の `direct` は、ワークフローから直接参照している依存関係かどうかを表します。Action が内部で呼び出す推移的な依存関係があれば、`direct` が `false` のエントリーとして表示されます。
+
+ネットワークを使わず、ワークフローの参照に対応するエントリーがあるかだけを確認するには、次のコマンドを使います。
+
+```bash
+gh actions-lock --verify-local
+```
+
+試しにワークフローだけを `actions/checkout@v6.0.0` に変更すると、以下のように不整合が検出されます。
+
+```text
+✗ Ref changed actions/checkout@v6.0.0
+  workflow uses ref "v6.0.0" but lockfile pins "v6.1.0"
+✗ Unused lockfile entry actions/checkout@v6.1.0
+  lockfile pins actions/checkout@v6.1.0 but no uses: in this workflow references it
+```
+
+`--verify-local` は手元で更新漏れに気づくために便利ですが、記録されたコミットやリポジトリの信頼性までは確認しません。CI での検証には `--verify` を使用します。
+
+## 依存関係を更新する
+
+Action を追加・削除したときや参照するバージョンを変更したときは、`gh actions-lock` を再実行します。再実行した場合、すでに固定されている参照は基本的に維持されます。
+
+:::info
+登録済みのワークフローで Dependabot が Action のバージョン更新 PR を作成すると、対応する lockfile のエントリーも同じ PR で再生成されます。
+:::
+
+タグの移動などで参照が変わったことを反映したい場合は、`--relock` を使うと lockfile のエントリーを解決し直して更新できます。
+
+```bash
+gh actions-lock --relock
+```
+
+例えば `--no-narrow` を指定して `actions/checkout@v6` のまま固定した場合、`v6` が指すコミットが A から B に移動すると、`--relock` で lockfile のエントリーが B に更新されます。一方、`actions/checkout@v6.1.0` のような完全なバージョンタグは公開後に移動することがほとんどないため、`--relock` を実行しても通常は同じコミットのままです。拡張がデフォルトで部分的なバージョン指定を完全なバージョンタグに絞り込むのは、このように固定したコミットが長く有効であり続けるようにするためです。
+
+なお、`--relock` は記録されたコミットに到達できなくなったエントリーをエラーのまま残します。このようなエントリーは改ざんの可能性もあるため、まず上流リポジトリの履歴を確認し、問題がなければ `gh actions-lock --relock --accept-moved` で新しいコミットを受け入れます。
+
+
+## まとめ
+
+- Workflow dependency lockfiles を使うと、タグ表記を残しながら Action の実行対象をコミット SHA に固定できる
+- `gh actions-lock` は lockfile を生成するだけでなく、ワークフローの参照を書き換える場合がある
+- `--verify` は GitHub にアクセスして検証し、`--verify-local` はオフラインで参照とエントリーの対応を確認する
+- 通常の再実行は固定済みの参照を維持し、`--relock` は既存の参照を解決し直す
+- 再利用可能なワークフロー内部の依存関係は、定義元のリポジトリの lockfile が管理する
+
+## 参考
+
+- [GitHub Actions workflow lockfiles in public preview](https://github.blog/changelog/2026-10-14-github-actions-workflow-lockfiles-in-public-preview/)
+- [Workflow dependency lockfiles](https://docs.github.com/en/actions/concepts/security/workflow-dependency-lockfiles)
+- [Locking action dependencies in a repository's workflows](https://docs.github.com/en/actions/how-tos/secure-your-work/lock-workflow-dependencies)
+- [Enforcing lockfiles for action dependencies](https://docs.github.com/en/actions/how-tos/administer/enforce-workflow-lockfiles)
+- [github/gh-actions-lock](https://github.com/github/gh-actions-lock)
