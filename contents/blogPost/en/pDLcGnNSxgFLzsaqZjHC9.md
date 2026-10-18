@@ -284,7 +284,7 @@ Start the development server with `npm run dev` (which runs `vp dev` under the h
 npm run dev
 ```
 
-You'll see the memo "Void を試す" inserted by `db/seed.ts`. Type a memo into the input and press the "追加" (Add) button, and the memo is added to the top of the list. Press the "削除" (Delete) button, and that memo disappears from the list.
+You'll see the memo `Void を試す` inserted by `db/seed.ts`. Type a memo into the input and press the `追加` (Add) button, and the memo is added to the top of the list. Press the `削除` (Delete) button, and that memo disappears from the list.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/4W44Vw9Urvt3c9jDZ8QUnx/c6e2dd2a1828729d45595f1374db5b52/void-vite-cloudflare-deploy-1.png)
 
@@ -363,7 +363,7 @@ Also turn each memo's body on the list page into a `Link` to its detail page.
              <button onClick={() => action("/?delete", { data: { id: memo.id } })}>
 ```
 
-Click a memo in the list, and you move to `/memos/1`, where the detail page is shown. Click "一覧に戻る" (Back to list) to return to the list page.
+Click a memo in the list, and you move to `/memos/1`, where the detail page is shown. Click `一覧に戻る` (Back to list) to return to the list page.
 
 ![](https://images.ctfassets.net/in6v9lxmm5c8/1E4pJQzznq4KPf9sDscwTU/00b84b9888ab605b5355fabec4e1c8a0/void-vite-cloudflare-deploy-4.png)
 
@@ -384,7 +384,7 @@ Looking at the Network panel in DevTools during navigation, the request to `/mem
 
 The response bundles the name of the page component to render (`component`), the `props` returned by the loader, and the URL parameters (`params`). The client receives this JSON and swaps in the page component. Requests made by `Link` navigation carry an `X-VoidPages: true` header; for the same URL without this header, the server returns server-rendered HTML instead. Inertia.js uses a [protocol](https://inertiajs.com/the-protocol) that returns JSON containing the component name and props for requests with an `X-Inertia` header, and Void's Pages mode works in a very similar way.
 
-Accessing the URL of a nonexistent ID directly (for example, `/memos/999`) returned status code 404 along with the message passed to `HTTPException`, "メモが見つかりません" (Memo not found), as plain text.
+Accessing the URL of a nonexistent ID directly (for example, `/memos/999`) returned status code 404 along with the message passed to `HTTPException`, `メモが見つかりません` (Memo not found), as plain text.
 
 ## Showing Related Memos Later with defer and Suspense
 
@@ -466,7 +466,7 @@ In a React page component, props wrapped in `defer()` are passed as Promises. Re
 
 `use(relatedMemos)` suspends the component's rendering until the data arrives. In the meantime, the `fallback` of the nearest `<Suspense>` is shown, and once the data arrives, `RelatedMemos` resumes rendering. Because you can reuse the type inferred from the loader, as in `Pick<Props, "relatedMemos">`, `related` is inferred as the mock's return type as well.
 
-Click a memo link on the list page to open its detail page. The memo body appears immediately, and the related memos area shows "関連メモを読み込み中..." (Loading related memos...). About 1.5 seconds later, it's replaced by the list of related memos.
+Click a memo link on the list page to open its detail page. The memo body appears immediately, and the related memos area shows `関連メモを読み込み中...` (Loading related memos...). About 1.5 seconds later, it's replaced by the list of related memos.
 
 !v(https://videos.ctfassets.net/in6v9lxmm5c8/24uSrmvw4j6D8M7TWBLr1B/e18e2df6aa27f7b921b8727351e5cd86/bda6e53a-dae7-48f4-8b83-663078ac9eb3.mov)
 
