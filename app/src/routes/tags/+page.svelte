@@ -14,11 +14,13 @@
 </svelte:head>
 
 <div class="min-h-[calc(100vh-3.5rem-6rem-2rem)]">
-  <h1 class="px-4 text-2xl font-bold">{m.tagsTitle()}</h1>
+  <div class="container px-4 pt-8 md:mx-auto md:px-12">
+    <h1 class="text-2xl font-bold">{m.tagsTitle()}</h1>
 
-  <div class="container my-8 md:mx-auto md:px-12">
-    {#each data.tagCollection.items as tag (tag.slug)}
-      <Tag name={tag.name} slug={tag.slug}></Tag>
-    {/each}
+    <div class="my-8 flex flex-wrap gap-2">
+      {#each data.tagCollection.items as tag (tag.slug)}
+        <Tag name={tag.name} slug={tag.slug}></Tag>
+      {/each}
+    </div>
   </div>
 </div>

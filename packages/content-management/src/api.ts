@@ -307,6 +307,14 @@ export const getBlogPosts = async ({
 };
 
 const createTag = async (tagName: string): Promise<contentful.Entry> => {
+  const slug = slugify(tagName, { lower: true });
+  const tags = await fetchTags();
+  // slug は /tags ページの each ブロックのキーになるため、空や重複を作るとページがクラッシュする
+  if (!slug || tags.some((t) => flattenField(t.fields.slug) === slug)) {
+    throw new Error(
+      `タグ「${tagName}」から一意な slug を生成できません（"${slug}"）。Contentful で英語の slug を付けたタグを先に作成してください。`,
+    );
+  }
   const client = await createClient();
   const tag = await client.createEntry("tag", {
     fields: {
@@ -314,7 +322,7 @@ const createTag = async (tagName: string): Promise<contentful.Entry> => {
         "en-US": tagName,
       },
       slug: {
-        "en-US": slugify(tagName, { lower: true }),
+        "en-US": slug,
       },
     },
   });
