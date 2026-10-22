@@ -1033,6 +1033,38 @@ describe("createBlogPost", () => {
     });
   });
 
+  test.each([
+    ["slug が空になるタグ名", "パスキー"],
+    ["既存タグと slug が重複するタグ名", "Tag1 Slug"],
+  ])("%s の場合はタグを作成せずエラーにする", async (_, tagName) => {
+    const tagBody = vi.fn();
+    server.use(
+      http.post(contentful("/entries"), async ({ request }) => {
+        tagBody(await request.json());
+        return HttpResponse.json({});
+      }),
+    );
+
+    await expect(
+      createBlogPost({
+        id: "id",
+        title: "title",
+        about: "about",
+        createdAt: "2021-01-01",
+        updatedAt: "2021-01-02",
+        slug: "slug",
+        article: "article",
+        published: false,
+        thumbnail: {
+          title: "title",
+          url: "https://images.ctfassets.net/{spaceId}/{assetId}/{token}/image.png",
+        },
+        tags: [tagName],
+      }),
+    ).rejects.toThrow(tagName);
+    expect(tagBody).not.toHaveBeenCalled();
+  });
+
   test("selfAssessment がスキーマに一致している場合作成する", async () => {
     const body = vi.fn();
     server.use(
