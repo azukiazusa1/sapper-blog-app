@@ -124,7 +124,7 @@ npm run new:article
 
 ### 6. 記事を書く
 
-合意済みの構成と [`../../../contents/BLOG_WRITING_GUIDE.md`](../../../contents/BLOG_WRITING_GUIDE.md) に従う。
+合意済みの構成と [`../../../contents/BLOG_WRITING_GUIDE.md`](../../../contents/BLOG_WRITING_GUIDE.md) に従う。特に「具体的に書く」「働いていない言葉を削る」「手順を『簡単』と言わない」「AI が書いたように見える表現を避ける」の各節と、本文の節ごとの役割分担に沿って書き、書き終えた段落を同じ観点で見直す。
 
 - 問題・背景から始め、読者の到達点を導入で明示する
 - 新しい Web 標準の記事では、Web Platform DX の公式 [`web-features`](https://github.com/web-platform-dx/web-features) データで対象機能の ID を確認し、frontmatter の直後かつ導入文の前に `b> <baseline-id>` を必ず置く。ID を推測せず、見つからない場合はその旨をユーザーへ伝える。中心的な機能が複数ある場合は 1 行ずつ置く
