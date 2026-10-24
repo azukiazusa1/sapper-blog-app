@@ -6,7 +6,7 @@ about: "MCP のクライアントがサーバー側の変化を知るには、�
 createdAt: "2026-10-24T21:50+09:00"
 updatedAt: "2026-10-24T21:50+09:00"
 tags: ["MCP", "AI SDK"]
-thumnail:
+thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/K4CKh0jgHGQH8eXXqADmU/3fa90cffef6dc212bd1efcc0c7f754e4/fish_aji_osashimi_15754-768x591.png"
   title: "アジのお刺身のイラスト"
 audio: null
