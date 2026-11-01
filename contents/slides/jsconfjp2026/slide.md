@@ -1,328 +1,17 @@
 ---
 marp: true
-theme: default
+theme: azukiazusa
 size: 16:9
-class: invert
 description: ワークフローからハーネスへ — Web フレームワークの作者たちが AI エージェントに向かう理由
 style: |
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&display=swap');
-
-  :root {
-    --stone-50: #fafaf9;
-    --stone-100: #f5f5f4;
-    --stone-200: #e7e5e4;
-    --stone-300: #d6d3d1;
-    --stone-400: #a8a29e;
-    --stone-500: #78716c;
-    --stone-600: #57534e;
-    --stone-700: #44403c;
-    --stone-800: #292524;
-    --stone-900: #1c1917;
-    --stone-950: #0c0a09;
-    --accent: #5eead4;
-    --accent-dim: #2dd4bf;
-    --accent-muted: rgba(94, 234, 212, 0.15);
-  }
-
-  section {
-    background: var(--stone-950);
-    color: var(--stone-200);
-    font-family: 'Noto Sans JP', 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 1.6;
-    padding: 56px 64px 52px;
-    position: relative;
-  }
-
-  section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background:
-      radial-gradient(ellipse at 10% 90%, rgba(94, 234, 212, 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 90% 10%, rgba(94, 234, 212, 0.04) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  section::after {
-    content: "";
-    position: absolute;
-    inset: 24px;
-    border: 1px solid rgba(245, 245, 244, 0.06);
-    pointer-events: none;
-  }
-
-  h1, h2, h3 {
-    margin: 0 0 0.6em;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-  }
-
-  h1 {
-    font-size: 58px;
-    font-weight: 800;
-  }
-
-  h2 {
-    font-size: 46px;
-    font-weight: 700;
-    border-bottom: 2px solid var(--accent-muted);
-    padding-bottom: 0.3rem;
-  }
-
-  h3 {
-    font-size: 34px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  p, li {
-    color: var(--stone-300);
-  }
-
-  strong {
-    color: #ffffff;
-    font-weight: 700;
-  }
-
-  em {
-    color: var(--accent);
-    font-style: normal;
-  }
-
-  a {
-    color: var(--accent-dim);
-    text-decoration: underline;
-    text-underline-offset: 0.14em;
-  }
-
-  code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82em;
-    background: var(--stone-800);
-    color: var(--accent);
-    border: 1px solid var(--stone-700);
-    border-radius: 6px;
-    padding: 0.14em 0.32em;
-  }
-
-  pre {
-    margin: 0.8em 0;
-    padding: 18px 20px;
-    border-radius: 10px;
-    border: 1px solid var(--stone-700);
-    background: linear-gradient(135deg, var(--stone-900), var(--stone-800));
-    font-size: 20px;
-    line-height: 1.45;
-  }
-
-  pre code {
-    background: transparent;
-    border: 0;
-    color: var(--stone-200);
-    padding: 0;
-  }
-
-  ul, ol {
-    margin: 0.4em 0 0;
-    padding-left: 0;
-  }
-
-  li {
-    list-style: none;
-    position: relative;
-    padding-left: 1.8rem;
-    margin: 0.32em 0;
-  }
-
-  li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: bold;
-    font-size: 1.1em;
-  }
-
-  blockquote {
-    margin: 1em 0;
-    padding: 0.9em 1em;
-    border-left: 4px solid var(--accent);
-    background: var(--accent-muted);
-    border-radius: 0 8px 8px 0;
-    color: var(--stone-100);
-  }
-
-  blockquote p {
-    color: var(--stone-200);
-    font-size: 1.0rem;
-    margin: 0;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 24px;
-  }
-
-  th, td {
-    border: 1px solid var(--stone-700);
-    padding: 12px 14px;
-    text-align: left;
-  }
-
-  th {
-    color: #ffffff;
-    background: var(--stone-800);
-  }
-
-  img {
-    border-radius: 8px;
-  }
-
-  .eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 17px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--stone-400);
-    margin-bottom: 18px;
-  }
-
-  .lead {
-    font-size: 34px;
-    line-height: 1.5;
-    color: var(--stone-100);
-  }
-
-  .muted {
-    color: var(--stone-400);
-  }
-
-  .accent {
-    color: var(--accent);
-  }
-
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero {
-    display: grid;
-    place-items: center;
-    text-align: center;
-    height: 100%;
-    align-content: center;
-    gap: 18px;
-  }
-
-  .title {
-    max-width: 16em;
-  }
-
-  .mono {
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    align-items: start;
-  }
-
-  .columns-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    align-items: stretch;
-  }
-
-  .card {
-    background: var(--accent-muted);
-    border: 1px solid rgba(94, 234, 212, 0.2);
-    border-radius: 10px;
-    padding: 18px 20px;
-  }
-
-  .card h3, .card h4 {
-    margin-top: 0;
-  }
-
-  .label {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 15px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-
-  .big {
-    font-size: 44px;
-    line-height: 1.35;
-    color: var(--stone-100);
-  }
-
-  .statement {
-    font-size: 40px;
-    line-height: 1.5;
-    color: var(--stone-100);
-    text-align: center;
-    margin: 1.2em 0;
-  }
-
-  .statement strong {
-    color: #ffffff;
-  }
-
-  .huge {
-    font-size: 64px;
-    line-height: 1.1;
-    color: #ffffff;
-  }
-
-  .quote {
-    font-size: 40px;
-    line-height: 1.4;
-    color: var(--stone-100);
-  }
-
-  .fit {
-    font-size: 24px;
-  }
-
-  .small {
-    font-size: 20px;
-  }
-
-  .tiny {
-    font-size: 16px;
-  }
-
-  .divider {
-    height: 1px;
-    background: var(--stone-700);
-    margin: 18px 0;
-  }
-
-  video {
-    max-width: 100%;
-    border-radius: 10px;
-    border: 1px solid var(--stone-700);
-  }
-
   .flow {
-    display: flex;
-    align-items: center;
     justify-content: center;
     gap: 12px;
     margin: 0.4em 0 1em;
+  }
+
+  .flow > div:last-child {
+    flex: none;
   }
 
   .flow .node {
@@ -334,88 +23,7 @@ style: |
     white-space: nowrap;
   }
 
-  table {
-    display: table;
-  }
-
-  .label {
-    font-size: 18px;
-  }
-
-  .columns-3 + p {
-    margin-top: 1em;
-  }
-
-  .shift {
-    display: grid;
-    grid-template-columns: 1fr 200px 1fr;
-    align-items: center;
-    margin-top: 1.4em;
-  }
-
-  .shift-end {
-    text-align: center;
-  }
-
-  .shift-place {
-    font-size: 30px;
-    margin-bottom: 0.2em;
-  }
-
-  .shift-lang {
-    font-family: 'Inter', sans-serif;
-    font-size: 56px;
-    font-weight: 800;
-    line-height: 1.2;
-  }
-
-  .shift-items {
-    font-size: 24px;
-    margin-top: 0.6em;
-  }
-
-  .shift-end {
-    color: var(--stone-100);
-  }
-
-  .shift .now .shift-lang {
-    color: var(--accent);
-  }
-
-  .shift .now .shift-place {
-    color: #ffffff;
-  }
-
-  .shift-axis {
-    position: relative;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 2px;
-  }
-
-  .shift-axis::after {
-    content: '';
-    position: absolute;
-    right: -4px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-left: 16px solid var(--accent);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-  }
-
-  .shift-axis span {
-    position: absolute;
-    left: 50%;
-    bottom: 14px;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    font-size: 20px;
-    color: var(--stone-200);
-  }
-
   .flow .arrow {
-    color: var(--accent);
     font-size: 28px;
   }
 ---
@@ -651,9 +259,9 @@ Mastra の作者たちも、エージェントを開発する中で抽象化す�
 
 ## Web の作者が得意なのは「複雑さを引き受ける」こと
 
-<div class="columns">
+<div class="compare">
 
-<div class="card">
+<div class="side">
   <div class="label">Web フレームワーク</div>
 
 - ルーティング・認証・状態管理
@@ -662,7 +270,7 @@ Mastra の作者たちも、エージェントを開発する中で抽象化す�
 
 </div>
 
-<div class="card">
+<div class="side">
   <div class="label">Agent フレームワーク</div>
 
 - ツール接続・権限・承認
@@ -782,9 +390,9 @@ Flue 1.0 Beta を実際の開発で使ったところ、複雑なエージェン
 
 ## TypeScript の活躍する領域が広がっている
 
-<div class="columns">
+<div class="compare">
 
-<div class="card">
+<div class="side weak">
   <div class="label">モデル・データに近い領域</div>
   <h3>Python が強い</h3>
 
@@ -793,9 +401,9 @@ Flue 1.0 Beta を実際の開発で使ったところ、複雑なエージェン
 
 </div>
 
-<div class="card">
+<div class="side">
   <div class="label">プロダクトに近い領域</div>
-  <h3>TypeScript が活きる</h3>
+  <h3 class="accent">TypeScript が活きる</h3>
 
 - サーバー・ツール・Web UI
 - npm 資産・デプロイとの統合
