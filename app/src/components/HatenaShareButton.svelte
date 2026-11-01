@@ -10,7 +10,7 @@
   let { url, text }: Props = $props();
 
   let href = $derived(
-    `https://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${text}`,
+    `https://b.hatena.ne.jp/add?mode=confirm&url=${encodeURIComponent(url)}&title=${encodeURIComponent(text)}`,
   );
 </script>
 

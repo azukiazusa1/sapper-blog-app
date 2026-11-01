@@ -151,7 +151,7 @@
 
       <!-- Secondary CTA (outline) -->
       <a
-        href={`https://x.com/share?url=${url}&text=${escapedText}`}
+        href={`https://x.com/intent/tweet?url=${encodeURIComponent(url)}&text=${escapedText}`}
         target="_blank"
         rel="noopener noreferrer"
         class="px-6 md:px-8 py-3 md:py-4 rounded-xl text-base md:text-lg font-bold
