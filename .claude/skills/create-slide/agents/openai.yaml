@@ -1,0 +1,4 @@
+interface:
+  display_name: "発表スライドを作成"
+  short_description: "壁打ちで発表内容を固め、Marp のスライド下書きを作成して検証します"
+  default_prompt: "$create-slide を使って、発表内容を壁打ちしてスライドの下書きを作成してください。"
