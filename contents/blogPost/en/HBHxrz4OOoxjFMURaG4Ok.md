@@ -7,8 +7,8 @@ createdAt: "2026-11-04T17:17+09:00"
 updatedAt: "2026-11-04T17:17+09:00"
 tags: ["CSS"]
 thumbnail:
-  url: ""
-  title: ""
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/7Moq95YA6MNzBWOQ8GMSIc/2ab602e0a51d3408b11199f33273a3a5/food_takotaki_illust_3428.png"
+  title: "たこ焼きのイラスト"
 audio: null
 selfAssessment:
   quizzes:
