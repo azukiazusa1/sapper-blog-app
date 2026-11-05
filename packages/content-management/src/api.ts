@@ -96,13 +96,48 @@ const fetchAssets = async (): Promise<contentful.Asset[]> => {
   return allAssets;
 };
 
-const fetchBlogs = async (): Promise<ContentfulBlogPost[]> => {
+/**
+ * blogPost の article は 1 件あたり数十 KB ある。
+ * limit: 1000 の単一リクエストは、原稿全体で CMA のレスポンス上限
+ * (7340032B ≒ 7MiB) を超えて 400 になる。
+ * 最大級の記事を 100 件集めても上限未満に収まる見積もりなので、このページサイズにする。
+ * 全件は skip を進めて結合する。
+ */
+const BLOG_POST_PAGE_SIZE = 100;
+
+const fetchBlogs = async (
+  query: {
+    "fields.createdAt[gte]"?: string;
+    "fields.createdAt[lte]"?: string;
+  } = {},
+): Promise<ContentfulBlogPost[]> => {
   const client = await createClient();
-  const posts = await client.getEntries({
-    content_type: "blogPost",
-    limit: 1000,
-  });
-  return posts.items as unknown as ContentfulBlogPost[];
+
+  let allPosts: ContentfulBlogPost[] = [];
+  let skip = 0;
+
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    const posts = await client.getEntries({
+      content_type: "blogPost",
+      // sys.createdAt は更新で動かないので、ページ途中の更新で取りこぼしにくい
+      order: "sys.createdAt",
+      limit: BLOG_POST_PAGE_SIZE,
+      skip,
+      ...query,
+    });
+
+    const items = posts.items as unknown as ContentfulBlogPost[];
+    allPosts = [...allPosts, ...items];
+
+    if (items.length < BLOG_POST_PAGE_SIZE) {
+      break;
+    }
+
+    skip += BLOG_POST_PAGE_SIZE;
+  }
+
+  return allPosts;
 };
 
 const fetchBlogsByCreatedAt = async ({
@@ -112,14 +147,10 @@ const fetchBlogsByCreatedAt = async ({
   startDate: string;
   endDate: string;
 }): Promise<ContentfulBlogPost[]> => {
-  const client = await createClient();
-  const posts = await client.getEntries({
-    content_type: "blogPost",
-    limit: 1000,
+  return fetchBlogs({
     "fields.createdAt[gte]": startDate,
     "fields.createdAt[lte]": endDate,
   });
-  return posts.items as unknown as ContentfulBlogPost[];
 };
 
 const flattenField = <T>(field: FieldValue<T>, locale: Locale = "en-US"): T => {
