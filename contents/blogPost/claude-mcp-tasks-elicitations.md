@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "SDK のサーバーは Tasks 拡張を実装していないため、`tasks/update` は `setRequestHandler` で自前で実装します。"
 published: true
 ---
-
 MCP（Model Context Protocol）のツール呼び出しは、クライアントがリクエストを送り、サーバーが結果を返すまで待つという同期的なやり取りが基本です。数秒で終わる処理ならこれで十分ですが、数分かかる調査や CI の実行のような処理では、接続を開いたまま待ち続けることになります。また、ツールを実行している途中で「本当に返金してよいか」「どのリポジトリを対象にするか」といった判断をユーザーに求めたい場面もあります。
 
 MCP にはこの 2 つの問題に対応する仕組みとして、時間のかかる処理を扱う Tasks と、処理の途中でユーザーに入力を求める Elicitation があります。2026 年 10 月 23 日、Anthropic は [Claude で MCP Tasks と Elicitations をサポートする](https://x.com/ClaudeDevs/status/2113698001889927608) ことを発表しました。現時点では Claude Code CLI で利用でき、ほかの Claude の製品にも順次展開される予定です。

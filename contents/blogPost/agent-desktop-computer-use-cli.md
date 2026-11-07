@@ -26,7 +26,6 @@ selfAssessment:
         - text: "要素が再び表示されるまで待ってからクリックする"
           correct: false
           explanation: "見つからない要素を待ち続ける動作ではなく、STALE_REF として拒否されると説明されています。"
-
     - question: "click の結果が disposition.delivery が delivered_unverified、retry が unsafe だったとき、エージェントが取るべき行動はどれですか？"
       answers:
         - text: "同じクリックは再送せず、スナップショットを取り直して結果を確かめる"
@@ -41,10 +40,8 @@ selfAssessment:
         - text: "操作は失敗したとみなし、アプリを再起動する"
           correct: false
           explanation: "delivered_unverified は操作が失敗したという意味ではありません。クリック自体はアプリに届いている可能性があります。"
-
 published: true
 ---
-
 AI エージェントに Web フロントエンドを実装させるとき、[agent-browser](https://github.com/vercel-labs/agent-browser) や [Playwright MCP](https://github.com/microsoft/playwright-mcp) を渡しておけば、エージェントは自分でブラウザを開いて動作を確認できます。一方で、SwiftUI や WinUI で作ったネイティブアプリはブラウザのようにエージェントが直接操作できる API がなく、動作確認の手段が限られます。
 
 デスクトップアプリを操作する手段として、Claude の [Computer Use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool) のように、スクリーンショットを撮ってモデルにクリックする座標を推定させる方式があります。この方式は画面に表示されるものなら何でも扱える反面、操作のたびに画像をモデルに渡し、モデルが画像からボタンの位置を読み取って座標を決める必要があるため、動作に時間がかかり、トークンを多く消費するという課題があります。

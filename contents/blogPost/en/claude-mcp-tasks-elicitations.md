@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "The SDK's server does not implement the Tasks extension, so you implement `tasks/update` yourself with `setRequestHandler`."
 published: true
 ---
-
 MCP (Model Context Protocol) tool calls are fundamentally synchronous: the client sends a request and waits until the server returns a result. That's fine for work that finishes in a few seconds, but for something like a multi-minute research job or a CI run, the client ends up holding a connection open the whole time. There are also cases where you want to ask the user for a decision partway through a tool's execution, such as "Are you sure you want to issue this refund?" or "Which repository should this target?"
 
 MCP has two mechanisms that address these problems: Tasks, for handling long-running work, and Elicitation, for asking the user for input in the middle of an operation. On October 23, 2026, Anthropic [announced support for MCP Tasks and Elicitations in Claude](https://x.com/ClaudeDevs/status/2113698001889927608). It's currently available in the Claude Code CLI and will roll out to other Claude products over time.

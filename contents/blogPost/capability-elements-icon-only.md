@@ -1,8 +1,8 @@
 ---
 id: -EbSLH9el56yjKmYc44Nf
-title: 'Capability Elements をアイコンだけで表示する `displaymode="icon-only"`'
+title: "Capability Elements をアイコンだけで表示する `displaymode=\"icon-only\"`"
 slug: "capability-elements-icon-only"
-about: 'Chrome は `<camera>`・`<microphone>`・`<geolocation>` をテキストなしのアイコンボタンとして描画する `displaymode="icon-only"` 属性を実装しています。この記事では、`displaymode="icon-only"` の使い方について紹介します。'
+about: "Chrome は `<camera>`・`<microphone>`・`<geolocation>` をテキストなしのアイコンボタンとして描画する `displaymode=\"icon-only\"` 属性を実装しています。この記事では、`displaymode=\"icon-only\"` の使い方について紹介します。"
 createdAt: "2026-11-07T19:24+09:00"
 updatedAt: "2026-11-07T19:24+09:00"
 tags: ["HTML"]
@@ -12,24 +12,22 @@ thumbnail:
 audio: null
 selfAssessment:
   quizzes:
-    - question: 'Chrome の実装で `displaymode="icon-only"` を付けてもアイコン表示にならない要素はどれですか?'
+    - question: "Chrome の実装で `displaymode=\"icon-only\"` を付けてもアイコン表示にならない要素はどれですか?"
       answers:
         - text: "`<camera>`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`<geolocation>`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`<usermedia>`"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "`<microphone>`"
           correct: false
-          explanation: ""
-          
+          explanation: null
 published: true
 ---
-
 !> `displaymode="icon-only"` は 2026 年 11 月 6 日時点で Chrome の実験的な機能です。試すには `--enable-blink-features=CapabilityElementIconOnlyMode` を付けて Chrome を起動する必要があります。仕様にはまだ含まれておらず、属性名が変わる可能性があります。
 
 `<camera>`・`<microphone>`・`<geolocation>` のように、ブラウザが描画するボタンで権限を要求する HTML 要素は Capability Elements と呼ばれています。ブラウザがボタンの見た目と文言を管理するため、JavaScript から `getUserMedia()` を呼び出すよりも安全に権限を要求できます。また、誤って必要な権限をブロックしてしまったとしても、再度ボタンを押すだけでよいので手軽に権限の再要求ができます。

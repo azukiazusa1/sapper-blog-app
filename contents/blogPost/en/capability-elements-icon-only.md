@@ -1,8 +1,8 @@
 ---
 id: -EbSLH9el56yjKmYc44Nf
-title: 'Displaying Capability Elements as Icons Only with `displaymode="icon-only"`'
+title: "Displaying Capability Elements as Icons Only with `displaymode=\"icon-only\"`"
 slug: "capability-elements-icon-only"
-about: 'Chrome has implemented a `displaymode="icon-only"` attribute that renders `<camera>`, `<microphone>`, and `<geolocation>` as icon buttons without text. This article explains how to use `displaymode="icon-only"`.'
+about: "Chrome has implemented a `displaymode=\"icon-only\"` attribute that renders `<camera>`, `<microphone>`, and `<geolocation>` as icon buttons without text. This article explains how to use `displaymode=\"icon-only\"`."
 createdAt: "2026-11-07T19:24+09:00"
 updatedAt: "2026-11-07T19:24+09:00"
 tags: ["HTML"]
@@ -12,24 +12,22 @@ thumbnail:
 audio: null
 selfAssessment:
   quizzes:
-    - question: 'In Chrome''s implementation, which element is NOT rendered as an icon even when you add `displaymode="icon-only"`?'
+    - question: "In Chrome's implementation, which element is NOT rendered as an icon even when you add `displaymode=\"icon-only\"`?"
       answers:
         - text: "`<camera>`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`<geolocation>`"
           correct: false
-          explanation: ""
+          explanation: null
         - text: "`<usermedia>`"
           correct: true
-          explanation: ""
+          explanation: null
         - text: "`<microphone>`"
           correct: false
-          explanation: ""
-
+          explanation: null
 published: true
 ---
-
 !> As of November 6, 2026, `displaymode="icon-only"` is an experimental feature in Chrome. To try it, you need to launch Chrome with `--enable-blink-features=CapabilityElementIconOnlyMode`. It is not yet part of any specification, and the attribute name may change.
 
 HTML elements such as `<camera>`, `<microphone>`, and `<geolocation>`, which request permissions through a button rendered by the browser, are called Capability Elements. Because the browser controls the button's appearance and label, they let you request permissions more safely than calling `getUserMedia()` from JavaScript. And even if a user accidentally blocks a permission they actually need, they can simply press the button again to re-request it.
