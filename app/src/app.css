@@ -187,15 +187,6 @@ html:has(dialog[open]) {
   scroll-margin-top: 5rem;
 }
 
-/* セクション間の呼吸（読書リズム） */
-#contents .markdown-body h2 {
-  margin-top: 3em;
-}
-
-#contents .markdown-body h3 {
-  margin-top: 2em;
-}
-
 #contents blockquote {
   @apply my-6 border-l-4 py-3 px-5 text-stone-700 rounded-r-lg md:my-8 dark:text-stone-300;
   border-left-color: var(--color-accent);
