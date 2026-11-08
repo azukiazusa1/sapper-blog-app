@@ -6,6 +6,9 @@ about: "Instead of one tool per message shape, @json-render/chat lets an LLM com
 createdAt: "2026-11-08T14:38+09:00"
 updatedAt: "2026-11-08T14:38+09:00"
 tags: ["Generative UI", "json-render", "Slack"]
+thumbnail:
+  url: "https://images.ctfassets.net/in6v9lxmm5c8/K9Q1deXcwDjLZdbskeEbO/6ba7b1045d81b99d1fcf81afd1629e50/aburiebi-nigiri-sushi_21410.png"
+  title: "炙りエビマヨ寿司のイラスト"
 audio: null
 selfAssessment:
   quizzes:
