@@ -50,7 +50,7 @@ Slack のボットでテーブルやグラフを含むメッセージを送る�
 
 ## @json-render/chat の概要
 
-`@json-render/chat` は Slack の Block Kit を直接出力するのではなく、Vercel の [Chat SDK](https://chat-sdk.dev) が定義する `CardElement` というプラットフォームに依存しないカードの表現を出力します。Chat SDK は Slack、Teams、Discord、Google Chat などのアダプターを持ち、各アダプターがカードをそのプラットフォームの形式に変換します。例えば Slack では Block Kit、Teams では Adaptive Cards になります。
+`@json-render/chat` は [Chat SDK](https://chat-sdk.dev) が定義する `CardElement` というプラットフォームに依存しないカードの表現を出力します。Chat SDK は Slack、Teams、Discord、Google Chat などのアダプターを持ち、各アダプターがカードをそのプラットフォームの形式に変換します。例えば Slack では Block Kit、Teams では Adaptive Cards になります。
 
 `@json-render/chat` が提供するのは次の 3 つです。
 
