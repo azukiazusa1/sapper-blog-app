@@ -26,7 +26,6 @@ selfAssessment:
         - text: "Microsoft Teams Adaptive Cards JSON"
           correct: false
           explanation: "Converting to Adaptive Cards is the role of the Chat SDK Teams adapter. The output of @json-render/chat is platform-independent."
-
     - question: "What happens when you post a card containing two tables to Slack without passing limits?"
       answers:
         - text: "The second table is replaced with an ASCII table in a code block"
@@ -41,10 +40,8 @@ selfAssessment:
         - text: "The second table is removed, and only the first table is shown"
           correct: false
           explanation: "The second table is not removed. It is displayed as an ASCII table with its data intact."
-
 published: true
 ---
-
 To send a message containing tables or charts from a Slack bot, you need to build [Block Kit](https://docs.slack.dev/block-kit/) JSON, which represents a Slack message as a combination of blocks. One way to delegate this to an LLM is to give it one tool per message shape, such as "a tool that posts a table" and "a tool that posts a chart." With this approach, though, you cannot combine elements in a single message in ways the tools did not anticipate. For example, if you want to show a table and a chart together, each tool has to post its own separate message.
 
 [json-render](https://json-render.dev) is a framework that lets AI pick parts from a predefined catalog of components and generate JSON (a Spec) describing the structure of the UI. I covered the idea of catalogs in [Trying json-render, which lets AI generate predefined UI](/blog/json-render). `@json-render/chat`, released on November 4, 2026, is a package for posting these Specs as Slack or Microsoft Teams messages. Because the model generates a single Spec that combines parts, you can put a table, a chart, and buttons into one message without having a tool for each shape.

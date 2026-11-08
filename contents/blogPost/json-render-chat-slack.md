@@ -26,7 +26,6 @@ selfAssessment:
         - text: "Microsoft Teams の Adaptive Cards の JSON"
           correct: false
           explanation: "Adaptive Cards への変換は Chat SDK の Teams アダプターの役割です。@json-render/chat の出力はプラットフォームに依存しません。"
-
     - question: "limits を渡さずに、テーブルを 2 つ含むカードを Slack に投稿すると何が起きますか？"
       answers:
         - text: "2 つ目のテーブルがコードブロックの ASCII テーブルに置き換えられる"
@@ -41,10 +40,8 @@ selfAssessment:
         - text: "2 つ目のテーブルが削除され、1 つ目のテーブルだけが表示される"
           correct: false
           explanation: "2 つ目のテーブルは削除されず、データを保ったまま ASCII テーブルとして表示されます。"
-
 published: true
 ---
-
 Slack のボットでテーブルやグラフを含むメッセージを送るには、Slack のメッセージをブロックの組み合わせで表す [Block Kit](https://docs.slack.dev/block-kit/) の JSON を組み立てる必要があります。LLM にこの処理を任せる方法の 1 つは、「テーブルを投稿するツール」「グラフを投稿するツール」のように、メッセージの形ごとにツールを用意することです。この方法では、ツールが想定していない組み合わせを 1 通のメッセージにできません。例えばテーブルとグラフを同時に表示したい場合は、それぞれのツールが別々のメッセージとして投稿する必要があります。
 
 [json-render](https://json-render.dev) は、あらかじめ定義したコンポーネントのカタログから AI に部品を選ばせ、UI の構造を表す JSON（Spec）を生成させるフレームワークです。カタログの考え方は [事前に定義した UI を AI に生成させる json-render を試してみた](/blog/json-render) で紹介しました。2026 年 11 月 4 日に公開された `@json-render/chat` は、この Spec を Slack や Microsoft Teams のメッセージとして投稿するためのパッケージです。モデルは部品を組み合わせた 1 つの Spec を生成するので、形ごとにツールを用意しなくても、テーブルとグラフとボタンを 1 通のメッセージにまとめられます。
