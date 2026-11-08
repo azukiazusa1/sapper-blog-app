@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "withValidator はリクエストの検証に使うもので、記事の GET ルートは defineHandler だけで型付き fetch から呼び出せています。"
 published: true
 ---
-
 [Void](https://void.cloud) は Vite でフルスタックアプリを構築して Cloudflare にデプロイするためのツールキットです。Vite や Vitest、Oxc、Rolldown を開発している VoidZero が開発し、同社が Cloudflare に加わった後の 2026 年 10 月 15 日にオープンソース（MIT ライセンス）として公開されました。コードで `void/db` を import するだけでローカルのデータベースが使えるようになり、`void deploy` を実行すると Cloudflare の D1 データベースが自動で作成されます。
 
 この記事では、Void を使って D1 にデータを保存するメモアプリを React で構築し、Cloudflare にデプロイするまでの手順を紹介します。

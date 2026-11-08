@@ -26,7 +26,6 @@ selfAssessment:
         - text: "(color) or (hover) or (width > 1024px)"
           correct: false
           explanation: "Because the conditions are combined with and, the width condition must always be satisfied. Matching just one of them is not enough."
-
     - question: "How is @media not (--undefined) evaluated when --undefined has never been defined?"
       answers:
         - text: "An undefined name is treated as false, so not makes it match"
@@ -43,7 +42,6 @@ selfAssessment:
           explanation: "Referencing an undefined name only makes that condition unknown. It has no effect on other rules."
 published: true
 ---
-
 b> custom-media-queries
 
 Responsive sites usually share a common set of breakpoints. For example, a project might decide that phones are below 48rem, tablets are 48rem and up, and desktops are 64rem and up. If you write a breakpoint like `(width >= 48rem)` directly in each component's CSS, changing that rule means hunting down and rewriting every occurrence. Miss just one, and you end up with a hard-to-find bug where the layout breaks only at certain widths.

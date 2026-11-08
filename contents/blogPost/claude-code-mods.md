@@ -6,7 +6,7 @@ about: "Claude Code の Mods は、Claude Code のプロセス内で動く TypeS
 createdAt: "2026-10-20T12:47+09:00"
 updatedAt: "2026-10-20T12:47+09:00"
 tags: ["claude-code"]
-thumbnail: 
+thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/27SOtIZC7ydElKzlS0X9It/66ea17e17ec7e55433dd96d7ea80a341/tarako_19133-768x591.png"
   title: "たらこのイラスト"
 audio: null
@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "next を呼ぶ前に失敗した hook はスキップされ、次のハンドラーが代わりに実行されます。そのためガード用の hook は、.catch で失敗時にもコマンドを止めるようにします。"
 published: true
 ---
-
 Claude Code をカスタマイズする方法として、これまでも [hooks](https://code.claude.com/docs/en/hooks)、Skill、MCP サーバー、ステータスラインなどが提供されてきました。しかし、これらはいずれも Claude Code の外側で動く仕組みです。たとえば hooks はイベントごとにシェルコマンドを実行し、その終了コードや JSON 出力でツール呼び出しを止めることはできますが、Claude Code の画面を描き替えたり、組み込みの処理を置き換えたりすることはできませんでした。
 
 2026 年 10 月 1 日、Claude Code に [Mods](https://code.claude.com/docs/en/plugins/mods/overview) が正式に追加されました。mod は Claude Code のプロセスの中で動く TypeScript/JavaScript の関数で、ツール呼び出しやプロンプトの送信、画面の描画といったイベントを観察・書き換え・代わりに応答できます。Claude Code 自身の `/diff` もすでに mod として実装されています。

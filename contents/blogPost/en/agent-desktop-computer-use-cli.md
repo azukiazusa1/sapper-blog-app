@@ -26,7 +26,6 @@ selfAssessment:
         - text: "It waits until the element reappears and then clicks it"
           correct: false
           explanation: "It does not keep waiting for a missing element. The article explains that the action is rejected with STALE_REF."
-
     - question: "A click returns disposition.delivery of delivered_unverified and retry of unsafe. What should the agent do?"
       answers:
         - text: "Not resend the click, and take a new snapshot to check the result"
@@ -41,10 +40,8 @@ selfAssessment:
         - text: "Treat the action as failed and restart the app"
           correct: false
           explanation: "delivered_unverified does not mean the action failed. The click itself may well have reached the app."
-
 published: true
 ---
-
 When you have an AI agent build a web frontend, you can hand it [agent-browser](https://github.com/vercel-labs/agent-browser) or [Playwright MCP](https://github.com/microsoft/playwright-mcp), and it will open a browser and check its own work. Native apps built with SwiftUI or WinUI, on the other hand, have no API that agents can drive directly the way they drive a browser, so there are few ways to verify how they behave.
 
 One way to operate desktop apps is the approach taken by Claude's [Computer Use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool): take a screenshot and have the model estimate the coordinates to click. This approach can handle anything that appears on screen, but every action requires sending an image to the model, which then has to read the button positions from the image and decide on coordinates. As a result, it is slow and consumes a lot of tokens.

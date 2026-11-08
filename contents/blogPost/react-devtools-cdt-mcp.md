@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "React のツールは performance_start_trace とは別に、execute_3p_developer_tool から呼び出す独立したツールとして登録されます。"
 published: true
 ---
-
 !> `react-devtools-cdt-mcp` は実験的なライブラリです。Chrome DevTools MCP の実験的なサードパーティ開発者ツール API の上に作られており、ツールの名前や出力はリリースごとに変わる可能性があります。
 
 [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) を使うと、AI エージェントがブラウザでページを開き、クリックや入力をして、アクセシビリティツリーのスナップショットやコンソールログを取得できます。しかし React アプリのデバッグでは、DOM から得られる情報だけでは足りない場面があります。スナップショットに現れるのはボタンや `<li>` 要素だけで、それを描画したのがどのコンポーネントかはわかりません。入力が重いときにどのコンポーネントの再レンダリングが時間を使っているのかという情報も、Chrome DevTools MCP のパフォーマンストレースの出力から、エージェントがコンポーネント単位で得るのは難しいです。

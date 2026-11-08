@@ -70,7 +70,6 @@ selfAssessment:
           explanation: "refusal は正常なレスポンスの中に含まれる場合があり、HTTP エラーとは区別します。"
 published: true
 ---
-
 アプリケーションに LLM を組み込む際に、あらかじめ決まった判断を自動化したい場面があります。例えばサポート窓口に届いた問い合わせを振り分ける際には、返金要求があるかの判定、担当部署の分類、問い合わせ内容の深刻度の段階評価といった処理が必要です。1 つ 1 つの判断は単純であっても、規模が大きくなるにつれてレイテンシやコストが積み重なってしまいます。
 
 OpenAI の [Decisions API](https://developers.openai.com/api/docs/guides/decisions) は、入力に対する条件判定・分類・段階評価を返す API です。Decisions API は回答の範囲が限定された質問を受け取り、低コストかつ高速に回答します。その速度は、Responses API と比べて約 10 倍と OpenAI が公表しています。

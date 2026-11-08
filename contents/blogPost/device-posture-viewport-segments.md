@@ -82,11 +82,10 @@ selfAssessment:
         - text: "CSS のメディア特性で角度を表現できなかったため"
           correct: false
           explanation: "CSS の表現上の制約ではなく、プライバシー上の理由で削除されました。"
-
 published: true
 ---
-
 b> device-posture
+
 b> viewport-segments
 
 iPhone Duo は画面を折りたためる iPhone で、閉じた状態では外側のディスプレイを、開いた状態では内側の大きなディスプレイを使います。[WebKit Features for Safari 27.1](https://webkit.org/blog/18486/webkit-features-for-safari-27-1/) によると、Safari のビューポートの幅は外側のディスプレイを縦に持ったときの 382px から、内側のディスプレイを横に持ったときの 951px まで変わります。

@@ -26,7 +26,6 @@ selfAssessment:
         - text: "(color) or (hover) or (width > 1024px)"
           correct: false
           explanation: "and で組み合わせているので、幅の条件は必ず満たす必要があります。いずれか 1 つが一致すればよい条件にはなりません。"
-
     - question: "定義していない名前 --undefined を参照する @media not (--undefined) はどのように評価されますか？"
       answers:
         - text: "未定義の名前は false として扱われるため、not によって一致する"
@@ -43,7 +42,6 @@ selfAssessment:
           explanation: "未定義の名前を参照しても、その条件が unknown になるだけで、ほかのルールには影響しません。"
 published: true
 ---
-
 b> custom-media-queries
 
 レスポンシブなサイトでは、メディアクエリのブレークポイントを統一して使うことが多いです。例えばスマホは 48rem 未満、タブレットは 48rem 以上、PC は 64rem 以上のようなルールが決められているといった場合です。`(width >= 48rem)` というブレークポイントを各コンポーネントの CSS に直接書いていると、ブレークポイントのルールを変えるときにすべての箇所を探して書き換えなければなりません。1 か所でも書き換えを忘れると、特定の幅でだけレイアウトが崩れるという見つけにくいバグになります。
