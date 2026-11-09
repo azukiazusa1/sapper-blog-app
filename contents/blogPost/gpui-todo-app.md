@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "cx.notify() は状態を変更した後に呼ぶもので、ハンドラの登録前に必要な操作ではありません。"
 published: true
 ---
-
 デスクトップアプリを作るフレームワークとして、[Electron](https://www.electronjs.org/) が広く使われています。Visual Studio Code、Slack、Discord なども Electron で作られたアプリです。Electron は Web 開発の知識で macOS・Windows・Linux 向けのアプリを作れる一方、アプリごとにブラウザエンジンを同梱して動かすため、メモリ使用量やアプリのサイズが大きくなりやすいという課題があります。また、画面の描画も DOM のレイアウトや JavaScript のガベージコレクションの影響を受けるため、これらの処理が重なると画面の更新が間に合わずスクロールやアニメーションがカクつくことがあります。
 
 こうした課題から、Electron 以外の選択肢も増えています。[Tauri](https://tauri.app/) は Chromium を同梱せず OS 標準の WebView で Web 技術の UI を表示し、[egui](https://github.com/emilk/egui) や [Iced](https://iced.rs/) は Web 技術を使わず Rust だけで UI を書けます。[GPUI](https://www.gpui.rs/) は後者に属するフレームワークで、コードエディタ [Zed](https://zed.dev/) の UI はすべて GPUI で描画されています。

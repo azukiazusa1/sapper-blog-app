@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "cx.notify() is called after modifying state. It is not something you need to do before registering a handler."
 published: true
 ---
-
 [Electron](https://www.electronjs.org/) is a widely used framework for building desktop apps. Visual Studio Code, Slack, and Discord are all built with it. Electron lets you build apps for macOS, Windows, and Linux with web development skills, but because every app bundles and runs its own browser engine, memory usage and app size tend to grow large. Rendering is also affected by DOM layout and JavaScript garbage collection, and when these pile up, screen updates can fall behind and cause stuttering in scrolling and animations.
 
 These issues have led to more alternatives to Electron. [Tauri](https://tauri.app/) displays a web-based UI using the OS's built-in WebView instead of bundling Chromium, while [egui](https://github.com/emilk/egui) and [Iced](https://iced.rs/) let you write UIs purely in Rust without web technologies. [GPUI](https://www.gpui.rs/) belongs to the latter group, and the entire UI of the code editor [Zed](https://zed.dev/) is rendered with GPUI.
