@@ -30,12 +30,12 @@
     {
       "border border-stone-300 text-stone-900 dark:border-stone-600 dark:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800":
         variant === "secondary",
-      "text-white hover:opacity-80": variant === "primary",
+      "bg-stone-900 text-white hover:bg-stone-700 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-300":
+        variant === "primary",
       "bg-transparent border border-stone-300 text-stone-700 dark:border-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800":
         variant === "transparent",
     },
   )}
-  style={variant === "primary" ? "background-color: var(--color-accent)" : ""}
 >
   {@render children?.()}
 </a>

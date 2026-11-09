@@ -71,12 +71,9 @@
               href={localizeHref(route)}
               class={`flex items-center rounded px-4 py-3 capitalize font-medium transition-colors hover:bg-stone-100 dark:hover:bg-stone-800 ${
                 isMatchPath(route, segment)
-                  ? "bg-stone-100 dark:bg-stone-800"
+                  ? "bg-stone-100 text-stone-900 dark:bg-stone-800 dark:text-stone-50"
                   : ""
               }`}
-              style={isMatchPath(route, segment)
-                ? "color: var(--color-accent)"
-                : ""}
             >
               {route.slice(1)}
             </a>

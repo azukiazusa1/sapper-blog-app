@@ -20,11 +20,10 @@
     >
       <div
         class="p-3 flex items-center justify-center border-b border-stone-200 dark:border-stone-800"
-        style="background-color: color-mix(in srgb, var(--color-accent) 10%, transparent)"
       >
         <span
-          class="font-mono text-sm font-medium"
-          style="color: var(--color-accent)">#{name}</span
+          class="font-mono text-sm font-medium text-stone-900 dark:text-stone-100"
+          >#{name}</span
         >
       </div>
       <div class="p-4 flex-1 flex items-center justify-center">

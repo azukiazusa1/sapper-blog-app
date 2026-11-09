@@ -18,11 +18,10 @@
           aria-current={isMatchPath(route, segment) ? "page" : undefined}
           href={localizeHref(route)}
           class={`rounded capitalize font-medium transition-colors hover:bg-stone-100 dark:hover:bg-stone-800 px-3 py-1.5 ${
-            isMatchPath(route, segment) ? "dark:bg-stone-800 bg-stone-100" : ""
+            isMatchPath(route, segment)
+              ? "bg-stone-100 text-stone-900 dark:bg-stone-800 dark:text-stone-50"
+              : ""
           }`}
-          style={isMatchPath(route, segment)
-            ? "color: var(--color-accent)"
-            : ""}
         >
           {route.slice(1)}
         </a>

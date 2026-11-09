@@ -18,7 +18,7 @@
   --color-sky-*: initial;
   --color-fuchsia-*: initial;
 
-  --animate-fade-in: fadeIn 0.2s ease-out;
+  --animate-fade-in: fade-in 0.2s ease-out;
   --animate-rotate: rotate 30s ease-in-out infinite;
 
   --font-sans:
@@ -71,15 +71,14 @@
     border-color: var(--color-stone-200, currentColor);
   }
 
-  /* 汎用的な文章の折り返し指定 */
   :where(:root) {
+    /* 汎用的な文章の折り返し指定 */
     overflow-wrap: anywhere;
     line-break: strict;
-  }
-
-  /* 日本語と英数字間のスペース自動挿入 */
-  :where(:root) {
+    /* 日本語と英数字間のスペース自動挿入 */
     text-autospace: normal;
+    /* 約物スペースの自動除去 */
+    text-spacing-trim: trim-start;
   }
 
   :where(
@@ -90,11 +89,6 @@
     [contenteditable]
   ) {
     text-autospace: no-autospace;
-  }
-
-  /* 約物スペースの自動除去 */
-  :where(:root) {
-    text-spacing-trim: trim-start;
   }
 
   :where(pre) {
@@ -154,30 +148,14 @@ html:has(dialog[open]) {
   }
 }
 
-#contents :is(h1, h2, h3, h4, h5, h6) {
-  font-feature-settings: "palt";
-  font-kerning: normal;
-
-  @supports (word-break: auto-phrase) {
-    word-break: auto-phrase;
-    text-wrap: balance;
-  }
-}
-
-#contents h1,
-#contents h2 {
-  @apply border-b border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-100;
-  text-wrap: balance;
-}
-
-#contents h3 {
+/* palt・カーニング・auto-phrase は @layer base の見出し指定で適用済み */
+#contents :is(h1, h2, h3, h4) {
   @apply text-stone-800 dark:text-stone-100;
   text-wrap: balance;
 }
 
-#contents h4 {
-  @apply text-stone-800 dark:text-stone-100;
-  text-wrap: balance;
+#contents :is(h1, h2) {
+  @apply border-b border-stone-200 dark:border-stone-700;
 }
 
 /* sticky header 分のスクロールオフセット */
@@ -188,33 +166,27 @@ html:has(dialog[open]) {
 }
 
 #contents blockquote {
-  @apply my-6 border-l-4 py-3 px-5 text-stone-700 rounded-r-lg md:my-8 dark:text-stone-300;
-  border-left-color: var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent) 8%, transparent);
+  @apply my-6 border-l-4 border-stone-300 py-3 px-5 text-stone-700 md:my-8 dark:border-stone-600 dark:text-stone-300;
 }
 
 #contents details[open] {
-  @apply rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800;
+  @apply rounded-lg border border-stone-200 dark:border-stone-700;
+  /* 中身が <p> で囲まれていない生のテキストでも余白が付くよう、details 自体に指定する */
+  padding: 0 1.25rem 1.25rem;
 }
 
-#contents details > p {
-  @apply p-5;
+#contents details[open] > summary {
+  margin-inline: -1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+#contents details[open] > :not(summary):last-child {
+  margin-bottom: 0;
 }
 
 #contents summary {
   padding: 0.75rem 1.25rem;
-  @apply mb-6 cursor-pointer rounded-t-lg font-medium md:mb-8;
-  background-color: color-mix(in oklch, var(--color-accent) 10%, transparent);
-  color: var(--color-accent);
-}
-
-html.dark #contents summary {
-  background-color: color-mix(
-    in srgb,
-    var(--color-accent-light) 8%,
-    transparent
-  );
-  color: var(--color-accent-light);
+  @apply mb-6 cursor-pointer rounded-t-lg bg-stone-100 font-medium text-stone-800 md:mb-8 dark:bg-stone-700/50 dark:text-stone-100;
 }
 
 #contents img,
@@ -273,11 +245,48 @@ html.dark #contents .markdown-body a:hover {
   border-bottom: 1px solid var(--color-accent-light);
 }
 
-/* 見出しの # */
-#contents a[aria-hidden="true"] {
-  text-decoration: none !important;
+/* 注釈の参照番号と戻るリンクは強調色にしない */
+#contents .markdown-body :is(a[data-footnote-ref], a[data-footnote-backref]) {
+  @apply text-stone-600! border-stone-400! dark:text-stone-400! dark:border-stone-500!;
 }
 
+/* 見出しの # にはリンクの下線を付けない */
+#contents .markdown-body a[aria-hidden="true"] {
+  border-bottom: none !important;
+}
+
+/* TOC スタイル */
+.toc-toggle {
+  @apply flex items-center gap-2 rounded px-3 py-2 text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-700 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-200;
+}
+
+.toc-nav {
+  @apply mt-2 border-l-2 border-stone-200 dark:border-stone-700;
+}
+
+.toc-list {
+  @apply m-0 list-none space-y-1 p-0;
+}
+
+.toc-link {
+  @apply block rounded-r py-1 pr-3 pl-3 text-sm leading-relaxed text-stone-600 no-underline transition-colors hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-200;
+  border-bottom: none !important;
+}
+
+.toc-link--active {
+  @apply border-l-2 border-l-stone-900 bg-stone-100 font-medium text-stone-900 dark:border-l-stone-100 dark:bg-stone-800 dark:text-stone-100;
+}
+
+/* モバイルではデスクトップ TOC を非表示、モバイル TOC を表示 */
+.toc-mobile {
+  @apply mt-6 rounded-lg border border-stone-200 p-4 dark:border-stone-700;
+}
+
+.toc-desktop {
+  display: none;
+}
+
+/* デスクトップでは本文と TOC の 2 カラムレイアウトにする */
 @media (min-width: calc(1024 / 16 * 1em)) {
   #contents {
     @apply grid items-start;
@@ -300,7 +309,6 @@ html.dark #contents .markdown-body a:hover {
 
   html:not(.open-toc) #contents {
     display: block;
-    max-inline-size: 1100px;
     position: relative;
   }
 
@@ -315,10 +323,15 @@ html.dark #contents .markdown-body a:hover {
     width: 240px;
     height: 100%;
   }
-}
 
-/* TOC スタイル */
-@media (min-width: calc(1024 / 16 * 1em)) {
+  .toc-mobile {
+    display: none;
+  }
+
+  .toc-desktop {
+    display: block;
+  }
+
   .toc-desktop .toc-wrapper {
     position: sticky;
     top: 5rem;
@@ -336,54 +349,6 @@ html.dark #contents .markdown-body a:hover {
   }
 }
 
-.toc-toggle {
-  @apply flex items-center gap-2 rounded px-3 py-2 text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-700 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-200;
-}
-
-.toc-nav {
-  @apply mt-2 border-l-2 border-stone-200 dark:border-stone-700;
-}
-
-.toc-list {
-  @apply m-0 list-none space-y-1 p-0;
-}
-
-.toc-link {
-  @apply block rounded-r py-1 pr-3 pl-3 text-sm leading-relaxed text-stone-600 no-underline transition-colors hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-200;
-  border-bottom: none !important;
-}
-
-.toc-link--active {
-  @apply border-l-2 font-medium;
-  border-left-color: var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent) 8%, transparent);
-  color: var(--color-accent);
-}
-
-/* モバイルではデスクトップ TOC を非表示、モバイル TOC を表示 */
-.toc-mobile {
-  @apply mt-6 rounded-lg border border-stone-200 p-4 dark:border-stone-700;
-}
-
-.toc-mobile .toc-wrapper {
-  position: static;
-  max-height: none;
-  overflow-y: visible;
-}
-
-.toc-desktop {
-  display: none;
-}
-
-@media (min-width: calc(1024 / 16 * 1em)) {
-  .toc-mobile {
-    display: none;
-  }
-
-  .toc-desktop {
-    display: block;
-  }
-}
 h1 .icon-link::before {
   content: "#";
 }
@@ -422,7 +387,7 @@ h6 .icon-link::before {
 }
 
 .icon-link {
-  @apply mr-2 text-stone-400 no-underline hover:text-stone-600;
+  @apply mr-2 text-stone-400 hover:text-stone-600;
 }
 
 .alert {
@@ -489,9 +454,7 @@ h6 .icon-link::before {
   padding: 0.2em 0.4em;
   word-break: break-all;
   border-radius: 0.25rem;
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+  font-family: var(--font-mono);
   @apply dark:bg-stone-800 font-normal;
 }
 
@@ -503,8 +466,6 @@ figure[data-rehype-pretty-code-figure] {
 #contents pre {
   overflow: auto;
   border-radius: 0.5rem;
-  background: #1e1e1e; /* VS Code dark theme color */
-  color: #fff;
   padding: 1.25em 1.25em 1.25em 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 17px;
@@ -543,7 +504,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 .link-card {
-  @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-stone-50 md:flex-row dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700;
+  @apply flex h-32 max-w-full flex-auto items-center justify-between rounded-lg border bg-white hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700;
   border-bottom: none !important;
 }
 
@@ -611,31 +572,6 @@ span[style*="color:#545454"] {
 [data-highlighted-line] {
   background: rgba(200, 200, 255, 0.1);
   @apply border-l-blue-400;
-}
-
-[data-highlighted-chars] {
-  @apply rounded-sm bg-stone-600/50;
-  box-shadow: 0 0 0 4px rgb(87 83 78 / 0.5);
-}
-
-[data-chars-id] {
-  @apply border-b-2 p-1 shadow-none;
-}
-
-[data-chars-id] span {
-  @apply text-inherit!;
-}
-
-[data-chars-id="v"] {
-  @apply border-b-pink-600 bg-rose-800/50 font-bold text-pink-300!;
-}
-
-[data-chars-id="s"] {
-  @apply border-b-yellow-600 bg-yellow-800/50 font-bold text-yellow-300!;
-}
-
-[data-chars-id="i"] {
-  @apply border-b-purple-600 bg-purple-800/50 font-bold text-purple-200!;
 }
 
 section[data-footnotes] {

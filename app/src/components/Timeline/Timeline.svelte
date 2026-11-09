@@ -23,8 +23,7 @@
   </div>
 
   <span
-    class="absolute -left-[7px] md:top-[18px] top-[42px] flex h-[13px] w-[13px] items-center justify-center rounded-full ring-stone-200 dark:ring-stone-700 ring-4"
-    style="background-color: var(--color-accent)"
+    class="absolute -left-[7px] md:top-[18px] top-[42px] flex h-[13px] w-[13px] items-center justify-center rounded-full bg-stone-400 ring-stone-200 dark:bg-stone-500 dark:ring-stone-700 ring-4"
   >
   </span>
   <div
@@ -36,8 +35,7 @@
       {eventTitle}
     </h3>
     <p
-      class="mt-2 flex items-center gap-2 text-lg font-bold underline"
-      style="color: var(--color-accent)"
+      class="mt-2 flex items-center gap-2 text-lg font-bold text-stone-900 underline decoration-stone-300 underline-offset-4 dark:text-stone-100 dark:decoration-stone-600"
     >
       <a
         class="no-underline hover:underline"
