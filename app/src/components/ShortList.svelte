@@ -79,7 +79,6 @@
                 <a
                   href={getDetailPath(item.id)}
                   class="text-lg font-semibold tracking-tight text-stone-900 transition-colors hover:underline dark:text-stone-50"
-                  style="text-decoration-color: var(--color-accent)"
                 >
                   {item.title}
                 </a>

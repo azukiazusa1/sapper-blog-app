@@ -10,8 +10,7 @@
     <div class="mx-auto max-w-3xl text-center">
       <div class="hero-content">
         <p
-          class="mb-3 font-mono text-xs tracking-[0.2em] uppercase text-stone-700 dark:text-stone-200"
-          style="color: var(--color-accent)"
+          class="mb-3 font-mono text-xs tracking-[0.2em] uppercase text-stone-500 dark:text-stone-400"
         >
           Web Developer
         </p>

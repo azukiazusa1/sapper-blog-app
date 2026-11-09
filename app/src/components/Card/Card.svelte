@@ -217,7 +217,9 @@
             <Time date={createdAt} />
           </div>
         </div>
-        <div class="mt-4 flex flex-wrap items-center justify-between">
+        <div
+          class="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3"
+        >
           <div
             class="flex flex-wrap items-center leading-none self-center gap-2"
             style:--tag="tag-{slug}"

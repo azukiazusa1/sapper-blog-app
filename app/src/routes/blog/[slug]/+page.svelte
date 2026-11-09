@@ -148,8 +148,7 @@
           <div class="text-sm text-stone-500 dark:text-stone-400">
             <a
               href={localizeHref(`/blog/${post.slug}.md`)}
-              class="inline-flex items-center gap-1 hover:underline"
-              style="color: var(--color-accent)"
+              class="inline-flex items-center gap-1 text-stone-700 hover:underline dark:text-stone-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
