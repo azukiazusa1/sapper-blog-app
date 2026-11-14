@@ -5,7 +5,7 @@ slug: "aws-emulator-local-testing"
 about: "AWS Emulator is AWS's official local emulator of the AWS APIs, built by AI agents from the AWS API models. This article runs it in Docker and tests DynamoDB code written with the AWS SDK for JavaScript v3 using Vitest."
 createdAt: "2026-11-14T12:50+09:00"
 updatedAt: "2026-11-14T12:50+09:00"
-tags: ["AWS", "testing"]
+tags: ["AWS", "テスト"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/1Uu8XZxx2YzdS7ciS8WHTi/5260f1a5e019e4bedf616ca7f6af3931/mille-crepe_23495-768x591.png"
   title: "ミルクレープケーキのイラスト"
@@ -40,10 +40,8 @@ selfAssessment:
         - text: "A test that checks whether AI agents can use the AWS emulator correctly"
           correct: false
           explanation: "It isn't a test that measures an agent's abilities."
-
 published: true
 ---
-
 There are several ways to test code that calls the AWS SDK. Mocking the SDK client keeps tests fast, but it doesn't reproduce errors that happen on the AWS side, such as table name length constraints or access to resources that don't exist. Testing against real AWS resources gives accurate behavior, but you pay for the resources, wait for them to be created, and have to pass credentials to CI. LocalStack, which has been widely used to reproduce AWS locally, [was consolidated into a single image on March 23, 2026, and now requires an auth token to use the latest version](https://blog.localstack.cloud/localstack-single-image-next-steps/).
 
 On November 11, 2026, AWS made [AWS Emulator](https://docs.aws.amazon.com/emulator/latest/userguide/what-is-service.html), its official local emulator, generally available. AWS Emulator doesn't require an AWS account and has no additional charge. You switch the SDK endpoint with environment variables, so you can use it without changing your application code.

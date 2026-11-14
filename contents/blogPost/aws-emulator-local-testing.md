@@ -40,10 +40,8 @@ selfAssessment:
         - text: "AI エージェントが AWS エミュレーターを正しく使えるかを確かめるテスト"
           correct: false
           explanation: "エージェントの能力を測るテストではありません。"
-
 published: true
 ---
-
 AWS の SDK を呼び出すコードをテストする方法には、いくつかの選択肢があります。SDK のクライアントをモックすればテストは速くなりますが、テーブル名の長さの制約や存在しないリソースへのアクセスといった、AWS 側で起きるエラーは再現されません。実際の AWS リソースでテストすれば挙動は正確ですが、リソースの作成を待つ時間や料金がかかり、CI に認証情報を渡す必要もあります。ローカルで AWS を再現するツールとして広く使われてきた LocalStack は、2026 年 3 月 23 日から[単一のイメージに統合され、最新版の利用に auth token が必要になりました](https://blog.localstack.cloud/localstack-single-image-next-steps/)。
 
 2026 年 11 月 11 日、AWS は公式のローカルエミュレーターである [AWS Emulator](https://docs.aws.amazon.com/emulator/latest/userguide/what-is-service.html) を一般提供として公開しました。AWS Emulator は AWS アカウントを必要とせず、追加の料金もかかりません。SDK のエンドポイントを環境変数で切り替えるため、アプリケーションのコードを変更せずに使えます。
