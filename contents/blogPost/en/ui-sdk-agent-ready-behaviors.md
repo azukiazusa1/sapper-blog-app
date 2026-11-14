@@ -5,7 +5,7 @@ slug: "ui-sdk-agent-ready-behaviors"
 about: "UI SDK is a headless UI library from Vercel Labs with framework-agnostic keyboard, focus, and ARIA behaviors. It treats AI agents as both builders and users of UI. Claude Code builds a transfer list that an agent then drives via the agent bridge."
 createdAt: "2026-11-13T20:27+09:00"
 updatedAt: "2026-11-13T20:27+09:00"
-tags: ["AI", "UI SDK", "accessibility"]
+tags: ["AI", "UI SDK", "アクセシビリティ"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/67M8FG9uCTsGTdCvxSRE6T/230e25fc7b96c4980b42e16cccb70478/walnut_24068-768x610.png"
   title: "くるみのイラスト"
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "The agent bridge's three methods: snapshot, query, and act"
           correct: false
           explanation: "These are methods of the agent bridge created with createAgent. On the primitive side, you only declare the operations exposed to agents with the agent key."
-
     - question: "Which agent bridge method takes a list of steps and operates the UI by calling each component's API?"
       answers:
         - text: "snapshot"
@@ -41,10 +40,8 @@ selfAssessment:
         - text: "act"
           correct: true
           explanation: "As the article explains, when you pass steps to act, the bridge calls the components' APIs. A single call can run multiple steps."
-
 published: true
 ---
-
 Headless UI libraries such as [Radix Primitives](https://www.radix-ui.com/primitives) and [React Aria](https://react-aria.adobe.com/) ship without styles, and in return they provide behaviors like keyboard interaction, focus management, and ARIA attributes. Developers don't have to implement the complex accessibility of menus and dialogs themselves, and they only need to adapt the look to their own design system.
 
 That benefit, however, only applies when you use the components the library provides. A kanban board or a picker tailored to a specific business task, for example, isn't included in typical headless UI libraries. With the rise of coding agents, agents now build these missing components directly. They can generate such components quickly, but because they can't reuse the behaviors built into finished components, they end up writing focus destinations, arrow-key handling, and screen reader announcements from scratch every time, and small mistakes tend to creep in.
