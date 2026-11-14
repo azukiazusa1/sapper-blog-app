@@ -1,6 +1,6 @@
 ---
 id: Me_6Zi_0VtbiMA0mMayRb
-title: "エージェントが作り、エージェントが使う Vercel の UI SDK と AI 時代のヘッドレス UI"
+title: "エージェントが作り、エージェントが使う Vercel の UI SDK"
 slug: "ui-sdk-agent-ready-behaviors"
 about: "UI SDK は Vercel Labs が公開した、キーボード操作やフォーカス、ARIA などの振る舞いをフレームワーク非依存で提供するヘッドレス UI ライブラリです。AI エージェントをコンポーネントの作り手と UI の使い手の両方として扱う点が、既存のヘッドレス UI と異なります。この記事では Claude Code に UI SDK でトランスファーリストを作らせ、エージェントブリッジから操作するまでを確認します。"
 createdAt: "2026-11-13T20:27+09:00"

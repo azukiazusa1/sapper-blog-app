@@ -1,6 +1,6 @@
 ---
 id: Me_6Zi_0VtbiMA0mMayRb
-title: "Built by Agents, Used by Agents: Vercel's UI SDK and Headless UI in the Age of AI"
+title: "Built by Agents, Used by Agents: Vercel's UI SDK"
 slug: "ui-sdk-agent-ready-behaviors"
 about: "UI SDK is a headless UI library from Vercel Labs with framework-agnostic keyboard, focus, and ARIA behaviors. It treats AI agents as both builders and users of UI. Claude Code builds a transfer list that an agent then drives via the agent bridge."
 createdAt: "2026-11-13T20:27+09:00"
