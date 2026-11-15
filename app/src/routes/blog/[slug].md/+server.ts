@@ -1,18 +1,22 @@
 import type { RequestHandler } from "@sveltejs/kit";
+import { getLocale } from "$paraglide/runtime";
 import { useRepositories } from "../../../repositories/useRepositories";
 
 const { post: postRepo } = useRepositories();
 
+const toContentfulLocale = (locale: string): string | undefined =>
+  locale === "en" ? "en-GB" : undefined;
+
 export const prerender = true;
 export const GET: RequestHandler = async ({ params }) => {
   const { slug } = params;
-  const postData = await postRepo.find(slug);
+  const postData = await postRepo.find(slug, toContentfulLocale(getLocale()));
+  const blogPost = postData.blogPostCollection?.items[0];
 
-  if (!postData) {
+  if (!blogPost) {
     return new Response("Not found", { status: 404 });
   }
 
-  const blogPost = postData.blogPostCollection.items[0];
   const body = `# ${blogPost.title}
 
 ${blogPost.article}
