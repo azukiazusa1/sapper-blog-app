@@ -11,7 +11,7 @@ allowed-tools: Bash(git *), Bash(npm *), Read, Glob, Grep, mcp__textlint__lintFi
 
 1. `blogPost/$ARGUMENTS.md` を読む
 2. `mcp__textlint__lintFile` で自動校正を実行する（ファイルパスは絶対パスで指定）
-3. `writing-style.md` を参照して筆者の文体スタイルを確認する
+3. `writing-style.md` と [`references/editorial-checklist.md`](references/editorial-checklist.md) を参照して筆者の文体スタイルと編集観点を確認する
 4. [references/notation-rules.md](references/notation-rules.md) を読み、筆者が統一している表記を確認する
 5. 下記の出力形式でレビュー結果をまとめる
 
@@ -34,12 +34,18 @@ textlint が検出した問題を列挙してください。問題がなけれ�
   修正案：「×××」
   理由：[具体的な理由]
 
+【不要な強調（太字）】
+- 該当箇所：「〇〇〇」
+  修正案：「×××」
+  理由：[太字が不要である具体的な理由]
+
 【改善提案】
 - より読みやすくするための提案があれば記載（任意）
 
 ## 注意事項
 
-- 文体や表現の好みではなく、明確な誤りのみを指摘してください。ただし [references/notation-rules.md](references/notation-rules.md) の表記ルールに反する語は誤りとして指摘してください
+- 文体や表現の好みではなく、明確な誤りやチェックリスト上の問題を中心に指摘してください。ただし [references/notation-rules.md](references/notation-rules.md) の表記ルールに反する語は誤りとして指摘してください
+- 太字（`**...**` や `<b>`）は多くの場合不要です。文脈だけで十分に伝わる語句や文への太字は、不要な強調として削除を提案してください
 - 修正案は必ず提示してください
 - 記事の良い点にふれる必要はありません。指摘事項のみを出力してください
 - `writing-style.md` に記載された筆者固有のスタイル（例：「ですます調」「一人称は私」など）は誤りとして指摘しないでください
@@ -49,4 +55,5 @@ textlint が検出した問題を列挙してください。問題がなけれ�
 
 - 記事のパス: `blogPost/$ARGUMENTS.md`
 - 筆者の文章スタイルの詳細: `writing-style.md` を参照
+- 編集チェックリスト: [`references/editorial-checklist.md`](references/editorial-checklist.md) を参照
 - 筆者が統一している表記: [references/notation-rules.md](references/notation-rules.md)
