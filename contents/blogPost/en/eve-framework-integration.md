@@ -70,7 +70,6 @@ selfAssessment:
           explanation: "As the article explains, input is disabled while resuming a saved session, but sending stays enabled while busy because, by default, a new message steers the current work (to process it after the turn finishes instead, pass { turnPolicy: \"queue\" })."
 published: true
 ---
-
 When you add an AI agent to a web application, it's common to manage the frontend app and the agent backend as separate projects. In that case, you have to start two servers separately during local development, and set up everything yourself, from CORS settings to connecting the app's login session with the agent's authentication.
 
 [eve 1.0](https://vercel.com/blog/eve-is-now-generally-available), the AI agent framework that Vercel made generally available (GA) in November 2026, expands its framework integrations to solve this problem. They support five frameworks: Next.js, Nuxt, SvelteKit, TanStack Start, and Vite. You can now develop, build, and deploy a web app and an eve agent as a single project on the same origin.

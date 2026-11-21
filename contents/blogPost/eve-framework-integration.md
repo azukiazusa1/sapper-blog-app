@@ -70,7 +70,6 @@ selfAssessment:
           explanation: "記事の通り、保存済みセッション復元中の resuming は入力を無効化する一方、処理中の busy はデフォルトで追加指示を割り込ませられるため送信を止めていません（完了後に処理したい場合は { turnPolicy: \"queue\" } を渡します）。"
 published: true
 ---
-
 Web アプリケーションに AI エージェントを組み込むとき、フロントエンドのアプリとエージェントのバックエンドを別々のプロジェクトとして管理するのが一般的でしょう。その場合、ローカル開発で 2 つのサーバーを別々に起動し、CORS の設定やアプリ側のログインセッションとエージェント側の認証をどう連携させるかまで自前で整備する必要があります。
 
 Vercel が 2026 年 11 月に一般提供（GA）を開始した AI エージェントフレームワーク [eve 1.0](https://vercel.com/blog/eve-is-now-generally-available) では、この課題を解消するためにフレームワーク統合（framework integration）が拡充されました。Next.js、Nuxt、SvelteKit、TanStack Start、Vite の 5 つのフレームワークに対応し、Web アプリと eve エージェントを同一オリジン・単一プロジェクトとして開発・ビルド・デプロイできるようになっています。
