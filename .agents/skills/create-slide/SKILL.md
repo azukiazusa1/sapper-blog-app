@@ -76,7 +76,9 @@ description: 発表タイトル - サブタイトル
 
 ### 5. 表示を検証する
 
-`.claude/launch.json` の `slides` を起動し、`http://localhost:<port>/<slug>/slide.md` を開く。ページ内で [`scripts/check-slides.js`](scripts/check-slides.js) を実行し、はみ出し、横に長いコード、強調色の使いすぎを修正する。
+リポジトリのルートで `npm --prefix contents run dev` を実行してプレビューサーバーを起動し、`http://localhost:8080/<slug>/slide.md` をブラウザで開く。ページ内で [`scripts/check-slides.js`](scripts/check-slides.js) を実行し、はみ出し、横に長いコード、強調色の使いすぎを修正する。
+
+ブラウザを操作できない環境では、ユーザーに確認を依頼する。その場合は、表示を確認していないことを報告に書く。
 
 新しいレイアウトは、目視でも確認する。
 
