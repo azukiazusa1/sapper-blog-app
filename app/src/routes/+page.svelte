@@ -82,8 +82,7 @@
                       <Time date={featuredLatest.createdAt} />
                     </div>
                     <span
-                      class="font-mono text-xs font-medium tracking-[0.2em] uppercase"
-                      style="color: var(--color-accent)"
+                      class="font-mono text-xs font-medium tracking-[0.2em] uppercase text-stone-500 dark:text-stone-400"
                     >
                       Feature
                     </span>
@@ -167,7 +166,7 @@
           {#each popularPosts as post}
             <li>
               <a
-                class="text-base transition-colors dark:text-stone-200 hover:underline focus-visible:underline focus-visible:outline-hidden hover:[color:var(--color-accent)] focus-visible:[color:var(--color-accent)]"
+                class="text-base transition-colors dark:text-stone-200 hover:underline focus-visible:underline focus-visible:outline-hidden"
                 href={post.path}
               >
                 {post.title}

@@ -70,7 +70,6 @@ selfAssessment:
           explanation: "A refusal can appear inside a successful response, so distinguish it from HTTP errors."
 published: true
 ---
-
 When integrating an LLM into an application, you often want to automate decisions whose shape is known in advance. For example, when routing inquiries that arrive at a support desk, you need to check whether the customer is requesting a refund, classify which department should handle it, and rate how severe the issue is. Each decision may be simple on its own, but as volume grows, the latency and cost add up.
 
 The OpenAI [Decisions API](https://developers.openai.com/api/docs/guides/decisions) returns condition checks, classifications, and graded ratings for an input. It accepts questions with a constrained set of possible answers and responds quickly at low cost. OpenAI states that it is about 10 times faster than the Responses API.

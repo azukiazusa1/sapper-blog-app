@@ -3,9 +3,9 @@ id: Fm922yg2Bb6LTBghhGChY
 title: "pstack, an Agent Skill Collection: Its Development Principles and How to Use It"
 slug: "pstack-agent-skills"
 about: "Trusting AI-generated code requires understanding before implementation and verification after it. pstack is an agent skill collection that combines investigation, design, implementation, and review. This article covers its principles and usage."
-createdAt: "2026-10-18T15:00+09:00"
-updatedAt: "2026-10-18T22:30+09:00"
-tags: ["AI", "agent skills", "Claude Code"]
+createdAt: "2026-10-22T15:00+09:00"
+updatedAt: "2026-10-22T22:30+09:00"
+tags: ["AI", "agent skills"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3gxhnXlxBP1Qoru9upLO7L/90d75c784119a10424b1ff49c6fd352d/potato-chips_15269-768x689.png"
   title: "ポテトチップスのイラスト"
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "It lists playbook commands such as /bug-fix and lets the user choose one"
           correct: false
           explanation: "The article explains that playbooks are procedures contained in poteto-mode, and there are no commands like /bug-fix to call them directly."
-
     - question: "According to the Prove It Works principle, which of the following is insufficient evidence for a bug fix?"
       answers:
         - text: "Retrying the operation that originally failed and confirming it now behaves as expected"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "A test that would pass even before the fix still passes after the fix"
           correct: true
           explanation: "As the article explains, a test that passes even before the fix does not capture the original bug, so it is not sufficient evidence for the fix."
-
     - question: "When you run setup-pstack in Claude Code, where does the article say the model settings are saved?"
       answers:
         - text: ".claude/settings.json at the repository root"
@@ -58,7 +56,6 @@ selfAssessment:
           explanation: "SKILL.md is the setup-pstack procedure itself. The models you choose are not written there."
 published: true
 ---
-
 To trust AI-generated code, you need to understand the system before implementing and verify the result afterward. [pstack](https://github.com/cursor/plugins/tree/main/pstack) is an agent skill collection by poteto. The author says it values the quality of generated code over its quantity, with the goal of getting things done with less code. This article introduces pstack's development principles and how to use it.
 
 ## How pstack drives development

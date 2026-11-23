@@ -82,10 +82,8 @@ selfAssessment:
         - text: "Because CSS media features could not express the angle"
           correct: false
           explanation: "It was removed for privacy reasons, not because of a limitation in how CSS can express values."
-
 published: true
 ---
-
 b> device-posture
 b> viewport-segments
 

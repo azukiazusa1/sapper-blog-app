@@ -553,6 +553,119 @@ describe("getBlogPosts", () => {
       published: false,
     });
   });
+
+  test("blog post を skip/limit でページングして全件取得する", async () => {
+    const pageSize = 100;
+    const allPosts = Array.from({ length: pageSize + 1 }, (_, index) => {
+      const id = `blog-${index}`;
+      return {
+        metadata: { tags: [] },
+        sys: createDummyMetaSysProps({ id, published: false }),
+        fields: {
+          title: {
+            "en-US": id,
+          },
+        },
+      } satisfies ContentfulBlogPost;
+    });
+    const requests: { skip: string | null; limit: string | null }[] = [];
+
+    server.use(
+      http.get(contentful("/entries"), ({ request }) => {
+        const url = new URL(request.url);
+        if (url.searchParams.get("content_type") === "tag") {
+          return HttpResponse.json({
+            items: tags,
+          });
+        }
+
+        const skip = Number(url.searchParams.get("skip") ?? "0");
+        requests.push({
+          skip: url.searchParams.get("skip"),
+          limit: url.searchParams.get("limit"),
+        });
+        expect(url.searchParams.get("order")).toBe("sys.createdAt");
+
+        return HttpResponse.json({
+          items: allPosts.slice(skip, skip + pageSize),
+        });
+      }),
+    );
+
+    const result = await getBlogPosts();
+
+    expect(requests).toEqual([
+      { skip: "0", limit: String(pageSize) },
+      { skip: String(pageSize), limit: String(pageSize) },
+    ]);
+    expect(result.map((post) => post.id)).toEqual(
+      allPosts.map((post) => post.sys.id),
+    );
+  });
+
+  test("createdAt で絞り込んだ blog post もページングする", async () => {
+    const pageSize = 100;
+    const requests: URLSearchParams[] = [];
+
+    server.use(
+      http.get(contentful("/entries"), ({ request }) => {
+        const url = new URL(request.url);
+        if (url.searchParams.get("content_type") === "tag") {
+          return HttpResponse.json({
+            items: tags,
+          });
+        }
+
+        requests.push(url.searchParams);
+        const skip = Number(url.searchParams.get("skip") ?? "0");
+        const items =
+          skip === 0
+            ? Array.from({ length: pageSize }, (_, index) => ({
+                metadata: { tags: [] },
+                sys: createDummyMetaSysProps({
+                  id: `dated-${index}`,
+                  published: false,
+                }),
+                fields: {
+                  title: { "en-US": `dated-${index}` },
+                },
+              }))
+            : [
+                {
+                  metadata: { tags: [] },
+                  sys: createDummyMetaSysProps({
+                    id: "dated-last",
+                    published: false,
+                  }),
+                  fields: {
+                    title: { "en-US": "dated-last" },
+                  },
+                },
+              ];
+
+        return HttpResponse.json({ items });
+      }),
+    );
+
+    const result = await getBlogPosts({
+      createdAt: {
+        startDate: "2024-01-01",
+        endDate: "2024-12-31",
+      },
+    });
+
+    expect(requests).toHaveLength(2);
+    for (const params of requests) {
+      expect(params.get("content_type")).toBe("blogPost");
+      expect(params.get("limit")).toBe(String(pageSize));
+      expect(params.get("fields.createdAt[gte]")).toBe("2024-01-01");
+      expect(params.get("fields.createdAt[lte]")).toBe("2024-12-31");
+    }
+    expect(requests[0]?.get("skip")).toBe("0");
+    expect(requests[1]?.get("skip")).toBe(String(pageSize));
+    expect(result).toHaveLength(pageSize + 1);
+    expect(result.at(-1)?.id).toBe("dated-last");
+  });
 });
 
 describe("getLocalizedBlogPosts", () => {

@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "除去するのは Safe 版の動作です。Unsafe 版のサニタイザは既定で無効です。"
 published: true
 ---
-
 b> html-streaming-setters
 
 LLM の回答を画面に少しずつ表示するチャット UI では、未完成の回答を描画し続ける必要があります。最も単純な実装は、届いた内容全体をチャンクごとにパースして要素を置き換える方法です。この方法では回答が長くなるほどパースし直す量が増え、更新のたびに要素が作り直されます。その結果、テキストの選択状態が失われたり、1 度開いた `<details>` が閉じてしまったりします。そのため実際のチャット UI では、Markdown ライブラリが完成した部分を処理し直さない工夫をしています。
@@ -52,7 +51,7 @@ LLM の回答を画面に少しずつ表示するチャット UI では、未完
 この記事では `streamAppendHTML()` の使い方とサニタイズの挙動について紹介します。
 
 :::warning
-2026 年 10 月 31 日時点の手元の確認では、Chrome 158 Beta 以降でフラグなしで `streamAppendHTML()` が使えます。Chrome 156 では使えませんでした。Chrome と Edge の 148 以降は `chrome://flags/#enable-experimental-web-platform-features` を有効にすると試せます。Safari と Firefox は未対応です。
+2026 年 10 月 31 日時点の手元の確認では、Chrome 158 Beta 以降でフラグなしで `streamAppendHTML()` が使えます。Chrome と Edge の 148 以降は `chrome://flags/#enable-experimental-web-platform-features` を有効にすると試せます。Safari と Firefox は未対応です。
 :::
 
 ## 従来の実装で起きること
@@ -170,7 +169,7 @@ await response.textStream().pipeTo(element.streamAppendHTML({ sanitizer }));
 
 Safe 版の `sanitizer` オプションのデフォルトは `"default"` で、ブラウザに組み込まれた設定が使われます。この設定は XSS を防ぐだけでなく、許可リスト方式で多くの要素と属性を除去します。Chrome 158 Beta と Chrome 159 で実際の結果を確認すると、以下のようになりました。
 
-| 入力 | 既定のサニタイザの結果 |
+| 入力 | デフォルトのサニタイザの結果 |
 | --- | --- |
 | `<img src="...">` | 要素ごと除去 |
 | `<details>`、`<summary>` | 要素ごと除去 |

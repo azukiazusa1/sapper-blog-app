@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "withValidator is for validating requests. The article's GET route is defined with defineHandler alone and can still be called with typed fetch."
 published: true
 ---
-
 [Void](https://void.cloud) is a toolkit for building full-stack apps with Vite and deploying them to Cloudflare. It was built by VoidZero, the company behind Vite, Vitest, Oxc, and Rolldown, and was released as open source (MIT License) on October 15, 2026, after VoidZero joined Cloudflare. Simply importing `void/db` in your code gives you a local database, and running `void deploy` automatically creates a D1 database on Cloudflare.
 
 In this article, we'll use Void to build a React memo app that stores its data in D1, and walk through deploying it to Cloudflare.

@@ -99,8 +99,7 @@
 >
   <div class="container mx-auto px-4 max-w-6xl">
     <p
-      class="mb-3 font-mono text-xs tracking-[0.2em] uppercase"
-      style="color: var(--color-accent)"
+      class="mb-3 font-mono text-xs tracking-[0.2em] uppercase text-stone-500 dark:text-stone-400"
     >
       About
     </p>
@@ -143,8 +142,7 @@
               azukiazusa1
             </div>
             <div
-              class="mt-1 font-mono text-sm"
-              style="color: var(--color-accent)"
+              class="mt-1 font-mono text-sm text-stone-500 dark:text-stone-400"
             >
               Frontend Engineer
             </div>
@@ -174,15 +172,15 @@
             <div class="flex items-center gap-2">
               <span class="text-stone-400 dark:text-stone-500">mahjong</span>
               <span
-                class="ml-auto font-medium"
-                style="color: var(--color-accent)">enabled</span
+                class="ml-auto font-medium text-stone-900 dark:text-stone-100"
+                >enabled</span
               >
             </div>
             <div class="flex items-center gap-2">
               <span class="text-stone-400 dark:text-stone-500">poker</span>
               <span
-                class="ml-auto font-medium"
-                style="color: var(--color-accent)">active</span
+                class="ml-auto font-medium text-stone-900 dark:text-stone-100"
+                >active</span
               >
             </div>
           </div>

@@ -65,7 +65,6 @@
       >
         <a
           class="no-underline line-clamp-3 hover:underline"
-          style="text-decoration-color: var(--color-accent)"
           href={localizeHref(`/blog/${slug}`)}>{title}</a
         >
       </h2>

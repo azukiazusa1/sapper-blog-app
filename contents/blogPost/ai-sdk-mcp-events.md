@@ -26,10 +26,8 @@ selfAssessment:
         - text: "express.raw() を使うと challenge への応答が自動で返されるため"
           correct: false
           explanation: "challenge への応答は experimental_createMCPEventWebhook で作ったハンドラーが行います。express.raw() は本文を Buffer のまま受け取るだけです。"
-
 published: true
 ---
-
 Model Context Protocol (MCP) のツールは、クライアントがサーバーに処理を依頼するための仕組みです。反対に、サーバー側で何かが起きたことをクライアントが知るには、定期的にツールを呼び出して確認するか、接続を張り続けて通知を待つしかありませんでした。Slack に新しいメッセージが届いた、PagerDuty でインシデントが起きた、といった出来事にエージェントが反応するには、この仕組みでは不十分です。
 
 この問題を解決するために、MCP の Triggers & Events Working Group が MCP Events という拡張を提案しています。Vercel の AI SDK（`@ai-sdk/mcp`）は、2026 年 10 月に MCP Events の webhook モードへ実験的に対応しました。

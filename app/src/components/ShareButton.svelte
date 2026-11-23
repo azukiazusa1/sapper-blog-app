@@ -18,7 +18,9 @@
   const share = async () => {
     if (!navigator.share) return;
     await navigator
-      .share({ title: trucatedText, text: trucatedText, url })
+      // X アプリなど url が渡されると text を無視する共有先があるため、
+      // url を text に含めてタイトルが確実に表示されるようにする
+      .share({ title: trucatedText, text: `${trucatedText}\n${url}` })
       .catch(() => {
         // noop
       });

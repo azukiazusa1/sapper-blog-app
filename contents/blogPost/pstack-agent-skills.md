@@ -3,9 +3,9 @@ id: Fm922yg2Bb6LTBghhGChY
 title: "エージェントスキル集 pstack の開発原則と使い方"
 slug: "pstack-agent-skills"
 about: "AI が生成したコードを安心して任せるには、実装前の理解と実装後の検証が欠かせません。pstack は調査・設計・実装・レビューを組み合わせるエージェントスキル集です。この記事では pstack の開発原則と使い方を紹介します。"
-createdAt: "2026-10-18T15:00+09:00"
-updatedAt: "2026-10-18T22:30+09:00"
-tags: ["AI", "agent skills", "Claude Code"]
+createdAt: "2026-10-22T15:00+09:00"
+updatedAt: "2026-10-22T22:30+09:00"
+tags: ["AI", "agent skills"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/3gxhnXlxBP1Qoru9upLO7L/90d75c784119a10424b1ff49c6fd352d/potato-chips_15269-768x689.png"
   title: "ポテトチップスのイラスト"
@@ -26,7 +26,6 @@ selfAssessment:
         - text: "/bug-fix などのプレイブック用コマンドを一覧表示し、ユーザーに選ばせる"
           correct: false
           explanation: "記事では、プレイブックは poteto-mode の中に含まれる手順書であり、/bug-fix のように直接呼び出すコマンドはないと説明されています。"
-
     - question: "Prove It Works の原則に照らすと、不具合修正の根拠として不十分とされるのはどれですか?"
       answers:
         - text: "最初に失敗した操作をもう一度試し、期待どおりになったことを確認する"
@@ -41,7 +40,6 @@ selfAssessment:
         - text: "修正前に実行しても成功するテストが、修正後も成功している"
           correct: true
           explanation: "記事の通り、修正前でも成功するテストは元の不具合を捉えていないため、修正の根拠として不十分です。"
-
     - question: "Claude Code で setup-pstack を実行したとき、モデルの設定はどこに保存されると記事で説明されていますか?"
       answers:
         - text: "リポジトリ直下の .claude/settings.json"
@@ -58,7 +56,6 @@ selfAssessment:
           explanation: "SKILL.md は setup-pstack の手順そのものであり、選んだモデルの設定はここには書き込まれません。"
 published: true
 ---
-
 AI が生成したコードを安心して任せるには、実装前の理解と実装後の検証が欠かせません。[pstack](https://github.com/cursor/plugins/tree/main/pstack) は、poteto 氏によるエージェントスキル集です。作者は生成するコードの量よりも品質を重視し、少ないコードで目的を達成することを目標として説明しています。この記事では、pstack の開発原則と使い方を紹介します。
 
 ## pstack はどのように開発を進めるのか

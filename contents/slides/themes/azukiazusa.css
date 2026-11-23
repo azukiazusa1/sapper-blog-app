@@ -160,11 +160,6 @@ table {
   font-size: 24px;
 }
 
-table tr,
-table tr:nth-child(2n) {
-  background: transparent;
-}
-
 th, td {
   border: 1px solid var(--stone-700);
   padding: 12px 14px;
@@ -183,8 +178,7 @@ img {
 .eyebrow {
   font-family: 'JetBrains Mono', monospace;
   font-size: 17px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--stone-400);
   margin-bottom: 18px;
 }
@@ -254,8 +248,7 @@ img {
   display: inline-block;
   font-family: 'JetBrains Mono', monospace;
   font-size: 18px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--stone-400);
   margin-bottom: 10px;
 }
@@ -372,8 +365,4 @@ video {
 
 .flow .label {
   display: block;
-}
-
-.mt-2 {
-  margin-top: 32px;
 }

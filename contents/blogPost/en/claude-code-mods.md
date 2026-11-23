@@ -6,9 +6,9 @@ about: "Claude Code Mods are TypeScript/JavaScript functions that run inside the
 createdAt: "2026-10-20T12:47+09:00"
 updatedAt: "2026-10-20T12:47+09:00"
 tags: ["claude-code"]
-thumbnail: 
+thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/27SOtIZC7ydElKzlS0X9It/66ea17e17ec7e55433dd96d7ea80a341/tarako_19133-768x591.png"
-  title: "Illustration of tarako (cod roe)"
+  title: "たらこのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "A hook that fails before calling next is skipped, and the next handler runs in its place. That's why a guarding hook should use .catch to stop the command even when it fails."
 published: true
 ---
-
 Claude Code has long offered several ways to customize it, including [hooks](https://code.claude.com/docs/en/hooks), Skills, MCP servers, and the status line. All of these, however, run outside of Claude Code. Hooks, for example, run a shell command for each event and can stop a tool call based on its exit code or JSON output, but they can't redraw Claude Code's screen or replace its built-in behavior.
 
 On October 1, 2026, [Mods](https://code.claude.com/docs/en/plugins/mods/overview) officially arrived in Claude Code. A mod is a TypeScript/JavaScript function that runs inside the Claude Code process and can observe, rewrite, or answer in place of events such as tool calls, prompt submissions, and screen rendering. Claude Code's own `/diff` is already implemented as a mod.

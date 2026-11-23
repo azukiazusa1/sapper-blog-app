@@ -11,8 +11,9 @@ allowed-tools: Bash(git *), Bash(npm *), Read, Glob, Grep, mcp__textlint__lintFi
 
 1. `blogPost/$ARGUMENTS.md` を読む
 2. `mcp__textlint__lintFile` で自動校正を実行する（ファイルパスは絶対パスで指定）
-3. `writing-style.md` を参照して筆者の文体スタイルを確認する
-4. 下記の出力形式でレビュー結果をまとめる
+3. `writing-style.md` と [`references/editorial-checklist.md`](references/editorial-checklist.md) を参照して筆者の文体スタイルと編集観点を確認する
+4. [references/notation-rules.md](references/notation-rules.md) を読み、筆者が統一している表記を確認する
+5. 下記の出力形式でレビュー結果をまとめる
 
 ## 出力形式
 
@@ -33,61 +34,18 @@ textlint が検出した問題を列挙してください。問題がなけれ�
   修正案：「×××」
   理由：[具体的な理由]
 
-【改善提案】
-- より読みやすくするための提案があれば記載（任意）
-
-## 注意事項
-
-- 文体や表現の好みではなく、明確な誤りのみを指摘してください
-- 修正案は必ず提示してください
-- 記事の良い点にふれる必要はありません。指摘事項のみを出力してください
-- `writing-style.md` に記載された筆者固有のスタイル（例：「ですます調」「一人称は私」など）は誤りとして指摘しないでください
-- `b> <baseline-id>` は baseline を表示する独自構文です。`b>` の後には baseline の id が続きます。この構文を Markdown/HTML の誤りとして指摘しないでください
-
-## コンテキスト
-
-- 記事のパス: `blogPost/$ARGUMENTS.md`
-- 筆者の文章スタイルの詳細: `writing-style.md` を参照---
-name: article-review
-description: "引数で指定した記事のレビューを行います。記事スラッグを引数に渡すと、textlint による自動校正と誤字脱字・文法的な誤りの指摘を行います。/article-review [スラッグ] の形式で呼び出してください。記事を書いた後のチェック、公開前の校正、文章の品質確認にも使用してください。"
-argument-hint: "[article-slug]"
-allowed-tools: Bash(git *), Bash(npm *), Read, Glob, Grep, mcp__textlint__lintFile
----
-
-あなたはプロの編集者です。`blogPost/$ARGUMENTS.md` の技術記事をレビューし、改善すべき点を指摘してください。
-
-## 手順
-
-1. `blogPost/$ARGUMENTS.md` を読む
-2. `mcp__textlint__lintFile` で自動校正を実行する（ファイルパスは絶対パスで指定）
-3. `writing-style.md` を参照して筆者の文体スタイルを確認する
-4. 下記の出力形式でレビュー結果をまとめる
-
-## 出力形式
-
-### textlint の指摘
-
-textlint が検出した問題を列挙してください。問題がなければ「指摘なし」と記載してください。
-各指摘には行番号と修正案を含めてください。
-
-### 手動レビュー
-
-【誤字脱字・表記ミス】
+【不要な強調（太字）】
 - 該当箇所：「〇〇〇」
   修正案：「×××」
-  理由：[具体的な理由]
-
-【文法的誤り】
-- 該当箇所：「〇〇〇」
-  修正案：「×××」
-  理由：[具体的な理由]
+  理由：[太字が不要である具体的な理由]
 
 【改善提案】
 - より読みやすくするための提案があれば記載（任意）
 
 ## 注意事項
 
-- 文体や表現の好みではなく、明確な誤りのみを指摘してください
+- 文体や表現の好みではなく、明確な誤りやチェックリスト上の問題を中心に指摘してください。ただし [references/notation-rules.md](references/notation-rules.md) の表記ルールに反する語は誤りとして指摘してください
+- 太字（`**...**` や `<b>`）は多くの場合不要です。文脈だけで十分に伝わる語句や文への太字は、不要な強調として削除を提案してください
 - 修正案は必ず提示してください
 - 記事の良い点にふれる必要はありません。指摘事項のみを出力してください
 - `writing-style.md` に記載された筆者固有のスタイル（例：「ですます調」「一人称は私」など）は誤りとして指摘しないでください
@@ -97,3 +55,5 @@ textlint が検出した問題を列挙してください。問題がなけれ�
 
 - 記事のパス: `blogPost/$ARGUMENTS.md`
 - 筆者の文章スタイルの詳細: `writing-style.md` を参照
+- 編集チェックリスト: [`references/editorial-checklist.md`](references/editorial-checklist.md) を参照
+- 筆者が統一している表記: [references/notation-rules.md](references/notation-rules.md)

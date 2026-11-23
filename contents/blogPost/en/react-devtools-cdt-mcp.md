@@ -28,7 +28,6 @@ selfAssessment:
           explanation: "The React tools are registered as standalone tools, separate from performance_start_trace, and are called through execute_3p_developer_tool."
 published: true
 ---
-
 !> `react-devtools-cdt-mcp` is an experimental library. It is built on the experimental third-party developer tools API of Chrome DevTools MCP, so tool names and outputs may change between releases.
 
 With [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp), an AI agent can open pages in a browser, click and type, and capture accessibility tree snapshots and console logs. When debugging a React app, however, the information you can get from the DOM is sometimes not enough. A snapshot only shows buttons and `<li>` elements; it does not tell you which component rendered them. And when typing feels sluggish, it is hard for an agent to figure out, at the component level, which re-renders are taking the time from the output of Chrome DevTools MCP's performance traces.

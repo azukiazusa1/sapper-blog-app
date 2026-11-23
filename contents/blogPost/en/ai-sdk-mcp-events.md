@@ -26,10 +26,8 @@ selfAssessment:
         - text: "express.raw() automatically responds to the challenge"
           correct: false
           explanation: "The handler created by experimental_createMCPEventWebhook responds to the challenge. express.raw() only hands over the body as a Buffer."
-
 published: true
 ---
-
 Model Context Protocol (MCP) tools let a client ask a server to do something. The opposite direction has been harder: for a client to learn that something happened on the server side, it had to call a tool periodically or keep a connection open and wait for notifications. That isn't enough for agents that need to react to events such as a new Slack message or a PagerDuty incident.
 
 To address this, the MCP Triggers & Events Working Group has proposed an extension called MCP Events. Vercel's AI SDK (`@ai-sdk/mcp`) added experimental support for the webhook mode of MCP Events in October 2026.

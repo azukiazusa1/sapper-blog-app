@@ -8,7 +8,7 @@ updatedAt: "2026-10-31T16:03+09:00"
 tags: ["HTML", "JavaScript"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/nMV8Y5VNXt3Ifpp6rZBFJ/6e19e55d05d2d0c5022ce38f9f89cc3f/bike_big-scooter_15971-768x591.png"
-  title: "Illustration of a big scooter"
+  title: "ビッグスクーターのイラスト"
 audio: null
 selfAssessment:
   quizzes:
@@ -42,7 +42,6 @@ selfAssessment:
           explanation: "Removing them is what the safe version does. The unsafe version's sanitizer is disabled by default."
 published: true
 ---
-
 b> html-streaming-setters
 
 Chat UIs that show an LLM's response little by little have to keep rendering an unfinished answer. The simplest implementation parses everything received so far on each chunk and replaces the element's contents. With this approach, the amount of reparsing grows as the response gets longer, and elements are recreated on every update. As a result, text selections are lost and a `<details>` element you opened snaps shut. That's why real-world chat UIs rely on Markdown libraries that avoid reprocessing the parts that are already finished.
