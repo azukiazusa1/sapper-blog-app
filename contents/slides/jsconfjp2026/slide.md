@@ -26,6 +26,11 @@ style: |
   .flow .arrow {
     font-size: 28px;
   }
+
+  /* 出典は投影時に読めるよう 18pt（24px）以上にする */
+  .small {
+    font-size: 24px;
+  }
 ---
 
 <div class="hero">
@@ -69,19 +74,19 @@ azukiazusa です。ブログで毎週 Web と AI の記事を書いています
 
 ---
 
-## Web の作り手たちが、エージェントを作り始めた
+## Web の作り手たちがエージェントを作り始めた
 
 - Gatsby のチーム: **Mastra**
 - Next.js（Vercel）: **eve**
 - Astro（Fred K. Schott）: **Flue**
 
 <!--
-最近は TypeScript 製の AI エージェントフレームワークが次々と発表されています。その中で特徴的だと思うのは、Gatsby、Next.js、Astro といった著名な Web フレームワークの作者・開発元が、相次いでエージェントフレームワークを作っていることです。
+2026年に入って、TypeScript 製の AI エージェントフレームワークが次々と発表されています。その中で特徴的だと思うのは、Gatsby、Next.js、Astro といった著名な Web フレームワークの作者・開発元が、相次いでエージェントフレームワークを作っていることです。
 -->
 
 ---
 
-## Web と AI、一見つながりがなさそうなのに？
+## Web と AI は一見つながりがなさそうなのに？
 
 <div class="statement">この疑問が今日の発表のきっかけとなった</div>
 
@@ -96,7 +101,7 @@ Web 技術と AI 技術って一見つながりが無さそうに見えますよ
 </div>
 
 <!--
-その答えは、エージェント開発の「抽象化のタイミング」を迎えたことにあると考えています。まず一昔前に比べて、モデルが賢くなり、処理の流れはモデル自身が組むようになりました。エージェント開発において、今重点となっているのは、エージェントが安全に走り続けるための足場を用意することです。これをハーネスという言葉で呼ばれていたりしますね。
+その答えは、エージェント開発の「抽象化のタイミング」を迎えたことにあると考えています。まず一昔前に比べて、モデルが賢くなり、処理の流れはモデル自身が組むようになりました。
 -->
 
 ---
@@ -123,7 +128,7 @@ Web フレームワークの作者たちは、認証やルーティング、状�
 - 開発者はみな、同じ土台を手作りしている
 - 手作りした土台は、次のプロジェクトに持ち越されない
 
-<div class="small muted">出典: Vercel, "Introducing eve" (2026) https://vercel.com/blog/introducing-eve</div>
+<div class="small muted">出典: <a href="https://vercel.com/blog/introducing-eve">Vercel, "Introducing eve" (2026)</a></div>
 
 <!--
 eve の発表ブログにこういう一文があります。"Agents today are where the web was before frameworks"、つまり「今のエージェントは、フレームワーク以前の Web の段階にある」という意味です。
@@ -135,7 +140,6 @@ eve の発表ブログにこういう一文があります。"Agents today are w
 ---
 
 <div class="hero">
-  <div class="eyebrow">Step 1</div>
   <div class="huge">ワークフローから<span class="accent">ハーネス</span>へ</div>
 </div>
 
@@ -157,11 +161,9 @@ eve の発表ブログにこういう一文があります。"Agents today are w
 
 - 初期の LLM アプリでは、手順を開発者が明示する設計が有効だった
 - モデルに任せる範囲を限定し、**処理の流れ**を組み立てた
-- ワークフローは今も、再現性が必要な処理で重要
 
 <!--
-初期の LLM アプリケーションでは、開発者がプロンプトやツール呼び出しの順番を決める設計が自然でした。モデルだけで複雑なタスクを安定して進めるのは難しかったからです。
-ただし、ワークフローが古くなったわけではありません。今も決まった手順を確実に実行するには重要で、LangGraph のようにエージェントの状態管理や永続化も扱う基盤があります。ここで話したいのは置き換えではなく、開発者が意識する課題の重心の変化です。
+初期の LLM アプリケーションでは、開発者がプロンプトやツール呼び出しの順番を決める設計が自然でした。モデルだけで複雑なタスクを安定して進めるのは難しかったからです。ワークフローはグラウフのように、処理の流れを明示的に組み立てる設計です。決定的な手順はコードに任せることにより、安定した処理の流れを作ることができました。
 -->
 
 ---
@@ -178,39 +180,26 @@ eve の発表ブログにこういう一文があります。"Agents today are w
 - **処理の流れだけでなく、実行環境を支える抽象化が重要に**
 - 状態・権限・安全性・継続実行を支える足場 = **ハーネス**
 
-<div class="small muted">出典: Vivek Trivedy, "The Anatomy of an Agent Harness", LangChain Blog</div>
+<div class="small muted">出典: <a href="https://langchain.com/blog/the-anatomy-of-an-agent-harness">Vivek Trivedy, "The Anatomy of an Agent Harness", LangChain Blog (2026)</a></div>
 
 <!--
 モデルの進化によって、次にどのツールを呼ぶか、どう情報を集めるかなどをモデルが判断する場面が増えました。それに伴い、失敗からどう再開するか、どこまでの権限を与えるか、実行の様子をどう観測するかといった外側の設計が重要になります。
-これを支える仕組みをハーネスと呼びます。「Agent = Model + Harness」は、この役割分担を捉える表現です。ワークフローがハーネスに完全に置き換わったのではありません。実際、eve でも会話の永続化には Workflow SDK が使われています。抽象化の重心が外側にも広がったのです。
+これを支える仕組みをハーネスと呼びます。「Agent = Model + Harness」は、この役割分担を捉える表現が LangChain のブログにも登場しています。
 -->
-
----
-
 
 ---
 
 ## Mastra：エージェントループだけでは足りない
 
-- Mastra Code の開発から得られた教訓
+- Mastra は元々ワークフロー中心の設計だった
 - 単純なエージェントループでは、長時間の実行に耐えられない
+  - Mastra Code の開発から得られた教訓
 - **コンテキスト管理・永続化・承認**などをハーネスで担う
 
-<div class="small muted">
-出典: Sam Bhagwat, "Anatomy of a harness" (2026)
-</div>
+<div class="small muted">出典: <a href="https://mastra.ai/blog/the-next-million-ai-developers">Sam Bhagwat, "A framework for the next million AI developers", Mastra Blog (2024)</a><br /><a href="https://mastra.ai/blog/anatomy-of-a-coding-agent">Sam Bhagwat, "Anatomy of a harness", Mastra Blog (2026)</a></div>
 
 <!--
-Mastra の作者たちも、エージェントを開発する中で抽象化する対象を広げてきました。
-
-決められたワークフローだけでは、実行経路がわからない複雑なタスクに対応しきれないことを説明しています。
-
-そのため Mastra は、モデルの判断そのものではなく、モデルが継続して動くための実行環境もフレームワーク側で引き受けるようになりました。
-
-その知見を抽象化したのが Agent Controller です。
-
-これは、抽象化の重心が処理の流れから
-実行環境へ広がっていることを示す例だと思います。
+Mastra もコーディングエージェント Mastra Code の開発を通じて同じ結論に至っています。Mastra は元々ワークフロー中心の設計でしたが、単純なエージェントループでは長時間の実行に耐えられないことが分かりました。そこでコンテキスト管理、永続化、承認などをハーネスで担う設計に変えて、これを Agent Controller として提供しています。
 -->
 
 ---
@@ -228,7 +217,7 @@ Mastra の作者たちも、エージェントを開発する中で抽象化す�
 - チャンネル
 
 <!--
-ハーネスに何が必要かは、ここ数年で見えてきました。ツールやスキルでエージェントの能力を拡張すること、サンドボックスや Human-in-the-loop で安全性を確保すること、耐久性やメモリで状態を保持すること、観測・評価でエージェントの挙動を監視すること、チャンネルで Slack や Discord と連携すること、などです。
+ハーネスに何が必要かは、ここ数年で見えてきました。ここであげている要素は一定の共通理解を得ているように思います。
 -->
 
 ---
@@ -241,13 +230,12 @@ Mastra の作者たちも、エージェントを開発する中で抽象化す�
 </div>
 
 <!--
-状態管理、承認、サンドボックスなど、複数のエージェントに共通する課題が見え始めました。こうした繰り返しが抽象化されると、フレームワークの出番です。ただし抽象化自体もまだ発展途上で、後で紹介する Flue 2.0 はその良い例です。
+こうしたきょうつパターンが見てたタイミングが、フレームワークの出番です。
 -->
 
 ---
 
 <div class="hero">
-  <div class="eyebrow">Step 2</div>
   <div class="huge">実績のある Web の設計を<br /><span class="accent">持ち込む</span></div>
 </div>
 
@@ -257,7 +245,7 @@ Mastra の作者たちも、エージェントを開発する中で抽象化す�
 
 ---
 
-## Web の作者が得意なのは「複雑さを引き受ける」こと
+## 複雑さを引き受けること
 
 <div class="compare">
 
@@ -284,7 +272,9 @@ Mastra の作者たちも、エージェントを開発する中で抽象化す�
 <div class="statement" style="font-size: 30px; margin: 0.6em 0;">開発者は「どう動かすか」より、<strong>「何を作るか」</strong>に集中できる</div>
 
 <!--
-なぜ Web の作者たちなのか。抽象化をするだけなら他分野の開発者にもできます。しかし Web フレームワークの作者たちは、ルーティング、認証、ビルドやデプロイを一つの開発体験として統合してきました。複雑な配線をフレームワーク側で引き受け、開発者にはアプリの本質を記述してもらう。この姿勢が、ハーネスにも共通しています。例えば eve はツールの登録だけでなく、サンドボックス、承認、永続実行までまとめて扱います。次のファイルベース規約は、その設計思想が現れる具体例です。
+Web フレームワークの作者たちは、ルーティング、認証、ビルドやデプロイを一つの開発体験として統合してきました。複雑な場所ををフレームワーク側で引き受け、開発者にはアプリの本質を記述してもらうという設計が Agent フレームワークのハーネスにも共通しています。
+
+これによって、開発者は「どう動かすか」よりも、「何を作るか」に集中できるようになります。
 -->
 
 ---
@@ -326,15 +316,19 @@ agent/
 
 </div>
 
-<div class="quote">
+<div class="quote" style="font-size: 32px;">
 "Just as Next.js turns a folder into a route by owning the routing, eve turns a file into an ability by owning the agent loop."
 </div>
 
+<div class="small muted">出典: <a href="https://vercel.com/blog/introducing-eve">Vercel, "Introducing eve" (2026)</a></div>
+
 <!--
-例えばファイルベースの規約です。
+例として eve のファイルベースの規約を紹介します。
 Next.js では app ディレクトリにフォルダを置くとそれがルートになります。eve でも同じように、 tools ディレクトリに get_weather.ts を置くと、get_weather という名前のツールが自動で登録されます。
 
-eve のブログでは「Next.js がルーティングを引き受けてフォルダをルートに変えたように、eve はエージェントループを引き受けてファイルを能力に変える」と説明しています。Next.js で慣れ親しんだ形が、そのままエージェントの世界に持ち込まれています。ここで重要なのは見た目が似ていることよりも、登録や接続の仕組みをフレームワークが引き受け、開発者は「何ができるか」の定義に集中できることです。
+eve のブログには「Next.jsが「フォルダ構成だけでURLルートを自動生成する」ように、eveは「ファイルを置くだけでエージェントの能力として機能させる」というふうに説明されています。
+
+このようにフレームワークに何を任せて、何を開発者に任せるかという設計は、Web フレームワークの知見が活かされているように感じます。
 -->
 
 ---
@@ -343,8 +337,7 @@ eve のブログでは「Next.js がルーティングを引き受けてフォ�
 
 ```ts
 export function SupportAgent() {
-  const [verified, setVerified] =
-    usePersistentState("verified", false);
+  const [verified, setVerified] = usePersistentState("verified", false);
 
   useTool({ name: "verify", description: "...",
     run: () => setVerified(true) });
@@ -354,31 +347,33 @@ export function SupportAgent() {
 }
 ```
 
-<!--
-Flue 2.0 は、静的な設定オブジェクトから Hooks ベースの API に変更しました。ここでは公式記事にある永続状態と条件付きツール登録の仕組みを使い、サポートエージェントの例にしています。verified は会話をまたいで保持され、verify ツールの実行で true になります。すると次の実行から返金ツールを使用可能にできます。
+<div class="small muted">参考: <a href="https://flueframework.com/blog/flue-2/">Flue, "Flue 2.0"</a></div>
 
-React に着想を得たのは、名前が use で始まることだけではありません。状態、ライフサイクル、能力を小さな部品として合成できることです。
+<!--
+Flue 2.0 では、React から着想を受けて、エージェントの定義が設定オブジェクトから、Hooks を呼ぶ関数に変わりました。
+
+React の Hooks が便利なのは、UI を状態の関数として書けることでした。Flue はこの着想を得て、エージェントの設定を関数として書けるようにしました。現在の状態からエージェントがどのツールを使えるか？という能力の組み立てを hooks で表現したことにより、宣言的な方法でエージェントの設定ができるというのが特徴です。
+
+もう 1 つ React のカスタムフックのように、関心のある部分を切り出して再利用できるというのも特徴です。
 -->
 
 ---
 
-## 抽象化は、使われてから見直される
+## Hooks を採用した理由
 
-- 静的な定義は、複雑なエージェントや複数ステップの処理で限界が見えた
-- 破壊的変更をしてでも、直す価値があると判断した
-- これは Web フレームワークの世界でも何度も見てきた光景
-
-<div class="small muted">出典: Flue, "Flue 2.0" https://flueframework.com/blog/flue-2/</div>
+- 実行時の動的な振る舞いと能力の切り替えを自然に記述できた
+- カスタムフックによるロジックの再利用と合成
+- 学習コストの低さ
 
 <!--
-Flue 1.0 Beta を実際の開発で使ったところ、複雑なエージェントや複数ステップのワークフローでは静的な定義に限界が見えてきたそうです。他の人気フレームワークにも同じ問題があるのではと考え、破壊的変更をしてでも直す価値があると判断しました。
-これは Web フレームワークの世界で何度も見てきた光景です。React のクラスコンポーネントから Hooks へ、Next.js の Pages Router から App Router へ。抽象化は一度で決まらず、使われてから見直されるものです。その感覚を持っているのが、Web を作ってきた人たちなんです。
+Hooks を採用した最大の目的は、実行時の動的な振る舞いと能力の切り替えを自然に記述できることでした。複雑なエージェントでは「状況に応じてツールを出し入れしたい」「タスクの難易度に応じて途中でより高性能なモデル」という要望が出てきます。このような動的な振る舞いは hooks を使うことで自然に記述できると気づいたようです。
+
+React が長年かけて培った設計思想を活かしているという点が面白いところだと思います。
 -->
 
 ---
 
 <div class="hero">
-  <div class="eyebrow">Step 3</div>
   <div class="huge">なぜ <span class="accent">TypeScript</span> なのか</div>
 </div>
 
@@ -392,78 +387,94 @@ Flue 1.0 Beta を実際の開発で使ったところ、複雑なエージェン
 
 <div class="compare">
 
-<div class="side weak">
-  <div class="label">モデル・データに近い領域</div>
+<div class="side">
+  <div class="label">モデルの中を補う</div>
   <h3>Python が強い</h3>
 
-- ML・データ処理・実験
-- モデルや評価のエコシステム
+- 学習・ファインチューニング
+- データ分析・RAG の精度改善
+- モデルの実験・検証
 
 </div>
 
 <div class="side">
-  <div class="label">プロダクトに近い領域</div>
+  <div class="label">モデルの外を整える</div>
   <h3 class="accent">TypeScript が活きる</h3>
 
-- サーバー・ツール・Web UI
-- npm 資産・デプロイとの統合
+- ツール・権限・承認（ハーネス）
+- UI とのリアルタイム対話
+- 既存 Web プロダクトへの組み込み
 
 </div>
 
 </div>
 
-<div class="statement" style="font-size: 32px; margin: 0.7em 0;">エージェントがプロダクトに近づいた</div>
+<div class="statement" style="font-size: 32px; margin: 0.7em 0;">差がつく場所が、モデルの外に移った</div>
 
 <!--
-なぜ TypeScript のエージェントフレームワークが増えているのでしょうか。
-エージェントを実際のプロダクトに組み込む仕事が増え、既存の Web サーバー、業務 API、npm パッケージ、UI と一体で作る場面が重要になったということです。そこで TypeScript のエコシステムという強みが生きるのです。
+従来は、AI エージェントのフレームワークといえば Python が中心でした。同じ名称のフレームワークでも、Python 製のものが先に新しい機能が追加されることも多かったです。
+
+それでもいま TypeScript が有力になってきた 1 つ目の理由は、エージェントの出来を決める場所が変わったからです。以前は、RAG やファインチューニングでモデルに足りない知識を補う、データと機械学習の仕事が中心でした。ここは今も Python の領域です。
+でもモデルが賢くなり、差がつく場所がモデルの外に移りました。ハーネスや UI とのリアルタイムな対話、既存 Web プロダクトへの組み込みなど、モデルの外側を整えることが重要になったのです。ここで TypeScript が活きる領域が広がっています。
 -->
 
 ---
 
-## エージェントと人をつなぐ UI は、もともと Web の仕事
+## エージェントの実行と UI は密接に結合する
 
-- エージェントは最終的に、UI を通して人と対話する
-  - Slack との接続
-  - Web UI への描画
-- → UI からサーバー、ツールまで同じ JS/TS 資産を使える
+- エージェントの内部状態がそのまま UI の状態になる
+  - 思考やツール実行の状態
+  - UI での承認を受けて再開
+  - Generative UI
+- 実際、`useEveAgent`（eve）や `@flue/react`（Flue）のように UI 連携もセットで提供されている
+
+<div class="statement" style="font-size: 30px; margin: 0.6em 0;">同じ TypeScript で扱う強みが活きる</div>
 
 <!--
-プロダクトの近くの中でも特に分かりやすいのが、エージェントの出口です。エージェントは最終的に、Web のチャット画面や Slack などを通して人と対話します。
-。
-人と対話する UI を作るのは、もともと Web の仕事で、TypeScript の場合はエージェントのツールと UI を同じ言語で作れたり、エコシステムが充実しているという強みがあるのです。
+TypeScript の強みとしては、やはりフロントエンドの UI とバックエンドの実行を同じ言語で扱えることが挙げられます。
+エージェントは、リクエストを送って完了した結果を 1 回返すだけでは終わりません。思考やツール実行の途中経過をリアルタイムに画面へ同期したり、危険なツールを実行する前に一度止めて UI でユーザーの承認を受けて再開したり、天気カードや Diff 表示のようにツールの出力に応じて UI を出し分ける Generative UI を描画したりと、エージェントの内部状態がそのまま UI の状態になります。
+このようにバックエンドの実行とフロントエンドの UI が密接に絡み合うからこそ、ツールの型定義から状態管理、UI の描画までを同じ TypeScript で一貫して扱える強みが活きます。実際、eve の `useEveAgent` や Flue の `@flue/react` のように、フレームワーク側もフロントエンド連携をセットで提供しています。
+-->
+
+---
+
+## Web のエコシステムをそのまま活かせる
+
+- Hooks や型システムなど、Web で磨かれた抽象化をそのまま持ち込める
+- Zod や外部連携の SDK（Slack, Discord）など、npm のパッケージが豊富に揃っている
+- Web 開発の延長線上で、エージェントの開発ができる
+
+<!--
+もう 1 つ大きな理由が、Web のエコシステムをそのまま活かせることです。
+先ほど Hooks や型システムのように、Web 開発で長年磨かれてきた設計の資産がそのまま持ち込めます。また、npm には Zod や各種 API の SDK など、エージェントに外部と連携させるためのパッケージが豊富に揃っています。
+そして何より JS/TS は利用者が多く、Web 開発者が新しい言語を一から学び直さずに、普段の延長線上でエージェントの作り手になれるのが大きな強みです。
 -->
 
 ---
 
 ## まとめ
 
-- ワークフローは今も重要。モデルの進化により、**抽象化の重心がハーネスにも広がった**
-- Web の作者は、共通の複雑さを引き受ける**開発体験の設計**をしてきた
-- エージェントがプロダクトに近づき、**TypeScript の活躍する領域が広がった**
+- モデルの進化により、**抽象化の重心がハーネスにも広がった**
+- Web フレームワークの作者は、共通の複雑さを引き受ける**開発体験の設計**をしてきた
+- 差がつく場所がモデルの外に移り、**UI 連携や Web のエコシステムを活かせる TypeScript** が強みになる
 
 <!--
 まとめです。
-1 つ目、ワークフローは今も必要ですが、モデルの進化で、抽象化の重心がハーネスにも広がりました。
-2 つ目、Web フレームワークの作り手は、認証や状態管理、デプロイなどの配線を引き受け、開発体験を設計してきました。その経験がエージェントの実行基盤にも活きています。
-3 つ目、Python を置き換えるという話ではなく、エージェントがプロダクトに近づいたことで TypeScript の強みが活きる場面が広がっていると考えています。
+1 つ目、モデルの進化で、抽象化の重心がハーネスにも広がりました。
+2 つ目、Web フレームワークの作り手は、認証や状態管理といった複雑さを引き受け、開発者が機能に集中できる環境を設計してきました。その経験がエージェントの実行基盤にも活きています。
+3 つ目、差がつく場所がモデルの外に移ったことで、UI との密な連携や、設計資産・npm といった Web のエコシステムをそのまま活かせる TypeScript の強みが活きる場面が広がっています。ぜひ普段の Web 開発の延長線上で、エージェントを作る側にも踏み出してみてください。
 -->
 
 ---
 
 ## 参考資料
 
-<div class="small">
-
-- Vercel, "Introducing eve" https://vercel.com/blog/introducing-eve
-- vercel/eve https://github.com/vercel/eve
-- Flue https://flueframework.com
-- Flue, "Flue 2.0" https://flueframework.com/blog/flue-2/
-- Mastra Docs https://mastra.ai/docs
-- Mastra About https://mastra.ai/about
-- LangChain, "The Anatomy of an Agent Harness" https://langchain.com/blog/the-anatomy-of-an-agent-harness
-
-</div>
+- Vercel, [&quot;Introducing eve&quot;](https://vercel.com/blog/introducing-eve) (2026)
+- Vivek Trivedy, [&quot;The Anatomy of an Agent Harness&quot;](https://langchain.com/blog/the-anatomy-of-an-agent-harness), LangChain Blog (2026)
+- Sam Bhagwat, [&quot;A framework for the next million AI developers&quot;](https://mastra.ai/blog/the-next-million-ai-developers), Mastra Blog (2024)
+- Sam Bhagwat, [&quot;Anatomy of a harness: building a coding agent that can run for hours&quot;](https://mastra.ai/blog/anatomy-of-a-coding-agent), Mastra Blog (2026)
+- Sam Bhagwat, [&quot;Announcing Agent Controller&quot;](https://mastra.ai/blog/announcing-agent-harness), Mastra Blog (2026)
+- Flue, [&quot;Flue 2.0&quot;](https://flueframework.com/blog/flue-2/)
 
 <!--
 参考資料です。今日紹介したフレームワークは、それぞれブログで詳しく試しているので、気になった方はぜひ読んでみてください。
