@@ -4,7 +4,7 @@ title: "Letting an AI Agent Modernize an Existing App with legacy-scan in Modern
 slug: "modern-web-guidance-legacy-scan"
 about: "legacy-scan, new in Modern Web Guidance 1.0, finds outdated web patterns with local static analysis and leaves the fixes to AI agents. This article runs it on a legacy sample app and follows an agent as it resolves 12 findings across 9 guides."
 createdAt: "2026-11-23T10:29+09:00"
-updatedAt: "2026-11-23T11:39+09:00"
+updatedAt: "2026-11-23T22:05+09:00"
 tags: ["AI", "HTML", "CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4m0kY463QMjLALJKb4pBAj/98a0aabce8e2236b47a2a0803d20af86/leaf_ichou_illust_1014-768x689.png"

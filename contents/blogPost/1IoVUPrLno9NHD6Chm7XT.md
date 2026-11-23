@@ -4,7 +4,7 @@ title: "Modern Web Guidance 1.0 の legacy-scan で既存アプリを AI エー�
 slug: "modern-web-guidance-legacy-scan"
 about: "Modern Web Guidance 1.0 に追加された legacy-scan は、既存プロジェクトの古い Web 実装パターンをローカルの静的解析で検出し、公式ガイドと組み合わせて AI エージェントにモダナイズさせる仕組みです。この記事では、古い書き方を含むサンプルアプリを用意し、legacy-scan で洗い出された 9 ガイド・12 件の問題を AI エージェントが最新の Web 標準へ書き換えるまでの流れとセッションログ上のポイントを紹介します。"
 createdAt: "2026-11-23T10:29+09:00"
-updatedAt: "2026-11-23T11:39+09:00"
+updatedAt: "2026-11-23T22:05+09:00"
 tags: ["AI", "HTML", "CSS"]
 thumbnail:
   url: "https://images.ctfassets.net/in6v9lxmm5c8/4m0kY463QMjLALJKb4pBAj/98a0aabce8e2236b47a2a0803d20af86/leaf_ichou_illust_1014-768x689.png"
