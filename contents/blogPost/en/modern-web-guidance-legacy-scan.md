@@ -56,7 +56,6 @@ selfAssessment:
           explanation: "Automatic textarea resizing was moved to CSS field-sizing: content, and the scrollHeight listener was removed."
 published: true
 ---
-
 In real-world development, you are far more likely to work on an existing codebase than to build a new app from scratch. Projects that have been running for years tend to accumulate old workarounds for problems that modern browsers now solve natively. For example, `<textarea>` elements used to be auto-resized by watching `scrollHeight` in JavaScript, but today CSS `field-sizing: content` does the same job.
 
 Because these old workarounds still appear to work, they rarely get prioritized and tend to be left alone. Underneath, though, they carry hidden costs: the maintenance burden of outdated code keeps growing, and not using native browser features inflates JavaScript bundle sizes. On top of that, AI coding agents are pulled along by their outdated training data and the surrounding code, so they end up spreading the same old patterns into new features.
