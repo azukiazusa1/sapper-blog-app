@@ -506,7 +506,7 @@ renderMemos();
 
 このモダナイズ前のアプリをブラウザで開いた初期画面を見てみましょう。
 
-![モダナイズ前の Team Memo Board。初期表示の時点で入力欄が赤枠と薄い赤背景になっている](./modern-web-guidance-legacy-scan-before.png)
+![モダナイズ前の Team Memo Board。初期表示の時点で入力欄が赤枠と薄い赤背景になっている](https://images.ctfassets.net/in6v9lxmm5c8/65xr476gVxdcR2xDNy9IB4/37f544c96c8da6dcacc3b4c724bd21ac/modern-web-guidance-legacy-scan-1.png)
 
 まだユーザーが何も入力していないにもかかわらず、`:invalid` セレクタによってタイトル欄と本文欄が赤枠と薄い赤背景になっています。また、メモ一覧右端のスクロールバーは非標準の `::-webkit-scrollbar` のみで装飾されており、Firefox ではスタイルが反映されない状態です。機能自体は動作しますが、フォームの体験やアクセシビリティ、パフォーマンスの面で改善の余地が多く残っています。
 
@@ -889,7 +889,7 @@ b> interpolate-size
 
 さらに、修正後のアプリを Chrome 152 で実際に開いて動作を検証しました。
 
-![モダナイズ後の Team Memo Board。初期表示の赤枠が消え、タイトルのヒント表示とコントラスト比を改善したスクロールバーが適用されている](./modern-web-guidance-legacy-scan-after.png)
+![モダナイズ後の Team Memo Board。初期表示の赤枠が消え、タイトルのヒント表示とコントラスト比を改善したスクロールバーが適用されている](https://images.ctfassets.net/in6v9lxmm5c8/4gyVOiy9xwaJADqebZSXjq/f34c12c963d1e66a431e5a18773e89e2/modern-web-guidance-legacy-scan-2.png)
 
 既存の機能がすべて維持されていることを確認できました。一方で単なるリファクタリングにとどまらず、ユーザーから見える UI や振る舞いまで変化している点はあまり好ましくない場合もあります。たとえば次のような変更は、依頼していないにもかかわらず加えられていました。
 

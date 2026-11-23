@@ -506,7 +506,7 @@ renderMemos();
 
 Let's look at the initial screen of this pre-modernization app in the browser.
 
-![Team Memo Board before modernization. The input fields already have red borders and a light red background on initial load](./modern-web-guidance-legacy-scan-before.png)
+![](https://images.ctfassets.net/in6v9lxmm5c8/65xr476gVxdcR2xDNy9IB4/37f544c96c8da6dcacc3b4c724bd21ac/modern-web-guidance-legacy-scan-1.png)
 
 Even though the user has not typed anything yet, the `:invalid` selector gives the title and body fields a red border and a light red background. The scrollbar on the right edge of the memo list is also styled only with the non-standard `::-webkit-scrollbar`, so the styles do not apply in Firefox. The app works, but there is plenty of room for improvement in form experience, accessibility, and performance.
 
@@ -889,7 +889,7 @@ After the fixes were complete, the agent reran `legacy-scan --json`, and the num
 
 I also opened the modernized app in Chrome 152 to check that it works.
 
-![Team Memo Board after modernization. The red borders on initial load are gone, and a hint for the title field and a higher-contrast scrollbar are applied](./modern-web-guidance-legacy-scan-after.png)
+![Team Memo Board after modernization. The red borders on initial load are gone, and a hint for the title field and a higher-contrast scrollbar are applied](https://images.ctfassets.net/in6v9lxmm5c8/4gyVOiy9xwaJADqebZSXjq/f34c12c963d1e66a431e5a18773e89e2/modern-web-guidance-legacy-scan-2.png)
 
 I confirmed that all existing features still work. On the other hand, the changes went beyond pure refactoring and altered the UI and behavior that users see, which is not always desirable. For example, the following changes were made even though I did not ask for them.
 
