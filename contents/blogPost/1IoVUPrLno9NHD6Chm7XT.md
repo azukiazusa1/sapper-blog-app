@@ -54,7 +54,7 @@ selfAssessment:
         - text: "textarea の高さを scrollHeight で再計算し続ける必要があるから"
           correct: false
           explanation: "textarea の自動リサイズは scrollHeight リスナーを削除し、CSS の field-sizing: content へ移行しています。"
-published: false
+published: true
 ---
 
 開発の現場ではゼロから新規アプリを作るよりも、既存のコードベースに手を入れる場面のほうが多いでしょう。長年運用されたプロジェクトには、現在のブラウザがネイティブに解決できる古い回避策が積み重なりがちです。例えば従来は `<textarea>` の高さを JavaScript で `scrollHeight` を監視して自動リサイズしていましたが、現在は CSS の `field-sizing: content` で同じことができます。

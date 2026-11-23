@@ -54,7 +54,7 @@ selfAssessment:
         - text: "Because the textarea height must keep being recalculated with scrollHeight"
           correct: false
           explanation: "Automatic textarea resizing was moved to CSS field-sizing: content, and the scrollHeight listener was removed."
-published: false
+published: true
 ---
 
 In real-world development, you are far more likely to work on an existing codebase than to build a new app from scratch. Projects that have been running for years tend to accumulate old workarounds for problems that modern browsers now solve natively. For example, `<textarea>` elements used to be auto-resized by watching `scrollHeight` in JavaScript, but today CSS `field-sizing: content` does the same job.
