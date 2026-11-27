@@ -138,15 +138,19 @@ html:has(dialog[open]) {
 #contents {
   font-size: 1rem;
   line-height: 1.9;
-  /*
-   * prose-stone は本文を light: stone-700 / dark: stone-300 にする。
-   * 記事本文はサイト全体（layout の text-stone-800 / dark:text-stone-100）を継承する。
-   */
+}
+
+/*
+ * prose-stone は本文を light: stone-700 / dark: stone-300、
+ * prose-zinc（ショート）は light: zinc-700 / dark: zinc-300 にする。
+ * 記事本文とショート投稿はサイト全体（layout の text-stone-800 / dark:text-stone-100）を継承する。
+ */
+:is(#contents, .short-thread-content) {
   color: inherit;
 }
 
 /* 強調も文字色は変えず、太さだけで区別する */
-#contents strong {
+:is(#contents, .short-thread-content) strong {
   color: inherit;
 }
 
@@ -159,7 +163,7 @@ html:has(dialog[open]) {
 }
 
 /* palt・カーニング・auto-phrase は @layer base の見出し指定で適用済み */
-#contents :is(h1, h2, h3, h4, h5, h6) {
+:is(#contents, .short-thread-content) :is(h1, h2, h3, h4, h5, h6) {
   @apply text-stone-800 dark:text-stone-100;
   text-wrap: balance;
 }
@@ -175,10 +179,13 @@ html:has(dialog[open]) {
   scroll-margin-top: 5rem;
 }
 
+/* 引用はボーダーで区別し、文字色は本文（サイト全体）に合わせる */
+:is(#contents, .short-thread-content) blockquote {
+  color: inherit;
+}
+
 #contents blockquote {
   @apply my-6 border-l-4 border-stone-300 py-3 px-5 md:my-8 dark:border-stone-600;
-  /* 引用はボーダーで区別し、文字色は本文（サイト全体）に合わせる */
-  color: inherit;
 }
 
 #contents details[open] {
