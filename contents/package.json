@@ -7,7 +7,7 @@
     "lint:textlint:fix": "textlint --fix blogPost/",
     "dev": "marp --engine ./slides/engine.mjs --theme-set ./slides/themes -s ./slides --html",
     "build:html": "marp --engine ./slides/engine.mjs --theme-set ./slides/themes --html --allow-local-files --notes",
-    "build:pdf": "marp --engine ./slides/engine.mjs --theme-set ./slides/themes --pdf --allow-local-files"
+    "build:pdf": "marp --engine ./slides/engine.mjs --theme-set ./slides/themes --html --pdf --allow-local-files"
   },
   "dependencies": {
     "@marp-team/marp-cli": "^4.1.1",

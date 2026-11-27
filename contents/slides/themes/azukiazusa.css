@@ -3,11 +3,12 @@
  * @auto-scaling true
  * @size 16:9 1280px 720px
  *
+ * 文字サイズは投影時の可読性のため 24px 未満にしない。
  * 強調色 (--accent) は 1 枚につき 1 か所までにする。使うときは *強調* か .accent を指定する。
  */
 
 @import 'default';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap');
 
 :root {
   --stone-50: #fafaf9;
@@ -21,6 +22,8 @@
   --stone-800: #292524;
   --stone-900: #1c1917;
   --stone-950: #0c0a09;
+  --text: #fafaf9;
+  --text-sub: #e7e5e4;
   --accent: #5eead4;
   --accent-dim: #2dd4bf;
   --accent-muted: rgba(94, 234, 212, 0.15);
@@ -28,9 +31,9 @@
 
 section {
   background: var(--stone-950);
-  color: var(--stone-200);
+  color: var(--text);
   font-family: 'Noto Sans JP', 'Inter', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 30px;
   line-height: 1.6;
   padding: 56px 64px 52px;
@@ -71,7 +74,7 @@ h3 {
 }
 
 p, li {
-  color: var(--stone-300);
+  color: var(--text);
 }
 
 strong {
@@ -85,16 +88,16 @@ em {
 }
 
 a {
-  color: var(--stone-300);
+  color: var(--text);
   text-decoration: underline;
   text-underline-offset: 0.14em;
 }
 
 code {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.82em;
+  font-size: max(0.82em, 24px);
   background: var(--stone-800);
-  color: var(--stone-200);
+  color: var(--text);
   border: 1px solid var(--stone-700);
   border-radius: 6px;
   padding: 0.14em 0.32em;
@@ -106,14 +109,15 @@ pre {
   border-radius: 10px;
   border: 1px solid var(--stone-700);
   background: linear-gradient(135deg, var(--stone-900), var(--stone-800));
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.45;
 }
 
 pre code {
+  font-size: 1em;
   background: transparent;
   border: 0;
-  color: var(--stone-200);
+  color: var(--text);
   padding: 0;
 }
 
@@ -133,7 +137,7 @@ li::before {
   content: '▸';
   position: absolute;
   left: 0;
-  color: var(--stone-500);
+  color: var(--stone-400);
   font-weight: bold;
   font-size: 1.1em;
 }
@@ -144,12 +148,12 @@ blockquote {
   border-left: 4px solid var(--accent);
   background: var(--accent-muted);
   border-radius: 0 8px 8px 0;
-  color: var(--stone-100);
+  color: var(--text);
 }
 
 blockquote p {
-  color: var(--stone-200);
-  font-size: 1.0rem;
+  color: var(--text);
+  font-size: 1em;
   margin: 0;
 }
 
@@ -177,20 +181,21 @@ img {
 
 .eyebrow {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 17px;
+  font-size: 24px;
   letter-spacing: 0.08em;
-  color: var(--stone-400);
+  font-weight: 500;
+  color: var(--text-sub);
   margin-bottom: 18px;
 }
 
 .lead {
   font-size: 34px;
   line-height: 1.5;
-  color: var(--stone-100);
+  color: var(--text);
 }
 
 .muted {
-  color: var(--stone-400);
+  color: var(--text-sub);
 }
 
 .accent {
@@ -236,6 +241,7 @@ img {
 
 .card {
   background: var(--stone-900);
+  border: 2px solid var(--stone-600);
   border-radius: 10px;
   padding: 18px 20px;
 }
@@ -247,22 +253,23 @@ img {
 .label {
   display: inline-block;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 18px;
+  font-size: 24px;
   letter-spacing: 0.06em;
-  color: var(--stone-400);
+  font-weight: 500;
+  color: var(--text-sub);
   margin-bottom: 10px;
 }
 
 .big {
   font-size: 44px;
   line-height: 1.35;
-  color: var(--stone-100);
+  color: var(--text);
 }
 
 .statement {
   font-size: 40px;
   line-height: 1.5;
-  color: var(--stone-100);
+  color: var(--text);
   text-align: center;
   margin: 1.2em 0;
 }
@@ -280,7 +287,7 @@ img {
 .quote {
   font-size: 40px;
   line-height: 1.4;
-  color: var(--stone-100);
+  color: var(--text);
 }
 
 .fit {
@@ -288,11 +295,11 @@ img {
 }
 
 .small {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .tiny {
-  font-size: 16px;
+  font-size: 24px;
 }
 
 .divider {
@@ -315,9 +322,9 @@ video {
   padding: 18px;
   border: 2px dashed var(--stone-500);
   border-radius: 10px;
-  color: var(--stone-400);
+  color: var(--text-sub);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .placeholder.video {
@@ -340,7 +347,7 @@ video {
 }
 
 .compare .weak h3, .compare .weak li {
-  color: var(--stone-400);
+  color: var(--text-sub);
 }
 
 .flow {
@@ -355,7 +362,7 @@ video {
 }
 
 .flow .arrow {
-  color: var(--stone-500);
+  color: var(--stone-400);
   font-size: 40px;
 }
 
